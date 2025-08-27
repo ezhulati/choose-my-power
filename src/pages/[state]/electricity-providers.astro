@@ -1,0 +1,32 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import StateElectricityProvidersPage from '../_components/StateElectricityProvidersPage';
+
+export async function getStaticPaths() {
+  const states = [
+    { params: { state: 'texas' } },
+    { params: { state: 'pennsylvania' } },
+    { params: { state: 'ohio' } },
+    { params: { state: 'illinois' } },
+    { params: { state: 'maryland' } },
+    { params: { state: 'delaware' } },
+    { params: { state: 'connecticut' } },
+    { params: { state: 'massachusetts' } },
+    { params: { state: 'rhode-island' } },
+    { params: { state: 'new-hampshire' } },
+    { params: { state: 'maine' } },
+  ];
+  
+  return states;
+}
+
+const { state } = Astro.params;
+const stateTitle = state?.charAt(0).toUpperCase() + state?.slice(1).replace('-', ' ') || 'State';
+
+const title = `${stateTitle} Electricity Providers | Compare Energy Companies`;
+const description = `Compare electricity providers in ${stateTitle}. Expert analysis of rates, customer service, and plan options from licensed energy companies.`;
+---
+
+<Layout title={title} description={description}>
+  <StateElectricityProvidersPage client:load state={state} onNavigate={(path) => window.location.href = path} />
+</Layout>

@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ResourcesPage from './_components/ResourcesPage';
+
+const title = "Electricity Resources & Guides | Learn About Energy Deregulation";
+const description = "Educational resources about electricity deregulation, understanding your bill, choosing plans, and managing your energy costs. Expert guides and tools.";
+---
+
+<Layout title={title} description={description}>
+  <ResourcesPage client:load onNavigate={(path) => window.location.href = path} />
+</Layout>

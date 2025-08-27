@@ -14,6 +14,8 @@ export function useRouter() {
   const [route, setRoute] = useState<Route>(() => parseCurrentRoute());
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     const handlePopState = () => {
       setRoute(parseCurrentRoute());
     };
@@ -23,6 +25,8 @@ export function useRouter() {
   }, []);
 
   const navigate = (path: string, params?: RouteParams) => {
+    if (typeof window === 'undefined') return;
+    
     let finalPath = path;
     
     if (params) {
@@ -39,6 +43,15 @@ export function useRouter() {
 }
 
 function parseCurrentRoute(): Route {
+  // Handle SSR - default to homepage
+  if (typeof window === 'undefined') {
+    return {
+      path: '/',
+      params: {},
+      query: new URLSearchParams()
+    };
+  }
+
   const path = window.location.pathname;
   const query = new URLSearchParams(window.location.search);
   

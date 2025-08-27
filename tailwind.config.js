@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         texas: {
+          navy: '#002868', // Texas navy blue
           red: {
             50: '#fef2f2',
             100: '#fee2e2',

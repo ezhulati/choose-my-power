@@ -1,0 +1,137 @@
+---
+// Interactive plan filtering component
+interface Props {
+  currentFilters?: {
+    filter?: string;
+    term?: string;
+    green?: string;
+    type?: string;
+  };
+  city: string;
+  totalPlans: number;
+}
+
+const { currentFilters = {}, city, totalPlans } = Astro.props;
+---
+
+<div class="plan-filters bg-white border border-gray-200 rounded-lg p-6 mb-8">
+  <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
+    <h3 class="text-lg font-semibold text-gray-900 mb-4 md:mb-0">Filter Plans</h3>
+    <div class="text-sm text-gray-600">
+      Showing <span id="filtered-count">{totalPlans}</span> of {totalPlans} plans
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+    <!-- Contract Length Filter -->
+    <div class="filter-group">
+      <label class="block text-sm font-medium text-gray-700 mb-2">Contract Length</label>
+      <select id="term-filter" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+        <option value="">Any length</option>
+        <option value="6" {currentFilters.term === '6' ? 'selected' : ''}>6 months</option>
+        <option value="12" {currentFilters.term === '12' || currentFilters.filter === '12-month' ? 'selected' : ''}>12 months</option>
+        <option value="24" {currentFilters.term === '24' ? 'selected' : ''}>24 months</option>
+        <option value="36" {currentFilters.term === '36' ? 'selected' : ''}>36 months</option>
+      </select>
+    </div>
+
+    <!-- Rate Type Filter -->
+    <div class="filter-group">
+      <label class="block text-sm font-medium text-gray-700 mb-2">Rate Type</label>
+      <select id="type-filter" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+        <option value="">Any type</option>
+        <option value="fixed" {currentFilters.type === 'fixed' || currentFilters.filter === 'fixed-rate' ? 'selected' : ''}>Fixed Rate</option>
+        <option value="variable" {currentFilters.type === 'variable' ? 'selected' : ''}>Variable Rate</option>
+        <option value="indexed" {currentFilters.type === 'indexed' ? 'selected' : ''}>Indexed Rate</option>
+      </select>
+    </div>
+
+    <!-- Green Energy Filter -->
+    <div class="filter-group">
+      <label class="block text-sm font-medium text-gray-700 mb-2">Green Energy</label>
+      <select id="green-filter" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+        <option value="">Any amount</option>
+        <option value="100" {currentFilters.green === '100' || currentFilters.filter === 'green-energy' ? 'selected' : ''}>100% Green</option>
+        <option value="50" {currentFilters.green === '50' ? 'selected' : ''}>50%+ Green</option>
+        <option value="25" {currentFilters.green === '25' ? 'selected' : ''}>25%+ Green</option>
+      </select>
+    </div>
+
+    <!-- Sort Options -->
+    <div class="filter-group">
+      <label class="block text-sm font-medium text-gray-700 mb-2">Sort By</label>
+      <select id="sort-filter" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+        <option value="price-low">Lowest Rate</option>
+        <option value="price-high">Highest Rate</option>
+        <option value="green-high">Most Green</option>
+        <option value="term-short">Shortest Term</option>
+        <option value="term-long">Longest Term</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="flex flex-col sm:flex-row gap-3 mt-6">
+    <button id="apply-filters" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md font-medium transition-colors flex-1 sm:flex-none">
+      Apply Filters
+    </button>
+    <button id="clear-filters" class="border border-gray-300 hover:border-gray-400 text-gray-700 px-6 py-2 rounded-md font-medium transition-colors flex-1 sm:flex-none">
+      Clear All
+    </button>
+  </div>
+</div>
+
+<script>
+  // Plan filtering functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const termFilter = document.getElementById('term-filter') as HTMLSelectElement;
+    const typeFilter = document.getElementById('type-filter') as HTMLSelectElement;
+    const greenFilter = document.getElementById('green-filter') as HTMLSelectElement;
+    const sortFilter = document.getElementById('sort-filter') as HTMLSelectElement;
+    const applyButton = document.getElementById('apply-filters');
+    const clearButton = document.getElementById('clear-filters');
+    
+    const citySlug = window.location.pathname.split('/')[2]; // Extract city from path
+    
+    function buildFilterUrl() {
+      const params = new URLSearchParams();
+      
+      if (termFilter.value) params.set('term', termFilter.value);
+      if (typeFilter.value) params.set('type', typeFilter.value);
+      if (greenFilter.value) params.set('green', greenFilter.value);
+      if (sortFilter.value) params.set('sort', sortFilter.value);
+      
+      const baseUrl = `/texas/${citySlug}`;
+      const queryString = params.toString();
+      
+      return queryString ? `${baseUrl}?${queryString}` : baseUrl;
+    }
+    
+    function applyFilters() {
+      const newUrl = buildFilterUrl();
+      window.location.href = newUrl;
+    }
+    
+    function clearFilters() {
+      window.location.href = `/texas/${citySlug}`;
+    }
+    
+    // Event listeners
+    applyButton?.addEventListener('click', applyFilters);
+    clearButton?.addEventListener('click', clearFilters);
+    
+    // Auto-apply on filter change
+    [termFilter, typeFilter, greenFilter, sortFilter].forEach(filter => {
+      filter?.addEventListener('change', applyFilters);
+    });
+  });
+</script>
+
+<style>
+  .filter-group select:focus {
+    outline: none;
+  }
+  
+  .plan-filters {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+</style>

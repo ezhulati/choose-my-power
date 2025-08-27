@@ -1,0 +1,45 @@
+---
+// Breadcrumb Schema markup for SEO
+interface Props {
+  items: Array<{
+    name: string;
+    url: string;
+    position: number;
+  }>;
+}
+
+const { items } = Astro.props;
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": items.map(item => ({
+    "@type": "ListItem",
+    "position": item.position,
+    "name": item.name,
+    "item": `https://choosemypower.org${item.url}`
+  }))
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
+
+<!-- Optional visual breadcrumbs -->
+<nav aria-label="Breadcrumb" class="breadcrumbs mb-4">
+  <ol class="flex items-center space-x-2 text-sm text-gray-600">
+    {items.map((item, index) => (
+      <li class="flex items-center">
+        {index > 0 && (
+          <span class="mx-2 text-gray-400">/</span>
+        )}
+        {index === items.length - 1 ? (
+          <span class="text-gray-900 font-medium">{item.name}</span>
+        ) : (
+          <a href={item.url} class="hover:text-blue-600 transition-colors">
+            {item.name}
+          </a>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>

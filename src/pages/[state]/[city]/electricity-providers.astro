@@ -1,0 +1,39 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CityElectricityProvidersPage from '../../_components/CityElectricityProvidersPage';
+
+export async function getStaticPaths() {
+  // Define state/city combinations available in your app
+  const paths = [
+    // Texas cities
+    { params: { state: 'texas', city: 'houston' } },
+    { params: { state: 'texas', city: 'dallas' } },
+    { params: { state: 'texas', city: 'austin' } },
+    { params: { state: 'texas', city: 'san-antonio' } },
+    { params: { state: 'texas', city: 'fort-worth' } },
+    { params: { state: 'texas', city: 'plano' } },
+    { params: { state: 'texas', city: 'arlington' } },
+    { params: { state: 'texas', city: 'corpus-christi' } },
+    { params: { state: 'texas', city: 'garland' } },
+    { params: { state: 'texas', city: 'irving' } },
+    // Pennsylvania cities
+    { params: { state: 'pennsylvania', city: 'philadelphia' } },
+    { params: { state: 'pennsylvania', city: 'pittsburgh' } },
+    { params: { state: 'pennsylvania', city: 'allentown' } },
+    // Add more state/city combinations as needed
+  ];
+  
+  return paths;
+}
+
+const { state, city } = Astro.params;
+const stateTitle = state?.charAt(0).toUpperCase() + state?.slice(1).replace('-', ' ') || 'State';
+const cityTitle = city?.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') || 'City';
+
+const title = `${cityTitle}, ${stateTitle} Electricity Providers | Local Energy Companies`;
+const description = `Compare electricity providers in ${cityTitle}, ${stateTitle}. Local and statewide energy companies serving ${cityTitle} residents and businesses.`;
+---
+
+<Layout title={title} description={description}>
+  <CityElectricityProvidersPage client:load state={state} city={city} onNavigate={(path) => window.location.href = path} />
+</Layout>

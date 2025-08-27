@@ -12,7 +12,20 @@ export function ZipCodeSearch({ onSearch, placeholder = "Enter ZIP code", size =
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('Form submitted with ZIP:', zipCode);
     if (zipCode.length === 5) {
+      console.log('Calling onSearch with:', zipCode);
+      onSearch(zipCode);
+    } else {
+      console.log('ZIP code not 5 digits:', zipCode.length);
+    }
+  };
+
+  const handleButtonClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    console.log('Button clicked with ZIP:', zipCode);
+    if (zipCode.length === 5) {
+      console.log('Calling onSearch from button with:', zipCode);
       onSearch(zipCode);
     }
   };
@@ -34,10 +47,11 @@ export function ZipCodeSearch({ onSearch, placeholder = "Enter ZIP code", size =
           value={zipCode}
           onChange={(e) => setZipCode(e.target.value.replace(/\D/g, '').slice(0, 5))}
           placeholder={placeholder}
-          className={`block w-full pl-10 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${sizeClasses[size]}`}
+          className={`block w-full pl-10 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-gray-900 bg-white placeholder-gray-500 ${sizeClasses[size]}`}
         />
         <button
           type="submit"
+          onClick={handleButtonClick}
           disabled={zipCode.length !== 5}
           className="absolute inset-y-0 right-0 px-4 flex items-center bg-red-600 text-white rounded-r-lg hover:bg-red-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
         >

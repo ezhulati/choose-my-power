@@ -1,0 +1,32 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import StateElectricityPlansPage from '../_components/StateElectricityPlansPage';
+
+export async function getStaticPaths() {
+  const states = [
+    { params: { state: 'texas' } },
+    { params: { state: 'pennsylvania' } },
+    { params: { state: 'ohio' } },
+    { params: { state: 'illinois' } },
+    { params: { state: 'maryland' } },
+    { params: { state: 'delaware' } },
+    { params: { state: 'connecticut' } },
+    { params: { state: 'massachusetts' } },
+    { params: { state: 'rhode-island' } },
+    { params: { state: 'new-hampshire' } },
+    { params: { state: 'maine' } },
+  ];
+  
+  return states;
+}
+
+const { state } = Astro.params;
+const stateTitle = state?.charAt(0).toUpperCase() + state?.slice(1).replace('-', ' ') || 'State';
+
+const title = `${stateTitle} Electricity Plans | Compare Energy Plans & Rates`;
+const description = `Compare electricity plans in ${stateTitle}. Fixed rate, variable rate, and green energy plans from top providers. Find the best plan for your home.`;
+---
+
+<Layout title={title} description={description}>
+  <StateElectricityPlansPage client:load state={state} onNavigate={(path) => window.location.href = path} />
+</Layout>

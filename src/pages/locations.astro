@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LocationsPage from './_components/LocationsPage.tsx';
+
+const title = "Electricity by Location | Find Providers in Your Area";
+const description = "Find electricity providers by state and city. Coverage maps and local energy companies serving deregulated electricity markets across the US.";
+---
+
+<Layout title={title} description={description}>
+  <LocationsPage client:load onNavigate={(path) => window.location.href = path} />
+</Layout>

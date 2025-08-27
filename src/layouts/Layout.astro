@@ -1,0 +1,74 @@
+---
+import '../index.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  robotsMeta?: string;
+  noIndex?: boolean;
+  ogImage?: string;
+  keywords?: string;
+}
+
+const { 
+  title, 
+  description = "Expert analysis of 50+ electricity providers and 300+ plans. Find the perfect match for your needs and save hundreds per year.",
+  canonical = "https://choosemypower.org",
+  robotsMeta = "index, follow",
+  noIndex = false,
+  ogImage = "https://choosemypower.org/images/og-default.jpg",
+  keywords
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <title>{title}</title>
+    
+    <!-- Robots Meta Tag -->
+    <meta name="robots" content={noIndex ? "noindex, follow" : robotsMeta} />
+    
+    <!-- Keywords (if provided) -->
+    {keywords && <meta name="keywords" content={keywords} />}
+    
+    <!-- SEO Meta Tags -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="ChooseMyPower.org" />
+    
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:site" content="@choosemypower" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonical} />
+    
+    <!-- Additional SEO Tags -->
+    <meta name="author" content="ChooseMyPower.org" />
+    <meta name="theme-color" content="#2563eb" />
+    
+    <!-- Sitemap Reference -->
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

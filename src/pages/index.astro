@@ -1,0 +1,9 @@
+---
+// Convert the React app to Astro page structure
+import Layout from '../layouts/Layout.astro';
+import App from '../components/App';
+---
+
+<Layout title="Compare & Choose Texas Electricity | ChooseMyPower.org">
+  <App client:only="react" />
+</Layout>

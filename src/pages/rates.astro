@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+import RatesPage from './_components/RatesPage';
+
+const title = "Texas Electricity Rates | Current Energy Prices & Rate Calculator";
+const description = "Current Texas electricity rates and pricing. Use our rate calculator to estimate your bill and compare kWh prices across providers.";
+---
+
+<Layout title={title} description={description}>
+  <RatesPage client:load onNavigate={(path) => window.location.href = path} />
+</Layout>

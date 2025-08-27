@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ShopPage from './_components/ShopPage';
+
+const title = "Shop Electricity Plans by Priority | Best Value, Green Energy, Service";
+const description = "Shop electricity plans by what matters most to you: lowest price, best service, green energy, or advanced features. Find your perfect match.";
+---
+
+<Layout title={title} description={description}>
+  <ShopPage client:load onNavigate={(path) => window.location.href = path} />
+</Layout>

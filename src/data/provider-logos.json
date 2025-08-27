@@ -1,0 +1,466 @@
+{
+  "metadata": {
+    "generatedAt": "2025-08-27T20:30:39.621Z",
+    "source": "comparepower-2025-08-27.csv",
+    "totalProviders": 16,
+    "totalPlans": 108
+  },
+  "providers": [
+    {
+      "name": "atlantex power",
+      "logoUrl": "https://assets.comparepower.com/images/atlantex_power.svg",
+      "logoFilename": "atlantex_power.svg",
+      "puctNumber": "10335",
+      "plans": 18
+    },
+    {
+      "name": "reliant",
+      "logoUrl": "https://assets.comparepower.com/images/reliant.svg",
+      "logoFilename": "reliant.svg",
+      "puctNumber": "10007",
+      "plans": 12
+    },
+    {
+      "name": "4change energy",
+      "logoUrl": "https://assets.comparepower.com/images/4change_energy.svg",
+      "logoFilename": "4change_energy.svg",
+      "puctNumber": "10041",
+      "plans": 8
+    },
+    {
+      "name": "cirro energy",
+      "logoUrl": "https://assets.comparepower.com/images/cirro_energy.svg",
+      "logoFilename": "cirro_energy.svg",
+      "puctNumber": "10177",
+      "plans": 8
+    },
+    {
+      "name": "gexa energy",
+      "logoUrl": "https://assets.comparepower.com/images/gexa_energy.svg",
+      "logoFilename": "gexa_energy.svg",
+      "puctNumber": "10027",
+      "plans": 7
+    },
+    {
+      "name": "apge",
+      "logoUrl": "https://assets.comparepower.com/images/apge.svg",
+      "logoFilename": "apge.svg",
+      "puctNumber": "10105",
+      "plans": 7
+    },
+    {
+      "name": "just energy",
+      "logoUrl": "https://assets.comparepower.com/images/just_energy.svg",
+      "logoFilename": "just_energy.svg",
+      "puctNumber": "10052",
+      "plans": 7
+    },
+    {
+      "name": "frontier utilities",
+      "logoUrl": "https://assets.comparepower.com/images/frontier_utilities.svg",
+      "logoFilename": "frontier_utilities.svg",
+      "puctNumber": "10169",
+      "plans": 6
+    },
+    {
+      "name": "discount power",
+      "logoUrl": "https://assets.comparepower.com/images/discount_power.svg",
+      "logoFilename": "discount_power.svg",
+      "puctNumber": "10177",
+      "plans": 6
+    },
+    {
+      "name": "green mountain",
+      "logoUrl": "https://assets.comparepower.com/images/green_mountain.svg",
+      "logoFilename": "green_mountain.svg",
+      "puctNumber": "10009",
+      "plans": 6
+    },
+    {
+      "name": "direct energy",
+      "logoUrl": "https://assets.comparepower.com/images/direct_energy.svg",
+      "logoFilename": "direct_energy.svg",
+      "puctNumber": "10040",
+      "plans": 5
+    },
+    {
+      "name": "amigo energy",
+      "logoUrl": "https://assets.comparepower.com/images/amigo_energy.svg",
+      "logoFilename": "amigo_energy.svg",
+      "puctNumber": "10081",
+      "plans": 5
+    },
+    {
+      "name": "rhythm energy",
+      "logoUrl": "https://assets.comparepower.com/images/rhythm_energy.svg",
+      "logoFilename": "rhythm_energy.svg",
+      "puctNumber": "10279",
+      "plans": 4
+    },
+    {
+      "name": "txu energy",
+      "logoUrl": "https://assets.comparepower.com/images/txu_energy.svg",
+      "logoFilename": "txu_energy.svg",
+      "puctNumber": "10004",
+      "plans": 4
+    },
+    {
+      "name": "tara energy",
+      "logoUrl": "https://assets.comparepower.com/images/tara_energy.svg",
+      "logoFilename": "tara_energy.svg",
+      "puctNumber": "10051",
+      "plans": 3
+    },
+    {
+      "name": "payless power",
+      "logoUrl": "https://assets.comparepower.com/images/payless_power.svg",
+      "logoFilename": "payless_power.svg",
+      "puctNumber": "10110",
+      "plans": 2
+    }
+  ],
+  "mapping": {
+    "atlantex power": {
+      "name": "atlantex power",
+      "logoUrl": "https://assets.comparepower.com/images/atlantex_power.svg",
+      "logoFilename": "atlantex_power.svg",
+      "puctNumber": "10335"
+    },
+    "atlantexpower": {
+      "name": "atlantex power",
+      "logoUrl": "https://assets.comparepower.com/images/atlantex_power.svg",
+      "logoFilename": "atlantex_power.svg",
+      "puctNumber": "10335"
+    },
+    "atlantex_power": {
+      "name": "atlantex power",
+      "logoUrl": "https://assets.comparepower.com/images/atlantex_power.svg",
+      "logoFilename": "atlantex_power.svg",
+      "puctNumber": "10335"
+    },
+    "atlantex": {
+      "name": "atlantex power",
+      "logoUrl": "https://assets.comparepower.com/images/atlantex_power.svg",
+      "logoFilename": "atlantex_power.svg",
+      "puctNumber": "10335"
+    },
+    "reliant": {
+      "name": "reliant",
+      "logoUrl": "https://assets.comparepower.com/images/reliant.svg",
+      "logoFilename": "reliant.svg",
+      "puctNumber": "10007"
+    },
+    "4change energy": {
+      "name": "4change energy",
+      "logoUrl": "https://assets.comparepower.com/images/4change_energy.svg",
+      "logoFilename": "4change_energy.svg",
+      "puctNumber": "10041"
+    },
+    "4changeenergy": {
+      "name": "4change energy",
+      "logoUrl": "https://assets.comparepower.com/images/4change_energy.svg",
+      "logoFilename": "4change_energy.svg",
+      "puctNumber": "10041"
+    },
+    "4change_energy": {
+      "name": "4change energy",
+      "logoUrl": "https://assets.comparepower.com/images/4change_energy.svg",
+      "logoFilename": "4change_energy.svg",
+      "puctNumber": "10041"
+    },
+    "4change": {
+      "name": "4change energy",
+      "logoUrl": "https://assets.comparepower.com/images/4change_energy.svg",
+      "logoFilename": "4change_energy.svg",
+      "puctNumber": "10041"
+    },
+    "cirro energy": {
+      "name": "cirro energy",
+      "logoUrl": "https://assets.comparepower.com/images/cirro_energy.svg",
+      "logoFilename": "cirro_energy.svg",
+      "puctNumber": "10177"
+    },
+    "cirroenergy": {
+      "name": "cirro energy",
+      "logoUrl": "https://assets.comparepower.com/images/cirro_energy.svg",
+      "logoFilename": "cirro_energy.svg",
+      "puctNumber": "10177"
+    },
+    "cirro_energy": {
+      "name": "cirro energy",
+      "logoUrl": "https://assets.comparepower.com/images/cirro_energy.svg",
+      "logoFilename": "cirro_energy.svg",
+      "puctNumber": "10177"
+    },
+    "cirro": {
+      "name": "cirro energy",
+      "logoUrl": "https://assets.comparepower.com/images/cirro_energy.svg",
+      "logoFilename": "cirro_energy.svg",
+      "puctNumber": "10177"
+    },
+    "gexa energy": {
+      "name": "gexa energy",
+      "logoUrl": "https://assets.comparepower.com/images/gexa_energy.svg",
+      "logoFilename": "gexa_energy.svg",
+      "puctNumber": "10027"
+    },
+    "gexaenergy": {
+      "name": "gexa energy",
+      "logoUrl": "https://assets.comparepower.com/images/gexa_energy.svg",
+      "logoFilename": "gexa_energy.svg",
+      "puctNumber": "10027"
+    },
+    "gexa_energy": {
+      "name": "gexa energy",
+      "logoUrl": "https://assets.comparepower.com/images/gexa_energy.svg",
+      "logoFilename": "gexa_energy.svg",
+      "puctNumber": "10027"
+    },
+    "gexa": {
+      "name": "gexa energy",
+      "logoUrl": "https://assets.comparepower.com/images/gexa_energy.svg",
+      "logoFilename": "gexa_energy.svg",
+      "puctNumber": "10027"
+    },
+    "apge": {
+      "name": "apge",
+      "logoUrl": "https://assets.comparepower.com/images/apge.svg",
+      "logoFilename": "apge.svg",
+      "puctNumber": "10105"
+    },
+    "just energy": {
+      "name": "just energy",
+      "logoUrl": "https://assets.comparepower.com/images/just_energy.svg",
+      "logoFilename": "just_energy.svg",
+      "puctNumber": "10052"
+    },
+    "justenergy": {
+      "name": "just energy",
+      "logoUrl": "https://assets.comparepower.com/images/just_energy.svg",
+      "logoFilename": "just_energy.svg",
+      "puctNumber": "10052"
+    },
+    "just_energy": {
+      "name": "just energy",
+      "logoUrl": "https://assets.comparepower.com/images/just_energy.svg",
+      "logoFilename": "just_energy.svg",
+      "puctNumber": "10052"
+    },
+    "just": {
+      "name": "just energy",
+      "logoUrl": "https://assets.comparepower.com/images/just_energy.svg",
+      "logoFilename": "just_energy.svg",
+      "puctNumber": "10052"
+    },
+    "frontier utilities": {
+      "name": "frontier utilities",
+      "logoUrl": "https://assets.comparepower.com/images/frontier_utilities.svg",
+      "logoFilename": "frontier_utilities.svg",
+      "puctNumber": "10169"
+    },
+    "frontierutilities": {
+      "name": "frontier utilities",
+      "logoUrl": "https://assets.comparepower.com/images/frontier_utilities.svg",
+      "logoFilename": "frontier_utilities.svg",
+      "puctNumber": "10169"
+    },
+    "frontier_utilities": {
+      "name": "frontier utilities",
+      "logoUrl": "https://assets.comparepower.com/images/frontier_utilities.svg",
+      "logoFilename": "frontier_utilities.svg",
+      "puctNumber": "10169"
+    },
+    "frontier": {
+      "name": "frontier utilities",
+      "logoUrl": "https://assets.comparepower.com/images/frontier_utilities.svg",
+      "logoFilename": "frontier_utilities.svg",
+      "puctNumber": "10169"
+    },
+    "discount power": {
+      "name": "discount power",
+      "logoUrl": "https://assets.comparepower.com/images/discount_power.svg",
+      "logoFilename": "discount_power.svg",
+      "puctNumber": "10177"
+    },
+    "discountpower": {
+      "name": "discount power",
+      "logoUrl": "https://assets.comparepower.com/images/discount_power.svg",
+      "logoFilename": "discount_power.svg",
+      "puctNumber": "10177"
+    },
+    "discount_power": {
+      "name": "discount power",
+      "logoUrl": "https://assets.comparepower.com/images/discount_power.svg",
+      "logoFilename": "discount_power.svg",
+      "puctNumber": "10177"
+    },
+    "discount": {
+      "name": "discount power",
+      "logoUrl": "https://assets.comparepower.com/images/discount_power.svg",
+      "logoFilename": "discount_power.svg",
+      "puctNumber": "10177"
+    },
+    "green mountain": {
+      "name": "green mountain",
+      "logoUrl": "https://assets.comparepower.com/images/green_mountain.svg",
+      "logoFilename": "green_mountain.svg",
+      "puctNumber": "10009"
+    },
+    "greenmountain": {
+      "name": "green mountain",
+      "logoUrl": "https://assets.comparepower.com/images/green_mountain.svg",
+      "logoFilename": "green_mountain.svg",
+      "puctNumber": "10009"
+    },
+    "green_mountain": {
+      "name": "green mountain",
+      "logoUrl": "https://assets.comparepower.com/images/green_mountain.svg",
+      "logoFilename": "green_mountain.svg",
+      "puctNumber": "10009"
+    },
+    "direct energy": {
+      "name": "direct energy",
+      "logoUrl": "https://assets.comparepower.com/images/direct_energy.svg",
+      "logoFilename": "direct_energy.svg",
+      "puctNumber": "10040"
+    },
+    "directenergy": {
+      "name": "direct energy",
+      "logoUrl": "https://assets.comparepower.com/images/direct_energy.svg",
+      "logoFilename": "direct_energy.svg",
+      "puctNumber": "10040"
+    },
+    "direct_energy": {
+      "name": "direct energy",
+      "logoUrl": "https://assets.comparepower.com/images/direct_energy.svg",
+      "logoFilename": "direct_energy.svg",
+      "puctNumber": "10040"
+    },
+    "direct": {
+      "name": "direct energy",
+      "logoUrl": "https://assets.comparepower.com/images/direct_energy.svg",
+      "logoFilename": "direct_energy.svg",
+      "puctNumber": "10040"
+    },
+    "amigo energy": {
+      "name": "amigo energy",
+      "logoUrl": "https://assets.comparepower.com/images/amigo_energy.svg",
+      "logoFilename": "amigo_energy.svg",
+      "puctNumber": "10081"
+    },
+    "amigoenergy": {
+      "name": "amigo energy",
+      "logoUrl": "https://assets.comparepower.com/images/amigo_energy.svg",
+      "logoFilename": "amigo_energy.svg",
+      "puctNumber": "10081"
+    },
+    "amigo_energy": {
+      "name": "amigo energy",
+      "logoUrl": "https://assets.comparepower.com/images/amigo_energy.svg",
+      "logoFilename": "amigo_energy.svg",
+      "puctNumber": "10081"
+    },
+    "amigo": {
+      "name": "amigo energy",
+      "logoUrl": "https://assets.comparepower.com/images/amigo_energy.svg",
+      "logoFilename": "amigo_energy.svg",
+      "puctNumber": "10081"
+    },
+    "rhythm energy": {
+      "name": "rhythm energy",
+      "logoUrl": "https://assets.comparepower.com/images/rhythm_energy.svg",
+      "logoFilename": "rhythm_energy.svg",
+      "puctNumber": "10279"
+    },
+    "rhythmenergy": {
+      "name": "rhythm energy",
+      "logoUrl": "https://assets.comparepower.com/images/rhythm_energy.svg",
+      "logoFilename": "rhythm_energy.svg",
+      "puctNumber": "10279"
+    },
+    "rhythm_energy": {
+      "name": "rhythm energy",
+      "logoUrl": "https://assets.comparepower.com/images/rhythm_energy.svg",
+      "logoFilename": "rhythm_energy.svg",
+      "puctNumber": "10279"
+    },
+    "rhythm": {
+      "name": "rhythm energy",
+      "logoUrl": "https://assets.comparepower.com/images/rhythm_energy.svg",
+      "logoFilename": "rhythm_energy.svg",
+      "puctNumber": "10279"
+    },
+    "txu energy": {
+      "name": "txu energy",
+      "logoUrl": "https://assets.comparepower.com/images/txu_energy.svg",
+      "logoFilename": "txu_energy.svg",
+      "puctNumber": "10004"
+    },
+    "txuenergy": {
+      "name": "txu energy",
+      "logoUrl": "https://assets.comparepower.com/images/txu_energy.svg",
+      "logoFilename": "txu_energy.svg",
+      "puctNumber": "10004"
+    },
+    "txu_energy": {
+      "name": "txu energy",
+      "logoUrl": "https://assets.comparepower.com/images/txu_energy.svg",
+      "logoFilename": "txu_energy.svg",
+      "puctNumber": "10004"
+    },
+    "txu": {
+      "name": "txu energy",
+      "logoUrl": "https://assets.comparepower.com/images/txu_energy.svg",
+      "logoFilename": "txu_energy.svg",
+      "puctNumber": "10004"
+    },
+    "tara energy": {
+      "name": "tara energy",
+      "logoUrl": "https://assets.comparepower.com/images/tara_energy.svg",
+      "logoFilename": "tara_energy.svg",
+      "puctNumber": "10051"
+    },
+    "taraenergy": {
+      "name": "tara energy",
+      "logoUrl": "https://assets.comparepower.com/images/tara_energy.svg",
+      "logoFilename": "tara_energy.svg",
+      "puctNumber": "10051"
+    },
+    "tara_energy": {
+      "name": "tara energy",
+      "logoUrl": "https://assets.comparepower.com/images/tara_energy.svg",
+      "logoFilename": "tara_energy.svg",
+      "puctNumber": "10051"
+    },
+    "tara": {
+      "name": "tara energy",
+      "logoUrl": "https://assets.comparepower.com/images/tara_energy.svg",
+      "logoFilename": "tara_energy.svg",
+      "puctNumber": "10051"
+    },
+    "payless power": {
+      "name": "payless power",
+      "logoUrl": "https://assets.comparepower.com/images/payless_power.svg",
+      "logoFilename": "payless_power.svg",
+      "puctNumber": "10110"
+    },
+    "paylesspower": {
+      "name": "payless power",
+      "logoUrl": "https://assets.comparepower.com/images/payless_power.svg",
+      "logoFilename": "payless_power.svg",
+      "puctNumber": "10110"
+    },
+    "payless_power": {
+      "name": "payless power",
+      "logoUrl": "https://assets.comparepower.com/images/payless_power.svg",
+      "logoFilename": "payless_power.svg",
+      "puctNumber": "10110"
+    },
+    "payless": {
+      "name": "payless power",
+      "logoUrl": "https://assets.comparepower.com/images/payless_power.svg",
+      "logoFilename": "payless_power.svg",
+      "puctNumber": "10110"
+    }
+  }
+}

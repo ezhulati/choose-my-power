@@ -1,0 +1,73 @@
+---
+// Simple plan grid for displaying electricity plans in faceted pages
+import PlanCard from './PlanCard.astro';
+
+interface Props {
+  plans: any[];
+  city: string;
+  filters: string[];
+  showComparison?: boolean;
+  analyticsContext?: any;
+}
+
+const { plans, city, filters, showComparison = false, analyticsContext } = Astro.props;
+---
+
+<div class="faceted-plan-grid">
+  {plans.length > 0 ? (
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {plans.slice(0, 12).map((plan, index) => (
+        <PlanCard 
+          plan={plan} 
+          rank={index + 1}
+          showRank={true}
+          analyticsContext={analyticsContext}
+        />
+      ))}
+    </div>
+  ) : (
+    <div class="no-plans-message text-center py-12">
+      <div class="text-6xl mb-4">⚡</div>
+      <h3 class="text-xl font-semibold text-gray-900 mb-2">No Plans Available</h3>
+      <p class="text-gray-600">
+        No electricity plans match your current filter criteria. 
+        Try adjusting your filters or removing some selections.
+      </p>
+    </div>
+  )}
+  
+  {plans.length > 12 && (
+    <div class="load-more-section mt-8 text-center">
+      <button class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium transition-colors">
+        Load More Plans ({plans.length - 12} remaining)
+      </button>
+    </div>
+  )}
+  
+  {showComparison && plans.length > 1 && (
+    <div class="comparison-bar fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg p-4 z-50">
+      <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <div class="text-sm text-gray-600">
+          Compare selected plans side-by-side
+        </div>
+        <button class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-medium transition-colors">
+          Compare Plans
+        </button>
+      </div>
+    </div>
+  )}
+</div>
+
+<style>
+  .faceted-plan-grid {
+    @apply w-full;
+  }
+  
+  .no-plans-message {
+    @apply bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg;
+  }
+  
+  .load-more-section button:hover {
+    transform: translateY(-1px);
+  }
+</style>

@@ -1,0 +1,56 @@
+---
+// Provider Logo Component - displays provider logos with consistent styling
+interface Props {
+  provider: string;
+  logo?: string;
+  size?: 'sm' | 'md' | 'lg';
+  className?: string;
+}
+
+const { 
+  provider, 
+  logo, 
+  size = 'md', 
+  className = '' 
+} = Astro.props;
+
+// Size mappings
+const sizeClasses = {
+  sm: 'w-6 h-6',
+  md: 'w-8 h-8', 
+  lg: 'w-12 h-12'
+};
+
+const sizeClass = sizeClasses[size];
+const logoSrc = logo || '/src/assets/logos/fallback.svg';
+---
+
+<div class={`provider-logo flex items-center justify-center ${className}`}>
+  <img 
+    src={logoSrc}
+    alt={`${provider} logo`}
+    class={`${sizeClass} object-contain transition-all duration-200`}
+    loading="lazy"
+    onerror="this.onerror=null; this.src='/src/assets/logos/fallback.svg'; this.classList.add('fallback-logo');"
+  />
+</div>
+
+<style>
+  .provider-logo img {
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+  }
+  
+  .provider-logo img:hover {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+  }
+  
+  .provider-logo .fallback-logo {
+    opacity: 0.6;
+    filter: grayscale(0.5) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+  }
+  
+  .provider-logo img[src*="fallback.svg"] {
+    opacity: 0.6;
+    filter: grayscale(0.5);
+  }
+</style>
