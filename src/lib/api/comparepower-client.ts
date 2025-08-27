@@ -9,6 +9,7 @@
 
 import type { Plan, ApiParams, CachedResponse } from '../../types/facets';
 import { getProviderLogo, getProviderLogoUrl } from '../providers/logo-mapper';
+import { planRepository } from '../database/plan-repository';
 
 interface ComparePowerAPIConfig {
   baseUrl: string;
@@ -103,18 +104,25 @@ export class ComparePowerClient {
   }
 
   /**
-   * Fetch electricity plans from ComparePower API
+   * Fetch electricity plans from ComparePower API with database caching
    * @param params - API parameters including TDSP DUNS and filters
    * @returns Promise<Plan[]> - Transformed plan data
    */
   async fetchPlans(params: ApiParams): Promise<Plan[]> {
-    const cacheKey = this.getCacheKey(params);
+    const startTime = Date.now();
     
-    // Check cache first
-    const cached = this.getFromCache(cacheKey);
+    // Check database cache first
+    const cached = await planRepository.getPlansFromCache(params);
     if (cached) {
-      console.log(`Cache hit for key: ${cacheKey}`);
       return cached;
+    }
+    
+    // Fallback to memory cache
+    const cacheKey = this.getCacheKey(params);
+    const memoryCached = this.getFromCache(cacheKey);
+    if (memoryCached) {
+      console.log(`Memory cache hit for key: ${cacheKey}`);
+      return memoryCached;
     }
 
     // Build query parameters
@@ -138,17 +146,48 @@ export class ComparePowerClient {
       const data = await this.makeRequestWithRetry(url);
       const transformedPlans = this.transformPlans(data);
       
-      // Cache the response
+      // Store in database cache and memory cache
+      await Promise.all([
+        planRepository.setPlansCache(params, transformedPlans, 1), // 1 hour TTL
+        planRepository.storePlans(data, params.tdsp_duns), // Store individual plans for analysis
+      ]);
+      
       this.setCache(cacheKey, transformedPlans);
+      
+      // Log successful API call
+      await planRepository.logApiCall(
+        url,
+        params,
+        200,
+        Date.now() - startTime
+      );
       
       return transformedPlans;
     } catch (error) {
+      const responseTime = Date.now() - startTime;
+      
+      // Log failed API call
+      await planRepository.logApiCall(
+        url,
+        params,
+        error instanceof Error && error.message.includes('HTTP') ? parseInt(error.message.split(' ')[1]) : 500,
+        responseTime,
+        error instanceof Error ? error.message : 'Unknown error'
+      );
+      
       console.error('ComparePower API Error:', error);
       
-      // Return stale cache if available
+      // Try to get plans from database as fallback
+      const fallbackPlans = await planRepository.getActivePlans(params.tdsp_duns, params);
+      if (fallbackPlans.length > 0) {
+        console.warn('Returning database plans due to API error');
+        return fallbackPlans;
+      }
+      
+      // Return stale memory cache if available
       const staleCache = this.cache.get(cacheKey);
       if (staleCache) {
-        console.warn('Returning stale cache due to API error');
+        console.warn('Returning stale memory cache due to API error');
         return staleCache.data;
       }
       
@@ -331,26 +370,38 @@ export class ComparePowerClient {
   }
 
   /**
-   * Get cache statistics
+   * Get comprehensive cache statistics from memory and database
    */
-  public getCacheStats() {
+  public async getCacheStats() {
     const entries = Array.from(this.cache.entries());
     const now = Date.now();
     const fresh = entries.filter(([_, value]) => now - value.timestamp < this.config.cacheTTL);
     
+    const dbStats = await planRepository.getCacheStats();
+    
     return {
-      totalEntries: this.cache.size,
-      freshEntries: fresh.length,
-      staleEntries: this.cache.size - fresh.length,
-      hitRate: fresh.length / this.cache.size,
+      memory: {
+        totalEntries: this.cache.size,
+        freshEntries: fresh.length,
+        staleEntries: this.cache.size - fresh.length,
+        hitRate: this.cache.size > 0 ? fresh.length / this.cache.size : 0,
+      },
+      database: {
+        totalCacheEntries: dbStats.totalCacheEntries,
+        activeCacheEntries: dbStats.activeCacheEntries,
+        apiCallsLast24h: dbStats.apiCallsLast24h,
+      },
+      timestamp: dbStats.timestamp
     };
   }
 
   /**
-   * Clear cache manually
+   * Clear memory cache and clean expired database cache
    */
-  public clearCache(): void {
+  public async clearCache(): Promise<void> {
     this.cache.clear();
+    const cleaned = await planRepository.cleanExpiredCache();
+    console.log(`Cleared memory cache and ${cleaned} expired database entries`);
   }
 
   /**
