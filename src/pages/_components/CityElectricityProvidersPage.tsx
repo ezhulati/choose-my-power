@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { ProviderCard } from '../../components/ProviderCard';
 import { mockProviders, mockStates } from '../../data/mockData';
-import { MapPin, TrendingDown, Users, Zap, Calculator, Star, Award, Clock, Filter } from 'lucide-react';
+import { MapPin, TrendingDown, Users, Zap, Calculator, Star, Award, Clock, Filter, Leaf } from 'lucide-react';
 
 interface CityElectricityProvidersPageProps {
   state: string;

@@ -4,7 +4,23 @@
  * while maximizing SEO value from high-value filter combinations
  */
 
-import { isHighValuePage } from '../faceted/url-parser';
+import { isHighValuePage, extractFiltersFromPath } from '../faceted/url-parser';
+
+/**
+ * Extract city from URL path
+ */
+function extractCityFromPath(path: string): string {
+  const pathParts = path.split('/').filter(Boolean);
+  // Assuming path structure: /texas/[city]/[...filters]/ or /electricity-plans/[city]/[...filters]/
+  if (pathParts.length >= 2) {
+    if (pathParts[0] === 'texas') {
+      return pathParts[1];
+    } else if (pathParts[0] === 'electricity-plans') {
+      return pathParts[1];
+    }
+  }
+  return '';
+}
 
 export interface CanonicalRule {
   pattern: RegExp;
@@ -164,7 +180,7 @@ export function shouldNoIndex(currentPath: string, filters: string[]): boolean {
     filters.some(filter => ['test', 'debug', 'invalid'].includes(filter)),
     
     // Very specific combinations unlikely to have search volume
-    filters.length === 2 && !isHighValuePage(currentPath),
+    filters.length === 2 && !isHighValuePage(extractCityFromPath(currentPath), filters),
   ];
 
   return noIndexConditions.some(condition => condition);
@@ -184,7 +200,9 @@ export function generateRobotsMetaTag(currentPath: string, filters: string[]): s
   }
   
   // High-value pages get enhanced crawling
-  if (isHighValuePage(currentPath)) {
+  const city = extractCityFromPath(currentPath);
+  const pathFilters = extractFiltersFromPath(currentPath);
+  if (isHighValuePage(city, pathFilters)) {
     return 'index, follow, max-snippet:160, max-image-preview:large';
   }
   
@@ -218,12 +236,12 @@ export function getCanonicalPriority(currentPath: string, filters: string[]): nu
   }
   
   // High-value single filters
-  if (filters.length === 1 && isHighValuePage(currentPath)) {
+  if (filters.length === 1 && isHighValuePage(extractCityFromPath(currentPath), filters)) {
     return 0.8;
   }
   
   // High-value combinations  
-  if (filters.length === 2 && isHighValuePage(currentPath)) {
+  if (filters.length === 2 && isHighValuePage(extractCityFromPath(currentPath), filters)) {
     return 0.6;
   }
   
