@@ -1182,7 +1182,7 @@
           }
         },
         {
-          "id": "68a01450e30bfeb00272158c",
+          "id": "68a01450e30bfeb00272158d",
           "name": "Gexa Eco Saver Lite 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1293,7 +1293,7 @@
           }
         },
         {
-          "id": "68a01450e30bfeb002721591",
+          "id": "68a01450e30bfeb00272158f",
           "name": "Gexa Eco Saver Value 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1330,7 +1330,7 @@
           }
         },
         {
-          "id": "689193abe8b1db9607773922",
+          "id": "689193abe8b1db9607773923",
           "name": "Gexa Light Saver 12",
           "provider": {
             "name": "Gexa Energy",
@@ -2828,7 +2828,7 @@
           }
         },
         {
-          "id": "68ae914c3465506e6d1d3d50",
+          "id": "68ae914c3465506e6d1d3d4f",
           "name": "Flex Forward",
           "provider": {
             "name": "TXU Energy",
@@ -3167,7 +3167,7 @@
           }
         },
         {
-          "id": "68a5f88aaf7e765b28591188",
+          "id": "68af67b62ee3bd055dc8aadc",
           "name": "SimpleSaver 12",
           "provider": {
             "name": "APGE",
@@ -3176,10 +3176,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.194,
-            "rate1000kWh": 0.09,
-            "rate2000kWh": 0.138,
-            "ratePerKwh": 0.09
+            "rate500kWh": 0.193,
+            "rate1000kWh": 0.089,
+            "rate2000kWh": 0.137,
+            "ratePerKwh": 0.089
           },
           "contract": {
             "length": 12,
@@ -3222,6 +3222,80 @@
             "length": 12,
             "type": "fixed",
             "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68af72272ee3bd055dc8ac46",
+          "name": "SimpleSaver 14",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.194,
+            "rate1000kWh": 0.09,
+            "rate2000kWh": 0.138,
+            "ratePerKwh": 0.09
+          },
+          "contract": {
+            "length": 14,
+            "type": "fixed",
+            "earlyTerminationFee": 250,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68af6b442ee3bd055dc8ab57",
+          "name": "True Simple 14",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.153,
+            "rate1000kWh": 0.149,
+            "rate2000kWh": 0.147,
+            "ratePerKwh": 0.149
+          },
+          "contract": {
+            "length": 14,
+            "type": "fixed",
+            "earlyTerminationFee": 250,
             "autoRenewal": false,
             "satisfactionGuarantee": false
           },
@@ -4128,7 +4202,7 @@
           }
         }
       ],
-      "count": 109,
+      "count": 111,
       "lowestRate": 0.089,
       "highestRate": 0.226
     },
@@ -4887,7 +4961,7 @@
           }
         },
         {
-          "id": "68a01450e30bfeb00272158c",
+          "id": "68a01450e30bfeb00272158d",
           "name": "Gexa Eco Saver Lite 12",
           "provider": {
             "name": "Gexa Energy",
@@ -4998,7 +5072,7 @@
           }
         },
         {
-          "id": "68a01450e30bfeb002721591",
+          "id": "68a01450e30bfeb00272158f",
           "name": "Gexa Eco Saver Value 12",
           "provider": {
             "name": "Gexa Energy",
@@ -5035,7 +5109,7 @@
           }
         },
         {
-          "id": "689193abe8b1db9607773922",
+          "id": "689193abe8b1db9607773923",
           "name": "Gexa Light Saver 12",
           "provider": {
             "name": "Gexa Energy",
@@ -6058,7 +6132,7 @@
           }
         },
         {
-          "id": "68a5f88aaf7e765b28591188",
+          "id": "68af67b62ee3bd055dc8aadc",
           "name": "SimpleSaver 12",
           "provider": {
             "name": "APGE",
@@ -6067,10 +6141,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.194,
-            "rate1000kWh": 0.09,
-            "rate2000kWh": 0.138,
-            "ratePerKwh": 0.09
+            "rate500kWh": 0.193,
+            "rate1000kWh": 0.089,
+            "rate2000kWh": 0.137,
+            "ratePerKwh": 0.089
           },
           "contract": {
             "length": 12,
@@ -7847,7 +7921,7 @@
           }
         },
         {
-          "id": "68a01450e30bfeb00272158c",
+          "id": "68a01450e30bfeb00272158d",
           "name": "Gexa Eco Saver Lite 12",
           "provider": {
             "name": "Gexa Energy",
@@ -7958,7 +8032,7 @@
           }
         },
         {
-          "id": "68a01450e30bfeb002721591",
+          "id": "68a01450e30bfeb00272158f",
           "name": "Gexa Eco Saver Value 12",
           "provider": {
             "name": "Gexa Energy",
@@ -7995,7 +8069,7 @@
           }
         },
         {
-          "id": "689193abe8b1db9607773922",
+          "id": "689193abe8b1db9607773923",
           "name": "Gexa Light Saver 12",
           "provider": {
             "name": "Gexa Energy",

@@ -4,22 +4,22 @@
       "citySlug": "dallas-tx",
       "cityName": "Dallas TX",
       "filtersBuilt": 4,
-      "totalPlans": 109
+      "totalPlans": 111
     },
     {
       "citySlug": "fort-worth-tx",
       "cityName": "Fort Worth TX",
       "filtersBuilt": 4,
-      "totalPlans": 109
+      "totalPlans": 111
     },
     {
       "citySlug": "houston-tx",
       "cityName": "Houston TX",
       "filtersBuilt": 4,
-      "totalPlans": 108
+      "totalPlans": 110
     }
   ],
-  "totalPlans": 326,
-  "buildTime": "2025-08-27T19:21:12.454Z",
+  "totalPlans": 332,
+  "buildTime": "2025-08-27T21:32:10.315Z",
   "errors": []
 }

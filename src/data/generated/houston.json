@@ -1108,7 +1108,7 @@
           }
         },
         {
-          "id": "68a0144ee30bfeb00272157b",
+          "id": "68a0144de30bfeb002721576",
           "name": "Gexa Eco Saver Advantage 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1219,7 +1219,7 @@
           }
         },
         {
-          "id": "68ad4321b32f244848d52947",
+          "id": "68ad4321b32f244848d52948",
           "name": "Gexa Eco Saver Plus 12",
           "provider": {
             "name": "Gexa Energy",
@@ -2865,7 +2865,7 @@
           }
         },
         {
-          "id": "68ae91433465506e6d1d3d29",
+          "id": "68aefab93465506e6d1d4ac2",
           "name": "Live Your Free 12",
           "provider": {
             "name": "TXU Energy",
@@ -3124,7 +3124,7 @@
           }
         },
         {
-          "id": "68a5f881af7e765b28591183",
+          "id": "68af67b12ee3bd055dc8aad2",
           "name": "SimpleSaver 12",
           "provider": {
             "name": "APGE",
@@ -3133,10 +3133,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.191,
-            "rate1000kWh": 0.086,
-            "rate2000kWh": 0.134,
-            "ratePerKwh": 0.086
+            "rate500kWh": 0.19,
+            "rate1000kWh": 0.085,
+            "rate2000kWh": 0.133,
+            "ratePerKwh": 0.085
           },
           "contract": {
             "length": 12,
@@ -3179,6 +3179,80 @@
             "length": 12,
             "type": "fixed",
             "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68af72222ee3bd055dc8ac3e",
+          "name": "SimpleSaver 14",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.191,
+            "rate1000kWh": 0.086,
+            "rate2000kWh": 0.134,
+            "ratePerKwh": 0.086
+          },
+          "contract": {
+            "length": 14,
+            "type": "fixed",
+            "earlyTerminationFee": 250,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68af6b402ee3bd055dc8ab50",
+          "name": "True Simple 14",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.149,
+            "rate1000kWh": 0.144,
+            "rate2000kWh": 0.142,
+            "ratePerKwh": 0.144
+          },
+          "contract": {
+            "length": 14,
+            "type": "fixed",
+            "earlyTerminationFee": 250,
             "autoRenewal": false,
             "satisfactionGuarantee": false
           },
@@ -4085,8 +4159,8 @@
           }
         }
       ],
-      "count": 108,
-      "lowestRate": 0.086,
+      "count": 110,
+      "lowestRate": 0.085,
       "highestRate": 0.226
     },
     "12-month": {
@@ -4770,7 +4844,7 @@
           }
         },
         {
-          "id": "68a0144ee30bfeb00272157b",
+          "id": "68a0144de30bfeb002721576",
           "name": "Gexa Eco Saver Advantage 12",
           "provider": {
             "name": "Gexa Energy",
@@ -4881,7 +4955,7 @@
           }
         },
         {
-          "id": "68ad4321b32f244848d52947",
+          "id": "68ad4321b32f244848d52948",
           "name": "Gexa Eco Saver Plus 12",
           "provider": {
             "name": "Gexa Energy",
@@ -5824,7 +5898,7 @@
           }
         },
         {
-          "id": "68ae91433465506e6d1d3d29",
+          "id": "68aefab93465506e6d1d4ac2",
           "name": "Live Your Free 12",
           "provider": {
             "name": "TXU Energy",
@@ -5972,7 +6046,7 @@
           }
         },
         {
-          "id": "68a5f881af7e765b28591183",
+          "id": "68af67b12ee3bd055dc8aad2",
           "name": "SimpleSaver 12",
           "provider": {
             "name": "APGE",
@@ -5981,10 +6055,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.191,
-            "rate1000kWh": 0.086,
-            "rate2000kWh": 0.134,
-            "ratePerKwh": 0.086
+            "rate500kWh": 0.19,
+            "rate1000kWh": 0.085,
+            "rate2000kWh": 0.133,
+            "ratePerKwh": 0.085
           },
           "contract": {
             "length": 12,
@@ -6318,7 +6392,7 @@
         }
       ],
       "count": 59,
-      "lowestRate": 0.086,
+      "lowestRate": 0.085,
       "highestRate": 0.226
     },
     "24-month": {
@@ -7687,7 +7761,7 @@
     "green-energy": {
       "plans": [
         {
-          "id": "68a0144ee30bfeb00272157b",
+          "id": "68a0144de30bfeb002721576",
           "name": "Gexa Eco Saver Advantage 12",
           "provider": {
             "name": "Gexa Energy",
@@ -7798,7 +7872,7 @@
           }
         },
         {
-          "id": "68ad4321b32f244848d52947",
+          "id": "68ad4321b32f244848d52948",
           "name": "Gexa Eco Saver Plus 12",
           "provider": {
             "name": "Gexa Energy",

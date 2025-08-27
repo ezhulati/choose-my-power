@@ -23,6 +23,7 @@
     "db:reset": "echo '⚠️ Reset not implemented yet - use Netlify dashboard to reset database'"
   },
   "dependencies": {
+    "@astrojs/netlify": "^6.5.9",
     "@netlify/neon": "^0.1.0",
     "dotenv": "^17.2.1",
     "drizzle-kit": "^0.31.4",
@@ -37,7 +38,6 @@
     "@astrojs/tailwind": "^6.0.2",
     "@eslint/js": "^9.9.1",
     "@playwright/test": "^1.40.0",
-    "@rollup/rollup-darwin-arm64": "^4.49.0",
     "@testing-library/jest-dom": "^6.1.0",
     "@testing-library/react": "^14.1.0",
     "@types/react": "^18.3.5",
