@@ -1,3 +1,4 @@
+import React from 'react';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import ComparisonBar from '../../../src/components/faceted/ComparisonBar';
@@ -362,12 +363,14 @@ describe('ComparisonBar', () => {
     // Check localStorage was called correctly
     expect(localStorageMock.setItem).toHaveBeenCalledWith(
       'comparisonPlans',
-      JSON.stringify({
-        plans: [mockPlan1, mockPlan2],
-        city: 'fort-worth',
-        timestamp: expect.any(Number)
-      })
+      expect.stringContaining('"city":"fort-worth"')
     );
+    
+    // Verify the stored data structure
+    const storedData = JSON.parse(localStorageMock.setItem.mock.calls[0][1]);
+    expect(storedData.plans).toHaveLength(2);
+    expect(storedData.city).toBe('fort-worth');
+    expect(storedData.timestamp).toBeDefined();
 
     // Check navigation
     expect(window.location.href).toBe('/texas/fort-worth/compare-plans');

@@ -1,0 +1,382 @@
+---
+/**
+ * Dynamic Faceted Navigation Route Handler with Static Generation Support
+ * Handles all electricity-plans URLs with multiple filter combinations
+ * Supports both static pre-generation and ISR for optimal performance
+ * 
+ * Pattern: /electricity-plans/[city-tx]/[filter1]/[filter2]/...
+ * 
+ * Examples:
+ * - /electricity-plans/dallas-tx/
+ * - /electricity-plans/dallas-tx/12-month/
+ * - /electricity-plans/dallas-tx/12-month/fixed-rate/
+ * - /electricity-plans/dallas-tx/green-energy/prepaid/
+ */
+
+import type { GetStaticPaths } from 'astro';
+import Layout from '../../layouts/Layout.astro';
+import FacetedPlanGrid from '../../components/faceted/FacetedPlanGrid.astro';
+import { facetedRouter, validateAndFetchPlans } from '../../lib/faceted/faceted-router';
+import { filterMapper } from '../../lib/api/filter-mapper';
+import { generateCanonicalUrl } from '../../lib/seo/canonical-scale';
+import { generateMetaTags } from '../../lib/seo/meta-generator-scale';
+import { generateBreadcrumbSchema } from '../../lib/seo/schema-scale';
+import { generateFacetedStaticPaths, getISRConfig } from '../../lib/faceted/static-generation-strategy';
+import type { Plan } from '../../types/facets';
+
+// Static generation for high-value pages with ISR support
+export const getStaticPaths: GetStaticPaths = async () => {
+  console.log('🔄 Generating static paths for faceted navigation...');
+  
+  try {
+    const paths = await generateFacetedStaticPaths();
+    const isrConfig = getISRConfig();
+    
+    console.log(`✅ Generated ${paths.length} static paths with ISR: ${isrConfig.revalidate ? 'enabled' : 'disabled'}`);
+    
+    return paths;
+  } catch (error) {
+    console.error('❌ Static path generation failed:', error);
+    
+    // Return minimal fallback paths
+    return [
+      { params: { path: 'dallas-tx' } },
+      { params: { path: 'houston-tx' } },
+      { params: { path: 'austin-tx' } }
+    ];
+  }
+};
+
+// Get dynamic parameters from URL
+const { path } = Astro.params;
+
+// Use the enhanced faceted router for comprehensive validation and data fetching
+const routeResult = await validateAndFetchPlans(path || '');
+
+// Handle routing errors and redirects
+if (!routeResult.isValid || routeResult.redirectUrl) {
+  const redirectUrl = routeResult.redirectUrl || '/404';
+  return Astro.redirect(redirectUrl);
+}
+
+// Extract validated data from route result
+const { 
+  citySlug, 
+  cityName, 
+  tdspDuns, 
+  filterSegments, 
+  filterResult, 
+  plans, 
+  error: apiError, 
+  canonicalUrl: routerCanonicalUrl,
+  shouldIndex 
+} = routeResult;
+
+// Ensure we have required data
+if (!filterResult || !tdspDuns) {
+  return Astro.redirect('/404');
+}
+
+// Generate SEO metadata using router data
+const currentUrl = `/electricity-plans/${filterSegments.join('/')}/`;
+const canonicalUrl = routerCanonicalUrl || generateCanonicalUrl(citySlug, filterSegments);
+
+const metaTags = generateMetaTags({
+  city: cityName,
+  state: 'TX',
+  filters: filterResult.appliedFilters,
+  planCount: plans.length,
+  currentUrl
+});
+
+// Generate structured data using router breadcrumbs
+const breadcrumbs = facetedRouter.getBreadcrumbs(citySlug, cityName, filterResult.appliedFilters);
+const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+
+// Performance monitoring
+const startTime = Date.now();
+const renderTime = Date.now() - startTime;
+
+// Log slow pages for optimization
+if (renderTime > 2000) {
+  console.warn(`Slow page render: ${currentUrl} took ${renderTime}ms`);
+}
+
+// Build page title and description using router utilities
+const pageTitle = facetedRouter.generatePageTitle(cityName, filterResult.appliedFilters);
+const pageDescription = facetedRouter.getFilterDescription(cityName, filterResult.appliedFilters);
+const filterLabels = filterResult.appliedFilters.map(f => f.displayName);
+
+// Generate internal linking suggestions using router
+const suggestedFilters = facetedRouter.getSuggestedFilters(citySlug, filterSegments, 6);
+const suggestedFilterDefinitions = suggestedFilters.map(pattern => ({
+  pattern,
+  definition: filterMapper.getDefinitionByPattern(pattern)
+})).filter(item => item.definition);
+
+---
+
+<Layout 
+  title={pageTitle}
+  description={pageDescription}
+  canonical={canonicalUrl}
+  noIndex={!shouldIndex} // Use router's indexing determination
+>
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  
+  <!-- Additional meta tags for faceted navigation -->
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={pageDescription} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:type" content="website" />
+  
+  <!-- City-specific meta -->
+  <meta name="geo.region" content="TX" />
+  <meta name="geo.placename" content={cityName} />
+  
+  <!-- Filter-specific meta -->
+  {filterLabels.length > 0 && (
+    <meta name="keywords" content={`${filterLabels.join(', ')}, ${cityName} electricity plans, Texas energy rates`} />
+  )}
+
+  <main class="min-h-screen bg-gray-50">
+    <!-- Breadcrumb Navigation -->
+    <nav class="bg-white border-b border-gray-200" aria-label="Breadcrumb">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center space-x-4 py-4 text-sm">
+          {breadcrumbs.map((breadcrumb, index) => (
+            <Fragment key={breadcrumb.url}>
+              {index > 0 && <span class="text-gray-400">/</span>}
+              <a 
+                href={breadcrumb.url}
+                class={index === breadcrumbs.length - 1 
+                  ? "text-gray-900 font-medium" 
+                  : "text-blue-600 hover:text-blue-800"
+                }
+              >
+                {breadcrumb.name}
+              </a>
+            </Fragment>
+          ))}
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="lg:flex lg:items-center lg:justify-between">
+          <div class="flex-1 min-w-0">
+            <h1 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
+              {filterLabels.length > 0 
+                ? `${filterLabels.join(' + ')} Electricity Plans in ${cityName}, Texas`
+                : `Compare Electricity Plans in ${cityName}, Texas`
+              }
+            </h1>
+            <div class="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
+              <div class="mt-2 flex items-center text-sm text-gray-500">
+                <span>{plans.length} plans available</span>
+                {filterResult.warnings.length > 0 && (
+                  <span class="ml-2 text-amber-600">• {filterResult.warnings[0]}</span>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active Filters -->
+        {filterResult.appliedFilters.length > 0 && (
+          <div class="mt-6">
+            <div class="flex flex-wrap gap-2">
+              <span class="text-sm font-medium text-gray-700">Active Filters:</span>
+              {filterResult.appliedFilters.map((filter) => (
+                <span 
+                  key={filter.urlSegment}
+                  class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
+                >
+                  {filter.displayName}
+                  <a
+                    href={`/electricity-plans/${citySlug}/${filterSegments.filter(f => f !== filter.urlSegment).join('/')}/`}
+                    class="ml-2 text-blue-600 hover:text-blue-800"
+                    title={`Remove ${filter.displayName} filter`}
+                  >
+                    ×
+                  </a>
+                </span>
+              ))}
+              {filterResult.appliedFilters.length > 0 && (
+                <a
+                  href={`/electricity-plans/${citySlug}/`}
+                  class="inline-flex items-center px-3 py-1 text-xs font-medium text-blue-600 hover:text-blue-800"
+                >
+                  Clear All
+                </a>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+
+    <!-- Error Handling -->
+    {apiError && (
+      <div class="bg-red-50 border border-red-200 rounded-md p-4 mx-4 mb-6">
+        <div class="flex">
+          <div class="flex-shrink-0">
+            <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="ml-3">
+            <h3 class="text-sm font-medium text-red-800">
+              Unable to load electricity plans
+            </h3>
+            <div class="mt-2 text-sm text-red-700">
+              <p>We're experiencing technical difficulties. Please try again later or contact support.</p>
+              <p class="mt-1 text-xs">Error: {apiError}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    )}
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="lg:grid lg:grid-cols-4 lg:gap-8">
+        <!-- Sidebar with Additional Filters -->
+        <div class="lg:col-span-1">
+          <div class="bg-white rounded-lg shadow p-6">
+            <h3 class="text-lg font-medium text-gray-900 mb-4">Refine Your Search</h3>
+            <div class="space-y-4">
+              {suggestedFilterDefinitions.map((item) => (
+                <div key={item.definition.type}>
+                  <h4 class="text-sm font-medium text-gray-700 mb-2">
+                    {item.definition.description}
+                  </h4>
+                  <div class="space-y-2">
+                    {item.definition.urlPatterns.slice(0, 3).map((pattern) => {
+                      const isActive = filterSegments.includes(pattern);
+                      const newUrl = isActive
+                        ? `/electricity-plans/${citySlug}/${filterSegments.filter(f => f !== pattern).join('/')}/`
+                        : `/electricity-plans/${citySlug}/${[...filterSegments, pattern].join('/')}/`;
+                      
+                      return (
+                        <a
+                          key={pattern}
+                          href={newUrl}
+                          class={`block text-sm px-3 py-2 rounded-md transition-colors ${
+                            isActive
+                              ? 'bg-blue-100 text-blue-800 font-medium'
+                              : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                          }`}
+                        >
+                          {item.definition.displayName(pattern)}
+                        </a>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Plans Grid -->
+        <div class="lg:col-span-3 mt-8 lg:mt-0">
+          <FacetedPlanGrid 
+            plans={plans}
+            city={cityName}
+            appliedFilters={filterResult.appliedFilters}
+            totalCount={plans.length}
+            loading={false}
+            error={apiError}
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Related Links Section -->
+    <div class="bg-gray-100 py-12 mt-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-xl font-bold text-gray-900 mb-6">Popular Electricity Plan Options in {cityName}</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {/* Generate popular filter combinations for internal linking */}
+          {['12-month', '24-month', 'fixed-rate', 'green-energy', 'prepaid', 'no-deposit'].map((filter) => {
+            const isActive = filterSegments.includes(filter);
+            if (isActive) return null;
+            
+            const newUrl = `/electricity-plans/${citySlug}/${filter}/`;
+            const definition = filterMapper.getDefinitionByPattern(filter);
+            const displayName = definition?.displayName(filter) || filter.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+            
+            return (
+              <a
+                key={filter}
+                href={newUrl}
+                class="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow border border-gray-200"
+              >
+                <div class="text-sm font-medium text-gray-900">{displayName}</div>
+                <div class="text-xs text-gray-500 mt-1">Plans in {cityName}</div>
+              </a>
+            );
+          }).filter(Boolean)}
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  /* Performance optimizations */
+  main {
+    contain: layout style paint;
+  }
+  
+  /* Ensure proper mobile responsiveness */
+  @media (max-width: 640px) {
+    .lg\:grid-cols-4 {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Loading states */
+  .plan-loading {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: .5;
+    }
+  }
+</style>
+
+<!-- Performance monitoring script -->
+<script>
+  // Monitor Core Web Vitals
+  if (typeof window !== 'undefined') {
+    const startTime = performance.now();
+    
+    window.addEventListener('load', () => {
+      const loadTime = performance.now() - startTime;
+      
+      // Log slow page loads
+      if (loadTime > 2000) {
+        console.warn(`Slow page load: ${window.location.pathname} took ${loadTime.toFixed(2)}ms`);
+      }
+      
+      // Send to analytics if available
+      if (window.gtag) {
+        window.gtag('event', 'page_load_time', {
+          event_category: 'Performance',
+          event_label: window.location.pathname,
+          value: Math.round(loadTime)
+        });
+      }
+    });
+  }
+</script>

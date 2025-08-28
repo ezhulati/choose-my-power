@@ -467,11 +467,91 @@ const styles = `
   color: #6b7280;
   line-height: 1.5;
 }
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .sidebar-content {
+    border-width: 3px;
+  }
+  
+  .filter-option:hover {
+    background: #000;
+    color: #fff;
+  }
+  
+  .checkbox-custom {
+    border-width: 3px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .sidebar-content {
+    transition: none;
+  }
+  
+  .filter-list-container {
+    transition: none;
+  }
+}
+
+/* Focus styles for accessibility */
+.filter-option:focus-within,
+.group-header:focus,
+.preset-btn:focus,
+.mobile-toggle:focus {
+  outline: 2px solid #002768;
+  outline-offset: 2px;
+}
+
+/* Dark mode support (if enabled) */
+@media (prefers-color-scheme: dark) {
+  .sidebar-content {
+    background: #1e293b;
+    color: #f1f5f9;
+    border-color: #374151;
+  }
+  
+  .group-header {
+    background: #1e293b;
+    color: #f1f5f9;
+  }
+  
+  .group-header:hover {
+    background: #334155;
+  }
+  
+  .filter-option {
+    color: #e2e8f0;
+  }
+  
+  .checkbox-custom {
+    background: #374151;
+    border-color: #64748b;
+  }
+  
+  .search-input {
+    background: #374151;
+    border-color: #64748b;
+    color: #f1f5f9;
+  }
+}
 `;
 
-// Inject styles (in a real app, you'd use CSS modules or styled-components)
+// Inject enhanced styles with better performance
 if (typeof document !== 'undefined') {
-  const styleSheet = document.createElement('style');
-  styleSheet.textContent = styles;
-  document.head.appendChild(styleSheet);
+  // Check if styles are already injected to avoid duplicates
+  const existingStyle = document.getElementById('faceted-sidebar-styles');
+  if (!existingStyle) {
+    const styleSheet = document.createElement('style');
+    styleSheet.id = 'faceted-sidebar-styles';
+    styleSheet.textContent = styles;
+    document.head.appendChild(styleSheet);
+  }
 }
