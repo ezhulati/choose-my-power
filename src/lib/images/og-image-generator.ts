@@ -132,21 +132,42 @@ class OGImageGenerator {
     topProviders: string[] = [],
     pageType: 'homepage' | 'city' | 'filtered' | 'comparison' | 'provider' | 'state' = 'city'
   ): Promise<string> {
-    const cityData = tdspMapping[city];
-    
-    const context: ImageGenerationContext = {
-      city,
-      filters,
-      planCount,
-      lowestRate,
-      topProviders,
-      pageType,
-      cityTier: cityData?.tier || 3,
-      tdspZone: cityData?.zone as any || 'North',
-      seasonalContext: this.getCurrentSeason()
-    };
+    try {
+      // Defensive programming - validate inputs
+      if (!city || typeof city !== 'string') {
+        console.warn('⚠️ Invalid city parameter:', city);
+        return this.getFallbackImage({ pageType, city: 'unknown', filters: [], planCount: 0, lowestRate: 0, topProviders: [], cityTier: 3, tdspZone: 'North' });
+      }
 
-    return await this.getOGImageUrl(context, { useStrategy: true });
+      // Ensure filters is an array of strings
+      const validFilters = Array.isArray(filters) 
+        ? filters.filter((f): f is string => typeof f === 'string')
+        : [];
+      
+      if (filters.length !== validFilters.length) {
+        console.warn('⚠️ Some filters were not strings, filtered out:', filters.filter(f => typeof f !== 'string'));
+      }
+
+      const cityData = tdspMapping[city];
+      
+      const context: ImageGenerationContext = {
+        city,
+        filters: validFilters,
+        planCount: Math.max(0, planCount || 0),
+        lowestRate: Math.max(0, lowestRate || 0),
+        topProviders: Array.isArray(topProviders) ? topProviders.filter((p): p is string => typeof p === 'string') : [],
+        pageType,
+        cityTier: cityData?.tier || 3,
+        tdspZone: cityData?.zone as any || 'North',
+        seasonalContext: this.getCurrentSeason()
+      };
+
+      return await this.getOGImageUrl(context, { useStrategy: true });
+    } catch (error) {
+      console.error('❌ Error in getOGImageForMeta:', error);
+      // Return a safe fallback image path
+      return '/images/og/comprehensive-clean/residential_neighborhood_16x9.png';
+    }
   }
 
   /**
