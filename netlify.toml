@@ -7,7 +7,7 @@
   functions = "netlify/functions"
 
 [build.environment]
-  NODE_VERSION = "20.0.0"
+  NODE_VERSION = "20.5.0"
   NPM_VERSION = "10.2.4"
   NODE_ENV = "production"
   ASTRO_TELEMETRY_DISABLED = "1"
