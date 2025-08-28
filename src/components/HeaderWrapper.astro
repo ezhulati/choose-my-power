@@ -169,8 +169,7 @@
 #header-container [role="menu"],
 #header-container [data-radix-popper-content-wrapper],
 #header-container .dropdown-menu {
-  z-index: 1000 !important; /* High z-index to ensure visibility above all content */
-  position: relative; /* Ensure proper stacking context */
+  z-index: 9999 !important; /* Maximum z-index to ensure visibility above all content */
 }
 
 /* Mobile menu fixes */
@@ -182,15 +181,13 @@
 /* Ensure all navigation dropdowns appear above any background content */
 #header-container nav .group:hover > div,
 #header-container nav .group:focus-within > div {
-  z-index: 1000 !important; /* High z-index to ensure visibility above all content */
-  position: absolute; /* Ensure proper positioning for dropdowns */
+  z-index: 9999 !important; /* Maximum z-index to ensure visibility above all content */
 }
 
 /* Additional dropdown targeting for maximum coverage */
 #header-container .group .absolute,
 #header-container .group-hover\\:visible,
 #header-container .group-hover\\:opacity-100 {
-  z-index: 1000 !important;
-  position: absolute !important;
+  z-index: 9999 !important;
 }
 </style>
