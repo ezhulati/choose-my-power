@@ -17,9 +17,12 @@ const {
   canonical = "https://choosemypower.org",
   robotsMeta = "index, follow",
   noIndex = false,
-  ogImage = "https://choosemypower.org/images/og-default.jpg",
+  ogImage = "/images/og-default.jpg",
   keywords
 } = Astro.props;
+
+// Ensure OG image is absolute URL for social sharing
+const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `https://choosemypower.org${ogImage}`;
 ---
 
 <!DOCTYPE html>
@@ -42,7 +45,7 @@ const {
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={absoluteOgImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="ChooseMyPower.org" />
@@ -51,7 +54,7 @@ const {
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image" content={absoluteOgImage} />
     <meta name="twitter:site" content="@choosemypower" />
     
     <!-- Canonical URL -->

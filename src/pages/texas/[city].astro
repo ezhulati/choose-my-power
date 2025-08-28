@@ -125,9 +125,24 @@ const heroImage = getHeroImage({
   location: city,
   filters: filters.length > 0 ? filters : undefined
 });
+
+// Get city-specific OG image
+function getCityOGImage(city: string): string {
+  const cityImages = {
+    'dallas-tx': '/images/og/comprehensive-clean/residential_neighborhood_16x9.png',
+    'houston-tx': '/images/og/comprehensive-clean/residential_neighborhood_16x9.png',
+    'austin-tx': '/images/og/comprehensive-clean/residential_neighborhood_16x9.png',
+    'fort-worth-tx': '/images/og/comprehensive-clean/residential_neighborhood_16x9.png',
+    'san-antonio-tx': '/images/og/comprehensive-clean/residential_neighborhood_16x9.png'
+  };
+  
+  return cityImages[city] || '/images/og/comprehensive-clean/texas_state_overview_16x9.png';
+}
+
+const ogImage = getCityOGImage(city);
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} ogImage={ogImage}>
   <!-- Hero Section with City Background -->
   <HeroBackground 
     imageUrl={heroImage} 

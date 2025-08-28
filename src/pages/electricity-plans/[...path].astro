@@ -148,6 +148,7 @@ const heroImage = getHeroImage({
   description={pageDescription}
   canonical={canonicalUrl}
   noIndex={!shouldIndex} // Use router's indexing determination
+  ogImage={metaTags.ogImage}
 >
   <!-- Schema.org structured data -->
   <script type="application/ld+json" set:html={JSON.stringify(schemas)} />
