@@ -1,0 +1,54 @@
+---
+export interface Props {
+  imageUrl?: string;
+  fallbackClass?: string;
+  overlayOpacity?: number;
+}
+
+const { 
+  imageUrl,
+  fallbackClass = "bg-gradient-to-br from-red-900 via-red-800 to-red-700",
+  overlayOpacity = 0.75
+} = Astro.props;
+
+// Debug logging
+console.log('🖼️  HeroBackground Debug:', {
+  imageUrl: imageUrl || 'No image provided',
+  hasImage: !!imageUrl,
+  fallbackClass
+});
+---
+
+<div 
+  class="relative min-h-[600px]" 
+  style={imageUrl ? 
+    `background: linear-gradient(135deg, rgba(30, 58, 138, 0.8), rgba(30, 64, 175, 0.7), rgba(55, 48, 163, 0.85)), url('${imageUrl}'); background-size: cover; background-position: center; background-repeat: no-repeat;` : 
+    'background: linear-gradient(135deg, #1e3a8a, #1e40af, #3730a3);'
+  }
+>
+  <!-- Content -->
+  <div class="relative flex items-center justify-center min-h-[600px]" style="z-index: 2;">
+    <slot />
+  </div>
+</div>
+
+<style>
+  /* Ensure proper layering and performance */
+  .bg-cover {
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+  }
+  
+  /* Hardware acceleration */
+  .transform {
+    transform: translate3d(0, 0, 0);
+  }
+  
+  /* Smooth transitions */
+  @media (prefers-reduced-motion: no-preference) {
+    .scale-105 {
+      transition: transform 0.3s ease-out;
+    }
+  }
+</style>

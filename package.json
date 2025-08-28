@@ -30,7 +30,7 @@
     "db:setup": "node scripts/setup-database-simple.mjs",
     "db:reset": "echo '⚠️ Reset not implemented yet - use Netlify dashboard to reset database'",
     "og:generate-all": "node scripts/generate-og-images.js generate-all",
-    "og:generate-priority": "node scripts/generate-og-images.js generate-priority",
+    "og:generate-priority": "node scripts/generate-priority-batch.js",
     "og:city": "node scripts/generate-og-images.js generate-city",
     "og:status": "node scripts/generate-og-images.js status",
     "og:preview": "node scripts/generate-og-images.js preview",
@@ -42,13 +42,13 @@
     "og:test-api": "node scripts/test-ideogram-api.js",
     "og:test-simple": "node scripts/og-simple-test.js",
     "og:priority-demo": "node scripts/og-priority-demo.js",
-    "og:generate-priority": "node scripts/generate-priority-batch.js",
     "og:validate": "node scripts/validate-og-system.js",
     "og:summary": "node scripts/og-summary.js"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/netlify": "^6.5.9",
+    "@fal-ai/client": "^1.6.2",
     "@netlify/neon": "^0.1.0",
     "dotenv": "^17.2.1",
     "drizzle-kit": "^0.31.4",

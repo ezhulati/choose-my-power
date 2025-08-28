@@ -1,0 +1,87 @@
+---
+import HeroBackground from './HeroBackground.astro';
+import { getHeroImage, extractContextFromPath } from '../lib/images/hero-image-mapper';
+
+export interface Props {
+  title: string;
+  subtitle?: string;
+  pageType?: 'homepage' | 'city' | 'state' | 'filter' | 'provider' | 'compare' | 'calculator';
+  location?: string;
+  filters?: string[];
+  specialty?: string;
+  overlayOpacity?: number;
+  customImageUrl?: string;
+  children?: any;
+}
+
+const { 
+  title,
+  subtitle,
+  pageType,
+  location,
+  filters,
+  specialty,
+  overlayOpacity = 0.75,
+  customImageUrl
+} = Astro.props;
+
+// Get contextual hero image
+let heroImage = customImageUrl;
+if (!heroImage && pageType) {
+  heroImage = getHeroImage({ pageType, location, filters, specialty });
+} else if (!heroImage) {
+  // Try to extract context from current URL
+  const context = extractContextFromPath(Astro.url.pathname);
+  heroImage = getHeroImage(context);
+}
+---
+
+<HeroBackground 
+  imageUrl={heroImage} 
+  overlayOpacity={overlayOpacity}
+>
+  <section class="text-white py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 drop-shadow-lg">
+          {title}
+        </h1>
+        {subtitle && (
+          <p class="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto mb-8 drop-shadow-md">
+            {subtitle}
+          </p>
+        )}
+        <slot />
+      </div>
+    </div>
+  </section>
+</HeroBackground>
+
+<!-- 
+Usage Examples:
+
+1. Auto-detect from URL:
+<SmartHero title="Electricity Plans" />
+
+2. Manual context:
+<SmartHero 
+  title="Dallas Electricity Plans" 
+  subtitle="Compare rates from top providers"
+  pageType="city" 
+  location="dallas-tx" 
+/>
+
+3. With filters:
+<SmartHero 
+  title="Green Energy Plans" 
+  pageType="filter" 
+  location="houston-tx"
+  filters={['green-energy', 'fixed-rate']}
+/>
+
+4. Custom image:
+<SmartHero 
+  title="Custom Page" 
+  customImageUrl="https://example.com/image.jpg"
+/>
+-->

@@ -1,10 +1,12 @@
 ---
 // City page with live electricity plans from ComparePower API
 import Layout from '../../layouts/Layout.astro';
+import HeroBackground from '../../components/HeroBackground.astro';
 import LivePlanGrid from '../../components/LivePlanGrid.astro';
 import PlanFilters from '../../components/PlanFilters.astro';
 import { tdspMapping, formatCityName } from '../../config/tdsp-mapping';
 import { comparePowerClient } from '../../lib/api/comparepower-client';
+import { getHeroImage } from '../../lib/images/hero-image-mapper';
 
 export async function getStaticPaths() {
   // Generate static paths for all cities in mapping
@@ -111,25 +113,48 @@ try {
 
 const title = `${filterLabel}Electricity Plans in ${cityName} | Live Rates & Providers`;
 const description = `Compare ${plans.length} live ${filterLabel.toLowerCase()}electricity plans in ${cityName}, Texas. Find the best rates starting at ${plans.length > 0 ? Math.min(...plans.map(p => p.pricing?.rate1000kWh || 999)).toFixed(1) : 'N/A'}¢/kWh from top providers.`;
+
+// Get contextual hero image for this city
+const filters = [];
+if (filter) filters.push(filter);
+if (greenEnergy) filters.push('green-energy');
+if (rateType) filters.push(rateType);
+
+const heroImage = getHeroImage({ 
+  pageType: 'city', 
+  location: city,
+  filters: filters.length > 0 ? filters : undefined
+});
 ---
 
 <Layout title={title} description={description}>
+  <!-- Hero Section with City Background -->
+  <HeroBackground 
+    imageUrl={heroImage} 
+    overlayOpacity={0.75}
+  >
+    <section class="text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <header class="text-center">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg">
+            {filterLabel}Electricity Plans in {cityName}
+          </h1>
+          <p class="text-xl text-blue-100 max-w-3xl mx-auto mb-6 drop-shadow-md">
+            {filterLabel ? `Showing ${filterLabel.toLowerCase()}plans from top providers serving ${cityName}, Texas.` : `Compare electricity plans and rates from top providers serving ${cityName}, Texas.`}
+          </p>
+          {filterLabel && (
+            <div>
+              <a href={`/texas/${city}`} class="inline-flex items-center text-blue-200 hover:text-white font-medium transition-colors drop-shadow-sm">
+                ← View All Plans
+              </a>
+            </div>
+          )}
+        </header>
+      </div>
+    </section>
+  </HeroBackground>
+
   <div class="max-w-7xl mx-auto px-4 py-8">
-    <header class="text-center mb-12">
-      <h1 class="text-4xl font-bold text-gray-900 mb-4">
-        {filterLabel}Electricity Plans in {cityName}
-      </h1>
-      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-        {filterLabel ? `Showing ${filterLabel.toLowerCase()}plans from top providers serving ${cityName}, Texas.` : `Compare electricity plans and rates from top providers serving ${cityName}, Texas.`}
-      </p>
-      {filterLabel && (
-        <div class="mt-4">
-          <a href={`/texas/${city}`} class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium">
-            ← View All Plans
-          </a>
-        </div>
-      )}
-    </header>
 
     <!-- TDSP Info -->
     <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
