@@ -201,7 +201,7 @@ class ImageStrategy {
     // Single filter matches
     if (context.filters.length === 1) {
       const tierSuffix = cityTier === 1 ? 'tier1' : 'tier2';
-      const templateId = `${primaryFilter.replace('-', '')}-${tierSuffix}`;
+      let templateId = `${primaryFilter.replace('-', '')}-${tierSuffix}`;
       let template = this.imageTemplates.find(t => t.id === templateId);
       
       if (!template) {
