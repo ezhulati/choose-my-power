@@ -7,7 +7,7 @@
 // Updated with new clean, realistic images from FLUX and comprehensive generation
 export const GENERATED_IMAGES = {
   // CORE PAGES - 16:9 FLUX Generated
-  homepage_texas_grid: '/images/og/comprehensive-clean/homepage_hero_clean_16x9.png', // Clean Texas hero
+  homepage_texas_grid: '/images/og/comprehensive-clean/residential_neighborhood_16x9.png', // Cozy residential neighborhood at dusk
   state_texas_overview: '/images/og/comprehensive-clean/texas_state_overview_16x9.png', // State overview 16:9
   global_comparison_all: '/images/og/comprehensive-clean/plan_comparison_16x9.png', // Plan comparison
 

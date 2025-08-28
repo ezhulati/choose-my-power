@@ -7,8 +7,7 @@ export interface Props {
 
 const { 
   imageUrl,
-  fallbackClass = "bg-gradient-to-br from-red-900 via-red-800 to-red-700",
-  overlayOpacity = 0.75
+  fallbackClass = "bg-gradient-to-br from-red-900 via-red-800 to-red-700"
 } = Astro.props;
 
 // Debug logging
@@ -20,14 +19,14 @@ console.log('🖼️  HeroBackground Debug:', {
 ---
 
 <div 
-  class="relative min-h-[600px]" 
+  class="relative min-h-[700px]" 
   style={imageUrl ? 
-    `background: linear-gradient(135deg, rgba(30, 58, 138, 0.8), rgba(30, 64, 175, 0.7), rgba(55, 48, 163, 0.85)), url('${imageUrl}'); background-size: cover; background-position: center; background-repeat: no-repeat;` : 
+    `background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(15, 23, 42, 0.7), rgba(30, 41, 59, 0.8)), url('${imageUrl}'); background-size: cover; background-position: center; background-repeat: no-repeat;` : 
     'background: linear-gradient(135deg, #1e3a8a, #1e40af, #3730a3);'
   }
 >
   <!-- Content -->
-  <div class="relative flex items-center justify-center min-h-[600px]" style="z-index: 2;">
+  <div class="relative flex items-center justify-center min-h-[700px]" style="z-index: 2;">
     <slot />
   </div>
 </div>

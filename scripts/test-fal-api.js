@@ -31,8 +31,8 @@ async function testFalApi() {
     
     const result = await fal.subscribe("fal-ai/stable-diffusion-v35-large", {
       input: {
-        prompt: 'Texas electricity transmission towers against blue sky, high quality, professional photography, no text, no words',
-        negative_prompt: 'text, words, letters, numbers, writing, typography, labels, signs',
+        prompt: 'Beautiful American suburban Texas neighborhood at night, warm yellow lights glowing in home windows, porch lights illuminated, street lamps lighting driveways and sidewalks, cozy family homes, cars in driveways, peaceful evening atmosphere, blue hour sky, realistic photography, no text, no words',
+        negative_prompt: 'text, words, letters, numbers, writing, typography, labels, signs, power lines, industrial, commercial buildings',
         image_size: 'landscape_16_9',
         num_inference_steps: 25,
         guidance_scale: 7.5,

@@ -19,11 +19,12 @@ import HeroBackground from '../../components/HeroBackground.astro';
 import FacetedPlanGrid from '../../components/faceted/FacetedPlanGrid.astro';
 import { facetedRouter, validateAndFetchPlans } from '../../lib/faceted/faceted-router';
 import { filterMapper } from '../../lib/api/filter-mapper';
-import { generateCanonicalUrl } from '../../lib/seo/canonical-scale';
-import { generateMetaTags } from '../../lib/seo/meta-generator-scale';
-import { generateBreadcrumbSchema } from '../../lib/seo/schema-scale';
+import { determineCanonicalUrl } from '../../lib/seo/canonical-scale';
+import { generateFacetedMeta } from '../../lib/seo/meta-generator-scale';
+import { generateFacetedSchema } from '../../lib/seo/schema-scale';
 import { generateFacetedStaticPaths, getISRConfig } from '../../lib/faceted/static-generation-strategy';
 import { getHeroImage, extractContextFromPath } from '../../lib/images/hero-image-mapper';
+import { tdspMapping } from '../../config/tdsp-mapping';
 import type { Plan } from '../../types/facets';
 
 // Static generation for high-value pages with ISR support
@@ -81,19 +82,35 @@ if (!filterResult || !tdspDuns) {
 
 // Generate SEO metadata using router data
 const currentUrl = `/electricity-plans/${filterSegments.join('/')}/`;
-const canonicalUrl = routerCanonicalUrl || generateCanonicalUrl(citySlug, filterSegments);
+const canonicalUrl = routerCanonicalUrl || determineCanonicalUrl(`/texas/${citySlug}`, filterSegments);
 
-const metaTags = generateMetaTags({
+// Calculate meta data
+const lowestRate = plans.length > 0 ? Math.min(...plans.map(p => parseFloat(p.rate) || 999)) : 0;
+const location = cityName; // Use city name as location
+const cityTier = tdspMapping[citySlug]?.tier || 3; // Get tier from TDSP mapping or default to 3
+
+const metaTags = await generateFacetedMeta({
   city: cityName,
-  state: 'TX',
   filters: filterResult.appliedFilters,
   planCount: plans.length,
-  currentUrl
+  lowestRate,
+  location,
+  cityTier,
+  isStatic: false
 });
 
 // Generate structured data using router breadcrumbs
 const breadcrumbs = facetedRouter.getBreadcrumbs(citySlug, cityName, filterResult.appliedFilters);
-const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
+const schemas = generateFacetedSchema({
+  city: cityName,
+  filters: filterResult.appliedFilters,
+  plans,
+  meta: metaTags,
+  tdspInfo: { name: location, duns: tdspDuns },
+  url: currentUrl,
+  planCount: plans.length,
+  lowestRate
+});
 
 // Performance monitoring
 const startTime = Date.now();
@@ -133,7 +150,7 @@ const heroImage = getHeroImage({
   noIndex={!shouldIndex} // Use router's indexing determination
 >
   <!-- Schema.org structured data -->
-  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(schemas)} />
   
   <!-- Additional meta tags for faceted navigation -->
   <meta property="og:title" content={pageTitle} />

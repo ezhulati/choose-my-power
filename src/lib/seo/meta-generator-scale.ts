@@ -350,71 +350,7 @@ function getShortFilterText(filters: string[]): string {
   return filters.map(f => shortMap[f] || formatFilterName(f)).join(' ');
 }
 
-/**
- * Generate unique descriptions for thousands of pages
- * Template variations prevent duplicate content penalties
- */
-function generateDescription(city: string, filters: string[], planCount: number, lowestRate: number, variation: number): string {
-  const cityName = formatCityName(city);
-  const rateText = lowestRate > 0 ? ` starting at ${lowestRate}¢/kWh` : '';
-  
-  if (filters.length === 0) {
-    const cityDescriptions = {
-      1: `Compare ${planCount} electricity plans in ${cityName}, Texas. Find competitive rates${rateText} with transparent pricing. Switch providers online in minutes - no hidden fees.`,
-      2: `Discover the best electricity rates in ${cityName} with ${planCount} available plans${rateText}. Compare providers, read reviews, and switch to save money on your power bill.`,
-      3: `${planCount} electricity plans available in ${cityName}, TX. Compare rates${rateText}, contract terms, and features. Find the perfect power plan for your home or business.`,
-      4: `Find your ideal electricity plan in ${cityName} from ${planCount} options${rateText}. Compare Texas power providers with transparent pricing and easy online enrollment.`,
-      5: `${cityName} residents can choose from ${planCount} electricity plans${rateText}. Compare rates, contract lengths, and green energy options. Switch and start saving today.`
-    };
-    return cityDescriptions[variation] || cityDescriptions[1];
-  }
-  
-  return generateFilteredDescription(cityName, filters, planCount, lowestRate, variation);
-}
 
-function generateFilteredDescription(cityName: string, filters: string[], planCount: number, lowestRate: number, variation: number): string {
-  const rateText = lowestRate > 0 ? ` starting at ${lowestRate}¢/kWh` : '';
-  const filterText = filters.map(formatFilterName).join(' ');
-  
-  const templates = {
-    1: `Compare ${planCount} ${filterText.toLowerCase()} electricity plans in ${cityName}${rateText}. Find the best rates with transparent pricing and no hidden fees. Switch online today.`,
-    2: `Discover ${planCount} ${filterText.toLowerCase()} power plans available in ${cityName}${rateText}. Compare providers, features, and contract terms to find your perfect electricity plan.`,
-    3: `${planCount} ${filterText.toLowerCase()} electricity options in ${cityName}${rateText}. Compare top-rated providers with competitive rates and flexible contract terms.`,
-    4: `Find the best ${filterText.toLowerCase()} electricity plans in ${cityName} from ${planCount} providers${rateText}. Easy comparison, transparent pricing, instant enrollment.`,
-    5: `${cityName} ${filterText.toLowerCase()} electricity plans - ${planCount} options available${rateText}. Compare rates, read reviews, and switch to save on your power bill.`
-  };
-  
-  return templates[variation] || templates[1];
-}
-
-/**
- * Generate H1 tags with template variations
- */
-function generateH1(city: string, filters: string[], planCount: number, variation: number): string {
-  const cityName = formatCityName(city);
-  
-  if (filters.length === 0) {
-    const h1Templates = {
-      1: `Electricity Plans in ${cityName}, Texas`,
-      2: `Compare Power Plans in ${cityName}`,
-      3: `${cityName} Electricity Rates & Plans`,
-      4: `Best Electricity Providers in ${cityName}`,
-      5: `${cityName} Power Plan Comparison`
-    };
-    return h1Templates[variation] || h1Templates[1];
-  }
-  
-  const filterText = filters.map(formatFilterName).join(' ');
-  const h1Templates = {
-    1: `${filterText} Electricity Plans in ${cityName}`,
-    2: `Best ${filterText} Power Plans - ${cityName}`,
-    3: `${cityName} ${filterText} Electricity Rates`,
-    4: `Compare ${filterText} Plans in ${cityName}`,
-    5: `${filterText} Power Options - ${cityName}, TX`
-  };
-  
-  return h1Templates[variation] || h1Templates[1];
-}
 
 /**
  * Generate category content with template variations

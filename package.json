@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "npm run build:data && npm run build:faceted && astro check && astro build",
+    "build": "npm run build:data && astro check && astro build",
     "build:data": "node scripts/build-data.mjs",
     "build:faceted": "node scripts/build-faceted-pages.mjs",
     "build:production": "NODE_ENV=production npm run build",

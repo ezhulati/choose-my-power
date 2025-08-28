@@ -278,7 +278,7 @@ export function getCityCanonicalUrls(city: string): string[] {
  * Validate canonical URL strategy for a city
  * Returns potential issues for review
  */
-export function validateCanonicalStrategy(city: string): string[] {
+export function getCanonicalIssues(city: string): string[] {
   const issues: string[] = [];
   const cityTier = tdspMapping[city]?.tier || 3;
   const canonicalUrls = getCityCanonicalUrls(city);
