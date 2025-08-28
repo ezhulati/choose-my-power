@@ -72,7 +72,79 @@ export interface TdspMapping {
     duns: string;
     name: string;
     zone: 'North' | 'Coast' | 'Central' | 'South' | 'Valley';
+    tier?: number;
+    priority?: number;
   };
+}
+
+// Enhanced TDSP mapping for multi-TDSP ZIP codes
+export interface TdspInfo {
+  duns: string;
+  name: string;
+  zone: 'North' | 'Coast' | 'Central' | 'South' | 'Valley';
+  tier: number;
+  priority: number;
+  coverage: 'primary' | 'secondary' | 'boundary';
+}
+
+export interface MultiTdspMapping {
+  [zipCode: string]: {
+    primaryTdsp: TdspInfo;
+    alternativeTdsps?: TdspInfo[];
+    requiresAddressValidation: boolean;
+    boundaryType?: 'street-level' | 'block-level' | 'zip4-level';
+    notes?: string;
+  };
+}
+
+// Address-based TDSP resolution
+export interface AddressInfo {
+  street: string;
+  city: string;
+  state: string;
+  zipCode: string;
+  zip4?: string;
+  unitNumber?: string;
+}
+
+export interface NormalizedAddress {
+  streetNumber: string;
+  streetName: string;
+  streetType: string;
+  unitType?: string;
+  unitNumber?: string;
+  city: string;
+  state: string;
+  zipCode: string;
+  zip4?: string;
+  fullAddress: string;
+}
+
+export interface AddressTdspResult {
+  address: NormalizedAddress;
+  tdsp: TdspInfo;
+  confidence: 'high' | 'medium' | 'low';
+  method: 'zip-primary' | 'zip4-lookup' | 'street-boundary' | 'esid-lookup' | 'fallback';
+  alternativeTdsps?: TdspInfo[];
+  warnings?: string[];
+}
+
+export interface TdspBoundaryData {
+  zipCode: string;
+  boundaries: Array<{
+    geometry: {
+      type: 'Polygon' | 'MultiPolygon';
+      coordinates: number[][][];
+    };
+    tdsp: TdspInfo;
+    streetRanges?: Array<{
+      streetName: string;
+      oddStart?: number;
+      oddEnd?: number;
+      evenStart?: number;
+      evenEnd?: number;
+    }>;
+  }>;
 }
 
 export interface FilterMapping {
