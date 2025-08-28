@@ -5,17 +5,13 @@ import { Footer } from './Footer';
 import { Homepage } from './Homepage';
 
 // Import all page components
-import { StatePage } from '../pages/StatePage';
-import { CityPage } from '../pages/CityPage';
-import { ProviderPage } from '../pages/ProviderPage';
-import { ShopPage } from '../pages/ShopPage';
-// ... import other pages as needed
+// Note: Page imports removed as they are not currently used in this component
 
 function App() {
   const { route, navigate } = useRouter();
 
   const renderPage = () => {
-    const { path, params } = route;
+    const { path } = route;
 
     // Homepage
     if (path === '/') {

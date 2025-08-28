@@ -1,5 +1,5 @@
 import React from 'react';
-import { Zap, Shield, DollarSign, Clock, MapPin, Calculator, Leaf, Users, TrendingDown, Battery, Award, BarChart } from 'lucide-react';
+import { Zap, Calculator, Leaf, Users, TrendingDown, Battery, Award, BarChart } from 'lucide-react';
 import { mockProviders } from '../data/mockData';
 import { ZipCodeSearch } from './ZipCodeSearch';
 import { getCityFromZip } from '../config/tdsp-mapping';

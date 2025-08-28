@@ -15,11 +15,13 @@ export interface FilterValidationResult {
   appliedFilters: AppliedFilter[];
 }
 
+export type FilterValue = string | number | boolean | { param: string; value: boolean };
+
 export interface AppliedFilter {
   type: FilterType;
   urlSegment: string;
   apiParam: string;
-  value: any;
+  value: FilterValue;
   displayName: string;
 }
 
@@ -29,9 +31,9 @@ export interface FilterDefinition {
   type: FilterType;
   urlPatterns: string[];
   apiParam: string;
-  valueTransform: (segment: string) => any;
+  valueTransform: (segment: string) => FilterValue;
   displayName: (segment: string) => string;
-  isValid: (value: any) => boolean;
+  isValid: (value: FilterValue) => boolean;
   conflictsWith?: FilterType[];
   description: string;
 }

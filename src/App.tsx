@@ -22,7 +22,7 @@ import { TexasPlansPage } from './pages/TexasPlansPage';
 import { ElectricityPlansPage } from './pages/ElectricityPlansPage';
 import { ElectricityCompaniesPage } from './pages/ElectricityCompaniesPage';
 import { BestPage } from './pages/BestPage';
-import { MapPin, Search, Star } from 'lucide-react';
+import { MapPin, Search } from 'lucide-react';
 import { ZipCodeSearch } from './components/ZipCodeSearch';
 import { CityElectricityProvidersPage } from './pages/CityElectricityProvidersPage';
 import { CityElectricityRatesPage } from './pages/CityElectricityRatesPage';

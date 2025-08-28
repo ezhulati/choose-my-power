@@ -7,6 +7,73 @@ import { getDatabase } from './config';
 import type { Plan, ApiParams } from '../../types/facets';
 import type { ElectricityPlan, Provider } from './schema';
 
+// Type definitions for API plan data
+interface ApiPlan {
+  _id: string;
+  product: {
+    brand: BrandData;
+    name: string;
+    family?: string;
+    term?: number;
+    percent_green?: number;
+    headline?: string;
+    description?: string;
+    early_termination_fee?: number;
+    is_pre_pay?: boolean;
+    is_time_of_use?: boolean;
+  };
+  display_pricing_500?: { avg_cents?: number; avg?: number; total?: number };
+  display_pricing_1000?: { avg_cents?: number; avg?: number; total?: number };
+  display_pricing_2000?: { avg_cents?: number; avg?: number; total?: number };
+  document_links?: DocumentLink[];
+}
+
+interface BrandData {
+  name: string;
+  legal_name?: string;
+  puct_number?: string;
+  contact_info?: {
+    sales?: { phone_number?: string };
+    support?: { 
+      phone_number?: string; 
+      email?: string; 
+      address?: string; 
+    };
+  };
+}
+
+interface DocumentLink {
+  type: string;
+  language?: string;
+  link: string;
+}
+
+interface DatabasePlan {
+  external_id: string;
+  provider_name: string;
+  logo_filename?: string;
+  logo_url?: string;
+  rating?: number;
+  review_count?: number;
+  name: string;
+  term_months: number;
+  rate_type: 'fixed' | 'variable' | 'indexed';
+  early_termination_fee: number;
+  auto_renewal: boolean;
+  satisfaction_guarantee: boolean;
+  percent_green: number;
+  bill_credit: number;
+  deposit_required: boolean;
+  deposit_amount?: number;
+  tdsp_duns: string;
+  rate_500kwh: number;
+  rate_1000kwh: number;
+  rate_2000kwh: number;
+  total_500kwh: number;
+  total_1000kwh: number;
+  total_2000kwh: number;
+}
+
 export class PlanRepository {
   private db = getDatabase();
 
@@ -74,7 +141,7 @@ export class PlanRepository {
   /**
    * Store individual plans in the database for long-term analysis
    */
-  async storePlans(apiPlans: any[], tdspDuns: string): Promise<void> {
+  async storePlans(apiPlans: ApiPlan[], tdspDuns: string): Promise<void> {
     try {
       for (const apiPlan of apiPlans) {
         // Validate required data before processing
@@ -143,7 +210,7 @@ export class PlanRepository {
   /**
    * Ensure provider exists in database, create if not
    */
-  private async ensureProviderExists(brandData: any): Promise<string> {
+  private async ensureProviderExists(brandData: BrandData): Promise<string> {
     try {
       // Validate brand data
       if (!brandData?.name) {
@@ -189,7 +256,7 @@ export class PlanRepository {
   async getActivePlans(tdspDuns: string, filters: Partial<ApiParams> = {}): Promise<Plan[]> {
     try {
       // Use separate queries for different filter combinations to avoid SQL building issues
-      let plans: any[];
+      let plans: DatabasePlan[];
       
       if (filters.term && filters.percent_green !== undefined && filters.is_pre_pay !== undefined) {
         plans = await this.db`
@@ -308,7 +375,7 @@ export class PlanRepository {
   /**
    * Log API calls for monitoring
    */
-  async logApiCall(endpoint: string, params: any, status: number, responseTime: number, error?: string): Promise<void> {
+  async logApiCall(endpoint: string, params: Record<string, unknown>, status: number, responseTime: number, error?: string): Promise<void> {
     try {
       await this.db`
         INSERT INTO api_logs (endpoint, params, response_status, response_time_ms, error_message)
@@ -361,7 +428,7 @@ export class PlanRepository {
   /**
    * Helper methods
    */
-  private determineRateType(product: any): 'fixed' | 'variable' | 'indexed' {
+  private determineRateType(product: ApiPlan['product']): 'fixed' | 'variable' | 'indexed' {
     const name = product.name?.toLowerCase() || '';
     const headline = product.headline?.toLowerCase() || '';
     
@@ -370,12 +437,12 @@ export class PlanRepository {
     return 'fixed';
   }
 
-  private findDocumentLink(links: any[] = [], type: string): string | null {
+  private findDocumentLink(links: DocumentLink[] = [], type: string): string | null {
     const link = links.find(l => l.type?.toLowerCase() === type.toLowerCase());
     return link?.link || null;
   }
 
-  private transformDatabasePlan = (dbPlan: any): Plan => ({
+  private transformDatabasePlan = (dbPlan: DatabasePlan): Plan => ({
     id: dbPlan.external_id,
     name: dbPlan.name,
     provider: {

@@ -162,13 +162,14 @@ const ConversionCTA: React.FC<ConversionCTAProps> = ({
       { threshold: 0.3 }
     );
 
-    if (ctaRef.current) {
-      observer.observe(ctaRef.current);
+    const currentRef = ctaRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (ctaRef.current) {
-        observer.unobserve(ctaRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);

@@ -145,7 +145,8 @@ class OGImageGenerator {
         : [];
       
       if (filters.length !== validFilters.length) {
-        console.warn('⚠️ Some filters were not strings, filtered out:', filters.filter(f => typeof f !== 'string'));
+        const invalidFilters = filters.filter(f => typeof f !== 'string');
+        console.warn('⚠️ Some filters were not strings, filtered out:', invalidFilters);
       }
 
       const cityData = tdspMapping[city];
@@ -158,7 +159,7 @@ class OGImageGenerator {
         topProviders: Array.isArray(topProviders) ? topProviders.filter((p): p is string => typeof p === 'string') : [],
         pageType,
         cityTier: cityData?.tier || 3,
-        tdspZone: cityData?.zone as any || 'North',
+        tdspZone: (cityData?.zone as 'North' | 'South' | 'East' | 'West' | 'Central') || 'North',
         seasonalContext: this.getCurrentSeason()
       };
 

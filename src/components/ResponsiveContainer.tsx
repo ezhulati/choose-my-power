@@ -97,7 +97,7 @@ const ResponsiveContainer: React.FC<ResponsiveContainerProps> = ({
   const detectTouchSupport = () => {
     const hasTouch = 'ontouchstart' in window || 
                     navigator.maxTouchPoints > 0 || 
-                    (window as any).DocumentTouch && document instanceof (window as any).DocumentTouch;
+                    ('DocumentTouch' in window && document instanceof (window as { DocumentTouch: unknown }).DocumentTouch);
     setTouchSupport(hasTouch);
   };
 
@@ -115,7 +115,7 @@ const ResponsiveContainer: React.FC<ResponsiveContainerProps> = ({
       window.removeEventListener('resize', updateScreenInfo);
       window.removeEventListener('orientationchange', updateScreenInfo);
     };
-  }, []);
+  }, [updateScreenInfo]);
 
   // Touch gesture handling
   const handleTouchStart = (e: React.TouchEvent) => {

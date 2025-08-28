@@ -5,6 +5,12 @@ interface HeaderProps {
   onNavigate: (path: string) => void;
 }
 
+interface NavigationItem {
+  name: string;
+  href: string;
+  dropdown?: Array<{ name: string; href: string }>;
+}
+
 export function Header({ onNavigate }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -45,7 +51,7 @@ export function Header({ onNavigate }: HeaderProps) {
     { name: 'Resources', href: '/resources' }
   ];
 
-  const handleNavClick = (item: any) => {
+  const handleNavClick = (item: NavigationItem) => {
     if (item.dropdown) {
       setActiveDropdown(activeDropdown === item.name ? null : item.name);
     } else {
