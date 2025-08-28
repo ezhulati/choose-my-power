@@ -1,0 +1,140 @@
+{
+  "executive_summary": {
+    "overall_health": {
+      "grade": "A-",
+      "score": 87,
+      "status": "Excellent"
+    },
+    "key_metrics": {
+      "total_routes": 939,
+      "working_routes": 937,
+      "success_rate": "99.8%",
+      "dead_paths": 1,
+      "critical_issues": 0
+    },
+    "business_impact": {
+      "user_experience": "Good",
+      "seo_risk": "Low",
+      "revenue_impact": "Minimal Impact"
+    },
+    "next_steps": []
+  },
+  "technical_details": {
+    "routing_systems": {
+      "total_systems": 19,
+      "static_routes": 13,
+      "dynamic_routes": 6,
+      "inconsistencies": 3
+    },
+    "performance_analysis": {
+      "test_duration": 70380,
+      "request_rate": 13,
+      "total_requests": 939,
+      "timeout_rate": "0.00%"
+    },
+    "error_breakdown": {
+      "by_error_type": {
+        "unknown": 1
+      },
+      "by_status_code": {
+        "500": 1
+      },
+      "by_route_pattern": {
+        "admin": 1
+      }
+    },
+    "system_recommendations": [
+      {
+        "priority": "medium",
+        "category": "performance",
+        "title": "Route Response Time Optimization",
+        "description": "Average response rate: 13 req/sec",
+        "impact": "Medium - User experience affected by slow pages",
+        "effort": "Medium",
+        "action_items": [
+          "Implement caching for dynamic routes",
+          "Optimize API calls in route handlers",
+          "Consider static generation for high-traffic routes"
+        ]
+      },
+      {
+        "priority": "low",
+        "category": "cleanup",
+        "title": "Clean Up Dead Paths",
+        "description": "1 unexpected dead paths found",
+        "impact": "Low - Minor SEO and UX impact",
+        "effort": "Low",
+        "action_items": [
+          "Review dead paths list",
+          "Remove or redirect obsolete routes",
+          "Update internal links that point to dead paths"
+        ],
+        "dead_paths": [
+          "/index"
+        ]
+      }
+    ]
+  },
+  "action_items": [
+    {
+      "id": "ACTION_001",
+      "title": "Route Response Time Optimization",
+      "description": "Average response rate: 13 req/sec",
+      "priority": "medium",
+      "category": "performance",
+      "estimated_effort": "Medium",
+      "assigned_to": "DevOps Team",
+      "due_date": "2025-09-11",
+      "status": "Open",
+      "action_items": [
+        "Implement caching for dynamic routes",
+        "Optimize API calls in route handlers",
+        "Consider static generation for high-traffic routes"
+      ],
+      "success_criteria": [
+        "Response rate improves to >20 req/sec",
+        "Page load times under 2 seconds"
+      ]
+    },
+    {
+      "id": "ACTION_002",
+      "title": "Clean Up Dead Paths",
+      "description": "1 unexpected dead paths found",
+      "priority": "low",
+      "category": "cleanup",
+      "estimated_effort": "Low",
+      "assigned_to": "Engineering Team",
+      "due_date": "2025-09-27",
+      "status": "Open",
+      "action_items": [
+        "Review dead paths list",
+        "Remove or redirect obsolete routes",
+        "Update internal links that point to dead paths"
+      ],
+      "success_criteria": [
+        "Dead paths reduced to expected municipal utilities only",
+        "All unexpected 404s resolved"
+      ]
+    }
+  ],
+  "performance_metrics": {
+    "response_times": {
+      "average_response_rate": 13,
+      "total_test_duration": 70380,
+      "throughput_analysis": "Baseline established"
+    },
+    "reliability_metrics": {
+      "success_rate": 0.9978700745473909,
+      "error_rate": 0.0010649627263045794,
+      "availability_sla": "99.787%"
+    },
+    "scalability_insights": {
+      "concurrent_request_capacity": "25 concurrent requests tested",
+      "load_testing_recommendation": "Consider load testing for production deployment",
+      "caching_opportunities": "44 static routes could benefit from CDN caching"
+    }
+  },
+  "seo_impact": {},
+  "recommendations": [],
+  "appendix": {}
+}

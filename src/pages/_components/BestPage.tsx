@@ -8,15 +8,29 @@ import {
   Building, Clock, Battery, Heart, Globe, Phone, Activity
 } from 'lucide-react';
 
-interface BestPageProps {
-  onNavigate: (path: string) => void;
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
 }
 
-export function BestPage({ onNavigate }: BestPageProps) {
+interface BestPageProps {
+}
+
+export function BestPage({}: BestPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [selectedCategory, setSelectedCategory] = useState<'companies' | 'plans' | 'rates' | 'features' | 'markets'>('companies');
 
   const handleZipSearch = (zipCode: string) => {
-    onNavigate(`/texas/houston/best`);
+    navigate(`/texas/houston/best`);
   };
 
   const bestCategories = {
@@ -494,13 +508,13 @@ export function BestPage({ onNavigate }: BestPageProps) {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
-                onClick={() => onNavigate(`/providers/${winnerSpotlight.winner?.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`)}
+                onClick={() => navigate(`/providers/${winnerSpotlight.winner?.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`)}
                 className="bg-yellow-500 text-white px-8 py-3 rounded-lg hover:bg-yellow-600 transition-colors font-medium"
               >
                 View Winner Profile
               </button>
               <button
-                onClick={() => onNavigate(`/best/${winnerSpotlight.id}`)}
+                onClick={() => navigate(`/best/${winnerSpotlight.id}`)}
                 className="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg hover:bg-gray-50 transition-colors font-medium"
               >
                 Full Category Analysis
@@ -565,7 +579,7 @@ export function BestPage({ onNavigate }: BestPageProps) {
                   </div>
 
                   <button
-                    onClick={() => onNavigate(`/best/${item.id}`)}
+                    onClick={() => navigate(`/best/${item.id}`)}
                     className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
                   >
                     View Full Analysis
@@ -633,7 +647,7 @@ export function BestPage({ onNavigate }: BestPageProps) {
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Company Intelligence</h3>
             <p className="text-gray-600 text-sm mb-4">Deep analysis of electricity companies by specialization</p>
             <button
-              onClick={() => onNavigate('/electricity-companies')}
+              onClick={() => navigate('/electricity-companies')}
               className="text-green-600 hover:text-green-800 font-medium text-sm"
             >
               Company Analysis →
@@ -647,7 +661,7 @@ export function BestPage({ onNavigate }: BestPageProps) {
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Plan Mastery</h3>
             <p className="text-gray-600 text-sm mb-4">Master guide to electricity plan types and selection</p>
             <button
-              onClick={() => onNavigate('/electricity-plans')}
+              onClick={() => navigate('/electricity-plans')}
               className="text-blue-600 hover:text-blue-800 font-medium text-sm"
             >
               Master Plans →
@@ -661,7 +675,7 @@ export function BestPage({ onNavigate }: BestPageProps) {
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Market Intelligence</h3>
             <p className="text-gray-600 text-sm mb-4">Compare providers, plans, and rates with expert tools</p>
             <button
-              onClick={() => onNavigate('/compare')}
+              onClick={() => navigate('/compare')}
               className="text-purple-600 hover:text-purple-800 font-medium text-sm"
             >
               Compare Options →
@@ -675,7 +689,7 @@ export function BestPage({ onNavigate }: BestPageProps) {
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Location Intelligence</h3>
             <p className="text-gray-600 text-sm mb-4">Location-specific rankings and market analysis</p>
             <button
-              onClick={() => onNavigate('/locations')}
+              onClick={() => navigate('/locations')}
               className="text-orange-600 hover:text-orange-800 font-medium text-sm"
             >
               Location Analysis →

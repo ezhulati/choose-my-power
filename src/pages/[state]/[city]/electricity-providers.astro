@@ -35,5 +35,12 @@ const description = `Compare electricity providers in ${cityTitle}, ${stateTitle
 ---
 
 <Layout title={title} description={description}>
-  <CityElectricityProvidersPage client:load state={state} city={city} onNavigate={(path) => window.location.href = path} />
+  <CityElectricityProvidersPage client:load state={state} city={city} />
+
+  <script>
+    // Client-side navigation function for React components
+    window.navigateToPath = function(path) {
+      window.location.href = path;
+    };
+  </script>
 </Layout>

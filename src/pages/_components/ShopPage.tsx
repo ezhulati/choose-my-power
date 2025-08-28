@@ -7,12 +7,26 @@ import {
   Heart, Battery, Building, Globe, Home, Headphones
 } from 'lucide-react';
 
-interface ShopPageProps {
-  category?: string;
-  onNavigate: (path: string) => void;
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
 }
 
-export function ShopPage({ category, onNavigate }: ShopPageProps) {
+interface ShopPageProps {
+  category?: string;
+}
+
+export function ShopPage({ category }: ShopPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [selectedUsage, setSelectedUsage] = useState<'low' | 'average' | 'high'>('average');
   const [selectedPriority, setSelectedPriority] = useState<'price' | 'service' | 'green' | 'features'>('price');
 
@@ -136,9 +150,9 @@ export function ShopPage({ category, onNavigate }: ShopPageProps) {
 
   const handleZipSearch = (zipCode: string) => {
     if (category) {
-      onNavigate(`/texas/houston/electricity-providers?category=${category}`);
+      navigate(`/texas/houston/electricity-providers?category=${category}`);
     } else {
-      onNavigate(`/texas/houston/electricity-providers`);
+      navigate(`/texas/houston/electricity-providers`);
     }
   };
 
@@ -149,9 +163,9 @@ export function ShopPage({ category, onNavigate }: ShopPageProps) {
         <div className={`bg-gradient-to-br from-${currentCategory.color}-600 via-${currentCategory.color}-700 to-${currentCategory.color}-800 text-white`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <nav className="text-sm text-white/80 mb-6">
-              <button onClick={() => onNavigate('/')} className="hover:text-white">Home</button>
+              <button onClick={() => navigate('/')} className="hover:text-white">Home</button>
               <span className="mx-2">/</span>
-              <button onClick={() => onNavigate('/shop')} className="hover:text-white">Shop</button>
+              <button onClick={() => navigate('/shop')} className="hover:text-white">Shop</button>
               <span className="mx-2">/</span>
               <span>{currentCategory.title}</span>
             </nav>
@@ -368,7 +382,7 @@ export function ShopPage({ category, onNavigate }: ShopPageProps) {
                   {priority.options.map((option, index) => (
                     <button
                       key={index}
-                      onClick={() => onNavigate(option.href)}
+                      onClick={() => navigate(option.href)}
                       className="w-full text-left p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
                     >
                       <div className="flex justify-between items-center">
@@ -395,7 +409,7 @@ export function ShopPage({ category, onNavigate }: ShopPageProps) {
             {Object.entries(shopCategories).map(([key, cat]) => (
               <button
                 key={key}
-                onClick={() => onNavigate(`/shop/${key}`)}
+                onClick={() => navigate(`/shop/${key}`)}
                 className="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow text-left"
               >
                 <div className={`inline-flex items-center justify-center w-12 h-12 bg-${cat.color}-100 text-${cat.color}-600 rounded-lg mb-4`}>

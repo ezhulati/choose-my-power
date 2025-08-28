@@ -2,12 +2,26 @@ import React, { useState } from 'react';
 import { mockProviders, mockStates } from '../../data/mockData';
 import { Star, Phone, Globe, MapPin, Zap, DollarSign, Calendar, Leaf } from 'lucide-react';
 
-interface ProviderPageProps {
-  providerId: string;
-  onNavigate: (path: string) => void;
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
 }
 
-export function ProviderPage({ providerId, onNavigate }: ProviderPageProps) {
+interface ProviderPageProps {
+  providerId: string;
+}
+
+export function ProviderPage({ providerId }: ProviderPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [selectedTab, setSelectedTab] = useState<'overview' | 'plans' | 'reviews' | 'service-areas'>('overview');
   
   const provider = mockProviders.find(p => p.slug === providerId);
@@ -19,7 +33,7 @@ export function ProviderPage({ providerId, onNavigate }: ProviderPageProps) {
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Provider Not Found</h1>
           <p className="text-gray-600 mb-8">The provider you're looking for doesn't exist in our database.</p>
           <button
-            onClick={() => onNavigate('/providers')}
+            onClick={() => navigate('/providers')}
             className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
           >
             View All Providers
@@ -63,9 +77,9 @@ export function ProviderPage({ providerId, onNavigate }: ProviderPageProps) {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => onNavigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => onNavigate('/providers')} className="hover:text-blue-600">Providers</button>
+            <button onClick={() => navigate('/providers')} className="hover:text-blue-600">Providers</button>
             <span className="mx-2">/</span>
             <span>{provider.name}</span>
           </nav>
@@ -95,13 +109,13 @@ export function ProviderPage({ providerId, onNavigate }: ProviderPageProps) {
               {/* Quick Actions */}
               <div className="flex flex-wrap gap-4 mb-6">
                 <button
-                  onClick={() => onNavigate('/compare/providers')}
+                  onClick={() => navigate('/compare/providers')}
                   className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
                 >
                   Compare Plans
                 </button>
                 <button
-                  onClick={() => onNavigate(`/providers/${provider.slug}/vs`)}
+                  onClick={() => navigate(`/providers/${provider.slug}/vs`)}
                   className="border border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors font-medium"
                 >
                   Compare vs Others
@@ -269,7 +283,7 @@ export function ProviderPage({ providerId, onNavigate }: ProviderPageProps) {
                     </div>
 
                     <button
-                      onClick={() => onNavigate('/texas/houston/electricity-providers')}
+                      onClick={() => navigate('/texas/houston/electricity-providers')}
                       className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
                     >
                       See Rates in Your Area
@@ -358,7 +372,7 @@ export function ProviderPage({ providerId, onNavigate }: ProviderPageProps) {
                     </div>
                     
                     <button
-                      onClick={() => onNavigate(`/${state.slug}/electricity-providers`)}
+                      onClick={() => navigate(`/${state.slug}/electricity-providers`)}
                       className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
                     >
                       View {state.name} Plans

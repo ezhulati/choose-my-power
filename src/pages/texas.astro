@@ -7,5 +7,12 @@ const description = "Compare Texas electricity providers and plans. Find the bes
 ---
 
 <Layout title={title} description={description} ogImage="/images/og/comprehensive-clean/texas_state_overview_16x9.png">
-  <TexasPage client:load onNavigate={(path) => window.location.href = path} />
+  <TexasPage client:load />
+  
+  <script>
+    // Client-side navigation function for React components
+    window.navigateToPath = function(path) {
+      window.location.href = path;
+    };
+  </script>
 </Layout>

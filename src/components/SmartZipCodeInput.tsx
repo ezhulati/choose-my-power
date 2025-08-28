@@ -4,9 +4,8 @@
  * Implements the rule: "When two TDUs could return from API, ask user to enter address"
  */
 
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { multiTDSPDetector, type TDSPResolutionResult } from '../lib/api/multi-tdsp-detector';
-import { ercotESIIDClient, type AddressTDSPResolution } from '../lib/api/ercot-esiid-client';
 
 interface SmartZipCodeInputProps {
   onTDSPResolved: (result: TDSPResolutionResult) => void;
@@ -52,15 +51,90 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
   });
 
   /**
-   * Handle ZIP code submission
+   * Enhanced ZIP code validation with security measures
+   */
+  const validateZipCode = (zipCode: string): string | null => {
+    const trimmed = zipCode.trim();
+    
+    // Basic format validation
+    if (!trimmed || trimmed.length !== 5) {
+      return 'ZIP code must be exactly 5 digits';
+    }
+    
+    // Numeric validation with stricter security check
+    if (!/^\d{5}$/.test(trimmed)) {
+      return 'ZIP code must contain only numbers';
+    }
+    
+    // Range validation for US ZIP codes
+    const zipNum = parseInt(trimmed, 10);
+    if (zipNum < 1000 || zipNum > 99999) {
+      return 'Please enter a valid US ZIP code';
+    }
+    
+    return null; // Valid
+  };
+
+  /**
+   * Enhanced address validation with security measures
+   */
+  const validateAddress = (address: string): string | null => {
+    const trimmed = address.trim();
+    
+    // Length validation
+    if (!trimmed || trimmed.length < 5) {
+      return 'Address must be at least 5 characters';
+    }
+    
+    if (trimmed.length > 200) {
+      return 'Address must be less than 200 characters';
+    }
+    
+    // Security: Check for potentially malicious patterns
+    const dangerousPatterns = [
+      /<script/i, // Script injection
+      /javascript:/i, // JavaScript protocol
+      /data:\s*text\/html/i, // Data URL HTML
+      /vbscript:/i, // VBScript protocol
+      /on\w+\s*=/i, // Event handlers
+    ];
+    
+    for (const pattern of dangerousPatterns) {
+      if (pattern.test(trimmed)) {
+        return 'Address contains invalid characters';
+      }
+    }
+    
+    // Basic format validation - should contain numbers and letters
+    if (!/\d/.test(trimmed) || !/[a-zA-Z]/.test(trimmed)) {
+      return 'Address should contain both numbers and letters';
+    }
+    
+    return null; // Valid
+  };
+
+  /**
+   * Sanitize user input to prevent XSS and other attacks
+   */
+  const sanitizeInput = (input: string): string => {
+    return input
+      .trim()
+      .replace(/[<>'"&]/g, '') // Remove potentially dangerous characters
+      .replace(/\s+/g, ' ') // Normalize whitespace
+      .slice(0, 500); // Enforce maximum length
+  };
+
+  /**
+   * Handle ZIP code submission with enhanced security
    */
   const handleZipCodeSubmit = useCallback(async () => {
-    const zipCode = state.zipCode.trim();
+    const sanitizedZipCode = sanitizeInput(state.zipCode);
+    const validationError = validateZipCode(sanitizedZipCode);
     
-    if (!zipCode || zipCode.length !== 5 || !/^\d{5}$/.test(zipCode)) {
+    if (validationError) {
       setState(prev => ({ 
         ...prev, 
-        error: 'Please enter a valid 5-digit ZIP code' 
+        error: validationError
       }));
       return;
     }
@@ -72,10 +146,10 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
     }));
 
     try {
-      console.log(`🔍 Analyzing ZIP code: ${zipCode}`);
+      console.log(`🔍 Analyzing ZIP code: ${sanitizedZipCode}`);
       
       // Step 1: Analyze ZIP code for multi-TDSP potential
-      const analysis = await multiTDSPDetector.analyzeZipCode(zipCode, displayUsage);
+      const analysis = await multiTDSPDetector.analyzeZipCode(sanitizedZipCode, displayUsage);
       
       if (analysis.addressRequired) {
         console.log(`⚠️  Address required for ZIP ${zipCode}`);
@@ -124,16 +198,28 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
   }, [state.zipCode, displayUsage, onTDSPResolved, onError]);
 
   /**
-   * Handle address submission for ESIID lookup
+   * Handle address submission for ESIID lookup with enhanced security
    */
   const handleAddressSubmit = useCallback(async () => {
-    const address = state.address.trim();
-    const zipCode = state.zipCode.trim();
+    const sanitizedAddress = sanitizeInput(state.address);
+    const sanitizedZipCode = sanitizeInput(state.zipCode);
     
-    if (!address || address.length < 5) {
+    // Validate address
+    const addressError = validateAddress(sanitizedAddress);
+    if (addressError) {
       setState(prev => ({ 
         ...prev, 
-        error: 'Please enter a valid street address' 
+        error: addressError 
+      }));
+      return;
+    }
+    
+    // Re-validate ZIP code
+    const zipError = validateZipCode(sanitizedZipCode);
+    if (zipError) {
+      setState(prev => ({ 
+        ...prev, 
+        error: zipError 
       }));
       return;
     }
@@ -145,12 +231,12 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
     }));
 
     try {
-      console.log(`📍 Resolving address: ${address}, ${zipCode}`);
+      console.log(`📍 Resolving address: ${sanitizedAddress}, ${sanitizedZipCode}`);
       
       // Step 2: Resolve address to specific TDSP using ESIID
       const resolution = await multiTDSPDetector.resolveAddressToTDSP(
-        address, 
-        zipCode, 
+        sanitizedAddress, 
+        sanitizedZipCode, 
         displayUsage
       );
 

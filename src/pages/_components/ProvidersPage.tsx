@@ -9,24 +9,36 @@ import {
   Headphones, DollarSign, Wifi, Heart, Battery
 } from 'lucide-react';
 
-interface ProvidersPageProps {
-  onNavigate: (path: string) => void;
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
 }
 
-export function ProvidersPage({ onNavigate }: ProvidersPageProps) {
+export function ProvidersPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'green' | 'service' | 'rewards' | 'tech' | 'local' | 'budget'>('all');
   const [sortBy, setSortBy] = useState<'name' | 'rating' | 'price' | 'popularity'>('rating');
   const [selectedProviders, setSelectedProviders] = useState<string[]>([]);
 
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
+
   const handleZipSearch = (zipCode: string) => {
     // Enhanced ZIP routing
     if (zipCode.startsWith('77') || zipCode.startsWith('75') || zipCode.startsWith('78')) {
-      onNavigate(`/texas/houston/electricity-providers`);
+      navigate(`/texas/houston/electricity-providers`);
     } else if (zipCode.startsWith('19') || zipCode.startsWith('15')) {
-      onNavigate(`/pennsylvania/philadelphia/electricity-providers`);
+      navigate(`/pennsylvania/philadelphia/electricity-providers`);
     } else {
-      onNavigate(`/texas/houston/electricity-providers`);
+      navigate(`/texas/houston/electricity-providers`);
     }
   };
 
@@ -469,13 +481,13 @@ export function ProvidersPage({ onNavigate }: ProvidersPageProps) {
 
                     <div className="space-y-2">
                       <button
-                        onClick={() => onNavigate(`/providers/${provider.slug}`)}
+                        onClick={() => navigate(`/providers/${provider.slug}`)}
                         className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
                       >
                         View {provider.name} Details
                       </button>
                       <button
-                        onClick={() => onNavigate(`/texas/houston/electricity-providers`)}
+                        onClick={() => navigate(`/texas/houston/electricity-providers`)}
                         className="w-full border border-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
                       >
                         See Plans & Rates
@@ -487,7 +499,7 @@ export function ProvidersPage({ onNavigate }: ProvidersPageProps) {
 
               <div className="text-center mt-8">
                 <button
-                  onClick={() => onNavigate(`/compare/providers?category=${category.id}`)}
+                  onClick={() => navigate(`/compare/providers?category=${category.id}`)}
                   className="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors font-medium"
                 >
                   Compare All {category.title.replace('Best for ', '')} Providers
@@ -535,7 +547,7 @@ export function ProvidersPage({ onNavigate }: ProvidersPageProps) {
               <ProviderCard
                 key={provider.id}
                 provider={provider}
-                onViewDetails={() => onNavigate(`/providers/${provider.slug}`)}
+                onViewDetails={() => navigate(`/providers/${provider.slug}`)}
                 onCompare={() => toggleProviderSelection(provider.id)}
                 showPlans
               />
@@ -544,7 +556,7 @@ export function ProvidersPage({ onNavigate }: ProvidersPageProps) {
 
           <div className="text-center mt-8">
             <button
-              onClick={() => onNavigate('/compare/providers')}
+              onClick={() => navigate('/compare/providers')}
               className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
             >
               View All Providers & Compare
@@ -563,7 +575,7 @@ export function ProvidersPage({ onNavigate }: ProvidersPageProps) {
               Compare providers offering the lowest electricity rates in your area.
             </p>
             <button
-              onClick={() => onNavigate('/shop/cheapest-electricity')}
+              onClick={() => navigate('/shop/cheapest-electricity')}
               className="text-green-600 hover:text-green-800 font-medium text-sm"
             >
               Find Lowest Rates →
@@ -579,7 +591,7 @@ export function ProvidersPage({ onNavigate }: ProvidersPageProps) {
               Select multiple providers and compare them head-to-head.
             </p>
             <button
-              onClick={() => onNavigate('/compare/providers')}
+              onClick={() => navigate('/compare/providers')}
               className="text-blue-600 hover:text-blue-800 font-medium text-sm"
             >
               Start Comparing →
@@ -595,7 +607,7 @@ export function ProvidersPage({ onNavigate }: ProvidersPageProps) {
               See our expert rankings of the best electricity providers.
             </p>
             <button
-              onClick={() => onNavigate('/compare/providers/top-5')}
+              onClick={() => navigate('/compare/providers/top-5')}
               className="text-purple-600 hover:text-purple-800 font-medium text-sm"
             >
               View Rankings →
@@ -611,7 +623,7 @@ export function ProvidersPage({ onNavigate }: ProvidersPageProps) {
               See providers, rates, and service areas by specific locations.
             </p>
             <button
-              onClick={() => onNavigate('/locations')}
+              onClick={() => navigate('/locations')}
               className="text-orange-600 hover:text-orange-800 font-medium text-sm"
             >
               Browse Locations →

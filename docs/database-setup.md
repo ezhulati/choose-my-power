@@ -22,8 +22,10 @@ For local development, copy these from your Netlify dashboard to `.env`:
 
 ```bash
 # .env
-NETLIFY_DATABASE_URL="postgresql://restless-mouse-26440852:password@ep-rough-field-a5vm3mqt.us-east-2.aws.neon.tech/main?sslmode=require"
-NETLIFY_DATABASE_URL_UNPOOLED="postgresql://restless-mouse-26440852:password@ep-rough-field-a5vm3mqt.us-east-2.aws.neon.tech/main?sslmode=require"
+# 🔒 SECURITY NOTE: Replace these with your actual database credentials from Netlify dashboard
+# Never commit real credentials to version control
+NETLIFY_DATABASE_URL="postgresql://your-username:your-secure-password@your-host.neon.tech/main?sslmode=require"
+NETLIFY_DATABASE_URL_UNPOOLED="postgresql://your-username:your-secure-password@your-host.neon.tech/main?sslmode=require"
 ```
 
 ### 2. Test Database Connection

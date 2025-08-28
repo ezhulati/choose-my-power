@@ -3,13 +3,27 @@ import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { mockProviders, mockStates } from '../../data/mockData';
 import { Shield, CreditCard, Clock, CheckCircle, AlertTriangle } from 'lucide-react';
 
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
+}
+
 interface CityNoDepositPageProps {
   state: string;
   city: string;
-  onNavigate: (path: string) => void;
 }
 
-export function CityNoDepositPage({ state, city, onNavigate }: CityNoDepositPageProps) {
+export function CityNoDepositPage({ state, city }: CityNoDepositPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [creditScore, setCreditScore] = useState<'excellent' | 'good' | 'fair' | 'poor'>('good');
 
   const stateData = mockStates.find(s => s.slug === state);
@@ -21,7 +35,7 @@ export function CityNoDepositPage({ state, city, onNavigate }: CityNoDepositPage
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Location Not Found</h1>
           <button
-            onClick={() => onNavigate(`/${state}/no-deposit-electricity`)}
+            onClick={() => navigate(`/${state}/no-deposit-electricity`)}
             className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
           >
             View {stateData?.name || 'State'} No Deposit Options
@@ -36,7 +50,7 @@ export function CityNoDepositPage({ state, city, onNavigate }: CityNoDepositPage
   );
 
   const handleZipSearch = (zipCode: string) => {
-    onNavigate(`/${state}/${city}/${zipCode}/no-deposit-electricity`);
+    navigate(`/${state}/${city}/${zipCode}/no-deposit-electricity`);
   };
 
   const creditScoreOptions = [
@@ -75,9 +89,9 @@ export function CityNoDepositPage({ state, city, onNavigate }: CityNoDepositPage
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => onNavigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => onNavigate(`/${state}/no-deposit-electricity`)} className="hover:text-blue-600">
+            <button onClick={() => navigate(`/${state}/no-deposit-electricity`)} className="hover:text-blue-600">
               {stateData.name}
             </button>
             <span className="mx-2">/</span>
@@ -245,13 +259,13 @@ export function CityNoDepositPage({ state, city, onNavigate }: CityNoDepositPage
 
                 <div className="space-y-2">
                   <button
-                    onClick={() => onNavigate(`/providers/${provider.slug}`)}
+                    onClick={() => navigate(`/providers/${provider.slug}`)}
                     className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
                   >
                     View Provider Details
                   </button>
                   <button
-                    onClick={() => onNavigate(`/${state}/${city}/electricity-providers`)}
+                    onClick={() => navigate(`/${state}/${city}/electricity-providers`)}
                     className="w-full border border-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
                   >
                     See Plans & Rates
@@ -300,7 +314,7 @@ export function CityNoDepositPage({ state, city, onNavigate }: CityNoDepositPage
                     Pay for electricity before you use it - no credit check or deposit required.
                   </p>
                   <button
-                    onClick={() => onNavigate('/shop/prepaid-electricity')}
+                    onClick={() => navigate('/shop/prepaid-electricity')}
                     className="text-blue-600 hover:text-blue-800 text-sm font-medium mt-2"
                   >
                     Learn about prepaid →
@@ -313,7 +327,7 @@ export function CityNoDepositPage({ state, city, onNavigate }: CityNoDepositPage
                     Have someone with good credit co-sign your electricity contract.
                   </p>
                   <button
-                    onClick={() => onNavigate('/shop/special-circumstances')}
+                    onClick={() => navigate('/shop/special-circumstances')}
                     className="text-blue-600 hover:text-blue-800 text-sm font-medium mt-2"
                   >
                     Co-signer guide →

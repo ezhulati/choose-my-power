@@ -3,12 +3,26 @@ import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { mockProviders, mockStates } from '../../data/mockData';
 import { Calendar, Zap, TrendingDown, Leaf, Shield, Filter } from 'lucide-react';
 
-interface StateElectricityPlansPageProps {
-  state: string;
-  onNavigate: (path: string) => void;
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
 }
 
-export function StateElectricityPlansPage({ state, onNavigate }: StateElectricityPlansPageProps) {
+interface StateElectricityPlansPageProps {
+  state: string;
+}
+
+export function StateElectricityPlansPage({ state }: StateElectricityPlansPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [planTypeFilter, setPlanTypeFilter] = useState<'all' | 'fixed' | 'variable' | 'indexed'>('all');
   const [termFilter, setTermFilter] = useState<'all' | '12' | '24' | '36'>('all');
   const [greenFilter, setGreenFilter] = useState<boolean>(false);
@@ -21,7 +35,7 @@ export function StateElectricityPlansPage({ state, onNavigate }: StateElectricit
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">State Not Found</h1>
           <button
-            onClick={() => onNavigate('/')}
+            onClick={() => navigate('/')}
             className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
           >
             Return Home
@@ -46,7 +60,7 @@ export function StateElectricityPlansPage({ state, onNavigate }: StateElectricit
   const handleZipSearch = (zipCode: string) => {
     const city = stateData.topCities.find(c => c.zipCodes.includes(zipCode));
     if (city) {
-      onNavigate(`/${state}/${city.slug}/electricity-plans`);
+      navigate(`/${state}/${city.slug}/electricity-plans`);
     }
   };
 
@@ -63,9 +77,9 @@ export function StateElectricityPlansPage({ state, onNavigate }: StateElectricit
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => onNavigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => onNavigate(`/${state}/electricity-providers`)} className="hover:text-blue-600">
+            <button onClick={() => navigate(`/${state}/electricity-providers`)} className="hover:text-blue-600">
               {stateData.name}
             </button>
             <span className="mx-2">/</span>
@@ -194,7 +208,7 @@ export function StateElectricityPlansPage({ state, onNavigate }: StateElectricit
                 {filteredPlans.length} Plans Available
               </h2>
               <button
-                onClick={() => onNavigate(`/compare/plans?state=${state}`)}
+                onClick={() => navigate(`/compare/plans?state=${state}`)}
                 className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
               >
                 Compare Selected Plans
@@ -221,7 +235,7 @@ export function StateElectricityPlansPage({ state, onNavigate }: StateElectricit
                       
                       <div className="text-sm text-gray-600 mb-3">
                         <button
-                          onClick={() => onNavigate(`/providers/${plan.providerSlug}`)}
+                          onClick={() => navigate(`/providers/${plan.providerSlug}`)}
                           className="text-blue-600 hover:text-blue-800 font-medium"
                         >
                           {plan.providerName}
@@ -265,13 +279,13 @@ export function StateElectricityPlansPage({ state, onNavigate }: StateElectricit
                       
                       <div className="space-y-2">
                         <button
-                          onClick={() => onNavigate(`/${state}/houston/electricity-providers`)}
+                          onClick={() => navigate(`/${state}/houston/electricity-providers`)}
                           className="w-full md:w-auto bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
                         >
                           See Rates in Your Area
                         </button>
                         <button
-                          onClick={() => onNavigate(`/compare/plans/${plan.id}`)}
+                          onClick={() => navigate(`/compare/plans/${plan.id}`)}
                           className="w-full md:w-auto border border-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
                         >
                           Compare Plan
@@ -298,7 +312,7 @@ export function StateElectricityPlansPage({ state, onNavigate }: StateElectricit
                   </p>
                   
                   <button
-                    onClick={() => onNavigate('/compare/plans/fixed-vs-variable')}
+                    onClick={() => navigate('/compare/plans/fixed-vs-variable')}
                     className="text-blue-600 hover:text-blue-800 font-medium text-sm"
                   >
                     Compare Fixed vs Variable Plans →
@@ -313,7 +327,7 @@ export function StateElectricityPlansPage({ state, onNavigate }: StateElectricit
                   </p>
                   
                   <button
-                    onClick={() => onNavigate('/compare/plans/12-month-vs-24-month')}
+                    onClick={() => navigate('/compare/plans/12-month-vs-24-month')}
                     className="text-blue-600 hover:text-blue-800 font-medium text-sm"
                   >
                     Compare Contract Lengths →

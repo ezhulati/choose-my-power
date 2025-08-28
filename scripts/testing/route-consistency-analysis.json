@@ -1,0 +1,111 @@
+{
+  "route_coverage": {
+    "total_expected": 939,
+    "total_tested": 939,
+    "coverage_percentage": "100.0",
+    "missing_routes": [],
+    "unexpected_routes": []
+  },
+  "consistency_issues": [],
+  "fix_recommendations": [
+    {
+      "priority": "medium",
+      "category": "performance",
+      "title": "Route Response Time Optimization",
+      "description": "Average response rate: 13 req/sec",
+      "impact": "Medium - User experience affected by slow pages",
+      "effort": "Medium",
+      "action_items": [
+        "Implement caching for dynamic routes",
+        "Optimize API calls in route handlers",
+        "Consider static generation for high-traffic routes"
+      ]
+    },
+    {
+      "priority": "low",
+      "category": "cleanup",
+      "title": "Clean Up Dead Paths",
+      "description": "1 unexpected dead paths found",
+      "impact": "Low - Minor SEO and UX impact",
+      "effort": "Low",
+      "action_items": [
+        "Review dead paths list",
+        "Remove or redirect obsolete routes",
+        "Update internal links that point to dead paths"
+      ],
+      "dead_paths": [
+        "/index"
+      ]
+    }
+  ],
+  "route_health": {
+    "overall_score": 87,
+    "scores": {
+      "availability": 100,
+      "coverage": 100,
+      "consistency": 70,
+      "performance": 26
+    },
+    "grade": "A-",
+    "strengths": [
+      "Excellent availability (100%)",
+      "Excellent coverage (100%)"
+    ],
+    "weaknesses": [
+      "Poor performance (26%)"
+    ]
+  },
+  "performance_insights": {},
+  "critical_findings": [],
+  "analysis_timestamp": "2025-08-28T16:39:17.808Z",
+  "dead_path_patterns": {
+    "by_routing_system": {
+      "[state].astro": [
+        {
+          "url": "/index",
+          "full_url": "http://localhost:4325/index",
+          "status_code": 404,
+          "status_text": "Not Found",
+          "response_time_ms": 1756398991391,
+          "attempt": 1,
+          "headers": {
+            "content-type": "text/html",
+            "location": null
+          },
+          "category": "not_found"
+        }
+      ]
+    },
+    "by_path_pattern": {
+      "index": [
+        {
+          "url": "/index",
+          "full_url": "http://localhost:4325/index",
+          "status_code": 404,
+          "status_text": "Not Found",
+          "response_time_ms": 1756398991391,
+          "attempt": 1,
+          "headers": {
+            "content-type": "text/html",
+            "location": null
+          },
+          "category": "not_found"
+        }
+      ]
+    },
+    "municipal_utilities": [],
+    "hardcoded_route_issues": [
+      {
+        "path": "/index",
+        "system": "[state].astro",
+        "issue": "Path not in hardcoded list but expected to exist"
+      }
+    ],
+    "dynamic_route_issues": []
+  },
+  "consistency_cross_ref": {
+    "confirmed_issues": [],
+    "resolved_issues": [],
+    "new_issues": []
+  }
+}

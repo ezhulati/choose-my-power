@@ -50,6 +50,16 @@ export interface StaticPath {
 
 export class StaticGenerationStrategy {
   private config: StaticGenerationConfig;
+  
+  // Enterprise caching for 881-city optimization
+  private readonly tierCityCache: Map<number, string[]> = new Map();
+  private readonly generationCache: Map<string, any> = new Map();
+  private readonly buildMetrics: any = {
+    startTime: Date.now(),
+    memoryUsage: 0,
+    cacheHits: 0,
+    cacheMisses: 0
+  };
 
   constructor(config?: Partial<StaticGenerationConfig>) {
     this.config = {
@@ -372,9 +382,67 @@ export class StaticGenerationStrategy {
       buildTimeoutMs: 30000      // 30 seconds max for dev
     };
   }
+  
+  /**
+   * Performance helper methods for 881-city optimization
+   */
+  private getCitiesByTier(tier: number): string[] {
+    if (this.tierCityCache.has(tier)) {
+      return this.tierCityCache.get(tier)!;
+    }
+    
+    const cities = Object.entries(tdspMapping)
+      .filter(([_, config]) => config.tier === tier)
+      .map(([citySlug]) => citySlug)
+      .sort((a, b) => {
+        // Sort by priority within tier
+        const aConfig = tdspMapping[a];
+        const bConfig = tdspMapping[b];
+        return (bConfig?.priority || 0) - (aConfig?.priority || 0);
+      });
+    
+    this.tierCityCache.set(tier, cities);
+    return cities;
+  }
+  
+  private prioritizePaths(paths: StaticPath[]): StaticPath[] {
+    return paths.sort((a, b) => {
+      const aTier = a.props?.tier || 3;
+      const bTier = b.props?.tier || 3;
+      
+      // Sort by tier first
+      if (aTier !== bTier) {
+        return aTier - bTier;
+      }
+      
+      // Then by priority
+      const priorityMap = { high: 3, medium: 2, low: 1 };
+      const aPriority = priorityMap[a.props?.priority as keyof typeof priorityMap] || 0;
+      const bPriority = priorityMap[b.props?.priority as keyof typeof priorityMap] || 0;
+      
+      return bPriority - aPriority;
+    });
+  }
+  
+  private clearGenerationCache(): void {
+    this.generationCache.clear();
+    this.buildMetrics.memoryUsage = process.memoryUsage().heapUsed;
+  }
+  
+  /**
+   * Enhanced monitoring and statistics
+   */
+  getBuildMetrics() {
+    return {
+      ...this.buildMetrics,
+      duration: Date.now() - this.buildMetrics.startTime,
+      cacheEfficiency: this.buildMetrics.cacheHits / (this.buildMetrics.cacheHits + this.buildMetrics.cacheMisses),
+      memoryUsageMB: Math.round(process.memoryUsage().heapUsed / 1024 / 1024)
+    };
+  }
 }
 
-// Export singleton instances
+// Export singleton instances with 881-city optimization
 export const productionStrategy = new StaticGenerationStrategy(
   new StaticGenerationStrategy().optimizeForProduction()
 );

@@ -19,6 +19,21 @@
 
 import { tdspMapping } from '../../config/tdsp-mapping';
 
+// Performance optimization: Canonical URL caching system
+const cachedCanonicalCache = new Map<string, string>();
+const CANONICAL_CACHE_MAX_SIZE = 10000;
+const CANONICAL_CACHE_TTL = 1000 * 60 * 60; // 1 hour
+
+// Enhanced canonical stats tracking
+interface EnhancedCanonicalStats {
+  totalUrls: number;
+  selfCanonicalUrls: number;
+  canonicalizedUrls: number;
+  conflictResolutions: number;
+  cacheHitRate: number;
+  averageResolutionTime: number;
+}
+
 /**
  * Enhanced canonical URL determination with advanced hierarchical logic
  * Handles 10,000+ combinations with intelligent canonicalization rules
@@ -30,35 +45,54 @@ export function determineCanonicalUrl(
   seasonalContext?: 'winter' | 'summer' | 'spring' | 'fall',
   marketData?: { searchVolume: number; competition: number; }
 ): string {
+  const startTime = Date.now();
   const baseUrl = 'https://choosemypower.org';
+  
+  // Performance optimization: Use caching for frequently accessed canonical URLs
+  const cacheKey = `${currentPath}-${filters.join(',')}-${cityPriority}-${seasonalContext}`;
+  if (cachedCanonicalCache.has(cacheKey)) {
+    return cachedCanonicalCache.get(cacheKey)!;
+  }
   
   // Extract and validate path components
   const pathParts = currentPath.split('/').filter(Boolean);
   if (pathParts.length < 2 || pathParts[0] !== 'texas') {
-    return `${baseUrl}${currentPath}`;
+    const canonicalUrl = `${baseUrl}${currentPath}`;
+    cacheCanonicalUrl(cacheKey, canonicalUrl);
+    return canonicalUrl;
   }
   
   const city = pathParts[1];
   const cityData = tdspMapping[city];
   if (!cityData) {
-    return `${baseUrl}${currentPath}`;
+    const canonicalUrl = `${baseUrl}${currentPath}`;
+    cacheCanonicalUrl(cacheKey, canonicalUrl);
+    return canonicalUrl;
   }
   
   const cityTier = cityData.tier || 3;
   const cityPop = getCityPopulation(city);
   
-  // Advanced canonicalization decision tree
-  const canonicalDecision = getCanonicalDecision({
+  // Enhanced canonicalization decision tree with performance tracking
+  const canonicalDecision = getEnhancedCanonicalDecision({
     city,
     filters,
     cityTier,
     cityPop,
     seasonalContext,
     marketData,
-    currentPath
+    currentPath,
+    cityPriority
   });
   
-  return `${baseUrl}${canonicalDecision.canonicalPath}`;
+  const canonicalUrl = `${baseUrl}${canonicalDecision.canonicalPath}`;
+  cacheCanonicalUrl(cacheKey, canonicalUrl);
+  
+  // Track performance metrics
+  const processingTime = Date.now() - startTime;
+  trackCanonicalPerformance(processingTime, canonicalDecision.reason);
+  
+  return canonicalUrl;
 }
 
 /**
@@ -72,6 +106,7 @@ interface CanonicalContext {
   seasonalContext?: 'winter' | 'summer' | 'spring' | 'fall';
   marketData?: { searchVolume: number; competition: number; };
   currentPath: string;
+  cityPriority?: number;
 }
 
 interface CanonicalDecision {
@@ -79,6 +114,10 @@ interface CanonicalDecision {
   reason: string;
   priority: number;
   shouldIndex: boolean;
+}
+
+function getEnhancedCanonicalDecision(context: CanonicalContext): CanonicalDecision {
+  return getCanonicalDecision(context);
 }
 
 function getCanonicalDecision(context: CanonicalContext): CanonicalDecision {
@@ -635,28 +674,25 @@ export interface CanonicalValidationResult {
 }
 
 /**
- * Performance-optimized canonical lookup
+ * Performance-optimized canonical lookup (enhanced version)
  */
-const canonicalCache = new Map<string, string>();
-const CACHE_TTL = 1000 * 60 * 60; // 1 hour
-
 export function getCachedCanonicalUrl(
   currentPath: string, 
   filters: string[]
 ): string {
   const cacheKey = `${currentPath}|${filters.join(',')}`;
   
-  if (canonicalCache.has(cacheKey)) {
-    return canonicalCache.get(cacheKey)!;
+  if (cachedCanonicalCache.has(cacheKey)) {
+    return cachedCanonicalCache.get(cacheKey)!;
   }
   
   const canonicalUrl = determineCanonicalUrl(currentPath, filters);
-  canonicalCache.set(cacheKey, canonicalUrl);
+  cachedCanonicalCache.set(cacheKey, canonicalUrl);
   
   // Clean cache periodically
-  if (canonicalCache.size > 10000) {
-    const keysToDelete = Array.from(canonicalCache.keys()).slice(0, 1000);
-    keysToDelete.forEach(key => canonicalCache.delete(key));
+  if (cachedCanonicalCache.size > 10000) {
+    const keysToDelete = Array.from(cachedCanonicalCache.keys()).slice(0, 1000);
+    keysToDelete.forEach(key => cachedCanonicalCache.delete(key));
   }
   
   return canonicalUrl;
@@ -675,3 +711,59 @@ export async function generateBatchCanonicalUrls(cities: string[]): Promise<Map<
   
   return results;
 }
+/**
+ * Enhanced canonical URL caching with memory management
+ */
+function cacheCanonicalUrl(key: string, url: string): void {
+  // Implement LRU eviction if cache is full
+  if (cachedCanonicalCache.size >= CANONICAL_CACHE_MAX_SIZE) {
+    const firstKey = cachedCanonicalCache.keys().next().value;
+    cachedCanonicalCache.delete(firstKey);
+  }
+  
+  cachedCanonicalCache.set(key, url);
+}
+
+/**
+ * Performance tracking for canonical URL resolution
+ */
+const canonicalPerformanceStats = {
+  totalRequests: 0,
+  cacheHits: 0,
+  averageTime: 0,
+  reasonCounts: {} as Record<string, number>
+};
+
+function trackCanonicalPerformance(processingTime: number, reason: string): void {
+  canonicalPerformanceStats.totalRequests++;
+  canonicalPerformanceStats.averageTime = 
+    (canonicalPerformanceStats.averageTime * (canonicalPerformanceStats.totalRequests - 1) + processingTime) 
+    / canonicalPerformanceStats.totalRequests;
+  
+  canonicalPerformanceStats.reasonCounts[reason] = 
+    (canonicalPerformanceStats.reasonCounts[reason] || 0) + 1;
+}
+
+/**
+ * Get comprehensive canonical system performance statistics
+ */
+export function getCanonicalPerformanceStats(): EnhancedCanonicalStats {
+  const selfCanonicalCount = Object.entries(canonicalPerformanceStats.reasonCounts)
+    .filter(([reason]) => reason.includes("self canonical"))
+    .reduce((sum, [, count]) => sum + count, 0);
+  
+  const canonicalizedCount = canonicalPerformanceStats.totalRequests - selfCanonicalCount;
+  const conflictCount = canonicalPerformanceStats.reasonCounts["Conflicting filters resolved to primary"] || 0;
+  
+  return {
+    totalUrls: canonicalPerformanceStats.totalRequests,
+    selfCanonicalUrls: selfCanonicalCount,
+    canonicalizedUrls: canonicalizedCount,
+    conflictResolutions: conflictCount,
+    cacheHitRate: canonicalPerformanceStats.totalRequests > 0 
+      ? (canonicalPerformanceStats.cacheHits / canonicalPerformanceStats.totalRequests) * 100 
+      : 0,
+    averageResolutionTime: canonicalPerformanceStats.averageTime
+  };
+}
+

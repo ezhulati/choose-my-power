@@ -1,18 +1,32 @@
 import React from 'react';
 import { FileText, Shield, AlertCircle, CheckCircle } from 'lucide-react';
 
-interface TermsOfServicePageProps {
-  onNavigate: (path: string) => void;
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
 }
 
-export function TermsOfServicePage({ onNavigate }: TermsOfServicePageProps) {
+interface TermsOfServicePageProps {
+}
+
+export function TermsOfServicePage({}: TermsOfServicePageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => onNavigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
             <span className="mx-2">/</span>
             <span>Terms of Service</span>
           </nav>
@@ -170,7 +184,7 @@ export function TermsOfServicePage({ onNavigate }: TermsOfServicePageProps) {
           <h3 className="text-lg font-semibold text-blue-900 mb-2">Questions About These Terms?</h3>
           <p className="text-blue-800 mb-4">Our team is available to clarify any questions about our terms of service.</p>
           <button
-            onClick={() => onNavigate('/resources/support/contact')}
+            onClick={() => navigate('/resources/support/contact')}
             className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
           >
             Contact Legal Team

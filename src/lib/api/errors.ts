@@ -8,6 +8,7 @@ export enum ApiErrorType {
   TIMEOUT = 'TIMEOUT',
   NETWORK_ERROR = 'NETWORK_ERROR',
   DNS_ERROR = 'DNS_ERROR',
+  CONNECTION_REFUSED = 'CONNECTION_REFUSED',
   
   // HTTP errors
   UNAUTHORIZED = 'UNAUTHORIZED',
@@ -16,20 +17,29 @@ export enum ApiErrorType {
   RATE_LIMITED = 'RATE_LIMITED',
   SERVER_ERROR = 'SERVER_ERROR',
   SERVICE_UNAVAILABLE = 'SERVICE_UNAVAILABLE',
+  GATEWAY_TIMEOUT = 'GATEWAY_TIMEOUT',
   
   // API-specific errors
   INVALID_TDSP = 'INVALID_TDSP',
   NO_PLANS_AVAILABLE = 'NO_PLANS_AVAILABLE',
   INVALID_PARAMETERS = 'INVALID_PARAMETERS',
   DATA_VALIDATION_ERROR = 'DATA_VALIDATION_ERROR',
+  API_REQUEST_ERROR = 'API_REQUEST_ERROR',
+  BATCH_PROCESSING_ERROR = 'BATCH_PROCESSING_ERROR',
   
   // Circuit breaker states
   CIRCUIT_OPEN = 'CIRCUIT_OPEN',
   CIRCUIT_HALF_OPEN = 'CIRCUIT_HALF_OPEN',
+  CIRCUIT_BREAKER_OPEN = 'CIRCUIT_BREAKER_OPEN',
   
   // Cache/fallback errors
   CACHE_ERROR = 'CACHE_ERROR',
+  REDIS_ERROR = 'REDIS_ERROR',
   FALLBACK_UNAVAILABLE = 'FALLBACK_UNAVAILABLE',
+  
+  // Mass deployment specific
+  MASS_DEPLOYMENT_ERROR = 'MASS_DEPLOYMENT_ERROR',
+  TDSP_MAPPING_ERROR = 'TDSP_MAPPING_ERROR',
   
   // Unknown
   UNKNOWN = 'UNKNOWN'
@@ -44,6 +54,12 @@ export interface ApiErrorContext {
   responseTime?: number;
   tdspDuns?: string;
   city?: string;
+  batchId?: string;
+  citiesAffected?: number;
+  deploymentPhase?: 'warming' | 'production' | 'validation';
+  errorCode?: string;
+  requestId?: string;
+  timestamp?: number;
 }
 
 export class ComparePowerApiError extends Error {
@@ -70,6 +86,7 @@ export class ComparePowerApiError extends Error {
 
   private generateUserMessage(): string {
     const cityName = this.context.city ? ` for ${this.context.city}` : '';
+    const phase = this.context.deploymentPhase ? ` during ${this.context.deploymentPhase}` : '';
     
     switch (this.type) {
       case ApiErrorType.TIMEOUT:
@@ -77,9 +94,15 @@ export class ComparePowerApiError extends Error {
       
       case ApiErrorType.NETWORK_ERROR:
         return `We're experiencing connectivity issues${cityName}. Please check your internet connection and try again.`;
+        
+      case ApiErrorType.CONNECTION_REFUSED:
+        return `Connection to the electricity plan service was refused${cityName}. Please try again in a few minutes.`;
       
       case ApiErrorType.RATE_LIMITED:
         return `Too many requests have been made${cityName}. Please wait a moment before trying again.`;
+        
+      case ApiErrorType.GATEWAY_TIMEOUT:
+        return `The electricity plan service gateway timed out${cityName}. Please try again.`;
       
       case ApiErrorType.SERVICE_UNAVAILABLE:
         return `Our electricity plan service is temporarily unavailable${cityName}. Please try again in a few minutes.`;
@@ -94,7 +117,20 @@ export class ComparePowerApiError extends Error {
         return `Your search criteria${cityName} aren't valid. Please adjust your filters and try again.`;
       
       case ApiErrorType.CIRCUIT_OPEN:
+      case ApiErrorType.CIRCUIT_BREAKER_OPEN:
         return `Our electricity plan service${cityName} is temporarily experiencing issues. We're working to restore it quickly.`;
+        
+      case ApiErrorType.BATCH_PROCESSING_ERROR:
+        return `Error processing multiple electricity plan requests${phase}. Some results may be incomplete.`;
+        
+      case ApiErrorType.MASS_DEPLOYMENT_ERROR:
+        return `Error during mass deployment process${phase}. Please check system status or contact support.`;
+        
+      case ApiErrorType.TDSP_MAPPING_ERROR:
+        return `Error mapping your location to utility service area${cityName}. Please verify your address.`;
+        
+      case ApiErrorType.REDIS_ERROR:
+        return `Caching service error${cityName}. Data may load slower than usual.`;
       
       case ApiErrorType.UNAUTHORIZED:
         return `Authentication error occurred${cityName}. Please refresh the page and try again.`;
@@ -174,10 +210,17 @@ export class ComparePowerApiError extends Error {
       
       case 502:
       case 503:
-      case 504:
         return new ComparePowerApiError(
           ApiErrorType.SERVICE_UNAVAILABLE,
           `Service unavailable: ${statusText}`,
+          errorContext,
+          true
+        );
+        
+      case 504:
+        return new ComparePowerApiError(
+          ApiErrorType.GATEWAY_TIMEOUT,
+          `Gateway timeout: ${statusText}`,
           errorContext,
           true
         );
@@ -197,12 +240,20 @@ export class ComparePowerApiError extends Error {
     context: ApiErrorContext = {}
   ): ComparePowerApiError {
     const message = error.message.toLowerCase();
+    const enhancedContext = {
+      ...context,
+      timestamp: Date.now(),
+      errorCode: 'NETWORK_ERROR'
+    };
     
-    if (message.includes('timeout') || message.includes('aborted')) {
+    // Check for timeout/abort scenarios including DOMException AbortError
+    if (message.includes('timeout') || 
+        message.includes('aborted') || 
+        (error instanceof DOMException && error.name === 'AbortError')) {
       return new ComparePowerApiError(
         ApiErrorType.TIMEOUT,
         `Request timeout: ${error.message}`,
-        context,
+        enhancedContext,
         true
       );
     }
@@ -211,7 +262,25 @@ export class ComparePowerApiError extends Error {
       return new ComparePowerApiError(
         ApiErrorType.DNS_ERROR,
         `DNS resolution failed: ${error.message}`,
-        context,
+        enhancedContext,
+        true
+      );
+    }
+    
+    if (message.includes('econnrefused') || message.includes('connection refused')) {
+      return new ComparePowerApiError(
+        ApiErrorType.CONNECTION_REFUSED,
+        `Connection refused: ${error.message}`,
+        enhancedContext,
+        true
+      );
+    }
+    
+    if (message.includes('enotfound') || message.includes('host not found')) {
+      return new ComparePowerApiError(
+        ApiErrorType.DNS_ERROR,
+        `Host not found: ${error.message}`,
+        enhancedContext,
         true
       );
     }
@@ -219,8 +288,70 @@ export class ComparePowerApiError extends Error {
     return new ComparePowerApiError(
       ApiErrorType.NETWORK_ERROR,
       `Network error: ${error.message}`,
-      context,
+      enhancedContext,
       true
+    );
+  }
+  
+  /**
+   * Create error for batch processing failures
+   */
+  static forBatchProcessing(
+    message: string,
+    context: ApiErrorContext = {}
+  ): ComparePowerApiError {
+    return new ComparePowerApiError(
+      ApiErrorType.BATCH_PROCESSING_ERROR,
+      `Batch processing error: ${message}`,
+      {
+        ...context,
+        timestamp: Date.now(),
+        errorCode: 'BATCH_ERROR'
+      },
+      false
+    );
+  }
+  
+  /**
+   * Create error for mass deployment failures
+   */
+  static forMassDeployment(
+    message: string,
+    citiesAffected: number,
+    context: ApiErrorContext = {}
+  ): ComparePowerApiError {
+    return new ComparePowerApiError(
+      ApiErrorType.MASS_DEPLOYMENT_ERROR,
+      `Mass deployment error: ${message}`,
+      {
+        ...context,
+        citiesAffected,
+        timestamp: Date.now(),
+        errorCode: 'DEPLOYMENT_ERROR'
+      },
+      true
+    );
+  }
+  
+  /**
+   * Create error for TDSP mapping issues
+   */
+  static forTdspMapping(
+    city: string,
+    tdspDuns: string,
+    context: ApiErrorContext = {}
+  ): ComparePowerApiError {
+    return new ComparePowerApiError(
+      ApiErrorType.TDSP_MAPPING_ERROR,
+      `TDSP mapping error for ${city}: ${tdspDuns}`,
+      {
+        ...context,
+        city,
+        tdspDuns,
+        timestamp: Date.now(),
+        errorCode: 'TDSP_ERROR'
+      },
+      false
     );
   }
 }
@@ -246,6 +377,9 @@ export class CircuitBreaker {
   private failureCount = 0;
   private lastFailureTime = 0;
   private halfOpenCalls = 0;
+  private successCount = 0;
+  private lastSuccessTime = 0;
+  private stateChangeCallbacks: Array<(state: CircuitBreakerState) => void> = [];
 
   constructor(private config: CircuitBreakerConfig) {}
 

@@ -1,11 +1,25 @@
 import React from 'react';
 import { BookOpen, Calculator, HelpCircle, Phone, FileText, Shield, Users, Zap } from 'lucide-react';
 
-interface ResourcesPageProps {
-  onNavigate: (path: string) => void;
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
 }
 
-export function ResourcesPage({ onNavigate }: ResourcesPageProps) {
+interface ResourcesPageProps {
+}
+
+export function ResourcesPage({}: ResourcesPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const guides = [
     {
       title: 'How to Choose an Electricity Provider',
@@ -116,7 +130,7 @@ export function ResourcesPage({ onNavigate }: ResourcesPageProps) {
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">{guide.title}</h3>
                     <p className="text-gray-600 mb-4">{guide.description}</p>
                     <button
-                      onClick={() => onNavigate(guide.href)}
+                      onClick={() => navigate(guide.href)}
                       className="text-blue-600 hover:text-blue-800 font-medium text-sm"
                     >
                       Read Guide →
@@ -129,7 +143,7 @@ export function ResourcesPage({ onNavigate }: ResourcesPageProps) {
 
           <div className="text-center mt-8">
             <button
-              onClick={() => onNavigate('/resources/guides')}
+              onClick={() => navigate('/resources/guides')}
               className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
             >
               View All Guides
@@ -150,7 +164,7 @@ export function ResourcesPage({ onNavigate }: ResourcesPageProps) {
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">{tool.title}</h3>
                 <p className="text-gray-600 mb-6">{tool.description}</p>
                 <button
-                  onClick={() => onNavigate(tool.href)}
+                  onClick={() => navigate(tool.href)}
                   className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors w-full"
                 >
                   Use Tool
@@ -173,7 +187,7 @@ export function ResourcesPage({ onNavigate }: ResourcesPageProps) {
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">{option.title}</h3>
                 <p className="text-gray-600 mb-6">{option.description}</p>
                 <button
-                  onClick={() => onNavigate(option.href)}
+                  onClick={() => navigate(option.href)}
                   className={`bg-${option.color}-600 text-white px-6 py-3 rounded-lg hover:bg-${option.color}-700 transition-colors w-full`}
                 >
                   Get Help
@@ -189,7 +203,7 @@ export function ResourcesPage({ onNavigate }: ResourcesPageProps) {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             <button
-              onClick={() => onNavigate('/resources/guides/red-flags')}
+              onClick={() => navigate('/resources/guides/red-flags')}
               className="p-4 text-left border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
             >
               <h3 className="font-medium text-gray-900 mb-1">Red Flags to Avoid</h3>
@@ -197,7 +211,7 @@ export function ResourcesPage({ onNavigate }: ResourcesPageProps) {
             </button>
             
             <button
-              onClick={() => onNavigate('/resources/guides/green-energy')}
+              onClick={() => navigate('/resources/guides/green-energy')}
               className="p-4 text-left border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
             >
               <h3 className="font-medium text-gray-900 mb-1">Green Energy Guide</h3>
@@ -205,7 +219,7 @@ export function ResourcesPage({ onNavigate }: ResourcesPageProps) {
             </button>
             
             <button
-              onClick={() => onNavigate('/resources/guides/business-electricity')}
+              onClick={() => navigate('/resources/guides/business-electricity')}
               className="p-4 text-left border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
             >
               <h3 className="font-medium text-gray-900 mb-1">Business Electricity</h3>
@@ -213,7 +227,7 @@ export function ResourcesPage({ onNavigate }: ResourcesPageProps) {
             </button>
             
             <button
-              onClick={() => onNavigate('/resources/guides/moving-guide')}
+              onClick={() => navigate('/resources/guides/moving-guide')}
               className="p-4 text-left border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
             >
               <h3 className="font-medium text-gray-900 mb-1">Moving Guide</h3>

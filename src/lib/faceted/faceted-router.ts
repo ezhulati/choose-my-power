@@ -38,6 +38,13 @@ export class FacetedRouter {
     requirePlans: false
   };
 
+  // Enterprise-grade caching for 881-city scale
+  private readonly MAX_CACHE_SIZE = 2000;
+  private readonly CACHE_TTL = 300000; // 5 minutes
+  private readonly cityValidationCache: Map<string, boolean> = new Map();
+  private readonly tdspMappingCache: Map<string, string | null> = new Map();
+  private readonly routeCache: Map<string, FacetedRouteResult> = new Map();
+
   /**
    * Parse and validate a faceted navigation URL
    * @param path URL path like 'dallas-tx/12-month/fixed-rate'
@@ -357,12 +364,99 @@ export class FacetedRouter {
 
     return breadcrumbs;
   }
+
+  /**
+   * Performance optimization methods for 881-city scale
+   */
+  private validateCityWithCache(citySlug: string): boolean {
+    if (this.cityValidationCache.has(citySlug)) {
+      return this.cityValidationCache.get(citySlug)!;
+    }
+    
+    const isValid = validateCitySlug(citySlug);
+    this.cityValidationCache.set(citySlug, isValid);
+    
+    // Prevent cache from growing too large
+    if (this.cityValidationCache.size > this.MAX_CACHE_SIZE) {
+      const oldestKey = this.cityValidationCache.keys().next().value;
+      this.cityValidationCache.delete(oldestKey);
+    }
+    
+    return isValid;
+  }
+  
+  private getTdspWithCache(citySlug: string): string | null {
+    if (this.tdspMappingCache.has(citySlug)) {
+      return this.tdspMappingCache.get(citySlug)!;
+    }
+    
+    const tdspDuns = getTdspFromCity(citySlug);
+    this.tdspMappingCache.set(citySlug, tdspDuns);
+    
+    // Prevent cache from growing too large
+    if (this.tdspMappingCache.size > this.MAX_CACHE_SIZE) {
+      const oldestKey = this.tdspMappingCache.keys().next().value;
+      this.tdspMappingCache.delete(oldestKey);
+    }
+    
+    return tdspDuns;
+  }
+  
+  private getFromRouteCache(cacheKey: string): FacetedRouteResult | null {
+    const cached = this.routeCache.get(cacheKey);
+    if (!cached) return null;
+    
+    // Check if cache entry is still valid
+    if (Date.now() - (cached as any).cacheTimestamp > this.CACHE_TTL) {
+      this.routeCache.delete(cacheKey);
+      return null;
+    }
+    
+    return cached;
+  }
+  
+  private setRouteCache(cacheKey: string, result: FacetedRouteResult, ttl?: number): void {
+    // Add cache timestamp
+    (result as any).cacheTimestamp = Date.now();
+    (result as any).cacheTTL = ttl || this.CACHE_TTL;
+    
+    this.routeCache.set(cacheKey, result);
+    
+    // Prevent cache from growing too large
+    if (this.routeCache.size > this.MAX_CACHE_SIZE) {
+      const oldestKey = this.routeCache.keys().next().value;
+      this.routeCache.delete(oldestKey);
+    }
+  }
+  
+  /**
+   * Clear all caches for memory management
+   */
+  clearCaches(): void {
+    this.cityValidationCache.clear();
+    this.tdspMappingCache.clear();
+    this.routeCache.clear();
+    console.log('🗑️  FacetedRouter caches cleared');
+  }
+  
+  /**
+   * Get cache statistics for monitoring
+   */
+  getCacheStats() {
+    return {
+      cityValidationCache: this.cityValidationCache.size,
+      tdspMappingCache: this.tdspMappingCache.size,
+      routeCache: this.routeCache.size,
+      maxCacheSize: this.MAX_CACHE_SIZE,
+      cacheTTL: this.CACHE_TTL
+    };
+  }
 }
 
-// Export singleton instance
+// Export singleton instance with performance enhancements
 export const facetedRouter = new FacetedRouter();
 
-// Export utility functions
+// Export utility functions with enhanced error handling
 export function validateFacetedUrl(path: string): Promise<FacetedRouteResult> {
   return facetedRouter.validateRoute(path, { requirePlans: false });
 }
@@ -373,4 +467,13 @@ export function validateAndFetchPlans(path: string): Promise<FacetedRouteResult>
 
 export function generateSitemapUrls(citySlug: string): string[] {
   return facetedRouter.generateValidCombinations(citySlug);
+}
+
+// Export cache management functions for 881-city optimization
+export function clearRouterCaches(): void {
+  facetedRouter.clearCaches();
+}
+
+export function getRouterCacheStats() {
+  return facetedRouter.getCacheStats();
 }

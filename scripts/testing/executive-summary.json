@@ -1,0 +1,20 @@
+{
+  "overall_health": {
+    "grade": "A-",
+    "score": 87,
+    "status": "Excellent"
+  },
+  "key_metrics": {
+    "total_routes": 939,
+    "working_routes": 937,
+    "success_rate": "99.8%",
+    "dead_paths": 1,
+    "critical_issues": 0
+  },
+  "business_impact": {
+    "user_experience": "Good",
+    "seo_risk": "Low",
+    "revenue_impact": "Minimal Impact"
+  },
+  "next_steps": []
+}

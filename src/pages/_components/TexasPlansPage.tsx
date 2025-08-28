@@ -7,11 +7,25 @@ import {
   Award, Target, Eye, BarChart, Users, MapPin, Home
 } from 'lucide-react';
 
-interface TexasPlansPageProps {
-  onNavigate: (path: string) => void;
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
 }
 
-export function TexasPlansPage({ onNavigate }: TexasPlansPageProps) {
+interface TexasPlansPageProps {
+}
+
+export function TexasPlansPage({}: TexasPlansPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [selectedPlanType, setSelectedPlanType] = useState<'all' | 'fixed' | 'variable' | 'green' | 'prepaid' | 'free-time'>('all');
   const [monthlyUsage, setMonthlyUsage] = useState('1000');
 
@@ -31,9 +45,9 @@ export function TexasPlansPage({ onNavigate }: TexasPlansPageProps) {
   const handleZipSearch = (zipCode: string) => {
     const city = texasData.topCities.find(c => c.zipCodes.includes(zipCode));
     if (city) {
-      onNavigate(`/texas/${city.slug}/electricity-plans`);
+      navigate(`/texas/${city.slug}/electricity-plans`);
     } else {
-      onNavigate('/texas/houston/electricity-plans');
+      navigate('/texas/houston/electricity-plans');
     }
   };
 
@@ -216,9 +230,9 @@ export function TexasPlansPage({ onNavigate }: TexasPlansPageProps) {
       <div className="bg-gradient-to-br from-blue-600 via-green-600 to-purple-700 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <nav className="text-sm text-white/80 mb-6">
-            <button onClick={() => onNavigate('/')} className="hover:text-white">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-white">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => onNavigate('/texas')} className="hover:text-white">Texas</button>
+            <button onClick={() => navigate('/texas')} className="hover:text-white">Texas</button>
             <span className="mx-2">/</span>
             <span>Electricity Plans</span>
           </nav>
@@ -322,7 +336,7 @@ export function TexasPlansPage({ onNavigate }: TexasPlansPageProps) {
                 </div>
 
                 <button
-                  onClick={() => onNavigate(`/texas/houston/electricity-plans`)}
+                  onClick={() => navigate(`/texas/houston/electricity-plans`)}
                   className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
                 >
                   Get This Plan
@@ -403,7 +417,7 @@ export function TexasPlansPage({ onNavigate }: TexasPlansPageProps) {
                 </div>
 
                 <button
-                  onClick={() => onNavigate(`/texas/plans/${type.id}`)}
+                  onClick={() => navigate(`/texas/plans/${type.id}`)}
                   className={`w-full bg-${type.color}-600 text-white py-2 rounded-lg hover:bg-${type.color}-700 transition-colors text-sm font-medium`}
                 >
                   View {type.title}
@@ -504,7 +518,7 @@ export function TexasPlansPage({ onNavigate }: TexasPlansPageProps) {
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Texas Companies</h3>
             <p className="text-gray-600 text-sm mb-4">Browse electricity companies by specialization</p>
             <button
-              onClick={() => onNavigate('/texas/electricity-companies')}
+              onClick={() => navigate('/texas/electricity-companies')}
               className="text-blue-600 hover:text-blue-800 font-medium text-sm"
             >
               View TX Companies →
@@ -518,7 +532,7 @@ export function TexasPlansPage({ onNavigate }: TexasPlansPageProps) {
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Texas Rates</h3>
             <p className="text-gray-600 text-sm mb-4">Compare current rates and calculate costs</p>
             <button
-              onClick={() => onNavigate('/texas/electricity-rates')}
+              onClick={() => navigate('/texas/electricity-rates')}
               className="text-green-600 hover:text-green-800 font-medium text-sm"
             >
               View TX Rates →
@@ -532,7 +546,7 @@ export function TexasPlansPage({ onNavigate }: TexasPlansPageProps) {
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Texas Cities</h3>
             <p className="text-gray-600 text-sm mb-4">City-specific plans and provider information</p>
             <button
-              onClick={() => onNavigate('/texas/cities')}
+              onClick={() => navigate('/texas/cities')}
               className="text-purple-600 hover:text-purple-800 font-medium text-sm"
             >
               Browse TX Cities →
@@ -546,7 +560,7 @@ export function TexasPlansPage({ onNavigate }: TexasPlansPageProps) {
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Best Plans</h3>
             <p className="text-gray-600 text-sm mb-4">Expert rankings of top Texas plans</p>
             <button
-              onClick={() => onNavigate('/texas/best-plans')}
+              onClick={() => navigate('/texas/best-plans')}
               className="text-orange-600 hover:text-orange-800 font-medium text-sm"
             >
               View Best Plans →

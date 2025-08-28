@@ -213,6 +213,8 @@ const TouchOptimizedCard: React.FC<TouchOptimizedCardProps> = ({
               src={plan.provider.logo} 
               alt={`${plan.provider.name} logo`}
               className="provider-logo-touch"
+              width="48"
+              height="24"
               loading="lazy"
             />
           )}

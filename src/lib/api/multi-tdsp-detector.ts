@@ -5,9 +5,9 @@
  */
 
 import { tdspMapping, zipToCity } from '../../config/tdsp-mapping';
-import { ercotESIIDClient, type AddressTDSPResolution } from './ercot-esiid-client';
+import { ercotESIIDClient } from './ercot-esiid-client';
 import { comparePowerClient } from './comparepower-client';
-import type { Plan, ApiParams } from '../../types/facets';
+import type { ApiParams } from '../../types/facets';
 
 export interface MultiTDSPZipCode {
   zipCode: string;

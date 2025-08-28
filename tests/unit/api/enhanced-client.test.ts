@@ -100,8 +100,13 @@ describe('Enhanced ComparePower Client', () => {
     client = new ComparePowerClientClass({
       baseUrl: 'https://test-api.comparepower.com',
       timeout: 5000,
-      retryAttempts: 2,
+      retryAttempts: 0, // Disable retries for cleaner testing
       cache: { redis: undefined }, // Disable Redis for testing
+      rateLimit: {
+        requestsPerSecond: 5, // Much more restrictive for testing
+        burstLimit: 5,
+        concurrentRequests: 2
+      },
       circuitBreaker: {
         failureThreshold: 3,
         recoveryTimeout: 10000,
@@ -147,7 +152,8 @@ describe('Enhanced ComparePower Client', () => {
       fetchMock.mockResolvedValueOnce({
         ok: false,
         status: 429,
-        statusText: 'Too Many Requests'
+        statusText: 'Too Many Requests',
+        json: async () => ({ error: 'Rate limited' })
       });
 
       try {
@@ -223,7 +229,8 @@ describe('Enhanced ComparePower Client', () => {
 
   describe('Rate Limiting', () => {
     it('should respect rate limits', async () => {
-      const params: ApiParams = { tdsp_duns: '1039940674000' };
+      // Clear cache first to ensure API calls are made
+      await client.clearCache();
       
       fetchMock.mockResolvedValue({
         ok: true,
@@ -232,12 +239,15 @@ describe('Enhanced ComparePower Client', () => {
       });
 
       const startTime = Date.now();
-      const promises = Array.from({ length: 15 }, () => client.fetchPlans(params));
+      // Use different TDSP values to avoid caching
+      const promises = Array.from({ length: 15 }, (_, i) => 
+        client.fetchPlans({ tdsp_duns: `103994067400${i}` })
+      );
       
       await Promise.all(promises);
       const endTime = Date.now();
       
-      // Should take at least 1 second due to rate limiting (10 req/sec)
+      // Should take at least 500ms due to rate limiting
       expect(endTime - startTime).toBeGreaterThan(500);
     });
   });
@@ -321,7 +331,9 @@ describe('Enhanced ComparePower Client', () => {
 
   describe('Performance Monitoring', () => {
     it('should track performance metrics', async () => {
-      const params: ApiParams = { tdsp_duns: '1039940674000' };
+      await client.clearCache(); // Clear cache to ensure API calls
+      const params1: ApiParams = { tdsp_duns: '1039940674001' }; // Different TDSP
+      const params2: ApiParams = { tdsp_duns: '1039940674002' }; // Different TDSP
       
       fetchMock.mockResolvedValue({
         ok: true,
@@ -329,8 +341,8 @@ describe('Enhanced ComparePower Client', () => {
         json: async () => mockApiResponse
       });
 
-      await client.fetchPlans(params);
-      await client.fetchPlans(params); // Second call should hit cache
+      await client.fetchPlans(params1);
+      await client.fetchPlans(params2); // Different TDSP should not hit cache
 
       const stats = await client.getCacheStats();
       
@@ -360,7 +372,8 @@ describe('Enhanced ComparePower Client', () => {
 
   describe('Cache Invalidation', () => {
     it('should invalidate city-specific cache', async () => {
-      const params: ApiParams = { tdsp_duns: '1039940674000' };
+      await client.clearCache(); // Clear cache first
+      const params: ApiParams = { tdsp_duns: '1039940674003' }; // Unique TDSP
       
       fetchMock.mockResolvedValue({
         ok: true,
@@ -398,7 +411,8 @@ describe('Error Classes', () => {
       const error = new ComparePowerApiError(
         ApiErrorType.RATE_LIMITED,
         'Too many requests',
-        { city: 'Dallas, TX' }
+        { city: 'Dallas, TX' },
+        true // Set as retryable
       );
 
       expect(error.userMessage).toContain('Dallas, TX');

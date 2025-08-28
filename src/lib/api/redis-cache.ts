@@ -13,6 +13,9 @@ export interface CacheConfig {
     retryDelayMs: number;
     ttlSeconds: number;
     maxMemoryMb: number;
+    keyPrefix?: string;
+    compression?: boolean;
+    pipeline?: boolean;
   };
   memory: {
     maxEntries: number;
@@ -23,6 +26,13 @@ export interface CacheConfig {
     enabled: boolean;
     popularCities: string[];
     commonFilters: Partial<ApiParams>[];
+    batchSize: number;
+    concurrentBatches: number;
+  };
+  production: {
+    massDeployment: boolean;
+    priorityTiers: boolean;
+    backgroundWarming: boolean;
   };
 }
 
@@ -87,17 +97,33 @@ export class RedisCache {
         return;
       }
 
-      this.redisClient = new Redis.default(this.config.redis.url, {
+      // Production-optimized Redis configuration
+      const redisConfig = {
         retryDelayOnFailover: this.config.redis.retryDelayMs,
         maxRetriesPerRequest: this.config.redis.maxRetries,
         lazyConnect: true,
-        maxmemoryPolicy: 'allkeys-lru'
-      });
+        maxmemoryPolicy: 'allkeys-lru',
+        // Production optimizations for high-volume deployment
+        connectTimeout: 10000,
+        commandTimeout: 5000,
+        enableAutoPipelining: this.config.redis.pipeline !== false,
+        maxLoadingTimeout: 30000,
+        // Connection pool settings for high concurrency
+        family: 4,
+        keepAlive: true,
+        // Compression for large payloads (881 cities)
+        compression: this.config.redis.compression ? 'gzip' : undefined
+      };
+
+      this.redisClient = new Redis.default(this.config.redis.url, redisConfig);
 
       this.redisClient.on('connect', () => {
         this.redisConnected = true;
         this.stats.redis.connected = true;
-        console.log('Redis cache connected successfully');
+        console.log('Redis cache connected successfully with production optimizations');
+        
+        // Set Redis memory optimization for 881 cities
+        this.optimizeRedisForMassDeployment();
       });
 
       this.redisClient.on('error', (error: Error) => {
@@ -111,6 +137,29 @@ export class RedisCache {
     } catch (error) {
       console.warn('Failed to initialize Redis:', error);
       this.redisConnected = false;
+    }
+  }
+  
+  /**
+   * Optimize Redis configuration for mass deployment of 881 cities
+   */
+  private async optimizeRedisForMassDeployment(): Promise<void> {
+    if (!this.redisClient || !this.config.production?.massDeployment) return;
+    
+    try {
+      // Set optimal memory policy for 881 cities worth of data
+      await this.redisClient.config('SET', 'maxmemory-policy', 'allkeys-lru');
+      
+      // Optimize for large datasets
+      await this.redisClient.config('SET', 'hash-max-ziplist-entries', '1024');
+      await this.redisClient.config('SET', 'hash-max-ziplist-value', '8192');
+      
+      // Enable compression for large city datasets
+      if (this.config.redis?.compression) {
+        console.log('Redis optimized for mass deployment with compression enabled');
+      }
+    } catch (error) {
+      console.warn('Failed to optimize Redis for mass deployment:', error);
     }
   }
 
@@ -186,21 +235,53 @@ export class RedisCache {
     // Always store in memory
     this.setInMemory(key, plans, ttl);
 
-    // Store in Redis if available
+    // Store in Redis if available with production optimizations
     if (this.redisConnected && this.config.redis) {
       try {
-        const redisKey = `cmp:plans:${key}`;
+        const keyPrefix = this.config.redis.keyPrefix || 'cmp:plans:';
+        const redisKey = `${keyPrefix}${key}`;
         const ttlSeconds = customTtlMs ? Math.floor(customTtlMs / 1000) : this.config.redis.ttlSeconds;
         
-        await this.redisClient.setex(
-          redisKey,
-          ttlSeconds,
-          JSON.stringify({
-            data: plans,
-            timestamp: Date.now(),
-            params
-          })
-        );
+        const cacheData = {
+          data: plans,
+          timestamp: Date.now(),
+          params,
+          version: '2.0' // For cache versioning during deployments
+        };
+        
+        let serializedData = JSON.stringify(cacheData);
+        
+        // Use compression for large datasets in mass deployment
+        if (this.config.redis.compression && plans.length > 20) {
+          try {
+            const zlib = await import('zlib');
+            const compressed = zlib.gzipSync(serializedData);
+            
+            // Use pipeline for better performance with compression
+            const pipeline = this.redisClient.pipeline();
+            pipeline.setex(`${redisKey}:gz`, ttlSeconds, compressed.toString('base64'));
+            pipeline.setex(`${redisKey}:meta`, ttlSeconds, JSON.stringify({
+              compressed: true,
+              originalSize: serializedData.length,
+              compressedSize: compressed.length
+            }));
+            
+            await pipeline.exec();
+          } catch (compressionError) {
+            // Fallback to uncompressed if compression fails
+            await this.redisClient.setex(redisKey, ttlSeconds, serializedData);
+          }
+        } else {
+          // Standard uncompressed storage
+          if (this.config.redis.pipeline) {
+            const pipeline = this.redisClient.pipeline();
+            pipeline.setex(redisKey, ttlSeconds, serializedData);
+            await pipeline.exec();
+          } else {
+            await this.redisClient.setex(redisKey, ttlSeconds, serializedData);
+          }
+        }
+        
       } catch (error) {
         this.stats.redis.errors++;
         console.warn('Redis set error:', error);
@@ -237,14 +318,50 @@ export class RedisCache {
   private async getFromRedis(key: string): Promise<Plan[] | null> {
     if (!this.redisClient) return null;
 
-    const redisKey = `cmp:plans:${key}`;
-    const result = await this.redisClient.get(redisKey);
+    const keyPrefix = this.config.redis?.keyPrefix || 'cmp:plans:';
+    const redisKey = `${keyPrefix}${key}`;
     
-    if (!result) return null;
-
     try {
+      // Check if data is compressed
+      const metaResult = await this.redisClient.get(`${redisKey}:meta`);
+      
+      if (metaResult) {
+        // Handle compressed data
+        const meta = JSON.parse(metaResult);
+        if (meta.compressed) {
+          const compressedData = await this.redisClient.get(`${redisKey}:gz`);
+          if (!compressedData) return null;
+          
+          try {
+            const zlib = await import('zlib');
+            const compressed = Buffer.from(compressedData, 'base64');
+            const decompressed = zlib.gunzipSync(compressed).toString();
+            const parsed = JSON.parse(decompressed);
+            return parsed.data;
+          } catch (decompressionError) {
+            console.warn('Failed to decompress Redis cache data:', decompressionError);
+            // Clean up corrupted compressed data
+            await this.redisClient.del(`${redisKey}:gz`, `${redisKey}:meta`);
+            return null;
+          }
+        }
+      }
+      
+      // Handle uncompressed data (standard path)
+      const result = await this.redisClient.get(redisKey);
+      if (!result) return null;
+      
       const parsed = JSON.parse(result);
+      
+      // Validate cache version for deployment compatibility
+      if (parsed.version !== '2.0' && process.env.NODE_ENV === 'production') {
+        console.log('Invalidating old cache version:', parsed.version);
+        await this.redisClient.del(redisKey);
+        return null;
+      }
+      
       return parsed.data;
+      
     } catch (error) {
       console.warn('Failed to parse Redis cache data:', error);
       // Remove corrupted data
@@ -253,40 +370,57 @@ export class RedisCache {
     }
   }
 
+  /**
+   * Production-grade cache warming optimized for 881 Texas cities
+   * Implements tiered warming and intelligent batching
+   */
   async warmCache(fetchFunction: (params: ApiParams) => Promise<Plan[]>): Promise<void> {
     if (!this.config.warming.enabled) return;
 
     const startTime = Date.now();
     let citiesWarmed = 0;
     let plansWarmed = 0;
+    let errors = 0;
 
-    console.log('Starting cache warming...');
+    console.log('Starting production cache warming for 881 cities...');
 
-    for (const cityDuns of this.config.warming.popularCities) {
-      for (const filters of this.config.warming.commonFilters) {
-        try {
-          const params: ApiParams = {
-            tdsp_duns: cityDuns,
-            ...filters
-          };
-
-          const existing = await this.get(params);
-          if (!existing) {
-            const plans = await fetchFunction(params);
-            if (plans.length > 0) {
-              await this.set(params, plans);
-              plansWarmed += plans.length;
-            }
-          }
-        } catch (error) {
-          console.warn(`Cache warming failed for ${cityDuns}:`, error);
-        }
+    // Group cities by TDSP for efficient batch processing
+    const tdspGroups = new Map<string, string[]>();
+    this.config.warming.popularCities.forEach(cityDuns => {
+      if (!tdspGroups.has(cityDuns)) {
+        tdspGroups.set(cityDuns, []);
       }
-      citiesWarmed++;
+      tdspGroups.get(cityDuns)!.push(cityDuns);
+    });
+
+    // Process TDSP groups with controlled concurrency
+    const batchPromises: Promise<void>[] = [];
+    let activeBatches = 0;
+    
+    for (const [tdspDuns, cities] of tdspGroups) {
+      // Limit concurrent batches to prevent overwhelming the system
+      while (activeBatches >= this.config.warming.concurrentBatches) {
+        await Promise.race(batchPromises);
+        activeBatches--;
+      }
       
-      // Add small delay to avoid overwhelming the API
-      await new Promise(resolve => setTimeout(resolve, 100));
+      activeBatches++;
+      const batchPromise = this.warmTdspBatch(tdspDuns, cities, fetchFunction)
+        .then(result => {
+          citiesWarmed += result.citiesWarmed;
+          plansWarmed += result.plansWarmed;
+          errors += result.errors;
+        })
+        .catch(error => {
+          console.warn(`TDSP batch warming failed for ${tdspDuns}:`, error);
+          errors++;
+        });
+        
+      batchPromises.push(batchPromise);
     }
+
+    // Wait for all batches to complete
+    await Promise.all(batchPromises);
 
     this.stats.warming = {
       lastRun: Date.now(),
@@ -294,7 +428,84 @@ export class RedisCache {
       plansWarmed
     };
 
-    console.log(`Cache warming completed in ${Date.now() - startTime}ms: ${citiesWarmed} cities, ${plansWarmed} plans`);
+    const duration = Date.now() - startTime;
+    console.log(`Production cache warming completed:`);
+    console.log(`  Duration: ${Math.round(duration / 1000)}s`);
+    console.log(`  Cities: ${citiesWarmed}`);
+    console.log(`  Plans: ${plansWarmed}`);
+    console.log(`  Errors: ${errors}`);
+    console.log(`  Success Rate: ${Math.round(((citiesWarmed - errors) / citiesWarmed) * 100)}%`);
+  }
+  
+  /**
+   * Warm cache for a specific TDSP batch
+   */
+  private async warmTdspBatch(
+    tdspDuns: string, 
+    cities: string[], 
+    fetchFunction: (params: ApiParams) => Promise<Plan[]>
+  ): Promise<{ citiesWarmed: number; plansWarmed: number; errors: number }> {
+    let citiesWarmed = 0;
+    let plansWarmed = 0;
+    let errors = 0;
+    
+    try {
+      // Make single API call for this TDSP
+      const baseParams: ApiParams = { tdsp_duns: tdspDuns };
+      const allPlans = await fetchFunction(baseParams);
+      
+      // Cache plans for all filter combinations
+      const filterPromises = this.config.warming.commonFilters.map(async (filters) => {
+        try {
+          const params: ApiParams = {
+            tdsp_duns: tdspDuns,
+            ...filters
+          };
+          
+          const existing = await this.get(params);
+          if (!existing) {
+            // Filter plans based on the specific parameters
+            const filteredPlans = this.filterPlansForParams(allPlans, params);
+            
+            if (filteredPlans.length > 0) {
+              await this.set(params, filteredPlans);
+              plansWarmed += filteredPlans.length;
+            }
+          }
+        } catch (error) {
+          errors++;
+          console.warn(`Filter warming failed for ${tdspDuns}:`, error);
+        }
+      });
+      
+      await Promise.all(filterPromises);
+      citiesWarmed = cities.length;
+      
+    } catch (error) {
+      errors++;
+      console.warn(`TDSP warming failed for ${tdspDuns}:`, error);
+    }
+    
+    // Add delay between TDSP batches
+    await new Promise(resolve => setTimeout(resolve, 50));
+    
+    return { citiesWarmed, plansWarmed, errors };
+  }
+  
+  /**
+   * Filter plans based on parameters (used in warming)
+   */
+  private filterPlansForParams(plans: Plan[], params: ApiParams): Plan[] {
+    return plans.filter(plan => {
+      // Apply filters similar to the main client
+      if (params.term && plan.contract?.length !== params.term) return false;
+      if (params.percent_green !== undefined && (plan.features?.greenEnergy || 0) < params.percent_green) return false;
+      if (params.is_pre_pay !== undefined) {
+        const isPrepaid = plan.features?.deposit?.required || false;
+        if (params.is_pre_pay !== isPrepaid) return false;
+      }
+      return true;
+    });
   }
 
   async invalidateCity(cityDuns: string): Promise<void> {
@@ -308,14 +519,39 @@ export class RedisCache {
     
     keysToRemove.forEach(key => this.memoryCache.delete(key));
 
-    // Remove from Redis cache
+    // Remove from Redis cache with production optimizations
     if (this.redisConnected) {
       try {
-        const pattern = `cmp:plans:*${cityDuns}*`;
-        const keys = await this.redisClient.keys(pattern);
-        if (keys.length > 0) {
-          await this.redisClient.del(...keys);
-        }
+        const keyPrefix = this.config.redis?.keyPrefix || 'cmp:plans:';
+        
+        // Use SCAN instead of KEYS for production safety
+        const stream = this.redisClient.scanStream({
+          match: `${keyPrefix}*${cityDuns}*`,
+          count: 100 // Process in batches
+        });
+        
+        const keysToDelete: string[] = [];
+        
+        stream.on('data', (keys: string[]) => {
+          keysToDelete.push(...keys);
+          
+          // Also check for compressed data keys
+          keys.forEach(key => {
+            keysToDelete.push(`${key}:gz`, `${key}:meta`);
+          });
+        });
+        
+        stream.on('end', async () => {
+          if (keysToDelete.length > 0) {
+            // Use pipeline for efficient deletion
+            const pipeline = this.redisClient.pipeline();
+            keysToDelete.forEach(key => pipeline.del(key));
+            await pipeline.exec();
+            
+            console.log(`Invalidated ${keysToDelete.length} cache entries for city ${cityDuns}`);
+          }
+        });
+        
       } catch (error) {
         this.stats.redis.errors++;
         console.warn('Redis invalidation error:', error);
@@ -327,13 +563,39 @@ export class RedisCache {
     // Clear memory cache
     this.memoryCache.clear();
     
-    // Clear Redis cache
+    // Clear Redis cache with production safety
     if (this.redisConnected) {
       try {
-        const keys = await this.redisClient.keys('cmp:plans:*');
-        if (keys.length > 0) {
-          await this.redisClient.del(...keys);
-        }
+        const keyPrefix = this.config.redis?.keyPrefix || 'cmp:plans:';
+        
+        // Use SCAN for production safety with large datasets (881 cities)
+        const stream = this.redisClient.scanStream({
+          match: `${keyPrefix}*`,
+          count: 1000 // Larger batches for clearing
+        });
+        
+        let totalKeysDeleted = 0;
+        
+        stream.on('data', async (keys: string[]) => {
+          if (keys.length > 0) {
+            // Use pipeline for efficient batch deletion
+            const pipeline = this.redisClient.pipeline();
+            
+            keys.forEach(key => {
+              pipeline.del(key);
+              pipeline.del(`${key}:gz`); // Clean up compressed data
+              pipeline.del(`${key}:meta`); // Clean up metadata
+            });
+            
+            const results = await pipeline.exec();
+            totalKeysDeleted += keys.length;
+          }
+        });
+        
+        stream.on('end', () => {
+          console.log(`Cleared ${totalKeysDeleted} cache entries from Redis`);
+        });
+        
       } catch (error) {
         this.stats.redis.errors++;
         console.warn('Redis clear error:', error);
@@ -369,10 +631,27 @@ export class RedisCache {
     this.stats.redis.hitRate = 0;
   }
 
-  getStats(): CacheStats {
+  getStats(): CacheStats & { production?: any } {
     this.stats.memory.size = this.memoryCache.size;
     this.updateHitRates();
-    return { ...this.stats };
+    
+    const baseStats = { ...this.stats };
+    
+    // Add production-specific statistics for monitoring
+    if (this.config.production?.massDeployment) {
+      return {
+        ...baseStats,
+        production: {
+          massDeployment: true,
+          estimatedCitiesCached: Math.round(this.memoryCache.size / 5), // Rough estimate
+          compressionEnabled: this.config.redis?.compression || false,
+          pipelineEnabled: this.config.redis?.pipeline || false,
+          redisMemoryMb: this.config.redis?.maxMemoryMb || 256
+        }
+      };
+    }
+    
+    return baseStats;
   }
 
   isRedisConnected(): boolean {
@@ -397,34 +676,50 @@ export class RedisCache {
 
 // Export a factory function to create cache instances
 export function createCache(config: Partial<CacheConfig> = {}): RedisCache {
+  const isProduction = process.env.NODE_ENV === 'production';
+  const isMassDeployment = process.env.MASS_DEPLOYMENT === 'true';
+  
   const defaultConfig: CacheConfig = {
     redis: process.env.REDIS_URL ? {
       url: process.env.REDIS_URL,
-      maxRetries: 3,
-      retryDelayMs: 2000,
-      ttlSeconds: 3600, // 1 hour
-      maxMemoryMb: 256
+      maxRetries: isProduction ? 5 : 3,
+      retryDelayMs: isProduction ? 1000 : 2000,
+      ttlSeconds: isProduction ? 7200 : 3600, // 2 hours in production
+      maxMemoryMb: isMassDeployment ? 1024 : 256, // 1GB for mass deployment
+      keyPrefix: 'cmp:v2:',
+      compression: isMassDeployment,
+      pipeline: isProduction
     } : undefined,
     memory: {
-      maxEntries: 1000,
-      ttlMs: 1800000, // 30 minutes
-      cleanupIntervalMs: 300000 // 5 minutes
+      maxEntries: isMassDeployment ? 5000 : 1000, // More entries for 881 cities
+      ttlMs: isProduction ? 3600000 : 1800000, // 1 hour in production
+      cleanupIntervalMs: isProduction ? 600000 : 300000 // 10 minutes in production
     },
     warming: {
-      enabled: process.env.NODE_ENV === 'production',
+      enabled: isProduction,
       popularCities: [
         '1039940674000', // Dallas/Fort Worth (Oncor)
         '957877905',     // Houston (CenterPoint)
         '007924772',     // Austin (AEP Central)
-        '007929441'      // Corpus Christi/South Texas (TNMP)
+        '007929441',     // Corpus Christi/South Texas (TNMP)
+        '007923311'      // AEP North Texas
       ],
       commonFilters: [
         {}, // No filters (default)
         { term: 12 }, // 12-month term
         { term: 24 }, // 24-month term
         { percent_green: 100 }, // 100% green
-        { is_pre_pay: false, term: 12 } // Non-prepaid 12-month
-      ]
+        { is_pre_pay: false, term: 12 }, // Non-prepaid 12-month
+        { is_pre_pay: true }, // Prepaid plans
+        { is_time_of_use: true } // Time-of-use plans
+      ],
+      batchSize: isMassDeployment ? 50 : 10,
+      concurrentBatches: isMassDeployment ? 5 : 2
+    },
+    production: {
+      massDeployment: isMassDeployment,
+      priorityTiers: isProduction,
+      backgroundWarming: isProduction
     }
   };
 
@@ -433,6 +728,28 @@ export function createCache(config: Partial<CacheConfig> = {}): RedisCache {
     ...config,
     memory: { ...defaultConfig.memory, ...config.memory },
     redis: config.redis !== undefined ? { ...defaultConfig.redis, ...config.redis } : defaultConfig.redis,
-    warming: { ...defaultConfig.warming, ...config.warming }
+    warming: { ...defaultConfig.warming, ...config.warming },
+    production: { ...defaultConfig.production, ...config.production }
   });
+}
+
+// Export production-specific cache warmer
+export async function warmProductionCache(
+  fetchFunction: (params: ApiParams) => Promise<Plan[]>,
+  cityMappings?: Record<string, string>
+): Promise<void> {
+  const cache = createCache({
+    production: { massDeployment: true, priorityTiers: true, backgroundWarming: true }
+  });
+  
+  console.log('Starting production cache warming for 881 cities...');
+  
+  if (cityMappings) {
+    // Use provided city mappings for comprehensive warming
+    const tdspDunsSet = new Set(Object.values(cityMappings));
+    cache.config.warming.popularCities = Array.from(tdspDunsSet);
+  }
+  
+  await cache.warmCache(fetchFunction);
+  console.log('Production cache warming complete');
 }

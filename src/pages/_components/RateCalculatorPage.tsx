@@ -3,17 +3,31 @@ import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { mockProviders, mockStates } from '../../data/mockData';
 import { Calculator, TrendingDown, DollarSign, Zap, Star } from 'lucide-react';
 
-interface RateCalculatorPageProps {
-  onNavigate: (path: string) => void;
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
 }
 
-export function RateCalculatorPage({ onNavigate }: RateCalculatorPageProps) {
+interface RateCalculatorPageProps {
+}
+
+export function RateCalculatorPage({}: RateCalculatorPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [selectedState, setSelectedState] = useState('texas');
   const [monthlyUsage, setMonthlyUsage] = useState('1000');
   const [homeType, setHomeType] = useState('average');
 
   const handleZipSearch = (zipCode: string) => {
-    onNavigate(`/${selectedState}/houston/electricity-providers`);
+    navigate(`/${selectedState}/houston/electricity-providers`);
   };
 
   const stateData = mockStates.find(s => s.slug === selectedState);
@@ -56,9 +70,9 @@ export function RateCalculatorPage({ onNavigate }: RateCalculatorPageProps) {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => onNavigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => onNavigate('/rates')} className="hover:text-blue-600">Rates</button>
+            <button onClick={() => navigate('/rates')} className="hover:text-blue-600">Rates</button>
             <span className="mx-2">/</span>
             <span>Calculator</span>
           </nav>
@@ -247,7 +261,7 @@ export function RateCalculatorPage({ onNavigate }: RateCalculatorPageProps) {
                   *Costs include electricity usage + monthly fees. Excludes taxes and utility delivery charges.
                 </p>
                 <button
-                  onClick={() => onNavigate(`/${selectedState}/electricity-providers`)}
+                  onClick={() => navigate(`/${selectedState}/electricity-providers`)}
                   className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
                 >
                   View All {stateData?.name} Providers

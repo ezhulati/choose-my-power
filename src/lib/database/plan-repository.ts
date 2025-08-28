@@ -145,8 +145,8 @@ export class PlanRepository {
     try {
       for (const apiPlan of apiPlans) {
         // Validate required data before processing
-        if (!apiPlan?.product?.brand) {
-          console.warn(`Skipping plan ${apiPlan?._id || 'unknown'}: missing brand data`);
+        if (!apiPlan?.product?.brand?.name) {
+          console.warn(`Skipping plan ${apiPlan?._id || 'unknown'}: missing brand data - brand: ${JSON.stringify(apiPlan?.product?.brand)}`);
           continue;
         }
         
@@ -186,7 +186,7 @@ export class PlanRepository {
             ${this.findDocumentLink(apiPlan.document_links, 'yrac')},
             ${true}, ${new Date()}
           )
-          ON CONFLICT (external_id, tdsp_duns) DO UPDATE SET
+          ON CONFLICT (external_id) DO UPDATE SET
             name = EXCLUDED.name,
             headline = EXCLUDED.headline,
             rate_500kwh = EXCLUDED.rate_500kwh,

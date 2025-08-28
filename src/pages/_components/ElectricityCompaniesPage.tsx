@@ -9,17 +9,31 @@ import {
   Target, Eye, ThumbsUp, Filter, Calculator, Home
 } from 'lucide-react';
 
-interface ElectricityCompaniesPageProps {
-  onNavigate: (path: string) => void;
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
 }
 
-export function ElectricityCompaniesPage({ onNavigate }: ElectricityCompaniesPageProps) {
+interface ElectricityCompaniesPageProps {
+}
+
+export function ElectricityCompaniesPage({}: ElectricityCompaniesPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'green' | 'service' | 'value' | 'tech' | 'local'>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState<'rating' | 'plans' | 'alphabetical'>('rating');
 
   const handleZipSearch = (zipCode: string) => {
-    onNavigate(`/texas/houston/electricity-companies`);
+    navigate(`/texas/houston/electricity-companies`);
   };
 
   // Company categories with expert analysis
@@ -500,13 +514,13 @@ export function ElectricityCompaniesPage({ onNavigate }: ElectricityCompaniesPag
 
                     <div className="space-y-2">
                       <button
-                        onClick={() => onNavigate(`/providers/${company.slug}`)}
+                        onClick={() => navigate(`/providers/${company.slug}`)}
                         className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
                       >
                         Company Intelligence Report
                       </button>
                       <button
-                        onClick={() => onNavigate(`/compare/companies/${company.slug}`)}
+                        onClick={() => navigate(`/compare/companies/${company.slug}`)}
                         className="w-full border border-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
                       >
                         Compare vs Competitors
@@ -518,7 +532,7 @@ export function ElectricityCompaniesPage({ onNavigate }: ElectricityCompaniesPag
 
               <div className="text-center mt-8">
                 <button
-                  onClick={() => onNavigate(`/companies/category/${category.id}`)}
+                  onClick={() => navigate(`/companies/category/${category.id}`)}
                   className="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors font-medium"
                 >
                   View All {category.title} Companies
@@ -617,7 +631,7 @@ export function ElectricityCompaniesPage({ onNavigate }: ElectricityCompaniesPag
                     {hub.topCities.map((city) => (
                       <button
                         key={city}
-                        onClick={() => onNavigate(`/${hub.slug}/${city.toLowerCase().replace(' ', '-')}/electricity-companies`)}
+                        onClick={() => navigate(`/${hub.slug}/${city.toLowerCase().replace(' ', '-')}/electricity-companies`)}
                         className="text-sm text-blue-600 hover:text-blue-800 text-left p-2 hover:bg-blue-50 rounded"
                       >
                         {city} Companies →
@@ -628,13 +642,13 @@ export function ElectricityCompaniesPage({ onNavigate }: ElectricityCompaniesPag
 
                 <div className="grid grid-cols-2 gap-3">
                   <button
-                    onClick={() => onNavigate(`/${hub.slug}/electricity-companies`)}
+                    onClick={() => navigate(`/${hub.slug}/electricity-companies`)}
                     className="bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium"
                   >
                     {hub.state} Companies
                   </button>
                   <button
-                    onClick={() => onNavigate(`/compare/companies?state=${hub.slug}`)}
+                    onClick={() => navigate(`/compare/companies?state=${hub.slug}`)}
                     className="border border-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-50 transition-colors font-medium"
                   >
                     Compare Companies
@@ -682,8 +696,8 @@ export function ElectricityCompaniesPage({ onNavigate }: ElectricityCompaniesPag
               <ProviderCard
                 key={company.id}
                 provider={company}
-                onViewDetails={() => onNavigate(`/providers/${company.slug}`)}
-                onCompare={() => onNavigate(`/compare/companies`)}
+                onViewDetails={() => navigate(`/providers/${company.slug}`)}
+                onCompare={() => navigate(`/compare/companies`)}
                 showPlans
               />
             ))}
@@ -691,7 +705,7 @@ export function ElectricityCompaniesPage({ onNavigate }: ElectricityCompaniesPag
 
           <div className="text-center mt-8">
             <button
-              onClick={() => onNavigate('/providers')}
+              onClick={() => navigate('/providers')}
               className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
             >
               View Complete Directory & Analysis
@@ -708,7 +722,7 @@ export function ElectricityCompaniesPage({ onNavigate }: ElectricityCompaniesPag
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Electricity Plans</h3>
             <p className="text-gray-600 text-sm mb-4">Master guide to plan types and selection strategy</p>
             <button
-              onClick={() => onNavigate('/electricity-plans')}
+              onClick={() => navigate('/electricity-plans')}
               className="text-green-600 hover:text-green-800 font-medium text-sm"
             >
               Master Plan Selection →
@@ -722,7 +736,7 @@ export function ElectricityCompaniesPage({ onNavigate }: ElectricityCompaniesPag
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Compare Rates</h3>
             <p className="text-gray-600 text-sm mb-4">Live market analysis and rate intelligence</p>
             <button
-              onClick={() => onNavigate('/compare/rates')}
+              onClick={() => navigate('/compare/rates')}
               className="text-blue-600 hover:text-blue-800 font-medium text-sm"
             >
               Analyze Market Rates →
@@ -736,7 +750,7 @@ export function ElectricityCompaniesPage({ onNavigate }: ElectricityCompaniesPag
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Best Rankings</h3>
             <p className="text-gray-600 text-sm mb-4">Expert rankings and category winners</p>
             <button
-              onClick={() => onNavigate('/best')}
+              onClick={() => navigate('/best')}
               className="text-purple-600 hover:text-purple-800 font-medium text-sm"
             >
               View Expert Rankings →
@@ -750,7 +764,7 @@ export function ElectricityCompaniesPage({ onNavigate }: ElectricityCompaniesPag
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Find by Location</h3>
             <p className="text-gray-600 text-sm mb-4">Location-specific company analysis</p>
             <button
-              onClick={() => onNavigate('/locations')}
+              onClick={() => navigate('/locations')}
               className="text-orange-600 hover:text-orange-800 font-medium text-sm"
             >
               Browse by Location →

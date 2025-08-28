@@ -28,5 +28,12 @@ const description = `Compare electricity providers in ${stateTitle}. Expert anal
 ---
 
 <Layout title={title} description={description}>
-  <StateElectricityProvidersPage client:load state={state} onNavigate={(path) => window.location.href = path} />
+  <StateElectricityProvidersPage client:load state={state} />
+
+  <script>
+    // Client-side navigation function for React components
+    window.navigateToPath = function(path) {
+      window.location.href = path;
+    };
+  </script>
 </Layout>

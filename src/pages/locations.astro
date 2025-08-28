@@ -8,5 +8,12 @@ const description = "Find electricity providers by state and city. Coverage maps
 ---
 
 <Layout title={title} description={description} ogImage="/images/og/comprehensive-clean/texas_state_overview_16x9.png">
-  <LocationsPage client:load onNavigate={(path) => window.location.href = path} />
+  <LocationsPage client:load />
+
+  <script>
+    // Client-side navigation function for React components
+    window.navigateToPath = function(path) {
+      window.location.href = path;
+    };
+  </script>
 </Layout>

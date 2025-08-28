@@ -7,11 +7,25 @@ import {
   Clock, Eye, Target, Home, Filter, BarChart, DollarSign, Activity
 } from 'lucide-react';
 
-interface LocationsPageProps {
-  onNavigate: (path: string) => void;
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
 }
 
-function LocationsPage({ onNavigate }: LocationsPageProps) {
+interface LocationsPageProps {
+}
+
+function LocationsPage({}: LocationsPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [selectedRegion, setSelectedRegion] = useState<'all' | 'texas' | 'pennsylvania'>('all');
   const [selectedMetric, setSelectedMetric] = useState<'providers' | 'rates' | 'population' | 'savings'>('providers');
   const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
@@ -32,15 +46,15 @@ function LocationsPage({ onNavigate }: LocationsPageProps) {
 
     const location = zipToLocation[zipCode];
     if (location) {
-      onNavigate(`/${location.state}/${location.city}/electricity-providers`);
+      navigate(`/${location.state}/${location.city}/electricity-providers`);
     } else {
       // Determine state by ZIP code pattern for fallback
       if (zipCode.startsWith('7')) {
-        onNavigate('/texas/electricity-providers');
+        navigate('/texas/electricity-providers');
       } else if (zipCode.startsWith('1')) {
-        onNavigate('/pennsylvania/electricity-providers');
+        navigate('/pennsylvania/electricity-providers');
       } else {
-        onNavigate('/texas/electricity-providers');
+        navigate('/texas/electricity-providers');
       }
     }
   };
@@ -61,14 +75,14 @@ function LocationsPage({ onNavigate }: LocationsPageProps) {
       title: 'States & Markets',
       count: mockStates.length,
       description: 'Deregulated electricity markets with provider choice',
-      action: () => onNavigate('/states')
+      action: () => navigate('/states')
     },
     {
       icon: Home,
       title: 'Major Cities',
       count: totalCities,
       description: 'Metropolitan areas with multiple provider options',
-      action: () => onNavigate('/cities')
+      action: () => navigate('/cities')
     },
     {
       icon: MapPin,
@@ -82,7 +96,7 @@ function LocationsPage({ onNavigate }: LocationsPageProps) {
       title: 'Utility Areas',
       count: `${Object.values(utilityCompanies).flat().length}`,
       description: 'Transmission and distribution service territories',
-      action: () => onNavigate('/utilities')
+      action: () => navigate('/utilities')
     }
   ];
 
@@ -229,7 +243,7 @@ function LocationsPage({ onNavigate }: LocationsPageProps) {
                     <div className="flex justify-between items-start mb-3">
                       <div>
                         <button
-                          onClick={() => onNavigate(`/${state.slug}/electricity-providers`)}
+                          onClick={() => navigate(`/${state.slug}/electricity-providers`)}
                           className="text-lg font-semibold text-blue-600 hover:text-blue-800"
                         >
                           {state.name}
@@ -282,19 +296,19 @@ function LocationsPage({ onNavigate }: LocationsPageProps) {
 
                     <div className="mt-3 flex gap-2">
                       <button
-                        onClick={() => onNavigate(`/${state.slug}/electricity-providers`)}
+                        onClick={() => navigate(`/${state.slug}/electricity-providers`)}
                         className="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded hover:bg-blue-100"
                       >
                         Providers
                       </button>
                       <button
-                        onClick={() => onNavigate(`/${state.slug}/electricity-rates`)}
+                        onClick={() => navigate(`/${state.slug}/electricity-rates`)}
                         className="text-xs bg-green-50 text-green-600 px-2 py-1 rounded hover:bg-green-100"
                       >
                         Rates
                       </button>
                       <button
-                        onClick={() => onNavigate(`/${state.slug}/electricity-plans`)}
+                        onClick={() => navigate(`/${state.slug}/electricity-plans`)}
                         className="text-xs bg-purple-50 text-purple-600 px-2 py-1 rounded hover:bg-purple-100"
                       >
                         Plans
@@ -326,7 +340,7 @@ function LocationsPage({ onNavigate }: LocationsPageProps) {
                   <div className="flex justify-between items-start mb-2">
                     <div>
                       <button
-                        onClick={() => onNavigate(`/${city.stateSlug}/${city.slug}/electricity-providers`)}
+                        onClick={() => navigate(`/${city.stateSlug}/${city.slug}/electricity-providers`)}
                         className="text-lg font-semibold text-green-600 hover:text-green-800"
                       >
                         {city.name}
@@ -373,13 +387,13 @@ function LocationsPage({ onNavigate }: LocationsPageProps) {
 
                   <div className="flex gap-2">
                     <button
-                      onClick={() => onNavigate(`/${city.stateSlug}/${city.slug}/electricity-providers`)}
+                      onClick={() => navigate(`/${city.stateSlug}/${city.slug}/electricity-providers`)}
                       className="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded hover:bg-blue-100"
                     >
                       Providers
                     </button>
                     <button
-                      onClick={() => onNavigate(`/${city.stateSlug}/${city.slug}/electricity-rates`)}
+                      onClick={() => navigate(`/${city.stateSlug}/${city.slug}/electricity-rates`)}
                       className="text-xs bg-green-50 text-green-600 px-2 py-1 rounded hover:bg-green-100"
                     >
                       Rates
@@ -482,7 +496,7 @@ function LocationsPage({ onNavigate }: LocationsPageProps) {
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Cheapest Rates</h3>
             <p className="text-gray-600 text-sm mb-4">Find the lowest electricity rates in your area</p>
             <button
-              onClick={() => onNavigate('/shop/cheapest-electricity')}
+              onClick={() => navigate('/shop/cheapest-electricity')}
               className="text-green-600 hover:text-green-800 font-medium text-sm"
             >
               Find Cheapest Rates →
@@ -496,7 +510,7 @@ function LocationsPage({ onNavigate }: LocationsPageProps) {
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Rate Calculator</h3>
             <p className="text-gray-600 text-sm mb-4">Calculate exact costs based on your usage</p>
             <button
-              onClick={() => onNavigate('/rates/calculator')}
+              onClick={() => navigate('/rates/calculator')}
               className="text-blue-600 hover:text-blue-800 font-medium text-sm"
             >
               Calculate Costs →
@@ -510,7 +524,7 @@ function LocationsPage({ onNavigate }: LocationsPageProps) {
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Compare Providers</h3>
             <p className="text-gray-600 text-sm mb-4">Side-by-side provider comparison</p>
             <button
-              onClick={() => onNavigate('/compare/providers')}
+              onClick={() => navigate('/compare/providers')}
               className="text-purple-600 hover:text-purple-800 font-medium text-sm"
             >
               Compare Providers →
@@ -524,7 +538,7 @@ function LocationsPage({ onNavigate }: LocationsPageProps) {
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Green Energy</h3>
             <p className="text-gray-600 text-sm mb-4">100% renewable electricity options</p>
             <button
-              onClick={() => onNavigate('/shop/green-energy')}
+              onClick={() => navigate('/shop/green-energy')}
               className="text-orange-600 hover:text-orange-800 font-medium text-sm"
             >
               Go Green →

@@ -9,11 +9,25 @@ import {
   Phone, Globe, MapPin, Calendar, Zap, Calculator
 } from 'lucide-react';
 
-interface TexasCompaniesPageProps {
-  onNavigate: (path: string) => void;
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
 }
 
-export function TexasCompaniesPage({ onNavigate }: TexasCompaniesPageProps) {
+interface TexasCompaniesPageProps {
+}
+
+export function TexasCompaniesPage({}: TexasCompaniesPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'green' | 'service' | 'value' | 'tech' | 'local'>('all');
   const [sortBy, setSortBy] = useState<'rating' | 'price' | 'popularity'>('rating');
 
@@ -23,9 +37,9 @@ export function TexasCompaniesPage({ onNavigate }: TexasCompaniesPageProps) {
   const handleZipSearch = (zipCode: string) => {
     const city = texasData.topCities.find(c => c.zipCodes.includes(zipCode));
     if (city) {
-      onNavigate(`/texas/${city.slug}/electricity-companies`);
+      navigate(`/texas/${city.slug}/electricity-companies`);
     } else {
-      onNavigate('/texas/houston/electricity-companies');
+      navigate('/texas/houston/electricity-companies');
     }
   };
 
@@ -250,9 +264,9 @@ export function TexasCompaniesPage({ onNavigate }: TexasCompaniesPageProps) {
       <div className="bg-gradient-to-br from-red-600 via-red-700 to-blue-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <nav className="text-sm text-white/80 mb-6">
-            <button onClick={() => onNavigate('/')} className="hover:text-white">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-white">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => onNavigate('/texas')} className="hover:text-white">Texas</button>
+            <button onClick={() => navigate('/texas')} className="hover:text-white">Texas</button>
             <span className="mx-2">/</span>
             <span>Electricity Companies</span>
           </nav>
@@ -401,13 +415,13 @@ export function TexasCompaniesPage({ onNavigate }: TexasCompaniesPageProps) {
 
                     <div className="space-y-2">
                       <button
-                        onClick={() => onNavigate(`/providers/${company.slug}`)}
+                        onClick={() => navigate(`/providers/${company.slug}`)}
                         className="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition-colors text-sm font-medium"
                       >
                         View Company Profile
                       </button>
                       <button
-                        onClick={() => onNavigate(`/texas/houston/electricity-providers`)}
+                        onClick={() => navigate(`/texas/houston/electricity-providers`)}
                         className="w-full border border-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
                       >
                         See Plans & Rates
@@ -419,7 +433,7 @@ export function TexasCompaniesPage({ onNavigate }: TexasCompaniesPageProps) {
 
               <div className="text-center mt-8">
                 <button
-                  onClick={() => onNavigate(`/texas/companies/category/${category.id}`)}
+                  onClick={() => navigate(`/texas/companies/category/${category.id}`)}
                   className="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors font-medium"
                 >
                   View All {category.title} in Texas
@@ -447,7 +461,7 @@ export function TexasCompaniesPage({ onNavigate }: TexasCompaniesPageProps) {
 
           <div className="text-center mt-8">
             <button
-              onClick={() => onNavigate('/texas/market-info')}
+              onClick={() => navigate('/texas/market-info')}
               className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
             >
               Learn About Texas Electricity Market
@@ -466,8 +480,8 @@ export function TexasCompaniesPage({ onNavigate }: TexasCompaniesPageProps) {
               <ProviderCard
                 key={provider.id}
                 provider={provider}
-                onViewDetails={() => onNavigate(`/providers/${provider.slug}`)}
-                onCompare={() => onNavigate(`/compare/providers`)}
+                onViewDetails={() => navigate(`/providers/${provider.slug}`)}
+                onCompare={() => navigate(`/compare/providers`)}
                 showPlans
               />
             ))}
@@ -475,7 +489,7 @@ export function TexasCompaniesPage({ onNavigate }: TexasCompaniesPageProps) {
 
           <div className="text-center mt-8">
             <button
-              onClick={() => onNavigate('/texas/electricity-providers')}
+              onClick={() => navigate('/texas/electricity-providers')}
               className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
             >
               View All Texas Providers

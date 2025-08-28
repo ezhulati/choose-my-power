@@ -1,11 +1,22 @@
 import React from 'react';
 import { Zap, MapPin, Star, Users, TrendingDown, Shield } from 'lucide-react';
 
-interface TexasPageProps {
-  onNavigate: (path: string) => void;
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
 }
 
-export const TexasPage: React.FC<TexasPageProps> = ({ onNavigate }) => {
+export const TexasPage: React.FC = () => {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   return (
     <div className="min-h-screen bg-gradient-to-b from-red-50 to-blue-50">
       {/* Hero Section */}
@@ -20,13 +31,13 @@ export const TexasPage: React.FC<TexasPageProps> = ({ onNavigate }) => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
-                onClick={() => onNavigate('/shop')}
+                onClick={() => navigate('/shop')}
                 className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-50 transition-colors"
               >
                 Shop Texas Plans
               </button>
               <button
-                onClick={() => onNavigate('/rates/compare')}
+                onClick={() => navigate('/rates/compare')}
                 className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-blue-600 transition-colors"
               >
                 Compare Rates
@@ -87,7 +98,7 @@ export const TexasPage: React.FC<TexasPageProps> = ({ onNavigate }) => {
                   <div>Avg Rate: {city.avgRate}/kWh</div>
                 </div>
                 <button
-                  onClick={() => onNavigate(`/texas/${city.name.toLowerCase()}`)}
+                  onClick={() => navigate(`/texas/${city.name.toLowerCase()}-tx`)}
                   className="mt-4 w-full bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition-colors"
                 >
                   View {city.name} Plans
@@ -141,14 +152,14 @@ export const TexasPage: React.FC<TexasPageProps> = ({ onNavigate }) => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
-              onClick={() => onNavigate('/shop')}
+              onClick={() => navigate('/shop')}
               className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-50 transition-colors"
             >
               Start Shopping
             </button>
             <button
-              onClick={() => onNavigate('/rates/calculator')}
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-blue-600 transition-colors"
+              onClick={() => navigate('/rates/calculator')}
+              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-50 transition-colors"
             >
               Calculate Savings
             </button>

@@ -1,0 +1,142 @@
+City,Keyword,Search Volume,Competition,CPC,Difficulty,Intent,Category,Target Page,Priority
+Dallas,"dallas electricity",1840,high,8.50,90,commercial,primary,/texas/dallas/,8
+Dallas,"electricity plans dallas",1380,high,7.25,85,commercial,primary,/texas/dallas/,8
+Dallas,"dallas electric rates",920,medium,5.50,55,commercial,primary,/texas/dallas/,7
+Dallas,"power companies dallas",690,medium,4.75,50,commercial,primary,/texas/dallas/,7
+Dallas,"dallas energy rates",580,medium,4.25,45,commercial,primary,/texas/dallas/,6
+Dallas,"electricity providers dallas",520,medium,5.25,60,commercial,primary,/texas/dallas/,6
+Dallas,"dallas electric plans",460,medium,4.50,50,commercial,primary,/texas/dallas/,6
+Dallas,"power plans dallas",410,medium,4.25,45,commercial,primary,/texas/dallas/,6
+Dallas,"dallas tx electricity",380,low,3.75,35,commercial,primary,/texas/dallas/,7
+Dallas,"electricity dallas texas",340,low,3.50,30,commercial,primary,/texas/dallas/,7
+Dallas,"best electricity rates dallas",580,high,9.75,95,commercial,commercial,/texas/dallas/,7
+Dallas,"cheap electricity dallas",520,high,8.25,90,commercial,commercial,/texas/dallas/,7
+Dallas,"compare electricity dallas",460,medium,6.50,65,commercial,commercial,/texas/dallas/,7
+Dallas,"switch electricity dallas",290,medium,5.25,55,transactional,commercial,/texas/dallas/,8
+Dallas,"dallas electricity comparison",230,medium,5.75,60,commercial,commercial,/texas/dallas/,6
+Dallas,"dallas power plan comparison",180,low,4.25,40,commercial,commercial,/texas/dallas/,7
+Dallas,"fixed rate electricity dallas",320,medium,5.75,60,commercial,secondary,/texas/dallas/fixed-rate/,7
+Dallas,"dallas fixed rate plans",260,medium,5.25,55,commercial,secondary,/texas/dallas/fixed-rate/,7
+Dallas,"fixed rate power dallas",210,low,4.50,40,commercial,secondary,/texas/dallas/fixed-rate/,7
+Dallas,"dallas fixed rate rates",180,low,4.25,35,commercial,secondary,/texas/dallas/fixed-rate/,6
+Dallas,"best fixed rate electricity dallas",150,medium,6.25,65,commercial,secondary,/texas/dallas/fixed-rate/,6
+Dallas,"dallas fixed rate energy plans",120,low,4.75,45,commercial,secondary,/texas/dallas/fixed-rate/,6
+Dallas,"12 month electricity dallas",380,medium,6.25,65,commercial,secondary,/texas/dallas/12-month/,7
+Dallas,"dallas annual plans",300,medium,5.75,60,commercial,secondary,/texas/dallas/12-month/,7
+Dallas,"12 month power dallas",240,low,4.75,45,commercial,secondary,/texas/dallas/12-month/,7
+Dallas,"dallas 12 month rates",200,low,4.25,40,commercial,secondary,/texas/dallas/12-month/,6
+Dallas,"best 12 month electricity dallas",160,medium,6.75,70,commercial,secondary,/texas/dallas/12-month/,6
+Dallas,"dallas 12 month energy plans",130,low,5.25,50,commercial,secondary,/texas/dallas/12-month/,6
+Dallas,"green energy electricity dallas",420,medium,6.50,65,commercial,secondary,/texas/dallas/green-energy/,7
+Dallas,"dallas 100% green plans",340,medium,6.25,60,commercial,secondary,/texas/dallas/green-energy/,7
+Dallas,"renewable power dallas",280,low,5.75,45,commercial,secondary,/texas/dallas/green-energy/,7
+Dallas,"dallas green energy rates",220,low,5.25,40,commercial,secondary,/texas/dallas/green-energy/,6
+Dallas,"best green energy electricity dallas",180,medium,7.25,70,commercial,secondary,/texas/dallas/green-energy/,6
+Dallas,"dallas renewable energy plans",150,low,6.75,55,commercial,secondary,/texas/dallas/green-energy/,6
+Dallas,"how to choose electricity provider dallas",85,low,2.10,25,informational,long-tail,/texas/dallas/,6
+Dallas,"dallas electricity rates comparison 2024",65,low,3.25,30,commercial,long-tail,/texas/dallas/,6
+Dallas,"switching electricity companies dallas",75,low,2.75,35,transactional,long-tail,/texas/dallas/,7
+Dallas,"dallas green energy electricity plans",55,low,4.50,40,commercial,long-tail,/texas/dallas/green-energy/,6
+Dallas,"best fixed rate electricity dallas",45,low,5.25,45,commercial,long-tail,/texas/dallas/fixed-rate/,6
+Houston,"houston electricity",2130,high,8.50,90,commercial,primary,/texas/houston/,9
+Houston,"electricity plans houston",1600,high,7.25,85,commercial,primary,/texas/houston/,8
+Houston,"houston electric rates",1070,medium,5.50,55,commercial,primary,/texas/houston/,7
+Houston,"power companies houston",800,medium,4.75,50,commercial,primary,/texas/houston/,7
+Houston,"houston energy rates",670,medium,4.25,45,commercial,primary,/texas/houston/,6
+Houston,"electricity providers houston",600,medium,5.25,60,commercial,primary,/texas/houston/,6
+Houston,"houston electric plans",530,medium,4.50,50,commercial,primary,/texas/houston/,6
+Houston,"power plans houston",480,medium,4.25,45,commercial,primary,/texas/houston/,6
+Houston,"houston tx electricity",440,low,3.75,35,commercial,primary,/texas/houston/,7
+Houston,"electricity houston texas",400,low,3.50,30,commercial,primary,/texas/houston/,7
+Houston,"best electricity rates houston",670,high,9.75,95,commercial,commercial,/texas/houston/,7
+Houston,"cheap electricity houston",600,high,8.25,90,commercial,commercial,/texas/houston/,7
+Houston,"compare electricity houston",530,medium,6.50,65,commercial,commercial,/texas/houston/,7
+Houston,"switch electricity houston",340,medium,5.25,55,transactional,commercial,/texas/houston/,8
+Houston,"houston electricity comparison",270,medium,5.75,60,commercial,commercial,/texas/houston/,6
+Houston,"houston power plan comparison",210,low,4.25,40,commercial,commercial,/texas/houston/,7
+Houston,"fixed rate electricity houston",370,medium,5.75,60,commercial,secondary,/texas/houston/fixed-rate/,7
+Houston,"houston fixed rate plans",300,medium,5.25,55,commercial,secondary,/texas/houston/fixed-rate/,7
+Houston,"fixed rate power houston",240,low,4.50,40,commercial,secondary,/texas/houston/fixed-rate/,7
+Houston,"houston fixed rate rates",210,low,4.25,35,commercial,secondary,/texas/houston/fixed-rate/,6
+Houston,"best fixed rate electricity houston",170,medium,6.25,65,commercial,secondary,/texas/houston/fixed-rate/,6
+Houston,"houston fixed rate energy plans",140,low,4.75,45,commercial,secondary,/texas/houston/fixed-rate/,6
+Austin,"austin electricity",1020,high,8.50,90,commercial,primary,/texas/austin/,8
+Austin,"electricity plans austin",760,high,7.25,85,commercial,primary,/texas/austin/,8
+Austin,"austin electric rates",510,medium,5.50,55,commercial,primary,/texas/austin/,7
+Austin,"power companies austin",380,medium,4.75,50,commercial,primary,/texas/austin/,7
+Austin,"austin energy rates",320,medium,4.25,45,commercial,primary,/texas/austin/,6
+Austin,"electricity providers austin",290,medium,5.25,60,commercial,primary,/texas/austin/,6
+Austin,"austin electric plans",260,medium,4.50,50,commercial,primary,/texas/austin/,6
+Austin,"power plans austin",230,medium,4.25,45,commercial,primary,/texas/austin/,6
+Austin,"austin tx electricity",210,low,3.75,35,commercial,primary,/texas/austin/,7
+Austin,"electricity austin texas",190,low,3.50,30,commercial,primary,/texas/austin/,7
+Austin,"best electricity rates austin",320,high,9.75,95,commercial,commercial,/texas/austin/,7
+Austin,"cheap electricity austin",290,high,8.25,90,commercial,commercial,/texas/austin/,7
+Austin,"compare electricity austin",260,medium,6.50,65,commercial,commercial,/texas/austin/,7
+Austin,"switch electricity austin",160,medium,5.25,55,transactional,commercial,/texas/austin/,8
+Austin,"austin electricity comparison",130,medium,5.75,60,commercial,commercial,/texas/austin/,6
+Austin,"austin power plan comparison",100,low,4.25,40,commercial,commercial,/texas/austin/,7
+San Antonio,"san antonio electricity",1280,high,8.50,90,commercial,primary,/texas/san-antonio/,8
+San Antonio,"electricity plans san antonio",960,high,7.25,85,commercial,primary,/texas/san-antonio/,8
+San Antonio,"san antonio electric rates",640,medium,5.50,55,commercial,primary,/texas/san-antonio/,7
+San Antonio,"power companies san antonio",480,medium,4.75,50,commercial,primary,/texas/san-antonio/,7
+San Antonio,"san antonio energy rates",400,medium,4.25,45,commercial,primary,/texas/san-antonio/,6
+San Antonio,"electricity providers san antonio",360,medium,5.25,60,commercial,primary,/texas/san-antonio/,6
+San Antonio,"san antonio electric plans",320,medium,4.50,50,commercial,primary,/texas/san-antonio/,6
+San Antonio,"power plans san antonio",290,medium,4.25,45,commercial,primary,/texas/san-antonio/,6
+San Antonio,"san antonio tx electricity",260,low,3.75,35,commercial,primary,/texas/san-antonio/,7
+San Antonio,"electricity san antonio texas",240,low,3.50,30,commercial,primary,/texas/san-antonio/,7
+Fort Worth,"fort worth electricity",760,high,8.50,90,commercial,primary,/texas/fort-worth/,8
+Fort Worth,"electricity plans fort worth",570,high,7.25,85,commercial,primary,/texas/fort-worth/,8
+Fort Worth,"fort worth electric rates",380,medium,5.50,55,commercial,primary,/texas/fort-worth/,7
+Fort Worth,"power companies fort worth",290,medium,4.75,50,commercial,primary,/texas/fort-worth/,7
+Fort Worth,"fort worth energy rates",240,medium,4.25,45,commercial,primary,/texas/fort-worth/,6
+Fort Worth,"electricity providers fort worth",220,medium,5.25,60,commercial,primary,/texas/fort-worth/,6
+Fort Worth,"fort worth electric plans",190,medium,4.50,50,commercial,primary,/texas/fort-worth/,6
+Fort Worth,"power plans fort worth",170,medium,4.25,45,commercial,primary,/texas/fort-worth/,6
+Arlington,"arlington electricity",330,medium,6.25,65,commercial,primary,/texas/arlington/,6
+Arlington,"electricity plans arlington",250,medium,5.75,60,commercial,primary,/texas/arlington/,6
+Arlington,"arlington electric rates",160,medium,4.50,50,commercial,primary,/texas/arlington/,5
+Arlington,"power companies arlington",120,low,3.75,40,commercial,primary,/texas/arlington/,5
+Arlington,"arlington energy rates",100,low,3.25,35,commercial,primary,/texas/arlington/,5
+Plano,"plano electricity",240,medium,5.75,60,commercial,primary,/texas/plano/,6
+Plano,"electricity plans plano",180,medium,5.25,55,commercial,primary,/texas/plano/,6
+Plano,"plano electric rates",120,medium,4.25,50,commercial,primary,/texas/plano/,5
+Plano,"power companies plano",90,low,3.50,40,commercial,primary,/texas/plano/,5
+Plano,"plano energy rates",75,low,3.25,35,commercial,primary,/texas/plano/,5
+Garland,"garland electricity",210,medium,5.50,58,commercial,primary,/texas/garland/,6
+Garland,"electricity plans garland",160,medium,5.00,53,commercial,primary,/texas/garland/,5
+Garland,"garland electric rates",100,low,4.00,45,commercial,primary,/texas/garland/,5
+Irving,"irving electricity",200,medium,5.25,55,commercial,primary,/texas/irving/,6
+Irving,"electricity plans irving",150,medium,4.75,50,commercial,primary,/texas/irving/,5
+Irving,"irving electric rates",95,low,3.75,42,commercial,primary,/texas/irving/,5
+Grand Prairie,"grand prairie electricity",170,medium,5.00,52,commercial,primary,/texas/grand-prairie/,5
+Grand Prairie,"electricity plans grand prairie",130,low,4.50,48,commercial,primary,/texas/grand-prairie/,5
+McKinney,"mckinney electricity",160,medium,4.75,50,commercial,primary,/texas/mckinney/,5
+McKinney,"electricity plans mckinney",120,low,4.25,45,commercial,primary,/texas/mckinney/,5
+Frisco,"frisco electricity",150,medium,4.50,48,commercial,primary,/texas/frisco/,5
+Frisco,"electricity plans frisco",110,low,4.00,43,commercial,primary,/texas/frisco/,5
+Mesquite,"mesquite electricity",130,low,4.25,45,commercial,primary,/texas/mesquite/,5
+Mesquite,"electricity plans mesquite",100,low,3.75,40,commercial,primary,/texas/mesquite/,4
+Richardson,"richardson electricity",125,low,4.00,43,commercial,primary,/texas/richardson/,5
+Richardson,"electricity plans richardson",95,low,3.50,38,commercial,primary,/texas/richardson/,4
+Corpus Christi,"corpus christi electricity",270,medium,5.75,60,commercial,primary,/texas/corpus-christi/,6
+Corpus Christi,"electricity plans corpus christi",200,medium,5.25,55,commercial,primary,/texas/corpus-christi/,6
+Corpus Christi,"corpus christi electric rates",130,low,4.25,45,commercial,primary,/texas/corpus-christi/,5
+Lubbock,"lubbock electricity",220,medium,5.50,58,commercial,primary,/texas/lubbock/,6
+Lubbock,"electricity plans lubbock",160,medium,5.00,53,commercial,primary,/texas/lubbock/,5
+Lubbock,"lubbock electric rates",100,low,4.00,45,commercial,primary,/texas/lubbock/,5
+Laredo,"laredo electricity",230,medium,5.25,55,commercial,primary,/texas/laredo/,6
+Laredo,"electricity plans laredo",170,medium,4.75,50,commercial,primary,/texas/laredo/,5
+Laredo,"laredo electric rates",110,low,3.75,42,commercial,primary,/texas/laredo/,5
+Amarillo,"amarillo electricity",180,medium,5.00,52,commercial,primary,/texas/amarillo/,5
+Amarillo,"electricity plans amarillo",130,low,4.50,48,commercial,primary,/texas/amarillo/,5
+Amarillo,"amarillo electric rates",85,low,3.50,40,commercial,primary,/texas/amarillo/,4
+Brownsville,"brownsville electricity",160,low,4.75,50,commercial,primary,/texas/brownsville/,5
+Brownsville,"electricity plans brownsville",120,low,4.25,45,commercial,primary,/texas/brownsville/,4
+McAllen,"mcallen electricity",140,low,4.50,48,commercial,primary,/texas/mcallen/,5
+McAllen,"electricity plans mcallen",100,low,4.00,43,commercial,primary,/texas/mcallen/,4
+Waco,"waco electricity",120,low,4.25,45,commercial,primary,/texas/waco/,5
+Waco,"electricity plans waco",90,low,3.75,40,commercial,primary,/texas/waco/,4
+Beaumont,"beaumont electricity",110,low,4.00,43,commercial,primary,/texas/beaumont/,4
+Beaumont,"electricity plans beaumont",85,low,3.50,38,commercial,primary,/texas/beaumont/,4

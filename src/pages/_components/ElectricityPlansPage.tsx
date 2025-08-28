@@ -3,16 +3,30 @@ import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { mockProviders, mockStates } from '../../data/mockData';
 import { Zap, Calendar, Leaf, DollarSign, Shield, TrendingDown, Users, Calculator, Star, MapPin, ArrowRight, CheckCircle, Filter, BarChart, Target, Award, Home } from 'lucide-react';
 
-interface ElectricityPlansPageProps {
-  onNavigate: (path: string) => void;
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
 }
 
-export function ElectricityPlansPage({ onNavigate }: ElectricityPlansPageProps) {
+interface ElectricityPlansPageProps {
+}
+
+export function ElectricityPlansPage({}: ElectricityPlansPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'fixed' | 'variable' | 'green' | 'prepaid' | 'free-nights'>('all');
   const [selectedState, setSelectedState] = useState('texas');
 
   const handleZipSearch = (zipCode: string) => {
-    onNavigate(`/texas/houston/electricity-plans`);
+    navigate(`/texas/houston/electricity-plans`);
   };
 
   const planCategories = [
@@ -341,13 +355,13 @@ export function ElectricityPlansPage({ onNavigate }: ElectricityPlansPageProps) 
 
                 <div className="space-y-3">
                   <button
-                    onClick={() => onNavigate(`/plans/${category.id}`)}
+                    onClick={() => navigate(`/plans/${category.id}`)}
                     className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
                   >
                     Master {category.title}
                   </button>
                   <button
-                    onClick={() => onNavigate(`/compare/plans?type=${category.id}`)}
+                    onClick={() => navigate(`/compare/plans?type=${category.id}`)}
                     className="w-full border border-gray-300 text-gray-700 py-3 rounded-lg hover:bg-gray-50 transition-colors font-medium"
                   >
                     Compare {category.title}
@@ -486,7 +500,7 @@ export function ElectricityPlansPage({ onNavigate }: ElectricityPlansPageProps) 
                     {hub.cities.map((city) => (
                       <button
                         key={city}
-                        onClick={() => onNavigate(`/${hub.slug}/${city.toLowerCase().replace(' ', '-')}/electricity-plans`)}
+                        onClick={() => navigate(`/${hub.slug}/${city.toLowerCase().replace(' ', '-')}/electricity-plans`)}
                         className="text-sm text-blue-600 hover:text-blue-800 text-left p-2 hover:bg-blue-50 rounded"
                       >
                         {city} Plans →
@@ -497,13 +511,13 @@ export function ElectricityPlansPage({ onNavigate }: ElectricityPlansPageProps) 
 
                 <div className="grid grid-cols-2 gap-3">
                   <button
-                    onClick={() => onNavigate(`/${hub.slug}/electricity-plans`)}
+                    onClick={() => navigate(`/${hub.slug}/electricity-plans`)}
                     className="bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium"
                   >
                     All {hub.state} Plans
                   </button>
                   <button
-                    onClick={() => onNavigate(`/${hub.slug}/electricity-rates`)}
+                    onClick={() => navigate(`/${hub.slug}/electricity-rates`)}
                     className="border border-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-50 transition-colors font-medium"
                   >
                     {hub.state} Rates
@@ -523,7 +537,7 @@ export function ElectricityPlansPage({ onNavigate }: ElectricityPlansPageProps) 
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Electricity Companies</h3>
             <p className="text-gray-600 text-sm mb-4">Browse providers by specialization and expertise</p>
             <button
-              onClick={() => onNavigate('/electricity-companies')}
+              onClick={() => navigate('/electricity-companies')}
               className="text-green-600 hover:text-green-800 font-medium text-sm"
             >
               View All Companies →
@@ -537,7 +551,7 @@ export function ElectricityPlansPage({ onNavigate }: ElectricityPlansPageProps) 
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Compare Rates</h3>
             <p className="text-gray-600 text-sm mb-4">Real-time rate comparison and cost analysis</p>
             <button
-              onClick={() => onNavigate('/compare/rates')}
+              onClick={() => navigate('/compare/rates')}
               className="text-blue-600 hover:text-blue-800 font-medium text-sm"
             >
               Compare Rates →
@@ -551,7 +565,7 @@ export function ElectricityPlansPage({ onNavigate }: ElectricityPlansPageProps) 
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Find by Location</h3>
             <p className="text-gray-600 text-sm mb-4">State and city-specific plan availability</p>
             <button
-              onClick={() => onNavigate('/locations')}
+              onClick={() => navigate('/locations')}
               className="text-purple-600 hover:text-purple-800 font-medium text-sm"
             >
               Browse Locations →
@@ -565,7 +579,7 @@ export function ElectricityPlansPage({ onNavigate }: ElectricityPlansPageProps) 
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Best Plans</h3>
             <p className="text-gray-600 text-sm mb-4">Expert rankings and top picks by category</p>
             <button
-              onClick={() => onNavigate('/best')}
+              onClick={() => navigate('/best')}
               className="text-orange-600 hover:text-orange-800 font-medium text-sm"
             >
               View Best Plans →

@@ -3,13 +3,27 @@ import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { mockProviders, mockStates } from '../../data/mockData';
 import { TrendingDown, Calculator, BarChart, DollarSign, Clock, Zap, Award } from 'lucide-react';
 
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
+}
+
 interface CityElectricityRatesPageProps {
   state: string;
   city: string;
-  onNavigate: (path: string) => void;
 }
 
-export function CityElectricityRatesPage({ state, city, onNavigate }: CityElectricityRatesPageProps) {
+export function CityElectricityRatesPage({ state, city }: CityElectricityRatesPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [selectedUsage, setSelectedUsage] = useState('1000');
   const [showComparison, setShowComparison] = useState(true);
 
@@ -22,7 +36,7 @@ export function CityElectricityRatesPage({ state, city, onNavigate }: CityElectr
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">City Not Found</h1>
           <button
-            onClick={() => onNavigate(`/${state}/electricity-rates`)}
+            onClick={() => navigate(`/${state}/electricity-rates`)}
             className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
           >
             View {stateData?.name || 'State'} Rates
@@ -51,7 +65,7 @@ export function CityElectricityRatesPage({ state, city, onNavigate }: CityElectr
   const highestRate = Math.max(...allPlans.map(p => p.rate));
 
   const handleZipSearch = (zipCode: string) => {
-    onNavigate(`/${state}/${city}/${zipCode}/electricity-rates`);
+    navigate(`/${state}/${city}/${zipCode}/electricity-rates`);
   };
 
   const calculateMonthlyCost = (rate: number, usage: number, monthlyFee: number) => {
@@ -71,9 +85,9 @@ export function CityElectricityRatesPage({ state, city, onNavigate }: CityElectr
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => onNavigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => onNavigate(`/${state}/electricity-rates`)} className="hover:text-blue-600">
+            <button onClick={() => navigate(`/${state}/electricity-rates`)} className="hover:text-blue-600">
               {stateData.name}
             </button>
             <span className="mx-2">/</span>
@@ -217,7 +231,7 @@ export function CityElectricityRatesPage({ state, city, onNavigate }: CityElectr
                             <div className="flex items-center">
                               <div>
                                 <button
-                                  onClick={() => onNavigate(`/providers/${plan.providerSlug}`)}
+                                  onClick={() => navigate(`/providers/${plan.providerSlug}`)}
                                   className="text-blue-600 hover:text-blue-800 font-medium"
                                 >
                                   {plan.providerName}
@@ -296,7 +310,7 @@ export function CityElectricityRatesPage({ state, city, onNavigate }: CityElectr
                   
                   <div className="mt-4">
                     <button
-                      onClick={() => onNavigate(`/${state}/${city}/electricity-providers`)}
+                      onClick={() => navigate(`/${state}/${city}/electricity-providers`)}
                       className="text-blue-600 hover:text-blue-800 font-medium text-sm"
                     >
                       View all {cityData.name} providers →
@@ -314,7 +328,7 @@ export function CityElectricityRatesPage({ state, city, onNavigate }: CityElectr
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Rate Tools</h3>
               <div className="space-y-3">
                 <button
-                  onClick={() => onNavigate('/rates/calculator')}
+                  onClick={() => navigate('/rates/calculator')}
                   className="w-full p-3 text-left border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
                 >
                   <div className="font-medium text-gray-900">Advanced Calculator</div>
@@ -322,7 +336,7 @@ export function CityElectricityRatesPage({ state, city, onNavigate }: CityElectr
                 </button>
                 
                 <button
-                  onClick={() => onNavigate(`/${state}/${city}/switch-provider`)}
+                  onClick={() => navigate(`/${state}/${city}/switch-provider`)}
                   className="w-full p-3 text-left border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
                 >
                   <div className="font-medium text-gray-900">Switch Guide</div>
@@ -330,7 +344,7 @@ export function CityElectricityRatesPage({ state, city, onNavigate }: CityElectr
                 </button>
                 
                 <button
-                  onClick={() => onNavigate(`/cheapest-electricity-${city}`)}
+                  onClick={() => navigate(`/cheapest-electricity-${city}`)}
                   className="w-full p-3 text-left border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
                 >
                   <div className="font-medium text-gray-900">Cheapest Options</div>
@@ -353,11 +367,11 @@ export function CityElectricityRatesPage({ state, city, onNavigate }: CityElectr
                   <button
                     key={index}
                     onClick={() => {
-                      if (search.includes('cheapest')) onNavigate(`/cheapest-electricity-${city}`);
-                      else if (search.includes('providers')) onNavigate(`/${state}/${city}/electricity-providers`);
-                      else if (search.includes('no deposit')) onNavigate(`/${state}/${city}/no-deposit-electricity`);
-                      else if (search.includes('green energy')) onNavigate(`/shop/green-energy?city=${city}`);
-                      else if (search.includes('switch')) onNavigate(`/${state}/${city}/switch-provider`);
+                      if (search.includes('cheapest')) navigate(`/cheapest-electricity-${city}`);
+                      else if (search.includes('providers')) navigate(`/${state}/${city}/electricity-providers`);
+                      else if (search.includes('no deposit')) navigate(`/${state}/${city}/no-deposit-electricity`);
+                      else if (search.includes('green energy')) navigate(`/shop/green-energy?city=${city}`);
+                      else if (search.includes('switch')) navigate(`/${state}/${city}/switch-provider`);
                     }}
                     className="block w-full text-left p-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600 rounded-md transition-colors"
                   >

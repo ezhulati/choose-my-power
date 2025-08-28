@@ -4,13 +4,27 @@ import { ProviderCard } from '../../components/ProviderCard';
 import { mockProviders, mockStates } from '../../data/mockData';
 import { TrendingDown, Calculator, Award, Clock, Shield, Star, DollarSign } from 'lucide-react';
 
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
+}
+
 interface CheapestElectricityLandingPageProps {
   city?: string;
   state?: string;
-  onNavigate: (path: string) => void;
 }
 
-export function CheapestElectricityLandingPage({ city, state, onNavigate }: CheapestElectricityLandingPageProps) {
+export function CheapestElectricityLandingPage({ city, state }: CheapestElectricityLandingPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [monthlyUsage, setMonthlyUsage] = useState('1000');
 
   const stateData = state ? mockStates.find(s => s.slug === state) : null;
@@ -54,17 +68,17 @@ export function CheapestElectricityLandingPage({ city, state, onNavigate }: Chea
 
   const handleZipSearch = (zipCode: string) => {
     if (state && city) {
-      onNavigate(`/${state}/${city}/${zipCode}`);
+      navigate(`/${state}/${city}/${zipCode}`);
     } else if (state) {
       // Find city by ZIP
       const foundCity = stateData?.topCities.find(c => c.zipCodes.includes(zipCode));
       if (foundCity) {
-        onNavigate(`/${state}/${foundCity.slug}/${zipCode}`);
+        navigate(`/${state}/${foundCity.slug}/${zipCode}`);
       } else {
-        onNavigate(`/${state}/electricity-providers`);
+        navigate(`/${state}/electricity-providers`);
       }
     } else {
-      onNavigate('/texas/houston/electricity-providers');
+      navigate('/texas/houston/electricity-providers');
     }
   };
 
@@ -249,7 +263,7 @@ export function CheapestElectricityLandingPage({ city, state, onNavigate }: Chea
                     )}
                     
                     <button
-                      onClick={() => onNavigate(`/providers/${plan.providerSlug}`)}
+                      onClick={() => navigate(`/providers/${plan.providerSlug}`)}
                       className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium"
                     >
                       Get This Rate
@@ -262,7 +276,7 @@ export function CheapestElectricityLandingPage({ city, state, onNavigate }: Chea
 
           <div className="text-center mt-8">
             <button
-              onClick={() => onNavigate(state ? `/${state}/electricity-providers` : '/providers')}
+              onClick={() => navigate(state ? `/${state}/electricity-providers` : '/providers')}
               className="text-green-600 hover:text-green-800 font-medium"
             >
               View All {locationText} Providers →

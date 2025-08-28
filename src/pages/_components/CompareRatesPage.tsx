@@ -7,11 +7,25 @@ import {
   Calendar, Shield, Users, Award, Clock, AlertTriangle
 } from 'lucide-react';
 
-interface CompareRatesPageProps {
-  onNavigate: (path: string) => void;
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
 }
 
-export function CompareRatesPage({ onNavigate }: CompareRatesPageProps) {
+interface CompareRatesPageProps {
+}
+
+export function CompareRatesPage({}: CompareRatesPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [monthlyUsage, setMonthlyUsage] = useState('1000');
   const [selectedState, setSelectedState] = useState('texas');
   const [rateType, setRateType] = useState<'all' | 'fixed' | 'variable'>('all');
@@ -19,7 +33,7 @@ export function CompareRatesPage({ onNavigate }: CompareRatesPageProps) {
   const [sortBy, setSortBy] = useState<'rate' | 'total-cost' | 'savings'>('total-cost');
 
   const handleZipSearch = (zipCode: string) => {
-    onNavigate(`/texas/houston/electricity-rates`);
+    navigate(`/texas/houston/electricity-rates`);
   };
 
   const stateData = mockStates.find(s => s.slug === selectedState);
@@ -487,7 +501,7 @@ export function CompareRatesPage({ onNavigate }: CompareRatesPageProps) {
               Compare electricity companies by service quality and specialization.
             </p>
             <button
-              onClick={() => onNavigate('/compare/providers')}
+              onClick={() => navigate('/compare/providers')}
               className="text-blue-600 hover:text-blue-800 font-medium text-sm"
             >
               Compare Providers →
@@ -503,7 +517,7 @@ export function CompareRatesPage({ onNavigate }: CompareRatesPageProps) {
               Detailed plan comparison with features and contract terms.
             </p>
             <button
-              onClick={() => onNavigate('/compare/plans')}
+              onClick={() => navigate('/compare/plans')}
               className="text-green-600 hover:text-green-800 font-medium text-sm"
             >
               Compare Plans →
@@ -519,7 +533,7 @@ export function CompareRatesPage({ onNavigate }: CompareRatesPageProps) {
               Expert rankings of providers with the best rates and value.
             </p>
             <button
-              onClick={() => onNavigate('/best')}
+              onClick={() => navigate('/best')}
               className="text-orange-600 hover:text-orange-800 font-medium text-sm"
             >
               View Best Rates →

@@ -4,12 +4,26 @@ import { ProviderCard } from '../../components/ProviderCard';
 import { mockProviders, mockStates } from '../../data/mockData';
 import { MapPin, TrendingDown, Users, Zap, Filter, Calculator, Leaf, Shield } from 'lucide-react';
 
-interface StateElectricityProvidersPageProps {
-  state: string;
-  onNavigate: (path: string) => void;
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
 }
 
-export function StateElectricityProvidersPage({ state, onNavigate }: StateElectricityProvidersPageProps) {
+interface StateElectricityProvidersPageProps {
+  state: string;
+}
+
+export function StateElectricityProvidersPage({ state }: StateElectricityProvidersPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [sortBy, setSortBy] = useState<'rating' | 'price' | 'popularity'>('rating');
   const [filterType, setFilterType] = useState<'all' | 'cheapest' | 'green' | 'no-deposit'>('all');
 
@@ -22,7 +36,7 @@ export function StateElectricityProvidersPage({ state, onNavigate }: StateElectr
           <h1 className="text-2xl font-bold text-gray-900 mb-4">State Not Found</h1>
           <p className="text-gray-600 mb-8">The state you're looking for doesn't exist in our database.</p>
           <button
-            onClick={() => onNavigate('/')}
+            onClick={() => navigate('/')}
             className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
           >
             Return Home
@@ -40,9 +54,9 @@ export function StateElectricityProvidersPage({ state, onNavigate }: StateElectr
     // Find city for ZIP code
     const city = stateData.topCities.find(c => c.zipCodes.includes(zipCode));
     if (city) {
-      onNavigate(`/${state}/${city.slug}/electricity-providers`);
+      navigate(`/${state}/${city.slug}/electricity-providers`);
     } else {
-      onNavigate(`/${state}/electricity-providers`);
+      navigate(`/${state}/electricity-providers`);
     }
   };
 
@@ -61,7 +75,7 @@ export function StateElectricityProvidersPage({ state, onNavigate }: StateElectr
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
             <div className="mb-6 lg:mb-0">
               <nav className="text-sm text-gray-500 mb-2">
-                <button onClick={() => onNavigate('/')} className="hover:text-blue-600">Home</button>
+                <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
                 <span className="mx-2">/</span>
                 <span>{stateData.name}</span>
                 <span className="mx-2">/</span>
@@ -113,7 +127,7 @@ export function StateElectricityProvidersPage({ state, onNavigate }: StateElectr
             {quickLinks.map((link) => (
               <button
                 key={link.name}
-                onClick={() => onNavigate(link.href)}
+                onClick={() => navigate(link.href)}
                 className="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors group"
               >
                 <link.icon className="h-5 w-5 mr-2 text-gray-400 group-hover:text-blue-600" />
@@ -168,7 +182,7 @@ export function StateElectricityProvidersPage({ state, onNavigate }: StateElectr
                 {stateData.topCities.map((city) => (
                   <button
                     key={city.id}
-                    onClick={() => onNavigate(`/${stateData.slug}/${city.slug}/electricity-providers`)}
+                    onClick={() => navigate(`/${stateData.slug}/${city.slug}/electricity-providers`)}
                     className="block w-full text-left p-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600 rounded-md transition-colors"
                   >
                     <div className="flex items-center justify-between">
@@ -190,7 +204,7 @@ export function StateElectricityProvidersPage({ state, onNavigate }: StateElectr
                 {stateData.utilityCompanies.map((utility, index) => (
                   <button
                     key={index}
-                    onClick={() => onNavigate(`/${state}/utilities/${utility.toLowerCase().replace(/\s+/g, '-')}`)}
+                    onClick={() => navigate(`/${state}/utilities/${utility.toLowerCase().replace(/\s+/g, '-')}`)}
                     className="block w-full text-left p-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600 rounded-md transition-colors"
                   >
                     {utility}
@@ -217,8 +231,8 @@ export function StateElectricityProvidersPage({ state, onNavigate }: StateElectr
                 <ProviderCard
                   key={provider.id}
                   provider={provider}
-                  onViewDetails={() => onNavigate(`/providers/${provider.slug}`)}
-                  onCompare={() => onNavigate(`/compare/providers`)}
+                  onViewDetails={() => navigate(`/providers/${provider.slug}`)}
+                  onCompare={() => navigate(`/compare/providers`)}
                   showPlans
                 />
               ))}
@@ -242,7 +256,7 @@ export function StateElectricityProvidersPage({ state, onNavigate }: StateElectr
                   
                   <div className="space-y-2">
                     <button
-                      onClick={() => onNavigate(`/${state}/market-info/deregulation`)}
+                      onClick={() => navigate(`/${state}/market-info/deregulation`)}
                       className="text-blue-600 hover:text-blue-800 text-sm font-medium"
                     >
                       Learn about {stateData.name} deregulation →
@@ -258,7 +272,7 @@ export function StateElectricityProvidersPage({ state, onNavigate }: StateElectr
                   
                   <div className="space-y-2">
                     <button
-                      onClick={() => onNavigate(`/${state}/switch-provider`)}
+                      onClick={() => navigate(`/${state}/switch-provider`)}
                       className="text-blue-600 hover:text-blue-800 text-sm font-medium"
                     >
                       Step-by-step switching guide →
@@ -271,7 +285,7 @@ export function StateElectricityProvidersPage({ state, onNavigate }: StateElectr
             {/* Quick Actions */}
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
               <button
-                onClick={() => onNavigate(`/providers#green`)}
+                onClick={() => navigate(`/providers#green`)}
                 className="p-4 bg-green-50 border border-green-200 rounded-lg hover:bg-green-100 transition-colors text-center"
               >
                 <Leaf className="h-6 w-6 text-green-600 mx-auto mb-2" />
@@ -280,7 +294,7 @@ export function StateElectricityProvidersPage({ state, onNavigate }: StateElectr
               </button>
               
               <button
-                onClick={() => onNavigate(`/providers#service`)}
+                onClick={() => navigate(`/providers#service`)}
                 className="p-4 bg-blue-50 border border-blue-200 rounded-lg hover:bg-blue-100 transition-colors text-center"
               >
                 <Users className="h-6 w-6 text-blue-600 mx-auto mb-2" />
@@ -289,7 +303,7 @@ export function StateElectricityProvidersPage({ state, onNavigate }: StateElectr
               </button>
               
               <button
-                onClick={() => onNavigate(`/shop/cheapest-electricity?state=${state}`)}
+                onClick={() => navigate(`/shop/cheapest-electricity?state=${state}`)}
                 className="p-4 bg-purple-50 border border-purple-200 rounded-lg hover:bg-purple-100 transition-colors text-center"
               >
                 <Calculator className="h-6 w-6 text-purple-600 mx-auto mb-2" />
@@ -298,7 +312,7 @@ export function StateElectricityProvidersPage({ state, onNavigate }: StateElectr
               </button>
               
               <button
-                onClick={() => onNavigate(`/providers#tech`)}
+                onClick={() => navigate(`/providers#tech`)}
                 className="p-4 bg-indigo-50 border border-indigo-200 rounded-lg hover:bg-indigo-100 transition-colors text-center"
               >
                 <Zap className="h-6 w-6 text-indigo-600 mx-auto mb-2" />
@@ -345,7 +359,7 @@ export function StateElectricityProvidersPage({ state, onNavigate }: StateElectr
               
               <div className="mt-4 text-center">
                 <button
-                  onClick={() => onNavigate('/providers')}
+                  onClick={() => navigate('/providers')}
                   className="text-blue-600 hover:text-blue-800 font-medium"
                 >
                   View all provider categories & expert rankings →

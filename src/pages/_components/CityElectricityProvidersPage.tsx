@@ -4,13 +4,27 @@ import { ProviderCard } from '../../components/ProviderCard';
 import { mockProviders, mockStates } from '../../data/mockData';
 import { MapPin, TrendingDown, Users, Zap, Calculator, Star, Award, Clock, Filter, Leaf } from 'lucide-react';
 
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
+}
+
 interface CityElectricityProvidersPageProps {
   state: string;
   city: string;
-  onNavigate: (path: string) => void;
 }
 
-export function CityElectricityProvidersPage({ state, city, onNavigate }: CityElectricityProvidersPageProps) {
+export function CityElectricityProvidersPage({ state, city }: CityElectricityProvidersPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [sortBy, setSortBy] = useState<'rating' | 'price' | 'popularity'>('rating');
   const [planTypeFilter, setPlanTypeFilter] = useState<'all' | 'fixed' | 'variable' | 'green'>('all');
   const [showCalculator, setShowCalculator] = useState(false);
@@ -25,7 +39,7 @@ export function CityElectricityProvidersPage({ state, city, onNavigate }: CityEl
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">City Not Found</h1>
           <button
-            onClick={() => onNavigate(`/${state}/electricity-providers`)}
+            onClick={() => navigate(`/${state}/electricity-providers`)}
             className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
           >
             View {stateData?.name || 'State'} Providers
@@ -40,7 +54,7 @@ export function CityElectricityProvidersPage({ state, city, onNavigate }: CityEl
   );
 
   const handleZipSearch = (zipCode: string) => {
-    onNavigate(`/${state}/${city}/${zipCode}`);
+    navigate(`/${state}/${city}/${zipCode}`);
   };
 
   const lowestRate = Math.min(...cityProviders.flatMap(p => p.plans.map(plan => plan.rate)));
@@ -53,9 +67,9 @@ export function CityElectricityProvidersPage({ state, city, onNavigate }: CityEl
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => onNavigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => onNavigate(`/${state}/electricity-providers`)} className="hover:text-blue-600">
+            <button onClick={() => navigate(`/${state}/electricity-providers`)} className="hover:text-blue-600">
               {stateData.name}
             </button>
             <span className="mx-2">/</span>
@@ -159,7 +173,7 @@ export function CityElectricityProvidersPage({ state, city, onNavigate }: CityEl
               
               <div className="space-y-3">
                 <button
-                  onClick={() => onNavigate('/providers#green')}
+                  onClick={() => navigate('/providers#green')}
                   className="w-full text-left p-3 border border-green-200 rounded-lg hover:bg-green-50 transition-colors"
                 >
                   <div className="flex items-center">
@@ -172,7 +186,7 @@ export function CityElectricityProvidersPage({ state, city, onNavigate }: CityEl
                 </button>
                 
                 <button
-                  onClick={() => onNavigate('/providers#service')}
+                  onClick={() => navigate('/providers#service')}
                   className="w-full text-left p-3 border border-blue-200 rounded-lg hover:bg-blue-50 transition-colors"
                 >
                   <div className="flex items-center">
@@ -185,7 +199,7 @@ export function CityElectricityProvidersPage({ state, city, onNavigate }: CityEl
                 </button>
                 
                 <button
-                  onClick={() => onNavigate('/providers#value')}
+                  onClick={() => navigate('/providers#value')}
                   className="w-full text-left p-3 border border-purple-200 rounded-lg hover:bg-purple-50 transition-colors"
                 >
                   <div className="flex items-center">
@@ -274,7 +288,7 @@ export function CityElectricityProvidersPage({ state, city, onNavigate }: CityEl
                 {cityProviders.length} Electricity Companies in {cityData.name}
               </h2>
               <button
-                onClick={() => onNavigate(`/compare/providers?city=${city}&state=${state}`)}
+                onClick={() => navigate(`/compare/providers?city=${city}&state=${state}`)}
                 className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
               >
                 Compare All Plans
@@ -286,8 +300,8 @@ export function CityElectricityProvidersPage({ state, city, onNavigate }: CityEl
                 <ProviderCard
                   key={provider.id}
                   provider={provider}
-                  onViewDetails={() => onNavigate(`/providers/${provider.slug}`)}
-                  onCompare={() => onNavigate(`/compare/providers`)}
+                  onViewDetails={() => navigate(`/providers/${provider.slug}`)}
+                  onCompare={() => navigate(`/compare/providers`)}
                   showPlans
                 />
               ))}
@@ -343,7 +357,7 @@ export function CityElectricityProvidersPage({ state, city, onNavigate }: CityEl
                   
                   <div className="mt-4">
                     <button
-                      onClick={() => onNavigate(`/${state}/${city}/switch-provider`)}
+                      onClick={() => navigate(`/${state}/${city}/switch-provider`)}
                       className="text-blue-600 hover:text-blue-800 font-medium text-sm"
                     >
                       Complete {cityData.name} switching guide →

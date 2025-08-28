@@ -9,11 +9,25 @@ import {
   Battery, Eye, ThumbsUp, BarChart, Activity, Calendar
 } from 'lucide-react';
 
-interface TexasElectricityPageProps {
-  onNavigate: (path: string) => void;
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
 }
 
-export function TexasElectricityPage({ onNavigate }: TexasElectricityPageProps) {
+interface TexasElectricityPageProps {
+}
+
+export function TexasElectricityPage({}: TexasElectricityPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'providers' | 'plans' | 'rates' | 'cities'>('all');
   const [sortBy, setSortBy] = useState<'popularity' | 'rating' | 'price'>('popularity');
 
@@ -23,9 +37,9 @@ export function TexasElectricityPage({ onNavigate }: TexasElectricityPageProps) 
   const handleZipSearch = (zipCode: string) => {
     const city = texasData.topCities.find(c => c.zipCodes.includes(zipCode));
     if (city) {
-      onNavigate(`/texas/${city.slug}/electricity-providers`);
+      navigate(`/texas/${city.slug}/electricity-providers`);
     } else {
-      onNavigate('/texas/houston/electricity-providers');
+      navigate('/texas/houston/electricity-providers');
     }
   };
 
@@ -259,7 +273,7 @@ export function TexasElectricityPage({ onNavigate }: TexasElectricityPageProps) 
                   {category.links.map((link, index) => (
                     <button
                       key={index}
-                      onClick={() => onNavigate(link.href)}
+                      onClick={() => navigate(link.href)}
                       className="w-full text-left p-3 border border-gray-200 rounded-lg hover:bg-gray-50 hover:border-blue-300 transition-colors"
                     >
                       <div className="flex items-center justify-between">
@@ -271,7 +285,7 @@ export function TexasElectricityPage({ onNavigate }: TexasElectricityPageProps) 
                 </div>
 
                 <button
-                  onClick={() => onNavigate(category.links[0].href)}
+                  onClick={() => navigate(category.links[0].href)}
                   className={`w-full bg-${category.color}-600 text-white py-3 rounded-lg hover:bg-${category.color}-700 transition-colors font-medium`}
                 >
                   Explore {category.title}
@@ -302,7 +316,7 @@ export function TexasElectricityPage({ onNavigate }: TexasElectricityPageProps) 
 
           <div className="text-center">
             <button
-              onClick={() => onNavigate('/texas/market-info')}
+              onClick={() => navigate('/texas/market-info')}
               className="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors font-medium"
             >
               Learn About Texas Electricity Market
@@ -320,7 +334,7 @@ export function TexasElectricityPage({ onNavigate }: TexasElectricityPageProps) 
             {texasData.topCities.slice(0, 12).map((city) => (
               <button
                 key={city.id}
-                onClick={() => onNavigate(`/texas/${city.slug}`)}
+                onClick={() => navigate(`/texas/${city.slug}`)}
                 className="text-left p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow"
               >
                 <div className="flex items-center justify-between mb-3">
@@ -350,7 +364,7 @@ export function TexasElectricityPage({ onNavigate }: TexasElectricityPageProps) 
 
           <div className="text-center">
             <button
-              onClick={() => onNavigate('/texas/cities')}
+              onClick={() => navigate('/texas/cities')}
               className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
             >
               View All Texas Cities
@@ -387,7 +401,7 @@ export function TexasElectricityPage({ onNavigate }: TexasElectricityPageProps) 
                 </div>
 
                 <button
-                  onClick={() => onNavigate(tool.href)}
+                  onClick={() => navigate(tool.href)}
                   className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium"
                 >
                   Use Tool
@@ -428,7 +442,7 @@ export function TexasElectricityPage({ onNavigate }: TexasElectricityPageProps) 
                 </div>
 
                 <button
-                  onClick={() => onNavigate(guide.href)}
+                  onClick={() => navigate(guide.href)}
                   className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors font-medium"
                 >
                   Read Guide
@@ -439,7 +453,7 @@ export function TexasElectricityPage({ onNavigate }: TexasElectricityPageProps) 
 
           <div className="text-center mt-8">
             <button
-              onClick={() => onNavigate('/texas/guides')}
+              onClick={() => navigate('/texas/guides')}
               className="bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors font-medium"
             >
               View All Texas Guides

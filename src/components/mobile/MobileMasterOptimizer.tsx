@@ -1,0 +1,545 @@
+/**
+ * Mobile Master Optimizer
+ * Comprehensive mobile-first optimization system that integrates all mobile
+ * enhancements for maximum Texas electricity customer conversion rates
+ */
+
+import React, { useEffect, useState, useCallback } from 'react';
+import { mobilePerformanceOptimizer } from '../../lib/mobile/performance-optimizer';
+import { progressiveImageLoader } from '../../lib/mobile/progressive-image-loader';
+import { mobileAccessibilityEnhancer } from '../../lib/mobile/accessibility-enhancer';
+import { mobileAnalyticsTracker } from '../../lib/mobile/mobile-analytics-tracker';
+
+import MobileOptimizedZipInput from './MobileOptimizedZipInput';
+import MobilePlanComparison from './MobilePlanComparison';
+import MobileFacetedSidebar from './MobileFacetedSidebar';
+import MobileConversionOptimizer from './MobileConversionOptimizer';
+import ProgressiveImage from './ProgressiveImage';
+
+import type { Plan, FacetCategory, FilterState } from '../../types/facets';
+import type { TDSPResolutionResult } from '../../lib/api/multi-tdsp-detector';
+
+interface MobileMasterOptimizerProps {
+  // Core Data
+  plans: Plan[];
+  categories: FacetCategory[];
+  city?: string;
+  zipCode?: string;
+  
+  // Configuration
+  enableAllOptimizations?: boolean;
+  performanceConfig?: {
+    targetLCP?: number;
+    targetFID?: number;
+    targetCLS?: number;
+  };
+  
+  // Feature Toggles
+  enableLocationDetection?: boolean;
+  enableSwipeGestures?: boolean;
+  enableProgressiveImages?: boolean;
+  enableAccessibility?: boolean;
+  enableAnalytics?: boolean;
+  enableOneHandedMode?: boolean;
+  enableConversionOptimization?: boolean;
+  
+  // Callbacks
+  onLocationResolved?: (result: TDSPResolutionResult) => void;
+  onPlanSelect?: (plan: Plan) => void;
+  onPlanEnroll?: (plan: Plan, position: number) => void;
+  onFiltersChange?: (filters: FilterState) => void;
+  onError?: (error: Error) => void;
+}
+
+interface OptimizationState {
+  isInitialized: boolean;
+  currentStep: 'location' | 'filtering' | 'comparison' | 'enrollment';
+  selectedLocation: TDSPResolutionResult | null;
+  selectedPlan: Plan | null;
+  activeFilters: FilterState;
+  showSidebar: boolean;
+  performanceScore: number;
+  accessibilityScore: number;
+  conversionFunnel: string[];
+}
+
+interface MobileCapabilities {
+  touchSupport: boolean;
+  orientationSupport: boolean;
+  connectionType: string;
+  deviceMemory: number;
+  hardwareConcurrency: number;
+  maxTouchPoints: number;
+}
+
+export const MobileMasterOptimizer: React.FC<MobileMasterOptimizerProps> = ({
+  plans = [],
+  categories = [],
+  city,
+  zipCode,
+  enableAllOptimizations = true,
+  performanceConfig = {},
+  enableLocationDetection = true,
+  enableSwipeGestures = true,
+  enableProgressiveImages = true,
+  enableAccessibility = true,
+  enableAnalytics = true,
+  enableOneHandedMode = true,
+  enableConversionOptimization = true,
+  onLocationResolved,
+  onPlanSelect,
+  onPlanEnroll,
+  onFiltersChange,
+  onError
+}) => {
+  const [state, setState] = useState<OptimizationState>({
+    isInitialized: false,
+    currentStep: 'location',
+    selectedLocation: null,
+    selectedPlan: null,
+    activeFilters: {},
+    showSidebar: false,
+    performanceScore: 0,
+    accessibilityScore: 0,
+    conversionFunnel: []
+  });
+
+  const [mobileCapabilities, setMobileCapabilities] = useState<MobileCapabilities>({
+    touchSupport: false,
+    orientationSupport: false,
+    connectionType: 'unknown',
+    deviceMemory: 0,
+    hardwareConcurrency: 0,
+    maxTouchPoints: 0
+  });
+
+  /**
+   * Initialize all mobile optimizations
+   */
+  useEffect(() => {
+    const initializeOptimizations = async () => {
+      try {
+        // Detect mobile capabilities
+        const capabilities = detectMobileCapabilities();
+        setMobileCapabilities(capabilities);
+
+        // Initialize performance optimizer
+        if (enableAllOptimizations || enablePerformanceOptimizer !== false) {
+          mobilePerformanceOptimizer.optimize();
+          const performanceScore = mobilePerformanceOptimizer.getPerformanceScore();
+          setState(prev => ({ ...prev, performanceScore }));
+        }
+
+        // Initialize progressive image loader
+        if (enableAllOptimizations && enableProgressiveImages) {
+          // Progressive image loader initializes automatically
+          console.log('Progressive image loading enabled');
+        }
+
+        // Initialize accessibility enhancer
+        if (enableAllOptimizations && enableAccessibility) {
+          const accessibilityReport = await mobileAccessibilityEnhancer.audit();
+          setState(prev => ({ ...prev, accessibilityScore: accessibilityReport.score }));
+        }
+
+        // Initialize analytics tracker
+        if (enableAllOptimizations && enableAnalytics) {
+          await mobileAnalyticsTracker.initialize();
+          mobileAnalyticsTracker.trackPageView('/electricity-plans', 'Texas Electricity Plans');
+        }
+
+        setState(prev => ({ ...prev, isInitialized: true }));
+
+        console.log('Mobile Master Optimizer initialized:', {
+          performanceScore: state.performanceScore,
+          accessibilityScore: state.accessibilityScore,
+          capabilities
+        });
+
+      } catch (error) {
+        console.error('Failed to initialize mobile optimizations:', error);
+        onError?.(error as Error);
+      }
+    };
+
+    initializeOptimizations();
+
+    // Cleanup on unmount
+    return () => {
+      mobilePerformanceOptimizer.cleanup();
+      mobileAccessibilityEnhancer.cleanup();
+      mobileAnalyticsTracker.cleanup();
+    };
+  }, [enableAllOptimizations]);
+
+  /**
+   * Detect mobile device capabilities
+   */
+  const detectMobileCapabilities = (): MobileCapabilities => {
+    const nav = navigator as any;
+    
+    return {
+      touchSupport: 'ontouchstart' in window || navigator.maxTouchPoints > 0,
+      orientationSupport: 'orientation' in window,
+      connectionType: nav.connection?.effectiveType || 'unknown',
+      deviceMemory: nav.deviceMemory || 0,
+      hardwareConcurrency: navigator.hardwareConcurrency || 0,
+      maxTouchPoints: navigator.maxTouchPoints || 0
+    };
+  };
+
+  /**
+   * Handle location resolution from ZIP code input
+   */
+  const handleLocationResolved = useCallback((result: TDSPResolutionResult) => {
+    setState(prev => ({
+      ...prev,
+      selectedLocation: result,
+      currentStep: 'filtering',
+      conversionFunnel: [...prev.conversionFunnel, 'location_resolved']
+    }));
+
+    // Track conversion event
+    if (enableAnalytics) {
+      mobileAnalyticsTracker.trackEvent({
+        category: 'Conversion',
+        action: 'Location Resolved',
+        label: result.tdsp_name,
+        timestamp: Date.now(),
+        sessionId: mobileAnalyticsTracker.getState().sessionId,
+        customDimensions: {
+          zipCode: result.zipCode || zipCode,
+          city: result.city || city,
+          method: result.method
+        }
+      });
+    }
+
+    onLocationResolved?.(result);
+  }, [city, zipCode, enableAnalytics, onLocationResolved]);
+
+  /**
+   * Handle plan selection
+   */
+  const handlePlanSelect = useCallback((plan: Plan) => {
+    setState(prev => ({
+      ...prev,
+      selectedPlan: plan,
+      currentStep: 'comparison',
+      conversionFunnel: [...prev.conversionFunnel, 'plan_selected']
+    }));
+
+    // Accessibility announcement
+    if (enableAccessibility) {
+      mobileAccessibilityEnhancer.announce(
+        `Selected ${plan.name} by ${plan.provider.name} at ${(plan.pricing.rate1000kWh * 100).toFixed(1)} cents per kWh`,
+        'polite'
+      );
+    }
+
+    // Track analytics
+    if (enableAnalytics) {
+      mobileAnalyticsTracker.trackEvent({
+        category: 'Plan',
+        action: 'Select',
+        label: plan.provider.name,
+        value: Math.round(plan.pricing.rate1000kWh * 1000),
+        timestamp: Date.now(),
+        sessionId: mobileAnalyticsTracker.getState().sessionId,
+        customDimensions: {
+          planId: plan.id,
+          planName: plan.name,
+          contractLength: plan.contract.length,
+          planType: plan.contract.type
+        }
+      });
+    }
+
+    onPlanSelect?.(plan);
+  }, [enableAccessibility, enableAnalytics, onPlanSelect]);
+
+  /**
+   * Handle plan enrollment
+   */
+  const handlePlanEnroll = useCallback((plan: Plan, position: number) => {
+    setState(prev => ({
+      ...prev,
+      currentStep: 'enrollment',
+      conversionFunnel: [...prev.conversionFunnel, 'enrollment_started']
+    }));
+
+    // Success accessibility announcement
+    if (enableAccessibility) {
+      mobileAccessibilityEnhancer.announce(
+        `Starting enrollment for ${plan.name}. You'll be redirected to complete your enrollment.`,
+        'assertive'
+      );
+    }
+
+    // Track conversion
+    if (enableAnalytics) {
+      mobileAnalyticsTracker.trackConversion({
+        id: `enrollment_${plan.id}`,
+        name: 'Plan Enrollment',
+        type: 'signup',
+        value: plan.pricing.rate1000kWh * 1000,
+        completed: true,
+        timestamp: Date.now()
+      });
+
+      mobileAnalyticsTracker.trackEvent({
+        category: 'Conversion',
+        action: 'Enrollment Started',
+        label: plan.provider.name,
+        value: Math.round(plan.pricing.rate1000kWh * 1000),
+        timestamp: Date.now(),
+        sessionId: mobileAnalyticsTracker.getState().sessionId,
+        customDimensions: {
+          planId: plan.id,
+          position: position.toString(),
+          funnelPath: state.conversionFunnel.join(' -> '),
+          timeToConversion: Date.now() - (mobileAnalyticsTracker.getState() as any).startTime
+        }
+      });
+    }
+
+    onPlanEnroll?.(plan, position);
+  }, [enableAccessibility, enableAnalytics, state.conversionFunnel, onPlanEnroll]);
+
+  /**
+   * Handle filter changes
+   */
+  const handleFiltersChange = useCallback((filters: FilterState) => {
+    setState(prev => ({ ...prev, activeFilters: filters }));
+
+    // Track filter usage
+    if (enableAnalytics) {
+      const activeFilterCount = Object.values(filters).reduce((count, filterArray) => 
+        count + (Array.isArray(filterArray) ? filterArray.length : 0), 0
+      );
+
+      mobileAnalyticsTracker.trackEvent({
+        category: 'Filter',
+        action: 'Change',
+        value: activeFilterCount,
+        timestamp: Date.now(),
+        sessionId: mobileAnalyticsTracker.getState().sessionId,
+        customDimensions: {
+          activeFilters: Object.keys(filters).join(','),
+          filterCount: activeFilterCount.toString()
+        }
+      });
+    }
+
+    onFiltersChange?.(filters);
+  }, [enableAnalytics, onFiltersChange]);
+
+  /**
+   * Handle sidebar toggle
+   */
+  const handleSidebarToggle = useCallback(() => {
+    setState(prev => ({ ...prev, showSidebar: !prev.showSidebar }));
+
+    // Track sidebar usage
+    if (enableAnalytics) {
+      mobileAnalyticsTracker.trackEvent({
+        category: 'UI',
+        action: 'Sidebar Toggle',
+        label: state.showSidebar ? 'close' : 'open',
+        timestamp: Date.now(),
+        sessionId: mobileAnalyticsTracker.getState().sessionId
+      });
+    }
+  }, [enableAnalytics, state.showSidebar]);
+
+  /**
+   * Get filtered plans based on active filters
+   */
+  const getFilteredPlans = (): Plan[] => {
+    if (Object.keys(state.activeFilters).length === 0) {
+      return plans;
+    }
+
+    return plans.filter(plan => {
+      return Object.entries(state.activeFilters).every(([category, filters]) => {
+        if (!Array.isArray(filters) || filters.length === 0) return true;
+
+        switch (category) {
+          case 'contract-length':
+            return filters.includes(`${plan.contract.length}-month`);
+          case 'plan-type':
+            return filters.includes(plan.contract.type.toLowerCase().replace(' ', '-'));
+          case 'special-features':
+            return filters.some(filter => {
+              switch (filter) {
+                case 'green-energy':
+                  return plan.features.greenEnergy > 0;
+                case 'no-deposit':
+                  return !plan.features.deposit.required;
+                case 'prepaid':
+                  return plan.contract.type === 'Prepaid';
+                default:
+                  return false;
+              }
+            });
+          default:
+            return true;
+        }
+      });
+    });
+  };
+
+  const filteredPlans = getFilteredPlans();
+
+  if (!state.isInitialized) {
+    return (
+      <div className="mobile-optimizer-loading">
+        <div className="loading-spinner" />
+        <p>Optimizing mobile experience...</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mobile-master-optimizer">
+      {/* Performance Debug Info (Development) */}
+      {process.env.NODE_ENV === 'development' && (
+        <div className="mobile-debug-info">
+          <div>Performance Score: {state.performanceScore}</div>
+          <div>Accessibility Score: {state.accessibilityScore}</div>
+          <div>Touch Support: {mobileCapabilities.touchSupport ? 'Yes' : 'No'}</div>
+          <div>Connection: {mobileCapabilities.connectionType}</div>
+          <div>Current Step: {state.currentStep}</div>
+        </div>
+      )}
+
+      {/* Step 1: Location Input */}
+      {state.currentStep === 'location' && (
+        <div className="location-step">
+          <div className="step-header">
+            <h1>Find Your Perfect Electricity Plan</h1>
+            <p>Compare rates from top providers in Texas</p>
+          </div>
+
+          <MobileOptimizedZipInput
+            onLocationResolved={handleLocationResolved}
+            onError={onError}
+            enableLocationDetection={enableLocationDetection}
+            city={city}
+            zipCode={zipCode}
+            autoFocus={true}
+          />
+        </div>
+      )}
+
+      {/* Steps 2-4: Plan Selection and Filtering */}
+      {state.currentStep !== 'location' && (
+        <div className="plans-step">
+          {/* Location Summary */}
+          {state.selectedLocation && (
+            <div className="location-summary">
+              <ProgressiveImage
+                src="/images/cities/texas-electricity.jpg"
+                alt="Texas electricity grid"
+                width={400}
+                height={200}
+                className="location-hero"
+                priority="high"
+                placeholder="blur"
+                aspectRatio={2}
+              />
+              
+              <div className="location-info">
+                <h2>
+                  Electricity Plans in {state.selectedLocation.city || city}
+                </h2>
+                <p>
+                  Serviced by {state.selectedLocation.tdsp_name} • 
+                  ZIP {state.selectedLocation.zipCode || zipCode}
+                </p>
+              </div>
+
+              <button
+                className="change-location-btn"
+                onClick={() => setState(prev => ({ 
+                  ...prev, 
+                  currentStep: 'location',
+                  selectedLocation: null 
+                }))}
+                aria-label="Change location"
+              >
+                Change Location
+              </button>
+            </div>
+          )}
+
+          {/* Filter Button */}
+          <div className="filter-controls">
+            <button
+              className="filter-toggle-btn"
+              onClick={handleSidebarToggle}
+              aria-label="Open filters"
+            >
+              <span className="filter-icon">⚙️</span>
+              <span>Filter Plans ({Object.keys(state.activeFilters).length})</span>
+            </button>
+            
+            <div className="results-count">
+              {filteredPlans.length} of {plans.length} plans
+            </div>
+          </div>
+
+          {/* Main Content */}
+          <div className="main-content">
+            {enableConversionOptimization ? (
+              <MobileConversionOptimizer
+                plans={filteredPlans}
+                selectedPlan={state.selectedPlan}
+                city={state.selectedLocation?.city || city || ''}
+                zipCode={state.selectedLocation?.zipCode || zipCode || ''}
+                onPlanSelect={handlePlanSelect}
+                onEnrollmentStart={handlePlanEnroll}
+                enableOneHanded={enableOneHandedMode}
+              />
+            ) : (
+              <MobilePlanComparison
+                plans={filteredPlans}
+                city={state.selectedLocation?.city || city || ''}
+                onPlanSelect={handlePlanSelect}
+                onPlanEnroll={handlePlanEnroll}
+                enableSwipeActions={enableSwipeGestures}
+              />
+            )}
+          </div>
+
+          {/* Faceted Sidebar */}
+          <MobileFacetedSidebar
+            categories={categories}
+            currentFilters={state.activeFilters}
+            onFiltersChange={handleFiltersChange}
+            onClose={() => setState(prev => ({ ...prev, showSidebar: false }))}
+            isOpen={state.showSidebar}
+            city={state.selectedLocation?.city || city}
+            planCount={filteredPlans.length}
+            enableOneHanded={enableOneHandedMode}
+          />
+        </div>
+      )}
+
+      {/* Loading States */}
+      {state.currentStep === 'enrollment' && (
+        <div className="enrollment-loading">
+          <div className="loading-content">
+            <div className="success-animation">
+              <div className="checkmark">✓</div>
+            </div>
+            <h3>Great Choice!</h3>
+            <p>Redirecting you to complete your enrollment...</p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default MobileMasterOptimizer;

@@ -3,15 +3,29 @@ import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { mockStates } from '../../data/mockData';
 import { TrendingDown, TrendingUp, BarChart, Zap, DollarSign, AlertTriangle, CheckCircle, Calendar, Activity, Globe, Calculator, Info, ArrowRight, ExternalLink } from 'lucide-react';
 
-interface TexasMarketForecastPageProps {
-  onNavigate: (path: string) => void;
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
 }
 
-export function TexasMarketForecastPage({ onNavigate }: TexasMarketForecastPageProps) {
+interface TexasMarketForecastPageProps {
+}
+
+export function TexasMarketForecastPage({}: TexasMarketForecastPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [selectedMetric, setSelectedMetric] = useState<'wholesale' | 'retail' | 'gas'>('wholesale');
 
   const handleZipSearch = (zipCode: string) => {
-    onNavigate(`/texas/dallas/electricity-providers`);
+    navigate(`/texas/dallas/electricity-providers`);
   };
 
   const forecastData = {
@@ -406,7 +420,7 @@ export function TexasMarketForecastPage({ onNavigate }: TexasMarketForecastPageP
               Find the best electricity rates in Dallas area (75205) and lock in favorable pricing before market changes.
             </p>
             <button
-              onClick={() => onNavigate('/texas/dallas/electricity-providers')}
+              onClick={() => navigate('/texas/dallas/electricity-providers')}
               className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium inline-flex items-center"
             >
               Compare Dallas Providers
@@ -423,7 +437,7 @@ export function TexasMarketForecastPage({ onNavigate }: TexasMarketForecastPageP
               Reduce exposure to natural gas price volatility with 100% renewable energy plans from Texas wind and solar.
             </p>
             <button
-              onClick={() => onNavigate('/shop/green-energy?state=texas')}
+              onClick={() => navigate('/shop/green-energy?state=texas')}
               className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors font-medium inline-flex items-center"
             >
               View Green Plans

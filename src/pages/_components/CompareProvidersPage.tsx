@@ -7,18 +7,32 @@ import {
   Building, MapPin, Filter, Eye, ThumbsUp, Target, Search
 } from 'lucide-react';
 
-interface CompareProvidersPageProps {
-  onNavigate: (path: string) => void;
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
 }
 
-export function CompareProvidersPage({ onNavigate }: CompareProvidersPageProps) {
+interface CompareProvidersPageProps {
+}
+
+export function CompareProvidersPage({}: CompareProvidersPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [selectedProviders, setSelectedProviders] = useState<string[]>([]);
   const [sortBy, setSortBy] = useState<'rating' | 'price' | 'reviews' | 'plans'>('rating');
   const [filterCategory, setFilterCategory] = useState<'all' | 'green' | 'service' | 'value' | 'tech' | 'local'>('all');
   const [showComparison, setShowComparison] = useState(false);
 
   const handleZipSearch = (zipCode: string) => {
-    onNavigate(`/texas/houston/electricity-providers`);
+    navigate(`/texas/houston/electricity-providers`);
   };
 
   const toggleProvider = (providerId: string) => {
@@ -266,13 +280,13 @@ export function CompareProvidersPage({ onNavigate }: CompareProvidersPageProps) 
                       <td key={provider?.id} className="py-4 px-4 text-center">
                         <div className="space-y-2">
                           <button
-                            onClick={() => onNavigate(`/providers/${provider?.slug}`)}
+                            onClick={() => navigate(`/providers/${provider?.slug}`)}
                             className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
                           >
                             View Details
                           </button>
                           <button
-                            onClick={() => onNavigate(`/texas/houston/electricity-providers`)}
+                            onClick={() => navigate(`/texas/houston/electricity-providers`)}
                             className="w-full border border-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
                           >
                             See Plans & Rates
@@ -423,13 +437,13 @@ export function CompareProvidersPage({ onNavigate }: CompareProvidersPageProps) 
                     {/* Actions */}
                     <div className="space-y-2">
                       <button
-                        onClick={() => onNavigate(`/providers/${provider.slug}`)}
+                        onClick={() => navigate(`/providers/${provider.slug}`)}
                         className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
                       >
                         View Company Profile
                       </button>
                       <button
-                        onClick={() => onNavigate(`/texas/houston/electricity-providers`)}
+                        onClick={() => navigate(`/texas/houston/electricity-providers`)}
                         className="w-full border border-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
                       >
                         See Plans & Rates
@@ -502,7 +516,7 @@ export function CompareProvidersPage({ onNavigate }: CompareProvidersPageProps) 
               Compare specific electricity plans by features, rates, and contract terms.
             </p>
             <button
-              onClick={() => onNavigate('/compare/plans')}
+              onClick={() => navigate('/compare/plans')}
               className="text-green-600 hover:text-green-800 font-medium text-sm"
             >
               Compare Plans →
@@ -518,7 +532,7 @@ export function CompareProvidersPage({ onNavigate }: CompareProvidersPageProps) 
               Real-time rate comparison with cost calculators and usage analysis.
             </p>
             <button
-              onClick={() => onNavigate('/compare/rates')}
+              onClick={() => navigate('/compare/rates')}
               className="text-purple-600 hover:text-purple-800 font-medium text-sm"
             >
               Compare Rates →
@@ -534,7 +548,7 @@ export function CompareProvidersPage({ onNavigate }: CompareProvidersPageProps) 
               Expert rankings of top providers by category and specialization.
             </p>
             <button
-              onClick={() => onNavigate('/best')}
+              onClick={() => navigate('/best')}
               className="text-blue-600 hover:text-blue-800 font-medium text-sm"
             >
               View Rankings →

@@ -8,7 +8,7 @@
  * - Details: GET https://ercot.api.comparepower.com/api/esiids/{esiid}
  */
 
-import type { Plan, ApiParams } from '../../types/facets';
+import type { ApiParams } from '../../types/facets';
 import { ComparePowerApiError, ApiErrorType } from './errors';
 
 export interface ESIIDSearchParams {
@@ -57,11 +57,12 @@ export interface AddressTDSPResolution {
   apiParams: ApiParams;
 }
 
+import { createManagedCache } from '../utils/memory-manager';
+
 export class ERCOTESIIDClient {
   private baseUrl: string;
   private apiKey?: string;
-  private cache: Map<string, ESIIDSearchResult[]> = new Map();
-  private cacheTimeout = 3600000; // 1 hour
+  private cache = createManagedCache<ESIIDSearchResult[]>('esiid-search', 3600000); // 1 hour
 
   constructor() {
     this.baseUrl = process.env.ERCOT_API_URL || 'https://ercot.api.comparepower.com';
@@ -76,8 +77,8 @@ export class ERCOTESIIDClient {
     const cacheKey = `${params.address}_${params.zip_code}`.toLowerCase();
     
     // Check cache first
-    if (this.cache.has(cacheKey)) {
-      const cached = this.cache.get(cacheKey)!;
+    const cached = this.cache.get(cacheKey);
+    if (cached) {
       console.log(`Cache hit for ESIID search: ${params.address}, ${params.zip_code}`);
       return cached;
     }
@@ -132,9 +133,8 @@ export class ERCOTESIIDClient {
         .filter(this.validateESIIDResult)
         .map(this.normalizeESIIDResult);
 
-      // Cache results
+      // Cache results (managed cache handles TTL automatically)
       this.cache.set(cacheKey, validResults);
-      setTimeout(() => this.cache.delete(cacheKey), this.cacheTimeout);
 
       console.log(`Found ${validResults.length} ESIID results for ${params.address}, ${params.zip_code}`);
       return validResults;
@@ -325,7 +325,7 @@ export class ERCOTESIIDClient {
   /**
    * Validate ESIID search result structure
    */
-  private validateESIIDResult(result: any): boolean {
+  private validateESIIDResult(result: unknown): boolean {
     return (
       result &&
       typeof result.esiid === 'string' &&
@@ -339,7 +339,7 @@ export class ERCOTESIIDClient {
   /**
    * Validate ESIID details structure
    */
-  private validateESIIDDetails(details: any): boolean {
+  private validateESIIDDetails(details: unknown): boolean {
     return (
       this.validateESIIDResult(details) &&
       typeof details.premise_number === 'string'
@@ -393,8 +393,8 @@ export class ERCOTESIIDClient {
    */
   public getCacheStats() {
     return {
-      size: this.cache.size,
-      keys: Array.from(this.cache.keys())
+      size: this.cache.size(),
+      keys: this.cache.keys()
     };
   }
 

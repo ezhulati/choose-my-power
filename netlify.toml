@@ -1,11 +1,256 @@
+# Production Netlify Configuration for ChooseMyPower.org
+# Enterprise-grade deployment with performance optimization
+
 [build]
   publish = "dist"
-  command = "npm run build"
+  command = "npm run build:production"
+  functions = "netlify/functions"
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "20.0.0"
+  NPM_VERSION = "10.2.4"
+  NODE_ENV = "production"
+  ASTRO_TELEMETRY_DISABLED = "1"
+  # Build optimization
+  MAX_CITIES = "881"
+  BATCH_SIZE = "10"
+  BATCH_DELAY_MS = "2000"
+  USE_CACHED_DATA = "true"
 
+# Production Build Processing
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
+
+[build.processing.images]
+  compress = true
+
+# Headers for Security and Performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Security Headers
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    X-Robots-Tag = "index, follow"
+    
+    # Performance Headers
+    X-DNS-Prefetch-Control = "on"
+    
+    # Content Security Policy
+    Content-Security-Policy = '''
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://js.stripe.com https://maps.googleapis.com;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net;
+      font-src 'self' https://fonts.gstatic.com data:;
+      img-src 'self' data: https: blob:;
+      connect-src 'self' https://api.comparepower.com https://www.google-analytics.com https://vitals.vercel-insights.com wss:;
+      frame-src 'none';
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
+      manifest-src 'self';
+      worker-src 'self';
+    '''
+
+# Static Assets Caching
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Vary = "Accept-Encoding"
+
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "text/css"
+
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "application/javascript"
+
+[[headers]]
+  for = "*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Access-Control-Allow-Origin = "*"
+
+# HTML Caching with Validation
+[[headers]]
+  for = "*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, must-revalidate"
+    Vary = "Accept-Encoding"
+
+# Faceted Navigation Pages
+[[headers]]
+  for = "/electricity-plans/*"
+  [headers.values]
+    Cache-Control = "public, max-age=14400, s-maxage=14400"
+    Vary = "Accept-Encoding"
+    X-Page-Type = "faceted-navigation"
+
+# City Pages
+[[headers]]
+  for = "/texas/*"
+  [headers.values]
+    Cache-Control = "public, max-age=21600, s-maxage=21600"
+    Vary = "Accept-Encoding"
+    X-Page-Type = "city-page"
+
+# API Caching
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Cache-Control = "public, max-age=600, s-maxage=600"
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, POST, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type, Authorization"
+
+# Sitemaps
+[[headers]]
+  for = "*.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+    Content-Type = "application/xml"
+
+[[headers]]
+  for = "/sitemap*.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+    Content-Type = "application/xml"
+
+# Robots.txt
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+    Content-Type = "text/plain"
+
+# HTTPS Redirects
+[[redirects]]
+  from = "http://choosemypower.org/*"
+  to = "https://choosemypower.org/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.choosemypower.org/*"
+  to = "https://choosemypower.org/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.choosemypower.org/*"
+  to = "https://choosemypower.org/:splat"
+  status = 301
+  force = true
+
+# SEO-Friendly Redirects
+[[redirects]]
+  from = "/electricity-plans/dallas"
+  to = "/electricity-plans/dallas-tx"
+  status = 301
+
+[[redirects]]
+  from = "/electricity-plans/houston"
+  to = "/electricity-plans/houston-tx"
+  status = 301
+
+[[redirects]]
+  from = "/electricity-plans/austin"
+  to = "/electricity-plans/austin-tx"
+  status = 301
+
+# API Proxy (if needed)
+[[redirects]]
+  from = "/api/plans/*"
+  to = "https://api.comparepower.com/api/plans/:splat"
+  status = 200
+  headers = {X-From = "Netlify"}
+
+# Health Check Endpoint
+[[redirects]]
+  from = "/health"
+  to = "/.netlify/functions/health"
+  status = 200
+
+# Legacy URL Redirects
+[[redirects]]
+  from = "/compare-electricity-plans/*"
+  to = "/electricity-plans/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/texas-electricity-plans/*"
+  to = "/electricity-plans/:splat"
+  status = 301
+
+# Fallback for SPA behavior (must be last)
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+# Edge Functions Configuration
+[functions]
+  external_node_modules = ["@netlify/neon", "drizzle-orm", "postgres"]
+
+# Build Plugins
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+
+  [plugins.inputs]
+    urls = [
+      "/",
+      "/texas/dallas",
+      "/electricity-plans/dallas-tx",
+      "/providers"
+    ]
+    thresholds = { performance = 0.9, accessibility = 0.9, "best-practices" = 0.9, seo = 0.95 }
+    upload_results = true
+
+[[plugins]]
+  package = "netlify-plugin-submit-sitemap"
+
+  [plugins.inputs]
+    baseUrl = "https://choosemypower.org"
+    sitemapPath = "/sitemap.xml"
+    ignorePeriod = 0
+    providers = [
+      "google",
+      "bing"
+    ]
+
+# Context-specific configurations
+[context.production.environment]
+  NODE_ENV = "production"
+  ASTRO_TELEMETRY_DISABLED = "1"
+  ENABLE_ANALYTICS = "true"
+  ENABLE_MONITORING = "true"
+
+[context.deploy-preview.environment]
+  NODE_ENV = "staging"
+  ASTRO_TELEMETRY_DISABLED = "1"
+  MAX_CITIES = "50"
+
+[context.branch-deploy.environment]
+  NODE_ENV = "development"
+  ASTRO_TELEMETRY_DISABLED = "1"
+  MAX_CITIES = "10"

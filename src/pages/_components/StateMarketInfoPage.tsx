@@ -2,12 +2,26 @@ import React, { useState } from 'react';
 import { mockStates, utilityCompanies } from '../../data/mockData';
 import { BarChart, TrendingUp, Users, Zap, Building, Scale, Info, Calendar } from 'lucide-react';
 
-interface StateMarketInfoPageProps {
-  state: string;
-  onNavigate: (path: string) => void;
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
 }
 
-export function StateMarketInfoPage({ state, onNavigate }: StateMarketInfoPageProps) {
+interface StateMarketInfoPageProps {
+  state: string;
+}
+
+export function StateMarketInfoPage({ state }: StateMarketInfoPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [activeTab, setActiveTab] = useState<'overview' | 'deregulation' | 'usage' | 'regulations'>('overview');
 
   const stateData = mockStates.find(s => s.slug === state);
@@ -18,7 +32,7 @@ export function StateMarketInfoPage({ state, onNavigate }: StateMarketInfoPagePr
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">State Not Found</h1>
           <button
-            onClick={() => onNavigate('/')}
+            onClick={() => navigate('/')}
             className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
           >
             Return Home
@@ -50,9 +64,9 @@ export function StateMarketInfoPage({ state, onNavigate }: StateMarketInfoPagePr
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => onNavigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => onNavigate(`/${state}/electricity-providers`)} className="hover:text-blue-600">
+            <button onClick={() => navigate(`/${state}/electricity-providers`)} className="hover:text-blue-600">
               {stateData.name}
             </button>
             <span className="mx-2">/</span>
@@ -396,7 +410,7 @@ export function StateMarketInfoPage({ state, onNavigate }: StateMarketInfoPagePr
                         </span>
                       </div>
                       <button
-                        onClick={() => onNavigate(`/${state}/${city.slug}/electricity-providers`)}
+                        onClick={() => navigate(`/${state}/${city.slug}/electricity-providers`)}
                         className="w-full mt-2 text-blue-600 hover:text-blue-800 text-xs font-medium"
                       >
                         View {city.name} Providers →
@@ -529,7 +543,7 @@ export function StateMarketInfoPage({ state, onNavigate }: StateMarketInfoPagePr
                     File complaints, get market information, and understand your rights
                   </p>
                   <button
-                    onClick={() => onNavigate('/resources/support/regulatory-contacts')}
+                    onClick={() => navigate('/resources/support/regulatory-contacts')}
                     className="text-blue-600 hover:text-blue-800 text-sm font-medium"
                   >
                     Contact Information →
@@ -545,7 +559,7 @@ export function StateMarketInfoPage({ state, onNavigate }: StateMarketInfoPagePr
                     Educational materials about your rights and how to choose providers
                   </p>
                   <button
-                    onClick={() => onNavigate(`/${state}/guides`)}
+                    onClick={() => navigate(`/${state}/guides`)}
                     className="text-blue-600 hover:text-blue-800 text-sm font-medium"
                   >
                     View Guides →
@@ -561,7 +575,7 @@ export function StateMarketInfoPage({ state, onNavigate }: StateMarketInfoPagePr
                     Current market statistics, rate trends, and usage data
                   </p>
                   <button
-                    onClick={() => onNavigate('/rates/tracker')}
+                    onClick={() => navigate('/rates/tracker')}
                     className="text-blue-600 hover:text-blue-800 text-sm font-medium"
                   >
                     View Market Data →

@@ -29,5 +29,12 @@ const description = `Compare ${stateTitle} electricity providers and plans. Find
 ---
 
 <Layout title={title} description={description}>
-  <StatePage client:load state={state} onNavigate={(path) => window.location.href = path} />
+  <StatePage client:load state={state} />
+
+  <script>
+    // Client-side navigation function for React components
+    window.navigateToPath = function(path) {
+      window.location.href = path;
+    };
+  </script>
 </Layout>

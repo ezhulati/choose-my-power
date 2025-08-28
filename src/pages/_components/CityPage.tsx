@@ -3,13 +3,27 @@ import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { mockProviders, mockStates } from '../../data/mockData';
 import { MapPin, TrendingDown, Users, Zap, Building, ArrowRight, Search, Star } from 'lucide-react';
 
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
+}
+
 interface CityPageProps {
   state: string;
   city: string;
-  onNavigate: (path: string) => void;
 }
 
-export function CityPage({ state, city, onNavigate }: CityPageProps) {
+export function CityPage({ state, city }: CityPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [selectedUsage, setSelectedUsage] = useState<'500' | '1000' | '2000'>('1000');
 
   const stateData = mockStates.find(s => s.slug === state);
@@ -36,21 +50,21 @@ export function CityPage({ state, city, onNavigate }: CityPageProps) {
                 
                 <div className="max-w-md mx-auto mb-8">
                   <ZipCodeSearch 
-                    onSearch={(zipCode) => onNavigate(`/${state}/electricity-providers`)} 
+                    onSearch={(zipCode) => navigate(`/${state}/electricity-providers`)} 
                     placeholder={`Enter ${stateData.abbreviation} ZIP code`}
                   />
                 </div>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <button
-                    onClick={() => onNavigate(`/${state}/electricity-providers`)}
+                    onClick={() => navigate(`/${state}/electricity-providers`)}
                     className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium inline-flex items-center justify-center"
                   >
                     View All {stateData.name} Providers
                     <ArrowRight className="h-4 w-4 ml-2" />
                   </button>
                   <button
-                    onClick={() => onNavigate(`/${state}/electricity-rates`)}
+                    onClick={() => navigate(`/${state}/electricity-rates`)}
                     className="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg hover:bg-gray-50 transition-colors font-medium"
                   >
                     See {stateData.name} Rates
@@ -66,7 +80,7 @@ export function CityPage({ state, city, onNavigate }: CityPageProps) {
                     {stateData.topCities.map((availableCity) => (
                       <button
                         key={availableCity.id}
-                        onClick={() => onNavigate(`/${state}/${availableCity.slug}/electricity-providers`)}
+                        onClick={() => navigate(`/${state}/${availableCity.slug}/electricity-providers`)}
                         className="p-3 text-sm text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition-colors border border-gray-200"
                       >
                         {availableCity.name}
@@ -86,13 +100,13 @@ export function CityPage({ state, city, onNavigate }: CityPageProps) {
                 
                 <div className="max-w-md mx-auto mb-8">
                   <ZipCodeSearch 
-                    onSearch={(zipCode) => onNavigate('/texas/electricity-providers')} 
+                    onSearch={(zipCode) => navigate('/texas/electricity-providers')} 
                     placeholder="Enter your ZIP code to find providers"
                   />
                 </div>
                 
                 <button
-                  onClick={() => onNavigate('/')}
+                  onClick={() => navigate('/')}
                   className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium inline-flex items-center"
                 >
                   <Search className="h-4 w-4 mr-2" />
@@ -111,7 +125,7 @@ export function CityPage({ state, city, onNavigate }: CityPageProps) {
   );
 
   const handleZipSearch = (zipCode: string) => {
-    onNavigate(`/${state}/${city}/${zipCode}`);
+    navigate(`/${state}/${city}/${zipCode}`);
   };
 
   const usageRates = {
@@ -126,9 +140,9 @@ export function CityPage({ state, city, onNavigate }: CityPageProps) {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => onNavigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => onNavigate(`/${state}/electricity-providers`)} className="hover:text-blue-600">
+            <button onClick={() => navigate(`/${state}/electricity-providers`)} className="hover:text-blue-600">
               {stateData.name}
             </button>
             <span className="mx-2">/</span>
@@ -269,7 +283,7 @@ export function CityPage({ state, city, onNavigate }: CityPageProps) {
               Electricity Providers in {cityData.name}
             </h2>
             <button
-              onClick={() => onNavigate(`/compare/providers`)}
+              onClick={() => navigate(`/compare/providers`)}
               className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
             >
               Compare All
@@ -299,13 +313,13 @@ export function CityPage({ state, city, onNavigate }: CityPageProps) {
                   
                   <div className="space-y-2">
                     <button
-                      onClick={() => onNavigate(`/providers/${provider.slug}`)}
+                      onClick={() => navigate(`/providers/${provider.slug}`)}
                       className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
                     >
                       View Details
                     </button>
                     <button
-                      onClick={() => onNavigate(`/${state}/${city}/electricity-providers`)}
+                      onClick={() => navigate(`/${state}/${city}/electricity-providers`)}
                       className="w-full border border-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
                     >
                       See Plans & Rates

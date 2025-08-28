@@ -2,14 +2,28 @@ import React, { useState } from 'react';
 import { mockProviders, mockStates } from '../../data/mockData';
 import { Star, TrendingDown, Calendar, Leaf, DollarSign, Users, Shield, Phone, CheckCircle, X } from 'lucide-react';
 
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
+}
+
 interface ProviderComparisonPageProps {
   providerA: string;
   providerB: string;
   state?: string;
-  onNavigate: (path: string) => void;
 }
 
-export function ProviderComparisonPage({ providerA, providerB, state, onNavigate }: ProviderComparisonPageProps) {
+export function ProviderComparisonPage({ providerA, providerB, state }: ProviderComparisonPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [selectedUsage, setSelectedUsage] = useState('1000');
   const [comparisonMetric, setComparisonMetric] = useState<'rate' | 'total-cost' | 'features'>('rate');
 
@@ -23,7 +37,7 @@ export function ProviderComparisonPage({ providerA, providerB, state, onNavigate
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Providers Not Found</h1>
           <button
-            onClick={() => onNavigate('/compare/providers')}
+            onClick={() => navigate('/compare/providers')}
             className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
           >
             Compare Other Providers
@@ -86,9 +100,9 @@ export function ProviderComparisonPage({ providerA, providerB, state, onNavigate
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => onNavigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => onNavigate('/compare/providers')} className="hover:text-blue-600">Compare Providers</button>
+            <button onClick={() => navigate('/compare/providers')} className="hover:text-blue-600">Compare Providers</button>
             <span className="mx-2">/</span>
             <span>{provider1.name} vs {provider2.name}</span>
           </nav>
@@ -144,7 +158,7 @@ export function ProviderComparisonPage({ providerA, providerB, state, onNavigate
               </div>
 
               <button
-                onClick={() => onNavigate(`/providers/${provider1.slug}`)}
+                onClick={() => navigate(`/providers/${provider1.slug}`)}
                 className="w-full mt-4 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors"
               >
                 View {provider1.name} Details
@@ -180,7 +194,7 @@ export function ProviderComparisonPage({ providerA, providerB, state, onNavigate
               </div>
 
               <button
-                onClick={() => onNavigate(`/providers/${provider2.slug}`)}
+                onClick={() => navigate(`/providers/${provider2.slug}`)}
                 className="w-full mt-4 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors"
               >
                 View {provider2.name} Details
@@ -364,13 +378,13 @@ export function ProviderComparisonPage({ providerA, providerB, state, onNavigate
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
-              onClick={() => onNavigate(`/providers/${provider1Cost < provider2Cost ? provider1.slug : provider2.slug}`)}
+              onClick={() => navigate(`/providers/${provider1Cost < provider2Cost ? provider1.slug : provider2.slug}`)}
               className="bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors font-medium"
             >
               Choose {provider1Cost < provider2Cost ? provider1.name : provider2.name}
             </button>
             <button
-              onClick={() => onNavigate('/compare/providers')}
+              onClick={() => navigate('/compare/providers')}
               className="border border-blue-300 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
             >
               Compare Other Providers

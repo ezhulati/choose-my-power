@@ -7,15 +7,27 @@ import {
   Leaf, DollarSign, Calendar, Clock, Battery, Phone, Globe
 } from 'lucide-react';
 
-interface ComparePageProps {
-  onNavigate: (path: string) => void;
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
 }
 
-export function ComparePage({ onNavigate }: ComparePageProps) {
+export function ComparePage() {
   const [selectedComparison, setSelectedComparison] = useState<'providers' | 'plans' | 'rates' | null>(null);
 
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
+
   const handleZipSearch = (zipCode: string) => {
-    onNavigate(`/texas/houston/electricity-providers`);
+    navigate(`/texas/houston/electricity-providers`);
   };
 
   const comparisonTypes = [
@@ -285,7 +297,7 @@ export function ComparePage({ onNavigate }: ComparePageProps) {
 
                   {/* CTA */}
                   <button
-                    onClick={() => onNavigate(`/compare/${type.id}`)}
+                    onClick={() => navigate(`/compare/${type.id}`)}
                     className={`w-full bg-${type.color}-600 text-white py-3 rounded-lg hover:bg-${type.color}-700 transition-colors font-medium flex items-center justify-center`}
                   >
                     Start Comparing {type.id === 'providers' ? 'Companies' : type.id === 'plans' ? 'Plans' : 'Rates'}
@@ -348,19 +360,19 @@ export function ComparePage({ onNavigate }: ComparePageProps) {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
-                onClick={() => onNavigate('/compare/providers')}
+                onClick={() => navigate('/compare/providers')}
                 className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
               >
                 Start with Companies
               </button>
               <button
-                onClick={() => onNavigate('/compare/plans')}
+                onClick={() => navigate('/compare/plans')}
                 className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors"
               >
                 Compare Plans
               </button>
               <button
-                onClick={() => onNavigate('/compare/rates')}
+                onClick={() => navigate('/compare/rates')}
                 className="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition-colors"
               >
                 Analyze Rates
@@ -434,7 +446,7 @@ export function ComparePage({ onNavigate }: ComparePageProps) {
                 If you want to choose a reliable company first, then look at their plans.
               </p>
               <button
-                onClick={() => onNavigate('/compare/providers')}
+                onClick={() => navigate('/compare/providers')}
                 className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
               >
                 Compare Companies
@@ -450,7 +462,7 @@ export function ComparePage({ onNavigate }: ComparePageProps) {
                 If you know you want green energy, fixed rates, or specific features.
               </p>
               <button
-                onClick={() => onNavigate('/compare/plans')}
+                onClick={() => navigate('/compare/plans')}
                 className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium"
               >
                 Compare Plans
@@ -466,7 +478,7 @@ export function ComparePage({ onNavigate }: ComparePageProps) {
                 If your main priority is finding the absolute lowest cost for your usage.
               </p>
               <button
-                onClick={() => onNavigate('/compare/rates')}
+                onClick={() => navigate('/compare/rates')}
                 className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors text-sm font-medium"
               >
                 Compare Rates

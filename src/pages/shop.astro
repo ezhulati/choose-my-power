@@ -7,5 +7,12 @@ const description = "Shop electricity plans by what matters most to you: lowest 
 ---
 
 <Layout title={title} description={description}>
-  <ShopPage client:load onNavigate={(path) => window.location.href = path} />
+  <ShopPage client:load />
+  
+  <script>
+    // Client-side navigation function for React components
+    window.navigateToPath = function(path) {
+      window.location.href = path;
+    };
+  </script>
 </Layout>

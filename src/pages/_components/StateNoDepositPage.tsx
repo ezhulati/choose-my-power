@@ -4,12 +4,26 @@ import { ProviderCard } from '../../components/ProviderCard';
 import { mockProviders, mockStates } from '../../data/mockData';
 import { Shield, CreditCard, Clock, CheckCircle, AlertTriangle, DollarSign } from 'lucide-react';
 
-interface StateNoDepositPageProps {
-  state: string;
-  onNavigate: (path: string) => void;
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
 }
 
-export function StateNoDepositPage({ state, onNavigate }: StateNoDepositPageProps) {
+interface StateNoDepositPageProps {
+  state: string;
+}
+
+export function StateNoDepositPage({ state }: StateNoDepositPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [creditScore, setCreditScore] = useState<'excellent' | 'good' | 'fair' | 'poor'>('good');
 
   const stateData = mockStates.find(s => s.slug === state);
@@ -20,8 +34,9 @@ export function StateNoDepositPage({ state, onNavigate }: StateNoDepositPageProp
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">State Not Found</h1>
           <button
-            onClick={() => onNavigate('/')}
+            onClick={() => navigate('/')}
             className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+            aria-label="Return to homepage"
           >
             Return Home
           </button>
@@ -45,7 +60,7 @@ export function StateNoDepositPage({ state, onNavigate }: StateNoDepositPageProp
   const handleZipSearch = (zipCode: string) => {
     const city = stateData.topCities.find(c => c.zipCodes.includes(zipCode));
     if (city) {
-      onNavigate(`/${state}/${city.slug}/no-deposit-electricity`);
+      navigate(`/${state}/${city.slug}/no-deposit-electricity`);
     }
   };
 
@@ -109,9 +124,9 @@ export function StateNoDepositPage({ state, onNavigate }: StateNoDepositPageProp
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => onNavigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => onNavigate(`/${state}/electricity-providers`)} className="hover:text-blue-600">
+            <button onClick={() => navigate(`/${state}/electricity-providers`)} className="hover:text-blue-600">
               {stateData.name}
             </button>
             <span className="mx-2">/</span>
@@ -269,13 +284,13 @@ export function StateNoDepositPage({ state, onNavigate }: StateNoDepositPageProp
 
                 <div className="space-y-2">
                   <button
-                    onClick={() => onNavigate(`/providers/${provider.slug}`)}
+                    onClick={() => navigate(`/providers/${provider.slug}`)}
                     className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
                   >
                     View Provider Details
                   </button>
                   <button
-                    onClick={() => onNavigate(`/${state}/electricity-providers`)}
+                    onClick={() => navigate(`/${state}/electricity-providers`)}
                     className="w-full border border-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
                   >
                     See Plans & Rates
@@ -325,7 +340,7 @@ export function StateNoDepositPage({ state, onNavigate }: StateNoDepositPageProp
                 </div>
                 
                 <button
-                  onClick={() => onNavigate(alt.link)}
+                  onClick={() => navigate(alt.link)}
                   className="w-full bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium"
                 >
                   Learn More

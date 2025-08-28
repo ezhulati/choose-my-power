@@ -7,5 +7,12 @@ const description = "ChooseMyPower.org privacy policy. Learn how we protect your
 ---
 
 <Layout title={title} description={description}>
-  <PrivacyPolicyPage client:load onNavigate={(path) => window.location.href = path} />
+  <PrivacyPolicyPage client:load />
+
+  <script>
+    // Client-side navigation function for React components
+    window.navigateToPath = function(path) {
+      window.location.href = path;
+    };
+  </script>
 </Layout>

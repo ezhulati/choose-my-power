@@ -1,11 +1,25 @@
 import React, { useState } from 'react';
 import { HelpCircle, ChevronDown, ChevronRight } from 'lucide-react';
 
-interface ResourcesFAQsPageProps {
-  onNavigate: (path: string) => void;
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
 }
 
-export function ResourcesFAQsPage({ onNavigate }: ResourcesFAQsPageProps) {
+interface ResourcesFAQsPageProps {
+}
+
+export function ResourcesFAQsPage({}: ResourcesFAQsPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [openFAQ, setOpenFAQ] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'choosing' | 'switching' | 'billing' | 'plans'>('all');
 
@@ -94,9 +108,9 @@ export function ResourcesFAQsPage({ onNavigate }: ResourcesFAQsPageProps) {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => onNavigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => onNavigate('/resources')} className="hover:text-blue-600">Resources</button>
+            <button onClick={() => navigate('/resources')} className="hover:text-blue-600">Resources</button>
             <span className="mx-2">/</span>
             <span>FAQs</span>
           </nav>
@@ -174,13 +188,13 @@ export function ResourcesFAQsPage({ onNavigate }: ResourcesFAQsPageProps) {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
-              onClick={() => onNavigate('/resources/support/contact')}
+              onClick={() => navigate('/resources/support/contact')}
               className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
             >
               Contact Support
             </button>
             <button
-              onClick={() => onNavigate('/resources/guides')}
+              onClick={() => navigate('/resources/guides')}
               className="border border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors"
             >
               Browse Guides

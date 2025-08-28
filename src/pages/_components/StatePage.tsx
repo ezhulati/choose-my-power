@@ -4,12 +4,26 @@ import { ProviderCard } from '../../components/ProviderCard';
 import { mockProviders, mockStates } from '../../data/mockData';
 import { MapPin, TrendingDown, Users, Zap, Filter } from 'lucide-react';
 
-interface StatePageProps {
-  state: string;
-  onNavigate: (path: string) => void;
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
 }
 
-export function StatePage({ state, onNavigate }: StatePageProps) {
+interface StatePageProps {
+  state: string;
+}
+
+export function StatePage({ state }: StatePageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [sortBy, setSortBy] = useState<'rating' | 'price' | 'popularity'>('rating');
   const [filterType, setFilterType] = useState<'all' | 'cheapest' | 'green' | 'no-deposit'>('all');
 
@@ -22,7 +36,7 @@ export function StatePage({ state, onNavigate }: StatePageProps) {
           <h1 className="text-2xl font-bold text-gray-900 mb-4">State Not Found</h1>
           <p className="text-gray-600 mb-8">The state you're looking for doesn't exist in our database.</p>
           <button
-            onClick={() => onNavigate('/')}
+            onClick={() => navigate('/')}
             className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
           >
             Return Home
@@ -44,7 +58,7 @@ export function StatePage({ state, onNavigate }: StatePageProps) {
     };
     
     const route = cityRoutes[zipCode] || `/${state}/electricity-providers`;
-    onNavigate(route);
+    navigate(route);
   };
 
   return (
@@ -55,7 +69,7 @@ export function StatePage({ state, onNavigate }: StatePageProps) {
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
             <div className="mb-6 lg:mb-0">
               <nav className="text-sm text-gray-500 mb-2">
-                <button onClick={() => onNavigate('/')} className="hover:text-blue-600">Home</button>
+                <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
                 <span className="mx-2">/</span>
                 <span>{stateData.name}</span>
               </nav>
@@ -139,7 +153,7 @@ export function StatePage({ state, onNavigate }: StatePageProps) {
                 {stateData.topCities.map((city) => (
                   <button
                     key={city.id}
-                    onClick={() => onNavigate(`/${stateData.slug}/${city.slug}/electricity-providers`)}
+                    onClick={() => navigate(`/${stateData.slug}/${city.slug}/electricity-providers`)}
                     className="block w-full text-left p-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600 rounded-md transition-colors"
                   >
                     <div className="flex items-center">
@@ -172,8 +186,8 @@ export function StatePage({ state, onNavigate }: StatePageProps) {
                 <ProviderCard
                   key={provider.id}
                   provider={provider}
-                  onViewDetails={() => onNavigate(`/providers/${provider.slug}`)}
-                  onCompare={() => onNavigate(`/compare/providers`)}
+                  onViewDetails={() => navigate(`/providers/${provider.slug}`)}
+                  onCompare={() => navigate(`/compare/providers`)}
                   showPlans
                 />
               ))}

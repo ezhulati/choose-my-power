@@ -4,12 +4,26 @@ import { ProviderCard } from '../../components/ProviderCard';
 import { mockProviders, mockStates } from '../../data/mockData';
 import { MapPin, TrendingDown, Users, Zap, Calculator, Star, Award, Clock, Filter, Phone, Globe, Building, Calendar, Shield, Leaf } from 'lucide-react';
 
-interface TexasCityPageProps {
-  city: string;
-  onNavigate: (path: string) => void;
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
 }
 
-export function TexasCityPage({ city, onNavigate }: TexasCityPageProps) {
+interface TexasCityPageProps {
+  city: string;
+}
+
+export function TexasCityPage({ city }: TexasCityPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [sortBy, setSortBy] = useState<'rating' | 'price' | 'popularity'>('rating');
   const [showCalculator, setShowCalculator] = useState(false);
   const [monthlyUsage, setMonthlyUsage] = useState('1000');
@@ -26,7 +40,7 @@ export function TexasCityPage({ city, onNavigate }: TexasCityPageProps) {
             We're working to add more Texas cities. Meanwhile, explore all Texas providers and rates.
           </p>
           <button
-            onClick={() => onNavigate('/texas/electricity-providers')}
+            onClick={() => navigate('/texas/electricity-providers')}
             className="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors"
           >
             View All Texas Providers
@@ -41,7 +55,7 @@ export function TexasCityPage({ city, onNavigate }: TexasCityPageProps) {
   );
 
   const handleZipSearch = (zipCode: string) => {
-    onNavigate(`/texas/${city}/${zipCode}/electricity-providers`);
+    navigate(`/texas/${city}/${zipCode}/electricity-providers`);
   };
 
   const lowestRate = Math.min(...cityProviders.flatMap(p => p.plans.map(plan => plan.rate)));
@@ -67,9 +81,9 @@ export function TexasCityPage({ city, onNavigate }: TexasCityPageProps) {
       <div className="bg-gradient-to-br from-red-600 via-red-700 to-red-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <nav className="text-sm text-red-200 mb-6">
-            <button onClick={() => onNavigate('/')} className="hover:text-white">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-white">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => onNavigate('/texas')} className="hover:text-white">Texas</button>
+            <button onClick={() => navigate('/texas')} className="hover:text-white">Texas</button>
             <span className="mx-2">/</span>
             <span>{cityData.name}</span>
           </nav>
@@ -144,7 +158,7 @@ export function TexasCityPage({ city, onNavigate }: TexasCityPageProps) {
             {cityQuickLinks.map((link) => (
               <button
                 key={link.name}
-                onClick={() => onNavigate(link.href)}
+                onClick={() => navigate(link.href)}
                 className="flex flex-col items-center p-3 bg-gray-50 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors group"
               >
                 <link.icon className="h-5 w-5 mb-2 text-gray-400 group-hover:text-red-600" />
@@ -163,7 +177,7 @@ export function TexasCityPage({ city, onNavigate }: TexasCityPageProps) {
               {cityProviders.length} Electricity Companies in {cityData.name}
             </h2>
             <button
-              onClick={() => onNavigate(`/compare/providers?city=${city}&state=texas`)}
+              onClick={() => navigate(`/compare/providers?city=${city}&state=texas`)}
               className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors"
             >
               Compare All Providers
@@ -175,8 +189,8 @@ export function TexasCityPage({ city, onNavigate }: TexasCityPageProps) {
               <ProviderCard
                 key={provider.id}
                 provider={provider}
-                onViewDetails={() => onNavigate(`/providers/${provider.slug}`)}
-                onCompare={() => onNavigate(`/compare/providers`)}
+                onViewDetails={() => navigate(`/providers/${provider.slug}`)}
+                onCompare={() => navigate(`/compare/providers`)}
                 showPlans
               />
             ))}
@@ -216,7 +230,7 @@ export function TexasCityPage({ city, onNavigate }: TexasCityPageProps) {
 
               <div className="pt-4">
                 <button
-                  onClick={() => onNavigate(`/texas/${city}/electricity-providers`)}
+                  onClick={() => navigate(`/texas/${city}/electricity-providers`)}
                   className="text-red-600 hover:text-red-800 font-medium"
                 >
                   View all {cityData.name} providers →
@@ -266,7 +280,7 @@ export function TexasCityPage({ city, onNavigate }: TexasCityPageProps) {
 
             <div className="pt-6">
               <button
-                onClick={() => onNavigate(`/texas/${city}/switch-provider`)}
+                onClick={() => navigate(`/texas/${city}/switch-provider`)}
                 className="w-full bg-red-600 text-white py-3 rounded-lg hover:bg-red-700 transition-colors font-medium"
               >
                 Complete {cityData.name} Switching Guide
@@ -291,7 +305,7 @@ export function TexasCityPage({ city, onNavigate }: TexasCityPageProps) {
                 Find the lowest electricity rates available in {cityData.name}. Perfect for budget-conscious customers.
               </p>
               <button
-                onClick={() => onNavigate(`/cheapest-electricity-${city}`)}
+                onClick={() => navigate(`/cheapest-electricity-${city}`)}
                 className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium"
               >
                 Find Cheapest Rates
@@ -307,7 +321,7 @@ export function TexasCityPage({ city, onNavigate }: TexasCityPageProps) {
                 100% renewable electricity plans powered by Texas wind and solar energy.
               </p>
               <button
-                onClick={() => onNavigate(`/shop/green-energy?city=${city}`)}
+                onClick={() => navigate(`/shop/green-energy?city=${city}`)}
                 className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium"
               >
                 View Green Plans
@@ -323,7 +337,7 @@ export function TexasCityPage({ city, onNavigate }: TexasCityPageProps) {
                 Start electricity service in {cityData.name} without paying a security deposit.
               </p>
               <button
-                onClick={() => onNavigate(`/texas/${city}/no-deposit-electricity`)}
+                onClick={() => navigate(`/texas/${city}/no-deposit-electricity`)}
                 className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
               >
                 No Deposit Options
@@ -342,7 +356,7 @@ export function TexasCityPage({ city, onNavigate }: TexasCityPageProps) {
             {neighboringCities.map((nearbyCity) => (
               <button
                 key={nearbyCity.id}
-                onClick={() => onNavigate(`/texas/${nearbyCity.slug}`)}
+                onClick={() => navigate(`/texas/${nearbyCity.slug}`)}
                 className="text-left p-4 border border-gray-200 rounded-lg hover:bg-gray-50 hover:border-red-300 transition-colors"
               >
                 <div className="flex items-center justify-between mb-2">
@@ -361,7 +375,7 @@ export function TexasCityPage({ city, onNavigate }: TexasCityPageProps) {
 
           <div className="text-center mt-6">
             <button
-              onClick={() => onNavigate('/texas')}
+              onClick={() => navigate('/texas')}
               className="text-red-600 hover:text-red-800 font-medium"
             >
               View All Texas Cities →

@@ -3,22 +3,36 @@ import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { mockProviders, mockStates } from '../../data/mockData';
 import { Calculator, TrendingDown, BarChart, MapPin, Zap, DollarSign, Calendar, Leaf, CheckCircle } from 'lucide-react';
 
-interface RatesPageProps {
-  onNavigate: (path: string) => void;
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
 }
 
-export function RatesPage({ onNavigate }: RatesPageProps) {
+interface RatesPageProps {
+}
+
+export function RatesPage({}: RatesPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [selectedState, setSelectedState] = useState('texas');
   const [monthlyUsage, setMonthlyUsage] = useState('1000');
 
   const handleZipSearch = (zipCode: string) => {
     // Enhanced ZIP routing
     if (zipCode.startsWith('77') || zipCode.startsWith('75') || zipCode.startsWith('78')) {
-      onNavigate('/texas/houston/electricity-rates');
+      navigate('/texas/houston/electricity-rates');
     } else if (zipCode.startsWith('19') || zipCode.startsWith('15')) {
-      onNavigate('/pennsylvania/philadelphia/electricity-rates');
+      navigate('/pennsylvania/philadelphia/electricity-rates');
     } else {
-      onNavigate('/texas/houston/electricity-rates');
+      navigate('/texas/houston/electricity-rates');
     }
   };
 
@@ -148,7 +162,7 @@ export function RatesPage({ onNavigate }: RatesPageProps) {
                   <h3 className="text-xl font-semibold text-gray-900 mb-4">{tool.title}</h3>
                   <p className="text-gray-600 mb-6">{tool.description}</p>
                   <button
-                    onClick={() => onNavigate(tool.href)}
+                    onClick={() => navigate(tool.href)}
                     className={`bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors font-medium w-full`}
                   >
                     Open Tool
@@ -201,7 +215,7 @@ export function RatesPage({ onNavigate }: RatesPageProps) {
 
           <div className="text-center">
             <button
-              onClick={() => onNavigate(`/${selectedState}/electricity-rates`)}
+              onClick={() => navigate(`/${selectedState}/electricity-rates`)}
               className="bg-red-600 text-white px-8 py-3 rounded-lg hover:bg-red-700 transition-colors font-medium"
             >
               View All {stateData?.name} Rates
@@ -288,7 +302,7 @@ export function RatesPage({ onNavigate }: RatesPageProps) {
 
           <div className="text-center mt-6">
             <button
-              onClick={() => onNavigate('/rates/calculator')}
+              onClick={() => navigate('/rates/calculator')}
               className="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors font-medium"
             >
               Use Advanced Calculator
@@ -311,7 +325,7 @@ export function RatesPage({ onNavigate }: RatesPageProps) {
               {mockStates.map((state) => (
                 <button
                   key={state.id}
-                  onClick={() => onNavigate(`/${state.slug}/electricity-rates`)}
+                  onClick={() => navigate(`/${state.slug}/electricity-rates`)}
                   className="w-full text-left p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
                 >
                   <div className="flex justify-between items-center">
@@ -338,7 +352,7 @@ export function RatesPage({ onNavigate }: RatesPageProps) {
             
             <div className="space-y-4">
               <button
-                onClick={() => onNavigate('/resources/guides/understanding-electricity-rates')}
+                onClick={() => navigate('/resources/guides/understanding-electricity-rates')}
                 className="w-full p-4 text-left border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
               >
                 <div className="font-medium text-gray-900 mb-1">Understanding Your Bill</div>
@@ -346,7 +360,7 @@ export function RatesPage({ onNavigate }: RatesPageProps) {
               </button>
               
               <button
-                onClick={() => onNavigate('/resources/guides/fixed-vs-variable')}
+                onClick={() => navigate('/resources/guides/fixed-vs-variable')}
                 className="w-full p-4 text-left border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
               >
                 <div className="font-medium text-gray-900 mb-1">Fixed vs Variable Rates</div>
@@ -354,7 +368,7 @@ export function RatesPage({ onNavigate }: RatesPageProps) {
               </button>
               
               <button
-                onClick={() => onNavigate('/resources/guides/rate-comparison')}
+                onClick={() => navigate('/resources/guides/rate-comparison')}
                 className="w-full p-4 text-left border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
               >
                 <div className="font-medium text-gray-900 mb-1">How to Compare Rates</div>
@@ -362,7 +376,7 @@ export function RatesPage({ onNavigate }: RatesPageProps) {
               </button>
               
               <button
-                onClick={() => onNavigate('/resources/faqs')}
+                onClick={() => navigate('/resources/faqs')}
                 className="w-full p-4 text-left border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
               >
                 <div className="font-medium text-gray-900 mb-1">Rate FAQs</div>

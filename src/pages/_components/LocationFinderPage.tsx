@@ -3,11 +3,25 @@ import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { mockStates, mockProviders } from '../../data/mockData';
 import { MapPin, Search, TrendingDown, Users, Zap, Building, ArrowRight, Star, Globe, Phone, CheckCircle, AlertCircle, Calculator, Shield, Leaf, Award, Clock, Eye, Target, Home } from 'lucide-react';
 
-interface LocationFinderPageProps {
-  onNavigate: (path: string) => void;
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
 }
 
-export function LocationFinderPage({ onNavigate }: LocationFinderPageProps) {
+interface LocationFinderPageProps {
+}
+
+export function LocationFinderPage({}: LocationFinderPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedRegion, setSelectedRegion] = useState<'all' | 'texas' | 'pennsylvania'>('all');
   const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
@@ -52,15 +66,15 @@ export function LocationFinderPage({ onNavigate }: LocationFinderPageProps) {
 
     const location = zipToLocation[zipCode];
     if (location) {
-      onNavigate(`/${location.state}/${location.city}/electricity-providers`);
+      navigate(`/${location.state}/${location.city}/electricity-providers`);
     } else {
       // Determine state by ZIP code pattern for fallback
       if (zipCode.startsWith('7')) {
-        onNavigate('/texas/electricity-providers');
+        navigate('/texas/electricity-providers');
       } else if (zipCode.startsWith('1')) {
-        onNavigate('/pennsylvania/electricity-providers');
+        navigate('/pennsylvania/electricity-providers');
       } else {
-        onNavigate('/texas/electricity-providers'); // Default fallback
+        navigate('/texas/electricity-providers'); // Default fallback
       }
     }
   };
@@ -418,7 +432,7 @@ export function LocationFinderPage({ onNavigate }: LocationFinderPageProps) {
                       {state.topCities.slice(0, 9).map((city) => (
                         <button
                           key={city.id}
-                          onClick={() => onNavigate(`/${state.slug}/${city.slug}/electricity-providers`)}
+                          onClick={() => navigate(`/${state.slug}/${city.slug}/electricity-providers`)}
                           className="text-left p-2 text-sm text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-md transition-colors border border-gray-100"
                         >
                           <div className="font-medium">{city.name}</div>
@@ -428,7 +442,7 @@ export function LocationFinderPage({ onNavigate }: LocationFinderPageProps) {
                     </div>
                     {state.topCities.length > 9 && (
                       <button
-                        onClick={() => onNavigate(`/${state.slug}`)}
+                        onClick={() => navigate(`/${state.slug}`)}
                         className="text-sm text-gray-500 hover:text-blue-600 mt-2 font-medium"
                       >
                         +{state.topCities.length - 9} more cities →
@@ -438,13 +452,13 @@ export function LocationFinderPage({ onNavigate }: LocationFinderPageProps) {
 
                   <div className="grid md:grid-cols-2 gap-3">
                     <button
-                      onClick={() => onNavigate(`/${state.slug}/electricity-providers`)}
+                      onClick={() => navigate(`/${state.slug}/electricity-providers`)}
                       className="bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
                     >
                       Browse {state.name} Providers
                     </button>
                     <button
-                      onClick={() => onNavigate(`/${state.slug}/electricity-rates`)}
+                      onClick={() => navigate(`/${state.slug}/electricity-rates`)}
                       className="border border-gray-300 text-gray-700 py-3 rounded-lg hover:bg-gray-50 transition-colors font-medium"
                     >
                       View {state.name} Rates
@@ -561,7 +575,7 @@ export function LocationFinderPage({ onNavigate }: LocationFinderPageProps) {
             </div>
 
             <button
-              onClick={() => onNavigate('/resources/guides/understanding-deregulation')}
+              onClick={() => navigate('/resources/guides/understanding-deregulation')}
               className="mt-6 text-blue-600 hover:text-blue-800 font-medium"
             >
               Learn about electricity deregulation →
@@ -666,7 +680,7 @@ export function LocationFinderPage({ onNavigate }: LocationFinderPageProps) {
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Cheapest Rates</h3>
             <p className="text-gray-600 text-sm mb-4">Find the lowest electricity rates in your area</p>
             <button
-              onClick={() => onNavigate('/shop/cheapest-electricity')}
+              onClick={() => navigate('/shop/cheapest-electricity')}
               className="text-green-600 hover:text-green-800 font-medium text-sm"
             >
               Find Cheapest Rates →
@@ -680,7 +694,7 @@ export function LocationFinderPage({ onNavigate }: LocationFinderPageProps) {
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Rate Calculator</h3>
             <p className="text-gray-600 text-sm mb-4">Calculate exact costs based on your usage</p>
             <button
-              onClick={() => onNavigate('/rates/calculator')}
+              onClick={() => navigate('/rates/calculator')}
               className="text-blue-600 hover:text-blue-800 font-medium text-sm"
             >
               Calculate Costs →
@@ -694,7 +708,7 @@ export function LocationFinderPage({ onNavigate }: LocationFinderPageProps) {
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Compare Providers</h3>
             <p className="text-gray-600 text-sm mb-4">Side-by-side provider comparison</p>
             <button
-              onClick={() => onNavigate('/compare/providers')}
+              onClick={() => navigate('/compare/providers')}
               className="text-purple-600 hover:text-purple-800 font-medium text-sm"
             >
               Compare Providers →
@@ -708,7 +722,7 @@ export function LocationFinderPage({ onNavigate }: LocationFinderPageProps) {
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Green Energy</h3>
             <p className="text-gray-600 text-sm mb-4">100% renewable electricity options</p>
             <button
-              onClick={() => onNavigate('/shop/green-energy')}
+              onClick={() => navigate('/shop/green-energy')}
               className="text-orange-600 hover:text-orange-800 font-medium text-sm"
             >
               Go Green →

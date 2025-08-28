@@ -23,42 +23,107 @@ import { determineCanonicalUrl } from '../../lib/seo/canonical-scale';
 import { generateFacetedMeta } from '../../lib/seo/meta-generator-scale';
 import { generateFacetedSchema } from '../../lib/seo/schema-scale';
 import { generateFacetedStaticPaths, getISRConfig } from '../../lib/faceted/static-generation-strategy';
+import { generateEnterpriseRoutes } from '../../lib/routing/enterprise-routing-system';
+import { performanceOptimizationSystem } from '../../lib/routing/performance-optimization-system';
+import { intelligentISRSystem } from '../../lib/routing/intelligent-isr-system';
+import { cdnEdgeOptimization } from '../../lib/routing/cdn-edge-optimization';
 import { getHeroImage, extractContextFromPath } from '../../lib/images/hero-image-mapper';
 import { tdspMapping } from '../../config/tdsp-mapping';
 import type { Plan } from '../../types/facets';
 
-// Static generation for high-value pages with ISR support
+// Enterprise-grade static generation with intelligent routing and ISR
 export const getStaticPaths: GetStaticPaths = async () => {
-  console.log('🔄 Generating static paths for faceted navigation...');
+  const startTime = Date.now();
+  console.log('🚀 Enterprise Routing System: Generating static paths for production scale...');
   
   try {
+    // Use enterprise routing system for production
+    if (process.env.NODE_ENV === 'production') {
+      console.log('📊 Using Enterprise Routing System for production deployment...');
+      const enterprisePaths = await generateEnterpriseRoutes();
+      
+      const duration = Date.now() - startTime;
+      console.log(`✅ Enterprise routing generated ${enterprisePaths.paths.length} paths in ${duration}ms`);
+      console.log(`   ISR: ${enterprisePaths.fallback ? 'enabled' : 'disabled'}`);
+      console.log(`   Fallback Mode: ${enterprisePaths.fallback}`);
+      
+      return enterprisePaths;
+    }
+    
+    // Use standard generation for development
+    const isDev = process.env.NODE_ENV === 'development';
+    const maxPaths = isDev ? 50 : 2000; // Limit dev builds for speed
+    
     const paths = await generateFacetedStaticPaths();
     const isrConfig = getISRConfig();
     
-    console.log(`✅ Generated ${paths.length} static paths with ISR: ${isrConfig.revalidate ? 'enabled' : 'disabled'}`);
+    // Apply smart path limiting for performance
+    const limitedPaths = paths.slice(0, maxPaths);
     
-    return paths;
+    const duration = Date.now() - startTime;
+    console.log(`✅ Generated ${limitedPaths.length}/${paths.length} static paths in ${duration}ms`);
+    console.log(`   ISR: ${isrConfig.revalidate ? 'enabled' : 'disabled'}`);
+    console.log(`   Mode: ${isDev ? 'Development (limited)' : 'Standard (production)'}`);
+    
+    return limitedPaths;
   } catch (error) {
     console.error('❌ Static path generation failed:', error);
     
-    // Return minimal fallback paths
-    return [
+    // Enhanced fallback with error context
+    const fallbackPaths = [
       { params: { path: 'dallas-tx' } },
       { params: { path: 'houston-tx' } },
-      { params: { path: 'austin-tx' } }
+      { params: { path: 'austin-tx' } },
+      { params: { path: 'fort-worth-tx' } },
+      { params: { path: 'san-antonio-tx' } }
     ];
+    
+    console.log(`⚠️  Using fallback paths (${fallbackPaths.length} cities)`);
+    return fallbackPaths;
   }
 };
 
 // Get dynamic parameters from URL
 const { path } = Astro.params;
 
-// Use the enhanced faceted router for comprehensive validation and data fetching
+// Enterprise performance tracking
+const requestId = performanceOptimizationSystem.recordRequestStart(path || '');
+const pageStartTime = Date.now();
+
+// Check if ISR regeneration is needed
+const shouldCheckISR = process.env.NODE_ENV === 'production' && path;
+if (shouldCheckISR) {
+  const isrCheck = await intelligentISRSystem.shouldRegenerate(path, pageStartTime - 3600000); // Check if page is over 1 hour old
+  if (isrCheck.shouldRegenerate) {
+    console.log(`🔄 ISR: Queuing regeneration for ${path} (reason: ${isrCheck.reason})`);
+    intelligentISRSystem.queueRegeneration(path, isrCheck.reason, isrCheck.priority);
+  }
+}
+
+// Use the enhanced faceted router with performance optimization
+const startValidation = Date.now();
 const routeResult = await validateAndFetchPlans(path || '');
+const validationTime = Date.now() - startValidation;
+
+// Performance monitoring for slow routes
+if (validationTime > 1000) {
+  console.warn(`🐌 Slow route validation: ${path} took ${validationTime}ms`);
+}
+
+// Track route access for ISR optimization
+if (process.env.NODE_ENV === 'production' && path) {
+  intelligentISRSystem.trackRouteAccess(path, validationTime);
+}
 
 // Handle routing errors and redirects
 if (!routeResult.isValid || routeResult.redirectUrl) {
   const redirectUrl = routeResult.redirectUrl || '/404';
+  
+  // Log redirect for debugging
+  if (routeResult.redirectUrl) {
+    console.log(`↪️  Redirecting ${path} -> ${redirectUrl}`);
+  }
+  
   return Astro.redirect(redirectUrl);
 }
 
@@ -112,13 +177,30 @@ const schemas = generateFacetedSchema({
   lowestRate
 });
 
-// Performance monitoring
-const startTime = Date.now();
-const renderTime = Date.now() - startTime;
+// Enhanced performance monitoring for 881-city scale
+const renderStartTime = Date.now();
+const renderTime = Date.now() - renderStartTime;
+const totalTime = validationTime + renderTime;
 
-// Log slow pages for optimization
-if (renderTime > 2000) {
-  console.warn(`Slow page render: ${currentUrl} took ${renderTime}ms`);
+// Multi-tier performance logging
+if (totalTime > 3000) {
+  console.error(`🚨 Very slow page: ${currentUrl} - Total: ${totalTime}ms (Validation: ${validationTime}ms, Render: ${renderTime}ms)`);
+} else if (totalTime > 1500) {
+  console.warn(`⚠️  Slow page: ${currentUrl} - Total: ${totalTime}ms`);
+} else if (process.env.NODE_ENV === 'development') {
+  console.log(`⚡ Page rendered: ${currentUrl} in ${totalTime}ms`);
+}
+
+// Store performance metrics for monitoring
+if (typeof globalThis !== 'undefined') {
+  globalThis.routePerformance = {
+    path: currentUrl,
+    validationTime,
+    renderTime,
+    totalTime,
+    planCount: plans.length,
+    timestamp: Date.now()
+  };
 }
 
 // Build page title and description using router utilities
@@ -140,6 +222,21 @@ const heroImage = getHeroImage({
   location: citySlug,
   filters: filterSegments
 });
+
+// Generate CDN cache headers for optimal edge performance
+const routePriority = cityTier === 1 ? 'critical' : cityTier === 2 ? 'high' : 'medium';
+const cacheHeaders = cdnEdgeOptimization.generateCacheHeaders(currentUrl, routePriority);
+
+// Record successful request completion
+const totalRequestTime = Date.now() - pageStartTime;
+performanceOptimizationSystem.recordRequestComplete(requestId, totalRequestTime, !routeResult.error);
+
+// Set response headers for CDN optimization
+if (typeof Astro.response !== 'undefined') {
+  Object.entries(cacheHeaders).forEach(([key, value]) => {
+    Astro.response.headers.set(key, value);
+  });
+}
 
 ---
 

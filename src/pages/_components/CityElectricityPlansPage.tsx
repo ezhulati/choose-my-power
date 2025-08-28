@@ -3,13 +3,27 @@ import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { mockProviders, mockStates } from '../../data/mockData';
 import { Calendar, Zap, TrendingDown, Leaf, Shield, Filter } from 'lucide-react';
 
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
+}
+
 interface CityElectricityPlansPageProps {
   state: string;
   city: string;
-  onNavigate: (path: string) => void;
 }
 
-export function CityElectricityPlansPage({ state, city, onNavigate }: CityElectricityPlansPageProps) {
+export function CityElectricityPlansPage({ state, city }: CityElectricityPlansPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [planTypeFilter, setPlanTypeFilter] = useState<'all' | 'fixed' | 'variable' | 'indexed'>('all');
   const [termFilter, setTermFilter] = useState<'all' | '12' | '24' | '36'>('all');
   const [greenFilter, setGreenFilter] = useState<boolean>(false);
@@ -23,7 +37,7 @@ export function CityElectricityPlansPage({ state, city, onNavigate }: CityElectr
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">City Not Found</h1>
           <button
-            onClick={() => onNavigate(`/${state}/electricity-plans`)}
+            onClick={() => navigate(`/${state}/electricity-plans`)}
             className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
           >
             View {stateData?.name || 'State'} Plans
@@ -55,7 +69,7 @@ export function CityElectricityPlansPage({ state, city, onNavigate }: CityElectr
   });
 
   const handleZipSearch = (zipCode: string) => {
-    onNavigate(`/${state}/${city}/${zipCode}/electricity-plans`);
+    navigate(`/${state}/${city}/${zipCode}/electricity-plans`);
   };
 
   const planTypeStats = {
@@ -71,9 +85,9 @@ export function CityElectricityPlansPage({ state, city, onNavigate }: CityElectr
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => onNavigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => onNavigate(`/${state}/electricity-plans`)} className="hover:text-blue-600">
+            <button onClick={() => navigate(`/${state}/electricity-plans`)} className="hover:text-blue-600">
               {stateData.name}
             </button>
             <span className="mx-2">/</span>
@@ -217,7 +231,7 @@ export function CityElectricityPlansPage({ state, city, onNavigate }: CityElectr
                 {filteredPlans.length} Plans Available in {cityData.name}
               </h2>
               <button
-                onClick={() => onNavigate(`/compare/plans?city=${city}&state=${state}`)}
+                onClick={() => navigate(`/compare/plans?city=${city}&state=${state}`)}
                 className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
               >
                 Compare Selected Plans
@@ -238,7 +252,7 @@ export function CityElectricityPlansPage({ state, city, onNavigate }: CityElectr
                         <div>
                           <h3 className="text-lg font-semibold text-gray-900">{plan.name}</h3>
                           <button
-                            onClick={() => onNavigate(`/providers/${plan.providerSlug}`)}
+                            onClick={() => navigate(`/providers/${plan.providerSlug}`)}
                             className="text-blue-600 hover:text-blue-800 text-sm font-medium"
                           >
                             {plan.providerName}
@@ -299,13 +313,13 @@ export function CityElectricityPlansPage({ state, city, onNavigate }: CityElectr
                       
                       <div className="space-y-2">
                         <button
-                          onClick={() => onNavigate(`/${state}/${city}/electricity-providers`)}
+                          onClick={() => navigate(`/${state}/${city}/electricity-providers`)}
                           className="w-full md:w-auto bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
                         >
                           Get This Plan
                         </button>
                         <button
-                          onClick={() => onNavigate(`/compare/plans/${plan.id}`)}
+                          onClick={() => navigate(`/compare/plans/${plan.id}`)}
                           className="w-full md:w-auto border border-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
                         >
                           Compare Plan
@@ -345,7 +359,7 @@ export function CityElectricityPlansPage({ state, city, onNavigate }: CityElectr
                     selecting an electricity plan in {cityData.name}.
                   </p>
                   <button
-                    onClick={() => onNavigate(`/${state}/${city}/electricity-providers`)}
+                    onClick={() => navigate(`/${state}/${city}/electricity-providers`)}
                     className="text-blue-600 hover:text-blue-800 font-medium text-sm"
                   >
                     See all {cityData.name} providers →

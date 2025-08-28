@@ -30,6 +30,8 @@ const logoSrc = logo || '/src/assets/logos/fallback.svg';
     src={logoSrc}
     alt={`${provider} logo`}
     class={`${sizeClass} object-contain transition-all duration-200`}
+    width={size === 'sm' ? '24' : size === 'md' ? '32' : '48'}
+    height={size === 'sm' ? '24' : size === 'md' ? '32' : '48'}
     loading="lazy"
     onerror="this.onerror=null; this.src='/src/assets/logos/fallback.svg'; this.classList.add('fallback-logo');"
   />

@@ -4,15 +4,29 @@ import { ProviderCard } from '../../components/ProviderCard';
 import { mockProviders } from '../../data/mockData';
 import { Award, Star, TrendingDown, Users, Shield, Trophy, Medal, Crown, CheckCircle, Target } from 'lucide-react';
 
-interface Top5ProvidersPageProps {
-  onNavigate: (path: string) => void;
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
 }
 
-export function Top5ProvidersPage({ onNavigate }: Top5ProvidersPageProps) {
+interface Top5ProvidersPageProps {
+}
+
+export function Top5ProvidersPage({}: Top5ProvidersPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [selectedCategory, setSelectedCategory] = useState<'overall' | 'value' | 'service' | 'green'>('overall');
 
   const handleZipSearch = (zipCode: string) => {
-    onNavigate(`/texas/houston/electricity-providers`);
+    navigate(`/texas/houston/electricity-providers`);
   };
 
   // Create rankings based on different criteria
@@ -126,11 +140,11 @@ export function Top5ProvidersPage({ onNavigate }: Top5ProvidersPageProps) {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => onNavigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => onNavigate('/compare')} className="hover:text-blue-600">Compare</button>
+            <button onClick={() => navigate('/compare')} className="hover:text-blue-600">Compare</button>
             <span className="mx-2">/</span>
-            <button onClick={() => onNavigate('/compare/providers')} className="hover:text-blue-600">Providers</button>
+            <button onClick={() => navigate('/compare/providers')} className="hover:text-blue-600">Providers</button>
             <span className="mx-2">/</span>
             <span>Top 5</span>
           </nav>
@@ -291,13 +305,13 @@ export function Top5ProvidersPage({ onNavigate }: Top5ProvidersPageProps) {
                         {/* Action Buttons */}
                         <div className="text-right space-y-2">
                           <button
-                            onClick={() => onNavigate(`/providers/${provider.slug}`)}
+                            onClick={() => navigate(`/providers/${provider.slug}`)}
                             className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
                           >
                             View Details
                           </button>
                           <button
-                            onClick={() => onNavigate(`/compare/providers`)}
+                            onClick={() => navigate(`/compare/providers`)}
                             className="block border border-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
                           >
                             Compare
@@ -349,7 +363,7 @@ export function Top5ProvidersPage({ onNavigate }: Top5ProvidersPageProps) {
                 Rankings help narrow your choices, but the best provider depends on your specific needs and location.
               </p>
               <button
-                onClick={() => onNavigate('/resources/guides/choosing-a-provider')}
+                onClick={() => navigate('/resources/guides/choosing-a-provider')}
                 className="text-blue-600 hover:text-blue-800 font-medium text-sm"
               >
                 Read our choosing guide →
@@ -378,13 +392,13 @@ export function Top5ProvidersPage({ onNavigate }: Top5ProvidersPageProps) {
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button
-                  onClick={() => onNavigate(`/providers/${currentRanking[0].slug}`)}
+                  onClick={() => navigate(`/providers/${currentRanking[0].slug}`)}
                   className="bg-yellow-600 text-white px-8 py-3 rounded-lg hover:bg-yellow-700 transition-colors font-medium"
                 >
                   View {currentRanking[0].name} Details
                 </button>
                 <button
-                  onClick={() => onNavigate('/compare/providers')}
+                  onClick={() => navigate('/compare/providers')}
                   className="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg hover:bg-gray-50 transition-colors font-medium"
                 >
                   Compare All Providers

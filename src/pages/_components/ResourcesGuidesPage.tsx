@@ -1,11 +1,25 @@
 import React, { useState } from 'react';
 import { BookOpen, Users, Zap, Calculator, Shield, Home, Building, Leaf } from 'lucide-react';
 
-interface ResourcesGuidesPageProps {
-  onNavigate: (path: string) => void;
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
 }
 
-export function ResourcesGuidesPage({ onNavigate }: ResourcesGuidesPageProps) {
+interface ResourcesGuidesPageProps {
+}
+
+export function ResourcesGuidesPage({}: ResourcesGuidesPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'getting-started' | 'switching' | 'plans' | 'business'>('all');
 
   const guides = [
@@ -93,9 +107,9 @@ export function ResourcesGuidesPage({ onNavigate }: ResourcesGuidesPageProps) {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => onNavigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => onNavigate('/resources')} className="hover:text-blue-600">Resources</button>
+            <button onClick={() => navigate('/resources')} className="hover:text-blue-600">Resources</button>
             <span className="mx-2">/</span>
             <span>Guides</span>
           </nav>
@@ -152,7 +166,7 @@ export function ResourcesGuidesPage({ onNavigate }: ResourcesGuidesPageProps) {
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-gray-500">{guide.readTime}</span>
                   <button
-                    onClick={() => onNavigate(guide.href)}
+                    onClick={() => navigate(guide.href)}
                     className="text-blue-600 hover:text-blue-800 font-medium text-sm"
                   >
                     Read Guide →
@@ -179,7 +193,7 @@ export function ResourcesGuidesPage({ onNavigate }: ResourcesGuidesPageProps) {
                 Moving to Texas and need to choose an electricity provider? Start here for everything you need to know.
               </p>
               <button
-                onClick={() => onNavigate('/resources/guides/moving-guide')}
+                onClick={() => navigate('/resources/guides/moving-guide')}
                 className="text-green-600 hover:text-green-800 font-medium"
               >
                 Texas Moving Guide →
@@ -195,7 +209,7 @@ export function ResourcesGuidesPage({ onNavigate }: ResourcesGuidesPageProps) {
                 Learn the simple process of switching electricity providers and what to expect during the transition.
               </p>
               <button
-                onClick={() => onNavigate('/resources/guides/how-to-switch-providers')}
+                onClick={() => navigate('/resources/guides/how-to-switch-providers')}
                 className="text-blue-600 hover:text-blue-800 font-medium"
               >
                 Switching Guide →
@@ -211,7 +225,7 @@ export function ResourcesGuidesPage({ onNavigate }: ResourcesGuidesPageProps) {
                 Understand the differences between fixed, variable, and indexed rate plans to choose wisely.
               </p>
               <button
-                onClick={() => onNavigate('/resources/guides/fixed-vs-variable')}
+                onClick={() => navigate('/resources/guides/fixed-vs-variable')}
                 className="text-purple-600 hover:text-purple-800 font-medium"
               >
                 Plan Types Guide →

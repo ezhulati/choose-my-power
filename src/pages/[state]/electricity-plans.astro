@@ -28,5 +28,12 @@ const description = `Compare electricity plans in ${stateTitle}. Fixed rate, var
 ---
 
 <Layout title={title} description={description}>
-  <StateElectricityPlansPage client:load state={state} onNavigate={(path) => window.location.href = path} />
+  <StateElectricityPlansPage client:load state={state} />
+
+  <script>
+    // Client-side navigation function for React components
+    window.navigateToPath = function(path) {
+      window.location.href = path;
+    };
+  </script>
 </Layout>

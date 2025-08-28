@@ -7,5 +7,12 @@ const description = "Complete directory of Texas electricity providers. Compare 
 ---
 
 <Layout title={title} description={description} ogImage="/images/og/comprehensive-clean/business_district_clean_16x9.png">
-  <ProvidersPage client:load onNavigate={(path) => window.location.href = path} />
+  <ProvidersPage client:load />
+  
+  <script>
+    // Client-side navigation function for React components
+    window.navigateToPath = function(path) {
+      window.location.href = path;
+    };
+  </script>
 </Layout>

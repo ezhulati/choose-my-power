@@ -1,11 +1,25 @@
 import React, { useState } from 'react';
 import { Phone, Mail, MessageCircle, Clock, HelpCircle, Users } from 'lucide-react';
 
-interface ContactPageProps {
-  onNavigate: (path: string) => void;
+// Extend Window interface to include our navigation function
+declare global {
+  interface Window {
+    navigateToPath: (path: string) => void;
+  }
 }
 
-export function ContactPage({ onNavigate }: ContactPageProps) {
+interface ContactPageProps {
+}
+
+export function ContactPage({}: ContactPageProps) {
+  const navigate = (path: string) => {
+    if (typeof window !== 'undefined' && window.navigateToPath) {
+      window.navigateToPath(path);
+    } else {
+      // Fallback for SSR or if script hasn't loaded yet
+      window.location.href = path;
+    }
+  };
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -66,9 +80,9 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => onNavigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => onNavigate('/resources')} className="hover:text-blue-600">Resources</button>
+            <button onClick={() => navigate('/resources')} className="hover:text-blue-600">Resources</button>
             <span className="mx-2">/</span>
             <span>Contact</span>
           </nav>
@@ -262,25 +276,25 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Links</h3>
               <div className="space-y-2">
                 <button
-                  onClick={() => onNavigate('/resources/faqs')}
+                  onClick={() => navigate('/resources/faqs')}
                   className="w-full text-left p-2 text-sm text-blue-600 hover:text-blue-800 hover:underline"
                 >
                   Frequently Asked Questions →
                 </button>
                 <button
-                  onClick={() => onNavigate('/resources/guides')}
+                  onClick={() => navigate('/resources/guides')}
                   className="w-full text-left p-2 text-sm text-blue-600 hover:text-blue-800 hover:underline"
                 >
                   Educational Guides →
                 </button>
                 <button
-                  onClick={() => onNavigate('/rates/calculator')}
+                  onClick={() => navigate('/rates/calculator')}
                   className="w-full text-left p-2 text-sm text-blue-600 hover:text-blue-800 hover:underline"
                 >
                   Rate Calculator →
                 </button>
                 <button
-                  onClick={() => onNavigate('/compare/providers')}
+                  onClick={() => navigate('/compare/providers')}
                   className="w-full text-left p-2 text-sm text-blue-600 hover:text-blue-800 hover:underline"
                 >
                   Compare Providers →

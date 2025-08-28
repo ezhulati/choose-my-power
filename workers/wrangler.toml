@@ -1,0 +1,44 @@
+name = "choosemypower-edge-cache"
+main = "edge-cache.js"
+compatibility_date = "2024-01-01"
+
+# Production environment
+[env.production]
+routes = [
+  { pattern = "choosemypower.org/*", zone_name = "choosemypower.org" },
+  { pattern = "www.choosemypower.org/*", zone_name = "choosemypower.org" }
+]
+
+[env.production.vars]
+ENVIRONMENT = "production"
+ORIGIN_URL = "https://choosemypower.netlify.app"
+
+# Staging environment
+[env.staging]
+routes = [
+  { pattern = "staging.choosemypower.org/*", zone_name = "choosemypower.org" }
+]
+
+[env.staging.vars]
+ENVIRONMENT = "staging"
+ORIGIN_URL = "https://choosemypower-staging.netlify.app"
+
+# Development environment for testing
+[env.dev]
+vars = { ENVIRONMENT = "development", ORIGIN_URL = "http://localhost:4324" }
+
+# Worker configuration
+[triggers]
+crons = ["0 */6 * * *"]  # Cache warming every 6 hours
+
+# Durable Objects for cache management (future enhancement)
+# [durable_objects]
+# bindings = [
+#   { name = "CACHE_MANAGER", class_name = "CacheManager" }
+# ]
+
+# KV namespace for cache metadata
+# [[kv_namespaces]]
+# binding = "CACHE_METADATA"
+# preview_id = "preview_id_here"
+# id = "production_id_here"
