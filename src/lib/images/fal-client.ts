@@ -214,29 +214,10 @@ class FalClient {
   }
 
   /**
-   * Get fallback image when API fails
+   * Enterprise grade - no fallbacks, throw error if API fails
    */
-  private getFallbackImage(prompt: string, context: ImageGenerationContext): GeneratedImage {
-    // Generate a unique fallback based on context
-    const fallbackImages = {
-      homepage: '/images/og/fallback-homepage.jpg',
-      city: `/images/og/fallback-city-${context.cityTier}.jpg`,
-      filtered: `/images/og/fallback-filtered.jpg`,
-      comparison: '/images/og/fallback-comparison.jpg',
-      provider: '/images/og/fallback-provider.jpg',
-      state: '/images/og/fallback-state.jpg'
-    };
-
-    return {
-      url: fallbackImages[context.pageType] || '/images/og/fallback-default.jpg',
-      prompt,
-      context,
-      generatedAt: new Date().toISOString(),
-      cacheKey: this.generateCacheKey(context),
-      width: 1216,
-      height: 832,
-      provider: 'fallback'
-    };
+  private getFallbackImage(prompt: string, context: ImageGenerationContext): never {
+    throw new Error(`Image generation failed for ${context.pageType}: ${prompt}. Enterprise build requires successful API generation.`);
   }
 
   /**

@@ -11,7 +11,11 @@ let db;
 const dbUrl = process.env.NETLIFY_DATABASE_URL_UNPOOLED || process.env.NETLIFY_DATABASE_URL;
 
 if (dbUrl) {
-  db = neon(dbUrl);
+  const sql = neon(dbUrl);
+  db = {
+    query: sql,
+    sql: sql  // Expose the raw client as well
+  };
 } else {
   // Fallback for development or when database is not available
   console.warn('⚠️  Database not configured - using mock database functions');

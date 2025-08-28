@@ -18,14 +18,7 @@ interface OGImageOptions {
 }
 
 class OGImageGenerator {
-  private fallbackImages: Record<string, string> = {
-    homepage: '/images/og/fallback-homepage.jpg',
-    city: '/images/og/fallback-city.jpg',
-    filtered: '/images/og/fallback-filtered.jpg',
-    comparison: '/images/og/fallback-comparison.jpg',
-    provider: '/images/og/fallback-provider.jpg',
-    state: '/images/og/fallback-state.jpg'
-  };
+  // Enterprise grade - no fallback images, all images must be generated successfully
 
   /**
    * Get OG image URL for page context - main entry point
@@ -275,17 +268,10 @@ class OGImageGenerator {
   }
 
   /**
-   * Get fallback image for context
+   * Enterprise grade - no fallbacks, throw error
    */
-  private getFallbackImage(context: ImageGenerationContext): string {
-    const fallback = this.fallbackImages[context.pageType];
-    
-    if (fallback) {
-      return fallback;
-    }
-
-    // Ultimate fallback
-    return '/images/og/fallback-default.jpg';
+  private getFallbackImage(context: ImageGenerationContext): never {
+    throw new Error(`Image generation failed for ${context.pageType}. Enterprise build requires successful generation.`);
   }
 
   /**
@@ -326,13 +312,11 @@ class OGImageGenerator {
   }> {
     const ideogramHealth = await ideogramClient.healthCheck();
     const cacheStats = await imageCache.getCacheStats();
-    const fallbackHealth = Object.values(this.fallbackImages).length > 0;
-    
     return {
       ideogramApi: ideogramHealth,
       imageCache: cacheStats.totalImages >= 0, // Cache is working if we can get stats
-      fallbackImages: fallbackHealth,
-      overallHealth: ideogramHealth && fallbackHealth // Cache is optional
+      fallbackImages: false, // Enterprise grade - no fallbacks
+      overallHealth: ideogramHealth // Must have working API
     };
   }
 

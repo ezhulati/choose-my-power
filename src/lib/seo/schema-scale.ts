@@ -501,6 +501,58 @@ function shouldIncludeFAQSchema(city: string, filters: string[]): boolean {
 }
 
 /**
+ * Generate AggregateOffer schema for bulk pricing data
+ */
+function generateAggregateOfferSchema(options: {
+  city: string;
+  filters: string[];
+  plans: Plan[];
+  planCount: number;
+  lowestRate: number;
+  averageRate?: number;
+}): object {
+  const { city, filters, plans, planCount, lowestRate, averageRate } = options;
+  const cityName = formatCityName(city);
+  const filterText = filters.length > 0 ? ` ${filters.map(formatFilterName).join(' ')}` : '';
+  
+  const rates = plans.map(plan => parseFloat(plan.rate) || 0).filter(rate => rate > 0);
+  const highestRate = rates.length > 0 ? Math.max(...rates) : lowestRate + 5;
+  const avgRate = averageRate || (rates.length > 0 ? rates.reduce((a, b) => a + b, 0) / rates.length : lowestRate + 2);
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'AggregateOffer',
+    name: `${cityName}${filterText} Electricity Plans`,
+    description: `Compare ${planCount} electricity plans in ${cityName}, Texas with rates starting at ${lowestRate.toFixed(3)}¢/kWh`,
+    offerCount: planCount,
+    lowPrice: lowestRate.toFixed(3),
+    highPrice: highestRate.toFixed(3),
+    priceCurrency: 'USD',
+    priceSpecification: {
+      '@type': 'UnitPriceSpecification',
+      price: avgRate.toFixed(3),
+      priceCurrency: 'USD',
+      unitCode: 'KWH',
+      unitText: 'per kWh'
+    },
+    availability: 'https://schema.org/InStock',
+    validFrom: new Date().toISOString(),
+    validThrough: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(), // 30 days
+    seller: {
+      '@type': 'Organization',
+      name: 'ChooseMyPower.org',
+      url: 'https://choosemypower.org'
+    },
+    areaServed: {
+      '@type': 'City',
+      name: cityName,
+      addressRegion: 'TX',
+      addressCountry: 'US'
+    }
+  };
+}
+
+/**
  * Validate schema markup for common issues
  */
 export function validateSchemaMarkup(schemas: object[]): string[] {

@@ -47,7 +47,7 @@ class IdeogramClient {
       prompt: this.enhancePrompt(prompt),
       rendering_speed: 'TURBO', // Fast rendering for OG images
       style_type: this.mapStyleType(options.style || 'modern'),
-      aspect_ratio: options.aspectRatio || '16:9', // Good for OG images
+      aspect_ratio: this.mapAspectRatio(options.aspectRatio || '16:9'), // Good for OG images
       negative_prompt: 'text, words, letters, numbers, writing, typography, labels, signs, watermark, signature, blurry, low quality, pixelated'
     };
 
@@ -194,6 +194,21 @@ class IdeogramClient {
   }
 
   /**
+   * Map aspect ratio to Ideogram API format
+   */
+  private mapAspectRatio(aspectRatio: string): string {
+    const aspectRatioMap: Record<string, string> = {
+      '16:9': '16:10', // Closest supported ratio for OG images
+      '1:1': '1:1',
+      '4:3': '4:3',
+      '3:4': '3:4',
+      '9:16': '9:16'
+    };
+
+    return aspectRatioMap[aspectRatio] || '16:10'; // Default to 16:10 for OG images
+  }
+
+  /**
    * Generate cache key for context
    */
   private generateCacheKey(context: ImageGenerationContext): string {
@@ -224,28 +239,10 @@ class IdeogramClient {
   }
 
   /**
-   * Get fallback image when API fails
+   * Enterprise grade - no fallbacks, throw error if API fails
    */
-  private getFallbackImage(prompt: string, context: ImageGenerationContext): GeneratedImage {
-    // Generate a unique fallback based on context
-    const fallbackImages = {
-      homepage: '/images/og/fallback-homepage.jpg',
-      city: `/images/og/fallback-city-${context.cityTier}.jpg`,
-      filtered: `/images/og/fallback-filtered.jpg`,
-      comparison: '/images/og/fallback-comparison.jpg',
-      provider: '/images/og/fallback-provider.jpg',
-      state: '/images/og/fallback-state.jpg'
-    };
-
-    return {
-      url: fallbackImages[context.pageType] || '/images/og/fallback-default.jpg',
-      prompt,
-      context,
-      generatedAt: new Date().toISOString(),
-      cacheKey: this.generateCacheKey(context),
-      width: 1200,
-      height: 630
-    };
+  private getFallbackImage(prompt: string, context: ImageGenerationContext): never {
+    throw new Error(`Image generation failed for ${context.pageType}: ${prompt}. Enterprise build requires successful API generation.`);
   }
 
   /**
