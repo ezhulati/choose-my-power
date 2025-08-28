@@ -58,6 +58,7 @@ class DatabaseCache {
     if (!this.db) return;
     
     try {
+      // Create table first
       await this.db.query(`
         CREATE TABLE IF NOT EXISTS og_images (
           id VARCHAR(255) PRIMARY KEY,
@@ -75,13 +76,14 @@ class DatabaseCache {
           last_used TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
           created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
           updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        );
-        
-        CREATE INDEX IF NOT EXISTS idx_og_images_cache_key ON og_images(cache_key);
-        CREATE INDEX IF NOT EXISTS idx_og_images_context ON og_images USING GIN(context);
-        CREATE INDEX IF NOT EXISTS idx_og_images_generated_at ON og_images(generated_at);
-        CREATE INDEX IF NOT EXISTS idx_og_images_status ON og_images(status);
+        )
       `);
+      
+      // Create indexes separately to avoid Neon DB multi-statement issues
+      await this.db.query(`CREATE INDEX IF NOT EXISTS idx_og_images_cache_key ON og_images(cache_key)`);
+      await this.db.query(`CREATE INDEX IF NOT EXISTS idx_og_images_context ON og_images USING GIN(context)`);
+      await this.db.query(`CREATE INDEX IF NOT EXISTS idx_og_images_generated_at ON og_images(generated_at)`);
+      await this.db.query(`CREATE INDEX IF NOT EXISTS idx_og_images_status ON og_images(status)`);
       
       console.log('✅ OG images database table ready');
     } catch (error) {
@@ -159,7 +161,7 @@ class DatabaseCache {
         [cacheKey]
       );
       
-      if (result.rows.length === 0) {
+      if (!result || !result.rows || result.rows.length === 0) {
         return null;
       }
       

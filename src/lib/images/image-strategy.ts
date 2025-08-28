@@ -207,12 +207,20 @@ class ImageStrategy {
     // Single filter matches
     if (context.filters.length === 1) {
       const tierSuffix = cityTier === 1 ? 'tier1' : 'tier2';
-      let templateId = `${primaryFilter.replace('-', '')}-${tierSuffix}`;
+      
+      // Double-check primaryFilter is a string with fallback
+      const filterString = typeof primaryFilter === 'string' ? primaryFilter : String(primaryFilter || '');
+      if (!filterString) {
+        console.warn('⚠️ Empty filter string after conversion:', primaryFilter);
+        return null;
+      }
+      
+      let templateId = `${filterString.replace('-', '')}-${tierSuffix}`;
       let template = this.imageTemplates.find(t => t.id === templateId);
       
       if (!template) {
         // Fallback to general filter template
-        templateId = `${primaryFilter.replace('-', '')}-all`;
+        templateId = `${filterString.replace('-', '')}-all`;
         template = this.imageTemplates.find(t => t.id === templateId);
       }
       

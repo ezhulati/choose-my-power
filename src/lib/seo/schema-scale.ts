@@ -510,7 +510,7 @@ function generateComprehensiveServiceSchema(options: {
   planCount: number;
   lowestRate: number;
   averageRate?: number;
-  topProviders: string[];
+  topProviders?: ProviderInfo[];
 }): object {
   const { city, filters, tdspInfo, planCount, lowestRate, averageRate, topProviders } = options;
   const cityName = formatCityName(city);
