@@ -278,7 +278,7 @@ export class InternalLinkingStrategy {
     const tier2Filters = ['24-month', 'prepaid', 'no-deposit'];
     const tier1Filters = ['variable-rate', 'time-of-use', 'business-plans'];
 
-    let availableFilters = [...baseFilters];
+    const availableFilters = [...baseFilters];
     if (tier <= 2) availableFilters.push(...tier2Filters);
     if (tier === 1) availableFilters.push(...tier1Filters);
 

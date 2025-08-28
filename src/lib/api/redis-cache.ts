@@ -249,7 +249,7 @@ export class RedisCache {
           version: '2.0' // For cache versioning during deployments
         };
         
-        let serializedData = JSON.stringify(cacheData);
+        const serializedData = JSON.stringify(cacheData);
         
         // Use compression for large datasets in mass deployment
         if (this.config.redis.compression && plans.length > 20) {

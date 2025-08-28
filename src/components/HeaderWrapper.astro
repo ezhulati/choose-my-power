@@ -1,0 +1,23 @@
+---
+// HeaderWrapper.astro - Astro wrapper for React Header component
+---
+
+<div id="header-root"></div>
+
+<script>
+import { Header } from './Header.tsx';
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+
+const container = document.getElementById('header-root');
+if (container) {
+  const root = createRoot(container);
+  
+  // Navigation handler for Astro routing
+  const handleNavigate = (path: string) => {
+    window.location.href = path;
+  };
+  
+  root.render(React.createElement(Header, { onNavigate: handleNavigate }));
+}
+</script>

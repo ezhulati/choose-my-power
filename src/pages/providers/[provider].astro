@@ -1,0 +1,101 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { ProviderPage } from '../_components/ProviderPage';
+import { mockProviders } from '../../data/mockData';
+
+// Get the provider slug from the URL
+const { provider: providerSlug } = Astro.params;
+
+// Find the provider in our data
+const provider = mockProviders.find(p => p.slug === providerSlug);
+
+// If provider not found, return 404
+if (!provider) {
+  return Astro.redirect('/404', 404);
+}
+
+// Generate dynamic page data
+const title = `${provider.name} Electricity Plans & Reviews | Texas Energy Provider`;
+const description = `${provider.description} Compare ${provider.name} electricity plans, rates, and customer reviews. Rating: ${provider.rating}★ (${provider.reviewCount} reviews).`;
+const canonicalUrl = `https://choosemypower.org/providers/${providerSlug}`;
+
+// Generate all provider paths for static generation
+export async function getStaticPaths() {
+  return mockProviders.map((provider) => ({
+    params: { provider: provider.slug },
+    props: { 
+      provider,
+      providerId: provider.slug 
+    }
+  }));
+}
+
+---
+
+<Layout 
+  title={title} 
+  description={description} 
+  ogImage={`/images/providers/provider_${provider.slug}_all.png`}
+  canonical={canonicalUrl}
+>
+  <!-- Provider Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": provider.name,
+    "description": provider.description,
+    "url": provider.website,
+    "logo": provider.logo,
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": provider.rating,
+      "reviewCount": provider.reviewCount,
+      "bestRating": 5,
+      "worstRating": 1
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": provider.contactPhone,
+      "contactType": "customer service"
+    },
+    "serviceArea": {
+      "@type": "State",
+      "name": "Texas"
+    }
+  })} />
+
+  <!-- Breadcrumb Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://choosemypower.org/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Providers",
+        "item": "https://choosemypower.org/providers"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": provider.name,
+        "item": `https://choosemypower.org/providers/${providerSlug}`
+      }
+    ]
+  })} />
+
+  <ProviderPage providerId={providerSlug} client:load />
+  
+  <script>
+    // Client-side navigation function for React components
+    window.navigateToPath = function(path) {
+      window.location.href = path;
+    };
+  </script>
+</Layout>

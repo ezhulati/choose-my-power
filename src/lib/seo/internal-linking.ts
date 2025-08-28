@@ -164,7 +164,7 @@ function calculateOptimalLinkDistribution(
   linkBudget: number
 ): LinkDistribution {
   // Base distribution percentages
-  let distribution = {
+  const distribution = {
     navigation: 0.20,
     contextual: 0.30,
     related: 0.25,

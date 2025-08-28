@@ -14,7 +14,7 @@ export default defineConfig({
     // Only use Netlify adapter for production builds
     ...(process.env.NODE_ENV === 'production' ? [netlify()] : [])
   ],
-  output: 'static',
+  output: process.env.NODE_ENV === 'production' ? 'static' : 'server',
   // Only set adapter for production
   ...(process.env.NODE_ENV === 'production' ? { adapter: netlify() } : {}),
   site: 'https://choosemypower.org',
@@ -263,5 +263,12 @@ export default defineConfig({
     // Prefetch internal links on hover
     prefetchAll: false,
     defaultStrategy: 'hover'
-  }
+  },
+  // Remove experimental features that are causing errors
+  // experimental: {
+  //   optimizeHoistedScript: true
+  // },
+  // Compression and optimization
+  compressHTML: true,
+  scopedStyleStrategy: 'attribute'
 });

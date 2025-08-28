@@ -209,8 +209,8 @@ export class AddressCache {
    */
   private async get<T>(key: string, type: keyof typeof this.TTL_CONFIG): Promise<T | null> {
     const startTime = Date.now();
-    let source: CacheEntry<T>['source'] | null = null;
-    let result: T | null = null;
+    const source: CacheEntry<T>['source'] | null = null;
+    const result: T | null = null;
 
     try {
       // Layer 1: Memory Cache

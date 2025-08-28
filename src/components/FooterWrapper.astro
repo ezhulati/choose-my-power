@@ -1,0 +1,23 @@
+---
+// FooterWrapper.astro - Astro wrapper for React Footer component
+---
+
+<div id="footer-root"></div>
+
+<script>
+import { Footer } from './Footer.tsx';
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+
+const container = document.getElementById('footer-root');
+if (container) {
+  const root = createRoot(container);
+  
+  // Navigation handler for Astro routing
+  const handleNavigate = (path: string) => {
+    window.location.href = path;
+  };
+  
+  root.render(React.createElement(Footer, { onNavigate: handleNavigate }));
+}
+</script>

@@ -776,7 +776,7 @@ export class EnhancedSitemapStrategy {
     const tier2Filters = ['24-month', 'prepaid', 'no-deposit'];
     const tier1Filters = ['variable-rate', 'time-of-use'];
 
-    let filters = [...baseFilters];
+    const filters = [...baseFilters];
     if (tier <= 2) filters.push(...tier2Filters);
     if (tier === 1) filters.push(...tier1Filters);
 

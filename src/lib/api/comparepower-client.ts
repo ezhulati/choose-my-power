@@ -283,7 +283,7 @@ export class ComparePowerClient {
     const cityName = this.getCityNameFromTdsp(params.tdsp_duns);
     const validPlans: ComparePowerPlanResponse[] = [];
     let skippedCount = 0;
-    let fixedCount = 0;
+    const fixedCount = 0;
 
     for (const plan of rawData) {
       try {

@@ -1,0 +1,18 @@
+{
+  "cacheKey": "Houston_TX__city_3_North",
+  "url": "/images/og/generated/city/Houston_TX__city_3_North_1756403707820.jpg",
+  "localPath": "/Users/mbp-ez/Downloads/AI Library/Apps/CMP/choose-my-power/public/images/og/generated/city/Houston_TX__city_3_North_1756403707820.jpg",
+  "generatedAt": "2025-08-28T17:55:07.820Z",
+  "context": {
+    "city": "Houston TX",
+    "filters": [],
+    "planCount": 110,
+    "lowestRate": 999,
+    "topProviders": [],
+    "pageType": "city",
+    "cityTier": 3,
+    "tdspZone": "North",
+    "seasonalContext": "summer"
+  },
+  "expiresAt": "2025-09-27T17:55:08.422Z"
+}
