@@ -1,0 +1,131 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroBackground from '../../components/HeroBackground.astro';
+import { ZipCodeSearch } from '../../components/ZipCodeSearch';
+import { Leaf, Sun, Wind, Zap } from 'lucide-react';
+
+const title = "Green Energy Plans in Texas | 100% Renewable Electricity";
+const description = "Choose from 100% renewable energy plans in Texas. Solar, wind, and clean energy options from top green electricity providers.";
+---
+
+<Layout title={title} description={description}>
+  <div class="min-h-screen bg-white">
+    <HeroBackground 
+      title="Green Energy Plans" 
+      subtitle="Power your home with 100% renewable electricity"
+      variant="green"
+    >
+      <div class="mt-8 max-w-md mx-auto">
+        <ZipCodeSearch 
+          client:load
+          placeholder="Find green energy in your area"
+          className="w-full"
+        />
+      </div>
+    </HeroBackground>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      
+      <!-- Environmental Impact Calculator -->
+      <div class="mb-12 bg-green-50 border border-green-200 rounded-xl p-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Your Environmental Impact</h2>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div class="text-center">
+            <div class="text-3xl font-bold text-green-600">2,400</div>
+            <div class="text-sm text-gray-600">lbs CO₂ saved annually</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-blue-600">120</div>
+            <div class="text-sm text-gray-600">trees equivalent</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-purple-600">5,000</div>
+            <div class="text-sm text-gray-600">miles not driven</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-emerald-600">100%</div>
+            <div class="text-sm text-gray-600">renewable energy</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Green Plans -->
+      <div class="mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8">Top Green Energy Plans</h2>
+        
+        <div class="space-y-6">
+          
+          <!-- Green Plan 1 -->
+          <div class="bg-white border-2 border-green-200 rounded-xl p-6">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 items-center">
+              <div class="lg:col-span-2">
+                <div class="flex items-center space-x-3 mb-3">
+                  <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                    <Leaf class="h-6 w-6 text-green-600" />
+                  </div>
+                  <div>
+                    <h3 class="text-xl font-bold text-gray-900">Pollution Free e-Plus 12</h3>
+                    <p class="text-gray-600">Green Mountain Energy</p>
+                  </div>
+                </div>
+                <div class="space-y-2">
+                  <div class="flex items-center space-x-2">
+                    <Wind class="h-4 w-4 text-green-600" />
+                    <span class="text-sm text-gray-600">100% Texas wind power</span>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <Leaf class="h-4 w-4 text-green-600" />
+                    <span class="text-sm text-gray-600">Carbon-free electricity</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="text-center">
+                <div class="text-4xl font-bold text-green-600 mb-1">8.9¢</div>
+                <div class="text-gray-600">/kWh</div>
+                <div class="text-sm text-gray-500 mt-1">12-month fixed</div>
+              </div>
+              
+              <div class="text-center lg:text-right">
+                <button class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors mb-2">
+                  Choose Green
+                </button>
+                <div class="text-sm text-green-600 font-medium">Most Popular</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Green Energy Sources -->
+      <div class="bg-blue-50 rounded-xl p-8">
+        <h3 class="text-2xl font-bold text-gray-900 mb-6">Texas Renewable Energy Sources</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Sun class="h-8 w-8 text-yellow-600" />
+            </div>
+            <h4 class="font-semibold text-gray-900 mb-2">Solar Power</h4>
+            <p class="text-sm text-gray-600">Clean energy from Texas sunshine, rapidly growing across the state with new solar farms.</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Wind class="h-8 w-8 text-blue-600" />
+            </div>
+            <h4 class="font-semibold text-gray-900 mb-2">Wind Energy</h4>
+            <p class="text-sm text-gray-600">Texas leads the nation in wind power generation, providing clean, abundant electricity.</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Zap class="h-8 w-8 text-green-600" />
+            </div>
+            <h4 class="font-semibold text-gray-900 mb-2">Other Renewables</h4>
+            <p class="text-sm text-gray-600">Including hydroelectric and biomass sources for a diverse clean energy portfolio.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</Layout>

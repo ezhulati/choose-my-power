@@ -1,0 +1,90 @@
+---
+// ProfessionalHeroWrapper.astro - Modern Hero Section
+export interface Props {
+  title: string;
+  subtitle?: string;
+  pageType?: 'homepage' | 'city' | 'state' | 'filter' | 'provider' | 'compare' | 'calculator';
+  location?: string;
+  filters?: string[];
+  specialty?: string;
+  overlayOpacity?: number;
+  customImageUrl?: string;
+}
+
+const { 
+  title,
+  subtitle,
+  pageType = 'default',
+  location,
+  filters,
+  specialty,
+  overlayOpacity = 0.6,
+  customImageUrl
+} = Astro.props;
+
+// Map pageType to hero variant
+const getVariant = () => {
+  switch (pageType) {
+    case 'city': return 'city';
+    case 'state': return 'state';
+    case 'compare': return 'compare';
+    case 'calculator': return 'minimal';
+    default: return 'default';
+  }
+};
+
+const variant = getVariant();
+---
+
+<div id="professional-hero-root" 
+     data-title={title}
+     data-subtitle={subtitle || ''}
+     data-variant={variant}
+     data-location={location || ''}
+     data-background-image={customImageUrl || ''}
+     data-overlay-opacity={overlayOpacity}></div>
+
+<script>
+import { ProfessionalHero } from './ui/professional-hero.tsx';
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+
+const container = document.getElementById('professional-hero-root');
+if (container) {
+  const root = createRoot(container);
+  
+  // Get props from data attributes
+  const props = {
+    title: container.dataset.title || '',
+    subtitle: container.dataset.subtitle || undefined,
+    variant: container.dataset.variant || 'default',
+    location: container.dataset.location || undefined,
+    backgroundImage: container.dataset.backgroundImage || undefined,
+    overlayOpacity: parseFloat(container.dataset.overlayOpacity || '0.6'),
+  };
+  
+  // Get children content (slot content will be handled separately)
+  const slotContent = container.innerHTML;
+  
+  root.render(React.createElement(ProfessionalHero, {
+    ...props,
+    children: slotContent ? React.createElement('div', { 
+      dangerouslySetInnerHTML: { __html: slotContent } 
+    }) : undefined
+  }));
+}
+</script>
+
+<style>
+/* Ensure hero takes full width */
+#professional-hero-root {
+  width: 100%;
+  min-height: 400px;
+}
+
+/* Override any existing hero styles that might conflict */
+.hero-override {
+  position: relative !important;
+  z-index: var(--z-background-image) !important;
+}
+</style>

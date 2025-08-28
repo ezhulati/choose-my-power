@@ -1,0 +1,336 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroBackground from '../../components/HeroBackground.astro';
+import { ZipCodeSearch } from '../../components/ZipCodeSearch';
+import { Building2, Award, Users, TrendingUp, Star, Shield, Zap } from 'lucide-react';
+
+const title = "Compare Texas Electricity Providers | ChooseMyPower";
+const description = "Compare 50+ Texas electricity providers side-by-side. Expert ratings, customer reviews, and detailed analysis to help you choose the best provider.";
+---
+
+<Layout title={title} description={description}>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Compare Texas Electricity Providers",
+    "description": "Compare 50+ Texas electricity providers side-by-side with expert ratings and customer reviews.",
+    "url": "https://choosemypower.org/compare/providers"
+  }
+  </script>
+
+  <div class="min-h-screen bg-white">
+    <!-- Hero Section -->
+    <HeroBackground 
+      title="Compare Electricity Providers" 
+      subtitle="Side-by-side analysis of 50+ Texas electricity companies"
+      variant="providers"
+    >
+      <div class="mt-8 max-w-md mx-auto">
+        <ZipCodeSearch 
+          client:load
+          placeholder="Enter ZIP to see local providers"
+          className="w-full"
+        />
+      </div>
+    </HeroBackground>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      
+      <!-- Provider Comparison Filters -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Filter Providers</h2>
+        <div class="bg-white border border-gray-200 rounded-lg p-6">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Provider Type</label>
+              <select class="w-full border border-gray-300 rounded-md px-3 py-2">
+                <option>All Types</option>
+                <option>National Providers</option>
+                <option>Regional Providers</option>
+                <option>Green Energy Only</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Customer Rating</label>
+              <select class="w-full border border-gray-300 rounded-md px-3 py-2">
+                <option>All Ratings</option>
+                <option>4+ Stars</option>
+                <option>3+ Stars</option>
+                <option>2+ Stars</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Special Features</label>
+              <select class="w-full border border-gray-300 rounded-md px-3 py-2">
+                <option>All Features</option>
+                <option>No Deposit</option>
+                <option>Free Nights/Weekends</option>
+                <option>Solar Buyback</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Top Providers Comparison Grid -->
+      <div class="mb-16">
+        <div class="flex items-center justify-between mb-8">
+          <h2 class="text-3xl font-bold text-gray-900">Top Texas Providers</h2>
+          <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+            Compare Selected
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+          
+          <!-- Provider Card 1 -->
+          <div class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                  <Building2 class="h-6 w-6 text-green-600" />
+                </div>
+                <div>
+                  <h3 class="font-semibold text-gray-900">Green Mountain Energy</h3>
+                  <div class="flex items-center space-x-1">
+                    <Star class="h-4 w-4 text-yellow-400 fill-current" />
+                    <Star class="h-4 w-4 text-yellow-400 fill-current" />
+                    <Star class="h-4 w-4 text-yellow-400 fill-current" />
+                    <Star class="h-4 w-4 text-yellow-400 fill-current" />
+                    <Star class="h-4 w-4 text-gray-300" />
+                    <span class="text-sm text-gray-600">(4.2)</span>
+                  </div>
+                </div>
+              </div>
+              <input type="checkbox" class="w-5 h-5 text-blue-600 rounded" />
+            </div>
+            
+            <div class="space-y-3 mb-4">
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-600">Plans Available</span>
+                <span class="font-medium">15+</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-600">Lowest Rate</span>
+                <span class="font-medium text-green-600">8.9¢/kWh</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-600">Green Energy</span>
+                <span class="font-medium text-green-600">100%</span>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">100% Renewable</span>
+              <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">No Deposit</span>
+            </div>
+
+            <button class="w-full bg-green-50 text-green-700 py-2 rounded-lg hover:bg-green-100 transition-colors">
+              View Plans
+            </button>
+          </div>
+
+          <!-- Provider Card 2 -->
+          <div class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <Zap class="h-6 w-6 text-blue-600" />
+                </div>
+                <div>
+                  <h3 class="font-semibold text-gray-900">TXU Energy</h3>
+                  <div class="flex items-center space-x-1">
+                    <Star class="h-4 w-4 text-yellow-400 fill-current" />
+                    <Star class="h-4 w-4 text-yellow-400 fill-current" />
+                    <Star class="h-4 w-4 text-yellow-400 fill-current" />
+                    <Star class="h-4 w-4 text-yellow-400 fill-current" />
+                    <Star class="h-4 w-4 text-yellow-400 fill-current" />
+                    <span class="text-sm text-gray-600">(4.5)</span>
+                  </div>
+                </div>
+              </div>
+              <input type="checkbox" class="w-5 h-5 text-blue-600 rounded" />
+            </div>
+            
+            <div class="space-y-3 mb-4">
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-600">Plans Available</span>
+                <span class="font-medium">25+</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-600">Lowest Rate</span>
+                <span class="font-medium text-green-600">9.2¢/kWh</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-600">Green Energy</span>
+                <span class="font-medium">Available</span>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Free Nights</span>
+              <span class="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">Rewards</span>
+            </div>
+
+            <button class="w-full bg-blue-50 text-blue-700 py-2 rounded-lg hover:bg-blue-100 transition-colors">
+              View Plans
+            </button>
+          </div>
+
+          <!-- Provider Card 3 -->
+          <div class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                  <Shield class="h-6 w-6 text-orange-600" />
+                </div>
+                <div>
+                  <h3 class="font-semibold text-gray-900">Reliant Energy</h3>
+                  <div class="flex items-center space-x-1">
+                    <Star class="h-4 w-4 text-yellow-400 fill-current" />
+                    <Star class="h-4 w-4 text-yellow-400 fill-current" />
+                    <Star class="h-4 w-4 text-yellow-400 fill-current" />
+                    <Star class="h-4 w-4 text-yellow-400 fill-current" />
+                    <Star class="h-4 w-4 text-gray-300" />
+                    <span class="text-sm text-gray-600">(4.0)</span>
+                  </div>
+                </div>
+              </div>
+              <input type="checkbox" class="w-5 h-5 text-blue-600 rounded" />
+            </div>
+            
+            <div class="space-y-3 mb-4">
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-600">Plans Available</span>
+                <span class="font-medium">20+</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-600">Lowest Rate</span>
+                <span class="font-medium text-green-600">8.7¢/kWh</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-600">Green Energy</span>
+                <span class="font-medium">Available</span>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded-full">Smart Thermostat</span>
+              <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">Solar Plans</span>
+            </div>
+
+            <button class="w-full bg-orange-50 text-orange-700 py-2 rounded-lg hover:bg-orange-100 transition-colors">
+              View Plans
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Detailed Comparison Table -->
+      <div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+        <div class="px-6 py-4 border-b border-gray-200 bg-gray-50">
+          <h3 class="text-lg font-semibold text-gray-900">Detailed Provider Comparison</h3>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead class="bg-gray-50 border-b border-gray-200">
+              <tr>
+                <th class="text-left py-3 px-6 font-medium text-gray-900">Provider</th>
+                <th class="text-left py-3 px-6 font-medium text-gray-900">Rating</th>
+                <th class="text-left py-3 px-6 font-medium text-gray-900">Plans</th>
+                <th class="text-left py-3 px-6 font-medium text-gray-900">Lowest Rate</th>
+                <th class="text-left py-3 px-6 font-medium text-gray-900">Green Options</th>
+                <th class="text-left py-3 px-6 font-medium text-gray-900">Special Features</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <tr class="hover:bg-gray-50">
+                <td class="py-4 px-6">
+                  <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-green-100 rounded flex items-center justify-center">
+                      <Building2 class="h-4 w-4 text-green-600" />
+                    </div>
+                    <span class="font-medium">Green Mountain Energy</span>
+                  </div>
+                </td>
+                <td class="py-4 px-6">⭐⭐⭐⭐ (4.2)</td>
+                <td class="py-4 px-6">15+</td>
+                <td class="py-4 px-6 text-green-600 font-medium">8.9¢/kWh</td>
+                <td class="py-4 px-6 text-green-600">100% Renewable</td>
+                <td class="py-4 px-6">No Deposit, Carbon Offsets</td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="py-4 px-6">
+                  <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-blue-100 rounded flex items-center justify-center">
+                      <Zap class="h-4 w-4 text-blue-600" />
+                    </div>
+                    <span class="font-medium">TXU Energy</span>
+                  </div>
+                </td>
+                <td class="py-4 px-6">⭐⭐⭐⭐⭐ (4.5)</td>
+                <td class="py-4 px-6">25+</td>
+                <td class="py-4 px-6 text-green-600 font-medium">9.2¢/kWh</td>
+                <td class="py-4 px-6">Available</td>
+                <td class="py-4 px-6">Free Nights, Rewards Program</td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="py-4 px-6">
+                  <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-orange-100 rounded flex items-center justify-center">
+                      <Shield class="h-4 w-4 text-orange-600" />
+                    </div>
+                    <span class="font-medium">Reliant Energy</span>
+                  </div>
+                </td>
+                <td class="py-4 px-6">⭐⭐⭐⭐ (4.0)</td>
+                <td class="py-4 px-6">20+</td>
+                <td class="py-4 px-6 text-green-600 font-medium">8.7¢/kWh</td>
+                <td class="py-4 px-6">Available</td>
+                <td class="py-4 px-6">Smart Home, Solar Plans</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- How We Rate Providers -->
+      <div class="mt-16 bg-blue-50 rounded-xl p-8">
+        <h3 class="text-2xl font-bold text-gray-900 mb-6">How We Rate Providers</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="flex items-start space-x-3">
+            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+              <Users class="h-5 w-5 text-blue-600" />
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-900 mb-2">Customer Satisfaction</h4>
+              <p class="text-gray-600 text-sm">Real customer reviews, complaint ratios, and service quality metrics</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+              <TrendingUp class="h-5 w-5 text-green-600" />
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-900 mb-2">Competitive Rates</h4>
+              <p class="text-gray-600 text-sm">Rate analysis, hidden fees, and overall value comparison</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+              <Award class="h-5 w-5 text-purple-600" />
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-900 mb-2">Plan Variety</h4>
+              <p class="text-gray-600 text-sm">Range of options, flexibility, and special features offered</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</Layout>

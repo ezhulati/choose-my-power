@@ -58,11 +58,11 @@ export class ResourcePreloader {
           'https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuDyfAZ9hiJ_EaA.woff2'
         ],
         scripts: [
-          '/assets/js/00-vendor-react.js',
-          '/assets/js/01-vendor-ui.js'
+          // Assets are generated with hashed names by Astro build process
+          // Actual preloading handled by Astro's built-in optimization
         ],
         styles: [
-          '/assets/css/critical.css'
+          // Critical CSS is inlined by Astro for better performance
         ],
         images: []
       },
@@ -97,7 +97,7 @@ export class ResourcePreloader {
           '/texas',
           '/electricity-plans/dallas-tx/',
           '/electricity-plans/houston-tx/',
-          '/assets/js/02-faceted-system.js'
+          // Faceted system assets handled by Astro's module system
         ]
       },
       {
@@ -106,7 +106,7 @@ export class ResourcePreloader {
         resources: [
           '/compare',
           '/providers',
-          '/assets/js/03-api-system.js'
+          // API system assets handled by Astro's module system
         ]
       }
     ]);
@@ -131,8 +131,8 @@ export class ResourcePreloader {
         priority: 'high',
         trigger: 'immediate',
         resources: [
-          '/assets/js/02-faceted-system.js',
-          '/assets/js/03-api-system.js'
+          // Faceted system assets handled by Astro's module system,
+          // API system assets handled by Astro's module system
         ]
       },
       {
@@ -152,8 +152,8 @@ export class ResourcePreloader {
         priority: 'high',
         trigger: 'immediate',
         resources: [
-          '/assets/js/02-faceted-system.js',
-          '/assets/js/03-api-system.js'
+          // Faceted system assets handled by Astro's module system,
+          // API system assets handled by Astro's module system
         ]
       },
       {
@@ -161,7 +161,7 @@ export class ResourcePreloader {
         trigger: 'intersection',
         resources: [
           '/compare',
-          '/assets/js/04-seo-system.js'
+          // SEO system assets handled by Astro's module system
         ]
       }
     ]);

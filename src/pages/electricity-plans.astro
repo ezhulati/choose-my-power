@@ -1,0 +1,192 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroBackground from '../components/HeroBackground.astro';
+import { ZipCodeSearch } from '../components/ZipCodeSearch';
+import { Search, Filter, Zap, Leaf, Clock, Shield } from 'lucide-react';
+
+const title = "Texas Electricity Plans | Browse All Available Plans";
+const description = "Browse all available electricity plans in Texas. Compare rates, contract terms, and features across 50+ providers and 300+ plans.";
+---
+
+<Layout title={title} description={description}>
+  <div class="min-h-screen bg-white">
+    <!-- Hero Section -->
+    <HeroBackground 
+      title="All Texas Electricity Plans" 
+      subtitle="Browse and compare 300+ electricity plans from 50+ providers"
+      variant="plans"
+    >
+      <div class="mt-8 max-w-md mx-auto">
+        <ZipCodeSearch 
+          client:load
+          placeholder="Enter ZIP to see available plans"
+          className="w-full"
+        />
+      </div>
+    </HeroBackground>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      
+      <!-- Search and Filters -->
+      <div class="mb-8">
+        <div class="flex flex-col lg:flex-row gap-4 mb-6">
+          <div class="flex-1 relative">
+            <Search class="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+            <input 
+              type="text" 
+              placeholder="Search plans by name or provider..." 
+              class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+          </div>
+          <button class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2">
+            <Filter class="h-5 w-5" />
+            <span>Filters</span>
+          </button>
+        </div>
+        
+        <!-- Quick Filter Tags -->
+        <div class="flex flex-wrap gap-2">
+          <button class="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm hover:bg-blue-200 transition-colors">Fixed Rate</button>
+          <button class="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm hover:bg-green-200 transition-colors">100% Renewable</button>
+          <button class="px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm hover:bg-purple-200 transition-colors">No Deposit</button>
+          <button class="px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm hover:bg-orange-200 transition-colors">Free Nights</button>
+          <button class="px-4 py-2 bg-gray-100 text-gray-800 rounded-full text-sm hover:bg-gray-200 transition-colors">12 Month</button>
+        </div>
+      </div>
+
+      <!-- Results Summary -->
+      <div class="mb-8">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-2xl font-bold text-gray-900">347 Plans Found</h2>
+            <p class="text-gray-600">Showing plans available statewide</p>
+          </div>
+          <div class="flex items-center space-x-4">
+            <span class="text-sm text-gray-600">Sort by:</span>
+            <select class="border border-gray-300 rounded-md px-3 py-2 text-sm">
+              <option>Lowest Rate</option>
+              <option>Highest Rated</option>
+              <option>Shortest Term</option>
+              <option>Most Popular</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Plans Grid -->
+      <div class="space-y-4">
+        
+        <!-- Plan Card 1 -->
+        <div class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-md transition-shadow">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex items-center space-x-4">
+              <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                <Leaf class="h-6 w-6 text-green-600" />
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900">Pollution Free e-Plus 12</h3>
+                <p class="text-gray-600">Green Mountain Energy</p>
+              </div>
+            </div>
+            <div class="text-right">
+              <div class="text-2xl font-bold text-green-600">8.9¢</div>
+              <div class="text-sm text-gray-600">/kWh</div>
+            </div>
+          </div>
+          
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+            <div>
+              <span class="text-sm text-gray-600">Contract Term</span>
+              <div class="font-medium">12 months</div>
+            </div>
+            <div>
+              <span class="text-sm text-gray-600">Rate Type</span>
+              <div class="font-medium">Fixed</div>
+            </div>
+            <div>
+              <span class="text-sm text-gray-600">Green Energy</span>
+              <div class="font-medium text-green-600">100%</div>
+            </div>
+            <div>
+              <span class="text-sm text-gray-600">Monthly Cost*</span>
+              <div class="font-medium">$98.95</div>
+            </div>
+          </div>
+          
+          <div class="flex items-center justify-between">
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">100% Renewable</span>
+              <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">No Deposit</span>
+              <span class="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">Fixed Rate</span>
+            </div>
+            <div class="flex space-x-2">
+              <button class="border border-gray-300 px-4 py-2 rounded-md text-sm hover:bg-gray-50">Compare</button>
+              <button class="bg-green-600 text-white px-4 py-2 rounded-md text-sm hover:bg-green-700">View Details</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Plan Card 2 -->
+        <div class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-md transition-shadow">
+          <div class="flex items-start justify-between mb-4">
+            <div class="flex items-center space-x-4">
+              <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                <Clock class="h-6 w-6 text-blue-600" />
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900">Free Nights & Weekends 12</h3>
+                <p class="text-gray-600">TXU Energy</p>
+              </div>
+            </div>
+            <div class="text-right">
+              <div class="text-2xl font-bold text-blue-600">15.2¢</div>
+              <div class="text-sm text-gray-600">/kWh*</div>
+            </div>
+          </div>
+          
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+            <div>
+              <span class="text-sm text-gray-600">Contract Term</span>
+              <div class="font-medium">12 months</div>
+            </div>
+            <div>
+              <span class="text-sm text-gray-600">Rate Type</span>
+              <div class="font-medium">Time of Use</div>
+            </div>
+            <div>
+              <span class="text-sm text-gray-600">Free Hours</span>
+              <div class="font-medium text-blue-600">Nights & Weekends</div>
+            </div>
+            <div>
+              <span class="text-sm text-gray-600">Monthly Cost*</span>
+              <div class="font-medium">$104.50</div>
+            </div>
+          </div>
+          
+          <div class="flex items-center justify-between">
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Free Nights</span>
+              <span class="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">Rewards</span>
+              <span class="px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded-full">Time of Use</span>
+            </div>
+            <div class="flex space-x-2">
+              <button class="border border-gray-300 px-4 py-2 rounded-md text-sm hover:bg-gray-50">Compare</button>
+              <button class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700">View Details</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Continue with more plan cards... -->
+        
+      </div>
+
+      <!-- Load More Button -->
+      <div class="text-center mt-12">
+        <button class="bg-gray-100 text-gray-800 px-8 py-3 rounded-lg hover:bg-gray-200 transition-colors">
+          Load More Plans
+        </button>
+      </div>
+
+    </div>
+  </div>
+</Layout>

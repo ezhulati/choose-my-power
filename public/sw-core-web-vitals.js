@@ -210,12 +210,14 @@ async function handleRequest(request) {
   } catch (error) {
     console.error('SW: Request failed:', error);
     
-    // Return offline fallback for HTML requests
-    if (isHTMLRequest(request)) {
+    // Only return offline fallback for genuine network failures (not HTTP errors like 404)
+    // Check if it's a network error vs HTTP error
+    if (isHTMLRequest(request) && isNetworkError(error)) {
+      console.warn('SW: Network unavailable, showing offline fallback');
       return getOfflineFallback();
     }
     
-    // For other requests, let the browser handle it
+    // For HTTP errors or other requests, let the browser handle it naturally
     throw error;
   }
 }
@@ -263,17 +265,26 @@ async function networkFirstStrategy(request, cacheName) {
   
   try {
     performanceMetrics.networkRequests++;
-    const networkResponse = await fetch(request);
+    const networkResponse = await fetch(request, {
+      // Add timeout to prevent hanging requests
+      signal: AbortSignal.timeout(10000) // 10 second timeout
+    });
     
     if (networkResponse.ok) {
       // Cache successful responses
       const responseToCache = networkResponse.clone();
       await cache.put(request, addTimestamp(responseToCache));
+      return networkResponse;
     }
     
+    // If response is not ok but we got a response, return it anyway
+    // Don't cache non-ok responses
     return networkResponse;
     
   } catch (error) {
+    // Only show offline fallback for actual network failures, not 404s or other HTTP errors
+    console.warn('SW: Network request failed, trying cache:', error.message);
+    
     // Fallback to cache
     const cachedResponse = await cache.match(request);
     if (cachedResponse) {
@@ -281,6 +292,9 @@ async function networkFirstStrategy(request, cacheName) {
       performanceMetrics.cacheHits++;
       return cachedResponse;
     }
+    
+    // If we have no cache and it's a genuine network error, re-throw
+    // This will let the browser handle it naturally instead of showing offline page
     throw error;
   }
 }
@@ -341,6 +355,19 @@ function isHTMLRequest(request) {
 
 function isImageRequest(request) {
   return /\.(png|jpg|jpeg|gif|svg|webp|avif|ico)$/i.test(request.url);
+}
+
+/**
+ * Check if error is a network error (vs HTTP error)
+ */
+function isNetworkError(error) {
+  // Network errors typically have these characteristics
+  return error.name === 'TypeError' ||
+         error.message.includes('NetworkError') ||
+         error.message.includes('Failed to fetch') ||
+         error.message.includes('ERR_NETWORK') ||
+         error.message.includes('ERR_INTERNET_DISCONNECTED') ||
+         error.code === 'NETWORK_ERROR';
 }
 
 /**

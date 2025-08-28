@@ -1,0 +1,226 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroBackground from '../components/HeroBackground.astro';
+import { Award, TrendingUp, Users, Shield, Leaf, DollarSign } from 'lucide-react';
+
+const title = "Best Texas Electricity Providers & Plans 2024 | Expert Rankings";
+const description = "Expert rankings and awards for the best Texas electricity providers and plans. Based on customer satisfaction, rates, and service quality.";
+---
+
+<Layout title={title} description={description}>
+  <div class="min-h-screen bg-white">
+    <!-- Hero Section -->
+    <HeroBackground 
+      title="Best of Texas Electricity" 
+      subtitle="Expert rankings and awards for top providers and plans"
+      variant="awards"
+    >
+    </HeroBackground>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      
+      <!-- Award Categories -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        
+        <!-- Best Overall -->
+        <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 border-2 border-yellow-300 rounded-xl p-8 text-center">
+          <div class="w-16 h-16 bg-yellow-500 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+            <Award class="h-8 w-8" />
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Best Overall Provider</h3>
+          <div class="text-3xl font-bold text-yellow-600 mb-2">Green Mountain Energy</div>
+          <p class="text-gray-600 text-sm">Outstanding customer service, competitive rates, and 100% renewable energy commitment</p>
+        </div>
+
+        <!-- Best Value -->
+        <div class="bg-gradient-to-br from-green-50 to-green-100 border-2 border-green-300 rounded-xl p-8 text-center">
+          <div class="w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+            <DollarSign class="h-8 w-8" />
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Best Value Plans</h3>
+          <div class="text-3xl font-bold text-green-600 mb-2">4Change Energy</div>
+          <p class="text-gray-600 text-sm">Consistently lowest rates with transparent pricing and no hidden fees</p>
+        </div>
+
+        <!-- Best Green Energy -->
+        <div class="bg-gradient-to-br from-green-50 to-emerald-100 border-2 border-emerald-300 rounded-xl p-8 text-center">
+          <div class="w-16 h-16 bg-emerald-500 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+            <Leaf class="h-8 w-8" />
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Best Green Energy</h3>
+          <div class="text-3xl font-bold text-emerald-600 mb-2">Gexa Energy</div>
+          <p class="text-gray-600 text-sm">Leading renewable energy options with innovative environmental programs</p>
+        </div>
+
+      </div>
+
+      <!-- Detailed Rankings -->
+      <div class="mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8">2024 Provider Rankings</h2>
+        
+        <div class="bg-white border border-gray-200 rounded-xl overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead class="bg-gray-50 border-b border-gray-200">
+                <tr>
+                  <th class="text-left py-4 px-6 font-semibold text-gray-900">Rank</th>
+                  <th class="text-left py-4 px-6 font-semibold text-gray-900">Provider</th>
+                  <th class="text-left py-4 px-6 font-semibold text-gray-900">Overall Score</th>
+                  <th class="text-left py-4 px-6 font-semibold text-gray-900">Customer Rating</th>
+                  <th class="text-left py-4 px-6 font-semibold text-gray-900">Best Rate</th>
+                  <th class="text-left py-4 px-6 font-semibold text-gray-900">Awards</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+                <tr class="bg-yellow-50 hover:bg-yellow-100">
+                  <td class="py-4 px-6">
+                    <div class="flex items-center space-x-2">
+                      <Award class="h-5 w-5 text-yellow-600" />
+                      <span class="font-bold text-yellow-600">#1</span>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6 font-semibold">Green Mountain Energy</td>
+                  <td class="py-4 px-6">
+                    <div class="text-2xl font-bold text-green-600">9.2</div>
+                    <div class="text-sm text-gray-600">out of 10</div>
+                  </td>
+                  <td class="py-4 px-6">⭐⭐⭐⭐⭐ (4.8)</td>
+                  <td class="py-4 px-6 text-green-600 font-medium">8.9¢/kWh</td>
+                  <td class="py-4 px-6">
+                    <div class="flex flex-wrap gap-1">
+                      <span class="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">Best Overall</span>
+                      <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">Best Green</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="py-4 px-6 font-bold text-gray-700">#2</td>
+                  <td class="py-4 px-6 font-semibold">TXU Energy</td>
+                  <td class="py-4 px-6">
+                    <div class="text-2xl font-bold text-blue-600">8.9</div>
+                    <div class="text-sm text-gray-600">out of 10</div>
+                  </td>
+                  <td class="py-4 px-6">⭐⭐⭐⭐⭐ (4.5)</td>
+                  <td class="py-4 px-6 text-green-600 font-medium">9.2¢/kWh</td>
+                  <td class="py-4 px-6">
+                    <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Most Popular</span>
+                  </td>
+                </tr>
+                <tr class="hover:bg-gray-50">
+                  <td class="py-4 px-6 font-bold text-gray-700">#3</td>
+                  <td class="py-4 px-6 font-semibold">4Change Energy</td>
+                  <td class="py-4 px-6">
+                    <div class="text-2xl font-bold text-green-600">8.7</div>
+                    <div class="text-sm text-gray-600">out of 10</div>
+                  </td>
+                  <td class="py-4 px-6">⭐⭐⭐⭐ (4.3)</td>
+                  <td class="py-4 px-6 text-green-600 font-medium">6.9¢/kWh</td>
+                  <td class="py-4 px-6">
+                    <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">Best Value</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Plan Awards -->
+      <div class="mb-16">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8">Best Plans by Category</h2>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          
+          <!-- Best Fixed Rate -->
+          <div class="bg-white border border-gray-200 rounded-xl p-6">
+            <div class="flex items-center space-x-3 mb-4">
+              <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                <Shield class="h-6 w-6 text-blue-600" />
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900">Best Fixed Rate Plan</h3>
+                <p class="text-sm text-gray-600">Predictable pricing with rate protection</p>
+              </div>
+            </div>
+            <div class="border-l-4 border-blue-500 pl-4 mb-4">
+              <div class="font-semibold text-gray-900">Maxx Saver Select 12</div>
+              <div class="text-sm text-gray-600">4Change Energy</div>
+              <div class="text-2xl font-bold text-green-600 mt-1">6.9¢/kWh</div>
+            </div>
+            <p class="text-sm text-gray-600">12-month fixed rate with no deposit required and transparent pricing.</p>
+          </div>
+
+          <!-- Best Variable Rate -->
+          <div class="bg-white border border-gray-200 rounded-xl p-6">
+            <div class="flex items-center space-x-3 mb-4">
+              <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                <TrendingUp class="h-6 w-6 text-orange-600" />
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900">Best Variable Rate Plan</h3>
+                <p class="text-sm text-gray-600">Flexibility with potential savings</p>
+              </div>
+            </div>
+            <div class="border-l-4 border-orange-500 pl-4 mb-4">
+              <div class="font-semibold text-gray-900">Live Brighter 12</div>
+              <div class="text-sm text-gray-600">TXU Energy</div>
+              <div class="text-2xl font-bold text-green-600 mt-1">7.8¢/kWh</div>
+            </div>
+            <p class="text-sm text-gray-600">Variable rate with no contract commitment and rewards program.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Methodology -->
+      <div class="bg-blue-50 rounded-xl p-8">
+        <h3 class="text-2xl font-bold text-gray-900 mb-6">How We Choose Winners</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h4 class="font-semibold text-gray-900 mb-3">Evaluation Criteria</h4>
+            <ul class="space-y-2 text-gray-600">
+              <li class="flex items-start space-x-2">
+                <Users class="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                <span>Customer satisfaction scores and complaint ratios</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <DollarSign class="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                <span>Rate competitiveness across usage levels</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <Shield class="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                <span>Contract terms and fee transparency</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <Award class="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                <span>Plan variety and special features</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-900 mb-3">Update Schedule</h4>
+            <ul class="space-y-2 text-gray-600">
+              <li class="flex items-start space-x-2">
+                <div class="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                <span>Rankings updated monthly with fresh data</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <div class="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                <span>Customer reviews incorporated weekly</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <div class="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                <span>Rate analysis performed daily</span>
+              </li>
+              <li class="flex items-start space-x-2">
+                <div class="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                <span>Independent verification by energy experts</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</Layout>

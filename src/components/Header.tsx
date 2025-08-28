@@ -67,7 +67,7 @@ export function Header({ onNavigate }: HeaderProps) {
   };
 
   return (
-    <header className="bg-white shadow-sm border-b border-gray-200 relative z-50">
+    <header className="bg-white shadow-sm border-b border-gray-200 relative" style={{ zIndex: 1000 }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -99,7 +99,7 @@ export function Header({ onNavigate }: HeaderProps) {
                 </button>
                 
                 {item.dropdown && activeDropdown === item.name && (
-                  <div className="absolute top-full left-0 w-56 bg-white border border-gray-200 rounded-md shadow-lg py-1 z-50">
+                  <div className="absolute top-full left-0 w-56 bg-white border border-gray-200 rounded-md shadow-lg py-1" style={{ zIndex: 1050 }}>
                     {item.dropdown.map((dropdownItem) => (
                       <button
                         key={dropdownItem.name}
@@ -128,7 +128,7 @@ export function Header({ onNavigate }: HeaderProps) {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-t border-gray-200 py-4 bg-white">
+          <div className="md:hidden border-t border-gray-200 py-4 bg-white mobile-menu" style={{ zIndex: 1020 }}>
             <div className="space-y-1">
               {navigation.map((item) => (
                 <div key={item.name}>

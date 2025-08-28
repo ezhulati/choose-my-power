@@ -1,0 +1,127 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroBackground from '../../components/HeroBackground.astro';
+import { ZipCodeSearch } from '../../components/ZipCodeSearch';
+import { Award, Users, Star, Shield } from 'lucide-react';
+
+const title = "Best Electricity Providers in Texas | Top Rated Companies";
+const description = "Shop with the best-rated electricity providers in Texas. Customer-verified reviews, expert analysis, and quality service guarantee.";
+---
+
+<Layout title={title} description={description}>
+  <div class="min-h-screen bg-white">
+    <HeroBackground 
+      title="Best Electricity Providers" 
+      subtitle="Shop with Texas's highest-rated electricity companies"
+      variant="providers"
+    >
+      <div class="mt-8 max-w-md mx-auto">
+        <ZipCodeSearch 
+          client:load
+          placeholder="Enter ZIP to see top providers"
+          className="w-full"
+        />
+      </div>
+    </HeroBackground>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      
+      <!-- Top Providers Grid -->
+      <div class="space-y-8">
+        
+        <!-- #1 Provider -->
+        <div class="bg-gradient-to-r from-yellow-50 to-yellow-100 border-2 border-yellow-300 rounded-xl p-8">
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-4">
+              <div class="bg-yellow-500 text-white px-4 py-2 rounded-full font-bold text-lg flex items-center space-x-2">
+                <Award class="h-5 w-5" />
+                <span>#1 Best Provider</span>
+              </div>
+            </div>
+            <div class="flex items-center space-x-2">
+              <div class="flex">
+                <Star class="h-6 w-6 text-yellow-400 fill-current" />
+                <Star class="h-6 w-6 text-yellow-400 fill-current" />
+                <Star class="h-6 w-6 text-yellow-400 fill-current" />
+                <Star class="h-6 w-6 text-yellow-400 fill-current" />
+                <Star class="h-6 w-6 text-yellow-400 fill-current" />
+              </div>
+              <span class="text-xl font-bold">(4.8/5)</span>
+            </div>
+          </div>
+          
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2">
+              <h3 class="text-3xl font-bold text-gray-900 mb-4">Green Mountain Energy</h3>
+              <p class="text-gray-700 text-lg mb-6">
+                The gold standard for Texas electricity providers. 100% renewable energy, outstanding customer service, and competitive rates make them the clear choice for environmentally conscious consumers.
+              </p>
+              
+              <div class="grid grid-cols-2 gap-6">
+                <div>
+                  <div class="text-2xl font-bold text-green-600">96%</div>
+                  <div class="text-sm text-gray-600">Customer Satisfaction</div>
+                </div>
+                <div>
+                  <div class="text-2xl font-bold text-blue-600">15+</div>
+                  <div class="text-sm text-gray-600">Plan Options</div>
+                </div>
+                <div>
+                  <div class="text-2xl font-bold text-green-600">8.9¢</div>
+                  <div class="text-sm text-gray-600">Starting Rate</div>
+                </div>
+                <div>
+                  <div class="text-2xl font-bold text-emerald-600">100%</div>
+                  <div class="text-sm text-gray-600">Renewable Energy</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="text-center">
+              <div class="bg-white rounded-lg p-6 shadow-md">
+                <div class="text-4xl font-bold text-green-600 mb-2">A+</div>
+                <div class="text-gray-600 mb-4">Expert Rating</div>
+                <button class="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-colors w-full mb-3">
+                  View Plans
+                </button>
+                <div class="text-sm text-gray-500">No deposit plans available</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Continue with other top providers... -->
+        
+      </div>
+
+      <!-- Why Choose the Best -->
+      <div class="mt-16 bg-blue-50 rounded-xl p-8">
+        <h3 class="text-2xl font-bold text-gray-900 mb-6">Why Shop with Top-Rated Providers?</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Shield class="h-8 w-8 text-blue-600" />
+            </div>
+            <h4 class="font-semibold text-gray-900 mb-2">Reliable Service</h4>
+            <p class="text-sm text-gray-600">Top providers maintain excellent service records with fewer outages and faster issue resolution.</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Users class="h-8 w-8 text-green-600" />
+            </div>
+            <h4 class="font-semibold text-gray-900 mb-2">Superior Support</h4>
+            <p class="text-sm text-gray-600">Award-winning customer service teams provide quick, helpful assistance when you need it.</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Award class="h-8 w-8 text-purple-600" />
+            </div>
+            <h4 class="font-semibold text-gray-900 mb-2">Proven Track Record</h4>
+            <p class="text-sm text-gray-600">Years of positive customer feedback and industry recognition you can trust.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</Layout>

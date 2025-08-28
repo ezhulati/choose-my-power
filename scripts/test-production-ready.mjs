@@ -430,7 +430,7 @@ async function testTdspMappingValidation() {
     console.log(`   Cities mapped: ${cityCount}`);
     
     // Validate TDSP DUNS numbers
-    const uniqueTdsps = [...new Set(Object.values(tdspMapping).map((m: any) => m.duns))];
+    const uniqueTdsps = [...new Set(Object.values(tdspMapping).map((m) => m.duns))];
     const expectedTdsps = ['1039940674000', '957877905', '007924772', '007923311', '007929441'];
     
     const missingTdsps = expectedTdsps.filter(tdsp => !uniqueTdsps.includes(tdsp));

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from '../hooks/useRouter';
-import { Header } from './Header';
+import { Header } from './Header.tsx';
 import { Footer } from './Footer';
 import { Homepage } from './Homepage';
 
