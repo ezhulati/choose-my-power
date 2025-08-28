@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Search, MapPin } from 'lucide-react';
 
 interface ZipCodeSearchProps {
-  onSearch: (zipCode: string) => void;
+  onSearch?: (zipCode: string) => void;
   placeholder?: string;
   size?: 'sm' | 'md' | 'lg';
 }
@@ -10,12 +10,23 @@ interface ZipCodeSearchProps {
 export function ZipCodeSearch({ onSearch, placeholder = "Enter ZIP code", size = 'md' }: ZipCodeSearchProps) {
   const [zipCode, setZipCode] = useState('');
 
+  const defaultOnSearch = (zipCode: string) => {
+    console.log('Default navigation for ZIP:', zipCode);
+    // Navigate to Texas city page based on ZIP code
+    // For now, navigate to general Texas page - could be enhanced with ZIP-to-city mapping
+    if (typeof window !== 'undefined') {
+      window.location.href = `/texas?zip=${zipCode}`;
+    }
+  };
+
+  const handleSearch = onSearch || defaultOnSearch;
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted with ZIP:', zipCode);
     if (zipCode.length === 5) {
-      console.log('Calling onSearch with:', zipCode);
-      onSearch(zipCode);
+      console.log('Calling handleSearch with:', zipCode);
+      handleSearch(zipCode);
     } else {
       console.log('ZIP code not 5 digits:', zipCode.length);
     }
@@ -25,8 +36,8 @@ export function ZipCodeSearch({ onSearch, placeholder = "Enter ZIP code", size =
     e.preventDefault();
     console.log('Button clicked with ZIP:', zipCode);
     if (zipCode.length === 5) {
-      console.log('Calling onSearch from button with:', zipCode);
-      onSearch(zipCode);
+      console.log('Calling handleSearch from button with:', zipCode);
+      handleSearch(zipCode);
     }
   };
 
