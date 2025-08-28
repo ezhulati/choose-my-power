@@ -77,6 +77,12 @@ export class PlanRepository {
   async storePlans(apiPlans: any[], tdspDuns: string): Promise<void> {
     try {
       for (const apiPlan of apiPlans) {
+        // Validate required data before processing
+        if (!apiPlan?.product?.brand) {
+          console.warn(`Skipping plan ${apiPlan?._id || 'unknown'}: missing brand data`);
+          continue;
+        }
+        
         // First ensure provider exists
         const providerId = await this.ensureProviderExists(apiPlan.product.brand);
         
@@ -139,10 +145,15 @@ export class PlanRepository {
    */
   private async ensureProviderExists(brandData: any): Promise<string> {
     try {
+      // Validate brand data
+      if (!brandData?.name) {
+        throw new Error('Brand data missing required name field');
+      }
+      
       // First try to find existing provider
       const existing = await this.db`
         SELECT id FROM providers 
-        WHERE puct_number = ${brandData.puct_number}
+        WHERE puct_number = ${brandData.puct_number || ''}
         LIMIT 1
       `;
 
@@ -177,34 +188,115 @@ export class PlanRepository {
    */
   async getActivePlans(tdspDuns: string, filters: Partial<ApiParams> = {}): Promise<Plan[]> {
     try {
-      let query = this.db`
-        SELECT 
-          p.*,
-          pr.name as provider_name,
-          pr.logo_filename,
-          pr.logo_url,
-          pr.rating,
-          pr.review_count
-        FROM electricity_plans p
-        JOIN providers pr ON p.provider_id = pr.id
-        WHERE p.tdsp_duns = ${tdspDuns} 
-          AND p.is_active = true
-      `;
-
-      // Add filters
-      if (filters.term) {
-        query = this.db`${query} AND p.term_months = ${filters.term}`;
+      // Use separate queries for different filter combinations to avoid SQL building issues
+      let plans: any[];
+      
+      if (filters.term && filters.percent_green !== undefined && filters.is_pre_pay !== undefined) {
+        plans = await this.db`
+          SELECT 
+            p.*,
+            pr.name as provider_name,
+            pr.logo_filename,
+            pr.logo_url,
+            pr.rating,
+            pr.review_count
+          FROM electricity_plans p
+          JOIN providers pr ON p.provider_id = pr.id
+          WHERE p.tdsp_duns = ${tdspDuns} 
+            AND p.is_active = true
+            AND p.term_months = ${filters.term}
+            AND p.percent_green >= ${filters.percent_green}
+            AND p.is_pre_pay = ${filters.is_pre_pay}
+          ORDER BY p.rate_1000kwh ASC 
+          LIMIT 50
+        `;
+      } else if (filters.term && filters.percent_green !== undefined) {
+        plans = await this.db`
+          SELECT 
+            p.*,
+            pr.name as provider_name,
+            pr.logo_filename,
+            pr.logo_url,
+            pr.rating,
+            pr.review_count
+          FROM electricity_plans p
+          JOIN providers pr ON p.provider_id = pr.id
+          WHERE p.tdsp_duns = ${tdspDuns} 
+            AND p.is_active = true
+            AND p.term_months = ${filters.term}
+            AND p.percent_green >= ${filters.percent_green}
+          ORDER BY p.rate_1000kwh ASC 
+          LIMIT 50
+        `;
+      } else if (filters.term) {
+        plans = await this.db`
+          SELECT 
+            p.*,
+            pr.name as provider_name,
+            pr.logo_filename,
+            pr.logo_url,
+            pr.rating,
+            pr.review_count
+          FROM electricity_plans p
+          JOIN providers pr ON p.provider_id = pr.id
+          WHERE p.tdsp_duns = ${tdspDuns} 
+            AND p.is_active = true
+            AND p.term_months = ${filters.term}
+          ORDER BY p.rate_1000kwh ASC 
+          LIMIT 50
+        `;
+      } else if (filters.percent_green !== undefined) {
+        plans = await this.db`
+          SELECT 
+            p.*,
+            pr.name as provider_name,
+            pr.logo_filename,
+            pr.logo_url,
+            pr.rating,
+            pr.review_count
+          FROM electricity_plans p
+          JOIN providers pr ON p.provider_id = pr.id
+          WHERE p.tdsp_duns = ${tdspDuns} 
+            AND p.is_active = true
+            AND p.percent_green >= ${filters.percent_green}
+          ORDER BY p.rate_1000kwh ASC 
+          LIMIT 50
+        `;
+      } else if (filters.is_pre_pay !== undefined) {
+        plans = await this.db`
+          SELECT 
+            p.*,
+            pr.name as provider_name,
+            pr.logo_filename,
+            pr.logo_url,
+            pr.rating,
+            pr.review_count
+          FROM electricity_plans p
+          JOIN providers pr ON p.provider_id = pr.id
+          WHERE p.tdsp_duns = ${tdspDuns} 
+            AND p.is_active = true
+            AND p.is_pre_pay = ${filters.is_pre_pay}
+          ORDER BY p.rate_1000kwh ASC 
+          LIMIT 50
+        `;
+      } else {
+        // No filters
+        plans = await this.db`
+          SELECT 
+            p.*,
+            pr.name as provider_name,
+            pr.logo_filename,
+            pr.logo_url,
+            pr.rating,
+            pr.review_count
+          FROM electricity_plans p
+          JOIN providers pr ON p.provider_id = pr.id
+          WHERE p.tdsp_duns = ${tdspDuns} 
+            AND p.is_active = true
+          ORDER BY p.rate_1000kwh ASC 
+          LIMIT 50
+        `;
       }
-      if (filters.percent_green !== undefined) {
-        query = this.db`${query} AND p.percent_green >= ${filters.percent_green}`;
-      }
-      if (filters.is_pre_pay !== undefined) {
-        query = this.db`${query} AND p.is_pre_pay = ${filters.is_pre_pay}`;
-      }
-
-      query = this.db`${query} ORDER BY p.rate_1000kwh ASC LIMIT 50`;
-
-      const plans = await query;
 
       return plans.map(this.transformDatabasePlan);
     } catch (error) {

@@ -372,13 +372,16 @@ export class ComparePowerClient {
       .filter(plan => this.validatePlanData(plan))
       .map(plan => {
         try {
+          // Safe access with fallbacks
+          const brandName = plan?.product?.brand?.name || 'Unknown Provider';
+          
           return {
             id: plan._id,
             name: plan.product.name,
             provider: {
-              name: plan.product.brand.name,
-              logo: getProviderLogoUrl(plan.product.brand.name),
-              logoInfo: getProviderLogo(plan.product.brand.name),
+              name: brandName,
+              logo: getProviderLogoUrl(brandName),
+              logoInfo: getProviderLogo(brandName),
               rating: 0, // Not provided in current API structure
               reviewCount: 0, // Not provided in current API structure
             },
@@ -695,17 +698,34 @@ export class ComparePowerClient {
    */
   private validatePlanData(plan: ComparePowerPlanResponse): boolean {
     try {
-      return Boolean(
-        plan._id &&
-        plan.product &&
-        plan.product.name &&
-        plan.product.brand &&
-        plan.product.brand.name &&
-        plan.tdsp &&
-        plan.tdsp.duns_number &&
-        (plan.display_pricing_1000?.avg || plan.display_pricing_1000?.total)
+      // More thorough validation
+      const hasRequiredPlanData = Boolean(
+        plan?._id &&
+        plan?.product &&
+        plan?.product?.name &&
+        plan?.product?.brand &&
+        plan?.product?.brand?.name &&
+        plan?.tdsp &&
+        plan?.tdsp?.duns_number &&
+        (plan?.display_pricing_1000?.avg || plan?.display_pricing_1000?.total)
       );
-    } catch {
+      
+      if (!hasRequiredPlanData) {
+        console.warn(`Plan validation failed for ${plan?._id || 'unknown'}:`, {
+          hasId: Boolean(plan?._id),
+          hasProduct: Boolean(plan?.product),
+          hasProductName: Boolean(plan?.product?.name),
+          hasBrand: Boolean(plan?.product?.brand),
+          hasBrandName: Boolean(plan?.product?.brand?.name),
+          hasTdsp: Boolean(plan?.tdsp),
+          hasTdspDuns: Boolean(plan?.tdsp?.duns_number),
+          hasPricing: Boolean(plan?.display_pricing_1000?.avg || plan?.display_pricing_1000?.total)
+        });
+      }
+      
+      return hasRequiredPlanData;
+    } catch (error) {
+      console.warn(`Plan validation error for ${plan?._id || 'unknown'}:`, error);
       return false;
     }
   }
