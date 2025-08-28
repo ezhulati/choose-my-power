@@ -1,193 +1,682 @@
 ---
-// HeaderWrapper.astro - Fixed Header with proper navigation visibility
+// HeaderWrapper.astro - Brand New Perfect Navigation
 ---
 
-<div id="header-container">
-  <header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-[100]" style="backdrop-filter: blur(8px); background-color: rgba(255, 255, 255, 0.95);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        <!-- Logo -->
-        <div class="flex items-center">
-          <a href="/" class="flex items-center space-x-2 text-blue-600 hover:text-blue-700 transition-colors">
-            <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-            <span class="text-xl font-bold text-blue-800">ChooseMyPower</span>
-          </a>
-        </div>
-
-        <!-- Desktop Navigation -->
-        <nav class="hidden md:flex space-x-1">
-          <a href="/compare" class="text-gray-700 hover:text-blue-600 px-4 py-2 text-sm font-medium transition-colors rounded-md hover:bg-blue-50">Compare</a>
-
-          <div class="relative group">
-            <button class="flex items-center space-x-1 text-gray-700 hover:text-blue-600 px-4 py-2 text-sm font-medium transition-colors rounded-md hover:bg-blue-50">
-              <span>Browse</span>
-              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            <div class="absolute top-full left-0 w-56 bg-white border border-gray-200 rounded-md shadow-lg py-1 z-[120] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-              <a href="/electricity-companies" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">Electricity Companies</a>
-              <a href="/providers" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">All Providers</a>
-              <a href="/texas" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">Texas Plans</a>
-            </div>
-          </div>
-
-          <div class="relative group">
-            <button class="flex items-center space-x-1 text-gray-700 hover:text-blue-600 px-4 py-2 text-sm font-medium transition-colors rounded-md hover:bg-blue-50">
-              <span>Rates</span>
-              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            <div class="absolute top-full left-0 w-56 bg-white border border-gray-200 rounded-md shadow-lg py-1 z-[120] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-              <a href="/rates" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">Current Rates</a>
-              <a href="/rates/calculator" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors">Rate Calculator</a>
-            </div>
-          </div>
-
-          <a href="/shop" class="text-gray-700 hover:text-blue-600 px-4 py-2 text-sm font-medium transition-colors rounded-md hover:bg-blue-50">Shop</a>
-          <a href="/locations" class="text-gray-700 hover:text-blue-600 px-4 py-2 text-sm font-medium transition-colors rounded-md hover:bg-blue-50">Locations</a>
-          <a href="/resources" class="text-gray-700 hover:text-blue-600 px-4 py-2 text-sm font-medium transition-colors rounded-md hover:bg-blue-50">Resources</a>
-        </nav>
-
-        <!-- Mobile menu button -->
-        <div class="md:hidden">
-          <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-600 p-2">
-            <svg id="menu-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            <svg id="close-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- Mobile Navigation -->
-      <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 py-4 bg-white z-[420]">
-        <div class="space-y-1">
-          <details class="group">
-            <summary class="flex items-center justify-between w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors cursor-pointer">
-              <span>Compare</span>
-              <svg class="h-4 w-4 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </summary>
-            <div class="ml-4 space-y-1 mt-1">
-              <a href="/compare/providers" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors">Compare Providers</a>
-              <a href="/compare/plans" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors">Compare Plans</a>
-              <a href="/compare/rates" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors">Compare Rates</a>
-              <a href="/compare/providers/top-5" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors">Top 5 Providers</a>
-            </div>
-          </details>
-
-          <details class="group">
-            <summary class="flex items-center justify-between w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors cursor-pointer">
-              <span>Browse</span>
-              <svg class="h-4 w-4 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </summary>
-            <div class="ml-4 space-y-1 mt-1">
-              <a href="/electricity-companies" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors">Electricity Companies</a>
-              <a href="/electricity-plans" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors">Electricity Plans</a>
-              <a href="/best" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors">Best Rankings</a>
-              <a href="/providers" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors">All Providers</a>
-            </div>
-          </details>
-
-          <a href="/rates" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors">Rates</a>
-
-          <details class="group">
-            <summary class="flex items-center justify-between w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors cursor-pointer">
-              <span>Shop</span>
-              <svg class="h-4 w-4 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </summary>
-            <div class="ml-4 space-y-1 mt-1">
-              <a href="/shop/cheapest-electricity" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors">Cheapest Electricity</a>
-              <a href="/shop/best-electricity-providers" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors">Best Providers</a>
-              <a href="/shop/green-energy" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors">Green Energy</a>
-              <a href="/shop/no-deposit-electricity" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors">No Deposit Plans</a>
-            </div>
-          </details>
-
-          <a href="/locations" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors">Locations</a>
-          <a href="/resources" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors">Resources</a>
-        </div>
-      </div>
+<header class="header-nav">
+  <div class="nav-container">
+    <!-- Logo -->
+    <div class="nav-logo">
+      <a href="/" class="logo-link">
+        <svg class="logo-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+        <span class="logo-text">ChooseMyPower</span>
+      </a>
     </div>
-  </header>
-</div>
+
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav">
+      <a href="/compare" class="nav-link">Compare</a>
+      
+      <div class="dropdown">
+        <button class="nav-link dropdown-trigger">
+          Browse
+          <svg class="dropdown-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div class="dropdown-menu">
+          <a href="/electricity-companies" class="dropdown-item">Electricity Companies</a>
+          <a href="/electricity-plans" class="dropdown-item">Electricity Plans</a>
+          <a href="/best" class="dropdown-item">Best Rankings</a>
+          <a href="/providers" class="dropdown-item">All Providers</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="nav-link dropdown-trigger">
+          Rates
+          <svg class="dropdown-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div class="dropdown-menu">
+          <a href="/rates" class="dropdown-item">Current Rates</a>
+          <a href="/rates/calculator" class="dropdown-item">Rate Calculator</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="nav-link dropdown-trigger">
+          Shop
+          <svg class="dropdown-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div class="dropdown-menu">
+          <a href="/shop/cheapest-electricity" class="dropdown-item">Cheapest Electricity</a>
+          <a href="/shop/best-electricity-providers" class="dropdown-item">Best Providers</a>
+          <a href="/shop/green-energy" class="dropdown-item">Green Energy</a>
+          <a href="/shop/no-deposit-electricity" class="dropdown-item">No Deposit Plans</a>
+        </div>
+      </div>
+
+      <a href="/locations" class="nav-link">Locations</a>
+      <a href="/resources" class="nav-link">Resources</a>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-btn" id="mobile-menu-btn">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav" id="mobile-nav">
+    <div class="mobile-nav-content">
+      <a href="/compare" class="mobile-nav-link">Compare</a>
+      
+      <div class="mobile-dropdown">
+        <button class="mobile-nav-link mobile-dropdown-trigger">
+          Browse
+          <svg class="mobile-dropdown-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div class="mobile-dropdown-menu">
+          <a href="/electricity-companies" class="mobile-dropdown-item">Electricity Companies</a>
+          <a href="/electricity-plans" class="mobile-dropdown-item">Electricity Plans</a>
+          <a href="/best" class="mobile-dropdown-item">Best Rankings</a>
+          <a href="/providers" class="mobile-dropdown-item">All Providers</a>
+        </div>
+      </div>
+
+      <div class="mobile-dropdown">
+        <button class="mobile-nav-link mobile-dropdown-trigger">
+          Rates
+          <svg class="mobile-dropdown-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div class="mobile-dropdown-menu">
+          <a href="/rates" class="mobile-dropdown-item">Current Rates</a>
+          <a href="/rates/calculator" class="mobile-dropdown-item">Rate Calculator</a>
+        </div>
+      </div>
+
+      <div class="mobile-dropdown">
+        <button class="mobile-nav-link mobile-dropdown-trigger">
+          Shop
+          <svg class="mobile-dropdown-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div class="mobile-dropdown-menu">
+          <a href="/shop/cheapest-electricity" class="mobile-dropdown-item">Cheapest Electricity</a>
+          <a href="/shop/best-electricity-providers" class="mobile-dropdown-item">Best Providers</a>
+          <a href="/shop/green-energy" class="mobile-dropdown-item">Green Energy</a>
+          <a href="/shop/no-deposit-electricity" class="mobile-dropdown-item">No Deposit Plans</a>
+        </div>
+      </div>
+
+      <a href="/locations" class="mobile-nav-link">Locations</a>
+      <a href="/resources" class="mobile-nav-link">Resources</a>
+    </div>
+  </div>
+</header>
 
 <script>
+document.addEventListener('DOMContentLoaded', function() {
   // Mobile menu toggle
-  document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuIcon = document.getElementById('menu-icon');
-    const closeIcon = document.getElementById('close-icon');
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileNav = document.getElementById('mobile-nav');
+  
+  if (mobileMenuBtn && mobileNav) {
+    mobileMenuBtn.addEventListener('click', function() {
+      mobileMenuBtn.classList.toggle('active');
+      mobileNav.classList.toggle('active');
+      document.body.classList.toggle('mobile-nav-open');
+    });
+  }
 
-    if (mobileMenuButton && mobileMenu && menuIcon && closeIcon) {
-      mobileMenuButton.addEventListener('click', function() {
-        const isOpen = !mobileMenu.classList.contains('hidden');
+  // Desktop dropdown functionality
+  const dropdowns = document.querySelectorAll('.dropdown');
+  dropdowns.forEach(dropdown => {
+    const trigger = dropdown.querySelector('.dropdown-trigger');
+    const menu = dropdown.querySelector('.dropdown-menu');
+    
+    if (trigger && menu) {
+      // Show on hover
+      dropdown.addEventListener('mouseenter', () => {
+        menu.classList.add('show');
+      });
+      
+      // Hide on mouse leave
+      dropdown.addEventListener('mouseleave', () => {
+        menu.classList.remove('show');
+      });
+      
+      // Toggle on click for touch devices
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        menu.classList.toggle('show');
         
-        if (isOpen) {
-          mobileMenu.classList.add('hidden');
-          menuIcon.classList.remove('hidden');
-          closeIcon.classList.add('hidden');
-        } else {
-          mobileMenu.classList.remove('hidden');
-          menuIcon.classList.add('hidden');
-          closeIcon.classList.remove('hidden');
-        }
+        // Close other dropdowns
+        dropdowns.forEach(otherDropdown => {
+          if (otherDropdown !== dropdown) {
+            otherDropdown.querySelector('.dropdown-menu').classList.remove('show');
+          }
+        });
       });
     }
   });
+
+  // Mobile dropdown functionality
+  const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
+  mobileDropdowns.forEach(dropdown => {
+    const trigger = dropdown.querySelector('.mobile-dropdown-trigger');
+    const menu = dropdown.querySelector('.mobile-dropdown-menu');
+    const arrow = dropdown.querySelector('.mobile-dropdown-arrow');
+    
+    if (trigger && menu && arrow) {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        dropdown.classList.toggle('active');
+        menu.classList.toggle('show');
+        arrow.classList.toggle('rotated');
+      });
+    }
+  });
+
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.dropdown')) {
+      document.querySelectorAll('.dropdown-menu').forEach(menu => {
+        menu.classList.remove('show');
+      });
+    }
+  });
+
+  // Close mobile nav when clicking on links
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link, .mobile-dropdown-item');
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (!link.classList.contains('mobile-dropdown-trigger')) {
+        mobileMenuBtn.classList.remove('active');
+        mobileNav.classList.remove('active');
+        document.body.classList.remove('mobile-nav-open');
+      }
+    });
+  });
+});
 </script>
 
 <style>
-/* Fix critical navigation visibility issues using design system z-index values */
-#header-container {
+/* Reset and base styles */
+.header-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+/* Logo */
+.nav-logo {
+  flex-shrink: 0;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: #2563eb;
+  font-weight: 700;
+  font-size: 1.25rem;
+  transition: color 0.2s ease;
+}
+
+.logo-link:hover {
+  color: #1d4ed8;
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  stroke-width: 2;
+}
+
+.logo-text {
+  color: #1e40af;
+}
+
+/* Desktop Navigation */
+.desktop-nav {
+  display: none;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+@media (min-width: 768px) {
+  .desktop-nav {
+    display: flex;
+  }
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  color: #374151;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.875rem;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  background: none;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  color: #2563eb;
+  background-color: #eff6ff;
+}
+
+/* Dropdown */
+.dropdown {
   position: relative;
+}
+
+.dropdown-trigger {
+  position: relative;
+}
+
+.dropdown-arrow {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+.dropdown:hover .dropdown-arrow,
+.dropdown-menu.show ~ .dropdown-trigger .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  padding: 0.5rem 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+  z-index: 99999 !important; /* ENTERPRISE SOLUTION: Maximum z-index to ensure visibility above ALL content */
+}
+
+.dropdown-menu.show,
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-item {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: #374151;
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  border-radius: 0;
+}
+
+.dropdown-item:hover {
+  color: #2563eb;
+  background-color: #eff6ff;
+}
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  gap: 4px;
+}
+
+@media (min-width: 768px) {
+  .mobile-menu-btn {
+    display: none;
+  }
+}
+
+.hamburger-line {
+  width: 24px;
+  height: 2px;
+  background-color: #374151;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.mobile-menu-btn.active .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-btn.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-btn.active .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: white;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 1500;
+  overflow-y: auto;
+}
+
+.mobile-nav.active {
+  transform: translateX(0);
+}
+
+.mobile-nav-content {
+  padding: 1rem;
+}
+
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  color: #374151;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  border-bottom: 1px solid #f3f4f6;
+  cursor: pointer;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+}
+
+.mobile-nav-link:hover {
+  color: #2563eb;
+}
+
+/* Mobile Dropdown */
+.mobile-dropdown {
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.mobile-dropdown-trigger {
   width: 100%;
 }
 
-/* Ensure header uses proper z-index from design system */
-#header-container header {
-  z-index: 100; /* Z_INDEX.HEADER */
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
+.mobile-dropdown-arrow {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.mobile-dropdown-arrow.rotated {
+  transform: rotate(180deg);
+}
+
+.mobile-dropdown-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background-color: #f9fafb;
+}
+
+.mobile-dropdown-menu.show {
+  max-height: 300px;
+}
+
+.mobile-dropdown-item {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: #6b7280;
+  text-decoration: none;
+  font-size: 0.875rem;
   border-bottom: 1px solid #e5e7eb;
 }
 
-/* Fix dropdown z-index issues - ensure they appear above hero content */
-#header-container .group > div[class*="absolute"],
-#header-container [role="menu"],
-#header-container [data-radix-popper-content-wrapper],
-#header-container .dropdown-menu {
-  z-index: 9999 !important; /* Maximum z-index to ensure visibility above all content */
+.mobile-dropdown-item:hover {
+  color: #2563eb;
+  background-color: #eff6ff;
 }
 
-/* Mobile menu fixes */
-#header-container #mobile-menu {
-  z-index: 420 !important; /* Z_INDEX.MOBILE_SIDE_MENU */
-  background-color: white;
+.mobile-dropdown-item:last-child {
+  border-bottom: none;
 }
 
-/* Ensure all navigation dropdowns appear above any background content */
-#header-container nav .group:hover > div,
-#header-container nav .group:focus-within > div {
-  z-index: 9999 !important; /* Maximum z-index to ensure visibility above all content */
+/* Prevent body scroll when mobile nav is open */
+body.mobile-nav-open {
+  overflow: hidden;
 }
 
-/* Additional dropdown targeting for maximum coverage */
-#header-container .group .absolute,
-#header-container .group-hover\\:visible,
-#header-container .group-hover\\:opacity-100 {
-  z-index: 9999 !important;
+/* Tablet optimizations */
+@media (min-width: 640px) and (max-width: 767px) {
+  .nav-container {
+    padding: 0 1.5rem;
+  }
+  
+  .logo-text {
+    font-size: 1.375rem;
+  }
 }
+
+/* Large desktop optimizations */
+@media (min-width: 1200px) {
+  .nav-container {
+    padding: 0 2rem;
+  }
+  
+  .desktop-nav {
+    gap: 0.5rem;
+  }
+  
+  .nav-link {
+    padding: 0.625rem 1.25rem;
+  }
+}
+
+/* High DPI display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .header-nav {
+    border-bottom-width: 0.5px;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus states for keyboard navigation */
+.nav-link:focus,
+.mobile-nav-link:focus,
+.dropdown-item:focus,
+.mobile-dropdown-item:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .header-nav {
+    border-bottom: 2px solid #000;
+  }
+  
+  .nav-link,
+  .mobile-nav-link {
+    border: 1px solid transparent;
+  }
+  
+  .nav-link:hover,
+  .mobile-nav-link:hover {
+    border-color: #2563eb;
+  }
+}
+
+/* ========== ENTERPRISE-GRADE DROPDOWN Z-INDEX SOLUTION ========== */
+/* This section ensures dropdown menus ALWAYS appear above hero sections */
+/* Addresses recurring z-index issues with comprehensive coverage */
+
+/* Primary dropdown selectors - Maximum z-index enforcement */
+.dropdown-menu,
+.dropdown-menu.show,
+.dropdown:hover .dropdown-menu,
+.dropdown.active .dropdown-menu,
+header .dropdown-menu,
+nav .dropdown-menu,
+[class*="dropdown"] .dropdown-menu,
+[class*="nav"] .dropdown-menu {
+  z-index: 99999 !important;
+  position: absolute !important;
+}
+
+/* Fallback selectors for any dropdown-like elements */
+[role="menu"],
+[role="menubar"],
+[role="menuitem"],
+[data-dropdown-menu],
+[aria-expanded="true"] + [class*="menu"],
+[aria-expanded="true"] + [class*="dropdown"],
+.menu[class*="absolute"],
+.menu[class*="fixed"],
+div[class*="absolute"][class*="menu"],
+div[class*="fixed"][class*="menu"] {
+  z-index: 99999 !important;
+}
+
+/* Header-specific dropdown enforcement */
+header [class*="dropdown"],
+header [class*="menu"],
+.header-nav [class*="dropdown"],
+.header-nav [class*="menu"],
+#header-container [class*="dropdown"],
+#header-container [class*="menu"] {
+  z-index: 99999 !important;
+}
+
+/* Navigation-specific dropdown enforcement */
+nav [class*="dropdown"],
+nav [class*="menu"],
+.nav [class*="dropdown"],
+.nav [class*="menu"],
+.navigation [class*="dropdown"],
+.navigation [class*="menu"] {
+  z-index: 99999 !important;
+}
+
+/* Comprehensive wildcard coverage for any missed scenarios */
+*[class*="dropdown"][class*="menu"],
+*[class*="drop"][class*="menu"],
+*[class*="nav"][class*="menu"] {
+  z-index: 99999 !important;
+}
+
+/* Stacking context protection - Ensure parent containers don't interfere */
+.header-nav,
+.nav-container,
+.desktop-nav,
+header,
+nav {
+  z-index: auto !important; /* Reset parent z-index to prevent stacking context issues */
+}
+
+.dropdown,
+.mobile-dropdown {
+  position: relative !important;
+  z-index: auto !important; /* Let child dropdown-menu handle the z-index */
+}
+
+/* Anti-hero interference rules */
+/* Ensure hero sections cannot override dropdown z-index */
+.hero,
+.hero-section,
+.hero-content,
+.hero-background,
+[class*="hero"],
+main,
+section {
+  z-index: 1 !important; /* Force hero content to stay below navigation dropdowns */
+}
+
+/* Emergency override for problematic elements that might interfere */
+.bg-gradient-to-br,
+.bg-gradient-to-r,
+.bg-gradient-to-l,
+[class*="bg-gradient"] {
+  z-index: 1 !important; /* Keep gradient backgrounds below dropdowns */
+}
+
+/* Mobile dropdown z-index enforcement */
+.mobile-nav {
+  z-index: 98000 !important; /* High but below dropdown menus */
+}
+
+.mobile-dropdown-menu,
+.mobile-dropdown-menu.show {
+  z-index: 99999 !important;
+}
+
+/* Debug utility - Uncomment during development to identify z-index conflicts */
+/*
+.dropdown-menu::before {
+  content: "Z-INDEX: 99999";
+  position: absolute;
+  top: -20px;
+  left: 0;
+  background: red;
+  color: white;
+  font-size: 10px;
+  padding: 2px 4px;
+  z-index: 100000;
+}
+*/
 </style>
