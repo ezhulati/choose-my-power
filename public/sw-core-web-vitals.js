@@ -208,7 +208,13 @@ async function handleRequest(request) {
   } catch (error) {
     console.error('SW: Request failed:', error);
     
-    // Only return offline fallback for genuine network failures (not HTTP errors like 404)
+    // Never intercept navigation requests - let the browser handle them naturally
+    // This fixes ZIP code search and other navigation being blocked by offline fallback
+    if (request.mode === 'navigate') {
+      throw error;
+    }
+    
+    // Only return offline fallback for genuine network failures on non-navigation requests
     // Check if it's a network error vs HTTP error
     if (isHTMLRequest(request) && isNetworkError(error)) {
       console.warn('SW: Network unavailable, showing offline fallback');
@@ -280,6 +286,11 @@ async function networkFirstStrategy(request, cacheName) {
     return networkResponse;
     
   } catch (error) {
+    // Never intercept navigation requests in error handling - let browser handle naturally
+    if (request.mode === 'navigate') {
+      throw error;
+    }
+    
     // Only show offline fallback for actual network failures, not 404s or other HTTP errors
     console.warn('SW: Network request failed, trying cache:', error.message);
     
