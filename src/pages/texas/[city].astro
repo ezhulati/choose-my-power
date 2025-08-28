@@ -8,6 +8,8 @@ import { tdspMapping, formatCityName } from '../../config/tdsp-mapping';
 import { comparePowerClient } from '../../lib/api/comparepower-client';
 import { getHeroImage } from '../../lib/images/hero-image-mapper';
 
+export const prerender = false;
+
 export async function getStaticPaths() {
   // Generate static paths for all cities in mapping
   const cityPaths = Object.keys(tdspMapping).map(city => ({

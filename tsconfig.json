@@ -6,11 +6,10 @@
       "@/*": [
         "./src/*"
       ]
-    }
+    },
+    "skipLibCheck": true,
+    "noEmit": true
   },
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+  "include": ["src/**/*", "tests/**/*", "vite.config.ts"],
+  "exclude": ["dist", "node_modules"]
 }

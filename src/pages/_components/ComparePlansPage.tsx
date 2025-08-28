@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { mockProviders, mockStates } from '../../data/mockData';
-import { 
-  Zap, Calendar, Leaf, DollarSign, Shield, TrendingDown, Filter, 
-  CheckCircle, Star, Calculator, BarChart, Award, ArrowRight,
-  Battery, Clock, Users, Target, Eye, Search
-} from 'lucide-react';
+import { Icon } from '../../components/ui/Icon';
+import { Card, CardHeader, CardContent, CardTitle, CardDescription } from '../../components/ui/card';
+import { Button } from '../../components/ui/button';
+import { Badge } from '../../components/ui/badge';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../../components/ui/table';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../components/ui/select';
+import { Input } from '../../components/ui/input';
+import { Separator } from '../../components/ui/separator';
 
 // Extend Window interface to include our navigation function
 declare global {
@@ -144,7 +147,7 @@ export function ComparePlansPage({}: ComparePlansPageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
             <div className="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-8">
-              <Zap className="h-10 w-10" />
+              <Icon icon="electricity" size={40} className="text-white" />
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
@@ -215,12 +218,13 @@ export function ComparePlansPage({}: ComparePlansPageProps) {
               </div>
               
               <div className="flex items-center space-x-3">
-                <button
+                <Button
                   onClick={() => setShowComparison(!showComparison)}
-                  className="bg-white text-green-600 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors font-medium"
+                  variant="secondary"
+                  className="bg-white text-green-600 hover:bg-gray-100"
                 >
                   {showComparison ? 'Hide' : 'Show'} Plan Comparison
-                </button>
+                </Button>
                 <button
                   onClick={() => setSelectedPlans([])}
                   className="text-white hover:text-gray-200"
@@ -234,91 +238,96 @@ export function ComparePlansPage({}: ComparePlansPageProps) {
 
         {/* Detailed Plan Comparison */}
         {showComparison && selectedPlanData.length > 1 && (
-          <div className="bg-white rounded-lg shadow-sm border p-6 mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
+          <Card className="mb-8">
+            <CardContent className="p-6">
+            <CardTitle className="text-2xl mb-6">
               Detailed Plan Comparison for {monthlyUsage} kWh/month
-            </h2>
+            </CardTitle>
             
             <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b-2 border-gray-200">
-                    <th className="text-left py-4 px-2 font-medium text-gray-900">Plan Details</th>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="text-left font-medium">Plan Details</TableHead>
                     {selectedPlanData.map((plan) => (
-                      <th key={plan?.id} className="text-center py-4 px-4 min-w-48">
+                      <TableHead key={plan?.id} className="text-center min-w-48">
                         <div className="flex flex-col items-center">
                           <img
                             src={plan?.providerLogo}
                             alt={`${plan?.providerName} logo`}
                             className="w-10 h-10 rounded-lg object-cover mb-2"
                           />
-                          <div className="font-semibold text-gray-900">{plan?.name}</div>
-                          <div className="text-sm text-gray-600">{plan?.providerName}</div>
+                          <div className="font-semibold">{plan?.name}</div>
+                          <div className="text-sm text-muted-foreground">{plan?.providerName}</div>
                         </div>
-                      </th>
+                      </TableHead>
                     ))}
-                  </tr>
-                </thead>
-                <tbody>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
                   {planComparisonMetrics.map((metric) => (
-                    <tr key={metric.name} className="border-b border-gray-100">
-                      <td className="py-4 px-2 font-medium text-gray-900">{metric.name}</td>
+                    <TableRow key={metric.name}>
+                      <TableCell className="font-medium">{metric.name}</TableCell>
                       {selectedPlanData.map((plan) => (
-                        <td key={plan?.id} className="py-4 px-4 text-center">
+                        <TableCell key={plan?.id} className="text-center">
                           <div className={`font-semibold ${metric.name === 'Monthly Cost*' ? 'text-green-600 text-lg' : ''}`}>
                             {metric.key === 'monthlyFee' || metric.key === 'cancellationFee' || metric.key === 'monthlyCost'
                               ? metric.format(plan)
                               : metric.format((plan as any)?.[metric.key] || 0)
                             }
                           </div>
-                        </td>
+                        </TableCell>
                       ))}
-                    </tr>
+                    </TableRow>
                   ))}
-                  <tr className="border-b border-gray-100">
-                    <td className="py-4 px-2 font-medium text-gray-900">Key Features</td>
+                  <TableRow>
+                    <TableCell className="font-medium">Key Features</TableCell>
                     {selectedPlanData.map((plan) => (
-                      <td key={plan?.id} className="py-4 px-4">
+                      <TableCell key={plan?.id}>
                         <div className="space-y-1">
                           {plan?.features.slice(0, 4).map((feature, index) => (
-                            <div key={index} className="flex items-center text-xs text-gray-600">
-                              <CheckCircle className="h-3 w-3 text-green-600 mr-1 flex-shrink-0" />
+                            <div key={index} className="flex items-center text-xs text-muted-foreground">
+                              <Icon icon="success" size={12} className="text-green-600 mr-1 flex-shrink-0" />
                               {feature}
                             </div>
                           ))}
                         </div>
-                      </td>
+                      </TableCell>
                     ))}
-                  </tr>
-                  <tr>
-                    <td className="py-4 px-2 font-medium text-gray-900">Actions</td>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">Actions</TableCell>
                     {selectedPlanData.map((plan) => (
-                      <td key={plan?.id} className="py-4 px-4 text-center">
+                      <TableCell key={plan?.id} className="text-center">
                         <div className="space-y-2">
-                          <button
+                          <Button
                             onClick={() => navigate(`/plans/${plan?.providerSlug}/${plan?.id}`)}
-                            className="w-full bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium"
+                            size="sm"
+                            className="w-full"
                           >
                             View Plan Details
-                          </button>
-                          <button
+                          </Button>
+                          <Button
                             onClick={() => navigate(`/texas/houston/electricity-plans`)}
-                            className="w-full border border-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
+                            variant="outline"
+                            size="sm"
+                            className="w-full"
                           >
                             Get This Plan
-                          </button>
+                          </Button>
                         </div>
-                      </td>
+                      </TableCell>
                     ))}
-                  </tr>
-                </tbody>
-              </table>
+                  </TableRow>
+                </TableBody>
+              </Table>
             </div>
             
-            <div className="mt-4 text-sm text-gray-500">
+            <div className="mt-4 text-sm text-muted-foreground">
               *Monthly cost calculated for {monthlyUsage} kWh usage including base charges
             </div>
-          </div>
+            </CardContent>
+          </Card>
         )}
 
         {/* Plan Type Categories */}
@@ -355,79 +364,87 @@ export function ComparePlansPage({}: ComparePlansPageProps) {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
             {planTypes.map((type) => (
-              <div key={type.id} className="bg-white rounded-lg shadow-sm border p-6 text-center">
-                <div className={`inline-flex items-center justify-center w-12 h-12 bg-${type.color}-100 text-${type.color}-600 rounded-lg mb-4`}>
-                  <type.icon className="h-6 w-6" />
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{type.name}</h3>
-                <p className="text-gray-600 text-sm mb-4">{type.description}</p>
-                <div className="text-2xl font-bold text-gray-900 mb-2">{type.count}</div>
-                <div className="text-sm text-gray-600">plans available</div>
-              </div>
+              <Card key={type.id} className="p-6 text-center">
+                <CardContent className="p-0">
+                  <div className={`inline-flex items-center justify-center w-12 h-12 bg-${type.color}-100 text-${type.color}-600 rounded-lg mb-4`}>
+                    <Icon icon={type.id === 'fixed' ? 'shield' : type.id === 'variable' ? 'trending' : type.id === 'green' ? 'leaf' : type.id === 'prepaid' ? 'dollar' : 'tabler:clock'} size={24} />
+                  </div>
+                  <CardTitle className="text-lg mb-2">{type.name}</CardTitle>
+                  <CardDescription className="text-sm mb-4">{type.description}</CardDescription>
+                  <div className="text-2xl font-bold mb-2">{type.count}</div>
+                  <div className="text-sm text-muted-foreground">plans available</div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
 
         {/* Usage Calculator */}
-        <div className="bg-white rounded-lg shadow-sm border p-8 mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            Plan Cost Calculator
-          </h2>
+        <Card className="p-8 mb-16">
+          <CardHeader className="text-center">
+            <CardTitle className="text-2xl mb-6">
+              Plan Cost Calculator
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
           
           <div className="max-w-2xl mx-auto">
             <div className="grid md:grid-cols-3 gap-6 mb-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Monthly Usage (kWh)</label>
-                <input
+                <label className="block text-sm font-medium mb-2">Monthly Usage (kWh)</label>
+                <Input
                   type="number"
                   value={monthlyUsage}
                   onChange={(e) => setMonthlyUsage(e.target.value)}
-                  className="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500"
                   placeholder="1000"
+                  className="focus:ring-2 focus:ring-green-500 focus:border-green-500"
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Plan Type</label>
-                <select
-                  value={planTypeFilter}
-                  onChange={(e) => setPlanTypeFilter(e.target.value as any)}
-                  className="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500"
-                >
-                  <option value="all">All Plan Types</option>
-                  <option value="fixed">Fixed Rate</option>
-                  <option value="variable">Variable Rate</option>
-                  <option value="green">Green Energy</option>
-                  <option value="prepaid">Prepaid</option>
-                  <option value="free-time">Free Time</option>
-                </select>
+                <label className="block text-sm font-medium mb-2">Plan Type</label>
+                <Select value={planTypeFilter} onValueChange={(value) => setPlanTypeFilter(value as any)}>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Plan Types</SelectItem>
+                    <SelectItem value="fixed">Fixed Rate</SelectItem>
+                    <SelectItem value="variable">Variable Rate</SelectItem>
+                    <SelectItem value="green">Green Energy</SelectItem>
+                    <SelectItem value="prepaid">Prepaid</SelectItem>
+                    <SelectItem value="free-time">Free Time</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Contract Length</label>
-                <select
-                  value={termFilter}
-                  onChange={(e) => setTermFilter(e.target.value as any)}
-                  className="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500"
-                >
-                  <option value="all">Any Length</option>
-                  <option value="12">12 Months</option>
-                  <option value="24">24 Months</option>
-                  <option value="36">36 Months</option>
-                </select>
+                <label className="block text-sm font-medium mb-2">Contract Length</label>
+                <Select value={termFilter} onValueChange={(value) => setTermFilter(value as any)}>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">Any Length</SelectItem>
+                    <SelectItem value="12">12 Months</SelectItem>
+                    <SelectItem value="24">24 Months</SelectItem>
+                    <SelectItem value="36">36 Months</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
             </div>
             
             <div className="text-center">
-              <div className="text-lg text-gray-600 mb-2">
+              <div className="text-lg text-muted-foreground mb-2">
                 Showing {filteredPlans.length} plans matching your criteria
               </div>
-              <div className="text-sm text-gray-500">
+              <div className="text-sm text-muted-foreground">
                 Costs calculated for {monthlyUsage} kWh monthly usage
               </div>
             </div>
           </div>
-        </div>
+          </CardContent>
+        </Card>
 
         {/* Plan Grid */}
         <div className="mb-16">
@@ -446,26 +463,26 @@ export function ComparePlansPage({}: ComparePlansPageProps) {
               const monthlyCost = calculateMonthlyCost(plan.rate, parseInt(monthlyUsage), plan.fees.monthlyFee);
               
               return (
-                <div key={plan.id} className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow relative">
+                <Card key={plan.id} className="p-6 hover:shadow-md transition-shadow relative">
                   {/* Selection Button */}
                   <div className="absolute top-4 right-4">
-                    <button
+                    <Button
                       onClick={() => togglePlan(plan.id)}
                       disabled={!isSelected && selectedPlans.length >= 4}
-                      className={`w-8 h-8 rounded-full border-2 flex items-center justify-center transition-colors ${
-                        isSelected
-                          ? 'bg-green-600 border-green-600 text-white'
-                          : selectedPlans.length >= 4
-                          ? 'bg-gray-100 border-gray-300 text-gray-400 cursor-not-allowed'
-                          : 'bg-white border-gray-300 text-gray-600 hover:border-green-600 hover:text-green-600'
+                      size="icon"
+                      variant={isSelected ? "default" : "outline"}
+                      className={`w-8 h-8 rounded-full ${
+                        selectedPlans.length >= 4 && !isSelected
+                          ? 'opacity-50 cursor-not-allowed'
+                          : ''
                       }`}
                     >
                       {isSelected ? (
-                        <CheckCircle className="h-5 w-5" />
+                        <Icon icon="success" size={16} />
                       ) : (
-                        <Plus className="h-5 w-5" />
+                        <Icon icon="tabler:plus" size={16} />
                       )}
-                    </button>
+                    </Button>
                   </div>
 
                   <div className="flex items-center justify-between pr-12">
@@ -482,52 +499,48 @@ export function ComparePlansPage({}: ComparePlansPageProps) {
                         </div>
                         
                         <div className="ml-4 flex items-center space-x-2">
-                          <span className={`px-2 py-1 text-xs rounded-full font-medium ${
-                            plan.type === 'fixed' ? 'bg-blue-100 text-blue-800' :
-                            plan.type === 'variable' ? 'bg-orange-100 text-orange-800' :
-                            'bg-purple-100 text-purple-800'
-                          }`}>
+                          <Badge variant={plan.type === 'fixed' ? 'default' : plan.type === 'variable' ? 'secondary' : 'outline'}>
                             {plan.type} rate
-                          </span>
+                          </Badge>
                           {plan.renewablePercent === 100 && (
-                            <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full font-medium flex items-center">
-                              <Leaf className="h-3 w-3 mr-1" />
+                            <Badge variant="secondary" className="bg-green-100 text-green-800">
+                              <Icon icon="leaf" size={12} className="mr-1" />
                               100% Green
-                            </span>
+                            </Badge>
                           )}
                         </div>
                       </div>
 
                       <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-sm mb-4">
                         <div className="flex items-center">
-                          <Calendar className="h-4 w-4 text-gray-400 mr-2" />
+                          <Icon icon="tabler:calendar" size={16} className="text-muted-foreground mr-2" />
                           <span>{plan.termLength} month term</span>
                         </div>
                         <div className="flex items-center">
-                          <DollarSign className="h-4 w-4 text-gray-400 mr-2" />
+                          <Icon icon="dollar" size={16} className="text-muted-foreground mr-2" />
                           <span>${plan.fees.monthlyFee}/month fee</span>
                         </div>
                         <div className="flex items-center">
-                          <Leaf className="h-4 w-4 text-gray-400 mr-2" />
+                          <Icon icon="leaf" size={16} className="text-muted-foreground mr-2" />
                           <span>{plan.renewablePercent}% renewable</span>
                         </div>
                         <div className="flex items-center">
-                          <Shield className="h-4 w-4 text-gray-400 mr-2" />
+                          <Icon icon="shield" size={16} className="text-muted-foreground mr-2" />
                           <span>${plan.fees.cancellationFee} ETF</span>
                         </div>
                         <div className="flex items-center">
-                          <Star className="h-4 w-4 text-yellow-400 fill-current mr-1" />
+                          <Icon icon="star" size={16} className="text-yellow-400 mr-1" />
                           <span>{plan.providerRating} provider rating</span>
                         </div>
                       </div>
 
                       <div className="mb-3">
-                        <div className="text-sm text-gray-600 mb-2">Plan Features:</div>
+                        <div className="text-sm text-muted-foreground mb-2">Plan Features:</div>
                         <div className="flex flex-wrap gap-2">
                           {plan.features.map((feature, index) => (
-                            <span key={index} className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
+                            <Badge key={index} variant="outline" className="text-xs">
                               {feature}
-                            </span>
+                            </Badge>
                           ))}
                         </div>
                       </div>
@@ -544,22 +557,25 @@ export function ComparePlansPage({}: ComparePlansPageProps) {
                       </div>
                       
                       <div className="space-y-2">
-                        <button
+                        <Button
                           onClick={() => navigate(`/plans/${plan.providerSlug}/${plan.id}`)}
-                          className="w-full bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition-colors text-sm font-medium"
+                          className="w-full"
+                          size="sm"
                         >
                           Plan Details
-                        </button>
-                        <button
+                        </Button>
+                        <Button
                           onClick={() => navigate(`/texas/houston/electricity-plans`)}
-                          className="w-full border border-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
+                          variant="outline"
+                          className="w-full"
+                          size="sm"
                         >
                           Get This Plan
-                        </button>
+                        </Button>
                       </div>
                     </div>
                   </div>
-                </div>
+                </Card>
               );
             })}
           </div>
@@ -567,53 +583,62 @@ export function ComparePlansPage({}: ComparePlansPageProps) {
 
         {/* Cross-Hub Navigation */}
         <div className="grid md:grid-cols-3 gap-8">
-          <div className="bg-white p-6 rounded-lg shadow-sm border text-center hover:shadow-md transition-shadow">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 text-blue-600 rounded-lg mb-4">
-              <Users className="h-6 w-6" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">Compare Providers</h3>
-            <p className="text-gray-600 text-sm mb-4">
-              Compare electricity companies by specialization and service quality.
-            </p>
-            <button
-              onClick={() => navigate('/compare/providers')}
-              className="text-blue-600 hover:text-blue-800 font-medium text-sm"
-            >
-              Compare Providers →
-            </button>
-          </div>
+          <Card className="p-6 text-center hover:shadow-md transition-shadow">
+            <CardContent className="p-0">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 text-blue-600 rounded-lg mb-4">
+                <Icon icon="users" size={24} />
+              </div>
+              <CardTitle className="text-lg mb-3">Compare Providers</CardTitle>
+              <CardDescription className="text-sm mb-4">
+                Compare electricity companies by specialization and service quality.
+              </CardDescription>
+              <Button
+                onClick={() => navigate('/compare/providers')}
+                variant="ghost"
+                className="text-blue-600 hover:text-blue-800 font-medium text-sm"
+              >
+                Compare Providers →
+              </Button>
+            </CardContent>
+          </Card>
 
-          <div className="bg-white p-6 rounded-lg shadow-sm border text-center hover:shadow-md transition-shadow">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-100 text-purple-600 rounded-lg mb-4">
-              <Calculator className="h-6 w-6" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">Compare Rates</h3>
-            <p className="text-gray-600 text-sm mb-4">
-              Real-time rate comparison with detailed cost analysis and calculators.
-            </p>
-            <button
-              onClick={() => navigate('/compare/rates')}
-              className="text-purple-600 hover:text-purple-800 font-medium text-sm"
-            >
-              Compare Rates →
-            </button>
-          </div>
+          <Card className="p-6 text-center hover:shadow-md transition-shadow">
+            <CardContent className="p-0">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-100 text-purple-600 rounded-lg mb-4">
+                <Icon icon="calculator" size={24} />
+              </div>
+              <CardTitle className="text-lg mb-3">Compare Rates</CardTitle>
+              <CardDescription className="text-sm mb-4">
+                Real-time rate comparison with detailed cost analysis and calculators.
+              </CardDescription>
+              <Button
+                onClick={() => navigate('/compare/rates')}
+                variant="ghost"
+                className="text-purple-600 hover:text-purple-800 font-medium text-sm"
+              >
+                Compare Rates →
+              </Button>
+            </CardContent>
+          </Card>
 
-          <div className="bg-white p-6 rounded-lg shadow-sm border text-center hover:shadow-md transition-shadow">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-orange-100 text-orange-600 rounded-lg mb-4">
-              <Award className="h-6 w-6" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">Best Plans</h3>
-            <p className="text-gray-600 text-sm mb-4">
-              Expert rankings of top plans by category and features.
-            </p>
-            <button
-              onClick={() => navigate('/best')}
-              className="text-orange-600 hover:text-orange-800 font-medium text-sm"
-            >
-              View Best Plans →
-            </button>
-          </div>
+          <Card className="p-6 text-center hover:shadow-md transition-shadow">
+            <CardContent className="p-0">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-orange-100 text-orange-600 rounded-lg mb-4">
+                <Icon icon="tabler:award" size={24} />
+              </div>
+              <CardTitle className="text-lg mb-3">Best Plans</CardTitle>
+              <CardDescription className="text-sm mb-4">
+                Expert rankings of top plans by category and features.
+              </CardDescription>
+              <Button
+                onClick={() => navigate('/best')}
+                variant="ghost"
+                className="text-orange-600 hover:text-orange-800 font-medium text-sm"
+              >
+                View Best Plans →
+              </Button>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>

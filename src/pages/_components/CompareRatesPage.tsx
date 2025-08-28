@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { mockProviders, mockStates } from '../../data/mockData';
-import { 
-  Calculator, TrendingDown, BarChart, DollarSign, Zap, Star, 
-  TrendingUp, Activity, Filter, Eye, Target, ArrowRight,
-  Calendar, Shield, Users, Award, Clock, AlertTriangle
-} from 'lucide-react';
+import { Icon } from '../../components/ui/Icon';
+import { Card, CardHeader, CardContent, CardTitle, CardDescription } from '../../components/ui/card';
+import { Button } from '../../components/ui/button';
+import { Badge } from '../../components/ui/badge';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../../components/ui/table';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../components/ui/select';
+import { Input } from '../../components/ui/input';
+import { Separator } from '../../components/ui/separator';
 
 // Extend Window interface to include our navigation function
 declare global {
@@ -162,7 +165,7 @@ export function CompareRatesPage({}: CompareRatesPageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
             <div className="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-8">
-              <Calculator className="h-10 w-10" />
+              <Icon icon="calculator" size={40} className="text-white" />
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
@@ -213,39 +216,45 @@ export function CompareRatesPage({}: CompareRatesPageProps) {
           
           <div className="grid md:grid-cols-4 gap-6 mb-8">
             {rateInsights.map((insight, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-sm border p-6 text-center">
-                <div className={`inline-flex items-center justify-center w-12 h-12 bg-${insight.color}-100 text-${insight.color}-600 rounded-lg mb-4`}>
-                  <insight.icon className="h-6 w-6" />
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{insight.title}</h3>
-                <div className="text-3xl font-bold text-gray-900 mb-2">{insight.value}</div>
-                <p className="text-gray-600 text-sm">{insight.description}</p>
-              </div>
+              <Card key={index} className="p-6 text-center">
+                <CardContent className="p-0">
+                  <div className={`inline-flex items-center justify-center w-12 h-12 bg-${insight.color}-100 text-${insight.color}-600 rounded-lg mb-4`}>
+                    <Icon icon={insight.title === 'Market Low' ? 'trending' : insight.title === 'Market Average' ? 'tabler:chart-bar' : insight.title === 'Lowest Monthly Bill' ? 'dollar' : 'calculator'} size={24} />
+                  </div>
+                  <CardTitle className="text-lg mb-2">{insight.title}</CardTitle>
+                  <div className="text-3xl font-bold mb-2">{insight.value}</div>
+                  <CardDescription className="text-sm">{insight.description}</CardDescription>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
 
         {/* Interactive Rate Calculator */}
-        <div className="bg-white rounded-lg shadow-sm border p-8 mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            Interactive Rate Calculator
-          </h2>
+        <Card className="p-8 mb-16">
+          <CardHeader className="text-center">
+            <CardTitle className="text-2xl mb-6">
+              Interactive Rate Calculator
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
           
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Calculator Controls */}
             <div className="lg:col-span-1">
               <div className="space-y-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">State</label>
-                  <select
-                    value={selectedState}
-                    onChange={(e) => setSelectedState(e.target.value)}
-                    className="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-                  >
-                    {mockStates.map(state => (
-                      <option key={state.id} value={state.slug}>{state.name}</option>
-                    ))}
-                  </select>
+                  <label className="block text-sm font-medium mb-2">State</label>
+                  <Select value={selectedState} onValueChange={setSelectedState}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {mockStates.map(state => (
+                        <SelectItem key={state.id} value={state.slug}>{state.name}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </div>
 
                 <div>
@@ -278,30 +287,32 @@ export function CompareRatesPage({}: CompareRatesPageProps) {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Rate Type</label>
-                    <select
-                      value={rateType}
-                      onChange={(e) => setRateType(e.target.value as any)}
-                      className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-                    >
-                      <option value="all">All Types</option>
-                      <option value="fixed">Fixed Only</option>
-                      <option value="variable">Variable Only</option>
-                    </select>
+                    <label className="block text-sm font-medium mb-2">Rate Type</label>
+                    <Select value={rateType} onValueChange={(value) => setRateType(value as any)}>
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">All Types</SelectItem>
+                        <SelectItem value="fixed">Fixed Only</SelectItem>
+                        <SelectItem value="variable">Variable Only</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Contract</label>
-                    <select
-                      value={contractLength}
-                      onChange={(e) => setContractLength(e.target.value as any)}
-                      className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-                    >
-                      <option value="all">Any Length</option>
-                      <option value="12">12 Months</option>
-                      <option value="24">24 Months</option>
-                      <option value="36">36 Months</option>
-                    </select>
+                    <label className="block text-sm font-medium mb-2">Contract</label>
+                    <Select value={contractLength} onValueChange={(value) => setContractLength(value as any)}>
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">Any Length</SelectItem>
+                        <SelectItem value="12">12 Months</SelectItem>
+                        <SelectItem value="24">24 Months</SelectItem>
+                        <SelectItem value="36">36 Months</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
                 </div>
               </div>
@@ -391,13 +402,17 @@ export function CompareRatesPage({}: CompareRatesPageProps) {
               </div>
             </div>
           </div>
-        </div>
+          </CardContent>
+        </Card>
 
         {/* Rate Factors Analysis */}
-        <div className="bg-white rounded-lg shadow-sm border p-8 mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">
-            What Affects Electricity Rates?
-          </h2>
+        <Card className="p-8 mb-16">
+          <CardHeader className="text-center">
+            <CardTitle className="text-2xl mb-8">
+              What Affects Electricity Rates?
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {rateFactors.map((factor, index) => (
@@ -418,7 +433,8 @@ export function CompareRatesPage({}: CompareRatesPageProps) {
               </div>
             ))}
           </div>
-        </div>
+          </CardContent>
+        </Card>
 
         {/* Rate Trends */}
         <div className="bg-white rounded-lg shadow-sm border p-8 mb-16">

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Star, Phone, Globe } from 'lucide-react';
-import { Provider } from '../types';
+import type { Provider } from '../types';
 
 interface ProviderCardProps {
   provider: Provider;

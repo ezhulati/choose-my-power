@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import { StatePage } from './_components/StatePage';
 
+export const prerender = true;
+
 export async function getStaticPaths() {
   // Define the states available in your app
   const states = [

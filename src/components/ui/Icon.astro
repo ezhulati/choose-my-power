@@ -1,0 +1,109 @@
+---
+// Icon.astro - Server-side icon component using Iconify
+interface Props {
+  icon: string;
+  size?: number | string;
+  className?: string;
+  color?: string;
+}
+
+const { icon, size = 24, className = '', color } = Astro.props;
+
+// Common electricity icons mapping for server-side rendering
+const iconMapping: Record<string, string> = {
+  // Power & Energy
+  'lightning': 'tabler:bolt',
+  'flash': 'tabler:flash', 
+  'energy': 'tabler:battery-charging',
+  'power': 'tabler:plug',
+  'electricity': 'tabler:zap',
+  'bolt': 'tabler:bolt',
+  'zap': 'tabler:zap',
+  
+  // Business & Money
+  'dollar': 'tabler:currency-dollar',
+  'dollar-sign': 'tabler:currency-dollar',
+  'savings': 'tabler:coin',
+  'calculator': 'tabler:calculator',
+  'chart': 'tabler:chart-line',
+  'trending': 'tabler:trending-up',
+  'trending-up': 'tabler:trending-up',
+  'trending-down': 'tabler:trending-down',
+  'bar-chart': 'tabler:chart-bar',
+  
+  // Green Energy
+  'solar': 'tabler:solar-panel',
+  'wind': 'tabler:wind',
+  'leaf': 'tabler:leaf',
+  'eco': 'tabler:recycle',
+  'earth': 'tabler:world',
+  'sun': 'tabler:sun',
+  
+  // UI Elements
+  'search': 'tabler:search',
+  'filter': 'tabler:filter',
+  'menu': 'tabler:menu-2',
+  'close': 'tabler:x',
+  'check': 'tabler:check',
+  'check-circle': 'tabler:circle-check',
+  'star': 'tabler:star',
+  'heart': 'tabler:heart',
+  'shield': 'tabler:shield',
+  'eye': 'tabler:eye',
+  'calendar': 'tabler:calendar',
+  'clock': 'tabler:clock',
+  
+  // Navigation
+  'home': 'tabler:home',
+  'compare': 'tabler:arrows-left-right',
+  'shop': 'tabler:shopping-cart',
+  'location': 'tabler:map-pin',
+  'map-pin': 'tabler:map-pin',
+  'info': 'tabler:info-circle',
+  'arrow-right': 'tabler:arrow-right',
+  
+  // User & Account
+  'user': 'tabler:user',
+  'users': 'tabler:users',
+  'profile': 'tabler:user-circle',
+  'building': 'tabler:building',
+  'building-2': 'tabler:building',
+  
+  // Actions
+  'download': 'tabler:download',
+  'share': 'tabler:share',
+  'edit': 'tabler:edit',
+  'phone': 'tabler:phone',
+  'mail': 'tabler:mail',
+  'headphones': 'tabler:headphones',
+  
+  // Status
+  'success': 'tabler:circle-check',
+  'error': 'tabler:circle-x',
+  'warning': 'tabler:alert-triangle',
+  'award': 'tabler:award',
+  'target': 'tabler:target',
+  'thumbs-up': 'tabler:thumb-up',
+  'globe': 'tabler:world',
+  'file-text': 'tabler:file-text',
+};
+
+const iconName = iconMapping[icon] || icon;
+---
+
+<iconify-icon
+  icon={iconName}
+  width={size}
+  height={size}
+  class={className}
+  style={color ? `color: ${color}` : undefined}
+></iconify-icon>
+
+<!-- Load Iconify Web Component -->
+<script src="https://code.iconify.design/iconify-icon/2.0.0/iconify-icon.min.js" is:inline></script>
+
+<style>
+  svg {
+    vertical-align: middle;
+  }
+</style>

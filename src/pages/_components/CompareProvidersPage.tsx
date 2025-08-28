@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { mockProviders, mockStates } from '../../data/mockData';
-import { 
-  Users, Star, Phone, Globe, Shield, Award, CheckCircle, X, Plus, 
-  Headphones, Heart, Leaf, DollarSign, Battery, TrendingDown,
-  Building, MapPin, Filter, Eye, ThumbsUp, Target, Search
-} from 'lucide-react';
+import { Icon } from '../../components/ui/Icon';
+import { Card, CardHeader, CardContent, CardTitle, CardDescription } from '../../components/ui/card';
+import { Button } from '../../components/ui/button';
+import { Badge } from '../../components/ui/badge';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../../components/ui/table';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../components/ui/select';
+import { Separator } from '../../components/ui/separator';
 
 // Extend Window interface to include our navigation function
 declare global {
@@ -125,7 +127,7 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
             <div className="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-8">
-              <Users className="h-10 w-10" />
+              <Icon icon="users" size={40} className="text-white" />
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
@@ -196,12 +198,13 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
               </div>
               
               <div className="flex items-center space-x-3">
-                <button
+                <Button
                   onClick={() => setShowComparison(!showComparison)}
-                  className="bg-white text-blue-600 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors font-medium"
+                  variant="secondary"
+                  className="bg-white text-blue-600 hover:bg-gray-100"
                 >
                   {showComparison ? 'Hide' : 'Show'} Comparison Table
-                </button>
+                </Button>
                 <button
                   onClick={() => setSelectedProviders([])}
                   className="text-white hover:text-gray-200"
@@ -215,90 +218,95 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
 
         {/* Detailed Comparison Table */}
         {showComparison && selectedProviderData.length > 1 && (
-          <div className="bg-white rounded-lg shadow-sm border p-6 mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
+          <Card className="mb-8">
+            <CardContent className="p-6">
+            <CardTitle className="text-2xl mb-6">
               Side-by-Side Provider Comparison
-            </h2>
+            </CardTitle>
             
             <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b-2 border-gray-200">
-                    <th className="text-left py-4 px-2 font-medium text-gray-900">Company Details</th>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="text-left font-medium">Company Details</TableHead>
                     {selectedProviderData.map((provider) => (
-                      <th key={provider?.id} className="text-center py-4 px-4 min-w-48">
+                      <TableHead key={provider?.id} className="text-center min-w-48">
                         <div className="flex flex-col items-center">
                           <img
                             src={provider?.logo}
                             alt={`${provider?.name} logo`}
                             className="w-12 h-12 rounded-lg object-cover mb-2"
                           />
-                          <div className="font-semibold text-gray-900">{provider?.name}</div>
+                          <div className="font-semibold">{provider?.name}</div>
                         </div>
-                      </th>
+                      </TableHead>
                     ))}
-                  </tr>
-                </thead>
-                <tbody>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
                   {comparisonMetrics.map((metric) => (
-                    <tr key={metric.name} className="border-b border-gray-100">
-                      <td className="py-4 px-2 font-medium text-gray-900">{metric.name}</td>
+                    <TableRow key={metric.name}>
+                      <TableCell className="font-medium">{metric.name}</TableCell>
                       {selectedProviderData.map((provider) => (
-                        <td key={provider?.id} className="py-4 px-4 text-center">
+                        <TableCell key={provider?.id} className="text-center">
                           <div className="font-semibold">
                             {metric.key === 'lowestRate' || metric.key === 'greenPlans' 
                               ? metric.format(provider)
                               : metric.format((provider as any)?.[metric.key] || 0)
                             }
                           </div>
-                        </td>
+                        </TableCell>
                       ))}
-                    </tr>
+                    </TableRow>
                   ))}
-                  <tr className="border-b border-gray-100">
-                    <td className="py-4 px-2 font-medium text-gray-900">Contact</td>
+                  <TableRow>
+                    <TableCell className="font-medium">Contact</TableCell>
                     {selectedProviderData.map((provider) => (
-                      <td key={provider?.id} className="py-4 px-4 text-center">
+                      <TableCell key={provider?.id} className="text-center">
                         <div className="space-y-2">
                           <div className="flex items-center justify-center text-sm">
-                            <Phone className="h-4 w-4 mr-1" />
+                            <Icon icon="phone" size={16} className="mr-1" />
                             {provider?.contactPhone}
                           </div>
                           <div className="flex items-center justify-center text-sm">
-                            <Globe className="h-4 w-4 mr-1" />
+                            <Icon icon="tabler:world" size={16} className="mr-1" />
                             <a href={provider?.website} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">
                               Website
                             </a>
                           </div>
                         </div>
-                      </td>
+                      </TableCell>
                     ))}
-                  </tr>
-                  <tr>
-                    <td className="py-4 px-2 font-medium text-gray-900">Actions</td>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell className="font-medium">Actions</TableCell>
                     {selectedProviderData.map((provider) => (
-                      <td key={provider?.id} className="py-4 px-4 text-center">
+                      <TableCell key={provider?.id} className="text-center">
                         <div className="space-y-2">
-                          <button
+                          <Button
                             onClick={() => navigate(`/providers/${provider?.slug}`)}
-                            className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                            size="sm"
+                            className="w-full"
                           >
                             View Details
-                          </button>
-                          <button
+                          </Button>
+                          <Button
                             onClick={() => navigate(`/texas/houston/electricity-providers`)}
-                            className="w-full border border-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
+                            variant="outline"
+                            size="sm"
+                            className="w-full"
                           >
                             See Plans & Rates
-                          </button>
+                          </Button>
                         </div>
-                      </td>
+                      </TableCell>
                     ))}
-                  </tr>
-                </tbody>
-              </table>
+                  </TableRow>
+                </TableBody>
+              </Table>
             </div>
-          </div>
+            </CardContent>
+          </Card>
         )}
 
         {/* Provider Categories */}
@@ -309,25 +317,25 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             {providerCategories.map((category) => (
-              <button
+              <Card
                 key={category.id}
-                onClick={() => setFilterCategory(category.id as any)}
-                className={`p-6 rounded-lg border-2 transition-all ${
+                className={`p-6 cursor-pointer transition-all hover:shadow-md ${
                   filterCategory === category.id
                     ? 'border-blue-600 bg-blue-50'
-                    : 'border-gray-200 hover:border-gray-300 bg-white'
+                    : ''
                 }`}
+                onClick={() => setFilterCategory(category.id as any)}
               >
                 <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg mb-4 ${
                   filterCategory === category.id
                     ? `bg-${category.color}-100 text-${category.color}-600`
                     : 'bg-gray-100 text-gray-600'
                 }`}>
-                  <category.icon className="h-6 w-6" />
+                  <Icon icon={category.id === 'green' ? 'leaf' : category.id === 'service' ? 'headphones' : category.id === 'value' ? 'dollar' : 'battery'} size={24} />
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{category.name}</h3>
-                <div className="text-sm text-gray-600">{category.providers.length} top providers</div>
-              </button>
+                <h3 className="text-lg font-semibold mb-2">{category.name}</h3>
+                <div className="text-sm text-muted-foreground">{category.providers.length} top providers</div>
+              </Card>
             ))}
           </div>
         </div>
@@ -343,23 +351,25 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
             </div>
             
             <div className="flex items-center space-x-4">
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as any)}
-                className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              >
-                <option value="rating">Highest Rated</option>
-                <option value="price">Lowest Rates</option>
-                <option value="reviews">Most Reviews</option>
-                <option value="plans">Most Plans</option>
-              </select>
+              <Select value={sortBy} onValueChange={(value) => setSortBy(value as any)}>
+                <SelectTrigger className="w-48">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="rating">Highest Rated</SelectItem>
+                  <SelectItem value="price">Lowest Rates</SelectItem>
+                  <SelectItem value="reviews">Most Reviews</SelectItem>
+                  <SelectItem value="plans">Most Plans</SelectItem>
+                </SelectContent>
+              </Select>
               
-              <button
+              <Button
                 onClick={() => setFilterCategory('all')}
-                className="text-blue-600 hover:text-blue-800 text-sm font-medium"
+                variant="ghost"
+                size="sm"
               >
                 Reset Filters
-              </button>
+              </Button>
             </div>
           </div>
 
@@ -369,29 +379,29 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
               const lowestRate = Math.min(...provider.plans.map(p => p.rate));
               
               return (
-                <div key={provider.id} className="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow relative">
+                <Card key={provider.id} className="hover:shadow-md transition-shadow relative">
                   {/* Selection Button */}
                   <div className="absolute top-4 right-4 z-10">
-                    <button
+                    <Button
                       onClick={() => toggleProvider(provider.id)}
                       disabled={!isSelected && selectedProviders.length >= 4}
-                      className={`w-8 h-8 rounded-full border-2 flex items-center justify-center transition-colors ${
-                        isSelected
-                          ? 'bg-blue-600 border-blue-600 text-white'
-                          : selectedProviders.length >= 4
-                          ? 'bg-gray-100 border-gray-300 text-gray-400 cursor-not-allowed'
-                          : 'bg-white border-gray-300 text-gray-600 hover:border-blue-600 hover:text-blue-600'
+                      size="icon"
+                      variant={isSelected ? "default" : "outline"}
+                      className={`w-8 h-8 rounded-full ${
+                        selectedProviders.length >= 4 && !isSelected
+                          ? 'opacity-50 cursor-not-allowed'
+                          : ''
                       }`}
                     >
                       {isSelected ? (
-                        <CheckCircle className="h-5 w-5" />
+                        <Icon icon="success" size={16} />
                       ) : (
-                        <Plus className="h-5 w-5" />
+                        <Icon icon="tabler:plus" size={16} />
                       )}
-                    </button>
+                    </Button>
                   </div>
 
-                  <div className="p-6">
+                  <CardContent className="p-6">
                     {/* Provider Header */}
                     <div className="flex items-center mb-4">
                       <img
@@ -402,9 +412,9 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
                       <div>
                         <h3 className="text-lg font-semibold text-gray-900">{provider.name}</h3>
                         <div className="flex items-center">
-                          <Star className="h-4 w-4 text-yellow-400 fill-current mr-1" />
+                          <Icon icon="star" size={16} className="text-yellow-400 mr-1" />
                           <span className="font-medium">{provider.rating}</span>
-                          <span className="text-gray-500 ml-1">({provider.reviewCount.toLocaleString()})</span>
+                          <span className="text-muted-foreground ml-1">({provider.reviewCount.toLocaleString()})</span>
                         </div>
                       </div>
                     </div>
@@ -426,8 +436,8 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
                       <div className="text-sm text-gray-600 mb-2">Key Strengths:</div>
                       <div className="space-y-1">
                         {provider.features.slice(0, 3).map((feature, index) => (
-                          <div key={index} className="flex items-center text-xs text-gray-600">
-                            <CheckCircle className="h-3 w-3 text-green-600 mr-1 flex-shrink-0" />
+                          <div key={index} className="flex items-center text-xs text-muted-foreground">
+                            <Icon icon="success" size={12} className="text-green-600 mr-1 flex-shrink-0" />
                             {feature}
                           </div>
                         ))}
@@ -436,38 +446,44 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
 
                     {/* Actions */}
                     <div className="space-y-2">
-                      <button
+                      <Button
                         onClick={() => navigate(`/providers/${provider.slug}`)}
-                        className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                        className="w-full"
+                        size="sm"
                       >
                         View Company Profile
-                      </button>
-                      <button
+                      </Button>
+                      <Button
                         onClick={() => navigate(`/texas/houston/electricity-providers`)}
-                        className="w-full border border-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
+                        variant="outline"
+                        className="w-full"
+                        size="sm"
                       >
                         See Plans & Rates
-                      </button>
+                      </Button>
                     </div>
-                  </div>
-                </div>
+                  </CardContent>
+                </Card>
               );
             })}
           </div>
         </div>
 
         {/* Comparison Methodology */}
-        <div className="bg-white rounded-lg shadow-sm border p-8 mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            How We Compare Electricity Providers
-          </h2>
+        <Card className="p-8 mb-16">
+          <CardHeader className="text-center">
+            <CardTitle className="text-2xl mb-6">
+              How We Compare Electricity Providers
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-blue-600 rounded-lg mb-6">
-                <Star className="h-8 w-8" />
+                <Icon icon="star" size={32} />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Customer Satisfaction</h3>
+              <h3 className="text-lg font-semibold mb-4">Customer Satisfaction</h3>
               <p className="text-gray-600 text-sm">
                 Customer ratings, review sentiment, and satisfaction scores from verified customers.
               </p>
@@ -475,9 +491,9 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
             
             <div className="text-center">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 text-green-600 rounded-lg mb-6">
-                <TrendingDown className="h-8 w-8" />
+                <Icon icon="trending" size={32} />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Competitive Pricing</h3>
+              <h3 className="text-lg font-semibold mb-4">Competitive Pricing</h3>
               <p className="text-gray-600 text-sm">
                 Rate competitiveness, fee structures, and overall value proposition analysis.
               </p>
@@ -485,9 +501,9 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
             
             <div className="text-center">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 text-purple-600 rounded-lg mb-6">
-                <Headphones className="h-8 w-8" />
+                <Icon icon="tabler:headphones" size={32} />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Service Quality</h3>
+              <h3 className="text-lg font-semibold mb-4">Service Quality</h3>
               <p className="text-gray-600 text-sm">
                 Customer service responsiveness, billing accuracy, and support channel quality.
               </p>
@@ -495,65 +511,75 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
             
             <div className="text-center">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-100 text-orange-600 rounded-lg mb-6">
-                <Award className="h-8 w-8" />
+                <Icon icon="tabler:award" size={32} />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Plan Portfolio</h3>
-              <p className="text-gray-600 text-sm">
+              <h3 className="text-lg font-semibold mb-4">Plan Portfolio</h3>
+              <p className="text-muted-foreground text-sm">
                 Plan variety, innovative features, and coverage of different customer needs.
               </p>
             </div>
           </div>
-        </div>
+          </CardContent>
+        </Card>
 
         {/* Cross-Hub Navigation */}
         <div className="grid md:grid-cols-3 gap-8">
-          <div className="bg-white p-6 rounded-lg shadow-sm border text-center hover:shadow-md transition-shadow">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 text-green-600 rounded-lg mb-4">
-              <Star className="h-6 w-6" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">Compare Plans</h3>
-            <p className="text-gray-600 text-sm mb-4">
-              Compare specific electricity plans by features, rates, and contract terms.
-            </p>
-            <button
-              onClick={() => navigate('/compare/plans')}
-              className="text-green-600 hover:text-green-800 font-medium text-sm"
-            >
-              Compare Plans →
-            </button>
-          </div>
+          <Card className="p-6 text-center hover:shadow-md transition-shadow">
+            <CardContent className="p-0">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 text-green-600 rounded-lg mb-4">
+                <Icon icon="star" size={24} />
+              </div>
+              <CardTitle className="text-lg mb-3">Compare Plans</CardTitle>
+              <CardDescription className="text-sm mb-4">
+                Compare specific electricity plans by features, rates, and contract terms.
+              </CardDescription>
+              <Button
+                onClick={() => navigate('/compare/plans')}
+                variant="ghost"
+                className="text-green-600 hover:text-green-800 font-medium text-sm"
+              >
+                Compare Plans →
+              </Button>
+            </CardContent>
+          </Card>
 
-          <div className="bg-white p-6 rounded-lg shadow-sm border text-center hover:shadow-md transition-shadow">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-100 text-purple-600 rounded-lg mb-4">
-              <TrendingDown className="h-6 w-6" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">Compare Rates</h3>
-            <p className="text-gray-600 text-sm mb-4">
-              Real-time rate comparison with cost calculators and usage analysis.
-            </p>
-            <button
-              onClick={() => navigate('/compare/rates')}
-              className="text-purple-600 hover:text-purple-800 font-medium text-sm"
-            >
-              Compare Rates →
-            </button>
-          </div>
+          <Card className="p-6 text-center hover:shadow-md transition-shadow">
+            <CardContent className="p-0">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-100 text-purple-600 rounded-lg mb-4">
+                <Icon icon="trending" size={24} />
+              </div>
+              <CardTitle className="text-lg mb-3">Compare Rates</CardTitle>
+              <CardDescription className="text-sm mb-4">
+                Real-time rate comparison with cost calculators and usage analysis.
+              </CardDescription>
+              <Button
+                onClick={() => navigate('/compare/rates')}
+                variant="ghost"
+                className="text-purple-600 hover:text-purple-800 font-medium text-sm"
+              >
+                Compare Rates →
+              </Button>
+            </CardContent>
+          </Card>
 
-          <div className="bg-white p-6 rounded-lg shadow-sm border text-center hover:shadow-md transition-shadow">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 text-blue-600 rounded-lg mb-4">
-              <Award className="h-6 w-6" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">Best Rankings</h3>
-            <p className="text-gray-600 text-sm mb-4">
-              Expert rankings of top providers by category and specialization.
-            </p>
-            <button
-              onClick={() => navigate('/best')}
-              className="text-blue-600 hover:text-blue-800 font-medium text-sm"
-            >
-              View Rankings →
-            </button>
-          </div>
+          <Card className="p-6 text-center hover:shadow-md transition-shadow">
+            <CardContent className="p-0">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 text-blue-600 rounded-lg mb-4">
+                <Icon icon="tabler:award" size={24} />
+              </div>
+              <CardTitle className="text-lg mb-3">Best Rankings</CardTitle>
+              <CardDescription className="text-sm mb-4">
+                Expert rankings of top providers by category and specialization.
+              </CardDescription>
+              <Button
+                onClick={() => navigate('/best')}
+                variant="ghost"
+                className="text-blue-600 hover:text-blue-800 font-medium text-sm"
+              >
+                View Rankings →
+              </Button>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>

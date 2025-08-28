@@ -4,7 +4,8 @@
  * and mobile-first layout patterns for electricity plan interfaces
  */
 
-import { useState, useEffect, useRef, ReactNode } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import type { ReactNode } from 'react';
 
 interface Breakpoint {
   name: 'mobile' | 'tablet' | 'desktop' | 'wide';

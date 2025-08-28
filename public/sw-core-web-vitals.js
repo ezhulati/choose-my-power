@@ -35,8 +35,6 @@ const CRITICAL_RESOURCES = [
   '/',
   '/manifest.json',
   '/assets/css/critical-*.css',
-  '/assets/js/00-vendor-react-*.js',
-  '/assets/js/01-vendor-ui-*.js',
   '/assets/fonts/inter-*.woff2'
 ];
 
