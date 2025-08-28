@@ -197,6 +197,12 @@ class ImageStrategy {
 
     const cityTier = context.cityTier;
     const primaryFilter = context.filters[0]; // Use first filter as primary
+    
+    // Add type safety - ensure primaryFilter is a string
+    if (typeof primaryFilter !== 'string') {
+      console.warn('⚠️ Primary filter is not a string:', primaryFilter, 'Context:', context);
+      return null;
+    }
 
     // Single filter matches
     if (context.filters.length === 1) {
@@ -215,7 +221,21 @@ class ImageStrategy {
 
     // Multi-filter combinations
     if (context.filters.length >= 2) {
-      const sortedFilters = context.filters.sort();
+      // Validate all filters are strings before processing
+      const validFilters = context.filters.filter((filter): filter is string => {
+        if (typeof filter !== 'string') {
+          console.warn('⚠️ Invalid filter type:', filter, 'in context:', context);
+          return false;
+        }
+        return true;
+      });
+      
+      if (validFilters.length === 0) {
+        console.warn('⚠️ No valid string filters found in context:', context);
+        return null;
+      }
+      
+      const sortedFilters = validFilters.sort();
       const filterCombo = sortedFilters.join('+').replace(/-/g, '');
       const tierSuffix = cityTier === 1 ? 'tier1' : '';
       

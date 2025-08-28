@@ -501,6 +501,74 @@ function shouldIncludeFAQSchema(city: string, filters: string[]): boolean {
 }
 
 /**
+ * Generate comprehensive service schema for specialized electricity services
+ */
+function generateComprehensiveServiceSchema(options: {
+  city: string;
+  filters: string[];
+  tdspInfo: any;
+  planCount: number;
+  lowestRate: number;
+  averageRate?: number;
+  topProviders: string[];
+}): object {
+  const { city, filters, tdspInfo, planCount, lowestRate, averageRate, topProviders } = options;
+  const cityName = formatCityName(city);
+  const filterText = filters.length > 0 ? ` ${filters.map(formatFilterName).join(' ')}` : '';
+  
+  const avgRate = averageRate || (lowestRate + 2);
+  const serviceDescription = filters.length > 0 
+    ? `Specialized${filterText} electricity service in ${cityName}, Texas`
+    : `Comprehensive electricity service in ${cityName}, Texas`;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: `${cityName}${filterText} Electricity Service`,
+    description: serviceDescription,
+    provider: {
+      '@type': 'Organization',
+      name: 'ChooseMyPower.org',
+      url: 'https://choosemypower.org',
+      description: 'Texas electricity plan comparison and enrollment service'
+    },
+    serviceType: 'Electricity Supply Service',
+    areaServed: {
+      '@type': 'City',
+      name: cityName,
+      addressRegion: 'TX',
+      addressCountry: 'US'
+    },
+    offers: {
+      '@type': 'AggregateOffer',
+      offerCount: planCount,
+      lowPrice: lowestRate.toFixed(3),
+      highPrice: (avgRate + 3).toFixed(3),
+      priceCurrency: 'USD',
+      priceSpecification: {
+        '@type': 'UnitPriceSpecification',
+        unitCode: 'KWH',
+        unitText: 'per kWh'
+      }
+    },
+    serviceOutput: {
+      '@type': 'EnergyConsumption',
+      energyEfficiency: 'Variable based on plan selection'
+    },
+    category: filters.includes('green-energy') ? 'Renewable Energy Service' : 'Electricity Service',
+    audience: {
+      '@type': 'Audience',
+      audienceType: 'Texas Residents and Businesses',
+      geographicArea: {
+        '@type': 'City',
+        name: cityName,
+        addressRegion: 'TX'
+      }
+    }
+  };
+}
+
+/**
  * Generate AggregateOffer schema for bulk pricing data
  */
 function generateAggregateOfferSchema(options: {
