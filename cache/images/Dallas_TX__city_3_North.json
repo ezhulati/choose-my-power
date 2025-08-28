@@ -1,0 +1,18 @@
+{
+  "cacheKey": "Dallas_TX__city_3_North",
+  "url": "/images/og/generated/city/Dallas_TX__city_3_North_1756356979440.jpg",
+  "localPath": "/Users/mbp-ez/Downloads/AI Library/Apps/CMP/choose-my-power/public/images/og/generated/city/Dallas_TX__city_3_North_1756356979440.jpg",
+  "generatedAt": "2025-08-28T04:56:19.440Z",
+  "context": {
+    "city": "Dallas TX",
+    "filters": [],
+    "planCount": 111,
+    "lowestRate": 999,
+    "topProviders": [],
+    "pageType": "city",
+    "cityTier": 3,
+    "tdspZone": "North",
+    "seasonalContext": "summer"
+  },
+  "expiresAt": "2025-09-27T04:56:20.058Z"
+}

@@ -38,9 +38,9 @@ const HUMAN_CENTERED_PROMPTS = {
     category: "city"
   },
 
-  austin_young_professionals: {
-    prompt: "Young diverse professionals in Austin condo working from home, efficient LED lighting, laptop charging, modern smart home devices, city lights through windows, work-life balance, realistic photography, 16:9 aspect ratio",
-    filename: "austin_professionals_16x9.png",
+  lubbock_new_market: {
+    prompt: "Lubbock families celebrating having electricity choice for first time, comparing plans at community center meeting, excited about new deregulated market options, realistic photography, 16:9 aspect ratio",
+    filename: "lubbock_new_choice_16x9.png",
     category: "city"
   },
 
@@ -50,9 +50,15 @@ const HUMAN_CENTERED_PROMPTS = {
     category: "city"
   },
 
-  san_antonio_multigenerational: {
-    prompt: "Large Mexican-American family gathering in San Antonio home for evening meal, multiple generations, warm interior lighting, celebration atmosphere, home full of life and light, realistic photography, 16:9 aspect ratio",
-    filename: "san_antonio_family_gathering_16x9.png",
+  plano_modern_family: {
+    prompt: "Modern diverse family in Plano suburban home at evening, children doing homework at kitchen island, warm LED lighting, energy-efficient appliances, comfortable family routine, realistic photography, 16:9 aspect ratio",
+    filename: "plano_modern_family_16x9.png",
+    category: "city"
+  },
+
+  arlington_sports_family: {
+    prompt: "Texas family in Arlington watching evening sports on TV, comfortable living room with efficient lighting, stadium lights visible through window, home team pride, realistic photography, 16:9 aspect ratio",  
+    filename: "arlington_sports_family_16x9.png",
     category: "city"
   },
 

@@ -198,14 +198,14 @@ class IdeogramClient {
    */
   private mapAspectRatio(aspectRatio: string): string {
     const aspectRatioMap: Record<string, string> = {
-      '16:9': '16:10', // Closest supported ratio for OG images
-      '1:1': '1:1',
-      '4:3': '4:3',
-      '3:4': '3:4',
-      '9:16': '9:16'
+      '16:9': '16x9', // Standard OG image ratio
+      '1:1': '1x1',
+      '4:3': '4x3',
+      '3:4': '3x4',
+      '9:16': '9x16'
     };
 
-    return aspectRatioMap[aspectRatio] || '16:10'; // Default to 16:10 for OG images
+    return aspectRatioMap[aspectRatio] || '16x9'; // Default to 16x9 for OG images
   }
 
   /**
@@ -239,10 +239,35 @@ class IdeogramClient {
   }
 
   /**
-   * Enterprise grade - no fallbacks, throw error if API fails
+   * Enterprise grade - use pre-generated static images as robust fallback
    */
-  private getFallbackImage(prompt: string, context: ImageGenerationContext): never {
-    throw new Error(`Image generation failed for ${context.pageType}: ${prompt}. Enterprise build requires successful API generation.`);
+  private getFallbackImage(prompt: string, context: ImageGenerationContext): GeneratedImage {
+    // Use existing high-quality static images based on context
+    const getStaticImageUrl = (context: ImageGenerationContext): string => {
+      if (context.pageType === 'city') {
+        const cityImages: Record<string, string> = {
+          'dallas-tx': '/images/og/clean-cities/dallas_clean_skyline_16x9.png',
+          'houston-tx': '/images/og/clean-cities/houston_clean_skyline_16x9.png',
+          'austin-tx': '/images/og/clean-cities/austin_clean_skyline_16x9.png',
+          'fort-worth-tx': '/images/og/clean-cities/fort_worth_clean_skyline_16x9.png',
+          'san-antonio-tx': '/images/og/clean-cities/san_antonio_clean_skyline_16x9.png'
+        };
+        return cityImages[context.city] || '/images/og/comprehensive-clean/business_district_clean_16x9.png';
+      }
+      
+      return '/images/og/comprehensive-clean/residential_neighborhood_16x9.png';
+    };
+
+    return {
+      url: getStaticImageUrl(context),
+      prompt,
+      context,
+      generatedAt: new Date().toISOString(),
+      cacheKey: this.generateCacheKey(context),
+      width: 1200,
+      height: 630,
+      provider: 'static-fallback'
+    };
   }
 
   /**

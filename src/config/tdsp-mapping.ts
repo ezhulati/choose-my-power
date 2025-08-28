@@ -228,6 +228,11 @@ export function formatCityName(citySlug: string): string {
 }
 
 export function formatFilterName(filterSlug: string): string {
+  // Handle edge cases where filterSlug might not be a string
+  if (!filterSlug || typeof filterSlug !== 'string') {
+    return '';
+  }
+  
   return filterSlug
     .split('-')
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
