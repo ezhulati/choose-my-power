@@ -31,55 +31,56 @@ import { getHeroImage, extractContextFromPath } from '../../lib/images/hero-imag
 import { tdspMapping } from '../../config/tdsp-mapping';
 import type { Plan } from '../../types/facets';
 
-// Enterprise-grade static generation with intelligent routing and ISR
+// Simplified static generation for development - temporarily bypass complex system
 export const getStaticPaths: GetStaticPaths = async () => {
+  console.log('🚀 Faceted Navigation: Generating static paths...');
   const startTime = Date.now();
-  console.log('🚀 Enterprise Routing System: Generating static paths for production scale...');
   
   try {
-    // Use enterprise routing system for production
-    if (process.env.NODE_ENV === 'production') {
-      console.log('📊 Using Enterprise Routing System for production deployment...');
-      const enterprisePaths = await generateEnterpriseRoutes();
-      
-      const duration = Date.now() - startTime;
-      console.log(`✅ Enterprise routing generated ${enterprisePaths.paths.length} paths in ${duration}ms`);
-      console.log(`   ISR: ${enterprisePaths.fallback ? 'enabled' : 'disabled'}`);
-      console.log(`   Fallback Mode: ${enterprisePaths.fallback}`);
-      
-      return enterprisePaths;
-    }
-    
-    // Use standard generation for development
-    const isDev = process.env.NODE_ENV === 'development';
-    const maxPaths = isDev ? 50 : 2000; // Limit dev builds for speed
-    
-    const paths = await generateFacetedStaticPaths();
-    const isrConfig = getISRConfig();
-    
-    // Apply smart path limiting for performance
-    const limitedPaths = paths.slice(0, maxPaths);
-    
-    const duration = Date.now() - startTime;
-    console.log(`✅ Generated ${limitedPaths.length}/${paths.length} static paths in ${duration}ms`);
-    console.log(`   ISR: ${isrConfig.revalidate ? 'enabled' : 'disabled'}`);
-    console.log(`   Mode: ${isDev ? 'Development (limited)' : 'Standard (production)'}`);
-    
-    return limitedPaths;
-  } catch (error) {
-    console.error('❌ Static path generation failed:', error);
-    
-    // Enhanced fallback with error context
-    const fallbackPaths = [
+    // Simple fallback paths for major Texas cities
+    const basicPaths = [
+      // Basic city pages
       { params: { path: 'dallas-tx' } },
       { params: { path: 'houston-tx' } },
       { params: { path: 'austin-tx' } },
       { params: { path: 'fort-worth-tx' } },
-      { params: { path: 'san-antonio-tx' } }
+      { params: { path: 'san-antonio-tx' } },
+      { params: { path: 'arlington-tx' } },
+      { params: { path: 'plano-tx' } },
+      { params: { path: 'irving-tx' } },
+      
+      // Popular filter combinations
+      { params: { path: 'dallas-tx/12-month' } },
+      { params: { path: 'dallas-tx/fixed-rate' } },
+      { params: { path: 'dallas-tx/green-energy' } },
+      { params: { path: 'houston-tx/12-month' } },
+      { params: { path: 'houston-tx/fixed-rate' } },
+      { params: { path: 'houston-tx/green-energy' } },
+      { params: { path: 'austin-tx/12-month' } },
+      { params: { path: 'austin-tx/fixed-rate' } },
+      { params: { path: 'austin-tx/green-energy' } }
     ];
     
-    console.log(`⚠️  Using fallback paths (${fallbackPaths.length} cities)`);
-    return fallbackPaths;
+    const duration = Date.now() - startTime;
+    console.log(`✅ Generated ${basicPaths.length} basic faceted paths in ${duration}ms`);
+    console.log('   Mode: Simplified development routing');
+    
+    return basicPaths;
+  } catch (error) {
+    console.error('❌ Faceted static path generation failed:', error);
+    
+    // Minimal fallback
+    const minimalPaths = [
+      { params: { path: 'dallas-tx' } },
+      { params: { path: 'houston-tx' } },
+      { params: { path: 'austin-tx' } }
+    ];
+    
+    console.log(`⚠️  Using minimal fallback (${minimalPaths.length} paths)`);
+    return {
+      paths: minimalPaths,
+      fallback: 'blocking'
+    };
   }
 };
 

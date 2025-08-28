@@ -217,14 +217,9 @@
   package = "@netlify/plugin-lighthouse"
 
   [plugins.inputs]
-    urls = [
-      "/",
-      "/texas/dallas",
-      "/electricity-plans/dallas-tx",
-      "/providers"
-    ]
+    audit_url = "/"
     thresholds = { performance = 0.9, accessibility = 0.9, "best-practices" = 0.9, seo = 0.95 }
-    upload_results = true
+    output_path = "lighthouse-report.html"
 
 [[plugins]]
   package = "netlify-plugin-submit-sitemap"

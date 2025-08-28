@@ -264,7 +264,7 @@ export class PerformanceTracker {
       .slice(0, 10)
       .map(metric => ({
         url: this.buildPageUrl(metric.city, metric.filters),
-        loadTime: metric.loadTime,
+        loadTime: metric.pageLoadTime,
         city: metric.city,
         filters: metric.filters,
         timestamp: metric.timestamp
