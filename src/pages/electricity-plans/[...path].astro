@@ -173,8 +173,8 @@ const heroImage = getHeroImage({
       imageUrl={heroImage} 
       overlayOpacity={0.75}
     >
-      <section class="text-white py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section class="text-white flex items-center justify-center min-h-[33vh] lg:min-h-[40vh]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <!-- Breadcrumb Navigation -->
           <nav class="mb-8" aria-label="Breadcrumb">
             <div class="flex items-center space-x-4 text-sm">
@@ -197,20 +197,20 @@ const heroImage = getHeroImage({
 
           <!-- Page Header -->
           <div class="text-center">
-            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 drop-shadow-lg">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 drop-shadow-lg">
               {filterLabels.length > 0 
                 ? `${filterLabels.join(' + ')} Plans`
                 : `Electricity Plans`
               }
             </h1>
-            <p class="text-xl md:text-2xl text-blue-100 mb-4 drop-shadow-md">
+            <p class="text-xl lg:text-2xl text-blue-100 mb-6 drop-shadow-md leading-relaxed max-w-4xl mx-auto">
               {filterLabels.length > 0 
                 ? `${filterLabels.join(' + ')} electricity plans in ${cityName}, Texas`
                 : `Compare electricity plans in ${cityName}, Texas`
               }
             </p>
             <div class="text-blue-200 drop-shadow-sm">
-              <span class="text-lg">{plans.length} plans available</span>
+              <span class="text-lg lg:text-xl">{plans.length} plans available</span>
               {filterResult.warnings.length > 0 && (
                 <span class="ml-2 text-amber-200">• {filterResult.warnings[0]}</span>
               )}

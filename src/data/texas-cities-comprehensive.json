@@ -13,8 +13,8 @@
       "priority": 1,
       "seo_priority": 1.0,
       "cities": [
-        "houston-tx", "dallas-tx", "san-antonio-tx", "austin-tx", "fort-worth-tx",
-        "el-paso-tx", "arlington-tx", "corpus-christi-tx", "plano-tx", "lubbock-tx",
+        "houston-tx", "dallas-tx", "fort-worth-tx",
+        "arlington-tx", "corpus-christi-tx", "plano-tx", "lubbock-tx",
         "irving-tx", "laredo-tx", "garland-tx", "frisco-tx", "mckinney-tx",
         "grand-prairie-tx", "mesquite-tx", "mcallen-tx", "carrollton-tx", "richardson-tx"
       ]
@@ -200,7 +200,7 @@
   },
   "exclusions": {
     "municipal_utilities": [
-      "san-antonio-tx", "el-paso-tx", "austin-tx", "brownsville-tx", "garland-tx"
+      "san-antonio-tx", "austin-tx", "el-paso-tx", "brownsville-tx", "garland-tx"
     ],
     "cooperative_areas": [
       "Some rural areas served by electric cooperatives"

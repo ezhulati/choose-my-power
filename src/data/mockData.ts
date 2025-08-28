@@ -637,28 +637,7 @@ export const mockStates: State[] = [
         averageRate: 12.2,
         topProviders: ['apge', 'gexa-energy', 'reliant-energy', 'constellation-energy', 'discount-power']
       },
-      {
-        id: 'austin',
-        name: 'Austin',
-        slug: 'austin',
-        state: 'Texas',
-        stateSlug: 'texas',
-        zipCodes: ['73301', '73344', '78701', '78702', '78703', '78704', '78705', '78712', '78717', '78724'],
-        population: 978908,
-        averageRate: 11.9,
-        topProviders: ['green-mountain-energy', 'rhythm-energy', 'gexa-energy', 'apge', 'atlantex-power']
-      },
-      {
-        id: 'san-antonio',
-        name: 'San Antonio',
-        slug: 'san-antonio',
-        state: 'Texas',
-        stateSlug: 'texas',
-        zipCodes: ['78201', '78202', '78203', '78204', '78205', '78207', '78208', '78209', '78210', '78211'],
-        population: 1547253,
-        averageRate: 12.0,
-        topProviders: ['apge', 'direct-energy', 'constellation-energy', 'just-energy', 'tara-energy']
-      },
+      // Note: Austin and San Antonio removed - served by municipal utilities (Austin Energy & CPS Energy, not deregulated)
       {
         id: 'fort-worth',
         name: 'Fort Worth',

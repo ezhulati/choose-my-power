@@ -49,7 +49,7 @@ export const tdspMapping: TdspMapping = {
   'alvin-tx': { duns: '957877905', name: 'CenterPoint Energy Houston Electric', zone: 'Coast', tier: 3, priority: 0.6 },
 
   // Central Texas (AEP Texas Central Company)
-  'austin-tx': { duns: '007924772', name: 'AEP Texas Central Company', zone: 'Central', tier: 1, priority: 1.0 },
+  // Note: Austin excluded - served by Austin Energy (municipal utility, not deregulated)
   'round-rock-tx': { duns: '007924772', name: 'AEP Texas Central Company', zone: 'Central', tier: 2, priority: 0.8 },
   'waco-tx': { duns: '007924772', name: 'AEP Texas Central Company', zone: 'Central', tier: 2, priority: 0.8 },
   'college-station-tx': { duns: '007924772', name: 'AEP Texas Central Company', zone: 'Central', tier: 2, priority: 0.8 },
@@ -155,14 +155,7 @@ export const zipToCity: Record<string, string> = {
   '77025': 'houston-tx', '77026': 'houston-tx', '77027': 'houston-tx', '77028': 'houston-tx',
   '77029': 'houston-tx', '77030': 'houston-tx', '77031': 'houston-tx', '77032': 'houston-tx',
 
-  // Austin area
-  '78701': 'austin-tx', '78702': 'austin-tx', '78703': 'austin-tx', '78704': 'austin-tx',
-  '78705': 'austin-tx', '78712': 'austin-tx', '78717': 'austin-tx', '78719': 'austin-tx',
-  '78721': 'austin-tx', '78722': 'austin-tx', '78723': 'austin-tx', '78724': 'austin-tx',
-  '78725': 'austin-tx', '78726': 'austin-tx', '78727': 'austin-tx', '78728': 'austin-tx',
-  '78729': 'austin-tx', '78730': 'austin-tx', '78731': 'austin-tx', '78732': 'austin-tx',
-  '78733': 'austin-tx', '78734': 'austin-tx', '78735': 'austin-tx', '78736': 'austin-tx',
-  '78737': 'austin-tx', '78738': 'austin-tx', '78739': 'austin-tx', '78741': 'austin-tx',
+  // Note: Austin area (78701-78741) excluded - served by Austin Energy (municipal utility, not deregulated)
 
   // Fort Worth area
   '76101': 'fort-worth-tx', '76102': 'fort-worth-tx', '76103': 'fort-worth-tx', '76104': 'fort-worth-tx',
@@ -171,12 +164,7 @@ export const zipToCity: Record<string, string> = {
   '76113': 'fort-worth-tx', '76114': 'fort-worth-tx', '76115': 'fort-worth-tx', '76116': 'fort-worth-tx',
   '76117': 'fort-worth-tx', '76118': 'fort-worth-tx', '76119': 'fort-worth-tx', '76120': 'fort-worth-tx',
 
-  // San Antonio area
-  '78201': 'san-antonio-tx', '78202': 'san-antonio-tx', '78203': 'san-antonio-tx', '78204': 'san-antonio-tx',
-  '78205': 'san-antonio-tx', '78207': 'san-antonio-tx', '78208': 'san-antonio-tx', '78209': 'san-antonio-tx',
-  '78210': 'san-antonio-tx', '78211': 'san-antonio-tx', '78212': 'san-antonio-tx', '78213': 'san-antonio-tx',
-  '78214': 'san-antonio-tx', '78215': 'san-antonio-tx', '78216': 'san-antonio-tx', '78217': 'san-antonio-tx',
-  '78218': 'san-antonio-tx', '78219': 'san-antonio-tx', '78220': 'san-antonio-tx', '78221': 'san-antonio-tx',
+  // Note: San Antonio area (78201-78221) excluded - served by CPS Energy (municipal utility, not deregulated)
 };
 
 // Filter mapping for URL segments to API parameters

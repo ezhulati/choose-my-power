@@ -6,21 +6,21 @@
 // Complete Image Library - All 60+ high-quality 16:9 images!
 // Updated with new clean, realistic images from FLUX and comprehensive generation
 export const GENERATED_IMAGES = {
-  // CORE PAGES - 16:9 FLUX Generated
-  homepage_texas_grid: '/images/og/comprehensive-clean/residential_neighborhood_16x9.png', // Cozy residential neighborhood at dusk
+  // CORE PAGES - Human-Centered Images
+  homepage_texas_grid: '/images/og/human-centered/homepage_nighttime_neighborhood_16x9.png', // Nighttime neighborhood with lights on
   state_texas_overview: '/images/og/comprehensive-clean/texas_state_overview_16x9.png', // State overview 16:9
   global_comparison_all: '/images/og/comprehensive-clean/plan_comparison_16x9.png', // Plan comparison
 
-  // MAJOR CITIES (Tier 1) - Clean City Skylines
-  'dallas-tx_city_main': '/images/og/clean-cities/dallas_clean_skyline_16x9.png', // Clean Dallas skyline
-  'houston-tx_city_main': '/images/og/clean-cities/houston_clean_skyline_16x9.png', // Clean Houston skyline  
-  'austin-tx_city_main': '/images/og/clean-cities/austin_clean_skyline_16x9.png', // Clean Austin skyline
+  // MAJOR CITIES (Tier 1) - People-Focused City Images
+  'dallas-tx_city_main': '/images/og/human-centered/dallas_family_patio_evening_16x9.png', // Dallas family on patio evening
+  'houston-tx_city_main': '/images/og/human-centered/houston_summer_cooling_relief_16x9.png', // Houston family staying cool  
+  'lubbock-tx_city_main': '/images/og/human-centered/lubbock_families_comparing_plans_16x9.png', // Lubbock families comparing plans
 
-  // ADDITIONAL MAJOR CITIES - Clean Skylines
-  'fort-worth-tx_city_main': '/images/og/clean-cities/fort_worth_clean_skyline_16x9.png', // Fort Worth skyline
-  'san-antonio-tx_city_main': '/images/og/clean-cities/san_antonio_clean_skyline_16x9.png', // San Antonio skyline
+  // ADDITIONAL MAJOR CITIES - People-Focused Images
+  'fort-worth-tx_city_main': '/images/og/human-centered/fort_worth_family_dinner_16x9.png', // Fort Worth family dinner
+  'plano-tx_city_main': '/images/og/human-centered/plano_modern_family_homework_16x9.png', // Plano modern family homework
+  // Note: San Antonio removed - not deregulated (CPS Energy municipal utility)
   'arlington-tx_city_main': '/images/og/clean-cities/arlington_clean_cityscape_16x9.png', // Arlington cityscape
-  'plano-tx_city_main': '/images/og/clean-cities/plano_clean_cityscape_16x9.png', // Plano cityscape
   'grand-prairie-tx_city_main': '/images/og/clean-cities/grand_prairie_clean_cityscape_16x9.png', // Grand Prairie
 
   // GEOGRAPHIC REGIONS - 16:9 Regional Views
@@ -36,13 +36,13 @@ export const GENERATED_IMAGES = {
   'east-texas_cities': '/images/og/comprehensive-clean/east_texas_region_16x9.png', // East Texas
   'west-texas_cities': '/images/og/comprehensive-clean/west_texas_region_16x9.png', // West Texas
 
-  // FILTER CATEGORIES - 16:9 Clean Concepts
-  filter_green_energy_all: '/images/og/comprehensive-clean/renewable_energy_clean_16x9.png', // Clean renewable energy
-  filter_fixed_rate_all: '/images/og/comprehensive-clean/fixed_rate_concept_16x9.png', // Fixed rate concept
-  filter_12month_all: '/images/og/comprehensive-clean/12_month_plans_16x9.png', // 12-month plans
-  'filter_variable-rate_all': '/images/og/comprehensive-clean/variable_rate_concept_16x9.png', // Variable rate
-  filter_24month_all: '/images/og/comprehensive-clean/24_month_plans_16x9.png', // 24-month plans
-  filter_prepaid_all: '/images/og/comprehensive-clean/prepaid_electricity_16x9.png', // Prepaid plans
+  // FILTER CATEGORIES - People Using Different Plan Types
+  filter_green_energy_all: '/images/og/human-centered/green_energy_eco_family_16x9.png', // Eco-conscious family with solar
+  filter_fixed_rate_all: '/images/og/human-centered/fixed_rate_family_budget_security_16x9.png', // Family budget security
+  filter_12month_all: '/images/og/human-centered/twelve_month_new_homeowners_16x9.png', // New homeowners signing
+  'filter_variable-rate_all': '/images/og/human-centered/variable_rate_smart_monitoring_16x9.png', // Smart monitoring
+  filter_24month_all: '/images/og/comprehensive-clean/24_month_plans_16x9.png', // 24-month plans (no specific image)
+  filter_prepaid_all: '/images/og/human-centered/prepaid_college_convenience_16x9.png', // College prepaid convenience
   'filter_no-deposit_all': '/images/og/comprehensive-clean/no_deposit_plans_16x9.png', // No deposit
   'filter_time-of-use_all': '/images/og/comprehensive-clean/smart_meter_16x9.png', // Time of use (smart meter)
   'filter_month-to-month_all': '/images/og/comprehensive-clean/month_to_month_plans_16x9.png', // Month to month
@@ -58,8 +58,8 @@ export const GENERATED_IMAGES = {
   'combo_green-dallas_all': '/images/og/combo-green-dallas.png', // Green + Dallas (existing)
   'combo_green-houston_all': '/images/og/combo-green-houston.png', // Green + Houston (existing)
 
-  // SEASONAL CONTEXTS - 16:9 Seasonal Imagery
-  seasonal_summer_cooling: '/images/og/comprehensive-clean/summer_comfort_16x9.png', // Summer comfort
+  // SEASONAL CONTEXTS - People in Seasonal Situations
+  seasonal_summer_cooling: '/images/og/human-centered/summer_ac_comfort_efficiency_16x9.png', // Family staying cool
   seasonal_winter_heating: '/images/og/comprehensive-clean/winter_warmth_16x9.png', // Winter warmth
   seasonal_spring_renewal: '/images/og/comprehensive-clean/spring_renewal_16x9.png', // Spring renewal
   seasonal_fall_efficiency: '/images/og/comprehensive-clean/fall_efficiency_16x9.png', // Fall efficiency
@@ -73,15 +73,18 @@ export const GENERATED_IMAGES = {
   provider_regional_all: '/images/og/provider_regional_all.png', // Regional providers
   provider_green_all: '/images/og/provider_green_all.png', // Green providers
 
-  // SPECIALTY CATEGORIES - 16:9 Targeted Imagery
-  specialty_business_all: '/images/og/comprehensive-clean/business_district_clean_16x9.png', // Business district
-  specialty_residential_all: '/images/og/comprehensive-clean/residential_neighborhood_16x9.png', // Residential
-  'specialty_low-usage_all': '/images/og/comprehensive-clean/residential_neighborhood_16x9.png', // Low usage
-  'specialty_high-usage_all': '/images/og/comprehensive-clean/business_district_clean_16x9.png', // High usage
-  specialty_savings_all: '/images/og/comprehensive-clean/savings_concept_16x9.png', // Savings concept
+  // SPECIALTY CATEGORIES - People-Focused Scenarios
+  specialty_business_all: '/images/og/human-centered/work_from_home_efficient_power_16x9.png', // Work from home efficiency
+  specialty_residential_all: '/images/og/human-centered/homepage_nighttime_neighborhood_16x9.png', // Residential neighborhood
+  'specialty_low-usage_all': '/images/og/human-centered/homepage_nighttime_neighborhood_16x9.png', // Low usage residential
+  'specialty_high-usage_all': '/images/og/human-centered/work_from_home_efficient_power_16x9.png', // High usage work from home
+  specialty_savings_all: '/images/og/human-centered/bill_savings_celebration_16x9.png', // People celebrating savings
   specialty_smart_home_all: '/images/og/comprehensive-clean/smart_meter_16x9.png', // Smart home
   specialty_low_rate_all: '/images/og/comprehensive-clean/savings_concept_16x9.png', // Low rate (savings)
-  'specialty_small-business_all': '/images/og/comprehensive-clean/small_business_16x9.png', // Small business
+  'specialty_small-business_all': '/images/og/human-centered/work_from_home_efficient_power_16x9.png', // Small business/work from home
+  
+  // LIFE TRANSITIONS - Human-Centered Scenarios
+  transition_moving_in: '/images/og/human-centered/moving_in_lights_first_time_16x9.png', // Moving into new home
 
   // COMPARISON TYPES - 16:9 Comparison Tools
   comparison_rates_all: '/images/og/comprehensive-clean/plan_comparison_16x9.png', // Plan comparison
@@ -126,21 +129,25 @@ export function getHeroImage(context: HeroImageContext): string | undefined {
       return GENERATED_IMAGES[cityKey];
     }
 
-    // Fall back to regional images based on location
+    // Fall back to regional images based on deregulated city location
     if (location.includes('dallas') || location.includes('plano') || location.includes('garland') || 
-        location.includes('fort-worth') || location.includes('arlington') || location.includes('grand-prairie')) {
+        location.includes('fort-worth') || location.includes('arlington') || location.includes('grand-prairie') ||
+        location.includes('irving') || location.includes('mesquite') || location.includes('carrollton')) {
       return GENERATED_IMAGES['tier1-north_cities'];
     }
     if (location.includes('houston') || location.includes('sugar-land') || location.includes('galveston') ||
-        location.includes('beaumont') || location.includes('port-arthur')) {
+        location.includes('beaumont') || location.includes('port-arthur') || location.includes('katy') ||
+        location.includes('spring') || location.includes('conroe') || location.includes('baytown')) {
       return GENERATED_IMAGES['tier1-coast_cities'];
     }
-    if (location.includes('austin') || location.includes('cedar-park') || location.includes('round-rock') ||
-        location.includes('san-marcos') || location.includes('kyle')) {
+    // Central Texas - Note: Austin is NOT deregulated (Austin Energy municipal utility)
+    if (location.includes('cedar-park') || location.includes('round-rock') || location.includes('pflugerville') ||
+        location.includes('san-marcos') || location.includes('kyle') || location.includes('georgetown')) {
       return GENERATED_IMAGES['tier1-central_cities'];
     }
-    if (location.includes('san-antonio') || location.includes('corpus-christi') || location.includes('laredo') ||
-        location.includes('brownsville') || location.includes('mcallen')) {
+    // South Texas deregulated cities only (excluding San Antonio - CPS Energy municipal)
+    if (location.includes('corpus-christi') || location.includes('laredo') || location.includes('brownsville') || 
+        location.includes('mcallen') || location.includes('edinburg') || location.includes('pharr')) {
       return GENERATED_IMAGES['tier1-south_cities'];
     }
     if (location.includes('tyler') || location.includes('longview') || location.includes('marshall')) {
@@ -225,7 +232,7 @@ export function getHeroImage(context: HeroImageContext): string | undefined {
     return GENERATED_IMAGES.tool_comparison_all;
   }
 
-  // Default fallback - use the main Texas grid image
+  // Default fallback - use the nighttime neighborhood image
   return GENERATED_IMAGES.homepage_texas_grid;
 }
 
