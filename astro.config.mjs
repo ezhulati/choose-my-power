@@ -14,7 +14,7 @@ export default defineConfig({
     // Only use Netlify adapter for production builds
     ...(process.env.NODE_ENV === 'production' ? [netlify()] : [])
   ],
-  output: process.env.NODE_ENV === 'production' ? 'static' : 'server',
+  output: 'server',
   // Only set adapter for production
   ...(process.env.NODE_ENV === 'production' ? { adapter: netlify() } : {}),
   site: 'https://choosemypower.org',
