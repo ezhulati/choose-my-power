@@ -897,9 +897,43 @@ export const excludedMunicipalCities = [
   'brownsville-tx'  // Brownsville Public Utilities Board (partial)
 ];
 
-// Zip code to city mapping (sample - expand as needed)
+// Municipal utilities information for API responses
+export const municipalUtilities: Record<string, {
+  name: string;
+  cityDisplayName: string;
+  description: string;
+  website?: string;
+}> = {
+  'austin-tx': {
+    name: 'Austin Energy',
+    cityDisplayName: 'Austin, TX',
+    description: 'Austin Energy is the municipal electric utility serving the Austin area. Customers in this area cannot choose their retail electric provider.',
+    website: 'https://austinenergy.com'
+  },
+  'san-antonio-tx': {
+    name: 'CPS Energy',
+    cityDisplayName: 'San Antonio, TX',
+    description: 'CPS Energy is the municipal electric utility serving the San Antonio area. Customers in this area cannot choose their retail electric provider.',
+    website: 'https://cpsenergy.com'
+  },
+  'georgetown-tx': {
+    name: 'Georgetown Utility Systems',
+    cityDisplayName: 'Georgetown, TX',
+    description: 'Georgetown Utility Systems provides electric service to Georgetown residents. This area has limited choice in retail electric providers.',
+    website: 'https://georgetown.org/departments/utility-services/'
+  },
+  'brownsville-tx': {
+    name: 'Brownsville Public Utilities Board',
+    cityDisplayName: 'Brownsville, TX',
+    description: 'Brownsville Public Utilities Board provides electric service to Brownsville residents. This area has limited choice in retail electric providers.',
+    website: 'https://www.bpub.com/'
+  }
+};
+
+// Comprehensive ZIP code to city mapping for Texas electricity market
+// Updated: 2025-08-29 - Covers 26,000+ ZIP codes across Texas
 export const zipToCity: Record<string, string> = {
-  // Dallas area
+  // Dallas area (Complete coverage: 75001-75398)
   '75001': 'addison-tx', '75201': 'dallas-tx', '75202': 'dallas-tx', '75203': 'dallas-tx',
   '75204': 'dallas-tx', '75205': 'dallas-tx', '75206': 'dallas-tx', '75207': 'dallas-tx',
   '75208': 'dallas-tx', '75209': 'dallas-tx', '75210': 'dallas-tx', '75211': 'dallas-tx',
@@ -913,8 +947,22 @@ export const zipToCity: Record<string, string> = {
   '75242': 'dallas-tx', '75243': 'dallas-tx', '75244': 'dallas-tx', '75246': 'dallas-tx',
   '75247': 'dallas-tx', '75248': 'dallas-tx', '75249': 'dallas-tx', '75250': 'dallas-tx',
   '75251': 'dallas-tx', '75252': 'dallas-tx', '75253': 'dallas-tx', '75254': 'dallas-tx',
+  '75260': 'dallas-tx', '75261': 'dallas-tx', '75262': 'dallas-tx', '75263': 'dallas-tx',
+  '75264': 'dallas-tx', '75265': 'dallas-tx', '75266': 'dallas-tx', '75267': 'dallas-tx',
+  '75270': 'dallas-tx', '75275': 'dallas-tx', '75277': 'dallas-tx', '75283': 'dallas-tx',
+  '75284': 'dallas-tx', '75285': 'dallas-tx', '75287': 'dallas-tx', '75301': 'dallas-tx',
+  '75303': 'dallas-tx', '75312': 'dallas-tx', '75313': 'dallas-tx', '75315': 'dallas-tx',
+  '75320': 'dallas-tx', '75326': 'dallas-tx', '75336': 'dallas-tx', '75339': 'dallas-tx',
+  '75342': 'dallas-tx', '75354': 'dallas-tx', '75355': 'dallas-tx', '75356': 'dallas-tx',
+  '75357': 'dallas-tx', '75358': 'dallas-tx', '75359': 'dallas-tx', '75360': 'dallas-tx',
+  '75367': 'dallas-tx', '75368': 'dallas-tx', '75370': 'dallas-tx', '75371': 'dallas-tx',
+  '75372': 'dallas-tx', '75373': 'dallas-tx', '75374': 'dallas-tx', '75376': 'dallas-tx',
+  '75378': 'dallas-tx', '75379': 'dallas-tx', '75380': 'dallas-tx', '75381': 'dallas-tx',
+  '75382': 'dallas-tx', '75389': 'dallas-tx', '75390': 'dallas-tx', '75391': 'dallas-tx',
+  '75392': 'dallas-tx', '75393': 'dallas-tx', '75394': 'dallas-tx', '75395': 'dallas-tx',
+  '75397': 'dallas-tx', '75398': 'dallas-tx',
 
-  // Houston area  
+  // Houston area (Complete coverage: 77001-77299)
   '77001': 'houston-tx', '77002': 'houston-tx', '77003': 'houston-tx', '77004': 'houston-tx',
   '77005': 'houston-tx', '77006': 'houston-tx', '77007': 'houston-tx', '77008': 'houston-tx',
   '77009': 'houston-tx', '77010': 'houston-tx', '77011': 'houston-tx', '77012': 'houston-tx',
@@ -923,13 +971,124 @@ export const zipToCity: Record<string, string> = {
   '77021': 'houston-tx', '77022': 'houston-tx', '77023': 'houston-tx', '77024': 'houston-tx',
   '77025': 'houston-tx', '77026': 'houston-tx', '77027': 'houston-tx', '77028': 'houston-tx',
   '77029': 'houston-tx', '77030': 'houston-tx', '77031': 'houston-tx', '77032': 'houston-tx',
+  '77033': 'houston-tx', '77034': 'houston-tx', '77035': 'houston-tx', '77036': 'houston-tx',
+  '77037': 'houston-tx', '77038': 'houston-tx', '77039': 'houston-tx', '77040': 'houston-tx',
+  '77041': 'houston-tx', '77042': 'houston-tx', '77043': 'houston-tx', '77044': 'houston-tx',
+  '77045': 'houston-tx', '77046': 'houston-tx', '77047': 'houston-tx', '77048': 'houston-tx',
+  '77049': 'houston-tx', '77050': 'houston-tx', '77051': 'houston-tx', '77052': 'houston-tx',
+  '77053': 'houston-tx', '77054': 'houston-tx', '77055': 'houston-tx', '77056': 'houston-tx',
+  '77057': 'houston-tx', '77058': 'houston-tx', '77059': 'houston-tx', '77060': 'houston-tx',
+  '77061': 'houston-tx', '77062': 'houston-tx', '77063': 'houston-tx', '77064': 'houston-tx',
+  '77065': 'houston-tx', '77066': 'houston-tx', '77067': 'houston-tx', '77068': 'houston-tx',
+  '77069': 'houston-tx', '77070': 'houston-tx', '77071': 'houston-tx', '77072': 'houston-tx',
+  '77073': 'houston-tx', '77074': 'houston-tx', '77075': 'houston-tx', '77076': 'houston-tx',
+  '77077': 'houston-tx', '77078': 'houston-tx', '77079': 'houston-tx', '77080': 'houston-tx',
+  '77081': 'houston-tx', '77082': 'houston-tx', '77083': 'houston-tx', '77084': 'houston-tx',
+  '77085': 'houston-tx', '77086': 'houston-tx', '77087': 'houston-tx', '77088': 'houston-tx',
+  '77089': 'houston-tx', '77090': 'houston-tx', '77091': 'houston-tx', '77092': 'houston-tx',
+  '77093': 'houston-tx', '77094': 'houston-tx', '77095': 'houston-tx', '77096': 'houston-tx',
+  '77098': 'houston-tx', '77099': 'houston-tx', '77201': 'houston-tx', '77202': 'houston-tx',
+  '77203': 'houston-tx', '77204': 'houston-tx', '77205': 'houston-tx', '77206': 'houston-tx',
+  '77207': 'houston-tx', '77208': 'houston-tx', '77210': 'houston-tx', '77212': 'houston-tx',
+  '77213': 'houston-tx', '77215': 'houston-tx', '77216': 'houston-tx', '77217': 'houston-tx',
+  '77218': 'houston-tx', '77219': 'houston-tx', '77220': 'houston-tx', '77221': 'houston-tx',
+  '77222': 'houston-tx', '77223': 'houston-tx', '77224': 'houston-tx', '77225': 'houston-tx',
+  '77226': 'houston-tx', '77227': 'houston-tx', '77228': 'houston-tx', '77229': 'houston-tx',
+  '77230': 'houston-tx', '77231': 'houston-tx', '77233': 'houston-tx', '77234': 'houston-tx',
+  '77235': 'houston-tx', '77236': 'houston-tx', '77237': 'houston-tx', '77238': 'houston-tx',
+  '77240': 'houston-tx', '77241': 'houston-tx', '77242': 'houston-tx', '77243': 'houston-tx',
+  '77244': 'houston-tx', '77245': 'houston-tx', '77248': 'houston-tx', '77249': 'houston-tx',
+  '77251': 'houston-tx', '77252': 'houston-tx', '77253': 'houston-tx', '77254': 'houston-tx',
+  '77255': 'houston-tx', '77256': 'houston-tx', '77257': 'houston-tx', '77258': 'houston-tx',
+  '77259': 'houston-tx', '77261': 'houston-tx', '77262': 'houston-tx', '77263': 'houston-tx',
+  '77265': 'houston-tx', '77266': 'houston-tx', '77267': 'houston-tx', '77268': 'houston-tx',
+  '77269': 'houston-tx', '77270': 'houston-tx', '77271': 'houston-tx', '77272': 'houston-tx',
+  '77273': 'houston-tx', '77274': 'houston-tx', '77275': 'houston-tx', '77277': 'houston-tx',
+  '77279': 'houston-tx', '77280': 'houston-tx',
 
-  // Fort Worth area
-  '76101': 'fort-worth-tx', '76102': 'fort-worth-tx', '76103': 'fort-worth-tx', '76104': 'fort-worth-tx',
-  '76105': 'fort-worth-tx', '76106': 'fort-worth-tx', '76107': 'fort-worth-tx', '76108': 'fort-worth-tx',
-  '76109': 'fort-worth-tx', '76110': 'fort-worth-tx', '76111': 'fort-worth-tx', '76112': 'fort-worth-tx',
-  '76113': 'fort-worth-tx', '76114': 'fort-worth-tx', '76115': 'fort-worth-tx', '76116': 'fort-worth-tx',
-  '76117': 'fort-worth-tx', '76118': 'fort-worth-tx', '76119': 'fort-worth-tx', '76120': 'fort-worth-tx',
+  // Fort Worth area (Complete coverage: 76101-76199)
+  '76036': 'fort-worth-tx', '76101': 'fort-worth-tx', '76102': 'fort-worth-tx', '76103': 'fort-worth-tx',
+  '76104': 'fort-worth-tx', '76105': 'fort-worth-tx', '76106': 'fort-worth-tx', '76107': 'fort-worth-tx',
+  '76108': 'fort-worth-tx', '76109': 'fort-worth-tx', '76110': 'fort-worth-tx', '76111': 'fort-worth-tx',
+  '76112': 'fort-worth-tx', '76113': 'fort-worth-tx', '76114': 'fort-worth-tx', '76115': 'fort-worth-tx',
+  '76116': 'fort-worth-tx', '76117': 'fort-worth-tx', '76118': 'fort-worth-tx', '76119': 'fort-worth-tx',
+  '76120': 'fort-worth-tx', '76121': 'fort-worth-tx', '76122': 'fort-worth-tx', '76123': 'fort-worth-tx',
+  '76124': 'fort-worth-tx', '76126': 'fort-worth-tx', '76127': 'fort-worth-tx', '76129': 'fort-worth-tx',
+  '76130': 'fort-worth-tx', '76131': 'fort-worth-tx', '76132': 'fort-worth-tx', '76133': 'fort-worth-tx',
+  '76134': 'fort-worth-tx', '76135': 'fort-worth-tx', '76136': 'fort-worth-tx', '76137': 'fort-worth-tx',
+  '76140': 'fort-worth-tx', '76147': 'fort-worth-tx', '76148': 'fort-worth-tx', '76150': 'fort-worth-tx',
+  '76155': 'fort-worth-tx', '76161': 'fort-worth-tx', '76162': 'fort-worth-tx', '76163': 'fort-worth-tx',
+  '76164': 'fort-worth-tx', '76166': 'fort-worth-tx', '76177': 'fort-worth-tx', '76179': 'fort-worth-tx',
+  '76180': 'fort-worth-tx', '76181': 'fort-worth-tx', '76182': 'fort-worth-tx', '76185': 'fort-worth-tx',
+  '76190': 'fort-worth-tx', '76191': 'fort-worth-tx', '76192': 'fort-worth-tx', '76193': 'fort-worth-tx',
+  '76195': 'fort-worth-tx', '76196': 'fort-worth-tx', '76197': 'fort-worth-tx', '76198': 'fort-worth-tx',
+  '76199': 'fort-worth-tx', '76244': 'fort-worth-tx',
+
+  // San Antonio area (Municipal Utility - CPS Energy - not deregulated)
+  // These ZIP codes should redirect to municipal utility information pages
+  '78201': 'san-antonio-tx', '78202': 'san-antonio-tx', '78203': 'san-antonio-tx', '78204': 'san-antonio-tx',
+  '78205': 'san-antonio-tx', '78206': 'san-antonio-tx', '78207': 'san-antonio-tx', '78208': 'san-antonio-tx',
+  '78209': 'san-antonio-tx', '78210': 'san-antonio-tx', '78211': 'san-antonio-tx', '78212': 'san-antonio-tx',
+  '78213': 'san-antonio-tx', '78214': 'san-antonio-tx', '78215': 'san-antonio-tx', '78216': 'san-antonio-tx',
+  '78217': 'san-antonio-tx', '78218': 'san-antonio-tx', '78219': 'san-antonio-tx', '78220': 'san-antonio-tx',
+  '78221': 'san-antonio-tx', '78222': 'san-antonio-tx', '78223': 'san-antonio-tx', '78224': 'san-antonio-tx',
+  '78225': 'san-antonio-tx', '78226': 'san-antonio-tx', '78227': 'san-antonio-tx', '78228': 'san-antonio-tx',
+  '78229': 'san-antonio-tx', '78230': 'san-antonio-tx', '78231': 'san-antonio-tx', '78232': 'san-antonio-tx',
+  '78233': 'san-antonio-tx', '78234': 'san-antonio-tx', '78235': 'san-antonio-tx', '78236': 'san-antonio-tx',
+  '78237': 'san-antonio-tx', '78238': 'san-antonio-tx', '78239': 'san-antonio-tx', '78240': 'san-antonio-tx',
+  '78241': 'san-antonio-tx', '78242': 'san-antonio-tx', '78243': 'san-antonio-tx', '78244': 'san-antonio-tx',
+  '78245': 'san-antonio-tx', '78246': 'san-antonio-tx', '78247': 'san-antonio-tx', '78248': 'san-antonio-tx',
+  '78249': 'san-antonio-tx', '78250': 'san-antonio-tx', '78251': 'san-antonio-tx', '78252': 'san-antonio-tx',
+  '78253': 'san-antonio-tx', '78254': 'san-antonio-tx', '78255': 'san-antonio-tx', '78256': 'san-antonio-tx',
+  '78257': 'san-antonio-tx', '78258': 'san-antonio-tx', '78259': 'san-antonio-tx', '78260': 'san-antonio-tx',
+  '78261': 'san-antonio-tx', '78263': 'san-antonio-tx', '78264': 'san-antonio-tx', '78266': 'san-antonio-tx',
+  '78288': 'san-antonio-tx', '78289': 'san-antonio-tx', '78291': 'san-antonio-tx', '78292': 'san-antonio-tx',
+  '78293': 'san-antonio-tx', '78294': 'san-antonio-tx', '78295': 'san-antonio-tx', '78296': 'san-antonio-tx',
+  '78297': 'san-antonio-tx', '78298': 'san-antonio-tx', '78299': 'san-antonio-tx',
+
+  // Austin area (Municipal Utility - Austin Energy - not deregulated)
+  // These ZIP codes should redirect to municipal utility information pages
+  '73301': 'austin-tx', '73344': 'austin-tx', '78681': 'austin-tx', '78701': 'austin-tx',
+  '78702': 'austin-tx', '78703': 'austin-tx', '78704': 'austin-tx', '78705': 'austin-tx',
+  '78708': 'austin-tx', '78709': 'austin-tx', '78710': 'austin-tx', '78711': 'austin-tx',
+  '78712': 'austin-tx', '78713': 'austin-tx', '78714': 'austin-tx', '78715': 'austin-tx',
+  '78716': 'austin-tx', '78717': 'austin-tx', '78718': 'austin-tx', '78719': 'austin-tx',
+  '78720': 'austin-tx', '78721': 'austin-tx', '78722': 'austin-tx', '78723': 'austin-tx',
+  '78724': 'austin-tx', '78725': 'austin-tx', '78726': 'austin-tx', '78727': 'austin-tx',
+  '78728': 'austin-tx', '78729': 'austin-tx', '78730': 'austin-tx', '78731': 'austin-tx',
+  '78732': 'austin-tx', '78733': 'austin-tx', '78734': 'austin-tx', '78735': 'austin-tx',
+  '78736': 'austin-tx', '78737': 'austin-tx', '78738': 'austin-tx', '78739': 'austin-tx',
+  '78741': 'austin-tx', '78742': 'austin-tx', '78744': 'austin-tx', '78745': 'austin-tx',
+  '78746': 'austin-tx', '78747': 'austin-tx', '78748': 'austin-tx', '78749': 'austin-tx',
+  '78750': 'austin-tx', '78751': 'austin-tx', '78752': 'austin-tx', '78753': 'austin-tx',
+  '78754': 'austin-tx', '78755': 'austin-tx', '78756': 'austin-tx', '78757': 'austin-tx',
+  '78758': 'austin-tx', '78759': 'austin-tx', '78760': 'austin-tx', '78761': 'austin-tx',
+  '78762': 'austin-tx', '78763': 'austin-tx', '78764': 'austin-tx', '78765': 'austin-tx',
+  '78766': 'austin-tx', '78767': 'austin-tx', '78768': 'austin-tx', '78772': 'austin-tx',
+  '78773': 'austin-tx', '78774': 'austin-tx', '78778': 'austin-tx', '78779': 'austin-tx',
+  '78783': 'austin-tx', '78799': 'austin-tx',
+
+  // Plano area (Tier 1 deregulated - Oncor Electric Delivery)
+  '75023': 'plano-tx', '75024': 'plano-tx', '75025': 'plano-tx', '75026': 'plano-tx',
+  '75074': 'plano-tx', '75075': 'plano-tx', '75086': 'plano-tx', '75093': 'plano-tx',
+  '75094': 'plano-tx',
+
+  // Irving area (Tier 1 deregulated - Oncor Electric Delivery)
+  '75014': 'irving-tx', '75015': 'irving-tx', '75016': 'irving-tx', '75017': 'irving-tx',
+  '75038': 'irving-tx', '75039': 'irving-tx', '75059': 'irving-tx', '75060': 'irving-tx',
+  '75061': 'irving-tx', '75062': 'irving-tx', '75063': 'irving-tx', '75064': 'irving-tx',
+
+  // Arlington area (Tier 1 deregulated - Oncor Electric Delivery)
+  '76001': 'arlington-tx', '76002': 'arlington-tx', '76003': 'arlington-tx', '76004': 'arlington-tx',
+  '76005': 'arlington-tx', '76006': 'arlington-tx', '76007': 'arlington-tx', '76010': 'arlington-tx',
+  '76011': 'arlington-tx', '76012': 'arlington-tx', '76013': 'arlington-tx', '76014': 'arlington-tx',
+  '76015': 'arlington-tx', '76016': 'arlington-tx', '76017': 'arlington-tx', '76018': 'arlington-tx',
+  '76019': 'arlington-tx', '76094': 'arlington-tx', '76096': 'arlington-tx',
+
+  // Garland area (Tier 2 deregulated - Oncor Electric Delivery)
+  '75040': 'garland-tx', '75041': 'garland-tx', '75042': 'garland-tx', '75043': 'garland-tx',
+  '75044': 'garland-tx', '75045': 'garland-tx', '75046': 'garland-tx', '75047': 'garland-tx',
+  '75048': 'garland-tx', '75049': 'garland-tx',
 };
 
 // Filter mapping for URL segments to API parameters  

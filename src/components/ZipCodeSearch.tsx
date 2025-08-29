@@ -10,12 +10,35 @@ interface ZipCodeSearchProps {
 export function ZipCodeSearch({ onSearch, placeholder = "Enter ZIP code", size = 'md' }: ZipCodeSearchProps) {
   const [zipCode, setZipCode] = useState('');
 
-  const defaultOnSearch = (zipCode: string) => {
-    console.log('Default navigation for ZIP:', zipCode);
-    // Navigate to Texas city page based on ZIP code
-    // For now, navigate to general Texas page - could be enhanced with ZIP-to-city mapping
+  const defaultOnSearch = async (zipCode: string) => {
+    console.log('Enhanced ZIP navigation for:', zipCode);
+    
     if (typeof window !== 'undefined') {
-      window.location.href = `/texas?zip=${zipCode}`;
+      try {
+        // Use our comprehensive ZIP lookup API for navigation
+        const response = await fetch(`/api/zip-lookup?zip=${encodeURIComponent(zipCode)}`);
+        const result = await response.json();
+        
+        if (result.success) {
+          // Navigate to specific city page
+          console.log('Navigating to city:', result.redirectUrl);
+          window.location.href = result.redirectUrl;
+        } else {
+          // Handle different error cases
+          if (result.errorType === 'non_deregulated') {
+            // Show municipal utility info or redirect to info page
+            window.location.href = result.redirectUrl || `/texas?zip=${zipCode}&municipal=true`;
+          } else {
+            // Fallback to general Texas page with ZIP parameter
+            console.log('ZIP not found, using fallback navigation');
+            window.location.href = `/texas?zip=${zipCode}`;
+          }
+        }
+      } catch (error) {
+        // Error fallback - navigate to general Texas page
+        console.error('ZIP lookup failed, using fallback:', error);
+        window.location.href = `/texas?zip=${zipCode}`;
+      }
     }
   };
 

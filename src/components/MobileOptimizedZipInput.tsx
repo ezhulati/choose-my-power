@@ -249,45 +249,175 @@ export const MobileOptimizedZipInput: React.FC<MobileOptimizedZipInputProps> = (
    */
   const processTDSPResolution = async (zipCode: string, location?: LocationData): Promise<void> => {
     try {
-      const analysis = await multiTDSPDetector.analyzeZipCode(zipCode, displayUsage);
+      console.log(`📱 Mobile ZIP lookup: ${zipCode}`);
       
-      const result = {
-        ...analysis,
-        location
-      };
+      // Step 1: Use our comprehensive ZIP lookup API first
+      const response = await fetch(`/api/zip-lookup?zip=${encodeURIComponent(zipCode)}`);
+      const zipResult = await response.json();
 
-      if (analysis.addressRequired) {
-        setState(prev => ({
-          ...prev,
-          step: 'address',
-          isLoading: false,
-          tdspResult: analysis
-        }));
-        return;
-      }
+      if (zipResult.success) {
+        console.log(`✅ Mobile ZIP resolved to city: ${zipResult.city}`);
+        
+        try {
+          // Step 2: Check for multi-TDSP scenarios
+          const analysis = await multiTDSPDetector.analyzeZipCode(zipCode, displayUsage);
+          
+          const result = {
+            ...analysis,
+            location
+          };
 
-      // Success - save to recent and resolve
-      saveRecentZipCode(zipCode);
-      setState(prev => ({
-        ...prev,
-        step: 'resolved',
-        isLoading: false,
-        tdspResult: analysis
-      }));
+          if (analysis.addressRequired) {
+            setState(prev => ({
+              ...prev,
+              step: 'address',
+              isLoading: false,
+              tdspResult: analysis
+            }));
+            return;
+          }
 
-      onLocationResolved(result);
+          // Success - save to recent and resolve
+          saveRecentZipCode(zipCode);
+          setState(prev => ({
+            ...prev,
+            step: 'resolved',
+            isLoading: false,
+            tdspResult: analysis
+          }));
 
-      // Success haptic feedback
-      if (vibrationSupported.current) {
-        navigator.vibrate([50, 50, 100]);
+          onLocationResolved(result);
+
+          // Success haptic feedback
+          if (vibrationSupported.current) {
+            navigator.vibrate([50, 50, 100]);
+          }
+
+        } catch (multiTDSPError) {
+          // Fallback to basic resolution if multi-TDSP fails
+          console.log(`⚠️ Multi-TDSP detection failed, using basic mobile resolution`);
+          
+          const basicResult: TDSPResolutionResult & { location?: LocationData } = {
+            method: 'zip_lookup_mobile',
+            zipCode,
+            city: zipResult.city,
+            tdsp_duns: '', // Will be filled by consuming component
+            tdsp_name: '', // Will be filled by consuming component
+            confidence: 'medium',
+            addressRequired: false,
+            requiresUserInput: false,
+            apiParams: {
+              display_usage: displayUsage
+            },
+            resolvedAddress: zipResult.cityDisplayName,
+            location
+          };
+
+          // Success - save to recent and resolve
+          saveRecentZipCode(zipCode);
+          setState(prev => ({
+            ...prev,
+            step: 'resolved',
+            isLoading: false,
+            tdspResult: basicResult
+          }));
+
+          onLocationResolved(basicResult);
+
+          // Success haptic feedback
+          if (vibrationSupported.current) {
+            navigator.vibrate([50, 50, 100]);
+          }
+        }
+
+      } else {
+        // Handle ZIP lookup errors
+        console.log(`⚠️ Mobile ZIP lookup failed:`, zipResult);
+        
+        if (zipResult.errorType === 'non_deregulated') {
+          // Municipal utility - show special error with haptic feedback
+          if (vibrationSupported.current) {
+            navigator.vibrate([100, 100, 100]); // Error vibration pattern
+          }
+          
+          setState(prev => ({ 
+            ...prev, 
+            isLoading: false, 
+            error: `${zipResult.error} This area doesn't have electricity choice.`,
+            step: 'input'
+          }));
+          
+        } else if (zipResult.errorType === 'not_found') {
+          // Try fallback to multi-TDSP detector
+          console.log(`🔄 Mobile ZIP not found, trying fallback...`);
+          
+          try {
+            const analysis = await multiTDSPDetector.analyzeZipCode(zipCode, displayUsage);
+            const result = { ...analysis, location };
+
+            if (analysis.addressRequired) {
+              setState(prev => ({
+                ...prev,
+                step: 'address',
+                isLoading: false,
+                tdspResult: analysis
+              }));
+              return;
+            }
+
+            saveRecentZipCode(zipCode);
+            setState(prev => ({
+              ...prev,
+              step: 'resolved',
+              isLoading: false,
+              tdspResult: analysis
+            }));
+
+            onLocationResolved(result);
+
+            if (vibrationSupported.current) {
+              navigator.vibrate([50, 50, 100]);
+            }
+
+          } catch (fallbackError) {
+            if (vibrationSupported.current) {
+              navigator.vibrate([100, 100, 100]);
+            }
+            
+            setState(prev => ({ 
+              ...prev, 
+              isLoading: false, 
+              error: 'This ZIP code is not in our Texas service area.',
+              step: 'input'
+            }));
+          }
+          
+        } else {
+          // Other errors
+          if (vibrationSupported.current) {
+            navigator.vibrate([100, 100, 100]);
+          }
+          
+          setState(prev => ({ 
+            ...prev, 
+            isLoading: false, 
+            error: zipResult.error || 'Unable to process this ZIP code.',
+            step: 'input'
+          }));
+        }
       }
 
     } catch (error) {
-      console.error('TDSP resolution failed:', error);
+      console.error('Mobile TDSP resolution failed:', error);
+      
+      // Error haptic feedback
+      if (vibrationSupported.current) {
+        navigator.vibrate([100, 100, 100]);
+      }
       
       const errorMessage = error instanceof Error 
         ? error.message 
-        : 'Unable to process location. Please try again.';
+        : 'Unable to process location. Please check your connection and try again.';
         
       setState(prev => ({ 
         ...prev, 

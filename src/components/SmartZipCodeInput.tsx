@@ -125,7 +125,7 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
   };
 
   /**
-   * Handle ZIP code submission with enhanced security
+   * Handle ZIP code submission with enhanced API and security
    */
   const handleZipCodeSubmit = useCallback(async () => {
     const sanitizedZipCode = sanitizeInput(state.zipCode);
@@ -146,46 +146,145 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
     }));
 
     try {
-      console.log(`🔍 Analyzing ZIP code: ${sanitizedZipCode}`);
+      console.log(`🔍 Looking up ZIP code: ${sanitizedZipCode}`);
       
-      // Step 1: Analyze ZIP code for multi-TDSP potential
-      const analysis = await multiTDSPDetector.analyzeZipCode(sanitizedZipCode, displayUsage);
-      
-      if (analysis.addressRequired) {
-        console.log(`⚠️  Address required for ZIP ${zipCode}`);
+      // Step 1: Use our new ZIP lookup API first
+      const response = await fetch(`/api/zip-lookup?zip=${encodeURIComponent(sanitizedZipCode)}`);
+      const zipResult = await response.json();
+
+      if (zipResult.success) {
+        // ZIP code resolved to a single city - now check if we need multi-TDSP detection
+        console.log(`✅ ZIP resolved to city: ${zipResult.city}`);
         
-        setState(prev => ({
-          ...prev,
-          step: 'address_input',
-          isLoading: false,
-          tdspResult: analysis,
-          showAddressForm: true,
-          error: null
-        }));
+        // Step 2: Check if this city might have multi-TDSP scenarios
+        try {
+          const analysis = await multiTDSPDetector.analyzeZipCode(sanitizedZipCode, displayUsage);
+          
+          if (analysis.addressRequired) {
+            console.log(`⚠️  Address required for ZIP ${sanitizedZipCode} due to multi-TDSP`);
+            
+            setState(prev => ({
+              ...prev,
+              step: 'address_input',
+              isLoading: false,
+              tdspResult: analysis,
+              showAddressForm: true,
+              error: null
+            }));
+            
+            return;
+          }
+
+          // Direct resolution successful
+          console.log(`✅ Direct ZIP resolution: ${analysis.tdsp_name}`);
+          
+          setState(prev => ({
+            ...prev,
+            step: 'resolved',
+            isLoading: false,
+            tdspResult: analysis,
+            showAddressForm: false,
+            error: null
+          }));
+
+          onTDSPResolved(analysis);
+
+        } catch (multiTDSPError) {
+          // Fallback to basic city resolution if multi-TDSP detection fails
+          console.log(`⚠️ Multi-TDSP detection failed, using basic city resolution`);
+          
+          // Create a basic TDSP result from our ZIP lookup
+          const basicResult: TDSPResolutionResult = {
+            method: 'zip_lookup',
+            zipCode: sanitizedZipCode,
+            city: zipResult.city,
+            tdsp_duns: '', // Will be filled by the consuming component
+            tdsp_name: '', // Will be filled by the consuming component
+            confidence: 'medium',
+            addressRequired: false,
+            requiresUserInput: false,
+            apiParams: {
+              display_usage: displayUsage
+            },
+            resolvedAddress: zipResult.cityDisplayName
+          };
+
+          setState(prev => ({
+            ...prev,
+            step: 'resolved',
+            isLoading: false,
+            tdspResult: basicResult,
+            showAddressForm: false,
+            error: null
+          }));
+
+          onTDSPResolved(basicResult);
+        }
+
+      } else {
+        // Handle different error types from ZIP lookup API
+        console.log(`⚠️ ZIP lookup failed:`, zipResult);
         
-        return;
+        if (zipResult.errorType === 'non_deregulated') {
+          // Municipal utility area - show special error
+          setState(prev => ({ 
+            ...prev, 
+            isLoading: false, 
+            error: `${zipResult.error} You cannot choose your electricity provider in this area.` 
+          }));
+        } else if (zipResult.errorType === 'not_found') {
+          // ZIP not found in our database, try multi-TDSP detector as fallback
+          console.log(`🔄 ZIP not in our database, trying multi-TDSP detection...`);
+          
+          try {
+            const analysis = await multiTDSPDetector.analyzeZipCode(sanitizedZipCode, displayUsage);
+            
+            if (analysis.addressRequired) {
+              setState(prev => ({
+                ...prev,
+                step: 'address_input',
+                isLoading: false,
+                tdspResult: analysis,
+                showAddressForm: true,
+                error: null
+              }));
+              return;
+            }
+
+            setState(prev => ({
+              ...prev,
+              step: 'resolved',
+              isLoading: false,
+              tdspResult: analysis,
+              showAddressForm: false,
+              error: null
+            }));
+
+            onTDSPResolved(analysis);
+
+          } catch (fallbackError) {
+            setState(prev => ({ 
+              ...prev, 
+              isLoading: false, 
+              error: 'This ZIP code is not in our service area. We currently serve deregulated electricity markets in Texas.' 
+            }));
+          }
+        } else {
+          // Other errors
+          setState(prev => ({ 
+            ...prev, 
+            isLoading: false, 
+            error: zipResult.error || 'Unable to process this ZIP code. Please try again.' 
+          }));
+        }
       }
 
-      // Direct resolution successful
-      console.log(`✅ Direct ZIP resolution: ${analysis.tdsp_name}`);
-      
-      setState(prev => ({
-        ...prev,
-        step: 'resolved',
-        isLoading: false,
-        tdspResult: analysis,
-        showAddressForm: false,
-        error: null
-      }));
-
-      onTDSPResolved(analysis);
-
     } catch (error) {
-      console.error('ZIP code analysis failed:', error);
+      console.error('ZIP code lookup failed:', error);
       
       const errorMessage = error instanceof Error 
         ? error.message 
-        : 'Unable to analyze ZIP code. Please try again.';
+        : 'Unable to process ZIP code. Please check your connection and try again.';
         
       setState(prev => ({ 
         ...prev, 
