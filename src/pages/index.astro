@@ -1,21 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import HeroBackground from '../components/HeroBackground.astro';
-import { ZipCodeSearch } from '../components/ZipCodeSearch';
 import { Zap, Shield, DollarSign, Clock, MapPin, Calculator, Leaf, Users, TrendingDown, Battery, Award, BarChart } from 'lucide-react';
-import { getHeroImage } from '../lib/images/hero-image-mapper';
 
 const title = "Compare & Choose Texas Electricity | ChooseMyPower.org";
 const description = "Expert analysis of 50+ providers and 300+ plans. Find the perfect match for your needs and save hundreds per year.";
 
-// Get the hero background image for homepage
-const heroImage = getHeroImage({ pageType: 'homepage' });
-console.log('🏠 Homepage Hero Image:', heroImage);
+// Homepage uses gradient background - no hero image needed
 ---
 
 <Layout title={title} description={description} ogImage="/images/og/comprehensive-clean/homepage_hero_clean_16x9.png">
-  <!-- Preload critical hero image for better LCP -->
-  {heroImage && <link rel="preload" as="image" href={heroImage} />}
+  <!-- Preload critical font for LCP text element -->
+  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/inter/v19/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2" type="font/woff2" crossorigin fetchpriority="high" />
   <!-- Organization and Website Schema -->
   <script type="application/ld+json">
   {

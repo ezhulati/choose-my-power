@@ -186,6 +186,19 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `https://choosemy
         font-display: swap;
         contain: layout;
       }
+      
+      /* Specific CLS prevention for homepage hero headings */
+      h1.text-4xl, h1.text-5xl, h1.text-6xl, h1.text-7xl {
+        line-height: 1.1;
+        min-height: 2.5em; /* Reserve space for multi-line headings */
+        contain: layout style;
+      }
+      
+      /* Prevent CLS in icon containers */
+      .w-16.h-16, .w-8.h-8, .w-5.h-5 {
+        flex-shrink: 0;
+        contain: layout;
+      }
 
       /* Critical typography for LCP optimization */
       h1, h2, h3, h4, h5, h6 {
