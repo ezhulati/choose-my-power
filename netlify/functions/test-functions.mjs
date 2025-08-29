@@ -167,8 +167,10 @@ async function makeRequest(url, options = {}) {
 // Test suites
 const testRunner = new TestRunner();
 
-// 1. Basic Function Health Tests
-await testRunner.runTest('Search Plans Function - Health Check', async () => {
+// Main test runner function
+async function runAllTests() {
+  // 1. Basic Function Health Tests
+  await testRunner.runTest('Search Plans Function - Health Check', async () => {
   const response = await makeRequest(`${config.baseUrl}/search-plans`, {
     method: 'POST',
     body: JSON.stringify({
@@ -606,13 +608,20 @@ await testRunner.runTest('Search Plans - Data Quality Validation', async () => {
   }
 });
 
-// Print final results
-const success = testRunner.printSummary();
+  // Print final results
+  const success = testRunner.printSummary();
 
-if (success) {
-  console.log('🎉 All tests passed! Functions are ready for production.');
-  process.exit(0);
-} else {
-  console.log('💥 Some tests failed. Please review and fix issues before deploying.');
-  process.exit(1);
+  if (success) {
+    console.log('🎉 All tests passed! Functions are ready for production.');
+    process.exit(0);
+  } else {
+    console.log('💥 Some tests failed. Please review and fix issues before deploying.');
+    process.exit(1);
+  }
 }
+
+// Run all tests
+runAllTests().catch(error => {
+  console.error('❌ Test runner failed:', error);
+  process.exit(1);
+});
