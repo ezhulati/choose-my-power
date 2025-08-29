@@ -334,8 +334,7 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `https://choosemy
     <link rel="dns-prefetch" href="//fonts.gstatic.com" />
     
     <!-- Preload critical resources for 0.53s server response improvement -->
-    <link rel="modulepreload" href="/src/layouts/Layout.astro" />
-    <link rel="preload" href="/src/index.css" as="style" />
+    <link rel="preload" href="/index.css" as="style" />
     
     <!-- Prefetch critical API endpoints -->
     <link rel="prefetch" href="/.netlify/functions/health" />
@@ -369,7 +368,7 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `https://choosemy
     
     <!-- Service Worker disabled in development to prevent interference -->
     <!-- Will be enabled in production build -->
-    <script>
+    <script nonce="web-vitals">
       if ('serviceWorker' in navigator && import.meta.env.PROD) {
         window.addEventListener('load', () => {
           navigator.serviceWorker.register('/sw-core-web-vitals.js')
@@ -398,11 +397,11 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `https://choosemy
     </script>
     
     <!-- Core Web Vitals Monitoring -->
-    <script>
+    <script nonce="web-vitals">
       // Initialize Core Web Vitals monitoring
       window.addEventListener('load', () => {
         // Import Web Vitals library dynamically to avoid blocking
-        import('https://unpkg.com/web-vitals@3?module')
+        import('https://unpkg.com/web-vitals@3/dist/web-vitals.js')
           .then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
             // Track all Core Web Vitals
             getCLS((metric) => {

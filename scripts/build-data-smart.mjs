@@ -23,7 +23,7 @@ const API_BASE_URL = 'https://pricing.api.comparepower.com';
 const DATA_DIR = './src/data/generated';
 const STATIC_DATA_DIR = './src/data/static';
 const CACHE_METADATA_FILE = `${DATA_DIR}/cache-metadata.json`;
-const CITIES_DATA_FILE = './scripts/texas-cities-mapped.json';
+const CITIES_DATA_FILE = './src/data/static/texas-cities-mapped.json';
 
 // Environment controls
 const USE_CACHED_DATA = process.env.USE_CACHED_DATA !== 'false';
