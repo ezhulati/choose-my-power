@@ -1,20 +1,48 @@
 import * as React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
-const Card = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn(
-      "rounded-xl border bg-card text-card-foreground shadow",
-      className
-    )}
-    {...props}
-  />
-))
+const cardVariants = cva(
+  "bg-card text-card-foreground shadow transition-all duration-200",
+  {
+    variants: {
+      variant: {
+        default: "rounded-xl border",
+        elevated: "rounded-xl border shadow-lg hover:shadow-xl",
+        outline: "rounded-xl border-2 border-input bg-background",
+        featured: "rounded-xl border-2 border-texas-gold bg-gradient-to-br from-texas-gold/5 to-transparent shadow-lg",
+        popular: "rounded-xl border-2 border-texas-navy bg-gradient-to-br from-texas-navy/5 to-transparent shadow-lg ring-2 ring-texas-navy/20",
+        "plan-card": "rounded-2xl border border-gray-200 hover:border-texas-navy/30 hover:shadow-lg bg-white",
+        "provider-card": "rounded-2xl border border-gray-200 hover:border-texas-gold/30 hover:shadow-lg bg-white",
+        "texas-themed": "rounded-2xl border border-texas-cream bg-gradient-to-br from-texas-cream/30 to-white shadow-md",
+      },
+      size: {
+        default: "",
+        compact: "",
+        spacious: "",
+      }
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  }
+)
+
+export interface CardProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof cardVariants> {}
+
+const Card = React.forwardRef<HTMLDivElement, CardProps>(
+  ({ className, variant, size, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={cn(cardVariants({ variant, size, className }))}
+      {...props}
+    />
+  )
+)
 Card.displayName = "Card"
 
 const CardHeader = React.forwardRef<
@@ -73,4 +101,4 @@ const CardFooter = React.forwardRef<
 ))
 CardFooter.displayName = "CardFooter"
 
-export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
+export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent, cardVariants }

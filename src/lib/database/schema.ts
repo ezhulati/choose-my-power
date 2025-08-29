@@ -60,6 +60,11 @@ export interface ElectricityPlan {
   tos_link?: string;
   yrac_link?: string;
   
+  // Faceted search support
+  facets?: Record<string, any>; // JSON field for facet data
+  search_vector?: string; // Full-text search vector
+  city_slug?: string; // For faceted navigation
+  
   // Metadata
   is_active: boolean;
   last_scraped_at: Date;
@@ -122,6 +127,92 @@ export interface UserSearch {
   filters_applied: string[];
   plans_viewed: number;
   conversion_event?: 'clicked_enroll' | 'viewed_details' | 'shared';
+  user_agent?: string;
+  ip_address?: string;
+  created_at: Date;
+}
+
+export interface Lead {
+  id: string;
+  zip_code: string;
+  city_slug?: string;
+  monthly_usage?: number;
+  current_rate?: number;
+  preferred_contract_length?: number;
+  green_energy_preference: boolean;
+  contact_email?: string;
+  contact_phone?: string;
+  utm_source?: string;
+  utm_campaign?: string;
+  utm_medium?: string;
+  utm_content?: string;
+  status: 'new' | 'qualified' | 'contacted' | 'converted' | 'unqualified';
+  score?: number; // Lead scoring 0-100
+  notes?: string;
+  created_at: Date;
+  updated_at: Date;
+}
+
+export interface PlanComparison {
+  id: string;
+  session_id: string;
+  plan_ids: string[];
+  city_slug?: string;
+  filters_applied: Record<string, any>;
+  comparison_duration_seconds?: number;
+  selected_plan_id?: string;
+  created_at: Date;
+}
+
+export interface SearchHistory {
+  id: string;
+  session_id?: string;
+  search_query: string;
+  search_type: 'city' | 'provider' | 'plan_features' | 'zip_code';
+  results_count: number;
+  clicked_result?: string;
+  no_results: boolean;
+  created_at: Date;
+}
+
+export interface ProviderCache {
+  id: string;
+  provider_name: string;
+  logo_url?: string;
+  website_url?: string;
+  customer_service_phone?: string;
+  service_areas: string[]; // Array of city slugs
+  specialties: string[]; // Array like ['green_energy', 'business_plans']
+  rating?: number;
+  total_plans: number;
+  updated_at: Date;
+  created_at: Date;
+}
+
+export interface CityAnalytics {
+  id: string;
+  city_slug: string;
+  tdsp_duns: string;
+  average_rate: number;
+  lowest_rate: number;
+  highest_rate: number;
+  total_plans: number;
+  green_plans: number;
+  fixed_rate_plans: number;
+  variable_rate_plans: number;
+  last_updated: Date;
+  monthly_trend?: number; // Rate change from previous month
+  created_at: Date;
+}
+
+export interface ApiMetrics {
+  id: string;
+  endpoint: string;
+  method: string;
+  status_code: number;
+  response_time_ms: number;
+  cache_hit: boolean;
+  error_type?: string;
   user_agent?: string;
   ip_address?: string;
   created_at: Date;
@@ -219,6 +310,11 @@ CREATE TABLE IF NOT EXISTS electricity_plans (
   tos_link TEXT,
   yrac_link TEXT,
   
+  -- Faceted search support
+  facets JSONB DEFAULT '{}', -- Facet metadata for fast filtering
+  search_vector tsvector, -- Full-text search vector
+  city_slug VARCHAR(255), -- For faceted navigation
+  
   -- Metadata
   is_active BOOLEAN DEFAULT true,
   last_scraped_at TIMESTAMP DEFAULT NOW(),
@@ -266,6 +362,98 @@ CREATE TABLE IF NOT EXISTS user_searches (
   created_at TIMESTAMP DEFAULT NOW()
 );
 
+-- Customer leads and inquiries
+CREATE TABLE IF NOT EXISTS leads (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  zip_code VARCHAR(10) NOT NULL,
+  city_slug VARCHAR(255),
+  monthly_usage INTEGER,
+  current_rate DECIMAL(8,4),
+  preferred_contract_length INTEGER,
+  green_energy_preference BOOLEAN DEFAULT false,
+  contact_email VARCHAR(255),
+  contact_phone VARCHAR(20),
+  utm_source VARCHAR(100),
+  utm_campaign VARCHAR(100),
+  utm_medium VARCHAR(100),
+  utm_content VARCHAR(100),
+  status VARCHAR(20) DEFAULT 'new' CHECK (status IN ('new', 'qualified', 'contacted', 'converted', 'unqualified')),
+  score INTEGER CHECK (score >= 0 AND score <= 100),
+  notes TEXT,
+  created_at TIMESTAMP DEFAULT NOW(),
+  updated_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Plan comparison sessions
+CREATE TABLE IF NOT EXISTS plan_comparisons (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  session_id VARCHAR(255) NOT NULL,
+  plan_ids JSONB NOT NULL, -- Array of plan IDs
+  city_slug VARCHAR(255),
+  filters_applied JSONB DEFAULT '{}',
+  comparison_duration_seconds INTEGER,
+  selected_plan_id VARCHAR(255),
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- User search history
+CREATE TABLE IF NOT EXISTS search_history (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  session_id VARCHAR(255),
+  search_query VARCHAR(255) NOT NULL,
+  search_type VARCHAR(50) NOT NULL CHECK (search_type IN ('city', 'provider', 'plan_features', 'zip_code')),
+  results_count INTEGER NOT NULL DEFAULT 0,
+  clicked_result VARCHAR(255),
+  no_results BOOLEAN DEFAULT false,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Provider information cache
+CREATE TABLE IF NOT EXISTS provider_cache (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  provider_name VARCHAR(255) UNIQUE NOT NULL,
+  logo_url VARCHAR(500),
+  website_url VARCHAR(500),
+  customer_service_phone VARCHAR(20),
+  service_areas JSONB DEFAULT '[]', -- Array of city slugs
+  specialties JSONB DEFAULT '[]', -- Array like ['green_energy', 'business_plans']
+  rating DECIMAL(3,2),
+  total_plans INTEGER DEFAULT 0,
+  updated_at TIMESTAMP DEFAULT NOW(),
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- City market analytics
+CREATE TABLE IF NOT EXISTS city_analytics (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  city_slug VARCHAR(255) UNIQUE NOT NULL,
+  tdsp_duns VARCHAR(20) NOT NULL,
+  average_rate DECIMAL(8,4) NOT NULL,
+  lowest_rate DECIMAL(8,4) NOT NULL,
+  highest_rate DECIMAL(8,4) NOT NULL,
+  total_plans INTEGER NOT NULL DEFAULT 0,
+  green_plans INTEGER DEFAULT 0,
+  fixed_rate_plans INTEGER DEFAULT 0,
+  variable_rate_plans INTEGER DEFAULT 0,
+  last_updated TIMESTAMP DEFAULT NOW(),
+  monthly_trend DECIMAL(8,4), -- Rate change from previous month
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- API performance metrics
+CREATE TABLE IF NOT EXISTS api_metrics (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  endpoint VARCHAR(255) NOT NULL,
+  method VARCHAR(10) NOT NULL,
+  status_code INTEGER NOT NULL,
+  response_time_ms INTEGER NOT NULL,
+  cache_hit BOOLEAN DEFAULT false,
+  error_type VARCHAR(100),
+  user_agent TEXT,
+  ip_address INET,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
 -- Indexes for performance
 CREATE INDEX IF NOT EXISTS idx_plans_tdsp_duns ON electricity_plans(tdsp_duns);
 CREATE INDEX IF NOT EXISTS idx_plans_provider_id ON electricity_plans(provider_id);
@@ -273,6 +461,16 @@ CREATE INDEX IF NOT EXISTS idx_plans_rate_1000kwh ON electricity_plans(rate_1000
 CREATE INDEX IF NOT EXISTS idx_plans_is_active ON electricity_plans(is_active);
 CREATE INDEX IF NOT EXISTS idx_plans_term_months ON electricity_plans(term_months);
 CREATE INDEX IF NOT EXISTS idx_plans_percent_green ON electricity_plans(percent_green);
+
+-- Faceted search indexes for performance
+CREATE INDEX IF NOT EXISTS idx_plans_facets_gin ON electricity_plans USING gin(facets);
+CREATE INDEX IF NOT EXISTS idx_plans_search_vector ON electricity_plans USING gin(search_vector);
+CREATE INDEX IF NOT EXISTS idx_plans_city_slug ON electricity_plans(city_slug);
+CREATE INDEX IF NOT EXISTS idx_plans_city_rate_type ON electricity_plans(city_slug, rate_type);
+CREATE INDEX IF NOT EXISTS idx_plans_contract_green ON electricity_plans(term_months, percent_green);
+CREATE INDEX IF NOT EXISTS idx_plans_rate_green ON electricity_plans(rate_type, percent_green);
+CREATE INDEX IF NOT EXISTS idx_plans_prepay_deposit ON electricity_plans(is_pre_pay, deposit_required);
+CREATE INDEX IF NOT EXISTS idx_plans_active_city ON electricity_plans(is_active, city_slug);
 
 CREATE INDEX IF NOT EXISTS idx_cache_key ON plan_cache(cache_key);
 CREATE INDEX IF NOT EXISTS idx_cache_expires ON plan_cache(expires_at);
@@ -283,6 +481,45 @@ CREATE INDEX IF NOT EXISTS idx_cities_tdsp ON cities(tdsp_duns);
 
 CREATE INDEX IF NOT EXISTS idx_user_searches_created ON user_searches(created_at);
 CREATE INDEX IF NOT EXISTS idx_user_searches_city ON user_searches(city_slug);
+
+-- Indexes for leads table
+CREATE INDEX IF NOT EXISTS idx_leads_zip_code ON leads(zip_code);
+CREATE INDEX IF NOT EXISTS idx_leads_city_slug ON leads(city_slug);
+CREATE INDEX IF NOT EXISTS idx_leads_status ON leads(status);
+CREATE INDEX IF NOT EXISTS idx_leads_created_at ON leads(created_at);
+CREATE INDEX IF NOT EXISTS idx_leads_score ON leads(score);
+CREATE INDEX IF NOT EXISTS idx_leads_utm_source ON leads(utm_source);
+
+-- Indexes for plan comparisons
+CREATE INDEX IF NOT EXISTS idx_plan_comparisons_session ON plan_comparisons(session_id);
+CREATE INDEX IF NOT EXISTS idx_plan_comparisons_city ON plan_comparisons(city_slug);
+CREATE INDEX IF NOT EXISTS idx_plan_comparisons_created ON plan_comparisons(created_at);
+
+-- Indexes for search history
+CREATE INDEX IF NOT EXISTS idx_search_history_session ON search_history(session_id);
+CREATE INDEX IF NOT EXISTS idx_search_history_type ON search_history(search_type);
+CREATE INDEX IF NOT EXISTS idx_search_history_query ON search_history(search_query);
+CREATE INDEX IF NOT EXISTS idx_search_history_created ON search_history(created_at);
+CREATE INDEX IF NOT EXISTS idx_search_history_no_results ON search_history(no_results);
+
+-- Indexes for provider cache
+CREATE INDEX IF NOT EXISTS idx_provider_cache_name ON provider_cache(provider_name);
+CREATE INDEX IF NOT EXISTS idx_provider_cache_updated ON provider_cache(updated_at);
+CREATE INDEX IF NOT EXISTS idx_provider_cache_rating ON provider_cache(rating);
+
+-- Indexes for city analytics
+CREATE INDEX IF NOT EXISTS idx_city_analytics_slug ON city_analytics(city_slug);
+CREATE INDEX IF NOT EXISTS idx_city_analytics_tdsp ON city_analytics(tdsp_duns);
+CREATE INDEX IF NOT EXISTS idx_city_analytics_updated ON city_analytics(last_updated);
+CREATE INDEX IF NOT EXISTS idx_city_analytics_avg_rate ON city_analytics(average_rate);
+CREATE INDEX IF NOT EXISTS idx_city_analytics_lowest_rate ON city_analytics(lowest_rate);
+
+-- Indexes for API metrics
+CREATE INDEX IF NOT EXISTS idx_api_metrics_endpoint ON api_metrics(endpoint);
+CREATE INDEX IF NOT EXISTS idx_api_metrics_created ON api_metrics(created_at);
+CREATE INDEX IF NOT EXISTS idx_api_metrics_status ON api_metrics(status_code);
+CREATE INDEX IF NOT EXISTS idx_api_metrics_response_time ON api_metrics(response_time_ms);
+CREATE INDEX IF NOT EXISTS idx_api_metrics_cache_hit ON api_metrics(cache_hit);
 
 -- Update triggers
 CREATE OR REPLACE FUNCTION update_updated_at_column()
@@ -303,5 +540,11 @@ CREATE TRIGGER update_tdsp_updated_at BEFORE UPDATE ON tdsp
   FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 
 CREATE TRIGGER update_cities_updated_at BEFORE UPDATE ON cities
+  FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
+CREATE TRIGGER update_leads_updated_at BEFORE UPDATE ON leads
+  FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
+CREATE TRIGGER update_provider_cache_updated_at BEFORE UPDATE ON provider_cache
   FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 `;

@@ -1,0 +1,441 @@
+---
+// Enhanced City page with Texas branding and modern design
+import Layout from '../../layouts/Layout.astro';
+import HeroBackground from '../../components/HeroBackground.astro';
+import LivePlanGrid from '../../components/LivePlanGrid.astro';
+import PlanFilters from '../../components/PlanFilters.astro';
+import { tdspMapping, formatCityName } from '../../config/tdsp-mapping';
+import { comparePowerClient } from '../../lib/api/comparepower-client';
+import { getHeroImage } from '../../lib/images/hero-image-mapper';
+import { MapPin, Zap, Shield, TrendingDown, Leaf, Clock, DollarSign, Users, Award, Star, ChevronRight, Info, CheckCircle } from 'lucide-react';
+
+export const prerender = false;
+
+const { city } = Astro.params;
+const url = new URL(Astro.request.url);
+
+// Get filter parameters from URL
+const filter = url.searchParams.get('filter');
+const term = url.searchParams.get('term');
+const greenEnergy = url.searchParams.get('green');
+const rateType = url.searchParams.get('type');
+const sort = url.searchParams.get('sort');
+
+// Validate city exists
+if (!city || !tdspMapping[city]) {
+  console.error(`Invalid city: ${city}`);
+  return Astro.redirect('/404', 404);
+}
+
+const tdspInfo = tdspMapping[city];
+const cityName = formatCityName(city);
+
+// Build API parameters with filters
+const apiParams = {
+  tdsp_duns: tdspInfo.duns,
+  display_usage: 1000 // Standard 1000 kWh usage
+};
+
+// Apply filters based on URL parameters
+if (filter === '12-month' || term === '12') {
+  apiParams.term = 12;
+} else if (term) {
+  apiParams.term = parseInt(term);
+}
+
+if (filter === 'green-energy' || greenEnergy === '100') {
+  apiParams.percent_green = 100;
+} else if (greenEnergy) {
+  apiParams.percent_green = parseInt(greenEnergy);
+}
+
+// Fetch live electricity plans from ComparePower API
+let plans = [];
+let apiError = null;
+let filterLabel = '';
+
+try {
+  console.log(`Fetching plans for ${cityName} (DUNS: ${tdspInfo.duns})`, apiParams);
+  
+  plans = await comparePowerClient.fetchPlans(apiParams);
+  
+  // Apply client-side filtering for rate types
+  if (filter === 'fixed-rate' || rateType === 'fixed') {
+    plans = plans.filter(plan => plan.contract?.type === 'fixed');
+    filterLabel = 'Fixed Rate ';
+  } else if (rateType === 'variable') {
+    plans = plans.filter(plan => plan.contract?.type === 'variable');
+    filterLabel = 'Variable Rate ';
+  } else if (rateType === 'indexed') {
+    plans = plans.filter(plan => plan.contract?.type === 'indexed');
+    filterLabel = 'Indexed Rate ';
+  }
+
+  // Apply green energy filtering if not handled by API
+  if (greenEnergy && greenEnergy !== '100') {
+    const minGreen = parseInt(greenEnergy);
+    plans = plans.filter(plan => plan.features?.greenEnergy >= minGreen);
+  }
+  
+  // Apply sorting
+  if (sort === 'price-low') {
+    plans = plans.sort((a, b) => (a.pricing?.rate1000kWh || 999) - (b.pricing?.rate1000kWh || 999));
+  } else if (sort === 'price-high') {
+    plans = plans.sort((a, b) => (b.pricing?.rate1000kWh || 0) - (a.pricing?.rate1000kWh || 0));
+  } else if (sort === 'green-high') {
+    plans = plans.sort((a, b) => (b.features?.greenEnergy || 0) - (a.features?.greenEnergy || 0));
+  } else if (sort === 'term-short') {
+    plans = plans.sort((a, b) => (a.contract?.length || 999) - (b.contract?.length || 999));
+  } else if (sort === 'term-long') {
+    plans = plans.sort((a, b) => (b.contract?.length || 0) - (a.contract?.length || 0));
+  }
+  
+  // Set filter labels for display
+  if (filter === '12-month') filterLabel = '12-Month ';
+  if (filter === 'green-energy') filterLabel = '100% Green Energy ';
+  
+  console.log(`Successfully fetched ${plans.length} ${filterLabel}plans for ${cityName}`);
+} catch (error) {
+  console.error(`Error fetching plans for ${cityName}:`, error);
+  apiError = error.message || 'Unable to load plans at this time';
+}
+
+// Calculate market insights
+const lowestRate = plans.length > 0 ? Math.min(...plans.map(p => p.pricing?.rate1000kWh || 999)).toFixed(1) : 'N/A';
+const avgRate = plans.length > 0 ? (plans.reduce((sum, plan) => sum + (plan.pricing?.rate1000kWh || 0), 0) / plans.length).toFixed(1) : 'N/A';
+const greenPlans = plans.filter(plan => (plan.features?.greenEnergy || 0) >= 50).length;
+const fixedPlans = plans.filter(plan => plan.contract?.type === 'fixed').length;
+
+const title = `${filterLabel}Electricity Plans in ${cityName} | Live Rates & Providers`;
+const description = `Compare ${plans.length} live ${filterLabel.toLowerCase()}electricity plans in ${cityName}, Texas. Find the best rates starting at ${lowestRate}¢/kWh from top providers.`;
+
+// Get contextual hero image for this city
+const filters = [];
+if (filter) filters.push(filter);
+if (greenEnergy) filters.push('green-energy');
+if (rateType) filters.push(rateType);
+
+const heroImage = getHeroImage({ 
+  pageType: 'city', 
+  location: city,
+  filters: filters.length > 0 ? filters : undefined
+});
+
+// Get city-specific OG image
+function getCityOGImage(city: string): string {
+  const cityImages = {
+    'dallas-tx': '/images/og/comprehensive-clean/residential_neighborhood_16x9.png',
+    'houston-tx': '/images/og/comprehensive-clean/residential_neighborhood_16x9.png',
+    'austin-tx': '/images/og/comprehensive-clean/residential_neighborhood_16x9.png',
+    'fort-worth-tx': '/images/og/comprehensive-clean/residential_neighborhood_16x9.png',
+    'san-antonio-tx': '/images/og/comprehensive-clean/residential_neighborhood_16x9.png'
+  };
+  
+  return cityImages[city] || '/images/og/comprehensive-clean/texas_state_overview_16x9.png';
+}
+
+const ogImage = getCityOGImage(city);
+---
+
+<Layout title={title} description={description} ogImage={ogImage}>
+  <!-- Enhanced Hero Section with Texas Branding -->
+  <HeroBackground 
+    imageUrl={heroImage} 
+    heroType="city"
+  >
+    <section class="relative text-white flex items-center justify-center min-h-[45vh] lg:min-h-[50vh]">
+      <!-- Texas Flag Accent -->
+      <div class="absolute top-6 right-6 hidden lg:block">
+        <div class="w-16 h-10 rounded shadow-lg overflow-hidden">
+          <div class="h-full flex">
+            <div class="w-1/3 bg-blue-800"></div>
+            <div class="w-2/3 flex flex-col">
+              <div class="h-1/2 bg-white"></div>
+              <div class="h-1/2 bg-red-600"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <header class="text-center">
+          <!-- Breadcrumb -->
+          <nav class="mb-6">
+            <ol class="flex justify-center items-center space-x-2 text-blue-200">
+              <li><a href="/texas" class="hover:text-white transition-colors">Texas</a></li>
+              <li><ChevronRight className="w-4 h-4" /></li>
+              <li class="text-white font-medium">{cityName}</li>
+            </ol>
+          </nav>
+
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 drop-shadow-lg">
+            <span class="block">Electricity Plans in</span>
+            <span class="block bg-gradient-to-r from-texas-gold via-yellow-300 to-texas-gold bg-clip-text text-transparent">
+              {cityName}
+            </span>
+          </h1>
+          
+          <p class="text-xl lg:text-2xl text-blue-100 max-w-4xl mx-auto mb-8 drop-shadow-md leading-relaxed">
+            {filterLabel ? 
+              `Discover ${filterLabel.toLowerCase()}plans from trusted providers serving ${cityName}, Texas.` : 
+              `Compare electricity plans and rates from top providers serving ${cityName}, Texas.`
+            }
+          </p>
+
+          <!-- Live Stats -->
+          <div class="flex justify-center items-center gap-8 mb-8">
+            <div class="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 border border-white/20">
+              <div class="text-2xl font-bold text-texas-gold">{plans.length}</div>
+              <div class="text-sm text-blue-200">Plans Available</div>
+            </div>
+            {lowestRate !== 'N/A' && (
+              <div class="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 border border-white/20">
+                <div class="text-2xl font-bold text-texas-gold">{lowestRate}¢</div>
+                <div class="text-sm text-blue-200">Lowest Rate</div>
+              </div>
+            )}
+            <div class="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 border border-white/20">
+              <div class="text-2xl font-bold text-texas-gold">{greenPlans}</div>
+              <div class="text-sm text-blue-200">Green Plans</div>
+            </div>
+          </div>
+
+          {filterLabel && (
+            <div>
+              <a href={`/texas/${city}`} class="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-xl font-semibold transition-all backdrop-blur-sm border border-white/20">
+                <ChevronRight className="w-4 h-4 rotate-180" />
+                View All Plans
+              </a>
+            </div>
+          )}
+        </header>
+      </div>
+    </section>
+  </HeroBackground>
+
+  <div class="max-w-7xl mx-auto px-4 py-8">
+
+    <!-- Market Insights Card -->
+    <div class="bg-gradient-to-r from-texas-cream/50 to-white rounded-2xl border-2 border-texas-cream p-8 mb-8 shadow-lg">
+      <div class="flex items-start gap-4 mb-6">
+        <div class="w-12 h-12 bg-texas-gold/20 rounded-xl flex items-center justify-center">
+          <TrendingDown className="w-6 h-6 text-texas-gold" />
+        </div>
+        <div>
+          <h2 class="text-2xl font-bold text-texas-navy mb-2">
+            {cityName} Market Insights
+          </h2>
+          <p class="text-gray-600">
+            Real-time analysis of electricity rates and plan availability in your area.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="text-center p-4 bg-white rounded-xl shadow-sm">
+          <div class="text-2xl font-bold text-texas-navy mb-1">{lowestRate}¢</div>
+          <div class="text-sm text-gray-600">Lowest Rate</div>
+          <div class="text-xs text-green-600 mt-1">per kWh</div>
+        </div>
+        <div class="text-center p-4 bg-white rounded-xl shadow-sm">
+          <div class="text-2xl font-bold text-texas-navy mb-1">{avgRate}¢</div>
+          <div class="text-sm text-gray-600">Average Rate</div>
+          <div class="text-xs text-blue-600 mt-1">market avg</div>
+        </div>
+        <div class="text-center p-4 bg-white rounded-xl shadow-sm">
+          <div class="text-2xl font-bold text-texas-navy mb-1">{greenPlans}</div>
+          <div class="text-sm text-gray-600">Green Plans</div>
+          <div class="text-xs text-green-600 mt-1">50%+ renewable</div>
+        </div>
+        <div class="text-center p-4 bg-white rounded-xl shadow-sm">
+          <div class="text-2xl font-bold text-texas-navy mb-1">{fixedPlans}</div>
+          <div class="text-sm text-gray-600">Fixed Rate</div>
+          <div class="text-xs text-purple-600 mt-1">rate protection</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TDSP Info Enhanced -->
+    <div class="bg-gradient-to-r from-texas-navy/5 to-transparent rounded-2xl border border-texas-navy/20 p-8 mb-8">
+      <div class="flex items-start gap-4">
+        <div class="w-12 h-12 bg-texas-navy/10 rounded-xl flex items-center justify-center">
+          <Shield className="w-6 h-6 text-texas-navy" />
+        </div>
+        <div class="flex-1">
+          <h3 class="text-xl font-bold text-texas-navy mb-2 flex items-center gap-2">
+            Your Local Utility Provider
+            <Info className="w-4 h-4 text-gray-400" />
+          </h3>
+          <p class="text-gray-700 mb-4 leading-relaxed">
+            <strong class="text-texas-navy">{tdspInfo.name}</strong> is the transmission and distribution 
+            service provider (TDSP) for all homes and businesses in {cityName}. They maintain the power 
+            lines, handle outages, and deliver electricity regardless of which retail provider you choose.
+          </p>
+          
+          <div class="grid md:grid-cols-3 gap-4">
+            <div class="flex items-center gap-2">
+              <MapPin className="w-4 h-4 text-texas-gold" />
+              <span class="text-sm">Service Zone: <strong>{tdspInfo.zone}</strong></span>
+            </div>
+            <div class="flex items-center gap-2">
+              <Star className="w-4 h-4 text-texas-gold" />
+              <span class="text-sm">Tier {tdspInfo.tier} City</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <CheckCircle className="w-4 h-4 text-texas-gold" />
+              <span class="text-sm">DUNS: {tdspInfo.duns}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Enhanced Plan Filters -->
+    <div class="mb-8">
+      <PlanFilters 
+        currentFilters={{
+          filter,
+          term,
+          green: greenEnergy,
+          type: rateType
+        }}
+        city={city}
+        totalPlans={plans.length}
+      />
+    </div>
+
+    <!-- Live Plans Grid -->
+    <div class="mb-12">
+      {apiError ? (
+        <div class="bg-gradient-to-r from-yellow-50 to-orange-50 border-2 border-yellow-200 rounded-2xl p-8">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center">
+              <Zap className="w-6 h-6 text-yellow-600" />
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold text-yellow-800 mb-2">
+                Plans Temporarily Unavailable
+              </h3>
+              <p class="text-yellow-700 mb-4">
+                We're experiencing temporary issues loading live electricity plans: {apiError}
+              </p>
+              <p class="text-yellow-600 mb-6">
+                This usually resolves quickly. Please try refreshing the page or check back in a few minutes.
+              </p>
+              <div class="flex gap-3">
+                <button 
+                  onclick="window.location.reload()" 
+                  class="bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-700 transition-colors"
+                >
+                  Refresh Page
+                </button>
+                <a 
+                  href="/texas" 
+                  class="border-2 border-yellow-600 text-yellow-600 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-50 transition-colors"
+                >
+                  Browse Other Cities
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div>
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="text-2xl font-bold text-texas-navy">
+              Available Electricity Plans
+            </h3>
+            {plans.length > 0 && (
+              <p class="text-gray-600">
+                Showing {plans.length} plans • Rates at 1,000 kWh usage
+              </p>
+            )}
+          </div>
+          
+          <LivePlanGrid 
+            plans={plans} 
+            cityName={cityName}
+            showLoadMore={true}
+            maxPlans={12}
+          />
+        </div>
+      )}
+    </div>
+
+    <!-- Enhanced Quick Actions -->
+    {!filterLabel && (
+      <div class="mb-12">
+        <h3 class="text-2xl font-bold text-texas-navy mb-8 text-center">Popular Plan Types</h3>
+        <div class="grid md:grid-cols-3 gap-6">
+          <!-- 12-Month Plans -->
+          <a href={`/texas/${city}?filter=12-month`} class="group block bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border-2 border-transparent hover:border-blue-200 transform hover:-translate-y-1">
+            <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+              <Clock className="w-8 h-8 text-blue-600" />
+            </div>
+            <h4 class="text-xl font-bold text-texas-navy mb-3 text-center">12-Month Plans</h4>
+            <p class="text-gray-600 text-center mb-6">Fixed rates for one year with guaranteed rate protection and predictable monthly bills.</p>
+            <div class="flex items-center justify-center text-blue-600 font-semibold group-hover:text-blue-800 transition-colors">
+              <span>Explore Plans</span>
+              <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </a>
+          
+          <!-- Green Energy -->
+          <a href={`/texas/${city}?filter=green-energy`} class="group block bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border-2 border-transparent hover:border-green-200 transform hover:-translate-y-1">
+            <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+              <Leaf className="w-8 h-8 text-green-600" />
+            </div>
+            <h4 class="text-xl font-bold text-texas-navy mb-3 text-center">Green Energy Plans</h4>
+            <p class="text-gray-600 text-center mb-6">100% renewable electricity from Texas wind and solar farms. Support clean energy initiatives.</p>
+            <div class="flex items-center justify-center text-green-600 font-semibold group-hover:text-green-800 transition-colors">
+              <span>Go Green</span>
+              <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </a>
+          
+          <!-- Fixed Rates -->
+          <a href={`/texas/${city}?filter=fixed-rate`} class="group block bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border-2 border-transparent hover:border-texas-gold/50 transform hover:-translate-y-1">
+            <div class="w-16 h-16 bg-texas-gold/20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+              <DollarSign className="w-8 h-8 text-texas-gold" />
+            </div>
+            <h4 class="text-xl font-bold text-texas-navy mb-3 text-center">Fixed Rate Plans</h4>
+            <p class="text-gray-600 text-center mb-6">Stable pricing that won't change during your contract period. Budget with confidence.</p>
+            <div class="flex items-center justify-center text-texas-gold font-semibold group-hover:text-texas-gold/80 transition-colors">
+              <span>Lock In Rates</span>
+              <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </a>
+        </div>
+      </div>
+    )}
+
+    <!-- Call to Action -->
+    <div class="bg-gradient-to-r from-texas-navy to-blue-800 rounded-2xl p-8 text-center text-white">
+      <h3 class="text-2xl font-bold mb-4">Questions About Choosing a Plan?</h3>
+      <p class="text-blue-100 mb-6 max-w-2xl mx-auto">
+        Our electricity experts are here to help {cityName} residents find the perfect plan. 
+        Get personalized recommendations based on your usage and preferences.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="/resources" class="bg-white text-texas-navy px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors inline-flex items-center gap-2">
+          <Users className="w-5 h-5" />
+          Expert Guidance
+        </a>
+        <a href={`/compare?city=${city}`} class="border border-white/30 text-white px-8 py-3 rounded-xl font-semibold hover:bg-white/10 transition-colors inline-flex items-center gap-2">
+          <Award className="w-5 h-5" />
+          Compare All Plans
+        </a>
+      </div>
+    </div>
+
+  </div>
+</Layout>
+
+<style>
+  /* Enhanced styling for better visual hierarchy */
+  .plan-grid-enhanced {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+  }
+</style>

@@ -1,0 +1,564 @@
+---
+# ChooseMyPower Design System Analysis
+# Comprehensive extraction of current design patterns and recommendations
+# Generated: 2025-08-29
+# Status: Foundation for 5,800+ page implementation
+
+metadata:
+  platform: "ChooseMyPower - Texas Electricity Comparison Platform"
+  framework: "Astro 5 + React + TypeScript"
+  styling: "Tailwind CSS + Shadcn/ui"
+  scope: "5,800+ pages (880 cities + 4,840 faceted combinations + providers)"
+  foundation_for: "Complete design system standardization"
+
+# BRAND IDENTITY & COLORS
+brand_system:
+  primary_brand_colors:
+    texas_navy: 
+      hex: "#002868"
+      usage: "Primary brand color, headers, CTAs"
+      accessibility: "WCAG AAA compliant on white backgrounds"
+    texas_red:
+      hex: "#BE0B31" 
+      usage: "Secondary brand, error states, urgent CTAs"
+      accessibility: "WCAG AA compliant"
+    texas_gold:
+      hex: "#F59E0B"
+      usage: "Accent color, highlights, success states"
+      accessibility: "WCAG AA compliant on dark backgrounds"
+    texas_cream:
+      hex: "#F8EDD3"
+      usage: "Background accent, soft highlights"
+      accessibility: "Background use only"
+
+  semantic_colors:
+    success: "#059669"  # Green for positive actions
+    warning: "#D97706"  # Orange for warnings  
+    error: "#DC2626"    # Red for errors
+    info: "#0891B2"     # Blue for information
+
+  neutral_palette:
+    gray_50: "#F9FAFB"   # Background, borders
+    gray_100: "#F3F4F6"  # Subtle backgrounds
+    gray_200: "#E5E7EB"  # Borders, dividers
+    gray_300: "#D1D5DB"  # Placeholder text
+    gray_400: "#9CA3AF"  # Disabled elements
+    gray_500: "#6B7280"  # Secondary text
+    gray_600: "#4B5563"  # Primary text
+    gray_700: "#374151"  # Dark text
+    gray_800: "#1F2937"  # Headings
+    gray_900: "#111827"  # Primary headings
+
+  # Shadcn/ui CSS Variables (HSL format)
+  shadcn_variables:
+    light_theme:
+      background: "0 0% 100%"        # White
+      foreground: "0 0% 3.9%"        # Near black
+      primary: "0 0% 9%"             # Dark primary
+      secondary: "0 0% 96.1%"        # Light secondary
+      muted: "0 0% 96.1%"            # Muted background
+      accent: "0 0% 96.1%"           # Accent background
+      destructive: "0 84.2% 60.2%"   # Error red
+      border: "0 0% 89.8%"           # Border gray
+      input: "0 0% 89.8%"            # Input border
+      ring: "0 0% 3.9%"              # Focus ring
+      radius: "0.5rem"               # Border radius
+
+    dark_theme:
+      background: "0 0% 3.9%"        # Dark background
+      foreground: "0 0% 98%"         # Light text
+      primary: "0 0% 98%"            # Light primary
+      secondary: "0 0% 14.9%"        # Dark secondary
+      muted: "0 0% 14.9%"            # Dark muted
+      accent: "0 0% 14.9%"           # Dark accent
+      destructive: "0 62.8% 30.6%"   # Dark error
+      border: "0 0% 14.9%"           # Dark border
+      input: "0 0% 14.9%"            # Dark input
+      ring: "0 0% 83.1%"             # Light focus ring
+
+# TYPOGRAPHY SYSTEM
+typography:
+  font_families:
+    primary: "Inter, system-ui, sans-serif"
+    fallback: "Inter-fallback, Arial, sans-serif"
+    
+  font_weights:
+    light: 300
+    normal: 400
+    medium: 500
+    semibold: 600
+    bold: 700
+    extrabold: 800
+
+  font_sizes:
+    xs: ["0.75rem", "1rem"]      # 12px, line-height 16px
+    sm: ["0.875rem", "1.25rem"]  # 14px, line-height 20px
+    base: ["1rem", "1.5rem"]     # 16px, line-height 24px
+    lg: ["1.125rem", "1.75rem"]  # 18px, line-height 28px
+    xl: ["1.25rem", "1.75rem"]   # 20px, line-height 28px
+    "2xl": ["1.5rem", "2rem"]    # 24px, line-height 32px
+    "3xl": ["1.875rem", "2.25rem"] # 30px, line-height 36px
+    "4xl": ["2.25rem", "2.5rem"] # 36px, line-height 40px
+    "5xl": ["3rem", "1"]         # 48px, line-height 1
+    "6xl": ["3.75rem", "1"]      # 60px, line-height 1
+    "7xl": ["4.5rem", "1"]       # 72px, line-height 1
+
+  text_hierarchy:
+    h1: "text-4xl md:text-6xl font-bold"
+    h2: "text-3xl md:text-4xl font-bold" 
+    h3: "text-xl font-semibold"
+    h4: "text-lg font-semibold"
+    body_large: "text-lg"
+    body: "text-base"
+    body_small: "text-sm"
+    caption: "text-xs"
+
+  letter_spacing:
+    tighter: "-0.05em"
+    tight: "-0.025em" 
+    normal: "0em"
+    wide: "0.025em"
+    wider: "0.05em"
+    widest: "0.1em"
+
+# SPACING SYSTEM
+spacing:
+  scale: "4px base unit system"
+  values:
+    xs: "0.25rem"   # 4px
+    sm: "0.5rem"    # 8px
+    md: "0.75rem"   # 12px
+    lg: "1rem"      # 16px
+    xl: "1.25rem"   # 20px
+    "2xl": "1.5rem" # 24px
+    "3xl": "2rem"   # 32px
+    "4xl": "2.5rem" # 40px
+    "5xl": "3rem"   # 48px
+    "6xl": "4rem"   # 64px
+    "7xl": "5rem"   # 80px
+    "8xl": "6rem"   # 96px
+
+  common_patterns:
+    section_padding: "py-16"        # 64px vertical
+    container_padding: "px-4 sm:px-6 lg:px-8"
+    card_padding: "p-6"            # 24px all sides
+    button_padding: "px-4 py-2"    # 16px horizontal, 8px vertical
+    form_spacing: "space-y-4"      # 16px between form elements
+    grid_gaps: "gap-6"             # 24px grid gap
+
+# COMPONENT SPECIFICATIONS
+components:
+  buttons:
+    base_classes: "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50"
+    
+    variants:
+      default: "bg-primary text-primary-foreground shadow hover:bg-primary/90"
+      destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90"
+      outline: "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground"
+      secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80"
+      ghost: "hover:bg-accent hover:text-accent-foreground"
+      link: "text-primary underline-offset-4 hover:underline"
+    
+    sizes:
+      default: "h-9 px-4 py-2 text-sm"
+      sm: "h-8 rounded-md px-3 text-xs"
+      lg: "h-10 rounded-md px-8"
+      icon: "h-9 w-9"
+
+    texas_theme_buttons:
+      primary: "bg-texas-navy text-white hover:bg-texas-navy/90"
+      secondary: "bg-texas-red text-white hover:bg-texas-red/90" 
+      accent: "bg-texas-gold text-white hover:bg-texas-gold/90"
+      outline: "border border-texas-navy text-texas-navy hover:bg-texas-navy hover:text-white"
+
+  cards:
+    base: "rounded-xl border bg-card text-card-foreground shadow"
+    hover: "transition-all duration-200 hover:shadow-lg"
+    popular: "ring-2 ring-blue-500 ring-offset-2"
+    
+    header: "flex flex-col space-y-1.5 p-6"
+    content: "p-6 pt-0"
+    footer: "flex items-center p-6 pt-0"
+    title: "font-semibold leading-none tracking-tight"
+    description: "text-sm text-muted-foreground"
+
+  badges:
+    base: "inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors"
+    variants:
+      default: "border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/80"
+      secondary: "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80"
+      destructive: "border-transparent bg-destructive text-destructive-foreground shadow hover:bg-destructive/80"
+      outline: "text-foreground"
+
+    plan_type_colors:
+      fixed: "bg-green-100 text-green-800 border-green-200"
+      variable: "bg-orange-100 text-orange-800 border-orange-200"
+      indexed: "bg-blue-100 text-blue-800 border-blue-200"
+      green_energy: "bg-green-100 text-green-800 border-green-200"
+
+  forms:
+    input: "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+    select: "flex h-9 w-full items-center justify-between whitespace-nowrap rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+
+  navigation:
+    header_height: "h-16"
+    logo: "text-xl font-bold text-blue-800"
+    nav_item: "text-gray-700 hover:text-blue-600 px-4 py-2 text-sm font-medium transition-colors rounded-md hover:bg-blue-50"
+    dropdown: "absolute top-full left-0 w-56 bg-white border border-gray-200 rounded-md shadow-lg py-1"
+    mobile_menu: "border-t border-gray-200 py-4 bg-white"
+
+  plan_cards:
+    container: "relative transition-all duration-200 hover:shadow-lg"
+    rate_display: "text-3xl font-bold text-green-600"
+    rating_stars: "text-yellow-400"
+    features: "flex flex-wrap gap-2"
+    monthly_estimate: "font-bold text-gray-900"
+
+# LAYOUT PATTERNS
+layout:
+  containers:
+    max_widths:
+      sm: "640px"
+      md: "768px" 
+      lg: "1024px"
+      xl: "1280px"
+      "2xl": "1536px"
+      content: "1200px"  # Main content container
+      
+    padding:
+      mobile: "px-4"     # 16px
+      tablet: "px-6"     # 24px  
+      desktop: "px-8"    # 32px
+
+  grid_systems:
+    homepage_features: "grid-cols-1 md:grid-cols-4 gap-8"
+    plan_comparison: "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+    provider_cards: "grid-cols-2 md:grid-cols-4 gap-6"
+    faceted_layout: "lg:grid-cols-4 gap-6" # 1 column sidebar + 3 columns content
+
+  responsive_breakpoints:
+    sm: "640px"   # Small tablets
+    md: "768px"   # Tablets
+    lg: "1024px"  # Small desktops
+    xl: "1280px"  # Large desktops
+    "2xl": "1536px" # Extra large screens
+
+# Z-INDEX SYSTEM
+z_index:
+  base_layers:
+    BASE: 0
+    BACKGROUND_IMAGE: 1
+    CONTENT: 2
+    OVERLAY: 3
+
+  component_layers:
+    CARD_HOVER: 10
+    FORM_ELEMENTS: 15
+    BUTTONS: 20
+
+  navigation_layers:
+    HEADER: 100
+    NAVIGATION: 110
+    DROPDOWN_MENU: 120
+    MOBILE_NAV_TOGGLE: 130
+
+  modal_layers:
+    BACKDROP: 200
+    MODAL: 210
+    DIALOG: 220
+
+  sidebar_layers:
+    SIDEBAR: 300
+    SIDEBAR_OVERLAY: 310
+
+  mobile_layers:
+    MOBILE_BOTTOM_NAV: 400
+    MOBILE_MENU_OVERLAY: 410
+    MOBILE_SIDE_MENU: 420
+    MOBILE_BOTTOM_SHEET: 430
+
+  system_layers:
+    COMPARISON_BAR: 500
+    FACETED_FILTERS: 510
+    TOAST: 1000
+    TOOLTIP: 1100
+    NOTIFICATION: 1200
+
+# SHADOW SYSTEM
+shadows:
+  elevation:
+    low: "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"
+    medium: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
+    high: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
+    highest: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
+
+  component_shadows:
+    card: "shadow"
+    card_hover: "shadow-lg"
+    button: "shadow-sm"
+    dropdown: "shadow-lg"
+    header: "shadow-sm"
+
+# BORDER RADIUS SYSTEM
+border_radius:
+  sm: "0.25rem"   # 4px
+  default: "0.5rem" # 8px - Shadcn default
+  md: "0.75rem"   # 12px
+  lg: "1rem"      # 16px
+  xl: "1.5rem"    # 24px
+  full: "9999px"  # Perfect circle
+
+  component_usage:
+    buttons: "rounded-md"
+    cards: "rounded-xl"
+    inputs: "rounded-md"
+    badges: "rounded-md"
+    images: "rounded-lg"
+
+# ANIMATION SYSTEM
+animations:
+  durations:
+    fast: "150ms"
+    normal: "300ms"
+    slow: "500ms"
+
+  easing:
+    ease: "ease"
+    ease_in: "cubic-bezier(0.4, 0, 1, 1)"
+    ease_out: "cubic-bezier(0, 0, 0.2, 1)"
+    ease_in_out: "cubic-bezier(0.4, 0, 0.2, 1)"
+
+  common_transitions:
+    colors: "transition-colors"
+    all: "transition-all duration-200"
+    hover: "transition-all duration-200 hover:shadow-lg"
+    button: "transition-colors focus-visible:outline-none focus-visible:ring-1"
+
+# MOBILE-SPECIFIC PATTERNS
+mobile_optimization:
+  touch_targets:
+    minimum_size: "44px"
+    button_height: "48px"
+    form_input_height: "48px"
+
+  mobile_breakpoints:
+    small_mobile: "320px"
+    large_mobile: "480px"
+    tablet: "768px"
+
+  spacing_adjustments:
+    mobile_padding: "px-4"
+    mobile_margin: "py-8"
+    mobile_gap: "gap-4"
+
+  component_adaptations:
+    mobile_cards: "Full width, reduced padding"
+    mobile_navigation: "Collapsible hamburger menu"
+    mobile_forms: "Stacked layout, larger inputs"
+    mobile_plan_comparison: "Single column, swipeable"
+
+# ACCESSIBILITY PATTERNS
+accessibility:
+  contrast_ratios:
+    aa_normal: "4.5:1 minimum"
+    aa_large: "3:1 minimum"
+    aaa_normal: "7:1 minimum"
+    aaa_large: "4.5:1 minimum"
+
+  focus_indicators:
+    ring: "focus-visible:ring-1 focus-visible:ring-ring"
+    outline: "focus-visible:outline-none"
+
+  semantic_markup:
+    landmarks: "header, main, nav, footer, aside"
+    headings: "Proper h1-h6 hierarchy"
+    forms: "Labels, fieldsets, error states"
+    buttons: "Proper button vs link usage"
+
+# SHADCN/UI INTEGRATION STATUS
+shadcn_integration:
+  installed_components:
+    - button
+    - card
+    - badge
+    - input
+    - select
+    - table
+    - separator
+    - dropdown-menu
+    - Icon (custom wrapper)
+
+  configuration:
+    style: "new-york"
+    base_color: "neutral"
+    css_variables: true
+    prefix: ""
+    
+  integration_points:
+    tailwind_config: "Extended with Texas theme colors"
+    css_variables: "Properly configured in index.css"
+    component_path: "src/components/ui/"
+    utils_path: "src/lib/utils"
+
+# INCONSISTENCIES IDENTIFIED
+inconsistencies:
+  color_usage:
+    - issue: "Mixed blue variants in components"
+      locations: ["Homepage.tsx", "Header.tsx", "ElectricityPlanCard.tsx"]
+      current_values: ["blue-600", "blue-700", "blue-800", "blue-900"]
+      recommendation: "Standardize to texas-navy (#002868) for brand consistency"
+    
+    - issue: "Inconsistent success colors" 
+      locations: ["ElectricityPlanCard.tsx", "mobile components"]
+      current_values: ["green-600", "green-100", "#059669"]
+      recommendation: "Use semantic.success (#059669) throughout"
+
+  spacing_patterns:
+    - issue: "Mixed padding patterns"
+      locations: ["Cards", "Buttons", "Forms"]
+      current_values: ["p-4", "p-6", "px-4 py-2", "px-8 py-4"]
+      recommendation: "Standardize card padding to p-6, button padding to px-4 py-2"
+
+    - issue: "Inconsistent section spacing"
+      locations: ["Homepage sections", "Layout components"]
+      current_values: ["py-16", "py-8", "py-32"]
+      recommendation: "Use py-16 for standard sections, py-32 for hero sections"
+
+  typography_issues:
+    - issue: "Hardcoded font sizes"
+      locations: ["Mobile CSS", "Layout.astro critical CSS"]
+      current_values: ["32px", "28px", "24px", "font-size: 2.25rem"]
+      recommendation: "Use Tailwind classes: text-3xl, text-2xl, text-xl"
+
+    - issue: "Mixed font weight usage"
+      locations: ["Various components"]
+      current_values: ["font-bold", "font-semibold", "font-700", "font-weight: 600"]
+      recommendation: "Standardize: font-bold for h1/h2, font-semibold for h3-h6"
+
+  component_variations:
+    - issue: "Multiple button implementations"
+      locations: ["Shadcn Button", "Custom button classes in Layout", "Homepage buttons"]
+      recommendation: "Migrate all to Shadcn Button component with consistent variants"
+
+    - issue: "Card component inconsistency"
+      locations: ["ElectricityPlanCard", "ProviderCard", "Homepage cards"]
+      recommendation: "Standardize on Shadcn Card with consistent padding and shadows"
+
+# RECOMMENDATIONS FOR 5,800+ PAGE IMPLEMENTATION
+
+implementation_strategy:
+  phase_1_foundation:
+    - "Standardize color usage to Texas theme palette"
+    - "Implement consistent spacing using 4px base scale"
+    - "Migrate all buttons to Shadcn Button component"
+    - "Standardize card components using Shadcn Card"
+    - "Fix typography inconsistencies"
+
+  phase_2_scale:
+    - "Create city page template with consistent design"
+    - "Implement faceted navigation design system"
+    - "Standardize provider page layouts"
+    - "Create mobile-optimized component variants"
+    - "Implement responsive grid systems"
+
+  phase_3_optimization:
+    - "Performance optimize for 5,800+ pages"
+    - "Implement design token system"
+    - "Create component library documentation"
+    - "Add accessibility improvements"
+    - "Implement dark mode support"
+
+  critical_components_needed:
+    - "CityHero component with consistent branding"
+    - "FacetedNavigation with design system compliance"
+    - "PlanComparisonGrid with standardized cards"
+    - "ProviderShowcase with consistent styling"
+    - "MobileOptimizedLayout for all page types"
+
+  design_system_files:
+    - "/src/design-system/tokens.ts" # Design tokens
+    - "/src/design-system/components.ts" # Component specifications
+    - "/src/design-system/themes.ts" # Texas theme variants
+    - "/src/design-system/utils.ts" # Helper functions
+
+# BRAND GUIDELINES FOR SCALE
+brand_application:
+  texas_electricity_context:
+    - "Use Texas flag colors (navy, red, cream) consistently"
+    - "Lightning bolt iconography for energy themes"
+    - "Professional, trustworthy visual language"
+    - "Emphasize savings and comparison value props"
+
+  city_page_branding:
+    - "Texas navy headers with city name prominence"
+    - "Gold accents for savings highlights"
+    - "Red for urgent CTAs and limited time offers"
+    - "Cream backgrounds for feature callouts"
+
+  conversion_optimization:
+    - "High contrast CTAs using Texas red"
+    - "Trust signals with professional typography"
+    - "Clear visual hierarchy for plan comparisons"
+    - "Mobile-first design for Texas market reach"
+
+# PERFORMANCE CONSIDERATIONS
+performance:
+  critical_css:
+    - "Inline critical path CSS in Layout.astro"
+    - "Defer non-critical component styles"
+    - "Use CSS custom properties for dynamic theming"
+
+  component_optimization:
+    - "Lazy load below-fold components"
+    - "Use Astro partial hydration for React components"
+    - "Minimize JavaScript bundle size"
+    - "Optimize images with WebP/AVIF formats"
+
+  scale_considerations:
+    - "Shared component caching across 5,800+ pages"
+    - "Static generation with design system consistency"
+    - "CDN optimization for Texas geographic distribution"
+    - "Core Web Vitals compliance across all page types"
+
+# CONCLUSION
+analysis_summary:
+  strengths:
+    - "Solid Shadcn/ui foundation in place"
+    - "Comprehensive z-index system implemented"
+    - "Mobile-optimized components exist"
+    - "Texas brand colors defined"
+    - "Performance-optimized critical CSS"
+
+  areas_for_improvement:
+    - "Color usage standardization needed"
+    - "Component implementation consistency"
+    - "Typography scale adherence"
+    - "Spacing system compliance"
+    - "Design token centralization"
+
+  readiness_for_scale:
+    rating: "70%"
+    blockers:
+      - "Color inconsistencies across components"
+      - "Multiple button implementation patterns"
+      - "Typography scale violations"
+    enablers:
+      - "Strong technical foundation"
+      - "Mobile-first approach"
+      - "Performance optimization"
+      - "Accessibility considerations"
+
+next_steps:
+  immediate_actions:
+    1. "Standardize Texas brand color usage"
+    2. "Consolidate button implementations"
+    3. "Fix typography inconsistencies"
+    4. "Create design token system"
+    5. "Document component patterns"
+
+  before_scaling:
+    1. "Complete component standardization"
+    2. "Create city page template"
+    3. "Test mobile responsiveness"
+    4. "Validate accessibility compliance"
+    5. "Performance test with sample pages"

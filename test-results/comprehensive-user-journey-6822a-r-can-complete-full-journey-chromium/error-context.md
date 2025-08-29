@@ -1,0 +1,50 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e5]:
+    - generic [ref=e7]:
+      - link "ChooseMyPower" [ref=e9] [cursor=pointer]:
+        - /url: /
+        - img [ref=e10] [cursor=pointer]
+        - generic [ref=e12] [cursor=pointer]: ChooseMyPower
+      - button "Open mobile navigation menu" [ref=e14] [cursor=pointer]:
+        - img [ref=e15] [cursor=pointer]
+  - generic [ref=e20]:
+    - button "Menu" [ref=e21]:
+      - img [ref=e23]
+      - generic: Menu
+    - button "Inspect" [ref=e27]:
+      - img [ref=e29]
+      - generic: Inspect
+    - button "Audit" [ref=e31]:
+      - img [ref=e33]
+      - generic: Audit
+    - button "Settings" [ref=e36]:
+      - img [ref=e38]
+      - generic: Settings
+  - generic [ref=e43]:
+    - generic [ref=e44]:
+      - checkbox "Use dark theme" [ref=e45]
+      - generic [ref=e46] [cursor=pointer]:
+        - img [ref=e47] [cursor=pointer]
+        - img [ref=e51] [cursor=pointer]
+        - generic [ref=e55] [cursor=pointer]: Use dark theme
+    - banner [ref=e56]:
+      - generic [ref=e57]:
+        - heading "ReferenceError" [level=2] [ref=e58]
+        - heading "An error occurred." [level=1] [ref=e59]
+    - generic [ref=e61]:
+      - img [ref=e63]
+      - generic [ref=e65]: Star is not defined
+    - generic [ref=e67]:
+      - heading "node/module-runner.js:1062:11" [level=2] [ref=e68]
+      - button "Open in editor" [ref=e70]:
+        - text: Open in editor
+        - img [ref=e71]
+    - generic [ref=e74]:
+      - heading "Stack Trace" [level=2] [ref=e75]
+      - generic [ref=e76]: "ReferenceError: Star is not defined at Object.default (eval at runInlinedModule (file:///Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/vite/dist/node/module-runner.js:1062:11), <anonymous>:477:6046) at new AstroComponentInstance (eval at runInlinedModule (file:///Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/vite/dist/node/module-runner.js:1062:11), <anonymous>:25:30) at createAstroComponentInstance (eval at runInlinedModule (file:///Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/vite/dist/node/module-runner.js:1062:11), <anonymous>:77:20) at renderAstroComponent (eval at runInlinedModule (file:///Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/vite/dist/node/module-runner.js:1062:11), <anonymous>:356:74) at renderComponent (eval at runInlinedModule (file:///Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/vite/dist/node/module-runner.js:1062:11), <anonymous>:377:12) at eval (eval at runInlinedModule (file:///Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/vite/dist/node/module-runner.js:1062:11), <anonymous>:21:82) at index (eval at runInlinedModule (file:///Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/vite/dist/node/module-runner.js:1062:11), <anonymous>:19:12) at callComponentAsTemplateResultOrResponse (file:///Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/astro/dist/runtime/server/render/astro/render.js:91:31) at renderToAsyncIterable (file:///Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/astro/dist/runtime/server/render/astro/render.js:133:32) at renderPage (file:///Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/astro/dist/runtime/server/render/page.js:36:30)"
+```

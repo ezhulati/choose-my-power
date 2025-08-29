@@ -239,3 +239,146 @@ export const CACHE_TTL = {
 } as const;
 
 export type SupportedFilterType = typeof SUPPORTED_FILTER_TYPES[number];
+
+// Enhanced types for new faceted search components
+
+export interface FacetValue {
+  value: string;
+  label: string;
+  count: number;
+  selected: boolean;
+  description?: string;
+  icon?: string;
+}
+
+export interface FilterState {
+  rateType?: 'fixed' | 'variable';
+  contractLength?: number[];
+  greenEnergy?: boolean;
+  prePaid?: boolean;
+  noDeposit?: boolean;
+  priceRange?: { min?: number; max?: number } | string;
+  providers?: string[];
+  features?: string[];
+}
+
+// Enhanced Plan type with additional fields needed by components
+export interface Plan {
+  id: string;
+  external_id?: string;
+  name: string;
+  provider: string;
+  provider_logo?: string;
+  rate: string; // rate in cents per kWh as string
+  rate_type: 'fixed' | 'variable' | 'indexed';
+  term_months: number;
+  percent_green: number;
+  
+  // Pricing fields
+  rate_500kwh?: string;
+  rate_1000kwh?: string;
+  rate_2000kwh?: string;
+  total_500kwh?: string;
+  total_1000kwh?: string;
+  total_2000kwh?: string;
+  
+  // Features
+  is_pre_pay?: boolean;
+  deposit_required?: boolean;
+  deposit_amount?: number;
+  bill_credit?: number;
+  free_nights_weekends?: boolean;
+  satisfaction_guarantee?: boolean;
+  requires_auto_pay?: boolean;
+  early_termination_fee?: number;
+  
+  // Links
+  enrollment_url?: string;
+  efl_link?: string;
+  tos_link?: string;
+  yrac_link?: string;
+  
+  // Meta
+  created_at?: string;
+  updated_at?: string;
+}
+
+// Enhanced FacetedSidebar props for new component
+export interface FacetedSidebarProps {
+  currentFilters: FilterState;
+  availableFacets?: {
+    rateTypes: FacetValue[];
+    contractLengths: FacetValue[];
+    greenEnergyLevels: FacetValue[];
+    providers: FacetValue[];
+    features: FacetValue[];
+    priceRanges: FacetValue[];
+  };
+  facetCounts: Record<string, Record<string, number>>;
+  onFilterChange: (filterType: string, value: any, checked: boolean) => void;
+  loading?: boolean;
+}
+
+// API Response types
+export interface FacetedSearchResponse {
+  success: boolean;
+  plans: Plan[];
+  totalCount: number;
+  page: number;
+  limit: number;
+  hasMore: boolean;
+  facets?: {
+    rateTypes: FacetValue[];
+    contractLengths: FacetValue[];
+    greenEnergyLevels: FacetValue[];
+    providers: FacetValue[];
+    features: FacetValue[];
+    priceRanges: FacetValue[];
+  };
+  appliedFilters: Array<{
+    key: string;
+    value: any;
+    displayName: string;
+    removeUrl: string;
+  }>;
+  canonicalUrl: string;
+  searchTime: number;
+  cityInfo: {
+    name: string;
+    slug: string;
+    tdspDuns: string;
+  };
+  error?: string;
+}
+
+export interface FilterRequest {
+  citySlug: string;
+  filters: FilterState;
+  sortBy?: 'rate' | 'green_energy' | 'contract_length' | 'provider';
+  sortOrder?: 'asc' | 'desc';
+  limit?: number;
+  sessionId?: string;
+}
+
+export interface FilterResponse {
+  success: boolean;
+  plans: Plan[];
+  totalCount: number;
+  filteredCount: number;
+  facetCounts: {
+    rateTypes: Record<string, number>;
+    contractLengths: Record<string, number>;
+    greenEnergyLevels: Record<string, number>;
+    providers: Record<string, number>;
+    priceRanges: Record<string, number>;
+  };
+  lowestRate: number;
+  averageRate: number;
+  responseTime: number;
+  cityInfo: {
+    name: string;
+    slug: string;
+    tdspDuns: string;
+  };
+  error?: string;
+}

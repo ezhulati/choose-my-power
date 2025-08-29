@@ -1,0 +1,67 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e5]:
+    - generic [ref=e7]:
+      - link "ChooseMyPower" [ref=e9] [cursor=pointer]:
+        - /url: /
+        - img [ref=e10] [cursor=pointer]
+        - generic [ref=e12] [cursor=pointer]: ChooseMyPower
+      - navigation [ref=e13]:
+        - link "Compare" [ref=e14] [cursor=pointer]:
+          - /url: /compare
+        - button "Browse" [ref=e16] [cursor=pointer]:
+          - text: Browse
+          - img [ref=e17] [cursor=pointer]
+        - button "Rates" [ref=e20] [cursor=pointer]:
+          - text: Rates
+          - img [ref=e21] [cursor=pointer]
+        - button "Shop" [ref=e24] [cursor=pointer]:
+          - text: Shop
+          - img [ref=e25] [cursor=pointer]
+        - link "Locations" [ref=e27] [cursor=pointer]:
+          - /url: /locations
+        - link "Resources" [ref=e28] [cursor=pointer]:
+          - /url: /resources
+  - generic [ref=e32]:
+    - generic [ref=e33]:
+      - checkbox "Use dark theme" [ref=e34]
+      - generic [ref=e35] [cursor=pointer]:
+        - img [ref=e36] [cursor=pointer]
+        - img [ref=e40] [cursor=pointer]
+        - generic [ref=e44] [cursor=pointer]: Use dark theme
+    - banner [ref=e45]:
+      - generic [ref=e46]:
+        - heading "ReferenceError" [level=2] [ref=e47]
+        - heading "An error occurred." [level=1] [ref=e48]
+      - img [ref=e51]
+    - generic [ref=e55]:
+      - img [ref=e57]
+      - generic [ref=e59]: Star is not defined
+    - generic [ref=e61]:
+      - heading "node/module-runner.js:1062:11" [level=2] [ref=e62]
+      - button "Open in editor" [ref=e64]:
+        - text: Open in editor
+        - img [ref=e65]
+    - generic [ref=e68]:
+      - heading "Stack Trace" [level=2] [ref=e69]
+      - generic [ref=e70]: "ReferenceError: Star is not defined at Object.default (eval at runInlinedModule (file:///Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/vite/dist/node/module-runner.js:1062:11), <anonymous>:477:6046) at new AstroComponentInstance (eval at runInlinedModule (file:///Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/vite/dist/node/module-runner.js:1062:11), <anonymous>:25:30) at createAstroComponentInstance (eval at runInlinedModule (file:///Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/vite/dist/node/module-runner.js:1062:11), <anonymous>:77:20) at renderAstroComponent (eval at runInlinedModule (file:///Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/vite/dist/node/module-runner.js:1062:11), <anonymous>:356:74) at renderComponent (eval at runInlinedModule (file:///Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/vite/dist/node/module-runner.js:1062:11), <anonymous>:377:12) at eval (eval at runInlinedModule (file:///Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/vite/dist/node/module-runner.js:1062:11), <anonymous>:21:82) at index (eval at runInlinedModule (file:///Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/vite/dist/node/module-runner.js:1062:11), <anonymous>:19:12) at callComponentAsTemplateResultOrResponse (file:///Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/astro/dist/runtime/server/render/astro/render.js:91:31) at renderToAsyncIterable (file:///Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/astro/dist/runtime/server/render/astro/render.js:133:32) at renderPage (file:///Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/astro/dist/runtime/server/render/page.js:36:30)"
+  - generic [ref=e73]:
+    - button "Menu" [ref=e74]:
+      - img [ref=e76]
+      - generic: Menu
+    - button "Inspect" [ref=e80]:
+      - img [ref=e82]
+      - generic: Inspect
+    - button "Audit" [ref=e84]:
+      - generic [ref=e85]:
+        - img [ref=e86]
+        - img [ref=e89]
+      - generic: Audit
+    - button "Settings" [ref=e92]:
+      - img [ref=e94]
+      - generic: Settings
+```

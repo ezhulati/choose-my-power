@@ -1161,3 +1161,27 @@ export function getTdspFromCity(citySlug: string): string | null {
 export function validateCitySlug(citySlug: string): boolean {
   return citySlug in tdspMapping;
 }
+
+export function formatCitySlug(cityName: string): string {
+  // Handle cases where cityName might be empty or invalid
+  if (!cityName || typeof cityName !== 'string') {
+    return '';
+  }
+  
+  // Convert city name to slug format
+  // Examples: "dallas" -> "dallas-tx", "san antonio" -> "san-antonio-tx"
+  const normalizedCity = cityName
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .replace(/[^a-z0-9-]/g, '') // Remove non-alphanumeric characters except hyphens
+    .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+    .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+  
+  // Add -tx suffix if not already present
+  if (!normalizedCity.endsWith('-tx')) {
+    return `${normalizedCity}-tx`;
+  }
+  
+  return normalizedCity;
+}

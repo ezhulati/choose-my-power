@@ -1,19 +1,20 @@
 /**
- * Performance Monitor for 881-City Optimization
- * Comprehensive monitoring system for routing, caching, and API performance
- * 
+ * Performance Monitoring System for ChooseMyPower
+ * Comprehensive monitoring, alerting, and optimization system
  * Features:
- * - Real-time performance tracking
- * - Memory usage monitoring
- * - API performance metrics
- * - Route timing analysis
- * - Automated performance alerts
- * - Performance reporting dashboard
+ * - Real-time performance metrics collection
+ * - Core Web Vitals monitoring
+ * - API response time tracking
+ * - Database performance monitoring
+ * - Automatic alerting and escalation
+ * - Performance optimization suggestions
  */
 
 import { routeCacheManager, getCachePerformanceStats } from '../cache/route-cache-manager';
 import { getRouterCacheStats, clearRouterCaches } from '../faceted/faceted-router';
 import { comparePowerClient } from '../api/comparepower-client';
+import { planRepository } from '../database/plan-repository';
+import { analyticsService } from '../api/analytics-service';
 
 interface PerformanceMetric {
   timestamp: number;
