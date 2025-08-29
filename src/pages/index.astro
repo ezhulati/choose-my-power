@@ -1,9 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Zap, Shield, DollarSign, Clock, MapPin, Calculator, Leaf, Users, TrendingDown, Battery, Award, BarChart, Star, ArrowRight } from 'lucide-react';
+import { getCredibleMarketingText, DEFAULT_COUNTS } from '../lib/utils/dynamic-counts';
 
 const title = "Compare & Choose Texas Electricity | ChooseMyPower.org";
-const description = "Expert analysis of 50+ providers and 300+ plans. Find the perfect match for your needs and save hundreds per year.";
+const marketingText = getCredibleMarketingText(DEFAULT_COUNTS.providers, DEFAULT_COUNTS.plans);
+const description = marketingText.seoDescription;
 
 // Homepage uses gradient background - no hero image needed
 ---
@@ -19,7 +21,7 @@ const description = "Expert analysis of 50+ providers and 300+ plans. Find the p
     "@context": "https://schema.org",
     "@type": ["Organization", "WebSite"],
     "name": "ChooseMyPower.org",
-    "description": "Expert analysis of 50+ electricity providers and 300+ plans in Texas. Find the perfect match for your needs and save hundreds per year.",
+    "description": "{marketingText.seoDescription}",
     "url": "https://choosemypower.org",
     "logo": "https://choosemypower.org/images/og-default.jpg",
     "sameAs": [
@@ -75,8 +77,7 @@ const description = "Expert analysis of 50+ providers and 300+ plans. Find the p
             
             <!-- Enhanced Subheading -->
             <p class="text-lg sm:text-xl lg:text-2xl text-blue-100 max-w-4xl mx-auto mb-4 leading-relaxed">
-              Expert analysis of <strong class="text-white font-semibold">50+ providers</strong> and <strong class="text-white font-semibold">300+ plans</strong>. 
-              Find the perfect match for your needs and save hundreds per year.
+              {marketingText.heroText}
             </p>
             
             <!-- Trust Indicators Above Search -->
@@ -130,7 +131,7 @@ const description = "Expert analysis of 50+ providers and 300+ plans. Find the p
                   <button
                     type="submit"
                     aria-label="Search electricity plans by ZIP code"
-                    class="px-10 py-5 bg-gradient-to-r from-texas-red to-red-700 text-white font-bold hover:from-texas-red/90 hover:to-red-700/90 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-red-500/50 active:scale-95 group"
+                    class="px-10 py-5 bg-gradient-to-r from-texas-red to-texas-red-700 text-white font-bold hover:from-texas-red-600 hover:to-texas-red-800 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-texas-red-200 active:scale-95 group"
                   >
                     <div class="flex items-center gap-3">
                       <svg class="h-6 w-6 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -145,15 +146,15 @@ const description = "Expert analysis of 50+ providers and 300+ plans. Find the p
               <!-- Live Stats Below Search -->
               <div class="mt-6 grid grid-cols-3 gap-4 text-center">
                 <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                  <div class="text-2xl font-bold text-texas-gold">881</div>
+                  <div class="text-2xl font-bold text-white">881</div>
                   <div class="text-xs text-blue-200">Texas Cities</div>
                 </div>
                 <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                  <div class="text-2xl font-bold text-texas-gold">50+</div>
+                  <div class="text-2xl font-bold text-white">{DEFAULT_COUNTS.providers}</div>
                   <div class="text-xs text-blue-200">Providers</div>
                 </div>
                 <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                  <div class="text-2xl font-bold text-texas-gold">300+</div>
+                  <div class="text-2xl font-bold text-white">{DEFAULT_COUNTS.plans}+</div>
                   <div class="text-xs text-blue-200">Plans</div>
                 </div>
               </div>
@@ -407,25 +408,25 @@ const description = "Expert analysis of 50+ providers and 300+ plans. Find the p
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <!-- Green Energy Leaders -->
-          <div class="group relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border-2 border-transparent hover:border-green-200">
-            <div class="absolute inset-0 bg-gradient-to-br from-green-50 to-transparent rounded-2xl opacity-50"></div>
+          <div class="group relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border-2 border-transparent hover:border-texas-gold-200">
+            <div class="absolute inset-0 bg-gradient-to-br from-texas-gold-50 to-transparent rounded-2xl opacity-50"></div>
             <div class="relative">
-              <div class="w-20 h-20 bg-gradient-to-br from-green-100 to-green-200 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                <Leaf className="w-10 h-10 text-green-600" />
+              <div class="w-20 h-20 bg-gradient-to-br from-texas-gold-100 to-texas-gold-200 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                <Leaf className="w-10 h-10 text-texas-gold" />
               </div>
               <h3 class="text-xl font-bold text-texas-navy mb-3 text-center">Green Energy Leaders</h3>
               <p class="text-gray-600 text-center leading-relaxed">100% renewable specialists with competitive green rates and environmental impact reporting</p>
               <div class="mt-4 text-center">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800">
-                  15+ Providers
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-texas-gold-100 text-texas-navy">
+                  {DEFAULT_COUNTS.providerText.replace('trusted', 'Green')}
                 </span>
               </div>
             </div>
           </div>
 
           <!-- Service Champions -->
-          <div class="group relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border-2 border-transparent hover:border-blue-200">
-            <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent rounded-2xl opacity-50"></div>
+          <div class="group relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border-2 border-transparent hover:border-texas-navy/20">
+            <div class="absolute inset-0 bg-gradient-to-br from-texas-navy/5 to-transparent rounded-2xl opacity-50"></div>
             <div class="relative">
               <div class="w-20 h-20 bg-gradient-to-br from-texas-navy/10 to-texas-navy/20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                 <Users className="w-10 h-10 text-texas-navy" />
@@ -433,8 +434,8 @@ const description = "Expert analysis of 50+ providers and 300+ plans. Find the p
               <h3 class="text-xl font-bold text-texas-navy mb-3 text-center">Service Champions</h3>
               <p class="text-gray-600 text-center leading-relaxed">Top-rated customer service and satisfaction leaders with 24/7 support and quick resolution</p>
               <div class="mt-4 text-center">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-800">
-                  12+ Providers
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-texas-navy/10 text-texas-navy">
+                  Top Service Providers
                 </span>
               </div>
             </div>
@@ -450,8 +451,8 @@ const description = "Expert analysis of 50+ providers and 300+ plans. Find the p
               <h3 class="text-xl font-bold text-texas-navy mb-3 text-center">Best Value</h3>
               <p class="text-gray-600 text-center leading-relaxed">Lowest total costs with competitive rates, minimal fees, and transparent pricing structures</p>
               <div class="mt-4 text-center">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-yellow-100 text-yellow-800">
-                  20+ Providers
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-texas-gold-100 text-texas-navy">
+                  Best Value Options
                 </span>
               </div>
             </div>
@@ -467,7 +468,7 @@ const description = "Expert analysis of 50+ providers and 300+ plans. Find the p
               <h3 class="text-xl font-bold text-texas-navy mb-3 text-center">Smart Plans</h3>
               <p class="text-gray-600 text-center leading-relaxed">Advanced features like time-of-use rates, smart home integration, and usage analytics</p>
               <div class="mt-4 text-center">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-800">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-texas-red-100 text-texas-navy">
                   8+ Providers
                 </span>
               </div>
@@ -555,11 +556,11 @@ const description = "Expert analysis of 50+ providers and 300+ plans. Find the p
               <!-- Comparison Stats -->
               <div class="mt-6 grid grid-cols-2 gap-4 pt-6 border-t border-gray-100">
                 <div class="text-center">
-                  <div class="text-lg font-bold text-texas-gold">300+</div>
+                  <div class="text-lg font-bold text-texas-gold">{DEFAULT_COUNTS.plans}+</div>
                   <div class="text-xs text-gray-500 uppercase tracking-wide">Active Plans</div>
                 </div>
                 <div class="text-center">
-                  <div class="text-lg font-bold text-texas-gold">50+</div>
+                  <div class="text-lg font-bold text-texas-gold">{DEFAULT_COUNTS.providers}</div>
                   <div class="text-xs text-gray-500 uppercase tracking-wide">Providers</div>
                 </div>
               </div>
@@ -608,7 +609,7 @@ const description = "Expert analysis of 50+ providers and 300+ plans. Find the p
               Our electricity experts have analyzed every major Texas provider to help you make the best decision.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a href="/providers" class="bg-white text-texas-navy px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors inline-flex items-center gap-2">
+              <a href="/providers" class="bg-white text-texas-navy px-8 py-3 rounded-xl font-semibold hover:bg-texas-cream transition-colors inline-flex items-center gap-2">
                 <Award className="w-5 h-5" />
                 View Expert Rankings
               </a>
@@ -666,10 +667,10 @@ const description = "Expert analysis of 50+ providers and 300+ plans. Find the p
 
               <!-- Specialties -->
               <div class="flex flex-wrap gap-2 mb-6">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-texas-gold-100 text-texas-navy">
                   100% Green Energy
                 </span>
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-800">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-texas-navy/10 text-texas-navy">
                   Service Champion
                 </span>
               </div>
@@ -727,10 +728,10 @@ const description = "Expert analysis of 50+ providers and 300+ plans. Find the p
 
               <!-- Specialties -->
               <div class="flex flex-wrap gap-2 mb-6">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-800">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-texas-navy/10 text-texas-navy">
                   Trusted Brand
                 </span>
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-texas-gold-100 text-texas-navy">
                   Green Options
                 </span>
               </div>
@@ -788,10 +789,10 @@ const description = "Expert analysis of 50+ providers and 300+ plans. Find the p
 
               <!-- Specialties -->
               <div class="flex flex-wrap gap-2 mb-6">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-yellow-100 text-yellow-800">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-texas-red-100 text-texas-navy">
                   Best Value
                 </span>
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-purple-100 text-purple-800">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-texas-cream-100 text-texas-navy">
                   Smart Plans
                 </span>
               </div>
@@ -831,25 +832,25 @@ const description = "Expert analysis of 50+ providers and 300+ plans. Find the p
         <div class="mb-12">
           <h3 class="text-2xl font-bold text-texas-navy text-center mb-8">Browse by Specialization</h3>
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <a href="/providers/green-energy" class="group text-center p-6 bg-green-50 rounded-xl border border-green-100 hover:border-green-200 hover:bg-green-100 transition-all">
-              <Leaf className="w-8 h-8 text-green-600 mx-auto mb-3" />
-              <h4 class="font-semibold text-green-800 mb-1">Green Energy</h4>
-              <p class="text-sm text-green-600">15+ providers</p>
+            <a href="/providers/green-energy" class="group text-center p-6 bg-texas-gold-50 rounded-xl border border-texas-gold-100 hover:border-texas-gold-200 hover:bg-texas-gold-100 transition-all">
+              <Leaf className="w-8 h-8 text-texas-gold-600 mx-auto mb-3" />
+              <h4 class="font-semibold text-texas-navy mb-1">Green Energy</h4>
+              <p class="text-sm text-texas-gold-600">Green Options</p>
             </a>
-            <a href="/providers/service-champions" class="group text-center p-6 bg-blue-50 rounded-xl border border-blue-100 hover:border-blue-200 hover:bg-blue-100 transition-all">
-              <Users className="w-8 h-8 text-blue-600 mx-auto mb-3" />
-              <h4 class="font-semibold text-blue-800 mb-1">Service Champions</h4>
-              <p class="text-sm text-blue-600">12+ providers</p>
+            <a href="/providers/service-champions" class="group text-center p-6 bg-texas-navy/5 rounded-xl border border-texas-navy/10 hover:border-texas-navy/20 hover:bg-texas-navy/10 transition-all">
+              <Users className="w-8 h-8 text-texas-navy mx-auto mb-3" />
+              <h4 class="font-semibold text-texas-navy mb-1">Service Champions</h4>
+              <p class="text-sm text-texas-navy/70">Top Rated</p>
             </a>
-            <a href="/providers/best-value" class="group text-center p-6 bg-yellow-50 rounded-xl border border-yellow-100 hover:border-yellow-200 hover:bg-yellow-100 transition-all">
-              <DollarSign className="w-8 h-8 text-yellow-600 mx-auto mb-3" />
-              <h4 class="font-semibold text-yellow-800 mb-1">Best Value</h4>
-              <p class="text-sm text-yellow-600">20+ providers</p>
+            <a href="/providers/best-value" class="group text-center p-6 bg-texas-red-50 rounded-xl border border-texas-red-100 hover:border-texas-red-200 hover:bg-texas-red-100 transition-all">
+              <DollarSign className="w-8 h-8 text-texas-red-600 mx-auto mb-3" />
+              <h4 class="font-semibold text-texas-navy mb-1">Best Value</h4>
+              <p class="text-sm text-texas-red-600">Best Rates</p>
             </a>
-            <a href="/providers/smart-plans" class="group text-center p-6 bg-purple-50 rounded-xl border border-purple-100 hover:border-purple-200 hover:bg-purple-100 transition-all">
-              <Battery className="w-8 h-8 text-purple-600 mx-auto mb-3" />
-              <h4 class="font-semibold text-purple-800 mb-1">Smart Plans</h4>
-              <p class="text-sm text-purple-600">8+ providers</p>
+            <a href="/providers/smart-plans" class="group text-center p-6 bg-texas-cream-100 rounded-xl border border-texas-cream-200 hover:border-texas-cream-300 hover:bg-texas-cream-200 transition-all">
+              <Battery className="w-8 h-8 text-texas-navy mx-auto mb-3" />
+              <h4 class="font-semibold text-texas-navy mb-1">Smart Plans</h4>
+              <p class="text-sm text-texas-navy/70">Smart Features</p>
             </a>
           </div>
         </div>
@@ -861,7 +862,7 @@ const description = "Expert analysis of 50+ providers and 300+ plans. Find the p
           </p>
           <a href="/providers" class="inline-flex items-center gap-2 bg-gradient-to-r from-texas-navy to-blue-800 text-white px-10 py-4 rounded-xl font-bold text-lg hover:from-texas-navy/90 hover:to-blue-800/90 transition-all shadow-lg hover:shadow-xl">
             <Award className="w-5 h-5" />
-            View All 50+ Providers
+            View All {DEFAULT_COUNTS.providerText.replace('trusted ', '').replace('licensed ', '')}
             <ArrowRight className="w-5 h-5" />
           </a>
         </div>
