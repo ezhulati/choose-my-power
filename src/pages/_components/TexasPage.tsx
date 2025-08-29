@@ -18,9 +18,9 @@ export const TexasPage: React.FC = () => {
     }
   };
   return (
-    <div className="min-h-screen bg-gradient-to-b from-red-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-b from-texas-cream to-gray-50">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
+      <div className="bg-gradient-to-r from-texas-navy to-texas-blue-800 text-white py-16">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
@@ -32,13 +32,13 @@ export const TexasPage: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 onClick={() => navigate('/shop')}
-                className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-50 transition-colors"
+                className="bg-texas-red text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-texas-red-600 transition-colors"
               >
                 Shop Texas Plans
               </button>
               <button
                 onClick={() => navigate('/rates/compare')}
-                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-blue-600 transition-colors"
+                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-texas-navy transition-colors"
               >
                 Compare Rates
               </button>
@@ -54,19 +54,19 @@ export const TexasPage: React.FC = () => {
             Texas Electricity Market Overview
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center p-6 bg-red-50 rounded-lg">
-              <Zap className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-              <div className="text-3xl font-bold text-blue-600 mb-2">150+</div>
+            <div className="text-center p-6 bg-texas-red-50 rounded-lg">
+              <Zap className="w-12 h-12 text-texas-navy mx-auto mb-4" />
+              <div className="text-3xl font-bold text-texas-navy mb-2">150+</div>
               <div className="text-gray-700">Electricity Providers</div>
             </div>
-            <div className="text-center p-6 bg-blue-50 rounded-lg">
-              <Users className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-              <div className="text-3xl font-bold text-blue-600 mb-2">29M</div>
+            <div className="text-center p-6 bg-texas-navy/10 rounded-lg">
+              <Users className="w-12 h-12 text-texas-navy mx-auto mb-4" />
+              <div className="text-3xl font-bold text-texas-navy mb-2">29M</div>
               <div className="text-gray-700">Texas Residents</div>
             </div>
-            <div className="text-center p-6 bg-yellow-50 rounded-lg">
-              <TrendingDown className="w-12 h-12 text-yellow-600 mx-auto mb-4" />
-              <div className="text-3xl font-bold text-yellow-600 mb-2">85%</div>
+            <div className="text-center p-6 bg-texas-gold-50 rounded-lg">
+              <TrendingDown className="w-12 h-12 text-texas-gold mx-auto mb-4" />
+              <div className="text-3xl font-bold text-texas-gold mb-2">85%</div>
               <div className="text-gray-700">Deregulated Market</div>
             </div>
           </div>
@@ -90,7 +90,7 @@ export const TexasPage: React.FC = () => {
             ].map((city) => (
               <div key={city.name} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
                 <div className="flex items-center mb-4">
-                  <MapPin className="w-6 h-6 text-blue-600 mr-2" />
+                  <MapPin className="w-6 h-6 text-texas-navy mr-2" />
                   <h3 className="text-xl font-semibold text-gray-900">{city.name}</h3>
                 </div>
                 <div className="space-y-2 text-sm text-gray-600">
@@ -99,7 +99,7 @@ export const TexasPage: React.FC = () => {
                 </div>
                 <button
                   onClick={() => navigate(`/texas/${city.name.toLowerCase()}-tx`)}
-                  className="mt-4 w-full bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 transition-colors"
+                  className="mt-4 w-full bg-texas-red text-white py-2 px-4 rounded-lg hover:bg-texas-red-600 transition-colors"
                 >
                   View {city.name} Plans
                 </button>
@@ -117,21 +117,21 @@ export const TexasPage: React.FC = () => {
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
-              <Shield className="w-12 h-12 text-green-600 mx-auto mb-4" />
+              <Shield className="w-12 h-12 text-texas-navy mx-auto mb-4" />
               <h3 className="text-xl font-semibold mb-3">Regulated & Safe</h3>
               <p className="text-gray-600">
                 All providers are regulated by the Texas Public Utility Commission
               </p>
             </div>
             <div className="text-center">
-              <Star className="w-12 h-12 text-yellow-600 mx-auto mb-4" />
+              <Star className="w-12 h-12 text-texas-gold mx-auto mb-4" />
               <h3 className="text-xl font-semibold mb-3">Best Rates</h3>
               <p className="text-gray-600">
                 Compare rates from over 150 providers to find the lowest prices
               </p>
             </div>
             <div className="text-center">
-              <Zap className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+              <Zap className="w-12 h-12 text-texas-red mx-auto mb-4" />
               <h3 className="text-xl font-semibold mb-3">Easy Switch</h3>
               <p className="text-gray-600">
                 Switch providers quickly without service interruption
@@ -142,7 +142,7 @@ export const TexasPage: React.FC = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="py-16 bg-gradient-to-r from-red-600 to-blue-600 text-white">
+      <div className="py-16 bg-gradient-to-r from-texas-red to-texas-navy text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">
             Ready to Find Your Perfect Texas Plan?
@@ -153,13 +153,13 @@ export const TexasPage: React.FC = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={() => navigate('/shop')}
-              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-50 transition-colors"
+              className="bg-white text-texas-navy px-8 py-4 rounded-lg font-semibold text-lg hover:bg-texas-cream transition-colors"
             >
               Start Shopping
             </button>
             <button
               onClick={() => navigate('/rates/calculator')}
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-50 transition-colors"
+              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-texas-navy transition-colors"
             >
               Calculate Savings
             </button>
