@@ -196,9 +196,9 @@ export class SmartBadgingSystem {
       case 'texas-secondary':
         return `${baseClasses} !bg-red-600 !text-white`;
       case 'warning':
-        return `${baseClasses} !bg-yellow-400 !text-yellow-900`;
+        return `${baseClasses} !bg-texas-gold !text-texas-navy !font-semibold`;
       case 'success':
-        return `${baseClasses} !bg-texas-gold-100 !text-texas-navy`;
+        return `${baseClasses} !bg-texas-gold !text-texas-navy !font-semibold`;
       case 'info':
         return `${baseClasses} !bg-texas-navy/10 !text-texas-navy`;
       case 'texas-primary':

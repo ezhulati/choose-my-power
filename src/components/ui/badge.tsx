@@ -21,7 +21,7 @@ const badgeVariants = cva(
         // Texas-themed badges
         "texas-primary": "border-transparent bg-texas-navy text-white shadow hover:bg-texas-navy/90",
         "texas-secondary": "border-transparent bg-texas-red text-white shadow hover:bg-texas-red/90",
-        "texas-accent": "border-transparent bg-texas-gold text-texas-navy shadow hover:bg-texas-gold/90",
+        "texas-accent": "border-transparent bg-texas-gold text-texas-navy shadow hover:bg-texas-gold/90 font-semibold",
         "texas-outline": "border-texas-navy text-texas-navy bg-transparent hover:bg-texas-navy/10",
         "plan-type": "border-gray-200 bg-gray-50 text-gray-700 hover:bg-gray-100",
         "featured": "border-transparent bg-gradient-to-r from-texas-gold to-yellow-600 text-white shadow",

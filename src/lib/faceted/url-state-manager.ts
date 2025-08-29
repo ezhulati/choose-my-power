@@ -93,6 +93,11 @@ export class UrlStateManager {
     const url = this.buildUrl(citySlug, filterState, options);
     const method = options.historyMethod || 'replace';
     
+    // Only update if URL has actually changed to prevent unnecessary operations
+    if (window.location.pathname === url) {
+      return;
+    }
+    
     if (method === 'push') {
       window.history.pushState({}, '', url);
     } else {

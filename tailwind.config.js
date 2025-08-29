@@ -72,10 +72,10 @@ export default {
             300: '#93c5fd',
             400: '#60a5fa',
             500: '#002868', // Primary Texas blue
-            600: '#1d4ed8',
-            700: '#1e40af',
-            800: '#1e3a8a',
-            900: '#1e3a8a',
+            600: '#001f4d', // Darker Texas navy
+            700: '#001a42',
+            800: '#001437',
+            900: '#000f2c',
           },
           gold: {
             50: '#fffbeb',
@@ -101,7 +101,12 @@ export default {
             800: '#dfaf52',
             900: '#d69a27',
           }
-        }
+        },
+        // Simplified brand colors for easier usage
+        'texas-navy': '#002868',
+        'texas-red': '#dc2626', 
+        'texas-gold': '#f59e0b',
+        'texas-cream': '#f8edd3'
       },
       borderRadius: {
         lg: "var(--radius)",
