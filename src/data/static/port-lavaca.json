@@ -216,7 +216,7 @@
           }
         },
         {
-          "id": "68b1f917809e2c9cf21e8e29",
+          "id": "68b1fc9cfb7c78848858d61c",
           "name": "12 Month GREEN (No Min Usage Fee)",
           "provider": {
             "name": "Constellation",
@@ -253,7 +253,7 @@
           }
         },
         {
-          "id": "68b1f917809e2c9cf21e8e28",
+          "id": "68b1fc9dfb7c78848858d61e",
           "name": "12 Month Usage Bill Credit",
           "provider": {
             "name": "Constellation",
@@ -290,7 +290,7 @@
           }
         },
         {
-          "id": "68b1f917809e2c9cf21e8e2a",
+          "id": "68b1fc9cfb7c78848858d61d",
           "name": "24 Month Usage Bill Credit",
           "provider": {
             "name": "Constellation",
@@ -1147,7 +1147,7 @@
           }
         },
         {
-          "id": "68a01453e30bfeb002721598",
+          "id": "68a01453e30bfeb00272159d",
           "name": "Gexa Eco Saver Advantage 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1295,7 +1295,7 @@
           }
         },
         {
-          "id": "68a01453e30bfeb00272159b",
+          "id": "68a01453e30bfeb00272159e",
           "name": "Gexa Eco Saver Premier 12",
           "provider": {
             "name": "Gexa Energy",
@@ -2904,7 +2904,7 @@
           }
         },
         {
-          "id": "68b13463890a850ebca0ccfa",
+          "id": "68b13463890a850ebca0cd01",
           "name": "Live Your Free 12",
           "provider": {
             "name": "TXU Energy",
@@ -2941,7 +2941,7 @@
           }
         },
         {
-          "id": "68b13463890a850ebca0ccfc",
+          "id": "68b13463890a850ebca0ccf8",
           "name": "Ultimate Season Pass 12",
           "provider": {
             "name": "TXU Energy",
@@ -2984,7 +2984,7 @@
           }
         },
         {
-          "id": "68b13463890a850ebca0cd06",
+          "id": "68b13464890a850ebca0cd0d",
           "name": "Free Nights & Solar Days 12 (8 pm)",
           "provider": {
             "name": "TXU Energy",

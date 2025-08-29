@@ -216,7 +216,7 @@
           }
         },
         {
-          "id": "68b1f90a809e2c9cf21e8e21",
+          "id": "68b1fc8dfb7c78848858d613",
           "name": "12 Month GREEN (No Min Usage Fee)",
           "provider": {
             "name": "Constellation",
@@ -253,7 +253,7 @@
           }
         },
         {
-          "id": "68b1f909809e2c9cf21e8e1f",
+          "id": "68b1fc8cfb7c78848858d612",
           "name": "12 Month Usage Bill Credit",
           "provider": {
             "name": "Constellation",
@@ -290,7 +290,7 @@
           }
         },
         {
-          "id": "68b1f90a809e2c9cf21e8e20",
+          "id": "68b1fc8cfb7c78848858d611",
           "name": "24 Month Usage Bill Credit",
           "provider": {
             "name": "Constellation",
@@ -1258,7 +1258,7 @@
           }
         },
         {
-          "id": "68a0144ae30bfeb002721554",
+          "id": "68a0144ae30bfeb00272155b",
           "name": "Gexa Eco Saver Lite 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1295,7 +1295,7 @@
           }
         },
         {
-          "id": "68ad431ef95bf521995a3bc9",
+          "id": "68ad431ef95bf521995a3bc8",
           "name": "Gexa Eco Saver Plus 12",
           "provider": {
             "name": "Gexa Energy",
@@ -2941,7 +2941,7 @@
           }
         },
         {
-          "id": "68b13447890a850ebca0cca5",
+          "id": "68b13448890a850ebca0ccb5",
           "name": "Live Your Free 12",
           "provider": {
             "name": "TXU Energy",

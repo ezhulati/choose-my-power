@@ -1,0 +1,840 @@
+---
+/**
+ * Careers Page - ChooseMyPower Job Opportunities
+ * Professional careers page with job listings and company culture
+ * Texas flag design system with competitive positioning
+ */
+
+import Layout from '../layouts/Layout.astro';
+import HeroBackground from '../components/HeroBackground.astro';
+import { Badge } from '../components/ui/badge';
+
+const pageTitle = "Careers at ChooseMyPower | Join the Texas Energy Revolution";
+const pageDescription = "Join ChooseMyPower's mission to empower Texas consumers with transparent electricity plan comparisons. Competitive salaries, equity, and meaningful impact across 881 Texas cities.";
+const canonicalUrl = "/careers";
+
+// Hero image for careers page
+const heroImage = "/images/hero/texas-tech-team-collaboration.jpg";
+
+// Company values
+const values = [
+  {
+    icon: "target",
+    title: "Consumer First",
+    description: "Every decision we make puts Texas consumers at the center. We believe everyone deserves transparent, honest guidance when choosing their electricity provider."
+  },
+  {
+    icon: "lightbulb",
+    title: "Innovation with Purpose",
+    description: "We leverage advanced technology – from AI-powered plan matching to real-time pricing data – to solve real problems for real people."
+  },
+  {
+    icon: "handshake",
+    title: "Texas Strong",
+    description: "As a Texas-based company, we understand the unique challenges of our state's energy market. We're committed to supporting Texas communities."
+  },
+  {
+    icon: "chart",
+    title: "Data-Driven Excellence", 
+    description: "We make decisions based on facts, not assumptions. Our platform processes millions of data points to provide accurate recommendations."
+  }
+];
+
+// Benefits
+const benefits = [
+  {
+    category: "Health & Wellness",
+    icon: "heart",
+    items: [
+      "Premium medical, dental, vision (100% company-paid for employees)",
+      "$2,000 annual wellness stipend for gym, mental health, or wellness activities",
+      "Mental health support through BetterHelp partnership",
+      "Flexible PTO policy with 3-week minimum encouraged"
+    ]
+  },
+  {
+    category: "Financial Security",
+    icon: "dollar",
+    items: [
+      "Competitive salaries benchmarked to Austin/Dallas tech market",
+      "Equity participation for all full-time employees",
+      "401(k) with 6% company matching (fully vested after 2 years)",
+      "Annual performance bonuses based on goals"
+    ]
+  },
+  {
+    category: "Professional Development",
+    icon: "graduation",
+    items: [
+      "$3,000 annual learning & development budget per employee",
+      "Conference attendance support (energy and tech conferences)",
+      "Internal mentorship program with senior team members",
+      "Tuition reimbursement up to $8,000 annually"
+    ]
+  },
+  {
+    category: "Work-Life Balance",
+    icon: "balance",
+    items: [
+      "Hybrid work model with flexible in-office requirements",
+      "Core collaboration hours (10 AM - 3 PM CT) with flexible start/end",
+      "16 weeks paid parental leave for primary caregivers",
+      "4-week sabbatical program after 3 years of service"
+    ]
+  }
+];
+
+// Open positions
+const positions = [
+  {
+    department: "Engineering",
+    color: "texas-navy",
+    jobs: [
+      {
+        title: "Senior Full-Stack Engineer",
+        salary: "$140,000 - $180,000 + equity",
+        location: "Austin, TX / Remote",
+        description: "Lead development of our React/TypeScript platform serving millions of monthly visitors across 881 Texas cities.",
+        requirements: "5+ years full-stack experience, modern web frameworks, scalable system design",
+        type: "Full-time"
+      },
+      {
+        title: "Data Engineer",
+        salary: "$130,000 - $170,000 + equity", 
+        location: "Austin, TX / Remote",
+        description: "Design real-time electricity pricing data pipeline and ML models for plan recommendations.",
+        requirements: "4+ years Python, SQL, cloud data platforms, API integration experience",
+        type: "Full-time"
+      },
+      {
+        title: "DevOps Engineer",
+        salary: "$125,000 - $165,000 + equity",
+        location: "Austin, TX / Remote", 
+        description: "Manage AWS infrastructure supporting critical business functions and prepare for SOC 2 compliance.",
+        requirements: "4+ years AWS, Docker, Kubernetes, CI/CD, security best practices",
+        type: "Full-time"
+      }
+    ]
+  },
+  {
+    department: "Product & Design",
+    color: "texas-gold",
+    jobs: [
+      {
+        title: "Senior Product Manager",
+        salary: "$150,000 - $190,000 + equity",
+        location: "Austin, TX / Hybrid",
+        description: "Own product strategy for customer acquisition and retention in the competitive Texas energy market.",
+        requirements: "5+ years product management, consumer tech experience, data-driven decision making",
+        type: "Full-time"
+      },
+      {
+        title: "UX/UI Designer",
+        salary: "$95,000 - $130,000 + equity",
+        location: "Austin, TX / Remote",
+        description: "Design intuitive interfaces for complex electricity plan comparisons and user research.",
+        requirements: "3+ years user-centered design, data-heavy applications, accessibility standards",
+        type: "Full-time"
+      }
+    ]
+  },
+  {
+    department: "Marketing & Growth", 
+    color: "texas-red",
+    jobs: [
+      {
+        title: "Digital Marketing Manager",
+        salary: "$85,000 - $115,000 + equity",
+        location: "Austin, TX / Remote",
+        description: "Lead SEO strategy for 2,000+ pages and manage acquisition campaigns across Texas-specific channels.",
+        requirements: "3+ years digital marketing, SEO expertise, consumer services experience",
+        type: "Full-time"
+      },
+      {
+        title: "Content Marketing Specialist",
+        salary: "$70,000 - $95,000 + equity",
+        location: "Austin, TX / Remote",
+        description: "Create educational content about Texas electricity market and manage content marketing campaigns.",
+        requirements: "2+ years content marketing, strong writing skills, energy industry interest",
+        type: "Full-time"
+      }
+    ]
+  },
+  {
+    department: "Customer Success",
+    color: "texas-cream",
+    jobs: [
+      {
+        title: "Customer Success Manager",
+        salary: "$75,000 - $100,000 + equity",
+        location: "Austin, TX / Hybrid",
+        description: "Support Texas consumers through provider switching and build electricity provider partnerships.",
+        requirements: "3+ years customer-facing experience, energy or financial services preferred",
+        type: "Full-time"
+      }
+    ]
+  }
+];
+
+// Office locations
+const offices = [
+  {
+    name: "Austin Headquarters",
+    address: "East Austin Tech Corridor",
+    description: "Our vibrant headquarters in the heart of Texas tech",
+    features: [
+      "Open, collaborative workspace with private focus areas",
+      "Fully stocked kitchen with local Texas favorites", 
+      "Rooftop deck overlooking downtown Austin",
+      "On-site gym and wellness room",
+      "Electric vehicle charging stations"
+    ]
+  },
+  {
+    name: "Houston Office",
+    address: "Energy Corridor (Opening Q2 2025)",
+    description: "Expanding to serve the Houston market",
+    features: [
+      "Modern workspace in energy district",
+      "Collaboration spaces and quiet zones",
+      "Easy access to major energy companies",
+      "Parking and transit connectivity"
+    ]
+  },
+  {
+    name: "Dallas Office", 
+    address: "Deep Ellum Tech District (Opening Q3 2025)",
+    description: "Growing our North Texas presence",
+    features: [
+      "Creative workspace in historic Deep Ellum",
+      "Walking distance to restaurants and venues",
+      "Flexible hybrid work arrangement",
+      "Community event spaces"
+    ]
+  }
+];
+
+// DEI initiatives
+const deiInitiatives = [
+  "Skills-based hiring with structured interview processes",
+  "Diverse interview panels for all final-round candidates", 
+  "Partnership with Texas universities and coding bootcamps",
+  "Employee Resource Groups for professional development",
+  "Transparent promotion criteria and salary bands",
+  "$50,000 annual commitment to Texas energy education"
+];
+---
+
+<Layout 
+  title={pageTitle}
+  description={pageDescription}
+  canonical={canonicalUrl}
+>
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "ChooseMyPower",
+      "sameAs": "https://choose-my-power.netlify.app",
+      "logo": "https://choose-my-power.netlify.app/images/logo/choosemypower-logo.png"
+    },
+    "jobLocation": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Austin", 
+        "addressRegion": "TX",
+        "addressCountry": "US"
+      }
+    },
+    "employmentType": "FULL_TIME",
+    "industry": "Technology/Energy",
+    "description": "Join ChooseMyPower's mission to empower Texas consumers with transparent electricity plan comparisons."
+  }
+  </script>
+
+  <main class="min-h-screen bg-gray-50">
+    <!-- Hero Section -->
+    <HeroBackground 
+      imageUrl={heroImage}
+      overlayOpacity={0.75}
+    >
+      <section class="text-white flex items-center justify-center min-h-[45vh] lg:min-h-[55vh]">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
+          <Badge variant="texas-accent" className="mb-6 text-lg px-6 py-3">
+            Join the Texas Energy Revolution
+          </Badge>
+          
+          <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 drop-shadow-lg">
+            Careers at ChooseMyPower
+          </h1>
+          
+          <p class="text-xl lg:text-2xl text-blue-100 mb-8 drop-shadow-md leading-relaxed max-w-4xl mx-auto">
+            Help millions of Texans make smarter electricity choices. Build cutting-edge technology 
+            that creates real impact across 881 Texas cities.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+              <div class="text-2xl font-bold text-texas-gold mb-1">$500+</div>
+              <div class="text-sm text-white">Avg. Annual Consumer Savings</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+              <div class="text-2xl font-bold text-texas-gold mb-1">2M+</div>
+              <div class="text-sm text-white">Monthly Platform Visitors</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+              <div class="text-2xl font-bold text-texas-gold mb-1">881</div>
+              <div class="text-sm text-white">Texas Cities Served</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+              <div class="text-2xl font-bold text-texas-gold mb-1">50+</div>
+              <div class="text-sm text-white">Provider Partners</div>
+            </div>
+          </div>
+
+          <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <a 
+              href="#positions" 
+              class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-lg text-texas-navy bg-texas-gold hover:bg-yellow-400 transition-colors shadow-lg"
+            >
+              View Open Positions
+              <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </a>
+            
+            <a 
+              href="#culture" 
+              class="inline-flex items-center justify-center px-8 py-4 border border-white text-base font-medium rounded-lg text-white bg-white/10 hover:bg-white/20 transition-colors backdrop-blur-sm"
+            >
+              Learn About Our Culture
+            </a>
+          </div>
+        </div>
+      </section>
+    </HeroBackground>
+
+    <!-- Mission & Values Section -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16" id="culture">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl lg:text-4xl font-bold text-texas-navy mb-4">
+          Our Mission & Values
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          We're building more than a platform – we're democratizing access to affordable electricity 
+          for millions of Texans through transparent, data-driven comparisons.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 mb-16">
+        <div class="text-center mb-8">
+          <h3 class="text-2xl font-bold text-texas-navy mb-4">Our Mission</h3>
+          <p class="text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto">
+            To empower every Texas consumer with the tools and knowledge they need to make informed 
+            electricity decisions, saving money while supporting a more competitive, transparent energy market.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {values.map((value) => (
+          <div key={value.title} class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border border-gray-200">
+            <div class="w-12 h-12 bg-texas-gold/10 rounded-lg flex items-center justify-center mb-4">
+              {value.icon === 'target' && (
+                <svg class="w-6 h-6 text-texas-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              )}
+              {value.icon === 'lightbulb' && (
+                <svg class="w-6 h-6 text-texas-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+              )}
+              {value.icon === 'handshake' && (
+                <svg class="w-6 h-6 text-texas-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11" />
+                </svg>
+              )}
+              {value.icon === 'chart' && (
+                <svg class="w-6 h-6 text-texas-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              )}
+            </div>
+            
+            <h3 class="text-lg font-bold text-texas-navy mb-3">
+              {value.title}
+            </h3>
+            
+            <p class="text-gray-600 text-sm leading-relaxed">
+              {value.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Benefits Section -->
+    <div class="bg-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl lg:text-4xl font-bold text-texas-navy mb-4">
+            Competitive Benefits & Perks
+          </h2>
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            We invest in our team's success with comprehensive benefits, competitive compensation, 
+            and meaningful growth opportunities.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {benefits.map((benefit) => (
+            <div key={benefit.category} class="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <div class="w-12 h-12 bg-texas-gold/10 rounded-lg flex items-center justify-center mb-4">
+                {benefit.icon === 'heart' && (
+                  <svg class="w-6 h-6 text-texas-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
+                )}
+                {benefit.icon === 'dollar' && (
+                  <svg class="w-6 h-6 text-texas-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+                  </svg>
+                )}
+                {benefit.icon === 'graduation' && (
+                  <svg class="w-6 h-6 text-texas-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                  </svg>
+                )}
+                {benefit.icon === 'balance' && (
+                  <svg class="w-6 h-6 text-texas-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                  </svg>
+                )}
+              </div>
+              
+              <h3 class="text-lg font-bold text-texas-navy mb-4">
+                {benefit.category}
+              </h3>
+              
+              <ul class="space-y-2">
+                {benefit.items.map((item, index) => (
+                  <li key={index} class="flex items-start gap-2 text-sm text-gray-600">
+                    <svg class="w-4 h-4 text-texas-gold mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Open Positions Section -->
+    <div class="bg-texas-cream/30 py-16" id="positions">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl lg:text-4xl font-bold text-texas-navy mb-4">
+            Open Positions
+          </h2>
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            All salaries include equity participation and comprehensive benefits package. 
+            We're hiring across multiple departments to support our rapid growth.
+          </p>
+        </div>
+
+        <div class="space-y-12">
+          {positions.map((department) => (
+            <div key={department.department} class="bg-white rounded-2xl p-8 shadow-lg">
+              <div class="flex items-center gap-3 mb-8">
+                <div class={`w-4 h-4 bg-${department.color} rounded-full`}></div>
+                <h3 class="text-2xl font-bold text-texas-navy">
+                  {department.department}
+                </h3>
+                <Badge variant="info" className="ml-2">
+                  {department.jobs.length} {department.jobs.length === 1 ? 'Position' : 'Positions'}
+                </Badge>
+              </div>
+              
+              <div class="grid gap-6">
+                {department.jobs.map((job, index) => (
+                  <div key={index} class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+                    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-4">
+                      <div class="flex-1">
+                        <h4 class="text-xl font-bold text-texas-navy mb-2">
+                          {job.title}
+                        </h4>
+                        <div class="flex flex-wrap gap-3 mb-3">
+                          <Badge variant="texas-accent">
+                            {job.salary}
+                          </Badge>
+                          <Badge variant="info">
+                            {job.location}
+                          </Badge>
+                          <Badge variant="success">
+                            {job.type}
+                          </Badge>
+                        </div>
+                      </div>
+                      
+                      <div class="flex-shrink-0">
+                        <a 
+                          href={`mailto:careers@choosemypower.com?subject=Application for ${job.title}`}
+                          class="inline-flex items-center px-6 py-3 border border-texas-navy text-sm font-medium rounded-lg text-texas-navy bg-white hover:bg-texas-navy hover:text-white transition-colors"
+                        >
+                          Apply Now
+                          <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                    
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                      {job.description}
+                    </p>
+                    
+                    <div class="text-sm text-gray-600">
+                      <strong>Requirements:</strong> {job.requirements}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="text-center mt-12 bg-white rounded-xl p-8 shadow-lg">
+          <h3 class="text-xl font-bold text-texas-navy mb-4">
+            Don't See the Perfect Role?
+          </h3>
+          <p class="text-gray-600 mb-6">
+            We're always looking for exceptional talent. Send us your resume and tell us 
+            how you'd like to contribute to our mission.
+          </p>
+          <a 
+            href="mailto:careers@choosemypower.com?subject=General Interest"
+            class="inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-lg text-white bg-texas-navy hover:bg-texas-navy/90 transition-colors"
+          >
+            Send General Application
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Office Locations Section -->
+    <div class="bg-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl lg:text-4xl font-bold text-texas-navy mb-4">
+            Our Texas Locations
+          </h2>
+          <p class="text-lg text-gray-600">
+            Hybrid work model with beautiful offices across Texas's major tech hubs
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+          {offices.map((office) => (
+            <div key={office.name} class="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-shadow">
+              <h3 class="text-xl font-bold text-texas-navy mb-2">
+                {office.name}
+              </h3>
+              
+              <p class="text-texas-gold font-medium mb-3">
+                {office.address}
+              </p>
+              
+              <p class="text-gray-600 mb-4">
+                {office.description}
+              </p>
+              
+              <ul class="space-y-2">
+                {office.features.map((feature, index) => (
+                  <li key={index} class="flex items-start gap-2 text-sm text-gray-600">
+                    <svg class="w-4 h-4 text-texas-gold mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <div class="bg-texas-navy text-white rounded-2xl p-8 mt-12">
+          <div class="text-center">
+            <h3 class="text-2xl font-bold mb-4">Hybrid Work Philosophy</h3>
+            <p class="text-blue-100 mb-6 max-w-3xl mx-auto">
+              We believe the best work happens when talented people have flexibility. Our hybrid model 
+              combines the benefits of in-person collaboration with the flexibility of remote work.
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+              <div class="bg-white/10 rounded-lg p-4">
+                <div class="text-lg font-bold mb-2">Core Office Days</div>
+                <div class="text-blue-200 text-sm">Tuesday-Thursday (flexible based on team needs)</div>
+              </div>
+              <div class="bg-white/10 rounded-lg p-4">
+                <div class="text-lg font-bold mb-2">Remote-First Hiring</div>
+                <div class="text-blue-200 text-sm">Open to candidates across Texas and select remote locations</div>
+              </div>
+              <div class="bg-white/10 rounded-lg p-4">
+                <div class="text-lg font-bold mb-2">Quarterly Gatherings</div>
+                <div class="text-blue-200 text-sm">All-hands meetings in rotating Texas cities</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DEI Section -->
+    <div class="bg-texas-gold py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl lg:text-4xl font-bold text-texas-navy mb-4">
+            Diversity, Equity & Inclusion
+          </h2>
+          <p class="text-lg text-texas-navy/80 max-w-3xl mx-auto">
+            We believe diverse teams build better products. We're committed to creating an inclusive 
+            environment where everyone can do their best work while helping Texas consumers save money.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h3 class="text-2xl font-bold text-texas-navy mb-6">
+              Our DEI Commitment
+            </h3>
+            
+            <ul class="space-y-3">
+              {deiInitiatives.map((initiative, index) => (
+                <li key={index} class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-texas-navy mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span class="text-texas-navy">{initiative}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          <div class="bg-white rounded-2xl p-8 shadow-lg">
+            <h3 class="text-xl font-bold text-texas-navy mb-6">
+              Employee Resource Groups
+            </h3>
+            
+            <div class="space-y-4">
+              <div class="p-4 bg-gray-50 rounded-lg">
+                <h4 class="font-semibold text-texas-navy mb-2">Texas Professionals Network</h4>
+                <p class="text-sm text-gray-600">Supporting career development across our three office locations</p>
+              </div>
+              
+              <div class="p-4 bg-gray-50 rounded-lg">
+                <h4 class="font-semibold text-texas-navy mb-2">Women in Energy Tech</h4>
+                <p class="text-sm text-gray-600">Mentorship and professional development for women in our industry</p>
+              </div>
+              
+              <div class="p-4 bg-gray-50 rounded-lg">
+                <h4 class="font-semibold text-texas-navy mb-2">Early Career Professionals</h4>
+                <p class="text-sm text-gray-600">Onboarding support and career guidance for new graduates</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Application Process Section -->
+    <div class="bg-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl lg:text-4xl font-bold text-texas-navy mb-4">
+            Application Process
+          </h2>
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            We hire for potential, curiosity, and alignment with our mission. Our process is designed 
+            to be efficient while giving you multiple touchpoints with our team.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12">
+          <div>
+            <h3 class="text-2xl font-bold text-texas-navy mb-6">
+              What We Look For
+            </h3>
+            
+            <div class="space-y-6">
+              <div class="p-4 bg-gray-50 rounded-lg">
+                <h4 class="font-semibold text-texas-navy mb-2">All Roles</h4>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <li>• Genuine interest in helping Texas consumers</li>
+                  <li>• Strong problem-solving skills</li>
+                  <li>• Collaborative mindset with excellent communication</li>
+                  <li>• Growth mindset and eagerness to learn</li>
+                </ul>
+              </div>
+              
+              <div class="p-4 bg-gray-50 rounded-lg">
+                <h4 class="font-semibold text-texas-navy mb-2">Technical Roles</h4>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <li>• Solid fundamentals in your area of expertise</li>
+                  <li>• Experience building scalable, reliable systems</li>
+                  <li>• Interest in working with large datasets</li>
+                  <li>• Appreciation for code quality and testing</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-2xl font-bold text-texas-navy mb-6">
+              Interview Process
+            </h3>
+            
+            <div class="space-y-4">
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-8 h-8 bg-texas-gold rounded-full flex items-center justify-center text-sm font-bold text-texas-navy">
+                  1
+                </div>
+                <div>
+                  <h4 class="font-semibold text-texas-navy mb-1">Initial Screening (30 min)</h4>
+                  <p class="text-sm text-gray-600">Phone/video conversation about background and role alignment</p>
+                </div>
+              </div>
+              
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-8 h-8 bg-texas-gold rounded-full flex items-center justify-center text-sm font-bold text-texas-navy">
+                  2
+                </div>
+                <div>
+                  <h4 class="font-semibold text-texas-navy mb-1">Skills Assessment</h4>
+                  <p class="text-sm text-gray-600">Take-home project or case study (2-3 hours maximum)</p>
+                </div>
+              </div>
+              
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-8 h-8 bg-texas-gold rounded-full flex items-center justify-center text-sm font-bold text-texas-navy">
+                  3
+                </div>
+                <div>
+                  <h4 class="font-semibold text-texas-navy mb-1">Team Interviews (2-3 hours)</h4>
+                  <p class="text-sm text-gray-600">Technical deep dive, culture conversation, and team meetings</p>
+                </div>
+              </div>
+              
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-8 h-8 bg-texas-gold rounded-full flex items-center justify-center text-sm font-bold text-texas-navy">
+                  4
+                </div>
+                <div>
+                  <h4 class="font-semibold text-texas-navy mb-1">Reference & Offer</h4>
+                  <p class="text-sm text-gray-600">Brief reference checks and competitive offer with 1-week consideration</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-6 p-4 bg-texas-navy/5 rounded-lg">
+              <p class="text-sm text-gray-600">
+                <strong>Timeline:</strong> Our typical hiring process takes 2-3 weeks from application to offer. 
+                We provide regular updates and feedback throughout the process.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ready to Apply Section -->
+    <div class="bg-texas-navy text-white py-16">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl lg:text-4xl font-bold mb-6">
+          Ready to Join Us?
+        </h2>
+        <p class="text-xl text-blue-100 mb-8">
+          Help us build the future of Texas energy while creating meaningful impact 
+          for millions of consumers across 881 cities.
+        </p>
+        
+        <div class="bg-white/10 rounded-2xl p-8 mb-8">
+          <h3 class="text-xl font-bold mb-4">How to Apply</h3>
+          <p class="text-blue-100 mb-6">
+            Send your resume and a brief note about why you're interested in ChooseMyPower to:
+          </p>
+          <a 
+            href="mailto:careers@choosemypower.com"
+            class="text-2xl font-bold text-texas-gold hover:text-yellow-300 transition-colors"
+          >
+            careers@choosemypower.com
+          </a>
+          
+          <div class="mt-6 text-blue-200 text-sm">
+            <p class="mb-2">Include in your email:</p>
+            <ul class="text-left max-w-md mx-auto space-y-1">
+              <li>• The position you're applying for</li>
+              <li>• Why you're excited about our mission</li>
+              <li>• What unique perspective you'd bring to our team</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-6 text-center">
+          <div>
+            <h4 class="font-semibold mb-2">General Inquiries</h4>
+            <a href="mailto:careers@choosemypower.com" class="text-texas-gold hover:text-yellow-300 transition-colors">
+              careers@choosemypower.com
+            </a>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-2">Technical Roles</h4>
+            <a href="mailto:engineering@choosemypower.com" class="text-texas-gold hover:text-yellow-300 transition-colors">
+              engineering@choosemypower.com
+            </a>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-2">All Other Roles</h4>
+            <a href="mailto:team@choosemypower.com" class="text-texas-gold hover:text-yellow-300 transition-colors">
+              team@choosemypower.com
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Equal Opportunity Statement -->
+    <div class="bg-gray-100 py-8">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="text-sm text-gray-600">
+          ChooseMyPower is an equal opportunity employer committed to diversity, equity, and inclusion. 
+          We welcome applications from candidates of all backgrounds and encourage members of 
+          underrepresented groups to apply.
+        </p>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  /* Smooth scrolling for anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Enhanced hover effects */
+  .hover\:shadow-xl:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+</style>

@@ -79,17 +79,20 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `https://choosemy
     <!-- Sitemap Reference -->
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
     
-    <!-- Critical font optimization for 0.64s savings -->
+    <!-- Optimized font loading for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     
-    <!-- Preload critical font weights immediately -->
-    <link rel="preload" as="font" type="font/ttf" href="https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.ttf" crossorigin />
-    <link rel="preload" as="font" type="font/ttf" href="https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYMZg.ttf" crossorigin />
+    <!-- DNS prefetch for better performance -->
+    <link rel="dns-prefetch" href="//api.comparepower.com" />
+    <link rel="dns-prefetch" href="//pricing.api.comparepower.com" />
     
-    <!-- Load Google Fonts CSS with optimal performance -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=optional" rel="stylesheet" media="print" onload="this.media='all'" />
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=optional" rel="stylesheet" /></noscript>
+    <!-- Preload critical WOFF2 fonts (much smaller than TTF) -->
+    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/inter/v19/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.woff2" crossorigin />
+    
+    <!-- Load Google Fonts CSS immediately for LCP -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
     
     <!-- Optimized critical CSS for maximum performance -->
     <style>
