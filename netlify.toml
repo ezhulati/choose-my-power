@@ -50,10 +50,10 @@
     # Performance Headers
     X-DNS-Prefetch-Control = "on"
     
-    # Content Security Policy - Enhanced Security with Nonce Support
+    # Content Security Policy - Enhanced Security with Strict Dynamic
     Content-Security-Policy = '''
       default-src 'self';
-      script-src 'self' 'nonce-web-vitals' https://www.googletagmanager.com https://www.google-analytics.com https://vercel.live;
+      script-src 'self' 'nonce-web-vitals' 'strict-dynamic' https://www.googletagmanager.com https://www.google-analytics.com https://vercel.live;
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
       font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com data:;
       img-src 'self' data: https: blob:;
@@ -67,6 +67,7 @@
       frame-ancestors 'none';
       upgrade-insecure-requests;
       report-uri /csp-report;
+      require-trusted-types-for 'script';
     '''
 
 # Static Assets Caching

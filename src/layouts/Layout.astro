@@ -153,18 +153,38 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `https://choosemy
         min-height: 60px; /* Reserve form height */
         display: block;
         width: 100%;
+        contain: layout;
       }
       
       /* Prevent CLS for hero text elements */
       .hero-title, .hero-subtitle {
         min-height: 1.2em;
         display: block;
+        contain: layout;
       }
       
-      /* Prevent CLS for spans */
-      span.block {
+      /* Prevent CLS for spans and text blocks */
+      span.block, .text-lg, .text-xl, .text-2xl {
         display: block;
         min-height: 1.2em;
+        contain: layout;
+      }
+      
+      /* Prevent CLS for feature sections */
+      .text-blue-200, .text-center {
+        min-height: 1.2em;
+        contain: layout;
+      }
+      
+      /* Reserve space for common UI elements */
+      .mb-10, .mb-8, .mb-4 {
+        contain: layout;
+      }
+      
+      /* Font loading optimization to prevent FOIT */
+      .font-bold, .font-semibold, .font-medium {
+        font-display: swap;
+        contain: layout;
       }
 
       /* Critical typography for LCP optimization */
@@ -353,9 +373,7 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `https://choosemy
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link rel="dns-prefetch" href="//fonts.gstatic.com" />
     
-    <!-- Load non-critical CSS asynchronously -->
-    <link rel="preload" href="/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-    <noscript><link rel="stylesheet" href="/index.css"></noscript>
+    <!-- CSS handled by Astro import system -->
     
     <!-- Prefetch critical API endpoints -->
     <link rel="prefetch" href="/.netlify/functions/health" />
