@@ -1,0 +1,56 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const title = "Frequently Asked Questions | Texas Electricity Guide";
+const description = "Get answers to common questions about choosing electricity providers in Texas. Billing, switching, contracts, and more.";
+---
+
+<Layout title={title} description={description}>
+  <div class="min-h-screen bg-gradient-to-b from-texas-cream to-gray-50">
+    <div class="bg-texas-navy text-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Frequently Asked Questions</h1>
+        <p class="text-xl text-blue-100">Common questions about Texas electricity providers and deregulated energy market.</p>
+      </div>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="space-y-6">
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <h2 class="text-xl font-bold text-texas-navy mb-3">How do I choose an electricity provider in Texas?</h2>
+          <p class="text-gray-700">Compare rates, contract terms, and customer reviews. Focus on the total cost per kWh at your usage level, not just the advertised rate. Read our complete <a href="/resources/guides/choosing-a-provider" class="text-texas-red hover:underline">guide to choosing a provider</a>.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <h2 class="text-xl font-bold text-texas-navy mb-3">What is the average electricity rate in Texas?</h2>
+          <p class="text-gray-700">The average residential electricity rate in Texas is approximately 14.51¢/kWh as of 2024. However, rates vary significantly by provider and plan type, ranging from 10¢ to 20¢/kWh.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <h2 class="text-xl font-bold text-texas-navy mb-3">How long does it take to switch electricity providers?</h2>
+          <p class="text-gray-700">Switching typically takes 14+ days and occurs on your next meter reading date. The process is automatic once you enroll with a new provider - you don't need to cancel your current service.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <h2 class="text-xl font-bold text-texas-navy mb-3">What are TDSP charges on my electricity bill?</h2>
+          <p class="text-gray-700">TDSP (Transmission and Distribution Service Provider) charges are fees from your local utility company for delivering electricity to your home. These charges are the same regardless of which retail provider you choose and typically account for 35-45% of your total bill.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <h2 class="text-xl font-bold text-texas-navy mb-3">Can I cancel my electricity contract without penalty?</h2>
+          <p class="text-gray-700">Texas law gives you 3 business days to cancel any electricity contract without penalty. After that, you may be subject to early termination fees if you cancel before your contract expires.</p>
+        </div>
+      </div>
+
+      <div class="mt-12 text-center">
+        <div class="bg-blue-50 p-8 rounded-xl">
+          <h2 class="text-2xl font-bold text-texas-navy mb-4">Still Have Questions?</h2>
+          <p class="text-gray-700 mb-6">Our experts are here to help you find the perfect electricity plan for your needs.</p>
+          <a href="/contact" class="bg-texas-red text-white px-8 py-4 rounded-lg font-semibold hover:bg-texas-red-600 transition-colors">
+            Contact Our Experts
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

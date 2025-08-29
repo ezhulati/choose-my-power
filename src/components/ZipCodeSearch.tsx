@@ -524,7 +524,7 @@ export function ZipCodeSearch({
                       <Badge variant="secondary" className="text-xs">Recent</Badge>
                     )}
                     {suggestion.type === 'popular' && (
-                      <Badge variant="outline" className="text-xs border-texas-gold text-texas-gold-700">
+                      <Badge variant="outline" className="text-xs border-texas-navy text-texas-navy">
                         Popular
                       </Badge>
                     )}

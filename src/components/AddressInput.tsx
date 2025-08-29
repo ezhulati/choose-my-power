@@ -568,7 +568,7 @@ export function AddressInput({
                   )}
                 </label>
                 {validationState.overall.requiresAddress && (
-                  <Badge variant="outline" className="text-xs border-texas-gold text-texas-gold-700">
+                  <Badge variant="outline" className="text-xs border-texas-navy text-texas-navy">
                     Required for boundary ZIP
                   </Badge>
                 )}

@@ -216,7 +216,7 @@
           }
         },
         {
-          "id": "68b1d97c8ca16498d838879c",
+          "id": "68b1f917809e2c9cf21e8e29",
           "name": "12 Month GREEN (No Min Usage Fee)",
           "provider": {
             "name": "Constellation",
@@ -253,7 +253,7 @@
           }
         },
         {
-          "id": "68b1d97c8ca16498d838879d",
+          "id": "68b1f917809e2c9cf21e8e28",
           "name": "12 Month Usage Bill Credit",
           "provider": {
             "name": "Constellation",
@@ -290,7 +290,7 @@
           }
         },
         {
-          "id": "68b1d97c8ca16498d838879e",
+          "id": "68b1f917809e2c9cf21e8e2a",
           "name": "24 Month Usage Bill Credit",
           "provider": {
             "name": "Constellation",
@@ -1147,7 +1147,7 @@
           }
         },
         {
-          "id": "68a01453e30bfeb00272159d",
+          "id": "68a01453e30bfeb002721598",
           "name": "Gexa Eco Saver Advantage 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1221,7 +1221,7 @@
           }
         },
         {
-          "id": "68a01453e30bfeb00272159f",
+          "id": "68a01453e30bfeb00272159a",
           "name": "Gexa Eco Saver Lite 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1258,7 +1258,7 @@
           }
         },
         {
-          "id": "68ad4325f95bf521995a3be8",
+          "id": "68ad4326f95bf521995a3be9",
           "name": "Gexa Eco Saver Plus 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1295,7 +1295,7 @@
           }
         },
         {
-          "id": "68a01453e30bfeb00272159e",
+          "id": "68a01453e30bfeb00272159b",
           "name": "Gexa Eco Saver Premier 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1332,7 +1332,7 @@
           }
         },
         {
-          "id": "68a01453e30bfeb0027215a0",
+          "id": "68a01453e30bfeb002721599",
           "name": "Gexa Eco Saver Value 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1369,7 +1369,7 @@
           }
         },
         {
-          "id": "689193aee8b1db9607773928",
+          "id": "689193aee8b1db9607773929",
           "name": "Gexa Light Saver 12",
           "provider": {
             "name": "Gexa Energy",
@@ -2867,7 +2867,7 @@
           }
         },
         {
-          "id": "68b13463890a850ebca0cd05",
+          "id": "68b13463890a850ebca0cd04",
           "name": "Flex Forward",
           "provider": {
             "name": "TXU Energy",
@@ -2904,7 +2904,7 @@
           }
         },
         {
-          "id": "68b13463890a850ebca0cd01",
+          "id": "68b13463890a850ebca0ccfa",
           "name": "Live Your Free 12",
           "provider": {
             "name": "TXU Energy",
@@ -2941,7 +2941,7 @@
           }
         },
         {
-          "id": "68b13463890a850ebca0ccf8",
+          "id": "68b13463890a850ebca0ccfc",
           "name": "Ultimate Season Pass 12",
           "provider": {
             "name": "TXU Energy",
@@ -2984,7 +2984,7 @@
           }
         },
         {
-          "id": "68b13464890a850ebca0cd0d",
+          "id": "68b13463890a850ebca0cd06",
           "name": "Free Nights & Solar Days 12 (8 pm)",
           "provider": {
             "name": "TXU Energy",

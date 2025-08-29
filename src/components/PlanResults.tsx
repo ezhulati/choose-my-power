@@ -542,7 +542,7 @@ export function PlanResults({
                   variant="outline"
                   size="sm"
                   onClick={() => setViewMode('comparison')}
-                  className="border-texas-gold text-texas-gold-700 hover:bg-texas-gold hover:text-white"
+                  className="border-texas-navy text-texas-navy hover:bg-texas-navy hover:text-white"
                 >
                   Compare Plans
                 </Button>
@@ -783,7 +783,7 @@ function PlanCard({
           )}
           
           {plan.features.billCredit > 0 && (
-            <Badge variant="outline" className="text-xs border-texas-gold text-texas-gold-700">
+            <Badge variant="outline" className="text-xs border-texas-navy text-texas-navy">
               <DollarSign className="h-3 w-3 mr-1" />
               Bill Credit
             </Badge>

@@ -1,0 +1,736 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const title = "Understanding Your Texas Electricity Bill | Complete 2024 Guide";
+const description = "Decode your Texas electricity bill line by line. Learn about TDSP charges, energy rates, fees, and how to spot billing errors. Expert tips to reduce costs.";
+---
+
+<Layout title={title} description={description}>
+  <div class="min-h-screen bg-gradient-to-b from-texas-cream to-gray-50">
+    <!-- Hero Section -->
+    <div class="bg-texas-navy text-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          Understanding Your Texas Electricity Bill
+        </h1>
+        <p class="text-xl text-blue-100 mb-8 leading-relaxed">
+          Learn to decode every charge, fee, and line item on your electricity bill. Understand what you're paying for and discover opportunities to save money in Texas's deregulated market.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <span class="bg-texas-red px-4 py-2 rounded-full text-sm font-medium">15 min read</span>
+          <span class="bg-texas-gold px-4 py-2 rounded-full text-sm font-medium text-texas-navy">Expert Guide</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <!-- Key Stats -->
+      <div class="grid md:grid-cols-3 gap-6 mb-12">
+        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+          <div class="text-3xl font-bold text-texas-red mb-2">40%</div>
+          <div class="text-gray-600">Of your bill is TDSP delivery charges</div>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+          <div class="text-3xl font-bold text-texas-red mb-2">$150</div>
+          <div class="text-gray-600">Average monthly Texas electric bill</div>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+          <div class="text-3xl font-bold text-texas-red mb-2">12¢</div>
+          <div class="text-gray-600">Average rate per kWh in Texas</div>
+        </div>
+      </div>
+
+      <!-- Table of Contents -->
+      <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 mb-12">
+        <h2 class="text-2xl font-bold text-texas-navy mb-6">Table of Contents</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          <ul class="space-y-2">
+            <li><a href="#bill-overview" class="text-texas-navy hover:text-texas-red transition-colors">1. Your Bill at a Glance</a></li>
+            <li><a href="#energy-charges" class="text-texas-navy hover:text-texas-red transition-colors">2. Energy Charges Explained</a></li>
+            <li><a href="#tdsp-charges" class="text-texas-navy hover:text-texas-red transition-colors">3. TDSP Delivery Charges</a></li>
+            <li><a href="#fees-taxes" class="text-texas-navy hover:text-texas-red transition-colors">4. Fees and Taxes Breakdown</a></li>
+          </ul>
+          <ul class="space-y-2">
+            <li><a href="#usage-details" class="text-texas-navy hover:text-texas-red transition-colors">5. Reading Your Usage</a></li>
+            <li><a href="#billing-errors" class="text-texas-navy hover:text-texas-red transition-colors">6. Spotting Billing Errors</a></li>
+            <li><a href="#saving-tips" class="text-texas-navy hover:text-texas-red transition-colors">7. Cost-Saving Tips</a></li>
+            <li><a href="#contact-info" class="text-texas-navy hover:text-texas-red transition-colors">8. Get Help & Support</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="space-y-12">
+        <!-- Section 1 -->
+        <section id="bill-overview" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+          <h2 class="text-3xl font-bold text-texas-navy mb-6">Your Texas Electricity Bill at a Glance</h2>
+          
+          <div class="prose prose-lg max-w-none mb-8">
+            <p class="text-gray-700">
+              Your Texas electricity bill contains several distinct charges from different companies. Unlike states with regulated utilities, Texas bills separate the cost of generating electricity from the cost of delivering it to your home.
+            </p>
+          </div>
+
+          <div class="bg-blue-50 p-6 rounded-lg mb-8">
+            <h3 class="text-xl font-semibold text-blue-800 mb-4">📋 Typical Bill Structure</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-semibold text-blue-700 mb-3">From Your Retail Electric Provider (REP):</h4>
+                <ul class="space-y-1 text-sm text-blue-700">
+                  <li>• Energy charges (cost per kWh)</li>
+                  <li>• Monthly service/base fees</li>
+                  <li>• Connection charges</li>
+                  <li>• Renewable energy credits</li>
+                  <li>• Provider-specific fees</li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-semibold text-blue-700 mb-3">From Your TDSP (Utility Company):</h4>
+                <ul class="space-y-1 text-sm text-blue-700">
+                  <li>• Delivery charges</li>
+                  <li>• Transmission charges</li>
+                  <li>• Metering charges</li>
+                  <li>• System benefit fund fees</li>
+                  <li>• Advanced metering charges</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="border border-gray-200 rounded-lg p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">Sample Bill Breakdown ($150 total)</h3>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between"><span>Energy Charges (1,000 kWh × 12¢)</span><span class="font-medium">$120.00</span></div>
+              <div class="flex justify-between"><span>TDSP Delivery Charges</span><span class="font-medium">$18.50</span></div>
+              <div class="flex justify-between"><span>Monthly Service Fee</span><span class="font-medium">$9.95</span></div>
+              <div class="flex justify-between"><span>Taxes & Regulatory Fees</span><span class="font-medium">$1.55</span></div>
+              <div class="border-t pt-2 flex justify-between font-semibold"><span>Total Amount Due</span><span>$150.00</span></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 2 -->
+        <section id="energy-charges" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+          <h2 class="text-3xl font-bold text-texas-navy mb-6">Energy Charges Explained</h2>
+          
+          <p class="text-gray-700 mb-6">
+            Energy charges are what you pay for the actual electricity you consume. This is the portion of your bill that varies based on your usage and is controlled by your chosen Retail Electric Provider (REP).
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-xl font-semibold text-texas-navy mb-4">Rate Structure Types</h3>
+              
+              <div class="space-y-4">
+                <div class="border border-green-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-green-700 mb-2">Fixed Rate (Most Common)</h4>
+                  <p class="text-sm text-gray-700 mb-2">One rate per kWh for all usage during your contract term.</p>
+                  <div class="bg-gray-50 p-3 rounded text-xs">
+                    <strong>Example:</strong> 12.5¢/kWh × 1,000 kWh = $125.00
+                  </div>
+                </div>
+                
+                <div class="border border-orange-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-orange-700 mb-2">Tiered/Stepped Rate</h4>
+                  <p class="text-sm text-gray-700 mb-2">Different rates for different usage levels.</p>
+                  <div class="bg-gray-50 p-3 rounded text-xs">
+                    <strong>Example:</strong><br>
+                    First 500 kWh: 10¢/kWh = $50<br>
+                    Next 500 kWh: 14¢/kWh = $70<br>
+                    Total: $120
+                  </div>
+                </div>
+                
+                <div class="border border-blue-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-blue-700 mb-2">Time-of-Use</h4>
+                  <p class="text-sm text-gray-700 mb-2">Different rates for different times of day.</p>
+                  <div class="bg-gray-50 p-3 rounded text-xs">
+                    <strong>Example:</strong><br>
+                    Peak (2-7 PM): 18¢/kWh<br>
+                    Off-Peak: 9¢/kWh<br>
+                    Night: 6¢/kWh
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-texas-navy mb-4">Understanding Your Rate</h3>
+              
+              <div class="bg-yellow-50 p-6 rounded-lg mb-6">
+                <h4 class="font-semibold text-yellow-800 mb-3">⚠️ Important: Check Your Usage Level</h4>
+                <p class="text-sm text-yellow-800">
+                  Many plans have different rates depending on how much electricity you use. The rate advertised may only apply at specific usage levels (often 1,000 or 2,000 kWh).
+                </p>
+              </div>
+
+              <div class="space-y-4">
+                <div>
+                  <h4 class="font-semibold text-gray-900 mb-2">Bill Credits & Discounts</h4>
+                  <ul class="text-sm text-gray-700 space-y-1">
+                    <li>• <strong>Usage Credits:</strong> Credits applied when you use specific amounts</li>
+                    <li>• <strong>Bill Credits:</strong> Fixed dollar amounts subtracted from your bill</li>
+                    <li>• <strong>Promotional Credits:</strong> Temporary credits for first few months</li>
+                    <li>• <strong>Auto-Pay Discounts:</strong> Savings for automatic payments</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 class="font-semibold text-gray-900 mb-2">Green Energy Charges</h4>
+                  <ul class="text-sm text-gray-700 space-y-1">
+                    <li>• <strong>RECs (Renewable Energy Certificates):</strong> Usually $0.01-0.03/kWh</li>
+                    <li>• <strong>Carbon Offset Fees:</strong> Small fee for environmental programs</li>
+                    <li>• <strong>Solar/Wind Sourcing:</strong> May show as separate line item</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 3 -->
+        <section id="tdsp-charges" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+          <h2 class="text-3xl font-bold text-texas-navy mb-6">TDSP Delivery Charges (The Big One!)</h2>
+          
+          <div class="bg-red-50 p-6 rounded-lg mb-8">
+            <h3 class="text-lg font-semibold text-red-800 mb-3">🔍 Critical Information</h3>
+            <p class="text-red-800">
+              <strong>TDSP charges typically account for 35-45% of your total electricity bill</strong> and are the same regardless of which retail provider you choose. These charges pay for maintaining the power lines, transformers, and infrastructure that delivers electricity to your home.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-xl font-semibold text-texas-navy mb-4">Major TDSP Companies in Texas</h3>
+              
+              <div class="space-y-4">
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 mb-2">CenterPoint Energy</h4>
+                  <p class="text-sm text-gray-600 mb-2">Serves Houston and surrounding areas</p>
+                  <div class="text-xs text-gray-600">
+                    Typical charges: ~$18-25/month for average home
+                  </div>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 mb-2">Oncor Electric</h4>
+                  <p class="text-sm text-gray-600 mb-2">Serves Dallas and North/West Texas</p>
+                  <div class="text-xs text-gray-600">
+                    Typical charges: ~$15-22/month for average home
+                  </div>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 mb-2">AEP Texas</h4>
+                  <p class="text-sm text-gray-600 mb-2">Serves South and West Texas</p>
+                  <div class="text-xs text-gray-600">
+                    Typical charges: ~$16-24/month for average home
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-texas-navy mb-4">TDSP Charge Breakdown</h3>
+              
+              <div class="space-y-4">
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-gray-900 mb-3">Typical TDSP Charges (CenterPoint Example)</h4>
+                  <div class="space-y-2 text-sm">
+                    <div class="flex justify-between"><span>Customer Charge</span><span>$5.47</span></div>
+                    <div class="flex justify-between"><span>Energy Delivery (1,000 kWh × $0.044)</span><span>$4.40</span></div>
+                    <div class="flex justify-between"><span>Transmission (1,000 kWh × $0.0458)</span><span>$4.58</span></div>
+                    <div class="flex justify-between"><span>Advanced Metering</span><span>$3.05</span></div>
+                    <div class="flex justify-between"><span>System Benefit Fund</span><span>$0.65</span></div>
+                    <div class="border-t pt-2 flex justify-between font-semibold"><span>Total TDSP Charges</span><span>$18.15</span></div>
+                  </div>
+                </div>
+                
+                <div class="border border-blue-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-blue-700 mb-2">📍 Find Your TDSP</h4>
+                  <p class="text-sm text-blue-700">
+                    Your TDSP is determined by your location, not your choice. Check your current bill or use your ZIP code on PowerToChoose.org to identify your TDSP.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 bg-blue-50 p-6 rounded-lg">
+            <h3 class="text-lg font-semibold text-blue-800 mb-3">💡 Key Takeaway</h3>
+            <p class="text-blue-800">
+              <strong>TDSP charges are unavoidable and identical across all providers.</strong> When comparing electricity plans, focus on the energy rate and provider fees – you can't control TDSP charges, but they significantly impact your total bill.
+            </p>
+          </div>
+        </section>
+
+        <!-- Section 4 -->
+        <section id="fees-taxes" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+          <h2 class="text-3xl font-bold text-texas-navy mb-6">Fees and Taxes Breakdown</h2>
+          
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-xl font-semibold text-texas-navy mb-4">Common Provider Fees</h3>
+              
+              <div class="space-y-4">
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 mb-2">Monthly Service Fee</h4>
+                  <p class="text-sm text-gray-700 mb-2">Fixed monthly charge from your REP</p>
+                  <div class="text-xs text-gray-600">
+                    <strong>Typical Range:</strong> $0 - $20/month<br>
+                    <strong>Average:</strong> $9.95/month
+                  </div>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 mb-2">Connection/Activation Fee</h4>
+                  <p class="text-sm text-gray-700 mb-2">One-time fee when starting service</p>
+                  <div class="text-xs text-gray-600">
+                    <strong>Typical Range:</strong> $0 - $50<br>
+                    <strong>Note:</strong> May be waived with promotional offers
+                  </div>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 mb-2">Late Payment Fee</h4>
+                  <p class="text-sm text-gray-700 mb-2">Charged when payment is received after due date</p>
+                  <div class="text-xs text-gray-600">
+                    <strong>Typical Range:</strong> 1.5% - 5% of balance or $25-50 flat fee
+                  </div>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 mb-2">Returned Payment Fee</h4>
+                  <p class="text-sm text-gray-700 mb-2">Fee for bounced checks or failed ACH payments</p>
+                  <div class="text-xs text-gray-600">
+                    <strong>Typical Range:</strong> $25 - $35
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-texas-navy mb-4">Taxes & Regulatory Charges</h3>
+              
+              <div class="space-y-4">
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 mb-2">State Sales Tax</h4>
+                  <p class="text-sm text-gray-700 mb-2">Texas state sales tax on electricity</p>
+                  <div class="text-xs text-gray-600">
+                    <strong>Rate:</strong> 6.25% on energy charges only<br>
+                    <strong>Applied to:</strong> kWh usage charges, not delivery charges
+                  </div>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 mb-2">Local Taxes</h4>
+                  <p class="text-sm text-gray-700 mb-2">City and county taxes (if applicable)</p>
+                  <div class="text-xs text-gray-600">
+                    <strong>Rate:</strong> Varies by location (0% - 2%)<br>
+                    <strong>Note:</strong> Not all areas have local electricity taxes
+                  </div>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 mb-2">Regulatory Assessments</h4>
+                  <p class="text-sm text-gray-700 mb-2">Fees to fund state regulatory activities</p>
+                  <div class="text-xs text-gray-600">
+                    <strong>Typical:</strong> Small percentage or flat fee<br>
+                    <strong>Purpose:</strong> Funds Public Utility Commission operations
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 bg-yellow-50 p-6 rounded-lg">
+            <h3 class="text-lg font-semibold text-yellow-800 mb-3">📊 Tax Calculation Example</h3>
+            <div class="text-sm text-yellow-800">
+              <strong>Energy Charges:</strong> $120.00<br>
+              <strong>State Sales Tax (6.25%):</strong> $7.50<br>
+              <strong>Local Tax (1%):</strong> $1.20<br>
+              <strong>Total Taxes:</strong> $8.70<br><br>
+              <em>Note: Taxes are typically only applied to energy charges, not TDSP delivery charges or provider fees.</em>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 5 -->
+        <section id="usage-details" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+          <h2 class="text-3xl font-bold text-texas-navy mb-6">Reading Your Usage Details</h2>
+          
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-xl font-semibold text-texas-navy mb-4">Meter Information</h3>
+              
+              <div class="space-y-4">
+                <div class="bg-blue-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-blue-700 mb-2">ESI ID (Electric Service Identifier)</h4>
+                  <p class="text-sm text-blue-700">
+                    Your unique 17 or 22-digit identifier. This never changes, even when you switch providers. You'll need this when shopping for electricity plans.
+                  </p>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-gray-900 mb-2">Meter Readings</h4>
+                  <div class="text-sm text-gray-700">
+                    <strong>Previous Reading:</strong> Starting meter reading<br>
+                    <strong>Current Reading:</strong> Ending meter reading<br>
+                    <strong>Usage (kWh):</strong> Current - Previous = Your consumption
+                  </div>
+                </div>
+                
+                <div class="border border-gray-200 p-4 rounded-lg">
+                  <h4 class="font-semibold text-gray-900 mb-2">Billing Period</h4>
+                  <p class="text-sm text-gray-700">
+                    Usually 28-32 days. Compare usage by looking at daily average (total kWh ÷ days in billing period) rather than total monthly usage.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-texas-navy mb-4">Understanding Your Usage</h3>
+              
+              <div class="space-y-4">
+                <div class="bg-green-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-green-700 mb-3">💡 Smart Meter Features</h4>
+                  <p class="text-sm text-green-700 mb-2">
+                    Most Texas homes have smart meters that provide detailed usage data:
+                  </p>
+                  <ul class="text-xs text-green-700 space-y-1">
+                    <li>• Hourly usage tracking</li>
+                    <li>• Remote meter reading</li>
+                    <li>• Real-time usage alerts</li>
+                    <li>• Outage detection and reporting</li>
+                  </ul>
+                </div>
+                
+                <div class="space-y-3">
+                  <h4 class="font-semibold text-gray-900">Seasonal Usage Patterns</h4>
+                  <div class="grid grid-cols-2 gap-3 text-sm">
+                    <div class="bg-orange-50 p-3 rounded">
+                      <strong class="text-orange-700">Summer Peak</strong><br>
+                      <span class="text-orange-600">May - September<br>
+                      Air conditioning drives usage up 50-100%</span>
+                    </div>
+                    <div class="bg-blue-50 p-3 rounded">
+                      <strong class="text-blue-700">Winter Low</strong><br>
+                      <span class="text-blue-600">October - April<br>
+                      Lowest usage if you have gas heating</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8">
+            <h3 class="text-xl font-semibold text-texas-navy mb-4">Daily Usage Breakdown</h3>
+            <div class="bg-gray-50 p-6 rounded-lg">
+              <h4 class="font-semibold text-gray-900 mb-4">Average Daily Usage by Home Size</h4>
+              <div class="grid md:grid-cols-3 gap-4 text-sm">
+                <div class="text-center">
+                  <div class="text-2xl font-bold text-texas-red">20-30</div>
+                  <div class="text-gray-600">kWh/day</div>
+                  <div class="text-xs text-gray-500">Apartments & Small Homes</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-2xl font-bold text-texas-red">30-50</div>
+                  <div class="text-gray-600">kWh/day</div>
+                  <div class="text-xs text-gray-500">Average Homes</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-2xl font-bold text-texas-red">50-100</div>
+                  <div class="text-gray-600">kWh/day</div>
+                  <div class="text-xs text-gray-500">Large Homes & High Usage</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 6 -->
+        <section id="billing-errors" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+          <h2 class="text-3xl font-bold text-texas-navy mb-6">Spotting and Resolving Billing Errors</h2>
+          
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-xl font-semibold text-red-700 mb-4">🚨 Common Billing Errors</h3>
+              
+              <div class="space-y-4">
+                <div class="border border-red-200 rounded-lg p-4 bg-red-50">
+                  <h4 class="font-semibold text-red-700 mb-2">Estimated Meter Readings</h4>
+                  <p class="text-sm text-red-700">
+                    Sometimes utility companies estimate usage instead of reading your actual meter. Look for "E" or "Estimated" on your bill.
+                  </p>
+                </div>
+                
+                <div class="border border-red-200 rounded-lg p-4 bg-red-50">
+                  <h4 class="font-semibold text-red-700 mb-2">Wrong Rate Applied</h4>
+                  <p class="text-sm text-red-700">
+                    Your provider may apply the wrong rate tier or fail to apply promotional credits you're entitled to.
+                  </p>
+                </div>
+                
+                <div class="border border-red-200 rounded-lg p-4 bg-red-50">
+                  <h4 class="font-semibold text-red-700 mb-2">Duplicate Charges</h4>
+                  <p class="text-sm text-red-700">
+                    Multiple fees for the same service, especially during provider switches or account changes.
+                  </p>
+                </div>
+                
+                <div class="border border-red-200 rounded-lg p-4 bg-red-50">
+                  <h4 class="font-semibold text-red-700 mb-2">Incorrect TDSP Assignment</h4>
+                  <p class="text-sm text-red-700">
+                    Being charged for the wrong utility company's delivery rates (rare but costly when it happens).
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-green-700 mb-4">✅ How to Verify Your Bill</h3>
+              
+              <div class="space-y-4">
+                <div class="bg-green-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-green-700 mb-3">📝 Monthly Bill Review Checklist</h4>
+                  <ul class="text-sm text-green-700 space-y-2">
+                    <li>☐ Verify kWh usage matches your meter readings</li>
+                    <li>☐ Check that the rate per kWh matches your contract</li>
+                    <li>☐ Confirm TDSP charges match your utility company</li>
+                    <li>☐ Look for any new or unexpected fees</li>
+                    <li>☐ Verify promotional credits were applied</li>
+                    <li>☐ Check billing period dates and number of days</li>
+                  </ul>
+                </div>
+                
+                <div class="border border-green-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-green-700 mb-2">Calculate Expected Bill</h4>
+                  <div class="text-sm text-green-700">
+                    <strong>Formula:</strong><br>
+                    (kWh × Your Rate) + Monthly Fees + TDSP Charges + Taxes = Expected Total
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8">
+            <h3 class="text-xl font-semibold text-texas-navy mb-4">Steps to Resolve Billing Errors</h3>
+            
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <div class="bg-texas-red text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-4 mt-1">1</div>
+                <div>
+                  <h4 class="font-semibold text-gray-900 mb-1">Contact Your Provider First</h4>
+                  <p class="text-sm text-gray-600">Call customer service and document your conversation. Most billing errors can be resolved directly with your REP.</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="bg-texas-red text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-4 mt-1">2</div>
+                <div>
+                  <h4 class="font-semibold text-gray-900 mb-1">Gather Documentation</h4>
+                  <p class="text-sm text-gray-600">Collect your contract, recent bills, meter readings, and any relevant correspondence.</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="bg-texas-red text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-4 mt-1">3</div>
+                <div>
+                  <h4 class="font-semibold text-gray-900 mb-1">File a Formal Complaint</h4>
+                  <p class="text-sm text-gray-600">If unresolved after 30 days, file a complaint with the Public Utility Commission of Texas (PUCT).</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="bg-texas-red text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-4 mt-1">4</div>
+                <div>
+                  <h4 class="font-semibold text-gray-900 mb-1">Know Your Rights</h4>
+                  <p class="text-sm text-gray-600">Texas law requires providers to investigate billing disputes within 30 days and provide written responses.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 7 -->
+        <section id="saving-tips" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+          <h2 class="text-3xl font-bold text-texas-navy mb-6">Expert Cost-Saving Tips</h2>
+          
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-xl font-semibold text-green-700 mb-4">💰 Reduce Your Energy Charges</h3>
+              
+              <div class="space-y-4">
+                <div class="bg-green-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-green-700 mb-2">Time Your Usage</h4>
+                  <p class="text-sm text-green-700">
+                    Avoid peak hours (2-7 PM weekdays) when possible. Run dishwashers, washing machines, and pool pumps during off-peak times.
+                  </p>
+                </div>
+                
+                <div class="bg-green-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-green-700 mb-2">Smart Thermostat Settings</h4>
+                  <p class="text-sm text-green-700">
+                    Set AC to 78°F when home, 85°F when away. Each degree can save 6-8% on cooling costs.
+                  </p>
+                </div>
+                
+                <div class="bg-green-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-green-700 mb-2">LED Light Bulbs</h4>
+                  <p class="text-sm text-green-700">
+                    Replace all bulbs with LEDs. They use 75% less energy and last 25 times longer than incandescent bulbs.
+                  </p>
+                </div>
+                
+                <div class="bg-green-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-green-700 mb-2">Unplug "Vampire" Devices</h4>
+                  <p class="text-sm text-green-700">
+                    Electronics draw power even when off. Unplug chargers, TVs, and computers when not in use.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-blue-700 mb-4">📋 Bill Management Strategies</h3>
+              
+              <div class="space-y-4">
+                <div class="bg-blue-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-blue-700 mb-2">Set Up Auto-Pay</h4>
+                  <p class="text-sm text-blue-700">
+                    Many providers offer $5-10 monthly discounts for automatic payments. Never pay late fees again.
+                  </p>
+                </div>
+                
+                <div class="bg-blue-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-blue-700 mb-2">Go Paperless</h4>
+                  <p class="text-sm text-blue-700">
+                    Some providers offer small discounts ($1-3/month) for electronic billing instead of paper bills.
+                  </p>
+                </div>
+                
+                <div class="bg-blue-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-blue-700 mb-2">Budget Billing</h4>
+                  <p class="text-sm text-blue-700">
+                    Average your annual costs into equal monthly payments to avoid summer bill shock.
+                  </p>
+                </div>
+                
+                <div class="bg-blue-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-blue-700 mb-2">Shop Annually</h4>
+                  <p class="text-sm text-blue-700">
+                    Set a calendar reminder to shop for new rates before your contract expires. Loyalty rarely pays in deregulated markets.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 bg-yellow-50 p-6 rounded-lg">
+            <h3 class="text-lg font-semibold text-yellow-800 mb-3">⚡ Potential Monthly Savings</h3>
+            <div class="grid md:grid-cols-3 gap-4 text-sm text-yellow-800">
+              <div class="text-center">
+                <div class="text-2xl font-bold">$15-30</div>
+                <div>Smart thermostat usage</div>
+              </div>
+              <div class="text-center">
+                <div class="text-2xl font-bold">$5-15</div>
+                <div>LED bulbs & unplugging devices</div>
+              </div>
+              <div class="text-center">
+                <div class="text-2xl font-bold">$10-50</div>
+                <div>Shopping for better rates</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 8 -->
+        <section id="contact-info" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+          <h2 class="text-3xl font-bold text-texas-navy mb-6">Get Help & Support</h2>
+          
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-xl font-semibold text-texas-navy mb-4">When You Need Help</h3>
+              
+              <div class="space-y-4">
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 mb-2">📞 Billing Questions</h4>
+                  <p class="text-sm text-gray-600 mb-2">Contact your REP's customer service first</p>
+                  <div class="text-xs text-gray-500">
+                    Available 24/7 for most major providers
+                  </div>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 mb-2">⚡ Power Outages</h4>
+                  <p class="text-sm text-gray-600 mb-2">Contact your TDSP (utility company) directly</p>
+                  <div class="text-xs text-gray-500">
+                    Your REP cannot restore power or fix outages
+                  </div>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 mb-2">📋 Billing Disputes</h4>
+                  <p class="text-sm text-gray-600 mb-2">File complaints with PUCT if unresolved</p>
+                  <div class="text-xs text-gray-500">
+                    Phone: (512) 936-7120 or online at puc.texas.gov
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-texas-navy mb-4">Additional Resources</h3>
+              
+              <div class="space-y-4">
+                <div class="bg-blue-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-blue-700 mb-2">Free Plan Comparison</h4>
+                  <p class="text-sm text-blue-700 mb-2">Use our comparison tool to find better rates</p>
+                  <a href="/electricity-plans" class="text-xs text-blue-600 hover:underline">
+                    Compare Plans →
+                  </a>
+                </div>
+                
+                <div class="bg-blue-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-blue-700 mb-2">Usage Calculator</h4>
+                  <p class="text-sm text-blue-700 mb-2">Estimate your costs with different plans</p>
+                  <a href="/rates/calculator" class="text-xs text-blue-600 hover:underline">
+                    Calculate Costs →
+                  </a>
+                </div>
+                
+                <div class="bg-blue-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-blue-700 mb-2">More Guides</h4>
+                  <p class="text-sm text-blue-700 mb-2">Learn about switching providers and plan types</p>
+                  <a href="/resources/guides" class="text-xs text-blue-600 hover:underline">
+                    View All Guides →
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Footer CTA -->
+      <div class="mt-16 text-center">
+        <div class="bg-gradient-to-r from-texas-navy to-blue-800 text-white p-12 rounded-xl">
+          <h2 class="text-3xl font-bold mb-4">Take Control of Your Electricity Costs</h2>
+          <p class="text-xl mb-8 text-blue-100">Now that you understand your bill, find a better rate and start saving.</p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/electricity-plans" class="bg-texas-red text-white px-8 py-4 rounded-lg font-semibold hover:bg-texas-red-600 transition-colors">
+              Find Better Rates
+            </a>
+            <a href="/resources/guides/choosing-a-provider" class="bg-texas-gold text-texas-navy px-8 py-4 rounded-lg font-semibold hover:bg-texas-gold-600 transition-colors">
+              How to Choose a Provider
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
