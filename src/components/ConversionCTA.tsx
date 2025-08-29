@@ -73,7 +73,7 @@ const ConversionCTA: React.FC<ConversionCTAProps> = ({
         return a & a;
       }, 0);
       const variantIndex = Math.abs(hash) % testVariants.length;
-      setCurrentVariant(testVariants[variantIndex]);
+      setCurrentVariant(testVariants[variantIndex] as typeof variant);
     }
   }, [enableABTesting, testVariants, plan.id, position]);
 
@@ -179,8 +179,8 @@ const ConversionCTA: React.FC<ConversionCTAProps> = ({
     setClickCount(prev => prev + 1);
 
     // Track conversion event
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'cta_click', {
+    if (typeof window !== 'undefined' && 'gtag' in window) {
+      (window as any).gtag('event', 'cta_click', {
         plan_id: plan.id,
         plan_name: plan.name,
         provider: plan.provider.name,

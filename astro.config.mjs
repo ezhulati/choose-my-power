@@ -132,8 +132,7 @@ export default defineConfig({
           return `assets/misc/[name]-[hash].${ext}`;
         },
         
-        // Optimize chunk size limits
-        maxParallelFileOps: 4,
+        // Note: maxParallelFileOps moved to correct location
       }
     },
     
