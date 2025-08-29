@@ -70,7 +70,8 @@ describe('StaticGenerationStrategy', () => {
       
       // Should have city pages (without filters)
       const cityPages = paths.filter(path => 
-        !path.params.path.includes('/') || path.params.path.split('/').length === 1
+        path.params.path && typeof path.params.path === 'string' && 
+        (!path.params.path.includes('/') || path.params.path.split('/').length === 1)
       );
       
       expect(cityPages.length).toBeGreaterThan(0);
@@ -84,8 +85,14 @@ describe('StaticGenerationStrategy', () => {
       const paths = await strategy.generateStaticPaths();
       
       // Dallas (tier 1) should have more filter combinations than small-city (tier 3)
-      const dallasPages = paths.filter(path => path.params.path.startsWith('dallas-tx'));
-      const smallCityPages = paths.filter(path => path.params.path.startsWith('small-city-tx'));
+      const dallasPages = paths.filter(path => 
+        path.params.path && typeof path.params.path === 'string' && 
+        path.params.path.startsWith('dallas-tx')
+      );
+      const smallCityPages = paths.filter(path => 
+        path.params.path && typeof path.params.path === 'string' && 
+        path.params.path.startsWith('small-city-tx')
+      );
       
       expect(dallasPages.length).toBeGreaterThan(smallCityPages.length);
     });
@@ -206,7 +213,10 @@ describe('StaticGenerationStrategy', () => {
     it('should generate appropriate combinations for tier 1 cities', async () => {
       const paths = await strategy.generateStaticPaths();
       
-      const dallasPaths = paths.filter(path => path.params.path.startsWith('dallas-tx'));
+      const dallasPaths = paths.filter(path => 
+        path.params.path && typeof path.params.path === 'string' && 
+        path.params.path.startsWith('dallas-tx')
+      );
       
       // Tier 1 city should have more paths (city page + combinations)
       expect(dallasPaths.length).toBeGreaterThan(10);
@@ -215,7 +225,10 @@ describe('StaticGenerationStrategy', () => {
     it('should generate fewer combinations for tier 3 cities', async () => {
       const paths = await strategy.generateStaticPaths();
       
-      const smallCityPaths = paths.filter(path => path.params.path.startsWith('small-city-tx'));
+      const smallCityPaths = paths.filter(path => 
+        path.params.path && typeof path.params.path === 'string' && 
+        path.params.path.startsWith('small-city-tx')
+      );
       
       // Tier 3 city should have fewer paths
       expect(smallCityPaths.length).toBeLessThan(10);

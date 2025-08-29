@@ -28,10 +28,10 @@ const { currentFilters = {}, city, totalPlans } = Astro.props;
       <label class="block text-sm font-medium text-gray-700 mb-2">Contract Length</label>
       <select id="term-filter" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
         <option value="">Any length</option>
-        <option value="6" {currentFilters.term === '6' ? 'selected' : ''}>6 months</option>
-        <option value="12" {currentFilters.term === '12' || currentFilters.filter === '12-month' ? 'selected' : ''}>12 months</option>
-        <option value="24" {currentFilters.term === '24' ? 'selected' : ''}>24 months</option>
-        <option value="36" {currentFilters.term === '36' ? 'selected' : ''}>36 months</option>
+        <option value="6" selected={currentFilters.term === '6'}>6 months</option>
+        <option value="12" selected={currentFilters.term === '12' || currentFilters.filter === '12-month'}>12 months</option>
+        <option value="24" selected={currentFilters.term === '24'}>24 months</option>
+        <option value="36" selected={currentFilters.term === '36'}>36 months</option>
       </select>
     </div>
 
@@ -40,9 +40,9 @@ const { currentFilters = {}, city, totalPlans } = Astro.props;
       <label class="block text-sm font-medium text-gray-700 mb-2">Rate Type</label>
       <select id="type-filter" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
         <option value="">Any type</option>
-        <option value="fixed" {currentFilters.type === 'fixed' || currentFilters.filter === 'fixed-rate' ? 'selected' : ''}>Fixed Rate</option>
-        <option value="variable" {currentFilters.type === 'variable' ? 'selected' : ''}>Variable Rate</option>
-        <option value="indexed" {currentFilters.type === 'indexed' ? 'selected' : ''}>Indexed Rate</option>
+        <option value="fixed" selected={currentFilters.type === 'fixed' || currentFilters.filter === 'fixed-rate'}>Fixed Rate</option>
+        <option value="variable" selected={currentFilters.type === 'variable'}>Variable Rate</option>
+        <option value="indexed" selected={currentFilters.type === 'indexed'}>Indexed Rate</option>
       </select>
     </div>
 
@@ -51,9 +51,9 @@ const { currentFilters = {}, city, totalPlans } = Astro.props;
       <label class="block text-sm font-medium text-gray-700 mb-2">Green Energy</label>
       <select id="green-filter" class="w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
         <option value="">Any amount</option>
-        <option value="100" {currentFilters.green === '100' || currentFilters.filter === 'green-energy' ? 'selected' : ''}>100% Green</option>
-        <option value="50" {currentFilters.green === '50' ? 'selected' : ''}>50%+ Green</option>
-        <option value="25" {currentFilters.green === '25' ? 'selected' : ''}>25%+ Green</option>
+        <option value="100" selected={currentFilters.green === '100' || currentFilters.filter === 'green-energy'}>100% Green</option>
+        <option value="50" selected={currentFilters.green === '50'}>50%+ Green</option>
+        <option value="25" selected={currentFilters.green === '25'}>25%+ Green</option>
       </select>
     </div>
 

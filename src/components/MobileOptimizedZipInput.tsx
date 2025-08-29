@@ -298,7 +298,6 @@ export const MobileOptimizedZipInput: React.FC<MobileOptimizedZipInputProps> = (
           
           const basicResult: TDSPResolutionResult & { location?: LocationData } = {
             method: 'zip_direct',
-            city: zipResult.city,
             tdsp_duns: '', // Will be filled by consuming component
             tdsp_name: '', // Will be filled by consuming component
             confidence: 'medium',
