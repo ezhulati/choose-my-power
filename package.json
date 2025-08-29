@@ -81,7 +81,13 @@
     "production:validate": "npm run deploy:validate && npm run health:check && npm run cache:stats",
     "production:monitor": "npm run monitor:start",
     "production:status": "npm run deploy:status && npm run health:check && npm run monitor:metrics",
-    "health:check": "node -e 'import(\"./src/lib/api/comparepower-client.ts\").then(async m => { const health = await m.comparePowerClient.healthCheck(); console.log(JSON.stringify(health, null, 2)); })'\" "
+    "health:check": "node -e 'import(\"./src/lib/api/comparepower-client.ts\").then(async m => { const health = await m.comparePowerClient.healthCheck(); console.log(JSON.stringify(health, null, 2)); })'\" ",
+    "changelog:validate": "node scripts/changelog/validate-changelog.mjs",
+    "changelog:add": "node scripts/changelog/interactive-changelog.mjs",
+    "changelog:release": "node scripts/changelog/release-version.mjs",
+    "changelog:format": "node scripts/changelog/format-changelog.mjs",
+    "hooks:install": "bash scripts/install-git-hooks.sh",
+    "hooks:test": "bash scripts/test-git-hooks.sh"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -143,7 +149,7 @@
     "puppeteer": "^24.17.1",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.3.0",
-    "vite": "^6.3.5",
+    "vite": "^5.4.10",
     "vitest": "^3.2.4"
   }
 }

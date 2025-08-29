@@ -224,7 +224,7 @@ const ProviderCardEnhanced = React.forwardRef<HTMLDivElement, ProviderCardProps>
             className="flex-1 group-hover:border-texas-navy/50"
           >
             <Globe className="w-4 h-4 mr-2" />
-            Learn More
+            About {name}
           </Button>
           
           {/* View Plans Button */}

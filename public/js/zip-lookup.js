@@ -1,5 +1,16 @@
 // Enhanced ZIP code form with API-based lookup and comprehensive error handling
-document.addEventListener('DOMContentLoaded', function() {
+// Using traditional script format to bypass module loading issues
+(function() {
+  'use strict';
+  
+  // Wait for DOM to be ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initZipLookup);
+  } else {
+    initZipLookup();
+  }
+  
+  function initZipLookup() {
   const form = document.getElementById('zipForm');
   const input = document.getElementById('zipInput');
   const submitButton = form.querySelector('button[type="submit"]');
@@ -221,4 +232,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }, 500);
     }
   });
-});
+  
+  } // End of initZipLookup function
+})(); // End of IIFE

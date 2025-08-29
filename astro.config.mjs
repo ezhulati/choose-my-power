@@ -253,6 +253,18 @@ export default defineConfig({
   },
   // Performance optimizations
   vite: {
+    define: {
+      // Fix for Vite 6.x __DEFINES__ issue that Astro 5.13.4 requires
+      '__DEFINES__': JSON.stringify({
+        DEV: process.env.NODE_ENV !== 'production',
+        PROD: process.env.NODE_ENV === 'production',
+        NODE_ENV: process.env.NODE_ENV || 'development'
+      }),
+      // Ensure proper environment variable access
+      'global.DEV': process.env.NODE_ENV !== 'production',
+      'import.meta.env.DEV': process.env.NODE_ENV !== 'production',
+      'import.meta.env.PROD': process.env.NODE_ENV === 'production',
+    },
     build: {
       // Increase chunk size warning limit
       chunkSizeWarningLimit: 600,
@@ -278,6 +290,40 @@ export default defineConfig({
     ssr: {
       // Don't externalize these packages in SSR
       noExternal: ['lucide-react']
+    },
+    // Fix MIME type issues in development
+    server: {
+      middlewareMode: false,
+      fs: {
+        // Allow serving files from one level up to the project root
+        allow: ['..']
+      }
+    },
+    // CSS handling configuration
+    css: {
+      devSourcemap: true,
+      preprocessorOptions: {
+        css: {
+          charset: false
+        }
+      }
+    },
+    // Fix CSS module loading issues in development
+    server: {
+      middlewareMode: false,
+      fs: {
+        // Allow serving files from one level up to the project root
+        allow: ['.']
+      },
+      hmr: {
+        overlay: false
+      }
+    },
+    // Ensure proper module resolution
+    resolve: {
+      alias: {
+        '~': new URL('./src', import.meta.url).pathname
+      }
     }
   },
   // Prefetch optimization
