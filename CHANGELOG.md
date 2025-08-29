@@ -8,9 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Major**: Conditional adapter system (Node.js for local development, Netlify for deployment)
+- **Major**: Complete changelog automation system with GitHub Actions workflow
+- **Documentation**: Comprehensive contributing guidelines and setup instructions
+- Interactive changelog management tools with npm scripts
 - Automated changelog generation system
 - Git hooks for enforcing changelog updates
 - CI/CD validation for changelog compliance
+- GitHub Actions workflow for changelog automation and release management
 
 ### Fixed
 - **Critical**: ZIP code lookup causing half-rendered pages requiring manual refresh
@@ -25,6 +30,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Improved accessibility with proper semantic HTML navigation elements
 - **SEO**: Non-descriptive "Learn More" link text replaced with provider-specific descriptions
 - Updated provider card components and homepage links for better search engine optimization
+
+### Changed
+- **Infrastructure**: Enhanced development workflow with proper local build/preview support using conditional adapters
+- **Documentation**: Complete project documentation overhaul with contributing guidelines
+- **CI/CD**: Improved build pipeline with automated changelog validation and git hooks
+- **Performance**: Development server optimized with Node.js adapter for faster local builds
 
 ## [1.2.0] - 2025-08-29
 

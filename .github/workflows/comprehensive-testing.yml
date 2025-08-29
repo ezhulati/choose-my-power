@@ -42,6 +42,43 @@ jobs:
       - name: Security audit
         run: npm audit --audit-level=moderate
 
+      - name: Validate changelog compliance
+        if: github.event_name == 'pull_request'
+        run: |
+          echo "🔍 Validating changelog compliance for PR..."
+          
+          # Check if CHANGELOG.md exists
+          if [ ! -f "CHANGELOG.md" ]; then
+            echo "❌ CHANGELOG.md is missing!"
+            echo "::error::CHANGELOG.md file is required for all repositories"
+            exit 1
+          fi
+          
+          # Check if CHANGELOG.md was modified in this PR
+          git fetch origin main
+          if ! git diff --name-only origin/main...HEAD | grep -q "CHANGELOG.md"; then
+            echo "❌ CHANGELOG.md was not updated in this PR!"
+            echo "::error::All PRs must include updates to CHANGELOG.md"
+            echo "::error::Please add your changes to the [Unreleased] section"
+            exit 1
+          fi
+          
+          # Validate changelog format
+          if ! grep -q "## \[Unreleased\]" CHANGELOG.md; then
+            echo "❌ Missing [Unreleased] section in CHANGELOG.md"
+            echo "::error::CHANGELOG.md must have an [Unreleased] section"
+            exit 1
+          fi
+          
+          # Check for empty unreleased section
+          if ! awk '/^## \[Unreleased\]$/,/^## \[/ { if (/^###/ || /^- /) found=1 } END { exit !found }' CHANGELOG.md; then
+            echo "❌ Unreleased section appears to be empty!"
+            echo "::error::Please add your changes to the [Unreleased] section"
+            exit 1
+          fi
+          
+          echo "✅ Changelog compliance validated successfully"
+
   # Job 2: Unit and Integration Tests
   unit-integration-tests:
     name: Unit & Integration Tests

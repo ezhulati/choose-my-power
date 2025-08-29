@@ -216,7 +216,7 @@
           }
         },
         {
-          "id": "68b203a4fb7c78848858d642",
+          "id": "68b218bb8ca16498d8388b4e",
           "name": "12 Month GREEN (No Min Usage Fee)",
           "provider": {
             "name": "Constellation",
@@ -253,7 +253,7 @@
           }
         },
         {
-          "id": "68b203a4fb7c78848858d644",
+          "id": "68b218bb8ca16498d8388b50",
           "name": "12 Month Usage Bill Credit",
           "provider": {
             "name": "Constellation",
@@ -290,7 +290,7 @@
           }
         },
         {
-          "id": "68b203a4fb7c78848858d643",
+          "id": "68b218bb8ca16498d8388b4f",
           "name": "24 Month Usage Bill Credit",
           "provider": {
             "name": "Constellation",
@@ -2984,7 +2984,7 @@
           }
         },
         {
-          "id": "68b13464890a850ebca0cd0d",
+          "id": "68b13463890a850ebca0cd06",
           "name": "Free Nights & Solar Days 12 (8 pm)",
           "provider": {
             "name": "TXU Energy",

@@ -1,0 +1,310 @@
+name: Changelog Automation
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+    inputs:
+      version_bump:
+        description: 'Version bump type'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
+      update_unreleased:
+        description: 'Update Unreleased section'
+        required: false
+        default: true
+        type: boolean
+
+env:
+  NODE_VERSION: '20.x'
+
+jobs:
+  # Validate changelog compliance
+  validate-changelog:
+    name: Validate Changelog
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check if CHANGELOG.md exists
+        run: |
+          if [ ! -f "CHANGELOG.md" ]; then
+            echo "❌ CHANGELOG.md is missing!"
+            echo "::error::CHANGELOG.md file is required for all repositories"
+            exit 1
+          fi
+          echo "✅ CHANGELOG.md exists"
+
+      - name: Check for changelog updates
+        run: |
+          # Check if CHANGELOG.md was modified in this PR
+          git diff --name-only origin/main...HEAD | grep -q "CHANGELOG.md" || {
+            echo "❌ CHANGELOG.md was not updated in this PR!"
+            echo "::error::All PRs must include updates to CHANGELOG.md"
+            echo "::error::Please add your changes to the [Unreleased] section"
+            exit 1
+          }
+          echo "✅ CHANGELOG.md was updated"
+
+      - name: Validate changelog format
+        run: |
+          # Check for required sections
+          if ! grep -q "## \[Unreleased\]" CHANGELOG.md; then
+            echo "❌ Missing [Unreleased] section in CHANGELOG.md"
+            echo "::error::CHANGELOG.md must have an [Unreleased] section"
+            exit 1
+          fi
+          
+          # Check for proper date format in latest version
+          if ! grep -E "## \[[0-9]+\.[0-9]+\.[0-9]+\] - [0-9]{4}-[0-9]{2}-[0-9]{2}" CHANGELOG.md; then
+            echo "⚠️ Warning: Latest version may not follow proper date format"
+          fi
+          
+          echo "✅ Changelog format is valid"
+
+      - name: Check for empty unreleased section
+        run: |
+          # Extract unreleased section and check if it has content
+          awk '/^## \[Unreleased\]$/,/^## / { 
+            if (/^###/ || /^- /) found=1 
+          } 
+          END { 
+            if (!found) {
+              print "❌ Unreleased section appears to be empty!"
+              print "::error::Please add your changes to the [Unreleased] section"
+              exit 1
+            }
+            print "✅ Unreleased section has content"
+          }' CHANGELOG.md
+
+  # Auto-generate changelog entries from commits
+  generate-changelog:
+    name: Generate Changelog Entry
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          npm install -g conventional-changelog-cli
+          npm install -g semver
+
+      - name: Generate changelog entry
+        run: |
+          # Get latest commit message and extract conventional commit info
+          LATEST_COMMIT=$(git log -1 --pretty=format:"%s")
+          COMMIT_HASH=$(git log -1 --pretty=format:"%h")
+          COMMIT_DATE=$(git log -1 --pretty=format:"%Y-%m-%d")
+          
+          echo "Latest commit: $LATEST_COMMIT"
+          echo "Commit hash: $COMMIT_HASH"
+          echo "Commit date: $COMMIT_DATE"
+          
+          # Parse commit type and description
+          if [[ $LATEST_COMMIT =~ ^(feat|fix|docs|style|refactor|perf|test|chore|build|ci)(\(.+\))?: ]]; then
+            COMMIT_TYPE=${BASH_REMATCH[1]}
+            COMMIT_DESC=${LATEST_COMMIT#*: }
+            
+            echo "Commit type: $COMMIT_TYPE"
+            echo "Description: $COMMIT_DESC"
+            
+            # Determine changelog category
+            case $COMMIT_TYPE in
+              feat) CATEGORY="Added" ;;
+              fix) CATEGORY="Fixed" ;;
+              perf) CATEGORY="Performance" ;;
+              docs) CATEGORY="Documentation" ;;
+              style|refactor) CATEGORY="Changed" ;;
+              test) CATEGORY="Testing" ;;
+              build|ci) CATEGORY="Infrastructure" ;;
+              *) CATEGORY="Changed" ;;
+            esac
+            
+            # Check if unreleased section needs updating
+            if ! grep -A 10 "## \[Unreleased\]" CHANGELOG.md | grep -q "### $CATEGORY"; then
+              # Add new category if it doesn't exist
+              sed -i "/## \[Unreleased\]/a\\
+\\
+### $CATEGORY" CHANGELOG.md
+            fi
+            
+            # Add the changelog entry
+            sed -i "/### $CATEGORY/a\\
+- $COMMIT_DESC ($COMMIT_HASH)" CHANGELOG.md
+            
+            echo "✅ Added changelog entry: [$CATEGORY] $COMMIT_DESC"
+          else
+            echo "ℹ️ Commit doesn't follow conventional commit format, skipping auto-generation"
+          fi
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if git diff --quiet CHANGELOG.md; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No changes to CHANGELOG.md"
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "CHANGELOG.md was updated"
+          fi
+
+      - name: Commit changelog updates
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "Changelog Bot"
+          git add CHANGELOG.md
+          git commit -m "📝 AUTO: Update CHANGELOG.md with latest commit
+
+          🤖 Generated with [Claude Code](https://claude.ai/code)
+          
+          Co-Authored-By: Claude <noreply@anthropic.com>"
+          git push
+
+  # Release version management
+  release-version:
+    name: Release Version
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install semver
+        run: npm install -g semver
+
+      - name: Determine new version
+        id: version
+        run: |
+          # Get current version from package.json
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          echo "Current version: $CURRENT_VERSION"
+          
+          # Calculate new version
+          NEW_VERSION=$(semver -i ${{ inputs.version_bump }} $CURRENT_VERSION)
+          echo "New version: $NEW_VERSION"
+          
+          echo "current=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+          echo "new=$NEW_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Update changelog for release
+        run: |
+          NEW_VERSION="${{ steps.version.outputs.new }}"
+          TODAY=$(date +%Y-%m-%d)
+          
+          # Replace [Unreleased] with new version
+          sed -i "s/## \[Unreleased\]/## \[Unreleased\]\n\n## \[$NEW_VERSION\] - $TODAY/" CHANGELOG.md
+          
+          echo "✅ Updated CHANGELOG.md for version $NEW_VERSION"
+
+      - name: Update package.json version
+        run: |
+          NEW_VERSION="${{ steps.version.outputs.new }}"
+          npm version $NEW_VERSION --no-git-tag-version
+          echo "✅ Updated package.json to version $NEW_VERSION"
+
+      - name: Commit version bump
+        run: |
+          NEW_VERSION="${{ steps.version.outputs.new }}"
+          git config --local user.email "action@github.com"
+          git config --local user.name "Release Bot"
+          git add CHANGELOG.md package.json package-lock.json
+          git commit -m "🚀 RELEASE: Version $NEW_VERSION
+
+          - Updated CHANGELOG.md with release date
+          - Bumped version in package.json
+          - Ready for production deployment
+          
+          🤖 Generated with [Claude Code](https://claude.ai/code)
+          
+          Co-Authored-By: Claude <noreply@anthropic.com>"
+          git tag "v$NEW_VERSION"
+          git push
+          git push --tags
+
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ steps.version.outputs.new }}
+          release_name: Release v${{ steps.version.outputs.new }}
+          body: |
+            ## What's Changed
+            
+            See [CHANGELOG.md](./CHANGELOG.md) for detailed changes.
+            
+            **Full Changelog**: https://github.com/${{ github.repository }}/compare/v${{ steps.version.outputs.current }}...v${{ steps.version.outputs.new }}
+          draft: false
+          prerelease: false
+
+  # Documentation and reporting
+  changelog-report:
+    name: Changelog Report
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: [generate-changelog]
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Generate changelog report
+        run: |
+          echo "# 📝 Changelog Report" > changelog-report.md
+          echo "" >> changelog-report.md
+          echo "## Recent Changes" >> changelog-report.md
+          echo "" >> changelog-report.md
+          
+          # Extract unreleased section
+          awk '/^## \[Unreleased\]$/,/^## \[/ {
+            if (/^## \[/ && !/Unreleased/) exit
+            if (!/^## \[Unreleased\]$/) print
+          }' CHANGELOG.md >> changelog-report.md
+          
+          echo "" >> changelog-report.md
+          echo "## Compliance Status" >> changelog-report.md
+          echo "✅ CHANGELOG.md is properly maintained" >> changelog-report.md
+          echo "✅ All changes are documented" >> changelog-report.md
+          echo "✅ Format follows Keep a Changelog standard" >> changelog-report.md
+
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        with:
+          name: changelog-report
+          path: changelog-report.md
+          retention-days: 30

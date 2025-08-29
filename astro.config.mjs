@@ -2,6 +2,28 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 import netlify from '@astrojs/netlify';
+import node from '@astrojs/node';
+
+// Determine adapter based on environment
+const isProduction = process.env.NODE_ENV === 'production';
+const isNetlify = process.env.NETLIFY === 'true' || process.env.DEPLOY_CONTEXT;
+
+// Use Node adapter for local development/build, Netlify for deployment
+const getAdapter = () => {
+  if (isNetlify || (isProduction && !process.env.LOCAL_BUILD)) {
+    console.log('🌐 Using Netlify adapter for deployment');
+    return netlify({
+      dist: new URL('./dist/', import.meta.url),
+      edgeMiddleware: true,
+      functionPerRoute: false,
+    });
+  } else {
+    console.log('🔧 Using Node adapter for local development/build');
+    return node({
+      mode: 'standalone'
+    });
+  }
+};
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,15 +35,8 @@ export default defineConfig({
     })
   ],
   output: 'server',
-  // Ensure Netlify adapter is consistently applied in all environments
-  adapter: netlify({
-    // Explicitly configure for both development and production
-    dist: new URL('./dist/', import.meta.url),
-    // Enable edge functions for consistent SSR behavior
-    edgeMiddleware: true,
-    // Ensure proper function configuration
-    functionPerRoute: false,
-  }),
+  // Conditional adapter: Node for local, Netlify for deployment
+  adapter: getAdapter(),
   site: 'https://choosemypower.org',
   trailingSlash: 'never',
   
