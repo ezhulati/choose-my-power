@@ -138,11 +138,8 @@ console.log('🏠 Homepage Hero Image:', heroImage);
 
           // Error display management
           function showError(message, type = 'error') {
-            // Remove any existing error messages
-            const existingError = form.querySelector('.zip-error-message');
-            if (existingError) {
-              existingError.remove();
-            }
+            // Clear all existing error messages first
+            clearErrors();
 
             // Create error element
             const errorDiv = document.createElement('div');
@@ -182,24 +179,34 @@ console.log('🏠 Homepage Hero Image:', heroImage);
             // Auto-remove after 8 seconds for non-municipal errors
             if (type !== 'municipal') {
               setTimeout(() => {
-                if (errorDiv.parentNode) {
+                if (errorDiv && errorDiv.parentNode) {
                   errorDiv.remove();
                 }
               }, 8000);
             }
           }
 
-          // Clear any error messages
+          // Clear any error messages - improved to handle multiple messages
           function clearErrors() {
-            const existingError = form.querySelector('.zip-error-message');
-            if (existingError) {
-              existingError.remove();
-            }
+            // Remove all error messages that might exist
+            const existingErrors = document.querySelectorAll('.zip-error-message');
+            existingErrors.forEach(error => {
+              if (error.parentNode) {
+                error.remove();
+              }
+            });
           }
 
-          // Form submission handler
+          // Form submission handler with duplicate prevention
+          let isSubmitting = false;
           form.addEventListener('submit', async function(e) {
             e.preventDefault();
+            
+            // Prevent duplicate submissions
+            if (isSubmitting) {
+              return;
+            }
+            
             const zipCode = input.value.trim();
 
             // Clear previous errors
@@ -218,7 +225,8 @@ console.log('🏠 Homepage Hero Image:', heroImage);
               return;
             }
 
-            // Set loading state
+            // Set loading state and submission flag
+            isSubmitting = true;
             setLoadingState(true);
 
             try {
@@ -227,6 +235,7 @@ console.log('🏠 Homepage Hero Image:', heroImage);
               const result = await response.json();
 
               setLoadingState(false);
+              isSubmitting = false;
 
               if (result.success) {
                 // Success - redirect to the city page
@@ -260,6 +269,7 @@ console.log('🏠 Homepage Hero Image:', heroImage);
 
             } catch (error) {
               setLoadingState(false);
+              isSubmitting = false;
               console.error('❌ ZIP lookup API error:', error);
               showError('Unable to process your request right now. Please try again or <a href="/texas/electricity-providers" class="underline font-semibold hover:text-red-900">browse all Texas providers →</a>');
             }
@@ -284,11 +294,21 @@ console.log('🏠 Homepage Hero Image:', heroImage);
           });
 
           // Auto-submit on 5 digits (optional UX enhancement)
+          let autoSubmitTimeout = null;
           input.addEventListener('input', function(e) {
+            // Clear any pending auto-submit
+            if (autoSubmitTimeout) {
+              clearTimeout(autoSubmitTimeout);
+              autoSubmitTimeout = null;
+            }
+            
             if (e.target.value.length === 5) {
               // Small delay to let user see the complete ZIP code
-              setTimeout(() => {
-                form.dispatchEvent(new Event('submit', { bubbles: true }));
+              autoSubmitTimeout = setTimeout(() => {
+                if (!submitButton.disabled) {
+                  form.dispatchEvent(new Event('submit', { bubbles: true }));
+                }
+                autoSubmitTimeout = null;
               }, 500);
             }
           });
