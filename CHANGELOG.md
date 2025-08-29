@@ -42,6 +42,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **CI/CD**: Improved build pipeline with automated changelog validation and git hooks
 - **Performance**: Development server optimized with Node.js adapter for faster local builds
 
+### Fixed
+- **UX**: Homepage navigation links now point to correct destinations for better user experience
+- "Compare Plans" link updated from `/compare` to `/electricity-plans` for immediate plan comparison access
+
 ## [1.2.0] - 2025-08-29
 
 ### Fixed
