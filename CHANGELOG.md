@@ -34,6 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Replaced 'unsafe-inline' scripts with specific SHA-256 hash-based authentication
 - Fixed CSS MIME type loading issues with proper /_astro/* asset headers
 - Enhanced asset caching with charset specifications for better browser compatibility
+- Updated CSP policy to be compatible with strict-dynamic nonce-based systems
 
 ### Changed
 - **Infrastructure**: Enhanced development workflow with proper local build/preview support using conditional adapters

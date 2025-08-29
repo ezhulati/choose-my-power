@@ -50,8 +50,8 @@
     # Performance Headers
     X-DNS-Prefetch-Control = "on"
     
-    # Content Security Policy - Strict Security with Hash-based Script Loading
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'sha256-UeBNPAjvA0GlAQOzFWmkpIOz4BCkTv1pRdzT/VaOX20=' 'sha256-C+N7h4sk8zBJ58VFz6N2gMzW3zlhy0CF64n+tOAWNX8=' 'sha256-0dVLqlfeNHNaV/61JLpr7IeTCwGx14lLkb6LH+i645Y=' https://www.googletagmanager.com https://www.google-analytics.com https://vercel.live; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://api.comparepower.com https://pricing.api.comparepower.com https://www.google-analytics.com https://vitals.vercel-insights.com wss:; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; manifest-src 'self'; worker-src 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+    # Content Security Policy - Compatible with strict-dynamic and nonce-based systems
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'sha256-UeBNPAjvA0GlAQOzFWmkpIOz4BCkTv1pRdzT/VaOX20=' 'sha256-C+N7h4sk8zBJ58VFz6N2gMzW3zlhy0CF64n+tOAWNX8=' 'sha256-0dVLqlfeNHNaV/61JLpr7IeTCwGx14lLkb6LH+i645Y=' https://www.googletagmanager.com https://www.google-analytics.com https://vercel.live; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://api.comparepower.com https://pricing.api.comparepower.com https://www.google-analytics.com https://vitals.vercel-insights.com wss:; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; manifest-src 'self'; worker-src 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
 
 # Static Assets Caching
 [[headers]]
