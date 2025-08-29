@@ -1,6 +1,6 @@
 {
-  "citySlug": "dean-tx",
-  "cityName": "Dean",
+  "citySlug": "edna-tx",
+  "cityName": "Edna",
   "tdsp": {
     "duns": "957877905",
     "name": "CenterPoint Energy Houston Electric",
@@ -8,7 +8,7 @@
     "tier": 3,
     "priority": 0.4
   },
-  "baseApiUrl": "dean",
+  "baseApiUrl": "edna",
   "filters": {
     "no-filters": {
       "plans": [

@@ -121,11 +121,13 @@ const description = marketingText.seoDescription;
                     <input
                       type="text"
                       id="zipInput"
+                      name="zip"
                       maxlength="5"
                       placeholder="Enter your ZIP code (e.g., 75201)"
                       class="w-full pl-14 pr-6 py-5 text-xl text-gray-900 placeholder-gray-500 border-0 focus:ring-0 focus:outline-none font-medium tracking-wider"
                       autocomplete="postal-code"
                       inputmode="numeric"
+                      required
                     />
                   </div>
                   <button
@@ -141,6 +143,11 @@ const description = marketingText.seoDescription;
                     </div>
                   </button>
                 </div>
+                
+                <!-- Hidden form that will be used for reliable navigation -->
+                <form id="redirectForm" method="GET" style="display: none;">
+                  <input type="hidden" name="redirect" value="">
+                </form>
               </form>
               
               <!-- Live Stats Below Search -->
@@ -315,9 +322,28 @@ const description = marketingText.seoDescription;
               isSubmitting = false;
 
               if (result.success) {
-                // Success - redirect to the city page
+                // Success - use reliable form-based navigation
                 console.log('✅ ZIP lookup successful:', result);
-                window.location.href = result.redirectUrl;
+                
+                // Show success feedback briefly
+                const successMessage = document.createElement('div');
+                successMessage.className = 'zip-success-message mt-4 p-4 rounded-lg text-sm bg-green-50 border border-green-200 text-green-800';
+                successMessage.innerHTML = `
+                  <div class="flex items-center">
+                    <svg class="h-5 w-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <div>
+                      <strong>Found your area!</strong>
+                      <p class="mt-1">Loading ${result.cityDisplayName} electricity plans...</p>
+                    </div>
+                  </div>
+                `;
+                form.parentNode.insertBefore(successMessage, form.nextSibling);
+                
+                // Use browser's native navigation for most reliable experience
+                // This avoids JavaScript navigation issues entirely
+                window.location = result.redirectUrl;
               } else {
                 // Handle different error types
                 console.log('⚠️ ZIP lookup failed:', result);
@@ -328,7 +354,8 @@ const description = marketingText.seoDescription;
                   // Optionally redirect after showing message
                   setTimeout(() => {
                     if (result.redirectUrl) {
-                      window.location.href = result.redirectUrl;
+                      // Use browser's native navigation for municipal utilities too
+                      window.location = result.redirectUrl;
                     }
                   }, 3000);
                 } else if (result.errorType === 'not_found') {
