@@ -1185,3 +1185,7 @@ export function formatCitySlug(cityName: string): string {
   
   return normalizedCity;
 }
+
+export function getAllCities(): string[] {
+  return Object.keys(tdspMapping);
+}
