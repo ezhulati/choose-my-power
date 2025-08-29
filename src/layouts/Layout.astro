@@ -87,8 +87,8 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `https://choosemy
     <link rel="preload" as="font" type="font/ttf" href="https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYMZg.ttf" crossorigin />
     
     <!-- Load Google Fonts CSS with optimal performance -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" /></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=optional" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=optional" rel="stylesheet" /></noscript>
     
     <!-- Optimized critical CSS for maximum performance -->
     <style>
@@ -148,12 +148,25 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `https://choosemy
         min-height: 200px; /* Reserve footer space */
       }
 
-      /* Prevent CLS for form elements */
+      /* Prevent CLS for form elements - Enhanced for ZIP form */
       #zipForm {
-        min-height: 60px; /* Reserve form height */
+        min-height: 72px; /* Exact height reservation for ZIP form */
+        height: 72px; /* Force exact height to prevent any shifting */
         display: block;
         width: 100%;
+        contain: layout style;
+        will-change: auto; /* Prevent unnecessary layer creation */
+      }
+      
+      /* Specific containment for ZIP form input and button */
+      #zipForm .flex {
+        height: 72px; /* Match form height exactly */
         contain: layout;
+      }
+      
+      #zipForm input[type="text"], #zipForm button[type="submit"] {
+        contain: layout;
+        will-change: auto;
       }
       
       /* Prevent CLS for hero text elements */
