@@ -17,6 +17,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CI/CD validation for changelog compliance
 - GitHub Actions workflow for changelog automation and release management
 - **Critical**: ZIP code lookup forms on all city pages to prevent user dead ends
+- **Major**: Complete data generation system improvements with caching optimization
+- New city data files for Amarillo, Brownsville, and Garland with comprehensive coverage
+- Enhanced OG image generation system with 6 new optimized hero images
+- Blog foundation with responsive design and content structure
+- Resources guides section with educational content framework
 
 ### Fixed
 - **Critical**: ZIP code lookup causing half-rendered pages requiring manual refresh
@@ -48,6 +53,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **UI/UX**: Enhanced FacetedPlanGrid with Texas Design System colors and improved visual consistency
 - Updated component styling to use texas-navy, texas-gold, and texas-cream color palette
 - Improved button transitions, shadows, and hover states for better user experience
+- **Performance**: Optimized image caching system with comprehensive metadata storage
+- Enhanced TDSP mapping configuration with expanded city coverage
+- Improved API filter mapping for better plan categorization and search accuracy
 
 ### Fixed
 - **UX**: Homepage navigation links now point to correct destinations for better user experience

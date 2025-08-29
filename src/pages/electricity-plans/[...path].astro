@@ -57,6 +57,13 @@ const {
   shouldIndex 
 } = routeResult;
 
+// Check if this is a municipal utility city and redirect
+const tdspInfo = tdspMapping[citySlug];
+if (tdspInfo?.municipal) {
+  console.log(`🏛️  Municipal utility detected for faceted navigation ${path}, redirecting to municipal utility page`);
+  return Astro.redirect(`/texas/${citySlug}/municipal-utility`, 302);
+}
+
 // Ensure we have required data
 if (!filterResult || !tdspDuns) {
   return Astro.redirect('/404');

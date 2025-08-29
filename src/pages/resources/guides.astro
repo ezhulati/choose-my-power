@@ -1,0 +1,286 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Clock, User, ArrowRight, BookOpen, Zap, DollarSign, Shield, Home, Building, TrendingUp } from 'lucide-react';
+
+const title = "Texas Electricity Guides | Expert Tips & How-To Articles";
+const description = "Comprehensive guides to help you navigate Texas's deregulated electricity market. Learn about providers, plan types, switching process, and saving money.";
+
+// Guide data with descriptions and metadata
+const guides = [
+  {
+    title: "How to Choose an Electricity Provider",
+    slug: "choosing-a-provider",
+    description: "Complete guide to selecting the right electricity provider in Texas. Learn about plan types, rates, and red flags to avoid.",
+    readTime: "12 min read",
+    category: "Getting Started",
+    icon: "shield",
+    difficulty: "Beginner",
+    featured: true
+  },
+  {
+    title: "How to Switch Electricity Providers",
+    slug: "how-to-switch-providers", 
+    description: "Step-by-step process for switching electricity providers in Texas. Timeline, requirements, and what to expect.",
+    readTime: "8 min read",
+    category: "Switching",
+    icon: "arrows",
+    difficulty: "Beginner",
+    featured: true
+  },
+  {
+    title: "Fixed vs Variable Rate Plans",
+    slug: "fixed-vs-variable",
+    description: "Understanding the difference between fixed and variable electricity rates. Which option is right for your situation?",
+    readTime: "10 min read",
+    category: "Plan Types",
+    icon: "trending",
+    difficulty: "Beginner",
+    featured: true
+  },
+  {
+    title: "Understanding Your Electricity Bill",
+    slug: "understanding-your-bill",
+    description: "Decode your Texas electricity bill. Learn about TDSP charges, energy charges, and hidden fees.",
+    readTime: "6 min read", 
+    category: "Billing",
+    icon: "dollar",
+    difficulty: "Beginner",
+    featured: false
+  },
+  {
+    title: "Green Energy Plans in Texas",
+    slug: "green-energy",
+    description: "Complete guide to renewable energy options in Texas. Compare green plans, understand RECs, and make eco-friendly choices.",
+    readTime: "9 min read",
+    category: "Green Energy", 
+    icon: "zap",
+    difficulty: "Intermediate",
+    featured: false
+  },
+  {
+    title: "Red Flags to Avoid When Choosing a Provider",
+    slug: "red-flags",
+    description: "Protect yourself from deceptive marketing practices and unreliable providers. Warning signs and how to spot them.",
+    readTime: "7 min read",
+    category: "Consumer Protection",
+    icon: "shield",
+    difficulty: "Beginner",
+    featured: false
+  },
+  {
+    title: "Moving to Texas: Electricity Setup Guide",
+    slug: "moving-guide",
+    description: "Everything you need to know about setting up electricity when moving to Texas. Timeline, requirements, and tips.",
+    readTime: "11 min read",
+    category: "Moving",
+    icon: "home",
+    difficulty: "Beginner", 
+    featured: false
+  },
+  {
+    title: "Business Electricity Guide",
+    slug: "business-electricity",
+    description: "Guide to commercial electricity plans in Texas. Understanding business rates, demand charges, and contract terms.",
+    readTime: "15 min read",
+    category: "Business",
+    icon: "building",
+    difficulty: "Advanced",
+    featured: false
+  }
+];
+
+const featuredGuides = guides.filter(guide => guide.featured);
+const allGuides = guides.filter(guide => !guide.featured);
+
+function getIcon(iconName: string) {
+  switch(iconName) {
+    case 'shield': return Shield;
+    case 'arrows': return ArrowRight;
+    case 'trending': return TrendingUp;
+    case 'dollar': return DollarSign;
+    case 'zap': return Zap;
+    case 'home': return Home;
+    case 'building': return Building;
+    default: return BookOpen;
+  }
+}
+
+function getDifficultyColor(difficulty: string) {
+  switch(difficulty) {
+    case 'Beginner': return 'bg-green-100 text-green-800';
+    case 'Intermediate': return 'bg-yellow-100 text-yellow-800';
+    case 'Advanced': return 'bg-red-100 text-red-800';
+    default: return 'bg-gray-100 text-gray-800';
+  }
+}
+---
+
+<Layout title={title} description={description}>
+  <div class="min-h-screen bg-gradient-to-b from-texas-cream to-gray-50">
+    <!-- Hero Section -->
+    <div class="bg-texas-navy text-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Texas Electricity Guides</h1>
+        <p class="text-xl text-blue-100 max-w-3xl">Expert guides and resources to help you navigate Texas's deregulated electricity market, save money, and make informed decisions.</p>
+      </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <!-- Featured Guides -->
+      <div class="mb-16">
+        <h2 class="text-3xl font-bold text-texas-navy mb-2">Popular Guides</h2>
+        <p class="text-gray-600 mb-8">Start with these essential guides for Texas electricity customers</p>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {featuredGuides.map((guide) => {
+            const IconComponent = getIcon(guide.icon);
+            return (
+              <a 
+                href={`/resources/guides/${guide.slug}`}
+                class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
+              >
+                <div class="flex items-center mb-4">
+                  <div class="w-12 h-12 bg-texas-red-100 rounded-lg flex items-center justify-center mr-4">
+                    <IconComponent className="w-6 h-6 text-texas-red" />
+                  </div>
+                  <div>
+                    <span class="text-sm font-medium text-texas-red">{guide.category}</span>
+                    <div class="flex items-center gap-2 mt-1">
+                      <Clock className="w-4 h-4 text-gray-500" />
+                      <span class="text-sm text-gray-600">{guide.readTime}</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <h3 class="text-xl font-bold text-texas-navy mb-3 group-hover:text-texas-red transition-colors">
+                  {guide.title}
+                </h3>
+                
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                  {guide.description}
+                </p>
+                
+                <div class="flex items-center justify-between">
+                  <span class={`px-3 py-1 rounded-full text-xs font-medium ${getDifficultyColor(guide.difficulty)}`}>
+                    {guide.difficulty}
+                  </span>
+                  <span class="text-texas-navy font-medium group-hover:text-texas-red transition-colors">
+                    Read Guide →
+                  </span>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+
+      <!-- All Guides -->
+      <div class="mb-16">
+        <h2 class="text-3xl font-bold text-texas-navy mb-2">All Guides</h2>
+        <p class="text-gray-600 mb-8">Comprehensive resources for every aspect of Texas electricity</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {allGuides.map((guide) => {
+            const IconComponent = getIcon(guide.icon);
+            return (
+              <a 
+                href={`/resources/guides/${guide.slug}`}
+                class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-all duration-200 group border border-gray-200"
+              >
+                <div class="flex items-start justify-between mb-4">
+                  <div class="flex items-center">
+                    <div class="w-10 h-10 bg-texas-gold-100 rounded-lg flex items-center justify-center mr-3">
+                      <IconComponent className="w-5 h-5 text-texas-gold-600" />
+                    </div>
+                    <div>
+                      <span class="text-sm font-medium text-texas-gold-600">{guide.category}</span>
+                      <div class="flex items-center gap-2 mt-1">
+                        <Clock className="w-3 h-3 text-gray-500" />
+                        <span class="text-xs text-gray-600">{guide.readTime}</span>
+                        <span class={`px-2 py-0.5 rounded-full text-xs font-medium ${getDifficultyColor(guide.difficulty)}`}>
+                          {guide.difficulty}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <h3 class="text-lg font-bold text-texas-navy mb-2 group-hover:text-texas-red transition-colors">
+                  {guide.title}
+                </h3>
+                
+                <p class="text-gray-700 text-sm leading-relaxed">
+                  {guide.description}
+                </p>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+
+      <!-- Quick Help Section -->
+      <div class="bg-white rounded-xl shadow-lg p-8">
+        <h2 class="text-2xl font-bold text-texas-navy mb-6 text-center">Quick Help</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-texas-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <BookOpen className="w-8 h-8 text-texas-red" />
+            </div>
+            <h3 class="font-bold text-texas-navy mb-2">New to Texas?</h3>
+            <p class="text-gray-600 text-sm mb-4">Start with our beginner guides to understand the basics of choosing electricity in Texas.</p>
+            <a href="/resources/guides/choosing-a-provider" class="text-texas-red hover:text-texas-red-600 font-medium text-sm">
+              Get Started →
+            </a>
+          </div>
+          
+          <div class="text-center">
+            <div class="w-16 h-16 bg-texas-gold-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <ArrowRight className="w-8 h-8 text-texas-gold-600" />
+            </div>
+            <h3 class="font-bold text-texas-navy mb-2">Ready to Switch?</h3>
+            <p class="text-gray-600 text-sm mb-4">Learn the step-by-step process to switch providers and avoid common mistakes.</p>
+            <a href="/resources/guides/how-to-switch-providers" class="text-texas-red hover:text-texas-red-600 font-medium text-sm">
+              Learn How →
+            </a>
+          </div>
+          
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Shield className="w-8 h-8 text-blue-600" />
+            </div>
+            <h3 class="font-bold text-texas-navy mb-2">Avoid Scams</h3>
+            <p class="text-gray-600 text-sm mb-4">Protect yourself from deceptive providers and too-good-to-be-true offers.</p>
+            <a href="/resources/guides/red-flags" class="text-texas-red hover:text-texas-red-600 font-medium text-sm">
+              Stay Safe →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional Resources -->
+      <div class="mt-12 text-center">
+        <div class="bg-texas-cream-200 p-8 rounded-xl">
+          <h2 class="text-2xl font-bold text-texas-navy mb-4">Need Personal Help?</h2>
+          <p class="text-gray-700 mb-6 max-w-2xl mx-auto">
+            Our electricity experts are available to provide personalized recommendations based on your specific needs and usage patterns.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a 
+              href="/resources/support/contact"
+              class="bg-texas-red text-white px-8 py-4 rounded-lg font-semibold hover:bg-texas-red-600 transition-colors"
+            >
+              Contact Our Experts
+            </a>
+            <a 
+              href="/compare"
+              class="bg-white text-texas-navy px-8 py-4 rounded-lg font-semibold border border-texas-navy hover:bg-texas-cream-100 transition-colors"
+            >
+              Compare Plans Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

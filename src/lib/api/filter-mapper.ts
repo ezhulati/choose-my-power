@@ -149,14 +149,17 @@ export const filterDefinitions: FilterDefinition[] = [
   // Provider Filters
   {
     type: 'provider',
-    urlPatterns: ['txu', 'reliant', 'green-mountain', 'gexa', 'direct-energy', 'discount-power'],
+    urlPatterns: ['txu', 'txu-energy', 'reliant', 'reliant-energy', 'green-mountain', 'green-mountain-energy', 'gexa', 'direct-energy', 'discount-power'],
     apiParam: 'brand_id',
     valueTransform: (segment: string) => {
       // This would need to be mapped to actual brand IDs from the API
       const providerMap: Record<string, string> = {
         'txu': 'txu_energy',
+        'txu-energy': 'txu_energy',
         'reliant': 'reliant',
+        'reliant-energy': 'reliant',
         'green-mountain': 'green_mountain',
+        'green-mountain-energy': 'green_mountain',
         'gexa': 'gexa_energy',
         'direct-energy': 'direct_energy',
         'discount-power': 'discount_power'
@@ -166,8 +169,11 @@ export const filterDefinitions: FilterDefinition[] = [
     displayName: (segment: string) => {
       const providerNames: Record<string, string> = {
         'txu': 'TXU Energy',
+        'txu-energy': 'TXU Energy',
         'reliant': 'Reliant',
+        'reliant-energy': 'Reliant',
         'green-mountain': 'Green Mountain Energy',
+        'green-mountain-energy': 'Green Mountain Energy',
         'gexa': 'Gexa Energy',
         'direct-energy': 'Direct Energy',
         'discount-power': 'Discount Power'

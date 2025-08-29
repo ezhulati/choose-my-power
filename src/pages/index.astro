@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import StandardZipInput from '../components/StandardZipInput.astro';
 import { Zap, Shield, DollarSign, Clock, MapPin, Calculator, Leaf, Users, TrendingDown, Battery, Award, BarChart, Star, ArrowRight } from 'lucide-react';
 import { getCredibleMarketingText, DEFAULT_COUNTS } from '../lib/utils/dynamic-counts';
 
@@ -100,64 +101,14 @@ const description = marketingText.seoDescription;
             </div>
             
             <!-- Enhanced ZIP Code Search -->
-            <div class="max-w-xl mx-auto mb-12">
-              <div class="mb-6">
-                <h2 class="text-xl font-semibold text-white mb-2">Find Plans in Your Area</h2>
-                <p class="text-blue-200 text-sm">Enter your ZIP code to see available electricity plans and rates</p>
-              </div>
-              
-              <form id="zipForm" class="relative" action="/api/zip-lookup" method="GET">
-                <div class="flex rounded-2xl shadow-2xl overflow-hidden bg-white ring-4 ring-white/10 backdrop-blur-sm">
-                  <div class="flex-1 relative">
-                    <div class="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none">
-                      <svg class="h-6 w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                      </svg>
-                    </div>
-                    <input
-                      type="text"
-                      id="zipInput"
-                      name="zip"
-                      maxlength="5"
-                      placeholder="Enter your ZIP code (e.g., 75201)"
-                      class="w-full pl-14 pr-6 py-5 text-xl text-gray-900 placeholder-gray-500 border-0 focus:ring-0 focus:outline-none font-medium tracking-wider"
-                      autocomplete="postal-code"
-                      inputmode="numeric"
-                      required
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    aria-label="Search electricity plans by ZIP code"
-                    class="px-10 py-5 bg-gradient-to-r from-texas-red to-texas-red-700 text-white font-bold hover:from-texas-red-600 hover:to-texas-red-800 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-texas-red-200 active:scale-95 group"
-                  >
-                    <div class="flex items-center gap-3">
-                      <svg class="h-6 w-6 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                      </svg>
-                      <span class="hidden sm:block">Find Plans</span>
-                    </div>
-                  </button>
-                </div>
-              </form>
-              
-              <!-- Live Stats Below Search -->
-              <div class="mt-6 grid grid-cols-3 gap-4 text-center">
-                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                  <div class="text-2xl font-bold text-white">881</div>
-                  <div class="text-xs text-blue-200">Texas Cities</div>
-                </div>
-                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                  <div class="text-2xl font-bold text-white">{DEFAULT_COUNTS.providers}</div>
-                  <div class="text-xs text-blue-200">Providers</div>
-                </div>
-                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                  <div class="text-2xl font-bold text-white">{DEFAULT_COUNTS.plans}+</div>
-                  <div class="text-xs text-blue-200">Plans</div>
-                </div>
-              </div>
-            </div>
+            <StandardZipInput 
+              variant="hero" 
+              size="lg"
+              showTitle={true}
+              showDescription={true}
+              showStats={true}
+              customClass="mb-12"
+            />
 
             <!-- Enhanced Call-to-Action -->
             <div class="text-center">
@@ -183,9 +134,6 @@ const description = marketingText.seoDescription;
         </div>
       </div>
 
-
-      <!-- Load ZIP lookup functionality from external optimized file -->
-      <script src="/js/zip-lookup.js" defer></script>
     </section>
 
     <!-- Enhanced Key Benefits with Texas Theme -->

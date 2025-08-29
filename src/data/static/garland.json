@@ -1,0 +1,19 @@
+{
+  "citySlug": "garland-tx",
+  "cityDisplayName": "Garland, TX",
+  "tdspDuns": "1039940674000",
+  "tdspName": "Oncor Electric Delivery",
+  "zone": "North",
+  "tier": 2,
+  "priority": 0.85,
+  "marketType": "deregulated",
+  "plans": [],
+  "lastUpdated": "2024-12-18T22:38:00.000Z",
+  "planCount": 0,
+  "lowestRate": null,
+  "averageRate": null,
+  "meta": {
+    "description": "Compare electricity plans in Garland, TX. Find the best energy rates from licensed providers serving the Oncor Electric Delivery territory.",
+    "keywords": "garland texas electricity, garland energy plans, garland electric rates, oncor electricity garland"
+  }
+}

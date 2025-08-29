@@ -24,6 +24,7 @@ export const tdspMapping: TdspMapping = {
   'alvarado-tx': { duns: '957877905', name: 'CenterPoint Energy Houston Electric', zone: 'Coast', tier: 3, priority: 0.45 },
   'alvin-tx': { duns: '957877905', name: 'CenterPoint Energy Houston Electric', zone: 'Coast', tier: 3, priority: 0.45 },
   'alvord-tx': { duns: '957877905', name: 'CenterPoint Energy Houston Electric', zone: 'Coast', tier: 3, priority: 0.45 },
+  'amarillo-tx': { duns: '007923311', name: 'AEP Texas North Company', zone: 'North', tier: 2, priority: 0.75 },
   'andrews-tx': { duns: '957877905', name: 'CenterPoint Energy Houston Electric', zone: 'Coast', tier: 3, priority: 0.45 },
   // Municipal Utility Cities - Special handling required
   'austin-tx': { duns: 'MUNICIPAL', name: 'Austin Energy', zone: 'Central', tier: 1, priority: 1.0, municipal: true },
@@ -110,6 +111,7 @@ export const tdspMapping: TdspMapping = {
   'bridgeport-tx': { duns: '957877905', name: 'CenterPoint Energy Houston Electric', zone: 'Coast', tier: 3, priority: 0.45 },
   'bronte-tx': { duns: '957877905', name: 'CenterPoint Energy Houston Electric', zone: 'Coast', tier: 3, priority: 0.45 },
   'brookesmith-tx': { duns: '957877905', name: 'CenterPoint Energy Houston Electric', zone: 'Coast', tier: 3, priority: 0.45 },
+  'brownsville-tx': { duns: 'MUNICIPAL', name: 'Brownsville Public Utilities Board', zone: 'Valley', tier: 2, priority: 0.8, municipal: true },
   'brookshire-tx': { duns: '957877905', name: 'CenterPoint Energy Houston Electric', zone: 'Coast', tier: 3, priority: 0.45 },
   'brownsboro-tx': { duns: '957877905', name: 'CenterPoint Energy Houston Electric', zone: 'Coast', tier: 3, priority: 0.45 },
   'brownwood-tx': { duns: '007923311', name: 'AEP Texas North Company', zone: 'North', tier: 3, priority: 0.3 },
@@ -304,6 +306,7 @@ export const tdspMapping: TdspMapping = {
   'galveston-tx': { duns: '957877905', name: 'CenterPoint Energy Houston Electric', zone: 'Coast', tier: 3, priority: 0.45 },
   'ganado-tx': { duns: '957877905', name: 'CenterPoint Energy Houston Electric', zone: 'Coast', tier: 3, priority: 0.45 },
   'garciasville-tx': { duns: '957877905', name: 'CenterPoint Energy Houston Electric', zone: 'Coast', tier: 3, priority: 0.45 },
+  'garland-tx': { duns: '1039940674000', name: 'Oncor Electric Delivery', zone: 'North', tier: 2, priority: 0.85 },
   'garden-city-tx': { duns: '957877905', name: 'CenterPoint Energy Houston Electric', zone: 'Coast', tier: 3, priority: 0.45 },
   'gardendale-tx': { duns: '957877905', name: 'CenterPoint Energy Houston Electric', zone: 'Coast', tier: 3, priority: 0.45 },
   'garrett-tx': { duns: '957877905', name: 'CenterPoint Energy Houston Electric', zone: 'Coast', tier: 3, priority: 0.45 },

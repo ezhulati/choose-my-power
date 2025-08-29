@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import HeroBackground from '../../components/HeroBackground.astro';
-import { ZipCodeSearch } from '../../components/ZipCodeSearch';
+import StandardZipInput from '../../components/StandardZipInput.astro';
 import { Calculator, Clock, Zap, Leaf, DollarSign, Shield, Star } from 'lucide-react';
 
 const title = "Compare Texas Electricity Plans | ChooseMyPower";
@@ -27,10 +27,11 @@ const description = "Compare 300+ Texas electricity plans side-by-side. Fixed, v
       variant="plans"
     >
       <div class="mt-8 max-w-md mx-auto">
-        <ZipCodeSearch 
-          client:load
-          placeholder="Enter ZIP to see local plans"
-          className="w-full"
+        <StandardZipInput 
+          variant="hero"
+          size="md"
+          showTitle={true}
+          showDescription={true}
         />
       </div>
     </HeroBackground>

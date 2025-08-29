@@ -1,0 +1,303 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Calendar, Clock, User, ArrowRight, TrendingUp, Zap, DollarSign, Leaf, Home } from 'lucide-react';
+
+const title = "Texas Electricity Blog | Energy Market News & Tips";
+const description = "Stay informed about the Texas electricity market with our expert analysis, consumer tips, and industry news. Save money and make smarter energy choices.";
+---
+
+<Layout title={title} description={description}>
+  <div class="min-h-screen bg-gradient-to-b from-texas-cream to-gray-50">
+    <!-- Hero Section -->
+    <div class="bg-texas-navy text-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Texas Electricity Blog</h1>
+        <p class="text-xl text-blue-100 max-w-3xl">Expert insights, market analysis, and consumer tips to help you navigate the Texas deregulated electricity market.</p>
+      </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <!-- Featured Article -->
+      <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+        <div class="flex items-center text-sm text-gray-600 mb-3">
+          <span class="bg-texas-red text-white px-3 py-1 rounded-full text-xs font-medium mr-3">FEATURED</span>
+          <Calendar className="w-4 h-4 mr-2" />
+          December 18, 2024
+          <Clock className="w-4 h-4 ml-4 mr-2" />
+          8 min read
+        </div>
+        <h2 class="text-3xl font-bold text-texas-navy mb-4">
+          Winter 2025: How Texas Electricity Rates Are Responding to Cold Weather Demand
+        </h2>
+        <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+          As Texas faces its coldest December in five years, electricity demand has surged 23% above normal levels. We analyze how this impacts pricing across different plan types and what consumers should know about managing winter electricity costs.
+        </p>
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <User className="w-5 h-5 text-gray-500 mr-2" />
+            <span class="text-gray-700">By Sarah Martinez, Energy Market Analyst</span>
+          </div>
+          <a href="#" class="bg-texas-red text-white px-6 py-3 rounded-lg font-semibold hover:bg-texas-red-600 transition-colors">
+            Read Article <ArrowRight className="w-4 h-4 inline ml-2" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Article Categories -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+        <a href="/blog/category/market-analysis" class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-all group">
+          <TrendingUp className="w-8 h-8 text-texas-red mb-3 group-hover:scale-110 transition-transform" />
+          <h3 class="font-semibold text-texas-navy">Market Analysis</h3>
+          <p class="text-sm text-gray-600">Industry trends & forecasts</p>
+        </a>
+        
+        <a href="/blog/category/consumer-tips" class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-all group">
+          <DollarSign className="w-8 h-8 text-texas-gold-600 mb-3 group-hover:scale-110 transition-transform" />
+          <h3 class="font-semibold text-texas-navy">Money-Saving Tips</h3>
+          <p class="text-sm text-gray-600">Lower your electricity bill</p>
+        </a>
+        
+        <a href="/blog/category/green-energy" class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-all group">
+          <Leaf className="w-8 h-8 text-green-600 mb-3 group-hover:scale-110 transition-transform" />
+          <h3 class="font-semibold text-texas-navy">Green Energy</h3>
+          <p class="text-sm text-gray-600">Renewable electricity options</p>
+        </a>
+        
+        <a href="/blog/category/home-energy" class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-all group">
+          <Home className="w-8 h-8 text-blue-600 mb-3 group-hover:scale-110 transition-transform" />
+          <h3 class="font-semibold text-texas-navy">Home Energy</h3>
+          <p class="text-sm text-gray-600">Efficiency & smart home tips</p>
+        </a>
+      </div>
+
+      <!-- Recent Articles Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Main Content -->
+        <div class="lg:col-span-2">
+          <h2 class="text-2xl font-bold text-texas-navy mb-8">Latest Articles</h2>
+          
+          <div class="space-y-8">
+            <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+              <div class="p-6">
+                <div class="flex items-center text-sm text-gray-600 mb-3">
+                  <Calendar className="w-4 h-4 mr-2" />
+                  December 15, 2024
+                  <Clock className="w-4 h-4 ml-4 mr-2" />
+                  5 min read
+                </div>
+                <h3 class="text-xl font-bold text-texas-navy mb-3">
+                  5 Red Flags to Avoid When Choosing an Electricity Provider
+                </h3>
+                <p class="text-gray-700 mb-4">
+                  Not all electricity providers are created equal. Learn the warning signs of deceptive marketing practices, hidden fees, and unreliable service that could cost you hundreds.
+                </p>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-texas-red font-medium">Consumer Tips</span>
+                  <a href="#" class="text-texas-navy hover:text-texas-red transition-colors font-medium">
+                    Read More →
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+              <div class="p-6">
+                <div class="flex items-center text-sm text-gray-600 mb-3">
+                  <Calendar className="w-4 h-4 mr-2" />
+                  December 12, 2024
+                  <Clock className="w-4 h-4 ml-4 mr-2" />
+                  7 min read
+                </div>
+                <h3 class="text-xl font-bold text-texas-navy mb-3">
+                  Texas Green Energy Plans: Are They Worth the Premium?
+                </h3>
+                <p class="text-gray-700 mb-4">
+                  With renewable energy options becoming more popular, we analyze the real costs and benefits of green electricity plans in Texas. Plus, which providers offer the best green energy deals.
+                </p>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-green-600 font-medium">Green Energy</span>
+                  <a href="#" class="text-texas-navy hover:text-texas-red transition-colors font-medium">
+                    Read More →
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+              <div class="p-6">
+                <div class="flex items-center text-sm text-gray-600 mb-3">
+                  <Calendar className="w-4 h-4 mr-2" />
+                  December 10, 2024
+                  <Clock className="w-4 h-4 ml-4 mr-2" />
+                  6 min read
+                </div>
+                <h3 class="text-xl font-bold text-texas-navy mb-3">
+                  Smart Home Technology: Reducing Your Electric Bill in 2025
+                </h3>
+                <p class="text-gray-700 mb-4">
+                  From programmable thermostats to smart water heaters, discover how home automation technology can slash your electricity costs by 20-30% while improving comfort.
+                </p>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-blue-600 font-medium">Home Energy</span>
+                  <a href="#" class="text-texas-navy hover:text-texas-red transition-colors font-medium">
+                    Read More →
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+              <div class="p-6">
+                <div class="flex items-center text-sm text-gray-600 mb-3">
+                  <Calendar className="w-4 h-4 mr-2" />
+                  December 8, 2024
+                  <Clock className="w-4 h-4 ml-4 mr-2" />
+                  4 min read
+                </div>
+                <h3 class="text-xl font-bold text-texas-navy mb-3">
+                  ERCOT Winter Outlook: What Texas Consumers Should Know
+                </h3>
+                <p class="text-gray-700 mb-4">
+                  ERCOT's latest seasonal assessment reveals key insights about grid reliability and pricing for winter 2024-2025. Here's how it affects your electricity costs.
+                </p>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-texas-red font-medium">Market Analysis</span>
+                  <a href="#" class="text-texas-navy hover:text-texas-red transition-colors font-medium">
+                    Read More →
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article class="bg-white rounded-lg shadow-lg overflow-hidden">
+              <div class="p-6">
+                <div class="flex items-center text-sm text-gray-600 mb-3">
+                  <Calendar className="w-4 h-4 mr-2" />
+                  December 5, 2024
+                  <Clock className="w-4 h-4 ml-4 mr-2" />
+                  8 min read
+                </div>
+                <h3 class="text-xl font-bold text-texas-navy mb-3">
+                  Fixed vs. Variable Electricity Rates: 2025 Buyer's Guide
+                </h3>
+                <p class="text-gray-700 mb-4">
+                  With market volatility reaching new highs, choosing between fixed and variable rate plans has never been more important. Our comprehensive analysis helps you decide.
+                </p>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-texas-gold-600 font-medium">Consumer Tips</span>
+                  <a href="#" class="text-texas-navy hover:text-texas-red transition-colors font-medium">
+                    Read More →
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Pagination -->
+          <div class="flex justify-center items-center space-x-4 mt-12">
+            <button class="px-4 py-2 text-gray-500 cursor-not-allowed">Previous</button>
+            <button class="px-4 py-2 bg-texas-navy text-white rounded">1</button>
+            <button class="px-4 py-2 text-texas-navy hover:bg-texas-cream-200 rounded">2</button>
+            <button class="px-4 py-2 text-texas-navy hover:bg-texas-cream-200 rounded">3</button>
+            <button class="px-4 py-2 text-texas-navy hover:text-texas-red">Next</button>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="space-y-8">
+          <!-- Newsletter Signup -->
+          <div class="bg-white p-6 rounded-xl shadow-lg">
+            <div class="text-center mb-4">
+              <Zap className="w-12 h-12 text-texas-red mx-auto mb-3" />
+              <h3 class="text-xl font-bold text-texas-navy">Stay Powered Up</h3>
+              <p class="text-gray-600">Get weekly electricity market insights and money-saving tips.</p>
+            </div>
+            <form class="space-y-4">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-4 focus:ring-texas-red-200 focus:border-texas-red"
+              />
+              <button
+                type="submit"
+                class="w-full bg-texas-red text-white px-6 py-3 rounded-lg font-semibold hover:bg-texas-red-600 transition-colors"
+              >
+                Subscribe
+              </button>
+            </form>
+            <p class="text-xs text-gray-500 mt-3">
+              Free. No spam. Unsubscribe anytime.
+            </p>
+          </div>
+
+          <!-- Popular Articles -->
+          <div class="bg-white p-6 rounded-xl shadow-lg">
+            <h3 class="text-xl font-bold text-texas-navy mb-4">Most Popular</h3>
+            <div class="space-y-4">
+              <a href="#" class="block group">
+                <div class="flex items-start">
+                  <div class="flex-shrink-0 w-8 h-8 bg-texas-red-100 rounded-full flex items-center justify-center mr-3">
+                    <span class="text-sm font-bold text-texas-red">1</span>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-gray-900 group-hover:text-texas-red transition-colors">
+                      How to Read Your Texas Electricity Bill
+                    </h4>
+                    <p class="text-xs text-gray-600 mt-1">12,400 views</p>
+                  </div>
+                </div>
+              </a>
+              
+              <a href="#" class="block group">
+                <div class="flex items-start">
+                  <div class="flex-shrink-0 w-8 h-8 bg-texas-gold-100 rounded-full flex items-center justify-center mr-3">
+                    <span class="text-sm font-bold text-texas-gold-600">2</span>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-gray-900 group-hover:text-texas-red transition-colors">
+                      Best Electricity Providers in Houston
+                    </h4>
+                    <p class="text-xs text-gray-600 mt-1">9,800 views</p>
+                  </div>
+                </div>
+              </a>
+              
+              <a href="#" class="block group">
+                <div class="flex items-start">
+                  <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                    <span class="text-sm font-bold text-blue-600">3</span>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-gray-900 group-hover:text-texas-red transition-colors">
+                      When Should You Switch Electric Companies?
+                    </h4>
+                    <p class="text-xs text-gray-600 mt-1">8,200 views</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Tools -->
+          <div class="bg-white p-6 rounded-xl shadow-lg">
+            <h3 class="text-xl font-bold text-texas-navy mb-4">Quick Tools</h3>
+            <div class="space-y-3">
+              <a href="/rates/calculator" class="block p-3 bg-texas-cream-100 rounded-lg hover:bg-texas-cream-200 transition-colors">
+                <div class="font-medium text-texas-navy">Rate Calculator</div>
+                <div class="text-sm text-gray-600">Compare your current rate</div>
+              </a>
+              <a href="/compare" class="block p-3 bg-texas-cream-100 rounded-lg hover:bg-texas-cream-200 transition-colors">
+                <div class="font-medium text-texas-navy">Plan Comparison</div>
+                <div class="text-sm text-gray-600">Find the best deal</div>
+              </a>
+              <a href="/resources/guides/how-to-switch-providers" class="block p-3 bg-texas-cream-100 rounded-lg hover:bg-texas-cream-200 transition-colors">
+                <div class="font-medium text-texas-navy">Switching Guide</div>
+                <div class="text-sm text-gray-600">Step-by-step help</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

@@ -1,12 +1,12 @@
 {
   "cacheKey": "Dallas_TX__filtered_3_North",
-  "url": "/images/og/generated/filtered/Dallas_TX__filtered_3_North_1756504752804.jpg",
-  "localPath": "/Users/mbp-ez/Downloads/AI Library/Apps/CMP/choose-my-power/public/images/og/generated/filtered/Dallas_TX__filtered_3_North_1756504752804.jpg",
-  "generatedAt": "2025-08-29T21:59:12.804Z",
+  "url": "/images/og/generated/filtered/Dallas_TX__filtered_3_North_1756508120230.jpg",
+  "localPath": "/Users/mbp-ez/Downloads/AI Library/Apps/CMP/choose-my-power/public/images/og/generated/filtered/Dallas_TX__filtered_3_North_1756508120230.jpg",
+  "generatedAt": "2025-08-29T22:55:20.230Z",
   "context": {
     "city": "Dallas TX",
     "filters": [],
-    "planCount": 60,
+    "planCount": 111,
     "lowestRate": 999,
     "topProviders": [],
     "pageType": "filtered",
@@ -14,5 +14,5 @@
     "tdspZone": "North",
     "seasonalContext": "summer"
   },
-  "expiresAt": "2025-09-28T21:59:13.355Z"
+  "expiresAt": "2025-09-28T22:55:20.899Z"
 }
