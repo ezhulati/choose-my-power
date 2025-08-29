@@ -153,3 +153,338 @@ This platform generates 2000+ pages dynamically. Key patterns:
 - Use tier-based deployment for production (`npm run deploy:tier1`)
 - Monitor API quotas during data generation
 - Cache invalidation affects 881 city pages simultaneously
+
+## ChooseMyPower Design System
+
+**Version**: 1.0  
+**Last Updated**: August 29, 2025  
+**Philosophy**: Authentic Texas electricity market branding with Power to Choose aesthetics
+
+### 🎨 Color System
+
+#### Primary Brand Colors (Texas Flag Inspired)
+```css
+/* Texas Navy - Primary brand color */
+texas-navy: #002868
+
+/* Texas Red - Action, CTAs, urgency */
+texas-red: #dc2626 (500)
+texas-red-50: #fef2f2 (lightest tint)
+texas-red-100: #fee2e2
+texas-red-200: #fecaca  
+texas-red-300: #fca5a5
+texas-red-400: #f87171
+texas-red-600: #b91c1c (hover/active)
+texas-red-700: #991b1b (pressed)
+texas-red-800: #7f1d1d (darkest)
+
+/* Texas Gold - Highlights, success, premium */
+texas-gold: #f59e0b (500)
+texas-gold-50: #fffbeb
+texas-gold-100: #fef3c7  
+texas-gold-200: #fde68a
+texas-gold-300: #fcd34d
+texas-gold-400: #fbbf24
+texas-gold-600: #d97706 (hover/active)
+texas-gold-700: #b45309 (pressed)
+
+/* Texas Cream - Soft backgrounds, subtle areas */
+texas-cream: #f8edd3 (500)  
+texas-cream-50: #fefefe (lightest)
+texas-cream-200: #fefcf8
+texas-cream-300: #fdf8f0
+texas-cream-400: #fbf2e4
+```
+
+#### Semantic Color Usage
+- **Primary Actions**: `texas-red` (Shop, Compare, Sign Up)
+- **Secondary Actions**: `texas-navy` (Learn More, View Details)
+- **Success States**: `texas-gold` (Savings, Best Value)
+- **Navigation**: `texas-navy` (headers, links, menu)
+- **Backgrounds**: `texas-cream` variants for sections
+- **Text**: `texas-navy` for headings, gray-900/700/600 for body
+
+#### Accessibility Requirements
+- **WCAG AA**: Minimum 4.5:1 contrast ratio for normal text
+- **WCAG AAA**: Target 7:1 contrast ratio where possible
+- All color combinations tested for colorblind accessibility
+
+### 📝 Typography System
+
+#### Font Stack
+```css
+Primary: 'Inter', system-ui, sans-serif
+Secondary: 'Georgia', serif (for emphasis/quotes)
+```
+
+#### Type Scale
+```css
+/* Display - Hero sections, major headings */
+text-7xl: 72px / 1.1 (4.5rem) - Hero titles
+text-6xl: 60px / 1.1 (3.75rem) - Page titles
+text-5xl: 48px / 1.1 (3rem) - Section titles
+
+/* Headings - Content hierarchy */
+text-4xl: 36px / 1.1 (2.25rem) - H1
+text-3xl: 30px / 1.2 (1.875rem) - H2  
+text-2xl: 24px / 1.3 (1.5rem) - H3
+text-xl: 20px / 1.4 (1.25rem) - H4
+text-lg: 18px / 1.5 (1.125rem) - H5
+
+/* Body Text */
+text-base: 16px / 1.5 (1rem) - Primary body
+text-sm: 14px / 1.4 (0.875rem) - Secondary text, captions
+text-xs: 12px / 1.3 (0.75rem) - Labels, fine print
+```
+
+#### Font Weights
+```css
+font-light: 300 - Rare use, large display text
+font-normal: 400 - Body text default
+font-medium: 500 - Emphasized body text
+font-semibold: 600 - Subheadings, important text
+font-bold: 700 - Headings, CTAs
+font-extrabold: 800 - Display headings only
+```
+
+#### Typography Rules
+1. **Headings**: Always `texas-navy`, font-bold or semibold
+2. **Body Text**: `text-gray-900` primary, `text-gray-700` secondary
+3. **Links**: `text-texas-navy` with `hover:text-texas-red`
+4. **CTAs**: White text on colored backgrounds
+5. **Line Height**: Increase with smaller font sizes for readability
+
+### 📏 Spacing & Layout System
+
+#### Spacing Scale (Tailwind Units)
+```css
+0.5: 2px  - Fine details, borders
+1: 4px    - Tight spacing
+1.5: 6px  - Button padding
+2: 8px    - Small gaps
+3: 12px   - Standard gaps
+4: 16px   - Standard padding
+6: 24px   - Section padding
+8: 32px   - Large padding
+10: 40px  - Large gaps
+12: 48px  - Section margins
+16: 64px  - Large section spacing  
+20: 80px  - Hero padding
+24: 96px  - Major section gaps
+32: 128px - Page section spacing
+```
+
+#### Container System
+```css
+/* Max Widths */
+max-w-sm: 384px - Small containers
+max-w-md: 448px - Form containers
+max-w-lg: 512px - Content containers
+max-w-xl: 576px - Article containers
+max-w-2xl: 672px - Blog posts
+max-w-4xl: 896px - Wide content
+max-w-6xl: 1152px - Page content
+max-w-7xl: 1280px - Full layouts
+
+/* Standard Container */
+.container: center, px-4, max-w-7xl
+```
+
+#### Grid System
+```css
+/* Plan Grids */
+grid-cols-1 md:grid-cols-2 lg:grid-cols-3
+gap-6 md:gap-8
+
+/* City Grids */  
+grid-cols-2 md:grid-cols-3 lg:grid-cols-4
+gap-4
+
+/* Feature Grids */
+grid-cols-1 md:grid-cols-2 lg:grid-cols-3
+gap-8
+```
+
+### 🔲 Component Library
+
+#### Button Variants
+```css
+/* Primary - Main CTAs */
+.btn-primary {
+  @apply bg-texas-red text-white px-6 py-3 rounded-lg font-semibold;
+  @apply hover:bg-texas-red-600 transition-all duration-200;
+  @apply focus:ring-4 focus:ring-texas-red-200 focus:outline-none;
+}
+
+/* Secondary - Less important actions */
+.btn-secondary {
+  @apply bg-texas-navy text-white px-6 py-3 rounded-lg font-semibold;
+  @apply hover:bg-blue-800 transition-all duration-200;
+}
+
+/* Outline - Subtle actions */
+.btn-outline {
+  @apply border-2 border-texas-navy text-texas-navy px-6 py-3 rounded-lg font-semibold;
+  @apply hover:bg-texas-navy hover:text-white transition-all duration-200;
+}
+
+/* Gold - Premium actions */
+.btn-gold {
+  @apply bg-texas-gold text-white px-6 py-3 rounded-lg font-semibold;
+  @apply hover:bg-texas-gold-600 transition-all duration-200;
+}
+```
+
+#### Card Components
+```css
+/* Plan Cards */
+.plan-card {
+  @apply bg-white rounded-xl shadow-lg border border-gray-200;
+  @apply hover:shadow-xl hover:-translate-y-1 transition-all duration-300;
+  @apply p-6;
+}
+
+/* City Cards */
+.city-card {
+  @apply bg-white rounded-lg shadow-md border border-gray-100;
+  @apply hover:shadow-lg hover:border-texas-navy transition-all duration-200;
+  @apply p-4;
+}
+
+/* Feature Cards */
+.feature-card {
+  @apply bg-gradient-to-br from-white to-gray-50 rounded-xl;
+  @apply border border-gray-200 p-8 text-center;
+  @apply hover:border-texas-gold transition-all duration-300;
+}
+```
+
+#### Form Elements
+```css
+/* Input Fields */
+.input-field {
+  @apply w-full px-4 py-3 border border-gray-300 rounded-lg;
+  @apply focus:ring-4 focus:ring-texas-red-200 focus:border-texas-red;
+  @apply text-gray-900 placeholder-gray-500;
+}
+
+/* Select Dropdowns */
+.select-field {
+  @apply w-full px-4 py-3 border border-gray-300 rounded-lg bg-white;
+  @apply focus:ring-4 focus:ring-texas-red-200 focus:border-texas-red;
+  @apply text-gray-900;
+}
+```
+
+### 🎯 Interactive States
+
+#### Hover States
+- **Buttons**: Darken by 100 (texas-red-600, texas-navy → blue-800)
+- **Cards**: `hover:shadow-xl hover:-translate-y-1`
+- **Links**: `hover:text-texas-red hover:underline`
+
+#### Focus States  
+- **Buttons**: `focus:ring-4 focus:ring-{color}-200`
+- **Inputs**: `focus:ring-4 focus:ring-texas-red-200 focus:border-texas-red`
+- **Cards**: `focus:outline-none focus:ring-2 focus:ring-texas-navy`
+
+#### Active/Pressed States
+- **Buttons**: `active:scale-95` or darker color variant
+- **Interactive Elements**: Brief scale animation
+
+### 📱 Responsive Breakpoints
+
+```css
+/* Mobile First Approach */
+sm: 640px   - Large phones
+md: 768px   - Tablets  
+lg: 1024px  - Laptops
+xl: 1280px  - Desktops
+2xl: 1536px - Large screens
+```
+
+#### Responsive Patterns
+```css
+/* Typography */
+text-4xl md:text-5xl lg:text-6xl
+
+/* Padding */  
+py-12 md:py-16 lg:py-20
+
+/* Grid */
+grid-cols-1 md:grid-cols-2 lg:grid-cols-3
+
+/* Spacing */
+gap-4 md:gap-6 lg:gap-8
+```
+
+### 🔧 Utility Classes
+
+#### Common Patterns
+```css
+/* Hero Sections */
+.hero-gradient {
+  @apply bg-gradient-to-r from-texas-navy via-blue-800 to-texas-navy;
+}
+
+/* Section Backgrounds */
+.section-cream {
+  @apply bg-gradient-to-b from-texas-cream to-gray-50;
+}
+
+/* Texas Themed Shadows */
+.texas-shadow {
+  @apply shadow-lg shadow-texas-red/10;
+}
+```
+
+### ♿ Accessibility Guidelines
+
+#### Color Contrast
+- **Body text**: Minimum 4.5:1 against background
+- **Large text**: Minimum 3:1 against background
+- **Interactive elements**: Must pass contrast tests
+
+#### Focus Management
+- Visible focus indicators on all interactive elements
+- Logical tab order throughout pages
+- Skip links for keyboard navigation
+
+#### ARIA Labels
+- Descriptive labels for all buttons and links
+- Proper heading hierarchy (h1 → h2 → h3)
+- Alt text for all meaningful images
+
+### 📋 Usage Rules
+
+#### DO's
+- ✅ Use texas-navy for primary text and navigation
+- ✅ Use texas-red for primary CTAs and urgent actions  
+- ✅ Use texas-gold for success states and highlights
+- ✅ Maintain consistent spacing using the scale
+- ✅ Test all color combinations for accessibility
+- ✅ Use hover states on interactive elements
+
+#### DON'Ts
+- ❌ Don't use generic blue/red colors (use Texas variants)
+- ❌ Don't mix font weights within the same text block
+- ❌ Don't use less than text-sm for body text
+- ❌ Don't create custom spacing outside the scale
+- ❌ Don't skip hover/focus states on buttons/links
+
+### 🔄 Maintenance Protocol
+
+**When adding new components:**
+1. Check if existing design system components can be used
+2. If creating new variants, follow established patterns
+3. Update this design system documentation
+4. Test accessibility and responsive behavior
+5. Add examples to component library
+
+**Color changes require:**
+1. Accessibility testing across all combinations
+2. Update of this documentation
+3. Review of all existing components
+4. Brand consistency check
+
+**This design system should be referenced for ALL design decisions and updated whenever new patterns are established.**
