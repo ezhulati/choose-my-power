@@ -41,6 +41,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Documentation**: Complete project documentation overhaul with contributing guidelines
 - **CI/CD**: Improved build pipeline with automated changelog validation and git hooks
 - **Performance**: Development server optimized with Node.js adapter for faster local builds
+- **UI/UX**: Enhanced FacetedPlanGrid with Texas Design System colors and improved visual consistency
+- Updated component styling to use texas-navy, texas-gold, and texas-cream color palette
+- Improved button transitions, shadows, and hover states for better user experience
 
 ### Fixed
 - **UX**: Homepage navigation links now point to correct destinations for better user experience

@@ -457,9 +457,9 @@ Compare
     }
   }
   
-  /* Grid Header Styles - Responsive */
+  /* Grid Header Styles - Responsive with Texas Design System */
   .grid-header {
-    @apply bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg mb-6;
+    @apply bg-gradient-to-r from-texas-cream-200 to-texas-cream-300 border border-texas-gold/20 rounded-lg mb-6;
     /* Mobile-first header spacing */
     padding: 1rem; /* 16px mobile */
   }
@@ -499,7 +499,7 @@ Compare
   }
   
   .stat-item {
-    @apply bg-white rounded-lg flex items-center shadow-sm border border-blue-100 transition-all duration-200 hover:shadow-md;
+    @apply bg-white rounded-lg flex items-center shadow-sm border border-texas-gold/20 transition-all duration-200 hover:shadow-md;
     /* Mobile-first stat card spacing */
     padding: 0.75rem; /* 12px mobile */
     gap: 0.5rem; /* 8px mobile */
@@ -520,7 +520,7 @@ Compare
   }
   
   .stat-item.primary {
-    @apply bg-gradient-to-br from-blue-600 to-indigo-600 text-white border-texas-navy;
+    @apply bg-gradient-to-br from-texas-navy to-blue-800 text-white border-texas-navy;
   }
   
   .stat-icon {
@@ -540,7 +540,7 @@ Compare
   }
   
   .average-rate {
-    @apply text-center p-3 bg-white rounded-lg border border-blue-100;
+    @apply text-center p-3 bg-white rounded-lg border border-texas-gold/20;
   }
   
   .average-rate-label {
@@ -596,7 +596,7 @@ Compare
   }
   
   .sort-select {
-    @apply bg-white border border-gray-300 rounded-lg px-4 py-2 text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all;
+    @apply bg-white border border-gray-300 rounded-lg px-4 py-2 text-sm font-medium focus:ring-2 focus:ring-texas-navy/50 focus:border-texas-navy transition-all;
   }
   
   .view-controls {
@@ -612,7 +612,7 @@ Compare
   }
   
   .view-toggle.active {
-    @apply bg-texas-navy text-white hover:bg-blue-800;
+    @apply bg-texas-navy text-white hover:bg-texas-navy/90;
   }
   
   .view-icon {
@@ -667,7 +667,7 @@ Compare
   
   /* Table View Styles */
   .plans-table-container {
-    @apply bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm;
+    @apply bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-all duration-200;
   }
   
   .plans-table {
@@ -683,7 +683,7 @@ Compare
   }
   
   .sort-header {
-    @apply flex items-center gap-1 text-xs font-semibold text-gray-700 uppercase tracking-wider hover:text-texas-navy transition-colors;
+    @apply flex items-center gap-1 text-xs font-semibold text-gray-700 uppercase tracking-wider hover:text-texas-navy transition-all duration-200;
   }
   
   .sort-arrow {
@@ -691,7 +691,7 @@ Compare
   }
   
   .plan-row {
-    @apply border-b border-gray-100 hover:bg-gray-50 transition-colors;
+    @apply border-b border-gray-100 hover:bg-texas-cream-50 transition-all duration-200;
   }
   
   .plan-row:last-child {
@@ -751,7 +751,7 @@ Compare
   }
   
   .feature-badge.green {
-    @apply bg-texas-gold-100 text-texas-navy;
+    @apply bg-green-50 text-green-700 border border-green-200;
   }
   
   .feature-badge.no-deposit {
@@ -791,11 +791,11 @@ Compare
   }
   
   .enroll-btn-small {
-    @apply bg-texas-red hover:bg-texas-red-600 text-white text-xs font-semibold px-3 py-1 rounded transition-colors;
+    @apply bg-texas-red hover:bg-texas-red/90 text-white text-xs font-semibold px-3 py-1 rounded-md transition-all duration-200 shadow-sm hover:shadow-md;
   }
   
   .compare-btn-small {
-    @apply bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs px-2 py-1 rounded transition-colors;
+    @apply bg-texas-navy/10 hover:bg-texas-navy/20 text-texas-navy text-xs px-2 py-1 rounded-md transition-all duration-200 border border-texas-navy/20;
   }
   
   /* Compact View Styles */
@@ -807,7 +807,7 @@ Compare
   }
   
   .compact-plan-card {
-    @apply bg-white border border-gray-200 rounded-lg hover:shadow-md transition-all duration-200;
+    @apply bg-white border border-gray-200 rounded-xl hover:shadow-lg hover:border-texas-navy/30 transition-all duration-300 hover:-translate-y-1;
     /* Enterprise-grade card spacing */
     padding: 1.5rem; /* 24px */
   }
@@ -857,11 +857,11 @@ Compare
   }
   
   .compact-enroll-btn {
-    @apply bg-texas-red hover:bg-texas-red-600 text-white text-sm font-semibold px-4 py-2 rounded transition-colors flex-1 text-center;
+    @apply bg-texas-red hover:bg-texas-red/90 text-white text-sm font-semibold px-4 py-2 rounded-md transition-all duration-200 flex-1 text-center shadow-sm hover:shadow-md;
   }
   
   .compact-compare-btn {
-    @apply bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm px-3 py-2 rounded transition-colors;
+    @apply bg-texas-navy/10 hover:bg-texas-navy/20 text-texas-navy text-sm px-3 py-2 rounded-md transition-all duration-200 border border-texas-navy/20;
   }
   
   /* Load More Section */
@@ -873,7 +873,7 @@ Compare
   }
   
   .load-more-btn {
-    @apply bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg flex items-center gap-3 mx-auto;
+    @apply bg-gradient-to-r from-texas-navy to-blue-800 hover:from-texas-navy/90 hover:to-blue-800/90 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg flex items-center gap-3 mx-auto;
   }
   
   .load-more-icon {
@@ -922,7 +922,7 @@ Compare
   }
   
   .no-plans-suggestions {
-    @apply bg-texas-cream-200 border border-blue-200 rounded-xl p-6 mb-8 text-left;
+    @apply bg-texas-cream-200 border border-texas-gold/20 rounded-xl p-6 mb-8 text-left;
   }
   
   .suggestions-title {
@@ -942,11 +942,11 @@ Compare
   }
   
   .clear-filters-btn {
-    @apply bg-texas-red-100 hover:bg-texas-red-200 text-texas-navy font-semibold px-6 py-3 rounded-lg transition-colors flex items-center gap-2 justify-center;
+    @apply bg-texas-red/10 hover:bg-texas-red/20 text-texas-navy font-semibold px-6 py-3 rounded-lg transition-all duration-200 flex items-center gap-2 justify-center shadow-sm hover:shadow-md;
   }
   
   .browse-providers-btn {
-    @apply bg-texas-navy/10 hover:bg-texas-navy/20 text-texas-navy font-semibold px-6 py-3 rounded-lg transition-colors flex items-center gap-2 justify-center;
+    @apply bg-texas-navy/10 hover:bg-texas-navy/20 text-texas-navy font-semibold px-6 py-3 rounded-lg transition-all duration-200 flex items-center gap-2 justify-center shadow-sm hover:shadow-md;
   }
   
   .btn-icon {
