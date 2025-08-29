@@ -1,0 +1,26 @@
+{
+  "timestamp": "2025-08-29T23:03:52.370Z",
+  "before": {
+    "brokenLinks": 42
+  },
+  "after": {
+    "brokenLinks": 0
+  },
+  "fixed": [
+    "/press",
+    "/blog",
+    "/resources/support/contact",
+    "/resources/guides",
+    "/texas/austin-tx/municipal-utility",
+    "/texas/san-antonio-tx/municipal-utility",
+    "/texas/brownsville-tx/municipal-utility",
+    "/texas/garland-tx",
+    "/texas/amarillo-tx",
+    "/texas/brownsville-tx",
+    "/electricity-plans/dallas-tx/txu-energy",
+    "/electricity-plans/dallas-tx/reliant-energy",
+    "/electricity-plans/dallas-tx/green-mountain-energy"
+  ],
+  "stillBroken": [],
+  "improvementRate": 100
+}
