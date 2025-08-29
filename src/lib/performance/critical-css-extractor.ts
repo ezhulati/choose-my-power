@@ -165,9 +165,9 @@ export class CriticalCSSExtractor {
       '.justify-center{justify-content:center}',
       
       // Font loading optimization (prevent FOIT/FOUT)
-      '@font-face{font-family:Inter;font-style:normal;font-weight:400;font-display:swap;src:url("https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2") format("woff2")}',
-      '@font-face{font-family:Inter;font-style:normal;font-weight:600;font-display:swap;src:url("https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGlBfis.woff2") format("woff2")}',
-      '@font-face{font-family:Inter;font-style:normal;font-weight:700;font-display:swap;src:url("https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuDyfAZ9hiJ_EaA.woff2") format("woff2")}',
+      '@font-face{font-family:Inter;font-style:normal;font-weight:400;font-display:swap;src:url("https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.ttf") format("truetype")}',
+      '@font-face{font-family:Inter;font-style:normal;font-weight:600;font-display:swap;src:url("https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYMZg.ttf") format("truetype")}',
+      '@font-face{font-family:Inter;font-style:normal;font-weight:700;font-display:swap;src:url("https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYMZg.ttf") format("truetype")}',
     ];
 
     return this.minifyCSS(criticalRules.join(''));

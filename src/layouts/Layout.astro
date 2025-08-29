@@ -83,8 +83,8 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `https://choosemy
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     
     <!-- Preload critical font weights immediately -->
-    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2" crossorigin />
-    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGKYAZ9hiA.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/ttf" href="https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.ttf" crossorigin />
+    <link rel="preload" as="font" type="font/ttf" href="https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYMZg.ttf" crossorigin />
     
     <!-- Load Google Fonts CSS with optimal performance -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
@@ -369,7 +369,7 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `https://choosemy
     <!-- Service Worker disabled in development to prevent interference -->
     <!-- Will be enabled in production build -->
     <script nonce="web-vitals">
-      if ('serviceWorker' in navigator && import.meta.env.PROD) {
+      if ('serviceWorker' in navigator && window.location.hostname !== 'localhost') {
         window.addEventListener('load', () => {
           navigator.serviceWorker.register('/sw-core-web-vitals.js')
             .then((registration) => {
@@ -391,7 +391,7 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `https://choosemy
             console.log('📊 SW: Performance update:', event.data.metrics);
           }
         });
-      } else if (!import.meta.env.PROD) {
+      } else if (window.location.hostname === 'localhost') {
         console.log('🚧 SW: Service Worker disabled in development mode');
       }
     </script>
@@ -401,7 +401,7 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `https://choosemy
       // Initialize Core Web Vitals monitoring
       window.addEventListener('load', () => {
         // Import Web Vitals library dynamically to avoid blocking
-        import('https://unpkg.com/web-vitals@3/dist/web-vitals.js')
+        import('/js/web-vitals.mjs')
           .then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
             // Track all Core Web Vitals
             getCLS((metric) => {

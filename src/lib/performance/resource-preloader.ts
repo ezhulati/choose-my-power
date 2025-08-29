@@ -53,9 +53,9 @@ export class ResourcePreloader {
     this.config = {
       critical: {
         fonts: [
-          'https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2',
-          'https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGlBfis.woff2',
-          'https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuDyfAZ9hiJ_EaA.woff2'
+          'https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.ttf',
+          'https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYMZg.ttf',
+          'https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYMZg.ttf'
         ],
         scripts: [
           // Assets are generated with hashed names by Astro build process
@@ -311,7 +311,7 @@ export class ResourcePreloader {
             break;
           case 'font':
             link.as = 'font';
-            link.type = 'font/woff2';
+            link.type = 'font/ttf';
             link.crossOrigin = 'anonymous';
             if (priority === 'high') {
               link.setAttribute('fetchpriority', 'high');
@@ -526,7 +526,7 @@ export class ResourcePreloader {
   private inferResourceType(url: string): 'script' | 'style' | 'font' | 'image' | 'fetch' {
     if (url.endsWith('.js')) return 'script';
     if (url.endsWith('.css')) return 'style';
-    if (url.match(/\.(woff2?|ttf|otf|eot)$/)) return 'font';
+    if (url.match(/\.(ttf|woff2?|otf|eot)$/)) return 'font';
     if (url.match(/\.(png|jpg|jpeg|gif|svg|webp|avif)$/)) return 'image';
     return 'fetch';
   }

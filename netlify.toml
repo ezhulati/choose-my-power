@@ -50,10 +50,10 @@
     # Performance Headers
     X-DNS-Prefetch-Control = "on"
     
-    # Content Security Policy - Enhanced for Security with Nonce Support
+    # Content Security Policy - Enhanced Security with Nonce Support
     Content-Security-Policy = '''
       default-src 'self';
-      script-src 'self' 'nonce-web-vitals' https://www.googletagmanager.com https://www.google-analytics.com https://unpkg.com/web-vitals@3/dist/web-vitals.js;
+      script-src 'self' 'nonce-web-vitals' https://www.googletagmanager.com https://www.google-analytics.com https://vercel.live;
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
       font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com data:;
       img-src 'self' data: https: blob:;
@@ -66,6 +66,7 @@
       worker-src 'self';
       frame-ancestors 'none';
       upgrade-insecure-requests;
+      report-uri /csp-report;
     '''
 
 # Static Assets Caching
@@ -191,6 +192,12 @@
 [[redirects]]
   from = "/health"
   to = "/.netlify/functions/health"
+  status = 200
+
+# CSP Report Endpoint
+[[redirects]]
+  from = "/csp-report"
+  to = "/.netlify/functions/csp-report"
   status = 200
 
 # Legacy URL Redirects
