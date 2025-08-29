@@ -107,9 +107,9 @@ export function ResourcesGuidesPage({}: ResourcesGuidesPageProps) {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-texas-navy">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => navigate('/resources')} className="hover:text-blue-600">Resources</button>
+            <button onClick={() => navigate('/resources')} className="hover:text-texas-navy">Resources</button>
             <span className="mx-2">/</span>
             <span>Guides</span>
           </nav>
@@ -136,7 +136,7 @@ export function ResourcesGuidesPage({}: ResourcesGuidesPageProps) {
                 onClick={() => setSelectedCategory(category.id as any)}
                 className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                   selectedCategory === category.id
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-texas-navy text-white'
                     : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
                 }`}
               >
@@ -152,10 +152,10 @@ export function ResourcesGuidesPage({}: ResourcesGuidesPageProps) {
             <div key={index} className="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow">
               <div className="p-6">
                 <div className="flex items-center mb-4">
-                  <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 text-blue-600 rounded-lg mr-4">
+                  <div className="inline-flex items-center justify-center w-12 h-12 bg-texas-cream text-texas-navy rounded-lg mr-4">
                     <guide.icon className="h-6 w-6" />
                   </div>
-                  <div className="text-sm text-blue-600 font-medium">
+                  <div className="text-sm text-texas-navy font-medium">
                     {categories.find(c => c.id === guide.category)?.name}
                   </div>
                 </div>
@@ -167,7 +167,7 @@ export function ResourcesGuidesPage({}: ResourcesGuidesPageProps) {
                   <span className="text-sm text-gray-500">{guide.readTime}</span>
                   <button
                     onClick={() => navigate(guide.href)}
-                    className="text-blue-600 hover:text-blue-800 font-medium text-sm"
+                    className="text-texas-navy hover:text-texas-navy font-medium text-sm"
                   >
                     Read Guide →
                   </button>
@@ -201,7 +201,7 @@ export function ResourcesGuidesPage({}: ResourcesGuidesPageProps) {
             </div>
 
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-blue-600 rounded-lg mb-6">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-lg mb-6">
                 <Zap className="h-8 w-8" />
               </div>
               <h3 className="text-lg font-semibold text-gray-900 mb-3">Want to Switch?</h3>
@@ -210,7 +210,7 @@ export function ResourcesGuidesPage({}: ResourcesGuidesPageProps) {
               </p>
               <button
                 onClick={() => navigate('/resources/guides/how-to-switch-providers')}
-                className="text-blue-600 hover:text-blue-800 font-medium"
+                className="text-texas-navy hover:text-texas-navy font-medium"
               >
                 Switching Guide →
               </button>

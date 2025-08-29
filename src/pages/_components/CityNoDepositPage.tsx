@@ -36,7 +36,7 @@ export function CityNoDepositPage({ state, city }: CityNoDepositPageProps) {
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Location Not Found</h1>
           <button
             onClick={() => navigate(`/${state}/no-deposit-electricity`)}
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+            className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors"
           >
             View {stateData?.name || 'State'} No Deposit Options
           </button>
@@ -89,9 +89,9 @@ export function CityNoDepositPage({ state, city }: CityNoDepositPageProps) {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-texas-navy">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => navigate(`/${state}/no-deposit-electricity`)} className="hover:text-blue-600">
+            <button onClick={() => navigate(`/${state}/no-deposit-electricity`)} className="hover:text-texas-navy">
               {stateData.name}
             </button>
             <span className="mx-2">/</span>
@@ -188,7 +188,7 @@ export function CityNoDepositPage({ state, city }: CityNoDepositPageProps) {
             )}
             
             {creditScore === 'good' && (
-              <div className="text-blue-700">
+              <div className="text-texas-navy">
                 <p className="mb-3">✅ Many no-deposit options available in {cityData.name}</p>
                 <ul className="list-disc list-inside space-y-1 text-sm">
                   <li>Most providers will approve without deposit</li>
@@ -260,7 +260,7 @@ export function CityNoDepositPage({ state, city }: CityNoDepositPageProps) {
                 <div className="space-y-2">
                   <button
                     onClick={() => navigate(`/providers/${provider.slug}`)}
-                    className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                    className="w-full bg-texas-navy text-white py-2 rounded-lg hover:bg-blue-800 transition-colors text-sm font-medium"
                   >
                     View Provider Details
                   </button>
@@ -315,7 +315,7 @@ export function CityNoDepositPage({ state, city }: CityNoDepositPageProps) {
                   </p>
                   <button
                     onClick={() => navigate('/shop/prepaid-electricity')}
-                    className="text-blue-600 hover:text-blue-800 text-sm font-medium mt-2"
+                    className="text-texas-navy hover:text-texas-navy text-sm font-medium mt-2"
                   >
                     Learn about prepaid →
                   </button>
@@ -328,7 +328,7 @@ export function CityNoDepositPage({ state, city }: CityNoDepositPageProps) {
                   </p>
                   <button
                     onClick={() => navigate('/shop/special-circumstances')}
-                    className="text-blue-600 hover:text-blue-800 text-sm font-medium mt-2"
+                    className="text-texas-navy hover:text-texas-navy text-sm font-medium mt-2"
                   >
                     Co-signer guide →
                   </button>

@@ -70,15 +70,15 @@ export function RateCalculatorPage({}: RateCalculatorPageProps) {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-texas-navy">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => navigate('/rates')} className="hover:text-blue-600">Rates</button>
+            <button onClick={() => navigate('/rates')} className="hover:text-texas-navy">Rates</button>
             <span className="mx-2">/</span>
             <span>Calculator</span>
           </nav>
 
           <div className="text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-blue-600 rounded-lg mb-6">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-lg mb-6">
               <Calculator className="h-8 w-8" />
             </div>
             
@@ -168,13 +168,13 @@ export function RateCalculatorPage({}: RateCalculatorPageProps) {
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">Most Expensive:</span>
-                      <span className="font-bold text-red-600">
+                      <span className="font-bold text-texas-red">
                         ${sortedPlans[sortedPlans.length - 1].monthlyCost.toFixed(2)}/mo
                       </span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">Potential Savings:</span>
-                      <span className="font-bold text-blue-600">
+                      <span className="font-bold text-texas-navy">
                         ${(sortedPlans[sortedPlans.length - 1].monthlyCost - sortedPlans[0].monthlyCost).toFixed(2)}/mo
                       </span>
                     </div>
@@ -262,7 +262,7 @@ export function RateCalculatorPage({}: RateCalculatorPageProps) {
                 </p>
                 <button
                   onClick={() => navigate(`/${selectedState}/electricity-providers`)}
-                  className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+                  className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors"
                 >
                   View All {stateData?.name} Providers
                 </button>
@@ -279,7 +279,7 @@ export function RateCalculatorPage({}: RateCalculatorPageProps) {
           
           <div className="grid md:grid-cols-3 gap-8">
             <div>
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 text-blue-600 rounded-lg mb-4">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-texas-cream text-texas-navy rounded-lg mb-4">
                 <Zap className="h-6 w-6" />
               </div>
               <h3 className="text-lg font-semibold text-gray-900 mb-3">Use Your Actual Usage</h3>

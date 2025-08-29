@@ -122,16 +122,16 @@ export function ResourcesPage({}: ResourcesPageProps) {
             {guides.map((guide, index) => (
               <div key={index} className="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow">
                 <div className="flex items-start">
-                  <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 text-blue-600 rounded-lg mr-4 flex-shrink-0">
+                  <div className="inline-flex items-center justify-center w-12 h-12 bg-texas-cream text-texas-navy rounded-lg mr-4 flex-shrink-0">
                     <guide.icon className="h-6 w-6" />
                   </div>
                   <div className="flex-1">
-                    <div className="text-sm text-blue-600 font-medium mb-1">{guide.category}</div>
+                    <div className="text-sm text-texas-navy font-medium mb-1">{guide.category}</div>
                     <h3 className="text-lg font-semibold text-gray-900 mb-2">{guide.title}</h3>
                     <p className="text-gray-600 mb-4">{guide.description}</p>
                     <button
                       onClick={() => navigate(guide.href)}
-                      className="text-blue-600 hover:text-blue-800 font-medium text-sm"
+                      className="text-texas-navy hover:text-texas-navy font-medium text-sm"
                     >
                       Read Guide →
                     </button>
@@ -144,7 +144,7 @@ export function ResourcesPage({}: ResourcesPageProps) {
           <div className="text-center mt-8">
             <button
               onClick={() => navigate('/resources/guides')}
-              className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+              className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors"
             >
               View All Guides
             </button>
@@ -236,9 +236,9 @@ export function ResourcesPage({}: ResourcesPageProps) {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
-            <div className="bg-blue-50 p-4 rounded-lg text-center">
+            <div className="bg-texas-cream-200 p-4 rounded-lg text-center">
               <div className="text-2xl font-bold text-blue-900">25+</div>
-              <div className="text-sm text-blue-700">Guides & Articles</div>
+              <div className="text-sm text-texas-navy">Guides & Articles</div>
             </div>
             <div className="bg-green-50 p-4 rounded-lg text-center">
               <div className="text-2xl font-bold text-green-900">10+</div>

@@ -35,7 +35,7 @@ export function StateElectricityRatesPage({ state }: StateElectricityRatesPagePr
           <h1 className="text-2xl font-bold text-gray-900 mb-4">State Not Found</h1>
           <button
             onClick={() => navigate('/')}
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+            className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors"
           >
             Return Home
           </button>
@@ -78,9 +78,9 @@ export function StateElectricityRatesPage({ state }: StateElectricityRatesPagePr
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-texas-navy">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => navigate(`/${state}/electricity-providers`)} className="hover:text-blue-600">
+            <button onClick={() => navigate(`/${state}/electricity-providers`)} className="hover:text-texas-navy">
               {stateData.name}
             </button>
             <span className="mx-2">/</span>
@@ -109,13 +109,13 @@ export function StateElectricityRatesPage({ state }: StateElectricityRatesPagePr
                   <div className="text-sm text-green-700">per kWh</div>
                 </div>
 
-                <div className="bg-blue-50 p-4 rounded-lg">
+                <div className="bg-texas-cream-200 p-4 rounded-lg">
                   <div className="flex items-center mb-2">
-                    <BarChart className="h-5 w-5 text-blue-600 mr-2" />
-                    <span className="text-sm font-medium text-blue-800">Average Rate</span>
+                    <BarChart className="h-5 w-5 text-texas-navy mr-2" />
+                    <span className="text-sm font-medium text-texas-navy">Average Rate</span>
                   </div>
                   <div className="text-2xl font-bold text-blue-900">{averageRate.toFixed(1)}¢</div>
-                  <div className="text-sm text-blue-700">per kWh</div>
+                  <div className="text-sm text-texas-navy">per kWh</div>
                 </div>
 
                 <div className="bg-purple-50 p-4 rounded-lg">
@@ -169,7 +169,7 @@ export function StateElectricityRatesPage({ state }: StateElectricityRatesPagePr
                       onClick={() => setSelectedUsage(option.value as any)}
                       className={`p-3 text-center border rounded-lg transition-colors ${
                         selectedUsage === option.value
-                          ? 'border-blue-600 bg-blue-50 text-blue-900'
+                          ? 'border-texas-navy bg-texas-cream-200 text-blue-900'
                           : 'border-gray-200 hover:bg-gray-50'
                       }`}
                     >
@@ -198,7 +198,7 @@ export function StateElectricityRatesPage({ state }: StateElectricityRatesPagePr
                         <td className="py-3">
                           <button
                             onClick={() => navigate(`/providers/${plan.providerSlug}`)}
-                            className="text-blue-600 hover:text-blue-800 font-medium"
+                            className="text-texas-navy hover:text-texas-navy font-medium"
                           >
                             {plan.providerName}
                           </button>
@@ -221,7 +221,7 @@ export function StateElectricityRatesPage({ state }: StateElectricityRatesPagePr
               <div className="mt-4 text-center">
                 <button
                   onClick={() => navigate(`/${state}/electricity-providers`)}
-                  className="text-blue-600 hover:text-blue-800 font-medium text-sm"
+                  className="text-texas-navy hover:text-texas-navy font-medium text-sm"
                 >
                   View all {stateProviders.length} providers →
                 </button>
@@ -245,7 +245,7 @@ export function StateElectricityRatesPage({ state }: StateElectricityRatesPagePr
                   
                   <button
                     onClick={() => setShowBreakdown(!showBreakdown)}
-                    className="text-blue-600 hover:text-blue-800 font-medium text-sm flex items-center"
+                    className="text-texas-navy hover:text-texas-navy font-medium text-sm flex items-center"
                   >
                     <Info className="h-4 w-4 mr-1" />
                     Show rate breakdown
@@ -324,25 +324,25 @@ export function StateElectricityRatesPage({ state }: StateElectricityRatesPagePr
               <div className="space-y-2">
                 <button
                   onClick={() => navigate(`/shop/cheapest-electricity?state=${state}`)}
-                  className="block w-full text-left p-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600 rounded-md transition-colors"
+                  className="block w-full text-left p-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-texas-navy rounded-md transition-colors"
                 >
                   Find Cheapest Rates
                 </button>
                 <button
                   onClick={() => navigate(`/${state}/electricity-plans`)}
-                  className="block w-full text-left p-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600 rounded-md transition-colors"
+                  className="block w-full text-left p-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-texas-navy rounded-md transition-colors"
                 >
                   Browse All Plans
                 </button>
                 <button
                   onClick={() => navigate(`/compare/rates/by-state`)}
-                  className="block w-full text-left p-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600 rounded-md transition-colors"
+                  className="block w-full text-left p-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-texas-navy rounded-md transition-colors"
                 >
                   Compare State Rates
                 </button>
                 <button
                   onClick={() => navigate(`/${state}/market-info`)}
-                  className="block w-full text-left p-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600 rounded-md transition-colors"
+                  className="block w-full text-left p-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-texas-navy rounded-md transition-colors"
                 >
                   Market Information
                 </button>

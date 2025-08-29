@@ -70,7 +70,7 @@ export class CriticalCSSExtractor {
           '.font-bold', '.font-semibold', '.font-medium'
         ],
         colors: [
-          '.bg-white', '.bg-gray-50', '.bg-blue-600', '.bg-red-600',
+          '.bg-white', '.bg-gray-50', '.bg-texas-navy', '.bg-texas-red',
           '.text-gray-900', '.text-gray-800', '.text-white',
           '.border-gray-200', '.border-gray-300'
         ],

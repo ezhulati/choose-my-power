@@ -26,13 +26,13 @@ export function TermsOfServicePage({}: TermsOfServicePageProps) {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-texas-navy">Home</button>
             <span className="mx-2">/</span>
             <span>Terms of Service</span>
           </nav>
 
           <div className="text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-blue-600 rounded-lg mb-6">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-lg mb-6">
               <FileText className="h-8 w-8" />
             </div>
             
@@ -59,7 +59,7 @@ export function TermsOfServicePage({}: TermsOfServicePageProps) {
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow-sm border text-center">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 text-blue-600 rounded-lg mb-4">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-texas-cream text-texas-navy rounded-lg mb-4">
               <Shield className="h-6 w-6" />
             </div>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">Independent Service</h3>
@@ -180,12 +180,12 @@ export function TermsOfServicePage({}: TermsOfServicePageProps) {
         </div>
 
         {/* Contact CTA */}
-        <div className="mt-8 bg-blue-50 border border-blue-200 rounded-lg p-6 text-center">
+        <div className="mt-8 bg-texas-cream-200 border border-blue-200 rounded-lg p-6 text-center">
           <h3 className="text-lg font-semibold text-blue-900 mb-2">Questions About These Terms?</h3>
-          <p className="text-blue-800 mb-4">Our team is available to clarify any questions about our terms of service.</p>
+          <p className="text-texas-navy mb-4">Our team is available to clarify any questions about our terms of service.</p>
           <button
             onClick={() => navigate('/resources/support/contact')}
-            className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+            className="bg-texas-navy text-white px-6 py-2 rounded-lg hover:bg-blue-800 transition-colors"
           >
             Contact Legal Team
           </button>

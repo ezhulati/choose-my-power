@@ -216,7 +216,7 @@
           }
         },
         {
-          "id": "68b1f90a809e2c9cf21e8e21",
+          "id": "68b200158ca16498d83889c1",
           "name": "12 Month GREEN (No Min Usage Fee)",
           "provider": {
             "name": "Constellation",
@@ -253,7 +253,7 @@
           }
         },
         {
-          "id": "68b1f909809e2c9cf21e8e1f",
+          "id": "68b200158ca16498d83889c0",
           "name": "12 Month Usage Bill Credit",
           "provider": {
             "name": "Constellation",
@@ -290,7 +290,7 @@
           }
         },
         {
-          "id": "68b1f90a809e2c9cf21e8e20",
+          "id": "68b200158ca16498d83889c2",
           "name": "24 Month Usage Bill Credit",
           "provider": {
             "name": "Constellation",
@@ -1184,7 +1184,7 @@
           }
         },
         {
-          "id": "68a0144ae30bfeb002721559",
+          "id": "68a0144ae30bfeb002721558",
           "name": "Gexa Eco Saver Advantage 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1369,7 +1369,7 @@
           }
         },
         {
-          "id": "68a0144ae30bfeb00272155f",
+          "id": "68a0144ae30bfeb002721557",
           "name": "Gexa Eco Saver Value 12",
           "provider": {
             "name": "Gexa Energy",
@@ -2904,7 +2904,7 @@
           }
         },
         {
-          "id": "68b13448890a850ebca0ccab",
+          "id": "68b13447890a850ebca0cca3",
           "name": "Flex Forward",
           "provider": {
             "name": "TXU Energy",
@@ -2978,7 +2978,7 @@
           }
         },
         {
-          "id": "68b13447890a850ebca0cc9f",
+          "id": "68b13447890a850ebca0cca1",
           "name": "Ultimate Season Pass 12",
           "provider": {
             "name": "TXU Energy",
@@ -3021,7 +3021,7 @@
           }
         },
         {
-          "id": "68b13448890a850ebca0ccac",
+          "id": "68b13447890a850ebca0cca4",
           "name": "Free Nights & Solar Days 12 (8 pm)",
           "provider": {
             "name": "TXU Energy",

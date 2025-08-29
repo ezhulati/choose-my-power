@@ -202,7 +202,7 @@ export function TexasMarketForecastPage({}: TexasMarketForecastPageProps) {
                   </div>
                   <div>
                     <div className="text-gray-600">Summer Peak</div>
-                    <div className="font-bold text-red-600">$110–165/MWh</div>
+                    <div className="font-bold text-texas-red">$110–165/MWh</div>
                   </div>
                 </div>
               </div>
@@ -264,7 +264,7 @@ export function TexasMarketForecastPage({}: TexasMarketForecastPageProps) {
               </div>
               
               <div className="flex items-start">
-                <TrendingUp className="h-6 w-6 text-red-600 mr-3 mt-1 flex-shrink-0" />
+                <TrendingUp className="h-6 w-6 text-texas-red mr-3 mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="font-semibold text-gray-900">Natural Gas Prices Expected to Rise</h3>
                   <p className="text-gray-600 text-sm">Fuel costs forecast to average $3.37/MMBtu, up ~24% from 2024.</p>
@@ -282,7 +282,7 @@ export function TexasMarketForecastPage({}: TexasMarketForecastPageProps) {
               </div>
               
               <div className="flex items-start">
-                <Zap className="h-6 w-6 text-blue-600 mr-3 mt-1 flex-shrink-0" />
+                <Zap className="h-6 w-6 text-texas-navy mr-3 mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="font-semibold text-gray-900">Massive Solar & Storage Build-Out</h3>
                   <p className="text-gray-600 text-sm">Plans to add tens of gigawatts, but project delays may limit near-term price relief.</p>
@@ -327,7 +327,7 @@ export function TexasMarketForecastPage({}: TexasMarketForecastPageProps) {
           <div className="grid md:grid-cols-2 gap-8">
             {consumerTips.map((tip, index) => (
               <div key={index} className="flex items-start">
-                <div className="inline-flex items-center justify-center w-8 h-8 bg-blue-100 text-blue-600 rounded-lg mr-4 mt-1 flex-shrink-0">
+                <div className="inline-flex items-center justify-center w-8 h-8 bg-texas-cream text-texas-navy rounded-lg mr-4 mt-1 flex-shrink-0">
                   <tip.icon className="h-4 w-4" />
                 </div>
                 <div>
@@ -338,12 +338,12 @@ export function TexasMarketForecastPage({}: TexasMarketForecastPageProps) {
             ))}
           </div>
 
-          <div className="mt-8 p-6 bg-blue-50 border border-blue-200 rounded-lg">
+          <div className="mt-8 p-6 bg-texas-cream-200 border border-blue-200 rounded-lg">
             <div className="flex items-start">
-              <Info className="h-6 w-6 text-blue-600 mr-3 mt-1 flex-shrink-0" />
+              <Info className="h-6 w-6 text-texas-navy mr-3 mt-1 flex-shrink-0" />
               <div>
                 <h3 className="font-semibold text-blue-900 mb-2">Stay Informed on Transmission Costs</h3>
-                <p className="text-blue-800 text-sm">
+                <p className="text-texas-navy text-sm">
                   New grid investments could shift cost burdens—especially through rate structure changes—
                   facing residential customers unless broader reforms are approved.
                 </p>
@@ -412,7 +412,7 @@ export function TexasMarketForecastPage({}: TexasMarketForecastPageProps) {
         {/* Action CTAs */}
         <div className="grid md:grid-cols-2 gap-8">
           <div className="bg-white rounded-lg shadow-sm border p-8 text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-blue-600 rounded-lg mb-6">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-lg mb-6">
               <Calculator className="h-8 w-8" />
             </div>
             <h3 className="text-xl font-semibold text-gray-900 mb-4">Compare Current Rates</h3>
@@ -421,7 +421,7 @@ export function TexasMarketForecastPage({}: TexasMarketForecastPageProps) {
             </p>
             <button
               onClick={() => navigate('/texas/dallas/electricity-providers')}
-              className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium inline-flex items-center"
+              className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors font-medium inline-flex items-center"
             >
               Compare Dallas Providers
               <ArrowRight className="h-4 w-4 ml-2" />
@@ -447,7 +447,7 @@ export function TexasMarketForecastPage({}: TexasMarketForecastPageProps) {
         </div>
 
         {/* Final Analysis */}
-        <div className="mt-12 bg-blue-600 text-white rounded-lg p-8">
+        <div className="mt-12 bg-texas-navy text-white rounded-lg p-8">
           <h2 className="text-2xl font-bold mb-4 text-center">Final Analysis</h2>
           <p className="text-blue-100 text-lg leading-relaxed text-center max-w-4xl mx-auto">
             The forecast isn't wrong in quoting EIA's ~$30/MWh wholesale projection. However, 

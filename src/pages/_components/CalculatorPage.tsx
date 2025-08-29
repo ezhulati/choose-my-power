@@ -297,7 +297,7 @@ export function CalculatorPage() {
         <div className="mt-12 grid lg:grid-cols-2 gap-8">
           <div className="bg-white rounded-lg shadow-sm border p-8">
             <div className="flex items-center mb-4">
-              <Info className="h-6 w-6 text-blue-600 mr-3" />
+              <Info className="h-6 w-6 text-texas-navy mr-3" />
               <h3 className="text-xl font-bold text-gray-900">How the Calculator Works</h3>
             </div>
             <div className="space-y-4 text-gray-600">

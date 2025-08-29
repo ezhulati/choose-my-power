@@ -5,7 +5,11 @@
  * Maintains credibility by showing actual data rather than inflated estimates.
  */
 
-import { mockProviders } from '../../data/mockData';
+// Lazy import for mockProviders to avoid loading 1000-line file on every request
+const getMockProviders = async () => {
+  const { mockProviders } = await import('../../data/mockData');
+  return mockProviders;
+};
 import type { Provider, Plan } from '../../types';
 
 interface CountingOptions {
@@ -33,8 +37,9 @@ export function getDynamicCounts(
   plans?: Plan[], 
   options: CountingOptions = {}
 ): DynamicCounts {
-  const providerCount = providers?.length || mockProviders.length;
-  const planCount = plans?.length || getTotalPlanCount(providers || mockProviders);
+  // Use conservative estimates when no providers passed, avoiding expensive mock data load
+  const providerCount = providers?.length || 14; // Realistic Texas provider count
+  const planCount = plans?.length || (providers ? getTotalPlanCount(providers) : 120); // Conservative estimate
 
   return {
     providers: providerCount,
@@ -154,8 +159,8 @@ export function getContextualCounts(
  */
 export async function getRealTimeCounts(citySlug?: string): Promise<DynamicCounts> {
   try {
-    // This would integrate with your actual API calls
-    // For now, using mock data as baseline
+    // Only load mock data when explicitly needed for real-time calculation
+    const mockProviders = await getMockProviders();
     const providerCount = mockProviders.length;
     const planCount = getTotalPlanCount(mockProviders);
     
@@ -174,7 +179,13 @@ export function getConservativeCounts(): DynamicCounts {
   const conservativeProviders = 14; // Realistic active provider count
   const conservativePlans = 120; // Realistic plan count
   
-  return getDynamicCounts(undefined, undefined);
+  return {
+    providers: conservativeProviders,
+    plans: conservativePlans,
+    providerText: formatProviderCount(conservativeProviders),
+    planText: formatPlanCount(conservativePlans),
+    combinedText: formatCombinedCount(conservativeProviders, conservativePlans)
+  };
 }
 
 /**
@@ -211,6 +222,29 @@ export function getTierBasedCounts(cityTier: 1 | 2 | 3): DynamicCounts {
 }
 
 /**
- * Export default counts for immediate use
+ * Cached static counts to avoid expensive computation on every server request
  */
-export const DEFAULT_COUNTS = getDynamicCounts();
+let _cachedCounts: DynamicCounts | null = null;
+
+export function getStaticCounts(): DynamicCounts {
+  if (_cachedCounts) return _cachedCounts;
+  
+  // Use realistic hardcoded values to avoid expensive mock data processing
+  const conservativeProviders = 14; // Realistic Texas provider count
+  const conservativePlans = 120; // Realistic plan count
+  
+  _cachedCounts = {
+    providers: conservativeProviders,
+    plans: conservativePlans,
+    providerText: formatProviderCount(conservativeProviders),
+    planText: formatPlanCount(conservativePlans),
+    combinedText: formatCombinedCount(conservativeProviders, conservativePlans)
+  };
+  
+  return _cachedCounts;
+}
+
+/**
+ * Export default counts for immediate use (now optimized)
+ */
+export const DEFAULT_COUNTS = getStaticCounts();

@@ -267,7 +267,7 @@ export function LocationFinderPage({}: LocationFinderPageProps) {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map((benefit, index) => (
               <div key={index} className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-blue-600 rounded-lg mb-6">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-lg mb-6">
                   <benefit.icon className="h-8 w-8" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">{benefit.title}</h3>
@@ -296,7 +296,7 @@ export function LocationFinderPage({}: LocationFinderPageProps) {
               onClick={() => setSelectedRegion('all')}
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                 selectedRegion === 'all'
-                  ? 'bg-blue-600 text-white'
+                  ? 'bg-texas-navy text-white'
                   : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
               }`}
             >
@@ -306,7 +306,7 @@ export function LocationFinderPage({}: LocationFinderPageProps) {
               onClick={() => setSelectedRegion('texas')}
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                 selectedRegion === 'texas'
-                  ? 'bg-red-600 text-white'
+                  ? 'bg-texas-red text-white'
                   : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
               }`}
             >
@@ -316,7 +316,7 @@ export function LocationFinderPage({}: LocationFinderPageProps) {
               onClick={() => setSelectedRegion('pennsylvania')}
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                 selectedRegion === 'pennsylvania'
-                  ? 'bg-blue-600 text-white'
+                  ? 'bg-texas-navy text-white'
                   : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
               }`}
             >
@@ -351,15 +351,15 @@ export function LocationFinderPage({}: LocationFinderPageProps) {
                       <div className="text-lg font-bold text-gray-900">{location.population}</div>
                       <div className="text-sm text-gray-600">Population</div>
                     </div>
-                    <div className="text-center p-3 bg-blue-50 rounded-lg">
+                    <div className="text-center p-3 bg-texas-cream-200 rounded-lg">
                       <div className="text-lg font-bold text-blue-900">{location.providers}</div>
-                      <div className="text-sm text-blue-600">Providers</div>
+                      <div className="text-sm text-texas-navy">Providers</div>
                     </div>
                   </div>
 
                   <button
                     onClick={() => handleZipSearch(location.zipCode)}
-                    className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium flex items-center justify-center"
+                    className="w-full bg-texas-navy text-white py-3 rounded-lg hover:bg-blue-800 transition-colors font-medium flex items-center justify-center"
                   >
                     View {location.name.split(',')[0]} Providers
                     <ArrowRight className="h-4 w-4 ml-2" />
@@ -400,7 +400,7 @@ export function LocationFinderPage({}: LocationFinderPageProps) {
                     </div>
                     
                     <div className="text-right">
-                      <div className="text-3xl font-bold text-blue-600">{state.topCities.length}</div>
+                      <div className="text-3xl font-bold text-texas-navy">{state.topCities.length}</div>
                       <div className="text-sm text-gray-500">major cities</div>
                     </div>
                   </div>
@@ -433,7 +433,7 @@ export function LocationFinderPage({}: LocationFinderPageProps) {
                         <button
                           key={city.id}
                           onClick={() => navigate(`/${state.slug}/${city.slug}/electricity-providers`)}
-                          className="text-left p-2 text-sm text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-md transition-colors border border-gray-100"
+                          className="text-left p-2 text-sm text-texas-navy hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors border border-gray-100"
                         >
                           <div className="font-medium">{city.name}</div>
                           <div className="text-xs text-gray-500">{city.averageRate}¢/kWh</div>
@@ -443,7 +443,7 @@ export function LocationFinderPage({}: LocationFinderPageProps) {
                     {state.topCities.length > 9 && (
                       <button
                         onClick={() => navigate(`/${state.slug}`)}
-                        className="text-sm text-gray-500 hover:text-blue-600 mt-2 font-medium"
+                        className="text-sm text-gray-500 hover:text-texas-navy mt-2 font-medium"
                       >
                         +{state.topCities.length - 9} more cities →
                       </button>
@@ -453,7 +453,7 @@ export function LocationFinderPage({}: LocationFinderPageProps) {
                   <div className="grid md:grid-cols-2 gap-3">
                     <button
                       onClick={() => navigate(`/${state.slug}/electricity-providers`)}
-                      className="bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                      className="bg-texas-navy text-white py-3 rounded-lg hover:bg-blue-800 transition-colors font-medium"
                     >
                       Browse {state.name} Providers
                     </button>
@@ -478,7 +478,7 @@ export function LocationFinderPage({}: LocationFinderPageProps) {
           
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-blue-600 rounded-full mb-6 text-2xl font-bold">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-full mb-6 text-2xl font-bold">
                 1
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Enter Your ZIP Code</h3>
@@ -488,7 +488,7 @@ export function LocationFinderPage({}: LocationFinderPageProps) {
             </div>
 
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-blue-600 rounded-full mb-6 text-2xl font-bold">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-full mb-6 text-2xl font-bold">
                 2
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Compare Your Options</h3>
@@ -498,7 +498,7 @@ export function LocationFinderPage({}: LocationFinderPageProps) {
             </div>
 
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-blue-600 rounded-full mb-6 text-2xl font-bold">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-full mb-6 text-2xl font-bold">
                 3
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Choose & Switch</h3>
@@ -550,7 +550,7 @@ export function LocationFinderPage({}: LocationFinderPageProps) {
               </div>
               
               <div className="flex items-start">
-                <TrendingDown className="h-6 w-6 text-blue-600 mr-3 mt-1 flex-shrink-0" />
+                <TrendingDown className="h-6 w-6 text-texas-navy mr-3 mt-1 flex-shrink-0" />
                 <div>
                   <div className="font-medium text-gray-900">Competitive Rates</div>
                   <div className="text-gray-600 text-sm">Competition drives down prices and improves value</div>
@@ -576,7 +576,7 @@ export function LocationFinderPage({}: LocationFinderPageProps) {
 
             <button
               onClick={() => navigate('/resources/guides/understanding-deregulation')}
-              className="mt-6 text-blue-600 hover:text-blue-800 font-medium"
+              className="mt-6 text-texas-navy hover:text-texas-navy font-medium"
             >
               Learn about electricity deregulation →
             </button>
@@ -590,7 +590,7 @@ export function LocationFinderPage({}: LocationFinderPageProps) {
             <div className="space-y-6">
               <div>
                 <div className="flex items-center mb-2">
-                  <MapPin className="h-5 w-5 text-blue-600 mr-2" />
+                  <MapPin className="h-5 w-5 text-texas-navy mr-2" />
                   <h4 className="font-medium text-gray-900">Your Location</h4>
                 </div>
                 <p className="text-gray-600 text-sm">
@@ -636,7 +636,7 @@ export function LocationFinderPage({}: LocationFinderPageProps) {
         </div>
 
         {/* ZIP Code Examples */}
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-8 mb-16">
+        <div className="bg-texas-cream-200 border border-blue-200 rounded-lg p-8 mb-16">
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
               Not Sure About Your ZIP Code?
@@ -661,9 +661,9 @@ export function LocationFinderPage({}: LocationFinderPageProps) {
               <button
                 key={index}
                 onClick={() => handleZipSearch(example.zip)}
-                className="p-4 bg-white border border-blue-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors text-left"
+                className="p-4 bg-white border border-blue-200 rounded-lg hover:bg-texas-cream-200 hover:border-blue-300 transition-colors text-left"
               >
-                <div className="font-bold text-blue-600 text-lg">{example.zip}</div>
+                <div className="font-bold text-texas-navy text-lg">{example.zip}</div>
                 <div className="text-gray-900 font-medium">{example.city}, {example.state}</div>
                 <div className="text-sm text-gray-600">Avg rate: {example.rate}/kWh</div>
               </button>
@@ -688,14 +688,14 @@ export function LocationFinderPage({}: LocationFinderPageProps) {
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow-sm border text-center hover:shadow-md transition-shadow">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 text-blue-600 rounded-lg mb-4">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-texas-cream text-texas-navy rounded-lg mb-4">
               <Calculator className="h-6 w-6" />
             </div>
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Rate Calculator</h3>
             <p className="text-gray-600 text-sm mb-4">Calculate exact costs based on your usage</p>
             <button
               onClick={() => navigate('/rates/calculator')}
-              className="text-blue-600 hover:text-blue-800 font-medium text-sm"
+              className="text-texas-navy hover:text-texas-navy font-medium text-sm"
             >
               Calculate Costs →
             </button>

@@ -185,7 +185,8 @@ export function AddressInput({
     } else {
       // Load Google Places API if not already loaded
       const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_PLACES_API_KEY}&libraries=places`;\n      script.onload = initializeGooglePlaces;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_PLACES_API_KEY}&libraries=places`;
+      script.onload = initializeGooglePlaces;
       document.head.appendChild(script);
     }
   }, [enableAutocomplete]);
@@ -544,7 +545,7 @@ export function AddressInput({
                 id="zip-validation" 
                 className={cn(
                   'flex items-center gap-2 text-sm',
-                  validationState.zipCode.isValid ? 'text-green-600' : 'text-red-600'
+                  validationState.zipCode.isValid ? 'text-green-600' : 'text-texas-red'
                 )}
               >
                 {validationState.zipCode.isValid ? (
@@ -640,7 +641,7 @@ export function AddressInput({
                   id="address-validation" 
                   className={cn(
                     'flex items-center gap-2 text-sm',
-                    validationState.address.isValid ? 'text-green-600' : 'text-red-600'
+                    validationState.address.isValid ? 'text-green-600' : 'text-texas-red'
                   )}
                 >
                   {validationState.address.isValid ? (

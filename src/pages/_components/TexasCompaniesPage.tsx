@@ -332,7 +332,7 @@ export function TexasCompaniesPage({}: TexasCompaniesPageProps) {
               onClick={() => setSelectedCategory('all')}
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                 selectedCategory === 'all'
-                  ? 'bg-red-600 text-white'
+                  ? 'bg-texas-red text-white'
                   : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
               }`}
             >
@@ -344,7 +344,7 @@ export function TexasCompaniesPage({}: TexasCompaniesPageProps) {
                 onClick={() => setSelectedCategory(category.id as any)}
                 className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                   selectedCategory === category.id
-                    ? 'bg-red-600 text-white'
+                    ? 'bg-texas-red text-white'
                     : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
                 }`}
               >
@@ -416,7 +416,7 @@ export function TexasCompaniesPage({}: TexasCompaniesPageProps) {
                     <div className="space-y-2">
                       <button
                         onClick={() => navigate(`/providers/${company.slug}`)}
-                        className="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition-colors text-sm font-medium"
+                        className="w-full bg-texas-red text-white py-2 rounded-lg hover:bg-texas-red-600 transition-colors text-sm font-medium"
                       >
                         View Company Profile
                       </button>
@@ -434,7 +434,7 @@ export function TexasCompaniesPage({}: TexasCompaniesPageProps) {
               <div className="text-center mt-8">
                 <button
                   onClick={() => navigate(`/texas/companies/category/${category.id}`)}
-                  className="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors font-medium"
+                  className="bg-texas-red text-white px-6 py-3 rounded-lg hover:bg-texas-red-600 transition-colors font-medium"
                 >
                   View All {category.title} in Texas
                 </button>
@@ -452,7 +452,7 @@ export function TexasCompaniesPage({}: TexasCompaniesPageProps) {
           <div className="grid md:grid-cols-4 gap-8">
             {texasMarketFacts.map((fact, index) => (
               <div key={index} className="text-center">
-                <div className="text-3xl font-bold text-red-600 mb-3">{fact.stat}</div>
+                <div className="text-3xl font-bold text-texas-red mb-3">{fact.stat}</div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">{fact.title}</h3>
                 <p className="text-gray-600 text-sm">{fact.description}</p>
               </div>
@@ -462,7 +462,7 @@ export function TexasCompaniesPage({}: TexasCompaniesPageProps) {
           <div className="text-center mt-8">
             <button
               onClick={() => navigate('/texas/market-info')}
-              className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+              className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors font-medium"
             >
               Learn About Texas Electricity Market
             </button>
@@ -490,7 +490,7 @@ export function TexasCompaniesPage({}: TexasCompaniesPageProps) {
           <div className="text-center mt-8">
             <button
               onClick={() => navigate('/texas/electricity-providers')}
-              className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+              className="bg-texas-navy text-white px-8 py-3 rounded-lg hover:bg-blue-800 transition-colors font-medium"
             >
               View All Texas Providers
             </button>

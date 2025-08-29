@@ -34,7 +34,7 @@ export function StateSwitchProviderPage({ state }: StateSwitchProviderPageProps)
           <h1 className="text-2xl font-bold text-gray-900 mb-4">State Not Found</h1>
           <button
             onClick={() => navigate('/')}
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+            className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors"
           >
             Return Home
           </button>
@@ -145,9 +145,9 @@ export function StateSwitchProviderPage({ state }: StateSwitchProviderPageProps)
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-texas-navy">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => navigate(`/${state}/electricity-providers`)} className="hover:text-blue-600">
+            <button onClick={() => navigate(`/${state}/electricity-providers`)} className="hover:text-texas-navy">
               {stateData.name}
             </button>
             <span className="mx-2">/</span>
@@ -206,7 +206,7 @@ export function StateSwitchProviderPage({ state }: StateSwitchProviderPageProps)
                 <div className="p-6">
                   <div className="flex items-start">
                     <div className="flex-shrink-0">
-                      <div className="w-12 h-12 bg-blue-600 text-white rounded-lg flex items-center justify-center font-bold text-lg">
+                      <div className="w-12 h-12 bg-texas-navy text-white rounded-lg flex items-center justify-center font-bold text-lg">
                         {step.number}
                       </div>
                     </div>
@@ -228,7 +228,7 @@ export function StateSwitchProviderPage({ state }: StateSwitchProviderPageProps)
                         <div className="mt-4">
                           <button
                             onClick={() => navigate(`/${state}/electricity-providers`)}
-                            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium inline-flex items-center"
+                            className="bg-texas-navy text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors text-sm font-medium inline-flex items-center"
                           >
                             Compare {stateData.name} Providers
                             <ArrowRight className="h-4 w-4 ml-2" />
@@ -273,7 +273,7 @@ export function StateSwitchProviderPage({ state }: StateSwitchProviderPageProps)
 
           <div className="bg-white rounded-lg shadow-sm border p-6">
             <div className="flex items-center mb-4">
-              <Phone className="h-6 w-6 text-blue-600 mr-3" />
+              <Phone className="h-6 w-6 text-texas-navy mr-3" />
               <h3 className="text-xl font-semibold text-gray-900">Need Help?</h3>
             </div>
             
@@ -285,7 +285,7 @@ export function StateSwitchProviderPage({ state }: StateSwitchProviderPageProps)
                 </p>
                 <button
                   onClick={() => navigate('/resources/support/regulatory-contacts')}
-                  className="text-blue-600 hover:text-blue-800 text-sm font-medium"
+                  className="text-texas-navy hover:text-texas-navy text-sm font-medium"
                 >
                   Get Contact Information →
                 </button>
@@ -298,7 +298,7 @@ export function StateSwitchProviderPage({ state }: StateSwitchProviderPageProps)
                 </p>
                 <button
                   onClick={() => navigate('/resources/support/contact')}
-                  className="text-blue-600 hover:text-blue-800 text-sm font-medium"
+                  className="text-texas-navy hover:text-texas-navy text-sm font-medium"
                 >
                   Contact Our Team →
                 </button>
@@ -325,7 +325,7 @@ export function StateSwitchProviderPage({ state }: StateSwitchProviderPageProps)
           <div className="mt-8 text-center">
             <button
               onClick={() => navigate('/resources/faqs')}
-              className="text-blue-600 hover:text-blue-800 font-medium"
+              className="text-texas-navy hover:text-texas-navy font-medium"
             >
               View All FAQs →
             </button>
@@ -333,14 +333,14 @@ export function StateSwitchProviderPage({ state }: StateSwitchProviderPageProps)
         </div>
 
         {/* CTA Section */}
-        <div className="mt-12 bg-blue-600 text-white rounded-lg p-8 text-center">
+        <div className="mt-12 bg-texas-navy text-white rounded-lg p-8 text-center">
           <h2 className="text-2xl font-bold mb-4">Ready to Switch?</h2>
           <p className="text-blue-100 mb-6">
             Compare electricity providers in {stateData.name} and start saving today.
           </p>
           <button
             onClick={() => navigate(`/${state}/electricity-providers`)}
-            className="bg-white text-blue-600 px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors font-medium"
+            className="bg-white text-texas-navy px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors font-medium"
           >
             Compare {stateData.name} Providers
           </button>

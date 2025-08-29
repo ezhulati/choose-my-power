@@ -38,7 +38,7 @@ export function ProviderComparisonPage({ providerA, providerB, state }: Provider
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Providers Not Found</h1>
           <button
             onClick={() => navigate('/compare/providers')}
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+            className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors"
           >
             Compare Other Providers
           </button>
@@ -100,9 +100,9 @@ export function ProviderComparisonPage({ providerA, providerB, state }: Provider
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-texas-navy">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => navigate('/compare/providers')} className="hover:text-blue-600">Compare Providers</button>
+            <button onClick={() => navigate('/compare/providers')} className="hover:text-texas-navy">Compare Providers</button>
             <span className="mx-2">/</span>
             <span>{provider1.name} vs {provider2.name}</span>
           </nav>
@@ -118,8 +118,8 @@ export function ProviderComparisonPage({ providerA, providerB, state }: Provider
             </p>
 
             {/* Quick Winner Banner */}
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 inline-block">
-              <div className="text-sm text-blue-800 mb-1">Quick Comparison Winner:</div>
+            <div className="bg-texas-cream-200 border border-blue-200 rounded-lg p-4 inline-block">
+              <div className="text-sm text-texas-navy mb-1">Quick Comparison Winner:</div>
               <div className="text-lg font-bold text-blue-900">
                 {provider1Cost < provider2Cost ? provider1.name : provider2.name} 
                 <span className="text-green-600 ml-2">saves ${annualSavings.toFixed(0)}/year</span>
@@ -159,7 +159,7 @@ export function ProviderComparisonPage({ providerA, providerB, state }: Provider
 
               <button
                 onClick={() => navigate(`/providers/${provider1.slug}`)}
-                className="w-full mt-4 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                className="w-full mt-4 bg-texas-navy text-white py-2 rounded-lg hover:bg-blue-800 transition-colors"
               >
                 View {provider1.name} Details
               </button>
@@ -195,7 +195,7 @@ export function ProviderComparisonPage({ providerA, providerB, state }: Provider
 
               <button
                 onClick={() => navigate(`/providers/${provider2.slug}`)}
-                className="w-full mt-4 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                className="w-full mt-4 bg-texas-navy text-white py-2 rounded-lg hover:bg-blue-800 transition-colors"
               >
                 View {provider2.name} Details
               </button>
@@ -222,7 +222,7 @@ export function ProviderComparisonPage({ providerA, providerB, state }: Provider
                   onClick={() => setSelectedUsage(usage)}
                   className={`p-3 text-center border rounded-lg transition-colors ${
                     selectedUsage === usage
-                      ? 'border-blue-600 bg-blue-50 text-blue-900'
+                      ? 'border-texas-navy bg-texas-cream-200 text-blue-900'
                       : 'border-gray-200 hover:bg-gray-50'
                   }`}
                 >
@@ -370,7 +370,7 @@ export function ProviderComparisonPage({ providerA, providerB, state }: Provider
         </div>
 
         {/* Bottom CTA */}
-        <div className="bg-blue-600 text-white rounded-lg p-8 text-center">
+        <div className="bg-texas-navy text-white rounded-lg p-8 text-center">
           <h2 className="text-2xl font-bold mb-4">Ready to Switch?</h2>
           <p className="text-blue-100 mb-6">
             Based on our comparison, {provider1Cost < provider2Cost ? provider1.name : provider2.name} offers better value. 
@@ -379,13 +379,13 @@ export function ProviderComparisonPage({ providerA, providerB, state }: Provider
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={() => navigate(`/providers/${provider1Cost < provider2Cost ? provider1.slug : provider2.slug}`)}
-              className="bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors font-medium"
+              className="bg-white text-texas-navy px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors font-medium"
             >
               Choose {provider1Cost < provider2Cost ? provider1.name : provider2.name}
             </button>
             <button
               onClick={() => navigate('/compare/providers')}
-              className="border border-blue-300 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+              className="border border-blue-300 text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors font-medium"
             >
               Compare Other Providers
             </button>

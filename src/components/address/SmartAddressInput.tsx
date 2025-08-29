@@ -256,7 +256,7 @@ const SmartAddressInput: React.FC<SmartAddressInputProps> = ({
           ${validation.type === 'error' ? 'bg-red-50 text-red-800' :
             validation.type === 'warning' ? 'bg-yellow-50 text-yellow-800' :
             validation.type === 'success' ? 'bg-green-50 text-green-800' :
-            'bg-blue-50 text-blue-800'}
+            'bg-texas-cream-200 text-texas-navy'}
         `}>
           <div className="flex items-start">
             <span className="mr-2">
@@ -354,7 +354,7 @@ const SmartAddressInput: React.FC<SmartAddressInputProps> = ({
             </button>
             <button
               type="submit"
-              className="flex-2 bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 disabled:opacity-50"
+              className="flex-2 bg-texas-navy text-white px-6 py-2 rounded-md hover:bg-blue-800 disabled:opacity-50"
               disabled={isAnalyzing || !addressForm.street.trim()}
             >
               {isAnalyzing ? 'Resolving...' : 'Continue'}

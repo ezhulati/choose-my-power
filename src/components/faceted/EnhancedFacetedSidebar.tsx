@@ -5,6 +5,8 @@
  */
 
 import React, { useState, useEffect, useCallback } from 'react';
+import { Button } from '../ui/button';
+import { Badge } from '../ui/badge';
 import type { FacetedSidebarProps, FacetValue } from '../../types/facets';
 
 const EnhancedFacetedSidebar: React.FC<FacetedSidebarProps> = ({
@@ -263,8 +265,9 @@ const EnhancedFacetedSidebar: React.FC<FacetedSidebarProps> = ({
   return (
     <div className="enhanced-faceted-sidebar">
       {/* Mobile Toggle */}
-      <button 
-        className="mobile-toggle lg:hidden"
+      <Button
+        variant="outline"
+        className="mobile-toggle lg:hidden w-full justify-start gap-3 mb-4"
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
         aria-label="Toggle filters"
@@ -272,9 +275,9 @@ const EnhancedFacetedSidebar: React.FC<FacetedSidebarProps> = ({
         <span className="toggle-icon">Filter</span>
         <span>Filters</span>
         {activeFilterCount > 0 && (
-          <span className="filter-badge">{activeFilterCount}</span>
+          <Badge variant="texas-primary" className="ml-auto">{activeFilterCount}</Badge>
         )}
-      </button>
+      </Button>
 
       {/* Sidebar Content */}
       <div className={`sidebar-content ${isOpen ? 'open' : 'closed'}`}>
@@ -285,13 +288,14 @@ const EnhancedFacetedSidebar: React.FC<FacetedSidebarProps> = ({
             {loading && <div className="loading-indicator"></div>}
           </h3>
           {activeFilterCount > 0 && (
-            <button 
-              className="clear-all-btn"
+            <Button
+              variant="destructive"
+              size="sm"
               onClick={clearAllFilters}
               disabled={loading}
             >
               Clear All ({activeFilterCount})
-            </button>
+            </Button>
           )}
         </div>
 
@@ -299,27 +303,33 @@ const EnhancedFacetedSidebar: React.FC<FacetedSidebarProps> = ({
         <div className="quick-filters">
           <h4 className="quick-filters-title">Quick Filters</h4>
           <div className="quick-filter-buttons">
-            <button 
-              className={`quick-filter-btn ${currentFilters.greenEnergy ? 'active' : ''}`}
+            <Button
+              variant={currentFilters.greenEnergy ? 'texas-primary' : 'outline'}
+              size="sm"
               onClick={() => onFilterChange('greenEnergy', true, !currentFilters.greenEnergy)}
               disabled={loading}
+              className="rounded-full text-sm"
             >
               100% Green
-            </button>
-            <button 
-              className={`quick-filter-btn ${currentFilters.noDeposit ? 'active' : ''}`}
+            </Button>
+            <Button
+              variant={currentFilters.noDeposit ? 'texas-primary' : 'outline'}
+              size="sm"
               onClick={() => onFilterChange('noDeposit', true, !currentFilters.noDeposit)}
               disabled={loading}
+              className="rounded-full text-sm"
             >
               No Deposit
-            </button>
-            <button 
-              className={`quick-filter-btn ${currentFilters.rateType === 'fixed' ? 'active' : ''}`}
+            </Button>
+            <Button
+              variant={currentFilters.rateType === 'fixed' ? 'texas-primary' : 'outline'}
+              size="sm"
               onClick={() => onFilterChange('rateType', 'fixed', currentFilters.rateType !== 'fixed')}
               disabled={loading}
+              className="rounded-full text-sm"
             >
               Fixed Rate
-            </button>
+            </Button>
           </div>
         </div>
 
@@ -330,19 +340,20 @@ const EnhancedFacetedSidebar: React.FC<FacetedSidebarProps> = ({
             
             return (
               <div key={group.key} className="facet-group">
-                <button
-                  className="group-header"
+                <Button
+                  variant="ghost"
+                  className="group-header w-full justify-between p-4 h-auto"
                   onClick={() => toggleGroup(group.key)}
                   aria-expanded={expandedGroups.has(group.key)}
                 >
-                  <div className="group-header-content">
+                  <div className="group-header-content flex items-center gap-3">
                     <span className="group-icon">{group.icon}</span>
-                    <h4 className="group-title">{group.label}</h4>
+                    <h4 className="group-title text-sm font-semibold text-gray-900">{group.label}</h4>
                   </div>
-                  <span className={`expand-icon ${expandedGroups.has(group.key) ? 'expanded' : ''}`}>
+                  <span className={`expand-icon text-gray-500 transition-transform ${expandedGroups.has(group.key) ? 'rotate-180' : ''}`}>
                     ▼
                   </span>
-                </button>
+                </Button>
 
                 {expandedGroups.has(group.key) && (
                   <div className="facet-list">

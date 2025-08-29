@@ -194,7 +194,7 @@ export class SmartBadgingSystem {
     
     switch (variant) {
       case 'texas-secondary':
-        return `${baseClasses} !bg-red-600 !text-white`;
+        return `${baseClasses} !bg-texas-red !text-white`;
       case 'warning':
         return `${baseClasses} !bg-texas-gold !text-texas-navy !font-semibold`;
       case 'success':

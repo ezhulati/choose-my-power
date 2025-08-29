@@ -35,7 +35,7 @@ export function StateNoDepositPage({ state }: StateNoDepositPageProps) {
           <h1 className="text-2xl font-bold text-gray-900 mb-4">State Not Found</h1>
           <button
             onClick={() => navigate('/')}
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+            className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors"
             aria-label="Return to homepage"
           >
             Return Home
@@ -124,9 +124,9 @@ export function StateNoDepositPage({ state }: StateNoDepositPageProps) {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-texas-navy">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => navigate(`/${state}/electricity-providers`)} className="hover:text-blue-600">
+            <button onClick={() => navigate(`/${state}/electricity-providers`)} className="hover:text-texas-navy">
               {stateData.name}
             </button>
             <span className="mx-2">/</span>
@@ -222,7 +222,7 @@ export function StateNoDepositPage({ state }: StateNoDepositPageProps) {
             )}
             
             {creditScore === 'good' && (
-              <div className="text-blue-700">
+              <div className="text-texas-navy">
                 <p className="mb-3">✅ Many no-deposit options available with credit approval</p>
                 <ul className="list-disc list-inside space-y-1 text-sm">
                   <li>Most providers will approve without deposit</li>
@@ -285,7 +285,7 @@ export function StateNoDepositPage({ state }: StateNoDepositPageProps) {
                 <div className="space-y-2">
                   <button
                     onClick={() => navigate(`/providers/${provider.slug}`)}
-                    className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                    className="w-full bg-texas-navy text-white py-2 rounded-lg hover:bg-blue-800 transition-colors text-sm font-medium"
                   >
                     View Provider Details
                   </button>
@@ -331,7 +331,7 @@ export function StateNoDepositPage({ state }: StateNoDepositPageProps) {
                     <ul className="text-sm text-gray-600 space-y-1">
                       {alt.cons.map((con, conIndex) => (
                         <li key={conIndex} className="flex items-center">
-                          <AlertTriangle className="h-3 w-3 text-red-600 mr-1 flex-shrink-0" />
+                          <AlertTriangle className="h-3 w-3 text-texas-red mr-1 flex-shrink-0" />
                           {con}
                         </li>
                       ))}

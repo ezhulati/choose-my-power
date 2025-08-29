@@ -41,7 +41,7 @@ export function TexasCityPage({ city }: TexasCityPageProps) {
           </p>
           <button
             onClick={() => navigate('/texas/electricity-providers')}
-            className="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors"
+            className="bg-texas-red text-white px-6 py-3 rounded-lg hover:bg-texas-red-600 transition-colors"
           >
             View All Texas Providers
           </button>
@@ -159,9 +159,9 @@ export function TexasCityPage({ city }: TexasCityPageProps) {
               <button
                 key={link.name}
                 onClick={() => navigate(link.href)}
-                className="flex flex-col items-center p-3 bg-gray-50 rounded-lg hover:bg-red-50 hover:text-red-600 transition-colors group"
+                className="flex flex-col items-center p-3 bg-gray-50 rounded-lg hover:bg-red-50 hover:text-texas-red transition-colors group"
               >
-                <link.icon className="h-5 w-5 mb-2 text-gray-400 group-hover:text-red-600" />
+                <link.icon className="h-5 w-5 mb-2 text-gray-400 group-hover:text-texas-red" />
                 <span className="text-xs font-medium text-center">{link.name}</span>
               </button>
             ))}
@@ -178,7 +178,7 @@ export function TexasCityPage({ city }: TexasCityPageProps) {
             </h2>
             <button
               onClick={() => navigate(`/compare/providers?city=${city}&state=texas`)}
-              className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors"
+              className="bg-texas-red text-white px-4 py-2 rounded-lg hover:bg-texas-red-600 transition-colors"
             >
               Compare All Providers
             </button>
@@ -231,7 +231,7 @@ export function TexasCityPage({ city }: TexasCityPageProps) {
               <div className="pt-4">
                 <button
                   onClick={() => navigate(`/texas/${city}/electricity-providers`)}
-                  className="text-red-600 hover:text-red-800 font-medium"
+                  className="text-texas-red hover:text-red-800 font-medium"
                 >
                   View all {cityData.name} providers →
                 </button>
@@ -246,7 +246,7 @@ export function TexasCityPage({ city }: TexasCityPageProps) {
             
             <div className="space-y-4">
               <div className="flex items-start">
-                <span className="bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5">1</span>
+                <span className="bg-texas-red text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5">1</span>
                 <div>
                   <div className="font-medium text-gray-900">Compare {cityData.name} Providers</div>
                   <div className="text-gray-600 text-sm">Review rates, plans, and customer reviews from all available providers</div>
@@ -254,7 +254,7 @@ export function TexasCityPage({ city }: TexasCityPageProps) {
               </div>
               
               <div className="flex items-start">
-                <span className="bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5">2</span>
+                <span className="bg-texas-red text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5">2</span>
                 <div>
                   <div className="font-medium text-gray-900">Calculate Your Costs</div>
                   <div className="text-gray-600 text-sm">Use your actual monthly usage to see real costs, not just advertised rates</div>
@@ -262,7 +262,7 @@ export function TexasCityPage({ city }: TexasCityPageProps) {
               </div>
               
               <div className="flex items-start">
-                <span className="bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5">3</span>
+                <span className="bg-texas-red text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5">3</span>
                 <div>
                   <div className="font-medium text-gray-900">Choose Your Plan</div>
                   <div className="text-gray-600 text-sm">Select based on rate type, contract length, and green energy preferences</div>
@@ -270,7 +270,7 @@ export function TexasCityPage({ city }: TexasCityPageProps) {
               </div>
               
               <div className="flex items-start">
-                <span className="bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5">4</span>
+                <span className="bg-texas-red text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5">4</span>
                 <div>
                   <div className="font-medium text-gray-900">Sign Up & Switch</div>
                   <div className="text-gray-600 text-sm">Your new provider handles the switch - no service interruption</div>
@@ -281,7 +281,7 @@ export function TexasCityPage({ city }: TexasCityPageProps) {
             <div className="pt-6">
               <button
                 onClick={() => navigate(`/texas/${city}/switch-provider`)}
-                className="w-full bg-red-600 text-white py-3 rounded-lg hover:bg-red-700 transition-colors font-medium"
+                className="w-full bg-texas-red text-white py-3 rounded-lg hover:bg-texas-red-600 transition-colors font-medium"
               >
                 Complete {cityData.name} Switching Guide
               </button>
@@ -330,7 +330,7 @@ export function TexasCityPage({ city }: TexasCityPageProps) {
 
             <div className="border border-gray-200 rounded-lg p-6 hover:border-red-300 transition-colors">
               <div className="flex items-center mb-4">
-                <Shield className="h-8 w-8 text-blue-600 mr-3" />
+                <Shield className="h-8 w-8 text-texas-navy mr-3" />
                 <h4 className="text-lg font-semibold text-gray-900">No Deposit</h4>
               </div>
               <p className="text-gray-600 mb-4">
@@ -338,7 +338,7 @@ export function TexasCityPage({ city }: TexasCityPageProps) {
               </p>
               <button
                 onClick={() => navigate(`/texas/${city}/no-deposit-electricity`)}
-                className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                className="w-full bg-texas-navy text-white py-2 rounded-lg hover:bg-blue-800 transition-colors text-sm font-medium"
               >
                 No Deposit Options
               </button>
@@ -361,7 +361,7 @@ export function TexasCityPage({ city }: TexasCityPageProps) {
               >
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center">
-                    <MapPin className="h-4 w-4 text-red-600 mr-2" />
+                    <MapPin className="h-4 w-4 text-texas-red mr-2" />
                     <span className="font-medium text-gray-900">{nearbyCity.name}</span>
                   </div>
                   <span className="text-sm text-gray-500">{nearbyCity.averageRate}¢/kWh</span>
@@ -376,7 +376,7 @@ export function TexasCityPage({ city }: TexasCityPageProps) {
           <div className="text-center mt-6">
             <button
               onClick={() => navigate('/texas')}
-              className="text-red-600 hover:text-red-800 font-medium"
+              className="text-texas-red hover:text-red-800 font-medium"
             >
               View All Texas Cities →
             </button>

@@ -36,7 +36,7 @@ export function StateElectricityPlansPage({ state }: StateElectricityPlansPagePr
           <h1 className="text-2xl font-bold text-gray-900 mb-4">State Not Found</h1>
           <button
             onClick={() => navigate('/')}
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+            className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors"
           >
             Return Home
           </button>
@@ -77,9 +77,9 @@ export function StateElectricityPlansPage({ state }: StateElectricityPlansPagePr
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-texas-navy">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => navigate(`/${state}/electricity-providers`)} className="hover:text-blue-600">
+            <button onClick={() => navigate(`/${state}/electricity-providers`)} className="hover:text-texas-navy">
               {stateData.name}
             </button>
             <span className="mx-2">/</span>
@@ -99,9 +99,9 @@ export function StateElectricityPlansPage({ state }: StateElectricityPlansPagePr
 
               {/* Plan Type Stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="bg-blue-50 p-3 rounded-lg">
+                <div className="bg-texas-cream-200 p-3 rounded-lg">
                   <div className="text-2xl font-bold text-blue-900">{planTypeStats.fixed}</div>
-                  <div className="text-sm text-blue-700">Fixed Rate Plans</div>
+                  <div className="text-sm text-texas-navy">Fixed Rate Plans</div>
                 </div>
                 <div className="bg-orange-50 p-3 rounded-lg">
                   <div className="text-2xl font-bold text-orange-900">{planTypeStats.variable}</div>
@@ -173,7 +173,7 @@ export function StateElectricityPlansPage({ state }: StateElectricityPlansPagePr
                       type="checkbox"
                       checked={greenFilter}
                       onChange={(e) => setGreenFilter(e.target.checked)}
-                      className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                      className="rounded border-gray-300 text-texas-navy focus:ring-blue-500"
                     />
                     <span className="ml-2 text-sm text-gray-700">Green Energy Only</span>
                   </label>
@@ -209,7 +209,7 @@ export function StateElectricityPlansPage({ state }: StateElectricityPlansPagePr
               </h2>
               <button
                 onClick={() => navigate(`/compare/plans?state=${state}`)}
-                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                className="bg-texas-navy text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors"
               >
                 Compare Selected Plans
               </button>
@@ -236,7 +236,7 @@ export function StateElectricityPlansPage({ state }: StateElectricityPlansPagePr
                       <div className="text-sm text-gray-600 mb-3">
                         <button
                           onClick={() => navigate(`/providers/${plan.providerSlug}`)}
-                          className="text-blue-600 hover:text-blue-800 font-medium"
+                          className="text-texas-navy hover:text-texas-navy font-medium"
                         >
                           {plan.providerName}
                         </button>
@@ -265,7 +265,7 @@ export function StateElectricityPlansPage({ state }: StateElectricityPlansPagePr
                         <div className="text-sm text-gray-600 mb-2">Key Features:</div>
                         <div className="flex flex-wrap gap-1">
                           {plan.features.slice(0, 3).map((feature, index) => (
-                            <span key={index} className="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded">
+                            <span key={index} className="px-2 py-1 bg-texas-cream-200 text-texas-navy text-xs rounded">
                               {feature}
                             </span>
                           ))}
@@ -280,7 +280,7 @@ export function StateElectricityPlansPage({ state }: StateElectricityPlansPagePr
                       <div className="space-y-2">
                         <button
                           onClick={() => navigate(`/${state}/houston/electricity-providers`)}
-                          className="w-full md:w-auto bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                          className="w-full md:w-auto bg-texas-navy text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors text-sm font-medium"
                         >
                           See Rates in Your Area
                         </button>
@@ -313,7 +313,7 @@ export function StateElectricityPlansPage({ state }: StateElectricityPlansPagePr
                   
                   <button
                     onClick={() => navigate('/compare/plans/fixed-vs-variable')}
-                    className="text-blue-600 hover:text-blue-800 font-medium text-sm"
+                    className="text-texas-navy hover:text-texas-navy font-medium text-sm"
                   >
                     Compare Fixed vs Variable Plans →
                   </button>
@@ -328,7 +328,7 @@ export function StateElectricityPlansPage({ state }: StateElectricityPlansPagePr
                   
                   <button
                     onClick={() => navigate('/compare/plans/12-month-vs-24-month')}
-                    className="text-blue-600 hover:text-blue-800 font-medium text-sm"
+                    className="text-texas-navy hover:text-texas-navy font-medium text-sm"
                   >
                     Compare Contract Lengths →
                   </button>

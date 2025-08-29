@@ -213,7 +213,7 @@ export function CheapestElectricityLandingPage({ city, state }: CheapestElectric
                   <div className="flex items-center flex-1">
                     {/* Rank Badge */}
                     <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold mr-4 ${
-                      index === 0 ? 'bg-yellow-500' : index === 1 ? 'bg-gray-400' : index === 2 ? 'bg-orange-400' : 'bg-blue-500'
+                      index === 0 ? 'bg-yellow-500' : index === 1 ? 'bg-gray-400' : index === 2 ? 'bg-orange-400' : 'bg-texas-cream-2000'
                     }`}>
                       {index + 1}
                     </div>
@@ -296,7 +296,7 @@ export function CheapestElectricityLandingPage({ city, state }: CheapestElectric
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-blue-600 rounded-full mb-6 text-2xl font-bold">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-full mb-6 text-2xl font-bold">
                 1
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Compare All Rates</h3>
@@ -307,7 +307,7 @@ export function CheapestElectricityLandingPage({ city, state }: CheapestElectric
             </div>
 
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-blue-600 rounded-full mb-6 text-2xl font-bold">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-full mb-6 text-2xl font-bold">
                 2
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Check Contract Terms</h3>
@@ -318,7 +318,7 @@ export function CheapestElectricityLandingPage({ city, state }: CheapestElectric
             </div>
 
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-blue-600 rounded-full mb-6 text-2xl font-bold">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-full mb-6 text-2xl font-bold">
                 3
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Switch & Save</h3>

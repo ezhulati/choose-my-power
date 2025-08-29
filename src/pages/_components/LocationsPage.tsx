@@ -176,7 +176,7 @@ function LocationsPage({}: LocationsPageProps) {
                 onClick={type.action}
                 className="bg-white p-8 rounded-lg shadow-sm border hover:shadow-md transition-shadow text-center group"
               >
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-blue-600 rounded-lg mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-lg mb-6 group-hover:bg-texas-navy group-hover:text-white transition-colors">
                   <type.icon className="h-8 w-8" />
                 </div>
                 <div className="text-3xl font-bold text-gray-900 mb-2">{type.count}</div>
@@ -229,7 +229,7 @@ function LocationsPage({}: LocationsPageProps) {
           {/* States Overview */}
           <div className="bg-white rounded-lg shadow-sm border p-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-              <Building className="h-6 w-6 mr-3 text-blue-600" />
+              <Building className="h-6 w-6 mr-3 text-texas-navy" />
               States & Markets
             </h3>
             
@@ -244,7 +244,7 @@ function LocationsPage({}: LocationsPageProps) {
                       <div>
                         <button
                           onClick={() => navigate(`/${state.slug}/electricity-providers`)}
-                          className="text-lg font-semibold text-blue-600 hover:text-blue-800"
+                          className="text-lg font-semibold text-texas-navy hover:text-texas-navy"
                         >
                           {state.name}
                         </button>
@@ -256,7 +256,7 @@ function LocationsPage({}: LocationsPageProps) {
                       <div className="text-right">
                         {selectedMetric === 'providers' && (
                           <>
-                            <div className="text-2xl font-bold text-blue-600">{stateProviders.length}</div>
+                            <div className="text-2xl font-bold text-texas-navy">{stateProviders.length}</div>
                             <div className="text-sm text-gray-500">providers</div>
                           </>
                         )}
@@ -297,7 +297,7 @@ function LocationsPage({}: LocationsPageProps) {
                     <div className="mt-3 flex gap-2">
                       <button
                         onClick={() => navigate(`/${state.slug}/electricity-providers`)}
-                        className="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded hover:bg-blue-100"
+                        className="text-xs bg-texas-cream-200 text-texas-navy px-2 py-1 rounded hover:bg-texas-cream"
                       >
                         Providers
                       </button>
@@ -351,7 +351,7 @@ function LocationsPage({}: LocationsPageProps) {
                     <div className="text-right">
                       {selectedMetric === 'providers' && (
                         <>
-                          <div className="text-xl font-bold text-blue-600">{city.providerCount}</div>
+                          <div className="text-xl font-bold text-texas-navy">{city.providerCount}</div>
                           <div className="text-xs text-gray-500">providers</div>
                         </>
                       )}
@@ -388,7 +388,7 @@ function LocationsPage({}: LocationsPageProps) {
                   <div className="flex gap-2">
                     <button
                       onClick={() => navigate(`/${city.stateSlug}/${city.slug}/electricity-providers`)}
-                      className="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded hover:bg-blue-100"
+                      className="text-xs bg-texas-cream-200 text-texas-navy px-2 py-1 rounded hover:bg-texas-cream"
                     >
                       Providers
                     </button>
@@ -432,7 +432,7 @@ function LocationsPage({}: LocationsPageProps) {
                           href={utility.website} 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="text-blue-600 hover:text-blue-800"
+                          className="text-texas-navy hover:text-texas-navy"
                         >
                           <Globe className="h-4 w-4" />
                         </a>
@@ -450,7 +450,7 @@ function LocationsPage({}: LocationsPageProps) {
         </div>
 
         {/* ZIP Code Examples */}
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-8 mb-16">
+        <div className="bg-texas-cream-200 border border-blue-200 rounded-lg p-8 mb-16">
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
               Try Sample ZIP Codes
@@ -475,9 +475,9 @@ function LocationsPage({}: LocationsPageProps) {
               <button
                 key={index}
                 onClick={() => handleZipSearch(example.zip)}
-                className="p-4 bg-white border border-blue-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-colors text-left"
+                className="p-4 bg-white border border-blue-200 rounded-lg hover:bg-texas-cream-200 hover:border-blue-300 transition-colors text-left"
               >
-                <div className="font-bold text-blue-600 text-lg">{example.zip}</div>
+                <div className="font-bold text-texas-navy text-lg">{example.zip}</div>
                 <div className="text-gray-900 font-medium">{example.city}, {example.state}</div>
                 <div className="text-sm text-gray-600">
                   {example.providers} providers • {example.rate}/kWh
@@ -504,14 +504,14 @@ function LocationsPage({}: LocationsPageProps) {
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow-sm border text-center hover:shadow-md transition-shadow">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 text-blue-600 rounded-lg mb-4">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-texas-cream text-texas-navy rounded-lg mb-4">
               <Calculator className="h-6 w-6" />
             </div>
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Rate Calculator</h3>
             <p className="text-gray-600 text-sm mb-4">Calculate exact costs based on your usage</p>
             <button
               onClick={() => navigate('/rates/calculator')}
-              className="text-blue-600 hover:text-blue-800 font-medium text-sm"
+              className="text-texas-navy hover:text-texas-navy font-medium text-sm"
             >
               Calculate Costs →
             </button>

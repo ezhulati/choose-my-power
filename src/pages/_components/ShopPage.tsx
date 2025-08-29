@@ -250,9 +250,9 @@ export function ShopPage({ category }: ShopPageProps) {
                         <div className="font-medium text-green-900">APGE SimpleSaver 11</div>
                         <div className="text-green-700 text-sm">9.7¢/kWh • No hidden fees • $100 bill credit</div>
                       </div>
-                      <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                      <div className="p-4 bg-texas-cream-200 border border-blue-200 rounded-lg">
                         <div className="font-medium text-blue-900">Gexa Eco Saver Plus</div>
-                        <div className="text-blue-700 text-sm">9.8¢/kWh • 100% green • $125 usage credit</div>
+                        <div className="text-texas-navy text-sm">9.8¢/kWh • 100% green • $125 usage credit</div>
                       </div>
                     </>
                   )}
@@ -263,9 +263,9 @@ export function ShopPage({ category }: ShopPageProps) {
                         <div className="font-medium text-green-900">Rhythm Energy Plans</div>
                         <div className="text-green-700 text-sm">100% renewable • Flexible billing • Smart alerts</div>
                       </div>
-                      <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                      <div className="p-4 bg-texas-cream-200 border border-blue-200 rounded-lg">
                         <div className="font-medium text-blue-900">Green Mountain Energy</div>
-                        <div className="text-blue-700 text-sm">Pollution-free plans • Wind power • Conserve & save</div>
+                        <div className="text-texas-navy text-sm">Pollution-free plans • Wind power • Conserve & save</div>
                       </div>
                     </>
                   )}
@@ -357,7 +357,7 @@ export function ShopPage({ category }: ShopPageProps) {
                 onClick={() => setSelectedPriority(priority.id as any)}
                 className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                   selectedPriority === priority.id
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-texas-navy text-white'
                     : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
                 }`}
               >
@@ -417,7 +417,7 @@ export function ShopPage({ category }: ShopPageProps) {
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{cat.title}</h3>
                 <p className="text-gray-600 text-sm mb-4">{cat.description}</p>
-                <div className="text-blue-600 font-medium text-sm flex items-center">
+                <div className="text-texas-navy font-medium text-sm flex items-center">
                   Shop Now <ArrowRight className="h-4 w-4 ml-1" />
                 </div>
               </button>
@@ -433,7 +433,7 @@ export function ShopPage({ category }: ShopPageProps) {
           
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-blue-600 rounded-lg mb-6">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-lg mb-6">
                 <Target className="h-8 w-8" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Define Your Priorities</h3>

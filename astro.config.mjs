@@ -10,13 +10,18 @@ export default defineConfig({
     tailwind({
       // Disable the default base styles
       applyBaseStyles: false,
-    }),
-    // Only use Netlify adapter for production builds
-    ...(process.env.NODE_ENV === 'production' ? [netlify()] : [])
+    })
   ],
   output: 'server',
-  // Only set adapter for production
-  ...(process.env.NODE_ENV === 'production' ? { adapter: netlify() } : {}),
+  // Ensure Netlify adapter is consistently applied in all environments
+  adapter: netlify({
+    // Explicitly configure for both development and production
+    dist: new URL('./dist/', import.meta.url),
+    // Enable edge functions for consistent SSR behavior
+    edgeMiddleware: true,
+    // Ensure proper function configuration
+    functionPerRoute: false,
+  }),
   site: 'https://choosemypower.org',
   trailingSlash: 'never',
   
@@ -240,7 +245,11 @@ export default defineConfig({
     sourcemap: process.env.NODE_ENV !== 'production' ? 'inline' : false
   },
   server: {
-    port: 4324
+    port: 4324,
+    // Ensure proper development server behavior for SSR
+    host: true,
+    // Handle routing correctly in development
+    open: false,
   },
   // Performance optimizations
   vite: {

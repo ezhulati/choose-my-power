@@ -228,7 +228,7 @@ const ProgressiveAddressInput: React.FC<ProgressiveAddressInputProps> = ({
                   ${step.completed 
                     ? 'bg-green-500 text-white' 
                     : step.step === currentStep 
-                      ? 'bg-blue-500 text-white' 
+                      ? 'bg-texas-cream-2000 text-white' 
                       : 'bg-gray-200 text-gray-600'
                   }
                 `}>
@@ -270,7 +270,7 @@ const ProgressiveAddressInput: React.FC<ProgressiveAddressInputProps> = ({
               disabled={isLoading}
             />
             {errors.zipCode && (
-              <p className="mt-1 text-sm text-red-600">{errors.zipCode}</p>
+              <p className="mt-1 text-sm text-texas-red">{errors.zipCode}</p>
             )}
           </div>
 
@@ -282,9 +282,9 @@ const ProgressiveAddressInput: React.FC<ProgressiveAddressInputProps> = ({
           )}
 
           {zipAnalysis && !isLoading && (
-            <div className="bg-blue-50 p-4 rounded-lg">
+            <div className="bg-texas-cream-200 p-4 rounded-lg">
               <h4 className="font-medium text-blue-900 mb-2">Service Area Analysis</h4>
-              <p className="text-blue-800 text-sm mb-3">{zipAnalysis.explanation}</p>
+              <p className="text-texas-navy text-sm mb-3">{zipAnalysis.explanation}</p>
               
               {zipAnalysis.primaryTdsp && (
                 <div className="text-sm">
@@ -316,7 +316,7 @@ const ProgressiveAddressInput: React.FC<ProgressiveAddressInputProps> = ({
                       confidence: 'medium'
                     });
                   }}
-                  className="mt-3 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm"
+                  className="mt-3 bg-texas-navy text-white px-4 py-2 rounded hover:bg-blue-800 text-sm"
                 >
                   Continue with {zipAnalysis.primaryTdsp?.name}
                 </button>
@@ -360,7 +360,7 @@ const ProgressiveAddressInput: React.FC<ProgressiveAddressInputProps> = ({
               disabled={isLoading}
             />
             {errors.street && (
-              <p className="mt-1 text-sm text-red-600">{errors.street}</p>
+              <p className="mt-1 text-sm text-texas-red">{errors.street}</p>
             )}
           </div>
 
@@ -382,7 +382,7 @@ const ProgressiveAddressInput: React.FC<ProgressiveAddressInputProps> = ({
                 disabled={isLoading}
               />
               {errors.city && (
-                <p className="mt-1 text-sm text-red-600">{errors.city}</p>
+                <p className="mt-1 text-sm text-texas-red">{errors.city}</p>
               )}
             </div>
 
@@ -462,7 +462,7 @@ const ProgressiveAddressInput: React.FC<ProgressiveAddressInputProps> = ({
             </button>
             <button
               type="submit"
-              className="flex-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 font-medium disabled:opacity-50"
+              className="flex-2 bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 font-medium disabled:opacity-50"
               disabled={isLoading}
             >
               {isLoading ? 'Resolving...' : 'Find My Utility Provider'}
@@ -495,7 +495,7 @@ const ProgressiveAddressInput: React.FC<ProgressiveAddressInputProps> = ({
                 onClick={() => handleTdspSelection(option.tdsp)}
                 className={`
                   w-full p-4 border rounded-lg text-left hover:bg-gray-50 transition-colors
-                  ${option.recommended ? 'border-blue-500 bg-blue-50' : 'border-gray-300'}
+                  ${option.recommended ? 'border-blue-500 bg-texas-cream-200' : 'border-gray-300'}
                 `}
               >
                 <div className="flex items-start justify-between">

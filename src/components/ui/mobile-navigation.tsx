@@ -105,10 +105,10 @@ export function MobileNavigation({ onNavigate, currentPath = '' }: MobileNavigat
       {/* Mobile Menu Trigger Button */}
       <Button
         variant="ghost"
-        size="sm"
+        size="default"
         onClick={() => setIsOpen(true)}
         className={cn(
-          "md:hidden text-gray-700 hover:text-texas-navy p-2",
+          "md:hidden text-gray-700 hover:text-texas-navy p-3 min-h-[48px] min-w-[48px] touch-manipulation",
           zIndexClass('MOBILE_NAV_TOGGLE')
         )}
         aria-label="Open navigation menu"
@@ -149,9 +149,9 @@ export function MobileNavigation({ onNavigate, currentPath = '' }: MobileNavigat
               </div>
               <Button
                 variant="ghost"
-                size="sm"
+                size="default"
                 onClick={() => setIsOpen(false)}
-                className="text-white hover:bg-white hover:bg-opacity-20 p-2"
+                className="text-white hover:bg-white hover:bg-opacity-20 p-3 min-h-[48px] min-w-[48px] touch-manipulation"
                 aria-label="Close navigation menu"
               >
                 <X className="h-6 w-6" />
@@ -168,7 +168,7 @@ export function MobileNavigation({ onNavigate, currentPath = '' }: MobileNavigat
                         variant="ghost"
                         onClick={() => item.children ? toggleSection(item.name) : handleNavigate(item.href)}
                         className={cn(
-                          "flex-1 justify-start text-left p-3 h-auto",
+                          "flex-1 justify-start text-left p-4 min-h-[48px] touch-manipulation",
                           isActiveLink(item.href) 
                             ? "bg-texas-navy text-white hover:bg-texas-navy hover:bg-opacity-90" 
                             : "text-gray-700 hover:bg-gray-100"
@@ -181,9 +181,9 @@ export function MobileNavigation({ onNavigate, currentPath = '' }: MobileNavigat
                       {item.children && (
                         <Button
                           variant="ghost"
-                          size="sm"
+                          size="default"
                           onClick={() => toggleSection(item.name)}
-                          className="p-2 text-gray-500 hover:text-gray-700"
+                          className="p-3 min-h-[48px] min-w-[48px] text-gray-500 hover:text-gray-700 touch-manipulation"
                         >
                           <ChevronDown 
                             className={cn(
@@ -204,9 +204,9 @@ export function MobileNavigation({ onNavigate, currentPath = '' }: MobileNavigat
                             variant="ghost"
                             onClick={() => handleNavigate(child.href)}
                             className={cn(
-                              "w-full justify-start text-left p-3 h-auto",
+                              "w-full justify-start text-left p-4 min-h-[48px] touch-manipulation",
                               isActiveLink(child.href)
-                                ? "bg-blue-50 text-texas-navy border-l-4 border-texas-navy"
+                                ? "bg-texas-cream-200 text-texas-navy border-l-4 border-texas-navy"
                                 : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
                             )}
                           >
@@ -232,9 +232,9 @@ export function MobileNavigation({ onNavigate, currentPath = '' }: MobileNavigat
                 <p className="text-sm text-gray-600 mb-2">Need help choosing?</p>
                 <Button
                   variant="outline"
-                  size="sm"
+                  size="default"
                   onClick={() => handleNavigate('/contact')}
-                  className="w-full"
+                  className="w-full min-h-[48px] touch-manipulation"
                 >
                   Contact Us
                 </Button>

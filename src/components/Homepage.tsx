@@ -1,6 +1,7 @@
 import React from 'react';
 import { Zap, Calculator, Leaf, Users, TrendingDown, Battery, Award, BarChart } from 'lucide-react';
-import { mockProviders } from '../data/mockData';
+import { Button } from './ui/button';
+import { Card, CardContent } from './ui/card';
 import { ZipCodeSearch } from './ZipCodeSearch';
 import { getCityFromZip } from '../config/tdsp-mapping';
 import { getCredibleMarketingText, DEFAULT_COUNTS } from '../lib/utils/dynamic-counts';
@@ -86,8 +87,8 @@ export function Homepage({ onNavigate }: HomepageProps) {
             </div>
 
             <div className="text-center p-6">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="w-8 h-8 text-blue-600" />
+              <div className="w-16 h-16 bg-texas-cream rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="w-8 h-8 text-texas-navy" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Service Champions</h3>
               <p className="text-gray-600">Top-rated customer service and satisfaction leaders</p>
@@ -125,41 +126,53 @@ export function Homepage({ onNavigate }: HomepageProps) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <button
+            <Card 
+              variant="plan-card" 
+              className="cursor-pointer"
               onClick={() => onNavigate('/electricity-companies')}
-              className="bg-white border border-gray-200 hover:border-blue-300 hover:shadow-lg p-6 rounded-lg text-left transition-all duration-200"
             >
-              <Award className="w-8 h-8 text-blue-600 mb-3" />
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Best Companies</h3>
-              <p className="text-gray-600">Expert-ranked electricity companies by specialization</p>
-            </button>
+              <CardContent className="p-6">
+                <Award className="w-8 h-8 text-texas-navy mb-3" />
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Best Companies</h3>
+                <p className="text-gray-600">Expert-ranked electricity companies by specialization</p>
+              </CardContent>
+            </Card>
 
-            <button
+            <Card 
+              variant="plan-card" 
+              className="cursor-pointer"
               onClick={() => onNavigate('/compare')}
-              className="bg-white border border-gray-200 hover:border-blue-300 hover:shadow-lg p-6 rounded-lg text-left transition-all duration-200"
             >
-              <BarChart className="w-8 h-8 text-green-600 mb-3" />
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Compare Options</h3>
-              <p className="text-gray-600">Side-by-side comparison of companies, plans, and rates</p>
-            </button>
+              <CardContent className="p-6">
+                <BarChart className="w-8 h-8 text-green-600 mb-3" />
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Compare Options</h3>
+                <p className="text-gray-600">Side-by-side comparison of companies, plans, and rates</p>
+              </CardContent>
+            </Card>
 
-            <button
+            <Card 
+              variant="plan-card" 
+              className="cursor-pointer"
               onClick={() => onNavigate('/shop')}
-              className="bg-white border border-gray-200 hover:border-blue-300 hover:shadow-lg p-6 rounded-lg text-left transition-all duration-200"
             >
-              <Zap className="w-8 h-8 text-purple-600 mb-3" />
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Shop by Priority</h3>
-              <p className="text-gray-600">Find options based on price, service, green energy, or features</p>
-            </button>
+              <CardContent className="p-6">
+                <Zap className="w-8 h-8 text-purple-600 mb-3" />
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Shop by Priority</h3>
+                <p className="text-gray-600">Find options based on price, service, green energy, or features</p>
+              </CardContent>
+            </Card>
 
-            <button
+            <Card 
+              variant="plan-card" 
+              className="cursor-pointer"
               onClick={() => onNavigate('/rates/calculator')}
-              className="bg-white border border-gray-200 hover:border-blue-300 hover:shadow-lg p-6 rounded-lg text-left transition-all duration-200"
             >
-              <Calculator className="w-8 h-8 text-orange-600 mb-3" />
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Calculate Costs</h3>
-              <p className="text-gray-600">See exact costs and savings based on your usage</p>
-            </button>
+              <CardContent className="p-6">
+                <Calculator className="w-8 h-8 text-orange-600 mb-3" />
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Calculate Costs</h3>
+                <p className="text-gray-600">See exact costs and savings based on your usage</p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -177,22 +190,30 @@ export function Homepage({ onNavigate }: HomepageProps) {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="bg-white p-6 rounded-lg shadow-sm border text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">{DEFAULT_COUNTS.providers}</div>
-              <div className="text-gray-600">Licensed Providers</div>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm border text-center">
-              <div className="text-3xl font-bold text-green-600 mb-2">6</div>
-              <div className="text-gray-600">Expert Categories</div>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm border text-center">
-              <div className="text-3xl font-bold text-purple-600 mb-2">{DEFAULT_COUNTS.plans}+</div>
-              <div className="text-gray-600">Available Plans</div>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm border text-center">
-              <div className="text-3xl font-bold text-orange-600 mb-2">25+</div>
-              <div className="text-gray-600">Major Cities</div>
-            </div>
+            <Card variant="elevated" className="text-center">
+              <CardContent className="p-6">
+                <div className="text-3xl font-bold text-texas-navy mb-2">{DEFAULT_COUNTS.providers}</div>
+                <div className="text-gray-600">Licensed Providers</div>
+              </CardContent>
+            </Card>
+            <Card variant="elevated" className="text-center">
+              <CardContent className="p-6">
+                <div className="text-3xl font-bold text-green-600 mb-2">6</div>
+                <div className="text-gray-600">Expert Categories</div>
+              </CardContent>
+            </Card>
+            <Card variant="elevated" className="text-center">
+              <CardContent className="p-6">
+                <div className="text-3xl font-bold text-purple-600 mb-2">{DEFAULT_COUNTS.plans}+</div>
+                <div className="text-gray-600">Available Plans</div>
+              </CardContent>
+            </Card>
+            <Card variant="elevated" className="text-center">
+              <CardContent className="p-6">
+                <div className="text-3xl font-bold text-orange-600 mb-2">25+</div>
+                <div className="text-gray-600">Major Cities</div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -207,20 +228,24 @@ export function Homepage({ onNavigate }: HomepageProps) {
             Join millions who have found the right electricity provider using our expert analysis
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
+            <Button
+              variant="texas-outline"
+              size="lg"
               onClick={() => onNavigate('/electricity-companies')}
-              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors inline-flex items-center gap-2"
+              className="inline-flex items-center gap-2 bg-white text-texas-navy hover:bg-texas-navy hover:text-white"
             >
               <Award className="w-5 h-5" />
               Find Best Companies
-            </button>
-            <button
+            </Button>
+            <Button
+              variant="texas-secondary"
+              size="lg"
               onClick={() => onNavigate('/compare')}
-              className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors inline-flex items-center gap-2"
+              className="inline-flex items-center gap-2"
             >
               <BarChart className="w-5 h-5" />
               Compare Options
-            </button>
+            </Button>
           </div>
         </div>
       </section>

@@ -140,11 +140,11 @@ export function Top5ProvidersPage({}: Top5ProvidersPageProps) {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-texas-navy">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => navigate('/compare')} className="hover:text-blue-600">Compare</button>
+            <button onClick={() => navigate('/compare')} className="hover:text-texas-navy">Compare</button>
             <span className="mx-2">/</span>
-            <button onClick={() => navigate('/compare/providers')} className="hover:text-blue-600">Providers</button>
+            <button onClick={() => navigate('/compare/providers')} className="hover:text-texas-navy">Providers</button>
             <span className="mx-2">/</span>
             <span>Top 5</span>
           </nav>
@@ -183,13 +183,13 @@ export function Top5ProvidersPage({}: Top5ProvidersPageProps) {
                 onClick={() => setSelectedCategory(category.id as any)}
                 className={`p-6 rounded-lg border-2 transition-all ${
                   selectedCategory === category.id
-                    ? 'border-blue-600 bg-blue-50'
+                    ? 'border-texas-navy bg-texas-cream-200'
                     : 'border-gray-200 hover:border-gray-300 bg-white'
                 }`}
               >
                 <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg mb-4 ${
                   selectedCategory === category.id
-                    ? 'bg-blue-100 text-blue-600'
+                    ? 'bg-texas-cream text-texas-navy'
                     : 'bg-gray-100 text-gray-600'
                 }`}>
                   <category.icon className="h-6 w-6" />
@@ -228,7 +228,7 @@ export function Top5ProvidersPage({}: Top5ProvidersPageProps) {
                             rank === 1 ? 'bg-yellow-100' :
                             rank === 2 ? 'bg-gray-100' :
                             rank === 3 ? 'bg-orange-100' :
-                            'bg-blue-100'
+                            'bg-texas-cream'
                           }`}>
                             {getRankIcon(rank)}
                           </div>
@@ -306,7 +306,7 @@ export function Top5ProvidersPage({}: Top5ProvidersPageProps) {
                         <div className="text-right space-y-2">
                           <button
                             onClick={() => navigate(`/providers/${provider.slug}`)}
-                            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                            className="bg-texas-navy text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors text-sm font-medium"
                           >
                             View Details
                           </button>
@@ -357,14 +357,14 @@ export function Top5ProvidersPage({}: Top5ProvidersPageProps) {
               </ul>
             </div>
 
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+            <div className="bg-texas-cream-200 border border-blue-200 rounded-lg p-6">
               <h3 className="text-lg font-semibold text-blue-900 mb-4">Need Help Choosing?</h3>
-              <p className="text-blue-800 text-sm mb-4">
+              <p className="text-texas-navy text-sm mb-4">
                 Rankings help narrow your choices, but the best provider depends on your specific needs and location.
               </p>
               <button
                 onClick={() => navigate('/resources/guides/choosing-a-provider')}
-                className="text-blue-600 hover:text-blue-800 font-medium text-sm"
+                className="text-texas-navy hover:text-texas-navy font-medium text-sm"
               >
                 Read our choosing guide →
               </button>

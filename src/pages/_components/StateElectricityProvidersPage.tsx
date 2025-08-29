@@ -37,7 +37,7 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
           <p className="text-gray-600 mb-8">The state you're looking for doesn't exist in our database.</p>
           <button
             onClick={() => navigate('/')}
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+            className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors"
           >
             Return Home
           </button>
@@ -75,7 +75,7 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
             <div className="mb-6 lg:mb-0">
               <nav className="text-sm text-gray-500 mb-2">
-                <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
+                <button onClick={() => navigate('/')} className="hover:text-texas-navy">Home</button>
                 <span className="mx-2">/</span>
                 <span>{stateData.name}</span>
                 <span className="mx-2">/</span>
@@ -97,7 +97,7 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
                   <span className="text-gray-600">Avg Rate: <strong>{stateData.averageRate}¢/kWh</strong></span>
                 </div>
                 <div className="flex items-center">
-                  <Users className="h-4 w-4 text-blue-600 mr-2" />
+                  <Users className="h-4 w-4 text-texas-navy mr-2" />
                   <span className="text-gray-600"><strong>{stateProviders.length}</strong> Providers</span>
                 </div>
                 <div className="flex items-center">
@@ -128,9 +128,9 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
               <button
                 key={link.name}
                 onClick={() => navigate(link.href)}
-                className="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors group"
+                className="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-texas-cream-200 hover:text-texas-navy transition-colors group"
               >
-                <link.icon className="h-5 w-5 mr-2 text-gray-400 group-hover:text-blue-600" />
+                <link.icon className="h-5 w-5 mr-2 text-gray-400 group-hover:text-texas-navy" />
                 <span className="text-sm font-medium">{link.name}</span>
               </button>
             ))}
@@ -183,7 +183,7 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
                   <button
                     key={city.id}
                     onClick={() => navigate(`/${stateData.slug}/${city.slug}/electricity-providers`)}
-                    className="block w-full text-left p-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600 rounded-md transition-colors"
+                    className="block w-full text-left p-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-texas-navy rounded-md transition-colors"
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center">
@@ -205,7 +205,7 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
                   <button
                     key={index}
                     onClick={() => navigate(`/${state}/utilities/${utility.toLowerCase().replace(/\s+/g, '-')}`)}
-                    className="block w-full text-left p-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600 rounded-md transition-colors"
+                    className="block w-full text-left p-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-texas-navy rounded-md transition-colors"
                   >
                     {utility}
                   </button>
@@ -257,7 +257,7 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
                   <div className="space-y-2">
                     <button
                       onClick={() => navigate(`/${state}/market-info/deregulation`)}
-                      className="text-blue-600 hover:text-blue-800 text-sm font-medium"
+                      className="text-texas-navy hover:text-texas-navy text-sm font-medium"
                     >
                       Learn about {stateData.name} deregulation →
                     </button>
@@ -273,7 +273,7 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
                   <div className="space-y-2">
                     <button
                       onClick={() => navigate(`/${state}/switch-provider`)}
-                      className="text-blue-600 hover:text-blue-800 text-sm font-medium"
+                      className="text-texas-navy hover:text-texas-navy text-sm font-medium"
                     >
                       Step-by-step switching guide →
                     </button>
@@ -295,11 +295,11 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
               
               <button
                 onClick={() => navigate(`/providers#service`)}
-                className="p-4 bg-blue-50 border border-blue-200 rounded-lg hover:bg-blue-100 transition-colors text-center"
+                className="p-4 bg-texas-cream-200 border border-blue-200 rounded-lg hover:bg-texas-cream transition-colors text-center"
               >
-                <Users className="h-6 w-6 text-blue-600 mx-auto mb-2" />
+                <Users className="h-6 w-6 text-texas-navy mx-auto mb-2" />
                 <div className="font-medium text-blue-900">Best Customer Service</div>
-                <div className="text-sm text-blue-700">Top-rated support</div>
+                <div className="text-sm text-texas-navy">Top-rated support</div>
               </button>
               
               <button
@@ -336,9 +336,9 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
                 </div>
                 
                 <div className="text-center p-4 border border-gray-200 rounded-lg">
-                  <Users className="h-8 w-8 text-blue-600 mx-auto mb-2" />
+                  <Users className="h-8 w-8 text-texas-navy mx-auto mb-2" />
                   <div className="font-semibold text-gray-900">Customer Service</div>
-                  <div className="text-sm text-blue-600">#1 Champion Energy</div>
+                  <div className="text-sm text-texas-navy">#1 Champion Energy</div>
                   <div className="text-xs text-gray-500">4.8★ rating</div>
                 </div>
                 
@@ -360,7 +360,7 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
               <div className="mt-4 text-center">
                 <button
                   onClick={() => navigate('/providers')}
-                  className="text-blue-600 hover:text-blue-800 font-medium"
+                  className="text-texas-navy hover:text-texas-navy font-medium"
                 >
                   View all provider categories & expert rankings →
                 </button>

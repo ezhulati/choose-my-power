@@ -457,7 +457,7 @@ export function CompareRatesPage({}: CompareRatesPageProps) {
                 </div>
                 
                 <div className="flex items-start">
-                  <TrendingUp className="h-6 w-6 text-blue-600 mr-3 mt-1 flex-shrink-0" />
+                  <TrendingUp className="h-6 w-6 text-texas-navy mr-3 mt-1 flex-shrink-0" />
                   <div>
                     <div className="font-medium text-gray-900">Rate Range</div>
                     <div className="text-gray-600 text-sm">
@@ -481,9 +481,9 @@ export function CompareRatesPage({}: CompareRatesPageProps) {
             <div>
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Rate Selection Tips</h3>
               <div className="space-y-4">
-                <div className="bg-blue-50 p-4 rounded-lg">
+                <div className="bg-texas-cream-200 p-4 rounded-lg">
                   <div className="font-medium text-blue-900 mb-2">Compare Total Costs</div>
-                  <div className="text-blue-800 text-sm">
+                  <div className="text-texas-navy text-sm">
                     Look beyond the rate per kWh. Include monthly fees and your actual usage.
                   </div>
                 </div>
@@ -509,7 +509,7 @@ export function CompareRatesPage({}: CompareRatesPageProps) {
         {/* Cross-Hub Navigation */}
         <div className="grid md:grid-cols-3 gap-8">
           <div className="bg-white p-6 rounded-lg shadow-sm border text-center hover:shadow-md transition-shadow">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 text-blue-600 rounded-lg mb-4">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-texas-cream text-texas-navy rounded-lg mb-4">
               <Users className="h-6 w-6" />
             </div>
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Compare Providers</h3>
@@ -518,7 +518,7 @@ export function CompareRatesPage({}: CompareRatesPageProps) {
             </p>
             <button
               onClick={() => navigate('/compare/providers')}
-              className="text-blue-600 hover:text-blue-800 font-medium text-sm"
+              className="text-texas-navy hover:text-texas-navy font-medium text-sm"
             >
               Compare Providers →
             </button>

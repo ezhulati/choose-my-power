@@ -169,7 +169,7 @@ const FilterBreadcrumb: React.FC<FilterBreadcrumbProps> = ({
               {item.removable ? (
                 <Badge
                   variant="texas-primary"
-                  className="cursor-pointer hover:opacity-80 pr-1"
+                  className="cursor-pointer hover:opacity-80 pr-1 min-h-[48px] px-4 py-3 touch-manipulation inline-flex items-center"
                   onClick={() => onRemoveFilter(item.type, item.value, false)}
                   aria-label={`Remove ${item.label} filter`}
                   title={`Remove ${item.label} filter`}
@@ -194,8 +194,9 @@ const FilterBreadcrumb: React.FC<FilterBreadcrumbProps> = ({
         {hasActiveFilters && (
           <Button
             variant="destructive"
-            size="sm"
+            size="default"
             onClick={onClearAll}
+            className="min-h-[48px] touch-manipulation"
             aria-label="Clear all filters"
             title="Clear all filters"
           >

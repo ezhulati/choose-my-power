@@ -156,14 +156,14 @@ export function RatesPage({}: RatesPageProps) {
             {rateTools.map((tool, index) => (
               <div key={index} className="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow">
                 <div className="p-8 text-center">
-                  <div className={`inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-blue-600 rounded-lg mb-6`}>
+                  <div className={`inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-lg mb-6`}>
                     <tool.icon className="h-8 w-8" />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-4">{tool.title}</h3>
                   <p className="text-gray-600 mb-6">{tool.description}</p>
                   <button
                     onClick={() => navigate(tool.href)}
-                    className={`bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors font-medium w-full`}
+                    className={`bg-texas-red text-white px-6 py-3 rounded-lg hover:bg-texas-red-600 transition-colors font-medium w-full`}
                   >
                     Open Tool
                   </button>
@@ -198,9 +198,9 @@ export function RatesPage({}: RatesPageProps) {
                 <div className="text-3xl font-bold text-green-900">{lowestRate.toFixed(1)}¢</div>
                 <div className="text-sm text-green-700">Lowest Rate</div>
               </div>
-              <div className="text-center p-6 bg-blue-50 rounded-lg">
+              <div className="text-center p-6 bg-texas-cream-200 rounded-lg">
                 <div className="text-3xl font-bold text-blue-900">{averageRate.toFixed(1)}¢</div>
-                <div className="text-sm text-blue-700">Average Rate</div>
+                <div className="text-sm text-texas-navy">Average Rate</div>
               </div>
               <div className="text-center p-6 bg-orange-50 rounded-lg">
                 <div className="text-3xl font-bold text-orange-900">{highestRate.toFixed(1)}¢</div>
@@ -216,7 +216,7 @@ export function RatesPage({}: RatesPageProps) {
           <div className="text-center">
             <button
               onClick={() => navigate(`/${selectedState}/electricity-rates`)}
-              className="bg-red-600 text-white px-8 py-3 rounded-lg hover:bg-red-700 transition-colors font-medium"
+              className="bg-texas-red text-white px-8 py-3 rounded-lg hover:bg-texas-red-600 transition-colors font-medium"
             >
               View All {stateData?.name} Rates
             </button>
@@ -237,7 +237,7 @@ export function RatesPage({}: RatesPageProps) {
           <div className="grid lg:grid-cols-3 gap-8">
             {rateEducation.map((item, index) => (
               <div key={index} className="bg-white rounded-lg shadow-sm border p-8">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 text-blue-600 rounded-lg mb-6">
+                <div className="inline-flex items-center justify-center w-12 h-12 bg-texas-cream text-texas-navy rounded-lg mb-6">
                   <item.icon className="h-6 w-6" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">{item.title}</h3>
@@ -303,7 +303,7 @@ export function RatesPage({}: RatesPageProps) {
           <div className="text-center mt-6">
             <button
               onClick={() => navigate('/rates/calculator')}
-              className="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors font-medium"
+              className="bg-texas-red text-white px-6 py-3 rounded-lg hover:bg-texas-red-600 transition-colors font-medium"
             >
               Use Advanced Calculator
             </button>

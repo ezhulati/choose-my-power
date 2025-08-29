@@ -452,7 +452,7 @@ export function ZipCodeSearch({
 
         {/* Error Message */}
         {error && (
-          <div id="zip-error" className="mt-2 flex items-center gap-2 text-red-600">
+          <div id="zip-error" className="mt-2 flex items-center gap-2 text-texas-red">
             <AlertCircle className="h-4 w-4 flex-shrink-0" />
             <span className="text-sm">{error.userMessage}</span>
           </div>
@@ -490,7 +490,7 @@ export function ZipCodeSearch({
                     <div className={cn(
                       'flex items-center justify-center w-8 h-8 rounded-full',
                       suggestion.type === 'recent' 
-                        ? 'bg-blue-100 text-blue-600'
+                        ? 'bg-texas-cream text-texas-navy'
                         : suggestion.type === 'popular'
                         ? 'bg-texas-gold/20 text-texas-gold-700'
                         : 'bg-gray-100 text-gray-600'

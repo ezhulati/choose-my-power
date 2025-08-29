@@ -495,7 +495,7 @@ export function ComparePlansPage({}: ComparePlansPageProps) {
                         />
                         <div>
                           <h3 className="text-lg font-semibold text-gray-900">{plan.name}</h3>
-                          <div className="text-blue-600 font-medium">{plan.providerName}</div>
+                          <div className="text-texas-navy font-medium">{plan.providerName}</div>
                         </div>
                         
                         <div className="ml-4 flex items-center space-x-2">
@@ -551,7 +551,7 @@ export function ComparePlansPage({}: ComparePlansPageProps) {
                       <div className="text-sm text-gray-500 mb-3">per kWh</div>
                       
                       <div className="mb-4">
-                        <div className="text-lg font-bold text-blue-600">${monthlyCost.toFixed(2)}</div>
+                        <div className="text-lg font-bold text-texas-navy">${monthlyCost.toFixed(2)}</div>
                         <div className="text-sm text-gray-500">monthly cost*</div>
                         <div className="text-sm text-gray-500">${(monthlyCost * 12).toFixed(0)}/year</div>
                       </div>
@@ -585,7 +585,7 @@ export function ComparePlansPage({}: ComparePlansPageProps) {
         <div className="grid md:grid-cols-3 gap-8">
           <Card className="p-6 text-center hover:shadow-md transition-shadow">
             <CardContent className="p-0">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 text-blue-600 rounded-lg mb-4">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-texas-cream text-texas-navy rounded-lg mb-4">
                 <Icon icon="users" size={24} />
               </div>
               <CardTitle className="text-lg mb-3">Compare Providers</CardTitle>
@@ -595,7 +595,7 @@ export function ComparePlansPage({}: ComparePlansPageProps) {
               <Button
                 onClick={() => navigate('/compare/providers')}
                 variant="ghost"
-                className="text-blue-600 hover:text-blue-800 font-medium text-sm"
+                className="text-texas-navy hover:text-texas-navy font-medium text-sm"
               >
                 Compare Providers →
               </Button>

@@ -34,7 +34,7 @@ export function CityPage({ state, city }: CityPageProps) {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <div className="bg-white rounded-lg shadow-sm border p-12">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-blue-100 text-blue-600 rounded-lg mb-8">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-texas-cream text-texas-navy rounded-lg mb-8">
               <MapPin className="h-10 w-10" />
             </div>
             
@@ -58,7 +58,7 @@ export function CityPage({ state, city }: CityPageProps) {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <button
                     onClick={() => navigate(`/${state}/electricity-providers`)}
-                    className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium inline-flex items-center justify-center"
+                    className="bg-texas-navy text-white px-8 py-3 rounded-lg hover:bg-blue-800 transition-colors font-medium inline-flex items-center justify-center"
                   >
                     View All {stateData.name} Providers
                     <ArrowRight className="h-4 w-4 ml-2" />
@@ -81,7 +81,7 @@ export function CityPage({ state, city }: CityPageProps) {
                       <button
                         key={availableCity.id}
                         onClick={() => navigate(`/${state}/${availableCity.slug}/electricity-providers`)}
-                        className="p-3 text-sm text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition-colors border border-gray-200"
+                        className="p-3 text-sm text-texas-navy hover:text-texas-navy hover:bg-texas-cream-200 rounded-lg transition-colors border border-gray-200"
                       >
                         {availableCity.name}
                       </button>
@@ -107,7 +107,7 @@ export function CityPage({ state, city }: CityPageProps) {
                 
                 <button
                   onClick={() => navigate('/')}
-                  className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium inline-flex items-center"
+                  className="bg-texas-navy text-white px-8 py-3 rounded-lg hover:bg-blue-800 transition-colors font-medium inline-flex items-center"
                 >
                   <Search className="h-4 w-4 mr-2" />
                   Start Your Search
@@ -140,9 +140,9 @@ export function CityPage({ state, city }: CityPageProps) {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-texas-navy">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => navigate(`/${state}/electricity-providers`)} className="hover:text-blue-600">
+            <button onClick={() => navigate(`/${state}/electricity-providers`)} className="hover:text-texas-navy">
               {stateData.name}
             </button>
             <span className="mx-2">/</span>
@@ -162,13 +162,13 @@ export function CityPage({ state, city }: CityPageProps) {
 
               {/* City Stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                <div className="bg-blue-50 p-4 rounded-lg">
+                <div className="bg-texas-cream-200 p-4 rounded-lg">
                   <div className="flex items-center mb-2">
-                    <TrendingDown className="h-5 w-5 text-blue-600 mr-2" />
-                    <span className="text-sm font-medium text-blue-800">Avg Rate</span>
+                    <TrendingDown className="h-5 w-5 text-texas-navy mr-2" />
+                    <span className="text-sm font-medium text-texas-navy">Avg Rate</span>
                   </div>
                   <div className="text-2xl font-bold text-blue-900">{cityData.averageRate}¢</div>
-                  <div className="text-sm text-blue-700">per kWh</div>
+                  <div className="text-sm text-texas-navy">per kWh</div>
                 </div>
 
                 <div className="bg-green-50 p-4 rounded-lg">
@@ -218,7 +218,7 @@ export function CityPage({ state, city }: CityPageProps) {
                     <button
                       key={zip}
                       onClick={() => handleZipSearch(zip)}
-                      className="text-blue-600 hover:text-blue-800 hover:underline"
+                      className="text-texas-navy hover:text-texas-navy hover:underline"
                     >
                       {zip}
                     </button>
@@ -244,7 +244,7 @@ export function CityPage({ state, city }: CityPageProps) {
                 onClick={() => setSelectedUsage(usage as any)}
                 className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                   selectedUsage === usage
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-texas-navy text-white'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
@@ -266,12 +266,12 @@ export function CityPage({ state, city }: CityPageProps) {
               </div>
               <div className="text-sm text-green-600">at {cityData.averageRate}¢/kWh</div>
             </div>
-            <div className="text-center p-4 bg-blue-50 rounded-lg">
-              <div className="text-sm text-blue-600 mb-1">Est. Yearly Cost</div>
+            <div className="text-center p-4 bg-texas-cream-200 rounded-lg">
+              <div className="text-sm text-texas-navy mb-1">Est. Yearly Cost</div>
               <div className="text-2xl font-bold text-blue-900">
                 ${usageRates[selectedUsage].yearly}
               </div>
-              <div className="text-sm text-blue-600">annual estimate</div>
+              <div className="text-sm text-texas-navy">annual estimate</div>
             </div>
           </div>
         </div>
@@ -284,7 +284,7 @@ export function CityPage({ state, city }: CityPageProps) {
             </h2>
             <button
               onClick={() => navigate(`/compare/providers`)}
-              className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+              className="bg-texas-navy text-white px-6 py-2 rounded-lg hover:bg-blue-800 transition-colors"
             >
               Compare All
             </button>
@@ -314,7 +314,7 @@ export function CityPage({ state, city }: CityPageProps) {
                   <div className="space-y-2">
                     <button
                       onClick={() => navigate(`/providers/${provider.slug}`)}
-                      className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                      className="w-full bg-texas-navy text-white py-2 rounded-lg hover:bg-blue-800 transition-colors text-sm font-medium"
                     >
                       View Details
                     </button>

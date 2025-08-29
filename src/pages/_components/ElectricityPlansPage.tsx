@@ -280,7 +280,7 @@ export function ElectricityPlansPage({}: ElectricityPlansPageProps) {
               onClick={() => setSelectedCategory('all')}
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                 selectedCategory === 'all'
-                  ? 'bg-blue-600 text-white'
+                  ? 'bg-texas-navy text-white'
                   : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
               }`}
             >
@@ -292,7 +292,7 @@ export function ElectricityPlansPage({}: ElectricityPlansPageProps) {
                 onClick={() => setSelectedCategory(category.id as any)}
                 className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                   selectedCategory === category.id
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-texas-navy text-white'
                     : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
                 }`}
               >
@@ -339,7 +339,7 @@ export function ElectricityPlansPage({}: ElectricityPlansPageProps) {
                   <ul className="space-y-1">
                     {category.bestFor.map((user, index) => (
                       <li key={index} className="flex items-center text-sm text-gray-600">
-                        <Target className="h-3 w-3 text-blue-600 mr-2 flex-shrink-0" />
+                        <Target className="h-3 w-3 text-texas-navy mr-2 flex-shrink-0" />
                         {user}
                       </li>
                     ))}
@@ -356,7 +356,7 @@ export function ElectricityPlansPage({}: ElectricityPlansPageProps) {
                 <div className="space-y-3">
                   <button
                     onClick={() => navigate(`/plans/${category.id}`)}
-                    className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                    className="w-full bg-texas-navy text-white py-3 rounded-lg hover:bg-blue-800 transition-colors font-medium"
                   >
                     Master {category.title}
                   </button>
@@ -381,7 +381,7 @@ export function ElectricityPlansPage({}: ElectricityPlansPageProps) {
           <div className="grid lg:grid-cols-4 gap-8">
             {planSelectionGuide.map((step) => (
               <div key={step.step} className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-blue-600 rounded-full mb-6 text-2xl font-bold">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-full mb-6 text-2xl font-bold">
                   {step.step}
                 </div>
                 <div className="inline-flex items-center justify-center w-12 h-12 bg-gray-100 text-gray-600 rounded-lg mb-4">
@@ -405,7 +405,7 @@ export function ElectricityPlansPage({}: ElectricityPlansPageProps) {
                   <h4 className="font-medium text-gray-900 mb-2">Available Tools:</h4>
                   <div className="space-y-1">
                     {step.tools.map((tool, index) => (
-                      <div key={index} className="text-sm text-blue-600">{tool}</div>
+                      <div key={index} className="text-sm text-texas-navy">{tool}</div>
                     ))}
                   </div>
                 </div>
@@ -470,7 +470,7 @@ export function ElectricityPlansPage({}: ElectricityPlansPageProps) {
 
                 <div className="grid grid-cols-3 gap-4 mb-6">
                   <div className="text-center p-3 bg-gray-50 rounded-lg">
-                    <div className="text-lg font-bold text-blue-600">{hub.providers}</div>
+                    <div className="text-lg font-bold text-texas-navy">{hub.providers}</div>
                     <div className="text-sm text-gray-600">Providers</div>
                   </div>
                   <div className="text-center p-3 bg-gray-50 rounded-lg">
@@ -501,7 +501,7 @@ export function ElectricityPlansPage({}: ElectricityPlansPageProps) {
                       <button
                         key={city}
                         onClick={() => navigate(`/${hub.slug}/${city.toLowerCase().replace(' ', '-')}/electricity-plans`)}
-                        className="text-sm text-blue-600 hover:text-blue-800 text-left p-2 hover:bg-blue-50 rounded"
+                        className="text-sm text-texas-navy hover:text-texas-navy text-left p-2 hover:bg-texas-cream-200 rounded"
                       >
                         {city} Plans →
                       </button>
@@ -512,7 +512,7 @@ export function ElectricityPlansPage({}: ElectricityPlansPageProps) {
                 <div className="grid grid-cols-2 gap-3">
                   <button
                     onClick={() => navigate(`/${hub.slug}/electricity-plans`)}
-                    className="bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                    className="bg-texas-navy text-white py-2 rounded-lg hover:bg-blue-800 transition-colors font-medium"
                   >
                     All {hub.state} Plans
                   </button>
@@ -545,14 +545,14 @@ export function ElectricityPlansPage({}: ElectricityPlansPageProps) {
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow-sm border text-center hover:shadow-md transition-shadow">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 text-blue-600 rounded-lg mb-4">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-texas-cream text-texas-navy rounded-lg mb-4">
               <TrendingDown className="h-6 w-6" />
             </div>
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Compare Rates</h3>
             <p className="text-gray-600 text-sm mb-4">Real-time rate comparison and cost analysis</p>
             <button
               onClick={() => navigate('/compare/rates')}
-              className="text-blue-600 hover:text-blue-800 font-medium text-sm"
+              className="text-texas-navy hover:text-texas-navy font-medium text-sm"
             >
               Compare Rates →
             </button>

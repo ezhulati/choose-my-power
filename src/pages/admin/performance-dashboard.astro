@@ -162,20 +162,20 @@ const pageDescription = `Real-time performance monitoring for ${perfStats.tierSt
         <!-- Overall Health Status -->
         <div class={`mt-4 p-4 rounded-lg border-2 ${
           healthStatus === 'excellent' ? 'bg-green-50 border-green-200' :
-          healthStatus === 'good' ? 'bg-blue-50 border-blue-200' :
+          healthStatus === 'good' ? 'bg-texas-cream-200 border-blue-200' :
           healthStatus === 'warning' ? 'bg-yellow-50 border-yellow-200' :
           'bg-red-50 border-red-200'
         }`}>
           <div class="flex items-center">
             <div class={`w-4 h-4 rounded-full mr-3 ${
               healthStatus === 'excellent' ? 'bg-green-500' :
-              healthStatus === 'good' ? 'bg-blue-500' :
+              healthStatus === 'good' ? 'bg-texas-cream-2000' :
               healthStatus === 'warning' ? 'bg-yellow-500' :
               'bg-red-500'
             }`}></div>
             <span class={`font-semibold ${
               healthStatus === 'excellent' ? 'text-green-800' :
-              healthStatus === 'good' ? 'text-blue-800' :
+              healthStatus === 'good' ? 'text-texas-navy' :
               healthStatus === 'warning' ? 'text-yellow-800' :
               'text-red-800'
             }`}>
@@ -190,8 +190,8 @@ const pageDescription = `Real-time performance monitoring for ${perfStats.tierSt
         <!-- Average Response Time -->
         <div class="bg-white p-6 rounded-lg shadow">
           <div class="flex items-center">
-            <div class="p-3 rounded-md bg-blue-100">
-              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="p-3 rounded-md bg-texas-cream">
+              <svg class="w-6 h-6 text-texas-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
             </div>
@@ -242,12 +242,12 @@ const pageDescription = `Real-time performance monitoring for ${perfStats.tierSt
         <div class="bg-white p-6 rounded-lg shadow">
           <div class="flex items-center">
             <div class={`p-3 rounded-md ${perfStats.averageErrorRate > 1 ? 'bg-red-100' : 'bg-gray-100'}`}>
-              <svg class={`w-6 h-6 ${perfStats.averageErrorRate > 1 ? 'text-red-600' : 'text-gray-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class={`w-6 h-6 ${perfStats.averageErrorRate > 1 ? 'text-texas-red' : 'text-gray-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
               </svg>
             </div>
             <div class="ml-4">
-              <div class={`text-2xl font-bold ${perfStats.averageErrorRate > 1 ? 'text-red-600' : 'text-gray-900'}`}>
+              <div class={`text-2xl font-bold ${perfStats.averageErrorRate > 1 ? 'text-texas-red' : 'text-gray-900'}`}>
                 {perfStats.averageErrorRate.toFixed(2)}%
               </div>
               <div class="text-sm text-gray-600">Error Rate</div>
@@ -271,7 +271,7 @@ const pageDescription = `Real-time performance monitoring for ${perfStats.tierSt
               <div class="flex justify-between">
                 <span class="text-gray-600">Avg Load Time:</span>
                 <span class={`font-semibold ${
-                  stats.avgLoadTime > 3000 ? 'text-red-600' :
+                  stats.avgLoadTime > 3000 ? 'text-texas-red' :
                   stats.avgLoadTime > 2000 ? 'text-yellow-600' :
                   'text-green-600'
                 }`}>
@@ -282,7 +282,7 @@ const pageDescription = `Real-time performance monitoring for ${perfStats.tierSt
               <div class="flex justify-between">
                 <span class="text-gray-600">Cache Hit Rate:</span>
                 <span class={`font-semibold ${
-                  stats.avgCacheHitRate < 70 ? 'text-red-600' :
+                  stats.avgCacheHitRate < 70 ? 'text-texas-red' :
                   stats.avgCacheHitRate < 85 ? 'text-yellow-600' :
                   'text-green-600'
                 }`}>
@@ -293,7 +293,7 @@ const pageDescription = `Real-time performance monitoring for ${perfStats.tierSt
               <div class="flex justify-between">
                 <span class="text-gray-600">Error Rate:</span>
                 <span class={`font-semibold ${
-                  stats.errorRate > 1 ? 'text-red-600' :
+                  stats.errorRate > 1 ? 'text-texas-red' :
                   stats.errorRate > 0.5 ? 'text-yellow-600' :
                   'text-green-600'
                 }`}>
@@ -304,7 +304,7 @@ const pageDescription = `Real-time performance monitoring for ${perfStats.tierSt
               <div class="flex justify-between">
                 <span class="text-gray-600">Threshold Violations:</span>
                 <span class={`font-semibold ${
-                  stats.thresholdViolations > 0 ? 'text-red-600' : 'text-green-600'
+                  stats.thresholdViolations > 0 ? 'text-texas-red' : 'text-green-600'
                 }`}>
                   {stats.thresholdViolations}
                 </span>
@@ -387,7 +387,7 @@ const pageDescription = `Real-time performance monitoring for ${perfStats.tierSt
           </div>
           
           <div class="text-center">
-            <div class={`text-2xl font-bold ${dbStats.failedQueries > 0 ? 'text-red-600' : 'text-gray-900'}`}>
+            <div class={`text-2xl font-bold ${dbStats.failedQueries > 0 ? 'text-texas-red' : 'text-gray-900'}`}>
               {dbStats.failedQueries}
             </div>
             <div class="text-sm text-gray-600">Failed Queries</div>
@@ -429,7 +429,7 @@ const pageDescription = `Real-time performance monitoring for ${perfStats.tierSt
           
           <div class="text-center">
             <div class={`text-2xl font-bold ${
-              memoryStats.memoryWarnings > 0 ? 'text-red-600' : 'text-gray-900'
+              memoryStats.memoryWarnings > 0 ? 'text-texas-red' : 'text-gray-900'
             }`}>
               {memoryStats.memoryWarnings}
             </div>
@@ -444,7 +444,7 @@ const pageDescription = `Real-time performance monitoring for ${perfStats.tierSt
           {memoryStats.memoryUsage && (
             <div class="text-center">
               <div class={`text-2xl font-bold ${
-                memoryStats.memoryUsage.used / memoryStats.memoryUsage.limit > 0.8 ? 'text-red-600' :
+                memoryStats.memoryUsage.used / memoryStats.memoryUsage.limit > 0.8 ? 'text-texas-red' :
                 memoryStats.memoryUsage.used / memoryStats.memoryUsage.limit > 0.6 ? 'text-yellow-600' :
                 'text-gray-900'
               }`}>
@@ -486,10 +486,10 @@ const pageDescription = `Real-time performance monitoring for ${perfStats.tierSt
               <tbody class="bg-white divide-y divide-gray-200">
                 {perfStats.slowestPages.map((page, index) => (
                   <tr key={index}>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-600 hover:text-blue-800">
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-texas-navy hover:text-texas-navy">
                       <a href={page.url}>{page.url}</a>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-red-600">
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-texas-red">
                       {Math.round(page.loadTime)}ms
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{page.city}</td>

@@ -497,7 +497,7 @@ export function BestPage({}: BestPageProps) {
                 <div className="text-gray-600">Rating/Status</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-blue-600">{selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)}</div>
+                <div className="text-2xl font-bold text-texas-navy">{selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)}</div>
                 <div className="text-gray-600">Category</div>
               </div>
             </div>
@@ -580,7 +580,7 @@ export function BestPage({}: BestPageProps) {
 
                   <button
                     onClick={() => navigate(`/best/${item.id}`)}
-                    className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                    className="w-full bg-texas-navy text-white py-2 rounded-lg hover:bg-blue-800 transition-colors text-sm font-medium"
                   >
                     View Full Analysis
                   </button>
@@ -599,7 +599,7 @@ export function BestPage({}: BestPageProps) {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {expertMethodology.map((method, index) => (
               <div key={index} className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-blue-600 rounded-lg mb-6">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-lg mb-6">
                   <method.icon className="h-8 w-8" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">{method.title}</h3>
@@ -623,7 +623,7 @@ export function BestPage({}: BestPageProps) {
             </p>
             <div className="inline-flex items-center space-x-4 text-sm">
               <div className="flex items-center">
-                <Clock className="h-4 w-4 mr-1 text-blue-600" />
+                <Clock className="h-4 w-4 mr-1 text-texas-navy" />
                 <span>Updated Monthly</span>
               </div>
               <div className="flex items-center">
@@ -655,14 +655,14 @@ export function BestPage({}: BestPageProps) {
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow-sm border text-center hover:shadow-md transition-shadow">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 text-blue-600 rounded-lg mb-4">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-texas-cream text-texas-navy rounded-lg mb-4">
               <Zap className="h-6 w-6" />
             </div>
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Plan Mastery</h3>
             <p className="text-gray-600 text-sm mb-4">Master guide to electricity plan types and selection</p>
             <button
               onClick={() => navigate('/electricity-plans')}
-              className="text-blue-600 hover:text-blue-800 font-medium text-sm"
+              className="text-texas-navy hover:text-texas-navy font-medium text-sm"
             >
               Master Plans →
             </button>

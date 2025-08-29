@@ -81,13 +81,13 @@ export function ProviderCard({ provider, onCompare, onViewDetails, showPlans = f
         <div className="flex items-center space-x-4 text-sm text-gray-500 mb-4">
           <div className="flex items-center">
             <Phone className="h-4 w-4 mr-1" />
-            <a href={`tel:${provider.contactPhone}`} className="hover:text-blue-600 transition-colors">
+            <a href={`tel:${provider.contactPhone}`} className="hover:text-texas-navy transition-colors">
               {provider.contactPhone}
             </a>
           </div>
           <div className="flex items-center">
             <Globe className="h-4 w-4 mr-1" />
-            <a href={provider.website} target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">
+            <a href={provider.website} target="_blank" rel="noopener noreferrer" className="hover:text-texas-navy transition-colors">
               Website
             </a>
           </div>
@@ -98,7 +98,7 @@ export function ProviderCard({ provider, onCompare, onViewDetails, showPlans = f
           {onViewDetails && (
             <button
               onClick={onViewDetails}
-              className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+              className="flex-1 bg-texas-navy text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors text-sm font-medium"
             >
               View Details
             </button>

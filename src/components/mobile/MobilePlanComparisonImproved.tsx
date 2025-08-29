@@ -383,8 +383,8 @@ export const MobilePlanComparisonImproved: React.FC<MobilePlanComparisonImproved
 
       {/* Swipe Instructions with improved design */}
       {enableSwipeActions && (
-        <Alert className="mx-4 border-blue-200 bg-blue-50">
-          <AlertDescription className="flex items-center justify-center gap-6 text-sm text-blue-800">
+        <Alert className="mx-4 border-blue-200 bg-texas-cream-200">
+          <AlertDescription className="flex items-center justify-center gap-6 text-sm text-texas-navy">
             <div className="flex items-center gap-2">
               <span className="text-lg">👈</span>
               <span className="font-medium">Swipe left to compare</span>
@@ -519,7 +519,7 @@ export const MobilePlanComparisonImproved: React.FC<MobilePlanComparisonImproved
                       </div>
                     )}
                     {plan.features.billCredit > 0 && (
-                      <div className="flex items-center gap-1 text-blue-600">
+                      <div className="flex items-center gap-1 text-texas-navy">
                         <span>💸</span>
                         <span>${plan.features.billCredit} Credit</span>
                       </div>
@@ -534,7 +534,7 @@ export const MobilePlanComparisonImproved: React.FC<MobilePlanComparisonImproved
                   <Button
                     variant={isSelected ? "texas-outline" : "outline"}
                     size="default"
-                    className={`flex-1 ${isSelected ? 'bg-blue-50' : ''}`}
+                    className={`flex-1 ${isSelected ? 'bg-texas-cream-200' : ''}`}
                     onClick={() => handleComparePlan(plan)}
                     disabled={!isSelected && comparisonState.selectedPlans.length >= maxComparisons}
                   >
@@ -570,7 +570,7 @@ export const MobilePlanComparisonImproved: React.FC<MobilePlanComparisonImproved
               {enableSwipeActions && swipeState.draggedPlan === plan.id && swipeState.isDragging && (
                 <div className="absolute inset-0 flex items-center justify-between px-8 bg-black bg-opacity-5 rounded-lg">
                   <div className={`p-4 rounded-full transition-all duration-200 ${
-                    swipeState.swipeDirection === 'left' ? 'bg-blue-500 text-white scale-110' : 'bg-gray-200 text-gray-600'
+                    swipeState.swipeDirection === 'left' ? 'bg-texas-cream-2000 text-white scale-110' : 'bg-gray-200 text-gray-600'
                   }`}>
                     <span className="text-xl">📊</span>
                   </div>

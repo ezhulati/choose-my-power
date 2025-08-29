@@ -400,7 +400,7 @@ export function ElectricityCompaniesPage({}: ElectricityCompaniesPageProps) {
               onClick={() => setSelectedCategory('all')}
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                 selectedCategory === 'all'
-                  ? 'bg-blue-600 text-white'
+                  ? 'bg-texas-navy text-white'
                   : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
               }`}
             >
@@ -412,7 +412,7 @@ export function ElectricityCompaniesPage({}: ElectricityCompaniesPageProps) {
                 onClick={() => setSelectedCategory(category.id as any)}
                 className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                   selectedCategory === category.id
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-texas-navy text-white'
                     : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
                 }`}
               >
@@ -445,7 +445,7 @@ export function ElectricityCompaniesPage({}: ElectricityCompaniesPageProps) {
                     <div className="text-sm text-gray-600">Avg Rating</div>
                   </div>
                   <div className="bg-gray-50 p-3 rounded-lg">
-                    <div className="text-lg font-bold text-blue-600">{category.companies.length}</div>
+                    <div className="text-lg font-bold text-texas-navy">{category.companies.length}</div>
                     <div className="text-sm text-gray-600">Top Companies</div>
                   </div>
                   <div className="bg-gray-50 p-3 rounded-lg">
@@ -515,7 +515,7 @@ export function ElectricityCompaniesPage({}: ElectricityCompaniesPageProps) {
                     <div className="space-y-2">
                       <button
                         onClick={() => navigate(`/providers/${company.slug}`)}
-                        className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                        className="w-full bg-texas-navy text-white py-2 rounded-lg hover:bg-blue-800 transition-colors text-sm font-medium"
                       >
                         Company Intelligence Report
                       </button>
@@ -533,7 +533,7 @@ export function ElectricityCompaniesPage({}: ElectricityCompaniesPageProps) {
               <div className="text-center mt-8">
                 <button
                   onClick={() => navigate(`/companies/category/${category.id}`)}
-                  className="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors font-medium"
+                  className="bg-texas-red text-white px-6 py-3 rounded-lg hover:bg-texas-red-600 transition-colors font-medium"
                 >
                   View All {category.title} Companies
                 </button>
@@ -552,18 +552,18 @@ export function ElectricityCompaniesPage({}: ElectricityCompaniesPageProps) {
             {companyAnalysis.map((factor, index) => (
               <div key={index} className="text-center">
                 <div className={`inline-flex items-center justify-center w-16 h-16 rounded-lg mb-6 ${
-                  factor.importance === 'Critical' ? 'bg-red-100 text-red-600' :
+                  factor.importance === 'Critical' ? 'bg-red-100 text-texas-red' :
                   factor.importance === 'Essential' ? 'bg-orange-100 text-orange-600' :
-                  factor.importance === 'High' ? 'bg-blue-100 text-blue-600' :
+                  factor.importance === 'High' ? 'bg-texas-cream text-texas-navy' :
                   'bg-purple-100 text-purple-600'
                 }`}>
                   <Eye className="h-8 w-8" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">{factor.metric}</h3>
                 <div className={`text-sm font-medium mb-3 ${
-                  factor.importance === 'Critical' ? 'text-red-600' :
+                  factor.importance === 'Critical' ? 'text-texas-red' :
                   factor.importance === 'Essential' ? 'text-orange-600' :
-                  factor.importance === 'High' ? 'text-blue-600' :
+                  factor.importance === 'High' ? 'text-texas-navy' :
                   'text-purple-600'
                 }`}>
                   {factor.importance} Factor
@@ -598,7 +598,7 @@ export function ElectricityCompaniesPage({}: ElectricityCompaniesPageProps) {
                     <p className="text-gray-600">{hub.marketType} market with {hub.companies} licensed companies</p>
                   </div>
                   <div className="text-right">
-                    <div className="text-2xl font-bold text-blue-600">{hub.avgRating}★</div>
+                    <div className="text-2xl font-bold text-texas-navy">{hub.avgRating}★</div>
                     <div className="text-sm text-gray-500">avg rating</div>
                   </div>
                 </div>
@@ -632,7 +632,7 @@ export function ElectricityCompaniesPage({}: ElectricityCompaniesPageProps) {
                       <button
                         key={city}
                         onClick={() => navigate(`/${hub.slug}/${city.toLowerCase().replace(' ', '-')}/electricity-companies`)}
-                        className="text-sm text-blue-600 hover:text-blue-800 text-left p-2 hover:bg-blue-50 rounded"
+                        className="text-sm text-texas-navy hover:text-texas-navy text-left p-2 hover:bg-texas-cream-200 rounded"
                       >
                         {city} Companies →
                       </button>
@@ -643,7 +643,7 @@ export function ElectricityCompaniesPage({}: ElectricityCompaniesPageProps) {
                 <div className="grid grid-cols-2 gap-3">
                   <button
                     onClick={() => navigate(`/${hub.slug}/electricity-companies`)}
-                    className="bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                    className="bg-texas-navy text-white py-2 rounded-lg hover:bg-blue-800 transition-colors font-medium"
                   >
                     {hub.state} Companies
                   </button>
@@ -706,7 +706,7 @@ export function ElectricityCompaniesPage({}: ElectricityCompaniesPageProps) {
           <div className="text-center mt-8">
             <button
               onClick={() => navigate('/providers')}
-              className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+              className="bg-texas-navy text-white px-8 py-3 rounded-lg hover:bg-blue-800 transition-colors font-medium"
             >
               View Complete Directory & Analysis
             </button>
@@ -730,14 +730,14 @@ export function ElectricityCompaniesPage({}: ElectricityCompaniesPageProps) {
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow-sm border text-center hover:shadow-md transition-shadow">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 text-blue-600 rounded-lg mb-4">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-texas-cream text-texas-navy rounded-lg mb-4">
               <TrendingDown className="h-6 w-6" />
             </div>
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Compare Rates</h3>
             <p className="text-gray-600 text-sm mb-4">Live market analysis and rate intelligence</p>
             <button
               onClick={() => navigate('/compare/rates')}
-              className="text-blue-600 hover:text-blue-800 font-medium text-sm"
+              className="text-texas-navy hover:text-texas-navy font-medium text-sm"
             >
               Analyze Market Rates →
             </button>

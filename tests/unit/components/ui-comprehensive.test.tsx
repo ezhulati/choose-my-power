@@ -5,7 +5,7 @@ import { axe, toHaveNoViolations } from 'jest-axe';
 import userEvent from '@testing-library/user-event';
 
 // Import components for testing
-import PlanCard from '../../../src/components/faceted/PlanCard.astro';
+import PlanCardImproved from '../../../src/components/faceted/PlanCardImproved.astro';
 import FacetedSidebar from '../../../src/components/faceted/FacetedSidebar';
 import TouchOptimizedCard from '../../../src/components/TouchOptimizedCard';
 import ResponsiveContainer from '../../../src/components/ResponsiveContainer';
@@ -76,14 +76,14 @@ const mockPlan: Plan = {
 
 describe('UI Components Comprehensive Testing', () => {
   describe('Accessibility (WCAG 2.1 AA Compliance)', () => {
-    it('should have no accessibility violations in PlanCard', async () => {
-      const { container } = render(<PlanCard plan={mockPlan} />);
+    it('should have no accessibility violations in PlanCardImproved', async () => {
+      const { container } = render(<PlanCardImproved plan={mockPlan} />);
       const results = await axe(container);
       expect(results).toHaveNoViolations();
     });
 
     it('should have proper ARIA labels and roles', () => {
-      render(<PlanCard plan={mockPlan} />);
+      render(<PlanCardImproved plan={mockPlan} />);
       
       // Check for proper labeling
       expect(screen.getByRole('article')).toBeInTheDocument();
@@ -101,7 +101,7 @@ describe('UI Components Comprehensive Testing', () => {
 
     it('should support keyboard navigation', async () => {
       const user = userEvent.setup();
-      render(<PlanCard plan={mockPlan} />);
+      render(<PlanCardImproved plan={mockPlan} />);
       
       const planCard = screen.getByRole('article');
       const compareButton = screen.getByLabelText(/add.*to comparison/i);
@@ -120,7 +120,7 @@ describe('UI Components Comprehensive Testing', () => {
     });
 
     it('should have proper color contrast ratios', () => {
-      render(<PlanCard plan={mockPlan} />);
+      render(<PlanCardImproved plan={mockPlan} />);
       
       // Test high contrast elements
       const rateDisplay = screen.getByText(/12\.0¢\/kWh/);
@@ -132,14 +132,14 @@ describe('UI Components Comprehensive Testing', () => {
     });
 
     it('should support screen readers with proper announcements', async () => {
-      const { rerender } = render(<PlanCard plan={mockPlan} />);
+      const { rerender } = render(<PlanCardImproved plan={mockPlan} />);
       
       // Check for live region updates
       expect(screen.getByRole('status', { name: /plan details/i })).toBeInTheDocument();
       
       // Update plan and check announcements
       const updatedPlan = { ...mockPlan, pricing: { ...mockPlan.pricing, rate1000kWh: 11.5 } };
-      rerender(<PlanCard plan={updatedPlan} />);
+      rerender(<PlanCardImproved plan={updatedPlan} />);
       
       expect(screen.getByText(/11\.5¢\/kWh/)).toBeInTheDocument();
     });
@@ -168,7 +168,7 @@ describe('UI Components Comprehensive Testing', () => {
     });
 
     it('should adapt layout for mobile viewports', () => {
-      render(<ResponsiveContainer><PlanCard plan={mockPlan} /></ResponsiveContainer>);
+      render(<ResponsiveContainer><PlanCardImproved plan={mockPlan} /></ResponsiveContainer>);
       
       const planCard = screen.getByRole('article');
       expect(planCard).toHaveClass(/mobile/i);
@@ -238,7 +238,7 @@ describe('UI Components Comprehensive Testing', () => {
         new Promise(resolve => setTimeout(resolve, 3000))
       );
       
-      render(<PlanCard plan={mockPlan} onImageLoad={slowImageLoad} />);
+      render(<PlanCardImproved plan={mockPlan} onImageLoad={slowImageLoad} />);
       
       // Should show loading placeholder
       expect(screen.getByRole('img', { name: /loading/i })).toBeInTheDocument();
@@ -252,7 +252,7 @@ describe('UI Components Comprehensive Testing', () => {
 
   describe('Performance Optimization', () => {
     it('should implement lazy loading for images', () => {
-      render(<PlanCard plan={mockPlan} />);
+      render(<PlanCardImproved plan={mockPlan} />);
       
       const logo = screen.getByAltText('TXU Energy logo');
       expect(logo).toHaveAttribute('loading', 'lazy');
@@ -270,7 +270,7 @@ describe('UI Components Comprehensive Testing', () => {
       render(
         <div role="list">
           {manyPlans.map(plan => (
-            <PlanCard key={plan.id} plan={plan} />
+            <PlanCardImproved key={plan.id} plan={plan} />
           ))}
         </div>
       );
@@ -309,7 +309,7 @@ describe('UI Components Comprehensive Testing', () => {
         disconnect: vi.fn(),
       }));
       
-      render(<PlanCard plan={mockPlan} />);
+      render(<PlanCardImproved plan={mockPlan} />);
       
       // Should observe performance metrics
       expect(performanceObserver).toHaveBeenCalledWith(
@@ -326,7 +326,7 @@ describe('UI Components Comprehensive Testing', () => {
       const mockToggleComparison = vi.fn();
       
       render(
-        <PlanCard 
+        <PlanCardImproved 
           plan={mockPlan} 
           onToggleComparison={mockToggleComparison}
         />
@@ -382,7 +382,7 @@ describe('UI Components Comprehensive Testing', () => {
         new Promise(resolve => setTimeout(() => resolve([]), 2000))
       );
       
-      render(<PlanCard plan={mockPlan} onDataFetch={slowDataFetch} />);
+      render(<PlanCardImproved plan={mockPlan} onDataFetch={slowDataFetch} />);
       
       const refreshButton = screen.getByRole('button', { name: /refresh/i });
       await userEvent.click(refreshButton);
@@ -405,7 +405,7 @@ describe('UI Components Comprehensive Testing', () => {
         pricing: { ...mockPlan.pricing, rate1000kWh: 0 }
       };
       
-      render(<PlanCard plan={incompletePlan} />);
+      render(<PlanCardImproved plan={incompletePlan} />);
       
       // Should show fallback content
       expect(screen.getByText(/provider information unavailable/i)).toBeInTheDocument();
@@ -421,7 +421,7 @@ describe('UI Components Comprehensive Testing', () => {
         }
       };
       
-      render(<PlanCard plan={planWithBadImage} />);
+      render(<PlanCardImproved plan={planWithBadImage} />);
       
       const logo = screen.getByAltText('TXU Energy logo');
       
@@ -478,7 +478,7 @@ describe('UI Components Comprehensive Testing', () => {
       global.gtag = mockTrackEvent;
       
       const user = userEvent.setup();
-      render(<PlanCard plan={mockPlan} />);
+      render(<PlanCardImproved plan={mockPlan} />);
       
       const enrollButton = screen.getByRole('button', { name: /enroll now/i });
       await user.click(enrollButton);
@@ -491,7 +491,7 @@ describe('UI Components Comprehensive Testing', () => {
     });
 
     it('should show trust signals effectively', () => {
-      render(<PlanCard plan={mockPlan} showTrustSignals={true} />);
+      render(<PlanCardImproved plan={mockPlan} showTrustSignals={true} />);
       
       // Should display trust indicators
       expect(screen.getByText(/texas approved/i)).toBeInTheDocument();
@@ -509,7 +509,7 @@ describe('UI Components Comprehensive Testing', () => {
         }
       };
       
-      render(<PlanCard plan={urgentPlan} />);
+      render(<PlanCardImproved plan={urgentPlan} />);
       
       expect(screen.getByText(/limited time/i)).toBeInTheDocument();
       expect(screen.getByText(/new customer discount/i)).toBeInTheDocument();
@@ -519,7 +519,7 @@ describe('UI Components Comprehensive Testing', () => {
       const testVariant = 'variant_b';
       localStorage.setItem('ab_test_variant', testVariant);
       
-      render(<PlanCard plan={mockPlan} />);
+      render(<PlanCardImproved plan={mockPlan} />);
       
       // Should render variant B layout
       expect(screen.getByTestId('plan-card-variant-b')).toBeInTheDocument();

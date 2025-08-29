@@ -48,12 +48,15 @@ const CSP_DIRECTIVES = {
 const buildCSPHeader = () => {
   return Object.entries(CSP_DIRECTIVES)
     .map(([directive, value]) => `${directive} ${value}`)
-    .join('; ');
+    .join('; ')
+    .replace(/\s+/g, ' ') // Normalize whitespace
+    .trim(); // Remove leading/trailing whitespace
 };
 
 // Security headers configuration
 const SECURITY_HEADERS = {
-  'Content-Security-Policy': buildCSPHeader(),
+  // Disable CSP in development to avoid conflicts with Netlify config
+  ...(import.meta.env.PROD ? { 'Content-Security-Policy': buildCSPHeader() } : {}),
   'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
   'X-Content-Type-Options': 'nosniff',
   'X-Frame-Options': 'DENY',

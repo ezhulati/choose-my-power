@@ -304,10 +304,10 @@ export function TexasElectricityPage({}: TexasElectricityPageProps) {
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             {marketInsights.map((insight, index) => (
               <div key={index} className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 text-red-600 rounded-lg mb-6">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 text-texas-red rounded-lg mb-6">
                   <insight.icon className="h-8 w-8" />
                 </div>
-                <div className="text-3xl font-bold text-red-600 mb-2">{insight.stat}</div>
+                <div className="text-3xl font-bold text-texas-red mb-2">{insight.stat}</div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">{insight.title}</h3>
                 <p className="text-gray-600 text-sm">{insight.description}</p>
               </div>
@@ -317,7 +317,7 @@ export function TexasElectricityPage({}: TexasElectricityPageProps) {
           <div className="text-center">
             <button
               onClick={() => navigate('/texas/market-info')}
-              className="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors font-medium"
+              className="bg-texas-red text-white px-6 py-3 rounded-lg hover:bg-texas-red-600 transition-colors font-medium"
             >
               Learn About Texas Electricity Market
             </button>
@@ -355,8 +355,8 @@ export function TexasElectricityPage({}: TexasElectricityPageProps) {
                 </div>
                 
                 <div className="flex justify-between items-center">
-                  <span className="text-blue-600 font-medium text-sm">View City Hub</span>
-                  <ArrowRight className="h-4 w-4 text-blue-600" />
+                  <span className="text-texas-navy font-medium text-sm">View City Hub</span>
+                  <ArrowRight className="h-4 w-4 text-texas-navy" />
                 </div>
               </button>
             ))}
@@ -365,7 +365,7 @@ export function TexasElectricityPage({}: TexasElectricityPageProps) {
           <div className="text-center">
             <button
               onClick={() => navigate('/texas/cities')}
-              className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+              className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors font-medium"
             >
               View All Texas Cities
             </button>
@@ -381,7 +381,7 @@ export function TexasElectricityPage({}: TexasElectricityPageProps) {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {texasTools.map((tool, index) => (
               <div key={index} className="bg-white rounded-lg shadow-sm border p-6 hover:shadow-md transition-shadow">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 text-blue-600 rounded-lg mb-6">
+                <div className="inline-flex items-center justify-center w-12 h-12 bg-texas-cream text-texas-navy rounded-lg mb-6">
                   <tool.icon className="h-6 w-6" />
                 </div>
                 
@@ -402,7 +402,7 @@ export function TexasElectricityPage({}: TexasElectricityPageProps) {
 
                 <button
                   onClick={() => navigate(tool.href)}
-                  className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                  className="w-full bg-texas-navy text-white py-2 rounded-lg hover:bg-blue-800 transition-colors font-medium"
                 >
                   Use Tool
                 </button>
@@ -425,7 +425,7 @@ export function TexasElectricityPage({}: TexasElectricityPageProps) {
                     <h3 className="text-xl font-semibold text-gray-900 mb-2">{guide.title}</h3>
                     <p className="text-gray-600 mb-4">{guide.description}</p>
                   </div>
-                  <div className="text-sm text-blue-600 font-medium ml-4">
+                  <div className="text-sm text-texas-navy font-medium ml-4">
                     {guide.readTime}
                   </div>
                 </div>

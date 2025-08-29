@@ -82,10 +82,10 @@ export function Header({ onNavigate }: HeaderProps) {
           <div className="flex items-center">
             <button
               onClick={() => onNavigate('/')}
-              className="flex items-center space-x-2 text-blue-600 hover:text-blue-700 transition-colors"
+              className="flex items-center space-x-2 text-texas-navy hover:text-texas-navy transition-colors"
             >
               <Zap className="h-8 w-8" />
-              <span className="text-xl font-bold text-blue-800">ChooseMyPower</span>
+              <span className="text-xl font-bold text-texas-navy">ChooseMyPower</span>
             </button>
           </div>
 
@@ -100,7 +100,7 @@ export function Header({ onNavigate }: HeaderProps) {
               >
                 <button
                   onClick={() => handleNavClick(item)}
-                  className="flex items-center space-x-1 text-gray-700 hover:text-blue-600 px-4 py-2 text-sm font-medium transition-colors rounded-md hover:bg-blue-50"
+                  className="flex items-center space-x-1 text-gray-700 hover:text-texas-navy px-4 py-2 text-sm font-medium transition-colors rounded-md hover:bg-texas-cream-200"
                 >
                   <span>{item.name}</span>
                   {item.dropdown && <ChevronDown className="h-4 w-4" />}
@@ -112,7 +112,7 @@ export function Header({ onNavigate }: HeaderProps) {
                       <button
                         key={dropdownItem.name}
                         onClick={() => handleDropdownClick(dropdownItem.href)}
-                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-texas-cream-200 hover:text-texas-navy transition-colors"
                       >
                         {dropdownItem.name}
                       </button>
@@ -127,7 +127,7 @@ export function Header({ onNavigate }: HeaderProps) {
           <div className="md:hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-gray-700 hover:text-blue-600 p-2"
+              className="text-gray-700 hover:text-texas-navy p-2"
             >
               {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -142,7 +142,7 @@ export function Header({ onNavigate }: HeaderProps) {
                 <div key={item.name}>
                   <button
                     onClick={() => handleNavClick(item)}
-                    className="flex items-center justify-between w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors"
+                    className="flex items-center justify-between w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors"
                   >
                     <span>{item.name}</span>
                     {item.dropdown && (
@@ -160,7 +160,7 @@ export function Header({ onNavigate }: HeaderProps) {
                         <button
                           key={dropdownItem.name}
                           onClick={() => handleDropdownClick(dropdownItem.href)}
-                          className="block w-full text-left px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors"
+                          className="block w-full text-left px-3 py-2 text-sm text-gray-600 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors"
                         >
                           {dropdownItem.name}
                         </button>

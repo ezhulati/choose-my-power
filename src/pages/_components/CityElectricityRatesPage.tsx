@@ -37,7 +37,7 @@ export function CityElectricityRatesPage({ state, city }: CityElectricityRatesPa
           <h1 className="text-2xl font-bold text-gray-900 mb-4">City Not Found</h1>
           <button
             onClick={() => navigate(`/${state}/electricity-rates`)}
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+            className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors"
           >
             View {stateData?.name || 'State'} Rates
           </button>
@@ -85,9 +85,9 @@ export function CityElectricityRatesPage({ state, city }: CityElectricityRatesPa
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-texas-navy">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => navigate(`/${state}/electricity-rates`)} className="hover:text-blue-600">
+            <button onClick={() => navigate(`/${state}/electricity-rates`)} className="hover:text-texas-navy">
               {stateData.name}
             </button>
             <span className="mx-2">/</span>
@@ -117,13 +117,13 @@ export function CityElectricityRatesPage({ state, city }: CityElectricityRatesPa
                   <div className="text-sm text-green-700">per kWh</div>
                 </div>
 
-                <div className="bg-blue-50 p-4 rounded-lg">
+                <div className="bg-texas-cream-200 p-4 rounded-lg">
                   <div className="flex items-center mb-2">
-                    <BarChart className="h-5 w-5 text-blue-600 mr-2" />
-                    <span className="text-sm font-medium text-blue-800">City Average</span>
+                    <BarChart className="h-5 w-5 text-texas-navy mr-2" />
+                    <span className="text-sm font-medium text-texas-navy">City Average</span>
                   </div>
                   <div className="text-2xl font-bold text-blue-900">{averageRate}¢</div>
-                  <div className="text-sm text-blue-700">per kWh</div>
+                  <div className="text-sm text-texas-navy">per kWh</div>
                 </div>
 
                 <div className="bg-purple-50 p-4 rounded-lg">
@@ -162,7 +162,7 @@ export function CityElectricityRatesPage({ state, city }: CityElectricityRatesPa
                     <button
                       key={zip}
                       onClick={() => handleZipSearch(zip)}
-                      className="text-blue-600 hover:text-blue-800 hover:underline text-xs"
+                      className="text-texas-navy hover:text-texas-navy hover:underline text-xs"
                     >
                       {zip}
                     </button>
@@ -197,7 +197,7 @@ export function CityElectricityRatesPage({ state, city }: CityElectricityRatesPa
                       onClick={() => setSelectedUsage(option.value)}
                       className={`p-3 text-center border rounded-lg transition-colors ${
                         selectedUsage === option.value
-                          ? 'border-blue-600 bg-blue-50 text-blue-900'
+                          ? 'border-texas-navy bg-texas-cream-200 text-blue-900'
                           : 'border-gray-200 hover:bg-gray-50'
                       }`}
                     >
@@ -232,7 +232,7 @@ export function CityElectricityRatesPage({ state, city }: CityElectricityRatesPa
                               <div>
                                 <button
                                   onClick={() => navigate(`/providers/${plan.providerSlug}`)}
-                                  className="text-blue-600 hover:text-blue-800 font-medium"
+                                  className="text-texas-navy hover:text-texas-navy font-medium"
                                 >
                                   {plan.providerName}
                                 </button>
@@ -311,7 +311,7 @@ export function CityElectricityRatesPage({ state, city }: CityElectricityRatesPa
                   <div className="mt-4">
                     <button
                       onClick={() => navigate(`/${state}/${city}/electricity-providers`)}
-                      className="text-blue-600 hover:text-blue-800 font-medium text-sm"
+                      className="text-texas-navy hover:text-texas-navy font-medium text-sm"
                     >
                       View all {cityData.name} providers →
                     </button>
@@ -373,7 +373,7 @@ export function CityElectricityRatesPage({ state, city }: CityElectricityRatesPa
                       else if (search.includes('green energy')) navigate(`/shop/green-energy?city=${city}`);
                       else if (search.includes('switch')) navigate(`/${state}/${city}/switch-provider`);
                     }}
-                    className="block w-full text-left p-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600 rounded-md transition-colors"
+                    className="block w-full text-left p-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-texas-navy rounded-md transition-colors"
                   >
                     {search}
                   </button>

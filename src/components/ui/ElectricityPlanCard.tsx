@@ -62,7 +62,7 @@ export const ElectricityPlanCard: React.FC<ElectricityPlanCardProps> = ({
     }`}>
       {isPopular && (
         <div className="absolute -top-3 left-4">
-          <Badge className="bg-blue-600 text-white">Most Popular</Badge>
+          <Badge className="bg-texas-navy text-white">Most Popular</Badge>
         </div>
       )}
       

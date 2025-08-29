@@ -136,7 +136,7 @@ const description = `Complete sitemap with ${totalUrls.toLocaleString()}+ pages 
               <!-- Show More Button for Large Sections -->
               {section.count > 50 && (
                 <div class="mt-6 text-center">
-                  <button class="inline-flex items-center px-6 py-3 border border-texas-navy text-texas-navy hover:bg-texas-navy hover:text-white transition-colors rounded-lg font-medium"
+                  <button class="inline-flex items-center px-6 py-3 min-h-[48px] border border-texas-navy text-texas-navy hover:bg-texas-navy hover:text-white transition-colors rounded-lg font-medium touch-manipulation"
                           onclick={`toggleShowMore('${section.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}')`}>
                     <span>Show More ({(section.count - 50).toLocaleString()} remaining)</span>
                     <svg class="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 20 20">

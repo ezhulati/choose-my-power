@@ -40,7 +40,7 @@ export function CityElectricityProvidersPage({ state, city }: CityElectricityPro
           <h1 className="text-2xl font-bold text-gray-900 mb-4">City Not Found</h1>
           <button
             onClick={() => navigate(`/${state}/electricity-providers`)}
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+            className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors"
           >
             View {stateData?.name || 'State'} Providers
           </button>
@@ -67,9 +67,9 @@ export function CityElectricityProvidersPage({ state, city }: CityElectricityPro
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-texas-navy">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => navigate(`/${state}/electricity-providers`)} className="hover:text-blue-600">
+            <button onClick={() => navigate(`/${state}/electricity-providers`)} className="hover:text-texas-navy">
               {stateData.name}
             </button>
             <span className="mx-2">/</span>
@@ -92,9 +92,9 @@ export function CityElectricityProvidersPage({ state, city }: CityElectricityPro
                   <div className="text-2xl font-bold text-green-900">{lowestRate}¢</div>
                   <div className="text-sm text-green-700">Lowest Rate</div>
                 </div>
-                <div className="bg-blue-50 p-3 rounded-lg">
+                <div className="bg-texas-cream-200 p-3 rounded-lg">
                   <div className="text-2xl font-bold text-blue-900">{cityProviders.length}</div>
-                  <div className="text-sm text-blue-700">Providers</div>
+                  <div className="text-sm text-texas-navy">Providers</div>
                 </div>
                 <div className="bg-purple-50 p-3 rounded-lg">
                   <div className="text-2xl font-bold text-purple-900">${potentialSavings}</div>
@@ -111,7 +111,7 @@ export function CityElectricityProvidersPage({ state, city }: CityElectricityPro
               {/* Enhanced Benefits */}
               <div className="grid md:grid-cols-3 gap-4 mb-6">
                 <div className="flex items-center p-3 bg-gray-50 rounded-lg">
-                  <Award className="h-5 w-5 text-blue-600 mr-3" />
+                  <Award className="h-5 w-5 text-texas-navy mr-3" />
                   <div>
                     <div className="font-medium text-gray-900">Trusted Providers</div>
                     <div className="text-sm text-gray-600">PUCT licensed & regulated</div>
@@ -148,7 +148,7 @@ export function CityElectricityProvidersPage({ state, city }: CityElectricityPro
                     <button
                       key={zip}
                       onClick={() => handleZipSearch(zip)}
-                      className="text-blue-600 hover:text-blue-800 hover:underline text-sm"
+                      className="text-texas-navy hover:text-texas-navy hover:underline text-sm"
                     >
                       {zip}
                     </button>
@@ -187,10 +187,10 @@ export function CityElectricityProvidersPage({ state, city }: CityElectricityPro
                 
                 <button
                   onClick={() => navigate('/providers#service')}
-                  className="w-full text-left p-3 border border-blue-200 rounded-lg hover:bg-blue-50 transition-colors"
+                  className="w-full text-left p-3 border border-blue-200 rounded-lg hover:bg-texas-cream-200 transition-colors"
                 >
                   <div className="flex items-center">
-                    <Users className="h-5 w-5 text-blue-600 mr-3" />
+                    <Users className="h-5 w-5 text-texas-navy mr-3" />
                     <div>
                       <div className="font-medium text-gray-900">Customer Service Champions</div>
                       <div className="text-sm text-gray-600">Top-rated support</div>
@@ -289,7 +289,7 @@ export function CityElectricityProvidersPage({ state, city }: CityElectricityPro
               </h2>
               <button
                 onClick={() => navigate(`/compare/providers?city=${city}&state=${state}`)}
-                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                className="bg-texas-navy text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors"
               >
                 Compare All Plans
               </button>
@@ -338,19 +338,19 @@ export function CityElectricityProvidersPage({ state, city }: CityElectricityPro
                   </h3>
                   <ol className="text-gray-600 space-y-2 text-sm">
                     <li className="flex items-start">
-                      <span className="bg-blue-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-3 mt-0.5">1</span>
+                      <span className="bg-texas-navy text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-3 mt-0.5">1</span>
                       Compare rates from {cityData.name} electricity providers above
                     </li>
                     <li className="flex items-start">
-                      <span className="bg-blue-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-3 mt-0.5">2</span>
+                      <span className="bg-texas-navy text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-3 mt-0.5">2</span>
                       Enter your ZIP code to see exact rates for your address
                     </li>
                     <li className="flex items-start">
-                      <span className="bg-blue-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-3 mt-0.5">3</span>
+                      <span className="bg-texas-navy text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-3 mt-0.5">3</span>
                       Choose a plan and sign up online - it takes less than 5 minutes
                     </li>
                     <li className="flex items-start">
-                      <span className="bg-blue-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-3 mt-0.5">4</span>
+                      <span className="bg-texas-navy text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-3 mt-0.5">4</span>
                       Your new provider handles the switch - no service interruption
                     </li>
                   </ol>
@@ -358,7 +358,7 @@ export function CityElectricityProvidersPage({ state, city }: CityElectricityPro
                   <div className="mt-4">
                     <button
                       onClick={() => navigate(`/${state}/${city}/switch-provider`)}
-                      className="text-blue-600 hover:text-blue-800 font-medium text-sm"
+                      className="text-texas-navy hover:text-texas-navy font-medium text-sm"
                     >
                       Complete {cityData.name} switching guide →
                     </button>

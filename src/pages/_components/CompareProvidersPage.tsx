@@ -172,7 +172,7 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Comparison Bar */}
         {selectedProviders.length > 0 && (
-          <div className="bg-blue-600 text-white rounded-lg p-4 mb-8 sticky top-4 z-10 shadow-lg">
+          <div className="bg-texas-navy text-white rounded-lg p-4 mb-8 sticky top-4 z-10 shadow-lg">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
                 <span className="font-medium">Comparing {selectedProviders.length} Providers:</span>
@@ -201,7 +201,7 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
                 <Button
                   onClick={() => setShowComparison(!showComparison)}
                   variant="secondary"
-                  className="bg-white text-blue-600 hover:bg-gray-100"
+                  className="bg-white text-texas-navy hover:bg-gray-100"
                 >
                   {showComparison ? 'Hide' : 'Show'} Comparison Table
                 </Button>
@@ -270,7 +270,7 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
                           </div>
                           <div className="flex items-center justify-center text-sm">
                             <Icon icon="tabler:world" size={16} className="mr-1" />
-                            <a href={provider?.website} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800">
+                            <a href={provider?.website} target="_blank" rel="noopener noreferrer" className="text-texas-navy hover:text-texas-navy">
                               Website
                             </a>
                           </div>
@@ -321,7 +321,7 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
                 key={category.id}
                 className={`p-6 cursor-pointer transition-all hover:shadow-md ${
                   filterCategory === category.id
-                    ? 'border-blue-600 bg-blue-50'
+                    ? 'border-texas-navy bg-texas-cream-200'
                     : ''
                 }`}
                 onClick={() => setFilterCategory(category.id as any)}
@@ -426,7 +426,7 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
                         <div className="text-xs text-gray-600">Lowest Rate</div>
                       </div>
                       <div className="text-center p-3 bg-gray-50 rounded-lg">
-                        <div className="text-lg font-bold text-blue-600">{provider.plans.length}</div>
+                        <div className="text-lg font-bold text-texas-navy">{provider.plans.length}</div>
                         <div className="text-xs text-gray-600">Plans Available</div>
                       </div>
                     </div>
@@ -480,7 +480,7 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-blue-600 rounded-lg mb-6">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-lg mb-6">
                 <Icon icon="star" size={32} />
               </div>
               <h3 className="text-lg font-semibold mb-4">Customer Satisfaction</h3>
@@ -564,7 +564,7 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
 
           <Card className="p-6 text-center hover:shadow-md transition-shadow">
             <CardContent className="p-0">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 text-blue-600 rounded-lg mb-4">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-texas-cream text-texas-navy rounded-lg mb-4">
                 <Icon icon="tabler:award" size={24} />
               </div>
               <CardTitle className="text-lg mb-3">Best Rankings</CardTitle>
@@ -574,7 +574,7 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
               <Button
                 onClick={() => navigate('/best')}
                 variant="ghost"
-                className="text-blue-600 hover:text-blue-800 font-medium text-sm"
+                className="text-texas-navy hover:text-texas-navy font-medium text-sm"
               >
                 View Rankings →
               </Button>

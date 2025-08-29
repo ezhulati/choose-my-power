@@ -37,7 +37,7 @@ export function StatePage({ state }: StatePageProps) {
           <p className="text-gray-600 mb-8">The state you're looking for doesn't exist in our database.</p>
           <button
             onClick={() => navigate('/')}
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+            className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors"
           >
             Return Home
           </button>
@@ -69,7 +69,7 @@ export function StatePage({ state }: StatePageProps) {
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
             <div className="mb-6 lg:mb-0">
               <nav className="text-sm text-gray-500 mb-2">
-                <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
+                <button onClick={() => navigate('/')} className="hover:text-texas-navy">Home</button>
                 <span className="mx-2">/</span>
                 <span>{stateData.name}</span>
               </nav>
@@ -89,7 +89,7 @@ export function StatePage({ state }: StatePageProps) {
                   <span className="text-gray-600">Avg Rate: <strong>{stateData.averageRate}¢/kWh</strong></span>
                 </div>
                 <div className="flex items-center">
-                  <Users className="h-4 w-4 text-blue-600 mr-2" />
+                  <Users className="h-4 w-4 text-texas-navy mr-2" />
                   <span className="text-gray-600"><strong>{stateProviders.length}</strong> Providers</span>
                 </div>
                 <div className="flex items-center">
@@ -154,7 +154,7 @@ export function StatePage({ state }: StatePageProps) {
                   <button
                     key={city.id}
                     onClick={() => navigate(`/${stateData.slug}/${city.slug}/electricity-providers`)}
-                    className="block w-full text-left p-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-blue-600 rounded-md transition-colors"
+                    className="block w-full text-left p-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-texas-navy rounded-md transition-colors"
                   >
                     <div className="flex items-center">
                       <MapPin className="h-4 w-4 mr-2" />

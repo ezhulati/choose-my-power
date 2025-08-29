@@ -33,7 +33,7 @@ export function StateMarketInfoPage({ state }: StateMarketInfoPageProps) {
           <h1 className="text-2xl font-bold text-gray-900 mb-4">State Not Found</h1>
           <button
             onClick={() => navigate('/')}
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+            className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors"
           >
             Return Home
           </button>
@@ -64,9 +64,9 @@ export function StateMarketInfoPage({ state }: StateMarketInfoPageProps) {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-texas-navy">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => navigate(`/${state}/electricity-providers`)} className="hover:text-blue-600">
+            <button onClick={() => navigate(`/${state}/electricity-providers`)} className="hover:text-texas-navy">
               {stateData.name}
             </button>
             <span className="mx-2">/</span>
@@ -84,13 +84,13 @@ export function StateMarketInfoPage({ state }: StateMarketInfoPageProps) {
 
           {/* Market Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="bg-blue-50 p-4 rounded-lg">
+            <div className="bg-texas-cream-200 p-4 rounded-lg">
               <div className="flex items-center mb-2">
-                <Users className="h-5 w-5 text-blue-600 mr-2" />
-                <span className="text-sm font-medium text-blue-800">Customers</span>
+                <Users className="h-5 w-5 text-texas-navy mr-2" />
+                <span className="text-sm font-medium text-texas-navy">Customers</span>
               </div>
               <div className="text-2xl font-bold text-blue-900">{marketStats.residentialCustomers}</div>
-              <div className="text-sm text-blue-700">residential</div>
+              <div className="text-sm text-texas-navy">residential</div>
             </div>
 
             <div className="bg-green-50 p-4 rounded-lg">
@@ -133,7 +133,7 @@ export function StateMarketInfoPage({ state }: StateMarketInfoPageProps) {
                 onClick={() => setActiveTab(tab.id as any)}
                 className={`flex items-center space-x-2 py-4 border-b-2 font-medium text-sm transition-colors ${
                   activeTab === tab.id
-                    ? 'border-blue-600 text-blue-600'
+                    ? 'border-texas-navy text-texas-navy'
                     : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                 }`}
               >
@@ -179,7 +179,7 @@ export function StateMarketInfoPage({ state }: StateMarketInfoPageProps) {
                 <h2 className="text-xl font-semibold text-gray-900 mb-4">Utility Companies</h2>
                 <div className="space-y-3">
                   {stateUtilities.map((utility) => (
-                    <div key={utility.id} className="border-l-4 border-blue-600 pl-4">
+                    <div key={utility.id} className="border-l-4 border-texas-navy pl-4">
                       <h3 className="font-medium text-gray-900">{utility.name}</h3>
                       <p className="text-sm text-gray-600 mb-1">{utility.description}</p>
                       <p className="text-xs text-gray-500">Service Area: {utility.serviceArea.join(', ')}</p>
@@ -200,7 +200,7 @@ export function StateMarketInfoPage({ state }: StateMarketInfoPageProps) {
                 
                 <div>
                   <h3 className="font-medium text-gray-900 mb-2">Major Cities Served</h3>
-                  <div className="text-2xl font-bold text-blue-600 mb-1">{stateData.topCities.length}</div>
+                  <div className="text-2xl font-bold text-texas-navy mb-1">{stateData.topCities.length}</div>
                   <p className="text-sm text-gray-600">metropolitan areas</p>
                 </div>
                 
@@ -262,9 +262,9 @@ export function StateMarketInfoPage({ state }: StateMarketInfoPageProps) {
                     <h4 className="font-medium text-green-900 mb-2">Competition</h4>
                     <p className="text-sm text-green-700">Multiple providers compete for customers, driving innovation and better rates.</p>
                   </div>
-                  <div className="bg-blue-50 p-4 rounded-lg">
+                  <div className="bg-texas-cream-200 p-4 rounded-lg">
                     <h4 className="font-medium text-blue-900 mb-2">Choice</h4>
-                    <p className="text-sm text-blue-700">Customers can choose plans that match their specific needs and preferences.</p>
+                    <p className="text-sm text-texas-navy">Customers can choose plans that match their specific needs and preferences.</p>
                   </div>
                   <div className="bg-purple-50 p-4 rounded-lg">
                     <h4 className="font-medium text-purple-900 mb-2">Innovation</h4>
@@ -411,7 +411,7 @@ export function StateMarketInfoPage({ state }: StateMarketInfoPageProps) {
                       </div>
                       <button
                         onClick={() => navigate(`/${state}/${city.slug}/electricity-providers`)}
-                        className="w-full mt-2 text-blue-600 hover:text-blue-800 text-xs font-medium"
+                        className="w-full mt-2 text-texas-navy hover:text-texas-navy text-xs font-medium"
                       >
                         View {city.name} Providers →
                       </button>
@@ -459,7 +459,7 @@ export function StateMarketInfoPage({ state }: StateMarketInfoPageProps) {
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-3">Consumer Protections</h3>
                   <div className="space-y-3">
-                    <div className="border-l-4 border-blue-600 pl-4">
+                    <div className="border-l-4 border-texas-navy pl-4">
                       <h4 className="font-medium text-gray-900">Disclosure Requirements</h4>
                       <p className="text-gray-600 text-sm">Providers must clearly disclose rates, fees, and contract terms</p>
                     </div>
@@ -510,19 +510,19 @@ export function StateMarketInfoPage({ state }: StateMarketInfoPageProps) {
                   <h3 className="font-medium text-gray-900 mb-3">Contract Standards</h3>
                   <ul className="text-gray-600 text-sm space-y-2">
                     <li className="flex items-start">
-                      <Info className="h-4 w-4 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
+                      <Info className="h-4 w-4 text-texas-navy mr-2 mt-0.5 flex-shrink-0" />
                       <span>Clear rate and fee disclosure requirements</span>
                     </li>
                     <li className="flex items-start">
-                      <Info className="h-4 w-4 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
+                      <Info className="h-4 w-4 text-texas-navy mr-2 mt-0.5 flex-shrink-0" />
                       <span>Standardized contract terms and conditions</span>
                     </li>
                     <li className="flex items-start">
-                      <Info className="h-4 w-4 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
+                      <Info className="h-4 w-4 text-texas-navy mr-2 mt-0.5 flex-shrink-0" />
                       <span>Automatic renewal notification requirements</span>
                     </li>
                     <li className="flex items-start">
-                      <Info className="h-4 w-4 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
+                      <Info className="h-4 w-4 text-texas-navy mr-2 mt-0.5 flex-shrink-0" />
                       <span>Cancellation and switching procedures</span>
                     </li>
                   </ul>
@@ -535,7 +535,7 @@ export function StateMarketInfoPage({ state }: StateMarketInfoPageProps) {
               
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="text-center">
-                  <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 text-blue-600 rounded-lg mb-3">
+                  <div className="inline-flex items-center justify-center w-12 h-12 bg-texas-cream text-texas-navy rounded-lg mb-3">
                     <Building className="h-6 w-6" />
                   </div>
                   <h3 className="font-medium text-gray-900 mb-2">State Regulator</h3>
@@ -544,7 +544,7 @@ export function StateMarketInfoPage({ state }: StateMarketInfoPageProps) {
                   </p>
                   <button
                     onClick={() => navigate('/resources/support/regulatory-contacts')}
-                    className="text-blue-600 hover:text-blue-800 text-sm font-medium"
+                    className="text-texas-navy hover:text-texas-navy text-sm font-medium"
                   >
                     Contact Information →
                   </button>
@@ -560,7 +560,7 @@ export function StateMarketInfoPage({ state }: StateMarketInfoPageProps) {
                   </p>
                   <button
                     onClick={() => navigate(`/${state}/guides`)}
-                    className="text-blue-600 hover:text-blue-800 text-sm font-medium"
+                    className="text-texas-navy hover:text-texas-navy text-sm font-medium"
                   >
                     View Guides →
                   </button>
@@ -576,7 +576,7 @@ export function StateMarketInfoPage({ state }: StateMarketInfoPageProps) {
                   </p>
                   <button
                     onClick={() => navigate('/rates/tracker')}
-                    className="text-blue-600 hover:text-blue-800 text-sm font-medium"
+                    className="text-texas-navy hover:text-texas-navy text-sm font-medium"
                   >
                     View Market Data →
                   </button>

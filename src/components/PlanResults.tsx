@@ -97,7 +97,8 @@ export interface PlanResultsProps {
   emptyMessage?: string;
   /** Callback for plan selection */
   onPlanSelect?: (plan: ElectricityPlan) => void;
-  /** Callback for comparison changes */\n  onComparisonChange?: (planIds: string[]) => void;
+  /** Callback for comparison changes */
+  onComparisonChange?: (planIds: string[]) => void;
   /** Analytics event callback */
   onTrackEvent?: (event: string, properties: Record<string, any>) => void;
 }
@@ -776,7 +777,7 @@ function PlanCard({
           )}
           
           {plan.features.freeTime && (
-            <Badge variant="outline" className="text-xs border-blue-500 text-blue-600">
+            <Badge variant="outline" className="text-xs border-blue-500 text-texas-navy">
               <Clock className="h-3 w-3 mr-1" />
               Free Time
             </Badge>
@@ -846,10 +847,10 @@ function PlanCard({
             >
               Select Plan
             </Button>
-            <Button variant="outline" size="sm">
+            <Button variant="outline" size="icon" className="min-h-[48px] min-w-[48px] touch-manipulation" aria-label="View plan details">
               <ExternalLink className="h-4 w-4" />
             </Button>
-            <Button variant="outline" size="sm">
+            <Button variant="outline" size="icon" className="min-h-[48px] min-w-[48px] touch-manipulation" aria-label="Share plan">
               <Share2 className="h-4 w-4" />
             </Button>
           </div>

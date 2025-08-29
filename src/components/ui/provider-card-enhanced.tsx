@@ -174,8 +174,8 @@ const ProviderCardEnhanced = React.forwardRef<HTMLDivElement, ProviderCardProps>
               </div>
             )}
             {customerService?.rating && customerService.rating >= 4.0 && (
-              <div className="flex items-center gap-2 text-sm text-blue-700">
-                <Award className="w-4 h-4 text-blue-600" />
+              <div className="flex items-center gap-2 text-sm text-texas-navy">
+                <Award className="w-4 h-4 text-texas-navy" />
                 Excellent customer service
               </div>
             )}

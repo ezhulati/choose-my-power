@@ -34,7 +34,7 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
           <p className="text-gray-600 mb-8">The provider you're looking for doesn't exist in our database.</p>
           <button
             onClick={() => navigate('/providers')}
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+            className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors"
           >
             View All Providers
           </button>
@@ -77,9 +77,9 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-texas-navy">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => navigate('/providers')} className="hover:text-blue-600">Providers</button>
+            <button onClick={() => navigate('/providers')} className="hover:text-texas-navy">Providers</button>
             <span className="mx-2">/</span>
             <span>{provider.name}</span>
           </nav>
@@ -110,7 +110,7 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
               <div className="flex flex-wrap gap-4 mb-6">
                 <button
                   onClick={() => navigate('/compare/providers')}
-                  className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                  className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors font-medium"
                 >
                   Compare Plans
                 </button>
@@ -146,7 +146,7 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                 <div className="flex items-center">
                   <Globe className="h-5 w-5 text-gray-400 mr-3" />
                   <div>
-                    <a href={provider.website} className="font-medium text-blue-600 hover:text-blue-800">
+                    <a href={provider.website} className="font-medium text-texas-navy hover:text-texas-navy">
                       Official Website
                     </a>
                     <div className="text-sm text-gray-600">Online Account & Support</div>
@@ -168,7 +168,7 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                 onClick={() => setSelectedTab(tab.id as any)}
                 className={`flex items-center space-x-2 py-4 border-b-2 font-medium text-sm transition-colors ${
                   selectedTab === tab.id
-                    ? 'border-blue-600 text-blue-600'
+                    ? 'border-texas-navy text-texas-navy'
                     : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                 }`}
               >
@@ -284,7 +284,7 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
 
                     <button
                       onClick={() => navigate('/texas/houston/electricity-providers')}
-                      className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                      className="w-full bg-texas-navy text-white py-2 rounded-lg hover:bg-blue-800 transition-colors text-sm font-medium"
                     >
                       See Rates in Your Area
                     </button>
@@ -373,7 +373,7 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                     
                     <button
                       onClick={() => navigate(`/${state.slug}/electricity-providers`)}
-                      className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                      className="w-full bg-texas-navy text-white py-2 rounded-lg hover:bg-blue-800 transition-colors text-sm font-medium"
                     >
                       View {state.name} Plans
                     </button>

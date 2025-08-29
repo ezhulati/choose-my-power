@@ -80,9 +80,9 @@ export function ContactPage({}: ContactPageProps) {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => navigate('/')} className="hover:text-blue-600">Home</button>
+            <button onClick={() => navigate('/')} className="hover:text-texas-navy">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => navigate('/resources')} className="hover:text-blue-600">Resources</button>
+            <button onClick={() => navigate('/resources')} className="hover:text-texas-navy">Resources</button>
             <span className="mx-2">/</span>
             <span>Contact</span>
           </nav>
@@ -211,7 +211,7 @@ export function ContactPage({}: ContactPageProps) {
 
               <button
                 type="submit"
-                className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                className="w-full bg-texas-navy text-white py-3 rounded-lg hover:bg-blue-800 transition-colors font-medium"
               >
                 Send Message
               </button>
@@ -235,12 +235,12 @@ export function ContactPage({}: ContactPageProps) {
               </div>
             </div>
 
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+            <div className="bg-texas-cream-200 border border-blue-200 rounded-lg p-6">
               <div className="flex items-center mb-4">
-                <Clock className="h-6 w-6 text-blue-600 mr-3" />
+                <Clock className="h-6 w-6 text-texas-navy mr-3" />
                 <h3 className="text-lg font-semibold text-blue-900">Response Times</h3>
               </div>
-              <div className="space-y-2 text-blue-800">
+              <div className="space-y-2 text-texas-navy">
                 <div className="flex justify-between">
                   <span>Live Chat:</span>
                   <span className="font-medium">Immediate</span>
@@ -277,25 +277,25 @@ export function ContactPage({}: ContactPageProps) {
               <div className="space-y-2">
                 <button
                   onClick={() => navigate('/resources/faqs')}
-                  className="w-full text-left p-2 text-sm text-blue-600 hover:text-blue-800 hover:underline"
+                  className="w-full text-left p-2 text-sm text-texas-navy hover:text-texas-navy hover:underline"
                 >
                   Frequently Asked Questions →
                 </button>
                 <button
                   onClick={() => navigate('/resources/guides')}
-                  className="w-full text-left p-2 text-sm text-blue-600 hover:text-blue-800 hover:underline"
+                  className="w-full text-left p-2 text-sm text-texas-navy hover:text-texas-navy hover:underline"
                 >
                   Educational Guides →
                 </button>
                 <button
                   onClick={() => navigate('/rates/calculator')}
-                  className="w-full text-left p-2 text-sm text-blue-600 hover:text-blue-800 hover:underline"
+                  className="w-full text-left p-2 text-sm text-texas-navy hover:text-texas-navy hover:underline"
                 >
                   Rate Calculator →
                 </button>
                 <button
                   onClick={() => navigate('/compare/providers')}
-                  className="w-full text-left p-2 text-sm text-blue-600 hover:text-blue-800 hover:underline"
+                  className="w-full text-left p-2 text-sm text-texas-navy hover:text-texas-navy hover:underline"
                 >
                   Compare Providers →
                 </button>

@@ -209,12 +209,12 @@ export function ComparePage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {whyCompare.map((reason, index) => (
               <div key={index} className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-blue-600 rounded-lg mb-6">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-lg mb-6">
                   <reason.icon className="h-8 w-8" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">{reason.title}</h3>
                 <p className="text-gray-600 mb-4">{reason.description}</p>
-                <div className="font-bold text-blue-600">{reason.stat}</div>
+                <div className="font-bold text-texas-navy">{reason.stat}</div>
               </div>
             ))}
           </div>
@@ -288,7 +288,7 @@ export function ComparePage() {
                     <ul className="space-y-1">
                       {type.bestFor.slice(0, 3).map((use, uIndex) => (
                         <li key={uIndex} className="flex items-center text-sm text-gray-600">
-                          <Target className="h-3 w-3 text-blue-600 mr-2 flex-shrink-0" />
+                          <Target className="h-3 w-3 text-texas-navy mr-2 flex-shrink-0" />
                           {use}
                         </li>
                       ))}
@@ -328,7 +328,7 @@ export function ComparePage() {
               <tbody>
                 <tr className="border-b border-gray-100">
                   <td className="py-4 px-2 font-medium text-gray-900">Primary Focus</td>
-                  <td className="py-4 px-4 text-center text-blue-700">Company Quality & Specialization</td>
+                  <td className="py-4 px-4 text-center text-texas-navy">Company Quality & Specialization</td>
                   <td className="py-4 px-4 text-center text-green-700">Plan Features & Terms</td>
                   <td className="py-4 px-4 text-center text-purple-700">Pricing & Cost Analysis</td>
                 </tr>
@@ -361,7 +361,7 @@ export function ComparePage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 onClick={() => navigate('/compare/providers')}
-                className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                className="bg-texas-navy text-white px-6 py-2 rounded-lg hover:bg-blue-800 transition-colors"
               >
                 Start with Companies
               </button>
@@ -389,7 +389,7 @@ export function ComparePage() {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-blue-600 rounded-lg mb-6">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-lg mb-6">
                 <Eye className="h-8 w-8" />
               </div>
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Data Collection</h3>
@@ -431,14 +431,14 @@ export function ComparePage() {
         </div>
 
         {/* Quick Decision Guide */}
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-8">
+        <div className="bg-texas-cream-200 border border-blue-200 rounded-lg p-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
             Quick Decision Guide
           </h2>
           
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-600 text-white rounded-lg mb-4 mx-auto">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-texas-navy text-white rounded-lg mb-4 mx-auto">
                 <Users className="h-6 w-6" />
               </div>
               <h3 className="text-lg font-semibold text-gray-900 mb-3">Start Here: Companies</h3>
@@ -447,7 +447,7 @@ export function ComparePage() {
               </p>
               <button
                 onClick={() => navigate('/compare/providers')}
-                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                className="bg-texas-navy text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors text-sm font-medium"
               >
                 Compare Companies
               </button>
