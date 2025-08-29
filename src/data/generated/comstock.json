@@ -1,0 +1,4169 @@
+{
+  "citySlug": "comstock-tx",
+  "cityName": "Comstock",
+  "tdsp": {
+    "duns": "957877905",
+    "name": "CenterPoint Energy Houston Electric",
+    "zone": "Coast",
+    "tier": 3,
+    "priority": 0.4
+  },
+  "baseApiUrl": "comstock",
+  "filters": {
+    "no-filters": {
+      "plans": [
+        {
+          "id": "68b1a54064bd2c63b1b109ee",
+          "name": "Simply Days Free - 12",
+          "provider": {
+            "name": "Amigo Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.184,
+            "rate1000kWh": 0.169,
+            "rate2000kWh": 0.162,
+            "ratePerKwh": 0.169
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 0,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "9:00 am-4:00 pm",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b1a54164bd2c63b1b109f3",
+          "name": "Simply Days Free - 24",
+          "provider": {
+            "name": "Amigo Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.178,
+            "rate1000kWh": 0.163,
+            "rate2000kWh": 0.156,
+            "ratePerKwh": 0.163
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 0,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "9:00 am-4:00 pm",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b1a53f64bd2c63b1b109e4",
+          "name": "Nights Free Plan - 12",
+          "provider": {
+            "name": "Amigo Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.191,
+            "rate1000kWh": 0.186,
+            "rate2000kWh": 0.183,
+            "ratePerKwh": 0.186
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 26.3,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "Off-peak hours",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b17a6b890a850ebca0d59d",
+          "name": "12th Month Free - 12",
+          "provider": {
+            "name": "Amigo Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.183,
+            "rate1000kWh": 0.183,
+            "rate2000kWh": 0.183,
+            "ratePerKwh": 0.183
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 31.5,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b1a53f64bd2c63b1b109e9",
+          "name": "Secure Energy - 24",
+          "provider": {
+            "name": "Amigo Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.187,
+            "rate1000kWh": 0.163,
+            "rate2000kWh": 0.16,
+            "ratePerKwh": 0.163
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 31.5,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b1a44a64bd2c63b1b10956",
+          "name": "Value Wise - 12",
+          "provider": {
+            "name": "Tara Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.201,
+            "rate1000kWh": 0.122,
+            "rate2000kWh": 0.157,
+            "ratePerKwh": 0.122
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 31.5,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b1a44a64bd2c63b1b1095c",
+          "name": "Value Wise - 24",
+          "provider": {
+            "name": "Tara Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.204,
+            "rate1000kWh": 0.125,
+            "rate2000kWh": 0.16,
+            "ratePerKwh": 0.125
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 31.5,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b1a44b64bd2c63b1b10962",
+          "name": "Weekends Free Plan - 24",
+          "provider": {
+            "name": "Tara Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.173,
+            "rate1000kWh": 0.168,
+            "rate2000kWh": 0.166,
+            "ratePerKwh": 0.168
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 31.5,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "Off-peak hours",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b1a3a864bd2c63b1b10946",
+          "name": "Mega Saver - 24",
+          "provider": {
+            "name": "Just Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.187,
+            "rate1000kWh": 0.183,
+            "rate2000kWh": 0.105,
+            "ratePerKwh": 0.183
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 15,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b1a3a964bd2c63b1b1094b",
+          "name": "Power Plus - 12",
+          "provider": {
+            "name": "Just Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.204,
+            "rate1000kWh": 0.1,
+            "rate2000kWh": 0.147,
+            "ratePerKwh": 0.1
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 26.3,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b17a6c890a850ebca0d5ab",
+          "name": "Simple Choice - 12",
+          "provider": {
+            "name": "Just Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.157,
+            "rate1000kWh": 0.147,
+            "rate2000kWh": 0.143,
+            "ratePerKwh": 0.147
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 26.3,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b17a6c890a850ebca0d5a8",
+          "name": "Basics - 12",
+          "provider": {
+            "name": "Just Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.153,
+            "rate1000kWh": 0.149,
+            "rate2000kWh": 0.146,
+            "ratePerKwh": 0.149
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 31.5,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b17a6c890a850ebca0d5a4",
+          "name": "Basics - 24",
+          "provider": {
+            "name": "Just Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.157,
+            "rate1000kWh": 0.153,
+            "rate2000kWh": 0.15,
+            "ratePerKwh": 0.153
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 31.5,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b1a3aa64bd2c63b1b10950",
+          "name": "Power Plus - 24",
+          "provider": {
+            "name": "Just Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.212,
+            "rate1000kWh": 0.108,
+            "rate2000kWh": 0.155,
+            "ratePerKwh": 0.108
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 31.5,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b17a6c890a850ebca0d5ac",
+          "name": "Simple Choice - 24",
+          "provider": {
+            "name": "Just Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.16,
+            "rate1000kWh": 0.15,
+            "rate2000kWh": 0.146,
+            "ratePerKwh": 0.15
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 31.5,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68ac88f7f95bf521995a272f",
+          "name": "Cash Money 12",
+          "provider": {
+            "name": "4Change Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.219,
+            "rate1000kWh": 0.159,
+            "rate2000kWh": 0.174,
+            "ratePerKwh": 0.159
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 6,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68ac88f7f95bf521995a272d",
+          "name": "One Rate 12",
+          "provider": {
+            "name": "4Change Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.171,
+            "rate1000kWh": 0.161,
+            "rate2000kWh": 0.156,
+            "ratePerKwh": 0.161
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 6,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68ac88f8f95bf521995a2730",
+          "name": "Power Maxx Saver 12",
+          "provider": {
+            "name": "4Change Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.184,
+            "rate1000kWh": 0.174,
+            "rate2000kWh": 0.119,
+            "ratePerKwh": 0.174
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 6,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68ac88f7f95bf521995a272e",
+          "name": "One Rate 24",
+          "provider": {
+            "name": "4Change Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.174,
+            "rate1000kWh": 0.164,
+            "rate2000kWh": 0.159,
+            "ratePerKwh": 0.164
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 480,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 6,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68ac88f8f95bf521995a2734",
+          "name": "Power Maxx Saver 24",
+          "provider": {
+            "name": "4Change Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.184,
+            "rate1000kWh": 0.174,
+            "rate2000kWh": 0.119,
+            "ratePerKwh": 0.174
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 480,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 6,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68ac88f8f95bf521995a2731",
+          "name": "Maxx Saver Value 12",
+          "provider": {
+            "name": "4Change Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.216,
+            "rate1000kWh": 0.086,
+            "rate2000kWh": 0.146,
+            "ratePerKwh": 0.086
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 9,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68ac88f8f95bf521995a2732",
+          "name": "Power Savvy Saver 12",
+          "provider": {
+            "name": "4Change Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.19,
+            "rate1000kWh": 0.175,
+            "rate2000kWh": 0.163,
+            "ratePerKwh": 0.175
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 9,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68ac88f8f95bf521995a2733",
+          "name": "Maxx Saver Value 24",
+          "provider": {
+            "name": "4Change Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.216,
+            "rate1000kWh": 0.086,
+            "rate2000kWh": 0.146,
+            "ratePerKwh": 0.086
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 480,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 9,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68abf1b60f61f94e175e7d20",
+          "name": "Frontier Saver Deluxe 12",
+          "provider": {
+            "name": "Frontier Utilities",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.191,
+            "rate1000kWh": 0.186,
+            "rate2000kWh": 0.134,
+            "ratePerKwh": 0.186
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 30.4,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68ad431ef95bf521995a3bc3",
+          "name": "Frontier Saver Plus 12",
+          "provider": {
+            "name": "Frontier Utilities",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.216,
+            "rate1000kWh": 0.086,
+            "rate2000kWh": 0.146,
+            "ratePerKwh": 0.086
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 30.4,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68abf1b60f61f94e175e7d21",
+          "name": "Frontier Saver Premier 12",
+          "provider": {
+            "name": "Frontier Utilities",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.201,
+            "rate1000kWh": 0.196,
+            "rate2000kWh": 0.118,
+            "ratePerKwh": 0.196
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 30.4,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68abf1b60f61f94e175e7d24",
+          "name": "Frontier Saver Value 12",
+          "provider": {
+            "name": "Frontier Utilities",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.146,
+            "rate1000kWh": 0.191,
+            "rate2000kWh": 0.214,
+            "ratePerKwh": 0.191
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 30.4,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68abf1b60f61f94e175e7d22",
+          "name": "Frontier Saver Value Plus 12",
+          "provider": {
+            "name": "Frontier Utilities",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.232,
+            "rate1000kWh": 0.152,
+            "rate2000kWh": 0.187,
+            "ratePerKwh": 0.152
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 30.4,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68abf1b60f61f94e175e7d25",
+          "name": "Light Saver 12",
+          "provider": {
+            "name": "Frontier Utilities",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.167,
+            "rate1000kWh": 0.155,
+            "rate2000kWh": 0.144,
+            "ratePerKwh": 0.155
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 30.4,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a0144ee30bfeb00272157b",
+          "name": "Gexa Eco Saver Advantage 12",
+          "provider": {
+            "name": "Gexa Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.192,
+            "rate1000kWh": 0.187,
+            "rate2000kWh": 0.135,
+            "ratePerKwh": 0.187
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "688c4da005ee1f58c9b42629",
+          "name": "Gexa Eco Saver Edge Plus 12",
+          "provider": {
+            "name": "Gexa Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.225,
+            "rate1000kWh": 0.12,
+            "rate2000kWh": 0.167,
+            "ratePerKwh": 0.12
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a0144de30bfeb002721579",
+          "name": "Gexa Eco Saver Lite 12",
+          "provider": {
+            "name": "Gexa Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.145,
+            "rate1000kWh": 0.19,
+            "rate2000kWh": 0.213,
+            "ratePerKwh": 0.19
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68ad4321b32f244848d52947",
+          "name": "Gexa Eco Saver Plus 12",
+          "provider": {
+            "name": "Gexa Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.216,
+            "rate1000kWh": 0.086,
+            "rate2000kWh": 0.146,
+            "ratePerKwh": 0.086
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a0144de30bfeb002721577",
+          "name": "Gexa Eco Saver Premier 12",
+          "provider": {
+            "name": "Gexa Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.201,
+            "rate1000kWh": 0.196,
+            "rate2000kWh": 0.118,
+            "ratePerKwh": 0.196
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a0144de30bfeb002721575",
+          "name": "Gexa Eco Saver Value 12",
+          "provider": {
+            "name": "Gexa Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.232,
+            "rate1000kWh": 0.152,
+            "rate2000kWh": 0.187,
+            "ratePerKwh": 0.152
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "689193a7e8b1db9607773919",
+          "name": "Gexa Light Saver 12",
+          "provider": {
+            "name": "Gexa Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.168,
+            "rate1000kWh": 0.156,
+            "rate2000kWh": 0.145,
+            "ratePerKwh": 0.156
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fe72e30bfeb0027293fa",
+          "name": "Pollution Free Conserve 12 Preferred",
+          "provider": {
+            "name": "Green Mountain",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.179,
+            "rate1000kWh": 0.169,
+            "rate2000kWh": 0.174,
+            "ratePerKwh": 0.169
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fe72e30bfeb0027293fd",
+          "name": "Pollution Free Green Savings Plus 12 Preferred",
+          "provider": {
+            "name": "Green Mountain",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.222,
+            "rate1000kWh": 0.217,
+            "rate2000kWh": 0.139,
+            "ratePerKwh": 0.217
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fb44e30bfeb00272935e",
+          "name": "Pollution Free e-Plus 12 Preferred",
+          "provider": {
+            "name": "Green Mountain",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.177,
+            "rate1000kWh": 0.172,
+            "rate2000kWh": 0.169,
+            "ratePerKwh": 0.172
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fe72e30bfeb0027293fb",
+          "name": "Pollution Free Conserve 24 Preferred",
+          "provider": {
+            "name": "Green Mountain",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.179,
+            "rate1000kWh": 0.169,
+            "rate2000kWh": 0.174,
+            "ratePerKwh": 0.169
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fe72e30bfeb0027293fc",
+          "name": "Pollution Free Green Savings Plus 24 Preferred",
+          "provider": {
+            "name": "Green Mountain",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.218,
+            "rate1000kWh": 0.213,
+            "rate2000kWh": 0.135,
+            "ratePerKwh": 0.213
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fb44e30bfeb00272935b",
+          "name": "Pollution Free e-Plus 24 Preferred",
+          "provider": {
+            "name": "Green Mountain",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.177,
+            "rate1000kWh": 0.172,
+            "rate2000kWh": 0.169,
+            "ratePerKwh": 0.172
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a5c85aaf7e765b28590c02",
+          "name": "Bill Credit Bundle 12",
+          "provider": {
+            "name": "Discount Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.217,
+            "rate1000kWh": 0.087,
+            "rate2000kWh": 0.147,
+            "ratePerKwh": 0.087
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a5c859af7e765b28590c01",
+          "name": "Bill Credit Bundle 24",
+          "provider": {
+            "name": "Discount Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.217,
+            "rate1000kWh": 0.087,
+            "rate2000kWh": 0.147,
+            "ratePerKwh": 0.087
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fb45e30bfeb00272936b",
+          "name": "Wise Buy Basic 24 Online",
+          "provider": {
+            "name": "Discount Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.173,
+            "rate1000kWh": 0.148,
+            "rate2000kWh": 0.145,
+            "ratePerKwh": 0.148
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fe6fe30bfeb0027293e9",
+          "name": "Bill Credit Bundle 2000 kWh 12",
+          "provider": {
+            "name": "Discount Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.212,
+            "rate1000kWh": 0.207,
+            "rate2000kWh": 0.129,
+            "ratePerKwh": 0.207
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fb45e30bfeb00272936c",
+          "name": "Essential Saver 12",
+          "provider": {
+            "name": "Discount Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.15,
+            "rate1000kWh": 0.145,
+            "rate2000kWh": 0.142,
+            "ratePerKwh": 0.145
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fe6fe30bfeb0027293e8",
+          "name": "Bill Credit Bundle 2000 kWh 24",
+          "provider": {
+            "name": "Discount Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.21,
+            "rate1000kWh": 0.205,
+            "rate2000kWh": 0.127,
+            "ratePerKwh": 0.205
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fb47e30bfeb002729379",
+          "name": "Reliant Basic Power 12 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.197,
+            "rate1000kWh": 0.172,
+            "rate2000kWh": 0.169,
+            "ratePerKwh": 0.172
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fe75e30bfeb002729412",
+          "name": "Reliant Power Savings 12 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.2,
+            "rate1000kWh": 0.145,
+            "rate2000kWh": 0.167,
+            "ratePerKwh": 0.145
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fb47e30bfeb00272937a",
+          "name": "Reliant Basic Power 24 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.193,
+            "rate1000kWh": 0.168,
+            "rate2000kWh": 0.165,
+            "ratePerKwh": 0.168
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fe77e30bfeb002729422",
+          "name": "Reliant Power Savings 24 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.194,
+            "rate1000kWh": 0.139,
+            "rate2000kWh": 0.161,
+            "ratePerKwh": 0.139
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fe73e30bfeb002729408",
+          "name": "Reliant Conservation 12 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.185,
+            "rate1000kWh": 0.175,
+            "rate2000kWh": 0.18,
+            "ratePerKwh": 0.175
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fe76e30bfeb002729418",
+          "name": "Reliant Power Savings 2,000 kWh 12 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.222,
+            "rate1000kWh": 0.217,
+            "rate2000kWh": 0.139,
+            "ratePerKwh": 0.217
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fb47e30bfeb00272937d",
+          "name": "Reliant Pure Power 12 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.164,
+            "rate1000kWh": 0.154,
+            "rate2000kWh": 0.149,
+            "ratePerKwh": 0.154
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fe74e30bfeb00272940d",
+          "name": "Reliant Conservation 24 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.175,
+            "rate1000kWh": 0.165,
+            "rate2000kWh": 0.17,
+            "ratePerKwh": 0.165
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fe76e30bfeb00272941d",
+          "name": "Reliant Power Savings 2,000 kWh 24 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.218,
+            "rate1000kWh": 0.213,
+            "rate2000kWh": 0.135,
+            "ratePerKwh": 0.213
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fb47e30bfeb00272937c",
+          "name": "Reliant Pure Power 24 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.164,
+            "rate1000kWh": 0.154,
+            "rate2000kWh": 0.149,
+            "ratePerKwh": 0.154
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fe77e30bfeb002729427",
+          "name": "Reliant Truly Free Nights 100% Solar 12 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.183,
+            "rate1000kWh": 0.178,
+            "rate2000kWh": 0.175,
+            "ratePerKwh": 0.178
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "Off-peak hours",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fe78e30bfeb00272942d",
+          "name": "Reliant Truly Free Weekends 100% Solar 12 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.187,
+            "rate1000kWh": 0.182,
+            "rate2000kWh": 0.179,
+            "ratePerKwh": 0.182
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "Off-peak hours",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a5c859af7e765b28590bfe",
+          "name": "Simple Bill Credit 12",
+          "provider": {
+            "name": "Cirro Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.217,
+            "rate1000kWh": 0.087,
+            "rate2000kWh": 0.147,
+            "ratePerKwh": 0.087
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a5c859af7e765b28590bfd",
+          "name": "Simple Bill Credit 24",
+          "provider": {
+            "name": "Cirro Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.217,
+            "rate1000kWh": 0.087,
+            "rate2000kWh": 0.147,
+            "ratePerKwh": 0.087
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fb47e30bfeb002729381",
+          "name": "Smart Value 24",
+          "provider": {
+            "name": "Cirro Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.19,
+            "rate1000kWh": 0.155,
+            "rate2000kWh": 0.167,
+            "ratePerKwh": 0.155
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fb47e30bfeb002729380",
+          "name": "Smart Value 12",
+          "provider": {
+            "name": "Cirro Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.194,
+            "rate1000kWh": 0.159,
+            "rate2000kWh": 0.171,
+            "ratePerKwh": 0.159
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 21,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fb47e30bfeb002729383",
+          "name": "Simple Advantage 12",
+          "provider": {
+            "name": "Cirro Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.15,
+            "rate1000kWh": 0.145,
+            "rate2000kWh": 0.142,
+            "ratePerKwh": 0.145
+          },
+          "contract": {
+            "length": 12,
+            "type": "variable",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fe6be30bfeb0027293c5",
+          "name": "Simple Bill Credit Bundle 2000 kWh 12",
+          "provider": {
+            "name": "Cirro Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.212,
+            "rate1000kWh": 0.207,
+            "rate2000kWh": 0.129,
+            "ratePerKwh": 0.207
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fb48e30bfeb002729385",
+          "name": "Simple Advantage 24",
+          "provider": {
+            "name": "Cirro Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.15,
+            "rate1000kWh": 0.145,
+            "rate2000kWh": 0.142,
+            "ratePerKwh": 0.145
+          },
+          "contract": {
+            "length": 24,
+            "type": "variable",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fe6be30bfeb0027293c6",
+          "name": "Simple Bill Credit Bundle 2000 kWh 24",
+          "provider": {
+            "name": "Cirro Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.21,
+            "rate1000kWh": 0.205,
+            "rate2000kWh": 0.127,
+            "ratePerKwh": 0.205
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fe6ce30bfeb0027293d1",
+          "name": "Live Brighter Lite 12",
+          "provider": {
+            "name": "Direct Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.15,
+            "rate1000kWh": 0.145,
+            "rate2000kWh": 0.147,
+            "ratePerKwh": 0.145
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fb44e30bfeb002729362",
+          "name": "Live Brighter 1K+ 24",
+          "provider": {
+            "name": "Direct Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.177,
+            "rate1000kWh": 0.162,
+            "rate2000kWh": 0.149,
+            "ratePerKwh": 0.162
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fe6de30bfeb0027293d6",
+          "name": "Live Brighter Lite 24",
+          "provider": {
+            "name": "Direct Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.15,
+            "rate1000kWh": 0.145,
+            "rate2000kWh": 0.147,
+            "ratePerKwh": 0.145
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fe6de30bfeb0027293db",
+          "name": "Twelve Hour Power 12",
+          "provider": {
+            "name": "Direct Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.238,
+            "rate1000kWh": 0.226,
+            "rate2000kWh": 0.219,
+            "ratePerKwh": 0.226
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "Off-peak hours",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68a4fb44e30bfeb002729365",
+          "name": "Bright Secure 12",
+          "provider": {
+            "name": "Direct Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.159,
+            "rate1000kWh": 0.149,
+            "rate2000kWh": 0.144,
+            "ratePerKwh": 0.149
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 35,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68960db60c894e22fc22f93f",
+          "name": "6 Month - Prepaid",
+          "provider": {
+            "name": "Payless Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.176,
+            "rate1000kWh": 0.176,
+            "rate2000kWh": 0.162,
+            "ratePerKwh": 0.176
+          },
+          "contract": {
+            "length": 6,
+            "type": "fixed",
+            "earlyTerminationFee": 99,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 26,
+            "billCredit": 0,
+            "deposit": {
+              "required": true,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68960db60c894e22fc22f93c",
+          "name": "12 Month - Prepaid",
+          "provider": {
+            "name": "Payless Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.175,
+            "rate1000kWh": 0.175,
+            "rate2000kWh": 0.161,
+            "ratePerKwh": 0.175
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 99,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 26.2,
+            "billCredit": 0,
+            "deposit": {
+              "required": true,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b13451890a850ebca0ccd4",
+          "name": "Flex Forward",
+          "provider": {
+            "name": "TXU Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.201,
+            "rate1000kWh": 0.186,
+            "rate2000kWh": 0.179,
+            "ratePerKwh": 0.186
+          },
+          "contract": {
+            "length": 1,
+            "type": "fixed",
+            "earlyTerminationFee": 0,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 9,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b13450890a850ebca0ccc5",
+          "name": "Live Your Free 12",
+          "provider": {
+            "name": "TXU Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.207,
+            "rate1000kWh": 0.192,
+            "rate2000kWh": 0.185,
+            "ratePerKwh": 0.192
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 9,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b13451890a850ebca0ccce",
+          "name": "Free Nights & Solar Days 12 (8 pm)",
+          "provider": {
+            "name": "TXU Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.21,
+            "rate1000kWh": 0.195,
+            "rate2000kWh": 0.188,
+            "ratePerKwh": 0.195
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b1cedb8ca16498d8388641",
+          "name": "Rhythm Saver 12",
+          "provider": {
+            "name": "Rhythm Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.188,
+            "rate1000kWh": 0.088,
+            "rate2000kWh": 0.138,
+            "ratePerKwh": 0.088
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b1cedb8ca16498d8388640",
+          "name": "Watt a Deal 12",
+          "provider": {
+            "name": "Rhythm Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.181,
+            "rate1000kWh": 0.181,
+            "rate2000kWh": 0.119,
+            "ratePerKwh": 0.181
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b1cb6a8ca16498d83885d9",
+          "name": "Simply Green 13",
+          "provider": {
+            "name": "Rhythm Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.176,
+            "rate1000kWh": 0.161,
+            "rate2000kWh": 0.154,
+            "ratePerKwh": 0.161
+          },
+          "contract": {
+            "length": 13,
+            "type": "fixed",
+            "earlyTerminationFee": 260,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b1cb6a8ca16498d83885da",
+          "name": "Simply Green 23",
+          "provider": {
+            "name": "Rhythm Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.173,
+            "rate1000kWh": 0.158,
+            "rate2000kWh": 0.15,
+            "ratePerKwh": 0.158
+          },
+          "contract": {
+            "length": 23,
+            "type": "fixed",
+            "earlyTerminationFee": 460,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "688b96fb188b2d85f329df86",
+          "name": "Ultra Flex 1",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.195,
+            "rate1000kWh": 0.185,
+            "rate2000kWh": 0.181,
+            "ratePerKwh": 0.185
+          },
+          "contract": {
+            "length": 1,
+            "type": "fixed",
+            "earlyTerminationFee": 0,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68af67b12ee3bd055dc8aad2",
+          "name": "SimpleSaver 12",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.19,
+            "rate1000kWh": 0.085,
+            "rate2000kWh": 0.133,
+            "ratePerKwh": 0.085
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68922e646c0045da28d1c597",
+          "name": "True Simple 12",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.148,
+            "rate1000kWh": 0.143,
+            "rate2000kWh": 0.141,
+            "ratePerKwh": 0.143
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68af72222ee3bd055dc8ac3e",
+          "name": "SimpleSaver 14",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.191,
+            "rate1000kWh": 0.086,
+            "rate2000kWh": 0.134,
+            "ratePerKwh": 0.086
+          },
+          "contract": {
+            "length": 14,
+            "type": "fixed",
+            "earlyTerminationFee": 250,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68af6b402ee3bd055dc8ab50",
+          "name": "True Simple 14",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.149,
+            "rate1000kWh": 0.144,
+            "rate2000kWh": 0.142,
+            "ratePerKwh": 0.144
+          },
+          "contract": {
+            "length": 14,
+            "type": "fixed",
+            "earlyTerminationFee": 250,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "6890c0bbe8b1db96077723e6",
+          "name": "SimpleSaver 24",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.197,
+            "rate1000kWh": 0.092,
+            "rate2000kWh": 0.14,
+            "ratePerKwh": 0.092
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 250,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b1cb788ca16498d8388609",
+          "name": "True Simple 24",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.154,
+            "rate1000kWh": 0.149,
+            "rate2000kWh": 0.147,
+            "ratePerKwh": 0.149
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 250,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b1c7d68ca16498d8388594",
+          "name": "SimpleSaver 36",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.211,
+            "rate1000kWh": 0.106,
+            "rate2000kWh": 0.154,
+            "ratePerKwh": 0.106
+          },
+          "contract": {
+            "length": 36,
+            "type": "fixed",
+            "earlyTerminationFee": 350,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b1cb788ca16498d8388608",
+          "name": "True Simple 36",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.157,
+            "rate1000kWh": 0.152,
+            "rate2000kWh": 0.15,
+            "ratePerKwh": 0.152
+          },
+          "contract": {
+            "length": 36,
+            "type": "fixed",
+            "earlyTerminationFee": 350,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68aceef1f95bf521995a3045",
+          "name": "Radiance1000  12",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.214,
+            "rate1000kWh": 0.109,
+            "rate2000kWh": 0.157,
+            "ratePerKwh": 0.109
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68aceef1f95bf521995a3048",
+          "name": "Radiance2000  12",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.215,
+            "rate1000kWh": 0.21,
+            "rate2000kWh": 0.108,
+            "ratePerKwh": 0.21
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68aceef0f95bf521995a303e",
+          "name": "Luminous 24",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.159,
+            "rate1000kWh": 0.154,
+            "rate2000kWh": 0.152,
+            "ratePerKwh": 0.154
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 480,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68aceef1f95bf521995a3044",
+          "name": "Radiance1000  24",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.219,
+            "rate1000kWh": 0.114,
+            "rate2000kWh": 0.162,
+            "ratePerKwh": 0.114
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68aceef1f95bf521995a3047",
+          "name": "Radiance2000  24",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.221,
+            "rate1000kWh": 0.216,
+            "rate2000kWh": 0.114,
+            "ratePerKwh": 0.216
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68aceef0f95bf521995a303d",
+          "name": "Luminous 36",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.162,
+            "rate1000kWh": 0.157,
+            "rate2000kWh": 0.155,
+            "ratePerKwh": 0.157
+          },
+          "contract": {
+            "length": 36,
+            "type": "fixed",
+            "earlyTerminationFee": 720,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68aceef0f95bf521995a3043",
+          "name": "Radiance1000  36",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.222,
+            "rate1000kWh": 0.117,
+            "rate2000kWh": 0.165,
+            "ratePerKwh": 0.117
+          },
+          "contract": {
+            "length": 36,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68aceef1f95bf521995a3046",
+          "name": "Radiance2000  36",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.224,
+            "rate1000kWh": 0.219,
+            "rate2000kWh": 0.117,
+            "ratePerKwh": 0.219
+          },
+          "contract": {
+            "length": 36,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68aceef1f95bf521995a304b",
+          "name": "Luminous Nights 12",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.154,
+            "rate1000kWh": 0.149,
+            "rate2000kWh": 0.147,
+            "ratePerKwh": 0.149
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "9:00 PM-9:00 AM",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68aceef1f95bf521995a304e",
+          "name": "Luminous Weekends 12",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.154,
+            "rate1000kWh": 0.149,
+            "rate2000kWh": 0.146,
+            "ratePerKwh": 0.149
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "Off-peak hours",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68aceef1f95bf521995a304a",
+          "name": "Luminous Nights 24",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.159,
+            "rate1000kWh": 0.155,
+            "rate2000kWh": 0.152,
+            "ratePerKwh": 0.155
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 480,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "9:00 PM-9:00 AM",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68aceef1f95bf521995a304d",
+          "name": "Luminous Weekends 24",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.159,
+            "rate1000kWh": 0.154,
+            "rate2000kWh": 0.151,
+            "ratePerKwh": 0.154
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 480,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "Off-peak hours",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68aceef1f95bf521995a3049",
+          "name": "Luminous Nights 36",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.162,
+            "rate1000kWh": 0.157,
+            "rate2000kWh": 0.155,
+            "ratePerKwh": 0.157
+          },
+          "contract": {
+            "length": 36,
+            "type": "fixed",
+            "earlyTerminationFee": 720,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "9:00 PM-9:00 AM",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68aceef1f95bf521995a304c",
+          "name": "Luminous Weekends 36",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.162,
+            "rate1000kWh": 0.157,
+            "rate2000kWh": 0.154,
+            "ratePerKwh": 0.157
+          },
+          "contract": {
+            "length": 36,
+            "type": "fixed",
+            "earlyTerminationFee": 720,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "Off-peak hours",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68aceef1f95bf521995a304f",
+          "name": "Luminous 12",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.144,
+            "rate1000kWh": 0.139,
+            "rate2000kWh": 0.137,
+            "ratePerKwh": 0.139
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 35,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68aceef0f95bf521995a303f",
+          "name": "Luminous 12",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.154,
+            "rate1000kWh": 0.149,
+            "rate2000kWh": 0.147,
+            "ratePerKwh": 0.149
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 35,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68aceef0f95bf521995a3042",
+          "name": "Luminous Green 12",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.157,
+            "rate1000kWh": 0.152,
+            "rate2000kWh": 0.15,
+            "ratePerKwh": 0.152
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68aceef0f95bf521995a3041",
+          "name": "Luminous Green 24",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.163,
+            "rate1000kWh": 0.158,
+            "rate2000kWh": 0.156,
+            "ratePerKwh": 0.158
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 480,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68aceef0f95bf521995a3040",
+          "name": "Luminous Green 36",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.166,
+            "rate1000kWh": 0.161,
+            "rate2000kWh": 0.159,
+            "ratePerKwh": 0.161
+          },
+          "contract": {
+            "length": 36,
+            "type": "fixed",
+            "earlyTerminationFee": 720,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        }
+      ],
+      "count": 110,
+      "lowestRate": 0.085,
+      "highestRate": 0.226
+    }
+  }
+}

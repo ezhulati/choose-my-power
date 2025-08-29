@@ -13,7 +13,7 @@
     "no-filters": {
       "plans": [
         {
-          "id": "689611690c894e22fc22f984",
+          "id": "68b1a54064bd2c63b1b109ed",
           "name": "Simply Days Free - 12",
           "provider": {
             "name": "Amigo Energy",
@@ -22,10 +22,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.216,
-            "rate1000kWh": 0.202,
-            "rate2000kWh": 0.196,
-            "ratePerKwh": 0.202
+            "rate500kWh": 0.194,
+            "rate1000kWh": 0.181,
+            "rate2000kWh": 0.174,
+            "ratePerKwh": 0.181
           },
           "contract": {
             "length": 12,
@@ -56,7 +56,7 @@
           }
         },
         {
-          "id": "6890ab5b03f610cb45111289",
+          "id": "68b1a54064bd2c63b1b109f2",
           "name": "Simply Days Free - 24",
           "provider": {
             "name": "Amigo Energy",
@@ -65,10 +65,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.204,
-            "rate1000kWh": 0.191,
-            "rate2000kWh": 0.185,
-            "ratePerKwh": 0.191
+            "rate500kWh": 0.188,
+            "rate1000kWh": 0.175,
+            "rate2000kWh": 0.168,
+            "ratePerKwh": 0.175
           },
           "contract": {
             "length": 24,
@@ -99,7 +99,7 @@
           }
         },
         {
-          "id": "6890aae703f610cb4511127a",
+          "id": "68b1a53f64bd2c63b1b109e3",
           "name": "Nights Free Plan - 12",
           "provider": {
             "name": "Amigo Energy",
@@ -108,10 +108,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.215,
-            "rate1000kWh": 0.21,
-            "rate2000kWh": 0.207,
-            "ratePerKwh": 0.21
+            "rate500kWh": 0.195,
+            "rate1000kWh": 0.19,
+            "rate2000kWh": 0.187,
+            "ratePerKwh": 0.19
           },
           "contract": {
             "length": 12,
@@ -142,7 +142,7 @@
           }
         },
         {
-          "id": "689084e0f2b1b73ca3570378",
+          "id": "68b17a69890a850ebca0d57e",
           "name": "12th Month Free - 12",
           "provider": {
             "name": "Amigo Energy",
@@ -151,10 +151,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.206,
-            "rate1000kWh": 0.206,
-            "rate2000kWh": 0.206,
-            "ratePerKwh": 0.206
+            "rate500kWh": 0.191,
+            "rate1000kWh": 0.191,
+            "rate2000kWh": 0.191,
+            "ratePerKwh": 0.191
           },
           "contract": {
             "length": 12,
@@ -179,7 +179,7 @@
           }
         },
         {
-          "id": "6890aae703f610cb4511127f",
+          "id": "68b1a53f64bd2c63b1b109e8",
           "name": "Secure Energy - 24",
           "provider": {
             "name": "Amigo Energy",
@@ -188,10 +188,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.217,
-            "rate1000kWh": 0.194,
-            "rate2000kWh": 0.192,
-            "ratePerKwh": 0.194
+            "rate500kWh": 0.201,
+            "rate1000kWh": 0.178,
+            "rate2000kWh": 0.176,
+            "ratePerKwh": 0.178
           },
           "contract": {
             "length": 24,
@@ -216,7 +216,7 @@
           }
         },
         {
-          "id": "68b06f39d06a017d70a75a05",
+          "id": "68b1d965cf3a97621a5dbf39",
           "name": "12 Month GREEN (No Min Usage Fee)",
           "provider": {
             "name": "Constellation",
@@ -253,7 +253,7 @@
           }
         },
         {
-          "id": "68b06f38d06a017d70a75a04",
+          "id": "68b1d965cf3a97621a5dbf3a",
           "name": "12 Month Usage Bill Credit",
           "provider": {
             "name": "Constellation",
@@ -290,7 +290,7 @@
           }
         },
         {
-          "id": "68b06f39d06a017d70a75a06",
+          "id": "68b1d965cf3a97621a5dbf3b",
           "name": "24 Month Usage Bill Credit",
           "provider": {
             "name": "Constellation",
@@ -327,7 +327,7 @@
           }
         },
         {
-          "id": "6890ac4e03f610cb451112e9",
+          "id": "68b1a44a64bd2c63b1b10955",
           "name": "Value Wise - 12",
           "provider": {
             "name": "Tara Energy",
@@ -336,10 +336,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.233,
-            "rate1000kWh": 0.155,
-            "rate2000kWh": 0.191,
-            "ratePerKwh": 0.155
+            "rate500kWh": 0.22,
+            "rate1000kWh": 0.142,
+            "rate2000kWh": 0.178,
+            "ratePerKwh": 0.142
           },
           "contract": {
             "length": 12,
@@ -364,7 +364,7 @@
           }
         },
         {
-          "id": "6890ac4f03f610cb451112ef",
+          "id": "68b1a44a64bd2c63b1b1095b",
           "name": "Value Wise - 24",
           "provider": {
             "name": "Tara Energy",
@@ -373,10 +373,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.232,
-            "rate1000kWh": 0.154,
-            "rate2000kWh": 0.19,
-            "ratePerKwh": 0.154
+            "rate500kWh": 0.222,
+            "rate1000kWh": 0.144,
+            "rate2000kWh": 0.18,
+            "ratePerKwh": 0.144
           },
           "contract": {
             "length": 24,
@@ -401,7 +401,7 @@
           }
         },
         {
-          "id": "6890ac4f03f610cb451112f5",
+          "id": "68b1a44b64bd2c63b1b10961",
           "name": "Weekends Free Plan - 24",
           "provider": {
             "name": "Tara Energy",
@@ -410,10 +410,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.201,
-            "rate1000kWh": 0.196,
-            "rate2000kWh": 0.194,
-            "ratePerKwh": 0.196
+            "rate500kWh": 0.184,
+            "rate1000kWh": 0.179,
+            "rate2000kWh": 0.177,
+            "ratePerKwh": 0.179
           },
           "contract": {
             "length": 24,
@@ -444,7 +444,7 @@
           }
         },
         {
-          "id": "689cad9032d4c62fd30ac971",
+          "id": "68b1a3a864bd2c63b1b10945",
           "name": "Mega Saver - 24",
           "provider": {
             "name": "Just Energy",
@@ -453,10 +453,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.211,
-            "rate1000kWh": 0.208,
-            "rate2000kWh": 0.131,
-            "ratePerKwh": 0.208
+            "rate500kWh": 0.182,
+            "rate1000kWh": 0.179,
+            "rate2000kWh": 0.102,
+            "ratePerKwh": 0.179
           },
           "contract": {
             "length": 24,
@@ -481,7 +481,7 @@
           }
         },
         {
-          "id": "6890abe503f610cb451112de",
+          "id": "68b1a3a964bd2c63b1b1094a",
           "name": "Power Plus - 12",
           "provider": {
             "name": "Just Energy",
@@ -490,10 +490,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.244,
-            "rate1000kWh": 0.141,
-            "rate2000kWh": 0.189,
-            "ratePerKwh": 0.141
+            "rate500kWh": 0.22,
+            "rate1000kWh": 0.117,
+            "rate2000kWh": 0.165,
+            "ratePerKwh": 0.117
           },
           "contract": {
             "length": 12,
@@ -518,7 +518,7 @@
           }
         },
         {
-          "id": "689084e0f2b1b73ca357037c",
+          "id": "68b17a69890a850ebca0d580",
           "name": "Simple Choice - 12",
           "provider": {
             "name": "Just Energy",
@@ -527,10 +527,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.214,
-            "rate1000kWh": 0.206,
-            "rate2000kWh": 0.202,
-            "ratePerKwh": 0.206
+            "rate500kWh": 0.169,
+            "rate1000kWh": 0.161,
+            "rate2000kWh": 0.157,
+            "ratePerKwh": 0.161
           },
           "contract": {
             "length": 12,
@@ -555,7 +555,7 @@
           }
         },
         {
-          "id": "689084e0f2b1b73ca357037a",
+          "id": "68b17a69890a850ebca0d582",
           "name": "Basics - 12",
           "provider": {
             "name": "Just Energy",
@@ -564,10 +564,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.209,
-            "rate1000kWh": 0.206,
-            "rate2000kWh": 0.204,
-            "ratePerKwh": 0.206
+            "rate500kWh": 0.166,
+            "rate1000kWh": 0.163,
+            "rate2000kWh": 0.161,
+            "ratePerKwh": 0.163
           },
           "contract": {
             "length": 12,
@@ -592,7 +592,7 @@
           }
         },
         {
-          "id": "689084e0f2b1b73ca3570377",
+          "id": "68b17a69890a850ebca0d584",
           "name": "Basics - 24",
           "provider": {
             "name": "Just Energy",
@@ -601,10 +601,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.197,
-            "rate1000kWh": 0.194,
-            "rate2000kWh": 0.192,
-            "ratePerKwh": 0.194
+            "rate500kWh": 0.17,
+            "rate1000kWh": 0.167,
+            "rate2000kWh": 0.165,
+            "ratePerKwh": 0.167
           },
           "contract": {
             "length": 24,
@@ -629,7 +629,7 @@
           }
         },
         {
-          "id": "689b39a132d4c62fd30a9f49",
+          "id": "68b1a3a964bd2c63b1b1094f",
           "name": "Power Plus - 24",
           "provider": {
             "name": "Just Energy",
@@ -638,10 +638,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.241,
-            "rate1000kWh": 0.138,
-            "rate2000kWh": 0.186,
-            "ratePerKwh": 0.138
+            "rate500kWh": 0.224,
+            "rate1000kWh": 0.121,
+            "rate2000kWh": 0.169,
+            "ratePerKwh": 0.121
           },
           "contract": {
             "length": 24,
@@ -666,7 +666,7 @@
           }
         },
         {
-          "id": "689084e0f2b1b73ca3570379",
+          "id": "68b17a69890a850ebca0d585",
           "name": "Simple Choice - 24",
           "provider": {
             "name": "Just Energy",
@@ -675,10 +675,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.202,
-            "rate1000kWh": 0.194,
-            "rate2000kWh": 0.19,
-            "ratePerKwh": 0.194
+            "rate500kWh": 0.173,
+            "rate1000kWh": 0.165,
+            "rate2000kWh": 0.161,
+            "ratePerKwh": 0.165
           },
           "contract": {
             "length": 24,
@@ -1221,7 +1221,7 @@
           }
         },
         {
-          "id": "68a01447751147f916dd1763",
+          "id": "68a01447751147f916dd1764",
           "name": "Gexa Eco Saver Lite 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1258,7 +1258,7 @@
           }
         },
         {
-          "id": "68ad431cf95bf521995a3bb3",
+          "id": "68ad431cf95bf521995a3bb4",
           "name": "Gexa Eco Saver Plus 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1295,7 +1295,7 @@
           }
         },
         {
-          "id": "68a01447751147f916dd176d",
+          "id": "68a01447751147f916dd176a",
           "name": "Gexa Eco Saver Premier 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1332,7 +1332,7 @@
           }
         },
         {
-          "id": "68a01447751147f916dd1769",
+          "id": "68a01447751147f916dd1767",
           "name": "Gexa Eco Saver Value 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1369,7 +1369,7 @@
           }
         },
         {
-          "id": "689193a0f03399b38e213175",
+          "id": "689193a0f03399b38e213176",
           "name": "Gexa Light Saver 12",
           "provider": {
             "name": "Gexa Energy",
@@ -2867,7 +2867,7 @@
           }
         },
         {
-          "id": "68afe2aa4cf61fe188e7624b",
+          "id": "68b1343f890a850ebca0cc87",
           "name": "Flex Forward",
           "provider": {
             "name": "TXU Energy",
@@ -2904,7 +2904,7 @@
           }
         },
         {
-          "id": "68afe2ab4cf61fe188e76252",
+          "id": "68b1343f890a850ebca0cc74",
           "name": "Live Your Free 12",
           "provider": {
             "name": "TXU Energy",
@@ -2941,7 +2941,7 @@
           }
         },
         {
-          "id": "68afe2ab4cf61fe188e76250",
+          "id": "68b1343f890a850ebca0cc77",
           "name": "Ultimate Season Pass 12",
           "provider": {
             "name": "TXU Energy",
@@ -2984,7 +2984,7 @@
           }
         },
         {
-          "id": "68afe2aa4cf61fe188e76249",
+          "id": "68b1343f890a850ebca0cc85",
           "name": "Free Nights & Solar Days 12 (8 pm)",
           "provider": {
             "name": "TXU Energy",
@@ -3021,7 +3021,7 @@
           }
         },
         {
-          "id": "68af24ca3465506e6d1d4fcc",
+          "id": "68b1ced819e1e83dee8fb46f",
           "name": "Rhythm Saver 12",
           "provider": {
             "name": "Rhythm Energy",
@@ -3058,7 +3058,7 @@
           }
         },
         {
-          "id": "68af24ca3465506e6d1d4fcb",
+          "id": "68b1ced819e1e83dee8fb46e",
           "name": "Watt a Deal 12",
           "provider": {
             "name": "Rhythm Energy",
@@ -3095,7 +3095,7 @@
           }
         },
         {
-          "id": "68af2141f1dee94adfc6bd96",
+          "id": "68b1cb673fc6b4add27664a9",
           "name": "Simply Green 13",
           "provider": {
             "name": "Rhythm Energy",
@@ -3104,10 +3104,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.178,
-            "rate1000kWh": 0.165,
-            "rate2000kWh": 0.158,
-            "ratePerKwh": 0.165
+            "rate500kWh": 0.181,
+            "rate1000kWh": 0.168,
+            "rate2000kWh": 0.162,
+            "ratePerKwh": 0.168
           },
           "contract": {
             "length": 13,
@@ -3132,7 +3132,7 @@
           }
         },
         {
-          "id": "68af2141f1dee94adfc6bd98",
+          "id": "68b1cb673fc6b4add27664a8",
           "name": "Simply Green 23",
           "provider": {
             "name": "Rhythm Energy",
@@ -3141,10 +3141,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.176,
-            "rate1000kWh": 0.162,
-            "rate2000kWh": 0.156,
-            "ratePerKwh": 0.162
+            "rate500kWh": 0.179,
+            "rate1000kWh": 0.166,
+            "rate2000kWh": 0.16,
+            "ratePerKwh": 0.166
           },
           "contract": {
             "length": 23,
@@ -3206,7 +3206,7 @@
           }
         },
         {
-          "id": "689cc17f69f65b54d19db35e",
+          "id": "68b080d4dff5b0aecea01bda",
           "name": "SimpleSaver 12",
           "provider": {
             "name": "APGE",
@@ -3215,10 +3215,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.211,
-            "rate1000kWh": 0.108,
-            "rate2000kWh": 0.156,
-            "ratePerKwh": 0.108
+            "rate500kWh": 0.208,
+            "rate1000kWh": 0.105,
+            "rate2000kWh": 0.153,
+            "ratePerKwh": 0.105
           },
           "contract": {
             "length": 12,
@@ -3280,7 +3280,7 @@
           }
         },
         {
-          "id": "68af72172ee3bd055dc8ac13",
+          "id": "68b080d4dff5b0aecea01bd9",
           "name": "SimpleSaver 14",
           "provider": {
             "name": "APGE",
@@ -3289,10 +3289,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.211,
-            "rate1000kWh": 0.108,
-            "rate2000kWh": 0.156,
-            "ratePerKwh": 0.108
+            "rate500kWh": 0.209,
+            "rate1000kWh": 0.106,
+            "rate2000kWh": 0.154,
+            "ratePerKwh": 0.106
           },
           "contract": {
             "length": 14,
@@ -3428,7 +3428,7 @@
           }
         },
         {
-          "id": "689cc17f69f65b54d19db35f",
+          "id": "68b1c7cbcf3a97621a5dbf09",
           "name": "SimpleSaver 36",
           "provider": {
             "name": "APGE",
@@ -3437,10 +3437,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.216,
-            "rate1000kWh": 0.113,
-            "rate2000kWh": 0.161,
-            "ratePerKwh": 0.113
+            "rate500kWh": 0.218,
+            "rate1000kWh": 0.115,
+            "rate2000kWh": 0.163,
+            "ratePerKwh": 0.115
           },
           "contract": {
             "length": 36,
