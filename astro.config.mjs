@@ -19,6 +19,20 @@ export default defineConfig({
   ...(process.env.NODE_ENV === 'production' ? { adapter: netlify() } : {}),
   site: 'https://choosemypower.org',
   trailingSlash: 'never',
+  
+  // Image optimization for Core Web Vitals
+  image: {
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+      config: {
+        formats: ['avif', 'webp'],
+        quality: { avif: 70, webp: 80, jpeg: 85 },
+        progressive: true,
+        loading: 'lazy',
+        decoding: 'async'
+      }
+    }
+  },
   build: {
     format: 'directory',
     // Advanced bundle optimization for Core Web Vitals

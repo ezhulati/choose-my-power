@@ -145,6 +145,26 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `https://choosemy
       .footer {
         flex-shrink: 0;
         margin-top: auto;
+        min-height: 200px; /* Reserve footer space */
+      }
+
+      /* Prevent CLS for form elements */
+      #zipForm {
+        min-height: 60px; /* Reserve form height */
+        display: block;
+        width: 100%;
+      }
+      
+      /* Prevent CLS for hero text elements */
+      .hero-title, .hero-subtitle {
+        min-height: 1.2em;
+        display: block;
+      }
+      
+      /* Prevent CLS for spans */
+      span.block {
+        display: block;
+        min-height: 1.2em;
       }
 
       /* Critical typography for LCP optimization */
@@ -333,8 +353,9 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `https://choosemy
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link rel="dns-prefetch" href="//fonts.gstatic.com" />
     
-    <!-- Preload critical resources for 0.53s server response improvement -->
-    <link rel="preload" href="/index.css" as="style" />
+    <!-- Load non-critical CSS asynchronously -->
+    <link rel="preload" href="/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="/index.css"></noscript>
     
     <!-- Prefetch critical API endpoints -->
     <link rel="prefetch" href="/.netlify/functions/health" />
@@ -396,10 +417,19 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `https://choosemy
       }
     </script>
     
-    <!-- Core Web Vitals Monitoring -->
+    <!-- Core Web Vitals Monitoring - Async Load -->
     <script nonce="web-vitals">
-      // Initialize Core Web Vitals monitoring
-      window.addEventListener('load', () => {
+      // Initialize Core Web Vitals monitoring with idle callback
+      function initWebVitals() {
+        // Use requestIdleCallback to avoid blocking main thread
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(() => loadWebVitals(), { timeout: 3000 });
+        } else {
+          setTimeout(loadWebVitals, 1000);
+        }
+      }
+      
+      function loadWebVitals() {
         // Import Web Vitals library dynamically to avoid blocking
         import('/js/web-vitals.mjs')
           .then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
@@ -467,7 +497,10 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `https://choosemy
           .catch((error) => {
             console.warn('Web Vitals monitoring failed to load:', error);
           });
-      });
+      }
+      
+      // Initialize on load
+      window.addEventListener('load', initWebVitals);
       
       // Performance optimization helpers
       window.performanceHelpers = {

@@ -75,6 +75,8 @@
     "perf:test:critical": "node scripts/performance-test-suite.mjs --critical-only",
     "perf:monitor": "node scripts/performance-monitor.mjs",
     "perf:report": "open reports/performance/performance-report.html",
+    "images:optimize": "node scripts/optimize-images.mjs",
+    "images:optimize:force": "node scripts/optimize-images.mjs --force",
     "production:deploy": "npm run deploy:production",
     "production:validate": "npm run deploy:validate && npm run health:check && npm run cache:stats",
     "production:monitor": "npm run monitor:start",
