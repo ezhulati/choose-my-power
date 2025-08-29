@@ -87,314 +87,103 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `https://choosemy
     <link rel="dns-prefetch" href="//api.comparepower.com" />
     <link rel="dns-prefetch" href="//pricing.api.comparepower.com" />
     
-    <!-- Preload critical WOFF2 fonts (much smaller than TTF) -->
-    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/inter/v19/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2" crossorigin />
-    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.woff2" crossorigin />
-    
-    <!-- Load Google Fonts CSS immediately for LCP -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-    
-    <!-- Optimized critical CSS for maximum performance -->
+    <!-- Inline critical font CSS to eliminate render-blocking -->
     <style>
-      /* Critical CSS reset for CLS prevention and 100/100 performance */
-      *, *::before, *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-      
-      html {
-        line-height: 1.5;
-        -webkit-text-size-adjust: 100%;
-        -moz-tab-size: 4;
-        tab-size: 4;
-        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-        font-feature-settings: normal;
-        font-display: swap;
-        font-optical-sizing: auto;
-        text-rendering: optimizeSpeed;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-      }
-      
-      body {
-        margin: 0;
-        line-height: inherit;
-        font-family: inherit;
-        color: #1f2937;
-        background-color: #ffffff;
-        min-height: 100vh;
-        overflow-x: hidden;
-      }
-
-      /* Critical layout containers to prevent CLS */
-      .main-container {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
-      
-      .header {
-        flex-shrink: 0;
-        height: 65px; /* Reserve space for header */
-        position: relative;
-        z-index: 99990; /* Ensure header stacking context above main content */
-      }
-      
-      .main-content {
-        flex: 1 0 auto;
-        min-height: calc(100vh - 65px);
-      }
-      
-      .footer {
-        flex-shrink: 0;
-        margin-top: auto;
-        min-height: 200px; /* Reserve footer space */
-      }
-
-      /* Prevent CLS for form elements - Enhanced for ZIP form */
-      #zipForm {
-        min-height: 72px; /* Exact height reservation for ZIP form */
-        height: 72px; /* Force exact height to prevent any shifting */
-        display: block;
-        width: 100%;
-        contain: layout style;
-        will-change: auto; /* Prevent unnecessary layer creation */
-      }
-      
-      /* Specific containment for ZIP form input and button */
-      #zipForm .flex {
-        height: 72px; /* Match form height exactly */
-        contain: layout;
-      }
-      
-      #zipForm input[type="text"], #zipForm button[type="submit"] {
-        contain: layout;
-        will-change: auto;
-      }
-      
-      /* Prevent CLS for hero text elements */
-      .hero-title, .hero-subtitle {
-        min-height: 1.2em;
-        display: block;
-        contain: layout;
-      }
-      
-      /* Prevent CLS for spans and text blocks */
-      span.block, .text-lg, .text-xl, .text-2xl {
-        display: block;
-        min-height: 1.2em;
-        contain: layout;
-      }
-      
-      /* Prevent CLS for feature sections */
-      .text-blue-200, .text-center {
-        min-height: 1.2em;
-        contain: layout;
-      }
-      
-      /* Reserve space for common UI elements */
-      .mb-10, .mb-8, .mb-4 {
-        contain: layout;
-      }
-      
-      /* Font loading optimization to prevent FOIT */
-      .font-bold, .font-semibold, .font-medium {
-        font-display: swap;
-        contain: layout;
-      }
-      
-      /* Specific CLS prevention for homepage hero headings */
-      h1.text-4xl, h1.text-5xl, h1.text-6xl, h1.text-7xl {
-        line-height: 1.1;
-        min-height: 2.5em; /* Reserve space for multi-line headings */
-        contain: layout style;
-      }
-      
-      /* Prevent CLS in icon containers */
-      .w-16.h-16, .w-8.h-8, .w-5.h-5 {
-        flex-shrink: 0;
-        contain: layout;
-      }
-
-      /* Critical typography for LCP optimization */
-      h1, h2, h3, h4, h5, h6 {
-        margin: 0;
-        font-weight: 600;
-        line-height: 1.25;
-      }
-      
-      h1 { font-size: 2.25rem; }
-      h2 { font-size: 1.875rem; }
-      h3 { font-size: 1.5rem; }
-      
-      p {
-        margin: 0 0 1rem 0;
-        line-height: 1.6;
-      }
-
-      /* Critical button styles for above-fold CTAs */
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0.75rem 1.5rem;
-        border-radius: 0.5rem;
-        font-weight: 600;
-        text-decoration: none;
-        transition: all 0.2s ease-in-out;
-        cursor: pointer;
-        border: 2px solid transparent;
-        font-size: 1rem;
-        line-height: 1.25;
-        min-height: 44px; /* Touch target size */
-      }
-      
-      .btn-primary {
-        background-color: #dc2626;
-        color: white;
-        border-color: #dc2626;
-      }
-      
-      .btn-primary:hover {
-        background-color: #b91c1c;
-        border-color: #b91c1c;
-        transform: translateY(-1px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
-      }
-
-      .btn-secondary {
-        background-color: #2563eb;
-        color: white;
-        border-color: #2563eb;
-      }
-      
-      .btn-secondary:hover {
-        background-color: #1d4ed8;
-        border-color: #1d4ed8;
-        transform: translateY(-1px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
-      }
-
-      .btn-outline {
-        background-color: transparent;
-        color: #2563eb;
-        border-color: #2563eb;
-      }
-      
-      .btn-outline:hover {
-        background-color: #2563eb;
-        color: white;
-        transform: translateY(-1px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
-      }
-
-      /* Critical utilities to prevent CLS */
-      .container {
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding-left: 1rem;
-        padding-right: 1rem;
-      }
-      
-      .text-center { text-align: center; }
-      .flex { display: flex; }
-      .items-center { align-items: center; }
-      .justify-center { justify-content: center; }
-      .space-y-4 > * + * { margin-top: 1rem; }
-      .mb-4 { margin-bottom: 1rem; }
-      .mb-8 { margin-bottom: 2rem; }
-      .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
-
-      /* Image optimization for CLS prevention */
-      img {
-        max-width: 100%;
-        height: auto;
-        border-style: none;
-      }
-      
-      img[width][height] {
-        aspect-ratio: attr(width) / attr(height);
-      }
-
-      /* Loading states to improve perceived performance */
-      .loading-skeleton {
-        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-        background-size: 200% 100%;
-        animation: loading 1.5s infinite;
-      }
-      
-      @keyframes loading {
-        0% { background-position: 200% 0; }
-        100% { background-position: -200% 0; }
-      }
-
-      /* Responsive design for mobile-first approach */
-      @media (max-width: 768px) {
-        .container {
-          padding-left: 0.75rem;
-          padding-right: 0.75rem;
-        }
-        
-        h1 { font-size: 1.875rem; }
-        h2 { font-size: 1.5rem; }
-        h3 { font-size: 1.25rem; }
-        
-        .btn {
-          padding: 0.875rem 2rem;
-          width: 100%;
-          max-width: 320px;
-        }
-      }
-
-      /* Advanced performance optimizations for 100/100 score */
-      * {
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-rendering: optimizeSpeed;
-        will-change: auto;
-      }
-      
-      /* GPU acceleration for critical elements */
-      .main-container, .main-content, .footer {
-        transform: translateZ(0);
-        backface-visibility: hidden;
-        perspective: 1000px;
-      }
-      
-      /* Optimize images for Core Web Vitals */
-      img, picture, svg {
-        display: block;
-        max-width: 100%;
-        height: auto;
-        content-visibility: auto;
-        contain-intrinsic-size: 1px 1px;
-      }
-      
-      /* Critical font fallbacks */
+      /* Inter Font Family - Inline for Performance */
       @font-face {
-        font-family: 'Inter-fallback';
-        size-adjust: 107%;
-        ascent-override: 90%;
-        src: local('Arial');
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.ttf') format('truetype');
+      }
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url('https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYMZg.ttf') format('truetype');
+      }
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url('https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYMZg.ttf') format('truetype');
+      }
+    </style>
+    
+    <!-- Preload critical font files for faster loading -->
+    <link rel="preload" as="font" type="font/truetype" href="https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.ttf" crossorigin />
+    
+    <!-- Critical CSS - Inline for LCP optimization -->
+    <style>
+      /* Critical reset - immediate visibility */
+      *,*::before,*::after{box-sizing:border-box}
+      body,html{margin:0;padding:0;font-family:Inter,system-ui,sans-serif;line-height:1.5;color:#1f2937}
+      
+      /* Critical layout - prevent CLS */
+      .container{width:100%;max-width:1200px;margin:0 auto;padding:0 1rem}
+      .hero-section{min-height:60vh;display:flex;align-items:center;background:linear-gradient(135deg,#002868 0%,#1e40af 100%)}
+      .hero-content{text-align:center;color:white;padding:2rem 0}
+      
+      /* Critical typography - LCP optimization */
+      h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:700;margin:0 0 1rem;line-height:1.2}
+      h2{font-size:clamp(1.5rem,4vw,2.5rem);font-weight:600;margin:0 0 1rem;line-height:1.3}
+      h3{font-size:1.875rem;font-weight:600;margin:0 0 1rem}
+      .text-xl{font-size:1.25rem;line-height:1.75rem}
+      .text-lg{font-size:1.125rem;line-height:1.75rem}
+      
+      /* Critical buttons - above-fold CTA */
+      .btn{display:inline-flex;align-items:center;justify-content:center;padding:0.75rem 2rem;border-radius:0.5rem;font-weight:600;text-decoration:none;transition:all 0.2s ease;cursor:pointer;border:2px solid transparent}
+      .btn-primary{background:#dc2626;color:white;border-color:#dc2626}
+      .btn-primary:hover{background:#b91c1c;border-color:#b91c1c}
+      
+      /* Critical utilities - prevent CLS */
+      .flex{display:flex}.grid{display:grid}.hidden{display:none}.block{display:block}.inline-block{display:inline-block}
+      .items-center{align-items:center}.justify-center{justify-content:center}.text-center{text-align:center}
+      .p-4{padding:1rem}.py-8{padding-top:2rem;padding-bottom:2rem}.px-4{padding-left:1rem;padding-right:1rem}
+      .mb-4{margin-bottom:1rem}.mb-8{margin-bottom:2rem}.mx-auto{margin-left:auto;margin-right:auto}
+      .w-full{width:100%}.max-w-4xl{max-width:56rem}.max-w-6xl{max-width:72rem}.max-w-7xl{max-width:80rem}
+      .rounded-xl{border-radius:0.75rem}.shadow-lg{box-shadow:0 10px 15px -3px rgba(0,0,0,0.1)}
+      .bg-white{background-color:#fff}.bg-background{background-color:#fff}.text-white{color:#fff}
+      .text-foreground{color:#0f172a}.text-muted-foreground{color:#64748b}.text-card-foreground{color:#0f172a}
+      
+      /* Mobile-first responsive - prevent CLS on mobile */
+      @media (max-width: 768px){
+        .hero-section{min-height:50vh;padding:1rem 0}
+        h1{font-size:2rem}
+        .container{padding:0 0.75rem}
       }
       
-      /* Reduce motion for users who prefer it */
-      @media (prefers-reduced-motion: reduce) {
-        *, *::before, *::after {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
-        }
-      }
+      /* Critical form elements - ZIP code input */
+      .zip-input{width:100%;max-width:300px;padding:0.75rem 1rem;border:2px solid #d1d5db;border-radius:0.5rem;font-size:1rem}
+      .zip-input:focus{outline:none;border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,0.1)}
       
-      /* High contrast support */
-      @media (prefers-contrast: high) {
-        .btn-primary {
-          border-width: 3px;
-        }
-      }
+      /* Loading states - improve perceived performance */
+      .loading{opacity:0;animation:fadeIn 0.3s ease-in-out forwards}
+      @keyframes fadeIn{to{opacity:1}}
+      
+      /* Critical layout containers to prevent CLS */
+      body{font-family:inherit;color:#1f2937;background-color:#ffffff;min-height:100vh;overflow-x:hidden}
+      .main-container{min-height:100vh;display:flex;flex-direction:column}
+      .header{flex-shrink:0;height:65px;position:relative;z-index:99990}
+      .main-content{flex:1 0 auto;min-height:calc(100vh - 65px)}
+      .footer{flex-shrink:0;margin-top:auto;min-height:200px}
+      
+      /* Form elements - prevent CLS */
+      #zipForm{min-height:72px;height:72px;display:block;width:100%}
+      .zip-form-container{contain:layout style;height:72px}
+    </style>
+    
+    <!-- Load remaining CSS asynchronously to avoid render-blocking -->
+    <link rel="preload" href="/_astro/_state_.Cspq1bGy.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/_astro/_state_.Cspq1bGy.css"></noscript>
+    
+    <style>
+      /* Smooth scrolling behavior */
+      html{scroll-behavior:smooth}
+      @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
     </style>
     
     <!-- DNS prefetch for external resources -->

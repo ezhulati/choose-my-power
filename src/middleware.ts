@@ -4,21 +4,29 @@
  */
 
 import type { APIContext, MiddlewareNext } from 'astro';
+import { webcrypto as crypto } from 'node:crypto';
+
+// Generate a cryptographically secure nonce for CSP
+function generateNonce(): string {
+  return Buffer.from(crypto.getRandomValues(new Uint8Array(16))).toString('base64');
+}
 
 // Content Security Policy configuration
-const CSP_DIRECTIVES = {
+const buildCSPDirectives = (nonce: string) => ({
   'default-src': "'self'",
   'script-src': [
     "'self'",
-    "'unsafe-inline'", // Required for Astro hydration - consider removing in production
+    `'nonce-${nonce}'`, // Use nonce instead of unsafe-inline
+    "'strict-dynamic'", // Allow scripts loaded by nonce to load other scripts
     'https://www.googletagmanager.com',
     'https://www.google-analytics.com',
     'https://vercel.live',
   ].join(' '),
   'style-src': [
     "'self'",
-    "'unsafe-inline'", // Required for Tailwind and inline styles
+    `'nonce-${nonce}'`, // Use nonce for inline styles
     'https://fonts.googleapis.com',
+    "'unsafe-inline'", // Fallback for older browsers that don't support nonces
   ].join(' '),
   'img-src': [
     "'self'",
@@ -43,10 +51,11 @@ const CSP_DIRECTIVES = {
   'object-src': "'none'",
   'base-uri': "'self'",
   'form-action': "'self'",
-};
+});
 
-const buildCSPHeader = () => {
-  return Object.entries(CSP_DIRECTIVES)
+const buildCSPHeader = (nonce: string) => {
+  const directives = buildCSPDirectives(nonce);
+  return Object.entries(directives)
     .map(([directive, value]) => `${directive} ${value}`)
     .join('; ')
     .replace(/\s+/g, ' ') // Normalize whitespace
@@ -54,9 +63,9 @@ const buildCSPHeader = () => {
 };
 
 // Security headers configuration
-const SECURITY_HEADERS = {
+const buildSecurityHeaders = (nonce: string) => ({
   // Disable CSP in development to avoid conflicts with Netlify config
-  ...(import.meta.env.PROD ? { 'Content-Security-Policy': buildCSPHeader() } : {}),
+  ...(import.meta.env.PROD ? { 'Content-Security-Policy': buildCSPHeader(nonce) } : {}),
   'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
   'X-Content-Type-Options': 'nosniff',
   'X-Frame-Options': 'DENY',
@@ -68,7 +77,7 @@ const SECURITY_HEADERS = {
     'geolocation=(self),',
     'payment=()',
   ].join(' '),
-};
+});
 
 // Rate limiting configuration (simple in-memory store for development)
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -213,6 +222,9 @@ export async function onRequest(context: APIContext, next: MiddlewareNext) {
   if (response.headers.get('content-type')?.includes('text/html') || 
       !response.headers.get('content-type')) {
     
+    // Generate a fresh nonce for each request
+    const nonce = generateNonce();
+    
     // Clone response to add headers
     const newResponse = new Response(response.body, {
       status: response.status,
@@ -220,10 +232,14 @@ export async function onRequest(context: APIContext, next: MiddlewareNext) {
       headers: new Headers(response.headers)
     });
 
-    // Add security headers
-    Object.entries(SECURITY_HEADERS).forEach(([key, value]) => {
+    // Add security headers with nonce
+    const securityHeaders = buildSecurityHeaders(nonce);
+    Object.entries(securityHeaders).forEach(([key, value]) => {
       newResponse.headers.set(key, value);
     });
+
+    // Make nonce available to the response for use in templates
+    newResponse.headers.set('X-CSP-Nonce', nonce);
 
     // Add cache control for static pages
     if (url.pathname.match(/^\/electricity-plans\//)) {

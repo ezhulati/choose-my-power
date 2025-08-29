@@ -5,6 +5,9 @@
  */
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { Button } from '../ui/button';
+import { Badge } from '../ui/badge';
+import { Card, CardContent } from '../ui/card';
 import type { FilterState, Plan, FacetValue } from '../../types/facets';
 
 interface MobileFacetedSearchProps {
@@ -161,28 +164,32 @@ const MobileFacetedSearch: React.FC<MobileFacetedSearchProps> = ({
           <h2 className="search-title">
             {plans.length} Plans in {cityName}
           </h2>
-          <button
-            className="view-toggle"
+          <Button
+            variant="outline"
+            size="sm"
             onClick={() => setViewMode(viewMode === 'card' ? 'compact' : 'card')}
             aria-label={`Switch to ${viewMode === 'card' ? 'compact' : 'card'} view`}
           >
             {viewMode === 'card' ? 'List' : 'Grid'}
-          </button>
+          </Button>
         </div>
 
         <div className="header-controls">
           {/* Filter Button */}
-          <button
-            className="filter-button"
+          <Button
+            variant="texas-primary"
             onClick={() => setShowFilters(true)}
             aria-label="Open filters"
+            className="relative min-h-[44px]"
           >
             <span className="filter-icon">Filter</span>
             <span>Filter</span>
             {activeFilterCount > 0 && (
-              <span className="filter-badge">{activeFilterCount}</span>
+              <Badge variant="destructive" className="absolute -top-1 -right-1 min-w-[20px] h-5 text-xs">
+                {activeFilterCount}
+              </Badge>
             )}
-          </button>
+          </Button>
 
           {/* Sort Dropdown */}
           <select
@@ -242,9 +249,9 @@ const MobileFacetedSearch: React.FC<MobileFacetedSearchProps> = ({
                 </button>
               )}
             </div>
-            <button className="clear-all-mobile" onClick={onClearAll}>
+            <Button variant="destructive" size="sm" onClick={onClearAll} className="whitespace-nowrap min-h-[44px]">
               Clear All
-            </button>
+            </Button>
           </div>
         )}
       </div>

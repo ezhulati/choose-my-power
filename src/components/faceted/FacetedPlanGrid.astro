@@ -180,9 +180,9 @@ const sortingOptions = [
   {plans.length > 0 ? (
     <div class="plans-container">
       
-      <!-- Grid View -->
+      <!-- Grid View - Mobile-First Responsive -->
       <div class={`grid-view ${viewMode === 'grid' ? 'active' : 'hidden'}`}>
-        <div class="plans-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="plans-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {initialPlans.map((plan, index) => (
             <PlanCardImproved 
               plan={plan} 
@@ -433,19 +433,49 @@ Compare
 </div>
 
 <style>
-  /* Enhanced Plan Grid Styles */
+  /* Enhanced Plan Grid Styles - Mobile-First */
   .enhanced-plan-grid {
     @apply w-full;
-    /* Enterprise-grade consistent spacing */
-    gap: 2rem; /* 32px */
-    margin-bottom: 3rem; /* 48px */
+    /* Mobile-first spacing */
+    gap: 1rem; /* 16px mobile */
+    margin-bottom: 2rem; /* 32px mobile */
   }
   
-  /* Grid Header Styles */
+  /* Tablet spacing */
+  @media (min-width: 768px) {
+    .enhanced-plan-grid {
+      gap: 1.5rem; /* 24px tablet */
+      margin-bottom: 2.5rem; /* 40px tablet */
+    }
+  }
+  
+  /* Desktop spacing */
+  @media (min-width: 1024px) {
+    .enhanced-plan-grid {
+      gap: 2rem; /* 32px desktop */
+      margin-bottom: 3rem; /* 48px desktop */
+    }
+  }
+  
+  /* Grid Header Styles - Responsive */
   .grid-header {
-    @apply bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl mb-8;
-    /* Enterprise-grade header spacing */
-    padding: 2rem; /* 32px */
+    @apply bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg mb-6;
+    /* Mobile-first header spacing */
+    padding: 1rem; /* 16px mobile */
+  }
+  
+  @media (min-width: 640px) {
+    .grid-header {
+      @apply rounded-xl mb-7;
+      padding: 1.5rem; /* 24px large mobile */
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .grid-header {
+      @apply mb-8;
+      padding: 2rem; /* 32px tablet+ */
+    }
   }
   
   .grid-stats {
@@ -453,15 +483,40 @@ Compare
   }
   
   .stats-overview {
-    @apply grid grid-cols-2 md:grid-cols-4 gap-6 mb-6;
-    /* Consistent grid spacing */
+    @apply grid grid-cols-2 gap-3 mb-4;
+  }
+  
+  @media (min-width: 640px) {
+    .stats-overview {
+      @apply gap-4 mb-5;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .stats-overview {
+      @apply grid-cols-4 gap-6 mb-6;
+    }
   }
   
   .stat-item {
     @apply bg-white rounded-lg flex items-center shadow-sm border border-blue-100 transition-all duration-200 hover:shadow-md;
-    /* Enterprise-grade stat card spacing */
-    padding: 1.5rem; /* 24px */
-    gap: 1rem; /* 16px */
+    /* Mobile-first stat card spacing */
+    padding: 0.75rem; /* 12px mobile */
+    gap: 0.5rem; /* 8px mobile */
+  }
+  
+  @media (min-width: 640px) {
+    .stat-item {
+      padding: 1rem; /* 16px large mobile */
+      gap: 0.75rem; /* 12px large mobile */
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .stat-item {
+      padding: 1.5rem; /* 24px tablet+ */
+      gap: 1rem; /* 16px tablet+ */
+    }
   }
   
   .stat-item.primary {
@@ -496,17 +551,40 @@ Compare
     @apply text-lg font-semibold text-texas-navy;
   }
   
-  /* Grid Controls */
+  /* Grid Controls - Mobile-First */
   .grid-controls {
-    @apply flex flex-col md:flex-row md:items-center md:justify-between;
-    /* Enterprise-grade control spacing */
-    gap: 1.5rem; /* 24px */
-    margin-top: 2rem; /* 32px */
+    @apply flex flex-col gap-3 mt-4;
+  }
+  
+  @media (min-width: 640px) {
+    .grid-controls {
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .grid-controls {
+      @apply flex-row items-center justify-between;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
   }
   
   .sort-controls {
-    @apply flex items-center;
-    gap: 1rem; /* 16px - consistent spacing */
+    @apply flex items-center gap-2;
+  }
+  
+  @media (min-width: 640px) {
+    .sort-controls {
+      gap: 0.75rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .sort-controls {
+      gap: 1rem;
+    }
   }
   
   .sort-label {
@@ -558,12 +636,33 @@ Compare
     @apply opacity-100 pointer-events-auto relative;
   }
   
-  /* Grid View Styles */
+  /* Grid View Styles - Mobile-First */
   .plans-grid {
     @apply transition-all duration-300;
-    /* Enterprise-grade grid spacing */
-    gap: 2rem; /* 32px */
-    margin-top: 2rem; /* 32px */
+    /* Mobile-first grid spacing */
+    gap: 1rem; /* 16px mobile */
+    margin-top: 1rem; /* 16px mobile */
+  }
+  
+  @media (min-width: 640px) {
+    .plans-grid {
+      gap: 1.25rem; /* 20px large mobile */
+      margin-top: 1.25rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .plans-grid {
+      gap: 1.5rem; /* 24px tablet */
+      margin-top: 1.5rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .plans-grid {
+      gap: 2rem; /* 32px desktop */
+      margin-top: 2rem;
+    }
   }
   
   /* Table View Styles */
@@ -858,20 +957,24 @@ Compare
     @apply relative z-50;
   }
   
-  /* Responsive Design */
+  /* Mobile-Specific Responsive Adjustments */
+  @media (max-width: 640px) {
+    /* Small mobile adjustments */
+    .stat-number {
+      @apply text-base;
+    }
+    
+    .stat-label {
+      @apply text-xs;
+    }
+    
+    .view-toggle {
+      @apply px-2 py-1 text-xs;
+    }
+  }
+  
   @media (max-width: 768px) {
-    .grid-header {
-      @apply p-4;
-    }
-    
-    .stats-overview {
-      @apply grid-cols-2;
-    }
-    
-    .grid-controls {
-      @apply flex-col gap-3;
-    }
-    
+    /* Mobile and tablet portrait */
     .plans-table-container {
       @apply overflow-x-auto;
     }
@@ -881,7 +984,7 @@ Compare
     }
     
     .compact-plan-header {
-      @apply flex-col gap-3;
+      @apply flex-col gap-2;
     }
     
     .compact-rate {
@@ -889,7 +992,29 @@ Compare
     }
     
     .compact-actions {
-      @apply flex-col;
+      @apply flex-col gap-2;
+    }
+    
+    .load-more-section {
+      padding: 2rem 0;
+      margin-top: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    /* Very small screens */
+    .enhanced-plan-grid {
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .grid-header {
+      @apply rounded-lg;
+      padding: 0.75rem;
+    }
+    
+    .sort-select {
+      @apply text-xs px-2 py-1;
     }
   }
   

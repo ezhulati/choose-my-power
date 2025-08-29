@@ -1,6 +1,8 @@
 ---
 // Live electricity plans grid component
 import ProviderLogo from './ProviderLogo.astro';
+import { Button } from './ui/button';
+import { Badge } from './ui/badge';
 
 interface Plan {
   id: string;
@@ -268,9 +270,11 @@ const mostPopularPlan = plans.length > 0 ? plans.find(plan =>
     <!-- Load More Section -->
     {showLoadMore && remainingPlans > 0 && (
       <div class="text-center mt-12">
-        <button id="load-more-btn" 
-                class="bg-texas-navy hover:bg-blue-800 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
-                data-remaining="{remainingPlans}"
+        <Button 
+                id="load-more-btn"
+                variant="texas-primary"
+                size="lg"
+                data-remaining={remainingPlans}
                 aria-label={`Show ${remainingPlans} more electricity plans for ${cityName}`}>
           Show {remainingPlans} More Plans
         </button>

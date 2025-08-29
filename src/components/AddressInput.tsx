@@ -482,7 +482,7 @@ export function AddressInput({
 
   const config = sizeConfig[size];
   const style = variantConfig[variant];
-  const isLoading = isLoading || externalLoading;
+  const isLoadingCombined = isLoading || externalLoading;
   const error = hookError || externalError;
 
   return (
@@ -518,7 +518,7 @@ export function AddressInput({
                 onChange={handleZipChange}
                 placeholder="Enter Texas ZIP code"
                 maxLength={5}
-                disabled={disabled || isLoading}
+                disabled={disabled || isLoadingCombined}
                 className={cn(
                   config.input,
                   style.input,
@@ -588,7 +588,7 @@ export function AddressInput({
                   value={address}
                   onChange={handleAddressChange}
                   placeholder="123 Main Street"
-                  disabled={disabled || isLoading}
+                  disabled={disabled || isLoadingCombined}
                   className={cn(
                     config.input,
                     style.input,
@@ -601,7 +601,7 @@ export function AddressInput({
                   )}
                   aria-describedby="address-validation"
                 />
-                {isLoading && (
+                {isLoadingCombined && (
                   <div className="absolute right-3 top-1/2 -translate-y-1/2">
                     <Loader2 className={cn(config.icon, 'animate-spin text-texas-gold')} />
                   </div>
@@ -667,14 +667,14 @@ export function AddressInput({
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
             <Button
               type="submit"
-              disabled={!validationState.overall.isComplete || disabled || isLoading}
+              disabled={!validationState.overall.isComplete || disabled || isLoadingCombined}
               className={cn(
                 'flex-1',
                 config.button,
                 'bg-gradient-to-r from-texas-navy to-blue-800 hover:from-texas-navy/90 hover:to-blue-800/90 text-white shadow-lg'
               )}
             >
-              {isLoading ? (
+              {isLoadingCombined ? (
                 <>
                   <Loader2 className={cn(config.icon, 'animate-spin mr-2')} />
                   Searching...

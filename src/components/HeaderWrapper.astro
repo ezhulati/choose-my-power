@@ -4,32 +4,32 @@
 
 <header class="bg-white border-b border-gray-200 shadow-sm relative z-50" id="main-header">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
-      <!-- Logo -->
+    <div class="flex items-center justify-between h-14 sm:h-16">
+      <!-- Logo - Mobile-First Responsive -->
       <div class="flex-shrink-0">
-        <a href="/" class="flex items-center space-x-2 header-logo transition-colors">
-          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <a href="/" class="flex items-center space-x-1 sm:space-x-2 header-logo transition-colors">
+          <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
           </svg>
-          <span class="text-xl font-bold">ChooseMyPower</span>
+          <span class="text-lg sm:text-xl font-bold">ChooseMyPower</span>
         </a>
       </div>
 
-      <!-- Desktop Navigation -->
-      <nav class="hidden md:flex items-center space-x-1">
-        <a href="/compare" class="px-3 py-2 text-sm font-medium header-link rounded-md transition-colors">
+      <!-- Desktop Navigation - Responsive Spacing -->
+      <nav class="hidden md:flex items-center space-x-0.5 lg:space-x-1">
+        <a href="/compare" class="px-2 py-2 lg:px-3 lg:py-2 text-sm font-medium header-link rounded-md transition-colors">
           Compare
         </a>
         
-        <!-- Browse Dropdown -->
+        <!-- Browse Dropdown - Responsive -->
         <div class="relative group">
-          <button class="flex items-center px-3 py-2 text-sm font-medium header-link rounded-md transition-colors">
+          <button class="flex items-center px-2 py-2 lg:px-3 lg:py-2 text-sm font-medium header-link rounded-md transition-colors">
             Browse
-            <svg class="ml-1 w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="ml-0.5 lg:ml-1 w-3 h-3 lg:w-4 lg:h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div class="absolute top-full left-0 mt-1 w-56 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 z-[9999]">
+          <div class="absolute top-full left-0 mt-1 w-52 lg:w-56 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 z-[9999]">
             <div class="py-2">
               <a href="/electricity-companies" class="block px-4 py-2 text-sm text-gray-700 hover:bg-texas-cream-200 hover:text-texas-navy transition-colors">
                 Electricity Companies
@@ -47,15 +47,15 @@
           </div>
         </div>
 
-        <!-- Rates Dropdown -->
+        <!-- Rates Dropdown - Responsive -->
         <div class="relative group">
-          <button class="flex items-center px-3 py-2 text-sm font-medium header-link rounded-md transition-colors">
+          <button class="flex items-center px-2 py-2 lg:px-3 lg:py-2 text-sm font-medium header-link rounded-md transition-colors">
             Rates
-            <svg class="ml-1 w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="ml-0.5 lg:ml-1 w-3 h-3 lg:w-4 lg:h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div class="absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 z-[9999]">
+          <div class="absolute top-full left-0 mt-1 w-44 lg:w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 z-[9999]">
             <div class="py-2">
               <a href="/rates" class="block px-4 py-2 text-sm text-gray-700 hover:bg-texas-cream-200 hover:text-texas-navy transition-colors">
                 Current Rates
@@ -67,15 +67,15 @@
           </div>
         </div>
 
-        <!-- Shop Dropdown -->
+        <!-- Shop Dropdown - Responsive -->
         <div class="relative group">
-          <button class="flex items-center px-3 py-2 text-sm font-medium header-link rounded-md transition-colors">
+          <button class="flex items-center px-2 py-2 lg:px-3 lg:py-2 text-sm font-medium header-link rounded-md transition-colors">
             Shop
-            <svg class="ml-1 w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="ml-0.5 lg:ml-1 w-3 h-3 lg:w-4 lg:h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </button>
-          <div class="absolute top-full left-0 mt-1 w-56 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 z-[9999]">
+          <div class="absolute top-full left-0 mt-1 w-52 lg:w-56 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 z-[9999]">
             <div class="py-2">
               <a href="/shop/cheapest-electricity" class="block px-4 py-2 text-sm text-gray-700 hover:bg-texas-cream-200 hover:text-texas-navy transition-colors">
                 Cheapest Electricity
@@ -93,18 +93,18 @@
           </div>
         </div>
 
-        <a href="/locations" class="px-3 py-2 text-sm font-medium header-link rounded-md transition-colors">
+        <a href="/locations" class="px-2 py-2 lg:px-3 lg:py-2 text-sm font-medium header-link rounded-md transition-colors">
           Locations
         </a>
-        <a href="/resources" class="px-3 py-2 text-sm font-medium header-link rounded-md transition-colors">
+        <a href="/resources" class="px-2 py-2 lg:px-3 lg:py-2 text-sm font-medium header-link rounded-md transition-colors">
           Resources
         </a>
       </nav>
 
-      <!-- Mobile Menu Button -->
+      <!-- Mobile Menu Button - Touch-Optimized -->
       <div class="md:hidden">
-        <button id="mobile-menu-button" class="p-2 header-link rounded-md transition-colors" aria-label="Open mobile navigation menu" aria-expanded="false">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <button id="mobile-menu-button" class="p-2 header-link rounded-md transition-colors touch-manipulation" aria-label="Open mobile navigation menu" aria-expanded="false">
+          <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
@@ -112,23 +112,23 @@
     </div>
   </div>
 
-  <!-- Mobile Menu -->
+  <!-- Mobile Menu - Mobile-First Optimized -->
   <div id="mobile-menu" class="md:hidden hidden mobile-menu-bg border-t">
-    <div class="px-4 py-2 space-y-1">
-      <a href="/compare" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors">
+    <div class="px-4 py-3 space-y-1">
+      <a href="/compare" class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors touch-manipulation">
         Compare
       </a>
       
       <!-- Mobile Browse Section -->
       <div class="space-y-1">
-        <button id="mobile-browse-toggle" class="flex items-center justify-between w-full px-3 py-2 text-base font-medium text-gray-700 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors">
+        <button id="mobile-browse-toggle" class="flex items-center justify-between w-full px-3 py-3 text-base font-medium text-gray-700 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors touch-manipulation">
           Browse
           <svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
-        <div id="mobile-browse-menu" class="hidden pl-4 space-y-1">
-          <a href="/electricity-companies" class="block px-3 py-2 text-sm text-gray-600 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors">
+        <div id="mobile-browse-menu" class="hidden pl-4 space-y-0.5">
+          <a href="/electricity-companies" class="block px-3 py-2.5 text-sm text-gray-600 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors touch-manipulation">
             Electricity Companies
           </a>
           <a href="/electricity-plans" class="block px-3 py-2 text-sm text-gray-600 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors">

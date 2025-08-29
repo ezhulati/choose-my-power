@@ -216,7 +216,7 @@
           }
         },
         {
-          "id": "68b200158ca16498d83889c1",
+          "id": "68b20397809e2c9cf21e8e81",
           "name": "12 Month GREEN (No Min Usage Fee)",
           "provider": {
             "name": "Constellation",
@@ -253,7 +253,7 @@
           }
         },
         {
-          "id": "68b200158ca16498d83889c0",
+          "id": "68b20397809e2c9cf21e8e82",
           "name": "12 Month Usage Bill Credit",
           "provider": {
             "name": "Constellation",
@@ -290,7 +290,7 @@
           }
         },
         {
-          "id": "68b200158ca16498d83889c2",
+          "id": "68b20396809e2c9cf21e8e80",
           "name": "24 Month Usage Bill Credit",
           "provider": {
             "name": "Constellation",
@@ -1258,7 +1258,7 @@
           }
         },
         {
-          "id": "68a0144ae30bfeb002721554",
+          "id": "68a0144ae30bfeb00272155b",
           "name": "Gexa Eco Saver Lite 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1295,7 +1295,7 @@
           }
         },
         {
-          "id": "68ad431ef95bf521995a3bc9",
+          "id": "68ad431ef95bf521995a3bc8",
           "name": "Gexa Eco Saver Plus 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1332,7 +1332,7 @@
           }
         },
         {
-          "id": "68a0144ae30bfeb002721556",
+          "id": "68a0144ae30bfeb00272155e",
           "name": "Gexa Eco Saver Premier 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1369,7 +1369,7 @@
           }
         },
         {
-          "id": "68a0144ae30bfeb002721557",
+          "id": "68a0144ae30bfeb00272155f",
           "name": "Gexa Eco Saver Value 12",
           "provider": {
             "name": "Gexa Energy",
@@ -2904,7 +2904,7 @@
           }
         },
         {
-          "id": "68b13447890a850ebca0cca3",
+          "id": "68b13448890a850ebca0ccab",
           "name": "Flex Forward",
           "provider": {
             "name": "TXU Energy",
@@ -2941,7 +2941,7 @@
           }
         },
         {
-          "id": "68b13447890a850ebca0cca5",
+          "id": "68b13448890a850ebca0ccb5",
           "name": "Live Your Free 12",
           "provider": {
             "name": "TXU Energy",
@@ -2978,7 +2978,7 @@
           }
         },
         {
-          "id": "68b13447890a850ebca0cca1",
+          "id": "68b13447890a850ebca0cc9f",
           "name": "Ultimate Season Pass 12",
           "provider": {
             "name": "TXU Energy",
@@ -3021,7 +3021,7 @@
           }
         },
         {
-          "id": "68b13447890a850ebca0cca4",
+          "id": "68b13448890a850ebca0ccac",
           "name": "Free Nights & Solar Days 12 (8 pm)",
           "provider": {
             "name": "TXU Energy",

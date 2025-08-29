@@ -39,18 +39,18 @@ export function Homepage({ onNavigate }: HomepageProps) {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white py-32">
+      {/* Hero Section - Mobile-First Responsive */}
+      <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white py-12 sm:py-16 md:py-20 lg:py-24 xl:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6">
               Compare & Choose Texas Electricity
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 text-blue-100 max-w-3xl mx-auto">
               {getCredibleMarketingText(DEFAULT_COUNTS.providers, DEFAULT_COUNTS.plans).heroText}
             </p>
             
-            <div className="max-w-md mx-auto mb-8">
+            <div className="max-w-md mx-auto mb-6 sm:mb-8">
               <ZipCodeSearch 
                 onSearch={handleZipSearch}
                 placeholder="Enter your ZIP code"
@@ -59,82 +59,82 @@ export function Homepage({ onNavigate }: HomepageProps) {
             </div>
 
             <div className="text-blue-200">
-              <p className="text-lg">{DEFAULT_COUNTS.providers} Expert-Ranked Providers • 6 Specializations • Free Comparison Tools</p>
+              <p className="text-sm sm:text-base md:text-lg">{DEFAULT_COUNTS.providers} Expert-Ranked Providers • 6 Specializations • Free Comparison Tools</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Key Benefits */}
-      <section className="py-16 bg-white">
+      {/* Key Benefits - Mobile-First Grid */}
+      <section className="py-8 sm:py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-8 sm:mb-10 md:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
               Expert Analysis & Category Rankings
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
               We analyze providers by specialization to help you find exactly what you need
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Leaf className="w-8 h-8 text-green-600" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            <div className="text-center p-4 sm:p-6">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                <Leaf className="w-6 h-6 sm:w-8 sm:h-8 text-green-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Green Energy Leaders</h3>
-              <p className="text-gray-600">100% renewable specialists with competitive green rates</p>
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">Green Energy Leaders</h3>
+              <p className="text-sm sm:text-base text-gray-600">100% renewable specialists with competitive green rates</p>
             </div>
 
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-texas-cream rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="w-8 h-8 text-texas-navy" />
+            <div className="text-center p-4 sm:p-6">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-texas-cream rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                <Users className="w-6 h-6 sm:w-8 sm:h-8 text-texas-navy" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Service Champions</h3>
-              <p className="text-gray-600">Top-rated customer service and satisfaction leaders</p>
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">Service Champions</h3>
+              <p className="text-sm sm:text-base text-gray-600">Top-rated customer service and satisfaction leaders</p>
             </div>
 
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <TrendingDown className="w-8 h-8 text-purple-600" />
+            <div className="text-center p-4 sm:p-6">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                <TrendingDown className="w-6 h-6 sm:w-8 sm:h-8 text-purple-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Best Value</h3>
-              <p className="text-gray-600">Lowest total costs with competitive rates and minimal fees</p>
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">Best Value</h3>
+              <p className="text-sm sm:text-base text-gray-600">Lowest total costs with competitive rates and minimal fees</p>
             </div>
 
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Battery className="w-8 h-8 text-indigo-600" />
+            <div className="text-center p-4 sm:p-6">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                <Battery className="w-6 h-6 sm:w-8 sm:h-8 text-indigo-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Tech Innovation</h3>
-              <p className="text-gray-600">Smart home integration and advanced technology features</p>
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">Tech Innovation</h3>
+              <p className="text-sm sm:text-base text-gray-600">Smart home integration and advanced technology features</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Quick Actions */}
-      <section className="py-16 bg-gray-50">
+      {/* Quick Actions - Responsive Card Grid */}
+      <section className="py-8 sm:py-12 md:py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-8 sm:mb-10 md:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
               Find What You're Looking For
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-lg sm:text-xl text-gray-600">
               Start with the right tool for your needs
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             <Card 
               variant="plan-card" 
               className="cursor-pointer"
               onClick={() => onNavigate('/electricity-companies')}
             >
-              <CardContent className="p-6">
-                <Award className="w-8 h-8 text-texas-navy mb-3" />
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Best Companies</h3>
-                <p className="text-gray-600">Expert-ranked electricity companies by specialization</p>
+              <CardContent className="p-4 sm:p-6">
+                <Award className="w-6 h-6 sm:w-8 sm:h-8 text-texas-navy mb-2 sm:mb-3" />
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">Best Companies</h3>
+                <p className="text-sm sm:text-base text-gray-600">Expert-ranked electricity companies by specialization</p>
               </CardContent>
             </Card>
 
@@ -143,10 +143,10 @@ export function Homepage({ onNavigate }: HomepageProps) {
               className="cursor-pointer"
               onClick={() => onNavigate('/compare')}
             >
-              <CardContent className="p-6">
-                <BarChart className="w-8 h-8 text-green-600 mb-3" />
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Compare Options</h3>
-                <p className="text-gray-600">Side-by-side comparison of companies, plans, and rates</p>
+              <CardContent className="p-4 sm:p-6">
+                <BarChart className="w-6 h-6 sm:w-8 sm:h-8 text-green-600 mb-2 sm:mb-3" />
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">Compare Options</h3>
+                <p className="text-sm sm:text-base text-gray-600">Side-by-side comparison of companies, plans, and rates</p>
               </CardContent>
             </Card>
 
@@ -155,10 +155,10 @@ export function Homepage({ onNavigate }: HomepageProps) {
               className="cursor-pointer"
               onClick={() => onNavigate('/shop')}
             >
-              <CardContent className="p-6">
-                <Zap className="w-8 h-8 text-purple-600 mb-3" />
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Shop by Priority</h3>
-                <p className="text-gray-600">Find options based on price, service, green energy, or features</p>
+              <CardContent className="p-4 sm:p-6">
+                <Zap className="w-6 h-6 sm:w-8 sm:h-8 text-purple-600 mb-2 sm:mb-3" />
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">Shop by Priority</h3>
+                <p className="text-sm sm:text-base text-gray-600">Find options based on price, service, green energy, or features</p>
               </CardContent>
             </Card>
 
@@ -167,84 +167,84 @@ export function Homepage({ onNavigate }: HomepageProps) {
               className="cursor-pointer"
               onClick={() => onNavigate('/rates/calculator')}
             >
-              <CardContent className="p-6">
-                <Calculator className="w-8 h-8 text-orange-600 mb-3" />
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Calculate Costs</h3>
-                <p className="text-gray-600">See exact costs and savings based on your usage</p>
+              <CardContent className="p-4 sm:p-6">
+                <Calculator className="w-6 h-6 sm:w-8 sm:h-8 text-orange-600 mb-2 sm:mb-3" />
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">Calculate Costs</h3>
+                <p className="text-sm sm:text-base text-gray-600">See exact costs and savings based on your usage</p>
               </CardContent>
             </Card>
           </div>
         </div>
       </section>
 
-      {/* Market Stats */}
-      <section className="py-16 bg-white">
+      {/* Market Stats - Mobile-Optimized Stats Grid */}
+      <section className="py-8 sm:py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-8 sm:mb-10 md:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
               Market Coverage & Expert Analysis
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-lg sm:text-xl text-gray-600">
               Comprehensive coverage of deregulated electricity markets
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             <Card variant="elevated" className="text-center">
-              <CardContent className="p-6">
-                <div className="text-3xl font-bold text-texas-navy mb-2">{DEFAULT_COUNTS.providers}</div>
-                <div className="text-gray-600">Licensed Providers</div>
+              <CardContent className="p-4 sm:p-6">
+                <div className="text-2xl sm:text-3xl font-bold text-texas-navy mb-2">{DEFAULT_COUNTS.providers}</div>
+                <div className="text-sm sm:text-base text-gray-600">Licensed Providers</div>
               </CardContent>
             </Card>
             <Card variant="elevated" className="text-center">
-              <CardContent className="p-6">
-                <div className="text-3xl font-bold text-green-600 mb-2">6</div>
-                <div className="text-gray-600">Expert Categories</div>
+              <CardContent className="p-4 sm:p-6">
+                <div className="text-2xl sm:text-3xl font-bold text-green-600 mb-2">6</div>
+                <div className="text-sm sm:text-base text-gray-600">Expert Categories</div>
               </CardContent>
             </Card>
             <Card variant="elevated" className="text-center">
-              <CardContent className="p-6">
-                <div className="text-3xl font-bold text-purple-600 mb-2">{DEFAULT_COUNTS.plans}+</div>
-                <div className="text-gray-600">Available Plans</div>
+              <CardContent className="p-4 sm:p-6">
+                <div className="text-2xl sm:text-3xl font-bold text-purple-600 mb-2">{DEFAULT_COUNTS.plans}+</div>
+                <div className="text-sm sm:text-base text-gray-600">Available Plans</div>
               </CardContent>
             </Card>
             <Card variant="elevated" className="text-center">
-              <CardContent className="p-6">
-                <div className="text-3xl font-bold text-orange-600 mb-2">25+</div>
-                <div className="text-gray-600">Major Cities</div>
+              <CardContent className="p-4 sm:p-6">
+                <div className="text-2xl sm:text-3xl font-bold text-orange-600 mb-2">25+</div>
+                <div className="text-sm sm:text-base text-gray-600">Major Cities</div>
               </CardContent>
             </Card>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+      {/* CTA Section - Mobile-Optimized */}
+      <section className="py-8 sm:py-12 md:py-16 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
             Ready to Find Your Perfect Provider?
           </h2>
-          <p className="text-xl mb-8 text-blue-100">
+          <p className="text-lg sm:text-xl mb-6 sm:mb-8 text-blue-100">
             Join millions who have found the right electricity provider using our expert analysis
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center max-w-lg mx-auto">
             <Button
               variant="texas-outline"
               size="lg"
               onClick={() => onNavigate('/electricity-companies')}
-              className="inline-flex items-center gap-2 bg-white text-texas-navy hover:bg-texas-navy hover:text-white"
+              className="inline-flex items-center justify-center gap-2 bg-white text-texas-navy hover:bg-texas-navy hover:text-white w-full sm:w-auto px-6 py-3"
             >
-              <Award className="w-5 h-5" />
-              Find Best Companies
+              <Award className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span className="text-sm sm:text-base">Find Best Companies</span>
             </Button>
             <Button
               variant="texas-secondary"
               size="lg"
               onClick={() => onNavigate('/compare')}
-              className="inline-flex items-center gap-2"
+              className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3"
             >
-              <BarChart className="w-5 h-5" />
-              Compare Options
+              <BarChart className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span className="text-sm sm:text-base">Compare Options</span>
             </Button>
           </div>
         </div>
