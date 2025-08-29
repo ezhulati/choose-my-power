@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Z-Index Test</title>
+    <style>
+        /* Systematic Z-Index Scale */
+        :root {
+            --z-base: 0;
+            --z-background-image: 1;
+            --z-content: 2;
+            --z-overlay: 3;
+            
+            --z-card-hover: 10;
+            --z-form-elements: 15;
+            --z-buttons: 20;
+            
+            --z-header: 100;
+            --z-navigation: 110;
+            --z-dropdown-menu: 120;
+            --z-mobile-nav-toggle: 130;
+            
+            --z-backdrop: 200;
+            --z-modal: 210;
+            --z-dialog: 220;
+            
+            --z-sidebar: 300;
+            --z-sidebar-overlay: 310;
+            
+            --z-mobile-bottom-nav: 400;
+            --z-mobile-menu-overlay: 410;
+            --z-mobile-side-menu: 420;
+            --z-mobile-bottom-sheet: 430;
+            
+            --z-comparison-bar: 500;
+            --z-faceted-filters: 510;
+            
+            --z-toast: 1000;
+            --z-tooltip: 1100;
+            --z-notification: 1200;
+            
+            --z-debug-overlay: 9000;
+            --z-emergency-modal: 9999;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-bottom: 1px solid #e5e7eb;
+            position: relative;
+            z-index: var(--z-header);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .nav {
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-button {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: #374151;
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border: none;
+            background: none;
+            cursor: pointer;
+            border-radius: 0.375rem;
+            transition: all 0.2s;
+        }
+
+        .nav-button:hover {
+            color: #2563eb;
+            background-color: #eff6ff;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 224px;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.375rem;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            padding: 0.25rem 0;
+            z-index: var(--z-dropdown-menu);
+            display: none;
+        }
+
+        .dropdown.show {
+            display: block;
+        }
+
+        .dropdown-item {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            color: #374151;
+            border: none;
+            background: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .dropdown-item:hover {
+            background-color: #eff6ff;
+            color: #2563eb;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            padding: 4rem 1rem;
+            position: relative;
+            z-index: var(--z-content);
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .chevron {
+            width: 1rem;
+            height: 1rem;
+            fill: currentColor;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">ChooseMyPower</div>
+            <nav class="nav">
+                <div class="nav-item">
+                    <button class="nav-button">Compare</button>
+                </div>
+                <div class="nav-item">
+                    <button class="nav-button" onclick="toggleDropdown('browse-dropdown')">
+                        Browse
+                        <svg class="chevron" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div id="browse-dropdown" class="dropdown">
+                        <button class="dropdown-item">Electricity Companies</button>
+                        <button class="dropdown-item">Electricity Plans</button>
+                        <button class="dropdown-item">Best Rankings</button>
+                        <button class="dropdown-item">All Providers</button>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <button class="nav-button">Rates</button>
+                </div>
+                <div class="nav-item">
+                    <button class="nav-button">Shop</button>
+                </div>
+                <div class="nav-item">
+                    <button class="nav-button">Locations</button>
+                </div>
+                <div class="nav-item">
+                    <button class="nav-button">Resources</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Compare & Choose Texas Electricity</h1>
+            <p>Expert analysis of 50+ providers and 300+ plans. Find the perfect match for your needs and save hundreds per year.</p>
+            <div style="background: white; padding: 1rem; border-radius: 0.5rem; display: inline-block; color: #374151;">
+                <strong>Z-Index Test:</strong> The dropdown should appear ABOVE this hero section when clicked.
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function toggleDropdown(id) {
+            const dropdown = document.getElementById(id);
+            const isVisible = dropdown.classList.contains('show');
+            
+            // Close all dropdowns first
+            document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('show'));
+            
+            // Toggle the clicked dropdown
+            if (!isVisible) {
+                dropdown.classList.add('show');
+            }
+        }
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.nav-item')) {
+                document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('show'));
+            }
+        });
+    </script>
+</body>
+</html>

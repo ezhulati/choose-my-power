@@ -1,23 +1,139 @@
 ---
-// FooterWrapper.astro - Astro wrapper for React Footer component
+// FooterWrapper.astro - Best-in-Class 2025 Footer for All Devices
+import { Zap, Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram, ExternalLink } from 'lucide-react';
+
+const currentYear = new Date().getFullYear();
 ---
 
-<div id="footer-root"></div>
+<footer class="footer-modern">
+  <!-- Main Footer Content -->
+  <div class="footer-container">
+    <div class="footer-grid">
+      
+      <!-- Brand Section -->
+      <div class="footer-brand">
+        <div class="brand-logo">
+          <svg class="logo-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+          <span class="logo-text">ChooseMyPower</span>
+        </div>
+        
+        <p class="brand-description">
+          Expert analysis of 50+ electricity providers and 300+ plans. Find the perfect match for your needs and save hundreds per year.
+        </p>
+        
+        <!-- Contact Info -->
+        <div class="contact-info">
+          <div class="contact-item">
+            <Phone class="contact-icon" />
+            <span>1-800-COMPARE</span>
+          </div>
+          <div class="contact-item">
+            <Mail class="contact-icon" />
+            <a href="mailto:support@choosemypower.org" class="contact-link">support@choosemypower.org</a>
+          </div>
+          <div class="contact-item">
+            <MapPin class="contact-icon" />
+            <span>Serving Texas & Deregulated Markets</span>
+          </div>
+        </div>
 
-<script>
-import { Footer } from './Footer.tsx';
-import React from 'react';
-import { createRoot } from 'react-dom/client';
+        <!-- Social Links -->
+        <div class="social-links">
+          <a href="https://twitter.com/choosemypower" class="social-link" aria-label="Follow us on Twitter">
+            <Twitter class="social-icon" />
+          </a>
+          <a href="https://facebook.com/choosemypower" class="social-link" aria-label="Follow us on Facebook">
+            <Facebook class="social-icon" />
+          </a>
+          <a href="https://linkedin.com/company/choosemypower" class="social-link" aria-label="Connect on LinkedIn">
+            <Linkedin class="social-icon" />
+          </a>
+          <a href="https://instagram.com/choosemypower" class="social-link" aria-label="Follow us on Instagram">
+            <Instagram class="social-icon" />
+          </a>
+        </div>
+      </div>
 
-const container = document.getElementById('footer-root');
-if (container) {
-  const root = createRoot(container);
-  
-  // Navigation handler for Astro routing
-  const handleNavigate = (path: string) => {
-    window.location.href = path;
-  };
-  
-  root.render(React.createElement(Footer, { onNavigate: handleNavigate }));
-}
-</script>
+      <!-- Navigation Columns -->
+      <div class="footer-nav-section">
+        <h3 class="footer-heading">Compare & Shop</h3>
+        <ul class="footer-links">
+          <li><a href="/compare" class="footer-link">Compare Plans</a></li>
+          <li><a href="/shop/cheapest-electricity" class="footer-link">Cheapest Electricity</a></li>
+          <li><a href="/shop/best-electricity-providers" class="footer-link">Best Providers</a></li>
+          <li><a href="/shop/green-energy" class="footer-link">Green Energy</a></li>
+          <li><a href="/shop/no-deposit-electricity" class="footer-link">No Deposit Plans</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-nav-section">
+        <h3 class="footer-heading">Browse by Location</h3>
+        <ul class="footer-links">
+          <li><a href="/texas" class="footer-link">Texas Providers</a></li>
+          <li><a href="/electricity-plans/dallas-tx" class="footer-link">Dallas Electricity</a></li>
+          <li><a href="/electricity-plans/houston-tx" class="footer-link">Houston Electricity</a></li>
+          <li><a href="/electricity-plans/austin-tx" class="footer-link">Austin Electricity</a></li>
+          <li><a href="/locations" class="footer-link">All Locations</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-nav-section">
+        <h3 class="footer-heading">Tools & Resources</h3>
+        <ul class="footer-links">
+          <li><a href="/rates/calculator" class="footer-link">Rate Calculator</a></li>
+          <li><a href="/resources/guides/how-to-switch-providers" class="footer-link">How to Switch</a></li>
+          <li><a href="/best" class="footer-link">Best Rankings</a></li>
+          <li><a href="/resources/guides" class="footer-link">Electricity Guide</a></li>
+          <li><a href="/resources/faqs" class="footer-link">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-nav-section">
+        <h3 class="footer-heading">Company</h3>
+        <ul class="footer-links">
+          <li><a href="/about" class="footer-link">About Us</a></li>
+          <li><a href="/resources/support/contact" class="footer-link">Contact</a></li>
+          <li><a href="/careers" class="footer-link">Careers</a></li>
+          <li><a href="/press" class="footer-link">Press</a></li>
+          <li><a href="/blog" class="footer-link">Blog</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="footer-bottom">
+    <div class="footer-bottom-container">
+      <div class="footer-bottom-content">
+        <p class="copyright">
+          © {currentYear} ChooseMyPower.org. All rights reserved.
+        </p>
+        
+        <div class="legal-links">
+          <a href="/privacy-policy" class="legal-link">Privacy Policy</a>
+          <a href="/terms-of-service" class="legal-link">Terms of Service</a>
+          <a href="/accessibility" class="legal-link">Accessibility</a>
+          <a href="/sitemap.xml" class="legal-link">
+            Sitemap <ExternalLink class="external-icon" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Trust Indicators -->
+      <div class="trust-indicators">
+        <div class="trust-item">
+          <span class="trust-badge">🔒 SSL Secured</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-badge">✅ BBB Accredited</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-badge">⚡ 50+ Providers</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
