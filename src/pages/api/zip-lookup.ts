@@ -1,6 +1,9 @@
 import type { APIRoute } from 'astro';
 import { zipToCity, municipalUtilities, getCityFromZip } from '../../config/tdsp-mapping';
 
+// Force server-side rendering for API endpoint
+export const prerender = false;
+
 export interface ZipLookupResponse {
   success: boolean;
   zipCode: string;
