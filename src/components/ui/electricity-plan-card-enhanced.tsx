@@ -67,11 +67,11 @@ const ElectricityPlanCardEnhanced = React.forwardRef<HTMLDivElement, Electricity
     const getRateTypeBadge = (type: string) => {
       switch (type) {
         case 'fixed':
-          return <Badge variant="success" className="bg-green-100 text-green-800 border-green-200">Fixed Rate</Badge>
+          return <Badge variant="success" className="bg-texas-gold-100 text-texas-navy border-texas-gold-200">Fixed Rate</Badge>
         case 'variable':
           return <Badge variant="warning" className="bg-orange-100 text-orange-800 border-orange-200">Variable Rate</Badge>
         case 'indexed':
-          return <Badge variant="info" className="bg-blue-100 text-blue-800 border-blue-200">Indexed Rate</Badge>
+          return <Badge variant="info" className="bg-texas-navy/10 text-texas-navy border-texas-navy/20">Indexed Rate</Badge>
         default:
           return null
       }
@@ -101,11 +101,11 @@ const ElectricityPlanCardEnhanced = React.forwardRef<HTMLDivElement, Electricity
           className
         )}
       >
-        {/* Popular/Featured Badge */}
+        {/* Popular/Featured Badge - positioned to avoid text overlap */}
         {(isPopular || isFeatured) && (
-          <div className="absolute top-0 right-0 z-10">
+          <div className="absolute -top-2 -right-2 z-10">
             <div className={cn(
-              "px-3 py-1 text-xs font-bold text-white rounded-bl-lg",
+              "px-3 py-1 text-xs font-bold text-white rounded-lg shadow-md transform rotate-3",
               isFeatured ? "bg-gradient-to-r from-texas-gold to-yellow-600" : "bg-gradient-to-r from-texas-navy to-blue-800"
             )}>
               {isFeatured ? "Featured" : "Popular"}

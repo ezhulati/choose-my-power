@@ -264,11 +264,11 @@ function getCityBasePlanCount(citySlug: string): number {
   const largeCities = ['plano-tx', 'garland-tx', 'irving-tx', 'arlington-tx', 'corpus-christi-tx'];
   
   if (majorCities.includes(citySlug)) {
-    return 400; // Major cities have ~400 plans
+    return 180; // Major cities have ~180 plans (realistic count)
   } else if (largeCities.includes(citySlug)) {
-    return 300; // Large cities have ~300 plans
+    return 120; // Large cities have ~120 plans (realistic count)
   } else {
-    return 200; // Other cities have ~200 plans
+    return 80; // Other cities have ~80 plans (realistic count)
   }
 }
 

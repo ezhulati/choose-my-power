@@ -68,11 +68,11 @@ const noDepositPlans = plans.filter(plan => !plan.features.deposit.required).len
 
 // Generate sorting options
 const sortingOptions = [
-  { value: 'price', label: 'Lowest Price', icon: '💰', description: 'Cheapest rates first' },
-  { value: 'rating', label: 'Highest Rated', icon: '⭐', description: 'Best customer reviews' },
-  { value: 'green', label: 'Most Green', icon: '🌱', description: 'Highest renewable energy %' },
-  { value: 'term', label: 'Shortest Term', icon: '📅', description: 'Flexible contracts' },
-  { value: 'popularity', label: 'Most Popular', icon: '🔥', description: 'Most customer reviews' }
+  { value: 'price', label: 'Lowest Price', icon: '', description: 'Cheapest rates first' },
+  { value: 'rating', label: 'Highest Rated', icon: '', description: 'Best customer reviews' },
+  { value: 'green', label: 'Most Green', icon: '', description: 'Highest renewable energy %' },
+  { value: 'term', label: 'Shortest Term', icon: '', description: 'Flexible contracts' },
+  { value: 'popularity', label: 'Most Popular', icon: '', description: 'Most customer reviews' }
 ];
 ---
 
@@ -83,7 +83,7 @@ const sortingOptions = [
     <div class="grid-stats">
       <div class="stats-overview">
         <div class="stat-item primary">
-          <span class="stat-icon">⚡</span>
+          <span class="stat-icon"></span>
           <div class="stat-content">
             <span class="stat-number">{totalPlans}</span>
             <span class="stat-label">Available Plans</span>
@@ -92,9 +92,9 @@ const sortingOptions = [
         
         {lowestRate > 0 && (
           <div class="stat-item">
-            <span class="stat-icon">💰</span>
+            <span class="stat-icon"></span>
             <div class="stat-content">
-              <span class="stat-number">{(lowestRate * 100).toFixed(1)}¢</span>
+              <span class="stat-number">{lowestRate.toFixed(1)}¢</span>
               <span class="stat-label">Lowest Rate</span>
             </div>
           </div>
@@ -102,7 +102,7 @@ const sortingOptions = [
         
         {greenPlans > 0 && (
           <div class="stat-item">
-            <span class="stat-icon">🌱</span>
+            <span class="stat-icon"></span>
             <div class="stat-content">
               <span class="stat-number">{greenPlans}</span>
               <span class="stat-label">Green Plans</span>
@@ -112,7 +112,7 @@ const sortingOptions = [
         
         {noDepositPlans > 0 && (
           <div class="stat-item">
-            <span class="stat-icon">🚫</span>
+            <span class="stat-icon"></span>
             <div class="stat-content">
               <span class="stat-number">{noDepositPlans}</span>
               <span class="stat-label">No Deposit</span>
@@ -124,7 +124,7 @@ const sortingOptions = [
       {avgRate > 0 && (
         <div class="average-rate">
           <span class="average-rate-label">Average Rate:</span>
-          <span class="average-rate-value">{(avgRate * 100).toFixed(1)}¢/kWh</span>
+          <span class="average-rate-value">{avgRate.toFixed(1)}¢/kWh</span>
         </div>
       )}
     </div>
@@ -133,13 +133,13 @@ const sortingOptions = [
     <div class="grid-controls">
       <div class="sort-controls">
         <label for="sort-select" class="sort-label">
-          <span class="sort-icon">🔀</span>
+          <span class="sort-icon"></span>
           Sort by:
         </label>
         <select id="sort-select" class="sort-select" data-default={defaultSort}>
           {sortingOptions.map(option => (
             <option value={option.value} selected={option.value === defaultSort}>
-              {option.icon} {option.label}
+              {option.label}
             </option>
           ))}
         </select>
@@ -153,7 +153,7 @@ const sortingOptions = [
             aria-label="Grid view"
             title="Grid View"
           >
-            <span class="view-icon">⊞</span>
+            <span class="view-icon">Grid</span>
           </button>
           <button 
             class={`view-toggle ${viewMode === 'table' ? 'active' : ''}`}
@@ -161,7 +161,7 @@ const sortingOptions = [
             aria-label="Table view"
             title="Table View"
           >
-            <span class="view-icon">☰</span>
+            <span class="view-icon">Table</span>
           </button>
           <button 
             class={`view-toggle ${viewMode === 'compact' ? 'active' : ''}`}
@@ -169,7 +169,7 @@ const sortingOptions = [
             aria-label="Compact view"
             title="Compact View"
           >
-            <span class="view-icon">▤</span>
+            <span class="view-icon">Compact</span>
           </button>
         </div>
       </div>
@@ -190,6 +190,7 @@ const sortingOptions = [
               position={index + 1}
               showComparison={showComparison}
               analyticsContext={analyticsContext}
+              allPlans={plans}
             />
           ))}
         </div>
@@ -259,17 +260,17 @@ const sortingOptions = [
                     <div class="feature-badges">
                       {plan.features.greenEnergy > 0 && (
                         <span class="feature-badge green">
-                          🌱 {plan.features.greenEnergy}%
+                          {plan.features.greenEnergy}% Green
                         </span>
                       )}
                       {!plan.features.deposit.required && (
                         <span class="feature-badge no-deposit">
-                          🚫 No Deposit
+                          No Deposit
                         </span>
                       )}
                       {plan.contract.earlyTerminationFee === 0 && (
                         <span class="feature-badge no-fee">
-                          ✅ No ETF
+                          No ETF
                         </span>
                       )}
                     </div>
@@ -301,7 +302,7 @@ const sortingOptions = [
                         data-plan-id={plan.id}
                         aria-label="Add to comparison"
                       >
-                        📊
+Compare
                       </button>
                     </div>
                   </td>
@@ -343,10 +344,10 @@ const sortingOptions = [
               <div class="compact-details">
                 <span class="compact-term">{plan.contract.length}mo {plan.contract.type}</span>
                 {plan.features.greenEnergy > 0 && (
-                  <span class="compact-green">🌱 {plan.features.greenEnergy}%</span>
+                  <span class="compact-green">{plan.features.greenEnergy}% Green</span>
                 )}
                 {!plan.features.deposit.required && (
-                  <span class="compact-no-deposit">🚫 No Deposit</span>
+                  <span class="compact-no-deposit">No Deposit</span>
                 )}
               </div>
               
@@ -362,7 +363,7 @@ const sortingOptions = [
                   data-plan-id={plan.id}
                   aria-label="Add to comparison"
                 >
-                  📊 Compare
+                  Compare
                 </button>
               </div>
             </div>
@@ -375,11 +376,11 @@ const sortingOptions = [
     {enableInfiniteScroll && totalPlans > plansPerPage && (
       <div class="load-more-section" id="load-more-trigger">
         <button class="load-more-btn" data-loaded={plansPerPage} data-total={totalPlans}>
-          <span class="load-more-icon">⬇️</span>
+          <span class="load-more-icon">Load</span>
           <span class="load-more-text">
             Load More Plans ({totalPlans - plansPerPage} remaining)
           </span>
-          <div class="load-more-spinner hidden">🔄</div>
+          <div class="load-more-spinner hidden">Loading...</div>
         </button>
       </div>
     )}
@@ -389,7 +390,7 @@ const sortingOptions = [
     <!-- Enhanced No Plans Message -->
     <div class="no-plans-container">
       <div class="no-plans-illustration">
-        <div class="no-plans-icon">⚡</div>
+        <div class="no-plans-icon">No Plans</div>
         <div class="no-plans-background-pattern" aria-hidden="true">
           <div class="pattern-dot"></div>
           <div class="pattern-dot"></div>
@@ -407,20 +408,20 @@ const sortingOptions = [
         <div class="no-plans-suggestions">
           <h4 class="suggestions-title">Try these suggestions:</h4>
           <ul class="suggestions-list">
-            <li>🔍 Remove some filter selections</li>
-            <li>📅 Consider different contract lengths</li>
-            <li>💡 Explore variable rate plans</li>
-            <li>🌱 Look at plans with lower green energy percentages</li>
+            <li>• Remove some filter selections</li>
+            <li>• Consider different contract lengths</li>
+            <li>• Explore variable rate plans</li>
+            <li>• Look at plans with lower green energy percentages</li>
           </ul>
         </div>
         
         <div class="no-plans-actions">
           <button class="clear-filters-btn" onclick="window.location.href = window.location.pathname.split('/').slice(0, -1).join('/') + '/electricity-plans'">
-            <span class="btn-icon">🗑️</span>
+            <span class="btn-icon">Clear</span>
             Clear All Filters
           </button>
           <a href={`/texas/${city}/electricity-providers`} class="browse-providers-btn">
-            <span class="btn-icon">🏢</span>
+            <span class="btn-icon">Browse</span>
             Browse Providers
           </a>
         </div>
@@ -436,12 +437,17 @@ const sortingOptions = [
 <style>
   /* Enhanced Plan Grid Styles */
   .enhanced-plan-grid {
-    @apply w-full space-y-6;
+    @apply w-full;
+    /* Enterprise-grade consistent spacing */
+    gap: 2rem; /* 32px */
+    margin-bottom: 3rem; /* 48px */
   }
   
   /* Grid Header Styles */
   .grid-header {
-    @apply bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-6 mb-6;
+    @apply bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl mb-8;
+    /* Enterprise-grade header spacing */
+    padding: 2rem; /* 32px */
   }
   
   .grid-stats {
@@ -449,11 +455,15 @@ const sortingOptions = [
   }
   
   .stats-overview {
-    @apply grid grid-cols-2 md:grid-cols-4 gap-4 mb-4;
+    @apply grid grid-cols-2 md:grid-cols-4 gap-6 mb-6;
+    /* Consistent grid spacing */
   }
   
   .stat-item {
-    @apply bg-white rounded-lg p-4 flex items-center gap-3 shadow-sm border border-blue-100 transition-all duration-200 hover:shadow-md;
+    @apply bg-white rounded-lg flex items-center shadow-sm border border-blue-100 transition-all duration-200 hover:shadow-md;
+    /* Enterprise-grade stat card spacing */
+    padding: 1.5rem; /* 24px */
+    gap: 1rem; /* 16px */
   }
   
   .stat-item.primary {
@@ -490,11 +500,15 @@ const sortingOptions = [
   
   /* Grid Controls */
   .grid-controls {
-    @apply flex flex-col md:flex-row md:items-center md:justify-between gap-4;
+    @apply flex flex-col md:flex-row md:items-center md:justify-between;
+    /* Enterprise-grade control spacing */
+    gap: 1.5rem; /* 24px */
+    margin-top: 2rem; /* 32px */
   }
   
   .sort-controls {
-    @apply flex items-center gap-3;
+    @apply flex items-center;
+    gap: 1rem; /* 16px - consistent spacing */
   }
   
   .sort-label {
@@ -549,6 +563,9 @@ const sortingOptions = [
   /* Grid View Styles */
   .plans-grid {
     @apply transition-all duration-300;
+    /* Enterprise-grade grid spacing */
+    gap: 2rem; /* 32px */
+    margin-top: 2rem; /* 32px */
   }
   
   /* Table View Styles */
@@ -637,15 +654,15 @@ const sortingOptions = [
   }
   
   .feature-badge.green {
-    @apply bg-green-100 text-green-800;
+    @apply bg-texas-gold-100 text-texas-navy;
   }
   
   .feature-badge.no-deposit {
-    @apply bg-blue-100 text-blue-800;
+    @apply bg-texas-navy/10 text-texas-navy;
   }
   
   .feature-badge.no-fee {
-    @apply bg-purple-100 text-purple-800;
+    @apply bg-texas-cream-100 text-texas-navy;
   }
   
   .rating-display {
@@ -686,11 +703,16 @@ const sortingOptions = [
   
   /* Compact View Styles */
   .compact-plans-list {
-    @apply space-y-3;
+    /* Enterprise-grade list spacing */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* 24px */
   }
   
   .compact-plan-card {
-    @apply bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition-all duration-200;
+    @apply bg-white border border-gray-200 rounded-lg hover:shadow-md transition-all duration-200;
+    /* Enterprise-grade card spacing */
+    padding: 1.5rem; /* 24px */
   }
   
   .compact-plan-header {
@@ -747,7 +769,10 @@ const sortingOptions = [
   
   /* Load More Section */
   .load-more-section {
-    @apply text-center py-8;
+    @apply text-center;
+    /* Enterprise-grade load more spacing */
+    padding: 3rem 0; /* 48px vertical */
+    margin-top: 2rem; /* 32px */
   }
   
   .load-more-btn {
@@ -820,11 +845,11 @@ const sortingOptions = [
   }
   
   .clear-filters-btn {
-    @apply bg-red-100 hover:bg-red-200 text-red-800 font-semibold px-6 py-3 rounded-lg transition-colors flex items-center gap-2 justify-center;
+    @apply bg-texas-red-100 hover:bg-texas-red-200 text-texas-navy font-semibold px-6 py-3 rounded-lg transition-colors flex items-center gap-2 justify-center;
   }
   
   .browse-providers-btn {
-    @apply bg-blue-100 hover:bg-blue-200 text-blue-800 font-semibold px-6 py-3 rounded-lg transition-colors flex items-center gap-2 justify-center;
+    @apply bg-texas-navy/10 hover:bg-texas-navy/20 text-texas-navy font-semibold px-6 py-3 rounded-lg transition-colors flex items-center gap-2 justify-center;
   }
   
   .btn-icon {
@@ -1119,7 +1144,7 @@ const sortingOptions = [
       
       // Update button text/appearance
       if (button.classList.contains('compact-compare-btn')) {
-        button.textContent = isAdding ? '📊 Remove' : '📊 Compare';
+        button.textContent = isAdding ? 'Remove' : 'Compare';
       }
       
       // Dispatch event for comparison system

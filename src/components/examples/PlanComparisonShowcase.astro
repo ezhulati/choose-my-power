@@ -1,0 +1,557 @@
+---
+/**
+ * Plan Comparison Showcase
+ * Demonstrates how to use shadcn/ui components for consistent design
+ * This is an example component showing best practices for design consistency
+ */
+
+// Sample data for demonstration
+const samplePlans = [
+  {
+    id: "plan-1",
+    name: "TXU Energy Freedom Nights & Weekends 12",
+    provider: {
+      name: "TXU Energy",
+      logo: "/images/providers/txu-logo.png",
+      rating: 4.2,
+      reviewCount: 1245
+    },
+    pricing: {
+      rate500kWh: 0.085,
+      rate1000kWh: 0.095,
+      rate2000kWh: 0.092,
+      ratePerKwh: 0.095
+    },
+    contract: {
+      length: 12,
+      type: "fixed",
+      earlyTerminationFee: 150,
+      satisfactionGuarantee: true
+    },
+    features: {
+      greenEnergy: 100,
+      billCredit: 50,
+      freeTime: {
+        hours: "9pm-6am",
+        days: ["weekends"]
+      },
+      deposit: {
+        required: false,
+        amount: 0
+      }
+    },
+    availability: {
+      enrollmentType: "both"
+    }
+  },
+  {
+    id: "plan-2",
+    name: "Reliant Secure Advantage 24",
+    provider: {
+      name: "Reliant Energy",
+      logo: "/images/providers/reliant-logo.png", 
+      rating: 4.0,
+      reviewCount: 892
+    },
+    pricing: {
+      rate500kWh: 0.089,
+      rate1000kWh: 0.088,
+      rate2000kWh: 0.087,
+      ratePerKwh: 0.088
+    },
+    contract: {
+      length: 24,
+      type: "fixed",
+      earlyTerminationFee: 200,
+      satisfactionGuarantee: false
+    },
+    features: {
+      greenEnergy: 50,
+      billCredit: 0,
+      freeTime: null,
+      deposit: {
+        required: true,
+        amount: 125
+      }
+    },
+    availability: {
+      enrollmentType: "both"
+    }
+  },
+  {
+    id: "plan-3", 
+    name: "Direct Energy Live Brighter 12",
+    provider: {
+      name: "Direct Energy",
+      logo: "/images/providers/direct-logo.png",
+      rating: 3.8,
+      reviewCount: 654
+    },
+    pricing: {
+      rate500kWh: 0.092,
+      rate1000kWh: 0.091,
+      rate2000kWh: 0.090,
+      ratePerKwh: 0.091
+    },
+    contract: {
+      length: 12,
+      type: "variable",
+      earlyTerminationFee: 0,
+      satisfactionGuarantee: true
+    },
+    features: {
+      greenEnergy: 0,
+      billCredit: 25,
+      freeTime: null,
+      deposit: {
+        required: false,
+        amount: 0
+      }
+    },
+    availability: {
+      enrollmentType: "online"
+    }
+  }
+];
+
+const city = "Dallas";
+---
+
+<!-- Import shadcn/ui components -->
+<script>
+  import { Badge } from '../ui/badge';
+  import { Button } from '../ui/button';
+  import { Card, CardHeader, CardContent, CardFooter } from '../ui/card';
+  import { Separator } from '../ui/separator';
+  import { Alert, AlertDescription } from '../ui/alert';
+  import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
+  import { Progress } from '../ui/progress';
+  import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
+</script>
+
+<div class="plan-comparison-showcase max-w-6xl mx-auto p-6 space-y-8">
+  
+  <!-- Page Header with improved design -->
+  <div class="text-center space-y-4">
+    <h1 class="text-4xl font-bold text-gray-900">
+      Electricity Plans in {city}, TX
+    </h1>
+    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+      Compare the best electricity plans with consistent design and clear pricing information.
+      Find the perfect plan for your home or business.
+    </p>
+    
+    <!-- Summary Stats using Badges -->
+    <div class="flex items-center justify-center gap-4 mt-6">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-lg border border-blue-200">
+        <span class="text-sm font-medium text-blue-700">Total Plans:</span>
+        <span class="inline-flex items-center gap-2 px-3 py-1 bg-blue-600 text-white text-sm font-bold rounded-full">
+          {samplePlans.length}
+        </span>
+      </div>
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-green-50 rounded-lg border border-green-200">
+        <span class="text-sm font-medium text-green-700">Avg Rate:</span>
+        <span class="inline-flex items-center gap-2 px-3 py-1 bg-green-600 text-white text-sm font-bold rounded-full">
+          9.1¢/kWh
+        </span>
+      </div>
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-yellow-50 rounded-lg border border-yellow-200">
+        <span class="text-sm font-medium text-yellow-700">Green Options:</span>
+        <span class="inline-flex items-center gap-2 px-3 py-1 bg-yellow-600 text-white text-sm font-bold rounded-full">
+          2
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filter and Sort Controls -->
+  <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+    <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+      <div class="flex items-center gap-3">
+        <h3 class="text-lg font-semibold text-gray-900">Filter & Sort</h3>
+        <span class="inline-flex items-center gap-1 px-2 py-1 bg-texas-navy/10 text-texas-navy text-xs font-medium rounded-full">
+          <span>ℹ️</span>
+          <span>Use filters to narrow down your options</span>
+        </span>
+      </div>
+      
+      <div class="flex gap-3">
+        <select class="px-4 py-2 border border-gray-300 rounded-lg bg-white text-sm font-medium focus:ring-2 focus:ring-texas-navy/20 focus:border-texas-navy min-w-[180px]">
+          <option>Sort by Lowest Rate</option>
+          <option>Sort by Highest Rate</option>
+          <option>Sort by Contract Length</option>
+          <option>Sort by Green Energy %</option>
+          <option>Sort by Provider Rating</option>
+        </select>
+        
+        <button class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-medium rounded-lg transition-colors">
+          <span>🎯</span>
+          <span>More Filters</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alert for Important Information -->
+  <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+    <div class="flex items-start gap-3">
+      <span class="text-green-600 text-lg flex-shrink-0">💡</span>
+      <div class="space-y-1">
+        <h4 class="text-sm font-semibold text-green-800">Pro Tip</h4>
+        <p class="text-sm text-green-700">
+          All prices shown include electricity charges and TDU delivery fees. 
+          No hidden costs or surprises on your monthly bill.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Plan Cards Grid -->
+  <div class="grid gap-8 lg:grid-cols-1 xl:grid-cols-1">
+    {samplePlans.map((plan, index) => {
+      const position = index + 1;
+      const isTopChoice = position <= 2;
+      const monthlyBill1000 = plan.pricing.rate1000kWh * 1000;
+      const isGoodDeal = plan.pricing.rate1000kWh < 0.09;
+      const rateDisplay = (plan.pricing.rate1000kWh * 100).toFixed(1);
+      
+      return (
+        <div class={`relative bg-white rounded-2xl border-2 shadow-lg hover:shadow-xl transition-all duration-300 overflow-visible ${
+          isTopChoice ? 'border-texas-gold bg-gradient-to-br from-texas-gold/5 to-transparent' : 'border-gray-200 hover:border-texas-navy/30'
+        }`}>
+          
+          <!-- Position Badge (outside card) -->
+          {isTopChoice && (
+            <div class="absolute -top-3 -right-3 z-10">
+              <span class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-texas-gold to-yellow-600 text-white text-sm font-bold rounded-full shadow-lg">
+                <span class="text-base">🏆</span>
+                <span>#{position} Choice</span>
+              </span>
+            </div>
+          )}
+
+          <!-- Savings Badge -->
+          {isGoodDeal && (
+            <div class="absolute -top-3 left-6 z-10">
+              <span class="inline-flex items-center gap-2 px-3 py-1 bg-green-600 text-white text-xs font-bold rounded-full shadow-md">
+                <span>💰</span>
+                <span>Great Value</span>
+              </span>
+            </div>
+          )}
+
+          <div class="p-8 pt-12">
+            
+            <!-- Provider Header -->
+            <div class="flex items-start justify-between mb-6">
+              <div class="flex items-center gap-6">
+                <div class="flex-shrink-0 w-20 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
+                  <span class="text-xs text-gray-500 font-medium">LOGO</span>
+                </div>
+                <div>
+                  <h3 class="text-2xl font-bold text-gray-900 mb-1">{plan.name}</h3>
+                  <p class="text-base text-gray-600 font-semibold">{plan.provider.name}</p>
+                  <div class="flex items-center gap-3 mt-2">
+                    <div class="flex text-yellow-400 text-lg">
+                      {Array.from({length: 5}, (_, i) => (
+                        <span class={i < Math.floor(plan.provider.rating) ? 'text-yellow-400' : 'text-gray-300'}>★</span>
+                      ))}
+                    </div>
+                    <span class="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-full">
+                      {plan.provider.rating.toFixed(1)} ({plan.provider.reviewCount} reviews)
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Feature Badges -->
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="inline-flex items-center gap-1 px-3 py-1 bg-texas-navy/10 text-texas-navy text-sm font-medium rounded-full">
+                <span>📅</span>
+                <span>{plan.contract.length} months</span>
+              </span>
+              <span class="inline-flex items-center gap-1 px-3 py-1 bg-gray-100 text-gray-700 text-sm font-medium rounded-full">
+                <span>📈</span>
+                <span>{plan.contract.type} rate</span>
+              </span>
+              {plan.features.greenEnergy > 0 && (
+                <span class="inline-flex items-center gap-1 px-3 py-1 bg-texas-gold-100 text-texas-navy text-sm font-medium rounded-full">
+                  <span>🌱</span>
+                  <span>{plan.features.greenEnergy}% Green</span>
+                </span>
+              )}
+              {!plan.features.deposit.required && (
+                <span class="inline-flex items-center gap-1 px-3 py-1 bg-texas-gold-100 text-texas-navy text-sm font-medium rounded-full">
+                  <span>💰</span>
+                  <span>No Deposit</span>
+                </span>
+              )}
+              {plan.contract.satisfactionGuarantee && (
+                <span class="inline-flex items-center gap-1 px-3 py-1 bg-texas-cream-100 text-texas-navy text-sm font-medium rounded-full">
+                  <span>✓</span>
+                  <span>Guarantee</span>
+                </span>
+              )}
+            </div>
+
+            <div class="border-t border-gray-200 pt-6 mb-6">
+              
+              <!-- Rate Display -->
+              <div class="text-center mb-8">
+                <div class="flex items-baseline justify-center gap-3 mb-2">
+                  <span class="text-5xl font-bold text-texas-navy">{rateDisplay}¢</span>
+                  <span class="text-xl text-gray-600 font-medium">per kWh</span>
+                </div>
+                <div class="text-lg text-gray-600 mb-4">
+                  ${monthlyBill1000.toFixed(0)}/month for 1000 kWh
+                </div>
+                <span class="inline-flex items-center gap-1 px-4 py-2 bg-blue-50 text-blue-700 text-sm font-semibold rounded-full border border-blue-200">
+                  <span>📊</span>
+                  <span>{plan.contract.type} rate plan</span>
+                </span>
+              </div>
+
+              <!-- Usage Tiers -->
+              <div class="space-y-4 mb-8">
+                <div class="flex items-center justify-between">
+                  <h4 class="text-lg font-semibold text-gray-900">Monthly Usage Estimates</h4>
+                  <span class="inline-flex items-center gap-1 px-3 py-1 bg-texas-gold-100 text-texas-navy text-sm font-semibold rounded-full">
+                    <span>⭐</span>
+                    <span>Most Popular: 1000 kWh</span>
+                  </span>
+                </div>
+                
+                <div class="grid grid-cols-3 gap-4">
+                  <div class="text-center p-6 rounded-xl border border-gray-200 bg-gray-50/50">
+                    <div class="text-sm text-gray-600 mb-2">Light Usage</div>
+                    <div class="text-lg font-bold text-gray-900">500 kWh</div>
+                    <div class="text-2xl font-bold text-texas-navy mt-2">
+                      ${(plan.pricing.rate500kWh * 500).toFixed(0)}
+                    </div>
+                    <div class="text-sm text-gray-500">per month</div>
+                  </div>
+                  
+                  <div class="text-center p-6 rounded-xl border-2 border-blue-300 bg-blue-50/50 relative">
+                    <span class="absolute -top-2 left-1/2 transform -translate-x-1/2 inline-flex items-center gap-1 px-3 py-1 bg-blue-600 text-white text-xs font-bold rounded-full">
+                      <span>👍</span>
+                      <span>Popular</span>
+                    </span>
+                    <div class="text-sm text-gray-600 mb-2">Average Usage</div>
+                    <div class="text-lg font-bold text-gray-900">1000 kWh</div>
+                    <div class="text-2xl font-bold text-texas-navy mt-2">
+                      ${monthlyBill1000.toFixed(0)}
+                    </div>
+                    <div class="text-sm text-gray-500">per month</div>
+                  </div>
+                  
+                  <div class="text-center p-6 rounded-xl border border-gray-200 bg-gray-50/50">
+                    <div class="text-sm text-gray-600 mb-2">Heavy Usage</div>
+                    <div class="text-lg font-bold text-gray-900">2000 kWh</div>
+                    <div class="text-2xl font-bold text-texas-navy mt-2">
+                      ${(plan.pricing.rate2000kWh * 2000).toFixed(0)}
+                    </div>
+                    <div class="text-sm text-gray-500">per month</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Price Transparency -->
+              <div class="bg-green-50 border border-green-200 rounded-xl p-4 mb-6">
+                <div class="flex items-center gap-3">
+                  <span class="text-green-600 text-xl flex-shrink-0">ℹ️</span>
+                  <p class="text-sm text-green-800 font-medium">
+                    All prices include electricity charges and TDU delivery fees - no hidden costs or surprises.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contract Details with improved layout -->
+            <div class="border-t border-gray-200 pt-6 mb-6">
+              <h4 class="text-lg font-semibold text-gray-900 mb-4">Contract Details</h4>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
+                <div class="space-y-2">
+                  <span class="text-gray-600 font-medium">Contract Length</span>
+                  <div class="text-lg font-bold text-gray-900">{plan.contract.length} months</div>
+                </div>
+                <div class="space-y-2">
+                  <span class="text-gray-600 font-medium">Early Termination</span>
+                  <div class="text-lg font-bold text-gray-900">
+                    {plan.contract.earlyTerminationFee > 0 ? `$${plan.contract.earlyTerminationFee}` : 'None'}
+                  </div>
+                </div>
+                {plan.features.deposit.required && (
+                  <div class="space-y-2">
+                    <span class="text-gray-600 font-medium">Deposit Required</span>
+                    <div class="text-lg font-bold text-gray-900">${plan.features.deposit.amount}</div>
+                  </div>
+                )}
+                {plan.features.billCredit > 0 && (
+                  <div class="space-y-2">
+                    <span class="text-gray-600 font-medium">Bill Credit</span>
+                    <div class="text-lg font-bold text-green-700">${plan.features.billCredit}</div>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <!-- Special Features -->
+            {(plan.features.freeTime || plan.features.greenEnergy > 50) && (
+              <div class="border-t border-gray-200 pt-6 mb-6">
+                <h4 class="text-lg font-semibold text-gray-900 mb-4">Special Features</h4>
+                <div class="space-y-3">
+                  {plan.features.freeTime && (
+                    <div class="flex items-center gap-3 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                      <span class="text-blue-600 text-xl flex-shrink-0">⏰</span>
+                      <div>
+                        <div class="font-semibold text-blue-900">Free Electricity Hours</div>
+                        <div class="text-sm text-blue-700">
+                          Free power {plan.features.freeTime.hours} on {plan.features.freeTime.days.join(' and ')}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  {plan.features.greenEnergy > 50 && (
+                    <div class="flex items-center gap-3 p-4 bg-green-50 rounded-lg border border-green-200">
+                      <span class="text-green-600 text-xl flex-shrink-0">🌱</span>
+                      <div>
+                        <div class="font-semibold text-green-900">Renewable Energy</div>
+                        <div class="text-sm text-green-700">
+                          {plan.features.greenEnergy}% of your electricity comes from renewable sources
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            <!-- Action Buttons -->
+            <div class="border-t border-gray-200 pt-6">
+              <div class="flex gap-4 mb-4">
+                <button class="flex-1 inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-texas-red to-red-700 text-white text-lg font-bold rounded-xl shadow-lg hover:shadow-xl hover:from-texas-red/90 hover:to-red-700/90 transition-all duration-200 transform hover:scale-105">
+                  <span class="text-xl">⚡</span>
+                  <span>Enroll Now</span>
+                </button>
+                
+                <button class="px-6 py-4 border-2 border-texas-navy text-texas-navy bg-white hover:bg-texas-navy hover:text-white text-lg font-semibold rounded-xl transition-all duration-200 shadow-sm hover:shadow-md">
+                  <span class="inline-flex items-center gap-2">
+                    <span>📊</span>
+                    <span>Compare</span>
+                  </span>
+                </button>
+              </div>
+              
+              <!-- Enrollment Info -->
+              <div class="flex items-center justify-between text-sm text-gray-600 pt-4 border-t border-gray-100">
+                <div class="flex items-center gap-2">
+                  <span class="inline-flex items-center gap-1 px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">
+                    <span>📱</span>
+                    <span>
+                      {plan.availability.enrollmentType === 'both' ? 'Online & Phone' :
+                       plan.availability.enrollmentType === 'online' ? 'Online Only' : 'Phone Only'} enrollment
+                    </span>
+                  </span>
+                </div>
+                <span class="inline-flex items-center gap-1 px-3 py-1 bg-texas-gold-100 text-texas-navy text-xs font-semibold rounded-full">
+                  <span>✓</span>
+                  <span>Texas Approved</span>
+                </span>
+              </div>
+
+              <!-- Fine Print -->
+              <div class="text-center pt-4 space-y-2">
+                <p class="text-xs text-gray-500 leading-relaxed">
+                  Rates shown for average residential usage in {city}, TX. 
+                  Includes all electricity charges and TDU delivery fees.
+                </p>
+                <a href="/terms" class="text-xs text-texas-blue hover:text-texas-navy underline font-medium">
+                  View complete terms and conditions
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    })}
+  </div>
+
+  <!-- Bottom Summary -->
+  <div class="bg-gradient-to-br from-texas-cream to-white rounded-xl border border-texas-gold/30 p-8 text-center">
+    <h3 class="text-2xl font-bold text-texas-navy mb-4">
+      Ready to Switch to a Better Plan?
+    </h3>
+    <p class="text-lg text-gray-700 mb-6 max-w-2xl mx-auto">
+      Compare these plans side-by-side or get personalized recommendations based on your usage patterns.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <button class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-texas-navy to-blue-800 text-white text-lg font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200">
+        <span>📊</span>
+        <span>Compare All Plans</span>
+      </button>
+      <button class="inline-flex items-center gap-2 px-8 py-4 border-2 border-texas-navy text-texas-navy bg-white hover:bg-texas-navy hover:text-white text-lg font-semibold rounded-xl transition-all duration-200">
+        <span>🎯</span>
+        <span>Get Recommendations</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+/* Additional styles for the showcase */
+.plan-comparison-showcase {
+  /* Ensure proper spacing and consistency */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+}
+
+/* Improved hover effects */
+.plan-comparison-showcase button {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.plan-comparison-showcase button:hover {
+  transform: translateY(-1px);
+}
+
+/* Badge animations */
+.plan-comparison-showcase .absolute {
+  animation: slideInBadge 0.3s ease-out;
+}
+
+@keyframes slideInBadge {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .plan-comparison-showcase .grid-cols-3 {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .plan-comparison-showcase .grid-cols-2 {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .plan-comparison-showcase .md\\:grid-cols-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .plan-comparison-showcase .text-5xl {
+    font-size: 2.5rem;
+  }
+  
+  .plan-comparison-showcase .flex-1 {
+    min-width: 100%;
+  }
+}
+</style>

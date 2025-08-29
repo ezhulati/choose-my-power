@@ -52,7 +52,7 @@ export function ProviderCard({ provider, onCompare, onViewDetails, showPlans = f
           {provider.features.slice(0, 3).map((feature, index) => (
             <span
               key={index}
-              className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
+              className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-texas-navy/10 text-texas-navy"
             >
               {feature}
             </span>

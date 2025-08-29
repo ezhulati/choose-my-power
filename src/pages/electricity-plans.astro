@@ -3,9 +3,11 @@ import Layout from '../layouts/Layout.astro';
 import HeroBackground from '../components/HeroBackground.astro';
 import { ZipCodeSearch } from '../components/ZipCodeSearch';
 import { Search, Filter, Zap, Leaf, Clock, Shield } from 'lucide-react';
+import { getCredibleMarketingText, DEFAULT_COUNTS } from '../lib/utils/dynamic-counts';
 
 const title = "Texas Electricity Plans | Browse All Available Plans";
-const description = "Browse all available electricity plans in Texas. Compare rates, contract terms, and features across 50+ providers and 300+ plans.";
+const marketingText = getCredibleMarketingText(DEFAULT_COUNTS.providers, DEFAULT_COUNTS.plans);
+const description = `Browse all available electricity plans in Texas. ${marketingText.combinedText} with transparent pricing.`;
 ---
 
 <Layout title={title} description={description}>
@@ -13,7 +15,7 @@ const description = "Browse all available electricity plans in Texas. Compare ra
     <!-- Hero Section -->
     <HeroBackground 
       title="All Texas Electricity Plans" 
-      subtitle="Browse and compare 300+ electricity plans from 50+ providers"
+      subtitle={DEFAULT_COUNTS.combinedText}
       variant="plans"
     >
       <div class="mt-8 max-w-md mx-auto">
@@ -46,9 +48,9 @@ const description = "Browse all available electricity plans in Texas. Compare ra
         
         <!-- Quick Filter Tags -->
         <div class="flex flex-wrap gap-2">
-          <button class="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm hover:bg-blue-200 transition-colors">Fixed Rate</button>
-          <button class="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm hover:bg-green-200 transition-colors">100% Renewable</button>
-          <button class="px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm hover:bg-purple-200 transition-colors">No Deposit</button>
+          <button class="px-4 py-2 bg-texas-navy/10 text-texas-navy rounded-full text-sm hover:bg-texas-navy/20 transition-colors">Fixed Rate</button>
+          <button class="px-4 py-2 bg-texas-gold-100 text-texas-navy rounded-full text-sm hover:bg-texas-gold-200 transition-colors">100% Renewable</button>
+          <button class="px-4 py-2 bg-texas-cream-100 text-texas-navy rounded-full text-sm hover:bg-texas-cream-200 transition-colors">No Deposit</button>
           <button class="px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm hover:bg-orange-200 transition-colors">Free Nights</button>
           <button class="px-4 py-2 bg-gray-100 text-gray-800 rounded-full text-sm hover:bg-gray-200 transition-colors">12 Month</button>
         </div>
@@ -115,9 +117,9 @@ const description = "Browse all available electricity plans in Texas. Compare ra
           
           <div class="flex items-center justify-between">
             <div class="flex flex-wrap gap-2">
-              <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">100% Renewable</span>
-              <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">No Deposit</span>
-              <span class="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">Fixed Rate</span>
+              <span class="px-2 py-1 bg-texas-gold-100 text-texas-navy text-xs rounded-full">100% Renewable</span>
+              <span class="px-2 py-1 bg-texas-navy/10 text-texas-navy text-xs rounded-full">No Deposit</span>
+              <span class="px-2 py-1 bg-texas-cream-100 text-texas-navy text-xs rounded-full">Fixed Rate</span>
             </div>
             <div class="flex space-x-2">
               <button class="border border-gray-300 px-4 py-2 rounded-md text-sm hover:bg-gray-50">Compare</button>
@@ -165,8 +167,8 @@ const description = "Browse all available electricity plans in Texas. Compare ra
           
           <div class="flex items-center justify-between">
             <div class="flex flex-wrap gap-2">
-              <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Free Nights</span>
-              <span class="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">Rewards</span>
+              <span class="px-2 py-1 bg-texas-navy/10 text-texas-navy text-xs rounded-full">Free Nights</span>
+              <span class="px-2 py-1 bg-texas-cream-100 text-texas-navy text-xs rounded-full">Rewards</span>
               <span class="px-2 py-1 bg-orange-100 text-orange-800 text-xs rounded-full">Time of Use</span>
             </div>
             <div class="flex space-x-2">

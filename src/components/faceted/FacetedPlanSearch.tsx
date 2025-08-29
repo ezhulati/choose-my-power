@@ -251,14 +251,14 @@ const FacetedPlanSearch: React.FC<FacetedPlanSearchProps> = ({
             </h2>
             <div className="search-metrics">
               <span className="stat-item">
-                📊 Starting at <strong>{statistics.lowestRate.toFixed(2)}¢/kWh</strong>
+                Starting at <strong>{statistics.lowestRate.toFixed(2)}¢/kWh</strong>
               </span>
               <span className="stat-item">
-                📈 Average Rate: <strong>{statistics.averageRate.toFixed(2)}¢/kWh</strong>
+                Average Rate: <strong>{statistics.averageRate.toFixed(2)}¢/kWh</strong>
               </span>
               {statistics.savings > 0 && (
                 <span className="stat-item highlight">
-                  💰 Save up to <strong>${statistics.savings}</strong> per year
+                  Save up to <strong>${statistics.savings}</strong> per year
                 </span>
               )}
             </div>
@@ -289,14 +289,14 @@ const FacetedPlanSearch: React.FC<FacetedPlanSearchProps> = ({
                 onClick={() => setViewMode('grid')}
                 aria-label="Grid view"
               >
-                ⊞
+                Grid
               </button>
               <button
                 className={`view-btn ${viewMode === 'list' ? 'active' : ''}`}
                 onClick={() => setViewMode('list')}
                 aria-label="List view"
               >
-                ☰
+                List
               </button>
             </div>
           </div>

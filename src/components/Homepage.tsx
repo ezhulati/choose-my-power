@@ -3,6 +3,7 @@ import { Zap, Calculator, Leaf, Users, TrendingDown, Battery, Award, BarChart } 
 import { mockProviders } from '../data/mockData';
 import { ZipCodeSearch } from './ZipCodeSearch';
 import { getCityFromZip } from '../config/tdsp-mapping';
+import { getCredibleMarketingText, DEFAULT_COUNTS } from '../lib/utils/dynamic-counts';
 
 interface HomepageProps {
   onNavigate: (path: string) => void;
@@ -45,7 +46,7 @@ export function Homepage({ onNavigate }: HomepageProps) {
               Compare & Choose Texas Electricity
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
-              Expert analysis of 50+ providers and 300+ plans. Find the perfect match for your needs and save hundreds per year.
+              {getCredibleMarketingText(DEFAULT_COUNTS.providers, DEFAULT_COUNTS.plans).heroText}
             </p>
             
             <div className="max-w-md mx-auto mb-8">
@@ -57,7 +58,7 @@ export function Homepage({ onNavigate }: HomepageProps) {
             </div>
 
             <div className="text-blue-200">
-              <p className="text-lg">50+ Expert-Ranked Providers • 6 Specializations • Free Comparison Tools</p>
+              <p className="text-lg">{DEFAULT_COUNTS.providers} Expert-Ranked Providers • 6 Specializations • Free Comparison Tools</p>
             </div>
           </div>
         </div>
@@ -177,7 +178,7 @@ export function Homepage({ onNavigate }: HomepageProps) {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="bg-white p-6 rounded-lg shadow-sm border text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">{mockProviders.length}</div>
+              <div className="text-3xl font-bold text-blue-600 mb-2">{DEFAULT_COUNTS.providers}</div>
               <div className="text-gray-600">Licensed Providers</div>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm border text-center">
@@ -185,7 +186,7 @@ export function Homepage({ onNavigate }: HomepageProps) {
               <div className="text-gray-600">Expert Categories</div>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm border text-center">
-              <div className="text-3xl font-bold text-purple-600 mb-2">300+</div>
+              <div className="text-3xl font-bold text-purple-600 mb-2">{DEFAULT_COUNTS.plans}+</div>
               <div className="text-gray-600">Available Plans</div>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm border text-center">

@@ -98,7 +98,7 @@ const EnhancedFacetedSidebar: React.FC<FacetedSidebarProps> = ({
     {
       key: 'contractLengths',
       label: 'Contract Length',
-      icon: '📅',
+      icon: '',
       facets: availableFacets?.contractLengths || [],
       searchable: false,
       renderFacet: (facet: FacetValue) => (
@@ -120,7 +120,7 @@ const EnhancedFacetedSidebar: React.FC<FacetedSidebarProps> = ({
     {
       key: 'rateTypes',
       label: 'Rate Type',
-      icon: '📊',
+      icon: '',
       facets: availableFacets?.rateTypes || [],
       searchable: false,
       renderFacet: (facet: FacetValue) => (
@@ -146,7 +146,7 @@ const EnhancedFacetedSidebar: React.FC<FacetedSidebarProps> = ({
     {
       key: 'greenEnergyLevels',
       label: 'Green Energy',
-      icon: '🌱',
+      icon: '',
       facets: availableFacets?.greenEnergyLevels || [],
       searchable: false,
       renderFacet: (facet: FacetValue) => (
@@ -168,7 +168,7 @@ const EnhancedFacetedSidebar: React.FC<FacetedSidebarProps> = ({
     {
       key: 'providers',
       label: 'Providers',
-      icon: '⚡',
+      icon: '',
       facets: availableFacets?.providers || [],
       searchable: true,
       renderFacet: (facet: FacetValue) => (
@@ -190,7 +190,7 @@ const EnhancedFacetedSidebar: React.FC<FacetedSidebarProps> = ({
     {
       key: 'features',
       label: 'Plan Features',
-      icon: '✨',
+      icon: '',
       facets: [
         ...availableFacets?.features || [],
         // Add standard feature filters
@@ -238,7 +238,7 @@ const EnhancedFacetedSidebar: React.FC<FacetedSidebarProps> = ({
     {
       key: 'priceRanges',
       label: 'Price Range',
-      icon: '💰',
+      icon: '',
       facets: availableFacets?.priceRanges || [],
       searchable: false,
       renderFacet: (facet: FacetValue) => (
@@ -269,7 +269,7 @@ const EnhancedFacetedSidebar: React.FC<FacetedSidebarProps> = ({
         aria-expanded={isOpen}
         aria-label="Toggle filters"
       >
-        <span className="toggle-icon">🔍</span>
+        <span className="toggle-icon">Filter</span>
         <span>Filters</span>
         {activeFilterCount > 0 && (
           <span className="filter-badge">{activeFilterCount}</span>
@@ -304,21 +304,21 @@ const EnhancedFacetedSidebar: React.FC<FacetedSidebarProps> = ({
               onClick={() => onFilterChange('greenEnergy', true, !currentFilters.greenEnergy)}
               disabled={loading}
             >
-              🌱 100% Green
+              100% Green
             </button>
             <button 
               className={`quick-filter-btn ${currentFilters.noDeposit ? 'active' : ''}`}
               onClick={() => onFilterChange('noDeposit', true, !currentFilters.noDeposit)}
               disabled={loading}
             >
-              ✅ No Deposit
+              No Deposit
             </button>
             <button 
               className={`quick-filter-btn ${currentFilters.rateType === 'fixed' ? 'active' : ''}`}
               onClick={() => onFilterChange('rateType', 'fixed', currentFilters.rateType !== 'fixed')}
               disabled={loading}
             >
-              📌 Fixed Rate
+              Fixed Rate
             </button>
           </div>
         </div>

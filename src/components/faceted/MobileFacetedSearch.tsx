@@ -166,7 +166,7 @@ const MobileFacetedSearch: React.FC<MobileFacetedSearchProps> = ({
             onClick={() => setViewMode(viewMode === 'card' ? 'compact' : 'card')}
             aria-label={`Switch to ${viewMode === 'card' ? 'compact' : 'card'} view`}
           >
-            {viewMode === 'card' ? '☰' : '⊞'}
+            {viewMode === 'card' ? 'List' : 'Grid'}
           </button>
         </div>
 
@@ -177,7 +177,7 @@ const MobileFacetedSearch: React.FC<MobileFacetedSearchProps> = ({
             onClick={() => setShowFilters(true)}
             aria-label="Open filters"
           >
-            <span className="filter-icon">🔍</span>
+            <span className="filter-icon">Filter</span>
             <span>Filter</span>
             {activeFilterCount > 0 && (
               <span className="filter-badge">{activeFilterCount}</span>
@@ -293,7 +293,7 @@ const MobileFacetedSearch: React.FC<MobileFacetedSearchProps> = ({
                 
                 {plan.percent_green > 0 && (
                   <div className="detail-row green">
-                    <span className="detail-label">🌱 Green Energy:</span>
+                    <span className="detail-label">Green Energy:</span>
                     <span className="detail-value">{plan.percent_green}%</span>
                   </div>
                 )}
@@ -307,7 +307,7 @@ const MobileFacetedSearch: React.FC<MobileFacetedSearchProps> = ({
                     
                     {plan.bill_credit && plan.bill_credit > 0 && (
                       <div className="detail-row">
-                        <span className="detail-label">💰 Bill Credit:</span>
+                        <span className="detail-label">Bill Credit:</span>
                         <span className="detail-value">${plan.bill_credit}/month</span>
                       </div>
                     )}
@@ -330,7 +330,7 @@ const MobileFacetedSearch: React.FC<MobileFacetedSearchProps> = ({
           ))
         ) : (
           <div className="no-results">
-            <div className="no-results-icon">🔍</div>
+            <div className="no-results-icon">No Results</div>
             <h3>No Plans Found</h3>
             <p>Try adjusting your filters to see more options.</p>
             <button onClick={onClearAll} className="clear-filters-btn">
@@ -366,25 +366,25 @@ const MobileFacetedSearch: React.FC<MobileFacetedSearchProps> = ({
                     className={`quick-filter ${currentFilters.greenEnergy ? 'active' : ''}`}
                     onClick={() => onFilterChange('greenEnergy', true, !currentFilters.greenEnergy)}
                   >
-                    🌱 100% Green
+                    100% Green
                   </button>
                   <button
                     className={`quick-filter ${currentFilters.noDeposit ? 'active' : ''}`}
                     onClick={() => onFilterChange('noDeposit', true, !currentFilters.noDeposit)}
                   >
-                    ✅ No Deposit
+                    No Deposit
                   </button>
                   <button
                     className={`quick-filter ${currentFilters.rateType === 'fixed' ? 'active' : ''}`}
                     onClick={() => onFilterChange('rateType', 'fixed', currentFilters.rateType !== 'fixed')}
                   >
-                    📌 Fixed Rate
+                    Fixed Rate
                   </button>
                   <button
                     className={`quick-filter ${currentFilters.prePaid ? 'active' : ''}`}
                     onClick={() => onFilterChange('prePaid', true, !currentFilters.prePaid)}
                   >
-                    💳 Prepaid
+                    Prepaid
                   </button>
                 </div>
               </div>
@@ -395,7 +395,7 @@ const MobileFacetedSearch: React.FC<MobileFacetedSearchProps> = ({
                   className="section-header"
                   onClick={() => setActiveSection(activeSection === 'contract' ? null : 'contract')}
                 >
-                  <span>📅 Contract Length</span>
+                  <span>Contract Length</span>
                   <span className={`arrow ${activeSection === 'contract' ? 'up' : 'down'}`}>▼</span>
                 </button>
                 {activeSection === 'contract' && (
@@ -420,7 +420,7 @@ const MobileFacetedSearch: React.FC<MobileFacetedSearchProps> = ({
                   className="section-header"
                   onClick={() => setActiveSection(activeSection === 'rateType' ? null : 'rateType')}
                 >
-                  <span>📊 Rate Type</span>
+                  <span>Rate Type</span>
                   <span className={`arrow ${activeSection === 'rateType' ? 'up' : 'down'}`}>▼</span>
                 </button>
                 {activeSection === 'rateType' && (
@@ -447,7 +447,7 @@ const MobileFacetedSearch: React.FC<MobileFacetedSearchProps> = ({
                     className="section-header"
                     onClick={() => setActiveSection(activeSection === 'providers' ? null : 'providers')}
                   >
-                    <span>⚡ Providers</span>
+                    <span>Providers</span>
                     <span className={`arrow ${activeSection === 'providers' ? 'up' : 'down'}`}>▼</span>
                   </button>
                   {activeSection === 'providers' && (

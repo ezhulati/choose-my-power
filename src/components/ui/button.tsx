@@ -25,7 +25,7 @@ const buttonVariants = cva(
         "texas-secondary":
           "bg-gradient-to-r from-texas-red to-red-700 text-white shadow-lg hover:from-texas-red/90 hover:to-red-700/90 hover:shadow-xl focus-visible:ring-texas-red/50",
         "texas-accent":
-          "bg-gradient-to-r from-texas-gold to-yellow-600 text-white shadow-lg hover:from-texas-gold/90 hover:to-yellow-600/90 hover:shadow-xl focus-visible:ring-texas-gold/50",
+          "bg-gradient-to-r from-texas-gold to-yellow-600 text-texas-navy shadow-lg hover:from-texas-gold/90 hover:to-yellow-600/90 hover:shadow-xl focus-visible:ring-texas-gold/50 font-semibold",
         "texas-outline":
           "border-2 border-texas-navy text-texas-navy bg-white hover:bg-texas-navy hover:text-white shadow-sm hover:shadow-md focus-visible:ring-texas-navy/50",
         "texas-outline-red":

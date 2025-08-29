@@ -618,7 +618,7 @@ export function ElectricityCompaniesPage({}: ElectricityCompaniesPageProps) {
                   <h4 className="font-medium text-gray-900 mb-3">Market Specializations:</h4>
                   <div className="flex flex-wrap gap-2">
                     {hub.specialties.map((specialty) => (
-                      <span key={specialty} className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
+                      <span key={specialty} className="px-2 py-1 bg-texas-navy/10 text-texas-navy text-xs rounded-full">
                         {specialty}
                       </span>
                     ))}

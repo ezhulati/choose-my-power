@@ -519,11 +519,11 @@ class CoreWebVitalsDashboard {
     element.className = 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium';
     
     if (status === 'excellent') {
-      element.classList.add('bg-green-100', 'text-green-800');
+      element.classList.add('bg-texas-gold-100', 'text-texas-navy');
     } else if (status === 'good') {
-      element.classList.add('bg-yellow-100', 'text-yellow-800');
+      element.classList.add('bg-texas-gold-100', 'text-texas-navy');
     } else {
-      element.classList.add('bg-red-100', 'text-red-800');
+      element.classList.add('bg-texas-red-100', 'text-texas-navy');
     }
   }
 
@@ -553,11 +553,11 @@ class CoreWebVitalsDashboard {
     ratingElement.className = 'inline-flex items-center px-3 py-1 rounded-full text-sm font-medium';
     
     if (overallScore >= 90) {
-      ratingElement.classList.add('bg-green-100', 'text-green-800');
+      ratingElement.classList.add('bg-texas-gold-100', 'text-texas-navy');
     } else if (overallScore >= 70) {
-      ratingElement.classList.add('bg-yellow-100', 'text-yellow-800');
+      ratingElement.classList.add('bg-texas-gold-100', 'text-texas-navy');
     } else {
-      ratingElement.classList.add('bg-red-100', 'text-red-800');
+      ratingElement.classList.add('bg-texas-red-100', 'text-texas-navy');
     }
   }
 
@@ -804,9 +804,9 @@ class CoreWebVitalsDashboard {
         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${data.cls.toFixed(3)}</td>
         <td class="px-6 py-4 whitespace-nowrap">
           <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-            data.score >= 90 ? 'bg-green-100 text-green-800' :
-            data.score >= 70 ? 'bg-yellow-100 text-yellow-800' :
-            'bg-red-100 text-red-800'
+            data.score >= 90 ? 'bg-texas-gold-100 text-texas-navy' :
+            data.score >= 70 ? 'bg-texas-gold-100 text-texas-navy' :
+            'bg-texas-red-100 text-texas-navy'
           }">
             ${data.score}
           </span>

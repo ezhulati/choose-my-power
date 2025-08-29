@@ -127,7 +127,7 @@ export const TexasPage: React.FC = () => {
               <Star className="w-12 h-12 text-texas-gold mx-auto mb-4" />
               <h3 className="text-xl font-semibold mb-3">Best Rates</h3>
               <p className="text-gray-600">
-                Compare rates from over 150 providers to find the lowest prices
+                Compare rates from licensed providers to find the lowest prices
               </p>
             </div>
             <div className="text-center">

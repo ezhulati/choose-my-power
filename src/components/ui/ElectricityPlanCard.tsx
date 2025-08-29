@@ -35,11 +35,11 @@ export const ElectricityPlanCard: React.FC<ElectricityPlanCardProps> = ({
   const getPlanTypeColor = (type: string) => {
     switch (type) {
       case 'fixed':
-        return 'bg-green-100 text-green-800 border-green-200';
+        return 'bg-texas-gold-100 text-texas-navy border-texas-gold-200';
       case 'variable':
         return 'bg-orange-100 text-orange-800 border-orange-200';
       case 'indexed':
-        return 'bg-blue-100 text-blue-800 border-blue-200';
+        return 'bg-texas-navy/10 text-texas-navy border-texas-navy/20';
       default:
         return 'bg-gray-100 text-gray-800 border-gray-200';
     }
@@ -117,7 +117,7 @@ export const ElectricityPlanCard: React.FC<ElectricityPlanCardProps> = ({
           <div className="text-sm font-medium text-gray-700">Plan Features:</div>
           <div className="flex flex-wrap gap-2">
             {plan.greenEnergy && (
-              <Badge className="bg-green-100 text-green-800 border-green-200" variant="outline">
+              <Badge className="bg-texas-gold-100 text-texas-navy border-texas-gold-200" variant="outline">
                 <Icon icon="leaf" size={12} className="mr-1" />
                 Green Energy
               </Badge>
@@ -220,7 +220,7 @@ export const ProviderComparisonCard: React.FC<ProviderCardProps> = ({
           <div className="text-sm font-medium">Features:</div>
           <div className="flex flex-wrap gap-1">
             {provider.greenOptions && (
-              <Badge className="bg-green-100 text-green-800 border-green-200" variant="outline">
+              <Badge className="bg-texas-gold-100 text-texas-navy border-texas-gold-200" variant="outline">
                 <Icon icon="leaf" size={10} className="mr-1" />
                 Green
               </Badge>

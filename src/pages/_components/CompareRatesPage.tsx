@@ -424,9 +424,9 @@ export function CompareRatesPage({}: CompareRatesPageProps) {
                 <p className="text-gray-600 text-sm mb-4">{factor.description}</p>
                 <div className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${
                   factor.impact === 'Variable' ? 'bg-orange-100 text-orange-800' :
-                  factor.impact === 'Controllable' ? 'bg-blue-100 text-blue-800' :
-                  factor.impact === 'Personal' ? 'bg-green-100 text-green-800' :
-                  'bg-purple-100 text-purple-800'
+                  factor.impact === 'Controllable' ? 'bg-texas-navy/10 text-texas-navy' :
+                  factor.impact === 'Personal' ? 'bg-texas-gold-100 text-texas-navy' :
+                  'bg-texas-cream-100 text-texas-navy'
                 }`}>
                   {factor.impact}
                 </div>

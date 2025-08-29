@@ -210,7 +210,7 @@ export function TexasElectricityPage({}: TexasElectricityPageProps) {
             </h1>
             <p className="text-xl md:text-2xl mb-12 text-red-100 max-w-4xl mx-auto leading-relaxed">
               Your complete resource for Texas electricity. Compare {texasProviders.length} providers, 
-              300+ plans, and rates across {texasData.topCities.length} major Texas cities. 
+              {texasProviders.reduce((sum, p) => sum + p.plans.length, 0)}+ plans, and rates across {texasData.topCities.length} major Texas cities. 
               Expert analysis, tools, and guides for every Texas electricity decision.
             </p>
 
@@ -434,7 +434,7 @@ export function TexasElectricityPage({}: TexasElectricityPageProps) {
                   <div className="text-sm text-gray-600 mb-2">Topics Covered:</div>
                   <div className="flex flex-wrap gap-2">
                     {guide.topics.map((topic, tIndex) => (
-                      <span key={tIndex} className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
+                      <span key={tIndex} className="px-2 py-1 bg-texas-navy/10 text-texas-navy text-xs rounded-full">
                         {topic}
                       </span>
                     ))}

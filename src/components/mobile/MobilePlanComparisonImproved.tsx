@@ -1,0 +1,650 @@
+/**
+ * Improved Mobile Plan Comparison Component with shadcn/ui components
+ * Touch-friendly plan comparison with consistent design system
+ * Uses shadcn/ui components for professional appearance and better UX
+ */
+
+import React, { useState, useRef, useEffect, useCallback } from 'react';
+import type { Plan } from '../../types/facets';
+import { Badge } from '../ui/badge';
+import { Button } from '../ui/button';
+import { Card, CardHeader, CardContent, CardFooter } from '../ui/card';
+import { Separator } from '../ui/separator';
+import { Alert, AlertDescription } from '../ui/alert';
+import { Progress } from '../ui/progress';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
+
+interface MobilePlanComparisonImprovedProps {
+  plans: Plan[];
+  city: string;
+  selectedPlans?: string[];
+  onPlanSelect?: (plan: Plan) => void;
+  onPlanDeselect?: (planId: string) => void;
+  onPlanEnroll?: (plan: Plan, position: number) => void;
+  maxComparisons?: number;
+  showSort?: boolean;
+  sortOptions?: SortOption[];
+  defaultSort?: string;
+  enableSwipeActions?: boolean;
+  compactMode?: boolean;
+  showTrustSignals?: boolean;
+}
+
+interface SortOption {
+  id: string;
+  label: string;
+  field: keyof Plan | string;
+  direction: 'asc' | 'desc';
+}
+
+interface SwipeState {
+  startX: number;
+  startY: number;
+  currentX: number;
+  deltaX: number;
+  isDragging: boolean;
+  draggedPlan: string | null;
+  swipeDirection: 'left' | 'right' | null;
+  swipeThreshold: number;
+}
+
+interface ComparisonState {
+  selectedPlans: string[];
+  sortBy: string;
+  showComparison: boolean;
+  viewMode: 'list' | 'cards';
+  filters: {
+    priceRange: [number, number];
+    contractLength: number[];
+    planType: string[];
+    greenEnergy: boolean;
+  };
+}
+
+const defaultSortOptions: SortOption[] = [
+  { id: 'rate_asc', label: 'Lowest Rate', field: 'pricing.rate1000kWh', direction: 'asc' },
+  { id: 'rate_desc', label: 'Highest Rate', field: 'pricing.rate1000kWh', direction: 'desc' },
+  { id: 'contract_asc', label: 'Shortest Contract', field: 'contract.length', direction: 'asc' },
+  { id: 'green_desc', label: 'Most Green', field: 'features.greenEnergy', direction: 'desc' },
+  { id: 'rating_desc', label: 'Best Rated', field: 'provider.rating', direction: 'desc' }
+];
+
+export const MobilePlanComparisonImproved: React.FC<MobilePlanComparisonImprovedProps> = ({
+  plans,
+  city,
+  selectedPlans = [],
+  onPlanSelect,
+  onPlanDeselect,
+  onPlanEnroll,
+  maxComparisons = 3,
+  showSort = true,
+  sortOptions = defaultSortOptions,
+  defaultSort = 'rate_asc',
+  enableSwipeActions = true,
+  compactMode = false,
+  showTrustSignals = true
+}) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [swipeState, setSwipeState] = useState<SwipeState>({
+    startX: 0,
+    startY: 0,
+    currentX: 0,
+    deltaX: 0,
+    isDragging: false,
+    draggedPlan: null,
+    swipeDirection: null,
+    swipeThreshold: 80
+  });
+
+  const [comparisonState, setComparisonState] = useState<ComparisonState>({
+    selectedPlans,
+    sortBy: defaultSort,
+    showComparison: false,
+    viewMode: 'cards',
+    filters: {
+      priceRange: [0, 1000],
+      contractLength: [],
+      planType: [],
+      greenEnergy: false
+    }
+  });
+
+  const [visiblePlans, setVisiblePlans] = useState(8); // Start with fewer for mobile
+  const [isLoading, setIsLoading] = useState(false);
+
+  /**
+   * Initialize component and setup performance optimizations
+   */
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.target.id === 'load-more-trigger') {
+            loadMorePlans();
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '100px' }
+    );
+
+    const trigger = document.getElementById('load-more-trigger');
+    if (trigger) {
+      observer.observe(trigger);
+    }
+
+    return () => observer.disconnect();
+  }, [visiblePlans, plans.length]);
+
+  /**
+   * Update selected plans when props change
+   */
+  useEffect(() => {
+    setComparisonState(prev => ({ ...prev, selectedPlans }));
+  }, [selectedPlans]);
+
+  /**
+   * Progressive loading of plans for better mobile performance
+   */
+  const loadMorePlans = useCallback(() => {
+    if (visiblePlans >= plans.length || isLoading) return;
+    
+    setIsLoading(true);
+    
+    setTimeout(() => {
+      setVisiblePlans(prev => Math.min(prev + 8, plans.length));
+      setIsLoading(false);
+    }, 100);
+  }, [visiblePlans, plans.length, isLoading]);
+
+  /**
+   * Sort plans based on selected option
+   */
+  const sortPlans = useCallback((plans: Plan[], sortBy: string): Plan[] => {
+    const option = sortOptions.find(opt => opt.id === sortBy);
+    if (!option) return plans;
+
+    return [...plans].sort((a, b) => {
+      const getValue = (plan: Plan, field: string): any => {
+        const keys = field.split('.');
+        let value: any = plan;
+        for (const key of keys) {
+          value = value?.[key];
+        }
+        return value ?? 0;
+      };
+
+      const aValue = getValue(a, option.field as string);
+      const bValue = getValue(b, option.field as string);
+
+      if (option.direction === 'asc') {
+        return aValue > bValue ? 1 : -1;
+      } else {
+        return aValue < bValue ? 1 : -1;
+      }
+    });
+  }, [sortOptions]);
+
+  /**
+   * Handle touch start for swipe gestures
+   */
+  const handleTouchStart = (e: React.TouchEvent, planId: string): void => {
+    if (!enableSwipeActions) return;
+
+    const touch = e.touches[0];
+    setSwipeState({
+      startX: touch.clientX,
+      startY: touch.clientY,
+      currentX: touch.clientX,
+      deltaX: 0,
+      isDragging: false,
+      draggedPlan: planId,
+      swipeDirection: null,
+      swipeThreshold: 80
+    });
+
+    if ('vibrate' in navigator) {
+      navigator.vibrate(10);
+    }
+  };
+
+  /**
+   * Handle touch move for swipe gestures
+   */
+  const handleTouchMove = (e: React.TouchEvent): void => {
+    if (!enableSwipeActions || !swipeState.draggedPlan) return;
+
+    const touch = e.touches[0];
+    const deltaX = touch.clientX - swipeState.startX;
+    const deltaY = touch.clientY - swipeState.startY;
+
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 10) {
+      e.preventDefault();
+      
+      const direction = deltaX > 0 ? 'right' : 'left';
+      const isDragging = Math.abs(deltaX) > 15;
+
+      setSwipeState(prev => ({
+        ...prev,
+        currentX: touch.clientX,
+        deltaX,
+        isDragging,
+        swipeDirection: direction
+      }));
+
+      const planCard = document.querySelector(`[data-plan-id="${swipeState.draggedPlan}"]`);
+      if (planCard instanceof HTMLElement && isDragging) {
+        const intensity = Math.min(Math.abs(deltaX) / swipeState.swipeThreshold, 1);
+        planCard.style.transform = `translateX(${deltaX * 0.2}px) scale(${0.98 + intensity * 0.02})`;
+        planCard.style.opacity = `${1 - intensity * 0.05}`;
+      }
+    }
+  };
+
+  /**
+   * Handle touch end for swipe actions
+   */
+  const handleTouchEnd = (): void => {
+    if (!enableSwipeActions || !swipeState.draggedPlan) return;
+
+    const planCard = document.querySelector(`[data-plan-id="${swipeState.draggedPlan}"]`);
+    if (planCard instanceof HTMLElement) {
+      planCard.style.transform = '';
+      planCard.style.opacity = '';
+    }
+
+    if (Math.abs(swipeState.deltaX) >= swipeState.swipeThreshold) {
+      const plan = plans.find(p => p.id === swipeState.draggedPlan);
+      if (plan) {
+        if (swipeState.swipeDirection === 'right') {
+          handleEnrollPlan(plan);
+        } else if (swipeState.swipeDirection === 'left') {
+          handleComparePlan(plan);
+        }
+      }
+
+      if ('vibrate' in navigator) {
+        navigator.vibrate([50, 50, 100]);
+      }
+    }
+
+    setSwipeState({
+      startX: 0,
+      startY: 0,
+      currentX: 0,
+      deltaX: 0,
+      isDragging: false,
+      draggedPlan: null,
+      swipeDirection: null,
+      swipeThreshold: 80
+    });
+  };
+
+  /**
+   * Handle plan comparison selection
+   */
+  const handleComparePlan = (plan: Plan): void => {
+    const isSelected = comparisonState.selectedPlans.includes(plan.id);
+    
+    if (isSelected) {
+      const updated = comparisonState.selectedPlans.filter(id => id !== plan.id);
+      setComparisonState(prev => ({ ...prev, selectedPlans: updated }));
+      onPlanDeselect?.(plan.id);
+    } else if (comparisonState.selectedPlans.length < maxComparisons) {
+      const updated = [...comparisonState.selectedPlans, plan.id];
+      setComparisonState(prev => ({ ...prev, selectedPlans: updated }));
+      onPlanSelect?.(plan);
+    }
+
+    if ('vibrate' in navigator) {
+      navigator.vibrate(30);
+    }
+  };
+
+  /**
+   * Handle plan enrollment
+   */
+  const handleEnrollPlan = (plan: Plan): void => {
+    const position = plans.findIndex(p => p.id === plan.id) + 1;
+    onPlanEnroll?.(plan, position);
+
+    if ('vibrate' in navigator) {
+      navigator.vibrate([100, 50, 100]);
+    }
+  };
+
+  /**
+   * Calculate savings compared to average
+   */
+  const calculateSavings = (plan: Plan): number => {
+    const avgRate = plans.reduce((sum, p) => sum + (p.pricing.rate1000kWh * 1000), 0) / plans.length;
+    const planRate = plan.pricing.rate1000kWh * 1000;
+    return avgRate - planRate;
+  };
+
+  /**
+   * Format rate display with emphasis on savings
+   */
+  const formatRateDisplay = (plan: Plan): { rate: string; savings: number; isGoodDeal: boolean } => {
+    const rate = (plan.pricing.rate1000kWh * 100).toFixed(1);
+    const savings = calculateSavings(plan);
+    const isGoodDeal = savings > 10;
+    
+    return { rate: `${rate}¢`, savings, isGoodDeal };
+  };
+
+  const sortedPlans = sortPlans(plans, comparisonState.sortBy);
+  const displayPlans = sortedPlans.slice(0, visiblePlans);
+
+  return (
+    <div 
+      ref={containerRef}
+      className={`mobile-plan-comparison-improved space-y-6 ${compactMode ? 'compact' : ''}`}
+      onTouchStart={(e) => {
+        const planCard = e.target as Element;
+        const planId = planCard.closest('[data-plan-id]')?.getAttribute('data-plan-id');
+        if (planId) handleTouchStart(e, planId);
+      }}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
+      {/* Header with improved design */}
+      <div className="space-y-4">
+        <div className="text-center space-y-2">
+          <h2 className="text-2xl font-bold text-gray-900">
+            {plans.length} Plans Available in {city}
+          </h2>
+          {comparisonState.selectedPlans.length > 0 && (
+            <div className="flex items-center justify-center">
+              <Badge variant="info" className="flex items-center gap-2">
+                <span>📊</span>
+                <span>{comparisonState.selectedPlans.length}/{maxComparisons} selected</span>
+              </Badge>
+            </div>
+          )}
+        </div>
+
+        {/* Sort Controls */}
+        {showSort && (
+          <div className="px-4">
+            <select
+              value={comparisonState.sortBy}
+              onChange={(e) => setComparisonState(prev => ({ ...prev, sortBy: e.target.value }))}
+              className="w-full p-3 border border-gray-300 rounded-lg bg-white text-sm font-medium focus:ring-2 focus:ring-texas-navy/20 focus:border-texas-navy"
+            >
+              {sortOptions.map(option => (
+                <option key={option.id} value={option.id}>
+                  Sort by {option.label}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+      </div>
+
+      {/* Swipe Instructions with improved design */}
+      {enableSwipeActions && (
+        <Alert className="mx-4 border-blue-200 bg-blue-50">
+          <AlertDescription className="flex items-center justify-center gap-6 text-sm text-blue-800">
+            <div className="flex items-center gap-2">
+              <span className="text-lg">👈</span>
+              <span className="font-medium">Swipe left to compare</span>
+            </div>
+            <Separator orientation="vertical" className="h-4 bg-blue-300" />
+            <div className="flex items-center gap-2">
+              <span className="text-lg">👉</span>
+              <span className="font-medium">Swipe right to enroll</span>
+            </div>
+          </AlertDescription>
+        </Alert>
+      )}
+
+      {/* Plan Cards with improved layout */}
+      <div className="space-y-4 px-4">
+        {displayPlans.map((plan, index) => {
+          const rateInfo = formatRateDisplay(plan);
+          const isSelected = comparisonState.selectedPlans.includes(plan.id);
+          const isTopPlan = index < 3;
+          
+          return (
+            <Card
+              key={plan.id}
+              data-plan-id={plan.id}
+              variant={isSelected ? "popular" : "plan-card"}
+              className={`relative transition-all duration-300 ${
+                swipeState.draggedPlan === plan.id && swipeState.isDragging ? 'scale-95' : ''
+              } ${isSelected ? 'ring-2 ring-texas-navy/20' : ''}`}
+            >
+              {/* Position and Savings Badges */}
+              {isTopPlan && (
+                <Badge variant="featured" className="absolute -top-2 -right-2 z-10 shadow-lg">
+                  <span className="flex items-center gap-1">
+                    <span>🏆</span>
+                    <span className="font-bold">#{index + 1}</span>
+                  </span>
+                </Badge>
+              )}
+
+              {rateInfo.isGoodDeal && (
+                <Badge variant="success" className="absolute -top-2 left-4 z-10 shadow-md">
+                  <span className="flex items-center gap-1">
+                    <span>💰</span>
+                    <span className="font-semibold">Save ${Math.round(rateInfo.savings)}/mo</span>
+                  </span>
+                </Badge>
+              )}
+
+              <CardHeader className="pb-4">
+                <div className="flex items-start gap-4">
+                  {plan.provider.logo && (
+                    <div className="flex-shrink-0">
+                      <img
+                        src={plan.provider.logo}
+                        alt={`${plan.provider.name} logo`}
+                        className="object-contain max-w-[60px] max-h-[30px]"
+                        loading="lazy"
+                        width="60"
+                        height="30"
+                      />
+                    </div>
+                  )}
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-lg font-bold text-gray-900 mb-1 line-clamp-2">{plan.name}</h3>
+                    <p className="text-sm text-gray-600 font-medium">{plan.provider.name}</p>
+                    {showTrustSignals && plan.provider.rating > 0 && (
+                      <div className="flex items-center gap-2 mt-2">
+                        <div className="flex text-yellow-400 text-sm">
+                          {Array.from({length: 5}, (_, i) => (
+                            <span key={i} className={i < Math.floor(plan.provider.rating) ? 'text-yellow-400' : 'text-gray-300'}>
+                              ★
+                            </span>
+                          ))}
+                        </div>
+                        <Badge variant="outline" className="text-xs">
+                          {plan.provider.rating.toFixed(1)} ({plan.provider.reviewCount})
+                        </Badge>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </CardHeader>
+
+              <CardContent className="space-y-4">
+                {/* Rate Display */}
+                <div className="text-center space-y-2">
+                  <div className="flex items-baseline justify-center gap-2">
+                    <span className="text-3xl font-bold text-texas-navy">{rateInfo.rate}</span>
+                    <span className="text-base text-gray-600">per kWh</span>
+                  </div>
+                  <div className="text-sm text-gray-600">
+                    ${(plan.pricing.rate1000kWh * 1000).toFixed(0)}/month for 1000 kWh
+                  </div>
+                </div>
+
+                <Separator />
+
+                {/* Feature Chips */}
+                <div className="flex flex-wrap gap-2 justify-center">
+                  <Badge variant="plan-type" className="text-xs">
+                    <span className="mr-1">📅</span>
+                    {plan.contract.length} months
+                  </Badge>
+                  
+                  <Badge variant="plan-type" className="text-xs">
+                    <span className="mr-1">📈</span>
+                    {plan.contract.type}
+                  </Badge>
+                  
+                  {plan.features.greenEnergy > 0 && (
+                    <Badge variant="green-energy" className="text-xs">
+                      <span className="mr-1">🌱</span>
+                      {plan.features.greenEnergy}% Green
+                    </Badge>
+                  )}
+                  
+                  {!plan.features.deposit.required && (
+                    <Badge variant="success" className="text-xs">
+                      <span className="mr-1">💰</span>
+                      No Deposit
+                    </Badge>
+                  )}
+                </div>
+
+                {/* Trust Signals */}
+                {showTrustSignals && (
+                  <div className="flex flex-wrap gap-2 justify-center text-xs">
+                    {plan.contract.earlyTerminationFee === 0 && (
+                      <div className="flex items-center gap-1 text-texas-gold-600">
+                        <span>✅</span>
+                        <span>No Early Fee</span>
+                      </div>
+                    )}
+                    {plan.features.billCredit > 0 && (
+                      <div className="flex items-center gap-1 text-blue-600">
+                        <span>💸</span>
+                        <span>${plan.features.billCredit} Credit</span>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </CardContent>
+
+              <CardFooter className="flex-col space-y-3">
+                {/* Action Buttons */}
+                <div className="flex gap-3 w-full">
+                  <Button
+                    variant={isSelected ? "texas-outline" : "outline"}
+                    size="default"
+                    className={`flex-1 ${isSelected ? 'bg-blue-50' : ''}`}
+                    onClick={() => handleComparePlan(plan)}
+                    disabled={!isSelected && comparisonState.selectedPlans.length >= maxComparisons}
+                  >
+                    <span className="mr-2">📊</span>
+                    {isSelected ? 'Remove' : 'Compare'}
+                  </Button>
+
+                  <Button
+                    variant="texas-primary"
+                    size="default"
+                    className="flex-2"
+                    onClick={() => handleEnrollPlan(plan)}
+                  >
+                    <span className="mr-2">⚡</span>
+                    Enroll Now
+                  </Button>
+                </div>
+
+                {/* Enrollment info */}
+                <div className="flex items-center justify-between w-full text-xs">
+                  <Badge variant="outline" className="text-xs">
+                    {plan.availability.enrollmentType === 'online' ? 'Online enrollment' : 
+                     plan.availability.enrollmentType === 'phone' ? 'Call to enroll' : 
+                     'Online & phone'}
+                  </Badge>
+                  <Badge variant="success" className="text-xs">
+                    ✓ TX Approved
+                  </Badge>
+                </div>
+              </CardFooter>
+
+              {/* Swipe Indicators */}
+              {enableSwipeActions && swipeState.draggedPlan === plan.id && swipeState.isDragging && (
+                <div className="absolute inset-0 flex items-center justify-between px-8 bg-black bg-opacity-5 rounded-lg">
+                  <div className={`p-4 rounded-full transition-all duration-200 ${
+                    swipeState.swipeDirection === 'left' ? 'bg-blue-500 text-white scale-110' : 'bg-gray-200 text-gray-600'
+                  }`}>
+                    <span className="text-xl">📊</span>
+                  </div>
+                  <div className={`p-4 rounded-full transition-all duration-200 ${
+                    swipeState.swipeDirection === 'right' ? 'bg-texas-gold-500 text-white scale-110' : 'bg-gray-200 text-gray-600'
+                  }`}>
+                    <span className="text-xl">⚡</span>
+                  </div>
+                </div>
+              )}
+            </Card>
+          );
+        })}
+      </div>
+
+      {/* Load More Section */}
+      {visiblePlans < plans.length && (
+        <div id="load-more-trigger" className="text-center py-8">
+          {isLoading ? (
+            <div className="flex flex-col items-center gap-3">
+              <Progress value={33} className="w-32" />
+              <span className="text-sm text-gray-600">Loading more plans...</span>
+            </div>
+          ) : (
+            <Button 
+              variant="outline"
+              size="lg"
+              onClick={loadMorePlans}
+              className="min-w-[200px]"
+            >
+              Load More Plans ({plans.length - visiblePlans} remaining)
+            </Button>
+          )}
+        </div>
+      )}
+
+      {/* Floating Comparison Bar */}
+      {comparisonState.selectedPlans.length > 0 && (
+        <div className="fixed bottom-4 left-4 right-4 z-20">
+          <Card className="shadow-lg border-texas-navy bg-white">
+            <CardContent className="p-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <Badge variant="texas-primary" className="px-3 py-1">
+                    {comparisonState.selectedPlans.length} Selected
+                  </Badge>
+                  <span className="text-sm text-gray-600">
+                    Ready to compare plans
+                  </span>
+                </div>
+                <Button
+                  variant="texas-primary"
+                  size="sm"
+                  onClick={() => setComparisonState(prev => ({ ...prev, showComparison: true }))}
+                >
+                  <span className="mr-2">📊</span>
+                  Compare All
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
+
+      {/* No Results Message */}
+      {plans.length === 0 && (
+        <div className="text-center py-12">
+          <div className="text-6xl mb-4">🔍</div>
+          <h3 className="text-xl font-semibold text-gray-900 mb-2">No plans found</h3>
+          <p className="text-gray-600">Try adjusting your filters or search criteria</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default MobilePlanComparisonImproved;

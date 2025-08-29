@@ -229,12 +229,12 @@ export function ElectricityPlansPage({}: ElectricityPlansPageProps) {
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-4xl mx-auto">
               Master guide to electricity plan types, selection strategy, and decision-making. 
-              Compare 300+ plans across 5 categories with expert analysis and selection tools.
+              Compare Texas electricity plans across 5 categories with expert analysis and selection tools.
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-8">
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-                <div className="text-3xl font-bold">300+</div>
+                <div className="text-3xl font-bold">180+</div>
                 <div className="text-blue-200 text-sm">Total Plans</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
@@ -487,7 +487,7 @@ export function ElectricityPlansPage({}: ElectricityPlansPageProps) {
                   <h4 className="font-medium text-gray-900 mb-3">Plan Specialties:</h4>
                   <div className="flex flex-wrap gap-2">
                     {hub.specialties.map((specialty) => (
-                      <span key={specialty} className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
+                      <span key={specialty} className="px-2 py-1 bg-texas-navy/10 text-texas-navy text-xs rounded-full">
                         {specialty}
                       </span>
                     ))}

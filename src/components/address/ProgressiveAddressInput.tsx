@@ -503,7 +503,7 @@ const ProgressiveAddressInput: React.FC<ProgressiveAddressInputProps> = ({
                     <h5 className="font-medium text-gray-900">
                       {option.tdsp.name}
                       {option.recommended && (
-                        <span className="ml-2 bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">
+                        <span className="ml-2 bg-texas-navy/10 text-texas-navy text-xs px-2 py-1 rounded-full">
                           Recommended
                         </span>
                       )}

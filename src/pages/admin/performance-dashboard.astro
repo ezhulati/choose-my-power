@@ -325,9 +325,9 @@ const pageDescription = `Real-time performance monitoring for ${perfStats.tierSt
             </div>
             <div class="text-sm text-gray-600 mb-2">LCP (P50)</div>
             <div class={`px-3 py-1 rounded-full text-xs font-semibold ${
-              perfStats.p50LoadTime <= 2500 ? 'bg-green-100 text-green-800' :
-              perfStats.p50LoadTime <= 4000 ? 'bg-yellow-100 text-yellow-800' :
-              'bg-red-100 text-red-800'
+              perfStats.p50LoadTime <= 2500 ? 'bg-texas-gold-100 text-texas-navy' :
+              perfStats.p50LoadTime <= 4000 ? 'bg-texas-gold-100 text-texas-navy' :
+              'bg-texas-red-100 text-texas-navy'
             }`}>
               {perfStats.p50LoadTime <= 2500 ? 'Good' :
                perfStats.p50LoadTime <= 4000 ? 'Needs Improvement' : 'Poor'}
@@ -340,9 +340,9 @@ const pageDescription = `Real-time performance monitoring for ${perfStats.tierSt
             </div>
             <div class="text-sm text-gray-600 mb-2">LCP (P95)</div>
             <div class={`px-3 py-1 rounded-full text-xs font-semibold ${
-              perfStats.p95LoadTime <= 2500 ? 'bg-green-100 text-green-800' :
-              perfStats.p95LoadTime <= 4000 ? 'bg-yellow-100 text-yellow-800' :
-              'bg-red-100 text-red-800'
+              perfStats.p95LoadTime <= 2500 ? 'bg-texas-gold-100 text-texas-navy' :
+              perfStats.p95LoadTime <= 4000 ? 'bg-texas-gold-100 text-texas-navy' :
+              'bg-texas-red-100 text-texas-navy'
             }`}>
               {perfStats.p95LoadTime <= 2500 ? 'Good' :
                perfStats.p95LoadTime <= 4000 ? 'Needs Improvement' : 'Poor'}
@@ -355,9 +355,9 @@ const pageDescription = `Real-time performance monitoring for ${perfStats.tierSt
             </div>
             <div class="text-sm text-gray-600 mb-2">LCP (P99)</div>
             <div class={`px-3 py-1 rounded-full text-xs font-semibold ${
-              perfStats.p99LoadTime <= 2500 ? 'bg-green-100 text-green-800' :
-              perfStats.p99LoadTime <= 4000 ? 'bg-yellow-100 text-yellow-800' :
-              'bg-red-100 text-red-800'
+              perfStats.p99LoadTime <= 2500 ? 'bg-texas-gold-100 text-texas-navy' :
+              perfStats.p99LoadTime <= 4000 ? 'bg-texas-gold-100 text-texas-navy' :
+              'bg-texas-red-100 text-texas-navy'
             }`}>
               {perfStats.p99LoadTime <= 2500 ? 'Good' :
                perfStats.p99LoadTime <= 4000 ? 'Needs Improvement' : 'Poor'}
@@ -404,7 +404,7 @@ const pageDescription = `Real-time performance monitoring for ${perfStats.tierSt
                 <div class="flex items-center space-x-3">
                   <span class="text-sm text-gray-600">{health.responseTime}ms</span>
                   <span class={`px-2 py-1 rounded-full text-xs font-semibold ${
-                    health.isHealthy ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                    health.isHealthy ? 'bg-texas-gold-100 text-texas-navy' : 'bg-texas-red-100 text-texas-navy'
                   }`}>
                     {health.isHealthy ? 'Healthy' : `Unhealthy (${health.consecutiveFailures} failures)`}
                   </span>

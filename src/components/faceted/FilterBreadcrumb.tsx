@@ -6,6 +6,8 @@
 
 import React from 'react';
 import type { FilterState } from '../../types/facets';
+import { Badge } from '../ui/badge';
+import { Button } from '../ui/button';
 
 interface FilterBreadcrumbProps {
   filters: FilterState;
@@ -165,15 +167,16 @@ const FilterBreadcrumb: React.FC<FilterBreadcrumbProps> = ({
               )}
               
               {item.removable ? (
-                <button
-                  className="breadcrumb-filter"
+                <Badge
+                  variant="texas-primary"
+                  className="cursor-pointer hover:opacity-80 pr-1"
                   onClick={() => onRemoveFilter(item.type, item.value, false)}
                   aria-label={`Remove ${item.label} filter`}
                   title={`Remove ${item.label} filter`}
                 >
-                  <span className="filter-label">{item.label}</span>
-                  <span className="remove-icon" aria-hidden="true">×</span>
-                </button>
+                  <span className="mr-2">{item.label}</span>
+                  <span className="hover:bg-white/20 rounded-full px-1" aria-hidden="true">×</span>
+                </Badge>
               ) : (
                 <a
                   href={item.url}
@@ -189,14 +192,15 @@ const FilterBreadcrumb: React.FC<FilterBreadcrumbProps> = ({
 
         {/* Clear All Button */}
         {hasActiveFilters && (
-          <button
-            className="clear-all-filters"
+          <Button
+            variant="destructive"
+            size="sm"
             onClick={onClearAll}
             aria-label="Clear all filters"
             title="Clear all filters"
           >
-            Clear All
-          </button>
+            Clear All Filters
+          </Button>
         )}
       </div>
 

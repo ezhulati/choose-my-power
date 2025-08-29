@@ -1,6 +1,8 @@
 ---
 // FooterWrapper.astro - Best-in-Class 2025 Footer for All Devices
+import { getCredibleMarketingText, DEFAULT_COUNTS } from '../lib/utils/dynamic-counts';
 const currentYear = new Date().getFullYear();
+const marketingText = getCredibleMarketingText(DEFAULT_COUNTS.providers, DEFAULT_COUNTS.plans);
 ---
 
 <footer class="footer-modern" role="contentinfo">
@@ -19,7 +21,7 @@ const currentYear = new Date().getFullYear();
         </div>
         
         <p class="brand-description">
-          Expert analysis of 50+ electricity providers and 300+ plans. Find the perfect match for your needs and save hundreds per year.
+          {marketingText.footerText}
         </p>
         
         <!-- Contact Info -->
@@ -164,7 +166,7 @@ const currentYear = new Date().getFullYear();
             <title>Provider Network</title>
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
           </svg>
-          <span class="trust-badge">50+ Providers</span>
+          <span class="trust-badge">{DEFAULT_COUNTS.providerText.replace('trusted ', '').replace('licensed ', '')}</span>
         </div>
       </div>
     </div>

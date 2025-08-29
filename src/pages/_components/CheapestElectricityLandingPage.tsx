@@ -257,7 +257,7 @@ export function CheapestElectricityLandingPage({ city, state }: CheapestElectric
                     <div className="text-sm text-gray-500 mb-3">per kWh</div>
                     
                     {index === 0 && (
-                      <div className="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded-full mb-3">
+                      <div className="bg-texas-gold-100 text-texas-navy text-xs font-medium px-2 py-1 rounded-full mb-3">
                         CHEAPEST
                       </div>
                     )}

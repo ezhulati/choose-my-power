@@ -1,0 +1,513 @@
+---
+/**
+ * Improved PlanCard Component with shadcn/ui components
+ * Server-rendered electricity plan card with consistent design system
+ * Uses shadcn/ui components for better consistency and professional appearance
+ */
+
+import type { Plan } from '../../types/facets';
+import { Badge } from '../ui/badge';
+import { Button } from '../ui/button';
+import { Card, CardHeader, CardContent, CardFooter } from '../ui/card';
+import { Separator } from '../ui/separator';
+import { Alert, AlertDescription } from '../ui/alert';
+
+interface Props {
+  plan: Plan;
+  city: string;
+  position: number;
+  showComparison?: boolean;
+}
+
+const { plan, city, position, showComparison = false } = Astro.props;
+
+// Format pricing for display
+const formatRate = (rate: number) => (rate * 100).toFixed(1);
+const formatCurrency = (amount: number) => `$${amount.toFixed(0)}`;
+
+// Calculate estimated monthly bills (converting from rate to actual bill)
+const monthlyBill500 = plan.pricing.rate500kWh * 500;
+const monthlyBill1000 = plan.pricing.rate1000kWh * 1000;
+const monthlyBill2000 = plan.pricing.rate2000kWh * 2000;
+
+// Generate enrollment tracking URL
+const enrollmentUrl = `/enroll/${plan.id}?city=${city}&position=${position}`;
+
+// Trust signals
+const hasRating = plan.provider.rating > 0;
+const hasGuarantee = plan.contract.satisfactionGuarantee;
+const isGreen = plan.features.greenEnergy > 0;
+const noDeposit = !plan.features.deposit.required;
+const isGoodDeal = plan.pricing.rate1000kWh < 0.12; // Below average rate
+
+// Contract highlights
+const contractHighlights = [];
+if (plan.contract.length <= 12) contractHighlights.push(`${plan.contract.length}-month`);
+if (plan.contract.type === 'fixed') contractHighlights.push('Fixed rate');
+if (isGreen) contractHighlights.push(`${plan.features.greenEnergy}% green`);
+if (noDeposit) contractHighlights.push('No deposit');
+if (hasGuarantee) contractHighlights.push('Satisfaction guarantee');
+---
+
+<Card variant={position <= 3 ? "popular" : "plan-card"} className="plan-card-improved mb-6 relative overflow-visible hover:shadow-lg transition-all duration-300 hover:-translate-y-1" data-plan-id={plan.id}>
+  
+  <!-- Position Badge - Outside card for better visibility -->
+  {position <= 3 && (
+    <Badge variant="featured" className="absolute -top-3 -right-2 z-10 shadow-lg">
+      <span className="flex items-center gap-1">
+        <span className="text-base">🏆</span>
+        <span className="font-bold">#{position}</span>
+      </span>
+    </Badge>
+  )}
+
+  <!-- Savings Badge -->
+  {isGoodDeal && (
+    <Badge variant="success" className="absolute -top-3 left-4 z-10 shadow-md">
+      <span className="flex items-center gap-1">
+        <span className="text-sm">💰</span>
+        <span className="font-semibold">Great Value</span>
+      </span>
+    </Badge>
+  )}
+
+  <CardHeader className="pb-4">
+    <!-- Provider Header -->
+    <div className="flex items-start justify-between">
+      <div className="flex items-center gap-4">
+        {plan.provider.logo && (
+          <div className="flex-shrink-0">
+            <img 
+              src={plan.provider.logo} 
+              alt={`${plan.provider.name} logo`}
+              className="object-contain max-w-[80px] max-h-[40px]"
+              width="80"
+              height="40"
+              loading="eager"
+            />
+          </div>
+        )}
+        <div className="min-w-0 flex-1">
+          <h3 className="text-xl font-bold text-gray-900 mb-1 line-clamp-2">{plan.name}</h3>
+          <p className="text-sm text-gray-600 mb-2 font-medium">{plan.provider.name}</p>
+          {hasRating && (
+            <div className="flex items-center gap-2 mb-2">
+              <div className="flex text-yellow-400 text-sm" aria-label={`${plan.provider.rating} out of 5 stars`}>
+                {Array.from({length: 5}, (_, i) => (
+                  <span className={i < Math.floor(plan.provider.rating) ? 'text-yellow-400' : 'text-gray-300'}>★</span>
+                ))}
+              </div>
+              <span className="text-xs text-gray-600 font-medium">
+                {plan.provider.rating.toFixed(1)} ({plan.provider.reviewCount} reviews)
+              </span>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+    
+    <!-- Trust Signals with improved spacing -->
+    <div className="flex flex-wrap gap-2 mt-4">
+      {contractHighlights.slice(0, 3).map(highlight => (
+        <Badge variant="plan-type" className="text-xs">
+          {highlight}
+        </Badge>
+      ))}
+    </div>
+  </CardHeader>
+
+  <CardContent className="space-y-6">
+    
+    <!-- Pricing Section with better visual hierarchy -->
+    <div className="text-center space-y-4">
+      <div className="space-y-2">
+        <div className="flex items-baseline justify-center gap-2">
+          <span className="text-4xl font-bold text-texas-navy">{formatRate(plan.pricing.rate1000kWh)}¢</span>
+          <span className="text-lg text-gray-600 font-medium">per kWh</span>
+        </div>
+        <Badge variant="outline" className="text-sm capitalize font-medium">
+          {plan.contract.type} rate plan
+        </Badge>
+      </div>
+      
+      {/* Additional value indicators */}
+      <div className="flex justify-center gap-2">
+        {isGoodDeal && (
+          <Badge variant="success" className="text-xs">
+            Below Average Rate
+          </Badge>
+        )}
+        {position <= 5 && (
+          <Badge variant="warning" className="text-xs">
+            Top Recommendation
+          </Badge>
+        )}
+      </div>
+    </div>
+
+    <Separator className="my-6" />
+
+    <!-- Usage-based pricing with improved layout -->
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <h4 className="text-sm font-semibold text-gray-900">Monthly Usage Estimates</h4>
+        <Badge variant="info" className="text-xs">
+          Most Popular: 1000 kWh
+        </Badge>
+      </div>
+      
+      <div className="grid grid-cols-3 gap-3">
+        <div className="text-center p-4 rounded-lg border border-gray-100 bg-gray-50/50">
+          <div className="text-xs text-gray-600 mb-1">500 kWh</div>
+          <div className="font-bold text-lg text-texas-navy">{formatCurrency(monthlyBill500)}</div>
+          <div className="text-xs text-gray-500">per month</div>
+        </div>
+        <div className="text-center p-4 rounded-lg border-2 border-blue-200 bg-blue-50/50 relative">
+          <Badge variant="info" className="absolute -top-2 left-1/2 transform -translate-x-1/2 text-xs px-2 py-0.5">
+            Popular
+          </Badge>
+          <div className="text-xs text-gray-600 mb-1">1000 kWh</div>
+          <div className="font-bold text-lg text-texas-navy">{formatCurrency(monthlyBill1000)}</div>
+          <div className="text-xs text-gray-500">per month</div>
+        </div>
+        <div className="text-center p-4 rounded-lg border border-gray-100 bg-gray-50/50">
+          <div className="text-xs text-gray-600 mb-1">2000 kWh</div>
+          <div className="font-bold text-lg text-texas-navy">{formatCurrency(monthlyBill2000)}</div>
+          <div className="text-xs text-gray-500">per month</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Price transparency with Alert component -->
+    <Alert className="border-green-200 bg-green-50">
+      <AlertDescription className="text-sm text-green-800 font-medium flex items-center gap-2">
+        <span className="text-green-600">ℹ️</span>
+        Prices include all electricity charges and delivery fees - no hidden costs
+      </AlertDescription>
+    </Alert>
+
+    <Separator className="my-6" />
+
+    <!-- Contract Details with improved grid -->
+    <div className="space-y-4">
+      <h4 className="text-sm font-semibold text-gray-900">Contract Details</h4>
+      <div className="grid grid-cols-2 gap-4 text-sm">
+        <div className="space-y-1">
+          <span className="text-gray-600">Contract Length:</span>
+          <div className="font-semibold text-gray-900">{plan.contract.length} months</div>
+        </div>
+        <div className="space-y-1">
+          <span className="text-gray-600">Cancellation Fee:</span>
+          <div className="font-semibold text-gray-900">
+            {plan.contract.earlyTerminationFee > 0 
+              ? formatCurrency(plan.contract.earlyTerminationFee)
+              : 'None'
+            }
+          </div>
+        </div>
+        {plan.features.deposit.required && (
+          <div className="space-y-1">
+            <span className="text-gray-600">Deposit:</span>
+            <div className="font-semibold text-gray-900">{formatCurrency(plan.features.deposit.amount)}</div>
+          </div>
+        )}
+        {plan.features.billCredit > 0 && (
+          <div className="space-y-1">
+            <span className="text-gray-600">Bill Credit:</span>
+            <div className="font-semibold text-green-700">{formatCurrency(plan.features.billCredit)}</div>
+          </div>
+        )}
+      </div>
+    </div>
+
+    <!-- Features & Benefits with better spacing -->
+    {(isGreen || plan.features.freeTime || hasGuarantee) && (
+      <>
+        <Separator className="my-6" />
+        <div className="space-y-4">
+          <h4 className="text-sm font-semibold text-gray-900">Plan Features</h4>
+          <div className="space-y-3">
+            {isGreen && (
+              <div className="flex items-center gap-3 text-sm">
+                <Badge variant="green-energy" className="flex-shrink-0">
+                  🌱 Green
+                </Badge>
+                <span className="text-gray-700">{plan.features.greenEnergy}% renewable energy</span>
+              </div>
+            )}
+            {plan.features.freeTime && (
+              <div className="flex items-center gap-3 text-sm">
+                <Badge variant="info" className="flex-shrink-0">
+                  ⏰ Free Time
+                </Badge>
+                <span className="text-gray-700">
+                  Free electricity {plan.features.freeTime.hours} {plan.features.freeTime.days.join(', ')}
+                </span>
+              </div>
+            )}
+            {hasGuarantee && (
+              <div className="flex items-center gap-3 text-sm">
+                <Badge variant="success" className="flex-shrink-0">
+                  ✓ Guarantee
+                </Badge>
+                <span className="text-gray-700">30-day satisfaction guarantee</span>
+              </div>
+            )}
+            {noDeposit && (
+              <div className="flex items-center gap-3 text-sm">
+                <Badge variant="plan-type" className="flex-shrink-0">
+                  💰 No Deposit
+                </Badge>
+                <span className="text-gray-700">No deposit required</span>
+              </div>
+            )}
+          </div>
+        </div>
+      </>
+    )}
+  </CardContent>
+
+  <CardFooter className="flex-col space-y-4 pt-6">
+    
+    <!-- Action Buttons with improved design -->
+    <div className="flex gap-3 w-full">
+      <Button
+        variant="texas-primary"
+        size="lg"
+        className="flex-1 font-semibold shadow-md hover:shadow-lg enroll-btn"
+        data-plan-id={plan.id}
+        data-provider={plan.provider.name}
+        data-rate={plan.pricing.rate1000kWh}
+        data-position={position}
+        asChild
+      >
+        <a href={enrollmentUrl}>
+          <span className="mr-2">⚡</span>
+          Enroll Now
+        </a>
+      </Button>
+      
+      <Button
+        variant="texas-outline"
+        size="lg"
+        className="px-6 compare-btn"
+        data-plan-id={plan.id}
+      >
+        <span className="mr-2">📊</span>
+        {showComparison ? 'Remove' : 'Compare'}
+      </Button>
+    </div>
+    
+    <!-- Enrollment info with better styling -->
+    <div className="flex items-center justify-between w-full text-xs text-gray-600 pt-2">
+      <div className="flex items-center gap-2">
+        <Badge variant="outline" className="text-xs px-2 py-0.5">
+          {plan.availability.enrollmentType === 'online' ? 'Online enrollment' : 
+           plan.availability.enrollmentType === 'phone' ? 'Call to enroll' : 
+           'Online & phone enrollment'}
+        </Badge>
+      </div>
+      <Badge variant="success" className="text-xs px-2 py-0.5">
+        ✓ Texas Approved
+      </Badge>
+    </div>
+
+    <Separator className="my-4" />
+
+    <!-- Fine Print with better typography -->
+    <div className="text-xs text-gray-500 leading-relaxed text-center space-y-1">
+      <p>
+        Rates include energy charges and TDU delivery fees for average monthly usage in {city}.
+      </p>
+      <p>
+        <a href="/terms" className="text-texas-blue hover:text-texas-navy underline font-medium">
+          View terms and conditions
+        </a>
+      </p>
+    </div>
+  </CardFooter>
+</Card>
+
+<!-- Enhanced analytics tracking script -->
+<script>
+  // Track plan card interactions and handle comparison functionality
+  document.addEventListener('click', (event) => {
+    const target = event.target as HTMLElement;
+    
+    // Track enrollment clicks
+    if (target.classList.contains('enroll-btn') || target.closest('.enroll-btn')) {
+      const button = target.closest('[data-plan-id]') as HTMLElement;
+      if (button) {
+        const planId = button.dataset.planId;
+        const provider = button.dataset.provider;
+        const rate = button.dataset.rate;
+        const position = button.dataset.position;
+        
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'plan_click', {
+            plan_id: planId,
+            provider: provider,
+            rate: rate,
+            position: parseInt(position || '0'),
+            page_url: window.location.pathname,
+          });
+        }
+      }
+    }
+    
+    // Handle comparison clicks
+    if (target.classList.contains('compare-btn') || target.closest('.compare-btn')) {
+      const button = target.closest('.compare-btn') as HTMLButtonElement;
+      if (button) {
+        const planId = button.dataset.planId;
+        
+        // Find the plan data from the card
+        const planCard = button.closest('.plan-card-improved') as HTMLElement;
+        const planData = planCard ? extractPlanDataFromCard(planCard) : null;
+        
+        if (planData) {
+          const isCurrentlyInComparison = button.textContent?.includes('Remove');
+          const action = isCurrentlyInComparison ? 'remove' : 'add';
+          
+          // Dispatch comparison event
+          window.dispatchEvent(new CustomEvent('compare-toggle', {
+            detail: { plan: planData, action }
+          }));
+          
+          // Update button text
+          const buttonText = button.querySelector('span');
+          if (buttonText) {
+            buttonText.innerHTML = isCurrentlyInComparison 
+              ? '<span class="mr-2">📊</span>Compare'
+              : '<span class="mr-2">📊</span>Remove';
+          }
+        }
+        
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'compare_click', {
+            plan_id: planId,
+            page_url: window.location.pathname,
+          });
+        }
+      }
+    }
+  });
+
+  // Listen for comparison updates from the comparison bar
+  window.addEventListener('comparison-updated', (event: CustomEvent) => {
+    const { planId, inComparison } = event.detail;
+    const button = document.querySelector(`[data-plan-id="${planId}"].compare-btn`) as HTMLButtonElement;
+    
+    if (button) {
+      const buttonText = button.querySelector('span');
+      if (buttonText) {
+        buttonText.innerHTML = inComparison 
+          ? '<span class="mr-2">📊</span>Remove'
+          : '<span class="mr-2">📊</span>Compare';
+      }
+    }
+  });
+
+  // Helper function to extract plan data from card DOM
+  function extractPlanDataFromCard(planCard: HTMLElement) {
+    const planId = planCard.dataset.planId;
+    if (!planId) return null;
+
+    // Extract basic info from data attributes and DOM content
+    const providerName = planCard.querySelector('.provider-name-mobile')?.textContent?.trim() || '';
+    const planName = planCard.querySelector('.plan-name-mobile')?.textContent?.trim() || '';
+    const rateText = planCard.querySelector('.rate-value')?.textContent?.trim() || '0¢';
+    const rate = parseFloat(rateText.replace('¢', '')) / 100;
+
+    return {
+      id: planId,
+      name: planName,
+      provider: {
+        name: providerName,
+        logo: '',
+        rating: 0,
+        reviewCount: 0
+      },
+      pricing: {
+        rate500kWh: rate * 0.95, // Approximate
+        rate1000kWh: rate,
+        rate2000kWh: rate * 0.98, // Approximate
+        ratePerKwh: rate
+      },
+      contract: {
+        length: 12, // Default
+        type: 'fixed' as const,
+        earlyTerminationFee: 0,
+        autoRenewal: false,
+        satisfactionGuarantee: false
+      },
+      features: {
+        greenEnergy: 0,
+        billCredit: 0,
+        deposit: {
+          required: false,
+          amount: 0
+        }
+      },
+      availability: {
+        enrollmentType: 'both' as const,
+        serviceAreas: []
+      }
+    };
+  }
+</script>
+
+<style>
+  /* Additional styles for improved component */
+  .plan-card-improved {
+    /* Ensure badges have proper z-index and don't interfere with content */
+    min-height: 400px;
+    padding-top: 1rem; /* Space for top badges */
+  }
+  
+  /* Smooth hover animations */
+  .plan-card-improved:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 39, 104, 0.12), 0 4px 16px rgba(0, 39, 104, 0.08);
+  }
+
+  /* Badge positioning improvements */
+  .plan-card-improved .absolute {
+    z-index: 10;
+  }
+
+  /* Typography improvements */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 640px) {
+    .plan-card-improved {
+      margin: 0.5rem;
+      min-height: auto;
+    }
+
+    .grid.grid-cols-3 {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+
+    .grid.grid-cols-2 {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+
+    .flex.gap-3 {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .text-4xl {
+      font-size: 2.5rem;
+    }
+  }
+</style>

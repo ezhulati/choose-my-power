@@ -261,14 +261,14 @@ export function CityElectricityPlansPage({ state, city }: CityElectricityPlansPa
                         
                         <div className="ml-4 flex items-center space-x-2">
                           <span className={`px-2 py-1 text-xs rounded-full font-medium ${
-                            plan.type === 'fixed' ? 'bg-blue-100 text-blue-800' :
+                            plan.type === 'fixed' ? 'bg-texas-navy/10 text-texas-navy' :
                             plan.type === 'variable' ? 'bg-orange-100 text-orange-800' :
-                            'bg-purple-100 text-purple-800'
+                            'bg-texas-cream-100 text-texas-navy'
                           }`}>
                             {plan.type}
                           </span>
                           {plan.renewablePercent === 100 && (
-                            <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full font-medium flex items-center">
+                            <span className="px-2 py-1 bg-texas-gold-100 text-texas-navy text-xs rounded-full font-medium flex items-center">
                               <Leaf className="h-3 w-3 mr-1" />
                               100% Green
                             </span>

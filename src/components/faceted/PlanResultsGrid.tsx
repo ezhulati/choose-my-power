@@ -142,7 +142,7 @@ const PlanResultsGrid: React.FC<PlanResultsGridProps> = ({
     return (
       <div className="no-results">
         <div className="no-results-content">
-          <div className="no-results-icon">🔍</div>
+          <div className="no-results-icon">No Results</div>
           <h3 className="no-results-title">No Plans Found</h3>
           <p className="no-results-message">
             Try adjusting your filters to see more electricity plans for {citySlug.replace('-tx', '').replace('-', ' ')}.
@@ -209,22 +209,22 @@ const PlanResultsGrid: React.FC<PlanResultsGridProps> = ({
                 <div className="plan-badges">
                   {plan.greenEnergyBadge === 'full' && (
                     <span className="badge green-badge" title="100% Green Energy">
-                      🌱 100% Green
+                      100% Green
                     </span>
                   )}
                   {plan.greenEnergyBadge === 'partial' && (
                     <span className="badge partial-green-badge" title={`${plan.percent_green}% Green Energy`}>
-                      🌿 {plan.percent_green}% Green
+                      {plan.percent_green}% Green
                     </span>
                   )}
                   {plan.is_pre_pay && (
                     <span className="badge prepaid-badge" title="Prepaid Plan">
-                      💳 Prepaid
+                      Prepaid
                     </span>
                   )}
                   {!plan.deposit_required && (
                     <span className="badge no-deposit-badge" title="No Deposit Required">
-                      ✅ No Deposit
+                      No Deposit
                     </span>
                   )}
                 </div>
@@ -258,7 +258,7 @@ const PlanResultsGrid: React.FC<PlanResultsGridProps> = ({
               {plan.savings > 0 && (
                 <div className="savings-indicator">
                   <span className="savings-badge">
-                    💰 Save up to ${plan.savings.toFixed(0)}/year
+                    Save up to ${plan.savings.toFixed(0)}/year
                   </span>
                 </div>
               )}
@@ -294,16 +294,16 @@ const PlanResultsGrid: React.FC<PlanResultsGridProps> = ({
                       <h4>Plan Features</h4>
                       <ul className="feature-list">
                         {plan.bill_credit > 0 && (
-                          <li>💰 ${plan.bill_credit} monthly bill credit</li>
+                          <li>${plan.bill_credit} monthly bill credit</li>
                         )}
                         {plan.free_nights_weekends && (
-                          <li>🌙 Free nights and weekends</li>
+                          <li>Free nights and weekends</li>
                         )}
                         {plan.satisfaction_guarantee && (
-                          <li>✅ Satisfaction guarantee</li>
+                          <li>Satisfaction guarantee</li>
                         )}
                         {plan.requires_auto_pay && (
-                          <li>🏧 Auto pay required</li>
+                          <li>Auto pay required</li>
                         )}
                       </ul>
                     </div>
@@ -311,13 +311,13 @@ const PlanResultsGrid: React.FC<PlanResultsGridProps> = ({
                     <div className="detail-group">
                       <h4>Contract Details</h4>
                       <ul className="contract-list">
-                        <li>📅 {plan.term_months} month term</li>
-                        <li>🔄 {plan.rate_type} rate</li>
+                        <li>{plan.term_months} month term</li>
+                        <li>{plan.rate_type} rate</li>
                         {plan.early_termination_fee > 0 && (
-                          <li>⚠️ ${plan.early_termination_fee} early termination fee</li>
+                          <li>${plan.early_termination_fee} early termination fee</li>
                         )}
                         {plan.deposit_required && (
-                          <li>💵 ${plan.deposit_amount || 'Varies'} deposit required</li>
+                          <li>${plan.deposit_amount || 'Varies'} deposit required</li>
                         )}
                       </ul>
                     </div>
@@ -333,7 +333,7 @@ const PlanResultsGrid: React.FC<PlanResultsGridProps> = ({
                               rel="noopener noreferrer"
                               className="doc-link"
                             >
-                              📄 Electricity Facts Label
+                              Electricity Facts Label
                             </a>
                           )}
                           {plan.tos_link && (
@@ -343,7 +343,7 @@ const PlanResultsGrid: React.FC<PlanResultsGridProps> = ({
                               rel="noopener noreferrer"
                               className="doc-link"
                             >
-                              📋 Terms of Service
+                              Terms of Service
                             </a>
                           )}
                         </div>

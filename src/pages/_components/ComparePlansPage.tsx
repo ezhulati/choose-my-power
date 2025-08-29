@@ -503,7 +503,7 @@ export function ComparePlansPage({}: ComparePlansPageProps) {
                             {plan.type} rate
                           </Badge>
                           {plan.renewablePercent === 100 && (
-                            <Badge variant="secondary" className="bg-green-100 text-green-800">
+                            <Badge variant="secondary" className="bg-texas-gold-100 text-texas-navy">
                               <Icon icon="leaf" size={12} className="mr-1" />
                               100% Green
                             </Badge>
