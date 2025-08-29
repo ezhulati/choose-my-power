@@ -4,11 +4,19 @@
  */
 
 import type { APIContext, MiddlewareNext } from 'astro';
-import { webcrypto as crypto } from 'node:crypto';
 
 // Generate a cryptographically secure nonce for CSP
 function generateNonce(): string {
-  return Buffer.from(crypto.getRandomValues(new Uint8Array(16))).toString('base64');
+  // Use Web Crypto API which is available in both Node.js and Edge runtime
+  const array = new Uint8Array(16);
+  crypto.getRandomValues(array);
+  
+  // Convert to base64
+  let binary = '';
+  for (let i = 0; i < array.length; i++) {
+    binary += String.fromCharCode(array[i]);
+  }
+  return btoa(binary);
 }
 
 // Content Security Policy configuration
