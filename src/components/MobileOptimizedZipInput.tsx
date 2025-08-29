@@ -6,7 +6,6 @@
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { multiTDSPDetector, type TDSPResolutionResult } from '../lib/api/multi-tdsp-detector';
-import { mobilePerformanceOptimizer } from '../lib/mobile/performance-optimizer';
 
 interface LocationData {
   latitude: number;
@@ -298,8 +297,7 @@ export const MobileOptimizedZipInput: React.FC<MobileOptimizedZipInputProps> = (
           console.log(`⚠️ Multi-TDSP detection failed, using basic mobile resolution`);
           
           const basicResult: TDSPResolutionResult & { location?: LocationData } = {
-            method: 'zip_lookup_mobile',
-            zipCode,
+            method: 'zip_direct',
             city: zipResult.city,
             tdsp_duns: '', // Will be filled by consuming component
             tdsp_name: '', // Will be filled by consuming component
@@ -307,7 +305,8 @@ export const MobileOptimizedZipInput: React.FC<MobileOptimizedZipInputProps> = (
             addressRequired: false,
             requiresUserInput: false,
             apiParams: {
-              display_usage: displayUsage
+              display_usage: displayUsage,
+              tdsp_duns: ''
             },
             resolvedAddress: zipResult.cityDisplayName,
             location
@@ -471,10 +470,6 @@ export const MobileOptimizedZipInput: React.FC<MobileOptimizedZipInputProps> = (
         displayUsage
       );
 
-      const result = {
-        ...resolution,
-        location: state.locationData
-      };
 
       saveRecentZipCode(state.zipCode);
       setState(prev => ({
@@ -484,7 +479,7 @@ export const MobileOptimizedZipInput: React.FC<MobileOptimizedZipInputProps> = (
         tdspResult: resolution
       }));
 
-      onLocationResolved(result);
+      onLocationResolved(resolution);
 
     } catch (error) {
       console.error('Address resolution failed:', error);

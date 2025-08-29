@@ -4,7 +4,7 @@
  * and mobile-first layout patterns for electricity plan interfaces
  */
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import type { ReactNode } from 'react';
 
 interface Breakpoint {
@@ -76,7 +76,7 @@ const ResponsiveContainer: React.FC<ResponsiveContainerProps> = ({
   ];
 
   // Update screen size and breakpoint
-  const updateScreenInfo = () => {
+  const updateScreenInfo = useCallback(() => {
     const width = window.innerWidth;
     const height = window.innerHeight;
     
@@ -92,7 +92,7 @@ const ResponsiveContainer: React.FC<ResponsiveContainerProps> = ({
     })?.name || 'mobile';
     
     setCurrentBreakpoint(newBreakpoint);
-  };
+  }, [breakpoints]);
 
   // Detect touch support
   const detectTouchSupport = () => {

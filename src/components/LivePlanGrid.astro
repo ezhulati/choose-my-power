@@ -75,7 +75,7 @@ const mostPopularPlan = plans.length > 0 ? plans.find(plan =>
     </div>
 
     <div id="plans-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {displayedPlans.map((plan, index) => (
+      {displayedPlans.map((plan) => (
         <div class="plan-card bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300 overflow-hidden relative">
           <!-- Badges -->
           {bestValuePlan && plan.id === bestValuePlan.id && (
@@ -101,7 +101,7 @@ const mostPopularPlan = plans.length > 0 ? plans.find(plan =>
                 <div class="flex items-center gap-2">
                   <ProviderLogo 
                     provider={plan.provider.name}
-                    logo={plan.provider.logo}
+                    logo={(plan.provider as any)?.logo}
                     size="sm"
                   />
                   <p class="text-gray-600 text-sm">{plan.provider.name}</p>
@@ -133,7 +133,7 @@ const mostPopularPlan = plans.length > 0 ? plans.find(plan =>
             <div class="space-y-3 mb-6">
               <div class="flex justify-between">
                 <span class="text-gray-600">Monthly cost (1000 kWh):</span>
-                <span class="font-semibold">${plan.pricing.total1000kWh ? plan.pricing.total1000kWh.toFixed(0) : (plan.pricing.rate1000kWh * 10).toFixed(0)}</span>
+                <span class="font-semibold">${((plan.pricing as any)?.total1000kWh || plan.pricing.rate1000kWh * 10).toFixed(0)}</span>
               </div>
               
               {plan.contract.earlyTerminationFee && plan.contract.earlyTerminationFee > 0 && (
@@ -170,7 +170,7 @@ const mostPopularPlan = plans.length > 0 ? plans.find(plan =>
       ))}
       
       <!-- Hidden plans for Load More functionality -->
-      {plans.slice(maxPlans).map((plan, index) => (
+      {plans.slice(maxPlans).map((plan) => (
         <div class="plan-card hidden bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300 overflow-hidden relative" data-hidden-plan="true">
           <!-- Badges -->
           {bestValuePlan && plan.id === bestValuePlan.id && (
@@ -196,7 +196,7 @@ const mostPopularPlan = plans.length > 0 ? plans.find(plan =>
                 <div class="flex items-center gap-2">
                   <ProviderLogo 
                     provider={plan.provider.name}
-                    logo={plan.provider.logo}
+                    logo={(plan.provider as any)?.logo}
                     size="sm"
                   />
                   <p class="text-gray-600 text-sm">{plan.provider.name}</p>
@@ -228,7 +228,7 @@ const mostPopularPlan = plans.length > 0 ? plans.find(plan =>
             <div class="space-y-3 mb-6">
               <div class="flex justify-between">
                 <span class="text-gray-600">Monthly cost (1000 kWh):</span>
-                <span class="font-semibold">${plan.pricing.total1000kWh ? plan.pricing.total1000kWh.toFixed(0) : (plan.pricing.rate1000kWh * 10).toFixed(0)}</span>
+                <span class="font-semibold">${((plan.pricing as any)?.total1000kWh || plan.pricing.rate1000kWh * 10).toFixed(0)}</span>
               </div>
               
               {plan.contract.earlyTerminationFee && plan.contract.earlyTerminationFee > 0 && (

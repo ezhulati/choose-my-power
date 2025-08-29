@@ -162,48 +162,48 @@ describe('URL Parser', () => {
 
   describe('isHighValuePage', () => {
     it('should consider base city pages as high value', () => {
-      expect(isHighValuePage('/texas/dallas/electricity-plans')).toBe(true);
-      expect(isHighValuePage('/texas/houston/electricity-plans')).toBe(true);
+      expect(isHighValuePage('dallas-tx', [])).toBe(true);
+      expect(isHighValuePage('houston-tx', [])).toBe(true);
     });
 
     it('should consider high-value single filters as high value', () => {
-      expect(isHighValuePage('/texas/dallas/electricity-plans/12-month')).toBe(true);
-      expect(isHighValuePage('/texas/houston/electricity-plans/24-month')).toBe(true);
-      expect(isHighValuePage('/texas/austin/electricity-plans/fixed-rate')).toBe(true);
-      expect(isHighValuePage('/texas/fort-worth/electricity-plans/variable-rate')).toBe(true);
-      expect(isHighValuePage('/texas/dallas/electricity-plans/green-energy')).toBe(true);
-      expect(isHighValuePage('/texas/houston/electricity-plans/prepaid')).toBe(true);
-      expect(isHighValuePage('/texas/austin/electricity-plans/no-deposit')).toBe(true);
+      expect(isHighValuePage('dallas-tx', ['12-month'])).toBe(true);
+      expect(isHighValuePage('houston-tx', ['24-month'])).toBe(true);
+      expect(isHighValuePage('austin-tx', ['fixed-rate'])).toBe(true);
+      expect(isHighValuePage('fort-worth-tx', ['variable-rate'])).toBe(true);
+      expect(isHighValuePage('dallas-tx', ['green-energy'])).toBe(true);
+      expect(isHighValuePage('houston-tx', ['prepaid'])).toBe(true);
+      expect(isHighValuePage('austin-tx', ['no-deposit'])).toBe(true);
     });
 
     it('should not consider low-value single filters as high value', () => {
-      expect(isHighValuePage('/texas/dallas/electricity-plans/obscure-filter')).toBe(false);
-      expect(isHighValuePage('/texas/houston/electricity-plans/very-specific')).toBe(false);
+      expect(isHighValuePage('dallas-tx', ['obscure-filter'])).toBe(false);
+      expect(isHighValuePage('houston-tx', ['very-specific'])).toBe(false);
     });
 
     it('should consider high-value two-filter combinations as high value', () => {
-      expect(isHighValuePage('/texas/dallas/electricity-plans/12-month+fixed-rate')).toBe(true);
-      expect(isHighValuePage('/texas/houston/electricity-plans/24-month+fixed-rate')).toBe(true);
-      expect(isHighValuePage('/texas/austin/electricity-plans/green-energy+12-month')).toBe(true);
-      expect(isHighValuePage('/texas/fort-worth/electricity-plans/fixed-rate+green-energy')).toBe(true);
-      expect(isHighValuePage('/texas/dallas/electricity-plans/no-deposit+prepaid')).toBe(true);
-      expect(isHighValuePage('/texas/houston/electricity-plans/12-month+autopay-discount')).toBe(true);
-      expect(isHighValuePage('/texas/austin/electricity-plans/autopay-discount+fixed-rate')).toBe(true);
+      expect(isHighValuePage('dallas-tx', ['12-month', 'fixed-rate'])).toBe(true);
+      expect(isHighValuePage('houston-tx', ['24-month', 'fixed-rate'])).toBe(true);
+      expect(isHighValuePage('austin-tx', ['green-energy', '12-month'])).toBe(true);
+      expect(isHighValuePage('fort-worth-tx', ['fixed-rate', 'green-energy'])).toBe(true);
+      expect(isHighValuePage('dallas-tx', ['no-deposit', 'prepaid'])).toBe(true);
+      expect(isHighValuePage('houston-tx', ['12-month', 'autopay-discount'])).toBe(true);
+      expect(isHighValuePage('austin-tx', ['autopay-discount', 'fixed-rate'])).toBe(true);
     });
 
     it('should not consider low-value two-filter combinations as high value', () => {
-      expect(isHighValuePage('/texas/dallas/electricity-plans/12-month+obscure-filter')).toBe(false);
-      expect(isHighValuePage('/texas/houston/electricity-plans/random-filter+variable-rate')).toBe(false);
+      expect(isHighValuePage('dallas-tx', ['12-month', 'obscure-filter'])).toBe(false);
+      expect(isHighValuePage('houston-tx', ['random-filter', 'variable-rate'])).toBe(false);
     });
 
     it('should not consider three or more filters as high value', () => {
-      expect(isHighValuePage('/texas/dallas/electricity-plans/12-month+fixed-rate+green-energy')).toBe(false);
-      expect(isHighValuePage('/texas/houston/electricity-plans/autopay+fixed-rate+green+prepaid')).toBe(false);
+      expect(isHighValuePage('dallas-tx', ['12-month', 'fixed-rate', 'green-energy'])).toBe(false);
+      expect(isHighValuePage('houston-tx', ['autopay', 'fixed-rate', 'green', 'prepaid'])).toBe(false);
     });
 
     it('should handle invalid paths gracefully', () => {
-      expect(isHighValuePage('/invalid/path')).toBe(false);
-      expect(isHighValuePage('')).toBe(false);
+      expect(isHighValuePage('invalid-city', ['path'])).toBe(false);
+      expect(isHighValuePage('', [])).toBe(false);
     });
   });
 

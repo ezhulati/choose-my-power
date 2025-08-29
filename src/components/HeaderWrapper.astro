@@ -232,7 +232,8 @@
 
   // Close mobile menu when clicking outside
   document.addEventListener('click', (e) => {
-    if (mobileMenu && !mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+    const target = e.target as Node;
+    if (mobileMenu && mobileMenuButton && !mobileMenu.contains(target) && !mobileMenuButton.contains(target)) {
       mobileMenu.classList.add('hidden');
     }
   });

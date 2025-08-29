@@ -51,7 +51,7 @@ describe('SEO Meta Generation Comprehensive Tests', () => {
         expect(desc.length).toBeGreaterThan(120);
         expect(desc.length).toBeLessThan(160); // SEO best practice
         expect(desc).toContain('electricity');
-        expect(desc).toContain('Texas' || 'plans');
+        expect(desc.includes('Texas') || desc.includes('plans')).toBe(true);
       });
     });
 
@@ -258,7 +258,7 @@ describe('SEO Meta Generation Comprehensive Tests', () => {
 
         expect(url).toBe(expected);
         expect(url).toMatch(/^\/electricity-plans\//);
-        expect(url).toEndWith('/');
+        expect(url).toMatch(/\/$/); // Should end with slash
         expect(url).not.toContain('//');
         expect(url).not.toContain('?');
         expect(url).not.toContain('#');
@@ -331,7 +331,7 @@ describe('SEO Meta Generation Comprehensive Tests', () => {
           });
         }
         
-        if (links.parent) {
+        if ('parent' in links && links.parent) {
           expect(links.parent.split('/').length).toBeLessThan(page.split('/').length);
         }
       });

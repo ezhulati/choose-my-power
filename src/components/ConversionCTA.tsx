@@ -180,7 +180,8 @@ const ConversionCTA: React.FC<ConversionCTAProps> = ({
 
     // Track conversion event
     if (typeof window !== 'undefined' && 'gtag' in window) {
-      (window as any).gtag('event', 'cta_click', {
+      const gtag = (window as { gtag: Function }).gtag;
+      gtag('event', 'cta_click', {
         plan_id: plan.id,
         plan_name: plan.name,
         provider: plan.provider.name,
