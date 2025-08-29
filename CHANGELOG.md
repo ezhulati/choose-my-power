@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Git hooks for enforcing changelog updates
 - CI/CD validation for changelog compliance
 - GitHub Actions workflow for changelog automation and release management
+- **Critical**: ZIP code lookup forms on all city pages to prevent user dead ends
 
 ### Fixed
 - **Critical**: ZIP code lookup causing half-rendered pages requiring manual refresh
@@ -35,6 +36,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed CSS MIME type loading issues with proper /_astro/* asset headers
 - Enhanced asset caching with charset specifications for better browser compatibility
 - Updated CSP policy to be compatible with strict-dynamic nonce-based systems
+- **Critical**: City pages creating user dead-end experiences after ZIP code lookup
+- Updated CSP hash for zip-lookup.js script to restore JavaScript functionality
+- **SEO**: Page title duplication bug showing "Houston TX, TX" instead of "Houston, TX"
 
 ### Changed
 - **Infrastructure**: Enhanced development workflow with proper local build/preview support using conditional adapters

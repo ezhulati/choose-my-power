@@ -8,6 +8,7 @@
 import Layout from '../../layouts/Layout.astro';
 import HeroBackground from '../../components/HeroBackground.astro';
 import FacetedPlanGrid from '../../components/faceted/FacetedPlanGrid.astro';
+import StandardZipInput from '../../components/StandardZipInput.astro';
 import { facetedRouter } from '../../lib/faceted/faceted-router';
 import { filterMapper } from '../../lib/api/filter-mapper';
 import { generateFacetedMeta } from '../../lib/seo/meta-generator-scale';
@@ -128,9 +129,9 @@ const schemas = generateFacetedSchema({
   lowestRate
 });
 
-// Use faceted title and description generation
-const pageTitle = `Best Electricity Plans in ${cityName}, TX | Compare Energy Rates`;
-const pageDescription = `Compare electricity plans in ${cityName}, Texas. Find the best energy rates and switch providers.`;
+// Use faceted title and description generation - fix double TX issue
+const pageTitle = `Best Electricity Plans in ${cityName} | Compare Energy Rates`;
+const pageDescription = `Compare electricity plans in ${cityName}. Find the best energy rates and switch providers.`;
 
 // Get suggested filters using faceted system
 const suggestedFilters = facetedRouter.getSuggestedFilters(citySlug, filterSegments, 6);
@@ -263,8 +264,21 @@ const heroImage = getHeroImage({
     <!-- Main Content with Faceted Layout -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div class="lg:grid lg:grid-cols-4 lg:gap-8">
-        <!-- Sidebar with Filter Suggestions -->
+        <!-- Sidebar with ZIP Lookup and Filter Suggestions -->
         <div class="lg:col-span-1">
+          <!-- ZIP Lookup Section -->
+          <div class="bg-white rounded-lg shadow p-6 mb-6">
+            <h3 class="text-lg font-medium text-gray-900 mb-4">Search Another Area</h3>
+            <StandardZipInput 
+              size="sm"
+              variant="compact"
+              showTitle={false}
+              showDescription={false}
+              customClass="w-full"
+            />
+          </div>
+          
+          <!-- Filter Suggestions -->
           <div class="bg-white rounded-lg shadow p-6">
             <h3 class="text-lg font-medium text-gray-900 mb-4">Refine Your Search</h3>
             <div class="space-y-4">
