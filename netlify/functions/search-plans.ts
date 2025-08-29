@@ -34,7 +34,7 @@ import { comparePowerClient } from "../../src/lib/api/comparepower-client";
 import { ercotESIIDClient } from "../../src/lib/api/ercot-esiid-client";
 import { ComparePowerApiError, ApiErrorType } from "../../src/lib/api/errors";
 import { multiTdspMapping } from "../../src/config/multi-tdsp-mapping";
-import { getTdspFromZip, resolveZipToTdsp, getZoneFromTdsp } from "./shared/utils";
+import { resolveZipToTdsp, getZoneFromTdsp } from "./shared/utils";
 
 // Performance monitoring
 const startTime = Date.now();

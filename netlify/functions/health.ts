@@ -155,7 +155,7 @@ async function checkBuild(): Promise<CheckResult> {
         details: `Missing files: ${missingFiles.join(', ')} (development mode)`
       };
     }
-  } catch (error) {
+  } catch {
     return {
       status: 'warn',
       duration: Date.now() - start,

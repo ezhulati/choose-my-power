@@ -144,7 +144,7 @@ jobs:
           CI: true
 
       - name: Upload E2E artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: e2e-artifacts-${{ matrix.browser }}-${{ matrix.device }}
@@ -196,7 +196,7 @@ jobs:
           echo "- CLS: $(grep -o 'CLS: [0-9.]*' test-results/performance.log | head -1 || echo 'CLS: N/A')" >> performance-report.md
 
       - name: Upload performance results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: performance-results
           path: |
@@ -257,7 +257,7 @@ jobs:
           echo "- Breadcrumb markup: ✅" >> seo-report.md
 
       - name: Upload SEO results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: seo-accessibility-results
           path: |
@@ -285,7 +285,7 @@ jobs:
         run: npm ci
 
       - name: Download coverage reports
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: ./coverage-artifacts
 
@@ -348,7 +348,7 @@ jobs:
           "
 
       - name: Upload coverage report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: coverage-report
           path: |
@@ -459,7 +459,7 @@ jobs:
           echo "**Ready for production deployment! 🎉**" >> deployment-summary.md
 
       - name: Upload deployment artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: deployment-artifacts
           path: |
@@ -497,7 +497,7 @@ jobs:
           echo "### Run ID: ${{ github.run_id }}" >> test-summary.md
 
       - name: Upload test summary
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: test-summary
           path: test-summary.md

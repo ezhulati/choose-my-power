@@ -139,12 +139,12 @@ export const MobileConversionOptimizer: React.FC<ConversionOptimizerProps> = ({
     generateUrgencyIndicators();
     loadSocialProofData();
     setupConversionTracking();
-  }, []);
+  }, [detectHandedness, generateUrgencyIndicators, loadSocialProofData, setupConversionTracking]);
 
   /**
    * Detect user handedness and optimize layout
    */
-  const detectHandedness = (): void => {
+  const detectHandedness = useCallback((): void => {
     // Simple heuristic based on screen size and touch patterns
     const screenWidth = window.innerWidth;
     const isLargeScreen = screenWidth > 414;
@@ -158,12 +158,12 @@ export const MobileConversionOptimizer: React.FC<ConversionOptimizerProps> = ({
       compactMode: screenWidth < 375,
       floatingActions: screenWidth < 768
     }));
-  };
+  }, []);
 
   /**
    * Generate contextual urgency indicators
    */
-  const generateUrgencyIndicators = (): void => {
+  const generateUrgencyIndicators = useCallback((): void => {
     const indicators: UrgencyIndicator[] = [];
     
     // Rate increase urgency (simulated)
@@ -202,12 +202,12 @@ export const MobileConversionOptimizer: React.FC<ConversionOptimizerProps> = ({
     }
     
     setActiveUrgencyIndicators(indicators);
-  };
+  }, []);
 
   /**
    * Load social proof data
    */
-  const loadSocialProofData = (): void => {
+  const loadSocialProofData = useCallback((): void => {
     const proofData: SocialProof[] = [
       {
         type: 'customer_count',
@@ -231,12 +231,12 @@ export const MobileConversionOptimizer: React.FC<ConversionOptimizerProps> = ({
     ];
     
     setSocialProofData(proofData);
-  };
+  }, []);
 
   /**
    * Setup conversion tracking
    */
-  const setupConversionTracking = (): void => {
+  const setupConversionTracking = useCallback((): void => {
     // Track scroll depth
     const handleScroll = () => {
       const scrollPercent = Math.round(
@@ -267,7 +267,7 @@ export const MobileConversionOptimizer: React.FC<ConversionOptimizerProps> = ({
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  };
+  }, []);
 
   /**
    * Track conversion events

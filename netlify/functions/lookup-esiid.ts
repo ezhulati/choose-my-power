@@ -82,7 +82,7 @@ interface LookupESIIDResponse {
     message: string;
     userMessage: string;
     retryable: boolean;
-    context?: any;
+    context?: Record<string, unknown>;
   };
   meta: {
     requestId: string;
@@ -93,7 +93,7 @@ interface LookupESIIDResponse {
 }
 
 // Enhanced request validation with address normalization
-function validateLookupESIIDRequest(body: any): { isValid: boolean; errors: string[]; data?: LookupESIIDRequest } {
+function validateLookupESIIDRequest(body: unknown): { isValid: boolean; errors: string[]; data?: LookupESIIDRequest } {
   const errors: string[] = [];
   
   // Required: Address
@@ -313,7 +313,7 @@ function extractCityFromAddress(fullAddress: string): string | null {
 
 // Enhanced error response builder
 function buildErrorResponse(
-  error: any, 
+  error: Error | ComparePowerApiError, 
   requestId: string, 
   responseTime: number
 ): LookupESIIDResponse {
@@ -469,7 +469,7 @@ export default async function handler(request: Request, context: Context) {
     try {
       const text = await request.text();
       body = text ? JSON.parse(text) : {};
-    } catch (parseError) {
+    } catch {
       return new Response(
         JSON.stringify({
           success: false,
