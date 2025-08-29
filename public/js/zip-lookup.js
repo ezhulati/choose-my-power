@@ -3,6 +3,9 @@
 (function() {
   'use strict';
   
+  // Debug logging for troubleshooting
+  console.log('🔧 ZIP lookup script loaded');
+  
   // Wait for DOM to be ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initZipLookup);
@@ -11,9 +14,18 @@
   }
   
   function initZipLookup() {
+  console.log('🚀 Initializing ZIP lookup functionality');
   const form = document.getElementById('zipForm');
   const input = document.getElementById('zipInput');
   const submitButton = form.querySelector('button[type="submit"]');
+  
+  // Check if elements exist
+  if (!form || !input || !submitButton) {
+    console.error('❌ ZIP form elements not found, falling back to native form submission');
+    return; // Let browser handle form submission naturally
+  }
+  
+  console.log('✅ ZIP form elements found, setting up JavaScript handler');
   
   // Loading state management
   function setLoadingState(loading) {
@@ -97,13 +109,23 @@
     });
   }
 
-  // Form submission handler with duplicate prevention
+  // Form submission handler with duplicate prevention and fallback
   let isSubmitting = false;
   form.addEventListener('submit', async function(e) {
-    e.preventDefault();
+    console.log('🎯 Form submit event triggered');
+    
+    // Try to prevent default, but handle gracefully if it fails
+    try {
+      e.preventDefault();
+      console.log('✅ Form default prevented, handling with JavaScript');
+    } catch (preventError) {
+      console.warn('⚠️ Could not prevent form default:', preventError);
+      return; // Let browser handle submission
+    }
     
     // Prevent duplicate submissions
     if (isSubmitting) {
+      console.log('⏳ Already submitting, ignoring duplicate');
       return;
     }
     
@@ -131,8 +153,15 @@
 
     try {
       // Call our ZIP lookup API
+      console.log(`📞 Making API call to /api/zip-lookup?zip=${zipCode}`);
       const response = await fetch(`/api/zip-lookup?zip=${encodeURIComponent(zipCode)}`);
+      
+      if (!response.ok) {
+        throw new Error(`API responded with status: ${response.status}`);
+      }
+      
       const result = await response.json();
+      console.log('📦 API response:', result);
 
       setLoadingState(false);
       isSubmitting = false;
@@ -191,6 +220,20 @@
       setLoadingState(false);
       isSubmitting = false;
       console.error('❌ ZIP lookup API error:', error);
+      
+      // Check if this is a network or API error - if so, try fallback
+      if (error.message.includes('API responded') || error.name === 'TypeError') {
+        console.log('🔄 API failed, attempting fallback to native form submission');
+        
+        // Try to submit the form natively as a fallback
+        try {
+          window.location.href = `/api/zip-lookup?zip=${encodeURIComponent(zipCode)}`;
+          return; // Don't show error if redirect works
+        } catch (fallbackError) {
+          console.error('❌ Fallback redirect also failed:', fallbackError);
+        }
+      }
+      
       showError('Unable to process your request right now. Please try again or <a href="/texas/electricity-providers" class="underline font-semibold hover:text-red-900">browse all Texas providers →</a>');
     }
   });

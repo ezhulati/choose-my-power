@@ -109,6 +109,23 @@ export const GET: APIRoute = async ({ request }) => {
     // Check if this is a municipal utility area
     if (municipalUtilities[citySlug]) {
       const utilityInfo = municipalUtilities[citySlug];
+      
+      // Check if this is a direct browser navigation
+      const acceptHeader = request.headers.get('accept') || '';
+      const wantsBrowserRedirect = acceptHeader.includes('text/html');
+      
+      if (wantsBrowserRedirect) {
+        // Direct browser navigation - redirect to municipal utility page
+        return new Response(null, {
+          status: 302,
+          headers: {
+            'Location': `/texas/${citySlug}/municipal-utility`,
+            'Cache-Control': 'public, max-age=86400'
+          }
+        });
+      }
+      
+      // AJAX/API call - return JSON response
       return new Response(JSON.stringify({
         success: false,
         zipCode,
@@ -133,6 +150,22 @@ export const GET: APIRoute = async ({ request }) => {
     const processingTime = Date.now() - startTime;
     console.log(`✅ ZIP lookup success: ${zipCode} -> ${citySlug} (${processingTime}ms)`);
     
+    // Check if this is a direct browser navigation (Accept header indicates HTML)
+    const acceptHeader = request.headers.get('accept') || '';
+    const wantsBrowserRedirect = acceptHeader.includes('text/html');
+    
+    if (wantsBrowserRedirect) {
+      // Direct browser navigation - perform immediate redirect
+      return new Response(null, {
+        status: 302,
+        headers: {
+          'Location': `/texas/${citySlug}`,
+          'Cache-Control': 'public, max-age=86400'
+        }
+      });
+    }
+    
+    // AJAX/API call - return JSON response
     return new Response(JSON.stringify({
       success: true,
       zipCode,

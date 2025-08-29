@@ -1,0 +1,18 @@
+{
+  "cacheKey": "Arlington_TX__city_3_North",
+  "url": "/images/og/generated/city/Arlington_TX__city_3_North_1756504605756.jpg",
+  "localPath": "/Users/mbp-ez/Downloads/AI Library/Apps/CMP/choose-my-power/public/images/og/generated/city/Arlington_TX__city_3_North_1756504605756.jpg",
+  "generatedAt": "2025-08-29T21:56:45.756Z",
+  "context": {
+    "city": "Arlington TX",
+    "filters": [],
+    "planCount": 111,
+    "lowestRate": 999,
+    "topProviders": [],
+    "pageType": "city",
+    "cityTier": 3,
+    "tdspZone": "North",
+    "seasonalContext": "summer"
+  },
+  "expiresAt": "2025-09-28T21:56:46.384Z"
+}

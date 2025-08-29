@@ -1,25 +1,43 @@
 {
+  "buildType": "cached",
+  "buildTime": "2025-08-29T21:43:01.630Z",
+  "duration": 107,
+  "apiCalls": 0,
   "cities": [
     {
-      "citySlug": "dallas-tx",
-      "cityName": "Dallas TX",
-      "filtersBuilt": 4,
-      "totalPlans": 111
-    },
-    {
-      "citySlug": "fort-worth-tx",
-      "cityName": "Fort Worth TX",
-      "filtersBuilt": 4,
-      "totalPlans": 111
-    },
-    {
       "citySlug": "houston-tx",
-      "cityName": "Houston TX",
-      "filtersBuilt": 4,
-      "totalPlans": 110
+      "cityName": "Houston",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "south-houston-tx",
+      "cityName": "South Houston",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "arlington-tx",
+      "cityName": "Arlington",
+      "filtersBuilt": 1,
+      "totalPlans": 111,
+      "success": true
+    },
+    {
+      "citySlug": "dallas-tx",
+      "cityName": "Dallas",
+      "filtersBuilt": 1,
+      "totalPlans": 111,
+      "success": true
+    },
+    {
+      "citySlug": "irving-tx",
+      "cityName": "Irving",
+      "filtersBuilt": 1,
+      "totalPlans": 111,
+      "success": true
     }
-  ],
-  "totalPlans": 332,
-  "buildTime": "2025-08-29T19:29:15.908Z",
-  "errors": []
+  ]
 }

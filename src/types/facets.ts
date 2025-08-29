@@ -74,6 +74,7 @@ export interface TdspMapping {
     zone: 'North' | 'Coast' | 'Central' | 'South' | 'Valley';
     tier?: number;
     priority?: number;
+    municipal?: boolean; // For municipal utilities like Austin Energy, CPS Energy
   };
 }
 

@@ -106,7 +106,7 @@ const description = marketingText.seoDescription;
                 <p class="text-blue-200 text-sm">Enter your ZIP code to see available electricity plans and rates</p>
               </div>
               
-              <form id="zipForm" class="relative">
+              <form id="zipForm" class="relative" action="/api/zip-lookup" method="GET">
                 <div class="flex rounded-2xl shadow-2xl overflow-hidden bg-white ring-4 ring-white/10 backdrop-blur-sm">
                   <div class="flex-1 relative">
                     <div class="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none">
@@ -140,11 +140,6 @@ const description = marketingText.seoDescription;
                     </div>
                   </button>
                 </div>
-                
-                <!-- Hidden form that will be used for reliable navigation -->
-                <form id="redirectForm" method="GET" style="display: none;">
-                  <input type="hidden" name="redirect" value="">
-                </form>
               </form>
               
               <!-- Live Stats Below Search -->

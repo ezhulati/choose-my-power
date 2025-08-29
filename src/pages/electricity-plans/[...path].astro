@@ -276,7 +276,7 @@ console.log(`✅ Faceted page processed: ${cityName} with ${filterResult.applied
                           class={`block text-sm px-3 py-2 rounded-md transition-colors ${
                             isActive
                               ? 'bg-texas-navy/10 text-texas-navy font-medium'
-                              : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                              : 'text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy'
                           }`}
                         >
                           {item.definition.displayName(pattern)}
@@ -305,7 +305,7 @@ console.log(`✅ Faceted page processed: ${cityName} with ${filterResult.applied
     </div>
 
     <!-- Related Links Section -->
-    <div class="bg-gray-100 py-12 mt-12">
+    <div class="bg-texas-cream-100 py-12 mt-12">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-xl font-bold text-gray-900 mb-6">Popular Electricity Plan Options in {cityName}</h2>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -321,7 +321,7 @@ console.log(`✅ Faceted page processed: ${cityName} with ${filterResult.applied
               <a
                 key={filter}
                 href={newUrl}
-                class="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow border border-gray-200"
+                class="bg-white p-4 rounded-xl shadow hover:shadow-lg hover:border-texas-navy/30 transition-all duration-300 border border-gray-200 hover:-translate-y-1"
               >
                 <div class="text-sm font-medium text-gray-900">{displayName}</div>
                 <div class="text-xs text-gray-500 mt-1">Plans in {cityName}</div>

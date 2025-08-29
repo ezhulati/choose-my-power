@@ -25,6 +25,8 @@ export const tdspMapping: TdspMapping = {
   'alvin-tx': { duns: '957877905', name: 'CenterPoint Energy Houston Electric', zone: 'Coast', tier: 3, priority: 0.45 },
   'alvord-tx': { duns: '957877905', name: 'CenterPoint Energy Houston Electric', zone: 'Coast', tier: 3, priority: 0.45 },
   'andrews-tx': { duns: '957877905', name: 'CenterPoint Energy Houston Electric', zone: 'Coast', tier: 3, priority: 0.45 },
+  // Municipal Utility Cities - Special handling required
+  'austin-tx': { duns: 'MUNICIPAL', name: 'Austin Energy', zone: 'Central', tier: 1, priority: 1.0, municipal: true },
   'angleton-tx': { duns: '957877905', name: 'CenterPoint Energy Houston Electric', zone: 'Coast', tier: 3, priority: 0.45 },
   'angus-tx': { duns: '957877905', name: 'CenterPoint Energy Houston Electric', zone: 'Coast', tier: 3, priority: 0.45 },
   'anna-tx': { duns: '1039940674000', name: 'Oncor Electric Delivery', zone: 'North', tier: 3, priority: 0.45 },
@@ -729,6 +731,8 @@ export const tdspMapping: TdspMapping = {
   'saint-jo-tx': { duns: '007929441', name: 'Texas-New Mexico Power Company', zone: 'South', tier: 3, priority: 0.4 },
   'salado-tx': { duns: '007929441', name: 'Texas-New Mexico Power Company', zone: 'South', tier: 3, priority: 0.4 },
   'san-angelo-tx': { duns: '007929441', name: 'Texas-New Mexico Power Company', zone: 'South', tier: 3, priority: 0.4 },
+  // Municipal Utility Cities - Special handling required  
+  'san-antonio-tx': { duns: 'MUNICIPAL', name: 'CPS Energy', zone: 'Central', tier: 1, priority: 1.0, municipal: true },
   'san-benito-tx': { duns: '007929441', name: 'Texas-New Mexico Power Company', zone: 'South', tier: 2, priority: 0.6400000000000001 },
   'san-carlos-tx': { duns: '007929441', name: 'Texas-New Mexico Power Company', zone: 'South', tier: 3, priority: 0.4 },
   'san-diego-tx': { duns: '007929441', name: 'Texas-New Mexico Power Company', zone: 'South', tier: 3, priority: 0.4 },

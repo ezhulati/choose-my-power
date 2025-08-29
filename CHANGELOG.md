@@ -48,6 +48,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - **UX**: Homepage navigation links now point to correct destinations for better user experience
 - "Compare Plans" link updated from `/compare` to `/electricity-plans` for immediate plan comparison access
+- **Critical**: ZIP code lookup creating malformed URLs instead of proper redirects
+- Removed conflicting hidden form causing `?zip=12345&redirect=` URL pattern
+- Enhanced ZIP lookup API to handle direct browser navigation with proper redirects
+- Improved JavaScript error handling with fallback to server-side navigation
+- Added comprehensive logging and debugging for ZIP code lookup troubleshooting
 
 ## [1.2.0] - 2025-08-29
 

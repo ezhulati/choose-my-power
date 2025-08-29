@@ -1,0 +1,49 @@
+URL,Status,Context,Priority,Category,Estimated Fix Time,Notes
+http://localhost:4326/electricity-plans/austin-tx,404,Main Navigation,HIGH,Missing City Data,2 days,Major Texas city - critical for production
+http://localhost:4326/resources/guides,404,Main Navigation,MEDIUM,Content Page,2 hours,Guide index page needed
+http://localhost:4326/resources/support/contact,404,Main Navigation,MEDIUM,Content Page,4 hours,Contact form required
+http://localhost:4326/press,404,Main Navigation,LOW,Content Page,2 hours,Can remove link if no press section planned
+http://localhost:4326/blog,404,Main Navigation,LOW,Content Page,4 hours,Can remove link if no blog planned
+http://localhost:4326/texas/dallas-tx/municipal-utility,404,Municipal Utility Pages,LOW,Data Issue,1 hour,Dallas doesn't have municipal utility - expected 404
+http://localhost:4326/texas/houston-tx/municipal-utility,404,Municipal Utility Pages,LOW,Data Issue,1 hour,Houston doesn't have municipal utility - expected 404
+http://localhost:4326/texas/austin-tx,404,City Pages,HIGH,Missing City Data,2 days,Austin is major market - must work
+http://localhost:4326/electricity-plans/austin-tx,404,City Plan Pages,HIGH,Missing City Data,2 days,Same as Austin city page
+http://localhost:4326/texas/fort-worth-tx/municipal-utility,404,Municipal Utility Pages,LOW,Data Issue,1 hour,Fort Worth doesn't have municipal utility - expected 404
+http://localhost:4326/texas/san-antonio-tx,404,City Pages,HIGH,Missing City Data,2 days,San Antonio is major market - must work
+http://localhost:4326/electricity-plans/san-antonio-tx,404,City Plan Pages,HIGH,Missing City Data,2 days,Same as San Antonio city page
+http://localhost:4326/texas/plano-tx/municipal-utility,404,Municipal Utility Pages,LOW,Data Issue,1 hour,Plano doesn't have municipal utility - expected 404
+http://localhost:4326/texas/arlington-tx/municipal-utility,404,Municipal Utility Pages,LOW,Data Issue,1 hour,Arlington doesn't have municipal utility - expected 404
+http://localhost:4326/texas/corpus-christi-tx/municipal-utility,404,Municipal Utility Pages,LOW,Data Issue,1 hour,Corpus Christi doesn't have municipal utility - expected 404
+http://localhost:4326/texas/garland-tx,404,City Pages,MEDIUM,Missing City Data,1 day,Add to city data pipeline
+http://localhost:4326/electricity-plans/garland-tx,404,City Plan Pages,MEDIUM,Missing City Data,1 day,Same as Garland city page
+http://localhost:4326/texas/garland-tx/municipal-utility,404,Municipal Utility Pages,LOW,Data Issue,1 hour,Garland doesn't have municipal utility - expected 404
+http://localhost:4326/texas/irving-tx/municipal-utility,404,Municipal Utility Pages,LOW,Data Issue,1 hour,Irving doesn't have municipal utility - expected 404
+http://localhost:4326/texas/lubbock-tx/municipal-utility,404,Municipal Utility Pages,LOW,Data Issue,1 hour,Lubbock doesn't have municipal utility - expected 404
+http://localhost:4326/texas/laredo-tx/municipal-utility,404,Municipal Utility Pages,LOW,Data Issue,1 hour,Laredo doesn't have municipal utility - expected 404
+http://localhost:4326/texas/amarillo-tx,404,City Pages,MEDIUM,Missing City Data,1 day,Add to city data pipeline
+http://localhost:4326/electricity-plans/amarillo-tx,404,City Plan Pages,MEDIUM,Missing City Data,1 day,Same as Amarillo city page
+http://localhost:4326/texas/amarillo-tx/municipal-utility,404,Municipal Utility Pages,LOW,Data Issue,1 hour,Amarillo doesn't have municipal utility - expected 404
+http://localhost:4326/texas/brownsville-tx,404,City Pages,MEDIUM,Missing City Data,1 day,Add to city data pipeline
+http://localhost:4326/electricity-plans/brownsville-tx,404,City Plan Pages,MEDIUM,Missing City Data,1 day,Same as Brownsville city page
+http://localhost:4326/texas/brownsville-tx/municipal-utility,404,Municipal Utility Pages,LOW,Data Issue,1 hour,Brownsville doesn't have municipal utility - expected 404
+http://localhost:4326/texas/pasadena-tx/municipal-utility,404,Municipal Utility Pages,LOW,Data Issue,1 hour,Pasadena doesn't have municipal utility - expected 404
+http://localhost:4326/texas/grand-prairie-tx/municipal-utility,404,Municipal Utility Pages,LOW,Data Issue,1 hour,Grand Prairie doesn't have municipal utility - expected 404
+http://localhost:4326/texas/mesquite-tx/municipal-utility,404,Municipal Utility Pages,LOW,Data Issue,1 hour,Mesquite doesn't have municipal utility - expected 404
+http://localhost:4326/texas/killeen-tx/municipal-utility,404,Municipal Utility Pages,LOW,Data Issue,1 hour,Killeen doesn't have municipal utility - expected 404
+http://localhost:4326/texas/mcallen-tx/municipal-utility,404,Municipal Utility Pages,LOW,Data Issue,1 hour,McAllen doesn't have municipal utility - expected 404
+http://localhost:4326/texas/frisco-tx/municipal-utility,404,Municipal Utility Pages,LOW,Data Issue,1 hour,Frisco doesn't have municipal utility - expected 404
+http://localhost:4326/electricity-plans/austin-tx,404,Discovered Links,HIGH,Missing City Data,2 days,Duplicate of Austin issue
+http://localhost:4326/resources/guides,404,Discovered Links,MEDIUM,Content Page,2 hours,Duplicate of guides issue
+http://localhost:4326/resources/support/contact,404,Discovered Links,MEDIUM,Content Page,4 hours,Duplicate of contact issue
+http://localhost:4326/press,404,Discovered Links,LOW,Content Page,2 hours,Duplicate of press issue
+http://localhost:4326/blog,404,Discovered Links,LOW,Content Page,4 hours,Duplicate of blog issue
+http://localhost:4326/electricity-plans/dallas-tx/txu-energy,404,Faceted Navigation,MEDIUM,Feature Missing,1 week,Provider filtering not implemented
+http://localhost:4326/electricity-plans/dallas-tx/reliant-energy,404,Faceted Navigation,MEDIUM,Feature Missing,1 week,Provider filtering not implemented
+http://localhost:4326/electricity-plans/dallas-tx/green-mountain-energy,404,Faceted Navigation,MEDIUM,Feature Missing,1 week,Provider filtering not implemented
+http://localhost:4326/electricity-plans/austin-tx/12-month,404,Multi-City Faceted Navigation,HIGH,Missing City Data,2 days,Related to Austin missing data
+http://localhost:4326/electricity-plans/austin-tx/fixed-rate,404,Multi-City Faceted Navigation,HIGH,Missing City Data,2 days,Related to Austin missing data
+http://localhost:4326/electricity-plans/austin-tx/green-energy,404,Multi-City Faceted Navigation,HIGH,Missing City Data,2 days,Related to Austin missing data
+http://localhost:4326/electricity-plans/san-antonio-tx/12-month,404,Multi-City Faceted Navigation,HIGH,Missing City Data,2 days,Related to San Antonio missing data
+http://localhost:4326/electricity-plans/san-antonio-tx/fixed-rate,404,Multi-City Faceted Navigation,HIGH,Missing City Data,2 days,Related to San Antonio missing data
+http://localhost:4326/electricity-plans/san-antonio-tx/green-energy,404,Multi-City Faceted Navigation,HIGH,Missing City Data,2 days,Related to San Antonio missing data
+https://www.reddit.com/r/withastro/,403,Footer,LOW,External Issue,N/A,Reddit blocking requests - not actionable

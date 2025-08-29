@@ -13,7 +13,7 @@ import { filterMapper } from '../../lib/api/filter-mapper';
 import { generateFacetedMeta } from '../../lib/seo/meta-generator-scale';
 import { generateFacetedSchema } from '../../lib/seo/schema-scale';
 import { getHeroImage, extractContextFromPath } from '../../lib/images/hero-image-mapper';
-import { tdspMapping, formatCityName, validateCitySlug, getTdspFromCity } from '../../config/tdsp-mapping';
+import { tdspMapping, municipalUtilities, formatCityName, validateCitySlug, getTdspFromCity, formatCitySlug } from '../../config/tdsp-mapping';
 import { comparePowerClient } from '../../lib/api/comparepower-client';
 import type { Plan } from '../../types/facets';
 
@@ -24,19 +24,28 @@ const url = new URL(Astro.request.url);
 
 console.log(`🏙️  City page requested: ${city}`);
 
+// Format city slug to include -tx suffix for validation
+const citySlug = formatCitySlug(city || '');
+
 // Validate city exists using faceted system
-if (!city || !validateCitySlug(city)) {
-  console.error(`Invalid city: ${city}`);
+if (!city || !validateCitySlug(citySlug)) {
+  console.error(`Invalid city: ${city} (formatted as: ${citySlug})`);
   return Astro.redirect('/404', 404);
 }
 
-const tdspDuns = getTdspFromCity(city);
-const cityName = formatCityName(city);
-const tdspInfo = tdspMapping[city];
+const tdspDuns = getTdspFromCity(citySlug);
+const cityName = formatCityName(citySlug);
+const tdspInfo = tdspMapping[citySlug];
 
 if (!tdspDuns || !tdspInfo) {
   console.error(`No TDSP mapping found for city: ${city}`);
   return Astro.redirect('/404', 404);
+}
+
+// Check if this is a municipal utility city and redirect appropriately
+if (tdspInfo.municipal && municipalUtilities[citySlug]) {
+  console.log(`🏛️  Municipal utility detected for ${cityName}, redirecting to municipal utility page`);
+  return Astro.redirect(`/texas/${citySlug}/municipal-utility`, 302);
 }
 
 // Handle legacy URL parameters by showing appropriate content
@@ -124,7 +133,7 @@ const pageTitle = `Best Electricity Plans in ${cityName}, TX | Compare Energy Ra
 const pageDescription = `Compare electricity plans in ${cityName}, Texas. Find the best energy rates and switch providers.`;
 
 // Get suggested filters using faceted system
-const suggestedFilters = facetedRouter.getSuggestedFilters(city, filterSegments, 6);
+const suggestedFilters = facetedRouter.getSuggestedFilters(citySlug, filterSegments, 6);
 const suggestedFilterDefinitions = suggestedFilters.map(pattern => ({
   pattern,
   definition: filterMapper.getDefinitionByPattern(pattern)
@@ -272,7 +281,7 @@ const heroImage = getHeroImage({
                         <a
                           key={pattern}
                           href={newUrl}
-                          class="block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+                          class="block text-sm px-3 py-2 rounded-md transition-all duration-200 text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy"
                         >
                           {item.definition.displayName(pattern)}
                         </a>
@@ -300,7 +309,7 @@ const heroImage = getHeroImage({
     </div>
 
     <!-- Related Links Section using Faceted Design -->
-    <div class="bg-gray-100 py-12 mt-12">
+    <div class="bg-texas-cream-100 py-12 mt-12">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-xl font-bold text-gray-900 mb-6">Popular Electricity Plan Options in {cityName}</h2>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -313,7 +322,7 @@ const heroImage = getHeroImage({
               <a
                 key={filter}
                 href={newUrl}
-                class="bg-white p-4 rounded-lg shadow hover:shadow-md transition-shadow border border-gray-200"
+                class="bg-white p-4 rounded-xl shadow hover:shadow-lg hover:border-texas-navy/30 transition-all duration-300 border border-gray-200 hover:-translate-y-1"
               >
                 <div class="text-sm font-medium text-gray-900">{displayName}</div>
                 <div class="text-xs text-gray-500 mt-1">Plans in {cityName}</div>
