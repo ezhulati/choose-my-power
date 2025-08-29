@@ -126,18 +126,20 @@ nav [class*="menu"],
 /* ========== STACKING CONTEXT PROTECTION ========== */
 /* Prevent parent containers from creating interfering stacking contexts */
 
-.header,
 .header-nav,
 .nav-container,
 .navbar,
 .navigation,
 .desktop-nav,
-header,
 nav,
-.sticky,
-.fixed {
+.sticky {
   z-index: auto !important;
   /* Allow child elements to manage their own z-index */
+}
+
+/* Ensure the main header remains above page content and hero */
+#main-header {
+  z-index: var(--dropdown-z-index) !important;
 }
 
 .dropdown,

@@ -60,6 +60,14 @@ export function Header({ onNavigate }: HeaderProps) {
     }
   };
 
+  const handleMouseEnter = (itemName: string) => {
+    setActiveDropdown(itemName);
+  };
+
+  const handleMouseLeave = () => {
+    setActiveDropdown(null);
+  };
+
   const handleDropdownClick = (href: string) => {
     onNavigate(href);
     setActiveDropdown(null);
@@ -67,7 +75,7 @@ export function Header({ onNavigate }: HeaderProps) {
   };
 
   return (
-    <header className="bg-white shadow-sm border-b border-gray-200 relative" style={{ zIndex: 1000 }}>
+    <header className="bg-white shadow-sm border-b border-gray-200 relative z-header">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -87,8 +95,8 @@ export function Header({ onNavigate }: HeaderProps) {
               <div
                 key={item.name}
                 className="relative"
-                onMouseEnter={() => item.dropdown && setActiveDropdown(item.name)}
-                onMouseLeave={() => setActiveDropdown(null)}
+                onMouseEnter={() => item.dropdown && handleMouseEnter(item.name)}
+                onMouseLeave={() => item.dropdown && handleMouseLeave()}
               >
                 <button
                   onClick={() => handleNavClick(item)}
@@ -99,7 +107,7 @@ export function Header({ onNavigate }: HeaderProps) {
                 </button>
                 
                 {item.dropdown && activeDropdown === item.name && (
-                  <div className="absolute top-full left-0 w-56 bg-white border border-gray-200 rounded-md shadow-lg py-1" style={{ zIndex: 1050 }}>
+                  <div className="absolute top-full left-0 w-56 bg-white border border-gray-200 rounded-md shadow-lg py-1 z-dropdown-menu">
                     {item.dropdown.map((dropdownItem) => (
                       <button
                         key={dropdownItem.name}
@@ -128,7 +136,7 @@ export function Header({ onNavigate }: HeaderProps) {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-t border-gray-200 py-4 bg-white mobile-menu" style={{ zIndex: 1020 }}>
+          <div className="md:hidden border-t border-gray-200 py-4 bg-white mobile-menu z-mobile-side-menu">
             <div className="space-y-1">
               {navigation.map((item) => (
                 <div key={item.name}>

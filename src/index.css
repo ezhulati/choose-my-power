@@ -105,4 +105,17 @@
     --z-debug-overlay: 9000;
     --z-emergency-modal: 9999;
   }
+
+  /* Z-Index Utility Classes */
+  .z-header {
+    z-index: var(--z-header);
+  }
+  
+  .z-dropdown-menu {
+    z-index: var(--z-dropdown-menu);
+  }
+  
+  .z-mobile-side-menu {
+    z-index: var(--z-mobile-side-menu);
+  }
 }

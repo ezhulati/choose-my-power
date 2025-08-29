@@ -4,6 +4,7 @@ import HeroBackground from '../components/HeroBackground.astro';
 import { ZipCodeSearch } from '../components/ZipCodeSearch';
 import { Zap, Shield, DollarSign, Clock, MapPin, Calculator, Leaf, Users, TrendingDown, Battery, Award, BarChart } from 'lucide-react';
 import { getHeroImage } from '../lib/images/hero-image-mapper';
+import { zipToCity } from '../config/tdsp-mapping';
 
 const title = "Compare & Choose Texas Electricity | ChooseMyPower.org";
 const description = "Expert analysis of 50+ providers and 300+ plans. Find the perfect match for your needs and save hundreds per year.";
@@ -46,106 +47,104 @@ console.log('🏠 Homepage Hero Image:', heroImage);
   </script>
 
   <div class="bg-white">
-    <!-- Hero Section -->
-    <HeroBackground 
-      imageUrl={heroImage}
-      heroType="homepage"
-    >
-      <section class="text-white flex items-center justify-center min-h-[40vh] lg:min-h-[50vh]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-40 lg:py-48">
+    <!-- New Hero Section - Navigation Compatible -->
+    <section class="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 overflow-hidden">
+      <!-- Background Pattern -->
+      <div class="absolute inset-0 bg-black opacity-10"></div>
+      <div class="absolute inset-0 opacity-30" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;0.05&quot;%3E%3Ccircle cx=&quot;30&quot; cy=&quot;30&quot; r=&quot;2&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+      
+      <!-- Content Container -->
+      <div class="relative z-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="py-16 sm:py-20 lg:py-28">
           <div class="text-center">
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 drop-shadow-lg">
-              Compare & Choose Texas Electricity
+            <!-- Main Heading -->
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+              <span class="block">Compare & Choose</span>
+              <span class="block text-blue-200">Texas Electricity</span>
             </h1>
-            <p class="text-xl lg:text-2xl mb-10 text-blue-100 max-w-4xl mx-auto drop-shadow-md leading-relaxed">
+            
+            <!-- Subheading -->
+            <p class="text-lg sm:text-xl lg:text-2xl text-blue-100 max-w-4xl mx-auto mb-10 leading-relaxed">
               Expert analysis of 50+ providers and 300+ plans. Find the perfect match for your needs and save hundreds per year.
             </p>
-          
-          <div class="max-w-md mx-auto mb-8">
-            <!-- Simple HTML form for now to test -->
-            <form id="zipForm" class="w-full max-w-md mx-auto">
-              <div class="relative">
-                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                  </svg>
+            
+            <!-- ZIP Code Search -->
+            <div class="max-w-lg mx-auto mb-8">
+              <form id="zipForm" class="relative">
+                <div class="flex rounded-xl shadow-2xl overflow-hidden bg-white">
+                  <div class="flex-1 relative">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                      <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                      </svg>
+                    </div>
+                    <input
+                      type="text"
+                      id="zipInput"
+                      maxlength="5"
+                      placeholder="Enter your ZIP code"
+                      class="w-full pl-12 pr-4 py-4 text-lg text-gray-900 placeholder-gray-500 border-0 focus:ring-0 focus:outline-none"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    aria-label="Search electricity plans by ZIP code"
+                    class="px-8 py-4 bg-red-600 text-white font-semibold hover:bg-red-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+                  >
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                  </button>
                 </div>
-                <input
-                  type="text"
-                  id="zipInput"
-                  maxlength="5"
-                  placeholder="Enter your ZIP code"
-                  class="block w-full pl-10 pr-12 h-14 text-lg border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-gray-900 bg-white placeholder-gray-500"
-                />
-                <button
-                  type="submit"
-                  aria-label="Search electricity plans by ZIP code"
-                  class="absolute inset-y-0 right-0 px-4 flex items-center bg-red-600 text-white rounded-r-lg hover:bg-red-700 transition-colors"
-                >
-                  <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                  </svg>
-                </button>
-              </div>
-            </form>
-          </div>
+              </form>
+            </div>
 
-          <script>
-            document.getElementById('zipForm').addEventListener('submit', function(e) {
-              e.preventDefault();
-              const zipCode = document.getElementById('zipInput').value;
-              console.log('ZIP code entered:', zipCode);
-              
-              if (zipCode.length !== 5) {
-                alert('Please enter a 5-digit ZIP code');
-                return;
-              }
-
-              // Define ZIP to city mapping
-              const zipToCity = {
-                // Houston area
-                '77001': 'houston-tx', '77002': 'houston-tx', '77003': 'houston-tx', '77004': 'houston-tx',
-                '77005': 'houston-tx', '77006': 'houston-tx', '77007': 'houston-tx', '77008': 'houston-tx',
-                // Dallas area
-                '75001': 'dallas-tx', '75201': 'dallas-tx', '75202': 'dallas-tx', '75203': 'dallas-tx',
-                '75204': 'dallas-tx', '75205': 'dallas-tx', '75206': 'dallas-tx', '75207': 'dallas-tx',
-                // Austin area  
-                '78701': 'austin-tx', '78702': 'austin-tx', '78703': 'austin-tx', '78704': 'austin-tx'
-              };
-
-              // Try to find the city for this ZIP code
-              const city = zipToCity[zipCode];
-              console.log('City lookup result:', city);
-              
-              if (city) {
-                console.log('Navigating to city page:', `/texas/${city}`);
-                window.location.href = `/texas/${city}`;
-              } else {
-                console.log('ZIP code not found in mapping, checking pattern...');
-                if (zipCode.startsWith('7')) {
-                  console.log('Texas ZIP code detected, going to Texas providers page');
-                  window.location.href = '/texas/electricity-providers';
-                } else {
-                  console.log('Unknown ZIP code, going to locations page');
-                  window.location.href = '/locations';
-                }
-              }
-            });
-
-            // Only allow numeric input
-            document.getElementById('zipInput').addEventListener('input', function(e) {
-              e.target.value = e.target.value.replace(/\D/g, '').slice(0, 5);
-            });
-          </script>
-
-            <div class="text-blue-200">
-              <p class="text-lg drop-shadow-sm">50+ Expert-Ranked Providers • 6 Specializations • Free Comparison Tools</p>
+            <!-- Trust Indicators -->
+            <div class="text-blue-200 text-center">
+              <p class="text-lg font-medium">50+ Expert-Ranked Providers • 6 Specializations • Free Comparison Tools</p>
             </div>
           </div>
         </div>
-      </section>
-    </HeroBackground>
+      </div>
+
+
+      <script define:vars={{ zipToCity }}>
+        document.getElementById('zipForm').addEventListener('submit', function(e) {
+          e.preventDefault();
+          const zipCode = document.getElementById('zipInput').value;
+          console.log('ZIP code entered:', zipCode);
+          
+          if (zipCode.length !== 5) {
+            alert('Please enter a 5-digit ZIP code');
+            return;
+          }
+
+          // Try to find the city for this ZIP code using comprehensive mapping
+          const city = zipToCity[zipCode];
+          console.log('City lookup result:', city);
+          
+          if (city) {
+            console.log('Navigating to city page:', `/texas/${city}`);
+            window.location.href = `/texas/${city}`;
+          } else {
+            console.log('ZIP code not found in mapping, checking pattern...');
+            if (zipCode.startsWith('7')) {
+              console.log('Texas ZIP code detected, going to Texas providers page');
+              window.location.href = '/texas/electricity-providers';
+            } else {
+              console.log('Unknown ZIP code, going to locations page');
+              window.location.href = '/locations';
+            }
+          }
+        });
+
+        // Only allow numeric input
+        document.getElementById('zipInput').addEventListener('input', function(e) {
+          e.target.value = e.target.value.replace(/\D/g, '').slice(0, 5);
+        });
+      </script>
+    </section>
 
     <!-- Key Benefits -->
     <section class="py-16 bg-white">

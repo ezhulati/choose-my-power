@@ -36,7 +36,12 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `https://choosemy
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Security headers removed - now handled by HTTP headers in netlify.toml for better CSP support -->
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    
+    <!-- Favicon - Lightning bolt icon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" type="image/svg+xml" href="/lightning-bolt-icon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    
     <title>{title}</title>
     
     <!-- Robots Meta Tag -->
@@ -127,6 +132,8 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `https://choosemy
       .header {
         flex-shrink: 0;
         height: 65px; /* Reserve space for header */
+        position: relative;
+        z-index: 99990; /* Ensure header stacking context above main content */
       }
       
       .main-content {
@@ -279,7 +286,7 @@ const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `https://choosemy
       }
       
       /* GPU acceleration for critical elements */
-      .main-container, .header, .main-content, .footer {
+      .main-container, .main-content, .footer {
         transform: translateZ(0);
         backface-visibility: hidden;
         perspective: 1000px;
