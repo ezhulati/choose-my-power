@@ -1,0 +1,407 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { ZipCodeSearch } from '../../components/ZipCodeSearch';
+import { DollarSign, CheckCircle, Users, Shield, AlertTriangle, Eye, Target, Heart, Zap, Home } from 'lucide-react';
+
+const title = "Electricity Without the Deposit Trap | Texas No-Deposit Plans";
+const description = "Escape $200+ deposits that trap you with bad providers. Find good electricity plans with zero upfront cost. Switch anytime, no financial hostages.";
+---
+
+<Layout title={title} description={description}>
+  <div class="bg-white">
+    <!-- Hero Section with Empathetic Anti-Trap Messaging -->
+    <section class="relative bg-gradient-to-br from-texas-gold via-orange-600 to-texas-gold overflow-hidden">
+      <!-- Background Pattern -->
+      <div class="absolute inset-0 bg-black/20"></div>
+      <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;80&quot; height=&quot;80&quot; viewBox=&quot;0 0 80 80&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;0.08&quot;%3E%3Cpath d=&quot;M20 20l20-20v40L20 20zm20 20l20-20v40L40 40z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+      
+      <!-- Content Container -->
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="text-center">
+          <!-- Problem Hook -->
+          <div class="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-8">
+            <Heart className="w-10 h-10 text-white" />
+          </div>
+          
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            Electricity Without the Deposit Trap
+          </h1>
+          
+          <p class="text-xl md:text-2xl text-orange-100 max-w-4xl mx-auto mb-8 leading-relaxed">
+            Moving? Tight on cash? Tired of companies demanding $200+ deposits to hold you hostage? 
+            Get good electricity service without the upfront ransom. Switch anytime, keep your money.
+          </p>
+
+          <!-- Trust Indicators -->
+          <div class="flex flex-wrap items-center justify-center gap-6 mb-10 text-orange-200">
+            <div class="flex items-center gap-2">
+              <DollarSign className="w-5 h-5 text-white" />
+              <span class="font-medium">$0 Upfront</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <Zap className="w-5 h-5 text-white" />
+              <span class="font-medium">Good Plans Available</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <Target className="w-5 h-5 text-white" />
+              <span class="font-medium">Switch Anytime</span>
+            </div>
+          </div>
+          
+          <!-- ZIP Search -->
+          <div class="max-w-md mx-auto">
+            <ZipCodeSearch 
+              client:load
+              placeholder="Find no-deposit plans near you"
+              className="w-full"
+            />
+            <p class="text-orange-200 text-sm mt-2">Keep your cash, get your lights on</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      
+      <!-- Why Companies Use Deposits (The Trap Exposed) -->
+      <div class="mb-16">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-texas-navy mb-6">
+            Why Companies Want Your Deposit Money
+          </h2>
+          <p class="text-xl text-gray-600 max-w-4xl mx-auto">
+            Deposits aren't about protecting them from you - they're about trapping you with them. 
+            Here's what they don't want you to know.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div class="bg-red-50 border-2 border-red-200 rounded-xl p-8">
+            <h3 class="text-2xl font-bold text-red-800 mb-4 flex items-center gap-3">
+              <AlertTriangle className="h-6 w-6" />
+              The Deposit Trap
+            </h3>
+            <div class="space-y-4">
+              <div class="border-l-4 border-red-300 pl-4">
+                <p class="font-semibold text-red-700">Makes You Reluctant to Switch</p>
+                <p class="text-red-600 text-sm mt-1">"I paid $200, might as well stick it out" even if service sucks</p>
+              </div>
+              <div class="border-l-4 border-red-300 pl-4">
+                <p class="font-semibold text-red-700">Cash Flow for Companies</p>
+                <p class="text-red-600 text-sm mt-1">Free loan from customers that they earn interest on</p>
+              </div>
+              <div class="border-l-4 border-red-300 pl-4">
+                <p class="font-semibold text-red-700">Barriers for People Moving</p>
+                <p class="text-red-600 text-sm mt-1">When you're already spending $1,000s on moving costs</p>
+              </div>
+              <div class="border-l-4 border-red-300 pl-4">
+                <p class="font-semibold text-red-700">Discriminates by Income</p>
+                <p class="text-red-600 text-sm mt-1">Forces lower-income people into worse providers</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-green-50 border-2 border-green-200 rounded-xl p-8">
+            <h3 class="text-2xl font-bold text-green-800 mb-4 flex items-center gap-3">
+              <Heart className="h-6 w-6" />
+              Why No-Deposit Makes Sense
+            </h3>
+            <div class="space-y-4">
+              <div class="border-l-4 border-green-400 pl-4">
+                <p class="font-semibold text-green-700">Keep Your Freedom</p>
+                <p class="text-green-700 text-sm mt-1">Switch providers if rates go up or service goes down</p>
+              </div>
+              <div class="border-l-4 border-green-400 pl-4">
+                <p class="font-semibold text-green-700">Use Your Money Better</p>
+                <p class="text-green-700 text-sm mt-1">Emergency fund, rent deposit, furniture - way better uses</p>
+              </div>
+              <div class="border-l-4 border-green-400 pl-4">
+                <p class="font-semibold text-green-700">Lights On Immediately</p>
+                <p class="text-green-700 text-sm mt-1">Start service today, not after you scrape together deposit money</p>
+              </div>
+              <div class="border-l-4 border-green-400 pl-4">
+                <p class="font-semibold text-green-700">Equal Access</p>
+                <p class="text-green-700 text-sm mt-1">Good electricity shouldn't depend on having extra cash lying around</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real Talk About No-Deposit Options -->
+      <div class="mb-12 bg-gradient-to-r from-texas-gold-50 to-orange-50 border border-texas-gold-200 rounded-xl p-8">
+        <h2 class="text-2xl font-bold text-texas-navy mb-6">Real Talk: What No-Deposit Actually Means</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="flex items-start space-x-3">
+            <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+              <DollarSign className="h-5 w-5 text-green-600" />
+            </div>
+            <div>
+              <h3 class="font-semibold text-texas-navy mb-2">Keep $200+ in Your Pocket</h3>
+              <p class="text-gray-700 text-sm">That's rent money, car payment money, or emergency fund money. Don't tie it up with an electric company.</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="w-10 h-10 bg-texas-gold-100 rounded-lg flex items-center justify-center flex-shrink-0">
+              <Zap className="h-5 w-5 text-texas-gold-600" />
+            </div>
+            <div>
+              <h3 class="font-semibold text-texas-navy mb-2">Service Starts Today</h3>
+              <p class="text-gray-700 text-sm">Moving in this weekend? No problem. Start service immediately instead of waiting for approval or payment processing.</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
+              <Target className="h-5 w-5 text-orange-600" />
+            </div>
+            <div>
+              <h3 class="font-semibold text-texas-navy mb-2">Freedom to Switch</h3>
+              <p class="text-gray-700 text-sm">If your provider raises rates or gives bad service, you can leave. No deposit holding you hostage.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Actually Good No-Deposit Plans -->
+      <div class="mb-16">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-texas-navy mb-6">
+            Good Plans That Don't Hold You Hostage
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Yes, you can get good electricity service without a deposit. These aren't bait-and-switch plans - 
+            they're legitimate options that won't trap you or jack up rates.
+          </p>
+        </div>
+        
+        <div class="space-y-6">
+          
+          <!-- TXU No Deposit Plan -->
+          <div class="bg-white border-2 border-texas-gold-200 rounded-xl p-6 relative">
+            <div class="absolute -top-3 left-6">
+              <span class="bg-texas-gold text-white px-4 py-1 rounded-full text-sm font-bold flex items-center space-x-1">
+                <DollarSign className="h-4 w-4" />
+                <span>Best No-Deposit Value</span>
+              </span>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 items-center mt-2">
+              <div class="lg:col-span-2">
+                <h3 class="text-xl font-bold text-texas-navy mb-2">TXU Simply Lock 12 - No Deposit</h3>
+                <p class="text-gray-600 mb-3">TXU Energy - Texas's Most Reliable Provider</p>
+                <div class="space-y-2">
+                  <div class="flex items-center space-x-2">
+                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span class="text-sm text-gray-600">$0 deposit with good credit or auto-pay</span>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <Eye className="h-4 w-4 text-green-600" />
+                    <span class="text-sm text-gray-600">Same rate as their regular plan - no premium</span>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <Shield className="h-4 w-4 text-green-600" />
+                    <span class="text-sm text-gray-600">Fixed rate locked for 12 months</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="text-center">
+                <div class="text-sm text-gray-500 mb-1">True Monthly Cost</div>
+                <div class="text-4xl font-bold text-texas-red mb-1">$92</div>
+                <div class="text-gray-600">for 1000 kWh</div>
+                <div class="text-sm text-green-600 mt-2 font-medium">9.2¢ effective rate</div>
+              </div>
+              
+              <div class="text-center lg:text-right">
+                <div class="mb-4">
+                  <div class="text-lg font-bold text-green-600">Save $200</div>
+                  <div class="text-sm text-gray-600">vs deposit requirement</div>
+                  <div class="text-sm text-green-700 font-medium">Start service today</div>
+                </div>
+                <button class="bg-texas-navy text-white px-6 py-3 min-h-[48px] rounded-lg hover:bg-texas-navy/90 transition-colors mb-2 touch-manipulation w-full">
+                  Start TXU Service
+                </button>
+                <div class="text-xs text-gray-500">No upfront costs • Same day</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reliant No Deposit -->
+          <div class="bg-white border border-gray-200 rounded-xl p-6">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 items-center">
+              <div class="lg:col-span-2">
+                <h3 class="text-xl font-bold text-texas-navy mb-2">Reliant Basic 12 - No Deposit Option</h3>
+                <p class="text-gray-600 mb-3">Reliant Energy - Established Provider</p>
+                <div class="space-y-2">
+                  <div class="flex items-center space-x-2">
+                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span class="text-sm text-gray-600">Auto-pay waives deposit requirement</span>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <Home className="h-4 w-4 text-green-600" />
+                    <span class="text-sm text-gray-600">Good for apartments and new residents</span>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <Target className="h-4 w-4 text-green-600" />
+                    <span class="text-sm text-gray-600">Switch anytime after 12 months</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="text-center">
+                <div class="text-sm text-gray-500 mb-1">True Monthly Cost</div>
+                <div class="text-4xl font-bold text-texas-red mb-1">$96</div>
+                <div class="text-gray-600">for 1000 kWh</div>
+                <div class="text-sm text-green-600 mt-2 font-medium">9.6¢ effective rate</div>
+              </div>
+              
+              <div class="text-center lg:text-right">
+                <div class="mb-4">
+                  <div class="text-lg font-bold text-green-600">Save $150</div>
+                  <div class="text-sm text-gray-600">typical deposit saved</div>
+                  <div class="text-sm text-orange-600 font-medium">Lights on same day</div>
+                </div>
+                <button class="bg-texas-red text-white px-6 py-3 min-h-[48px] rounded-lg hover:bg-red-700 transition-colors mb-2 touch-manipulation w-full">
+                  Start Reliant Service
+                </button>
+                <div class="text-xs text-gray-500">Auto-pay required • No fees</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Green Mountain No Deposit -->
+          <div class="bg-white border border-gray-200 rounded-xl p-6">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 items-center">
+              <div class="lg:col-span-2">
+                <h3 class="text-xl font-bold text-texas-navy mb-2">Green Mountain Renewable 12 - No Deposit</h3>
+                <p class="text-gray-600 mb-3">Green Mountain Energy - 100% Green Option</p>
+                <div class="space-y-2">
+                  <div class="flex items-center space-x-2">
+                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span class="text-sm text-gray-600">No deposit with satisfactory credit</span>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <Heart className="h-4 w-4 text-green-600" />
+                    <span class="text-sm text-gray-600">100% renewable energy (actually verified)</span>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <Users className="h-4 w-4 text-green-600" />
+                    <span class="text-sm text-gray-600">Great for environmentally conscious customers</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="text-center">
+                <div class="text-sm text-gray-500 mb-1">True Monthly Cost</div>
+                <div class="text-4xl font-bold text-texas-red mb-1">$101</div>
+                <div class="text-gray-600">for 1000 kWh</div>
+                <div class="text-sm text-green-600 mt-2 font-medium">10.1¢ effective rate</div>
+              </div>
+              
+              <div class="text-center lg:text-right">
+                <div class="mb-4">
+                  <div class="text-lg font-bold text-green-600">Save $250</div>
+                  <div class="text-sm text-gray-600">typical green deposit saved</div>
+                  <div class="text-sm text-green-700 font-medium">Green + no deposit</div>
+                </div>
+                <button class="bg-green-600 text-white px-6 py-3 min-h-[48px] rounded-lg hover:bg-green-700 transition-colors mb-2 touch-manipulation w-full">
+                  Start Green Service
+                </button>
+                <div class="text-xs text-gray-500">100% wind power • No upfront</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- How to Get No-Deposit Service -->
+      <div class="bg-gradient-to-r from-texas-gold to-orange-600 rounded-xl p-8 text-white">
+        <h3 class="text-2xl font-bold mb-6">How to Escape the Deposit Trap</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h4 class="font-semibold text-yellow-200 mb-3 flex items-center gap-2">
+              <CheckCircle className="h-5 w-5" />
+              Easy Ways to Qualify
+            </h4>
+            <ul class="space-y-3 text-orange-100">
+              <li class="flex items-start gap-2">
+                <span class="text-yellow-300 font-bold">•</span>
+                <span><strong>Auto-pay enrollment:</strong> Most providers waive deposits if you auto-pay</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-yellow-300 font-bold">•</span>
+                <span><strong>Previous utility history:</strong> Show you paid your last electric bill on time</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-yellow-300 font-bold">•</span>
+                <span><strong>Decent credit score:</strong> Usually 650+ but varies by provider</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-yellow-300 font-bold">•</span>
+                <span><strong>Employment verification:</strong> Proof of stable income</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-yellow-200 mb-3 flex items-center gap-2">
+              <Heart className="h-5 w-5" />
+              If Your Credit Isn't Great
+            </h4>
+            <ul class="space-y-3 text-orange-100">
+              <li class="flex items-start gap-2">
+                <span class="text-yellow-300 font-bold">•</span>
+                <span><strong>Co-signer letter:</strong> Have someone with good credit vouch for you</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-yellow-300 font-bold">•</span>
+                <span><strong>Utility payment history:</strong> Show records from water, gas, or previous electric</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-yellow-300 font-bold">•</span>
+                <span><strong>Try smaller providers:</strong> Some are more flexible than big companies</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-yellow-300 font-bold">•</span>
+                <span><strong>Military/senior discounts:</strong> Many providers waive deposits for veterans and seniors</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- The Real Talk Section -->
+        <div class="mt-8 p-6 bg-white/10 rounded-xl border border-white/20">
+          <h4 class="font-bold text-white mb-3">Real Talk: What If You Don't Qualify?</h4>
+          <div class="text-orange-100 space-y-2">
+            <p>
+              Look, if no provider will waive the deposit, you're not stuck forever. Here's what to do:
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+              <div>
+                <p class="font-medium text-yellow-200">Short-term strategy:</p>
+                <p class="text-sm">Pay the smallest deposit you can find, get service started, then switch in 6-12 months when your payment history is established.</p>
+              </div>
+              <div>
+                <p class="font-medium text-yellow-200">Long-term strategy:</p>
+                <p class="text-sm">Build your credit and payment history. Next time you move or switch, you'll have more no-deposit options.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Call to Action -->
+        <div class="mt-8 text-center">
+          <p class="text-orange-200 text-lg mb-4">
+            Ready to keep your money and get your lights on?
+          </p>
+          <button class="bg-white text-texas-gold px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-50 transition-colors shadow-lg">
+            Find My No-Deposit Options
+          </button>
+          <p class="text-orange-300 text-sm mt-3">
+            Stop letting electric companies hold your money hostage
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</Layout>

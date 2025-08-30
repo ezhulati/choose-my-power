@@ -1,0 +1,162 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const title = "New to Texas? Start Here (Don't Get Taken Advantage Of) | 2024 Guide";
+const description = "Moving to Texas? Don't let electricity companies take advantage of you on day one. Here's how to get set up without getting scammed.";
+---
+
+<Layout title={title} description={description}>
+  <div class="min-h-screen bg-gradient-to-b from-texas-cream to-gray-50">
+    <div class="bg-texas-navy text-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">New to Texas? Start Here</h1>
+        <p class="text-xl text-blue-100 mb-8 leading-relaxed">
+          Welcome to Texas! Here's what makes us different: you actually get to choose your electricity company and rate. Most states stick you with whatever monopoly runs your area. The freedom is great - but yeah, comparing all those options can be overwhelming. Don't worry - I'll show you exactly how to get the best deal without the headache.
+        </p>
+      </div>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="bg-texas-cream-200 p-8 rounded-xl shadow-lg border border-blue-200 mb-8">
+        <h2 class="text-2xl font-bold text-texas-navy mb-4">🎯 Don't Let Them Catch You Unprepared</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="font-semibold text-texas-navy mb-3">Before You Move (2-3 weeks):</h3>
+            <ul class="text-sm text-texas-navy space-y-1">
+              <li>☐ Research electricity providers in your area</li>
+              <li>☐ Compare rates and plan types</li>
+              <li>☐ Choose your electricity provider</li>
+              <li>☐ Schedule service connection date</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold text-texas-navy mb-3">After You Move (First Week):</h3>
+            <ul class="text-sm text-texas-navy space-y-1">
+              <li>☐ Verify electricity service is active</li>
+              <li>☐ Set up online account with provider</li>
+              <li>☐ Understand your first bill</li>
+              <li>☐ Set contract expiration reminder</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-8">
+        <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+          <h2 class="text-2xl font-bold text-texas-navy mb-4">Understanding Texas Electricity Choice</h2>
+          <p class="text-gray-700 mb-4">
+            Unlike most states, Texas lets you choose your electricity provider. You have the power to select the company, rate, and plan type that best fits your needs and budget.
+          </p>
+          
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="text-center bg-gray-50 p-4 rounded-lg">
+              <div class="text-3xl font-bold text-texas-red mb-2">100+</div>
+              <div class="text-sm text-gray-600">Electricity providers to choose from</div>
+            </div>
+            <div class="text-center bg-gray-50 p-4 rounded-lg">
+              <div class="text-3xl font-bold text-texas-red mb-2">85%</div>
+              <div class="text-sm text-gray-600">Of Texas has electricity choice</div>
+            </div>
+            <div class="text-center bg-gray-50 p-4 rounded-lg">
+              <div class="text-3xl font-bold text-texas-red mb-2">Free</div>
+              <div class="text-sm text-gray-600">To switch providers anytime</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+          <h2 class="text-2xl font-bold text-texas-navy mb-4">Setting Up Service in Your New Home</h2>
+          
+          <div class="space-y-6">
+            <div class="flex items-start">
+              <div class="bg-texas-red text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-4 mt-1">1</div>
+              <div>
+                <h3 class="font-semibold text-gray-900 mb-2">Find Your Service Area</h3>
+                <p class="text-sm text-gray-600">Use your new address ZIP code to determine which utility company serves your area and which electricity providers are available.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="bg-texas-red text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-4 mt-1">2</div>
+              <div>
+                <h3 class="font-semibold text-gray-900 mb-2">Choose Your Provider</h3>
+                <p class="text-sm text-gray-600">Compare rates, contract terms, and customer reviews. For new residents, we recommend starting with a 12-month fixed-rate plan.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="bg-texas-red text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-4 mt-1">3</div>
+              <div>
+                <h3 class="font-semibold text-gray-900 mb-2">Schedule Connection</h3>
+                <p class="text-sm text-gray-600">Contact your chosen provider to schedule service connection for your move-in date. Service can typically be connected within 1-2 business days.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="bg-texas-red text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-4 mt-1">4</div>
+              <div>
+                <h3 class="font-semibold text-gray-900 mb-2">Provide Required Information</h3>
+                <p class="text-sm text-gray-600">You'll need your new address, move-in date, Social Security Number, and possibly a security deposit.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+          <h2 class="text-2xl font-bold text-texas-navy mb-4">First-Time Texas Resident Tips</h2>
+          
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-lg font-semibold text-green-700 mb-3">✅ Smart Choices for Beginners</h3>
+              <ul class="text-sm text-gray-700 space-y-2">
+                <li>• Choose a 12-month fixed-rate plan for predictable costs</li>
+                <li>• Select a provider with good customer service ratings</li>
+                <li>• Avoid variable-rate plans until you understand usage patterns</li>
+                <li>• Set up automatic payments for potential discounts</li>
+                <li>• Keep your first few bills to track usage patterns</li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 class="text-lg font-semibold text-red-700 mb-3">⚠️ Common New Resident Mistakes</h3>
+              <ul class="text-sm text-gray-700 space-y-2">
+                <li>• Signing with door-to-door salespeople</li>
+                <li>• Choosing based only on the lowest advertised rate</li>
+                <li>• Not reading the Electricity Facts Label</li>
+                <li>• Forgetting to set contract expiration reminders</li>
+                <li>• Not understanding TDSP charges on bills</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+          <h2 class="text-2xl font-bold text-texas-navy mb-4">Special Considerations for Renters</h2>
+          <p class="text-gray-700 mb-4">
+            As a renter in Texas, you typically choose your own electricity provider unless your landlord specifically includes utilities in the rent.
+          </p>
+          
+          <div class="bg-yellow-50 p-4 rounded-lg mb-4">
+            <h3 class="font-semibold text-yellow-800 mb-2">💡 Renter Tips</h3>
+            <ul class="text-sm text-yellow-700 space-y-1">
+              <li>• Check your lease to see if electricity is included</li>
+              <li>• Consider shorter contract terms (6-12 months) if unsure about staying</li>
+              <li>• Ask about early termination fee waivers for moves</li>
+              <li>• Transfer service instead of canceling when moving within Texas</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 text-center">
+        <div class="bg-gradient-to-r from-texas-navy to-blue-800 text-white p-8 rounded-xl">
+          <h2 class="text-2xl font-bold mb-4">Welcome to Texas!</h2>
+          <p class="text-lg mb-6 text-blue-100">Ready to choose your electricity provider? We'll help you find the best plan for your new home.</p>
+          <a href="/electricity-plans" class="bg-texas-red text-white px-8 py-4 rounded-lg font-semibold hover:bg-texas-red-600 transition-colors">
+            Find Your Texas Electricity Plan
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

@@ -188,7 +188,7 @@ function generateTitle(city: string, filters: string[], planCount: number, prima
       2: `${cityName} Electricity That Actually Fits | ${planCount} Clear Options | ${rateContext}`,
       3: `Moving to ${cityName}? Don't Transfer Your Plan | ${planCount} Better Options`,
       4: `${cityName} Plans That Work for Your Home | ${planCount} Honest Rates | ${trendContext}`,
-      5: `${cityName} Electricity Made Simple | ${planCount} Quality Providers Only`,
+      5: `${cityName} Electricity Made Simple | ${planCount} Licensed Electricity Companies Only`,
       6: `${cityName} Electricity - Clear Choices | ${planCount} Plans | ${rateContext}`,
       7: `${cityName} Electricity Options That Make Sense | ${planCount} Plans | No Overwhelm`,
       8: `Looking for Better Rates in ${cityName}? | ${planCount} Quality Plans Available`,
@@ -383,7 +383,7 @@ function generateMultiFilterTitle(cityName: string, filters: string[], planCount
     4: `${shortFilterText} Electricity Plans ${cityName} | ${planCount} Providers`,
     5: `${planCount} ${filterText} Options in ${cityName} | Compare & Save`,
     6: `${cityName} Specialized ${shortFilterText} Plans | ${planCount} Available`,
-    7: `Premium ${filterText} Plans ${cityName} | ${planCount} Top Options`,
+    7: `${filterText} Plans ${cityName} | ${planCount} Available Options`,
     8: `${cityName} ${filterText} Electricity | ${planCount} Custom Plans`
   };
   
@@ -430,7 +430,7 @@ function generateCityContent(cityName: string, planCount: number, lowestRate: nu
   
   const templates = {
     1: `
-      <p>${cityName} residents deserve clear electricity choices. We understand that comparing plans can be confusing, so we've organized ${planCount} options from quality providers to make your decision straightforward.</p>
+      <p>${cityName} residents deserve clear electricity choices. We understand that comparing plans can be confusing, so we've organized ${planCount} options from licensed electricity companies to make your decision straightforward.</p>
       
       <p>You'll see transparent pricing with rates ${rateText}—no hidden fees or confusing terms. Since ${location} handles power delivery throughout the ${cityName} area, you get the same reliable service regardless of which provider you choose.</p>
       
@@ -441,7 +441,7 @@ function generateCityContent(cityName: string, planCount: number, lowestRate: nu
       
       <p>We show you the true cost of each plan upfront, including fees. Since ${location} handles the power lines and infrastructure, switching providers doesn't change your service reliability—just your bill.</p>
       
-      <p>Whether you're budget-focused or want premium features like renewable energy, there's likely a plan that fits your ${cityName} household. Compare what matters to you and choose with confidence.</p>
+      <p>Plans with different features are available for ${cityName} households. Compare options by rate, contract term, and features.</p>
     `,
     3: `
       <p>Choosing electricity for your ${cityName} home doesn't have to be complicated. We've organized ${planCount} quality plans so you can easily compare rates ${rateText} and find what works for your situation.</p>
@@ -451,14 +451,14 @@ function generateCityContent(cityName: string, planCount: number, lowestRate: nu
       <p>Ready to make a change? Most customers can switch online quickly and see savings on their next bill. No complicated paperwork, no service interruption—just a better electricity plan.</p>
     `,
     4: `
-      <p>Many ${cityName} residents are discovering they can save money by choosing a different electricity provider. You have ${planCount} options with rates ${rateText}—and switching is simpler than you might think.</p>
+      <p>${planCount} electricity plans available for ${cityName} residents with rates ${rateText}. Compare providers and switch to find a better rate.</p>
       
       <p>${location} keeps your lights on with reliable power delivery, while competitive companies offer plans with features you actually want: renewable energy, flexible billing, and rewards that matter to you.</p>
       
       <p>Why stick with a plan that doesn't fit your needs? Take a few minutes to compare your options and find something that matches your budget and values. Most switches happen smoothly within a couple of billing cycles.</p>
     `,
     5: `
-      <p>You can take control of your electricity costs in ${cityName}. We've found ${planCount} quality plans from trusted providers with transparent rates ${rateText}—no hidden fees or surprise charges.</p>
+      <p>You can take control of your electricity costs in ${cityName}. We've found ${planCount} quality plans from licensed electricity companies with transparent rates ${rateText}—no hidden fees or surprise charges.</p>
       
       <p>Here's the good news: while you choose your electricity company, ${location} still maintains the power lines and handles outages. You get competitive pricing with the same dependable service you're used to.</p>
       
@@ -568,9 +568,9 @@ function generateFilteredDescription(cityName: string, filters: string[], planCo
   
   const templates = {
     1: `Compare ${planCount} ${filterText} electricity plans in ${cityName}${rateText}${providerText}. Find the best rates with transparent pricing and no hidden fees. Switch online today.`,
-    2: `Discover ${planCount} ${filterText} power plans available in ${cityName}${rateText}. Compare top providers, contract terms, and special features to find your ideal electricity plan.`,
+    2: `Discover ${planCount} ${filterText} power plans available in ${cityName}${rateText}. Compare licensed electricity companies, contract terms, and special features to find your ideal electricity plan.`,
     3: `${planCount} ${filterText} electricity options in ${cityName}${rateText}${providerText}. Compare rates, read customer reviews, and switch to save on your monthly power bill.`,
-    4: `Find the best ${filterText} electricity plans in ${cityName} from ${planCount} trusted providers${rateText}. Easy comparison, transparent pricing, instant online enrollment.`,
+    4: `Find the best ${filterText} electricity plans in ${cityName} from ${planCount} licensed electricity companies${rateText}. Easy comparison, transparent pricing, instant online enrollment.`,
     5: `${cityName} ${filterText} electricity plans - ${planCount} options available${rateText}${providerText}. Compare features, rates, and contract terms to find your ideal plan.`,
     6: `Choose from ${planCount} ${filterText} electricity plans in ${cityName}${rateText}. Our comparison tool makes switching providers simple and saves you money.`,
     7: `${planCount} ${filterText} power options in ${cityName} with competitive rates${rateText}. Compare plans, providers, and special features to find the best deal.`,
@@ -708,7 +708,7 @@ function generateOGDescription(city: string, filters: string[], planCount: numbe
     const ogDescriptions = {
       1: `Compare ${planCount} electricity plans in ${cityName}, TX${rateText}. Find the best rates and switch online in minutes.`,
       2: `${planCount} electricity options in ${cityName} with transparent pricing${rateText}. Compare and switch today.`,
-      3: `Find the best electricity plan in ${cityName} from ${planCount} trusted providers${rateText}.`
+      3: `Find the best electricity plan in ${cityName} from ${planCount} licensed electricity companies${rateText}.`
     };
     return ogDescriptions[Math.min(variation, 3)] || ogDescriptions[1];
   }
@@ -895,46 +895,46 @@ function getEnhancedDescriptionTemplates(
 ): Record<number, string> {
   if (filters.length === 0) {
     return {
-      1: `${cityName} residents deserve clear electricity choices. We show plans from quality providers${rateText}${providerText} so you can pick with confidence. No confusing jargon, just your power of choice.`,
-      2: `Finding the right electricity plan in ${cityName} shouldn't be complicated. We've simplified ${planCount} options${rateText} from trusted providers. Compare rates and choose what works for you.`,
+      1: `${cityName} residents deserve clear electricity choices. We show plans from licensed electricity companies${rateText}${providerText} so you can pick with confidence. No confusing jargon, just your power of choice.`,
+      2: `Finding the right electricity plan in ${cityName} shouldn't be complicated. We've simplified ${planCount} options${rateText} from licensed electricity companies. Compare rates and choose what works for you.`,
       3: `${cityName} residents, you have the power to choose your electricity provider. We make it simple with ${planCount} plans${rateText} from quality companies. No overwhelm, just clear choices.`,
-      4: `Confused by electricity options in ${cityName}? You're not alone. We've organized ${planCount} plans${rateText} from trusted providers so you can decide with confidence.`,
+      4: `Confused by electricity options in ${cityName}? You're not alone. We've organized ${planCount} plans${rateText} from licensed electricity companies so you can decide with confidence.`,
       5: `${cityName} residents can save money on electricity with the right plan. We show ${planCount} quality options${rateText} with transparent pricing. Your power of choice made simple.`,
-      6: `Looking for electricity plans in ${cityName}? We make it straightforward with ${planCount} options${rateText} from quality providers. Compare what matters and choose with confidence.`,
+      6: `Looking for electricity plans in ${cityName}? We make it straightforward with ${planCount} options${rateText} from licensed electricity companies. Compare what matters and choose with confidence.`,
       7: `${cityName} residents have ${planCount} electricity choices${rateText}. We organize them clearly so you can find what works for your home and budget. No sales pressure, just helpful comparison.`,
-      8: `Power your ${cityName} home the smart way. We've gathered ${planCount} plans${rateText} from trusted providers so you can choose what's best for your needs.`,
+      8: `Power your ${cityName} home the smart way. We've gathered ${planCount} plans${rateText} from licensed electricity companies so you can choose what's best for your needs.`,
       9: `Tired of confusing electricity bills in ${cityName}? We show ${planCount} clear options${rateText}${providerText} with honest pricing. Your power of choice shouldn't be complicated.`,
-      10: `${cityName} electricity shopping made simple. We present ${planCount} plans${rateText} from quality providers so you can decide without the confusion.`,
-      11: `Ready to save on electricity in ${cityName}? We compare ${planCount} plans${rateText} from quality providers so you don't have to. Clear pricing, honest comparison.`,
+      10: `${cityName} electricity shopping made simple. We present ${planCount} plans${rateText} from licensed electricity companies so you can decide without the confusion.`,
+      11: `Ready to save on electricity in ${cityName}? We compare ${planCount} plans${rateText} from licensed electricity companies so you don't have to. Clear pricing, honest comparison.`,
       12: `${cityName} electricity plans organized for you. Browse ${planCount} options${rateText} from trusted companies. We make choosing simple so you can focus on saving.`,
       13: `Electricity choice in ${cityName} doesn't have to be overwhelming. We show ${planCount} clear options${rateText} so you can pick what works for your situation.`,
       14: `Want better electricity rates in ${cityName}? We've found ${planCount} quality options${rateText}${providerText}. Compare honestly and choose confidently.`,
-      15: `${cityName} residents deserve better electricity options. We organize ${planCount} plans${rateText} from trusted providers so you can find your ideal match.`,
-      16: `Electricity choice in ${cityName} made clear. We organize ${planCount} plans${rateText} from quality providers so you can compare what actually matters to you.`,
+      15: `${cityName} residents deserve better electricity options. We organize ${planCount} plans${rateText} from licensed electricity companies so you can find your ideal match.`,
+      16: `Electricity choice in ${cityName} made clear. We organize ${planCount} plans${rateText} from licensed electricity companies so you can compare what actually matters to you.`,
       17: `${cityName} residents have options for electricity. We show ${planCount} plans${rateText}${providerText} from trusted companies. Compare honestly, choose confidently.`,
       18: `Ready to switch electricity in ${cityName}? We make it simple with ${planCount} clear options${rateText}. No pressure, just helpful comparison and choice.`,
       19: `Electricity plans for ${cityName} residents organized clearly. Browse ${planCount} options${rateText}${providerText} and find what works for your home and budget.`,
-      20: `${cityName} electricity comparison made simple. We present ${planCount} plans${rateText} from quality providers so you can choose what's right for you.`,
-      21: `Save money on electricity in ${cityName}. We show ${planCount} quality options${rateText} from trusted providers so you can find what fits your budget and lifestyle.`,
+      20: `${cityName} electricity comparison made simple. We present ${planCount} plans${rateText} from licensed electricity companies so you can choose what's right for you.`,
+      21: `Save money on electricity in ${cityName}. We show ${planCount} quality options${rateText} from licensed electricity companies so you can find what fits your budget and lifestyle.`,
       22: `${cityName} electricity rates organized for you. Compare ${planCount} clear options${rateText} and choose what works for your home. Your power of choice made simple.`,
       23: `Compare electricity providers in ${cityName} without the confusion. ${planCount} plans${rateText}${providerText} from quality companies, presented honestly.`,
       24: `${cityName} electricity choice doesn't have to be complicated. We organize ${planCount} options${rateText} so you can pick what's right for your situation.`,
-      25: `Looking for better electricity rates in ${cityName}? We compare ${planCount} plans${rateText} from trusted providers so you can choose with confidence.`
+      25: `Looking for better electricity rates in ${cityName}? We compare ${planCount} plans${rateText} from licensed electricity companies so you can choose with confidence.`
     };
   }
   
   const filterText = filters.map(f => formatFilterName(f)).join(' ').toLowerCase();
   return {
     1: `${cityName} residents looking for ${filterText} electricity have ${planCount} quality options${rateText}${providerText}. We organize them clearly so you can choose with confidence.`,
-    2: `Finding ${filterText} power plans in ${cityName} made simple. We show ${planCount} options${rateText} from trusted providers so you can pick what works for you.`,
+    2: `Finding ${filterText} power plans in ${cityName} made simple. We show ${planCount} options${rateText} from licensed electricity companies so you can pick what works for you.`,
     3: `${planCount} ${filterText} electricity choices in ${cityName}${rateText}${providerText}. We make comparison straightforward so you can focus on what matters to you.`,
-    4: `Looking for ${filterText} electricity plans in ${cityName}? We've organized ${planCount} quality options${rateText} from trusted providers for easy comparison.`,
+    4: `Looking for ${filterText} electricity plans in ${cityName}? We've organized ${planCount} quality options${rateText} from licensed electricity companies for easy comparison.`,
     5: `${cityName} ${filterText} electricity plans organized for you. Browse ${planCount} options${rateText}${providerText} and find what fits your home and budget.`,
-    6: `Ready for ${filterText} electricity in ${cityName}? We show ${planCount} clear choices${rateText} from quality providers so you can decide with confidence.`,
+    6: `Ready for ${filterText} electricity in ${cityName}? We show ${planCount} clear choices${rateText} from licensed electricity companies so you can decide with confidence.`,
     7: `${planCount} ${filterText} power options in ${cityName}${rateText} from trusted companies. We organize them so you can compare what actually matters.`,
     8: `Want ${filterText} electricity in ${cityName}? We've found ${planCount} quality plans${rateText}${providerText} and made comparison simple for you.`,
-    9: `${cityName} ${filterText} energy plans made clear. Compare ${planCount} options${rateText} from trusted providers and choose what works for your situation.`,
-    10: `Looking for ${filterText} electricity deals in ${cityName}? We organize ${planCount} plans${rateText}${providerText} from quality providers for honest comparison.`
+    9: `${cityName} ${filterText} energy plans made clear. Compare ${planCount} options${rateText} from licensed electricity companies and choose what works for your situation.`,
+    10: `Looking for ${filterText} electricity deals in ${cityName}? We organize ${planCount} plans${rateText}${providerText} from licensed electricity companies for honest comparison.`
   };
 }
 

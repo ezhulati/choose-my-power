@@ -1,0 +1,303 @@
+---
+// HeaderWrapper.astro - Perfect Navigation for All Devices
+---
+
+<header class="bg-white border-b border-gray-200 shadow-sm relative z-50" id="main-header">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-14 sm:h-16">
+      <!-- Logo - Mobile-First Responsive -->
+      <div class="flex-shrink-0">
+        <a href="/" class="flex items-center space-x-1 sm:space-x-2 header-logo transition-colors">
+          <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+          <span class="text-lg sm:text-xl font-bold">ChooseMyPower</span>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation - Responsive Spacing -->
+      <nav class="hidden md:flex items-center space-x-0.5 lg:space-x-1">
+        <a href="/compare" class="px-2 py-2 lg:px-3 lg:py-2 text-sm font-medium header-link rounded-md transition-colors">
+          Compare
+        </a>
+        
+        <!-- Browse Dropdown - Responsive -->
+        <div class="relative group">
+          <button class="flex items-center px-2 py-2 lg:px-3 lg:py-2 text-sm font-medium header-link rounded-md transition-colors">
+            Browse
+            <svg class="ml-0.5 lg:ml-1 w-3 h-3 lg:w-4 lg:h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="absolute top-full left-0 mt-1 w-52 lg:w-56 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 z-[9999]">
+            <div class="py-2">
+              <a href="/electricity-companies" class="block px-4 py-2 text-sm text-gray-700 hover:bg-texas-cream-200 hover:text-texas-navy transition-colors">
+                Electricity Companies
+              </a>
+              <a href="/electricity-plans" class="block px-4 py-2 text-sm text-gray-700 hover:bg-texas-cream-200 hover:text-texas-navy transition-colors">
+                Electricity Plans
+              </a>
+              <a href="/best" class="block px-4 py-2 text-sm text-gray-700 hover:bg-texas-cream-200 hover:text-texas-navy transition-colors">
+                Best Rankings
+              </a>
+              <a href="/providers" class="block px-4 py-2 text-sm text-gray-700 hover:bg-texas-cream-200 hover:text-texas-navy transition-colors">
+                Our Providers
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rates Dropdown - Responsive -->
+        <div class="relative group">
+          <button class="flex items-center px-2 py-2 lg:px-3 lg:py-2 text-sm font-medium header-link rounded-md transition-colors">
+            Rates
+            <svg class="ml-0.5 lg:ml-1 w-3 h-3 lg:w-4 lg:h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="absolute top-full left-0 mt-1 w-44 lg:w-48 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 z-[9999]">
+            <div class="py-2">
+              <a href="/rates" class="block px-4 py-2 text-sm text-gray-700 hover:bg-texas-cream-200 hover:text-texas-navy transition-colors">
+                Current Rates
+              </a>
+              <a href="/rates/calculator" class="block px-4 py-2 text-sm text-gray-700 hover:bg-texas-cream-200 hover:text-texas-navy transition-colors">
+                Rate Calculator
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shop Dropdown - Responsive -->
+        <div class="relative group">
+          <button class="flex items-center px-2 py-2 lg:px-3 lg:py-2 text-sm font-medium header-link rounded-md transition-colors">
+            Shop
+            <svg class="ml-0.5 lg:ml-1 w-3 h-3 lg:w-4 lg:h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="absolute top-full left-0 mt-1 w-52 lg:w-56 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 z-[9999]">
+            <div class="py-2">
+              <a href="/shop/cheapest-electricity" class="block px-4 py-2 text-sm text-gray-700 hover:bg-texas-cream-200 hover:text-texas-navy transition-colors">
+                Cheapest Electricity
+              </a>
+              <a href="/shop/best-electricity-providers" class="block px-4 py-2 text-sm text-gray-700 hover:bg-texas-cream-200 hover:text-texas-navy transition-colors">
+                Best Providers
+              </a>
+              <a href="/shop/green-energy" class="block px-4 py-2 text-sm text-gray-700 hover:bg-texas-cream-200 hover:text-texas-navy transition-colors">
+                Green Energy
+              </a>
+              <a href="/shop/no-deposit-electricity" class="block px-4 py-2 text-sm text-gray-700 hover:bg-texas-cream-200 hover:text-texas-navy transition-colors">
+                No Deposit Plans
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a href="/locations" class="px-2 py-2 lg:px-3 lg:py-2 text-sm font-medium header-link rounded-md transition-colors">
+          Locations
+        </a>
+        <a href="/resources" class="px-2 py-2 lg:px-3 lg:py-2 text-sm font-medium header-link rounded-md transition-colors">
+          Resources
+        </a>
+      </nav>
+
+      <!-- Mobile Menu Button - Touch-Optimized -->
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="p-2 header-link rounded-md transition-colors touch-manipulation" aria-label="Open mobile navigation menu" aria-expanded="false">
+          <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu - Mobile-First Optimized -->
+  <div id="mobile-menu" class="md:hidden hidden mobile-menu-bg border-t">
+    <div class="px-4 py-3 space-y-1">
+      <a href="/compare" class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors touch-manipulation">
+        Compare
+      </a>
+      
+      <!-- Mobile Browse Section -->
+      <div class="space-y-1">
+        <button id="mobile-browse-toggle" class="flex items-center justify-between w-full px-3 py-3 text-base font-medium text-gray-700 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors touch-manipulation">
+          Browse
+          <svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div id="mobile-browse-menu" class="hidden pl-4 space-y-0.5">
+          <a href="/electricity-companies" class="block px-3 py-2.5 text-sm text-gray-600 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors touch-manipulation">
+            Electricity Companies
+          </a>
+          <a href="/electricity-plans" class="block px-3 py-2 text-sm text-gray-600 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors">
+            Electricity Plans
+          </a>
+          <a href="/best" class="block px-3 py-2 text-sm text-gray-600 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors">
+            Best Rankings
+          </a>
+          <a href="/providers" class="block px-3 py-2 text-sm text-gray-600 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors">
+            Our Providers
+          </a>
+        </div>
+      </div>
+
+      <!-- Mobile Rates Section -->
+      <div class="space-y-1">
+        <button id="mobile-rates-toggle" class="flex items-center justify-between w-full px-3 py-2 text-base font-medium text-gray-700 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors">
+          Rates
+          <svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div id="mobile-rates-menu" class="hidden pl-4 space-y-1">
+          <a href="/rates" class="block px-3 py-2 text-sm text-gray-600 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors">
+            Current Rates
+          </a>
+          <a href="/rates/calculator" class="block px-3 py-2 text-sm text-gray-600 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors">
+            Rate Calculator
+          </a>
+        </div>
+      </div>
+
+      <!-- Mobile Shop Section -->
+      <div class="space-y-1">
+        <button id="mobile-shop-toggle" class="flex items-center justify-between w-full px-3 py-2 text-base font-medium text-gray-700 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors">
+          Shop
+          <svg class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div id="mobile-shop-menu" class="hidden pl-4 space-y-1">
+          <a href="/shop/cheapest-electricity" class="block px-3 py-2 text-sm text-gray-600 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors">
+            Cheapest Electricity
+          </a>
+          <a href="/shop/best-electricity-providers" class="block px-3 py-2 text-sm text-gray-600 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors">
+            Best Providers
+          </a>
+          <a href="/shop/green-energy" class="block px-3 py-2 text-sm text-gray-600 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors">
+            Green Energy
+          </a>
+          <a href="/shop/no-deposit-electricity" class="block px-3 py-2 text-sm text-gray-600 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors">
+            No Deposit Plans
+          </a>
+        </div>
+      </div>
+
+      <a href="/locations" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors">
+        Locations
+      </a>
+      <a href="/resources" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors">
+        Resources
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Standard header - no dynamic behavior needed
+
+  // Mobile menu toggle
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+      const isHidden = mobileMenu.classList.toggle('hidden');
+      mobileMenuButton.setAttribute('aria-expanded', isHidden ? 'false' : 'true');
+      mobileMenuButton.setAttribute('aria-label', 
+        isHidden ? 'Open mobile navigation menu' : 'Close mobile navigation menu'
+      );
+    });
+  }
+
+  // Mobile dropdown toggles
+  const toggles = [
+    { button: 'mobile-browse-toggle', menu: 'mobile-browse-menu' },
+    { button: 'mobile-rates-toggle', menu: 'mobile-rates-menu' },
+    { button: 'mobile-shop-toggle', menu: 'mobile-shop-menu' }
+  ];
+
+  toggles.forEach(({ button, menu }) => {
+    const buttonEl = document.getElementById(button);
+    const menuEl = document.getElementById(menu);
+    
+    if (buttonEl && menuEl) {
+      buttonEl.addEventListener('click', () => {
+        menuEl.classList.toggle('hidden');
+        const arrow = buttonEl.querySelector('svg');
+        if (arrow) {
+          arrow.classList.toggle('rotate-180');
+        }
+      });
+    }
+  });
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', (e) => {
+    const target = e.target as Node;
+    if (mobileMenu && mobileMenuButton && !mobileMenu.contains(target) && !mobileMenuButton.contains(target)) {
+      mobileMenu.classList.add('hidden');
+    }
+  });
+</script>
+
+<style>
+  /* Standard header styling */
+  .header-logo {
+    @apply text-texas-navy hover:text-texas-navy;
+  }
+  
+  .header-link {
+    @apply text-gray-700 hover:text-texas-navy hover:bg-texas-cream-200;
+  }
+  
+  .mobile-menu-bg {
+    @apply bg-white border-gray-200;
+  }
+  
+  /* Ensure dropdowns appear above everything */
+  .group:hover > div[class*="absolute"] {
+    z-index: 9999 !important;
+  }
+  
+  .group:hover > div.absolute {
+    z-index: 9999 !important;
+  }
+  
+  /* Target all dropdown containers specifically */
+  .group div[class*="group-hover:opacity-100"] {
+    z-index: 9999 !important;
+  }
+  
+  /* Smooth transitions */
+  .transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+  
+  /* Mobile menu animations */
+  @media (max-width: 767px) {
+    #mobile-menu {
+      animation: slideDown 0.2s ease-out;
+    }
+    
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+  
+  /* Dropdown menus maintain white background */
+  .group:hover > div {
+    @apply bg-white;
+  }
+</style>

@@ -1,0 +1,135 @@
+---
+/**
+ * Optimized Image Component with Next-Gen Format Support
+ * Automatically serves WebP/AVIF when available with fallbacks
+ */
+
+export interface Props {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  loading?: 'lazy' | 'eager';
+  class?: string;
+  sizes?: string;
+  quality?: number;
+  priority?: boolean;
+}
+
+const { 
+  src, 
+  alt, 
+  width, 
+  height, 
+  loading = 'lazy', 
+  class: className = '',
+  sizes,
+  quality = 80,
+  priority = false
+} = Astro.props;
+
+// Generate different format URLs
+const basePath = src.replace(/\.[^/.]+$/, '');
+const extension = src.split('.').pop();
+
+// Check if this is a local image
+const isLocal = src.startsWith('/') && !src.startsWith('//');
+
+// For local images, generate format variations
+let avifSrc = '';
+let webpSrc = '';
+
+if (isLocal) {
+  avifSrc = `${basePath}.avif`;
+  webpSrc = `${basePath}.webp`;
+}
+
+// Determine loading strategy
+const loadingAttr = priority ? 'eager' : loading;
+const fetchPriorityAttr = priority ? 'high' : undefined;
+---
+
+{isLocal ? (
+  <picture class={className}>
+    <source srcset={avifSrc} type="image/avif" />
+    <source srcset={webpSrc} type="image/webp" />
+    <img 
+      src={src} 
+      alt={alt}
+      width={width}
+      height={height}
+      loading={loadingAttr}
+      decoding="async"
+      fetchpriority={fetchPriorityAttr}
+      sizes={sizes}
+    />
+  </picture>
+) : (
+  <img 
+    src={src} 
+    alt={alt}
+    width={width}
+    height={height}
+    loading={loadingAttr}
+    decoding="async"
+    fetchpriority={fetchPriorityAttr}
+    sizes={sizes}
+    class={className}
+  />
+)}
+
+<style>
+  picture {
+    display: block;
+    position: relative;
+  }
+  
+  picture img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  /* Prevent layout shifts */
+  img[width][height] {
+    aspect-ratio: attr(width) / attr(height);
+  }
+  
+  /* Ensure images don't exceed container */
+  picture, img {
+    max-width: 100%;
+  }
+  
+  /* Loading states */
+  img:not([src]) {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+  }
+  
+  @keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+  
+  /* Improve image rendering */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimizeSpeed;
+    image-rendering: optimize-contrast;
+  }
+  
+  /* High DPI displays */
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    img {
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+    }
+  }
+</style>

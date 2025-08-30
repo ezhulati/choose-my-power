@@ -1,14 +1,27 @@
-# ChooseMyPower 5,800+ Page Build - Project Roadmap
+# ChooseMyPower.org - Complete shadcn/ui Migration Roadmap
 
-**Generated:** 2025-08-29  
-**Program Director:** Claude Code  
-**Target:** Complete implementation of 5,800+ page electricity comparison platform  
-**Timeline:** 14 days (2 weeks)  
-**Architecture:** Enterprise-scale Astro 5 with React, Shadcn UI, and intelligent faceted navigation
+**Project Director:** Program Director (Claude Code)  
+**Target Completion:** Within 2 weeks  
+**Scope:** Complete UI overhaul across 5,800+ pages  
+**Status:** Phase 1 - Discovery & Planning ✅  
+**Generated:** 2025-08-30
 
 ## 🎯 Mission Statement
 
-Transform the ChooseMyPower platform into a comprehensive 5,800+ page electricity comparison site covering all 880+ Texas cities with complete faceted navigation, provider analysis, and enterprise-grade performance.
+Execute complete UI overhaul of ChooseMyPower.org using shadcn/ui components with strict Texas branding enforcement across all 5,800+ pages. This is a comprehensive component migration requiring systematic replacement, branding compliance, and performance optimization.
+
+## 🚨 CRITICAL REQUIREMENTS
+
+### Mandatory Components Usage
+- **100% shadcn/ui MCP server usage** - Every component MUST use the shadcn MCP server
+- **46 shadcn components available** - All must be properly implemented with Texas branding
+- **NO legacy components** - Complete replacement, no compromises
+
+### Texas Branding Enforcement
+- **Colors**: texas-navy (#002868), texas-red (#BE0B31), texas-gold (#F59E0B), texas-cream (#F8EDD3)
+- **Button hover states**: Text MUST always stay visible (never white on white)
+- **Single icon per button maximum** - Enforce this strictly across all components
+- **Consistent spacing and typography** - Follow established design system
 
 ## 📊 Project Scope Overview
 

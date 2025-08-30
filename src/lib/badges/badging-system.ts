@@ -202,7 +202,7 @@ export class SmartBadgingSystem {
       case 'info':
         return `${baseClasses} !bg-texas-navy/10 !text-texas-navy`;
       case 'texas-primary':
-        return `${baseClasses} !bg-blue-900 !text-white`;
+        return `${baseClasses} !bg-texas-navy !text-white`;
       case 'destructive':
         return `${baseClasses} !bg-texas-red-100 !text-texas-navy`;
       default:

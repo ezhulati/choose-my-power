@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { ResourcesPage } from './_components/ResourcesPage';
+
+const title = "Finally. Texas Electricity Guides That Actually Make Sense";
+const description = "You've been to PowerToChoose. You've read confusing articles about electricity. You're still confused. We've been there. Here's everything we figured out, explained like you're talking to a friend who gets it.";
+---
+
+<Layout title={title} description={description}>
+  <ResourcesPage client:load />
+
+  <script>
+    // Client-side navigation function for React components
+    window.navigateToPath = function(path) {
+      window.location.href = path;
+    };
+  </script>
+</Layout>

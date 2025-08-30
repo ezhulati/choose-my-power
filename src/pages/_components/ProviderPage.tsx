@@ -34,9 +34,9 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
           <p className="text-gray-600 mb-8">The provider you're looking for doesn't exist in our database.</p>
           <button
             onClick={() => navigate('/providers')}
-            className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors"
+            className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-texas-navy/90 transition-colors"
           >
-            View Quality Providers
+            View Licensed Companies
           </button>
         </div>
       </div>
@@ -95,7 +95,7 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                 />
                 <div>
                   {/* Hero's Journey Honest Header */}
-                  <h1 className="text-3xl font-bold text-texas-navy mb-2">
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-texas-navy mb-2">
                     {provider.heroJourney?.honestHeader || `Here's What Real Customers Say About ${provider.name}`}
                   </h1>
                   
@@ -128,12 +128,10 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                     </div>
                   </div>
                   
-                  {/* Trust Signal */}
-                  <div className="bg-gray-50 border-l-4 border-texas-gold p-4 mb-4 rounded-r-lg">
-                    <p className="text-sm font-medium text-gray-800 mb-1">Our Promise</p>
-                    <p className="text-sm text-gray-600">
-                      Based on {provider.reviewCount.toLocaleString()} real customer experiences • We're honest about our provider partnerships • 
-                      Updated monthly so you get the current reality, not outdated info
+                  {/* Simplified Trust Signal */}
+                  <div className="bg-texas-cream-50 border border-texas-gold-200 p-3 mb-4 rounded-lg">
+                    <p className="text-sm text-gray-700">
+                      Based on {provider.reviewCount.toLocaleString()} real customer reviews • Updated monthly
                     </p>
                   </div>
                 </div>
@@ -162,7 +160,7 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                 {provider.heroJourney?.recommendedAction === 'avoid' && (
                   <button
                     onClick={() => navigate('/providers')}
-                    className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors font-medium inline-flex items-center"
+                    className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-texas-navy/90 transition-colors font-medium inline-flex items-center"
                   >
                     <Users className="h-4 w-4 mr-2" />
                     Find Better Alternatives
@@ -437,7 +435,7 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
 
                     <button
                       onClick={() => navigate('/texas/houston/electricity-providers')}
-                      className="w-full bg-texas-navy text-white py-2 rounded-lg hover:bg-blue-800 transition-colors text-sm font-medium"
+                      className="w-full bg-texas-navy text-white py-2 rounded-lg hover:bg-texas-navy/90 transition-colors text-sm font-medium"
                     >
                       Check Your Area's Rates
                     </button>
@@ -526,7 +524,7 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                     
                     <button
                       onClick={() => navigate(`/${state.slug}/electricity-providers`)}
-                      className="w-full bg-texas-navy text-white py-2 rounded-lg hover:bg-blue-800 transition-colors text-sm font-medium"
+                      className="w-full bg-texas-navy text-white py-2 rounded-lg hover:bg-texas-navy/90 transition-colors text-sm font-medium"
                     >
                       View {state.name} Plans
                     </button>

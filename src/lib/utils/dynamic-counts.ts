@@ -54,10 +54,10 @@ export function getDynamicCounts(
  * Format provider count with appropriate qualitative language
  */
 export function formatProviderCount(count: number): string {
-  if (count >= 20) return `${count}+ trusted providers`;
-  if (count >= 15) return `${count} trusted providers`;
+  if (count >= 20) return `${count}+ licensed electricity companies`;
+  if (count >= 15) return `${count} licensed electricity companies`;
   if (count >= 12) return `${count} licensed providers`;
-  if (count >= 10) return `${count} top providers`;
+  if (count >= 10) return `${count} licensed electricity companies`;
   return `${count} providers`;
 }
 
@@ -242,6 +242,36 @@ export function getStaticCounts(): DynamicCounts {
   };
   
   return _cachedCounts;
+}
+
+/**
+ * Get the lowest rate available from current plans
+ */
+export function getLowestRate(providers?: Provider[]): string {
+  if (!providers || providers.length === 0) {
+    return "5.9"; // Conservative fallback rate
+  }
+  
+  const allPlans = providers.flatMap(provider => provider.plans || []);
+  if (allPlans.length === 0) {
+    return "5.9"; // Conservative fallback
+  }
+  
+  const lowestRate = Math.min(...allPlans.map(plan => plan.rate));
+  return lowestRate.toFixed(1); // Format to one decimal place like "6.9"
+}
+
+/**
+ * Async function to get real-time lowest rate
+ */
+export async function getRealTimeLowestRate(): Promise<string> {
+  try {
+    const mockProviders = await getMockProviders();
+    return getLowestRate(mockProviders);
+  } catch (error) {
+    console.warn('Failed to get real-time lowest rate, using fallback:', error);
+    return "5.9"; // Conservative fallback
+  }
 }
 
 /**

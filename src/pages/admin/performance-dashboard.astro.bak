@@ -1,0 +1,525 @@
+---
+/**
+ * Performance Monitoring Dashboard
+ * Real-time performance metrics and alerting
+ * Enterprise-grade monitoring for 881+ cities
+ */
+
+import Layout from '../../layouts/Layout.astro';
+
+// Authenticate user (in production, implement proper auth)
+const isAuthorized = true; // Replace with actual auth check
+
+if (!isAuthorized) {
+  return Astro.redirect('/login');
+}
+
+// Mock data for development environment (when DATABASE_URL is not set)
+const getMockStats = () => ({
+  totalRequests: 15420,
+  timeRange: 60,
+  averagePageLoadTime: 1250,
+  averageApiResponseTime: 320,
+  averageCacheHitRate: 89.5,
+  averageErrorRate: 0.12,
+  p50LoadTime: 1100,
+  p95LoadTime: 2300,
+  p99LoadTime: 4200,
+  tierStats: {
+    1: {
+      requestCount: 8540,
+      avgLoadTime: 980,
+      avgCacheHitRate: 92.1,
+      errorRate: 0.08,
+      thresholdViolations: 12
+    },
+    2: {
+      requestCount: 4920,
+      avgLoadTime: 1420,
+      avgCacheHitRate: 87.3,
+      errorRate: 0.15,
+      thresholdViolations: 8
+    },
+    3: {
+      requestCount: 1960,
+      avgLoadTime: 1890,
+      avgCacheHitRate: 84.7,
+      errorRate: 0.22,
+      thresholdViolations: 5
+    }
+  },
+  slowestPages: [
+    { url: '/electricity-plans/houston-tx/green-energy/12-month/', loadTime: 4200, city: 'Houston', filters: ['green-energy', '12-month'], timestamp: Date.now() - 120000 },
+    { url: '/electricity-plans/dallas-tx/fixed-rate/24-month/', loadTime: 3890, city: 'Dallas', filters: ['fixed-rate', '24-month'], timestamp: Date.now() - 180000 },
+    { url: '/electricity-plans/austin-tx/prepaid/no-deposit/', loadTime: 3650, city: 'Austin', filters: ['prepaid', 'no-deposit'], timestamp: Date.now() - 240000 }
+  ],
+  topErrors: []
+});
+
+const getMockMemoryStats = () => ({
+  caches: {
+    'api-responses': 1247,
+    'route-cache': 881,
+    'image-cache': 456,
+    'db-queries': 234
+  },
+  memoryUsage: {
+    used: 42,
+    total: 64,
+    limit: 128
+  },
+  memoryWarnings: 0,
+  observerCount: 3
+});
+
+const getMockDbStats = () => ({
+  totalQueries: 8934,
+  averageResponseTime: 125,
+  cacheHits: 5687,
+  failedQueries: 12,
+  connections: {
+    'primary': {
+      isHealthy: true,
+      responseTime: 98,
+      consecutiveFailures: 0
+    },
+    'replica-0': {
+      isHealthy: true,
+      responseTime: 145,
+      consecutiveFailures: 0
+    },
+    'replica-1': {
+      isHealthy: true,
+      responseTime: 132,
+      consecutiveFailures: 0
+    }
+  }
+});
+
+// Try to get real statistics, fall back to mock data
+let perfStats, memoryStats, dbStats;
+
+try {
+  // Only import and use real modules if database is configured
+  if (process.env.DATABASE_URL || process.env.POSTGRES_URL) {
+    const { performanceTracker } = await import('../../lib/monitoring/performance-scale');
+    const { memoryManager } = await import('../../lib/utils/memory-manager');
+    const { getConnectionPool } = await import('../../lib/database/connection-pool');
+    
+    perfStats = performanceTracker.getStats();
+    memoryStats = memoryManager.getMemoryStats();
+    const dbPool = getConnectionPool();
+    dbStats = dbPool.getStats();
+  } else {
+    // Use mock data for development
+    perfStats = getMockStats();
+    memoryStats = getMockMemoryStats();
+    dbStats = getMockDbStats();
+  }
+} catch (error) {
+  console.warn('Using mock data for performance dashboard:', error.message);
+  perfStats = getMockStats();
+  memoryStats = getMockMemoryStats();
+  dbStats = getMockDbStats();
+}
+
+// Calculate health scores
+const calculateHealthScore = (stats: any): number => {
+  let score = 100;
+  
+  // Penalize for slow average response time
+  if (stats.averagePageLoadTime > 3000) score -= 30;
+  else if (stats.averagePageLoadTime > 2000) score -= 15;
+  
+  // Penalize for high error rate
+  if (stats.averageErrorRate > 5) score -= 40;
+  else if (stats.averageErrorRate > 1) score -= 20;
+  
+  // Penalize for low cache hit rate
+  if (stats.averageCacheHitRate < 70) score -= 20;
+  else if (stats.averageCacheHitRate < 85) score -= 10;
+  
+  return Math.max(0, score);
+};
+
+const healthScore = calculateHealthScore(perfStats);
+const healthStatus = healthScore >= 90 ? 'excellent' : 
+                   healthScore >= 70 ? 'good' : 
+                   healthScore >= 50 ? 'warning' : 'critical';
+
+const pageTitle = `Performance Dashboard - ChooseMyPower.org`;
+const pageDescription = `Real-time performance monitoring for ${perfStats.tierStats[1]?.requestCount || 0} tier-1 cities and ${perfStats.totalRequests} total requests.`;
+---
+
+<Layout title={pageTitle} description={pageDescription} noIndex={true}>
+  <div class="min-h-screen bg-gray-50 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="mb-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Performance Dashboard</h1>
+        <p class="text-gray-600">Real-time monitoring for ChooseMyPower.org infrastructure</p>
+        
+        <!-- Overall Health Status -->
+        <div class={`mt-4 p-4 rounded-lg border-2 ${
+          healthStatus === 'excellent' ? 'bg-green-50 border-green-200' :
+          healthStatus === 'good' ? 'bg-texas-cream-200 border-blue-200' :
+          healthStatus === 'warning' ? 'bg-yellow-50 border-yellow-200' :
+          'bg-red-50 border-red-200'
+        }`}>
+          <div class="flex items-center">
+            <div class={`w-4 h-4 rounded-full mr-3 ${
+              healthStatus === 'excellent' ? 'bg-green-500' :
+              healthStatus === 'good' ? 'bg-texas-cream-2000' :
+              healthStatus === 'warning' ? 'bg-yellow-500' :
+              'bg-red-500'
+            }`}></div>
+            <span class={`font-semibold ${
+              healthStatus === 'excellent' ? 'text-green-800' :
+              healthStatus === 'good' ? 'text-texas-navy' :
+              healthStatus === 'warning' ? 'text-yellow-800' :
+              'text-red-800'
+            }`}>
+              System Health: {healthScore}/100 ({healthStatus.toUpperCase()})
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Key Metrics Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <!-- Average Response Time -->
+        <div class="bg-white p-6 rounded-lg shadow">
+          <div class="flex items-center">
+            <div class="p-3 rounded-md bg-texas-cream">
+              <svg class="w-6 h-6 text-texas-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <div class="ml-4">
+              <div class="text-2xl font-bold text-gray-900">
+                {Math.round(perfStats.averagePageLoadTime)}ms
+              </div>
+              <div class="text-sm text-gray-600">Avg Response Time</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Total Requests -->
+        <div class="bg-white p-6 rounded-lg shadow">
+          <div class="flex items-center">
+            <div class="p-3 rounded-md bg-green-100">
+              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+              </svg>
+            </div>
+            <div class="ml-4">
+              <div class="text-2xl font-bold text-gray-900">
+                {perfStats.totalRequests.toLocaleString()}
+              </div>
+              <div class="text-sm text-gray-600">Total Requests ({perfStats.timeRange}min)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cache Hit Rate -->
+        <div class="bg-white p-6 rounded-lg shadow">
+          <div class="flex items-center">
+            <div class="p-3 rounded-md bg-purple-100">
+              <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <div class="ml-4">
+              <div class="text-2xl font-bold text-gray-900">
+                {Math.round(perfStats.averageCacheHitRate)}%
+              </div>
+              <div class="text-sm text-gray-600">Cache Hit Rate</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Error Rate -->
+        <div class="bg-white p-6 rounded-lg shadow">
+          <div class="flex items-center">
+            <div class={`p-3 rounded-md ${perfStats.averageErrorRate > 1 ? 'bg-red-100' : 'bg-gray-100'}`}>
+              <svg class={`w-6 h-6 ${perfStats.averageErrorRate > 1 ? 'text-texas-red' : 'text-gray-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+              </svg>
+            </div>
+            <div class="ml-4">
+              <div class={`text-2xl font-bold ${perfStats.averageErrorRate > 1 ? 'text-texas-red' : 'text-gray-900'}`}>
+                {perfStats.averageErrorRate.toFixed(2)}%
+              </div>
+              <div class="text-sm text-gray-600">Error Rate</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Performance by City Tier -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+        {Object.entries(perfStats.tierStats).map(([tier, stats]) => (
+          <div class="bg-white p-6 rounded-lg shadow" key={tier}>
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">
+              Tier {tier} Cities
+              <span class="text-sm font-normal text-gray-600 ml-2">
+                ({stats.requestCount} requests)
+              </span>
+            </h3>
+            
+            <div class="space-y-3">
+              <div class="flex justify-between">
+                <span class="text-gray-600">Avg Load Time:</span>
+                <span class={`font-semibold ${
+                  stats.avgLoadTime > 3000 ? 'text-texas-red' :
+                  stats.avgLoadTime > 2000 ? 'text-yellow-600' :
+                  'text-green-600'
+                }`}>
+                  {Math.round(stats.avgLoadTime)}ms
+                </span>
+              </div>
+              
+              <div class="flex justify-between">
+                <span class="text-gray-600">Cache Hit Rate:</span>
+                <span class={`font-semibold ${
+                  stats.avgCacheHitRate < 70 ? 'text-texas-red' :
+                  stats.avgCacheHitRate < 85 ? 'text-yellow-600' :
+                  'text-green-600'
+                }`}>
+                  {Math.round(stats.avgCacheHitRate)}%
+                </span>
+              </div>
+              
+              <div class="flex justify-between">
+                <span class="text-gray-600">Error Rate:</span>
+                <span class={`font-semibold ${
+                  stats.errorRate > 1 ? 'text-texas-red' :
+                  stats.errorRate > 0.5 ? 'text-yellow-600' :
+                  'text-green-600'
+                }`}>
+                  {stats.errorRate.toFixed(2)}%
+                </span>
+              </div>
+              
+              <div class="flex justify-between">
+                <span class="text-gray-600">Threshold Violations:</span>
+                <span class={`font-semibold ${
+                  stats.thresholdViolations > 0 ? 'text-texas-red' : 'text-green-600'
+                }`}>
+                  {stats.thresholdViolations}
+                </span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Core Web Vitals -->
+      <div class="bg-white p-6 rounded-lg shadow mb-8">
+        <h3 class="text-lg font-semibold text-gray-900 mb-4">Core Web Vitals</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="text-center">
+            <div class="text-3xl font-bold text-gray-900 mb-1">
+              {Math.round(perfStats.p50LoadTime)}ms
+            </div>
+            <div class="text-sm text-gray-600 mb-2">LCP (P50)</div>
+            <div class={`px-3 py-1 rounded-full text-xs font-semibold ${
+              perfStats.p50LoadTime <= 2500 ? 'bg-texas-gold-100 text-texas-navy' :
+              perfStats.p50LoadTime <= 4000 ? 'bg-texas-gold-100 text-texas-navy' :
+              'bg-texas-red-100 text-texas-navy'
+            }`}>
+              {perfStats.p50LoadTime <= 2500 ? 'Good' :
+               perfStats.p50LoadTime <= 4000 ? 'Needs Improvement' : 'Poor'}
+            </div>
+          </div>
+          
+          <div class="text-center">
+            <div class="text-3xl font-bold text-gray-900 mb-1">
+              {Math.round(perfStats.p95LoadTime)}ms
+            </div>
+            <div class="text-sm text-gray-600 mb-2">LCP (P95)</div>
+            <div class={`px-3 py-1 rounded-full text-xs font-semibold ${
+              perfStats.p95LoadTime <= 2500 ? 'bg-texas-gold-100 text-texas-navy' :
+              perfStats.p95LoadTime <= 4000 ? 'bg-texas-gold-100 text-texas-navy' :
+              'bg-texas-red-100 text-texas-navy'
+            }`}>
+              {perfStats.p95LoadTime <= 2500 ? 'Good' :
+               perfStats.p95LoadTime <= 4000 ? 'Needs Improvement' : 'Poor'}
+            </div>
+          </div>
+          
+          <div class="text-center">
+            <div class="text-3xl font-bold text-gray-900 mb-1">
+              {Math.round(perfStats.p99LoadTime)}ms
+            </div>
+            <div class="text-sm text-gray-600 mb-2">LCP (P99)</div>
+            <div class={`px-3 py-1 rounded-full text-xs font-semibold ${
+              perfStats.p99LoadTime <= 2500 ? 'bg-texas-gold-100 text-texas-navy' :
+              perfStats.p99LoadTime <= 4000 ? 'bg-texas-gold-100 text-texas-navy' :
+              'bg-texas-red-100 text-texas-navy'
+            }`}>
+              {perfStats.p99LoadTime <= 2500 ? 'Good' :
+               perfStats.p99LoadTime <= 4000 ? 'Needs Improvement' : 'Poor'}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Database Performance -->
+      <div class="bg-white p-6 rounded-lg shadow mb-8">
+        <h3 class="text-lg font-semibold text-gray-900 mb-4">Database Performance</h3>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div class="text-center">
+            <div class="text-2xl font-bold text-gray-900">{dbStats.totalQueries}</div>
+            <div class="text-sm text-gray-600">Total Queries</div>
+          </div>
+          
+          <div class="text-center">
+            <div class="text-2xl font-bold text-gray-900">{Math.round(dbStats.averageResponseTime)}ms</div>
+            <div class="text-sm text-gray-600">Avg Response</div>
+          </div>
+          
+          <div class="text-center">
+            <div class="text-2xl font-bold text-gray-900">{dbStats.cacheHits}</div>
+            <div class="text-sm text-gray-600">Cache Hits</div>
+          </div>
+          
+          <div class="text-center">
+            <div class={`text-2xl font-bold ${dbStats.failedQueries > 0 ? 'text-texas-red' : 'text-gray-900'}`}>
+              {dbStats.failedQueries}
+            </div>
+            <div class="text-sm text-gray-600">Failed Queries</div>
+          </div>
+        </div>
+
+        <!-- Connection Health -->
+        <div class="mt-6">
+          <h4 class="text-md font-medium text-gray-900 mb-3">Connection Health</h4>
+          <div class="space-y-2">
+            {Object.entries(dbStats.connections).map(([connId, health]) => (
+              <div class="flex items-center justify-between py-2 px-3 bg-gray-50 rounded" key={connId}>
+                <span class="font-medium">{connId}</span>
+                <div class="flex items-center space-x-3">
+                  <span class="text-sm text-gray-600">{health.responseTime}ms</span>
+                  <span class={`px-2 py-1 rounded-full text-xs font-semibold ${
+                    health.isHealthy ? 'bg-texas-gold-100 text-texas-navy' : 'bg-texas-red-100 text-texas-navy'
+                  }`}>
+                    {health.isHealthy ? 'Healthy' : `Unhealthy (${health.consecutiveFailures} failures)`}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Memory Usage -->
+      <div class="bg-white p-6 rounded-lg shadow mb-8">
+        <h3 class="text-lg font-semibold text-gray-900 mb-4">Memory Management</h3>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
+          <div class="text-center">
+            <div class="text-2xl font-bold text-gray-900">
+              {Object.values(memoryStats.caches).reduce((a, b) => a + b, 0)}
+            </div>
+            <div class="text-sm text-gray-600">Cache Entries</div>
+          </div>
+          
+          <div class="text-center">
+            <div class={`text-2xl font-bold ${
+              memoryStats.memoryWarnings > 0 ? 'text-texas-red' : 'text-gray-900'
+            }`}>
+              {memoryStats.memoryWarnings}
+            </div>
+            <div class="text-sm text-gray-600">Memory Warnings</div>
+          </div>
+          
+          <div class="text-center">
+            <div class="text-2xl font-bold text-gray-900">{memoryStats.observerCount}</div>
+            <div class="text-sm text-gray-600">Active Observers</div>
+          </div>
+          
+          {memoryStats.memoryUsage && (
+            <div class="text-center">
+              <div class={`text-2xl font-bold ${
+                memoryStats.memoryUsage.used / memoryStats.memoryUsage.limit > 0.8 ? 'text-texas-red' :
+                memoryStats.memoryUsage.used / memoryStats.memoryUsage.limit > 0.6 ? 'text-yellow-600' :
+                'text-gray-900'
+              }`}>
+                {memoryStats.memoryUsage.used}MB
+              </div>
+              <div class="text-sm text-gray-600">Memory Used</div>
+            </div>
+          )}
+        </div>
+
+        <!-- Cache Breakdown -->
+        <div>
+          <h4 class="text-md font-medium text-gray-900 mb-3">Cache Breakdown</h4>
+          <div class="space-y-2">
+            {Object.entries(memoryStats.caches).map(([cacheName, size]) => (
+              <div class="flex justify-between py-2 px-3 bg-gray-50 rounded" key={cacheName}>
+                <span class="font-medium">{cacheName}</span>
+                <span class="text-gray-600">{size} entries</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Slowest Pages -->
+      {perfStats.slowestPages.length > 0 && (
+        <div class="bg-white p-6 rounded-lg shadow mb-8">
+          <h3 class="text-lg font-semibold text-gray-900 mb-4">Slowest Pages</h3>
+          <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">URL</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Load Time</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">City</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Filters</th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                {perfStats.slowestPages.map((page, index) => (
+                  <tr key={index}>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-texas-navy hover:text-texas-navy">
+                      <a href={page.url}>{page.url}</a>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-texas-red">
+                      {Math.round(page.loadTime)}ms
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{page.city}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      {page.filters.join(', ') || 'None'}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      <!-- Auto-refresh notice -->
+      <div class="text-center text-gray-500 text-sm">
+        <p>Dashboard refreshes automatically every 30 seconds</p>
+        <p class="mt-1">Last updated: <span id="last-updated">{new Date().toLocaleTimeString()}</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Auto-refresh script -->
+  <script>
+    // Auto-refresh every 30 seconds
+    setInterval(() => {
+      window.location.reload();
+    }, 30000);
+
+    // Update last updated time
+    document.getElementById('last-updated').textContent = new Date().toLocaleTimeString();
+  </script>
+</Layout>

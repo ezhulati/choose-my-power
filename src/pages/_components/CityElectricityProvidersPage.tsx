@@ -40,7 +40,7 @@ export function CityElectricityProvidersPage({ state, city }: CityElectricityPro
           <h1 className="text-2xl font-bold text-gray-900 mb-4">City Not Found</h1>
           <button
             onClick={() => navigate(`/${state}/electricity-providers`)}
-            className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors"
+            className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-texas-navy/90 transition-colors"
           >
             View {stateData?.name || 'State'} Providers
           </button>
@@ -78,12 +78,12 @@ export function CityElectricityProvidersPage({ state, city }: CityElectricityPro
 
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Finally. {cityData.name} Electricity Providers Without the Games
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+                {cityData.name} Electricity Providers
               </h1>
               
               <p className="text-lg text-gray-600 mb-6">
-                We work with {cityProviders.length} quality providers in {cityData.name}—not "all" providers (that's impossible). 
+                We work with {cityProviders.length} licensed electricity companies in {cityData.name}—not "all" providers (that's impossible). 
                 Here's who's actually good, who has the best rates, and who you should probably avoid. 
                 Could save you ${potentialSavings}/year by picking the right one.
               </p>
@@ -95,7 +95,7 @@ export function CityElectricityProvidersPage({ state, city }: CityElectricityPro
                   <div className="text-sm text-green-700">Lowest Rate</div>
                 </div>
                 <div className="bg-texas-cream-200 p-3 rounded-lg">
-                  <div className="text-2xl font-bold text-blue-900">{cityProviders.length}</div>
+                  <div className="text-2xl font-bold text-texas-navy">{cityProviders.length}</div>
                   <div className="text-sm text-texas-navy">Providers</div>
                 </div>
                 <div className="bg-purple-50 p-3 rounded-lg">
@@ -189,7 +189,7 @@ export function CityElectricityProvidersPage({ state, city }: CityElectricityPro
                 
                 <button
                   onClick={() => navigate('/providers#service')}
-                  className="w-full text-left p-3 border border-blue-200 rounded-lg hover:bg-texas-cream-200 transition-colors"
+                  className="w-full text-left p-3 border border-texas-navy/20 rounded-lg hover:bg-texas-cream transition-colors"
                 >
                   <div className="flex items-center">
                     <Users className="h-5 w-5 text-texas-navy mr-3" />
@@ -227,7 +227,7 @@ export function CityElectricityProvidersPage({ state, city }: CityElectricityPro
                   <select
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value as any)}
-                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-texas-navy focus:border-texas-navy"
                   >
                     <option value="price">Lowest Price</option>
                     <option value="rating">Highest Rated</option>
@@ -240,7 +240,7 @@ export function CityElectricityProvidersPage({ state, city }: CityElectricityPro
                   <select
                     value={planTypeFilter}
                     onChange={(e) => setPlanTypeFilter(e.target.value as any)}
-                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-texas-navy focus:border-texas-navy"
                   >
                     <option value="all">All Plan Types</option>
                     <option value="fixed">Fixed Rate</option>
@@ -265,7 +265,7 @@ export function CityElectricityProvidersPage({ state, city }: CityElectricityPro
                     type="number"
                     value={monthlyUsage}
                     onChange={(e) => setMonthlyUsage(e.target.value)}
-                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-texas-navy focus:border-texas-navy"
                     placeholder="1000"
                   />
                 </div>
@@ -291,7 +291,7 @@ export function CityElectricityProvidersPage({ state, city }: CityElectricityPro
               </h2>
               <button
                 onClick={() => navigate(`/compare/providers?city=${city}&state=${state}`)}
-                className="bg-texas-navy text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors"
+                className="bg-texas-navy text-white px-4 py-2 rounded-lg hover:bg-texas-navy/90 transition-colors"
               >
                 Compare Quality Plans
               </button>

@@ -316,52 +316,58 @@ export function ProvidersPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <div className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      {/* Elegant Hero Section */}
+      <div className="bg-gradient-to-br from-texas-navy via-blue-800 to-texas-navy text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="text-center">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-8">
-              <Award className="h-10 w-10" />
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-6">
+              <Award className="h-8 w-8" />
             </div>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              The Real Story on Texas Electricity Providers
-            </h1>
-            <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-blue-100">
-              Honest Reviews from Someone Who's Done the Research
-            </h2>
-            <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-4xl mx-auto">
-              We've analyzed thousands of customer experiences so you don't have to. Here's what each provider 
-              is actually good at - and what they're not. No marketing fluff, just the truth.
-            </p>
+            <div className="space-y-4">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight max-w-4xl mx-auto">
+                Texas Electricity Providers - Honest Reviews & Rankings
+              </h1>
+              
+              <p className="text-base md:text-lg text-blue-100/80 font-normal max-w-3xl mx-auto leading-relaxed">
+                We've analyzed thousands of customer experiences to show you what each provider 
+                <span className="text-white font-medium"> is actually good at.</span> No marketing fluff, just honest rankings.
+              </p>
+              
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 max-w-2xl mx-auto border border-white/20">
+                <p className="text-sm text-white/90 font-normal">
+                  <span className="text-texas-gold font-medium">Real provider rankings</span> based on what they're genuinely good at.
+                </p>
+              </div>
+            </div>
 
-            {/* Quick Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-8">
+            {/* Elegant Quick Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mt-8 mb-8">
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-                <div className="text-3xl font-bold">{mockProviders.length}</div>
-                <div className="text-blue-200 text-sm">Licensed Providers</div>
+                <div className="text-2xl font-bold">{mockProviders.length}</div>
+                <div className="text-blue-200 text-xs">Licensed Providers</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-                <div className="text-3xl font-bold">{lowestRate}¢</div>
-                <div className="text-blue-200 text-sm">Lowest Rate</div>
+                <div className="text-2xl font-bold">{lowestRate}¢</div>
+                <div className="text-blue-200 text-xs">Lowest Rate</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-                <div className="text-3xl font-bold">{avgRating}</div>
-                <div className="text-blue-200 text-sm">Avg Rating</div>
+                <div className="text-2xl font-bold">{avgRating}</div>
+                <div className="text-blue-200 text-xs">Avg Rating</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-                <div className="text-3xl font-bold">6</div>
-                <div className="text-blue-200 text-sm">Categories</div>
+                <div className="text-2xl font-bold">6</div>
+                <div className="text-blue-200 text-xs">Categories</div>
               </div>
             </div>
 
             <div className="max-w-md mx-auto">
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder="Enter zip code"
+                placeholder="Enter your ZIP code"
                 size="lg"
               />
-              <p className="text-blue-200 text-sm mt-2">Get personalized results for your area</p>
+              <p className="text-blue-200 text-sm mt-2">Get personalized provider results</p>
             </div>
           </div>
         </div>
@@ -371,10 +377,10 @@ export function ProvidersPage() {
       <div className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-xl md:text-2xl font-semibold text-gray-900 mb-4">
               Why We Sort Them This Way
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-base text-gray-600 max-w-3xl mx-auto">
               Every provider has their strengths and weaknesses. We'll help you find the ones that are actually good at what you need.
             </p>
           </div>
@@ -385,8 +391,8 @@ export function ProvidersPage() {
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-lg mb-6">
                   <benefit.icon className="h-8 w-8" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">{benefit.title}</h3>
-                <p className="text-gray-600">{benefit.description}</p>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">{benefit.title}</h3>
+                <p className="text-sm text-gray-600">{benefit.description}</p>
               </div>
             ))}
           </div>
@@ -397,10 +403,10 @@ export function ProvidersPage() {
         {/* Category Filter */}
         <div className="mb-12">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-xl md:text-2xl font-semibold text-gray-900 mb-4">
               What Each Provider Is Actually Good At
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-base text-gray-600">
               We've sorted them by what they do well, so you can focus on what matters to you
             </p>
           </div>
@@ -440,9 +446,9 @@ export function ProvidersPage() {
                 <div className={`inline-flex items-center justify-center w-16 h-16 bg-${category.color}-100 text-${category.color}-600 rounded-lg mb-4`}>
                   <category.icon className="h-8 w-8" />
                 </div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">{category.title}</h2>
-                <h3 className="text-lg text-gray-600 mb-3">{category.subtitle}</h3>
-                <p className="text-gray-600 max-w-2xl mx-auto">{category.description}</p>
+                <h2 className="text-lg md:text-xl font-semibold text-gray-900 mb-2">{category.title}</h2>
+                <h3 className="text-base text-gray-600 mb-3">{category.subtitle}</h3>
+                <p className="text-sm text-gray-600 max-w-2xl mx-auto">{category.description}</p>
               </div>
 
               <div className="grid lg:grid-cols-3 gap-6">
@@ -482,7 +488,7 @@ export function ProvidersPage() {
                     <div className="space-y-2">
                       <button
                         onClick={() => navigate(`/providers/${provider.slug}`)}
-                        className="w-full bg-texas-navy text-white py-2 rounded-lg hover:bg-blue-800 transition-colors text-sm font-medium"
+                        className="w-full bg-texas-navy text-white py-2 rounded-lg hover:bg-texas-navy/90 transition-colors text-sm font-medium"
                       >
                         See What We Think About {provider.name}
                       </button>
@@ -513,8 +519,8 @@ export function ProvidersPage() {
         <div className="bg-white rounded-lg shadow-sm border p-8 mb-12">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 space-y-4 md:space-y-0">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Every Licensed Provider in Texas</h2>
-              <p className="text-gray-600">All {mockProviders.length} licensed providers, with our honest take on each one</p>
+              <h2 className="text-xl font-semibold text-gray-900 mb-2">Every Licensed Provider in Texas</h2>
+              <p className="text-sm text-gray-600">All {mockProviders.length} licensed providers, with our honest take on each one</p>
             </div>
             
             <div className="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-4">
@@ -557,7 +563,7 @@ export function ProvidersPage() {
           <div className="text-center mt-8">
             <button
               onClick={() => navigate('/compare/providers')}
-              className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors font-medium"
+              className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-texas-navy/90 transition-colors font-medium"
             >
               See All Provider Reviews
             </button>

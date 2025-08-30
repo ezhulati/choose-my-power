@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { StatePage } from './_components/StatePage';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  // Define the states available in your app
+  const states = [
+    { params: { state: 'texas' } },
+    { params: { state: 'pennsylvania' } },
+    { params: { state: 'ohio' } },
+    { params: { state: 'illinois' } },
+    { params: { state: 'maryland' } },
+    { params: { state: 'delaware' } },
+    { params: { state: 'connecticut' } },
+    { params: { state: 'massachusetts' } },
+    { params: { state: 'rhode-island' } },
+    { params: { state: 'new-hampshire' } },
+    { params: { state: 'maine' } },
+  ];
+  
+  return states;
+}
+
+const { state } = Astro.params;
+const stateTitle = state?.charAt(0).toUpperCase() + state?.slice(1).replace('-', ' ') || 'State';
+
+const title = `${stateTitle} Electricity Providers & Plans | ChooseMyPower.org`;
+const description = `Compare ${stateTitle} electricity providers and plans. Find the best rates, green energy options, and no-deposit plans for your ${stateTitle} home or business.`;
+---
+
+<Layout title={title} description={description}>
+  <StatePage client:load state={state} />
+
+  <script>
+    // Client-side navigation function for React components
+    window.navigateToPath = function(path) {
+      window.location.href = path;
+    };
+  </script>
+</Layout>

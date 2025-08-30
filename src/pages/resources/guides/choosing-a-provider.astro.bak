@@ -1,0 +1,620 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const title = "How to Pick a Provider That Won't Screw You | Texas Guide 2024";
+const description = "Real talk on choosing electricity providers in Texas. Learn what they don't want you to know about rates, contracts, and scams. Updated for 2024.";
+---
+
+<Layout title={title} description={description}>
+  <div class="min-h-screen bg-gradient-to-b from-texas-cream to-gray-50">
+    <!-- Hero Section -->
+    <div class="bg-texas-navy text-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          How to Pick a Provider That Won't Screw You
+        </h1>
+        <p class="text-xl text-blue-100 mb-8 leading-relaxed">
+          Look, the Texas electricity market is designed to confuse you. Electric companies hope you'll get overwhelmed and just pick whatever sounds good. I'm here to help you see through their tricks and find a plan that actually saves you money.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <span class="bg-texas-red px-4 py-2 rounded-full text-sm font-medium">12 min read</span>
+          <span class="bg-texas-gold px-4 py-2 rounded-full text-sm font-medium text-texas-navy">Updated Jan 2024</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <!-- Quick Stats -->
+      <div class="grid md:grid-cols-3 gap-6 mb-12">
+        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+          <div class="text-3xl font-bold text-texas-red mb-2">100+</div>
+          <div class="text-gray-600">Ways to get confused (they call them "providers")</div>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+          <div class="text-3xl font-bold text-texas-red mb-2">85%</div>
+          <div class="text-gray-600">Of Texans who could save money but don't know how</div>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+          <div class="text-3xl font-bold text-texas-red mb-2">$300+</div>
+          <div class="text-gray-600">What you're probably overpaying every year</div>
+        </div>
+      </div>
+
+      <!-- Table of Contents -->
+      <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 mb-12">
+        <h2 class="text-2xl font-bold text-texas-navy mb-6">Table of Contents</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          <ul class="space-y-2">
+            <li><a href="#understanding-deregulation" class="text-texas-navy hover:text-texas-red transition-colors">1. Why This System is So Confusing</a></li>
+            <li><a href="#plan-types" class="text-texas-navy hover:text-texas-red transition-colors">2. The Main Types of Traps (I Mean Plans)</a></li>
+            <li><a href="#key-factors" class="text-texas-navy hover:text-texas-red transition-colors">3. What Actually Matters</a></li>
+            <li><a href="#comparing-plans" class="text-texas-navy hover:text-texas-red transition-colors">4. How to See Through the Nonsense</a></li>
+          </ul>
+          <ul class="space-y-2">
+            <li><a href="#contract-terms" class="text-texas-navy hover:text-texas-red transition-colors">5. The Fine Print They Hope You Won't Read</a></li>
+            <li><a href="#red-flags" class="text-texas-navy hover:text-texas-red transition-colors">6. How to Spot the Vultures</a></li>
+            <li><a href="#switching-process" class="text-texas-navy hover:text-texas-red transition-colors">7. Actually Making the Switch</a></li>
+            <li><a href="#next-steps" class="text-texas-navy hover:text-texas-red transition-colors">8. What to Do Right Now</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="space-y-12">
+        <!-- Section 1 -->
+        <section id="understanding-deregulation" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+          <h2 class="text-3xl font-bold text-texas-navy mb-6">Why This System is So Confusing</h2>
+          
+          <div class="prose prose-lg max-w-none">
+            <p class="text-gray-700 mb-6">
+              Here's the deal: Back in 2002, Texas said "Let's make electricity competitive!" Sounds great, right? Instead of one company controlling everything, you get to choose. But here's what they don't tell you: the system was designed by the same companies that profit from your confusion.
+            </p>
+            
+            <div class="bg-yellow-50 p-6 rounded-lg mb-6">
+              <h3 class="text-lg font-semibold text-yellow-800 mb-3">💡 Quick lesson: Think of it like this</h3>
+              <p class="text-yellow-800">
+                Imagine if instead of one coffee shop in town, suddenly there were 100 coffee shops, but they all had different ways of pricing coffee. One charges by the cup, another by the hour you sit there, another gives you "free" coffee but charges $50/month membership. That's Texas electricity.
+              </p>
+            </div>
+
+            <div class="bg-texas-cream-200 p-6 rounded-lg mb-6">
+              <h3 class="text-xl font-semibold text-texas-navy mb-3">Here's How They Split Things Up</h3>
+              <ul class="space-y-2 text-gray-700">
+                <li><strong>Generation:</strong> Big power plants make the electricity (like farms growing food)</li>
+                <li><strong>Delivery:</strong> Your utility company (Oncor, CenterPoint, etc.) owns the power lines that bring electricity to your house - think of them like the roads. This part NEVER changes no matter who you choose.</li>
+                <li><strong>Sales:</strong> Electric companies (REPs) buy electricity wholesale and sell it to you - like grocery stores buying food from farms and selling it to you. This is where they make their money... and where you need to be careful.</li>
+              </ul>
+            </div>
+
+            <p class="text-gray-700 mb-6">
+              <strong>Here's what they hope you won't notice:</strong> Those "delivery fees" (TDSP charges) on your bill? Same price no matter which company you choose. It's like paying the same road toll whether you drive a Honda or a BMW. The electric companies can't control these fees, but they'll sometimes hide their high rates by talking about the delivery fees instead.
+            </p>
+          </div>
+        </section>
+
+        <!-- Section 2 -->
+        <section id="plan-types" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+          <h2 class="text-3xl font-bold text-texas-navy mb-6">The Main Types of Traps (I Mean Plans)</h2>
+          
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="space-y-6">
+              <div class="border border-green-200 rounded-lg p-6">
+                <h3 class="text-xl font-semibold text-green-700 mb-3">Fixed-Rate Plans (The Safe Choice)</h3>
+                <p class="text-gray-700 mb-4">Think of this like a gym membership - you pay the same amount every month for the whole contract. If you sign up for 12¢ per unit of electricity, that's what you'll pay whether electricity gets expensive or cheap.</p>
+                <div class="space-y-2 text-sm">
+                  <div class="flex items-center"><span class="text-green-600 mr-2">✓</span> Predictable monthly bills</div>
+                  <div class="flex items-center"><span class="text-green-600 mr-2">✓</span> Budget-friendly</div>
+                  <div class="flex items-center"><span class="text-green-600 mr-2">✓</span> Protected from market volatility</div>
+                </div>
+                <p class="text-sm text-gray-600 mt-4"><strong>Perfect for:</strong> Anyone who likes knowing what they'll pay (that's most of us)</p>
+              </div>
+
+              <div class="border border-orange-200 rounded-lg p-6">
+                <h3 class="text-xl font-semibold text-orange-700 mb-3">Variable-Rate Plans (The Wild Card)</h3>
+                <p class="text-gray-700 mb-4">These are like agreeing to pay "whatever gas costs" without knowing if gas prices will be $2 or $6 per gallon. They can change your rate whenever they want, and guess which direction it usually goes?</p>
+                <div class="space-y-2 text-sm">
+                  <div class="flex items-center"><span class="text-texas-red mr-2">✗</span> Unpredictable bills</div>
+                  <div class="flex items-center"><span class="text-green-600 mr-2">✓</span> No early termination fees</div>
+                  <div class="flex items-center"><span class="text-texas-red mr-2">✗</span> Rates often increase over time</div>
+                </div>
+                <p class="text-sm text-gray-600 mt-4"><strong>Only good for:</strong> People who plan to move in 3 months or like gambling with their electric bill</p>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              <div class="border border-purple-200 rounded-lg p-6">
+                <h3 class="text-xl font-semibold text-purple-700 mb-3">Indexed Plans (The "Trust Me" Option)</h3>
+                <p class="text-gray-700 mb-4">These follow natural gas prices plus the company's profit. So when natural gas goes up, your bill goes up. When it goes down, your bill goes down. Sounds fair, but...</p>
+                <div class="space-y-2 text-sm">
+                  <div class="flex items-center"><span class="text-green-600 mr-2">✓</span> At least they're honest about it</div>
+                  <div class="flex items-center"><span class="text-texas-red mr-2">✗</span> You need to watch gas prices like a trader</div>
+                  <div class="flex items-center"><span class="text-orange-600 mr-2">~</span> Your bill changes every month</div>
+                </div>
+                <p class="text-sm text-gray-600 mt-4"><strong>Best for:</strong> People who actually read the business section and enjoy uncertainty</p>
+              </div>
+
+              <div class="border border-blue-200 rounded-lg p-6">
+                <h3 class="text-xl font-semibold text-texas-navy mb-3">Time-of-Use Plans (The "Night Owl Special")</h3>
+                <p class="text-gray-700 mb-4">Electricity costs more during the day when everyone's using it, cheaper at night. Like happy hour for electricity, except the expensive times are when you actually need power.</p>
+                <div class="space-y-2 text-sm">
+                  <div class="flex items-center"><span class="text-green-600 mr-2">✓</span> Great if you do laundry at midnight</div>
+                  <div class="flex items-center"><span class="text-texas-red mr-2">✗</span> Expensive when you're actually awake</div>
+                  <div class="flex items-center"><span class="text-orange-600 mr-2">~</span> More complicated than your taxes</div>
+                </div>
+                <p class="text-sm text-gray-600 mt-4"><strong>Best for:</strong> Night shift workers or people with very flexible schedules</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 bg-yellow-50 p-6 rounded-lg">
+            <h3 class="text-lg font-semibold text-yellow-800 mb-3">💡 Real talk from someone who's seen it all</h3>
+            <p class="text-yellow-800">
+              <strong>Unless you have a really specific situation, go with a fixed-rate plan for 12-18 months.</strong> I've watched thousands of people get burned by variable rates that started low and ended up costing $50+ extra per month. Don't be clever - be boring and save money.
+            </p>
+          </div>
+        </section>
+
+        <!-- Section 3 -->
+        <section id="key-factors" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+          <h2 class="text-3xl font-bold text-texas-navy mb-6">What Actually Matters</h2>
+          
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="space-y-6">
+              <div>
+                <h3 class="text-xl font-semibold text-texas-navy mb-3">1. The Rate (What You Actually Pay Per Unit)</h3>
+                <p class="text-gray-700 mb-4">Think of electricity like gas for your car - you pay per gallon (or in this case, per kilowatt-hour). A kilowatt-hour is just the unit they use to measure electricity, like gallons for gas.</p>
+                <div class="bg-yellow-50 p-4 rounded-lg">
+                  <p class="text-sm text-yellow-800"><strong>Here's what they hope you won't notice:</strong> That big rate they advertise? It might only apply if you use exactly 1,000 kWh. Use more or less, and surprise - different rate! Always ask "What's my rate at MY usage level?"</p>
+                </div>
+              </div>
+
+              <div>
+                <h3 class="text-xl font-semibold text-texas-navy mb-3">2. Monthly Fees (The Hidden Gotchas)</h3>
+                <p class="text-gray-700 mb-4">These are like the "convenience fees" that ticketing websites love. You pay them every month whether you use electricity or not. They call them different names to confuse you:</p>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <li>• "Connection fee" (you're already connected)</li>
+                  <li>• "Service fee" (for the service you're already paying for)</li>
+                  <li>• "Account maintenance fee" (for maintaining the account you pay them to maintain)</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 class="text-xl font-semibold text-texas-navy mb-3">3. How Long You're Stuck</h3>
+                <p class="text-gray-700 mb-4">Like a cell phone contract, but for electricity. Longer contracts usually get better rates, but you're committed.</p>
+                <div class="space-y-2 text-sm">
+                  <div class="flex justify-between"><span>6-12 months:</span><span class="text-green-600">Safe choice, decent rates</span></div>
+                  <div class="flex justify-between"><span>12-18 months:</span><span class="text-green-600">Sweet spot for most people</span></div>
+                  <div class="flex justify-between"><span>36+ months:</span><span class="text-orange-600">What happens if you need to move?</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              <div>
+                <h3 class="text-xl font-semibold text-texas-navy mb-3">4. The Breakup Fee</h3>
+                <p class="text-gray-700 mb-4">If you want out of your contract early, they'll charge you. Think of it like canceling a gym membership - they make it expensive on purpose.</p>
+                <div class="bg-red-50 p-4 rounded-lg">
+                  <p class="text-sm text-red-800"><strong>Watch out:</strong> I've seen companies charge $500+ to let you leave. That's insane. Anything over $200 is too much, and $150 or less is reasonable.</p>
+                </div>
+              </div>
+
+              <div>
+                <h3 class="text-xl font-semibold text-texas-navy mb-3">5. Going Green (If You Care About That)</h3>
+                <p class="text-gray-700 mb-4">Texas actually has tons of wind power, so green energy isn't just feel-good marketing here. But watch out for greenwashing:</p>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <li>• "Renewable Energy Certificates" = accounting tricks (better than nothing, but barely)</li>
+                  <li>• Actual solar/wind sourcing = the real deal</li>
+                  <li>• Carbon offset programs = they plant trees to make up for coal power</li>
+                  <li>• Tree-planting initiatives = mostly marketing</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 class="text-xl font-semibold text-texas-navy mb-3">6. How They Treat You</h3>
+                <p class="text-gray-700 mb-4">Some companies are great until they have your money, then good luck reaching them. Check reviews for:</p>
+                <ul class="text-sm text-gray-600 space-y-1">
+                  <li>• "My bill was wrong and they actually fixed it"</li>
+                  <li>• "I called and talked to a real person"</li>
+                  <li>• "Their website doesn't suck"</li>
+                  <li>• "They solved my problem without me having to call 5 times"</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 4 -->
+        <section id="comparing-plans" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+          <h2 class="text-3xl font-bold text-texas-navy mb-6">How to Compare Plans Effectively</h2>
+          
+          <div class="mb-8">
+            <h3 class="text-xl font-semibold text-texas-navy mb-4">Step 1: Know Your Usage</h3>
+            <p class="text-gray-700 mb-4">Check your last 12 months of electricity bills to find your average monthly kWh usage. Texas households typically use:</p>
+            <div class="grid md:grid-cols-3 gap-4 mb-6">
+              <div class="bg-texas-cream-200 p-4 rounded-lg text-center">
+                <div class="text-2xl font-bold text-texas-navy">600-900</div>
+                <div class="text-sm text-texas-navy">Apartments/Small homes</div>
+              </div>
+              <div class="bg-texas-cream-200 p-4 rounded-lg text-center">
+                <div class="text-2xl font-bold text-texas-navy">1000-1500</div>
+                <div class="text-sm text-texas-navy">Average homes</div>
+              </div>
+              <div class="bg-texas-cream-200 p-4 rounded-lg text-center">
+                <div class="text-2xl font-bold text-texas-navy">1500-3000</div>
+                <div class="text-sm text-texas-navy">Large homes/high usage</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <h3 class="text-xl font-semibold text-texas-navy mb-4">Step 2: Calculate True Cost</h3>
+            <p class="text-gray-700 mb-4">Use this formula to compare plans accurately:</p>
+            <div class="bg-gray-50 p-6 rounded-lg">
+              <div class="text-center">
+                <strong class="text-lg text-texas-navy">Monthly Cost = (Your kWh × Rate per kWh) + Monthly Base Charges + TDSP Charges</strong>
+              </div>
+              <p class="text-sm text-gray-600 mt-4 text-center">Don't forget to include taxes and fees in your calculations</p>
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <h3 class="text-xl font-semibold text-texas-navy mb-4">Step 3: Use the Electricity Facts Label (EFL)</h3>
+            <p class="text-gray-700 mb-4">Every provider must provide an EFL that shows exactly what you'll pay at different usage levels.</p>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="bg-green-50 p-6 rounded-lg">
+                <h4 class="font-semibold text-green-700 mb-3">✓ What to Look For</h4>
+                <ul class="text-sm text-green-700 space-y-1">
+                  <li>• Average price per kWh at 500, 1000, and 2000 kWh</li>
+                  <li>• All monthly fees clearly listed</li>
+                  <li>• Contract terms and length</li>
+                  <li>• Early termination fee amount</li>
+                  <li>• Renewable energy percentage</li>
+                </ul>
+              </div>
+              <div class="bg-red-50 p-6 rounded-lg">
+                <h4 class="font-semibold text-red-700 mb-3">✗ Red Flags in EFLs</h4>
+                <ul class="text-sm text-red-700 space-y-1">
+                  <li>• Vastly different rates at different usage levels</li>
+                  <li>• Unusually high monthly fees</li>
+                  <li>• Introductory rates that expire quickly</li>
+                  <li>• Confusing tier structures</li>
+                  <li>• Missing or vague fee information</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-semibold text-texas-navy mb-4">Step 4: Check the Fine Print</h3>
+            <div class="bg-yellow-50 p-6 rounded-lg">
+              <h4 class="font-semibold text-yellow-800 mb-3">⚠️ Critical Items to Review</h4>
+              <ul class="text-sm text-yellow-800 space-y-2">
+                <li>• <strong>Rate changes:</strong> Can your rate change during the contract?</li>
+                <li>• <strong>Auto-renewal terms:</strong> What happens when your contract expires?</li>
+                <li>• <strong>Promotional pricing:</strong> How long do introductory rates last?</li>
+                <li>• <strong>Usage credits:</strong> Do you get credits for using less electricity?</li>
+                <li>• <strong>Deposit requirements:</strong> Do you need to pay a security deposit?</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 5 -->
+        <section id="contract-terms" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+          <h2 class="text-3xl font-bold text-texas-navy mb-6">Contract Terms & Fine Print</h2>
+          
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-xl font-semibold text-texas-navy mb-4">Understanding Your Contract</h3>
+              <div class="space-y-4">
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 mb-2">Contract Start Date</h4>
+                  <p class="text-sm text-gray-600">Your contract typically begins on your next meter reading date, not the day you sign up.</p>
+                </div>
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 mb-2">Auto-Renewal Terms</h4>
+                  <p class="text-sm text-gray-600">Most contracts automatically renew into month-to-month terms, often at higher rates. You'll get a renewal notice 30-60 days before expiration.</p>
+                </div>
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 mb-2">Right of Rescission</h4>
+                  <p class="text-sm text-gray-600">Texas law gives you 3 business days to cancel any electricity contract without penalty after signing.</p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-texas-navy mb-4">Common Contract Traps</h3>
+              <div class="space-y-4">
+                <div class="border border-red-200 rounded-lg p-4 bg-red-50">
+                  <h4 class="font-semibold text-red-700 mb-2">Teaser Rates</h4>
+                  <p class="text-sm text-red-700">Very low introductory rates that jump significantly after a few months. Always check what your rate will be after the promotional period.</p>
+                </div>
+                <div class="border border-red-200 rounded-lg p-4 bg-red-50">
+                  <h4 class="font-semibold text-red-700 mb-2">Usage Requirements</h4>
+                  <p class="text-sm text-red-700">Some plans require you to use a minimum amount of electricity to get the advertised rate. Using less triggers penalty fees.</p>
+                </div>
+                <div class="border border-red-200 rounded-lg p-4 bg-red-50">
+                  <h4 class="font-semibold text-red-700 mb-2">Bill Credit Gimmicks</h4>
+                  <p class="text-sm text-red-700">Plans that advertise "$200 in bill credits" often have higher base rates that offset the credits over time.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 bg-texas-cream-200 p-6 rounded-lg">
+            <h3 class="text-lg font-semibold text-texas-navy mb-3">📋 Your Pre-Contract Checklist</h3>
+            <div class="grid md:grid-cols-2 gap-4">
+              <ul class="space-y-2 text-sm text-texas-navy">
+                <li>☐ Reviewed the Electricity Facts Label (EFL)</li>
+                <li>☐ Calculated total monthly cost at your usage level</li>
+                <li>☐ Confirmed contract length and early termination fee</li>
+                <li>☐ Understood auto-renewal terms</li>
+              </ul>
+              <ul class="space-y-2 text-sm text-texas-navy">
+                <li>☐ Checked for promotional rate expiration dates</li>
+                <li>☐ Verified green energy percentage if important to you</li>
+                <li>☐ Read recent customer reviews</li>
+                <li>☐ Confirmed no hidden fees or usage requirements</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 6 -->
+        <section id="red-flags" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+          <h2 class="text-3xl font-bold text-texas-navy mb-6">Red Flags & Scams to Avoid</h2>
+          
+          <div class="bg-red-50 p-6 rounded-lg mb-8">
+            <h3 class="text-lg font-semibold text-red-800 mb-3">🚨 Fraud Alert</h3>
+            <p class="text-red-800">
+              <strong>15-20% of attempted electricity enrollments in Texas were fraudulent in early 2024.</strong> Door-to-door and telemarketing scams are especially common. Here's how to protect yourself:
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-xl font-semibold text-red-700 mb-4">🚨 Major Red Flags</h3>
+              <div class="space-y-4">
+                <div class="border border-red-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-red-700 mb-2">Door-to-Door Sales</h4>
+                  <p class="text-sm text-red-700">Legitimate providers rarely use door-to-door sales. Never give your account information or sign contracts with uninvited visitors.</p>
+                </div>
+                <div class="border border-red-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-red-700 mb-2">Pressure Tactics</h4>
+                  <p class="text-sm text-red-700">"Sign today or lose this deal" is always a scam. Legitimate offers don't expire in hours.</p>
+                </div>
+                <div class="border border-red-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-red-700 mb-2">Utility Impersonation</h4>
+                  <p class="text-sm text-red-700">Scammers claim to be from your utility company and threaten immediate disconnection unless you switch providers.</p>
+                </div>
+                <div class="border border-red-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-red-700 mb-2">Too-Good-to-Be-True Rates</h4>
+                  <p class="text-sm text-red-700">Rates significantly below market average (under 8¢/kWh) usually have hidden fees or rate increases.</p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-green-700 mb-4">✅ How to Verify Legitimacy</h3>
+              <div class="space-y-4">
+                <div class="border border-green-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-green-700 mb-2">Check REP Certification</h4>
+                  <p class="text-sm text-green-700">All legitimate providers must be certified. Search the Public Utility Commission of Texas (PUCT) website for their REP number.</p>
+                </div>
+                <div class="border border-green-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-green-700 mb-2">Get Everything in Writing</h4>
+                  <p class="text-sm text-green-700">Request the Electricity Facts Label and Terms of Service document before signing anything.</p>
+                </div>
+                <div class="border border-green-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-green-700 mb-2">Research Online First</h4>
+                  <p class="text-sm text-green-700">Use PowerToChoose.org or other comparison sites to research providers and rates before speaking with sales representatives.</p>
+                </div>
+                <div class="border border-green-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-green-700 mb-2">Never Pay Upfront</h4>
+                  <p class="text-sm text-green-700">Legitimate providers don't require payment before service begins. Security deposits are collected after enrollment, if needed.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 bg-yellow-50 p-6 rounded-lg">
+            <h3 class="text-lg font-semibold text-yellow-800 mb-3">🔍 Contract Warning Signs</h3>
+            <div class="grid md:grid-cols-2 gap-4 text-sm text-yellow-800">
+              <ul class="space-y-1">
+                <li>• Rates that vary dramatically by usage level</li>
+                <li>• Monthly fees over $20</li>
+                <li>• Early termination fees over $300</li>
+                <li>• Contracts longer than 36 months</li>
+              </ul>
+              <ul class="space-y-1">
+                <li>• Automatic rate increases built into the contract</li>
+                <li>• Required minimum usage levels</li>
+                <li>• Confusing tier pricing structures</li>
+                <li>• Missing or unclear fee disclosures</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 7 -->
+        <section id="switching-process" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+          <h2 class="text-3xl font-bold text-texas-navy mb-6">The Switching Process</h2>
+          
+          <div class="mb-8">
+            <h3 class="text-xl font-semibold text-texas-navy mb-4">What You'll Need</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="bg-texas-cream-200 p-6 rounded-lg">
+                <h4 class="font-semibold text-texas-navy mb-3">Required Information</h4>
+                <ul class="text-sm text-texas-navy space-y-2">
+                  <li>• Your current electricity bill</li>
+                  <li>• ESI ID (Electric Service Identifier) - found on your bill</li>
+                  <li>• Service address</li>
+                  <li>• Social Security Number or Tax ID</li>
+                  <li>• Contact information</li>
+                </ul>
+              </div>
+              <div class="bg-green-50 p-6 rounded-lg">
+                <h4 class="font-semibold text-green-700 mb-3">Optional Documents</h4>
+                <ul class="text-sm text-green-700 space-y-2">
+                  <li>• Previous 12 months of usage history</li>
+                  <li>• Identity verification (driver's license)</li>
+                  <li>• Proof of income (if required for deposits)</li>
+                  <li>• Bank account info (for automatic payments)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <h3 class="text-xl font-semibold text-texas-navy mb-4">Step-by-Step Switching Process</h3>
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <div class="bg-texas-red text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-4 mt-1">1</div>
+                <div>
+                  <h4 class="font-semibold text-gray-900 mb-1">Choose Your New Provider</h4>
+                  <p class="text-sm text-gray-600">Compare plans using the factors outlined above. Don't cancel your current service yet!</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="bg-texas-red text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-4 mt-1">2</div>
+                <div>
+                  <h4 class="font-semibold text-gray-900 mb-1">Enroll with New Provider</h4>
+                  <p class="text-sm text-gray-600">Sign up online, by phone, or in person. Your new provider handles the switch automatically.</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="bg-texas-red text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-4 mt-1">3</div>
+                <div>
+                  <h4 class="font-semibold text-gray-900 mb-1">Receive Confirmation</h4>
+                  <p class="text-sm text-gray-600">Your new provider will send enrollment confirmation and a "Welcome Letter" with contract details.</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="bg-texas-red text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-4 mt-1">4</div>
+                <div>
+                  <h4 class="font-semibold text-gray-900 mb-1">Automatic Switch (14+ days)</h4>
+                  <p class="text-sm text-gray-600">The switch happens on your next meter reading date, typically 14+ days after enrollment.</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="bg-texas-red text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-4 mt-1">5</div>
+                <div>
+                  <h4 class="font-semibold text-gray-900 mb-1">Final Bill from Old Provider</h4>
+                  <p class="text-sm text-gray-600">You'll receive a final bill from your previous provider. Pay this promptly to avoid late fees.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-green-50 p-6 rounded-lg">
+              <h3 class="font-semibold text-green-700 mb-3">✅ What to Expect</h3>
+              <ul class="text-sm text-green-700 space-y-2">
+                <li>• No interruption to your electricity service</li>
+                <li>• Same power lines and utility company for outages</li>
+                <li>• New bills will come from your new provider</li>
+                <li>• Switch typically completes within 1-2 billing cycles</li>
+              </ul>
+            </div>
+            <div class="bg-red-50 p-6 rounded-lg">
+              <h3 class="font-semibold text-red-700 mb-3">⚠️ Important Notes</h3>
+              <ul class="text-sm text-red-700 space-y-2">
+                <li>• Don't cancel your old service - it's automatic</li>
+                <li>• You may receive bills from both providers during transition</li>
+                <li>• Keep your 3-day cancellation window in mind</li>
+                <li>• Set a calendar reminder for contract expiration</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 8 -->
+        <section id="next-steps" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+          <h2 class="text-3xl font-bold text-texas-navy mb-6">Your Next Steps</h2>
+          
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-xl font-semibold text-texas-navy mb-4">Ready to Switch?</h3>
+              <div class="space-y-4">
+                <div class="bg-texas-cream-200 p-4 rounded-lg">
+                  <h4 class="font-semibold text-texas-navy mb-2">1. Gather Your Information</h4>
+                  <p class="text-sm text-texas-navy">Get your most recent electricity bill and identify your ESI ID.</p>
+                </div>
+                <div class="bg-texas-cream-200 p-4 rounded-lg">
+                  <h4 class="font-semibold text-texas-navy mb-2">2. Compare Plans</h4>
+                  <p class="text-sm text-texas-navy">Use our plan comparison tool to find the best rates for your usage level.</p>
+                </div>
+                <div class="bg-texas-cream-200 p-4 rounded-lg">
+                  <h4 class="font-semibold text-texas-navy mb-2">3. Read the Fine Print</h4>
+                  <p class="text-sm text-texas-navy">Review the Electricity Facts Label and contract terms before enrolling.</p>
+                </div>
+              </div>
+              
+              <div class="mt-6 text-center">
+                <a href="/electricity-plans" class="bg-texas-red text-white px-8 py-4 rounded-lg font-semibold hover:bg-texas-red-600 transition-colors inline-block">
+                  Compare Electricity Plans →
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-texas-navy mb-4">Need More Help?</h3>
+              <div class="space-y-4">
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 mb-2">📞 Free Consultation</h4>
+                  <p class="text-sm text-gray-600">Call (877) 854-8463 to speak with an electricity plan specialist.</p>
+                </div>
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 mb-2">📧 Email Support</h4>
+                  <p class="text-sm text-gray-600">Send questions to support@choosemypower.org for detailed responses.</p>
+                </div>
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 mb-2">📚 Additional Resources</h4>
+                  <ul class="text-sm text-gray-600 space-y-1">
+                    <li>• <a href="/resources/guides/understanding-your-bill" class="text-texas-navy hover:underline">Understanding Your Bill</a></li>
+                    <li>• <a href="/resources/guides/fixed-vs-variable" class="text-texas-navy hover:underline">Fixed vs Variable Plans</a></li>
+                    <li>• <a href="/resources/guides/green-energy" class="text-texas-navy hover:underline">Green Energy Options</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 bg-texas-cream p-6 rounded-lg">
+            <h3 class="text-lg font-semibold text-texas-navy mb-3">📋 Your Action Checklist</h3>
+            <div class="grid md:grid-cols-2 gap-4 text-sm">
+              <ul class="space-y-2">
+                <li>☐ Found my ESI ID on current bill</li>
+                <li>☐ Calculated my average monthly kWh usage</li>
+                <li>☐ Compared at least 3 electricity providers</li>
+                <li>☐ Read the Electricity Facts Label for my top choice</li>
+              </ul>
+              <ul class="space-y-2">
+                <li>☐ Verified the provider's REP certification</li>
+                <li>☐ Understood the contract length and terms</li>
+                <li>☐ Confirmed early termination fee amount</li>
+                <li>☐ Set calendar reminder for contract expiration</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Footer CTA -->
+      <div class="mt-16 text-center">
+        <div class="bg-gradient-to-r from-texas-navy to-blue-800 text-white p-12 rounded-xl">
+          <h2 class="text-3xl font-bold mb-4">Ready to Find Your Best Electricity Plan?</h2>
+          <p class="text-xl mb-8 text-blue-100">Compare rates from 100+ Texas providers and save on your monthly bill.</p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/electricity-plans" class="bg-texas-red text-white px-8 py-4 rounded-lg font-semibold hover:bg-texas-red-600 transition-colors">
+              Compare Plans Now
+            </a>
+            <a href="/rates/calculator" class="bg-texas-gold text-texas-navy px-8 py-4 rounded-lg font-semibold hover:bg-texas-gold-600 transition-colors">
+              Calculate Savings
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

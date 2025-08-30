@@ -87,8 +87,8 @@ export function ResourcesPage({}: ResourcesPageProps) {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center">
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Finally. Texas Electricity Help That Actually Helps
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+              Texas Electricity Help That Actually Helps
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
               You've spent hours trying to figure this out. So did we. Here's everything we learned the hard way, 
@@ -129,7 +129,7 @@ export function ResourcesPage({}: ResourcesPageProps) {
           <div className="text-center mt-8">
             <a
               href="/resources/guides"
-              className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors inline-block"
+              className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-texas-navy/90 transition-colors inline-block"
             >
               View All Guides
             </a>

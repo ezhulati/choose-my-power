@@ -1,0 +1,893 @@
+---
+// Core Web Vitals Performance Dashboard
+// Real-time monitoring and optimization insights
+
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout 
+  title="Core Web Vitals Dashboard - ChooseMyPower.org" 
+  description="Real-time performance monitoring and Core Web Vitals optimization dashboard"
+  noIndex={true}
+>
+  <div class="min-h-screen bg-gray-50 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="mb-8">
+        <h1 class="text-3xl font-bold text-gray-900">Core Web Vitals Dashboard</h1>
+        <p class="mt-2 text-gray-600">Real-time performance monitoring for optimal user experience</p>
+        <div class="mt-4 flex items-center space-x-4">
+          <div class="flex items-center">
+            <div id="status-indicator" class="w-3 h-3 bg-green-400 rounded-full mr-2"></div>
+            <span id="status-text" class="text-sm text-gray-600">Monitoring Active</span>
+          </div>
+          <button 
+            id="refresh-btn" 
+            class="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+          >
+            🔄 Refresh Data
+          </button>
+          <button 
+            id="export-btn" 
+            class="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+          >
+            📊 Export Report
+          </button>
+        </div>
+      </div>
+
+      <!-- Core Web Vitals Overview -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-white overflow-hidden shadow rounded-lg">
+          <div class="p-5">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <div class="w-8 h-8 bg-texas-cream-2000 rounded-md flex items-center justify-center">
+                  <span class="text-white font-bold text-sm">LCP</span>
+                </div>
+              </div>
+              <div class="ml-5 w-0 flex-1">
+                <dl>
+                  <dt class="text-sm font-medium text-gray-500 truncate">Largest Contentful Paint</dt>
+                  <dd class="flex items-baseline">
+                    <div id="lcp-value" class="text-2xl font-semibold text-gray-900">--</div>
+                    <div id="lcp-unit" class="ml-2 text-sm text-gray-500">ms</div>
+                  </dd>
+                  <dd class="mt-1">
+                    <span id="lcp-status" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium">
+                      Measuring...
+                    </span>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white overflow-hidden shadow rounded-lg">
+          <div class="p-5">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <div class="w-8 h-8 bg-green-500 rounded-md flex items-center justify-center">
+                  <span class="text-white font-bold text-sm">FID</span>
+                </div>
+              </div>
+              <div class="ml-5 w-0 flex-1">
+                <dl>
+                  <dt class="text-sm font-medium text-gray-500 truncate">First Input Delay</dt>
+                  <dd class="flex items-baseline">
+                    <div id="fid-value" class="text-2xl font-semibold text-gray-900">--</div>
+                    <div id="fid-unit" class="ml-2 text-sm text-gray-500">ms</div>
+                  </dd>
+                  <dd class="mt-1">
+                    <span id="fid-status" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium">
+                      Waiting for interaction...
+                    </span>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white overflow-hidden shadow rounded-lg">
+          <div class="p-5">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <div class="w-8 h-8 bg-purple-500 rounded-md flex items-center justify-center">
+                  <span class="text-white font-bold text-sm">CLS</span>
+                </div>
+              </div>
+              <div class="ml-5 w-0 flex-1">
+                <dl>
+                  <dt class="text-sm font-medium text-gray-500 truncate">Cumulative Layout Shift</dt>
+                  <dd class="flex items-baseline">
+                    <div id="cls-value" class="text-2xl font-semibold text-gray-900">--</div>
+                    <div id="cls-unit" class="ml-2 text-sm text-gray-500"></div>
+                  </dd>
+                  <dd class="mt-1">
+                    <span id="cls-status" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium">
+                      Measuring...
+                    </span>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Performance Score -->
+      <div class="bg-white shadow rounded-lg mb-8">
+        <div class="px-6 py-4 border-b border-gray-200">
+          <h3 class="text-lg leading-6 font-medium text-gray-900">Overall Performance Score</h3>
+          <p class="mt-1 text-sm text-gray-500">Calculated based on Core Web Vitals and additional metrics</p>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center justify-center">
+            <div class="relative">
+              <svg class="w-32 h-32 transform -rotate-90">
+                <circle
+                  cx="64"
+                  cy="64"
+                  r="56"
+                  stroke="currentColor"
+                  stroke-width="8"
+                  fill="none"
+                  class="text-gray-200"
+                />
+                <circle
+                  id="performance-circle"
+                  cx="64"
+                  cy="64"
+                  r="56"
+                  stroke="currentColor"
+                  stroke-width="8"
+                  fill="none"
+                  stroke-linecap="round"
+                  class="text-green-500"
+                  stroke-dasharray="351.86"
+                  stroke-dashoffset="351.86"
+                  style="transition: stroke-dashoffset 0.5s ease-in-out"
+                />
+              </svg>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center">
+                  <div id="performance-score" class="text-2xl font-bold text-gray-900">--</div>
+                  <div class="text-sm text-gray-500">/ 100</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 text-center">
+            <span id="performance-rating" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium">
+              Calculating...
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Detailed Metrics Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <!-- Additional Performance Metrics -->
+        <div class="bg-white shadow rounded-lg">
+          <div class="px-6 py-4 border-b border-gray-200">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">Additional Metrics</h3>
+          </div>
+          <div class="p-6">
+            <dl class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+              <div>
+                <dt class="text-sm font-medium text-gray-500">First Contentful Paint</dt>
+                <dd class="mt-1 flex items-baseline justify-between">
+                  <span id="fcp-value" class="text-lg font-semibold text-gray-900">--</span>
+                  <span id="fcp-status" class="text-xs font-medium"></span>
+                </dd>
+              </div>
+              <div>
+                <dt class="text-sm font-medium text-gray-500">Time to Interactive</dt>
+                <dd class="mt-1 flex items-baseline justify-between">
+                  <span id="tti-value" class="text-lg font-semibold text-gray-900">--</span>
+                  <span id="tti-status" class="text-xs font-medium"></span>
+                </dd>
+              </div>
+              <div>
+                <dt class="text-sm font-medium text-gray-500">Total Blocking Time</dt>
+                <dd class="mt-1 flex items-baseline justify-between">
+                  <span id="tbt-value" class="text-lg font-semibold text-gray-900">--</span>
+                  <span id="tbt-status" class="text-xs font-medium"></span>
+                </dd>
+              </div>
+              <div>
+                <dt class="text-sm font-medium text-gray-500">Speed Index</dt>
+                <dd class="mt-1 flex items-baseline justify-between">
+                  <span id="si-value" class="text-lg font-semibold text-gray-900">--</span>
+                  <span id="si-status" class="text-xs font-medium"></span>
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+        <!-- Resource Loading Performance -->
+        <div class="bg-white shadow rounded-lg">
+          <div class="px-6 py-4 border-b border-gray-200">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">Resource Performance</h3>
+          </div>
+          <div class="p-6">
+            <dl class="grid grid-cols-1 gap-5">
+              <div>
+                <dt class="text-sm font-medium text-gray-500">JavaScript Bundle Size</dt>
+                <dd class="mt-1 flex items-baseline justify-between">
+                  <span id="js-size" class="text-lg font-semibold text-gray-900">--</span>
+                  <span class="text-xs text-gray-500">KB</span>
+                </dd>
+              </div>
+              <div>
+                <dt class="text-sm font-medium text-gray-500">CSS Bundle Size</dt>
+                <dd class="mt-1 flex items-baseline justify-between">
+                  <span id="css-size" class="text-lg font-semibold text-gray-900">--</span>
+                  <span class="text-xs text-gray-500">KB</span>
+                </dd>
+              </div>
+              <div>
+                <dt class="text-sm font-medium text-gray-500">Image Optimization Rate</dt>
+                <dd class="mt-1 flex items-baseline justify-between">
+                  <span id="image-opt" class="text-lg font-semibold text-gray-900">--</span>
+                  <span class="text-xs text-gray-500">%</span>
+                </dd>
+              </div>
+              <div>
+                <dt class="text-sm font-medium text-gray-500">Cache Hit Rate</dt>
+                <dd class="mt-1 flex items-baseline justify-between">
+                  <span id="cache-rate" class="text-lg font-semibold text-gray-900">--</span>
+                  <span class="text-xs text-gray-500">%</span>
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <!-- Performance Timeline -->
+      <div class="bg-white shadow rounded-lg mb-8">
+        <div class="px-6 py-4 border-b border-gray-200">
+          <h3 class="text-lg leading-6 font-medium text-gray-900">Performance Timeline</h3>
+          <p class="mt-1 text-sm text-gray-500">Real-time Core Web Vitals measurements over time</p>
+        </div>
+        <div class="p-6">
+          <div id="performance-chart" class="h-64 w-full">
+            <!-- Chart will be rendered here -->
+            <div class="flex items-center justify-center h-full text-gray-500">
+              <div class="text-center">
+                <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 mx-auto"></div>
+                <p class="mt-2">Loading performance data...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Optimization Recommendations -->
+      <div class="bg-white shadow rounded-lg mb-8">
+        <div class="px-6 py-4 border-b border-gray-200">
+          <h3 class="text-lg leading-6 font-medium text-gray-900">Optimization Recommendations</h3>
+          <p class="mt-1 text-sm text-gray-500">AI-powered suggestions to improve Core Web Vitals</p>
+        </div>
+        <div class="p-6">
+          <ul id="recommendations-list" class="space-y-4">
+            <!-- Recommendations will be populated here -->
+            <li class="flex items-start">
+              <div class="flex-shrink-0">
+                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-yellow-100">
+                  <span class="text-yellow-800 text-xs">⚡</span>
+                </div>
+              </div>
+              <div class="ml-3">
+                <p class="text-sm text-gray-900">Analyzing performance metrics...</p>
+                <p class="text-xs text-gray-500">Recommendations will appear based on your site's performance</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Historical Data -->
+      <div class="bg-white shadow rounded-lg">
+        <div class="px-6 py-4 border-b border-gray-200">
+          <h3 class="text-lg leading-6 font-medium text-gray-900">Historical Performance</h3>
+          <p class="mt-1 text-sm text-gray-500">Performance trends over the past 30 days</p>
+        </div>
+        <div class="p-6">
+          <div class="overflow-hidden">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">LCP</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">FID</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">CLS</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Score</th>
+                </tr>
+              </thead>
+              <tbody id="historical-data" class="bg-white divide-y divide-gray-200">
+                <!-- Historical data will be populated here -->
+                <tr>
+                  <td colspan="5" class="px-6 py-4 text-center text-sm text-gray-500">
+                    Loading historical data...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+// Core Web Vitals Dashboard JavaScript
+class CoreWebVitalsDashboard {
+  constructor() {
+    this.metrics = {
+      lcp: 0,
+      fid: 0,
+      cls: 0,
+      fcp: 0,
+      tti: 0,
+      tbt: 0,
+      si: 0
+    };
+    
+    this.performanceData = [];
+    this.isMonitoring = true;
+    
+    this.init();
+  }
+
+  async init() {
+    this.startPerformanceMonitoring();
+    this.loadHistoricalData();
+    this.setupEventListeners();
+    this.startRealTimeUpdates();
+    
+    // Load initial data
+    await this.updateResourceMetrics();
+    await this.updateCacheMetrics();
+    this.generateRecommendations();
+  }
+
+  startPerformanceMonitoring() {
+    // Core Web Vitals monitoring using Performance Observer
+    if ('PerformanceObserver' in window) {
+      // LCP Observer
+      const lcpObserver = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+          this.metrics.lcp = entry.startTime;
+          this.updateLCPDisplay();
+        }
+      });
+      
+      try {
+        lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
+      } catch (e) {
+        console.warn('LCP monitoring not supported');
+      }
+
+      // FID Observer
+      const fidObserver = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+          this.metrics.fid = entry.processingStart - entry.startTime;
+          this.updateFIDDisplay();
+        }
+      });
+
+      try {
+        fidObserver.observe({ entryTypes: ['first-input'] });
+      } catch (e) {
+        console.warn('FID monitoring not supported');
+      }
+
+      // CLS Observer
+      const clsObserver = new PerformanceObserver((list) => {
+        let clsScore = 0;
+        for (const entry of list.getEntries()) {
+          if (!entry.hadRecentInput) {
+            clsScore += entry.value;
+          }
+        }
+        this.metrics.cls = clsScore;
+        this.updateCLSDisplay();
+      });
+
+      try {
+        clsObserver.observe({ entryTypes: ['layout-shift'] });
+      } catch (e) {
+        console.warn('CLS monitoring not supported');
+      }
+
+      // Navigation timing for other metrics
+      const navigationObserver = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+          this.metrics.fcp = entry.firstContentfulPaint;
+          this.metrics.tti = entry.timeToInteractive || 0;
+          this.updateAdditionalMetrics();
+        }
+      });
+
+      try {
+        navigationObserver.observe({ entryTypes: ['navigation'] });
+      } catch (e) {
+        console.warn('Navigation timing not fully supported');
+      }
+    }
+
+    // Web Vitals library fallback
+    this.loadWebVitalsLibrary();
+  }
+
+  async loadWebVitalsLibrary() {
+    try {
+      const { getCLS, getFID, getFCP, getLCP, getTTFB } = await import('https://unpkg.com/web-vitals@3?module');
+      
+      getCLS((metric) => {
+        this.metrics.cls = metric.value;
+        this.updateCLSDisplay();
+      });
+
+      getFID((metric) => {
+        this.metrics.fid = metric.value;
+        this.updateFIDDisplay();
+      });
+
+      getFCP((metric) => {
+        this.metrics.fcp = metric.value;
+        this.updateAdditionalMetrics();
+      });
+
+      getLCP((metric) => {
+        this.metrics.lcp = metric.value;
+        this.updateLCPDisplay();
+      });
+
+      getTTFB((metric) => {
+        // TTFB is part of navigation timing
+        this.updateAdditionalMetrics();
+      });
+      
+    } catch (error) {
+      console.warn('Web Vitals library failed to load:', error);
+    }
+  }
+
+  updateLCPDisplay() {
+    const value = Math.round(this.metrics.lcp);
+    const status = this.getLCPStatus(value);
+    
+    document.getElementById('lcp-value').textContent = value;
+    this.updateStatusBadge('lcp-status', status, value < 1800 ? 'excellent' : value < 2500 ? 'good' : 'poor');
+    
+    this.updatePerformanceScore();
+    this.addToTimeline('lcp', value);
+  }
+
+  updateFIDDisplay() {
+    const value = Math.round(this.metrics.fid);
+    const status = this.getFIDStatus(value);
+    
+    document.getElementById('fid-value').textContent = value;
+    this.updateStatusBadge('fid-status', status, value < 75 ? 'excellent' : value < 100 ? 'good' : 'poor');
+    
+    this.updatePerformanceScore();
+    this.addToTimeline('fid', value);
+  }
+
+  updateCLSDisplay() {
+    const value = Math.round(this.metrics.cls * 1000) / 1000;
+    const status = this.getCLSStatus(value);
+    
+    document.getElementById('cls-value').textContent = value.toFixed(3);
+    this.updateStatusBadge('cls-status', status, value < 0.05 ? 'excellent' : value < 0.1 ? 'good' : 'poor');
+    
+    this.updatePerformanceScore();
+    this.addToTimeline('cls', value);
+  }
+
+  updateAdditionalMetrics() {
+    // First Contentful Paint
+    const fcpValue = Math.round(this.metrics.fcp);
+    document.getElementById('fcp-value').textContent = fcpValue ? `${fcpValue}ms` : '--';
+    
+    // Time to Interactive
+    const ttiValue = Math.round(this.metrics.tti);
+    document.getElementById('tti-value').textContent = ttiValue ? `${ttiValue}ms` : '--';
+    
+    // Total Blocking Time (approximate)
+    const tbtValue = Math.max(0, Math.round((this.metrics.tti - this.metrics.fcp) / 2));
+    document.getElementById('tbt-value').textContent = tbtValue ? `${tbtValue}ms` : '--';
+    
+    // Speed Index (approximate)
+    const siValue = Math.round(this.metrics.fcp * 1.2);
+    document.getElementById('si-value').textContent = siValue ? `${siValue}ms` : '--';
+  }
+
+  updateStatusBadge(elementId, text, status) {
+    const element = document.getElementById(elementId);
+    if (!element) return;
+    
+    element.textContent = text;
+    element.className = 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium';
+    
+    if (status === 'excellent') {
+      element.classList.add('bg-texas-gold-100', 'text-texas-navy');
+    } else if (status === 'good') {
+      element.classList.add('bg-texas-gold-100', 'text-texas-navy');
+    } else {
+      element.classList.add('bg-texas-red-100', 'text-texas-navy');
+    }
+  }
+
+  updatePerformanceScore() {
+    const lcpScore = this.calculateLCPScore();
+    const fidScore = this.calculateFIDScore();
+    const clsScore = this.calculateCLSScore();
+    
+    const overallScore = Math.round((lcpScore + fidScore + clsScore) / 3);
+    
+    document.getElementById('performance-score').textContent = overallScore;
+    
+    const circle = document.getElementById('performance-circle');
+    const circumference = 351.86;
+    const strokeDashoffset = circumference - (overallScore / 100) * circumference;
+    circle.style.strokeDashoffset = strokeDashoffset;
+    
+    // Update color based on score
+    circle.className = overallScore >= 90 ? 'text-green-500' : 
+                     overallScore >= 70 ? 'text-yellow-500' : 'text-red-500';
+    
+    // Update rating
+    const rating = overallScore >= 90 ? 'Excellent' : 
+                  overallScore >= 70 ? 'Good' : 'Needs Improvement';
+    const ratingElement = document.getElementById('performance-rating');
+    ratingElement.textContent = rating;
+    ratingElement.className = 'inline-flex items-center px-3 py-1 rounded-full text-sm font-medium';
+    
+    if (overallScore >= 90) {
+      ratingElement.classList.add('bg-texas-gold-100', 'text-texas-navy');
+    } else if (overallScore >= 70) {
+      ratingElement.classList.add('bg-texas-gold-100', 'text-texas-navy');
+    } else {
+      ratingElement.classList.add('bg-texas-red-100', 'text-texas-navy');
+    }
+  }
+
+  calculateLCPScore() {
+    const lcp = this.metrics.lcp;
+    if (lcp <= 1800) return 100;
+    if (lcp <= 2500) return Math.round(100 - ((lcp - 1800) / 700) * 50);
+    return Math.max(0, 50 - ((lcp - 2500) / 2500) * 50);
+  }
+
+  calculateFIDScore() {
+    const fid = this.metrics.fid;
+    if (fid <= 75) return 100;
+    if (fid <= 100) return Math.round(100 - ((fid - 75) / 25) * 50);
+    return Math.max(0, 50 - ((fid - 100) / 100) * 50);
+  }
+
+  calculateCLSScore() {
+    const cls = this.metrics.cls;
+    if (cls <= 0.05) return 100;
+    if (cls <= 0.1) return Math.round(100 - ((cls - 0.05) / 0.05) * 50);
+    return Math.max(0, 50 - ((cls - 0.1) / 0.1) * 50);
+  }
+
+  getLCPStatus(value) {
+    return value < 1800 ? 'Excellent' : value < 2500 ? 'Good' : 'Needs Improvement';
+  }
+
+  getFIDStatus(value) {
+    return value < 75 ? 'Excellent' : value < 100 ? 'Good' : 'Needs Improvement';
+  }
+
+  getCLSStatus(value) {
+    return value < 0.05 ? 'Excellent' : value < 0.1 ? 'Good' : 'Needs Improvement';
+  }
+
+  addToTimeline(metric, value) {
+    this.performanceData.push({
+      timestamp: Date.now(),
+      metric,
+      value
+    });
+    
+    // Keep only last 100 data points
+    if (this.performanceData.length > 100) {
+      this.performanceData = this.performanceData.slice(-100);
+    }
+    
+    this.updateChart();
+  }
+
+  updateChart() {
+    // Simple chart implementation
+    const chartContainer = document.getElementById('performance-chart');
+    if (!this.performanceData.length) return;
+    
+    const metrics = ['lcp', 'fid', 'cls'];
+    const colors = ['#3b82f6', '#10b981', '#8b5cf6'];
+    
+    let chartHtml = '<div class="relative h-full">';
+    
+    // Add legend
+    chartHtml += '<div class="flex justify-center space-x-4 mb-4">';
+    metrics.forEach((metric, index) => {
+      chartHtml += `
+        <div class="flex items-center">
+          <div class="w-3 h-3 rounded-full mr-2" style="background-color: ${colors[index]}"></div>
+          <span class="text-sm text-gray-600">${metric.toUpperCase()}</span>
+        </div>
+      `;
+    });
+    chartHtml += '</div>';
+    
+    // Simple visualization
+    chartHtml += '<div class="text-center text-gray-500">Interactive chart would be rendered here with a charting library like Chart.js</div>';
+    
+    chartHtml += '</div>';
+    
+    chartContainer.innerHTML = chartHtml;
+  }
+
+  async updateResourceMetrics() {
+    try {
+      // Calculate bundle sizes from performance entries
+      const resources = performance.getEntriesByType('resource');
+      
+      let jsSize = 0;
+      let cssSize = 0;
+      let imageCount = 0;
+      let optimizedImages = 0;
+      
+      resources.forEach(resource => {
+        const size = resource.transferSize || 0;
+        
+        if (resource.name.includes('.js')) {
+          jsSize += size;
+        } else if (resource.name.includes('.css')) {
+          cssSize += size;
+        } else if (resource.name.match(/\.(png|jpg|jpeg|gif|svg|webp|avif)$/)) {
+          imageCount++;
+          if (resource.name.includes('webp') || resource.name.includes('avif')) {
+            optimizedImages++;
+          }
+        }
+      });
+      
+      document.getElementById('js-size').textContent = Math.round(jsSize / 1024);
+      document.getElementById('css-size').textContent = Math.round(cssSize / 1024);
+      
+      const optimizationRate = imageCount > 0 ? Math.round((optimizedImages / imageCount) * 100) : 0;
+      document.getElementById('image-opt').textContent = optimizationRate;
+      
+    } catch (error) {
+      console.warn('Failed to calculate resource metrics:', error);
+    }
+  }
+
+  async updateCacheMetrics() {
+    try {
+      // Try to get cache metrics from service worker
+      if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+        const messageChannel = new MessageChannel();
+        
+        navigator.serviceWorker.controller.postMessage({
+          type: 'GET_METRICS'
+        }, [messageChannel.port2]);
+        
+        messageChannel.port1.onmessage = (event) => {
+          if (event.data.type === 'METRICS_RESPONSE') {
+            const metrics = event.data.data;
+            const totalRequests = metrics.cacheHits + metrics.cacheMisses;
+            const hitRate = totalRequests > 0 ? Math.round((metrics.cacheHits / totalRequests) * 100) : 0;
+            
+            document.getElementById('cache-rate').textContent = hitRate;
+          }
+        };
+      } else {
+        document.getElementById('cache-rate').textContent = '—';
+      }
+    } catch (error) {
+      console.warn('Failed to get cache metrics:', error);
+      document.getElementById('cache-rate').textContent = '—';
+    }
+  }
+
+  generateRecommendations() {
+    const recommendations = [];
+    
+    // LCP recommendations
+    if (this.metrics.lcp > 2500) {
+      recommendations.push({
+        type: 'critical',
+        icon: '🚨',
+        title: 'Optimize Largest Contentful Paint',
+        description: 'LCP is above 2.5s. Consider optimizing images, preloading critical resources, and reducing server response times.'
+      });
+    } else if (this.metrics.lcp > 1800) {
+      recommendations.push({
+        type: 'warning',
+        icon: '⚡',
+        title: 'Improve LCP Performance',
+        description: 'LCP can be optimized further. Try image optimization and critical CSS inlining.'
+      });
+    }
+    
+    // FID recommendations
+    if (this.metrics.fid > 100) {
+      recommendations.push({
+        type: 'critical',
+        icon: '🚨',
+        title: 'Reduce First Input Delay',
+        description: 'FID is above 100ms. Consider code splitting, reducing JavaScript execution time, and using web workers.'
+      });
+    }
+    
+    // CLS recommendations
+    if (this.metrics.cls > 0.1) {
+      recommendations.push({
+        type: 'critical',
+        icon: '🚨',
+        title: 'Fix Cumulative Layout Shift',
+        description: 'CLS is above 0.1. Set size attributes on images and reserve space for dynamic content.'
+      });
+    }
+    
+    // General recommendations
+    if (recommendations.length === 0) {
+      recommendations.push({
+        type: 'success',
+        icon: '✅',
+        title: 'Core Web Vitals Optimized',
+        description: 'Your site meets Google\'s excellent Core Web Vitals thresholds. Keep monitoring for regressions.'
+      });
+    }
+    
+    this.displayRecommendations(recommendations);
+  }
+
+  displayRecommendations(recommendations) {
+    const container = document.getElementById('recommendations-list');
+    if (!container) return;
+    
+    container.innerHTML = recommendations.map(rec => `
+      <li class="flex items-start">
+        <div class="flex-shrink-0">
+          <div class="flex items-center justify-center h-6 w-6 rounded-full ${
+            rec.type === 'critical' ? 'bg-red-100' :
+            rec.type === 'warning' ? 'bg-yellow-100' :
+            'bg-green-100'
+          }">
+            <span class="${
+              rec.type === 'critical' ? 'text-red-800' :
+              rec.type === 'warning' ? 'text-yellow-800' :
+              'text-green-800'
+            } text-xs">${rec.icon}</span>
+          </div>
+        </div>
+        <div class="ml-3">
+          <p class="text-sm font-medium text-gray-900">${rec.title}</p>
+          <p class="text-xs text-gray-500">${rec.description}</p>
+        </div>
+      </li>
+    `).join('');
+  }
+
+  loadHistoricalData() {
+    // Simulate historical data - in production this would come from an API
+    const historicalData = [
+      { date: '2024-01-20', lcp: 1650, fid: 85, cls: 0.045, score: 95 },
+      { date: '2024-01-19', lcp: 1720, fid: 92, cls: 0.052, score: 92 },
+      { date: '2024-01-18', lcp: 1580, fid: 78, cls: 0.038, score: 97 },
+      { date: '2024-01-17', lcp: 1890, fid: 95, cls: 0.067, score: 88 },
+      { date: '2024-01-16', lcp: 1750, fid: 88, cls: 0.041, score: 94 }
+    ];
+    
+    const tbody = document.getElementById('historical-data');
+    if (!tbody) return;
+    
+    tbody.innerHTML = historicalData.map(data => `
+      <tr>
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${data.date}</td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${data.lcp}ms</td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${data.fid}ms</td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${data.cls.toFixed(3)}</td>
+        <td class="px-6 py-4 whitespace-nowrap">
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+            data.score >= 90 ? 'bg-texas-gold-100 text-texas-navy' :
+            data.score >= 70 ? 'bg-texas-gold-100 text-texas-navy' :
+            'bg-texas-red-100 text-texas-navy'
+          }">
+            ${data.score}
+          </span>
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  setupEventListeners() {
+    // Refresh button
+    document.getElementById('refresh-btn')?.addEventListener('click', () => {
+      this.refreshData();
+    });
+    
+    // Export button
+    document.getElementById('export-btn')?.addEventListener('click', () => {
+      this.exportReport();
+    });
+  }
+
+  refreshData() {
+    // Reset metrics and reload
+    this.metrics = { lcp: 0, fid: 0, cls: 0, fcp: 0, tti: 0, tbt: 0, si: 0 };
+    this.updateResourceMetrics();
+    this.updateCacheMetrics();
+    this.generateRecommendations();
+  }
+
+  exportReport() {
+    const report = {
+      timestamp: new Date().toISOString(),
+      metrics: this.metrics,
+      performanceData: this.performanceData,
+      recommendations: 'See dashboard for detailed recommendations'
+    };
+    
+    const blob = new Blob([JSON.stringify(report, null, 2)], {
+      type: 'application/json'
+    });
+    
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `core-web-vitals-report-${new Date().toISOString().split('T')[0]}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  startRealTimeUpdates() {
+    // Update display every 5 seconds
+    setInterval(() => {
+      this.updateResourceMetrics();
+      this.updateCacheMetrics();
+      this.generateRecommendations();
+    }, 5000);
+  }
+}
+
+// Initialize dashboard when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  new CoreWebVitalsDashboard();
+});
+</script>
+
+<style>
+  /* Custom styles for the dashboard */
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  /* Smooth transitions */
+  * {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+</style>

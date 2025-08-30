@@ -1,27 +1,36 @@
 ---
 // Live electricity plans grid component
-import ProviderLogo from './ProviderLogo.astro';
+import { ProfessionalPlanCard } from './ui/ProfessionalPlanCard';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 
 interface Plan {
   id: string;
   name: string;
-  provider: {
+  provider: string | {
     name: string;
     rating?: number;
     reviewCount?: number;
   };
-  pricing: {
+  rate: number;
+  contractTerm: string;
+  planType: 'fixed' | 'variable' | 'indexed';
+  greenEnergy: boolean;
+  noDeposit?: boolean;
+  topRated?: boolean;
+  features: string[];
+  slug: string;
+  // Support legacy structure
+  pricing?: {
     rate1000kWh: number;
     ratePerKwh: number;
   };
-  contract: {
+  contract?: {
     length: number;
     type: string;
     earlyTerminationFee?: number;
   };
-  features: {
+  features?: {
     greenEnergy: number;
     deposit?: {
       required: boolean;
@@ -38,19 +47,45 @@ interface Props {
 }
 
 const { plans, cityName, showLoadMore = true, maxPlans = 12 } = Astro.props;
-const displayedPlans = plans.slice(0, maxPlans);
-const remainingPlans = Math.max(0, plans.length - maxPlans);
 
-// Identify standout plans
-const bestValuePlan = plans.length > 0 ? plans.reduce((prev, current) => 
-  (prev.pricing?.rate1000kWh || 999) < (current.pricing?.rate1000kWh || 999) ? prev : current
+// Convert legacy plans to ProfessionalPlanCard format
+const convertedPlans = plans.map((plan, index) => {
+  // Handle legacy structure
+  const providerName = typeof plan.provider === 'string' ? plan.provider : plan.provider?.name || 'Unknown Provider';
+  const rate = plan.rate || plan.pricing?.rate1000kWh || 0;
+  const contractLength = plan.contract?.length || 12;
+  const contractType = plan.contract?.type || 'fixed';
+  const greenEnergyPercent = plan.features?.greenEnergy || 0;
+  const isNoDeposit = plan.noDeposit || (plan.features?.deposit && !plan.features.deposit.required) || false;
+  
+  return {
+    id: plan.id || `plan-${index}`,
+    name: plan.name,
+    provider: providerName,
+    rate: rate,
+    contractTerm: plan.contractTerm || `${contractLength} months`,
+    planType: (plan.planType || contractType) as 'fixed' | 'variable' | 'indexed',
+    greenEnergy: plan.greenEnergy || greenEnergyPercent > 0,
+    noDeposit: isNoDeposit,
+    topRated: plan.topRated || false,
+    features: plan.features || [],
+    slug: plan.slug || plan.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')
+  };
+});
+
+const displayedPlans = convertedPlans.slice(0, maxPlans);
+const remainingPlans = Math.max(0, convertedPlans.length - maxPlans);
+
+// Identify standout plans (using converted data)
+const bestValuePlan = convertedPlans.length > 0 ? convertedPlans.reduce((prev, current) => 
+  prev.rate < current.rate ? prev : current
 ) : null;
 
-const mostPopularPlan = plans.length > 0 ? plans.find(plan => 
-  plan.contract?.length === 12 && 
-  plan.contract?.type === 'fixed' &&
-  plan.features?.greenEnergy > 0
-) || plans[Math.floor(plans.length * 0.2)] : null; // Fallback to top 20% if no ideal match
+const mostPopularPlan = convertedPlans.length > 0 ? convertedPlans.find(plan => 
+  plan.contractTerm.includes('12') && 
+  plan.planType === 'fixed' &&
+  plan.greenEnergy
+) || convertedPlans[Math.floor(convertedPlans.length * 0.2)] : null;
 
 ---
 
@@ -69,7 +104,7 @@ const mostPopularPlan = plans.length > 0 ? plans.find(plan =>
     <!-- Plans Grid -->
     <div class="plans-header mb-8">
       <h2 class="text-3xl font-bold text-gray-900 mb-2">
-        {plans.length} Live Electricity Plans
+        {convertedPlans.length} Live Electricity Plans
       </h2>
       <p class="text-gray-600">
         Updated in real-time • All fees included • Ready to enroll today
@@ -78,206 +113,40 @@ const mostPopularPlan = plans.length > 0 ? plans.find(plan =>
 
     <div id="plans-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {displayedPlans.map((plan) => (
-        <div class="plan-card bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300 overflow-hidden relative">
-          <!-- Badges -->
-          {bestValuePlan && plan.id === bestValuePlan.id && (
-            <div class="absolute top-3 right-3 z-10">
-              <div class="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                Best Value
-              </div>
-            </div>
-          )}
-          {mostPopularPlan && plan.id === mostPopularPlan.id && plan.id !== bestValuePlan?.id && (
-            <div class="absolute top-3 right-3 z-10">
-              <div class="bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                Most Popular
-              </div>
-            </div>
-          )}
-          
-          <!-- Plan Header -->
-          <div class="p-6 border-b border-gray-100">
-            <div class="flex items-start justify-between mb-4">
-              <div class="flex-1 pr-4">
-                <h3 class="text-lg font-bold text-gray-900 mb-1">{plan.name}</h3>
-                <div class="flex items-center gap-2">
-                  <ProviderLogo 
-                    provider={plan.provider.name}
-                    logo={(plan.provider as any)?.logo}
-                    size="sm"
-                  />
-                  <p class="text-gray-600 text-sm">{plan.provider.name}</p>
-                </div>
-              </div>
-              <div class="text-right">
-                <div class="text-2xl font-bold text-texas-navy">
-                  {plan.pricing.rate1000kWh.toFixed(1)}¢
-                </div>
-                <div class="text-xs text-gray-500">per kWh</div>
-              </div>
-            </div>
-
-            <!-- Contract Info -->
-            <div class="flex items-center gap-4 text-sm text-gray-600">
-              <span class="bg-gray-100 px-2 py-1 rounded">
-                {plan.contract.length}-month {plan.contract.type}
-              </span>
-              {plan.features.greenEnergy > 0 && (
-                <span class="bg-green-100 text-green-700 px-2 py-1 rounded flex items-center gap-1">
-                  <span>🌱</span> {plan.features.greenEnergy}% green
-                </span>
-              )}
-            </div>
-          </div>
-
-          <!-- Plan Details -->
-          <div class="p-6">
-            <div class="space-y-3 mb-6">
-              <div class="flex justify-between">
-                <span class="text-gray-600">Monthly cost (1000 kWh):</span>
-                <span class="font-semibold">${((plan.pricing as any)?.total1000kWh || plan.pricing.rate1000kWh * 10).toFixed(0)}</span>
-              </div>
-              
-              {plan.contract.earlyTerminationFee && plan.contract.earlyTerminationFee > 0 && (
-                <div class="flex justify-between">
-                  <span class="text-gray-600">Early termination fee:</span>
-                  <span class="font-semibold">${plan.contract.earlyTerminationFee}</span>
-                </div>
-              )}
-
-              {plan.features.deposit && (
-                <div class="flex justify-between">
-                  <span class="text-gray-600">Deposit required:</span>
-                  <span class="font-semibold">
-                    {plan.features.deposit.required 
-                      ? `$${plan.features.deposit.amount || 'Varies'}`
-                      : 'No deposit'
-                    }
-                  </span>
-                </div>
-              )}
-            </div>
-
-            <!-- Action Buttons -->
-            <div class="space-y-3">
-              <button class="w-full bg-texas-red hover:bg-texas-red-600 text-white py-3 px-4 rounded-lg font-semibold transition-colors" aria-label={`Enroll now in ${plan.name} plan from ${plan.provider.name}`}>
-                Enroll Now
-              </button>
-              <button class="w-full border border-gray-300 hover:border-gray-400 text-gray-700 py-2 px-4 rounded-lg font-medium transition-colors" aria-label={`View details for ${plan.name} plan from ${plan.provider.name}`}>
-                View Details
-              </button>
-            </div>
-          </div>
-        </div>
-      ))}
-      
-      <!-- Hidden plans for Load More functionality -->
-      {plans.slice(maxPlans).map((plan) => (
-        <div class="plan-card hidden bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300 overflow-hidden relative" data-hidden-plan="true">
-          <!-- Badges -->
-          {bestValuePlan && plan.id === bestValuePlan.id && (
-            <div class="absolute top-3 right-3 z-10">
-              <div class="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                Best Value
-              </div>
-            </div>
-          )}
-          {mostPopularPlan && plan.id === mostPopularPlan.id && plan.id !== bestValuePlan?.id && (
-            <div class="absolute top-3 right-3 z-10">
-              <div class="bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-semibold">
-                Most Popular
-              </div>
-            </div>
-          )}
-          
-          <!-- Plan Header -->
-          <div class="p-6 border-b border-gray-100">
-            <div class="flex items-start justify-between mb-4">
-              <div class="flex-1 pr-4">
-                <h3 class="text-lg font-bold text-gray-900 mb-1">{plan.name}</h3>
-                <div class="flex items-center gap-2">
-                  <ProviderLogo 
-                    provider={plan.provider.name}
-                    logo={(plan.provider as any)?.logo}
-                    size="sm"
-                  />
-                  <p class="text-gray-600 text-sm">{plan.provider.name}</p>
-                </div>
-              </div>
-              <div class="text-right">
-                <div class="text-2xl font-bold text-texas-navy">
-                  {plan.pricing.rate1000kWh.toFixed(1)}¢
-                </div>
-                <div class="text-xs text-gray-500">per kWh</div>
-              </div>
-            </div>
-
-            <!-- Contract Info -->
-            <div class="flex items-center gap-4 text-sm text-gray-600">
-              <span class="bg-gray-100 px-2 py-1 rounded">
-                {plan.contract.length}-month {plan.contract.type}
-              </span>
-              {plan.features.greenEnergy > 0 && (
-                <span class="bg-green-100 text-green-700 px-2 py-1 rounded flex items-center gap-1">
-                  <span>🌱</span> {plan.features.greenEnergy}% green
-                </span>
-              )}
-            </div>
-          </div>
-
-          <!-- Plan Details -->
-          <div class="p-6">
-            <div class="space-y-3 mb-6">
-              <div class="flex justify-between">
-                <span class="text-gray-600">Monthly cost (1000 kWh):</span>
-                <span class="font-semibold">${((plan.pricing as any)?.total1000kWh || plan.pricing.rate1000kWh * 10).toFixed(0)}</span>
-              </div>
-              
-              {plan.contract.earlyTerminationFee && plan.contract.earlyTerminationFee > 0 && (
-                <div class="flex justify-between">
-                  <span class="text-gray-600">Early termination fee:</span>
-                  <span class="font-semibold">${plan.contract.earlyTerminationFee}</span>
-                </div>
-              )}
-
-              {plan.features.deposit && (
-                <div class="flex justify-between">
-                  <span class="text-gray-600">Deposit required:</span>
-                  <span class="font-semibold">
-                    {plan.features.deposit.required 
-                      ? `$${plan.features.deposit.amount || 'Varies'}`
-                      : 'No deposit'
-                    }
-                  </span>
-                </div>
-              )}
-            </div>
-
-            <!-- Action Buttons -->
-            <div class="space-y-3">
-              <button class="w-full bg-texas-red hover:bg-texas-red-600 text-white py-3 px-4 rounded-lg font-semibold transition-colors" aria-label={`Enroll now in ${plan.name} plan from ${plan.provider.name}`}>
-                Enroll Now
-              </button>
-              <button class="w-full border border-gray-300 hover:border-gray-400 text-gray-700 py-2 px-4 rounded-lg font-medium transition-colors" aria-label={`View details for ${plan.name} plan from ${plan.provider.name}`}>
-                View Details
-              </button>
-            </div>
-          </div>
-        </div>
+        <ProfessionalPlanCard 
+          plan={plan}
+          client:load
+          className="h-full"
+        />
       ))}
     </div>
+
+    <!-- Hidden plans for Load More functionality -->
+    {convertedPlans.slice(maxPlans).length > 0 && (
+      <div id="hidden-plans" class="hidden">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {convertedPlans.slice(maxPlans).map((plan) => (
+            <ProfessionalPlanCard 
+              plan={plan}
+              client:load
+              className="h-full hidden-plan"
+            />
+          ))}
+        </div>
+      </div>
+    )}
 
     <!-- Load More Section -->
     {showLoadMore && remainingPlans > 0 && (
       <div class="text-center mt-12">
         <Button 
-                id="load-more-btn"
-                variant="texas-primary"
-                size="lg"
-                data-remaining={remainingPlans}
-                aria-label={`Show ${remainingPlans} more electricity plans for ${cityName}`}>
+          id="load-more-btn"
+          variant="texas-primary"
+          size="lg"
+          data-remaining={remainingPlans}
+          aria-label={`Show ${remainingPlans} more electricity plans for ${cityName}`}>
           Show {remainingPlans} More Plans
-        </button>
+        </Button>
         <p class="text-gray-600 text-sm mt-2">
           All plans updated daily with current market rates
         </p>
@@ -286,7 +155,7 @@ const mostPopularPlan = plans.length > 0 ? plans.find(plan =>
   )}
 
   <!-- Plans Summary -->
-  {plans.length > 0 && (
+  {convertedPlans.length > 0 && (
     <div class="plans-summary mt-12 bg-texas-cream-200 border border-blue-200 rounded-lg p-6">
       <h3 class="text-lg font-semibold text-blue-900 mb-2">
         📊 Market Summary for {cityName}
@@ -294,21 +163,21 @@ const mostPopularPlan = plans.length > 0 ? plans.find(plan =>
       <div class="grid md:grid-cols-3 gap-4 text-sm">
         <div>
           <div class="text-texas-navy font-semibold">
-            {Math.min(...plans.map(p => p.pricing.rate1000kWh)).toFixed(1)}¢
+            {Math.min(...convertedPlans.map(p => p.rate)).toFixed(1)}¢
           </div>
           <div class="text-texas-navy">Lowest rate</div>
         </div>
         <div>
           <div class="text-texas-navy font-semibold">
-            {(plans.reduce((sum, p) => sum + p.pricing.rate1000kWh, 0) / plans.length).toFixed(1)}¢
+            {(convertedPlans.reduce((sum, p) => sum + p.rate, 0) / convertedPlans.length).toFixed(1)}¢
           </div>
           <div class="text-texas-navy">Average rate</div>
         </div>
         <div>
           <div class="text-texas-navy font-semibold">
-            {plans.filter(p => p.features.greenEnergy === 100).length}
+            {convertedPlans.filter(p => p.greenEnergy).length}
           </div>
-          <div class="text-texas-navy">100% green plans</div>
+          <div class="text-texas-navy">Green energy plans</div>
         </div>
       </div>
     </div>
@@ -334,10 +203,11 @@ const mostPopularPlan = plans.length > 0 ? plans.find(plan =>
   // Load More functionality
   document.addEventListener('DOMContentLoaded', function() {
     const loadMoreBtn = document.getElementById('load-more-btn');
-    const hiddenPlans = document.querySelectorAll('[data-hidden-plan="true"]');
+    const hiddenPlansContainer = document.getElementById('hidden-plans');
     
-    if (!loadMoreBtn || hiddenPlans.length === 0) return;
+    if (!loadMoreBtn || !hiddenPlansContainer) return;
     
+    const hiddenPlans = hiddenPlansContainer.querySelectorAll('.hidden-plan');
     const plansPerLoad = 6; // Show 6 more plans each time
     let currentlyShown = 0;
     
@@ -345,10 +215,18 @@ const mostPopularPlan = plans.length > 0 ? plans.find(plan =>
       // Show next batch of hidden plans
       const toShow = Array.from(hiddenPlans).slice(currentlyShown, currentlyShown + plansPerLoad);
       
-      toShow.forEach(plan => {
-        plan.classList.remove('hidden');
-        plan.classList.add('animate-fade-in');
+      // Move plans to main grid
+      const mainGrid = document.getElementById('plans-grid');
+      toShow.forEach(planCard => {
+        planCard.classList.remove('hidden-plan');
+        planCard.classList.add('animate-fade-in');
+        mainGrid.appendChild(planCard);
       });
+      
+      // Show the hidden container if it was hidden
+      if (hiddenPlansContainer.classList.contains('hidden')) {
+        hiddenPlansContainer.classList.remove('hidden');
+      }
       
       currentlyShown += plansPerLoad;
       

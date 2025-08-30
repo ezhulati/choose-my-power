@@ -90,12 +90,12 @@ export function TexasCityPage({ city }: TexasCityPageProps) {
 
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
-              <h1 className="text-3xl md:text-4xl font-bold mb-6">
-                Finally. {cityData.name} Electricity That Makes Sense
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                {cityData.name} Electricity Options
               </h1>
               
               <p className="text-lg text-red-100 mb-6">
-                Moving to {cityData.name}? Here's why transferring your old plan usually backfires: Your old rate was based on your OLD home's size. "Fixed" rates aren't fixed—they change with usage. A plan for a 2-bedroom apartment costs way more in a 4-bedroom house. We found {cityProviders.length} quality providers that actually work for your new {cityData.name} home.
+                Moving to {cityData.name}? Here's why transferring your old plan usually backfires: Your old rate was based on your OLD home's size. "Fixed" rates aren't fixed—they change with usage. A plan for a 2-bedroom apartment costs way more in a 4-bedroom house. We found {cityProviders.length} licensed electricity companies that actually work for your new {cityData.name} home.
               </p>
 
               {/* Enhanced Key Stats Row */}
@@ -179,7 +179,7 @@ export function TexasCityPage({ city }: TexasCityPageProps) {
               onClick={() => navigate(`/compare/providers?city=${city}&state=texas`)}
               className="bg-texas-red text-white px-4 py-2 rounded-lg hover:bg-texas-red-600 transition-colors"
             >
-              Compare Quality Providers
+              Compare Licensed Companies
             </button>
           </div>
 
@@ -337,7 +337,7 @@ export function TexasCityPage({ city }: TexasCityPageProps) {
               </p>
               <button
                 onClick={() => navigate(`/texas/${city}/no-deposit-electricity`)}
-                className="w-full bg-texas-navy text-white py-2 rounded-lg hover:bg-blue-800 transition-colors text-sm font-medium"
+                className="w-full bg-texas-navy text-white py-2 rounded-lg hover:bg-texas-navy/90 transition-colors text-sm font-medium"
               >
                 No Deposit Options
               </button>

@@ -8,7 +8,7 @@
  * - Contract urgency signals
  */
 
-import { DEFAULT_COUNTS } from '../utils/dynamic-counts';
+import { DEFAULT_COUNTS, getRealTimeLowestRate } from '../utils/dynamic-counts';
 
 export interface TemporalContext {
   hour: number;
@@ -120,6 +120,16 @@ export class TemporalMessagingEngine {
   getMessage(context?: TemporalContext): MessagingBundle {
     const ctx = context || this.getTemporalContext();
     
+    // Holiday-specific messaging takes priority
+    if (ctx.holiday) {
+      return this.getHolidayMessage(ctx);
+    }
+    
+    // Special period messaging
+    if (ctx.specialPeriod) {
+      return this.getSpecialPeriodMessage(ctx);
+    }
+    
     // Weekend Warriors - People sacrificing their weekend
     if (ctx.isWeekend) {
       return this.getWeekendMessage(ctx);
@@ -139,59 +149,214 @@ export class TemporalMessagingEngine {
     return this.getWeekdayMessage(ctx);
   }
 
+  private getHolidayMessage(ctx: TemporalContext): MessagingBundle {
+    const { holiday, timeOfDay, isWeekend, dayName } = ctx;
+    if (!holiday) return this.getWeekendMessage(ctx);
+
+    switch (holiday.name) {
+      case "Labor Day":
+        if (holiday.daysUntil === 0) {
+          // IT'S LABOR DAY
+          return {
+            headline: "Labor Day. Ironic electricity shopping.",
+            subheadline: "Celebrating work by doing more work. At least this saves money."
+          };
+        } else if (holiday.daysUntil === 1) {
+          // SUNDAY OF LABOR DAY WEEKEND
+          return {
+            headline: "Labor Day tomorrow. Last chance weekend.",
+            subheadline: "Summer's over Monday. Time to lock in a good rate for fall."
+          };
+        } else if (holiday.daysUntil === 2 && dayName === 'Saturday') {
+          // SATURDAY OF LABOR DAY WEEKEND - THIS IS NOW
+          return {
+            headline: "Labor Day weekend. Saturday electricity reality check.",
+            subheadline: "End of summer, AC bills dropping soon. Time to lock in a good rate for fall."
+          };
+        } else {
+          return {
+            headline: "Labor Day weekend electricity homework.",
+            subheadline: "Last weekend of summer. Time to adult and fix your rate."
+          };
+        }
+
+      case "Memorial Day":
+        return {
+          headline: holiday.daysUntil === 0
+            ? "Memorial Day electricity research."
+            : "Memorial Day weekend prep.",
+          subheadline: holiday.daysUntil === 0
+            ? "Pool season starts now. Time to lock in a good rate."
+            : "Summer's coming. AC bills are coming. Get ready."
+        };
+
+      case "Independence Day":
+        return {
+          headline: holiday.daysUntil === 0
+            ? "July 4th electricity freedom."
+            : "4th of July weekend planning.",
+          subheadline: holiday.daysUntil === 0
+            ? "Celebrate independence with a better electricity rate."
+            : "BBQ season means AC season. Find a better rate first."
+        };
+
+      case "Thanksgiving":
+        return {
+          headline: holiday.daysUntil === 0
+            ? "Thanksgiving Day electricity gratitude."
+            : "Thanksgiving prep mode.",
+          subheadline: holiday.daysUntil === 0
+            ? "Thankful for working AC during family visits."
+            : "Family coming over? Better check that electricity rate first."
+        };
+
+      case "Christmas":
+        return {
+          headline: holiday.daysUntil === 0
+            ? "Christmas Day electricity miracle."
+            : "Christmas prep electricity audit.",
+          subheadline: holiday.daysUntil === 0
+            ? "Even Santa would comparison shop for electricity."
+            : "Holiday lights cost extra. Find a rate that doesn't."
+        };
+
+      case "New Year's Day":
+        return {
+          headline: holiday.daysUntil === 0
+            ? "New Year, new electricity rate."
+            : "New Year resolution prep.",
+          subheadline: holiday.daysUntil === 0
+            ? "Starting the year right. With better electricity."
+            : "Resolution idea. Find a better electricity rate."
+        };
+
+      default:
+        return isWeekend ? this.getWeekendMessage(ctx) : this.getWeekdayMessage(ctx);
+    }
+  }
+
+  private getSpecialPeriodMessage(ctx: TemporalContext): MessagingBundle {
+    const { specialPeriod, timeOfDay, isWeekend } = ctx;
+    if (!specialPeriod) return this.getWeekendMessage(ctx);
+
+    switch (specialPeriod.type) {
+      case 'back-to-school':
+        return {
+          headline: isWeekend
+            ? "Back-to-school weekend electricity homework."
+            : "Back-to-school electricity assignment.",
+          subheadline: "New schedules, new routines. Might as well get a new (better) electricity rate."
+        };
+
+      case 'tax-season':
+        return {
+          headline: timeOfDay === 'late-night'
+            ? "Late night tax season electricity therapy."
+            : "Tax season electricity deduction research.",
+          subheadline: "Can't deduct electricity, but you can definitely pay less for it."
+        };
+
+      case 'holiday-shopping':
+        return {
+          headline: isWeekend
+            ? "Holiday shopping break. Electricity edition."
+            : "Holiday shopping list electricity research.",
+          subheadline: "Shopping for everyone else. Shop for yourself too. Better electricity rate."
+        };
+
+      case 'summer-vacation':
+        return {
+          headline: timeOfDay === 'evening'
+            ? "Summer evening AC bill reality check."
+            : "Summer vacation electricity planning.",
+          subheadline: "Vacation costs money. AC costs money. Save on one of them."
+        };
+
+      default:
+        return isWeekend ? this.getWeekendMessage(ctx) : this.getWeekdayMessage(ctx);
+    }
+  }
+
   private getWeekendMessage(ctx: TemporalContext): MessagingBundle {
     const { dayName, timeOfDay, hour, season, holiday, specialPeriod } = ctx;
-    const activities = this.getSeasonalActivities(season, holiday, specialPeriod);
+    
+    // Check for Labor Day weekend first - THIS IS CRITICAL FOR RIGHT NOW
+    if (holiday?.name === "Labor Day" && holiday.daysUntil === 2 && dayName === 'Saturday') {
+      switch (timeOfDay) {
+        case 'early-morning':
+          return {
+            headline: "Labor Day weekend. Early Saturday electricity mission.",
+            subheadline: "End of summer, rates about to drop. Smart to lock in a good one early."
+          };
+        
+        case 'morning':
+          return {
+            headline: "Saturday morning Labor Day weekend electricity audit.",
+            subheadline: "Summer's ending Monday. Lower fall rates coming. Good time to lock in now."
+          };
+        
+        case 'lunch':
+          return {
+            headline: "Labor Day weekend lunch break productivity.",
+            subheadline: "End of summer project. Find your rate before fall prices hit."
+          };
+        
+        case 'afternoon':
+          return {
+            headline: `${hour === 15 ? '3pm Labor Day weekend. Still untangling electricity contracts.' : 'Labor Day weekend Saturday afternoon.'}`,
+            subheadline: "End of summer. Beginning of higher rates. We read the fine print so you don't have to."
+          };
+        
+        case 'evening':
+          return {
+            headline: "Labor Day weekend Saturday night electricity research.",
+            subheadline: "Responsible weekend move. Summer ends Monday, rates go up Tuesday."
+          };
+        
+        case 'late-night':
+          return {
+            headline: "Late Labor Day weekend Saturday. Smart timing actually.",
+            subheadline: "End of summer insomnia? Might as well save money. Rates jump after the holiday."
+          };
+      }
+    }
     
     if (dayName === 'Saturday') {
       switch (timeOfDay) {
         case 'early-morning':
           return {
-            headline: "6am Saturday. Comparing electricity plans. This is adulting.",
-            subheadline: `Could still be in bed. Instead you're here doing what Texas forces you to do. We tested ${DEFAULT_COUNTS.providers} quality providers last week. Here's the three that won't waste your time.`,
-            urgencyFlag: "Average person spends 3 hours on this. You'll be done in 10 minutes.",
-            ctaText: "Let's get this over with"
+            headline: "Saturday morning electricity shopping.",
+            subheadline: "You could do literally anything else. But here we are. No teaser rates that cost 14¢."
           };
         
         case 'morning':
           return {
-            headline: "Saturday morning electricity homework. Fantastic.",
-            subheadline: `Kids' soccer game at 11? Farmers market? Nope - kilowatt calculations. Texas gives you real choice (${DEFAULT_COUNTS.providers} quality providers competing), but comparing them all is the worst. Pick wrong, pay double.`,
-            urgencyFlag: "Your neighbor locked in 8.9¢. You're still paying 16¢.",
-            ctaText: "Show me the actual good plans"
+            headline: "Saturday morning. Still dealing with Texas electricity.",
+            subheadline: `${DEFAULT_COUNTS.providers} companies, ${DEFAULT_COUNTS.plans} plans. We sorted the good from the garbage.`
           };
         
         case 'lunch':
-          const contextualActivity = this.getContextualActivityMessage(activities, holiday, specialPeriod);
           return {
-            headline: "Gorgeous Saturday afternoon for... rate shopping?",
-            subheadline: contextualActivity + " Because if you don't pick a plan, you'll pay holdover rates that cost an extra $200/month. Texas rules.",
-            urgencyFlag: "Your contract's ending soon? Good timing to look around.",
-            ctaText: "Let's get this over with"
+            headline: "Saturday lunch break. Electricity shopping.",
+            subheadline: "Not exactly weekend goals, but okay. Clear prices, straight answers."
           };
         
         case 'afternoon':
           return {
-            headline: `3pm Saturday. Still untangling electricity contracts.`,
-            subheadline: `You've got ${DEFAULT_COUNTS.providers} trusted providers to choose from. Each with multiple plans. That's ${DEFAULT_COUNTS.plans}+ options. We already did the math. Here's the 5 that don't suck.`,
-            urgencyFlag: "Saturday shoppers save $312/year on average. Weird but true.",
-            ctaText: "Just show me the winners"
+            headline: `${hour === 15 ? '3pm Saturday. Still untangling electricity contracts.' : 'Saturday afternoon. Electricity homework.'}`,
+            subheadline: "We read the fine print so you don't have to. Here's what's actually good."
           };
         
         case 'evening':
           return {
-            headline: "Saturday night rate shopping. Living the dream.",
-            subheadline: "Date night? Movie? Nah - you're comparing TDU charges and base rates. At least you found us. We've already called these companies at 2am to test them.",
-            urgencyFlag: "Most contracts expire at 11:59pm. Don't get caught.",
-            ctaText: "Find my plan now"
+            headline: "Saturday night electricity research.",
+            subheadline: "Either very responsible or very bored. Clear prices, no teaser rates."
           };
         
         case 'late-night':
           return {
-            headline: "11pm Saturday googling electricity rates. Peak existence.",
-            subheadline: `Tomorrow you'll wish you'd handled this. Holdover rates are criminal - literally double. We tested ${DEFAULT_COUNTS.providers} quality providers. Most are terrible. Here's who isn't.`,
-            urgencyFlag: "Lock in tonight's rates. They change at midnight.",
-            ctaText: "Get me out of here"
+            headline: "Late Saturday night. Electricity rates.",
+            subheadline: "Couldn't sleep? Might as well find a better rate. No teaser rates that cost 14¢."
           };
       }
     }
@@ -200,190 +365,186 @@ export class TemporalMessagingEngine {
     switch (timeOfDay) {
       case 'early-morning':
         return {
-          headline: "Sunday sunrise. Coffee. Electricity spreadsheets.",
-          subheadline: `Should be reading the paper, not EFL documents. Texas deregulation gives you power most states don't have - but the homework is brutal. We read ${DEFAULT_COUNTS.plans}+ plans this week. Here's what matters.`,
-          urgencyFlag: "Early birds get 15% better rates. Seriously.",
-          ctaText: "Show me who's legit"
+          headline: "Sunday morning. Getting your life together.",
+          subheadline: "Starting with electricity rates. Smart move. No teaser rates that cost 14¢."
         };
       
       case 'morning':
         return {
-          headline: "Sunday morning electricity mass. Pray for lower rates.",
-          subheadline: `Church at 11? Better hurry. Texas gives you ${DEFAULT_COUNTS.providers} trusted providers but no guidance. Half are sketchy. We found the good ones.`,
-          urgencyFlag: "Average holdover rate: 18.2¢. Don't be average.",
-          ctaText: "Skip to the good ones"
+          headline: "Sunday morning electricity audit.",
+          subheadline: "Coffee in one hand, rate comparison in the other. Clear prices, straight answers."
+        };
+      
+      case 'lunch':
+        return {
+          headline: "Sunday lunch break productivity.",
+          subheadline: "Weekend project that actually saves money. No 40-page contracts."
         };
       
       case 'afternoon':
         return {
-          headline: "Beautiful Sunday for being stuck inside comparing rates.",
-          subheadline: "NFL starts in an hour. You're still here. Smart actually - Sunday shoppers avoid the Monday price hikes. Pick a plan, watch the game.",
-          urgencyFlag: "Cowboys kick off at 3:25. Let's move.",
-          ctaText: "Quick comparison"
+          headline: "Sunday afternoon. Adulting hard.",
+          subheadline: `We tested all ${DEFAULT_COUNTS.providers} providers. Here's who doesn't waste your time.`
         };
       
-      default:
+      case 'evening':
         return {
-          headline: "Sunday evening electricity anxiety. Classic.",
-          subheadline: `Tomorrow's Monday. Work's waiting. And you still need electricity sorted. We tested all ${DEFAULT_COUNTS.providers} trusted providers. Here's your shortlist.`,
-          urgencyFlag: "New work week = new rates. Lock in now.",
-          ctaText: "Just tell me what to pick"
+          headline: "Sunday evening prep mode.",
+          subheadline: "Monday's coming. Fix your electricity rate while you can still think."
+        };
+      
+      case 'late-night':
+        return {
+          headline: "Sunday night electricity insomnia.",
+          subheadline: "Tomorrow's Monday. At least your rate will be sorted. No teaser rates."
         };
     }
   }
 
   private getFridayMessage(ctx: TemporalContext): MessagingBundle {
     const { timeOfDay, hour, season, holiday, specialPeriod } = ctx;
-    const activities = this.getSeasonalActivities(season, holiday, specialPeriod);
     
     switch (timeOfDay) {
+      case 'early-morning':
+        return {
+          headline: "Friday morning electricity mission.",
+          subheadline: "Early start on weekend prep. No teaser rates that cost 14¢."
+        };
+      
       case 'morning':
         return {
-          headline: "Friday morning electricity panic. We get it.",
-          subheadline: "Trying to wrap up before the weekend. Now THIS lands on your desk. Texas makes you choose. Choose wrong, pay 2x. We'll make it quick.",
-          urgencyFlag: "Handle it now or it'll ruin your weekend.",
-          ctaText: "Let's knock this out"
+          headline: "Friday morning electricity to-do.",
+          subheadline: "Get this off your list before the weekend. Clear prices, straight answers."
         };
       
       case 'lunch':
         return {
-          headline: "Friday lunch break = electricity research time?",
-          subheadline: "Coworkers at happy hour already. You're comparing kilowatts. Responsible? Yes. Fun? No. Here's the fastest path out.",
-          urgencyFlag: "Rates update Monday morning. Beat the increase.",
-          ctaText: "Speed run this"
+          headline: "Friday lunch break productivity.",
+          subheadline: "15 minutes to find a better rate. Then weekend mode. No 40-page contracts."
         };
       
       case 'afternoon':
         return {
-          headline: "4pm Friday. One more thing: pick your electricity.",
-          subheadline: "Boss gone. Coworkers checked out. You're googling TDU charges. Because adulting. We did the homework - here's the answer key.",
-          urgencyFlag: "Deal with it now, enjoy the weekend.",
-          ctaText: "Get me to happy hour"
+          headline: "Friday afternoon. Almost weekend.",
+          subheadline: `One quick thing: find a better rate. ${DEFAULT_COUNTS.plans} plans reviewed.`
         };
       
       case 'evening':
+        return {
+          headline: "Friday night electricity research.",
+          subheadline: "Either very responsible or questionable weekend plans. Clear prices either way."
+        };
+      
       case 'late-night':
         return {
-          headline: "Friday night electricity shopping. You absolute legend.",
-          subheadline: "Everyone's out. You're in, comparing plans like it's Black Friday. Good news: evening shoppers get better rates. Bad news: you're spending Friday night doing this.",
-          urgencyFlag: "Contracts expire at midnight. Don't get stuck.",
-          ctaText: "End this nightmare"
+          headline: "Late Friday night. Still grinding.",
+          subheadline: "Might as well save money while you're up. No teaser rates."
         };
       
       default:
         return {
-          headline: "TGIF: Thank God It's... Electricity Shopping Day?",
-          subheadline: "Not how you planned to end the week. But Texas doesn't care about your plans. Pick a provider or pay double. We'll make it painless.",
-          urgencyFlag: "5 minutes now saves $1,200/year.",
-          ctaText: "Show me the way"
+          headline: "Friday. Cross this off your list.",
+          subheadline: "Weekend starts when you find the right electricity rate."
         };
     }
   }
 
   private getMondayMessage(ctx: TemporalContext): MessagingBundle {
     const { timeOfDay, hour, season, holiday, specialPeriod } = ctx;
-    const activities = this.getSeasonalActivities(season, holiday, specialPeriod);
     
     switch (timeOfDay) {
       case 'early-morning':
         return {
-          headline: "Monday, 6am. Already dealing with electricity rates.",
-          subheadline: `Coffee hasn't kicked in. Inbox is full. And now this. Texas forces you to choose from ${DEFAULT_COUNTS.providers} providers. We found the 3 that won't ruin your week.`,
-          urgencyFlag: "Monday morning rates are 8% higher. Beat them.",
-          ctaText: "Just pick for me"
+          headline: "Monday morning electricity mission.",
+          subheadline: `${DEFAULT_COUNTS.providers} providers, endless plans. We found the ones that matter. No teaser rates.`
         };
       
       case 'morning':
         return {
-          headline: "Case of the Mondays? Now with bonus rate shopping.",
-          subheadline: "Meetings at 10. Deadlines looming. And Texas wants you to pick an electricity plan. No default option. Pick wrong, pay double. Here's the cheat sheet.",
-          urgencyFlag: "Your old provider hopes you forget. Don't.",
-          ctaText: "Fast track this"
+          headline: "Monday morning. Time to adult.",
+          subheadline: "Starting with electricity rates. Clear prices, straight answers."
+        };
+      
+      case 'lunch':
+        return {
+          headline: "Monday lunch break electricity check.",
+          subheadline: "Week's half started. Might as well fix your rate. No 40-page contracts."
         };
       
       case 'afternoon':
         return {
-          headline: "Monday afternoon electricity overwhelm. Standard.",
-          subheadline: `${DEFAULT_COUNTS.providers} providers. ${DEFAULT_COUNTS.plans}+ plans. Infinite fine print. And you have actual work to do. We read every contract. Most are trash. Here's what's not.`,
-          urgencyFlag: "Average Monday shopper overpays by $127/month.",
-          ctaText: "Show me the shortcut"
+          headline: "Monday afternoon electricity homework.",
+          subheadline: `${DEFAULT_COUNTS.plans} plans out there. We read them all. Here's what's worth it.`
+        };
+      
+      case 'evening':
+        return {
+          headline: "Monday evening electricity wrap-up.",
+          subheadline: "End of day one. Start with a better rate for the rest of the week."
+        };
+      
+      case 'late-night':
+        return {
+          headline: "Late Monday night electricity research.",
+          subheadline: "Monday insomnia? Productive use of time. No teaser rates that cost 14¢."
         };
       
       default:
         return {
-          headline: "Monday night, still at the electricity thing.",
-          subheadline: "Should be unwinding. Instead you're decoding rate tiers. Because Texas. We stayed up testing these companies. Most failed. Here's who passed.",
-          urgencyFlag: "Tomorrow's another day of overpaying. Fix it now.",
-          ctaText: "End Monday on a win"
+          headline: "Monday. Week starts right.",
+          subheadline: "Begin with better electricity. Clear prices, no surprises."
         };
     }
   }
 
   private getWeekdayMessage(ctx: TemporalContext): MessagingBundle {
     const { dayName, timeOfDay, hour, seasonalContext, season, holiday, specialPeriod } = ctx;
-    const activities = this.getSeasonalActivities(season, holiday, specialPeriod);
     
     // Tuesday through Thursday messaging
     switch (timeOfDay) {
       case 'early-morning':
         return {
-          headline: `${dayName}, ${hour}am. Electricity rates before coffee.`,
-          subheadline: "Early bird or insomniac, you're here comparing plans. Respect. Texas makes this mandatory. We make it manageable. 10 minutes, sorted.",
-          urgencyFlag: seasonalContext === 'summer-peak' 
-            ? "AC season = highest rates. Lock in now." 
-            : "Morning shoppers save 12% on average.",
-          ctaText: "Let's do this"
+          headline: `${dayName} morning electricity deep dive.`,
+          subheadline: "Early start on the adulting. We respect the hustle."
         };
       
       case 'morning':
         return {
-          headline: `Another ${dayName} morning in electricity hell.`,
-          subheadline: `Meetings, emails, and now THIS. Texas deregulation = you choose or lose. We tested all ${DEFAULT_COUNTS.providers} providers. Called their support. Read the fine print. Here's the truth.`,
-          urgencyFlag: "Your ZIP has [[available_plans]] plans. 5 are decent.",
-          ctaText: "Show me the 5"
+          headline: `${dayName} morning. Checking electricity rates.`,
+          subheadline: `We tested all ${DEFAULT_COUNTS.providers} providers. Here's what actually works.`
         };
       
       case 'lunch':
         return {
-          headline: "Lunch break electricity research. Appetizing.",
-          subheadline: "Sandwich in one hand, rate sheet in the other. Living the Texas dream. We've already digested these plans. Here's what won't give you heartburn.",
-          urgencyFlag: "Lunch shoppers get exclusive rates. True story.",
-          ctaText: "Quick bite comparison"
+          headline: "Lunch break electricity optimization.",
+          subheadline: "15 minutes well spent. We already did the boring research part."
         };
       
       case 'afternoon':
         return {
-          headline: `${dayName} afternoon energy (shopping) crisis.`,
-          subheadline: `3pm slump hits different when you're comparing kilowatt charges. Texas gives you choice (${DEFAULT_COUNTS.providers} competing providers), but the comparison work is brutal. Pick wrong, pay double. We did the analysis.`,
-          urgencyFlag: seasonalContext === 'summer-peak'
-            ? "AC running? You're burning money. Fix it."
-            : "Afternoon = best time to lock rates.",
-          ctaText: "Energize my savings"
+          headline: `${dayName} afternoon electricity audit.`,
+          subheadline: seasonalContext === 'summer-peak'
+            ? "AC season means higher bills. Time to find a better rate."
+            : "Perfect time to review your electricity situation."
         };
       
       case 'evening':
         return {
-          headline: `${dayName} evening. Still shopping for electrons.`,
-          subheadline: "Dinner's getting cold. Kids need help with homework. You're googling 'TDU pass-through charges.' Peak parenting. We'll make this quick.",
-          urgencyFlag: "Evening rates update at midnight. Move fast.",
-          ctaText: "Wrap this up"
+          headline: `${dayName} evening productivity.`,
+          subheadline: "Wrapping up the day with some money-saving research. Smart move."
         };
       
       case 'late-night':
         return {
-          headline: "Late night electricity deep dive. You okay?",
-          subheadline: "Can't sleep? Might as well save money. We pulled all-nighters testing these companies' '24/7 support.' Most lied. Here's who actually answers.",
-          urgencyFlag: "Insomniacs get the best deals. Science.",
-          ctaText: "Midnight special"
+          headline: "Late night electricity deep thoughts.",
+          subheadline: "Can't sleep? Might as well find a better rate. We tested the reliable ones."
         };
     }
     
     // Fallback (should never reach)
     return {
-      headline: "Texas Makes You Choose Your Electricity.",
-      subheadline: `No default utility. Pick wrong, pay double. We tested all ${DEFAULT_COUNTS.providers} providers - here's who won't screw you over.`,
-      urgencyFlag: "Holdover rates average 18¢/kWh. Don't get stuck.",
-      ctaText: "Find my provider"
+      headline: "Texas electricity plan comparison.",
+      subheadline: `We reviewed all ${DEFAULT_COUNTS.providers} providers. Here's what's worth your time.`
     };
   }
 
@@ -574,55 +735,11 @@ export class TemporalMessagingEngine {
 
   /**
    * Generate contextual activity message based on current season/holiday
+   * Simplified to avoid negative messaging
    */
   private getContextualActivityMessage(activities: string[], holiday?: HolidayInfo, specialPeriod?: SpecialPeriodInfo): string {
-    // Special Labor Day weekend context (current)
-    if (holiday?.name === 'Labor Day') {
-      if (holiday.daysUntil === 0) {
-        return "Last weekend BBQ can wait. End-of-summer shopping can wait.";
-      } else if (holiday.daysUntil === 1) {
-        return "Tomorrow's Labor Day BBQ prep can wait. Summer's last hurrah can wait.";
-      } else if (holiday.daysUntil === 2) {
-        return "Weekend before Labor Day relaxation can wait. End-of-summer activities can wait.";
-      }
-    }
-    
-    // Holiday-specific messaging
-    if (holiday) {
-      switch (holiday.name) {
-        case 'Memorial Day':
-          return "First pool opening can wait. BBQ season start can wait.";
-        case 'Independence Day':
-          return "4th of July BBQ can wait. Fireworks prep can wait.";
-        case 'Thanksgiving':
-          return "Turkey prep can wait. Football can wait.";
-        case 'Christmas':
-          return "Gift wrapping can wait. Holiday cooking can wait.";
-        case "New Year's Day":
-          return "Resolution planning can wait. Gym signup can wait.";
-      }
-    }
-    
-    // Special period messaging
-    if (specialPeriod) {
-      switch (specialPeriod.type) {
-        case 'back-to-school':
-          return "School supply shopping can wait. Back-to-school prep can wait.";
-        case 'tax-season':
-          return "Tax paperwork can wait. Financial planning can wait.";
-        case 'holiday-shopping':
-          return "Holiday shopping can wait. Gift planning can wait.";
-        case 'summer-vacation':
-          return "Vacation planning can wait. Pool maintenance can wait.";
-      }
-    }
-    
-    // Get two random activities for the current season
-    const shuffled = [...activities].sort(() => 0.5 - Math.random());
-    const activity1 = shuffled[0] || 'relaxation';
-    const activity2 = shuffled[1] || 'entertainment';
-    
-    return `${this.capitalizeFirst(activity1)} can wait. ${this.capitalizeFirst(activity2)} can wait.`;
+    // Keep it simple and positive
+    return "";
   }
 
   /**
@@ -685,9 +802,7 @@ export class TemporalMessagingEngine {
     // Add conversational modifiers (not pushy urgency)
     const conversationalPrefixes = [
       "FYI: ",
-      "Heads up: ",
-      "Real talk: ",
-      "Quick reminder: "
+      "Heads up: "
     ];
     
     // Only add prefix 30% of the time for A/B testing
@@ -700,8 +815,8 @@ export class TemporalMessagingEngine {
   }
 
   private enhanceUrgency(flag?: string): string {
-    if (!flag) return "⚡ Time sensitive: Rates increase at midnight";
-    return "🚨 " + flag;
+    if (!flag) return "";
+    return flag;
   }
 }
 

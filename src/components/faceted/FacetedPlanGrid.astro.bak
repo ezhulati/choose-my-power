@@ -1,0 +1,1393 @@
+---
+/**
+ * Enhanced FacetedPlanGrid Component
+ * Advanced plan grid with sorting, filtering, comparison, infinite scroll,
+ * and mobile-optimized display features for electricity plan comparison
+ */
+import PlanCardImproved from './PlanCardImproved.astro';
+import type { Plan } from '../../types/facets';
+
+interface Props {
+  plans: Plan[];
+  city: string;
+  filters: string[];
+  showComparison?: boolean;
+  analyticsContext?: any;
+  defaultSort?: 'price' | 'rating' | 'green' | 'term' | 'popularity';
+  viewMode?: 'grid' | 'table' | 'compact';
+  enableInfiniteScroll?: boolean;
+  plansPerPage?: number;
+}
+
+const { 
+  plans, 
+  city, 
+  filters, 
+  showComparison = true, 
+  analyticsContext,
+  defaultSort = 'price',
+  viewMode = 'grid',
+  enableInfiniteScroll = true,
+  plansPerPage = 12
+} = Astro.props;
+
+// Plan sorting and filtering logic
+const sortPlans = (plans: Plan[], sortBy: string) => {
+  const sorted = [...plans];
+  
+  switch (sortBy) {
+    case 'price':
+      return sorted.sort((a, b) => a.pricing.rate1000kWh - b.pricing.rate1000kWh);
+    case 'rating':
+      return sorted.sort((a, b) => b.provider.rating - a.provider.rating);
+    case 'green':
+      return sorted.sort((a, b) => b.features.greenEnergy - a.features.greenEnergy);
+    case 'term':
+      return sorted.sort((a, b) => a.contract.length - b.contract.length);
+    case 'popularity':
+      return sorted.sort((a, b) => b.provider.reviewCount - a.provider.reviewCount);
+    default:
+      return sorted;
+  }
+};
+
+// Get plans for initial display
+const sortedPlans = sortPlans(plans, defaultSort);
+const initialPlans = enableInfiniteScroll ? sortedPlans.slice(0, plansPerPage) : sortedPlans;
+
+// Calculate statistics for display
+const totalPlans = plans.length;
+const avgRate = plans.length > 0 
+  ? (plans.reduce((sum, plan) => sum + plan.pricing.rate1000kWh, 0) / plans.length) 
+  : 0;
+const lowestRate = plans.length > 0 
+  ? Math.min(...plans.map(plan => plan.pricing.rate1000kWh))
+  : 0;
+const greenPlans = plans.filter(plan => plan.features.greenEnergy > 0).length;
+const noDepositPlans = plans.filter(plan => !plan.features.deposit.required).length;
+
+// Generate sorting options
+const sortingOptions = [
+  { value: 'price', label: 'Lowest Price', icon: '', description: 'Cheapest rates first' },
+  { value: 'rating', label: 'Highest Rated', icon: '', description: 'Best customer reviews' },
+  { value: 'green', label: 'Most Green', icon: '', description: 'Highest renewable energy %' },
+  { value: 'term', label: 'Shortest Term', icon: '', description: 'Flexible contracts' },
+  { value: 'popularity', label: 'Most Popular', icon: '', description: 'Most customer reviews' }
+];
+---
+
+<div class="enhanced-plan-grid" data-city={city} data-total-plans={totalPlans}>
+  
+  <!-- Grid Header with Statistics and Controls -->
+  <div class="grid-header">
+    <div class="grid-stats">
+      <div class="stats-overview">
+        <div class="stat-item primary">
+          <span class="stat-icon"></span>
+          <div class="stat-content">
+            <span class="stat-number">{totalPlans}</span>
+            <span class="stat-label">Plans Found</span>
+          </div>
+        </div>
+        
+        {lowestRate > 0 && (
+          <div class="stat-item">
+            <span class="stat-icon"></span>
+            <div class="stat-content">
+              <span class="stat-number">{lowestRate.toFixed(1)}¢</span>
+              <span class="stat-label">Lowest Rate</span>
+            </div>
+          </div>
+        )}
+        
+        {greenPlans > 0 && (
+          <div class="stat-item">
+            <span class="stat-icon"></span>
+            <div class="stat-content">
+              <span class="stat-number">{greenPlans}</span>
+              <span class="stat-label">Green Plans</span>
+            </div>
+          </div>
+        )}
+        
+        {noDepositPlans > 0 && (
+          <div class="stat-item">
+            <span class="stat-icon"></span>
+            <div class="stat-content">
+              <span class="stat-number">{noDepositPlans}</span>
+              <span class="stat-label">No Deposit</span>
+            </div>
+          </div>
+        )}
+      </div>
+      
+      {avgRate > 0 && (
+        <div class="average-rate">
+          <span class="average-rate-label">Average Rate:</span>
+          <span class="average-rate-value">{avgRate.toFixed(1)}¢/kWh</span>
+        </div>
+      )}
+    </div>
+    
+    <!-- Sorting and View Controls -->
+    <div class="grid-controls">
+      <div class="sort-controls">
+        <label for="sort-select" class="sort-label">
+          <span class="sort-icon"></span>
+          Sort by:
+        </label>
+        <select id="sort-select" class="sort-select" data-default={defaultSort}>
+          {sortingOptions.map(option => (
+            <option value={option.value} selected={option.value === defaultSort}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+      </div>
+      
+      <div class="view-controls">
+        <div class="view-toggle-group" role="radiogroup" aria-label="Display mode">
+          <button 
+            class={`view-toggle ${viewMode === 'grid' ? 'active' : ''}`}
+            data-view="grid"
+            aria-label="Grid view"
+            title="Grid View"
+          >
+            <span class="view-icon">Grid</span>
+          </button>
+          <button 
+            class={`view-toggle ${viewMode === 'table' ? 'active' : ''}`}
+            data-view="table"
+            aria-label="Table view"
+            title="Table View"
+          >
+            <span class="view-icon">Table</span>
+          </button>
+          <button 
+            class={`view-toggle ${viewMode === 'compact' ? 'active' : ''}`}
+            data-view="compact"
+            aria-label="Compact view"
+            title="Compact View"
+          >
+            <span class="view-icon">Compact</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Plans Display -->
+  {plans.length > 0 ? (
+    <div class="plans-container">
+      
+      <!-- Grid View - Mobile-First Responsive -->
+      <div class={`grid-view ${viewMode === 'grid' ? 'active' : 'hidden'}`}>
+        <div class="plans-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {initialPlans.map((plan, index) => (
+            <PlanCardImproved 
+              plan={plan} 
+              city={city}
+              position={index + 1}
+              showComparison={showComparison}
+            />
+          ))}
+        </div>
+      </div>
+      
+      <!-- Table View -->
+      <div class={`table-view ${viewMode === 'table' ? 'active' : 'hidden'}`}>
+        <div class="plans-table-container">
+          <table class="plans-table">
+            <thead class="table-header">
+              <tr>
+                <th class="provider-col">Provider & Plan</th>
+                <th class="rate-col sortable" data-sort="price">
+                  <button class="sort-header">
+                    Rate <span class="sort-arrow">↕</span>
+                  </button>
+                </th>
+                <th class="term-col sortable" data-sort="term">
+                  <button class="sort-header">
+                    Term <span class="sort-arrow">↕</span>
+                  </button>
+                </th>
+                <th class="features-col">Features</th>
+                <th class="rating-col sortable" data-sort="rating">
+                  <button class="sort-header">
+                    Rating <span class="sort-arrow">↕</span>
+                  </button>
+                </th>
+                <th class="actions-col">Action</th>
+              </tr>
+            </thead>
+            <tbody class="table-body">
+              {initialPlans.map((plan, index) => (
+                <tr class="plan-row" data-plan-id={plan.id}>
+                  <td class="provider-cell">
+                    <div class="provider-info">
+                      {plan.provider.logo && (
+                        <img 
+                          src={plan.provider.logo} 
+                          alt={`${plan.provider.name} logo`}
+                          class="provider-logo"
+                          width="40"
+                          height="20"
+                          loading="lazy"
+                        />
+                      )}
+                      <div class="plan-details">
+                        <div class="plan-name">{plan.name}</div>
+                        <div class="provider-name">{plan.provider.name}</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="rate-cell">
+                    <div class="rate-display">
+                      <span class="rate-value">{(plan.pricing.rate1000kWh * 100).toFixed(1)}¢</span>
+                      <span class="rate-unit">per kWh</span>
+                    </div>
+                    <div class="monthly-estimate">
+                      ${(plan.pricing.rate1000kWh * 1000).toFixed(0)}/mo
+                    </div>
+                  </td>
+                  <td class="term-cell">
+                    <span class="term-length">{plan.contract.length} months</span>
+                    <span class="rate-type">{plan.contract.type}</span>
+                  </td>
+                  <td class="features-cell">
+                    <div class="feature-badges">
+                      {plan.features.greenEnergy > 0 && (
+                        <span class="feature-badge green">
+                          {plan.features.greenEnergy}% Green
+                        </span>
+                      )}
+                      {!plan.features.deposit.required && (
+                        <span class="feature-badge no-deposit">
+                          No Deposit
+                        </span>
+                      )}
+                      {plan.contract.earlyTerminationFee === 0 && (
+                        <span class="feature-badge no-fee">
+                          No ETF
+                        </span>
+                      )}
+                    </div>
+                  </td>
+                  <td class="rating-cell">
+                    {plan.provider.rating > 0 ? (
+                      <div class="rating-display">
+                        <div class="stars">
+                          {Array.from({length: 5}, (_, i) => (
+                            <span class={`star ${i < Math.floor(plan.provider.rating) ? 'filled' : ''}`}>★</span>
+                          ))}
+                        </div>
+                        <span class="rating-value">{plan.provider.rating.toFixed(1)}</span>
+                      </div>
+                    ) : (
+                      <span class="no-rating">No reviews</span>
+                    )}
+                  </td>
+                  <td class="actions-cell">
+                    <div class="action-buttons">
+                      <a 
+                        href={`/enroll/${plan.id}?city=${city}&position=${index + 1}`}
+                        class="enroll-btn-small"
+                      >
+                        Enroll
+                      </a>
+                      <button 
+                        class="compare-btn-small"
+                        data-plan-id={plan.id}
+                        aria-label="Add to comparison"
+                      >
+Compare
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <!-- Compact View -->
+      <div class={`compact-view ${viewMode === 'compact' ? 'active' : 'hidden'}`}>
+        <div class="compact-plans-list">
+          {initialPlans.map((plan, index) => (
+            <div class="compact-plan-card" data-plan-id={plan.id}>
+              <div class="compact-plan-header">
+                <div class="compact-provider-info">
+                  {plan.provider.logo && (
+                    <img 
+                      src={plan.provider.logo} 
+                      alt={`${plan.provider.name} logo`}
+                      class="compact-provider-logo"
+                      width="32"
+                      height="16"
+                      loading="lazy"
+                    />
+                  )}
+                  <div class="compact-plan-details">
+                    <div class="compact-plan-name">{plan.name}</div>
+                    <div class="compact-provider-name">{plan.provider.name}</div>
+                  </div>
+                </div>
+                <div class="compact-rate">
+                  <span class="compact-rate-value">{(plan.pricing.rate1000kWh * 100).toFixed(1)}¢</span>
+                  <span class="compact-monthly">${(plan.pricing.rate1000kWh * 1000).toFixed(0)}/mo</span>
+                </div>
+              </div>
+              
+              <div class="compact-details">
+                <span class="compact-term">{plan.contract.length}mo {plan.contract.type}</span>
+                {plan.features.greenEnergy > 0 && (
+                  <span class="compact-green">{plan.features.greenEnergy}% Green</span>
+                )}
+                {!plan.features.deposit.required && (
+                  <span class="compact-no-deposit">No Deposit</span>
+                )}
+              </div>
+              
+              <div class="compact-actions">
+                <a 
+                  href={`/enroll/${plan.id}?city=${city}&position=${index + 1}`}
+                  class="compact-enroll-btn"
+                >
+                  Enroll Now
+                </a>
+                <button 
+                  class="compact-compare-btn"
+                  data-plan-id={plan.id}
+                  aria-label="Add to comparison"
+                >
+                  Compare
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+    
+    <!-- Load More / Infinite Scroll -->
+    {enableInfiniteScroll && totalPlans > plansPerPage && (
+      <div class="load-more-section" id="load-more-trigger">
+        <button class="load-more-btn" data-loaded={plansPerPage} data-total={totalPlans}>
+          <span class="load-more-icon">Load</span>
+          <span class="load-more-text">
+            Load More Plans ({totalPlans - plansPerPage} remaining)
+          </span>
+          <div class="load-more-spinner hidden">Loading...</div>
+        </button>
+      </div>
+    )}
+    
+  ) : (
+    
+    <!-- Enhanced No Plans Message -->
+    <div class="no-plans-container">
+      <div class="no-plans-illustration">
+        <div class="no-plans-icon">No Plans</div>
+        <div class="no-plans-background-pattern" aria-hidden="true">
+          <div class="pattern-dot"></div>
+          <div class="pattern-dot"></div>
+          <div class="pattern-dot"></div>
+        </div>
+      </div>
+      
+      <div class="no-plans-content">
+        <h3 class="no-plans-title">Nothing Matches Those Filters</h3>
+        <p class="no-plans-description">
+          Your search criteria might be too specific for what's actually available in {city}.
+          Here's how to find something that'll work for you instead.
+        </p>
+        
+        <div class="no-plans-suggestions">
+          <h4 class="suggestions-title">Try This Instead:</h4>
+          <ul class="suggestions-list">
+            <li>• Remove a few filters - you might be too picky</li>
+            <li>• 12-month contracts usually have the ideal rates</li>
+            <li>• Fixed rates mean no surprises on your bill</li>
+            <li>• Sometimes the best plan isn't what you expected</li>
+          </ul>
+        </div>
+        
+        <div class="no-plans-actions">
+          <button class="clear-filters-btn" onclick="window.location.href = window.location.pathname.split('/').slice(0, -1).join('/') + '/electricity-plans'">
+            <span class="btn-icon">Clear</span>
+            Start Fresh
+          </button>
+          <a href={`/texas/${city}/electricity-providers`} class="browse-providers-btn">
+            <span class="btn-icon">Browse</span>
+            Just Show Me Good Plans
+          </a>
+        </div>
+      </div>
+    </div>
+  )}
+  
+  <!-- Enhanced Comparison Bar Integration -->
+  <div id="comparison-bar-mount" class="comparison-mount"></div>
+  
+</div>
+
+<style>
+  /* Enhanced Plan Grid Styles - Mobile-First */
+  .enhanced-plan-grid {
+    @apply w-full;
+    /* Mobile-first spacing */
+    gap: 1rem; /* 16px mobile */
+    margin-bottom: 2rem; /* 32px mobile */
+  }
+  
+  /* Tablet spacing */
+  @media (min-width: 768px) {
+    .enhanced-plan-grid {
+      gap: 1.5rem; /* 24px tablet */
+      margin-bottom: 2.5rem; /* 40px tablet */
+    }
+  }
+  
+  /* Desktop spacing */
+  @media (min-width: 1024px) {
+    .enhanced-plan-grid {
+      gap: 2rem; /* 32px desktop */
+      margin-bottom: 3rem; /* 48px desktop */
+    }
+  }
+  
+  /* Grid Header Styles - Responsive with Texas Design System */
+  .grid-header {
+    @apply bg-gradient-to-r from-texas-cream-200 to-texas-cream-300 border border-texas-gold/20 rounded-lg mb-6;
+    /* Mobile-first header spacing */
+    padding: 1rem; /* 16px mobile */
+  }
+  
+  @media (min-width: 640px) {
+    .grid-header {
+      @apply rounded-xl mb-7;
+      padding: 1.5rem; /* 24px large mobile */
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .grid-header {
+      @apply mb-8;
+      padding: 2rem; /* 32px tablet+ */
+    }
+  }
+  
+  .grid-stats {
+    @apply mb-6;
+  }
+  
+  .stats-overview {
+    @apply grid grid-cols-2 gap-3 mb-4;
+  }
+  
+  @media (min-width: 640px) {
+    .stats-overview {
+      @apply gap-4 mb-5;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .stats-overview {
+      @apply grid-cols-4 gap-6 mb-6;
+    }
+  }
+  
+  .stat-item {
+    @apply bg-white rounded-lg flex items-center shadow-sm border border-texas-gold/20 transition-all duration-200 hover:shadow-md;
+    /* Mobile-first stat card spacing */
+    padding: 0.75rem; /* 12px mobile */
+    gap: 0.5rem; /* 8px mobile */
+  }
+  
+  @media (min-width: 640px) {
+    .stat-item {
+      padding: 1rem; /* 16px large mobile */
+      gap: 0.75rem; /* 12px large mobile */
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .stat-item {
+      padding: 1.5rem; /* 24px tablet+ */
+      gap: 1rem; /* 16px tablet+ */
+    }
+  }
+  
+  .stat-item.primary {
+    @apply bg-gradient-to-br from-texas-navy to-texas-navy/80 text-white border-texas-navy;
+  }
+  
+  .stat-icon {
+    @apply text-2xl;
+  }
+  
+  .stat-content {
+    @apply flex flex-col;
+  }
+  
+  .stat-number {
+    @apply text-lg font-bold leading-none;
+  }
+  
+  .stat-label {
+    @apply text-sm opacity-80 mt-1;
+  }
+  
+  .average-rate {
+    @apply text-center p-3 bg-white rounded-lg border border-texas-gold/20;
+  }
+  
+  .average-rate-label {
+    @apply text-sm text-gray-600 mr-2;
+  }
+  
+  .average-rate-value {
+    @apply text-lg font-semibold text-texas-navy;
+  }
+  
+  /* Grid Controls - Mobile-First */
+  .grid-controls {
+    @apply flex flex-col gap-3 mt-4;
+  }
+  
+  @media (min-width: 640px) {
+    .grid-controls {
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .grid-controls {
+      @apply flex-row items-center justify-between;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+  }
+  
+  .sort-controls {
+    @apply flex items-center gap-2;
+  }
+  
+  @media (min-width: 640px) {
+    .sort-controls {
+      gap: 0.75rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .sort-controls {
+      gap: 1rem;
+    }
+  }
+  
+  .sort-label {
+    @apply text-sm font-medium text-gray-700 flex items-center gap-2;
+  }
+  
+  .sort-icon {
+    @apply text-base;
+  }
+  
+  .sort-select {
+    @apply bg-white border border-gray-300 rounded-lg px-4 py-2 text-sm font-medium focus:ring-2 focus:ring-texas-navy/50 focus:border-texas-navy transition-all;
+  }
+  
+  .view-controls {
+    @apply flex items-center;
+  }
+  
+  .view-toggle-group {
+    @apply flex bg-white border border-gray-300 rounded-lg overflow-hidden;
+  }
+  
+  .view-toggle {
+    @apply px-3 py-2 text-gray-600 hover:bg-gray-50 transition-all border-r border-gray-300 last:border-r-0;
+  }
+  
+  .view-toggle.active {
+    @apply bg-texas-navy text-white hover:bg-texas-navy/90;
+  }
+  
+  .view-icon {
+    @apply text-lg;
+  }
+  
+  /* Plans Container */
+  .plans-container {
+    @apply relative;
+  }
+  
+  .grid-view, .table-view, .compact-view {
+    @apply transition-all duration-300;
+  }
+  
+  .grid-view.hidden, .table-view.hidden, .compact-view.hidden {
+    @apply opacity-0 pointer-events-none absolute inset-0;
+  }
+  
+  .grid-view.active, .table-view.active, .compact-view.active {
+    @apply opacity-100 pointer-events-auto relative;
+  }
+  
+  /* Grid View Styles - Mobile-First */
+  .plans-grid {
+    @apply transition-all duration-300;
+    /* Mobile-first grid spacing */
+    gap: 1rem; /* 16px mobile */
+    margin-top: 1rem; /* 16px mobile */
+  }
+  
+  @media (min-width: 640px) {
+    .plans-grid {
+      gap: 1.25rem; /* 20px large mobile */
+      margin-top: 1.25rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .plans-grid {
+      gap: 1.5rem; /* 24px tablet */
+      margin-top: 1.5rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .plans-grid {
+      gap: 2rem; /* 32px desktop */
+      margin-top: 2rem;
+    }
+  }
+  
+  /* Table View Styles */
+  .plans-table-container {
+    @apply bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-all duration-200;
+  }
+  
+  .plans-table {
+    @apply w-full;
+  }
+  
+  .table-header {
+    @apply bg-gray-50 border-b border-gray-200;
+  }
+  
+  .table-header th {
+    @apply px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider;
+  }
+  
+  .sort-header {
+    @apply flex items-center gap-1 text-xs font-semibold text-gray-700 uppercase tracking-wider hover:text-texas-navy transition-all duration-200;
+  }
+  
+  .sort-arrow {
+    @apply opacity-50;
+  }
+  
+  .plan-row {
+    @apply border-b border-gray-100 hover:bg-texas-cream-50 transition-all duration-200;
+  }
+  
+  .plan-row:last-child {
+    @apply border-b-0;
+  }
+  
+  .plan-row td {
+    @apply px-4 py-4 text-sm;
+  }
+  
+  .provider-cell .provider-info {
+    @apply flex items-center gap-3;
+  }
+  
+  .provider-cell .provider-logo {
+    @apply object-contain;
+  }
+  
+  .provider-cell .plan-name {
+    @apply font-semibold text-gray-900;
+  }
+  
+  .provider-cell .provider-name {
+    @apply text-gray-600 text-xs;
+  }
+  
+  .rate-cell .rate-display {
+    @apply flex items-baseline gap-1;
+  }
+  
+  .rate-cell .rate-value {
+    @apply text-lg font-bold text-texas-navy;
+  }
+  
+  .rate-cell .rate-unit {
+    @apply text-xs text-gray-600;
+  }
+  
+  .rate-cell .monthly-estimate {
+    @apply text-xs text-gray-500;
+  }
+  
+  .term-cell .term-length {
+    @apply font-medium;
+  }
+  
+  .term-cell .rate-type {
+    @apply text-xs text-gray-600 capitalize;
+  }
+  
+  .feature-badges {
+    @apply flex flex-wrap gap-1;
+  }
+  
+  .feature-badge {
+    @apply text-xs px-2 py-1 rounded-full font-medium;
+  }
+  
+  .feature-badge.green {
+    @apply bg-texas-gold-50 text-texas-gold-700 border border-texas-gold-200;
+  }
+  
+  .feature-badge.no-deposit {
+    @apply bg-texas-navy/10 text-texas-navy;
+  }
+  
+  .feature-badge.no-fee {
+    @apply bg-texas-cream-100 text-texas-navy;
+  }
+  
+  .rating-display {
+    @apply flex items-center gap-2;
+  }
+  
+  .stars {
+    @apply text-texas-gold;
+  }
+  
+  .star.filled {
+    @apply text-texas-gold;
+  }
+  
+  .star:not(.filled) {
+    @apply text-gray-300;
+  }
+  
+  .rating-value {
+    @apply text-xs text-gray-600;
+  }
+  
+  .no-rating {
+    @apply text-xs text-gray-400;
+  }
+  
+  .action-buttons {
+    @apply flex gap-2;
+  }
+  
+  .enroll-btn-small {
+    @apply bg-texas-red hover:bg-texas-red/90 text-white text-xs font-semibold px-3 py-1 rounded-md transition-all duration-200 shadow-sm hover:shadow-md;
+  }
+  
+  .compare-btn-small {
+    @apply bg-texas-navy/10 hover:bg-texas-navy/20 text-texas-navy text-xs px-2 py-1 rounded-md transition-all duration-200 border border-texas-navy/20;
+  }
+  
+  /* Compact View Styles */
+  .compact-plans-list {
+    /* Enterprise-grade list spacing */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* 24px */
+  }
+  
+  .compact-plan-card {
+    @apply bg-white border border-gray-200 rounded-xl hover:shadow-lg hover:border-texas-navy/30 transition-all duration-300 hover:-translate-y-1;
+    /* Enterprise-grade card spacing */
+    padding: 1.5rem; /* 24px */
+  }
+  
+  .compact-plan-header {
+    @apply flex justify-between items-start mb-3;
+  }
+  
+  .compact-provider-info {
+    @apply flex items-center gap-2 flex-1 min-w-0;
+  }
+  
+  .compact-provider-logo {
+    @apply object-contain flex-shrink-0;
+  }
+  
+  .compact-plan-name {
+    @apply font-semibold text-sm text-gray-900 truncate;
+  }
+  
+  .compact-provider-name {
+    @apply text-xs text-gray-600;
+  }
+  
+  .compact-rate {
+    @apply text-right;
+  }
+  
+  .compact-rate-value {
+    @apply text-lg font-bold text-texas-navy block;
+  }
+  
+  .compact-monthly {
+    @apply text-xs text-gray-600;
+  }
+  
+  .compact-details {
+    @apply flex flex-wrap gap-2 mb-3;
+  }
+  
+  .compact-term, .compact-green, .compact-no-deposit {
+    @apply text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full;
+  }
+  
+  .compact-actions {
+    @apply flex gap-2;
+  }
+  
+  .compact-enroll-btn {
+    @apply bg-texas-red hover:bg-texas-red/90 text-white text-sm font-semibold px-4 py-2 rounded-md transition-all duration-200 flex-1 text-center shadow-sm hover:shadow-md;
+  }
+  
+  .compact-compare-btn {
+    @apply bg-texas-navy/10 hover:bg-texas-navy/20 text-texas-navy text-sm px-3 py-2 rounded-md transition-all duration-200 border border-texas-navy/20;
+  }
+  
+  /* Load More Section */
+  .load-more-section {
+    @apply text-center;
+    /* Enterprise-grade load more spacing */
+    padding: 3rem 0; /* 48px vertical */
+    margin-top: 2rem; /* 32px */
+  }
+  
+  .load-more-btn {
+    @apply bg-gradient-to-r from-texas-navy to-texas-navy/80 hover:from-texas-navy/90 hover:to-texas-navy/70 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg flex items-center gap-3 mx-auto;
+  }
+  
+  .load-more-icon {
+    @apply text-lg;
+  }
+  
+  .load-more-spinner {
+    @apply animate-spin text-lg;
+  }
+  
+  /* Enhanced No Plans Styles */
+  .no-plans-container {
+    @apply text-center py-16 px-6 max-w-2xl mx-auto;
+  }
+  
+  .no-plans-illustration {
+    @apply relative mb-8;
+  }
+  
+  .no-plans-icon {
+    @apply text-8xl mb-4 relative z-10;
+  }
+  
+  .no-plans-background-pattern {
+    @apply absolute inset-0 flex justify-center items-center opacity-10;
+  }
+  
+  .pattern-dot {
+    @apply w-2 h-2 bg-gray-400 rounded-full mx-1 animate-pulse;
+  }
+  
+  .pattern-dot:nth-child(2) {
+    animation-delay: 0.5s;
+  }
+  
+  .pattern-dot:nth-child(3) {
+    animation-delay: 1s;
+  }
+  
+  .no-plans-title {
+    @apply text-2xl font-bold text-gray-900 mb-4;
+  }
+  
+  .no-plans-description {
+    @apply text-gray-600 text-lg leading-relaxed mb-8;
+  }
+  
+  .no-plans-suggestions {
+    @apply bg-texas-cream-200 border border-texas-gold/20 rounded-xl p-6 mb-8 text-left;
+  }
+  
+  .suggestions-title {
+    @apply text-lg font-semibold text-texas-navy mb-4;
+  }
+  
+  .suggestions-list {
+    @apply space-y-2;
+  }
+  
+  .suggestions-list li {
+    @apply text-texas-navy flex items-center;
+  }
+  
+  .no-plans-actions {
+    @apply flex flex-col sm:flex-row gap-4 justify-center;
+  }
+  
+  .clear-filters-btn {
+    @apply bg-texas-red/10 hover:bg-texas-red/20 text-texas-navy font-semibold px-6 py-3 rounded-lg transition-all duration-200 flex items-center gap-2 justify-center shadow-sm hover:shadow-md;
+  }
+  
+  .browse-providers-btn {
+    @apply bg-texas-navy/10 hover:bg-texas-navy/20 text-texas-navy font-semibold px-6 py-3 rounded-lg transition-all duration-200 flex items-center gap-2 justify-center shadow-sm hover:shadow-md;
+  }
+  
+  .btn-icon {
+    @apply text-lg;
+  }
+  
+  .comparison-mount {
+    @apply relative z-50;
+  }
+  
+  /* Mobile-Specific Responsive Adjustments */
+  @media (max-width: 640px) {
+    /* Small mobile adjustments */
+    .stat-number {
+      @apply text-base;
+    }
+    
+    .stat-label {
+      @apply text-xs;
+    }
+    
+    .view-toggle {
+      @apply px-2 py-1 text-xs;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    /* Mobile and tablet portrait */
+    .plans-table-container {
+      @apply overflow-x-auto;
+    }
+    
+    .plans-table {
+      @apply min-w-full;
+    }
+    
+    .compact-plan-header {
+      @apply flex-col gap-2;
+    }
+    
+    .compact-rate {
+      @apply text-left;
+    }
+    
+    .compact-actions {
+      @apply flex-col gap-2;
+    }
+    
+    .load-more-section {
+      padding: 2rem 0;
+      margin-top: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    /* Very small screens */
+    .enhanced-plan-grid {
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .grid-header {
+      @apply rounded-lg;
+      padding: 0.75rem;
+    }
+    
+    .sort-select {
+      @apply text-xs px-2 py-1;
+    }
+  }
+  
+  /* Animation for loading states */
+  @keyframes shimmer {
+    0% { background-position: -200px 0; }
+    100% { background-position: calc(200px + 100%) 0; }
+  }
+  
+  .loading-shimmer {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200px 100%;
+    animation: shimmer 1.5s infinite;
+  }
+</style>
+
+<!-- Enhanced JavaScript for Advanced Grid Functionality -->
+<script>
+  // Enhanced Plan Grid Controller
+  class EnhancedPlanGrid {
+    constructor() {
+      this.currentSort = document.querySelector('.sort-select')?.dataset.default || 'price';
+      this.currentView = 'grid';
+      this.loadedPlans = parseInt(document.querySelector('.load-more-btn')?.dataset.loaded) || 12;
+      this.totalPlans = parseInt(document.querySelector('.load-more-btn')?.dataset.total) || 0;
+      this.allPlans = [];
+      this.isLoading = false;
+      
+      this.init();
+    }
+    
+    init() {
+      this.bindEvents();
+      this.setupIntersectionObserver();
+      this.loadAllPlansData();
+    }
+    
+    bindEvents() {
+      // Sort functionality
+      const sortSelect = document.querySelector('.sort-select');
+      if (sortSelect) {
+        sortSelect.addEventListener('change', (e) => this.handleSort(e.target.value));
+      }
+      
+      // View toggle functionality
+      document.querySelectorAll('.view-toggle').forEach(button => {
+        button.addEventListener('click', (e) => this.handleViewChange(e.currentTarget.dataset.view));
+      });
+      
+      // Table sorting
+      document.querySelectorAll('.sortable .sort-header').forEach(header => {
+        header.addEventListener('click', (e) => {
+          const sortBy = e.currentTarget.closest('.sortable').dataset.sort;
+          this.handleSort(sortBy);
+        });
+      });
+      
+      // Load more functionality
+      const loadMoreBtn = document.querySelector('.load-more-btn');
+      if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', () => this.loadMorePlans());
+      }
+      
+      // Comparison functionality
+      document.addEventListener('click', (e) => {
+        if (e.target.matches('.compare-btn-small, .compact-compare-btn')) {
+          this.handleComparisonToggle(e.target);
+        }
+      });
+      
+      // Enhanced analytics tracking
+      this.trackGridInteractions();
+    }
+    
+    setupIntersectionObserver() {
+      if (!window.IntersectionObserver) return;
+      
+      const loadTrigger = document.getElementById('load-more-trigger');
+      if (!loadTrigger) return;
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !this.isLoading && this.loadedPlans < this.totalPlans) {
+            this.loadMorePlans(true); // Auto-load on scroll
+          }
+        });
+      }, {
+        rootMargin: '200px 0px'
+      });
+      
+      observer.observe(loadTrigger);
+    }
+    
+    async loadAllPlansData() {
+      // In a real implementation, this would fetch all plan data
+      // For now, we'll work with the existing data on the page
+      this.allPlans = this.extractPlanDataFromDOM();
+    }
+    
+    extractPlanDataFromDOM() {
+      const planElements = document.querySelectorAll('[data-plan-id]');
+      return Array.from(planElements).map(element => {
+        return {
+          id: element.dataset.planId,
+          element: element.cloneNode(true)
+        };
+      });
+    }
+    
+    handleSort(sortBy) {
+      this.currentSort = sortBy;
+      
+      // Update sort select if triggered by table
+      const sortSelect = document.querySelector('.sort-select');
+      if (sortSelect && sortSelect.value !== sortBy) {
+        sortSelect.value = sortBy;
+      }
+      
+      // Update URL with sort parameter
+      const url = new URL(window.location);
+      url.searchParams.set('sort', sortBy);
+      window.history.replaceState({}, '', url);
+      
+      // Show loading state
+      this.showLoadingState();
+      
+      // Reload page with new sort (in a real app, this would be client-side)
+      setTimeout(() => {
+        window.location.href = url.toString();
+      }, 500);
+      
+      // Track sorting
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'plans_sorted', {
+          sort_type: sortBy,
+          current_view: this.currentView,
+          plans_visible: this.loadedPlans
+        });
+      }
+    }
+    
+    handleViewChange(newView) {
+      if (newView === this.currentView) return;
+      
+      const previousView = this.currentView;
+      this.currentView = newView;
+      
+      // Update button states
+      document.querySelectorAll('.view-toggle').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.querySelector(`[data-view="${newView}"]`).classList.add('active');
+      
+      // Update view visibility with animation
+      const views = ['grid', 'table', 'compact'];
+      views.forEach(view => {
+        const viewElement = document.querySelector(`.${view}-view`);
+        if (viewElement) {
+          if (view === newView) {
+            viewElement.classList.remove('hidden');
+            viewElement.classList.add('active');
+          } else {
+            viewElement.classList.add('hidden');
+            viewElement.classList.remove('active');
+          }
+        }
+      });
+      
+      // Update URL
+      const url = new URL(window.location);
+      url.searchParams.set('view', newView);
+      window.history.replaceState({}, '', url);
+      
+      // Track view change
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'view_changed', {
+          previous_view: previousView,
+          new_view: newView,
+          plans_visible: this.loadedPlans
+        });
+      }
+    }
+    
+    async loadMorePlans(isAutoLoad = false) {
+      if (this.isLoading || this.loadedPlans >= this.totalPlans) return;
+      
+      this.isLoading = true;
+      const loadMoreBtn = document.querySelector('.load-more-btn');
+      
+      // Update UI to show loading
+      if (loadMoreBtn) {
+        const spinner = loadMoreBtn.querySelector('.load-more-spinner');
+        const text = loadMoreBtn.querySelector('.load-more-text');
+        
+        if (spinner) spinner.classList.remove('hidden');
+        if (text) text.textContent = 'Loading more plans...';
+        loadMoreBtn.disabled = true;
+      }
+      
+      try {
+        // In a real implementation, this would be an API call
+        await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate network delay
+        
+        // Simulate loading more plans
+        const newPlansToLoad = Math.min(12, this.totalPlans - this.loadedPlans);
+        this.loadedPlans += newPlansToLoad;
+        
+        // Update the display
+        if (loadMoreBtn) {
+          const text = loadMoreBtn.querySelector('.load-more-text');
+          const remaining = this.totalPlans - this.loadedPlans;
+          
+          if (remaining > 0) {
+            if (text) text.textContent = `Load More Plans (${remaining} remaining)`;
+          } else {
+            loadMoreBtn.style.display = 'none';
+          }
+        }
+        
+        // Track load more event
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'load_more_plans', {
+            is_auto_load: isAutoLoad,
+            plans_loaded: this.loadedPlans,
+            total_plans: this.totalPlans,
+            current_view: this.currentView
+          });
+        }
+        
+      } catch (error) {
+        console.error('Failed to load more plans:', error);
+      } finally {
+        this.isLoading = false;
+        
+        if (loadMoreBtn) {
+          const spinner = loadMoreBtn.querySelector('.load-more-spinner');
+          if (spinner) spinner.classList.add('hidden');
+          loadMoreBtn.disabled = false;
+        }
+      }
+    }
+    
+    handleComparisonToggle(button) {
+      const planId = button.dataset.planId;
+      if (!planId) return;
+      
+      // Toggle button state
+      const isAdding = !button.classList.contains('comparing');
+      button.classList.toggle('comparing');
+      
+      // Update button text/appearance
+      if (button.classList.contains('compact-compare-btn')) {
+        button.textContent = isAdding ? 'Remove' : 'Compare';
+      }
+      
+      // Dispatch event for comparison system
+      const planElement = button.closest('[data-plan-id]');
+      const planData = this.extractPlanDataFromElement(planElement);
+      
+      window.dispatchEvent(new CustomEvent('compare-toggle', {
+        detail: {
+          plan: planData,
+          action: isAdding ? 'add' : 'remove'
+        }
+      }));
+      
+      // Track comparison interaction
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'comparison_toggle', {
+          action: isAdding ? 'add' : 'remove',
+          plan_id: planId,
+          current_view: this.currentView
+        });
+      }
+    }
+    
+    extractPlanDataFromElement(element) {
+      // Extract plan data from DOM element
+      // This would be more robust in a real implementation
+      const planId = element.dataset.planId;
+      const planName = element.querySelector('.plan-name, .compact-plan-name')?.textContent?.trim();
+      const providerName = element.querySelector('.provider-name, .compact-provider-name')?.textContent?.trim();
+      const rateText = element.querySelector('.rate-value, .compact-rate-value')?.textContent?.trim();
+      
+      return {
+        id: planId,
+        name: planName || '',
+        provider: {
+          name: providerName || '',
+          logo: '',
+          rating: 0,
+          reviewCount: 0
+        },
+        pricing: {
+          rate1000kWh: parseFloat(rateText?.replace('¢', '')) / 100 || 0
+        },
+        contract: {
+          length: 12,
+          type: 'fixed',
+          earlyTerminationFee: 0,
+          autoRenewal: false,
+          satisfactionGuarantee: false
+        },
+        features: {
+          greenEnergy: 0,
+          billCredit: 0,
+          deposit: {
+            required: false,
+            amount: 0
+          }
+        },
+        availability: {
+          enrollmentType: 'both',
+          serviceAreas: []
+        }
+      };
+    }
+    
+    showLoadingState() {
+      // Add loading shimmer effect to plan cards
+      document.querySelectorAll('.plan-card, .compact-plan-card').forEach(card => {
+        card.classList.add('loading-shimmer');
+      });
+    }
+    
+    trackGridInteractions() {
+      // Track scroll depth
+      let maxScroll = 0;
+      window.addEventListener('scroll', () => {
+        const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+        if (scrollPercent > maxScroll) {
+          maxScroll = scrollPercent;
+          if (maxScroll % 25 === 0 && typeof gtag !== 'undefined') {
+            gtag('event', 'scroll_depth', {
+              scroll_percent: maxScroll,
+              page_type: 'plans_grid',
+              current_view: this.currentView
+            });
+          }
+        }
+      });
+      
+      // Track time spent on page
+      const startTime = Date.now();
+      window.addEventListener('beforeunload', () => {
+        const timeSpent = Math.round((Date.now() - startTime) / 1000);
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'time_on_page', {
+            time_seconds: timeSpent,
+            plans_viewed: this.loadedPlans,
+            max_scroll: maxScroll,
+            current_view: this.currentView
+          });
+        }
+      });
+    }
+  }
+  
+  // Initialize enhanced plan grid when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => new EnhancedPlanGrid());
+  } else {
+    new EnhancedPlanGrid();
+  }
+  
+  // Initialize comparison bar if it exists
+  if (window.React && document.getElementById('comparison-bar-mount')) {
+    import('./ComparisonBar.tsx').then(({ default: ComparisonBar }) => {
+      const city = document.querySelector('.enhanced-plan-grid')?.dataset.city;
+      if (city) {
+        const root = ReactDOM.createRoot(document.getElementById('comparison-bar-mount'));
+        root.render(React.createElement(ComparisonBar, { city }));
+      }
+    });
+  }
+</script>

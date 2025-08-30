@@ -222,7 +222,7 @@ export const microcopyLibrary = {
       contractLength: 'How long?',
       rateType: 'Price type',
       greenEnergy: 'Clean energy?',
-      features: 'Special features',
+      features: 'Additional features',
       provider: 'Company',
       priceRange: 'Monthly cost'
     },
@@ -277,7 +277,7 @@ export const microcopyLibrary = {
 
   // Time-Sensitive - Urgency without pressure
   timeSensitive: {
-    limited: 'Limited time',
+    limited: 'Time-sensitive',
     ending: 'Ends {time}',
     popular: 'Going fast',
     lastChance: 'Last chance',

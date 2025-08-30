@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
+import { ProfessionalPlanCard } from '../../components/ui/ProfessionalPlanCard';
 import { mockProviders, mockStates } from '../../data/mockData';
 import { Calendar, Zap, TrendingDown, Leaf, Shield, Filter } from 'lucide-react';
 
@@ -38,7 +39,7 @@ export function CityElectricityPlansPage({ state, city }: CityElectricityPlansPa
           <h1 className="text-2xl font-bold text-gray-900 mb-4">City Not Found</h1>
           <button
             onClick={() => navigate(`/${state}/electricity-plans`)}
-            className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors"
+            className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-texas-navy/90 transition-colors"
           >
             View {stateData?.name || 'State'} Plans
           </button>
@@ -96,8 +97,8 @@ export function CityElectricityPlansPage({ state, city }: CityElectricityPlansPa
 
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Finally. {cityData.name} Electricity That Makes Sense
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+                {cityData.name} Electricity Plans
               </h1>
               
               <p className="text-lg text-gray-600 mb-6">
@@ -150,7 +151,8 @@ export function CityElectricityPlansPage({ state, city }: CityElectricityPlansPa
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      {/* MAIN CONTENT SECTION */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid lg:grid-cols-4 gap-8">
           {/* Filters Sidebar */}
           <div className="lg:col-span-1">
@@ -226,108 +228,58 @@ export function CityElectricityPlansPage({ state, city }: CityElectricityPlansPa
           {/* Plans List */}
           <div className="lg:col-span-3">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-semibold text-gray-900">
-                {filteredPlans.length} Plans Available in {cityData.name}
-              </h2>
-              <button
-                onClick={() => navigate(`/compare/plans?city=${city}&state=${state}`)}
-                className="bg-texas-navy text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors"
-              >
-                Compare Selected Plans
-              </button>
+              <div className="space-y-2">
+                <h2 className="text-3xl font-bold text-gray-900">
+                  {filteredPlans.length} Quality Plans in {cityData.name}
+                </h2>
+                <p className="text-lg text-gray-600">
+                  Clean, modern cards showing only what matters: provider, price, and term.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <button
+                  onClick={() => navigate(`/compare/plans?city=${city}&state=${state}`)}
+                  className="bg-texas-gold text-white px-6 py-3 rounded-xl font-semibold hover:bg-texas-gold-600 transition-all shadow-lg"
+                >
+                  Compare Multiple Plans
+                </button>
+                <button
+                  onClick={() => navigate(`/${state}/${city}/best-electricity-plans`)}
+                  className="border-2 border-texas-navy text-texas-navy px-6 py-3 rounded-xl font-semibold hover:bg-texas-navy hover:text-white transition-all"
+                >
+                  Show Best Rated Only
+                </button>
+              </div>
             </div>
 
-            <div className="space-y-4">
-              {filteredPlans.map((plan) => (
-                <div key={plan.id} className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                    <div className="flex-1 mb-4 md:mb-0">
-                      <div className="flex items-center mb-2">
-                        <img
-                          src={plan.providerLogo}
-                          alt={`${plan.providerName} logo`}
-                          className="w-10 h-10 rounded-lg object-cover mr-3"
-                        />
-                        <div>
-                          <h3 className="text-lg font-semibold text-gray-900">{plan.name}</h3>
-                          <button
-                            onClick={() => navigate(`/providers/${plan.providerSlug}`)}
-                            className="text-texas-navy hover:text-texas-navy text-sm font-medium"
-                          >
-                            {plan.providerName}
-                          </button>
-                        </div>
-                        
-                        <div className="ml-4 flex items-center space-x-2">
-                          <span className={`px-2 py-1 text-xs rounded-full font-medium ${
-                            plan.type === 'fixed' ? 'bg-texas-navy/10 text-texas-navy' :
-                            plan.type === 'variable' ? 'bg-orange-100 text-orange-800' :
-                            'bg-texas-cream-100 text-texas-navy'
-                          }`}>
-                            {plan.type}
-                          </span>
-                          {plan.renewablePercent === 100 && (
-                            <span className="px-2 py-1 bg-texas-gold-100 text-texas-navy text-xs rounded-full font-medium flex items-center">
-                              <Leaf className="h-3 w-3 mr-1" />
-                              100% Green
-                            </span>
-                          )}
-                        </div>
-                      </div>
+            {/* PROFESSIONAL PLAN CARDS */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+              {filteredPlans.map((plan) => {
+                // Transform plan data to match ProfessionalPlanCard interface
+                const transformedPlan = {
+                  id: plan.id,
+                  name: plan.name,
+                  provider: plan.providerName,
+                  rate: plan.rate,
+                  contractTerm: `${plan.termLength} months`,
+                  planType: plan.type as 'fixed' | 'variable' | 'indexed',
+                  greenEnergy: plan.renewablePercent === 100,
+                  noDeposit: plan.fees?.deposit === 0,
+                  topRated: plan.providerRating > 4.5,
+                  features: plan.features || [],
+                  slug: plan.name.toLowerCase().replace(/\s+/g, '-')
+                };
 
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm mb-4">
-                        <div className="flex items-center">
-                          <Calendar className="h-4 w-4 text-gray-400 mr-2" />
-                          <span>{plan.termLength} months</span>
-                        </div>
-                        <div className="flex items-center">
-                          <Shield className="h-4 w-4 text-gray-400 mr-2" />
-                          <span>${plan.fees.monthlyFee}/month fee</span>
-                        </div>
-                        <div className="flex items-center">
-                          <Leaf className="h-4 w-4 text-gray-400 mr-2" />
-                          <span>{plan.renewablePercent}% renewable</span>
-                        </div>
-                        <div className="flex items-center">
-                          <TrendingDown className="h-4 w-4 text-gray-400 mr-2" />
-                          <span>${plan.fees.cancellationFee} ETF</span>
-                        </div>
-                      </div>
-
-                      <div className="mb-3">
-                        <div className="text-sm text-gray-600 mb-2">Features:</div>
-                        <div className="flex flex-wrap gap-2">
-                          {plan.features.map((feature, index) => (
-                            <span key={index} className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
-                              {feature}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="md:text-right md:ml-6">
-                      <div className="text-3xl font-bold text-texas-navy mb-1">{plan.rate}¢</div>
-                      <div className="text-sm text-gray-500 mb-3">per kWh</div>
-                      
-                      <div className="space-y-2">
-                        <button
-                          onClick={() => navigate(`/${state}/${city}/electricity-providers`)}
-                          className="w-full md:w-auto bg-texas-navy text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors text-sm font-medium"
-                        >
-                          Get This Plan
-                        </button>
-                        <button
-                          onClick={() => navigate(`/compare/plans/${plan.id}`)}
-                          className="w-full md:w-auto border border-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
-                        >
-                          Compare Plan
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
+                return (
+                  <ProfessionalPlanCard
+                    key={plan.id}
+                    plan={transformedPlan}
+                    onViewDetails={(selectedPlan) => {
+                      navigate(`/electricity-plans/${plan.providerSlug}/${selectedPlan.slug}`);
+                    }}
+                  />
+                );
+              })}
             </div>
 
             {/* SEO Content */}

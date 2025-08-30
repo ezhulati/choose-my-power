@@ -16,33 +16,18 @@
 import React, { useState, useMemo, useCallback, useEffect, useRef } from 'react';
 import {
   Filter,
-  SortAsc,
-  SortDesc,
   Grid,
   List,
   Compare,
-  Star,
-  Zap,
   Leaf,
   Calendar,
-  DollarSign,
   TrendingUp,
   TrendingDown,
-  Info,
   ChevronDown,
   ChevronUp,
   X,
-  Check,
   AlertCircle,
-  MapPin,
   Building,
-  Clock,
-  Phone,
-  ExternalLink,
-  Share2,
-  Heart,
-  Bookmark,
-  Eye,
   Search
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -52,6 +37,7 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Separator } from '@/components/ui/separator';
+import { ProfessionalPlanCard } from '@/components/ui/ProfessionalPlanCard';
 import { useElectricityPlans, type UseElectricityPlansReturn } from '@/hooks/useElectricityPlans';
 import type { ElectricityPlan } from '@/types/electricity-plans';
 
@@ -292,6 +278,29 @@ export function PlanResults({
     );
   }, [displayPlans, searchQuery]);
 
+  // Convert ElectricityPlan to ProfessionalPlanCard format
+  const convertedPlans = useMemo(() => {
+    return searchFilteredPlans.map((plan) => ({
+      id: plan.id,
+      name: plan.name,
+      provider: plan.provider.name,
+      rate: plan.pricing.rate1000kWh,
+      contractTerm: `${plan.contract.length} months`,
+      planType: plan.contract.type as 'fixed' | 'variable' | 'indexed',
+      greenEnergy: plan.features.greenEnergy > 0,
+      noDeposit: !plan.features.deposit.required,
+      topRated: (plan.provider as any)?.rating >= 4.5 || false,
+      features: [
+        plan.contract.type === 'fixed' ? 'Fixed Rate' : 'Variable Rate',
+        ...(plan.features.greenEnergy > 0 ? [`${plan.features.greenEnergy}% Green Energy`] : []),
+        ...(!plan.features.deposit.required ? ['No Deposit'] : []),
+        ...(plan.features.freeTime ? ['Free Time'] : []),
+        ...(plan.features.billCredit > 0 ? ['Bill Credit'] : [])
+      ].filter(Boolean),
+      slug: plan.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')
+    }));
+  }, [searchFilteredPlans]);
+
   // Handle filter changes
   const handleFilterChange = useCallback((filterType: string, value: any) => {
     const newFilters = { ...selectedFilters, [filterType]: value };
@@ -301,9 +310,9 @@ export function PlanResults({
     trackEvent('filter_applied', {
       filterType,
       value,
-      resultCount: searchFilteredPlans.length
+      resultCount: convertedPlans.length
     });
-  }, [selectedFilters, updateFilters, trackEvent, searchFilteredPlans.length]);
+  }, [selectedFilters, updateFilters, trackEvent, convertedPlans.length]);
 
   // Handle sort changes
   const handleSortChange = useCallback((sortValue: string) => {
@@ -316,9 +325,9 @@ export function PlanResults({
     trackEvent('sort_changed', {
       sortField: option.field,
       sortOrder: option.order,
-      resultCount: searchFilteredPlans.length
+      resultCount: convertedPlans.length
     });
-  }, [sortOptions, updateSorting, trackEvent, searchFilteredPlans.length]);
+  }, [sortOptions, updateSorting, trackEvent, convertedPlans.length]);
 
   // Handle plan expansion
   const handlePlanExpand = useCallback((planId: string) => {
@@ -391,7 +400,7 @@ export function PlanResults({
     return (
       <Card className={cn('w-full', className)}>
         <CardContent className="flex flex-col items-center justify-center py-12">
-          <AlertCircle className="h-12 w-12 text-red-500 mb-4" />
+          <AlertCircle className="h-12 w-12 text-texas-red mb-4" />
           <h3 className="text-lg font-semibold text-gray-900 mb-2">
             Unable to load plans
           </h3>
@@ -407,7 +416,7 @@ export function PlanResults({
   }
 
   // Empty state
-  if (!searchFilteredPlans.length) {
+  if (!convertedPlans.length) {
     return (
       <Card className={cn('w-full', className)}>
         <CardContent className="flex flex-col items-center justify-center py-12">
@@ -443,7 +452,7 @@ export function PlanResults({
             Electricity Plans
           </h2>
           <p className="text-gray-600">
-            {searchFilteredPlans.length} plan{searchFilteredPlans.length !== 1 ? 's' : ''} available
+            {convertedPlans.length} plan{convertedPlans.length !== 1 ? 's' : ''} available
             {searchQuery && <span> for "{searchQuery}"</span>}
           </p>
         </div>
@@ -618,19 +627,12 @@ export function PlanResults({
                 ? 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6'
                 : 'space-y-4'
             )}>
-              {searchFilteredPlans.map((plan) => (
-                <PlanCard
+              {convertedPlans.map((plan) => (
+                <ProfessionalPlanCard
                   key={plan.id}
                   plan={plan}
-                  viewMode={viewMode}
-                  isExpanded={expandedPlans.has(plan.id)}
-                  isSelected={selectedPlan === plan.id}
-                  isInComparison={comparisonPlans.includes(plan.id)}
-                  canAddToComparison={comparisonPlans.length < maxComparison}
-                  showProviderInfo={showProviderInfo}
-                  onExpand={() => handlePlanExpand(plan.id)}
-                  onSelect={() => handlePlanSelect(plan)}
-                  onComparisonToggle={() => handleComparisonToggle(plan)}
+                  onViewDetails={() => handlePlanSelect(searchFilteredPlans.find(p => p.id === plan.id)!)}
+                  className="h-full"
                 />
               ))}
             </div>
@@ -641,224 +643,6 @@ export function PlanResults({
   );
 }
 
-// Individual Plan Card Component
-interface PlanCardProps {
-  plan: ElectricityPlan;
-  viewMode: 'grid' | 'list';
-  isExpanded: boolean;
-  isSelected: boolean;
-  isInComparison: boolean;
-  canAddToComparison: boolean;
-  showProviderInfo: boolean;
-  onExpand: () => void;
-  onSelect: () => void;
-  onComparisonToggle: () => void;
-}
-
-function PlanCard({
-  plan,
-  viewMode,
-  isExpanded,
-  isSelected,
-  isInComparison,
-  canAddToComparison,
-  showProviderInfo,
-  onExpand,
-  onSelect,
-  onComparisonToggle
-}: PlanCardProps) {
-  const isListView = viewMode === 'list';
-  
-  return (
-    <Card className={cn(
-      'transition-all duration-200 hover:shadow-lg',
-      isSelected && 'ring-2 ring-texas-navy border-texas-navy',
-      isInComparison && 'border-texas-gold bg-texas-gold/5'
-    )}>
-      <CardHeader className={cn('pb-4', isListView && 'pb-2')}>
-        <div className="flex items-start justify-between">
-          <div className="flex-1">
-            <CardTitle className="text-lg text-texas-navy mb-2">
-              {plan.name}
-            </CardTitle>
-            {showProviderInfo && (
-              <div className="flex items-center gap-2 text-sm text-gray-600 mb-3">
-                <Building className="h-4 w-4" />
-                <span>{plan.provider.name}</span>
-                {plan.provider.rating && (
-                  <div className="flex items-center gap-1 ml-2">
-                    <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                    <span>{plan.provider.rating.toFixed(1)}</span>
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-          
-          <div className="flex items-center gap-2">
-            {/* Comparison Toggle */}
-            <Button
-              variant={isInComparison ? "default" : "outline"}
-              size="sm"
-              onClick={onComparisonToggle}
-              disabled={!canAddToComparison && !isInComparison}
-              className={cn(
-                isInComparison && "bg-texas-gold hover:bg-texas-gold/90"
-              )}
-            >
-              <Compare className="h-4 w-4" />
-            </Button>
-            
-            {/* Expand Toggle */}
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={onExpanded}
-            >
-              {isExpanded ? (
-                <ChevronUp className="h-4 w-4" />
-              ) : (
-                <ChevronDown className="h-4 w-4" />
-              )}
-            </Button>
-          </div>
-        </div>
-
-        {/* Key Metrics */}
-        <div className={cn(
-          'grid gap-4',
-          isListView ? 'grid-cols-4 md:grid-cols-6' : 'grid-cols-2'
-        )}>
-          <div className="text-center">
-            <div className="text-2xl font-bold text-texas-navy">
-              {plan.pricing.rate1000kWh.toFixed(1)}¢
-            </div>
-            <div className="text-xs text-gray-500">per kWh</div>
-          </div>
-          
-          <div className="text-center">
-            <div className="text-lg font-semibold text-gray-900">
-              {plan.contract.length}mo
-            </div>
-            <div className="text-xs text-gray-500">contract</div>
-          </div>
-          
-          {plan.features.greenEnergy > 0 && (
-            <div className="text-center">
-              <div className="text-lg font-semibold text-green-600">
-                {plan.features.greenEnergy}%
-              </div>
-              <div className="text-xs text-gray-500">green</div>
-            </div>
-          )}
-          
-          {!plan.features.deposit.required && (
-            <div className="text-center">
-              <CheckCircle className="h-6 w-6 text-green-500 mx-auto" />
-              <div className="text-xs text-gray-500">no deposit</div>
-            </div>
-          )}
-        </div>
-
-        {/* Plan Features */}
-        <div className="flex flex-wrap gap-2 mt-3">
-          {plan.contract.type === 'fixed' && (
-            <Badge variant="outline" className="text-xs">
-              <Zap className="h-3 w-3 mr-1" />
-              Fixed Rate
-            </Badge>
-          )}
-          
-          {plan.features.greenEnergy > 0 && (
-            <Badge variant="outline" className="text-xs border-green-500 text-green-600">
-              <Leaf className="h-3 w-3 mr-1" />
-              Green Energy
-            </Badge>
-          )}
-          
-          {plan.features.freeTime && (
-            <Badge variant="outline" className="text-xs border-blue-500 text-texas-navy">
-              <Clock className="h-3 w-3 mr-1" />
-              Free Time
-            </Badge>
-          )}
-          
-          {plan.features.billCredit > 0 && (
-            <Badge variant="outline" className="text-xs border-texas-navy text-texas-navy">
-              <DollarSign className="h-3 w-3 mr-1" />
-              Bill Credit
-            </Badge>
-          )}
-        </div>
-      </CardHeader>
-
-      {/* Expanded Details */}
-      {isExpanded && (
-        <CardContent className="pt-0 space-y-4 animate-in slide-in-from-top-5 duration-300">
-          <Separator />
-          
-          {/* Detailed Pricing */}
-          <div>
-            <h4 className="font-semibold text-gray-900 mb-2">Pricing Details</h4>
-            <div className="grid grid-cols-3 gap-4 text-sm">
-              <div>
-                <div className="text-gray-600">500 kWh</div>
-                <div className="font-medium">{plan.pricing.rate500kWh.toFixed(1)}¢</div>
-              </div>
-              <div>
-                <div className="text-gray-600">1,000 kWh</div>
-                <div className="font-medium">{plan.pricing.rate1000kWh.toFixed(1)}¢</div>
-              </div>
-              <div>
-                <div className="text-gray-600">2,000 kWh</div>
-                <div className="font-medium">{plan.pricing.rate2000kWh.toFixed(1)}¢</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Contract Terms */}
-          <div>
-            <h4 className="font-semibold text-gray-900 mb-2">Contract Terms</h4>
-            <div className="space-y-2 text-sm">
-              <div className="flex justify-between">
-                <span className="text-gray-600">Contract Length:</span>
-                <span className="font-medium">{plan.contract.length} months</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600">Rate Type:</span>
-                <span className="font-medium capitalize">{plan.contract.type}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600">Early Termination Fee:</span>
-                <span className="font-medium">${plan.contract.earlyTerminationFee}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-600">Auto Renewal:</span>
-                <span className="font-medium">{plan.contract.autoRenewal ? 'Yes' : 'No'}</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Action Buttons */}
-          <div className="flex gap-3 pt-4">
-            <Button 
-              onClick={onSelect}
-              className="flex-1 bg-gradient-to-r from-texas-navy to-blue-800 hover:from-texas-navy/90 hover:to-blue-800/90"
-            >
-              Select Plan
-            </Button>
-            <Button variant="outline" size="icon" className="min-h-[48px] min-w-[48px] touch-manipulation" aria-label="View plan details">
-              <ExternalLink className="h-4 w-4" />
-            </Button>
-            <Button variant="outline" size="icon" className="min-h-[48px] min-w-[48px] touch-manipulation" aria-label="Share plan">
-              <Share2 className="h-4 w-4" />
-            </Button>
-          </div>
-        </CardContent>
-      )}
-    </Card>
-  );
-}
 
 // Plan Filters Component
 interface PlanFiltersProps {

@@ -58,7 +58,7 @@ export function ShopPage({ category }: ShopPageProps) {
       ]
     },
     'green-energy': {
-      title: 'Real Green Energy (Not Greenwashing)',
+      title: 'Green Energy Plans',
       subtitle: 'Actually From Wind & Solar',
       description: 'These plans buy real renewable energy credits from Texas wind and solar farms. Not just marketing fluff.',
       icon: Leaf,
@@ -175,7 +175,7 @@ export function ShopPage({ category }: ShopPageProps) {
                 <currentCategory.icon className="h-8 w-8" />
               </div>
               
-              <h1 className="text-3xl md:text-4xl font-bold mb-4">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
                 {currentCategory.title}
               </h1>
               <h2 className="text-xl text-white/90 mb-4">{currentCategory.subtitle}</h2>

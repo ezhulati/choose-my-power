@@ -429,12 +429,12 @@ export class ContentOrchestrator {
     
     return {
       title: `${filterText} Electricity Plans in ${cityName}, TX | ChooseMyPower.org`,
-      description: `Compare${filterText.toLowerCase()} electricity plans in ${cityName}, Texas. Find competitive rates and trusted providers.`,
+      description: `Compare${filterText.toLowerCase()} electricity plans in ${cityName}, Texas. Find competitive rates and licensed electricity companies.`,
       hero: {
         headline: `${filterText} Electricity Plans in ${cityName}`,
         subheadline: `Compare competitive electricity rates and providers in ${cityName}, Texas.`,
         cta: `Find My ${cityName} Plan`,
-        benefits: ['Competitive rates', 'Trusted providers', 'Easy comparison', 'No hidden fees', 'Fast switching']
+        benefits: ['Competitive rates', 'Licensed electricity companies', 'Easy comparison', 'No hidden fees', 'Fast switching']
       },
       sections: {
         introduction: `Find the right electricity plan in ${cityName}, Texas with our comprehensive comparison tool.`,

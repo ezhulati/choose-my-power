@@ -167,19 +167,19 @@ function generateCityIntroVariation(cityName: string, planCount: number, rateTex
   const variations = [
     `Moving to ${cityName}? Don't transfer your old plan. ${seasonalContext} We show ${planCount} quality options with rates ${rateText}${avgRateText} so you can get a rate matched to your new home's size and usage. ${demographicContext}`,
     
-    `${cityName} residents have electricity options—and that's a good thing. We organize ${planCount} plans from quality providers with rates ${rateText}${avgRateText}. ${seasonalContext} No overwhelming lists or pushy sales, just clear choices for your situation.`,
+    `${cityName} residents have electricity options—and that's a good thing. We organize ${planCount} plans from licensed electricity companies with rates ${rateText}${avgRateText}. ${seasonalContext} No overwhelming lists or pushy sales, just clear choices for your situation.`,
     
-    `Discover why thousands of ${cityName} homeowners trust our platform to find better electricity rates. ${seasonalContext} Compare ${planCount} available plans with rates ${rateText}${avgRateText}, read authentic customer reviews, and switch online in minutes. ${demographicContext}`,
+    `Compare ${planCount} electricity plans available in ${cityName}. Rates start ${rateText}${avgRateText}. ${seasonalContext} Switch online or by phone. ${demographicContext}`,
     
     `Looking for electricity in ${cityName}? We make it straightforward with ${planCount} options with rates ${rateText}${avgRateText}. ${seasonalContext} Real rates with all fees included—no teaser rates or overwhelming lists. ${demographicContext}`,
     
-    `${cityName} electricity comparison made simple. We present ${planCount} plans with rates ${rateText}${avgRateText} from quality providers so you can choose what's right for you. ${seasonalContext} Your power of choice made clear. ${demographicContext}`,
+    `${cityName} electricity comparison made simple. We present ${planCount} plans with rates ${rateText}${avgRateText} from licensed electricity companies so you can choose what's right for you. ${seasonalContext} Your power of choice made clear. ${demographicContext}`,
     
     `Want better electricity rates in ${cityName}? We've found ${planCount} quality options with rates ${rateText}${avgRateText}. ${seasonalContext} Compare honestly and choose confidently—no overwhelming lists or pushy sales tactics.`,
     
     `Navigating ${cityName}'s electricity market has never been easier. ${planCount} plans await your comparison, featuring rates ${rateText}${avgRateText}. ${seasonalContext} Our user-friendly platform eliminates confusion by presenting clear, honest pricing from reputable providers. ${demographicContext}`,
     
-    `Experience the freedom of choice in ${cityName}'s competitive electricity marketplace. ${seasonalContext} With ${planCount} plans offering rates ${rateText}${avgRateText}, you'll likely find significant savings. Our platform's advanced filtering and comparison tools make finding your ideal plan effortless.`,
+    `${planCount} electricity plans serve ${cityName} customers. ${seasonalContext} Rates start ${rateText}${avgRateText}. Compare plans by rate, contract term, and features.`,
     
     `${cityName} homeowners and renters both benefit from our electricity comparison help. ${planCount} quality plans offer rates ${rateText}${avgRateText}. ${seasonalContext} Whether you want low cost, clean energy, or flexible terms, we help you find the right company. ${demographicContext}`,
     
@@ -348,7 +348,7 @@ function generateFilterSpecificFeatureExplanation(cityName: string, filters: str
     'fixed-rate': [
       `${filterName} electricity plans eliminate the uncertainty that comes with variable pricing. In ${cityName}, these plans lock in your rate throughout the entire contract term, regardless of market fluctuations, seasonal demand changes, or fuel cost variations. This predictability makes budgeting simple and protects you from bill shock during peak usage periods.`,
       
-      `The security of ${filterName} plans has made them the preferred choice for many ${cityName} families and businesses. Your rate is locked in from day one, providing peace of mind and budget certainty. This protection is especially valuable during volatile market periods when other plan types might experience significant rate increases.`,
+      `${filterName} plans lock your rate for the contract duration. This provides budget certainty and protects against rate increases during volatile market periods.`,
       
       `${cityName} consumers choose ${filterName} plans for their financial predictability and protection against market volatility. These contracts act as a hedge against rising electricity costs, ensuring your rate remains constant even during periods of increased demand or fuel price spikes.`
     ],
@@ -474,7 +474,7 @@ function generateFilterSpecificFAQs(cityName: string, filters: string[]): FAQIte
   if (filters.includes('fixed-rate')) {
     faqs.push({
       question: `Why choose fixed-rate electricity in ${cityName}?`,
-      answer: `Fixed-rate plans lock in your electricity rate for the entire contract term, protecting you from market volatility and seasonal price increases. This makes budgeting easier and eliminates bill shock. In ${cityName}'s competitive market, fixed rates often provide excellent value while giving you peace of mind about your monthly costs.`,
+      answer: `Fixed-rate plans lock your electricity rate for the contract term, protecting you from market volatility and seasonal price increases. This makes budgeting easier. In ${cityName}'s competitive market, fixed rates provide predictable monthly costs.`,
       importance: 'high'
     });
   }
@@ -662,7 +662,7 @@ function generateFilterEducationBlock(cityName: string, filter: string, seed: nu
   const filterEducation = {
     'fixed-rate': {
       title: 'Fixed Rate Plan Benefits',
-      content: `Fixed-rate electricity plans in ${cityName} fix your price per kWh throughout your contract term. This protection against market volatility helps with budgeting and provides peace of mind during periods of rising energy costs. While you won't benefit from market decreases, the price certainty often outweighs this limitation for most households.`,
+      content: `Fixed-rate electricity plans in ${cityName} set your price per kWh for the contract term. This protection against market volatility helps with budgeting during periods of rising energy costs. You won't benefit from market decreases, but rate certainty helps with monthly planning.`,
       category: 'plan-types' as const,
       readingLevel: 7
     },

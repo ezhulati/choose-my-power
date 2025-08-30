@@ -4,8 +4,8 @@ import HeroBackground from '../../components/HeroBackground.astro';
 import StandardZipInput from '../../components/StandardZipInput.astro';
 import { Calculator, Clock, Zap, Leaf, DollarSign, Shield, Star } from 'lucide-react';
 
-const title = "Finally. Real Electricity Prices (Not Marketing Tricks) | ChooseMyPower";
-const description = "No more 6.9¢ rates that cost 14¢. We show what 300+ Texas electricity plans actually cost you—not the teaser rate. Real math, no nonsense, done in 10 minutes.";
+const title = "Compare Texas Electricity Plans - Real Costs & Side-by-Side Analysis";
+const description = "Compare electricity plans with actual monthly costs, not teaser rates. Side-by-side analysis of 300+ Texas plans to find the best deal for your home.";
 ---
 
 <Layout title={title} description={description}>
@@ -20,28 +20,47 @@ const description = "No more 6.9¢ rates that cost 14¢. We show what 300+ Texas
   </script>
 
   <div class="bg-white">
-    <!-- Hero Section -->
-    <HeroBackground 
-      title="Finally. Real Electricity Prices (Not Marketing Tricks)" 
-      subtitle="That 6.9¢ rate? It costs 14¢. We do the actual math on 300+ Texas plans."
-      variant="plans"
-    >
-      <div class="mt-8 max-w-md mx-auto">
-        <StandardZipInput 
-          variant="hero"
-          size="md"
-          showTitle={true}
-          showDescription={true}
-        />
+    <!-- Elegant Hero Section -->
+    <section class="bg-gradient-to-br from-texas-navy via-blue-800 to-texas-navy">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 text-center">
+        <div class="inline-flex items-center justify-center w-16 h-16 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-6">
+          <Calculator class="h-8 w-8 text-white" />
+        </div>
+        
+        <div class="space-y-4">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold text-white leading-tight max-w-4xl mx-auto">
+            Compare Texas Electricity Plans Side-by-Side
+          </h1>
+          
+          <p class="text-base md:text-lg text-blue-100/80 font-normal max-w-3xl mx-auto leading-relaxed">
+            See actual monthly costs for 300+ Texas plans. 
+            <span class="text-white font-medium">No teaser rates, just real pricing</span> to help you make the right choice.
+          </p>
+          
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 max-w-2xl mx-auto border border-white/20">
+            <p class="text-sm text-white/90 font-normal">
+              <span class="text-texas-gold font-medium">Real plan comparison</span> with honest monthly costs.
+            </p>
+          </div>
+        </div>
+
+        <div class="max-w-md mx-auto mt-8">
+          <StandardZipInput 
+            variant="hero"
+            size="md"
+            showTitle={false}
+            showDescription={false}
+          />
+        </div>
       </div>
-    </HeroBackground>
+    </section>
 
     <!-- Main Content -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       
-      <!-- Usage Calculator -->
-      <div class="mb-12 bg-texas-cream-200 rounded-xl p-8">
-        <h2 class="text-2xl font-bold text-gray-900 mb-6">Calculate Your Monthly Costs</h2>
+      <!-- Elegant Usage Calculator -->
+      <div class="mb-12 bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-xl p-6 lg:p-8">
+        <h2 class="text-xl font-semibold text-gray-900 mb-6">Calculate Your Monthly Costs</h2>
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
           <div>
             <label class="block text-sm font-medium text-gray-700 mb-2">Monthly Usage (kWh)</label>
@@ -66,16 +85,16 @@ const description = "No more 6.9¢ rates that cost 14¢. We show what 300+ Texas
             </select>
           </div>
           <div class="flex items-end">
-            <button class="w-full bg-texas-navy text-white px-6 py-3 min-h-[48px] rounded-lg hover:bg-blue-800 transition-colors touch-manipulation"
+            <button class="w-full bg-texas-navy text-white px-6 py-3 min-h-[48px] rounded-lg hover:bg-texas-navy/90 transition-colors touch-manipulation"
               Update Costs
             </button>
           </div>
         </div>
       </div>
 
-      <!-- Advanced Filters -->
+      <!-- Elegant Filters -->
       <div class="mb-12">
-        <h3 class="text-xl font-semibold text-gray-900 mb-4">Filter Plans</h3>
+        <h3 class="text-lg font-medium text-gray-900 mb-4">Filter Plans</h3>
         <div class="bg-white border border-gray-200 rounded-lg p-6">
           <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div>
@@ -109,10 +128,10 @@ const description = "No more 6.9¢ rates that cost 14¢. We show what 300+ Texas
       <!-- Plans Comparison Grid -->
       <div class="mb-16">
         <div class="flex items-center justify-between mb-8">
-          <h2 class="text-3xl font-bold text-gray-900">Best Plans for Your Usage</h2>
+          <h2 class="text-xl md:text-2xl font-semibold text-gray-900">Best Plans for Your Usage</h2>
           <div class="flex space-x-2">
-            <button class="border border-gray-300 px-4 py-3 min-h-[48px] rounded-lg hover:bg-gray-50 touch-manipulation">Sort by Price</button>
-            <button class="bg-texas-navy text-white px-4 py-3 min-h-[48px] rounded-lg hover:bg-blue-800 touch-manipulation">Compare Selected</button>
+            <button class="border border-gray-300 px-4 py-2 text-sm rounded-lg hover:bg-gray-50 transition-colors">Sort by Price</button>
+            <button class="bg-texas-navy text-white px-4 py-2 text-sm rounded-lg hover:bg-texas-navy/90 transition-colors">Compare Selected</button>
           </div>
         </div>
 
@@ -172,7 +191,7 @@ const description = "No more 6.9¢ rates that cost 14¢. We show what 300+ Texas
                   <span class="text-gray-600">/month</span>
                 </div>
                 <div class="text-sm text-gray-600 mb-4">Based on 1,000 kWh</div>
-                <button class="bg-green-600 text-white px-6 py-3 min-h-[48px] rounded-lg hover:bg-green-700 transition-colors touch-manipulation"
+                <button class="bg-green-600 text-white px-4 py-2 text-sm rounded-lg hover:bg-green-700 transition-colors">
                   View Details
                 </button>
               </div>
@@ -231,7 +250,7 @@ const description = "No more 6.9¢ rates that cost 14¢. We show what 300+ Texas
                   <span class="text-gray-600">/month</span>
                 </div>
                 <div class="text-sm text-gray-600 mb-4">Based on 1,000 kWh</div>
-                <button class="bg-texas-navy text-white px-6 py-3 min-h-[48px] rounded-lg hover:bg-blue-800 transition-colors touch-manipulation"
+                <button class="bg-texas-navy text-white px-4 py-2 text-sm rounded-lg hover:bg-texas-navy/90 transition-colors">
                   View Details
                 </button>
               </div>
@@ -290,7 +309,7 @@ const description = "No more 6.9¢ rates that cost 14¢. We show what 300+ Texas
                 </div>
                 <div class="text-sm text-gray-600 mb-1">Based on 1,000 kWh</div>
                 <div class="text-xs text-green-600 mb-3">-$20 Bill Credit Applied</div>
-                <button class="bg-orange-600 text-white px-6 py-3 min-h-[48px] rounded-lg hover:bg-orange-700 transition-colors touch-manipulation"
+                <button class="bg-orange-600 text-white px-4 py-2 text-sm rounded-lg hover:bg-orange-700 transition-colors">
                   View Details
                 </button>
               </div>
@@ -363,8 +382,8 @@ const description = "No more 6.9¢ rates that cost 14¢. We show what 300+ Texas
       </div>
 
       <!-- Understanding Plan Types -->
-      <div class="bg-gray-50 rounded-xl p-8">
-        <h3 class="text-2xl font-bold text-gray-900 mb-6">Understanding Plan Types</h3>
+      <div class="bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-xl p-6 lg:p-8">
+        <h3 class="text-lg md:text-xl font-semibold text-gray-900 mb-6">Understanding Plan Types</h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div class="bg-white rounded-lg p-6">
             <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">

@@ -44,7 +44,7 @@ export function ElectricityCompaniesPage({}: ElectricityCompaniesPageProps) {
       subtitle: '100% Renewable Specialists',
       icon: Leaf,
       color: 'green',
-      description: 'Leading companies committed to 100% renewable energy and environmental sustainability',
+      description: 'Electricity companies committed to 100% renewable energy and environmental sustainability',
       marketShare: '35%',
       avgRating: '4.3',
       topCompanies: ['Rhythm Energy', 'Gexa Energy', 'Green Mountain Energy'],
@@ -91,7 +91,7 @@ export function ElectricityCompaniesPage({}: ElectricityCompaniesPageProps) {
       subtitle: 'Top-Rated Support & Satisfaction',
       icon: Headphones,
       color: 'blue',
-      description: 'Companies with exceptional customer support, local call centers, and highest satisfaction ratings',
+      description: 'Companies with local call centers and highest satisfaction ratings',
       marketShare: '42%',
       avgRating: '4.4',
       topCompanies: ['Champion Energy', 'Reliant Energy', 'TXU Energy'],
@@ -345,7 +345,7 @@ export function ElectricityCompaniesPage({}: ElectricityCompaniesPageProps) {
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Electricity Companies - Expert Analysis & Company Intelligence
+              Electricity Companies
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-4xl mx-auto">
               Comprehensive analysis of electricity companies by specialization, market position, and expertise. 
@@ -515,7 +515,7 @@ export function ElectricityCompaniesPage({}: ElectricityCompaniesPageProps) {
                     <div className="space-y-2">
                       <button
                         onClick={() => navigate(`/providers/${company.slug}`)}
-                        className="w-full bg-texas-navy text-white py-2 rounded-lg hover:bg-blue-800 transition-colors text-sm font-medium"
+                        className="w-full bg-texas-navy text-white py-2 rounded-lg hover:bg-texas-navy/90 transition-colors text-sm font-medium"
                       >
                         Company Intelligence Report
                       </button>
@@ -643,7 +643,7 @@ export function ElectricityCompaniesPage({}: ElectricityCompaniesPageProps) {
                 <div className="grid grid-cols-2 gap-3">
                   <button
                     onClick={() => navigate(`/${hub.slug}/electricity-companies`)}
-                    className="bg-texas-navy text-white py-2 rounded-lg hover:bg-blue-800 transition-colors font-medium"
+                    className="bg-texas-navy text-white py-2 rounded-lg hover:bg-texas-navy/90 transition-colors font-medium"
                   >
                     {hub.state} Companies
                   </button>
@@ -706,7 +706,7 @@ export function ElectricityCompaniesPage({}: ElectricityCompaniesPageProps) {
           <div className="text-center mt-8">
             <button
               onClick={() => navigate('/providers')}
-              className="bg-texas-navy text-white px-8 py-3 rounded-lg hover:bg-blue-800 transition-colors font-medium"
+              className="bg-texas-navy text-white px-8 py-3 rounded-lg hover:bg-texas-navy/90 transition-colors font-medium"
             >
               View Complete Directory & Analysis
             </button>

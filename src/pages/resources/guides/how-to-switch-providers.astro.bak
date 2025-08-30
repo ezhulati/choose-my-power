@@ -1,0 +1,536 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const title = "How to Switch Electric Companies (It's Easier Than You Think) | Texas 2024";
+const description = "Your lights stay on, the process is free, and it takes 5 minutes to sign up. Here's exactly how to switch without any drama.";
+---
+
+<Layout title={title} description={description}>
+  <div class="min-h-screen bg-gradient-to-b from-texas-cream to-gray-50">
+    <!-- Hero Section -->
+    <div class="bg-texas-navy text-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          How to Switch Electric Companies (It's Easier Than You Think)
+        </h1>
+        <p class="text-xl text-blue-100 mb-8 leading-relaxed">
+          Your lights stay on, the process is free, and it takes 5 minutes to sign up. Here's exactly what happens when you switch, why it won't hurt, and how to do it right the first time.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <span class="bg-texas-red px-4 py-2 rounded-full text-sm font-medium">8 min read</span>
+          <span class="bg-texas-gold px-4 py-2 rounded-full text-sm font-medium text-texas-navy">Free Process</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <!-- Key Stats -->
+      <div class="grid md:grid-cols-3 gap-6 mb-12">
+        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+          <div class="text-3xl font-bold text-texas-red mb-2">14+</div>
+          <div class="text-gray-600">Days typical switch timeframe</div>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+          <div class="text-3xl font-bold text-texas-red mb-2">$0</div>
+          <div class="text-gray-600">Cost to switch providers</div>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+          <div class="text-3xl font-bold text-texas-red mb-2">3</div>
+          <div class="text-gray-600">Days to cancel after signing</div>
+        </div>
+      </div>
+
+      <!-- Quick Start Guide -->
+      <div class="bg-green-50 p-8 rounded-xl shadow-lg border border-green-200 mb-12">
+        <h2 class="text-2xl font-bold text-green-800 mb-6">✅ The TL;DR Version: Just Want to Do This?</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="font-semibold text-green-700 mb-3">Grab This Stuff First:</h3>
+            <ul class="text-sm text-green-700 space-y-1">
+              <li>• Your current electricity bill</li>
+              <li>• ESI ID (17-digit number on your bill)</li>
+              <li>• Service address and contact info</li>
+              <li>• Social Security Number</li>
+              <li>• Bank account info (for auto-pay)</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold text-green-700 mb-3">Here's What Happens:</h3>
+            <ul class="text-sm text-green-700 space-y-1">
+              <li>• Pick a new provider & plan</li>
+              <li>• Sign up online (takes 5 minutes)</li>
+              <li>• Your new company does everything else</li>
+              <li>• Switch happens in 2-4 weeks</li>
+              <li>• Your lights never go out</li>
+            </ul>
+          </div>
+        </div>
+        <div class="text-center mt-6">
+          <a href="/electricity-plans" class="bg-texas-red text-white px-8 py-4 rounded-lg font-semibold hover:bg-texas-red-600 transition-colors">
+            Show Me My Options →
+          </a>
+        </div>
+      </div>
+
+      <!-- Detailed Process -->
+      <div class="space-y-12">
+        <!-- Step 1 -->
+        <section class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+          <div class="flex items-center mb-6">
+            <div class="bg-texas-red text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mr-4">1</div>
+            <h2 class="text-3xl font-bold text-texas-navy">Research and Compare Plans</h2>
+          </div>
+          
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-xl font-semibold text-texas-navy mb-4">Before You Start Shopping</h3>
+              <div class="space-y-4">
+                <div class="bg-texas-cream-200 p-4 rounded-lg">
+                  <h4 class="font-semibold text-texas-navy mb-2">Calculate Your Average Usage</h4>
+                  <p class="text-sm text-texas-navy">
+                    Look at your last 12 months of bills. Add up your kWh usage and divide by 12 to get your monthly average. This helps you compare plans accurately.
+                  </p>
+                </div>
+                
+                <div class="bg-texas-cream-200 p-4 rounded-lg">
+                  <h4 class="font-semibold text-texas-navy mb-2">Check Your Current Contract</h4>
+                  <p class="text-sm text-texas-navy">
+                    Find your contract end date and early termination fee. If you're still under contract, calculate whether savings justify the cancellation fee.
+                  </p>
+                </div>
+                
+                <div class="bg-texas-cream-200 p-4 rounded-lg">
+                  <h4 class="font-semibold text-texas-navy mb-2">Set Your Priorities</h4>
+                  <p class="text-sm text-texas-navy">
+                    Decide what's most important: lowest rate, green energy, no deposit, flexible terms, or specific customer service features.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-texas-navy mb-4">Where to Compare Plans</h3>
+              <div class="space-y-4">
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 mb-2">PowerToChoose.org</h4>
+                  <p class="text-sm text-gray-600">Official Texas state website with all certified providers and their rates.</p>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 mb-2">ChooseMyPower.org</h4>
+                  <p class="text-sm text-gray-600">Advanced filtering and comparison tools with detailed plan analysis.</p>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 mb-2">Provider Websites</h4>
+                  <p class="text-sm text-gray-600">Check directly with providers for exclusive online deals and promotional rates.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 bg-yellow-50 p-6 rounded-lg">
+            <h3 class="text-lg font-semibold text-yellow-800 mb-3">⚠️ Important: Read the Electricity Facts Label (EFL)</h3>
+            <p class="text-yellow-800">
+              Every plan must provide an EFL showing exactly what you'll pay at 500, 1,000, and 2,000 kWh usage levels. Use this to compare total costs, not just the advertised rate.
+            </p>
+          </div>
+        </section>
+
+        <!-- Step 2 -->
+        <section class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+          <div class="flex items-center mb-6">
+            <div class="bg-texas-red text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mr-4">2</div>
+            <h2 class="text-3xl font-bold text-texas-navy">Enroll with Your New Provider</h2>
+          </div>
+          
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-xl font-semibold text-texas-navy mb-4">Enrollment Methods</h3>
+              
+              <div class="space-y-4">
+                <div class="border border-green-200 rounded-lg p-4 bg-green-50">
+                  <h4 class="font-semibold text-green-700 mb-2">Online Enrollment (Recommended)</h4>
+                  <ul class="text-sm text-green-700 space-y-1">
+                    <li>• Fastest and most convenient</li>
+                    <li>• Get instant confirmation</li>
+                    <li>• Often includes online-only promotions</li>
+                    <li>• Avoid high-pressure sales tactics</li>
+                  </ul>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 mb-2">Phone Enrollment</h4>
+                  <ul class="text-sm text-gray-700 space-y-1">
+                    <li>• Speak with a representative</li>
+                    <li>• Ask questions about plan details</li>
+                    <li>• May take 15-30 minutes</li>
+                    <li>• Confirm all details before hanging up</li>
+                  </ul>
+                </div>
+                
+                <div class="border border-red-200 rounded-lg p-4 bg-red-50">
+                  <h4 class="font-semibold text-red-700 mb-2">Door-to-Door Sales (Avoid)</h4>
+                  <ul class="text-sm text-red-700 space-y-1">
+                    <li>• High risk of scams and fraud</li>
+                    <li>• Pressure tactics and misleading claims</li>
+                    <li>• Never sign with door-to-door sellers</li>
+                    <li>• Research online instead</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-texas-navy mb-4">Information You'll Provide</h3>
+              
+              <div class="space-y-4">
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-gray-900 mb-3">Required Information:</h4>
+                  <ul class="text-sm text-gray-700 space-y-2">
+                    <li>• <strong>ESI ID:</strong> 17 or 22-digit number from your bill</li>
+                    <li>• <strong>Service Address:</strong> Where electricity is delivered</li>
+                    <li>• <strong>Mailing Address:</strong> Where you want bills sent</li>
+                    <li>• <strong>Social Security Number:</strong> For identity verification</li>
+                    <li>• <strong>Contact Information:</strong> Phone and email</li>
+                    <li>• <strong>Move-in Date:</strong> When service should start</li>
+                  </ul>
+                </div>
+                
+                <div class="bg-gray-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-gray-900 mb-3">Optional Information:</h4>
+                  <ul class="text-sm text-gray-700 space-y-2">
+                    <li>• <strong>Bank Account:</strong> For automatic payments</li>
+                    <li>• <strong>ID Verification:</strong> Driver's license info</li>
+                    <li>• <strong>Employment Info:</strong> May be required for no-deposit offers</li>
+                    <li>• <strong>Previous Usage:</strong> To estimate your bills</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 bg-texas-cream-200 p-6 rounded-lg">
+            <h3 class="text-lg font-semibold text-texas-navy mb-3">💡 Pro Tip: Security Deposits</h3>
+            <p class="text-texas-navy">
+              Providers may require a security deposit (typically $100-300) based on your credit score. Many offer ways to waive deposits with auto-pay, good credit, or 12+ months payment history with previous providers.
+            </p>
+          </div>
+        </section>
+
+        <!-- Step 3 -->
+        <section class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+          <div class="flex items-center mb-6">
+            <div class="bg-texas-red text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mr-4">3</div>
+            <h2 class="text-3xl font-bold text-texas-navy">Review Your Enrollment</h2>
+          </div>
+          
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-xl font-semibold text-texas-navy mb-4">What Happens After Enrollment</h3>
+              
+              <div class="space-y-4">
+                <div class="flex items-start">
+                  <div class="bg-texas-navy text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3 mt-1">1</div>
+                  <div>
+                    <h4 class="font-semibold text-gray-900 mb-1">Immediate Confirmation</h4>
+                    <p class="text-sm text-gray-600">You'll receive an enrollment confirmation number and email confirmation immediately.</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <div class="bg-texas-navy text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3 mt-1">2</div>
+                  <div>
+                    <h4 class="font-semibold text-gray-900 mb-1">Welcome Package (3-5 days)</h4>
+                    <p class="text-sm text-gray-600">Your new provider sends a Welcome Letter with complete contract terms and conditions.</p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start">
+                  <div class="bg-texas-navy text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3 mt-1">3</div>
+                  <div>
+                    <h4 class="font-semibold text-gray-900 mb-1">Switch Processing (14+ days)</h4>
+                    <p class="text-sm text-gray-600">Your new provider notifies your TDSP and processes the switch for your next meter reading date.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-texas-navy mb-4">Your 3-Day Cancellation Window</h3>
+              
+              <div class="bg-yellow-50 p-6 rounded-lg">
+                <h4 class="font-semibold text-yellow-800 mb-3">⏰ Right of Rescission</h4>
+                <p class="text-sm text-yellow-800 mb-4">
+                  Texas law gives you 3 business days to cancel any electricity contract without penalty after enrollment. This period starts when you receive your Welcome Letter.
+                </p>
+                
+                <div class="space-y-2 text-sm text-yellow-800">
+                  <h5 class="font-semibold">How to Cancel:</h5>
+                  <ul class="space-y-1">
+                    <li>• Call your new provider's customer service</li>
+                    <li>• Email written cancellation notice</li>
+                    <li>• Mail written notice (postmarked within 3 days)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8">
+            <h3 class="text-xl font-semibold text-texas-navy mb-4">Review Your Welcome Letter Carefully</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="bg-green-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-green-700 mb-3">✅ Verify These Details:</h4>
+                <ul class="text-sm text-green-700 space-y-1">
+                  <li>• Rate per kWh matches what you agreed to</li>
+                  <li>• Contract length is correct</li>
+                  <li>• Monthly fees match the plan you selected</li>
+                  <li>• Service address is accurate</li>
+                  <li>• Early termination fee amount</li>
+                  <li>• Promotional credits are included</li>
+                </ul>
+              </div>
+              
+              <div class="bg-red-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-red-700 mb-3">🚨 Red Flags to Watch For:</h4>
+                <ul class="text-sm text-red-700 space-y-1">
+                  <li>• Different rate than discussed</li>
+                  <li>• Additional fees not mentioned</li>
+                  <li>• Wrong contract length</li>
+                  <li>• Missing promotional terms</li>
+                  <li>• Automatic renewal at higher rates</li>
+                  <li>• Usage requirements not disclosed</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Step 4 -->
+        <section class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+          <div class="flex items-center mb-6">
+            <div class="bg-texas-red text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mr-4">4</div>
+            <h2 class="text-3xl font-bold text-texas-navy">Complete the Switch</h2>
+          </div>
+          
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-xl font-semibold text-texas-navy mb-4">Timeline & What to Expect</h3>
+              
+              <div class="space-y-4">
+                <div class="bg-texas-cream-200 p-4 rounded-lg">
+                  <h4 class="font-semibold text-texas-navy mb-2">Switch Date</h4>
+                  <p class="text-sm text-texas-navy">
+                    Your switch occurs on your next regularly scheduled meter reading date, typically 14+ days after enrollment. You cannot choose the exact switch date.
+                  </p>
+                </div>
+                
+                <div class="bg-texas-cream-200 p-4 rounded-lg">
+                  <h4 class="font-semibold text-texas-navy mb-2">No Service Interruption</h4>
+                  <p class="text-sm text-texas-navy">
+                    Your electricity never stops flowing. The same power lines deliver electricity – only the company billing you changes.
+                  </p>
+                </div>
+                
+                <div class="bg-texas-cream-200 p-4 rounded-lg">
+                  <h4 class="font-semibold text-texas-navy mb-2">Two Bills During Transition</h4>
+                  <p class="text-sm text-texas-navy">
+                    You may receive bills from both your old and new provider during the switch month. Pay both to avoid late fees.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-texas-navy mb-4">Final Steps</h3>
+              
+              <div class="space-y-4">
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 mb-2">1. Pay Your Final Bill</h4>
+                  <p class="text-sm text-gray-600">
+                    Your old provider will send a final bill for electricity used before the switch date. Pay this promptly to avoid late fees and maintain good credit.
+                  </p>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 mb-2">2. Set Up Account with New Provider</h4>
+                  <p class="text-sm text-gray-600">
+                    Create your online account, set up auto-pay if desired, and choose paperless billing for potential discounts.
+                  </p>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 mb-2">3. Monitor Your First Bills</h4>
+                  <p class="text-sm text-gray-600">
+                    Check that your new provider applies the correct rates and credits. Contact customer service immediately if you spot any errors.
+                  </p>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 mb-2">4. Set Contract Expiration Reminder</h4>
+                  <p class="text-sm text-gray-600">
+                    Put a calendar reminder 60 days before your contract expires to shop for new rates and avoid auto-renewal at higher prices.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Common Issues -->
+        <section class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+          <h2 class="text-3xl font-bold text-texas-navy mb-6">Troubleshooting Common Issues</h2>
+          
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-xl font-semibold text-red-700 mb-4">🚨 Problems & Solutions</h3>
+              
+              <div class="space-y-4">
+                <div class="border border-red-200 rounded-lg p-4 bg-red-50">
+                  <h4 class="font-semibold text-red-700 mb-2">Switch is Delayed/Rejected</h4>
+                  <p class="text-sm text-red-700 mb-2"><strong>Common Causes:</strong></p>
+                  <ul class="text-xs text-red-700 space-y-1">
+                    <li>• Incorrect ESI ID or address</li>
+                    <li>• Outstanding balance with current provider</li>
+                    <li>• Failed credit check requiring deposit</li>
+                  </ul>
+                  <p class="text-sm text-red-700 mt-2"><strong>Solution:</strong> Contact new provider immediately to resolve issues.</p>
+                </div>
+                
+                <div class="border border-red-200 rounded-lg p-4 bg-red-50">
+                  <h4 class="font-semibold text-red-700 mb-2">Unexpected Cancellation Fees</h4>
+                  <p class="text-sm text-red-700 mb-2"><strong>Cause:</strong> Switching before contract expires</p>
+                  <p class="text-sm text-red-700"><strong>Solution:</strong> Calculate if savings justify the fee or wait until contract ends.</p>
+                </div>
+                
+                <div class="border border-red-200 rounded-lg p-4 bg-red-50">
+                  <h4 class="font-semibold text-red-700 mb-2">Wrong Rate on First Bill</h4>
+                  <p class="text-sm text-red-700 mb-2"><strong>Cause:</strong> Billing system errors or promo codes not applied</p>
+                  <p class="text-sm text-red-700"><strong>Solution:</strong> Contact customer service with your Welcome Letter as proof of agreed terms.</p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-green-700 mb-4">✅ Prevention Tips</h3>
+              
+              <div class="space-y-4">
+                <div class="bg-green-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-green-700 mb-2">Double-Check Your Information</h4>
+                  <p class="text-sm text-green-700">
+                    Verify your ESI ID, service address, and personal information before submitting enrollment. Small errors can delay your switch by weeks.
+                  </p>
+                </div>
+                
+                <div class="bg-green-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-green-700 mb-2">Pay Outstanding Balances</h4>
+                  <p class="text-sm text-green-700">
+                    Ensure you're current with your existing provider. Outstanding balances often prevent switches from completing.
+                  </p>
+                </div>
+                
+                <div class="bg-green-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-green-700 mb-2">Keep Documentation</h4>
+                  <p class="text-sm text-green-700">
+                    Save your enrollment confirmation, Welcome Letter, and all communications. You'll need these to resolve any disputes.
+                  </p>
+                </div>
+                
+                <div class="bg-green-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-green-700 mb-2">Set Up Monitoring</h4>
+                  <p class="text-sm text-green-700">
+                    Check your first 2-3 bills carefully to ensure rates and credits are applied correctly. Early detection prevents larger problems.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Action Steps -->
+        <section class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+          <h2 class="text-3xl font-bold text-texas-navy mb-6">Your Switching Checklist</h2>
+          
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-xl font-semibold text-texas-navy mb-4">Before Switching:</h3>
+              <div class="space-y-2 text-sm">
+                <label class="flex items-center">
+                  <input type="checkbox" class="mr-3 text-texas-red">
+                  <span>Calculated my average monthly kWh usage</span>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" class="mr-3 text-texas-red">
+                  <span>Checked my current contract end date</span>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" class="mr-3 text-texas-red">
+                  <span>Found my ESI ID on current bill</span>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" class="mr-3 text-texas-red">
+                  <span>Compared at least 3 different plans</span>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" class="mr-3 text-texas-red">
+                  <span>Read the Electricity Facts Label</span>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" class="mr-3 text-texas-red">
+                  <span>Verified provider credentials</span>
+                </label>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-texas-navy mb-4">After Switching:</h3>
+              <div class="space-y-2 text-sm">
+                <label class="flex items-center">
+                  <input type="checkbox" class="mr-3 text-texas-red">
+                  <span>Reviewed Welcome Letter within 3 days</span>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" class="mr-3 text-texas-red">
+                  <span>Set up online account with new provider</span>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" class="mr-3 text-texas-red">
+                  <span>Enabled auto-pay for discounts</span>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" class="mr-3 text-texas-red">
+                  <span>Paid final bill from old provider</span>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" class="mr-3 text-texas-red">
+                  <span>Verified first bill rates are correct</span>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" class="mr-3 text-texas-red">
+                  <span>Set contract expiration reminder</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Footer CTA -->
+      <div class="mt-16 text-center">
+        <div class="bg-gradient-to-r from-texas-navy to-blue-800 text-white p-12 rounded-xl">
+          <h2 class="text-3xl font-bold mb-4">Ready to Switch and Start Saving?</h2>
+          <p class="text-xl mb-8 text-blue-100">Compare plans from 100+ Texas providers and switch in minutes.</p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/electricity-plans" class="bg-texas-red text-white px-8 py-4 rounded-lg font-semibold hover:bg-texas-red-600 transition-colors">
+              Compare Plans Now
+            </a>
+            <a href="/rates/calculator" class="bg-texas-gold text-texas-navy px-8 py-4 rounded-lg font-semibold hover:bg-texas-gold-600 transition-colors">
+              Calculate Your Savings
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

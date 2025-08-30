@@ -1,0 +1,166 @@
+---
+/**
+ * Standard ZIP Input Component
+ * 
+ * Reusable component that matches the exact functionality and styling of the homepage ZIP input.
+ * Uses the same /api/zip-lookup endpoint and /js/zip-lookup.js script for consistency.
+ * 
+ * Props:
+ * - size: 'sm' | 'md' | 'lg' (default: 'md')
+ * - variant: 'hero' | 'inline' | 'compact' (default: 'inline') 
+ * - showTitle: boolean (default: false)
+ * - showDescription: boolean (default: false)
+ * - showStats: boolean (default: false)
+ * - customClass: string (additional CSS classes)
+ */
+
+import { DEFAULT_COUNTS } from '../lib/utils/dynamic-counts';
+
+export interface Props {
+  size?: 'sm' | 'md' | 'lg';
+  variant?: 'hero' | 'inline' | 'compact';
+  showTitle?: boolean;
+  showDescription?: boolean; 
+  showStats?: boolean;
+  customClass?: string;
+}
+
+const { 
+  size = 'md',
+  variant = 'inline',
+  showTitle = false,
+  showDescription = false,
+  showStats = false,
+  customClass = ''
+} = Astro.props;
+
+// Size configurations
+const sizes = {
+  sm: {
+    input: 'pl-10 pr-4 py-3 text-base',
+    button: 'px-6 py-3',
+    icon: 'h-5 w-5'
+  },
+  md: {
+    input: 'pl-14 pr-6 py-5 text-xl',
+    button: 'px-10 py-5',
+    icon: 'h-6 w-6'
+  },
+  lg: {
+    input: 'pl-16 pr-8 py-6 text-2xl',
+    button: 'px-12 py-6',
+    icon: 'h-7 w-7'
+  }
+};
+
+// Variant configurations
+const variants = {
+  hero: {
+    container: 'max-w-xl mx-auto',
+    form: 'rounded-2xl shadow-2xl overflow-hidden bg-white ring-4 ring-white/10 backdrop-blur-sm',
+    background: 'transparent'
+  },
+  inline: {
+    container: 'w-full max-w-md',
+    form: 'rounded-lg shadow-lg overflow-hidden bg-white border border-gray-200',
+    background: 'bg-gray-50'
+  },
+  compact: {
+    container: 'w-full max-w-sm',
+    form: 'rounded-md shadow overflow-hidden bg-white border border-gray-300',
+    background: 'bg-gray-100'
+  }
+};
+
+const sizeConfig = sizes[size];
+const variantConfig = variants[variant];
+
+// Using imported DEFAULT_COUNTS from dynamic-counts system
+---
+
+<div class={`${variantConfig.container} ${customClass}`}>
+  {showTitle && (
+    <div class="mb-6 text-center">
+      <h2 class={`text-xl font-semibold mb-2 ${variant === 'hero' ? 'text-white' : 'text-texas-navy'}`}>Find Plans in Your Area</h2>
+      {showDescription && (
+        <p class={`text-sm ${variant === 'hero' ? 'text-blue-200' : 'text-gray-600'}`}>Enter your ZIP code to see available electricity plans and rates</p>
+      )}
+    </div>
+  )}
+  
+  <form id="zipForm" class="relative" action="/api/zip-lookup" method="GET">
+    <div class={`flex ${variantConfig.form}`}>
+      <div class="flex-1 relative">
+        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+          <svg class={`${sizeConfig.icon} text-gray-400`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+          </svg>
+        </div>
+        <input
+          type="text"
+          id="zipInput"
+          name="zip"
+          maxlength="5"
+          placeholder="Enter zip code"
+          class={`w-full ${sizeConfig.input} text-gray-900 placeholder-gray-500 border-0 focus:ring-0 focus:outline-none font-medium tracking-wider`}
+          autocomplete="postal-code"
+          inputmode="numeric"
+          required
+        />
+      </div>
+      <button
+        type="submit"
+        aria-label="Search electricity plans by ZIP code"
+        class={`${sizeConfig.button} bg-gradient-to-r from-texas-red to-texas-red-700 text-white font-bold hover:from-texas-red-600 hover:to-texas-red-800 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-texas-red-200 active:scale-95 group`}
+      >
+        <div class="flex items-center gap-3">
+          <svg class={`${sizeConfig.icon} group-hover:scale-110 transition-transform`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+          {size !== 'sm' && <span class="hidden sm:block">Find Plans</span>}
+        </div>
+      </button>
+    </div>
+  </form>
+  
+  {showStats && (
+    <div class="mt-6 grid grid-cols-3 gap-4 text-center">
+      <div class={`rounded-lg p-4 border ${variant === 'hero' ? 'bg-white/10 backdrop-blur-sm border-white/20' : 'bg-white border-gray-200 shadow-sm'}`}>
+        <div class={`text-xl font-bold ${variant === 'hero' ? 'text-white' : 'text-texas-navy'}`}>{DEFAULT_COUNTS.cities}</div>
+        <div class={`text-xs ${variant === 'hero' ? 'text-blue-200' : 'text-gray-600'}`}>Texas Cities</div>
+      </div>
+      <div class={`rounded-lg p-4 border ${variant === 'hero' ? 'bg-white/10 backdrop-blur-sm border-white/20' : 'bg-white border-gray-200 shadow-sm'}`}>
+        <div class={`text-xl font-bold ${variant === 'hero' ? 'text-white' : 'text-texas-navy'}`}>{DEFAULT_COUNTS.providers}</div>
+        <div class={`text-xs ${variant === 'hero' ? 'text-blue-200' : 'text-gray-600'}`}>Providers</div>
+      </div>
+      <div class={`rounded-lg p-4 border ${variant === 'hero' ? 'bg-white/10 backdrop-blur-sm border-white/20' : 'bg-white border-gray-200 shadow-sm'}`}>
+        <div class={`text-xl font-bold ${variant === 'hero' ? 'text-white' : 'text-texas-navy'}`}>{DEFAULT_COUNTS.plans}</div>
+        <div class={`text-xs ${variant === 'hero' ? 'text-blue-200' : 'text-gray-600'}`}>Plans</div>
+      </div>
+    </div>
+  )}
+</div>
+
+<!-- Load ZIP lookup functionality from external optimized file -->
+<script src="/js/zip-lookup.js" defer></script>
+
+<style>
+  /* Ensure consistent focus states */
+  #zipInput:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+  }
+  
+  /* Button hover enhancements */
+  button[type="submit"]:hover svg {
+    transform: scale(1.1);
+  }
+  
+  /* Mobile optimization */
+  @media (max-width: 640px) {
+    .hidden.sm\\:block {
+      display: none;
+    }
+  }
+</style>

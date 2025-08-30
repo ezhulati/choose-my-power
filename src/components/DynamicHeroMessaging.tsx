@@ -3,8 +3,8 @@ import { messagingEngine, type MessagingBundle } from '../lib/messaging/temporal
 
 export function DynamicHeroMessaging() {
   const [messaging, setMessaging] = useState<MessagingBundle>({
-    headline: "Find Your Electricity Provider",
-    subheadline: "Compare plans and save on your electric bill"
+    headline: "Compare Texas Electricity Plans & Rates",
+    subheadline: "No more teaser rates that cost 14¢. Clear prices and straight answers."
   });
 
   useEffect(() => {
@@ -22,23 +22,14 @@ export function DynamicHeroMessaging() {
   }, []);
 
   return (
-    <div className="dynamic-hero-messaging mb-8">
-      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 animate-fade-in leading-tight max-w-4xl mx-auto">
+    <div className="dynamic-hero-messaging space-y-2">
+      <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white leading-tight max-w-4xl mx-auto">
         {messaging.headline}
       </h1>
-      <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-white/90 max-w-3xl mx-auto leading-relaxed">
+      
+      <p className="text-lg md:text-xl text-blue-100/80 font-normal max-w-3xl mx-auto leading-relaxed">
         {messaging.subheadline}
       </p>
-      {messaging.urgencyFlag && (
-        <p className="text-sm sm:text-base text-texas-gold mb-4 font-medium max-w-2xl mx-auto">
-          {messaging.urgencyFlag}
-        </p>
-      )}
-      {messaging.ctaText && (
-        <p className="text-sm sm:text-base text-blue-200 font-semibold uppercase tracking-wide">
-          {messaging.ctaText} →
-        </p>
-      )}
     </div>
   );
 }

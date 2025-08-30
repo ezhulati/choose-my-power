@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { PrivacyPolicyPage } from './_components/PrivacyPolicyPage';
+
+const title = "Privacy Policy | ChooseMyPower.org";
+const description = "ChooseMyPower.org privacy policy. Learn how we protect your personal information and data when using our electricity comparison service.";
+---
+
+<Layout title={title} description={description}>
+  <PrivacyPolicyPage client:load />
+
+  <script>
+    // Client-side navigation function for React components
+    window.navigateToPath = function(path) {
+      window.location.href = path;
+    };
+  </script>
+</Layout>

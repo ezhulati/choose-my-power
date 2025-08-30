@@ -3,60 +3,51 @@ import Layout from '../../layouts/Layout.astro';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { DollarSign, TrendingDown, Calculator, Award, AlertTriangle, Eye, CheckCircle, Target } from 'lucide-react';
 
-const title = "Your Neighbor Found 8¢ Electricity. Here's How. | Texas Cheapest Rates";
-const description = "Skip the PowerToChoose fake teaser rates. We show real total costs with all fees included. Find truly cheap electricity rates in Texas.";
+const title = "Compare Lowest Electricity Rates in Texas | Cheapest Plans";
+const description = "Compare lowest electricity rates in Texas. Find affordable plans from licensed providers with transparent pricing including all fees.";
 ---
 
 <Layout title={title} description={description}>
   <div class="bg-white">
-    <!-- Hero Section with Hero's Journey -->
-    <section class="relative bg-gradient-to-br from-texas-red via-red-700 to-texas-red overflow-hidden">
-      <!-- Background Pattern -->
-      <div class="absolute inset-0 bg-black/20"></div>
-      <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;80&quot; height=&quot;80&quot; viewBox=&quot;0 0 80 80&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;0.08&quot;%3E%3Cpath d=&quot;M20 20l20-20v40L20 20zm20 20l20-20v40L40 40z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-      
-      <!-- Content Container -->
-      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div class="text-center">
-          <!-- Problem Hook -->
-          <div class="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-8">
-            <AlertTriangle className="w-10 h-10 text-white" />
-          </div>
-          
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            Your Neighbor Found 8¢ Electricity. Here's How.
+    <!-- Elegant Hero Section -->
+    <section class="bg-gradient-to-br from-texas-navy via-blue-800 to-texas-navy">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 text-center">
+        <div class="inline-flex items-center justify-center w-16 h-16 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-6">
+          <TrendingDown className="h-8 w-8 text-white" />
+        </div>
+        
+        <div class="space-y-4">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold text-white leading-tight max-w-4xl mx-auto">
+            Cheapest Texas Electricity Plans - Real Rates
           </h1>
           
-          <p class="text-xl md:text-2xl text-red-100 max-w-4xl mx-auto mb-8 leading-relaxed">
-            Tired of PowerToChoose showing you fake "teaser rates" that explode after 3 months? 
-            We'll show you the real total cost with ALL fees included. No tricks. No surprises.
+          <p class="text-base md:text-lg text-blue-100/80 font-normal max-w-3xl mx-auto leading-relaxed">
+            Find genuinely cheap electricity plans from licensed Texas providers. 
+            <span class="text-white font-medium">All rates include delivery charges and fees</span> - no surprises.
           </p>
-
-          <!-- Trust Indicators -->
-          <div class="flex flex-wrap items-center justify-center gap-6 mb-10 text-red-200">
-            <div class="flex items-center gap-2">
-              <Eye className="w-5 h-5 text-white" />
-              <span class="font-medium">Real Total Cost</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <CheckCircle className="w-5 h-5 text-white" />
-              <span class="font-medium">All Fees Included</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <Target className="w-5 h-5 text-white" />
-              <span class="font-medium">No Teaser Tricks</span>
-            </div>
-          </div>
           
-          <!-- ZIP Search -->
-          <div class="max-w-md mx-auto">
-            <ZipCodeSearch 
-              client:load
-              placeholder="Enter zip code"
-              className="w-full"
-            />
-            <p class="text-red-200 text-sm mt-2">See what your neighbor actually pays</p>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 max-w-2xl mx-auto border border-white/20">
+            <p class="text-sm text-white/90 font-normal">
+              <span class="text-texas-gold font-medium">Total cost comparison</span> with all fees included upfront.
+            </p>
           </div>
+        </div>
+
+        <!-- Trust Indicators -->
+        <div class="flex flex-wrap items-center justify-center gap-6 text-center text-white/70 text-sm max-w-md mx-auto mt-8">
+          <span>Real total costs</span>
+          <span>All fees included</span>
+          <span>No teaser tricks</span>
+        </div>
+        
+        <!-- ZIP Search -->
+        <div class="max-w-md mx-auto mt-8">
+          <ZipCodeSearch 
+            client:load
+            placeholder="Enter your ZIP code"
+            className="w-full"
+          />
+          <p class="text-blue-200 text-sm mt-2">Compare cheapest rates in your area</p>
         </div>
       </div>
     </section>
@@ -66,12 +57,11 @@ const description = "Skip the PowerToChoose fake teaser rates. We show real tota
       <!-- The Problem: PowerToChoose Deception -->
       <div class="mb-16">
         <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold text-texas-navy mb-6">
-            Why PowerToChoose Shows Fake Rates
+          <h2 class="text-xl md:text-2xl font-semibold text-texas-navy mb-4">
+            How to Compare Electricity Rates Correctly
           </h2>
-          <p class="text-xl text-gray-600 max-w-4xl mx-auto">
-            You've been there. You see "8.9¢" advertised, sign up, and your first bill is $180 for 1,000 kWh. 
-            Here's what they're hiding from you.
+          <p class="text-base text-gray-600 max-w-3xl mx-auto">
+            Compare total monthly cost including delivery charges, connection fees, and all service charges.
           </p>
         </div>
 
@@ -79,7 +69,7 @@ const description = "Skip the PowerToChoose fake teaser rates. We show real tota
           <div class="bg-red-50 border-2 border-red-200 rounded-xl p-8">
             <h3 class="text-2xl font-bold text-red-800 mb-4 flex items-center gap-3">
               <AlertTriangle className="h-6 w-6" />
-              What PowerToChoose Shows
+              Advertised Rate Only
             </h3>
             <div class="space-y-4">
               <div class="flex justify-between items-center">
@@ -96,7 +86,7 @@ const description = "Skip the PowerToChoose fake teaser rates. We show real tota
           <div class="bg-green-50 border-2 border-green-200 rounded-xl p-8">
             <h3 class="text-2xl font-bold text-green-800 mb-4 flex items-center gap-3">
               <CheckCircle className="h-6 w-6" />
-              What We Show You
+              Total Cost Comparison
             </h3>
             <div class="space-y-3">
               <div class="flex justify-between items-center">
@@ -120,9 +110,9 @@ const description = "Skip the PowerToChoose fake teaser rates. We show real tota
         </div>
       </div>
 
-      <!-- Savings Calculator -->
-      <div class="mb-12 bg-gradient-to-r from-texas-gold-50 to-yellow-50 border border-texas-gold-200 rounded-xl p-8">
-        <h2 class="text-2xl font-bold text-texas-navy mb-6">Stop Getting Ripped Off - Calculate Your Real Savings</h2>
+      <!-- Elegant Savings Calculator -->
+      <div class="mb-12 bg-gradient-to-br from-texas-gold-50 to-yellow-50 border border-texas-gold-200 rounded-xl p-6 lg:p-8">
+        <h2 class="text-lg md:text-xl font-semibold text-texas-navy mb-6">Calculate Your Real Savings</h2>
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
           <div>
             <label class="block text-sm font-medium text-gray-700 mb-2">What You Pay Now (total bill)</label>
@@ -147,12 +137,12 @@ const description = "Skip the PowerToChoose fake teaser rates. We show real tota
       <!-- Actually Cheapest Plans -->
       <div class="mb-16">
         <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold text-texas-navy mb-6">
-            Real Cheapest Plans (With All Fees)
+          <h2 class="text-xl md:text-2xl font-semibold text-texas-navy mb-4">
+            Cheapest Texas Plans (All Fees Included)
           </h2>
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-            These aren't teaser rates. These are the actual cheapest plans when you add up everything you'll pay. 
-            Your neighbor who found 8¢ electricity? This is what they actually chose.
+          <p class="text-base text-gray-600 max-w-3xl mx-auto">
+            These are the genuinely cheapest plans when you add up everything you'll pay. 
+            <span class="text-foreground font-medium">No teaser rates, just honest total costs.</span>
           </p>
         </div>
         
@@ -237,7 +227,7 @@ const description = "Skip the PowerToChoose fake teaser rates. We show real tota
                   <div class="text-2xl font-bold text-texas-navy">Save $86</div>
                   <div class="text-sm text-gray-600">per month vs average</div>
                 </div>
-                <button class="bg-texas-navy text-white px-6 py-3 min-h-[48px] rounded-lg hover:bg-blue-800 transition-colors mb-2 touch-manipulation w-full">
+                <button class="bg-texas-navy text-white px-6 py-3 min-h-[48px] rounded-lg hover:bg-texas-navy/90 transition-colors mb-2 touch-manipulation w-full">
                   Get This Rate
                 </button>
                 <div class="text-xs text-gray-500">Online account management</div>

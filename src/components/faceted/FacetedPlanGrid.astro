@@ -4,7 +4,7 @@
  * Advanced plan grid with sorting, filtering, comparison, infinite scroll,
  * and mobile-optimized display features for electricity plan comparison
  */
-import PlanCardImproved from './PlanCardImproved.astro';
+import { ProfessionalPlanCard } from '../ui/ProfessionalPlanCard';
 import type { Plan } from '../../types/facets';
 
 interface Props {
@@ -54,6 +54,27 @@ const sortPlans = (plans: Plan[], sortBy: string) => {
 // Get plans for initial display
 const sortedPlans = sortPlans(plans, defaultSort);
 const initialPlans = enableInfiniteScroll ? sortedPlans.slice(0, plansPerPage) : sortedPlans;
+
+// Convert plans to ProfessionalPlanCard format
+const convertedInitialPlans = initialPlans.map((plan) => ({
+  id: plan.id,
+  name: plan.name,
+  provider: plan.provider.name,
+  rate: plan.pricing.rate1000kWh,
+  contractTerm: `${plan.contract.length} months`,
+  planType: plan.contract.type as 'fixed' | 'variable' | 'indexed',
+  greenEnergy: plan.features.greenEnergy > 0,
+  noDeposit: !plan.features.deposit.required,
+  topRated: plan.provider.rating >= 4.5,
+  features: [
+    plan.contract.type === 'fixed' ? 'Fixed Rate' : plan.contract.type === 'variable' ? 'Variable Rate' : 'Indexed Rate',
+    ...(plan.features.greenEnergy > 0 ? [`${plan.features.greenEnergy}% Green Energy`] : []),
+    ...(!plan.features.deposit.required ? ['No Deposit'] : []),
+    ...(plan.features.freeTime ? ['Free Time'] : []),
+    ...(plan.features.billCredit > 0 ? ['Bill Credit'] : [])
+  ].filter(Boolean),
+  slug: plan.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')
+}));
 
 // Calculate statistics for display
 const totalPlans = plans.length;
@@ -182,13 +203,12 @@ const sortingOptions = [
       
       <!-- Grid View - Mobile-First Responsive -->
       <div class={`grid-view ${viewMode === 'grid' ? 'active' : 'hidden'}`}>
-        <div class="plans-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {initialPlans.map((plan, index) => (
-            <PlanCardImproved 
-              plan={plan} 
-              city={city}
-              position={index + 1}
-              showComparison={showComparison}
+        <div class="plans-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {convertedInitialPlans.map((plan) => (
+            <ProfessionalPlanCard 
+              plan={plan}
+              client:load
+              className="h-full"
             />
           ))}
         </div>

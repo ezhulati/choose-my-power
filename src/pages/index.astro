@@ -2,11 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 import StandardZipInput from '../components/StandardZipInput.astro';
 import { Zap, Shield, DollarSign, Clock, MapPin, Calculator, Leaf, Users, TrendingDown, Battery, Award, BarChart, Star, ArrowRight } from 'lucide-react';
-import { getCredibleMarketingText, DEFAULT_COUNTS } from '../lib/utils/dynamic-counts';
+import { getCredibleMarketingText, DEFAULT_COUNTS, getRealTimeLowestRate } from '../lib/utils/dynamic-counts';
 import { DynamicHeroMessaging } from '../components/DynamicHeroMessaging';
 
-const title = "Finally. Texas Electricity That Makes Sense. | ChooseMyPower.org";
-const description = "No more 6.9¢ rates that cost 14¢. No more 40-page contracts. Just honest prices and straight answers from someone who's figured this out. Whether you're moving tomorrow or your rate just jumped, we'll get you sorted in 10 minutes.";
+// Get the actual lowest rate available
+const lowestRate = await getRealTimeLowestRate();
+
+const title = "Compare Texas Electricity Plans & Find Your Best Rate | ChooseMyPower.org";
+const description = `No more "${lowestRate}¢" rates that cost 14¢. No more 40-page contracts. Clear prices and straight answers from someone who's figured this out. Whether you're moving tomorrow or your rate just jumped, we'll get you sorted in 10 minutes.`;
 
 // Homepage uses gradient background - no hero image needed
 ---
@@ -19,7 +22,7 @@ const description = "No more 6.9¢ rates that cost 14¢. No more 40-page contrac
     "@context": "https://schema.org",
     "@type": ["Organization", "WebSite"],
     "name": "ChooseMyPower.org",
-    "description": "No more 6.9¢ rates that cost 14¢. No more 40-page contracts. Just honest prices and straight answers from someone who's figured this out. Whether you're moving tomorrow or your rate just jumped, we'll get you sorted in 10 minutes.",
+    "description": `No more "${lowestRate}¢" rates that cost 14¢. No more 40-page contracts. Clear prices and straight answers from someone who's figured this out. Whether you're moving tomorrow or your rate just jumped, we'll get you sorted in 10 minutes.`,
     "url": "https://choosemypower.org",
     "logo": "https://choosemypower.org/images/og-default.jpg",
     "sameAs": [
@@ -43,58 +46,72 @@ const description = "No more 6.9¢ rates that cost 14¢. No more 40-page contrac
   </script>
 
   <div class="bg-white">
-    <!-- Hero Section - Direct & Honest -->
-    <section class="relative bg-gradient-to-br from-texas-navy via-blue-800 to-texas-navy overflow-hidden">
-      <!-- Background Elements -->
-      <div class="absolute inset-0 bg-black/20"></div>
+    <!-- WORLD-CLASS HERO SECTION - Best-in-Class Design -->
+    <section class="relative min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-texas-navy via-blue-900 to-texas-navy overflow-hidden">
+      <!-- Advanced Background Elements -->
+      <div class="absolute inset-0">
+        <div class="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30"></div>
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-texas-gold/10 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-texas-red/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      </div>
       
       <!-- Content Container -->
-      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="py-20 sm:py-24 lg:py-32">
-          <div class="text-center">
-            <!-- Dynamic Temporal Messaging -->
-            <DynamicHeroMessaging client:load />
-            
-            <!-- ZIP Code Search -->
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="space-y-4">
+          <!-- Dynamic Temporal Headlines -->
+          <DynamicHeroMessaging client:load />
+          
+          <!-- Enhanced ZIP Code Search -->
+          <div class="space-y-8">
             <StandardZipInput 
               variant="hero" 
               size="lg"
-              showTitle={true}
-              showDescription={true}
-              showStats={true}
-              customClass="mb-8"
+              showTitle={false}
+              showDescription={false}
+              showStats={false}
+              customClass="transform hover:scale-105 transition-all duration-300"
             />
-
-            <!-- Trust Signals -->
-            <div class="flex flex-wrap items-center justify-center gap-6 text-blue-200 text-sm">
-              <div class="flex items-center gap-2">
-                <div class="w-2 h-2 bg-texas-gold rounded-full"></div>
-                <span>{DEFAULT_COUNTS.planText} from quality providers</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <div class="w-2 h-2 bg-texas-gold rounded-full"></div>
-                <span>No sign-up needed</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <div class="w-2 h-2 bg-texas-gold rounded-full"></div>
-                <span>No spam. Just answers.</span>
-              </div>
+            
+            <!-- Trust Signals - Redesigned -->
+            <div class="flex flex-wrap items-center justify-center gap-4 text-center text-white/50 text-xs max-w-md mx-auto">
+              <span>{DEFAULT_COUNTS.planText} from licensed companies</span>
+              <span>Free & takes 10 minutes</span>
+              <span>Real prices, no surprises</span>
             </div>
+          </div>
+          
+          <!-- Social Proof Indicator -->
+          <div class="text-blue-200 text-lg">
+            <span class="inline-flex items-center gap-2">
+              <span class="flex -space-x-2">
+                <div class="w-8 h-8 bg-texas-gold rounded-full border-2 border-white"></div>
+                <div class="w-8 h-8 bg-texas-red rounded-full border-2 border-white"></div>
+                <div class="w-8 h-8 bg-blue-500 rounded-full border-2 border-white"></div>
+                <div class="w-8 h-8 bg-texas-navy rounded-full border-2 border-white flex items-center justify-center text-xs text-white font-bold">+</div>
+              </span>
+              Join thousands of Texans who've already found better rates
+            </span>
           </div>
         </div>
       </div>
-
+      
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/60 animate-bounce">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+      </div>
     </section>
 
-    <!-- How It Works - Simple 3-Step Process -->
-    <section class="py-20 bg-gradient-to-b from-gray-50 to-white">
+    <!-- How It Works - Enhanced 3-Step Process -->
+    <section class="py-24 bg-gradient-to-b from-gray-50 via-white to-gray-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold text-texas-navy mb-6">
-            How We Help You Choose Right
+          <h2 class="text-2xl md:text-3xl font-semibold text-texas-navy mb-6">
+            Texas Gives You Choice. We Handle the Homework.
           </h2>
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Three simple steps. No sales calls. No personal information. Just the facts you need to decide.
+          <p class="text-base md:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            {DEFAULT_COUNTS.providers} companies competing for your business. Real competition means better rates. The comparing part? We already did that work.
           </p>
         </div>
 
@@ -106,7 +123,7 @@ const description = "No more 6.9¢ rates that cost 14¢. No more 40-page contrac
             </div>
             <h3 class="text-2xl font-bold text-texas-navy mb-4">Enter Your ZIP</h3>
             <p class="text-gray-600 leading-relaxed">
-              We find quality providers in your area. No phone number. No email. No spam.
+              See which companies compete in your area. (Most states get just one choice.)
             </p>
           </div>
 
@@ -115,9 +132,9 @@ const description = "No more 6.9¢ rates that cost 14¢. No more 40-page contrac
             <div class="w-20 h-20 bg-texas-red rounded-full flex items-center justify-center mx-auto mb-6">
               <span class="text-2xl font-bold text-white">2</span>
             </div>
-            <h3 class="text-2xl font-bold text-texas-navy mb-4">See Real Costs</h3>
+            <h3 class="text-2xl font-bold text-texas-navy mb-4">Skip the Spreadsheets</h3>
             <p class="text-gray-600 leading-relaxed">
-              We calculate what each plan actually costs you. No fine print surprises.
+              We already calculated what each plan actually costs. No fine print math required.
             </p>
           </div>
 
@@ -126,22 +143,23 @@ const description = "No more 6.9¢ rates that cost 14¢. No more 40-page contrac
             <div class="w-20 h-20 bg-texas-red rounded-full flex items-center justify-center mx-auto mb-6">
               <span class="text-2xl font-bold text-white">3</span>
             </div>
-            <h3 class="text-2xl font-bold text-texas-navy mb-4">Pick the Winner</h3>
+            <h3 class="text-2xl font-bold text-texas-navy mb-4">Pick Your Winner</h3>
             <p class="text-gray-600 leading-relaxed">
-              Choose the plan that saves you the most money. Click through to sign up directly.
+              Choose from the best options. Your freedom, your choice, your savings.
             </p>
           </div>
         </div>
 
-        <!-- Moving-Specific Warning -->
+        <!-- Two-Column Critical Information -->
         <div class="mt-12 mb-8 bg-texas-gold-50 rounded-xl p-8 border border-texas-gold-200">
-          <div class="text-center">
-            <h3 class="text-2xl font-bold text-texas-navy mb-4">Moving? Don't Transfer Your Old Plan</h3>
-            <div class="max-w-4xl mx-auto text-left space-y-4">
-              <p class="text-gray-700 leading-relaxed">
+          <div class="grid md:grid-cols-2 gap-8">
+            <!-- Column 1: Moving Advice -->
+            <div class="bg-white rounded-lg p-6 shadow-sm">
+              <h3 class="text-xl font-bold text-texas-navy mb-4">Moving? Don't Transfer Your Old Plan</h3>
+              <p class="text-gray-700 leading-relaxed mb-4">
                 <strong>Here's why transferring is usually a mistake:</strong>
               </p>
-              <ul class="text-gray-700 leading-relaxed space-y-2 ml-6">
+              <ul class="text-gray-700 leading-relaxed space-y-2 mb-4">
                 <li class="flex items-start gap-2">
                   <span class="text-texas-gold mt-1">•</span>
                   <span>Your current plan's price is based on your OLD home's usage</span>
@@ -155,8 +173,33 @@ const description = "No more 6.9¢ rates that cost 14¢. No more 40-page contrac
                   <span>A plan that works for a 2-bedroom apartment will cost way more in a 4-bedroom house (or vice versa)</span>
                 </li>
               </ul>
-              <p class="text-gray-700 leading-relaxed font-semibold text-center mt-6">
+              <p class="text-gray-700 leading-relaxed font-semibold">
                 Let's find a plan that matches your NEW home instead. Takes the same 10 minutes as transferring, saves you money.
+              </p>
+            </div>
+            
+            <!-- Column 2: Contract Expiration Advice -->
+            <div class="bg-white rounded-lg p-6 shadow-sm">
+              <h3 class="text-xl font-bold text-texas-navy mb-4">Contract Expiring? Don't Go on Holdover</h3>
+              <p class="text-gray-700 leading-relaxed mb-4">
+                <strong>If you're on a holdover rate, shop now:</strong>
+              </p>
+              <ul class="text-gray-700 leading-relaxed space-y-2 mb-4">
+                <li class="flex items-start gap-2">
+                  <span class="text-texas-red mt-1">•</span>
+                  <span>Anything will be cheaper than the holdover rate you're on</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-texas-red mt-1">•</span>
+                  <span>In Texas, you have 14 days before your contract expires to switch without penalty</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-texas-red mt-1">•</span>
+                  <span>Shop for a new plan every time your contract expires - don't renew</span>
+                </li>
+              </ul>
+              <p class="text-gray-700 leading-relaxed font-semibold">
+                Best way to save: shop every contract expiration. Never let your plan expire and go on holdover.
               </p>
             </div>
           </div>
@@ -176,18 +219,18 @@ const description = "No more 6.9¢ rates that cost 14¢. No more 40-page contrac
     <section class="py-20 bg-gradient-to-b from-texas-cream/30 to-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold text-texas-navy mb-6">
-            What brings you here today?
+          <h2 class="text-2xl md:text-3xl font-semibold text-texas-navy mb-6">
+            Your Situation. Our Research.
           </h2>
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Tell us your situation and we'll show you exactly what you need to know.
+          <p class="text-base md:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            Texas gives you choices other states don't get. The tedious part? Comparing them all. We skip straight to what matters for your situation.
           </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <!-- Moving -->
           <div class="group relative">
-            <a href="/moving" class="block bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 text-center border-2 border-transparent hover:border-texas-red/30">
+            <a href="#zipForm" class="block bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 text-center border-2 border-transparent hover:border-texas-red/30">
               <div class="w-16 h-16 bg-texas-red/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <MapPin className="w-8 h-8 text-texas-red" />
               </div>
@@ -195,7 +238,7 @@ const description = "No more 6.9¢ rates that cost 14¢. No more 40-page contrac
                 I'm moving
               </div>
               <p class="text-gray-600 text-sm leading-relaxed mb-4">
-                Need power on before you arrive? Your new home needs a plan that matches its size and your usage.
+                Welcome to Texas electricity freedom. Your new home needs a plan that matches its actual usage, not your old one.
               </p>
               <span class="text-texas-red font-semibold text-sm group-hover:underline">
                 Get Power On Day One →
@@ -205,7 +248,7 @@ const description = "No more 6.9¢ rates that cost 14¢. No more 40-page contrac
 
           <!-- High Bill -->
           <div class="group relative">
-            <a href="/high-bill" class="block bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 text-center border-2 border-transparent hover:border-texas-gold/50">
+            <a href="#zipForm" class="block bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 text-center border-2 border-transparent hover:border-texas-gold/50">
               <div class="w-16 h-16 bg-texas-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <DollarSign className="w-8 h-8 text-texas-gold" />
               </div>
@@ -223,7 +266,7 @@ const description = "No more 6.9¢ rates that cost 14¢. No more 40-page contrac
 
           <!-- Contract Ending -->
           <div class="group relative">
-            <a href="/contract-ending" class="block bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 text-center border-2 border-transparent hover:border-texas-navy/30">
+            <a href="#zipForm" class="block bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 text-center border-2 border-transparent hover:border-texas-navy/30">
               <div class="w-16 h-16 bg-texas-navy/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Clock className="w-8 h-8 text-texas-navy" />
               </div>
@@ -241,7 +284,7 @@ const description = "No more 6.9¢ rates that cost 14¢. No more 40-page contrac
 
           <!-- Need $0 Deposit -->
           <div class="group relative">
-            <a href="/no-deposit" class="block bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 text-center border-2 border-transparent hover:border-green-500/30">
+            <a href="#zipForm" class="block bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 text-center border-2 border-transparent hover:border-green-500/30">
               <div class="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Shield className="w-8 h-8 text-green-600" />
               </div>
@@ -249,7 +292,7 @@ const description = "No more 6.9¢ rates that cost 14¢. No more 40-page contrac
                 Need $0 deposit
               </div>
               <p class="text-gray-600 text-sm leading-relaxed mb-4">
-                Why tie up money in deposits when you need it elsewhere? We'll find options that work for your situation.
+                Why tie up money in deposits when you need it elsewhere? We'll find options that work for you.
               </p>
               <span class="text-green-600 font-semibold text-sm group-hover:underline">
                 Find No-Deposit Plans →
@@ -258,121 +301,17 @@ const description = "No more 6.9¢ rates that cost 14¢. No more 40-page contrac
           </div>
         </div>
 
-        <!-- General CTA -->
-        <div class="mt-12 text-center">
-          <p class="text-lg text-gray-600 mb-6">
-            Not sure which fits? No problem.
-          </p>
-          <a href="#zipForm" class="inline-flex items-center gap-2 bg-texas-navy text-white px-8 py-3 rounded-xl font-semibold hover:bg-texas-navy/90 transition-all">
-            <BarChart className="w-5 h-5" />
-            Just Show Me What's Available
-          </a>
-        </div>
       </div>
     </section>
 
     <!-- Why This Matters - Transformation Messaging -->
     <section class="py-20 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold text-texas-navy mb-6">
-            The Real Cost of Doing Nothing
-          </h2>
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Every month you stick with your current plan is money left on the table. Here's what Texas families actually save.
-          </p>
-        </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          <!-- Average Family -->
-          <div class="bg-texas-cream-50 rounded-xl p-8 text-center border border-texas-cream-200">
-            <div class="text-4xl font-bold text-texas-navy mb-2">$347</div>
-            <div class="text-lg font-semibold text-texas-navy mb-3">Average Family Saves</div>
-            <p class="text-gray-600 text-sm">
-              Based on 1,200 kWh monthly usage switching from default rates to competitive plans
-            </p>
-          </div>
 
-          <!-- High Usage -->
-          <div class="bg-texas-gold-50 rounded-xl p-8 text-center border border-texas-gold-200">
-            <div class="text-4xl font-bold text-texas-navy mb-2">$642</div>
-            <div class="text-lg font-semibold text-texas-navy mb-3">High Usage Homes</div>
-            <p class="text-gray-600 text-sm">
-              Families using 2,000+ kWh benefit even more from switching to the right plan
-            </p>
-          </div>
-
-          <!-- Small Apartments -->
-          <div class="bg-texas-navy/5 rounded-xl p-8 text-center border border-texas-navy/10">
-            <div class="text-4xl font-bold text-texas-navy mb-2">$184</div>
-            <div class="text-lg font-semibold text-texas-navy mb-3">Small Apartments</div>
-            <p class="text-gray-600 text-sm">
-              Even low usage customers save hundreds by avoiding expensive default rates
-            </p>
-          </div>
-        </div>
-
-        <!-- The Problem -->
-        <div class="bg-texas-red-50 rounded-xl p-8 mb-12 border border-texas-red-200">
-          <h3 class="text-2xl font-bold text-texas-navy mb-4 text-center">
-            Here's the Problem Everyone Talks About
-          </h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <h4 class="font-bold text-texas-navy mb-3">Before Using Our Service</h4>
-              <ul class="space-y-2 text-gray-700">
-                <li class="flex items-start gap-2">
-                  <span class="text-texas-red mt-1">✗</span>
-                  <span>Confused by misleading "teaser rates"</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-texas-red mt-1">✗</span>
-                  <span>Stuck paying inflated default rates</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-texas-red mt-1">✗</span>
-                  <span>Overwhelmed by 100+ plan options</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-texas-red mt-1">✗</span>
-                  <span>Getting pestered by aggressive salespeople</span>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 class="font-bold text-texas-navy mb-3">After Using Our Service</h4>
-              <ul class="space-y-2 text-gray-700">
-                <li class="flex items-start gap-2">
-                  <span class="text-green-600 mt-1">✓</span>
-                  <span>Crystal clear on total costs</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-green-600 mt-1">✓</span>
-                  <span>Paying fair market rates</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-green-600 mt-1">✓</span>
-                  <span>Confident in your choice</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <span class="text-green-600 mt-1">✓</span>
-                  <span>Saving hundreds every year</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- CTA -->
         <div class="text-center">
-          <h3 class="text-2xl font-bold text-texas-navy mb-4">
-            Ready to Stop Overpaying?
-          </h3>
-          <p class="text-lg text-gray-600 mb-8">
-            Most people find their plan in about 10 minutes. You could be saving money by next month.
-          </p>
           <a href="#zipForm" class="inline-flex items-center gap-2 bg-texas-red text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-texas-red-600 transition-all shadow-lg hover:shadow-xl">
-            Find My Best Plan Now
+            Compare Your Plans
             <ArrowRight className="w-5 h-5" />
           </a>
         </div>
@@ -382,12 +321,12 @@ const description = "No more 6.9¢ rates that cost 14¢. No more 40-page contrac
     <!-- Micro-Lessons Section -->
     <section class="py-20 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold text-texas-navy mb-6">
-            Quick Electricity 101
+        <div class="text-center mb-12">
+          <h2 class="text-2xl md:text-3xl font-semibold text-texas-navy mb-4">
+            Why Texas Electricity Is Different
           </h2>
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Complex made simple. Here's what you actually need to know.
+          <p class="text-base md:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            Most states get stuck with one utility. Texas gets choice. Here's why that matters and how it works.
           </p>
         </div>
 
@@ -407,7 +346,7 @@ const description = "No more 6.9¢ rates that cost 14¢. No more 40-page contrac
           <div class="bg-texas-gold-50 rounded-xl p-6 border border-texas-gold-200">
             <h3 class="text-xl font-bold text-texas-navy mb-3">Why Do Rates Vary?</h3>
             <p class="text-gray-700 leading-relaxed mb-4">
-              Same electricity, different middlemen. Like buying the same coffee at different shops.
+              Competition. {DEFAULT_COUNTS.providers} companies fight for your business. Same electricity, different prices.
             </p>
             <p class="text-gray-700 leading-relaxed font-semibold">
               The coffee's identical, but one shop charges more. Let's find the shop that doesn't overcharge.
@@ -432,11 +371,11 @@ const description = "No more 6.9¢ rates that cost 14¢. No more 40-page contrac
     <section class="py-20 bg-gray-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-texas-navy mb-4">
+          <h2 class="text-2xl md:text-3xl font-semibold text-texas-navy mb-4">
             We Only Show You the Good Ones
           </h2>
-          <p class="text-lg text-gray-600">
-            {DEFAULT_COUNTS.planText} from quality providers. No fly-by-night companies. No door-to-door scammers.
+          <p class="text-base md:text-lg text-gray-600">
+            {DEFAULT_COUNTS.planText} from licensed electricity companies. No fly-by-night companies. No door-to-door scammers.
           </p>
         </div>
 

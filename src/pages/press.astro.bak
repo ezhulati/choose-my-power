@@ -1,0 +1,263 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Calendar, Download, ExternalLink, Users, Award, TrendingUp } from 'lucide-react';
+
+const title = "Press & Media | ChooseMyPower News & Resources";
+const description = "Press releases, media resources, and company news from ChooseMyPower. Get the latest updates on Texas electricity market insights and analysis.";
+---
+
+<Layout title={title} description={description}>
+  <div class="min-h-screen bg-gradient-to-b from-texas-cream to-gray-50">
+    <!-- Hero Section -->
+    <div class="bg-texas-navy text-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">Press & Media Center</h1>
+        <p class="text-xl text-blue-100 max-w-3xl">The latest news, press releases, and media resources from ChooseMyPower, Texas's leading electricity comparison platform.</p>
+      </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <!-- Key Stats -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+        <div class="bg-white p-6 rounded-xl shadow-lg text-center">
+          <div class="w-12 h-12 bg-texas-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <Users className="w-6 h-6 text-texas-red" />
+          </div>
+          <div class="text-2xl font-bold text-texas-navy">500K+</div>
+          <div class="text-sm text-gray-600">Texans Served</div>
+        </div>
+        
+        <div class="bg-white p-6 rounded-xl shadow-lg text-center">
+          <div class="w-12 h-12 bg-texas-gold-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <Award className="w-6 h-6 text-texas-gold-600" />
+          </div>
+          <div class="text-2xl font-bold text-texas-navy">14</div>
+          <div class="text-sm text-gray-600">Licensed Providers</div>
+        </div>
+        
+        <div class="bg-white p-6 rounded-xl shadow-lg text-center">
+          <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <TrendingUp className="w-6 h-6 text-green-600" />
+          </div>
+          <div class="text-2xl font-bold text-texas-navy">$2.3M+</div>
+          <div class="text-sm text-gray-600">Customer Savings</div>
+        </div>
+        
+        <div class="bg-white p-6 rounded-xl shadow-lg text-center">
+          <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <Calendar className="w-6 h-6 text-blue-600" />
+          </div>
+          <div class="text-2xl font-bold text-texas-navy">2018</div>
+          <div class="text-sm text-gray-600">Founded</div>
+        </div>
+      </div>
+
+      <!-- Recent Press Releases -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-12">
+        <div class="lg:col-span-2">
+          <h2 class="text-3xl font-bold text-texas-navy mb-8">Latest Press Releases</h2>
+          
+          <div class="space-y-8">
+            <article class="bg-white p-8 rounded-xl shadow-lg">
+              <div class="flex items-center text-sm text-gray-600 mb-3">
+                <Calendar className="w-4 h-4 mr-2" />
+                December 15, 2024
+              </div>
+              <h3 class="text-xl font-bold text-texas-navy mb-4">
+                ChooseMyPower Reports Record Winter Savings for Texas Customers
+              </h3>
+              <p class="text-gray-700 mb-4">
+                Platform users saved an average of $847 annually by switching to optimized electricity plans during peak winter demand season. Analysis of 50,000+ customer switches reveals significant market inefficiencies.
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-texas-red font-medium">Press Release</span>
+                <a href="#" class="text-texas-navy hover:text-texas-red transition-colors font-medium">
+                  Read Full Release <ExternalLink className="w-4 h-4 inline ml-1" />
+                </a>
+              </div>
+            </article>
+
+            <article class="bg-white p-8 rounded-xl shadow-lg">
+              <div class="flex items-center text-sm text-gray-600 mb-3">
+                <Calendar className="w-4 h-4 mr-2" />
+                November 8, 2024
+              </div>
+              <h3 class="text-xl font-bold text-texas-navy mb-4">
+                Texas Green Energy Adoption Reaches All-Time High
+              </h3>
+              <p class="text-gray-700 mb-4">
+                ChooseMyPower data shows 73% of new plan enrollments include renewable energy options, up from 45% in 2023. Platform launches enhanced green energy comparison tools.
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-texas-red font-medium">Market Analysis</span>
+                <a href="#" class="text-texas-navy hover:text-texas-red transition-colors font-medium">
+                  Read Full Release <ExternalLink className="w-4 h-4 inline ml-1" />
+                </a>
+              </div>
+            </article>
+
+            <article class="bg-white p-8 rounded-xl shadow-lg">
+              <div class="flex items-center text-sm text-gray-600 mb-3">
+                <Calendar className="w-4 h-4 mr-2" />
+                September 22, 2024
+              </div>
+              <h3 class="text-xl font-bold text-texas-navy mb-4">
+                ChooseMyPower Launches AI-Powered Plan Recommendations
+              </h3>
+              <p class="text-gray-700 mb-4">
+                New machine learning algorithm analyzes usage patterns, preferences, and market conditions to provide personalized electricity plan recommendations for Texas consumers.
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-texas-red font-medium">Product Launch</span>
+                <a href="#" class="text-texas-navy hover:text-texas-red transition-colors font-medium">
+                  Read Full Release <ExternalLink className="w-4 h-4 inline ml-1" />
+                </a>
+              </div>
+            </article>
+          </div>
+
+          <div class="mt-8 text-center">
+            <a href="#" class="text-texas-red hover:text-texas-red-600 font-medium">
+              View All Press Releases →
+            </a>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="space-y-8">
+          <!-- Media Kit -->
+          <div class="bg-white p-6 rounded-xl shadow-lg">
+            <h3 class="text-xl font-bold text-texas-navy mb-4">Media Kit</h3>
+            <p class="text-gray-700 mb-6">Download our complete media kit with logos, company information, and executive bios.</p>
+            
+            <div class="space-y-3">
+              <a href="/media/choosemypower-logo-package.zip" class="flex items-center text-texas-navy hover:text-texas-red transition-colors">
+                <Download className="w-4 h-4 mr-2" />
+                Logo Package (ZIP)
+              </a>
+              <a href="/media/executive-bios.pdf" class="flex items-center text-texas-navy hover:text-texas-red transition-colors">
+                <Download className="w-4 h-4 mr-2" />
+                Executive Bios (PDF)
+              </a>
+              <a href="/media/company-factsheet.pdf" class="flex items-center text-texas-navy hover:text-texas-red transition-colors">
+                <Download className="w-4 h-4 mr-2" />
+                Company Fact Sheet (PDF)
+              </a>
+              <a href="/media/market-data-2024.pdf" class="flex items-center text-texas-navy hover:text-texas-red transition-colors">
+                <Download className="w-4 h-4 mr-2" />
+                2024 Market Report (PDF)
+              </a>
+            </div>
+          </div>
+
+          <!-- Media Contact -->
+          <div class="bg-white p-6 rounded-xl shadow-lg">
+            <h3 class="text-xl font-bold text-texas-navy mb-4">Media Contact</h3>
+            <div class="space-y-3">
+              <div>
+                <div class="font-semibold text-gray-900">Sarah Johnson</div>
+                <div class="text-sm text-gray-600">Director of Communications</div>
+              </div>
+              <div>
+                <div class="text-sm text-gray-700">📧 press@choosemypower.org</div>
+                <div class="text-sm text-gray-700">📱 (512) 555-0123</div>
+              </div>
+              <div class="pt-2 border-t border-gray-200">
+                <div class="text-xs text-gray-600">
+                  Response time: Within 2 hours during business hours
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Awards & Recognition -->
+          <div class="bg-white p-6 rounded-xl shadow-lg">
+            <h3 class="text-xl font-bold text-texas-navy mb-4">Awards & Recognition</h3>
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <Award className="w-5 h-5 text-texas-gold-600 mr-3 mt-0.5 flex-shrink-0" />
+                <div>
+                  <div class="font-semibold text-gray-900">Best Energy Comparison Platform</div>
+                  <div class="text-sm text-gray-600">Texas Energy Awards 2024</div>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <Award className="w-5 h-5 text-texas-gold-600 mr-3 mt-0.5 flex-shrink-0" />
+                <div>
+                  <div class="font-semibold text-gray-900">Consumer Choice Excellence</div>
+                  <div class="text-sm text-gray-600">Austin Business Journal 2023</div>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <Award className="w-5 h-5 text-texas-gold-600 mr-3 mt-0.5 flex-shrink-0" />
+                <div>
+                  <div class="font-semibold text-gray-900">Innovation in Clean Tech</div>
+                  <div class="text-sm text-gray-600">Clean Energy Summit 2023</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Company Background -->
+      <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+        <h2 class="text-3xl font-bold text-texas-navy mb-6">About ChooseMyPower</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div class="prose prose-lg text-gray-700">
+            <p>
+              Founded in 2018, ChooseMyPower is Texas's leading electricity comparison platform, helping over 500,000 consumers navigate the deregulated energy market. Our proprietary analysis engine evaluates plans from 14 licensed providers across all ERCOT territories.
+            </p>
+            <p>
+              Through advanced data analytics and machine learning, we've saved Texas consumers over $2.3 million annually by matching them with optimal electricity plans based on their usage patterns, preferences, and budget constraints.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-texas-navy mb-4">Key Markets</h3>
+            <div class="grid grid-cols-2 gap-4 text-sm">
+              <div>
+                <div class="font-semibold text-gray-900">Dallas-Fort Worth</div>
+                <div class="text-gray-600">2.1M+ households</div>
+              </div>
+              <div>
+                <div class="font-semibold text-gray-900">Houston Metro</div>
+                <div class="text-gray-600">1.8M+ households</div>
+              </div>
+              <div>
+                <div class="font-semibold text-gray-900">San Antonio</div>
+                <div class="text-gray-600">Municipal utility info</div>
+              </div>
+              <div>
+                <div class="font-semibold text-gray-900">Austin Area</div>
+                <div class="text-gray-600">Municipal utility info</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Media Coverage -->
+      <div class="bg-texas-cream-100 rounded-xl p-8">
+        <h2 class="text-2xl font-bold text-texas-navy mb-6 text-center">Featured In</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+          <div class="text-center">
+            <div class="font-bold text-lg text-gray-800">Houston Chronicle</div>
+            <div class="text-sm text-gray-600">Energy Market Analysis</div>
+          </div>
+          <div class="text-center">
+            <div class="font-bold text-lg text-gray-800">Dallas Morning News</div>
+            <div class="text-sm text-gray-600">Consumer Advocacy</div>
+          </div>
+          <div class="text-center">
+            <div class="font-bold text-lg text-gray-800">Austin Business Journal</div>
+            <div class="text-sm text-gray-600">Tech Innovation</div>
+          </div>
+          <div class="text-center">
+            <div class="font-bold text-lg text-gray-800">San Antonio Express</div>
+            <div class="text-sm text-gray-600">Market Insights</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

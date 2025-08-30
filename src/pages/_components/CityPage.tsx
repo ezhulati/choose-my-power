@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { mockProviders, mockStates } from '../../data/mockData';
 import { MapPin, TrendingDown, Users, Zap, Building, ArrowRight, Search, Star } from 'lucide-react';
+import { Button } from '../../components/ui/button';
+import { Card, CardHeader, CardContent, CardFooter } from '../../components/ui/card';
 
 // Extend Window interface to include our navigation function
 declare global {
@@ -44,7 +46,7 @@ export function CityPage({ state, city }: CityPageProps) {
                   Expanding Coverage in {stateData.name}
                 </h1>
                 <p className="text-lg text-gray-600 mb-8">
-                  We're working to add more cities in {stateData.name}. Meanwhile, you can view quality providers 
+                  We're working to add more cities in {stateData.name}. Meanwhile, you can view licensed electricity companies 
                   available statewide or search by ZIP code to find options in your area.
                 </p>
                 
@@ -56,19 +58,22 @@ export function CityPage({ state, city }: CityPageProps) {
                 </div>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <button
+                  <Button
+                    variant="texas-primary"
+                    size="lg"
                     onClick={() => navigate(`/${state}/electricity-providers`)}
-                    className="bg-texas-navy text-white px-8 py-3 rounded-lg hover:bg-blue-800 transition-colors font-medium inline-flex items-center justify-center"
+                    className="inline-flex items-center justify-center"
                   >
                     View All {stateData.name} Providers
                     <ArrowRight className="h-4 w-4 ml-2" />
-                  </button>
-                  <button
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="lg"
                     onClick={() => navigate(`/${state}/electricity-rates`)}
-                    className="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg hover:bg-gray-50 transition-colors font-medium"
                   >
                     See {stateData.name} Rates
-                  </button>
+                  </Button>
                 </div>
                 
                 {/* Available Cities */}
@@ -78,13 +83,15 @@ export function CityPage({ state, city }: CityPageProps) {
                   </h3>
                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                     {stateData.topCities.map((availableCity) => (
-                      <button
+                      <Button
                         key={availableCity.id}
+                        variant="texas-ghost"
+                        size="sm"
                         onClick={() => navigate(`/${state}/${availableCity.slug}/electricity-providers`)}
-                        className="p-3 text-sm text-texas-navy hover:text-texas-navy hover:bg-texas-cream-200 rounded-lg transition-colors border border-gray-200"
+                        className="p-3 text-sm border border-gray-200"
                       >
                         {availableCity.name}
-                      </button>
+                      </Button>
                     ))}
                   </div>
                 </div>
@@ -105,13 +112,15 @@ export function CityPage({ state, city }: CityPageProps) {
                   />
                 </div>
                 
-                <button
+                <Button
+                  variant="texas-primary"
+                  size="lg"
                   onClick={() => navigate('/')}
-                  className="bg-texas-navy text-white px-8 py-3 rounded-lg hover:bg-blue-800 transition-colors font-medium inline-flex items-center"
+                  className="inline-flex items-center"
                 >
                   <Search className="h-4 w-4 mr-2" />
                   Start Your Search
-                </button>
+                </Button>
               </>
             )}
           </div>
@@ -140,65 +149,28 @@ export function CityPage({ state, city }: CityPageProps) {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => navigate('/')} className="hover:text-texas-navy">Home</button>
+            <Button variant="link" onClick={() => navigate('/')} className="p-0 h-auto text-sm text-gray-500 hover:text-texas-navy">Home</Button>
             <span className="mx-2">/</span>
-            <button onClick={() => navigate(`/${state}/electricity-providers`)} className="hover:text-texas-navy">
+            <Button variant="link" onClick={() => navigate(`/${state}/electricity-providers`)} className="p-0 h-auto text-sm text-gray-500 hover:text-texas-navy">
               {stateData.name}
-            </button>
+            </Button>
             <span className="mx-2">/</span>
             <span>{cityData.name}</span>
           </nav>
 
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Finally. {cityData.name} Electricity That Makes Sense
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+                {cityData.name} Electricity Options
               </h1>
               
               <p className="text-lg text-gray-600 mb-6">
-                Moving to {cityData.name}? Here's why transferring your old plan usually backfires: Your old rate was based on your OLD home's size. "Fixed" rates aren't fixed—they change with usage. A plan for a 2-bedroom apartment costs way more in a 4-bedroom house. We found {cityProviders.length} quality providers that actually work for your new {cityData.name} home.
+                Moving to {cityData.name}? Here's why transferring your old plan usually backfires: Your old rate was based on your OLD home's size. "Fixed" rates aren't fixed—they change with usage. A plan for a 2-bedroom apartment costs way more in a 4-bedroom house. We found {cityProviders.length} licensed electricity companies that actually work for your new {cityData.name} home.
               </p>
 
-              {/* City Stats */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                <div className="bg-texas-cream-200 p-4 rounded-lg">
-                  <div className="flex items-center mb-2">
-                    <TrendingDown className="h-5 w-5 text-texas-navy mr-2" />
-                    <span className="text-sm font-medium text-texas-navy">Avg Rate</span>
-                  </div>
-                  <div className="text-2xl font-bold text-blue-900">{cityData.averageRate}¢</div>
-                  <div className="text-sm text-texas-navy">per kWh</div>
-                </div>
-
-                <div className="bg-green-50 p-4 rounded-lg">
-                  <div className="flex items-center mb-2">
-                    <Users className="h-5 w-5 text-green-600 mr-2" />
-                    <span className="text-sm font-medium text-green-800">Providers</span>
-                  </div>
-                  <div className="text-2xl font-bold text-green-900">{cityProviders.length}</div>
-                  <div className="text-sm text-green-700">available</div>
-                </div>
-
-                <div className="bg-purple-50 p-4 rounded-lg">
-                  <div className="flex items-center mb-2">
-                    <Building className="h-5 w-5 text-purple-600 mr-2" />
-                    <span className="text-sm font-medium text-purple-800">Population</span>
-                  </div>
-                  <div className="text-2xl font-bold text-purple-900">
-                    {(cityData.population / 1000000).toFixed(1)}M
-                  </div>
-                  <div className="text-sm text-purple-700">residents</div>
-                </div>
-
-                <div className="bg-orange-50 p-4 rounded-lg">
-                  <div className="flex items-center mb-2">
-                    <Zap className="h-5 w-5 text-orange-600 mr-2" />
-                    <span className="text-sm font-medium text-orange-800">Market</span>
-                  </div>
-                  <div className="text-lg font-bold text-orange-900">
-                    {stateData.isDeregulated ? 'Choice' : 'Regulated'}
-                  </div>
-                  <div className="text-sm text-orange-700">market type</div>
+              <div className="text-center mb-6">
+                <div className="inline-flex items-center gap-4 bg-texas-cream-200 px-6 py-3 rounded-lg">
+                  <span className="text-texas-navy font-medium">{cityProviders.length} providers available</span>
                 </div>
               </div>
             </div>
@@ -214,13 +186,14 @@ export function CityPage({ state, city }: CityPageProps) {
                 <div className="font-medium mb-2">Popular ZIP Codes:</div>
                 <div className="flex flex-wrap gap-2">
                   {cityData.zipCodes.map((zip) => (
-                    <button
+                    <Button
                       key={zip}
+                      variant="link"
                       onClick={() => handleZipSearch(zip)}
-                      className="text-texas-navy hover:text-texas-navy hover:underline"
+                      className="p-0 h-auto text-sm text-texas-navy hover:text-texas-navy hover:underline"
                     >
                       {zip}
-                    </button>
+                    </Button>
                   ))}
                 </div>
               </div>
@@ -238,17 +211,14 @@ export function CityPage({ state, city }: CityPageProps) {
           
           <div className="flex space-x-4 mb-4">
             {Object.keys(usageRates).map((usage) => (
-              <button
+              <Button
                 key={usage}
                 onClick={() => setSelectedUsage(usage as any)}
-                className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                  selectedUsage === usage
-                    ? 'bg-texas-navy text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
+                variant={selectedUsage === usage ? 'texas-primary' : 'secondary'}
+                size="sm"
               >
                 {usage} kWh/month
-              </button>
+              </Button>
             ))}
           </div>
 
@@ -281,94 +251,112 @@ export function CityPage({ state, city }: CityPageProps) {
             <h2 className="text-2xl font-bold text-gray-900">
               Quality Electricity Providers in {cityData.name}
             </h2>
-            <button
+            <Button
+              variant="texas-primary"
               onClick={() => navigate(`/compare/providers`)}
-              className="bg-texas-navy text-white px-6 py-2 rounded-lg hover:bg-blue-800 transition-colors"
             >
               Find Plans That Fit
-            </button>
+            </Button>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {cityProviders.map((provider) => (
-              <div key={provider.id} className="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow">
-                <div className="p-6">
-                  <div className="flex items-center mb-4">
+              <Card key={provider.id} variant="provider-card" className="hover:shadow-lg transition-all duration-200">
+                <CardHeader className="pb-4">
+                  <div className="flex items-center gap-3">
                     <img
                       src={provider.logo}
                       alt={`${provider.name} logo`}
-                      className="w-12 h-12 rounded-lg object-cover mr-3"
+                      className="w-12 h-12 rounded-lg object-cover"
                     />
-                    <div>
+                    <div className="flex-1">
                       <h3 className="text-lg font-semibold text-gray-900">{provider.name}</h3>
-                      <div className="flex items-center">
-                        <Star className="h-4 w-4 text-yellow-400 fill-current mr-1" />
+                      <div className="flex items-center gap-1">
+                        <Star className="h-4 w-4 text-yellow-400 fill-current" />
                         <span className="text-sm text-gray-600">{provider.rating} ({provider.reviewCount})</span>
                       </div>
                     </div>
                   </div>
-                  
-                  <p className="text-gray-600 text-sm mb-4">{provider.description}</p>
-                  
-                  <div className="space-y-2">
-                    <button
-                      onClick={() => navigate(`/providers/${provider.slug}`)}
-                      className="w-full bg-texas-navy text-white py-2 rounded-lg hover:bg-blue-800 transition-colors text-sm font-medium"
-                    >
-                      View Details
-                    </button>
-                    <button
-                      onClick={() => navigate(`/${state}/${city}/electricity-providers`)}
-                      className="w-full border border-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
-                    >
-                      See Plans & Rates
-                    </button>
-                  </div>
-                </div>
-              </div>
+                </CardHeader>
+                
+                <CardContent className="pb-4">
+                  <p className="text-gray-600 text-sm">{provider.description}</p>
+                </CardContent>
+                
+                <CardFooter className="flex flex-col gap-2 pt-2">
+                  <Button
+                    variant="texas-primary"
+                    size="sm"
+                    onClick={() => navigate(`/providers/${provider.slug}`)}
+                    className="w-full"
+                  >
+                    View Details
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => navigate(`/${state}/${city}/electricity-providers`)}
+                    className="w-full border-gray-300 text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                  >
+                    See Plans & Rates
+                  </Button>
+                </CardFooter>
+              </Card>
             ))}
           </div>
         </div>
 
         {/* Local Information */}
-        <div className="bg-white rounded-lg shadow-sm border p-6">
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">
-            About Electricity Service in {cityData.name}
-          </h3>
+        <Card className="shadow-sm">
+          <CardHeader>
+            <h3 className="text-xl font-semibold text-gray-900">
+              About Electricity Service in {cityData.name}
+            </h3>
+          </CardHeader>
           
-          <div className="grid md:grid-cols-2 gap-6">
-            <div>
-              <h4 className="font-medium text-gray-900 mb-2">Market Overview</h4>
-              <p className="text-gray-600 text-sm mb-4">
-                {cityData.name} residents can choose from {cityProviders.length} electricity providers 
-                in {stateData.name}'s {stateData.isDeregulated ? 'deregulated' : 'regulated'} market. 
-                The average electricity rate is {cityData.averageRate}¢ per kWh.
-              </p>
+          <CardContent>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-medium text-gray-900 mb-2">Market Overview</h4>
+                  <p className="text-gray-600 text-sm">
+                    {cityData.name} residents can choose from {cityProviders.length} electricity providers 
+                    in {stateData.name}'s {stateData.isDeregulated ? 'deregulated' : 'regulated'} market. 
+                    The average electricity rate is {cityData.averageRate}¢ per kWh.
+                  </p>
+                </div>
+                
+                <div>
+                  <h4 className="font-medium text-gray-900 mb-2">How to Switch</h4>
+                  <p className="text-gray-600 text-sm">
+                    Switching electricity providers in {cityData.name} is simple and free. Compare plans above, 
+                    choose your provider, and they'll handle the switch for you. There's no interruption to your service.
+                  </p>
+                </div>
+              </div>
               
-              <h4 className="font-medium text-gray-900 mb-2">How to Switch</h4>
-              <p className="text-gray-600 text-sm">
-                Switching electricity providers in {cityData.name} is simple and free. Compare plans above, 
-                choose your provider, and they'll handle the switch for you. There's no interruption to your service.
-              </p>
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-medium text-gray-900 mb-2">Utility Information</h4>
+                  <p className="text-gray-600 text-sm">
+                    Your electricity is delivered through the local utility grid, regardless of which provider you choose. 
+                    The utility company maintains the power lines and handles outages.
+                  </p>
+                </div>
+                
+                <div>
+                  <h4 className="font-medium text-gray-900 mb-2">Tips for {cityData.name} Residents</h4>
+                  <ul className="text-gray-600 text-sm space-y-1">
+                    <li>• Compare rates based on your actual usage</li>
+                    <li>• Consider contract length and cancellation fees</li>
+                    <li>• Look for green energy options if important to you</li>
+                    <li>• Read customer reviews before switching</li>
+                  </ul>
+                </div>
+              </div>
             </div>
-            
-            <div>
-              <h4 className="font-medium text-gray-900 mb-2">Utility Information</h4>
-              <p className="text-gray-600 text-sm mb-4">
-                Your electricity is delivered through the local utility grid, regardless of which provider you choose. 
-                The utility company maintains the power lines and handles outages.
-              </p>
-              
-              <h4 className="font-medium text-gray-900 mb-2">Tips for {cityData.name} Residents</h4>
-              <ul className="text-gray-600 text-sm space-y-1">
-                <li>• Compare rates based on your actual usage</li>
-                <li>• Consider contract length and cancellation fees</li>
-                <li>• Look for green energy options if important to you</li>
-                <li>• Read customer reviews before switching</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

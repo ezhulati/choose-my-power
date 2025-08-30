@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { ElectricityCompaniesPage } from './_components/ElectricityCompaniesPage';
+
+const title = "Which Texas Electric Companies Don't Suck? | Real Reviews & Rankings";
+const description = "Honest rankings of Texas electricity companies. Who answers the phone? Who has the fewest complaints? Who won't surprise you with weird fees? We name names.";
+---
+
+<Layout title={title} description={description} ogImage="/images/og/comprehensive-clean/business_district_clean_16x9.png">
+  <ElectricityCompaniesPage client:load />
+
+  <script>
+    // Client-side navigation function for React components
+    window.navigateToPath = function(path) {
+      window.location.href = path;
+    };
+  </script>
+</Layout>

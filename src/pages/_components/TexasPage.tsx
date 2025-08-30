@@ -19,66 +19,98 @@ export const TexasPage: React.FC = () => {
   };
   return (
     <div className="min-h-screen bg-gradient-to-b from-texas-cream to-gray-50">
-      {/* Hero Section */}
-      <div className="bg-gradient-to-r from-texas-navy to-texas-blue-800 text-white py-16">
-        <div className="max-w-6xl mx-auto px-4">
+      {/* Elegant Hero Section */}
+      <div className="bg-gradient-to-br from-texas-navy via-blue-800 to-texas-navy text-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Texas Electricity Plans
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 opacity-90">
-              Find the best electricity rates and providers in the Lone Star State
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-6">
+              <Zap className="h-8 w-8" />
+            </div>
+            
+            <div className="space-y-4">
+              <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold leading-relaxed max-w-4xl mx-auto">
+                Texas Electricity Market Guide
+              </h1>
+              
+              <p className="text-base md:text-lg text-blue-100/80 font-normal max-w-3xl mx-auto leading-relaxed">
+                Navigate the deregulated Texas electricity market with confidence. 
+                <span className="text-white font-medium">Compare providers across 880+ cities</span> and find the best plan for your home.
+              </p>
+              
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 max-w-2xl mx-auto border border-white/20">
+                <p className="text-sm text-white/90 font-normal">
+                  <span className="text-texas-gold font-medium">Complete market overview</span> with honest provider comparisons.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
               <button
                 onClick={() => navigate('/shop')}
-                className="bg-texas-red text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-texas-red-600 transition-colors"
+                className="bg-texas-red text-white px-6 py-3 rounded-lg font-medium hover:bg-texas-red-600 transition-colors"
               >
                 Shop Texas Plans
               </button>
               <button
-                onClick={() => navigate('/rates/compare')}
-                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-texas-navy transition-colors"
+                onClick={() => navigate('/compare/plans')}
+                className="border border-white/50 text-white px-6 py-3 rounded-lg font-medium hover:bg-white/10 transition-colors"
               >
-                Compare Rates
+                Compare Plans
               </button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Texas Market Stats */}
+      {/* Elegant Market Stats */}
       <div className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
-            Texas Electricity Market Overview
-          </h2>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-xl md:text-2xl font-semibold text-gray-900 mb-4">
+              Texas Electricity Market Overview
+            </h2>
+            <p className="text-base text-gray-600 max-w-3xl mx-auto">
+              Understanding the deregulated market that serves 29 million Texans
+            </p>
+          </div>
+          
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center p-6 bg-texas-red-50 rounded-lg">
-              <Zap className="w-12 h-12 text-texas-navy mx-auto mb-4" />
-              <div className="text-3xl font-bold text-texas-navy mb-2">150+</div>
-              <div className="text-gray-700">Electricity Providers</div>
+            <div className="text-center p-6 bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-lg">
+              <div className="w-12 h-12 bg-texas-navy/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <Zap className="w-6 h-6 text-texas-navy" />
+              </div>
+              <div className="text-2xl font-bold text-texas-navy mb-2">150+</div>
+              <div className="text-sm text-gray-600">Licensed Providers</div>
             </div>
-            <div className="text-center p-6 bg-texas-navy/10 rounded-lg">
-              <Users className="w-12 h-12 text-texas-navy mx-auto mb-4" />
-              <div className="text-3xl font-bold text-texas-navy mb-2">29M</div>
-              <div className="text-gray-700">Texas Residents</div>
+            <div className="text-center p-6 bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-lg">
+              <div className="w-12 h-12 bg-texas-navy/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <Users className="w-6 h-6 text-texas-navy" />
+              </div>
+              <div className="text-2xl font-bold text-texas-navy mb-2">29M</div>
+              <div className="text-sm text-gray-600">Texas Residents</div>
             </div>
-            <div className="text-center p-6 bg-texas-gold-50 rounded-lg">
-              <TrendingDown className="w-12 h-12 text-texas-gold mx-auto mb-4" />
-              <div className="text-3xl font-bold text-texas-gold mb-2">85%</div>
-              <div className="text-gray-700">Deregulated Market</div>
+            <div className="text-center p-6 bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-lg">
+              <div className="w-12 h-12 bg-texas-gold/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <TrendingDown className="w-6 h-6 text-texas-gold" />
+              </div>
+              <div className="text-2xl font-bold text-texas-gold mb-2">85%</div>
+              <div className="text-sm text-gray-600">Deregulated Market</div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Top Texas Cities */}
-      <div className="py-16 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">
-            Popular Texas Cities
-          </h2>
+      {/* Major Texas Cities */}
+      <div className="py-16 bg-gradient-to-b from-gray-50 to-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-xl md:text-2xl font-semibold text-gray-900 mb-4">
+              Major Texas Cities
+            </h2>
+            <p className="text-base text-gray-600 max-w-3xl mx-auto">
+              Electricity plans and rates for Texas's largest metropolitan areas
+            </p>
+          </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { name: 'Houston', population: '2.3M', avgRate: '12.5¢' },

@@ -1,0 +1,407 @@
+---
+/**
+ * Dynamic Faceted Navigation Route Handler with Static Generation Support
+ * Handles all electricity-plans URLs with multiple filter combinations
+ * Supports both static pre-generation and ISR for optimal performance
+ * 
+ * Pattern: /electricity-plans/[city-tx]/[filter1]/[filter2]/...
+ * 
+ * Examples:
+ * - /electricity-plans/dallas-tx/
+ * - /electricity-plans/dallas-tx/12-month/
+ * - /electricity-plans/dallas-tx/12-month/fixed-rate/
+ * - /electricity-plans/dallas-tx/green-energy/prepaid/
+ */
+
+import Layout from '../../layouts/Layout.astro';
+import HeroBackground from '../../components/HeroBackground.astro';
+import FacetedPlanGrid from '../../components/faceted/FacetedPlanGrid.astro';
+import { facetedRouter, validateAndFetchPlans } from '../../lib/faceted/faceted-router';
+import { filterMapper } from '../../lib/api/filter-mapper';
+import { generateFacetedMeta } from '../../lib/seo/meta-generator-scale';
+import { generateFacetedSchema } from '../../lib/seo/schema-scale';
+import { getHeroImage, extractContextFromPath } from '../../lib/images/hero-image-mapper';
+import { tdspMapping } from '../../config/tdsp-mapping';
+import type { Plan } from '../../types/facets';
+
+// Enable server-side rendering for dynamic routes
+export const prerender = false;
+
+console.log('🚀 Faceted Navigation: Server-rendered dynamic route with full functionality');
+
+// Get dynamic parameters from URL
+const { path } = Astro.params;
+
+console.log(`📍 Faceted page requested: ${path}`);
+
+// Use the faceted router with performance optimization
+const routeResult = await validateAndFetchPlans(path || '');
+
+// Handle routing errors and redirects
+if (!routeResult.isValid || routeResult.redirectUrl) {
+  const redirectUrl = routeResult.redirectUrl || '/404';
+  console.log(`↪️  Redirecting ${path} -> ${redirectUrl}`);
+  return Astro.redirect(redirectUrl);
+}
+
+// Extract validated data from route result
+const { 
+  citySlug, 
+  cityName, 
+  tdspDuns, 
+  filterSegments, 
+  filterResult, 
+  plans, 
+  error: apiError, 
+  canonicalUrl: routerCanonicalUrl,
+  shouldIndex,
+  messaging 
+} = routeResult;
+
+// Check if this is a municipal utility city and redirect
+const tdspInfo = tdspMapping[citySlug];
+if (tdspInfo?.municipal) {
+  console.log(`🏛️  Municipal utility detected for faceted navigation ${path}, redirecting to municipal utility page`);
+  return Astro.redirect(`/texas/${citySlug}/municipal-utility`, 302);
+}
+
+// Ensure we have required data
+if (!filterResult || !tdspDuns) {
+  return Astro.redirect('/404');
+}
+
+// Generate SEO metadata using router data
+const currentUrl = `/electricity-plans/${filterSegments.join('/')}/`;
+const canonicalUrl = routerCanonicalUrl;
+
+// Calculate meta data
+const lowestRate = plans.length > 0 ? Math.min(...plans.map(p => parseFloat(p.rate) || 999)) : 0;
+const location = cityName;
+const cityTier = tdspMapping[citySlug]?.tier || 3;
+
+const metaTags = await generateFacetedMeta({
+  city: cityName,
+  filters: filterResult.appliedFilters,
+  planCount: plans.length,
+  lowestRate,
+  location,
+  cityTier,
+  isStatic: false
+});
+
+// Generate structured data using router breadcrumbs
+const breadcrumbs = facetedRouter.getBreadcrumbs(citySlug, cityName, filterResult.appliedFilters);
+const schemas = generateFacetedSchema({
+  city: cityName,
+  filters: filterResult.appliedFilters,
+  plans,
+  meta: metaTags,
+  tdspInfo: { name: location, duns: tdspDuns },
+  url: currentUrl,
+  planCount: plans.length,
+  lowestRate
+});
+
+// Build page title and description using router utilities
+const pageTitle = facetedRouter.generatePageTitle(cityName, filterResult.appliedFilters);
+const pageDescription = facetedRouter.getFilterDescription(cityName, filterResult.appliedFilters);
+const filterLabels = filterResult.appliedFilters.map(f => f.displayName);
+
+// Generate internal linking suggestions using router
+const suggestedFilters = facetedRouter.getSuggestedFilters(citySlug, filterSegments, 6);
+const suggestedFilterDefinitions = suggestedFilters.map(pattern => ({
+  pattern,
+  definition: filterMapper.getDefinitionByPattern(pattern)
+})).filter(item => item.definition);
+
+// Get contextual hero image for this faceted page
+const heroContext = extractContextFromPath(currentUrl);
+const heroImage = getHeroImage({
+  pageType: 'filter',
+  location: citySlug,
+  filters: filterSegments
+});
+
+console.log(`✅ Faceted page processed: ${cityName} with ${filterResult.appliedFilters.length} filters, ${plans.length} plans`);
+
+---
+
+<Layout 
+  title={pageTitle}
+  description={pageDescription}
+  canonical={canonicalUrl}
+  noIndex={!shouldIndex}
+  ogImage={metaTags.ogImage}
+>
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json" set:html={JSON.stringify(schemas)} />
+  
+  <!-- Additional meta tags for faceted navigation -->
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={pageDescription} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:type" content="website" />
+  
+  <!-- City-specific meta -->
+  <meta name="geo.region" content="TX" />
+  <meta name="geo.placename" content={cityName} />
+  
+  <!-- Filter-specific meta -->
+  {filterLabels.length > 0 && (
+    <meta name="keywords" content={`${filterLabels.join(', ')}, ${cityName} electricity plans, Texas energy rates`} />
+  )}
+
+  <main class="min-h-screen bg-gray-50">
+    <!-- Hero Section with Contextual Background -->
+    <HeroBackground 
+      imageUrl={heroImage} 
+      overlayOpacity={0.75}
+    >
+      <section class="text-white flex items-center justify-center min-h-[33vh] lg:min-h-[40vh]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <!-- Breadcrumb Navigation -->
+          <nav class="mb-8" aria-label="Breadcrumb">
+            <div class="flex items-center space-x-4 text-sm">
+              {breadcrumbs.map((breadcrumb, index) => (
+                <Fragment key={breadcrumb.url}>
+                  {index > 0 && <span class="text-white/60">/</span>}
+                  <a 
+                    href={breadcrumb.url}
+                    class={index === breadcrumbs.length - 1 
+                      ? "text-white font-medium drop-shadow-sm" 
+                      : "text-white/80 hover:text-white transition-colors drop-shadow-sm"
+                    }
+                  >
+                    {breadcrumb.name}
+                  </a>
+                </Fragment>
+              ))}
+            </div>
+          </nav>
+
+          <!-- Page Header -->
+          <div class="text-center">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 drop-shadow-lg">
+              {messaging.headline}
+            </h1>
+            <p class="text-xl lg:text-2xl text-white/90 mb-6 drop-shadow-md leading-relaxed max-w-4xl mx-auto">
+              {messaging.subheadline}
+            </p>
+            <div class="text-white/80 drop-shadow-sm">
+              <span class="text-lg lg:text-xl">{messaging.realityCheck || "Skip the teaser rates and marketing tricks - here's what you'll actually pay each month."}</span>
+              {messaging.warning && (
+                <span class="ml-2 text-texas-gold-200">• {messaging.warning}</span>
+              )}
+              {filterResult.warnings.length > 0 && !messaging.warning && (
+                <span class="ml-2 text-texas-gold-200">• {filterResult.warnings[0]}</span>
+              )}
+            </div>
+
+            <!-- Promise Section -->
+            {messaging.promise && (
+              <div class="mt-6">
+                <p class="text-lg text-texas-cream-100 drop-shadow-sm max-w-3xl mx-auto">
+                  {messaging.promise}
+                </p>
+              </div>
+            )}
+
+            <!-- Active Filters -->
+            {filterResult.appliedFilters.length > 0 && (
+              <div class="mt-8">
+                <div class="flex flex-wrap justify-center gap-3">
+                  {filterResult.appliedFilters.map((filter) => (
+                    <span 
+                      key={filter.urlSegment}
+                      class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-texas-navy/90 text-white backdrop-blur-sm shadow-sm"
+                    >
+                      {filter.displayName}
+                      <a
+                        href={`/electricity-plans/${citySlug}/${filterSegments.filter(f => f !== filter.urlSegment).join('/')}`}
+                        class="ml-2 text-white/60 hover:text-white transition-colors"
+                        title={`Remove ${filter.displayName} filter`}
+                      >
+                        ×
+                      </a>
+                    </span>
+                  ))}
+                  {filterResult.appliedFilters.length > 0 && (
+                    <a
+                      href={`/electricity-plans/${citySlug}`}
+                      class="inline-flex items-center px-4 py-2 text-sm font-medium text-white/70 hover:text-white transition-colors"
+                    >
+                      Clear All Filters
+                    </a>
+                  )}
+                </div>
+              </div>
+            )}
+
+            <!-- Conversational CTA -->
+            <div class="mt-8">
+              <a
+                href={`#plans-grid`}
+                class="inline-flex items-center px-8 py-4 text-lg font-semibold bg-texas-red text-white rounded-xl shadow-lg hover:bg-texas-red-600 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              >
+                {messaging.cta}
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </HeroBackground>
+
+    <!-- Error Handling -->
+    {apiError && (
+      <div class="bg-red-50 border border-red-200 rounded-md p-4 mx-4 mb-6">
+        <div class="flex">
+          <div class="flex-shrink-0">
+            <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="ml-3">
+            <h3 class="text-sm font-medium text-red-800">
+              Unable to load electricity plans
+            </h3>
+            <div class="mt-2 text-sm text-red-700">
+              <p>We're experiencing technical difficulties. Please try again later or contact support.</p>
+              <p class="mt-1 text-xs">Error: {apiError}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    )}
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="lg:grid lg:grid-cols-4 lg:gap-8">
+        <!-- Sidebar with Additional Filters -->
+        <div class="lg:col-span-1">
+          <div class="bg-white rounded-lg shadow p-6">
+            <h3 class="text-lg font-medium text-texas-navy mb-4">Refine Your Search</h3>
+            
+            <!-- Trust Signals -->
+            <div class="mb-6 p-4 bg-texas-cream-50 rounded-lg border border-texas-cream-200">
+              <h4 class="text-sm font-semibold text-texas-navy mb-2">How We're Different</h4>
+              <ul class="text-xs text-gray-700 space-y-1">
+                <li>• We only show quality plans from 12-15 trusted companies</li>
+                <li>• No teaser rates, no fine print surprises</li>
+                <li>• The companies pay us, you pay the same either way</li>
+                <li>• No email required, no spam, no sales calls</li>
+              </ul>
+            </div>
+            <div class="space-y-4">
+              {suggestedFilterDefinitions.map((item) => (
+                <div key={item.definition.type}>
+                  <h4 class="text-sm font-medium text-gray-700 mb-2">
+                    {item.definition.description}
+                  </h4>
+                  <div class="space-y-2">
+                    {item.definition.urlPatterns.slice(0, item.definition.type === 'providers' ? 12 : 6).map((pattern) => {
+                      const isActive = filterSegments.includes(pattern);
+                      const newUrl = isActive
+                        ? `/electricity-plans/${citySlug}/${filterSegments.filter(f => f !== pattern).join('/')}`
+                        : `/electricity-plans/${citySlug}/${[...filterSegments, pattern].join('/')}`;
+                      
+                      return (
+                        <a
+                          key={pattern}
+                          href={newUrl}
+                          class={`block text-sm px-3 py-2 rounded-md transition-colors ${
+                            isActive
+                              ? 'bg-texas-navy/10 text-texas-navy font-medium'
+                              : 'text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy'
+                          }`}
+                        >
+                          {item.definition.displayName(pattern)}
+                        </a>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Plans Grid -->
+        <div class="lg:col-span-3 mt-8 lg:mt-0" id="plans-grid">
+          <!-- Plans Header with Messaging -->
+          {plans.length > 0 && (
+            <div class="mb-6">
+              <h2 class="text-2xl font-bold text-texas-navy mb-2">
+                {filterResult.appliedFilters.length > 0 
+                  ? `${filterResult.appliedFilters.map(f => f.displayName).join(' + ')} Plans in ${cityName}`
+                  : `Electricity Plans in ${cityName}`
+                }
+              </h2>
+              <p class="text-gray-700">
+                You'll see each plan's real cost, not the marketing rate. Takes 5 minutes.
+              </p>
+              {messaging.warning && (
+                <div class="mt-3 p-3 bg-texas-gold-50 border-l-4 border-texas-gold-400 rounded-r">
+                  <p class="text-sm text-texas-gold-800">
+                    <strong>Reality Check:</strong> {messaging.warning}
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
+
+          <FacetedPlanGrid 
+            plans={plans}
+            city={cityName}
+            appliedFilters={filterResult.appliedFilters}
+            totalCount={plans.length}
+            loading={false}
+            error={apiError}
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Related Links Section -->
+    <div class="bg-texas-cream-100 py-12 mt-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-texas-navy mb-4">
+          {filterResult.appliedFilters.length > 0 
+            ? `Other Options in ${cityName} Worth Considering`
+            : `The Most Popular Plan Types in ${cityName}`
+          }
+        </h2>
+        <p class="text-gray-700 mb-6">
+          {filterResult.appliedFilters.length > 0 
+            ? `Don't see what you need? These combinations work well for ${cityName} residents:`
+            : `Most people start with these plan types. Click to see what's available:`
+          }
+        </p>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {['12-month', '24-month', 'fixed-rate', 'green-energy', 'prepaid', 'no-deposit'].map((filter) => {
+            const isActive = filterSegments.includes(filter);
+            if (isActive) return null;
+            
+            const newUrl = `/electricity-plans/${citySlug}/${filter}`;
+            const definition = filterMapper.getDefinitionByPattern(filter);
+            const displayName = definition?.displayName(filter) || filter.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+            
+            return (
+              <a
+                key={filter}
+                href={newUrl}
+                class="bg-white p-4 rounded-xl shadow hover:shadow-lg hover:border-texas-navy/30 transition-all duration-300 border border-gray-200 hover:-translate-y-1 group"
+              >
+                <div class="text-sm font-semibold text-texas-navy group-hover:text-texas-red transition-colors">{displayName}</div>
+                <div class="text-xs text-gray-600 mt-1">Popular in {cityName}</div>
+              </a>
+            );
+          }).filter(Boolean)}
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+

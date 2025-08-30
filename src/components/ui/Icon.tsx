@@ -54,6 +54,7 @@ export const ElectricityIcons = {
   shop: 'tabler:shopping-cart',
   location: 'tabler:map-pin',
   info: 'tabler:info-circle',
+  'arrow-right': 'tabler:arrow-right',
   
   // User & Account
   user: 'tabler:user',

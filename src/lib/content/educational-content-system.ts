@@ -536,7 +536,7 @@ When you choose a green energy plan in Texas, you're supporting this continued r
           title: 'Green Energy Plan Costs and Value',
           content: `Green energy plans in Texas are more affordable than ever, with many 100% renewable plans priced competitively with traditional electricity plans. The cost premium for green energy has decreased significantly as renewable energy costs have fallen.
 
-When evaluating green energy plan costs, consider both the direct financial impact and the environmental value you receive. Many consumers find the peace of mind and environmental benefits worth a small premium.
+When evaluating green energy plan costs, consider both the direct financial impact and the environmental value. Many consumers find the environmental benefits worth a small rate increase.
 
 Some green energy plans also include additional benefits like energy efficiency programs, smart home technology, or carbon offset programs that add value beyond just renewable energy sourcing.`,
           keyPoints: [

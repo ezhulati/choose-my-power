@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LocationsPage from './_components/LocationsPage';
+
+const title = "Find Electricity Plans in Your Exact Spot | Texas Cities & ZIP Codes";
+const description = "Just moved? Checking if you can switch? Enter your ZIP code and we'll show you exactly which providers serve your street, what rates they're offering today, and how much your neighbors save.";
+// Cache busting comment for deployment
+---
+
+<Layout title={title} description={description} ogImage="/images/og/comprehensive-clean/texas_state_overview_16x9.png">
+  <LocationsPage client:load />
+
+  <script>
+    // Client-side navigation function for React components
+    window.navigateToPath = function(path) {
+      window.location.href = path;
+    };
+  </script>
+</Layout>

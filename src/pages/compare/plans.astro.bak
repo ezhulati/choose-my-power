@@ -1,0 +1,395 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroBackground from '../../components/HeroBackground.astro';
+import StandardZipInput from '../../components/StandardZipInput.astro';
+import { Calculator, Clock, Zap, Leaf, DollarSign, Shield, Star } from 'lucide-react';
+
+const title = "Finally. Real Electricity Prices (Not Marketing Tricks) | ChooseMyPower";
+const description = "No more 6.9¢ rates that cost 14¢. We show what 300+ Texas electricity plans actually cost you—not the teaser rate. Real math, no nonsense, done in 10 minutes.";
+---
+
+<Layout title={title} description={description}>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Compare Texas Electricity Plans",
+    "description": "Compare 300+ Texas electricity plans with detailed cost analysis and savings calculator.",
+    "url": "https://choosemypower.org/compare/plans"
+  }
+  </script>
+
+  <div class="bg-white">
+    <!-- Hero Section -->
+    <HeroBackground 
+      title="Finally. Real Electricity Prices (Not Marketing Tricks)" 
+      subtitle="That 6.9¢ rate? It costs 14¢. We do the actual math on 300+ Texas plans."
+      variant="plans"
+    >
+      <div class="mt-8 max-w-md mx-auto">
+        <StandardZipInput 
+          variant="hero"
+          size="md"
+          showTitle={true}
+          showDescription={true}
+        />
+      </div>
+    </HeroBackground>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      
+      <!-- Usage Calculator -->
+      <div class="mb-12 bg-texas-cream-200 rounded-xl p-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Calculate Your Monthly Costs</h2>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Monthly Usage (kWh)</label>
+            <input type="number" value="1000" class="w-full border border-gray-300 rounded-md px-3 py-2" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Plan Type</label>
+            <select class="w-full border border-gray-300 rounded-md px-3 py-2">
+              <option>All Plan Types</option>
+              <option>Fixed Rate</option>
+              <option>Variable Rate</option>
+              <option>Time of Use</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Contract Length</label>
+            <select class="w-full border border-gray-300 rounded-md px-3 py-2">
+              <option>Any Length</option>
+              <option>Month-to-month</option>
+              <option>12 months</option>
+              <option>24+ months</option>
+            </select>
+          </div>
+          <div class="flex items-end">
+            <button class="w-full bg-texas-navy text-white px-6 py-3 min-h-[48px] rounded-lg hover:bg-blue-800 transition-colors touch-manipulation"
+              Update Costs
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Advanced Filters -->
+      <div class="mb-12">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4">Filter Plans</h3>
+        <div class="bg-white border border-gray-200 rounded-lg p-6">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div>
+              <label class="flex items-center space-x-3 cursor-pointer p-2 min-h-[48px] touch-manipulation">
+                <input type="checkbox" class="w-5 h-5 text-texas-navy rounded touch-manipulation" />
+                <span class="text-sm">No Deposit Required</span>
+              </label>
+            </div>
+            <div>
+              <label class="flex items-center space-x-3 cursor-pointer p-2 min-h-[48px] touch-manipulation">
+                <input type="checkbox" class="w-5 h-5 text-texas-navy rounded touch-manipulation" />
+                <span class="text-sm">100% Renewable</span>
+              </label>
+            </div>
+            <div>
+              <label class="flex items-center space-x-3 cursor-pointer p-2 min-h-[48px] touch-manipulation">
+                <input type="checkbox" class="w-5 h-5 text-texas-navy rounded touch-manipulation" />
+                <span class="text-sm">Free Nights/Weekends</span>
+              </label>
+            </div>
+            <div>
+              <label class="flex items-center space-x-3 cursor-pointer p-2 min-h-[48px] touch-manipulation">
+                <input type="checkbox" class="w-5 h-5 text-texas-navy rounded touch-manipulation" />
+                <span class="text-sm">Bill Credit Plans</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Plans Comparison Grid -->
+      <div class="mb-16">
+        <div class="flex items-center justify-between mb-8">
+          <h2 class="text-3xl font-bold text-gray-900">Best Plans for Your Usage</h2>
+          <div class="flex space-x-2">
+            <button class="border border-gray-300 px-4 py-3 min-h-[48px] rounded-lg hover:bg-gray-50 touch-manipulation">Sort by Price</button>
+            <button class="bg-texas-navy text-white px-4 py-3 min-h-[48px] rounded-lg hover:bg-blue-800 touch-manipulation">Compare Selected</button>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          
+          <!-- Plan Card 1 -->
+          <div class="bg-white border-2 border-green-200 rounded-xl p-6 hover:shadow-lg transition-shadow relative">
+            <label class="absolute top-2 right-2 p-3 min-h-[48px] min-w-[48px] cursor-pointer touch-manipulation flex items-center justify-center">
+              <input type="checkbox" class="w-5 h-5 text-texas-navy rounded touch-manipulation" />
+            </label>
+            <div class="absolute -top-3 left-6">
+              <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">Best Value</span>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+              <div class="lg:col-span-2">
+                <div class="flex items-center space-x-3 mb-3">
+                  <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                    <Leaf class="h-5 w-5 text-green-600" />
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-gray-900">Green Mountain Energy</h3>
+                    <p class="text-sm text-gray-600">Pollution Free e-Plus 12</p>
+                  </div>
+                </div>
+                <div class="space-y-2">
+                  <div class="flex items-center space-x-2">
+                    <Shield class="h-4 w-4 text-green-600" />
+                    <span class="text-sm text-gray-600">12-month fixed rate</span>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <Leaf class="h-4 w-4 text-green-600" />
+                    <span class="text-sm text-gray-600">100% renewable energy</span>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <DollarSign class="h-4 w-4 text-green-600" />
+                    <span class="text-sm text-gray-600">No deposit required</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="text-center lg:text-left">
+                <div class="mb-2">
+                  <span class="text-3xl font-bold text-green-600">8.9</span>
+                  <span class="text-gray-600">¢/kWh</span>
+                </div>
+                <div class="text-sm text-gray-600">Energy Charge</div>
+                <div class="mt-2">
+                  <span class="text-sm text-gray-600">Base Charge: </span>
+                  <span class="font-medium">$9.95/month</span>
+                </div>
+              </div>
+
+              <div class="text-center lg:text-right">
+                <div class="mb-2">
+                  <span class="text-3xl font-bold text-gray-900">$98.95</span>
+                  <span class="text-gray-600">/month</span>
+                </div>
+                <div class="text-sm text-gray-600 mb-4">Based on 1,000 kWh</div>
+                <button class="bg-green-600 text-white px-6 py-3 min-h-[48px] rounded-lg hover:bg-green-700 transition-colors touch-manipulation"
+                  View Details
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Plan Card 2 -->
+          <div class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow relative">
+            <label class="absolute top-2 right-2 p-3 min-h-[48px] min-w-[48px] cursor-pointer touch-manipulation flex items-center justify-center">
+              <input type="checkbox" class="w-5 h-5 text-texas-navy rounded touch-manipulation" />
+            </label>
+
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+              <div class="lg:col-span-2">
+                <div class="flex items-center space-x-3 mb-3">
+                  <div class="w-10 h-10 bg-texas-cream rounded-lg flex items-center justify-center">
+                    <Zap class="h-5 w-5 text-texas-navy" />
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-gray-900">TXU Energy</h3>
+                    <p class="text-sm text-gray-600">Free Nights & Weekends 12</p>
+                  </div>
+                </div>
+                <div class="space-y-2">
+                  <div class="flex items-center space-x-2">
+                    <Clock class="h-4 w-4 text-texas-navy" />
+                    <span class="text-sm text-gray-600">Free power nights & weekends</span>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <Shield class="h-4 w-4 text-texas-navy" />
+                    <span class="text-sm text-gray-600">12-month fixed rate</span>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <Star class="h-4 w-4 text-texas-navy" />
+                    <span class="text-sm text-gray-600">Rewards program</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="text-center lg:text-left">
+                <div class="mb-2">
+                  <span class="text-3xl font-bold text-texas-navy">15.2</span>
+                  <span class="text-gray-600">¢/kWh</span>
+                </div>
+                <div class="text-sm text-gray-600">Energy Charge*</div>
+                <div class="mt-2">
+                  <span class="text-sm text-gray-600">Base Charge: </span>
+                  <span class="font-medium">$9.95/month</span>
+                </div>
+                <div class="text-xs text-gray-500 mt-1">*Rate applies during peak hours</div>
+              </div>
+
+              <div class="text-center lg:text-right">
+                <div class="mb-2">
+                  <span class="text-3xl font-bold text-gray-900">$104.50</span>
+                  <span class="text-gray-600">/month</span>
+                </div>
+                <div class="text-sm text-gray-600 mb-4">Based on 1,000 kWh</div>
+                <button class="bg-texas-navy text-white px-6 py-3 min-h-[48px] rounded-lg hover:bg-blue-800 transition-colors touch-manipulation"
+                  View Details
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Plan Card 3 -->
+          <div class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow relative">
+            <label class="absolute top-2 right-2 p-3 min-h-[48px] min-w-[48px] cursor-pointer touch-manipulation flex items-center justify-center">
+              <input type="checkbox" class="w-5 h-5 text-texas-navy rounded touch-manipulation" />
+            </label>
+
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+              <div class="lg:col-span-2">
+                <div class="flex items-center space-x-3 mb-3">
+                  <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
+                    <Calculator class="h-5 w-5 text-orange-600" />
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-gray-900">Reliant Energy</h3>
+                    <p class="text-sm text-gray-600">Secure Advantage 24</p>
+                  </div>
+                </div>
+                <div class="space-y-2">
+                  <div class="flex items-center space-x-2">
+                    <Shield class="h-4 w-4 text-orange-600" />
+                    <span class="text-sm text-gray-600">24-month fixed rate</span>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <DollarSign class="h-4 w-4 text-orange-600" />
+                    <span class="text-sm text-gray-600">Bill credit at 1000 kWh</span>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <Zap class="h-4 w-4 text-orange-600" />
+                    <span class="text-sm text-gray-600">Smart home features</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="text-center lg:text-left">
+                <div class="mb-2">
+                  <span class="text-3xl font-bold text-orange-600">9.4</span>
+                  <span class="text-gray-600">¢/kWh</span>
+                </div>
+                <div class="text-sm text-gray-600">Energy Charge</div>
+                <div class="mt-2">
+                  <span class="text-sm text-gray-600">Base Charge: </span>
+                  <span class="font-medium">$9.95/month</span>
+                </div>
+              </div>
+
+              <div class="text-center lg:text-right">
+                <div class="mb-2">
+                  <span class="text-3xl font-bold text-gray-900">$84.00</span>
+                  <span class="text-gray-600">/month</span>
+                </div>
+                <div class="text-sm text-gray-600 mb-1">Based on 1,000 kWh</div>
+                <div class="text-xs text-green-600 mb-3">-$20 Bill Credit Applied</div>
+                <button class="bg-orange-600 text-white px-6 py-3 min-h-[48px] rounded-lg hover:bg-orange-700 transition-colors touch-manipulation"
+                  View Details
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Detailed Comparison Table -->
+      <div class="bg-white border border-gray-200 rounded-xl overflow-hidden mb-16">
+        <div class="px-6 py-4 border-b border-gray-200 bg-gray-50">
+          <h3 class="text-lg font-semibold text-gray-900">Plan Comparison Table</h3>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead class="bg-gray-50 border-b border-gray-200">
+              <tr>
+                <th class="text-left py-3 px-6 font-medium text-gray-900">Plan Name</th>
+                <th class="text-left py-3 px-6 font-medium text-gray-900">Rate</th>
+                <th class="text-left py-3 px-6 font-medium text-gray-900">Term</th>
+                <th class="text-left py-3 px-6 font-medium text-gray-900">Monthly Cost</th>
+                <th class="text-left py-3 px-6 font-medium text-gray-900">Green Energy</th>
+                <th class="text-left py-3 px-6 font-medium text-gray-900">Special Features</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <tr class="hover:bg-gray-50">
+                <td class="py-4 px-6">
+                  <div>
+                    <div class="font-medium">Pollution Free e-Plus 12</div>
+                    <div class="text-sm text-gray-600">Green Mountain Energy</div>
+                  </div>
+                </td>
+                <td class="py-4 px-6 text-green-600 font-medium">8.9¢/kWh</td>
+                <td class="py-4 px-6">12 months</td>
+                <td class="py-4 px-6 font-medium">$98.95</td>
+                <td class="py-4 px-6 text-green-600">100%</td>
+                <td class="py-4 px-6">No Deposit, Carbon Free</td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="py-4 px-6">
+                  <div>
+                    <div class="font-medium">Free Nights & Weekends 12</div>
+                    <div class="text-sm text-gray-600">TXU Energy</div>
+                  </div>
+                </td>
+                <td class="py-4 px-6 text-texas-navy font-medium">15.2¢/kWh*</td>
+                <td class="py-4 px-6">12 months</td>
+                <td class="py-4 px-6 font-medium">$104.50</td>
+                <td class="py-4 px-6">Available</td>
+                <td class="py-4 px-6">Free Nights/Weekends, Rewards</td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="py-4 px-6">
+                  <div>
+                    <div class="font-medium">Secure Advantage 24</div>
+                    <div class="text-sm text-gray-600">Reliant Energy</div>
+                  </div>
+                </td>
+                <td class="py-4 px-6 text-orange-600 font-medium">9.4¢/kWh</td>
+                <td class="py-4 px-6">24 months</td>
+                <td class="py-4 px-6 font-medium">$84.00</td>
+                <td class="py-4 px-6">Available</td>
+                <td class="py-4 px-6">Bill Credit, Smart Home</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Understanding Plan Types -->
+      <div class="bg-gray-50 rounded-xl p-8">
+        <h3 class="text-2xl font-bold text-gray-900 mb-6">Understanding Plan Types</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white rounded-lg p-6">
+            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+              <Shield class="h-6 w-6 text-green-600" />
+            </div>
+            <h4 class="font-semibold text-gray-900 mb-3">Fixed Rate Plans</h4>
+            <p class="text-gray-600 text-sm">Locked-in rate for the contract term. Predictable bills and protection from market fluctuations.</p>
+          </div>
+          <div class="bg-white rounded-lg p-6">
+            <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+              <Calculator class="h-6 w-6 text-orange-600" />
+            </div>
+            <h4 class="font-semibold text-gray-900 mb-3">Variable Rate Plans</h4>
+            <p class="text-gray-600 text-sm">Rates can change monthly. Often lower initial rates but subject to market conditions.</p>
+          </div>
+          <div class="bg-white rounded-lg p-6">
+            <div class="w-12 h-12 bg-texas-cream rounded-lg flex items-center justify-center mb-4">
+              <Clock class="h-6 w-6 text-texas-navy" />
+            </div>
+            <h4 class="font-semibold text-gray-900 mb-3">Time-of-Use Plans</h4>
+            <p class="text-gray-600 text-sm">Different rates for different times. Free nights/weekends or peak/off-peak pricing.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</Layout>

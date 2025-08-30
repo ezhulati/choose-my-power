@@ -208,28 +208,31 @@
         // Multiple navigation strategies for maximum reliability
         console.log('🎯 Navigating to:', result.redirectUrl);
         
-        try {
-          // Primary: Use window.location.href for most reliable navigation
-          window.location.href = result.redirectUrl;
-        } catch (navError) {
-          console.warn('⚠️ window.location.href failed, trying alternatives:', navError);
-          
+        // Add small delay to prevent "page can't be found" flash on dynamic routes
+        setTimeout(() => {
           try {
-            // Fallback 1: Use window.location assignment
-            window.location = result.redirectUrl;
-          } catch (navError2) {
-            console.warn('⚠️ window.location assignment failed, trying replace:', navError2);
+            // Primary: Use window.location.href for most reliable navigation
+            window.location.href = result.redirectUrl;
+          } catch (navError) {
+            console.warn('⚠️ window.location.href failed, trying alternatives:', navError);
             
             try {
-              // Fallback 2: Use location.replace
-              window.location.replace(result.redirectUrl);
-            } catch (navError3) {
-              console.error('❌ All navigation methods failed, using API URL as final fallback:', navError3);
-              // Final safety net: redirect to the API URL directly
-              window.location.href = url;
+              // Fallback 1: Use window.location assignment
+              window.location = result.redirectUrl;
+            } catch (navError2) {
+              console.warn('⚠️ window.location assignment failed, trying replace:', navError2);
+              
+              try {
+                // Fallback 2: Use location.replace
+                window.location.replace(result.redirectUrl);
+              } catch (navError3) {
+                console.error('❌ All navigation methods failed, using API URL as final fallback:', navError3);
+                // Final safety net: redirect to the API URL directly
+                window.location.href = url;
+              }
             }
           }
-        }
+        }, 100); // 100ms delay to prevent "page can't be found" flash
       } else {
         // Handle different error types
         console.log('⚠️ ZIP lookup failed:', result);
