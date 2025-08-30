@@ -97,7 +97,7 @@ export function CityElectricityRatesPage({ state, city }: CityElectricityRatesPa
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
               <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                {cityData.name} Electricity Rates - Compare {city === 'dallas' ? 'Dallas TX' : cityData.name + ' ' + stateData.abbreviation} Electric Rates
+                {cityData.name} Electricity Rates
               </h1>
               
               <p className="text-lg text-gray-600 mb-6">

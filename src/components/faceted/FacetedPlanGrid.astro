@@ -1226,6 +1226,59 @@ Compare
       }
     }
     
+    handleQuickFilter(button) {
+      // Remove active state from all filter buttons
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      // Add active state to clicked button
+      button.classList.add('active');
+      
+      const usage = button.dataset.usage;
+      const filter = button.dataset.filter;
+      
+      let sortBy = 'price'; // default
+      let filterType = '';
+      
+      if (usage) {
+        // Sort by best rate for specific usage level
+        sortBy = `usage_${usage}`;
+        filterType = `${usage}kWh`;
+      } else if (filter === 'green') {
+        sortBy = 'green';
+        filterType = 'green_energy';
+      } else if (filter === 'cheapest') {
+        sortBy = 'price';
+        filterType = 'cheapest';
+      }
+      
+      // Update URL with filter
+      const url = new URL(window.location);
+      url.searchParams.set('sort', sortBy);
+      if (filterType) {
+        url.searchParams.set('filter', filterType);
+      }
+      window.history.replaceState({}, '', url);
+      
+      // Show loading state
+      this.showLoadingState();
+      
+      // Track filter usage
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'quick_filter_used', {
+          filter_type: filterType,
+          sort_type: sortBy,
+          current_view: this.currentView
+        });
+      }
+      
+      // Reload page with new filter (in real app, would filter client-side)
+      setTimeout(() => {
+        window.location.href = url.toString();
+      }, 300);
+    }
+
     handleViewChange(newView) {
       if (newView === this.currentView) return;
       

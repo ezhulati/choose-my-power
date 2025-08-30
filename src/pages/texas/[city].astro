@@ -115,7 +115,7 @@ const metaTags = await generateFacetedMeta({
 const breadcrumbs = [
   { name: 'Home', url: '/' },
   { name: 'Texas Electricity', url: '/texas/' },
-  { name: `${cityName} Plans`, url: `/texas/${city}/` }
+  { name: cityName.replace(', TX', ''), url: `/texas/${city}/` }
 ];
 
 const schemas = generateFacetedSchema({
