@@ -323,11 +323,11 @@ export class FacetedRouter {
    */
   getFilterDescription(cityName: string, appliedFilters: AppliedFilter[]): string {
     if (appliedFilters.length === 0) {
-      return `Compare electricity plans in ${cityName}, Texas. Find the best energy rates and switch providers.`;
+      return `Shopping for electricity in ${cityName}? Here's how to avoid the common mistakes and find a plan that actually works for your budget.`;
     }
 
     const filterDescriptions = appliedFilters.map(f => f.displayName).join(' and ');
-    return `Find ${filterDescriptions} electricity plans in ${cityName}, Texas. Compare rates from top energy providers.`;
+    return `Looking for ${filterDescriptions} plans in ${cityName}? We'll show you which providers deliver what they promise and what you'll actually pay.`;
   }
 
   /**
@@ -335,11 +335,11 @@ export class FacetedRouter {
    */
   generatePageTitle(cityName: string, appliedFilters: AppliedFilter[]): string {
     if (appliedFilters.length === 0) {
-      return `Best Electricity Plans in ${cityName}, TX | Compare Energy Rates`;
+      return `Electricity Plans in ${cityName}, TX | What You'll Actually Pay`;
     }
 
     const filterLabels = appliedFilters.map(f => f.displayName).join(' + ');
-    return `${filterLabels} Electricity Plans in ${cityName}, TX | Compare Rates`;
+    return `${filterLabels} Plans in ${cityName}, TX | Real Rates, No Tricks`;
   }
 
   /**

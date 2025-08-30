@@ -86,7 +86,7 @@ const sortingOptions = [
           <span class="stat-icon"></span>
           <div class="stat-content">
             <span class="stat-number">{totalPlans}</span>
-            <span class="stat-label">Available Plans</span>
+            <span class="stat-label">Plans Found</span>
           </div>
         </div>
         
@@ -397,30 +397,30 @@ Compare
       </div>
       
       <div class="no-plans-content">
-        <h3 class="no-plans-title">We Can't Find What You're Looking For</h3>
+        <h3 class="no-plans-title">Nothing Matches Those Filters</h3>
         <p class="no-plans-description">
-          None of the electricity plans in {city} match what you're searching for.
-          But don't worry - we'll help you find something that works.
+          Your search criteria might be too specific for what's actually available in {city}.
+          Here's how to find something that'll work for you instead.
         </p>
         
         <div class="no-plans-suggestions">
-          <h4 class="suggestions-title">Here's How We Can Help:</h4>
+          <h4 class="suggestions-title">Try This Instead:</h4>
           <ul class="suggestions-list">
-            <li>• Try fewer filters (most people over-filter)</li>
-            <li>• Consider 12-month plans (usually the best deal)</li>
-            <li>• Look at fixed rates (predictable bills)</li>
-            <li>• Check out our top recommendations instead</li>
+            <li>• Remove a few filters - you might be too picky</li>
+            <li>• 12-month contracts usually have the ideal rates</li>
+            <li>• Fixed rates mean no surprises on your bill</li>
+            <li>• Sometimes the best plan isn't what you expected</li>
           </ul>
         </div>
         
         <div class="no-plans-actions">
           <button class="clear-filters-btn" onclick="window.location.href = window.location.pathname.split('/').slice(0, -1).join('/') + '/electricity-plans'">
             <span class="btn-icon">Clear</span>
-            Start Over
+            Start Fresh
           </button>
           <a href={`/texas/${city}/electricity-providers`} class="browse-providers-btn">
             <span class="btn-icon">Browse</span>
-            Show Me What's Good
+            Just Show Me Good Plans
           </a>
         </div>
       </div>

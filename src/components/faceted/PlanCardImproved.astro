@@ -134,12 +134,12 @@ if (hasGuarantee) contractHighlights.push('Satisfaction guarantee');
       <div className="flex justify-center gap-2">
         {isGoodDeal && (
           <Badge variant="success" className="text-xs">
-            Below Average Rate
+            Good Deal
           </Badge>
         )}
         {position <= 5 && (
           <Badge variant="warning" className="text-xs">
-            Top Recommendation
+            Recommended
           </Badge>
         )}
       </div>
@@ -150,9 +150,9 @@ if (hasGuarantee) contractHighlights.push('Satisfaction guarantee');
     <!-- Usage-based pricing with improved layout -->
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h4 className="text-sm font-semibold text-gray-900">Monthly Usage Estimates</h4>
+        <h4 className="text-sm font-semibold text-gray-900">What You'll Actually Pay</h4>
         <Badge variant="info" className="text-xs">
-          Most Popular: 1000 kWh
+          Average Home: 1000 kWh
         </Badge>
       </div>
       
@@ -164,7 +164,7 @@ if (hasGuarantee) contractHighlights.push('Satisfaction guarantee');
         </div>
         <div className="text-center p-4 rounded-lg border-2 border-texas-navy/30 bg-texas-cream-200/50 relative">
           <Badge variant="info" className="absolute -top-2 left-1/2 transform -translate-x-1/2 text-xs px-2 py-0.5">
-            Popular
+            Typical
           </Badge>
           <div className="text-xs text-gray-600 mb-1">1000 kWh</div>
           <div className="font-bold text-lg text-texas-navy">{formatCurrency(monthlyBill1000)}</div>
@@ -182,7 +182,7 @@ if (hasGuarantee) contractHighlights.push('Satisfaction guarantee');
     <Alert className="border-texas-gold-200 bg-texas-gold-50">
       <AlertDescription className="text-sm text-texas-gold-800 font-medium flex items-center gap-2">
         <span className="text-texas-gold-600">ℹ️</span>
-        Prices include all electricity charges and delivery fees - no hidden costs
+This is what you'll actually pay - no teaser rates or surprise fees
       </AlertDescription>
     </Alert>
 
