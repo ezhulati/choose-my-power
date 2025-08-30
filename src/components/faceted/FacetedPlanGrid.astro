@@ -397,30 +397,30 @@ Compare
       </div>
       
       <div class="no-plans-content">
-        <h3 class="no-plans-title">No Plans Match Your Criteria</h3>
+        <h3 class="no-plans-title">We Can't Find What You're Looking For</h3>
         <p class="no-plans-description">
-          We couldn't find any electricity plans that match your current filters for {city}.
-          Try adjusting your criteria to see more options.
+          None of the electricity plans in {city} match what you're searching for.
+          But don't worry - we'll help you find something that works.
         </p>
         
         <div class="no-plans-suggestions">
-          <h4 class="suggestions-title">Try these suggestions:</h4>
+          <h4 class="suggestions-title">Here's How We Can Help:</h4>
           <ul class="suggestions-list">
-            <li>• Remove some filter selections</li>
-            <li>• Consider different contract lengths</li>
-            <li>• Explore variable rate plans</li>
-            <li>• Look at plans with lower green energy percentages</li>
+            <li>• Try fewer filters (most people over-filter)</li>
+            <li>• Consider 12-month plans (usually the best deal)</li>
+            <li>• Look at fixed rates (predictable bills)</li>
+            <li>• Check out our top recommendations instead</li>
           </ul>
         </div>
         
         <div class="no-plans-actions">
           <button class="clear-filters-btn" onclick="window.location.href = window.location.pathname.split('/').slice(0, -1).join('/') + '/electricity-plans'">
             <span class="btn-icon">Clear</span>
-            Clear All Filters
+            Start Over
           </button>
           <a href={`/texas/${city}/electricity-providers`} class="browse-providers-btn">
             <span class="btn-icon">Browse</span>
-            Browse Providers
+            Show Me What's Good
           </a>
         </div>
       </div>
