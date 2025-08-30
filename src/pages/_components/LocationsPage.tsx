@@ -358,7 +358,7 @@ function LocationsPage({}: LocationsPageProps) {
                       {selectedMetric === 'rates' && (
                         <>
                           <div className="text-xl font-bold text-green-600">{city.averageRate}¢</div>
-                          <div className="text-xs text-gray-500">avg/kWh</div>
+                          <div className="text-[10px] text-gray-500">avg/kWh</div>
                         </>
                       )}
                       {selectedMetric === 'population' && (

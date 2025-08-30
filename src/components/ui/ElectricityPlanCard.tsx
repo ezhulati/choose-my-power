@@ -149,7 +149,7 @@ export const ElectricityPlanCard: React.FC<ElectricityPlanCardProps> = ({
       </CardFooter>
 
       <div className="absolute bottom-2 right-2">
-        <div className="text-xs text-gray-500">*Based on 1,000 kWh</div>
+        <div className="text-[10px] text-gray-500">*Based on 1,000 kWh</div>
       </div>
     </Card>
   );

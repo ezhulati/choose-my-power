@@ -276,11 +276,11 @@ const PlanResultsGrid: React.FC<PlanResultsGridProps> = ({
                 {/* Monthly Estimates */}
                 <div className="grid grid-cols-2 gap-4 p-4 bg-texas-cream rounded-lg">
                   <div className="text-center">
-                    <div className="text-xs text-gray-600 mb-1">1,000 kWh</div>
+                    <div className="text-[10px] text-gray-600 mb-1">1,000 kWh</div>
                     <div className="font-semibold text-gray-900">${plan.monthlyEstimate1000.toFixed(2)}/month</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-xs text-gray-600 mb-1">2,000 kWh</div>
+                    <div className="text-[10px] text-gray-600 mb-1">2,000 kWh</div>
                     <div className="font-semibold text-gray-900">${plan.monthlyEstimate2000.toFixed(2)}/month</div>
                   </div>
                 </div>

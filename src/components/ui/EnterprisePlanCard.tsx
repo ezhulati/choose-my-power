@@ -17,8 +17,14 @@ interface EnterprisePlanCardProps {
     topRated?: boolean;
     features?: string[];
     slug: string;
+    // Pricing for different usage levels
+    pricing?: {
+      rate500kWh?: number;
+      rate1000kWh?: number;
+      rate2000kWh?: number;
+    };
   };
-  onViewDetails: (plan: EnterprisePlanCardProps['plan']) => void;
+  onViewDetails?: (plan: EnterprisePlanCardProps['plan']) => void;
   className?: string;
 }
 
@@ -27,51 +33,128 @@ export const EnterprisePlanCard: React.FC<EnterprisePlanCardProps> = ({
   onViewDetails,
   className = "",
 }) => {
-  // Professional provider logo mapping
+  // Real provider logo mapping from CompareMore CSV data
   const getProviderLogo = (providerName: string) => {
     const provider = providerName.toLowerCase();
     
-    // Map common Texas electricity providers to their brand colors and icons
+    // Map Texas electricity providers to their actual CompareMore logo URLs
+    if (provider.includes('frontier') || provider.includes('frontier utilities')) return { 
+      logoUrl: 'https://assets.comparepower.com/images/frontier_utilities.svg',
+      fallbackIcon: 'zap', 
+      color: 'bg-blue-600', 
+      textColor: 'text-white',
+      name: 'Frontier Utilities' 
+    };
+    if (provider.includes('gexa')) return { 
+      logoUrl: 'https://assets.comparepower.com/images/gexa_energy.svg',
+      fallbackIcon: 'zap', 
+      color: 'bg-blue-500', 
+      textColor: 'text-white',
+      name: 'Gexa Energy' 
+    };
+    if (provider.includes('4change') || provider.includes('4 change')) return { 
+      logoUrl: 'https://assets.comparepower.com/images/4change_energy.svg',
+      fallbackIcon: 'zap', 
+      color: 'bg-green-600', 
+      textColor: 'text-white',
+      name: '4Change Energy' 
+    };
+    if (provider.includes('discount power')) return { 
+      logoUrl: 'https://assets.comparepower.com/images/discount_power.svg',
+      fallbackIcon: 'zap', 
+      color: 'bg-orange-600', 
+      textColor: 'text-white',
+      name: 'Discount Power' 
+    };
+    if (provider.includes('cirro')) return { 
+      logoUrl: 'https://assets.comparepower.com/images/cirro_energy.svg',
+      fallbackIcon: 'zap', 
+      color: 'bg-purple-600', 
+      textColor: 'text-white',
+      name: 'Cirro Energy' 
+    };
+    if (provider.includes('apge')) return { 
+      logoUrl: 'https://assets.comparepower.com/images/apge.svg',
+      fallbackIcon: 'zap', 
+      color: 'bg-indigo-600', 
+      textColor: 'text-white',
+      name: 'APGE' 
+    };
+    if (provider.includes('rhythm')) return { 
+      logoUrl: 'https://assets.comparepower.com/images/rhythm_energy.svg',
+      fallbackIcon: 'leaf', 
+      color: 'bg-green-700', 
+      textColor: 'text-white',
+      name: 'Rhythm Energy' 
+    };
+    if (provider.includes('atlantex')) return { 
+      logoUrl: 'https://assets.comparepower.com/images/atlantex_power.svg',
+      fallbackIcon: 'star', 
+      color: 'bg-blue-700', 
+      textColor: 'text-white',
+      name: 'Atlantex Power' 
+    };
+    if (provider.includes('just energy')) return { 
+      logoUrl: 'https://assets.comparepower.com/images/just_energy.svg',
+      fallbackIcon: 'zap', 
+      color: 'bg-red-600', 
+      textColor: 'text-white',
+      name: 'Just Energy' 
+    };
+    if (provider.includes('tara energy')) return { 
+      logoUrl: 'https://assets.comparepower.com/images/tara_energy.svg',
+      fallbackIcon: 'zap', 
+      color: 'bg-purple-500', 
+      textColor: 'text-white',
+      name: 'Tara Energy' 
+    };
     if (provider.includes('reliant')) return { 
-      icon: 'zap', 
+      logoUrl: 'https://assets.comparepower.com/images/reliant.svg',
+      fallbackIcon: 'zap', 
       color: 'bg-blue-600', 
       textColor: 'text-white',
       name: 'Reliant Energy' 
     };
-    if (provider.includes('txu')) return { 
-      icon: 'zap', 
-      color: 'bg-red-600', 
-      textColor: 'text-white',
-      name: 'TXU Energy' 
-    };
-    if (provider.includes('direct')) return { 
-      icon: 'zap', 
+    if (provider.includes('direct energy')) return { 
+      logoUrl: 'https://assets.comparepower.com/images/direct_energy.svg',
+      fallbackIcon: 'zap', 
       color: 'bg-orange-600', 
       textColor: 'text-white',
       name: 'Direct Energy' 
     };
     if (provider.includes('green mountain')) return { 
-      icon: 'leaf', 
+      logoUrl: 'https://assets.comparepower.com/images/green_mountain.svg',
+      fallbackIcon: 'leaf', 
       color: 'bg-green-600', 
       textColor: 'text-white',
       name: 'Green Mountain Energy' 
     };
-    if (provider.includes('constellation')) return { 
-      icon: 'star', 
-      color: 'bg-indigo-600', 
+    if (provider.includes('amigo energy')) return { 
+      logoUrl: 'https://assets.comparepower.com/images/amigo_energy.svg',
+      fallbackIcon: 'zap', 
+      color: 'bg-yellow-600', 
       textColor: 'text-white',
-      name: 'Constellation Energy' 
+      name: 'Amigo Energy' 
     };
-    if (provider.includes('stream')) return { 
-      icon: 'zap', 
-      color: 'bg-teal-600', 
+    if (provider.includes('payless power')) return { 
+      logoUrl: 'https://assets.comparepower.com/images/payless_power.svg',
+      fallbackIcon: 'zap', 
+      color: 'bg-red-500', 
       textColor: 'text-white',
-      name: 'Stream Energy' 
+      name: 'Payless Power' 
+    };
+    if (provider.includes('txu')) return { 
+      logoUrl: 'https://assets.comparepower.com/images/txu_energy.svg',
+      fallbackIcon: 'zap', 
+      color: 'bg-red-600', 
+      textColor: 'text-white',
+      name: 'TXU Energy' 
     };
     
     // Default for unknown providers
     return { 
-      icon: 'zap', 
+      logoUrl: null,
+      fallbackIcon: 'zap', 
       color: 'bg-texas-navy', 
       textColor: 'text-white',
       name: providerName 
@@ -112,28 +195,6 @@ export const EnterprisePlanCard: React.FC<EnterprisePlanCardProps> = ({
     }
   };
 
-  // Get special badge for premium features
-  const getSpecialBadge = () => {
-    if (plan.greenEnergy) return { 
-      text: "100% Green Energy", 
-      variant: "secondary" as const,
-      className: "bg-green-100 text-green-800 border-green-300",
-      icon: "leaf"
-    };
-    if (plan.topRated) return { 
-      text: "Top Rated Provider", 
-      variant: "secondary" as const,
-      className: "bg-texas-gold-100 text-texas-navy border-texas-gold-300",
-      icon: "star"
-    };
-    if (plan.noDeposit) return { 
-      text: "No Deposit Required", 
-      variant: "outline" as const,
-      className: "bg-texas-red-50 text-texas-red-700 border-texas-red-200",
-      icon: "shield"
-    };
-    return null;
-  };
 
   // Format rate display
   const formatRate = (rate: number | string) => {
@@ -143,85 +204,140 @@ export const EnterprisePlanCard: React.FC<EnterprisePlanCardProps> = ({
 
   const providerInfo = getProviderLogo(plan.provider);
   const planTypeInfo = getPlanTypeInfo(plan.planType);
-  const specialBadge = getSpecialBadge();
 
   return (
     <Card className={`group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-gray-200 hover:border-texas-navy/30 bg-white ${className}`}>
-      {/* Provider Header */}
-      <CardHeader className="p-6 pb-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <div className={`${providerInfo.color} ${providerInfo.textColor} p-2 rounded-lg`}>
-              <Icon name={providerInfo.icon as any} className="h-5 w-5" />
-            </div>
-            <div className="text-base font-semibold text-gray-900">
-              {providerInfo.name}
-            </div>
+      {/* Provider Header - Stacked Layout */}
+      <CardHeader className="p-4 pb-1 text-center">
+        {/* Provider Logo */}
+        <div className="w-20 h-12 mx-auto mb-2 flex items-center justify-center bg-transparent overflow-hidden">
+          {providerInfo.logoUrl ? (
+            <img 
+              src={providerInfo.logoUrl} 
+              alt={`${providerInfo.name} logo`}
+              className="max-w-full max-h-full object-contain"
+              onError={(e) => {
+                // Fallback to icon if logo fails to load
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                const fallback = target.nextElementSibling as HTMLElement;
+                if (fallback) fallback.style.display = 'flex';
+              }}
+            />
+          ) : null}
+          <div 
+            className={`${providerInfo.color} ${providerInfo.textColor} p-2 rounded-lg flex items-center justify-center ${providerInfo.logoUrl ? 'hidden' : ''}`}
+            style={{ display: providerInfo.logoUrl ? 'none' : 'flex' }}
+          >
+            <Icon name={providerInfo.fallbackIcon as any} className="h-5 w-5" />
           </div>
-          {specialBadge && (
-            <Badge className={`${specialBadge.className} text-xs font-medium px-2 py-1`}>
-              {specialBadge.text}
+        </div>
+        
+        {/* Provider Name */}
+        <div className="text-sm font-semibold text-gray-900 mb-1">
+          {providerInfo.name}
+        </div>
+        
+        {/* Plan Name */}
+        <h3 className="text-base font-bold text-gray-900 leading-snug mb-2">
+          {plan.name}
+        </h3>
+        
+        {/* Feature Badges */}
+        <div className="flex flex-wrap justify-center gap-1 mb-1">
+          {/* Green Energy Badge */}
+          {plan.greenEnergy && (
+            <Badge className="bg-green-100 text-green-800 border-green-300 text-[10px] font-medium px-2 py-1">
+              100% Green Energy
+            </Badge>
+          )}
+          
+          {/* No Deposit Badge - Only for prepaid or variable month-to-month plans */}
+          {(plan.planType === 'variable' && plan.contractTerm?.toLowerCase().includes('month-to-month')) && (
+            <Badge className="bg-blue-100 text-blue-800 border-blue-300 text-[10px] font-medium px-2 py-1">
+              No Deposit
+            </Badge>
+          )}
+          
+          {/* Top Rated Badge */}
+          {plan.topRated && (
+            <Badge className="bg-yellow-100 text-yellow-800 border-yellow-300 text-[10px] font-medium px-2 py-1">
+              Top Rated
             </Badge>
           )}
         </div>
       </CardHeader>
 
       {/* Plan Details */}
-      <CardContent className="p-6 pt-0 space-y-4">
-        {/* Plan Name */}
-        <h3 className="text-lg font-bold text-gray-900 leading-snug">
-          {plan.name}
-        </h3>
+      <CardContent className="px-4 pb-0 pt-0 space-y-0">
 
-        {/* Rate Display */}
-        <div className="text-center py-4 bg-gray-50 rounded-lg border">
-          <div className="text-3xl font-black text-texas-navy">
-            {formatRate(plan.rate)}
+        {/* Pricing Table for Different Usage Levels */}
+        <div className="bg-gray-50 rounded-lg border p-3 mb-3">
+          <div className="text-[10px] font-medium text-gray-600 mb-2 text-center">Monthly Usage Pricing</div>
+          <div className="grid grid-cols-3 gap-1">
+            <div className="text-center py-1.5 bg-white rounded border">
+              <div className="text-sm font-bold text-texas-navy">
+                {plan.pricing?.rate500kWh ? `${plan.pricing.rate500kWh.toFixed(1)}¢` : formatRate(plan.rate)}
+              </div>
+              <div className="text-[9px] text-gray-600">500 kWh</div>
+            </div>
+            <div className="text-center py-1.5 bg-white rounded border border-texas-navy">
+              <div className="text-sm font-bold text-texas-navy">
+                {plan.pricing?.rate1000kWh ? `${plan.pricing.rate1000kWh.toFixed(1)}¢` : formatRate(plan.rate)}
+              </div>
+              <div className="text-[9px] text-texas-navy font-medium">1000 kWh</div>
+            </div>
+            <div className="text-center py-1.5 bg-white rounded border">
+              <div className="text-sm font-bold text-texas-navy">
+                {plan.pricing?.rate2000kWh ? `${plan.pricing.rate2000kWh.toFixed(1)}¢` : formatRate(plan.rate)}
+              </div>
+              <div className="text-[9px] text-gray-600">2000 kWh</div>
+            </div>
           </div>
-          <div className="text-xs text-gray-600 mt-1">
-            per kWh
+          
+          {/* Monthly Bill Totals */}
+          <div className="mt-2 pt-2 border-t border-gray-200">
+            <div className="text-[9px] font-medium text-gray-500 mb-1 text-center">Estimated Monthly Bill</div>
+            <div className="grid grid-cols-3 gap-1 text-center">
+              <div className="text-xs font-semibold text-gray-700">
+                ${plan.pricing?.rate500kWh ? ((plan.pricing.rate500kWh * 500) / 100).toFixed(0) : Math.round((parseFloat(plan.rate.toString()) * 500) / 100)}
+              </div>
+              <div className="text-xs font-semibold text-texas-navy">
+                ${plan.pricing?.rate1000kWh ? ((plan.pricing.rate1000kWh * 1000) / 100).toFixed(0) : Math.round((parseFloat(plan.rate.toString()) * 1000) / 100)}
+              </div>
+              <div className="text-xs font-semibold text-gray-700">
+                ${plan.pricing?.rate2000kWh ? ((plan.pricing.rate2000kWh * 2000) / 100).toFixed(0) : Math.round((parseFloat(plan.rate.toString()) * 2000) / 100)}
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Contract & Type Info */}
-        <div className="grid grid-cols-2 gap-3 text-center">
-          <div className="py-2 px-3 bg-white border rounded-lg">
+        <div className="grid grid-cols-2 gap-2 text-center mt-3">
+          <div className="py-1.5 px-2 bg-white border rounded-lg">
             <div className="text-sm font-semibold text-gray-900">{plan.contractTerm}</div>
-            <div className="text-xs text-gray-500">Contract</div>
+            <div className="text-[10px] text-gray-500">Contract</div>
           </div>
-          <div className="py-2 px-3 bg-white border rounded-lg">
+          <div className="py-1.5 px-2 bg-white border rounded-lg">
             <div className="text-sm font-semibold text-gray-900">{planTypeInfo.label}</div>
-            <div className="text-xs text-gray-500">Rate Type</div>
+            <div className="text-[10px] text-gray-500">Rate Type</div>
           </div>
         </div>
 
-        {/* Features - Only show unique ones, avoid redundancy */}
-        {plan.features && plan.features.length > 0 && (
-          <div className="flex flex-wrap gap-1.5 justify-center">
-            {plan.features
-              .filter(feature => 
-                // Remove redundant features that match plan type or special badge
-                !feature.toLowerCase().includes(planTypeInfo.label.toLowerCase()) &&
-                (!specialBadge || !feature.toLowerCase().includes(specialBadge.text.toLowerCase().split(' ')[0]))
-              )
-              .slice(0, 3)
-              .map((feature, index) => (
-                <span
-                  key={index}
-                  className="px-2.5 py-1 bg-gray-100 text-gray-700 text-xs rounded-full"
-                >
-                  {feature}
-                </span>
-              ))
-            }
-          </div>
-        )}
       </CardContent>
 
       {/* CTA Button */}
-      <CardFooter className="p-6 pt-0">
+      <CardFooter className="p-4 pt-2">
         <Button
-          onClick={() => onViewDetails(plan)}
+          onClick={() => {
+            if (onViewDetails) {
+              onViewDetails(plan);
+            } else {
+              // Fallback navigation when onViewDetails is not provided
+              const providerSlug = plan.provider.toLowerCase().replace(/\s+/g, '-');
+              window.location.href = `/electricity-plans/${providerSlug}/${plan.slug}`;
+            }
+          }}
           className="w-full bg-texas-red hover:bg-texas-red-600 text-white font-semibold py-3 text-sm rounded-lg transition-all duration-200"
         >
           View Details

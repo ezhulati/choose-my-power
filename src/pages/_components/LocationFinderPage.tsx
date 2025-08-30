@@ -436,7 +436,7 @@ export function LocationFinderPage({}: LocationFinderPageProps) {
                           className="text-left p-2 text-sm text-texas-navy hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors border border-gray-100"
                         >
                           <div className="font-medium">{city.name}</div>
-                          <div className="text-xs text-gray-500">{city.averageRate}¢/kWh</div>
+                          <div className="text-[10px] text-gray-500">{city.averageRate}¢/kWh</div>
                         </button>
                       ))}
                     </div>

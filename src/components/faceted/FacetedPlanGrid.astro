@@ -55,7 +55,7 @@ const sortPlans = (plans: Plan[], sortBy: string) => {
 const sortedPlans = sortPlans(plans, defaultSort);
 const initialPlans = enableInfiniteScroll ? sortedPlans.slice(0, plansPerPage) : sortedPlans;
 
-// Convert plans to ProfessionalPlanCard format
+// Convert plans to EnterprisePlanCard format
 const convertedInitialPlans = initialPlans.map((plan) => ({
   id: plan.id,
   name: plan.name,
@@ -73,7 +73,13 @@ const convertedInitialPlans = initialPlans.map((plan) => ({
     ...(plan.features.freeTime ? ['Free Time'] : []),
     ...(plan.features.billCredit > 0 ? ['Bill Credit'] : [])
   ].filter(Boolean),
-  slug: plan.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')
+  slug: plan.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
+  // Add pricing for different usage levels
+  pricing: {
+    rate500kWh: plan.pricing.rate500kWh || plan.pricing.rate1000kWh,
+    rate1000kWh: plan.pricing.rate1000kWh,
+    rate2000kWh: plan.pricing.rate2000kWh || plan.pricing.rate1000kWh
+  }
 }));
 
 // Calculate statistics for display
@@ -121,33 +127,39 @@ const sortingOptions = [
           </div>
         )}
         
-        {greenPlans > 0 && (
-          <div class="stat-item">
-            <span class="stat-icon"></span>
-            <div class="stat-content">
-              <span class="stat-number">{greenPlans}</span>
-              <span class="stat-label">Green Plans</span>
-            </div>
-          </div>
-        )}
         
-        {noDepositPlans > 0 && (
+        {avgRate > 0 && (
           <div class="stat-item">
             <span class="stat-icon"></span>
             <div class="stat-content">
-              <span class="stat-number">{noDepositPlans}</span>
-              <span class="stat-label">No Deposit</span>
+              <span class="stat-number">{avgRate.toFixed(1)}¢</span>
+              <span class="stat-label">Average Rate</span>
             </div>
           </div>
         )}
       </div>
       
-      {avgRate > 0 && (
-        <div class="average-rate">
-          <span class="average-rate-label">Average Rate:</span>
-          <span class="average-rate-value">{avgRate.toFixed(1)}¢/kWh</span>
+      <!-- Quick Usage Filters -->
+      <div class="quick-filters">
+        <div class="quick-filters-label">Quick Filters:</div>
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-usage="1000">
+            Best for 1000 kWh
+          </button>
+          <button class="filter-btn" data-usage="500">
+            Best for 500 kWh
+          </button>
+          <button class="filter-btn" data-usage="2000">
+            Best for 2000 kWh
+          </button>
+          <button class="filter-btn" data-filter="green">
+            100% Green Energy
+          </button>
+          <button class="filter-btn" data-filter="cheapest">
+            Cheapest Overall
+          </button>
         </div>
-      )}
+      </div>
     </div>
     
     <!-- Sorting and View Controls -->
@@ -207,6 +219,9 @@ const sortingOptions = [
           {convertedInitialPlans.map((plan) => (
             <EnterprisePlanCard 
               plan={plan}
+              onViewDetails={(selectedPlan) => {
+                window.location.href = `/electricity-plans/${selectedPlan.provider.toLowerCase().replace(/\s+/g, '-')}/${selectedPlan.slug}`;
+              }}
               client:load
               className="h-full"
             />
@@ -503,18 +518,18 @@ Compare
   }
   
   .stats-overview {
-    @apply grid grid-cols-2 gap-3 mb-4;
+    @apply grid grid-cols-1 gap-2 mb-4 w-full;
   }
   
   @media (min-width: 640px) {
     .stats-overview {
-      @apply gap-4 mb-5;
+      @apply grid-cols-3 gap-3 mb-4;
     }
   }
   
   @media (min-width: 768px) {
     .stats-overview {
-      @apply grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8;
+      @apply grid-cols-3 gap-4 mb-4;
     }
   }
   
@@ -559,16 +574,46 @@ Compare
     @apply text-sm opacity-80 mt-1;
   }
   
-  .average-rate {
-    @apply text-center p-3 bg-white rounded-lg border border-texas-gold/20;
+  /* Quick Filters - Match main container theme */
+  .quick-filters {
+    @apply mt-3 p-4 rounded-lg border border-texas-gold/20;
+    background: linear-gradient(to right, #f8edd3, #fdf8f0);
   }
   
-  .average-rate-label {
-    @apply text-sm text-gray-600 mr-2;
+  .quick-filters-label {
+    @apply text-sm font-semibold text-texas-navy mb-3;
   }
   
-  .average-rate-value {
-    @apply text-lg font-semibold text-texas-navy;
+  .filter-buttons {
+    @apply flex flex-wrap gap-2;
+  }
+  
+  .filter-btn {
+    @apply px-3 py-2 text-xs font-medium rounded-lg border transition-all duration-200 hover:shadow-md;
+    @apply bg-white border-texas-gold/20 text-texas-navy hover:border-texas-navy hover:shadow-sm;
+    white-space: nowrap;
+  }
+  
+  .filter-btn.active {
+    @apply bg-gradient-to-br from-texas-navy to-texas-navy/80 text-white border-texas-navy shadow-sm;
+  }
+  
+  .filter-btn:hover:not(.active) {
+    @apply bg-texas-cream-50 border-texas-gold/30;
+  }
+  
+  @media (max-width: 640px) {
+    .filter-btn {
+      @apply text-xs px-3 py-1.5;
+    }
+    
+    .filter-buttons {
+      @apply gap-1.5;
+    }
+    
+    .quick-filters {
+      @apply p-3;
+    }
   }
   
   /* Grid Controls - Mobile-First */
@@ -1082,6 +1127,11 @@ Compare
       // View toggle functionality
       document.querySelectorAll('.view-toggle').forEach(button => {
         button.addEventListener('click', (e) => this.handleViewChange(e.currentTarget.dataset.view));
+      });
+      
+      // Quick filter functionality
+      document.querySelectorAll('.filter-btn').forEach(button => {
+        button.addEventListener('click', (e) => this.handleQuickFilter(e.currentTarget));
       });
       
       // Table sorting

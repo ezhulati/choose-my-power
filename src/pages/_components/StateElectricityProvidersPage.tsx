@@ -346,7 +346,7 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
                   <TrendingDown className="h-8 w-8 text-purple-600 mx-auto mb-2" />
                   <div className="font-semibold text-gray-900">Best Value</div>
                   <div className="text-sm text-purple-600">#1 APGE</div>
-                  <div className="text-xs text-gray-500">9.7¢/kWh</div>
+                  <div className="text-[10px] text-gray-500">9.7¢/kWh</div>
                 </div>
                 
                 <div className="text-center p-4 border border-gray-200 rounded-lg">

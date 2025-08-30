@@ -115,6 +115,9 @@ const mostPopularPlan = convertedPlans.length > 0 ? convertedPlans.find(plan =>
       {displayedPlans.map((plan) => (
         <EnterprisePlanCard 
           plan={plan}
+          onViewDetails={(selectedPlan) => {
+            window.location.href = `/electricity-plans/${selectedPlan.provider.toLowerCase().replace(/\s+/g, '-')}/${selectedPlan.slug}`;
+          }}
           client:load
           className="h-full"
         />
@@ -128,6 +131,9 @@ const mostPopularPlan = convertedPlans.length > 0 ? convertedPlans.find(plan =>
           {convertedPlans.slice(maxPlans).map((plan) => (
             <EnterprisePlanCard 
               plan={plan}
+              onViewDetails={(selectedPlan) => {
+                window.location.href = `/electricity-plans/${selectedPlan.provider.toLowerCase().replace(/\s+/g, '-')}/${selectedPlan.slug}`;
+              }}
               client:load
               className="h-full hidden-plan"
             />

@@ -166,7 +166,7 @@ export const MobileProfessionalPlanCard: React.FC<ProfessionalPlanCardProps> = (
             <div className="text-2xl font-bold text-green-600">
               {plan.rate}¢
             </div>
-            <div className="text-xs text-gray-600">per kWh</div>
+            <div className="text-[10px] text-gray-600">per kWh</div>
           </div>
         </div>
 
