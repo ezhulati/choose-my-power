@@ -21,7 +21,29 @@ export interface TemporalContext {
   isFriday: boolean;
   isMonday: boolean;
   month: number;
+  date: number;
+  year: number;
+  season: 'winter' | 'spring' | 'summer' | 'fall';
   seasonalContext?: 'summer-peak' | 'winter-heating' | 'shoulder-season';
+  holiday?: HolidayInfo;
+  specialPeriod?: SpecialPeriodInfo;
+}
+
+export interface HolidayInfo {
+  name: string;
+  type: 'major' | 'minor' | 'seasonal' | 'financial';
+  activities: string[];
+  isWeekend?: boolean;
+  daysUntil?: number;
+  daysSince?: number;
+}
+
+export interface SpecialPeriodInfo {
+  name: string;
+  type: 'back-to-school' | 'tax-season' | 'holiday-shopping' | 'summer-vacation';
+  startDate: Date;
+  endDate: Date;
+  activities: string[];
 }
 
 export interface MessagingBundle {
@@ -48,6 +70,8 @@ export class TemporalMessagingEngine {
     const minute = now.getMinutes();
     const day = now.getDay();
     const month = now.getMonth() + 1; // JavaScript months are 0-indexed
+    const date = now.getDate();
+    const year = now.getFullYear();
     
     const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     
@@ -60,11 +84,18 @@ export class TemporalMessagingEngine {
     else if (hour >= 17 && hour < 21) timeOfDay = 'evening';
     else timeOfDay = 'late-night';
     
+    // Determine season
+    const season = this.getSeason(month, date);
+    
     // Texas seasonal context
     let seasonalContext: TemporalContext['seasonalContext'];
     if (month >= 6 && month <= 9) seasonalContext = 'summer-peak'; // June-Sept = AC season
     else if (month === 12 || month === 1 || month === 2) seasonalContext = 'winter-heating';
     else seasonalContext = 'shoulder-season';
+    
+    // Detect holidays and special periods
+    const holiday = this.detectHoliday(now);
+    const specialPeriod = this.detectSpecialPeriod(now);
     
     return {
       hour,
@@ -77,7 +108,12 @@ export class TemporalMessagingEngine {
       isFriday: day === 5,
       isMonday: day === 1,
       month,
-      seasonalContext
+      date,
+      year,
+      season,
+      seasonalContext,
+      holiday,
+      specialPeriod
     };
   }
 
@@ -104,7 +140,8 @@ export class TemporalMessagingEngine {
   }
 
   private getWeekendMessage(ctx: TemporalContext): MessagingBundle {
-    const { dayName, timeOfDay, hour } = ctx;
+    const { dayName, timeOfDay, hour, season, holiday, specialPeriod } = ctx;
+    const activities = this.getSeasonalActivities(season, holiday, specialPeriod);
     
     if (dayName === 'Saturday') {
       switch (timeOfDay) {
@@ -125,11 +162,12 @@ export class TemporalMessagingEngine {
           };
         
         case 'lunch':
+          const contextualActivity = this.getContextualActivityMessage(activities, holiday, specialPeriod);
           return {
             headline: "Gorgeous Saturday afternoon for... rate shopping?",
-            subheadline: "BBQ can wait. Pool can wait. Because if you don't pick a plan, you'll pay holdover rates that cost an extra $200/month. Texas rules.",
-            urgencyFlag: "Contract expires in [[days]]? Act now or pay double.",
-            ctaText: "Quick, before I lose my mind"
+            subheadline: contextualActivity + " Because if you don't pick a plan, you'll pay holdover rates that cost an extra $200/month. Texas rules.",
+            urgencyFlag: "Your contract's ending soon? Good timing to look around.",
+            ctaText: "Let's get this over with"
           };
         
         case 'afternoon':
@@ -195,7 +233,8 @@ export class TemporalMessagingEngine {
   }
 
   private getFridayMessage(ctx: TemporalContext): MessagingBundle {
-    const { timeOfDay, hour } = ctx;
+    const { timeOfDay, hour, season, holiday, specialPeriod } = ctx;
+    const activities = this.getSeasonalActivities(season, holiday, specialPeriod);
     
     switch (timeOfDay) {
       case 'morning':
@@ -242,7 +281,8 @@ export class TemporalMessagingEngine {
   }
 
   private getMondayMessage(ctx: TemporalContext): MessagingBundle {
-    const { timeOfDay, hour } = ctx;
+    const { timeOfDay, hour, season, holiday, specialPeriod } = ctx;
+    const activities = this.getSeasonalActivities(season, holiday, specialPeriod);
     
     switch (timeOfDay) {
       case 'early-morning':
@@ -280,7 +320,8 @@ export class TemporalMessagingEngine {
   }
 
   private getWeekdayMessage(ctx: TemporalContext): MessagingBundle {
-    const { dayName, timeOfDay, hour, seasonalContext } = ctx;
+    const { dayName, timeOfDay, hour, seasonalContext, season, holiday, specialPeriod } = ctx;
+    const activities = this.getSeasonalActivities(season, holiday, specialPeriod);
     
     // Tuesday through Thursday messaging
     switch (timeOfDay) {
@@ -346,6 +387,284 @@ export class TemporalMessagingEngine {
     };
   }
 
+  /**
+   * Get season based on month and date
+   */
+  private getSeason(month: number, date: number): 'winter' | 'spring' | 'summer' | 'fall' {
+    // Texas seasons (adjusted for climate)
+    if (month === 12 || month === 1 || month === 2) return 'winter';
+    if (month === 3 || month === 4 || month === 5) return 'spring';
+    if (month === 6 || month === 7 || month === 8) return 'summer';
+    return 'fall'; // Sept, Oct, Nov
+  }
+
+  /**
+   * Detect current holiday or nearby holidays
+   */
+  private detectHoliday(date: Date): HolidayInfo | undefined {
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const year = date.getFullYear();
+    const dayOfWeek = date.getDay();
+    
+    // Calculate days until/since key holidays
+    const holidays = this.getHolidayDates(year);
+    
+    for (const holiday of holidays) {
+      const holidayDate = holiday.date;
+      const diffTime = holidayDate.getTime() - date.getTime();
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      
+      // Current day is the holiday
+      if (diffDays === 0) {
+        return {
+          ...holiday,
+          daysUntil: 0,
+          daysSince: 0
+        };
+      }
+      
+      // Holiday is within 3 days
+      if (diffDays > 0 && diffDays <= 3) {
+        return {
+          ...holiday,
+          daysUntil: diffDays
+        };
+      }
+      
+      // Holiday was within 2 days ago
+      if (diffDays < 0 && Math.abs(diffDays) <= 2) {
+        return {
+          ...holiday,
+          daysSince: Math.abs(diffDays)
+        };
+      }
+    }
+    
+    return undefined;
+  }
+
+  /**
+   * Get holiday dates for a given year
+   */
+  private getHolidayDates(year: number) {
+    return [
+      // New Year's Day
+      {
+        name: "New Year's Day",
+        type: 'major' as const,
+        date: new Date(year, 0, 1),
+        activities: ['resolutions', 'gym signup', 'financial planning', 'fresh starts']
+      },
+      // Memorial Day (last Monday in May)
+      {
+        name: "Memorial Day",
+        type: 'major' as const,
+        date: this.getLastMondayOfMay(year),
+        activities: ['first pool opening', 'BBQ season start', 'summer prep', 'vacation planning']
+      },
+      // 4th of July
+      {
+        name: "Independence Day",
+        type: 'major' as const,
+        date: new Date(year, 6, 4),
+        activities: ['BBQ', 'fireworks', 'pool parties', 'summer peak']
+      },
+      // Labor Day (first Monday in September)
+      {
+        name: "Labor Day",
+        type: 'major' as const,
+        date: this.getFirstMondayOfSeptember(year),
+        activities: ['end of summer', 'back-to-school prep', 'last BBQ', 'fall transition']
+      },
+      // Thanksgiving (4th Thursday in November)
+      {
+        name: "Thanksgiving",
+        type: 'major' as const,
+        date: this.getFourthThursdayOfNovember(year),
+        activities: ['family cooking', 'football watching', 'travel prep', 'oven usage']
+      },
+      // Christmas
+      {
+        name: "Christmas",
+        type: 'major' as const,
+        date: new Date(year, 11, 25),
+        activities: ['holiday cooking', 'family visits', 'gift wrapping', 'winter bills']
+      }
+    ];
+  }
+
+  /**
+   * Detect special periods (multi-day events)
+   */
+  private detectSpecialPeriod(date: Date): SpecialPeriodInfo | undefined {
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const year = date.getFullYear();
+    
+    // Back to school period (mid-August to early September)
+    if ((month === 8 && day >= 15) || (month === 9 && day <= 10)) {
+      return {
+        name: 'Back to School',
+        type: 'back-to-school',
+        startDate: new Date(year, 7, 15), // Aug 15
+        endDate: new Date(year, 8, 10),   // Sep 10
+        activities: ['school supply shopping', 'new routines', 'schedule changes', 'kids\'s activities']
+      };
+    }
+    
+    // Tax season (January 1 - April 15)
+    if ((month >= 1 && month <= 3) || (month === 4 && day <= 15)) {
+      return {
+        name: 'Tax Season',
+        type: 'tax-season',
+        startDate: new Date(year, 0, 1),  // Jan 1
+        endDate: new Date(year, 3, 15),   // Apr 15
+        activities: ['tax preparation', 'financial stress', 'expense tracking', 'money concerns']
+      };
+    }
+    
+    // Holiday shopping season (November 15 - December 31)
+    if ((month === 11 && day >= 15) || month === 12) {
+      return {
+        name: 'Holiday Shopping Season',
+        type: 'holiday-shopping',
+        startDate: new Date(year, 10, 15), // Nov 15
+        endDate: new Date(year, 11, 31),   // Dec 31
+        activities: ['holiday shopping', 'budget concerns', 'gift planning', 'family prep']
+      };
+    }
+    
+    // Summer vacation season (June 1 - August 31)
+    if (month >= 6 && month <= 8) {
+      return {
+        name: 'Summer Vacation Season',
+        type: 'summer-vacation',
+        startDate: new Date(year, 5, 1),   // Jun 1
+        endDate: new Date(year, 7, 31),    // Aug 31
+        activities: ['vacation planning', 'AC bills', 'pool maintenance', 'travel prep']
+      };
+    }
+    
+    return undefined;
+  }
+
+  /**
+   * Get seasonal activities based on current context
+   */
+  private getSeasonalActivities(season: 'winter' | 'spring' | 'summer' | 'fall', holiday?: HolidayInfo, specialPeriod?: SpecialPeriodInfo): string[] {
+    // Priority: Holiday > Special Period > Season
+    if (holiday) {
+      return holiday.activities;
+    }
+    
+    if (specialPeriod) {
+      return specialPeriod.activities;
+    }
+    
+    const seasonalActivities = {
+      winter: ['hot cocoa', 'Netflix', 'fireplace time', 'holiday cooking', 'heating bills', 'cozy indoor time'],
+      spring: ['yard work', 'spring cleaning', 'gardening', 'AC prep', 'moderate weather', 'home projects'],
+      summer: ['BBQ', 'pool time', 'AC bills', 'vacation planning', 'outdoor activities', 'cooling costs'],
+      fall: ['football watching', 'leaf raking', 'heating prep', 'back-to-school', 'fall activities', 'cozy evenings']
+    };
+    
+    return seasonalActivities[season] || seasonalActivities.summer;
+  }
+
+  /**
+   * Generate contextual activity message based on current season/holiday
+   */
+  private getContextualActivityMessage(activities: string[], holiday?: HolidayInfo, specialPeriod?: SpecialPeriodInfo): string {
+    // Special Labor Day weekend context (current)
+    if (holiday?.name === 'Labor Day') {
+      if (holiday.daysUntil === 0) {
+        return "Last weekend BBQ can wait. End-of-summer shopping can wait.";
+      } else if (holiday.daysUntil === 1) {
+        return "Tomorrow's Labor Day BBQ prep can wait. Summer's last hurrah can wait.";
+      } else if (holiday.daysUntil === 2) {
+        return "Weekend before Labor Day relaxation can wait. End-of-summer activities can wait.";
+      }
+    }
+    
+    // Holiday-specific messaging
+    if (holiday) {
+      switch (holiday.name) {
+        case 'Memorial Day':
+          return "First pool opening can wait. BBQ season start can wait.";
+        case 'Independence Day':
+          return "4th of July BBQ can wait. Fireworks prep can wait.";
+        case 'Thanksgiving':
+          return "Turkey prep can wait. Football can wait.";
+        case 'Christmas':
+          return "Gift wrapping can wait. Holiday cooking can wait.";
+        case "New Year's Day":
+          return "Resolution planning can wait. Gym signup can wait.";
+      }
+    }
+    
+    // Special period messaging
+    if (specialPeriod) {
+      switch (specialPeriod.type) {
+        case 'back-to-school':
+          return "School supply shopping can wait. Back-to-school prep can wait.";
+        case 'tax-season':
+          return "Tax paperwork can wait. Financial planning can wait.";
+        case 'holiday-shopping':
+          return "Holiday shopping can wait. Gift planning can wait.";
+        case 'summer-vacation':
+          return "Vacation planning can wait. Pool maintenance can wait.";
+      }
+    }
+    
+    // Get two random activities for the current season
+    const shuffled = [...activities].sort(() => 0.5 - Math.random());
+    const activity1 = shuffled[0] || 'relaxation';
+    const activity2 = shuffled[1] || 'entertainment';
+    
+    return `${this.capitalizeFirst(activity1)} can wait. ${this.capitalizeFirst(activity2)} can wait.`;
+  }
+
+  /**
+   * Capitalize first letter of a string
+   */
+  private capitalizeFirst(str: string): string {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
+  /**
+   * Helper functions for holiday date calculations
+   */
+  private getLastMondayOfMay(year: number): Date {
+    const date = new Date(year, 4, 31); // May 31
+    while (date.getDay() !== 1) { // Find Monday
+      date.setDate(date.getDate() - 1);
+    }
+    return date;
+  }
+
+  private getFirstMondayOfSeptember(year: number): Date {
+    const date = new Date(year, 8, 1); // Sep 1
+    while (date.getDay() !== 1) { // Find Monday
+      date.setDate(date.getDate() + 1);
+    }
+    return date;
+  }
+
+  private getFourthThursdayOfNovember(year: number): Date {
+    const date = new Date(year, 10, 1); // Nov 1
+    let thursdayCount = 0;
+    while (thursdayCount < 4) {
+      if (date.getDay() === 4) { // Thursday
+        thursdayCount++;
+      }
+      if (thursdayCount < 4) {
+        date.setDate(date.getDate() + 1);
+      }
+    }
+    return date;
+  }
+
   // A/B testing capability
   getVariant(baseMessage: MessagingBundle, testPercentage: number = 50): MessagingBundle {
     const random = Math.random() * 100;
@@ -363,17 +682,17 @@ export class TemporalMessagingEngine {
   }
 
   private makeMoreUrgent(headline: string): string {
-    // Add urgency modifiers
-    const urgentPrefixes = [
-      "LAST CHANCE: ",
-      "WARNING: ",
-      "48 HOURS LEFT: ",
-      "EXPIRES TONIGHT: "
+    // Add conversational modifiers (not pushy urgency)
+    const conversationalPrefixes = [
+      "FYI: ",
+      "Heads up: ",
+      "Real talk: ",
+      "Quick reminder: "
     ];
     
     // Only add prefix 30% of the time for A/B testing
     if (Math.random() < 0.3) {
-      const prefix = urgentPrefixes[Math.floor(Math.random() * urgentPrefixes.length)];
+      const prefix = conversationalPrefixes[Math.floor(Math.random() * conversationalPrefixes.length)];
       return prefix + headline;
     }
     

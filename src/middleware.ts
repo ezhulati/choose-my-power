@@ -72,8 +72,8 @@ const buildCSPHeader = (nonce: string) => {
 
 // Security headers configuration
 const buildSecurityHeaders = (nonce: string) => ({
-  // Disable CSP in development to avoid conflicts with Netlify config
-  ...(import.meta.env.PROD ? { 'Content-Security-Policy': buildCSPHeader(nonce) } : {}),
+  // CSP handled by netlify.toml to avoid conflicts and support script hashes
+  // ...(import.meta.env.PROD ? { 'Content-Security-Policy': buildCSPHeader(nonce) } : {}),
   'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
   'X-Content-Type-Options': 'nosniff',
   'X-Frame-Options': 'DENY',
