@@ -346,7 +346,7 @@ export function ShopPage({ category }: ShopPageProps) {
               What Do You Actually Care About?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Pick your top priority. We'll cut through the BS and show you what actually delivers.
+              Pick your top priority. We'll cut through the nonsense and show you what actually delivers.
             </p>
           </div>
 

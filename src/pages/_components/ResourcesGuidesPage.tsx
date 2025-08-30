@@ -56,7 +56,7 @@ export function ResourcesGuidesPage({}: ResourcesGuidesPageProps) {
       href: '/resources/guides/fixed-vs-variable'
     },
     {
-      title: 'Green Energy: What\'s Actually Green vs. Marketing BS',
+      title: 'Green Energy: What\'s Actually Green vs. Marketing Nonsense',
       description: 'How to find truly renewable plans and avoid the greenwashing that\'s everywhere.',
       category: 'plans',
       icon: Leaf,
@@ -221,7 +221,7 @@ export function ResourcesGuidesPage({}: ResourcesGuidesPageProps) {
               </div>
               <h3 className="text-lg font-semibold text-gray-900 mb-3">All Plans Look the Same?</h3>
               <p className="text-gray-600 mb-4">
-                They're designed to confuse you. Here's how to cut through the BS and find the real differences.
+                They're designed to confuse you. Here's how to cut through the nonsense and find the real differences.
               </p>
               <button
                 onClick={() => navigate('/resources/guides/fixed-vs-variable')}

@@ -82,7 +82,7 @@ export function ResourcesFAQsPage({}: ResourcesFAQsPageProps) {
       id: 'move-to-texas',
       category: 'choosing',
       question: 'I\'m moving to Texas. How do I get electricity turned on?',
-      answer: 'In Texas, you must choose an electricity provider before you can get service. Compare providers and plans, sign up online or by phone, and schedule your service start date. Allow 1-3 business days for connection. Don\'t wait until moving day to sign up.'
+      answer: 'In deregulated areas of Texas, you get to choose your electricity provider - a freedom most states don\'t offer. Compare providers and plans to find your best rate, sign up online or by phone, and schedule your service start date. Allow 1-3 business days for connection. Don\'t wait until moving day to sign up.'
     }
   ];
 

@@ -60,7 +60,7 @@ export function ResourcesPage({}: ResourcesPageProps) {
   const supportOptions = [
     {
       title: 'Real Questions, Straight Answers',
-      description: 'No corporate BS - just honest answers to what you\'re actually wondering',
+      description: 'No corporate nonsense - just honest answers to what you\'re actually wondering',
       href: '/resources/faqs',
       icon: HelpCircle,
       color: 'blue'
@@ -88,10 +88,11 @@ export function ResourcesPage({}: ResourcesPageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center">
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Everything You Need to Not Get Screwed by Electric Companies
+              Finally. Texas Electricity Help That Actually Helps
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              The Texas electricity market is designed to confuse you. We're here to level the playing field with plain English guides that actually help you save money and avoid the traps.
+              You've spent hours trying to figure this out. So did we. Here's everything we learned the hard way, 
+              explained like we're helping a friend. No corporate nonsense. Just the stuff that actually matters.
             </p>
           </div>
         </div>
@@ -100,7 +101,7 @@ export function ResourcesPage({}: ResourcesPageProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Guides Section */}
         <div className="mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">No-BS Guides to Beat the System</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">The Stuff We Wish Someone Had Told Us</h2>
           
           <div className="grid md:grid-cols-2 gap-6">
             {guides.map((guide, index) => (
@@ -137,7 +138,7 @@ export function ResourcesPage({}: ResourcesPageProps) {
 
         {/* Tools Section */}
         <div className="mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Tools That Actually Work</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">Calculators That Don't Lie to You</h2>
           
           <div className="grid md:grid-cols-3 gap-6">
             {tools.map((tool, index) => (
@@ -160,7 +161,7 @@ export function ResourcesPage({}: ResourcesPageProps) {
 
         {/* Support Section */}
         <div className="mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">When You Need Backup</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">When Stuff Goes Wrong (And It Will)</h2>
           
           <div className="grid md:grid-cols-3 gap-6">
             {supportOptions.map((option, index) => (
@@ -183,7 +184,7 @@ export function ResourcesPage({}: ResourcesPageProps) {
 
         {/* Quick Links */}
         <div className="bg-white rounded-lg shadow-sm border p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Reader Favorites</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">The Most-Read Stuff (Because Everyone Gets Tricked By This)</h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             <a

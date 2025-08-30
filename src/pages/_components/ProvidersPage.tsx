@@ -262,7 +262,7 @@ export function ProvidersPage() {
     ? providerCategories 
     : providerCategories.filter(cat => cat.id === selectedCategory);
 
-  // Get all providers for general listing
+  // Get quality providers for general listing
   const filteredProviders = mockProviders.filter(provider => {
     if (searchQuery && !provider.name.toLowerCase().includes(searchQuery.toLowerCase())) {
       return false;

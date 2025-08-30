@@ -153,7 +153,18 @@ export class FacetedRouter {
         }
       }
 
-      // 10. Mark as valid if we got this far
+      // 10. Generate messaging for this route
+      const messageContext: MessageContext = {
+        cityName,
+        citySlug,
+        planCount: result.plans.length,
+        lowestRate: result.plans.length > 0 ? Math.min(...result.plans.map(p => parseFloat(p.rate) || 999)) : 0,
+        appliedFilters: filterResult.appliedFilters
+      };
+
+      result.messaging = facetedMessaging.generateMessage(messageContext);
+
+      // 11. Mark as valid if we got this far
       result.isValid = filterResult.isValid || opts.allowInvalidFilters;
 
       return result;
@@ -327,23 +338,37 @@ export class FacetedRouter {
   }
 
   /**
-   * Get human-readable description of a filter combination
+   * Get human-readable description of a filter combination using messaging service
    */
   getFilterDescription(cityName: string, appliedFilters: AppliedFilter[]): string {
-    if (appliedFilters.length === 0) {
-      return `Shopping for electricity in ${cityName}? Here's how to avoid the common mistakes and find a plan that actually works for your budget.`;
-    }
+    const messageContext: MessageContext = {
+      cityName,
+      citySlug: cityName.toLowerCase().replace(/\s+/g, '-'),
+      planCount: 0,
+      lowestRate: 0,
+      appliedFilters
+    };
 
-    const filterDescriptions = appliedFilters.map(f => f.displayName).join(' and ');
-    return `Looking for ${filterDescriptions} plans in ${cityName}? We'll show you which providers deliver what they promise and what you'll actually pay.`;
+    const messaging = facetedMessaging.generateMessage(messageContext);
+    return messaging.subheadline;
   }
 
   /**
-   * Generate page title for SEO
+   * Generate page title for SEO using messaging service
    */
   generatePageTitle(cityName: string, appliedFilters: AppliedFilter[]): string {
+    const messageContext: MessageContext = {
+      cityName,
+      citySlug: cityName.toLowerCase().replace(/\s+/g, '-'),
+      planCount: 0,
+      lowestRate: 0,
+      appliedFilters
+    };
+
+    const messaging = facetedMessaging.generateMessage(messageContext);
+    
     if (appliedFilters.length === 0) {
-      return `Electricity Plans in ${cityName}, TX | What You'll Actually Pay`;
+      return `${messaging.headline} | ChooseMyPower`;
     }
 
     const filterLabels = appliedFilters.map(f => f.displayName).join(' + ');

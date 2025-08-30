@@ -552,7 +552,7 @@ function LocationsPage({}: LocationsPageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to See What's Available Where You Live?</h2>
           <p className="text-xl mb-8 text-blue-100 max-w-3xl mx-auto">
-            Enter your ZIP and we'll show you every provider, every plan, and exactly what 
+            Enter your ZIP and we'll show you quality providers, 100+ plans, and exactly what 
             your neighbors are paying. Takes 30 seconds.
           </p>
           

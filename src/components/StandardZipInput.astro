@@ -14,6 +14,8 @@
  * - customClass: string (additional CSS classes)
  */
 
+import { DEFAULT_COUNTS } from '../lib/utils/dynamic-counts';
+
 export interface Props {
   size?: 'sm' | 'md' | 'lg';
   variant?: 'hero' | 'inline' | 'compact';
@@ -73,12 +75,7 @@ const variants = {
 const sizeConfig = sizes[size];
 const variantConfig = variants[variant];
 
-// Default counts for stats
-const DEFAULT_COUNTS = {
-  providers: '50+',
-  plans: '500+',
-  cities: '881'
-};
+// Using imported DEFAULT_COUNTS from dynamic-counts system
 ---
 
 <div class={`${variantConfig.container} ${customClass}`}>

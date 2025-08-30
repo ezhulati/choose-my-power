@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { mockProviders } from '../../data/mockData';
+import { DEFAULT_COUNTS } from '../../lib/utils/dynamic-counts';
 import { 
   Award, Star, TrendingDown, Leaf, Shield, Users, DollarSign, 
   Calendar, Zap, Trophy, Crown, Medal, Target, CheckCircle,
@@ -38,7 +39,7 @@ export function BestPage({}: BestPageProps) {
       {
         id: 'green-energy-leader',
         title: 'Actually Green (Not Greenwashing)',
-        description: 'Who\'s really 100% renewable vs. just marketing BS',
+        description: 'Who\'s really 100% renewable vs. just marketing nonsense',
         icon: Leaf,
         color: 'green',
         winner: 'Rhythm Energy',
@@ -402,7 +403,7 @@ export function BestPage({}: BestPageProps) {
               Stop Guessing Who's Actually Good (We Did the Work)
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-orange-100 max-w-4xl mx-auto">
-              We tested them all. Called their support. Read the contracts. Tracked the complaints. 
+              We tested {DEFAULT_COUNTS.providers} quality providers. Called their support. Read the contracts. Tracked the complaints. 
               Here's who actually delivers vs. who's just good at marketing.
             </p>
 

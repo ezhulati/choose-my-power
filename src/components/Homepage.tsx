@@ -5,6 +5,7 @@ import { Card, CardContent } from './ui/card';
 import { ZipCodeSearch } from './ZipCodeSearch';
 import { getCityFromZip } from '../config/tdsp-mapping';
 import { getCredibleMarketingText, DEFAULT_COUNTS } from '../lib/utils/dynamic-counts';
+import { DynamicHeroMessaging } from './DynamicHeroMessaging';
 
 interface HomepageProps {
   onNavigate: (path: string) => void;
@@ -43,12 +44,7 @@ export function Homepage({ onNavigate }: HomepageProps) {
       <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white py-12 sm:py-16 md:py-20 lg:py-24 xl:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6">
-              Your Neighbor Pays Half What You Pay
-            </h1>
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 text-blue-100 max-w-3xl mx-auto">
-              {getCredibleMarketingText(DEFAULT_COUNTS.providers, DEFAULT_COUNTS.plans).heroText}
-            </p>
+            <DynamicHeroMessaging />
             
             <div className="max-w-md mx-auto mb-6 sm:mb-8">
               <ZipCodeSearch 
@@ -73,7 +69,7 @@ export function Homepage({ onNavigate }: HomepageProps) {
               Which Companies Are Actually Good?
             </h2>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-              We tested them all. Called support at 2am. Here's who's good, who's cheap, and who will ghost you.
+              We tested {DEFAULT_COUNTS.providers} quality providers. Called support at 2am. Here's who's good, who's cheap, and who will ghost you.
             </p>
           </div>
 
@@ -146,7 +142,7 @@ export function Homepage({ onNavigate }: HomepageProps) {
               <CardContent className="p-4 sm:p-6">
                 <BarChart className="w-6 h-6 sm:w-8 sm:h-8 text-green-600 mb-2 sm:mb-3" />
                 <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">See Side-by-Side</h3>
-                <p className="text-sm sm:text-base text-gray-600">Compare real prices without the marketing BS</p>
+                <p className="text-sm sm:text-base text-gray-600">Compare real prices without the marketing nonsense</p>
               </CardContent>
             </Card>
 

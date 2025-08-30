@@ -14,9 +14,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
 import { Input } from '../components/ui/input';
 import { getCredibleMarketingText, DEFAULT_COUNTS } from '../lib/utils/dynamic-counts';
 
-const title = "Texas Electricity Plans | Browse All Available Plans";
+const title = "Finally. Texas Electricity Plans That Don't Hide the Real Cost";
 const marketingText = getCredibleMarketingText(DEFAULT_COUNTS.providers, DEFAULT_COUNTS.plans);
-const description = `Browse all available electricity plans in Texas. ${marketingText.combinedText} with transparent pricing.`;
+const description = `Tired of plan shopping that makes no sense? We show you what you'll actually pay each month, not teaser rates. ${marketingText.combinedText} with honest pricing.`;
 
 // Sample plan data using shadcn design system structure
 const samplePlans = [
@@ -78,11 +78,11 @@ const samplePlans = [
           </Badge>
           
           <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 drop-shadow-lg">
-            Browse Electricity Plans
+            Finally. Plans That Show What You'll Really Pay
           </h1>
           
           <p class="text-xl lg:text-2xl text-blue-100 mb-8 drop-shadow-md leading-relaxed max-w-4xl mx-auto">
-            Compare {DEFAULT_COUNTS.plans}+ plans from {DEFAULT_COUNTS.providers}+ providers across all {DEFAULT_COUNTS.cities}+ Texas cities
+            You've been to PowerToChoose. You've scrolled through confusing teaser rates. Here's what you'll actually pay each month from {DEFAULT_COUNTS.providerText} across all {DEFAULT_COUNTS.cities}+ Texas cities.
           </p>
 
           <div class="max-w-md mx-auto">
@@ -264,11 +264,11 @@ const samplePlans = [
     <Card variant="texas-themed" className="mx-4 sm:mx-6 lg:mx-8 mb-8">
       <CardContent className="py-16 text-center">
         <CardTitle className="text-3xl lg:text-4xl font-bold text-texas-navy mb-6">
-          Need Help Choosing the Right Plan?
+          Still Confused? We Get It.
         </CardTitle>
         <p class="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Our Texas energy experts can help you find the right electricity plan 
-          for your home or business needs.
+          Texas electricity is complicated on purpose. We've figured it out the hard way. 
+          Talk to someone who actually knows this stuff and won't try to sell you anything.
         </p>
         
         <div class="flex flex-col sm:flex-row gap-4 justify-center">

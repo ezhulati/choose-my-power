@@ -183,7 +183,7 @@ function generateCityIntroVariation(cityName: string, planCount: number, rateTex
     
     `${cityName} homeowners and renters both benefit from our electricity comparison help. ${planCount} quality plans offer rates ${rateText}${avgRateText}. ${seasonalContext} Whether you want low cost, clean energy, or flexible terms, we help you find the right company. ${demographicContext}`,
     
-    `Join your ${cityName} neighbors in finding better electricity rates. ${seasonalContext} We show ${planCount} carefully chosen plans with rates ${rateText}${avgRateText}. Every plan includes clear pricing, customer ratings, and contract terms to help you pick what works for your home.`
+    `Join your ${cityName} neighbors in finding better electricity rates. ${seasonalContext} We show ${planCount} carefully chosen plans with rates ${rateText}${avgRateText}. Each plan includes clear pricing, customer ratings, and contract terms to help you pick what works for your home.`
   ];
   
   const index = (seed - 1) % variations.length;
@@ -341,7 +341,7 @@ function generateFilterSpecificFeatureExplanation(cityName: string, filters: str
     '12-month': [
       `${filterName} plans in ${cityName} hit the sweet spot for most electricity users. These contracts give you one full year of rate protection, shielding you from seasonal price spikes while keeping the flexibility to look at your options annually. Unlike longer contracts, 12-month terms typically have lower cancellation fees and let you take advantage of market improvements more often.`,
       
-      `The popularity of ${filterName} electricity plans among ${cityName} residents comes from their balanced approach to risk and reward. You get solid protection against market ups and downs without the long-term commitment that might leave you stuck with high rates. This contract length works great with annual budgeting cycles and seasonal usage patterns.`,
+      `The popularity of ${filterName} electricity plans among ${cityName} residents comes from their balanced approach to risk and reward. You get solid protection against market ups and downs without the long-term commitment that might lock you into less favorable rates. This contract length works great with annual budgeting cycles and seasonal usage patterns.`,
       
       `What makes ${filterName} plans especially appealing in ${cityName} is how they align with Texas electricity market cycles. These contracts often capture seasonal pricing advantages while providing enough stability for good household budgeting. The annual renewal cycle also matches when companies typically introduce their most competitive rates.`
     ],

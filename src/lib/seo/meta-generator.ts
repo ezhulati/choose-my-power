@@ -128,7 +128,7 @@ function getMetaTemplate(
             <li>Feel good about your energy choices</li>
           </ul>
           
-          <p>Every plan displayed includes complete pricing transparency and provider ratings from real customers. Join thousands of ${cityName} residents powering their homes with clean, renewable electricity.</p>
+          <p>Each plan displayed includes complete pricing transparency and provider ratings from real customers. Join thousands of ${cityName} residents powering their homes with clean, renewable electricity.</p>
         </div>
       `,
     },

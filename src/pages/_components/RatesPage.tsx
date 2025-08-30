@@ -356,7 +356,7 @@ export function RatesPage({}: RatesPageProps) {
                 className="w-full p-4 text-left border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
               >
                 <div className="font-medium text-gray-900 mb-1">Decode Your Confusing Bill</div>
-                <div className="text-sm text-gray-600">What all those random charges actually mean (spoiler: half are BS)</div>
+                <div className="text-sm text-gray-600">What all those random charges actually mean (spoiler: half are nonsense)</div>
               </button>
               
               <button

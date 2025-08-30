@@ -4,6 +4,8 @@
  * Performance target: <50ms per template generation
  */
 
+import { DEFAULT_COUNTS } from '../utils/dynamic-counts';
+
 interface ContentContext {
   city: string;
   state: string;
@@ -77,10 +79,10 @@ export function generateCityHubContent(context: ContentContext): ContentTemplate
         `10 minutes to pick, hundreds saved all year`
       ]
     },
-    introduction: `Finally, someone decoded ${cityName}'s electricity mess. Look, we got tricked by those "9.5¢ teaser rates" too—until we figured out the game. Now we show you ${context.planCount} plans that actually work, with real math instead of marketing BS. You'll find honest comparisons here, not 40-page contracts full of gotchas.`,
+    introduction: `Finally, someone decoded ${cityName}'s electricity mess. Look, we got tricked by those "9.5¢ teaser rates" too—until we figured out the game. Now we show you ${context.planCount} plans that actually work, with real math instead of marketing nonsense. You'll find honest comparisons here, not 40-page contracts full of gotchas.`,
     keyPoints: [
       `Here's what they don't tell you: ${localUtility} delivers your power no matter who you pick—companies just send bills`,
-      `We work with 12-15 quality providers in ${cityName} (not "all" providers—that's impossible)`,
+      `We work with ${DEFAULT_COUNTS.providers} quality providers in ${cityName} (not "all" providers—that's impossible)`,
       `Your savings start the moment you switch—but only if you pick right`,
       `${seasonalModifier.context} means smart ${cityName} families are switching now, before rates jump`,
       `"Green" energy costs the same as regular—we'll show you real Texas wind power, not marketing fluff`
@@ -170,7 +172,7 @@ export function generateMultiFilterContent(context: ContentContext): ContentTemp
       cta: `Show Me ${filterCombination} That Works`,
       benefits: [
         `Real ${primaryFilter} + actual ${secondaryFilter} (not marketing fluff)`,
-        `${context.planCount} plans that passed our BS detector`,
+        `${context.planCount} plans that passed our quality filter`,
         `Built for how ${cityName} families actually use electricity`,
         `True rates starting at ${context.lowestRate}¢/kWh (we did the math)`,
         `${context.tdspName} delivers it all—same wires, better deal`
@@ -215,7 +217,7 @@ export function generateProviderContent(context: ContentContext & { provider: st
   const template: ContentTemplate = {
     hero: {
       headline: `Finally. ${providerName} Plans in ${cityName} That Actually Work`,
-      subheadline: `${context.planCount} ${providerName} plans in ${cityName} that passed our BS detector. ${providerInfo.reputation} with honest rates from ${context.lowestRate}¢/kWh—no fine print games.`,
+      subheadline: `${context.planCount} ${providerName} plans in ${cityName} that passed our quality filter. ${providerInfo.reputation} with honest rates from ${context.lowestRate}¢/kWh—no fine print games.`,
       cta: `Show Me ${providerName} Plans That Work`,
       benefits: [
         providerInfo.primaryBenefit,
@@ -397,7 +399,7 @@ function generateCityFAQ(cityName: string, context: ContentContext) {
     },
     {
       question: `Why do you only show ${context.planCount} plans instead of hundreds like other sites?`,
-      answer: `Because we filtered out the garbage. Other sites show every plan to look "complete"—including F-rated companies and bait-and-switch rates. We work with 12-15 quality providers in ${cityName}. You'll find plans that actually work, not 500 ways to get scammed.`
+      answer: `Because we filtered out the garbage. Other sites show every plan to look "complete"—including F-rated companies and bait-and-switch rates. We work with ${DEFAULT_COUNTS.providers} quality providers in ${cityName}. You'll find plans that actually work, not 500 ways to get scammed.`
     },
     {
       question: `Do you really work with "all" electricity providers in ${cityName}?`,

@@ -62,7 +62,7 @@ export function ComparePage() {
     {
       id: 'plans',
       title: 'Find Plans That Won\'t Screw You',
-      subtitle: 'Decode the Fine Print BS',
+      subtitle: 'Decode the Fine Print Tricks',
       description: 'We read all the fine print so you don\'t have to. See what each plan REALLY costs, not just the teaser rate.',
       icon: Zap,
       color: 'green',
@@ -127,7 +127,7 @@ export function ComparePage() {
     {
       icon: Shield,
       title: 'Dodge the Traps',
-      description: 'That 9.9¢ rate? It jumps to 15¢ if you use 999 kWh instead of 1000. We catch this BS for you.',
+      description: 'That 9.9¢ rate? It jumps to 15¢ if you use 999 kWh instead of 1000. We catch this nonsense for you.',
       stat: 'No more gotchas'
     },
     {
@@ -162,11 +162,11 @@ export function ComparePage() {
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8">
-              Tired of Confusing Electricity Comparisons? We Get It.
+              Finally. Electric Bill Comparison That Makes Actual Sense.
             </h1>
             <p className="text-xl md:text-2xl mb-12 text-blue-100 max-w-4xl mx-auto leading-relaxed">
-              PowerToChoose makes it confusing on purpose. We don't play games. 
-              Here's the truth about Texas electricity - organized so you can actually understand it and stop overpaying.
+              You've been to PowerToChoose. You've scrolled through 300 confusing plans. You're still confused and probably overpaying. 
+              We've been there too. Here's what we figured out - organized so you'll be done in 10 minutes.
             </p>
 
             {/* Quick Stats */}
@@ -181,7 +181,7 @@ export function ComparePage() {
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
                 <div className="text-3xl font-bold">Zero</div>
-                <div className="text-blue-200 text-sm">Sales BS</div>
+                <div className="text-blue-200 text-sm">Sales Nonsense</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
                 <div className="text-3xl font-bold">100%</div>
@@ -206,10 +206,11 @@ export function ComparePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Your Neighbor Pays Less. Here's Why.
+              Your Neighbor Saves $400/Year. You Can Too.
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              They didn't fall for the marketing tricks. They know what to look for. Now you will too.
+              They figured out the system. They know which plans are actually cheap and which companies won't screw them over. 
+              Here's exactly what they do different.
             </p>
           </div>
 
@@ -233,10 +234,11 @@ export function ComparePage() {
         <div className="mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Stop Guessing. Start Knowing.
+              Three Ways to Compare (Pick Your Battle)
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We built three simple tools that actually show you the truth. No marketing tricks, no hidden fees in the fine print.
+              You can't compare everything at once - that's why PowerToChoose is useless. Pick what matters most to you. 
+              We'll show you exactly what you need to know, nothing else.
             </p>
           </div>
 
@@ -391,7 +393,7 @@ export function ComparePage() {
         {/* Expert Methodology */}
         <div className="bg-white rounded-lg shadow-sm border p-8 mb-16">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            Here's How We Cut Through the BS
+            How We Actually Do This (The Real Work)
           </h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -440,7 +442,7 @@ export function ComparePage() {
         {/* Quick Decision Guide */}
         <div className="bg-texas-cream-200 border border-blue-200 rounded-lg p-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            Where Should You Start? (Real Talk)
+            Where Should You Start? (30-Second Guide)
           </h2>
           
           <div className="grid md:grid-cols-3 gap-8">

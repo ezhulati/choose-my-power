@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import StandardZipInput from '../components/StandardZipInput.astro';
 import { Zap, Shield, DollarSign, Clock, MapPin, Calculator, Leaf, Users, TrendingDown, Battery, Award, BarChart, Star, ArrowRight } from 'lucide-react';
 import { getCredibleMarketingText, DEFAULT_COUNTS } from '../lib/utils/dynamic-counts';
+import { DynamicHeroMessaging } from '../components/DynamicHeroMessaging';
 
 const title = "Finally. Texas Electricity That Makes Sense. | ChooseMyPower.org";
 const description = "No more 6.9¢ rates that cost 14¢. No more 40-page contracts. Just honest prices and straight answers from someone who's figured this out. Whether you're moving tomorrow or your rate just jumped, we'll get you sorted in 10 minutes.";
@@ -51,27 +52,8 @@ const description = "No more 6.9¢ rates that cost 14¢. No more 40-page contrac
       <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="py-20 sm:py-24 lg:py-32">
           <div class="text-center">
-            <!-- Main Heading - Relief & Authority -->
-            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight tracking-tight">
-              <span class="block text-texas-gold font-extrabold">Finally.</span>
-              <span class="block">Texas Electricity</span>
-              <span class="block bg-gradient-to-r from-texas-gold via-texas-gold-300 to-texas-gold bg-clip-text text-transparent">
-                That Makes Sense.
-              </span>
-            </h1>
-            
-            <!-- Reality Check Statement -->
-            <p class="text-lg sm:text-xl lg:text-2xl text-blue-100 max-w-4xl mx-auto mb-4 leading-relaxed">
-              No more 6.9¢ rates that cost 14¢. No more 40-page contracts.<br>
-              Just honest prices and straight answers from someone who's figured this out.
-            </p>
-            
-            <!-- Urgency Coverage -->
-            <div class="mb-8">
-              <p class="text-xl sm:text-2xl text-texas-gold font-semibold">
-                Whether you're moving tomorrow or your rate just jumped, we'll get you sorted in 10 minutes.
-              </p>
-            </div>
+            <!-- Dynamic Temporal Messaging -->
+            <DynamicHeroMessaging client:load />
             
             <!-- ZIP Code Search -->
             <StandardZipInput 
@@ -87,7 +69,7 @@ const description = "No more 6.9¢ rates that cost 14¢. No more 40-page contrac
             <div class="flex flex-wrap items-center justify-center gap-6 text-blue-200 text-sm">
               <div class="flex items-center gap-2">
                 <div class="w-2 h-2 bg-texas-gold rounded-full"></div>
-                <span>100+ plans from quality providers</span>
+                <span>{DEFAULT_COUNTS.planText} from quality providers</span>
               </div>
               <div class="flex items-center gap-2">
                 <div class="w-2 h-2 bg-texas-gold rounded-full"></div>
@@ -454,7 +436,7 @@ const description = "No more 6.9¢ rates that cost 14¢. No more 40-page contrac
             We Only Show You the Good Ones
           </h2>
           <p class="text-lg text-gray-600">
-            100+ plans from quality providers. No fly-by-night companies. No door-to-door scammers.
+            {DEFAULT_COUNTS.planText} from quality providers. No fly-by-night companies. No door-to-door scammers.
           </p>
         </div>
 
@@ -528,4 +510,7 @@ const description = "No more 6.9¢ rates that cost 14¢. No more 40-page contrac
       </div>
     </section>
   </div>
+
+  <!-- Backup ZIP lookup script in case StandardZipInput component doesn't load it -->
+  <script src="/js/zip-lookup.js" defer></script>
 </Layout>

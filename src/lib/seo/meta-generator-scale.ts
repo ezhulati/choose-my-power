@@ -188,7 +188,7 @@ function generateTitle(city: string, filters: string[], planCount: number, prima
       2: `${cityName} Electricity That Actually Fits | ${planCount} Clear Options | ${rateContext}`,
       3: `Moving to ${cityName}? Don't Transfer Your Plan | ${planCount} Better Options`,
       4: `${cityName} Plans That Work for Your Home | ${planCount} Honest Rates | ${trendContext}`,
-      5: `${cityName} TX Electricity Made Simple | ${planCount} Quality Providers Only`,
+      5: `${cityName} Electricity Made Simple | ${planCount} Quality Providers Only`,
       6: `${cityName} Electricity - Clear Choices | ${planCount} Plans | ${rateContext}`,
       7: `${cityName} Electricity Options That Make Sense | ${planCount} Plans | No Overwhelm`,
       8: `Looking for Better Rates in ${cityName}? | ${planCount} Quality Plans Available`,
@@ -478,7 +478,7 @@ function generateFilterContent(cityName: string, filters: string[], planCount: n
     '12-month': {
       1: `<p>Secure predictable electricity rates in ${cityName} with ${planCount} 12-month contract options ${rateText}. These annual plans offer the ideal balance between rate stability and flexibility, protecting you from market volatility without the long-term commitment of 24 or 36-month contracts.</p><p>All plans are backed by ${location}'s reliable grid infrastructure and include transparent pricing with all fees disclosed upfront. Choose from fixed-rate options that lock in today's competitive rates for a full year, giving you budget certainty and peace of mind.</p>`,
       
-      2: `<p>Lock in stable electricity pricing for your ${cityName} home with ${planCount} available 12-month plans ${rateText}. These contracts provide rate protection against seasonal spikes while maintaining the flexibility to switch after just one year if your needs change.</p><p>Every plan includes complete fee disclosure and is serviced through ${location}'s established distribution network. Compare features like green energy options, bill credits, and customer service ratings to find the ideal 12-month electricity plan for your household.</p>`
+      2: `<p>Lock in stable electricity pricing for your ${cityName} home with ${planCount} available 12-month plans ${rateText}. These contracts provide rate protection against seasonal spikes while maintaining the flexibility to switch after just one year if your needs change.</p><p>Each plan includes complete fee disclosure and is serviced through ${location}'s established distribution network. Compare features like green energy options, bill credits, and customer service ratings to find the ideal 12-month electricity plan for your household.</p>`
     },
     'green-energy': {
       1: `<p>Power your ${cityName} home with clean, renewable energy through ${planCount} 100% green electricity plans ${rateText}. These environmentally responsible options support Texas wind and solar generation while often costing no more than traditional plans.</p><p>All renewable energy credits are verified and sourced from Texas facilities, ensuring your electricity usage supports local clean energy development. With ${location} handling reliable delivery, you get the same quality service while making a positive environmental impact.</p>`,

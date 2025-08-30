@@ -29,7 +29,7 @@ export function LocationFinderPage({}: LocationFinderPageProps) {
   const handleZipSearch = (zipCode: string) => {
     // Complete ZIP code routing logic
     const zipToLocation: { [key: string]: { state: string; city: string } } = {
-      // Texas ZIP codes - complete coverage
+      // Texas ZIP codes - quality coverage
       '77001': { state: 'texas', city: 'houston' }, '77002': { state: 'texas', city: 'houston' }, '77003': { state: 'texas', city: 'houston' }, '77004': { state: 'texas', city: 'houston' }, '77005': { state: 'texas', city: 'houston' },
       '75201': { state: 'texas', city: 'dallas' }, '75202': { state: 'texas', city: 'dallas' }, '75203': { state: 'texas', city: 'dallas' }, '75204': { state: 'texas', city: 'dallas' }, '75205': { state: 'texas', city: 'dallas' },
       '78701': { state: 'texas', city: 'austin' }, '78702': { state: 'texas', city: 'austin' }, '78703': { state: 'texas', city: 'austin' }, '73301': { state: 'texas', city: 'austin' }, '73344': { state: 'texas', city: 'austin' },
@@ -52,7 +52,7 @@ export function LocationFinderPage({}: LocationFinderPageProps) {
       '79701': { state: 'texas', city: 'midland' }, '79702': { state: 'texas', city: 'midland' }, '79703': { state: 'texas', city: 'midland' }, '79704': { state: 'texas', city: 'midland' }, '79705': { state: 'texas', city: 'midland' },
       '79601': { state: 'texas', city: 'abilene' }, '79602': { state: 'texas', city: 'abilene' }, '79603': { state: 'texas', city: 'abilene' }, '79604': { state: 'texas', city: 'abilene' }, '79605': { state: 'texas', city: 'abilene' },
       
-      // Pennsylvania ZIP codes - complete coverage
+      // Pennsylvania ZIP codes - quality coverage
       '19101': { state: 'pennsylvania', city: 'philadelphia' }, '19102': { state: 'pennsylvania', city: 'philadelphia' }, '19103': { state: 'pennsylvania', city: 'philadelphia' }, '19104': { state: 'pennsylvania', city: 'philadelphia' }, '19105': { state: 'pennsylvania', city: 'philadelphia' },
       '15201': { state: 'pennsylvania', city: 'pittsburgh' }, '15202': { state: 'pennsylvania', city: 'pittsburgh' }, '15203': { state: 'pennsylvania', city: 'pittsburgh' }, '15204': { state: 'pennsylvania', city: 'pittsburgh' }, '15205': { state: 'pennsylvania', city: 'pittsburgh' },
       '18101': { state: 'pennsylvania', city: 'allentown' }, '18102': { state: 'pennsylvania', city: 'allentown' }, '18103': { state: 'pennsylvania', city: 'allentown' }, '18104': { state: 'pennsylvania', city: 'allentown' }, '18105': { state: 'pennsylvania', city: 'allentown' },

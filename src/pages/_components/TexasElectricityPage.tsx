@@ -63,7 +63,7 @@ export function TexasElectricityPage({}: TexasElectricityPageProps) {
       id: 'plans',
       title: 'Texas Electricity Plans',
       subtitle: '300+ Available Plans',
-      description: 'Every plan type from fixed rates to green energy',
+      description: 'All plan types from fixed rates to green energy',
       icon: Zap,
       color: 'green',
       count: texasProviders.reduce((sum, p) => sum + p.plans.length, 0),

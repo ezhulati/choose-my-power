@@ -54,7 +54,8 @@ const {
   plans, 
   error: apiError, 
   canonicalUrl: routerCanonicalUrl,
-  shouldIndex 
+  shouldIndex,
+  messaging 
 } = routeResult;
 
 // Check if this is a municipal utility city and redirect
@@ -181,23 +182,29 @@ console.log(`✅ Faceted page processed: ${cityName} with ${filterResult.applied
           <!-- Page Header -->
           <div class="text-center">
             <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 drop-shadow-lg">
-              {filterLabels.length > 0 
-                ? `Best ${filterLabels.join(' + ')} Plans That Actually Work`
-                : `Here's What Actually Happens When You Switch`
-              }
+              {messaging.headline}
             </h1>
             <p class="text-xl lg:text-2xl text-white/90 mb-6 drop-shadow-md leading-relaxed max-w-4xl mx-auto">
-              {filterLabels.length > 0 
-                ? `Found ${plans.length} ${filterLabels.join(' + ')} plans in ${cityName} that won't surprise you with hidden fees or rate hikes.`
-                : `You've got ${plans.length} electricity plans to choose from in ${cityName}. Most people pick wrong - here's how to pick right.`
-              }
+              {messaging.subheadline}
             </p>
             <div class="text-white/80 drop-shadow-sm">
-              <span class="text-lg lg:text-xl">Skip the teaser rates and marketing tricks - here's what you'll actually pay each month.</span>
-              {filterResult.warnings.length > 0 && (
+              <span class="text-lg lg:text-xl">{messaging.realityCheck || "Skip the teaser rates and marketing tricks - here's what you'll actually pay each month."}</span>
+              {messaging.warning && (
+                <span class="ml-2 text-texas-gold-200">• {messaging.warning}</span>
+              )}
+              {filterResult.warnings.length > 0 && !messaging.warning && (
                 <span class="ml-2 text-texas-gold-200">• {filterResult.warnings[0]}</span>
               )}
             </div>
+
+            <!-- Promise Section -->
+            {messaging.promise && (
+              <div class="mt-6">
+                <p class="text-lg text-texas-cream-100 drop-shadow-sm max-w-3xl mx-auto">
+                  {messaging.promise}
+                </p>
+              </div>
+            )}
 
             <!-- Active Filters -->
             {filterResult.appliedFilters.length > 0 && (
@@ -229,6 +236,19 @@ console.log(`✅ Faceted page processed: ${cityName} with ${filterResult.applied
                 </div>
               </div>
             )}
+
+            <!-- Conversational CTA -->
+            <div class="mt-8">
+              <a
+                href={`#plans-grid`}
+                class="inline-flex items-center px-8 py-4 text-lg font-semibold bg-texas-red text-white rounded-xl shadow-lg hover:bg-texas-red-600 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              >
+                {messaging.cta}
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -262,7 +282,18 @@ console.log(`✅ Faceted page processed: ${cityName} with ${filterResult.applied
         <!-- Sidebar with Additional Filters -->
         <div class="lg:col-span-1">
           <div class="bg-white rounded-lg shadow p-6">
-            <h3 class="text-lg font-medium text-gray-900 mb-4">Refine Your Search</h3>
+            <h3 class="text-lg font-medium text-texas-navy mb-4">Refine Your Search</h3>
+            
+            <!-- Trust Signals -->
+            <div class="mb-6 p-4 bg-texas-cream-50 rounded-lg border border-texas-cream-200">
+              <h4 class="text-sm font-semibold text-texas-navy mb-2">How We're Different</h4>
+              <ul class="text-xs text-gray-700 space-y-1">
+                <li>• We only show quality plans from 12-15 trusted companies</li>
+                <li>• No teaser rates, no fine print surprises</li>
+                <li>• The companies pay us, you pay the same either way</li>
+                <li>• No email required, no spam, no sales calls</li>
+              </ul>
+            </div>
             <div class="space-y-4">
               {suggestedFilterDefinitions.map((item) => (
                 <div key={item.definition.type}>
@@ -298,7 +329,29 @@ console.log(`✅ Faceted page processed: ${cityName} with ${filterResult.applied
         </div>
 
         <!-- Plans Grid -->
-        <div class="lg:col-span-3 mt-8 lg:mt-0">
+        <div class="lg:col-span-3 mt-8 lg:mt-0" id="plans-grid">
+          <!-- Plans Header with Messaging -->
+          {plans.length > 0 && (
+            <div class="mb-6">
+              <h2 class="text-2xl font-bold text-texas-navy mb-2">
+                {filterResult.appliedFilters.length > 0 
+                  ? `${filterResult.appliedFilters.map(f => f.displayName).join(' + ')} Plans in ${cityName}`
+                  : `Electricity Plans in ${cityName}`
+                }
+              </h2>
+              <p class="text-gray-700">
+                You'll see each plan's real cost, not the marketing rate. Takes 5 minutes.
+              </p>
+              {messaging.warning && (
+                <div class="mt-3 p-3 bg-texas-gold-50 border-l-4 border-texas-gold-400 rounded-r">
+                  <p class="text-sm text-texas-gold-800">
+                    <strong>Reality Check:</strong> {messaging.warning}
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
+
           <FacetedPlanGrid 
             plans={plans}
             city={cityName}
@@ -314,7 +367,18 @@ console.log(`✅ Faceted page processed: ${cityName} with ${filterResult.applied
     <!-- Related Links Section -->
     <div class="bg-texas-cream-100 py-12 mt-12">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-xl font-bold text-gray-900 mb-6">Other Options People Ask About in {cityName}</h2>
+        <h2 class="text-2xl font-bold text-texas-navy mb-4">
+          {filterResult.appliedFilters.length > 0 
+            ? `Other Options in ${cityName} Worth Considering`
+            : `The Most Popular Plan Types in ${cityName}`
+          }
+        </h2>
+        <p class="text-gray-700 mb-6">
+          {filterResult.appliedFilters.length > 0 
+            ? `Don't see what you need? These combinations work well for ${cityName} residents:`
+            : `Most people start with these plan types. Click to see what's available:`
+          }
+        </p>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {['12-month', '24-month', 'fixed-rate', 'green-energy', 'prepaid', 'no-deposit'].map((filter) => {
             const isActive = filterSegments.includes(filter);
@@ -328,10 +392,10 @@ console.log(`✅ Faceted page processed: ${cityName} with ${filterResult.applied
               <a
                 key={filter}
                 href={newUrl}
-                class="bg-white p-4 rounded-xl shadow hover:shadow-lg hover:border-texas-navy/30 transition-all duration-300 border border-gray-200 hover:-translate-y-1"
+                class="bg-white p-4 rounded-xl shadow hover:shadow-lg hover:border-texas-navy/30 transition-all duration-300 border border-gray-200 hover:-translate-y-1 group"
               >
-                <div class="text-sm font-medium text-gray-900">{displayName}</div>
-                <div class="text-xs text-gray-500 mt-1">Plans in {cityName}</div>
+                <div class="text-sm font-semibold text-texas-navy group-hover:text-texas-red transition-colors">{displayName}</div>
+                <div class="text-xs text-gray-600 mt-1">Popular in {cityName}</div>
               </a>
             );
           }).filter(Boolean)}

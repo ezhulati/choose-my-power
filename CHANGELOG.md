@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- **Critical**: ZIP form button click navigation issue on production site - button clicks now work identically to Enter key submissions
+
 ### Added
 - **Major**: Conditional adapter system (Node.js for local development, Netlify for deployment)
 - **Major**: Complete changelog automation system with GitHub Actions workflow

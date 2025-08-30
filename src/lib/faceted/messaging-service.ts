@@ -290,7 +290,7 @@ export class FacetedMessagingService {
     return {
       headline: `Finally. ${filterName} Plans in ${cityName} That Actually Work`,
       subheadline: `Half of them aren't really ${filterName} at all. Found ${planCount} that actually deliver.`,
-      realityCheck: "We checked every plan to make sure it matches what you're looking for.",
+      realityCheck: "We checked each plan to make sure it matches what you're looking for.",
       warning: "If it has 40 pages of fine print, it's hiding something."
     };
   }

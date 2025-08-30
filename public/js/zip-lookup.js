@@ -154,19 +154,38 @@
     try {
       // Call our ZIP lookup API
       console.log(`📞 Making API call to /api/zip-lookup?zip=${zipCode}`);
-      const response = await fetch(`/api/zip-lookup?zip=${encodeURIComponent(zipCode)}`);
-      
-      if (!response.ok) {
-        throw new Error(`API responded with status: ${response.status}`);
+      const url = `/api/zip-lookup?zip=${encodeURIComponent(zipCode)}`;
+      const res = await fetch(url, { redirect: 'follow' });
+
+      // Handle redirected responses (API might redirect directly)
+      if (res.redirected) {
+        console.log('🔄 API redirected directly, following redirect');
+        window.location = res.url;
+        return;
       }
+
+      if (!res.ok) {
+        throw new Error(`API responded with status: ${res.status}`);
+      }
+
+      // Check content type to handle both JSON and HTML responses
+      const ct = res.headers.get('content-type') || '';
       
-      const result = await response.json();
-      console.log('📦 API response:', result);
+      let result;
+      if (ct.includes('application/json')) {
+        result = await res.json();
+        console.log('📦 API JSON response:', result);
+      } else {
+        // API returned HTML/redirect instead of JSON
+        console.log('🔄 API returned non-JSON, redirecting to API URL directly');
+        window.location = url;
+        return;
+      }
 
       setLoadingState(false);
       isSubmitting = false;
 
-      if (result.success) {
+      if (result && result.success) {
         // Success - use reliable form-based navigation
         console.log('✅ ZIP lookup successful:', result);
         
@@ -186,9 +205,31 @@
         `;
         form.parentNode.insertBefore(successMessage, form.nextSibling);
         
-        // Use browser's native navigation for most reliable experience
-        // This avoids JavaScript navigation issues entirely
-        window.location = result.redirectUrl;
+        // Multiple navigation strategies for maximum reliability
+        console.log('🎯 Navigating to:', result.redirectUrl);
+        
+        try {
+          // Primary: Use window.location.href for most reliable navigation
+          window.location.href = result.redirectUrl;
+        } catch (navError) {
+          console.warn('⚠️ window.location.href failed, trying alternatives:', navError);
+          
+          try {
+            // Fallback 1: Use window.location assignment
+            window.location = result.redirectUrl;
+          } catch (navError2) {
+            console.warn('⚠️ window.location assignment failed, trying replace:', navError2);
+            
+            try {
+              // Fallback 2: Use location.replace
+              window.location.replace(result.redirectUrl);
+            } catch (navError3) {
+              console.error('❌ All navigation methods failed, using API URL as final fallback:', navError3);
+              // Final safety net: redirect to the API URL directly
+              window.location.href = url;
+            }
+          }
+        }
       } else {
         // Handle different error types
         console.log('⚠️ ZIP lookup failed:', result);
@@ -223,14 +264,31 @@
       
       // Check if this is a network or API error - if so, try fallback
       if (error.message.includes('API responded') || error.name === 'TypeError') {
-        console.log('🔄 API failed, attempting fallback to native form submission');
+        console.log('🔄 API failed, attempting robust fallback navigation');
         
-        // Try to submit the form natively as a fallback
+        // Try multiple navigation methods for fallback
+        const fallbackUrl = `/api/zip-lookup?zip=${encodeURIComponent(zipCode)}`;
+        
         try {
-          window.location.href = `/api/zip-lookup?zip=${encodeURIComponent(zipCode)}`;
+          window.location.href = fallbackUrl;
           return; // Don't show error if redirect works
-        } catch (fallbackError) {
-          console.error('❌ Fallback redirect also failed:', fallbackError);
+        } catch (fallbackError1) {
+          console.warn('⚠️ Fallback href failed, trying location assignment:', fallbackError1);
+          
+          try {
+            window.location = fallbackUrl;
+            return;
+          } catch (fallbackError2) {
+            console.warn('⚠️ Fallback location assignment failed, trying replace:', fallbackError2);
+            
+            try {
+              window.location.replace(fallbackUrl);
+              return;
+            } catch (fallbackError3) {
+              console.error('❌ All fallback navigation methods failed:', fallbackError3);
+              // Continue to show error message below
+            }
+          }
         }
       }
       

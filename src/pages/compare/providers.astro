@@ -4,6 +4,7 @@ import HeroBackground from '../../components/HeroBackground.astro';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import Icon from '../../components/ui/Icon.astro';
 import { Building2, Award, Users, TrendingUp, Star, Shield, Zap } from 'lucide-react';
+import { DEFAULT_COUNTS } from '../../lib/utils/dynamic-counts';
 
 const title = "Finally. Honest Reviews of Texas Electric Companies | ChooseMyPower";
 const description = "We tell you what each provider is actually like to deal with. Real customer experiences, hidden fees exposed, and who actually answers the phone when things go wrong.";
@@ -24,7 +25,7 @@ const description = "We tell you what each provider is actually like to deal wit
     <!-- Hero Section -->
     <HeroBackground 
       title="Finally. The Truth About Texas Electric Companies" 
-      subtitle="Who's actually good? Who's a nightmare? We tracked 50+ providers for you."
+      subtitle={`Who's actually good? Who's a nightmare? We tracked ${DEFAULT_COUNTS.providers} trusted providers for you.`}
       heroType="compare"
     >
       <div class="mt-8 max-w-md mx-auto">
