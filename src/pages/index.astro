@@ -205,12 +205,17 @@ const description = `No more "${lowestRate}¢" rates that cost 14¢. No more 40-
           </div>
         </div>
 
-        <!-- CTA -->
-        <div class="mt-16 text-center">
-          <a href="#zipForm" class="inline-flex items-center gap-2 bg-texas-red text-white px-10 py-4 rounded-xl font-semibold text-lg hover:bg-texas-red-600 transition-all shadow-lg hover:shadow-xl">
-            Find My Right Plan
-            <ArrowRight className="w-5 h-5" />
-          </a>
+        <!-- Inline ZIP Entry -->
+        <div class="mt-16">
+          <StandardZipInput 
+            variant="inline" 
+            size="md"
+            showTitle={true}
+            title="Find My Right Plan"
+            showDescription={false}
+            showStats={false}
+            customClass="max-w-md mx-auto"
+          />
         </div>
       </div>
     </section>
@@ -227,78 +232,71 @@ const description = `No more "${lowestRate}¢" rates that cost 14¢. No more 40-
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           <!-- Moving -->
-          <div class="group relative">
-            <a href="#zipForm" class="block bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 text-center border-2 border-transparent hover:border-texas-red/30">
-              <div class="w-16 h-16 bg-texas-red/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <MapPin className="w-8 h-8 text-texas-red" />
-              </div>
-              <div class="bg-texas-red text-white px-4 py-2 rounded-full text-sm font-semibold mb-3">
-                I'm moving
-              </div>
-              <p class="text-gray-600 text-sm leading-relaxed mb-4">
-                Welcome to Texas electricity freedom. Your new home needs a plan that matches its actual usage, not your old one.
-              </p>
-              <span class="text-texas-red font-semibold text-sm group-hover:underline">
-                Get Power On Day One →
-              </span>
-            </a>
+          <div class="bg-white rounded-xl shadow-md p-6 text-center border-2 border-transparent hover:border-texas-red/30 hover:shadow-lg transition-all">
+            <div class="w-16 h-16 bg-texas-red/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <MapPin className="w-8 h-8 text-texas-red" />
+            </div>
+            <div class="bg-texas-red text-white px-4 py-2 rounded-full text-sm font-semibold mb-3">
+              I'm moving
+            </div>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Welcome to Texas electricity freedom. Your new home needs a plan that matches its actual usage, not your old one.
+            </p>
           </div>
 
           <!-- High Bill -->
-          <div class="group relative">
-            <a href="#zipForm" class="block bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 text-center border-2 border-transparent hover:border-texas-gold/50">
-              <div class="w-16 h-16 bg-texas-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <DollarSign className="w-8 h-8 text-texas-gold" />
-              </div>
-              <div class="bg-texas-gold text-white px-4 py-2 rounded-full text-sm font-semibold mb-3">
-                My bill's too high
-              </div>
-              <p class="text-gray-600 text-sm leading-relaxed mb-4">
-                That sinking feeling when you open the bill? Let's see what you should actually be paying.
-              </p>
-              <span class="text-texas-gold font-semibold text-sm group-hover:underline">
-                Show Me What I Should Pay →
-              </span>
-            </a>
+          <div class="bg-white rounded-xl shadow-md p-6 text-center border-2 border-transparent hover:border-texas-gold/50 hover:shadow-lg transition-all">
+            <div class="w-16 h-16 bg-texas-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <DollarSign className="w-8 h-8 text-texas-gold" />
+            </div>
+            <div class="bg-texas-gold text-white px-4 py-2 rounded-full text-sm font-semibold mb-3">
+              My bill's too high
+            </div>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              That sinking feeling when you open the bill? Let's see what you should actually be paying.
+            </p>
           </div>
 
           <!-- Contract Ending -->
-          <div class="group relative">
-            <a href="#zipForm" class="block bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 text-center border-2 border-transparent hover:border-texas-navy/30">
-              <div class="w-16 h-16 bg-texas-navy/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Clock className="w-8 h-8 text-texas-navy" />
-              </div>
-              <div class="bg-texas-navy text-white px-4 py-2 rounded-full text-sm font-semibold mb-3">
-                Contract ending soon
-              </div>
-              <p class="text-gray-600 text-sm leading-relaxed mb-4">
-                Got that renewal notice? Good timing. Let's find you something better before auto-renewal hits.
-              </p>
-              <span class="text-texas-navy font-semibold text-sm group-hover:underline">
-                Beat Auto-Renewal →
-              </span>
-            </a>
+          <div class="bg-white rounded-xl shadow-md p-6 text-center border-2 border-transparent hover:border-texas-navy/30 hover:shadow-lg transition-all">
+            <div class="w-16 h-16 bg-texas-navy/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Clock className="w-8 h-8 text-texas-navy" />
+            </div>
+            <div class="bg-texas-navy text-white px-4 py-2 rounded-full text-sm font-semibold mb-3">
+              Contract ending soon
+            </div>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Got that renewal notice? Good timing. Let's find you something better before auto-renewal hits.
+            </p>
           </div>
 
           <!-- Need $0 Deposit -->
-          <div class="group relative">
-            <a href="#zipForm" class="block bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 text-center border-2 border-transparent hover:border-green-500/30">
-              <div class="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Shield className="w-8 h-8 text-green-600" />
-              </div>
-              <div class="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-3">
-                Need $0 deposit
-              </div>
-              <p class="text-gray-600 text-sm leading-relaxed mb-4">
-                Why tie up money in deposits when you need it elsewhere? We'll find options that work for you.
-              </p>
-              <span class="text-green-600 font-semibold text-sm group-hover:underline">
-                Find No-Deposit Plans →
-              </span>
-            </a>
+          <div class="bg-white rounded-xl shadow-md p-6 text-center border-2 border-transparent hover:border-green-500/30 hover:shadow-lg transition-all">
+            <div class="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Shield className="w-8 h-8 text-green-600" />
+            </div>
+            <div class="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-3">
+              Need $0 deposit
+            </div>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Why tie up money in deposits when you need it elsewhere? We'll find options that work for you.
+            </p>
           </div>
+        </div>
+
+        <!-- Single ZIP Entry Below All Cards -->
+        <div class="text-center">
+          <StandardZipInput 
+            variant="inline" 
+            size="lg"
+            showTitle={true}
+            title="Get Started With Any Situation Above"
+            showDescription={false}
+            showStats={false}
+            customClass="max-w-lg mx-auto"
+          />
         </div>
 
       </div>
@@ -310,10 +308,15 @@ const description = `No more "${lowestRate}¢" rates that cost 14¢. No more 40-
 
 
         <div class="text-center">
-          <a href="#zipForm" class="inline-flex items-center gap-2 bg-texas-red text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-texas-red-600 transition-all shadow-lg hover:shadow-xl">
-            Compare Your Plans
-            <ArrowRight className="w-5 h-5" />
-          </a>
+          <StandardZipInput 
+            variant="inline" 
+            size="lg"
+            showTitle={true}
+            title="Compare Your Plans"
+            showDescription={false}
+            showStats={false}
+            customClass="max-w-lg mx-auto"
+          />
         </div>
       </div>
     </section>
@@ -332,7 +335,7 @@ const description = `No more "${lowestRate}¢" rates that cost 14¢. No more 40-
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <!-- What's a kWh? -->
-          <div class="bg-texas-cream-50 rounded-xl p-6 border border-texas-cream-200">
+          <div class="bg-white rounded-xl p-6 border-2 border-texas-red shadow-lg">
             <h3 class="text-xl font-bold text-texas-navy mb-3">What's a kWh?</h3>
             <p class="text-gray-700 leading-relaxed mb-4">
               Think of it like gas for your car. You pay per gallon of gas. You pay per kWh of electricity.
@@ -441,10 +444,16 @@ const description = `No more "${lowestRate}¢" rates that cost 14¢. No more 40-
           <p class="text-blue-100 mb-6 max-w-2xl mx-auto">
             Join them. Enter your ZIP code above and see what's really available in your area.
           </p>
-          <a href="#zipForm" class="inline-flex items-center gap-2 bg-texas-red text-white px-8 py-3 rounded-xl font-semibold hover:bg-texas-red-600 transition-all">
-            Show Me My Options
-            <ArrowRight className="w-5 h-5" />
-          </a>
+          <StandardZipInput 
+            variant="compact" 
+            size="md"
+            showTitle={false}
+            showDescription={false}
+            showStats={false}
+            placeholder="Enter your ZIP"
+            buttonText="Show Me My Options"
+            customClass="max-w-sm mx-auto"
+          />
         </div>
       </div>
     </section>

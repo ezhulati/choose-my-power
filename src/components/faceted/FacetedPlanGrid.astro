@@ -4,7 +4,7 @@
  * Advanced plan grid with sorting, filtering, comparison, infinite scroll,
  * and mobile-optimized display features for electricity plan comparison
  */
-import { ProfessionalPlanCard } from '../ui/ProfessionalPlanCard';
+import { EnterprisePlanCard } from '../ui/EnterprisePlanCard';
 import type { Plan } from '../../types/facets';
 
 interface Props {
@@ -203,9 +203,9 @@ const sortingOptions = [
       
       <!-- Grid View - Mobile-First Responsive -->
       <div class={`grid-view ${viewMode === 'grid' ? 'active' : 'hidden'}`}>
-        <div class="plans-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div class="plans-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {convertedInitialPlans.map((plan) => (
-            <ProfessionalPlanCard 
+            <EnterprisePlanCard 
               plan={plan}
               client:load
               className="h-full"
@@ -514,7 +514,7 @@ Compare
   
   @media (min-width: 768px) {
     .stats-overview {
-      @apply grid-cols-4 gap-6 mb-6;
+      @apply grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8;
     }
   }
   

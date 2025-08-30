@@ -37,7 +37,7 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Separator } from '@/components/ui/separator';
-import { ProfessionalPlanCard } from '@/components/ui/ProfessionalPlanCard';
+import { EnterprisePlanCard } from '@/components/ui/EnterprisePlanCard';
 import { useElectricityPlans, type UseElectricityPlansReturn } from '@/hooks/useElectricityPlans';
 import type { ElectricityPlan } from '@/types/electricity-plans';
 
@@ -278,7 +278,7 @@ export function PlanResults({
     );
   }, [displayPlans, searchQuery]);
 
-  // Convert ElectricityPlan to ProfessionalPlanCard format
+  // Convert ElectricityPlan to EnterprisePlanCard format
   const convertedPlans = useMemo(() => {
     return searchFilteredPlans.map((plan) => ({
       id: plan.id,
@@ -624,11 +624,11 @@ export function PlanResults({
           ) : (
             <div className={cn(
               viewMode === 'grid' 
-                ? 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6'
+                ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'
                 : 'space-y-4'
             )}>
               {convertedPlans.map((plan) => (
-                <ProfessionalPlanCard
+                <EnterprisePlanCard
                   key={plan.id}
                   plan={plan}
                   onViewDetails={() => handlePlanSelect(searchFilteredPlans.find(p => p.id === plan.id)!)}
@@ -795,7 +795,7 @@ function PlanComparison({ plans, onPlanSelect, onRemoveFromComparison }: PlanCom
       </CardHeader>
       <CardContent>
         <div className="overflow-x-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 min-w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 min-w-full">
             {plans.map((plan) => (
               <Card key={plan.id} className="border-2 border-texas-gold/30">
                 <CardHeader className="pb-4">
@@ -884,7 +884,7 @@ function PlanResultsSkeleton() {
           <div className="h-96 bg-gray-200 rounded-lg animate-pulse" />
         </div>
         <div className="lg:col-span-3">
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {Array.from({ length: 6 }).map((_, i) => (
               <div key={i} className="h-80 bg-gray-200 rounded-lg animate-pulse" />
             ))}

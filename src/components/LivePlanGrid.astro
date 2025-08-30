@@ -1,6 +1,6 @@
 ---
 // Live electricity plans grid component
-import { ProfessionalPlanCard } from './ui/ProfessionalPlanCard';
+import { EnterprisePlanCard } from './ui/EnterprisePlanCard';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 
@@ -48,7 +48,7 @@ interface Props {
 
 const { plans, cityName, showLoadMore = true, maxPlans = 12 } = Astro.props;
 
-// Convert legacy plans to ProfessionalPlanCard format
+// Convert legacy plans to EnterprisePlanCard format
 const convertedPlans = plans.map((plan, index) => {
   // Handle legacy structure
   const providerName = typeof plan.provider === 'string' ? plan.provider : plan.provider?.name || 'Unknown Provider';
@@ -111,9 +111,9 @@ const mostPopularPlan = convertedPlans.length > 0 ? convertedPlans.find(plan =>
       </p>
     </div>
 
-    <div id="plans-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div id="plans-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {displayedPlans.map((plan) => (
-        <ProfessionalPlanCard 
+        <EnterprisePlanCard 
           plan={plan}
           client:load
           className="h-full"
@@ -124,9 +124,9 @@ const mostPopularPlan = convertedPlans.length > 0 ? convertedPlans.find(plan =>
     <!-- Hidden plans for Load More functionality -->
     {convertedPlans.slice(maxPlans).length > 0 && (
       <div id="hidden-plans" class="hidden">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {convertedPlans.slice(maxPlans).map((plan) => (
-            <ProfessionalPlanCard 
+            <EnterprisePlanCard 
               plan={plan}
               client:load
               className="h-full hidden-plan"

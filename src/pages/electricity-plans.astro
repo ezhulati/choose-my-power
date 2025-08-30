@@ -12,14 +12,14 @@ import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Input } from '../components/ui/input';
-import { ProfessionalPlanCard } from '../components/ui/ProfessionalPlanCard';
+import { EnterprisePlanCard } from '../components/ui/EnterprisePlanCard';
 import { getCredibleMarketingText, DEFAULT_COUNTS } from '../lib/utils/dynamic-counts';
 
 const title = "Texas Electricity Plans - Compare Real Rates & Find Your Best Deal";
 const marketingText = getCredibleMarketingText(DEFAULT_COUNTS.providers, DEFAULT_COUNTS.plans);
 const description = `Compare real electricity rates from ${DEFAULT_COUNTS.providerText} across Texas. No hidden fees, no teaser rates - just honest pricing to help you find the best electricity plan for your home.`;
 
-// Professional plan data for ProfessionalPlanCard component
+// Professional plan data for EnterprisePlanCard component
 const samplePlans = [
   {
     id: "1",
@@ -150,9 +150,9 @@ const samplePlans = [
       </div>
 
       <!-- Professional Plan Cards Grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {samplePlans.map((plan) => (
-          <ProfessionalPlanCard 
+          <EnterprisePlanCard 
             key={plan.id} 
             plan={plan} 
             client:load

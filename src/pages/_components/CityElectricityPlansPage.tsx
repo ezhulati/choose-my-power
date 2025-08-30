@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
-import { ProfessionalPlanCard } from '../../components/ui/ProfessionalPlanCard';
+import { EnterprisePlanCard } from '../../components/ui/EnterprisePlanCard';
 import { mockProviders, mockStates } from '../../data/mockData';
 import { Calendar, Zap, TrendingDown, Leaf, Shield, Filter } from 'lucide-react';
 
@@ -253,9 +253,9 @@ export function CityElectricityPlansPage({ state, city }: CityElectricityPlansPa
             </div>
 
             {/* PROFESSIONAL PLAN CARDS */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPlans.map((plan) => {
-                // Transform plan data to match ProfessionalPlanCard interface
+                // Transform plan data to match EnterprisePlanCard interface
                 const transformedPlan = {
                   id: plan.id,
                   name: plan.name,
@@ -271,7 +271,7 @@ export function CityElectricityPlansPage({ state, city }: CityElectricityPlansPa
                 };
 
                 return (
-                  <ProfessionalPlanCard
+                  <EnterprisePlanCard
                     key={plan.id}
                     plan={transformedPlan}
                     onViewDetails={(selectedPlan) => {
