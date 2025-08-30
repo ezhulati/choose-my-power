@@ -34,7 +34,7 @@ interface ComponentState {
 export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
   onTDSPResolved,
   onError,
-  placeholder = "Enter ZIP code",
+  placeholder = "75201",
   className = "",
   showProgress = true,
   displayUsage = 1000
@@ -58,18 +58,18 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
     
     // Basic format validation
     if (!trimmed || trimmed.length !== 5) {
-      return 'ZIP code must be exactly 5 digits';
+      return 'Just need 5 digits - like 75201';
     }
     
     // Numeric validation with stricter security check
     if (!/^\d{5}$/.test(trimmed)) {
-      return 'ZIP code must contain only numbers';
+      return 'Numbers only - no letters or spaces';
     }
     
     // Range validation for US ZIP codes
     const zipNum = parseInt(trimmed, 10);
     if (zipNum < 1000 || zipNum > 99999) {
-      return 'Please enter a valid US ZIP code';
+      return "That ZIP doesn't look familiar. Mind double-checking?";
     }
     
     return null; // Valid
@@ -83,11 +83,11 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
     
     // Length validation
     if (!trimmed || trimmed.length < 5) {
-      return 'Address must be at least 5 characters';
+      return 'What street are you on?';
     }
     
     if (trimmed.length > 200) {
-      return 'Address must be less than 200 characters';
+      return "That's a bit long - just the street works!";
     }
     
     // Security: Check for potentially malicious patterns
@@ -101,13 +101,13 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
     
     for (const pattern of dangerousPatterns) {
       if (pattern.test(trimmed)) {
-        return 'Address contains invalid characters';
+        return 'Let\'s keep it simple - just letters and numbers';
       }
     }
     
     // Basic format validation - should contain numbers and letters
     if (!/\d/.test(trimmed) || !/[a-zA-Z]/.test(trimmed)) {
-      return 'Address should contain both numbers and letters';
+      return 'Need both number and street (like "123 Main St")';
     }
     
     return null; // Valid
@@ -230,7 +230,7 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
           setState(prev => ({ 
             ...prev, 
             isLoading: false, 
-            error: `${zipResult.error} You cannot choose your electricity provider in this area.` 
+            error: `${zipResult.error} That's a city-owned utility area - no switching there, but those usually have pretty good rates already!` 
           }));
         } else if (zipResult.errorType === 'not_found') {
           // ZIP not found in our database, try multi-TDSP detector as fallback
@@ -266,7 +266,7 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
             setState(prev => ({ 
               ...prev, 
               isLoading: false, 
-              error: 'This ZIP code is not in our service area. We currently serve deregulated electricity markets in Texas.' 
+              error: "We don't cover that area yet. We have all of deregulated Texas - about 85% of the state." 
             }));
           }
         } else {
@@ -274,7 +274,7 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
           setState(prev => ({ 
             ...prev, 
             isLoading: false, 
-            error: zipResult.error || 'Unable to process this ZIP code. Please try again.' 
+            error: zipResult.error || 'Something went wrong. Let\\'s try that again?' 
           }));
         }
       }
@@ -284,7 +284,7 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
       
       const errorMessage = error instanceof Error 
         ? error.message 
-        : 'Unable to process ZIP code. Please check your connection and try again.';
+        : "Can't connect right now. Check your internet and try again?";
         
       setState(prev => ({ 
         ...prev, 
@@ -372,7 +372,7 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
       
       const errorMessage = error instanceof Error 
         ? error.message 
-        : 'Unable to resolve address. Please check your address and try again.';
+        : "Can't find that address. Try just the number and street name?";
         
       setState(prev => ({ 
         ...prev, 
@@ -454,16 +454,16 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
       {showProgress && (
         <div className="progress-steps mb-4">
           <div className={`step ${state.step === 'zip_input' ? 'active' : ''} ${state.step !== 'zip_input' ? 'completed' : ''}`}>
-            1. ZIP Code
+            Step 1: ZIP Code
           </div>
           {state.showAddressForm && (
             <div className={`step ${state.step === 'address_input' ? 'active' : ''} ${['tdsp_selection', 'resolved'].includes(state.step) ? 'completed' : ''}`}>
-              2. Address
+              Step 2: Street
             </div>
           )}
           {state.tdspResult?.alternatives && (
             <div className={`step ${state.step === 'tdsp_selection' ? 'active' : ''} ${state.step === 'resolved' ? 'completed' : ''}`}>
-              3. Select Utility
+              Step 3: Utility
             </div>
           )}
         </div>
@@ -488,7 +488,7 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
               disabled={state.isLoading || state.zipCode.length !== 5}
               className="submit-button"
             >
-              {state.isLoading ? 'Checking...' : 'Check Rates'}
+              {state.isLoading ? 'Checking...' : 'Show My Plans'}
             </button>
           </div>
         </div>
@@ -498,8 +498,8 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
       {state.step === 'address_input' && (
         <div className="address-input-section">
           <div className="section-header">
-            <h3>Address Required</h3>
-            <p>Your ZIP code ({state.zipCode}) spans multiple utility service areas. Please enter your street address for accurate rates.</p>
+            <h3>One Quick Thing - Your Street?</h3>
+            <p>Your ZIP ({state.zipCode}) is right on the border. What street? That tells us which utility serves you.</p>
           </div>
           
           <div className="input-group">
@@ -508,7 +508,7 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
               value={state.address}
               onChange={(e) => setState(prev => ({ ...prev, address: e.target.value }))}
               onKeyPress={handleKeyPress}
-              placeholder="Enter street address (e.g., 1234 Main St)"
+              placeholder="123 Main St"
               className="address-input"
               disabled={state.isLoading}
             />
@@ -517,13 +517,13 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
               disabled={state.isLoading || !state.address.trim()}
               className="submit-button"
             >
-              {state.isLoading ? 'Looking up...' : 'Find Utility'}
+              {state.isLoading ? 'Looking it up...' : 'That's It'}
             </button>
           </div>
 
           <div className="utility-info">
-            <p><strong>Why do we need your address?</strong></p>
-            <p>Multiple electricity providers serve your ZIP code area. Your exact address helps us identify your utility company and show you the correct rates.</p>
+            <p><strong>Why ask?</strong></p>
+            <p>Different streets get different utilities. Knowing yours means we show actual prices you'll pay.</p>
           </div>
         </div>
       )}
@@ -532,8 +532,8 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
       {state.step === 'tdsp_selection' && state.tdspResult?.alternatives && (
         <div className="tdsp-selection-section">
           <div className="section-header">
-            <h3>Select Your Utility Company</h3>
-            <p>We found multiple utilities that may serve your address. Please select your current or preferred utility:</p>
+            <h3>Quick Check - Who's Your Utility?</h3>
+            <p>You're right between two areas. Which name do you see on your current bill?</p>
           </div>
           
           <div className="tdsp-options">
@@ -558,18 +558,18 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
       {state.step === 'resolved' && state.tdspResult && (
         <div className="success-section">
           <div className="success-message">
-            <div className="success-icon">✅</div>
+            <div className="success-icon">🎯</div>
             <div className="success-text">
-              <strong>Service Area Confirmed</strong>
-              <p>Your utility company: {state.tdspResult.tdsp_name}</p>
+              <strong>Got It! Found Your Spot</strong>
+              <p>You're served by: {state.tdspResult.tdsp_name}</p>
               {state.tdspResult.resolvedAddress && (
-                <p className="resolved-address">Address: {state.tdspResult.resolvedAddress}</p>
+                <p className="resolved-address">Location: {state.tdspResult.resolvedAddress}</p>
               )}
             </div>
           </div>
           
           <button onClick={handleReset} className="reset-button">
-            Change Location
+            Try Another Address
           </button>
         </div>
       )}
@@ -590,7 +590,7 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
         <div className="loading-indicator">
           <div className="loading-spinner"></div>
           <div className="loading-text">
-            {state.step === 'zip_input' ? 'Checking service area...' : 'Resolving utility company...'}
+            {state.step === 'zip_input' ? 'Looking up your area...' : 'Finding your utility...'}
           </div>
         </div>
       )}

@@ -165,25 +165,25 @@ function generateCityIntroVariation(cityName: string, planCount: number, rateTex
   const demographicContext = getDemographicContext(cityName, tier);
   
   const variations = [
-    `Finding the perfect electricity plan in ${cityName} doesn't have to be overwhelming. ${seasonalContext} With ${planCount} carefully vetted options available, you can compare rates ${rateText}${avgRateText} and find a plan that fits your budget and energy needs. ${demographicContext}`,
+    `Moving to ${cityName}? Don't transfer your old plan. ${seasonalContext} We show ${planCount} quality options with rates ${rateText}${avgRateText} so you can get a rate matched to your new home's size and usage. ${demographicContext}`,
     
-    `${cityName} residents have the power of choice when it comes to electricity. Our comprehensive comparison tool showcases ${planCount} plans from trusted providers, with rates ${rateText}${avgRateText}. ${seasonalContext} Whether you're a new resident or looking to switch providers, we make the process simple and transparent.`,
+    `${cityName} residents have electricity options—and that's a good thing. We organize ${planCount} plans from quality providers with rates ${rateText}${avgRateText}. ${seasonalContext} No overwhelming lists or pushy sales, just clear choices for your situation.`,
     
     `Discover why thousands of ${cityName} homeowners trust our platform to find better electricity rates. ${seasonalContext} Compare ${planCount} available plans with rates ${rateText}${avgRateText}, read authentic customer reviews, and switch online in minutes. ${demographicContext}`,
     
-    `Take control of your electricity costs in ${cityName} with our award-winning comparison platform. ${planCount} plans are currently available with rates ${rateText}${avgRateText}. ${seasonalContext} Our transparent pricing includes all fees, so you can make an informed decision without surprises.`,
+    `Looking for electricity in ${cityName}? We make it straightforward with ${planCount} options with rates ${rateText}${avgRateText}. ${seasonalContext} Real rates with all fees included—no teaser rates or overwhelming lists. ${demographicContext}`,
     
-    `${cityName}'s deregulated electricity market gives you unprecedented choice and savings potential. Browse ${planCount} competitive plans with rates ${rateText}${avgRateText}. ${seasonalContext} From budget-friendly options to premium green energy plans, find the perfect match for your lifestyle. ${demographicContext}`,
+    `${cityName} electricity comparison made simple. We present ${planCount} plans with rates ${rateText}${avgRateText} from quality providers so you can choose what's right for you. ${seasonalContext} Your power of choice made clear. ${demographicContext}`,
     
-    `Smart ${cityName} residents are saving hundreds annually by choosing the right electricity plan. ${seasonalContext} Our platform features ${planCount} options with rates ${rateText}${avgRateText}, complete with transparent pricing and authentic customer reviews. Switch today and join the thousands who've already made the smart choice.`,
+    `Want better electricity rates in ${cityName}? We've found ${planCount} quality options with rates ${rateText}${avgRateText}. ${seasonalContext} Compare honestly and choose confidently—no overwhelming lists or pushy sales tactics.`,
     
     `Navigating ${cityName}'s electricity market has never been easier. ${planCount} plans await your comparison, featuring rates ${rateText}${avgRateText}. ${seasonalContext} Our user-friendly platform eliminates confusion by presenting clear, honest pricing from reputable providers. ${demographicContext}`,
     
-    `Experience the freedom of choice in ${cityName}'s competitive electricity marketplace. ${seasonalContext} With ${planCount} plans offering rates ${rateText}${avgRateText}, you're guaranteed to find significant savings. Our platform's advanced filtering and comparison tools make finding your ideal plan effortless.`,
+    `Experience the freedom of choice in ${cityName}'s competitive electricity marketplace. ${seasonalContext} With ${planCount} plans offering rates ${rateText}${avgRateText}, you'll likely find significant savings. Our platform's advanced filtering and comparison tools make finding your ideal plan effortless.`,
     
-    `${cityName} homeowners and renters alike benefit from our comprehensive electricity comparison service. ${planCount} vetted plans offer rates ${rateText}${avgRateText}. ${seasonalContext} Whether you prioritize low cost, green energy, or flexible terms, our platform connects you with the perfect provider. ${demographicContext}`,
+    `${cityName} homeowners and renters both benefit from our electricity comparison help. ${planCount} quality plans offer rates ${rateText}${avgRateText}. ${seasonalContext} Whether you want low cost, clean energy, or flexible terms, we help you find the right company. ${demographicContext}`,
     
-    `Join the electricity savings revolution in ${cityName}. ${seasonalContext} Our platform showcases ${planCount} carefully selected plans with rates ${rateText}${avgRateText}. Every plan includes detailed pricing breakdowns, customer ratings, and contract terms to help you make the best decision for your home.`
+    `Join your ${cityName} neighbors in finding better electricity rates. ${seasonalContext} We show ${planCount} carefully chosen plans with rates ${rateText}${avgRateText}. Every plan includes clear pricing, customer ratings, and contract terms to help you pick what works for your home.`
   ];
   
   const index = (seed - 1) % variations.length;
@@ -197,25 +197,25 @@ function generateFilteredIntroVariation(cityName: string, filters: string[], pla
   const filterBenefits = getFilterBenefits(filters);
   
   const variations = [
-    `${cityName} residents seeking ${filterText} electricity plans have excellent options available. ${seasonalContext} Our curated selection of ${planCount} plans offers rates ${rateText}${avgRateText}. ${filterBenefits} Compare features, read verified reviews, and switch to a plan that perfectly matches your needs.`,
+    `${cityName} residents seeking ${filterText} electricity plans have excellent options available. ${seasonalContext} Our curated selection of ${planCount} plans offers rates ${rateText}${avgRateText}. ${filterBenefits} Compare features, read verified reviews, and switch to a plan that fits your needs.`,
     
     `Discover the advantages of ${filterText} electricity plans in ${cityName}. ${planCount} specialized options feature rates ${rateText}${avgRateText}. ${seasonalContext} These carefully selected plans offer unique benefits that standard options can't match. ${filterBenefits}`,
     
     `${cityName}'s ${filterText} electricity market offers exceptional value for informed consumers. ${seasonalContext} Browse ${planCount} premium plans with rates ${rateText}${avgRateText}. Our platform highlights the specific advantages of each option, making your decision straightforward. ${filterBenefits}`,
     
-    `Experience the benefits of ${filterText} electricity service in ${cityName}. ${planCount} top-tier plans are available with rates ${rateText}${avgRateText}. ${seasonalContext} These specialized options provide enhanced value through innovative features and competitive pricing. ${filterBenefits}`,
+    `Experience the benefits of ${filterText} electricity service in ${cityName}. ${planCount} top-tier plans are available with rates ${rateText}${avgRateText}. ${seasonalContext} These specialized options provide enhanced value through new features and competitive pricing. ${filterBenefits}`,
     
     `Smart ${cityName} residents are choosing ${filterText} electricity plans for good reason. ${seasonalContext} Our selection of ${planCount} plans offers rates ${rateText}${avgRateText}, each designed to deliver maximum value. ${filterBenefits} Compare your options and join thousands of satisfied customers.`,
     
     `Unlock the potential of ${filterText} electricity plans in ${cityName}. ${planCount} carefully vetted options provide rates ${rateText}${avgRateText}. ${seasonalContext} These plans offer distinct advantages over traditional options, including enhanced features and customer benefits. ${filterBenefits}`,
     
-    `${cityName}'s ${filterText} electricity landscape offers compelling opportunities for savings and service. ${seasonalContext} Explore ${planCount} specialized plans with rates ${rateText}${avgRateText}. Our comprehensive comparison reveals why these options are increasingly popular among discerning consumers. ${filterBenefits}`,
+    `${cityName}'s ${filterText} electricity landscape offers compelling opportunities for savings and service. ${seasonalContext} Explore ${planCount} specialized plans with rates ${rateText}${avgRateText}. Our complete comparison reveals why these options are increasingly popular among discerning consumers. ${filterBenefits}`,
     
-    `Transform your electricity experience in ${cityName} with ${filterText} plans tailored to your preferences. ${planCount} exceptional options feature rates ${rateText}${avgRateText}. ${seasonalContext} These advanced plans combine competitive pricing with innovative features. ${filterBenefits}`,
+    `Transform your electricity experience in ${cityName} with ${filterText} plans tailored to your preferences. ${planCount} exceptional options feature rates ${rateText}${avgRateText}. ${seasonalContext} These advanced plans combine competitive pricing with new features. ${filterBenefits}`,
     
     `${cityName} consumers are discovering superior value through ${filterText} electricity plans. ${seasonalContext} Our marketplace features ${planCount} premium options with rates ${rateText}${avgRateText}. Each plan is carefully evaluated for quality, reliability, and customer satisfaction. ${filterBenefits}`,
     
-    `Elevate your electricity service in ${cityName} with ${filterText} plans designed for modern consumers. ${planCount} cutting-edge options offer rates ${rateText}${avgRateText}. ${seasonalContext} These plans represent the future of electricity service, combining innovation with affordability. ${filterBenefits}`
+    `Elevate your electricity service in ${cityName} with ${filterText} plans designed for modern consumers. ${planCount} modern options offer rates ${rateText}${avgRateText}. ${seasonalContext} These plans represent the future of electricity service, combining new technology with affordability. ${filterBenefits}`
   ];
   
   const index = (seed - 1) % variations.length;
@@ -229,10 +229,10 @@ function getSeasonalIntroContext(season: string | undefined): string {
   if (!season) return '';
   
   const seasonalContexts = {
-    winter: 'With winter heating costs on the horizon, now is the perfect time to secure a better electricity rate.',
-    summer: 'As summer cooling season approaches, locking in competitive rates can lead to significant savings.',
-    spring: 'Spring brings renewal and the perfect opportunity to refresh your electricity plan.',
-    fall: 'Fall is an ideal time to evaluate your electricity costs before the high-usage winter months.'
+    winter: 'With winter heating costs coming, now is a smart time to find a better electricity rate.',
+    summer: 'As summer cooling season approaches, getting good rates now can save you money.',
+    spring: 'Spring brings renewal and a great chance to look at your electricity plan.',
+    fall: 'Fall is a smart time to check your electricity costs before the high-usage winter months.'
   };
   
   return seasonalContexts[season] || '';
@@ -243,11 +243,11 @@ function getSeasonalIntroContext(season: string | undefined): string {
  */
 function getDemographicContext(cityName: string, tier: number): string {
   const contexts = [
-    `Our platform is trusted by families, professionals, and retirees throughout the ${cityName} area.`,
-    `From young professionals to established families, ${cityName} residents rely on our expertise.`,
+    `Our help is trusted by families, professionals, and retirees throughout the ${cityName} area.`,
+    `From young professionals to established families, ${cityName} residents rely on our honest guidance.`,
     `Whether you're a first-time homebuyer or a long-time resident, we make electricity shopping simple.`,
-    `Join your neighbors in ${cityName} who have already discovered better electricity rates through our platform.`,
-    `Homeowners and renters alike find value in our comprehensive ${cityName} electricity comparison service.`
+    `Join your neighbors in ${cityName} who have already found better electricity rates with our help.`,
+    `Homeowners and renters both find value in our straightforward ${cityName} electricity comparison.`
   ];
   
   return contexts[Math.floor(Math.random() * contexts.length)];
@@ -260,7 +260,7 @@ function getFilterBenefits(filters: string[]): string {
   const benefitMap = {
     '12-month': 'Twelve-month contracts offer the perfect balance of rate stability and flexibility, protecting you from market volatility without long-term commitment.',
     '24-month': 'Two-year agreements provide maximum rate security and often feature the lowest available rates for budget-conscious consumers.',
-    'fixed-rate': 'Fixed-rate plans eliminate bill shock by guaranteeing your rate throughout the contract term, making budgeting simple and predictable.',
+    'fixed-rate': 'Fixed-rate plans eliminate bill shock by fixing your rate throughout the contract term, making budgeting simple and predictable.',
     'variable-rate': 'Variable-rate plans offer flexibility and the potential to benefit from market decreases, perfect for consumers who monitor energy markets.',
     'green-energy': '100% renewable plans support Texas wind and solar development while often costing no more than traditional fossil fuel options.',
     'prepaid': 'Prepaid service eliminates deposits and credit checks while giving you complete control over your electricity spending.',
@@ -319,15 +319,15 @@ function generateFeatureExplanation(options: ContentVariationOptions, seed: numb
 
 function generateGeneralFeatureExplanation(cityName: string, seed: number): string {
   const explanations = [
-    `Our ${cityName} electricity comparison platform offers several key advantages: transparent pricing with all fees included, authentic customer reviews from verified users, easy online enrollment with same-day processing, and dedicated customer support throughout the switching process.`,
+    `Our ${cityName} electricity comparison help offers several key advantages: clear pricing with all fees included, real customer reviews from verified users, easy online signup with quick processing, and helpful support throughout the switching process.`,
     
-    `What sets our ${cityName} service apart is our commitment to complete transparency. Every rate displayed includes transmission fees, taxes, and monthly charges, so the price you see is the price you pay. Our advanced filtering system helps you find plans that match your specific needs and preferences.`,
+    `What makes our ${cityName} service different is our commitment to complete honesty. Every rate shown includes delivery fees, taxes, and monthly charges, so what you see is what you pay. Our simple filtering helps you find plans that match what you need.`,
     
-    `${cityName} residents benefit from our comprehensive approach to electricity comparison. We verify every provider's credentials, monitor plan availability in real-time, and provide detailed contract analysis to help you avoid common pitfalls like teaser rates and hidden fees.`,
+    `${cityName} residents benefit from our thorough approach to electricity comparison. We verify every company's credentials, monitor plan availability in real-time, and provide clear contract analysis to help you avoid common traps like teaser rates and hidden fees.`,
     
-    `Our platform's sophisticated matching system considers your usage patterns, budget preferences, and service priorities to recommend the most suitable ${cityName} electricity plans. This personalized approach has helped thousands of residents find better rates and service.`,
+    `Our smart matching system looks at your usage patterns, budget preferences, and service priorities to suggest the most suitable ${cityName} electricity plans. This personalized approach has helped thousands of residents find better rates and service.`,
     
-    `Experience the difference of working with ${cityName}'s most trusted electricity comparison service. Our team of energy experts continuously monitors market conditions, negotiates exclusive offers, and maintains relationships with top providers to ensure you get the best available deals.`
+    `Experience the difference of working with ${cityName}'s most trusted electricity comparison service. Our team of energy experts continuously watches market conditions, finds exclusive offers, and maintains relationships with top companies to ensure you get the best available deals.`
   ];
   
   return explanations[(seed - 1) % explanations.length];
@@ -339,14 +339,14 @@ function generateFilterSpecificFeatureExplanation(cityName: string, filters: str
   
   const explanations = {
     '12-month': [
-      `${filterName} plans in ${cityName} represent the sweet spot for most electricity consumers. These contracts offer one full year of rate protection, shielding you from seasonal price spikes while maintaining the flexibility to reassess your options annually. Unlike longer contracts, 12-month terms typically have lower cancellation fees and allow you to take advantage of market improvements more frequently.`,
+      `${filterName} plans in ${cityName} hit the sweet spot for most electricity users. These contracts give you one full year of rate protection, shielding you from seasonal price spikes while keeping the flexibility to look at your options annually. Unlike longer contracts, 12-month terms typically have lower cancellation fees and let you take advantage of market improvements more often.`,
       
-      `The popularity of ${filterName} electricity plans among ${cityName} residents stems from their balanced approach to risk and reward. You get meaningful protection against market volatility without the long-term commitment that might leave you stuck with above-market rates. This contract length aligns perfectly with annual budgeting cycles and seasonal usage patterns.`,
+      `The popularity of ${filterName} electricity plans among ${cityName} residents comes from their balanced approach to risk and reward. You get solid protection against market ups and downs without the long-term commitment that might leave you stuck with high rates. This contract length works great with annual budgeting cycles and seasonal usage patterns.`,
       
-      `What makes ${filterName} plans particularly attractive in ${cityName} is their alignment with Texas electricity market cycles. These contracts often capture seasonal pricing advantages while providing enough stability for effective household budgeting. The annual renewal cycle also coincides with when providers typically introduce their most competitive rates.`
+      `What makes ${filterName} plans especially appealing in ${cityName} is how they align with Texas electricity market cycles. These contracts often capture seasonal pricing advantages while providing enough stability for good household budgeting. The annual renewal cycle also matches when companies typically introduce their most competitive rates.`
     ],
     'fixed-rate': [
-      `${filterName} electricity plans eliminate the uncertainty that comes with variable pricing. In ${cityName}, these plans guarantee your rate throughout the entire contract term, regardless of market fluctuations, seasonal demand changes, or fuel cost variations. This predictability makes budgeting simple and protects you from bill shock during peak usage periods.`,
+      `${filterName} electricity plans eliminate the uncertainty that comes with variable pricing. In ${cityName}, these plans lock in your rate throughout the entire contract term, regardless of market fluctuations, seasonal demand changes, or fuel cost variations. This predictability makes budgeting simple and protects you from bill shock during peak usage periods.`,
       
       `The security of ${filterName} plans has made them the preferred choice for many ${cityName} families and businesses. Your rate is locked in from day one, providing peace of mind and budget certainty. This protection is especially valuable during volatile market periods when other plan types might experience significant rate increases.`,
       
@@ -380,11 +380,11 @@ function generateLocalMarketContext(options: ContentVariationOptions, seed: numb
   const contexts = [
     `${cityName}'s electricity market is served by ${tdspInfo?.name}, which maintains the power lines and responds to outages regardless of which retail provider you choose. This deregulated structure allows you to shop for competitive rates while ensuring reliable service delivery. ${trendContext} The competitive landscape continues to benefit consumers through innovation and competitive pricing.`,
     
-    `As part of Texas's deregulated electricity market, ${cityName} residents enjoy unprecedented choice in their electricity provider. ${tdspInfo?.name} handles distribution and maintains grid reliability, while retail providers compete for your business through competitive rates and innovative service features. ${trendContext} This market structure has consistently delivered savings compared to regulated markets.`,
+    `As part of Texas's deregulated electricity market, ${cityName} residents enjoy unprecedented choice in their electricity provider. ${tdspInfo?.name} handles distribution and maintains grid reliability, while retail providers compete for your business through competitive rates and new service features. ${trendContext} This market structure has consistently delivered savings compared to regulated markets.`,
     
-    `The ${cityName} electricity market exemplifies the success of Texas deregulation, with robust competition driving innovation and consumer savings. ${tdspInfo?.name}'s reliable distribution infrastructure supports multiple retail providers, creating a stable foundation for competitive pricing. ${trendContext} Market transparency and consumer choice remain key benefits of this system.`,
+    `The ${cityName} electricity market exemplifies the success of Texas deregulation, with strong competition driving new options and consumer savings. ${tdspInfo?.name}'s reliable distribution infrastructure supports multiple retail providers, creating a stable foundation for competitive pricing. ${trendContext} Market transparency and consumer choice remain key benefits of this system.`,
     
-    `${cityName}'s position in the Texas electricity market provides residents with excellent choices and competitive rates. The area's served by ${tdspInfo?.name}'s transmission infrastructure, ensuring consistent service quality regardless of your provider choice. ${trendContext} This competitive environment continues to evolve with new providers and innovative plan features.`,
+    `${cityName}'s position in the Texas electricity market provides residents with excellent choices and competitive rates. The area's served by ${tdspInfo?.name}'s transmission infrastructure, ensuring consistent service quality regardless of your provider choice. ${trendContext} This competitive environment continues to evolve with new providers and new plan features.`,
     
     `Market dynamics in ${cityName} reflect broader Texas electricity trends, with increasing competition and consumer-friendly options. ${tdspInfo?.name} provides dependable infrastructure support, while retail competition drives better rates and service innovations. ${trendContext} The market's maturity has led to more sophisticated plan options and pricing transparency.`
   ];
@@ -433,28 +433,28 @@ function generateDynamicFAQ(options: ContentVariationOptions, seed: number): FAQ
 function generateBaseFAQs(cityName: string, planCount: number, lowestRate: number): FAQItem[] {
   return [
     {
-      question: `How do I choose the best electricity plan in ${cityName}?`,
-      answer: `Compare plans based on your monthly usage, rate type preference, and contract length. Look at the total cost including all fees, not just the advertised rate. Consider whether you want fixed or variable pricing, and check for green energy options if environmental impact matters to you. Our platform shows ${planCount} available plans with transparent pricing starting at ${lowestRate.toFixed(3)}¢/kWh.`,
+      question: `How do I pick the best electricity plan in ${cityName}?`,
+      answer: `Compare plans based on your monthly usage, rate type preference, and how long you want to commit. Look at the total cost including all fees, not just the advertised rate. Think about whether you want fixed or variable pricing, and check for clean energy options if that matters to you. We show ${planCount} available plans with clear pricing starting at ${lowestRate.toFixed(3)}¢/kWh.`,
       importance: 'high'
     },
     {
-      question: `What's included in electricity rates shown for ${cityName}?`,
-      answer: `Our displayed rates include the energy charge, transmission and distribution fees from your local utility, and applicable taxes. This gives you the true cost per kWh with no hidden surprises. All ${planCount} plans show complete pricing transparency, so you can compare apples-to-apples.`,
+      question: `What's included in the electricity rates shown for ${cityName}?`,
+      answer: `Our displayed rates include the energy charge, delivery fees from your local utility, and applicable taxes. This gives you the real cost per kWh with no hidden surprises. All ${planCount} plans show complete pricing honesty, so you can compare fairly.`,
       importance: 'high'
     },
     {
-      question: `How quickly can I switch electricity providers in ${cityName}?`,
-      answer: `Most switches in Texas take 1-2 billing cycles, typically 4-6 weeks. However, if you're moving to a new address in ${cityName}, service can often be connected within 1-3 business days. The switching process is handled electronically with no service interruption.`,
+      question: `How fast can I switch electricity companies in ${cityName}?`,
+      answer: `Most switches in Texas take 1-2 billing cycles, usually 4-6 weeks. However, if you're moving to a new address in ${cityName}, service can often start within 1-3 business days. The switching process happens electronically with no power interruption.`,
       importance: 'medium'
     },
     {
-      question: `Are there any fees to switch electricity providers in ${cityName}?`,
-      answer: `There are no fees to switch electricity providers in Texas. However, if you break an existing contract early, you may owe an early termination fee to your current provider. New connections may have a connection fee, but switching between providers is free.`,
+      question: `Are there any fees to switch electricity companies in ${cityName}?`,
+      answer: `There are no fees to switch electricity companies in Texas. However, if you break an existing contract early, you may owe an early termination fee to your current company. New connections may have a setup fee, but switching between companies is free.`,
       importance: 'medium'
     },
     {
-      question: `Can I keep the same electricity provider if I move within ${cityName}?`,
-      answer: `Yes, you can often transfer your electricity plan to a new address within ${cityName} or the same service territory. Contact your provider before moving to arrange the transfer. Some providers may require a new contract or deposit for the new address.`,
+      question: `Can I keep the same electricity company if I move within ${cityName}?`,
+      answer: `Yes, you can often transfer your electricity plan to a new address within ${cityName} or the same service territory. Contact your company before moving to arrange the transfer. Some companies may require a new contract or deposit for the new address.`,
       importance: 'low'
     }
   ];
@@ -474,7 +474,7 @@ function generateFilterSpecificFAQs(cityName: string, filters: string[]): FAQIte
   if (filters.includes('fixed-rate')) {
     faqs.push({
       question: `Why choose fixed-rate electricity in ${cityName}?`,
-      answer: `Fixed-rate plans guarantee your electricity rate for the entire contract term, protecting you from market volatility and seasonal price increases. This makes budgeting easier and eliminates bill shock. In ${cityName}'s competitive market, fixed rates often provide excellent value while giving you peace of mind about your monthly costs.`,
+      answer: `Fixed-rate plans lock in your electricity rate for the entire contract term, protecting you from market volatility and seasonal price increases. This makes budgeting easier and eliminates bill shock. In ${cityName}'s competitive market, fixed rates often provide excellent value while giving you peace of mind about your monthly costs.`,
       importance: 'high'
     });
   }
@@ -507,17 +507,17 @@ function generateCallToAction(options: ContentVariationOptions, seed: number): s
   const filterText = filters.length > 0 ? `${filters.map(formatFilterName).join(' ').toLowerCase()} ` : '';
   
   const ctas = [
-    `Compare ${planCount} ${filterText}electricity plans in ${cityName} today and start saving on your next bill. Our free comparison tool makes switching simple and secure.`,
+    `Find ${cityName} Plans That Fit - Compare ${planCount} quality ${filterText}options organized clearly so you can choose with confidence. No overwhelming lists.`,
     
-    `Ready to save money on electricity in ${cityName}? Browse ${planCount} ${filterText}plans now and find your perfect match in minutes. Switch online with confidence and transparency.`,
+    `Ready for better electricity rates in ${cityName}? We show ${planCount} ${filterText}plans that actually serve your area. Choose what works for your situation.`,
     
-    `Don't overpay for electricity in ${cityName}. Compare ${planCount} ${filterText}options right now and discover how much you could be saving. Start your comparison today.`,
+    `Moving to ${cityName}? Don't transfer your old plan. Compare ${planCount} ${filterText}options matched to your new home's needs. Get rates that fit.`,
     
-    `Join thousands of satisfied ${cityName} customers who found better rates through our platform. Compare ${planCount} ${filterText}electricity plans and switch to start saving immediately.`,
+    `${cityName} residents have real choices. We organize ${planCount} ${filterText}plans so you can understand what's available and choose what fits your home.`,
     
-    `Take control of your electricity costs in ${cityName}. Our easy comparison tool shows ${planCount} ${filterText}plans with transparent pricing. Find your ideal plan and switch today.`,
+    `Looking for honest electricity comparison in ${cityName}? We show ${planCount} ${filterText}plans with clear pricing. No pushy sales or teaser rates.`,
     
-    `${cityName} residents are saving hundreds annually by choosing better electricity plans. Compare ${planCount} ${filterText}options now and see how much you could save. Start your savings today.`,
+    `New to ${cityName}? Don't transfer your old plan. We help you find ${planCount} ${filterText}options that work for your new address and usage needs.`,
     
     `Stop settling for expensive electricity in ${cityName}. Our platform makes comparing ${planCount} ${filterText}plans simple and switching secure. Find better rates and start saving now.`,
     
@@ -662,7 +662,7 @@ function generateFilterEducationBlock(cityName: string, filter: string, seed: nu
   const filterEducation = {
     'fixed-rate': {
       title: 'Fixed Rate Plan Benefits',
-      content: `Fixed-rate electricity plans in ${cityName} guarantee your price per kWh throughout your contract term. This protection against market volatility helps with budgeting and provides peace of mind during periods of rising energy costs. While you won't benefit from market decreases, the price certainty often outweighs this limitation for most households.`,
+      content: `Fixed-rate electricity plans in ${cityName} fix your price per kWh throughout your contract term. This protection against market volatility helps with budgeting and provides peace of mind during periods of rising energy costs. While you won't benefit from market decreases, the price certainty often outweighs this limitation for most households.`,
       category: 'plan-types' as const,
       readingLevel: 7
     },
@@ -688,7 +688,7 @@ function generateLocalMarketBlock(cityName: string, seed: number): EducationalBl
   
   return {
     title: `${cityName} Electricity Market Overview`,
-    content: `${cityName} is served by ${tdspInfo?.name || 'your local transmission utility'}, which maintains the power lines and ensures reliable electricity delivery regardless of which retail provider you choose. This infrastructure supports a competitive retail market where multiple providers compete for your business through better rates, innovative features, and superior customer service.`,
+    content: `${cityName} is served by ${tdspInfo?.name || 'your local transmission utility'}, which maintains the power lines and ensures reliable electricity delivery regardless of which retail provider you choose. This infrastructure supports a competitive retail market where multiple providers compete for your business through better rates, new features, and superior customer service.`,
     category: 'local-market',
     readingLevel: 9
   };

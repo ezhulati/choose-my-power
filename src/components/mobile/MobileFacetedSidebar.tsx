@@ -355,7 +355,7 @@ export const MobileFacetedSidebar: React.FC<MobileFacetedSidebarProps> = ({
               <span className="active-count">{filterStats.activeCount} filter{filterStats.activeCount > 1 ? 's' : ''} active</span>
               {showClearAll && (
                 <button className="clear-all-btn" onClick={handleClearAll}>
-                  Clear All
+                  Start Over
                 </button>
               )}
             </div>
@@ -462,7 +462,7 @@ export const MobileFacetedSidebar: React.FC<MobileFacetedSidebarProps> = ({
                 className="browse-all-btn"
                 onClick={onClose}
               >
-                Browse All Plans
+                Browse Quality Plans
               </button>
             )}
           </div>

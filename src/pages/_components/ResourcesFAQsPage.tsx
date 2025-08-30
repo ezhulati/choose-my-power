@@ -34,7 +34,7 @@ export function ResourcesFAQsPage({}: ResourcesFAQsPageProps) {
       id: 'how-to-choose-provider',
       category: 'choosing',
       question: 'How do I pick a provider that won\'t screw me over?',
-      answer: 'First rule: ignore the big flashy rate they advertise - it\'s usually BS. Instead, look at what you\'ll actually pay each month based on how much electricity you use. Check reviews (especially complaints), avoid door-to-door salespeople like the plague, and read the fine print for hidden fees. If it sounds too good to be true, it probably is.'
+      answer: 'First rule: ignore the big flashy rate they advertise - it\'s usually misleading. Instead, look at what you\'ll actually pay each month based on how much electricity you use. Check reviews (especially complaints), avoid door-to-door salespeople like the plague, and read the fine print for hidden fees. If it sounds too good to be true, it probably is.'
     },
     {
       id: 'switching-process',
@@ -124,7 +124,7 @@ export function ResourcesFAQsPage({}: ResourcesFAQsPageProps) {
               Real Questions, Straight Answers
             </h1>
             <p className="text-lg text-gray-600 mb-8 max-w-3xl mx-auto">
-              No corporate BS here. Just honest answers to the questions you're actually asking about Texas electricity. We've helped thousands of people figure this out.
+              No corporate nonsense here. Just honest answers to the questions you're actually asking about Texas electricity. We've helped thousands of people figure this out.
             </p>
           </div>
         </div>

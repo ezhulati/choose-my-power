@@ -23,7 +23,7 @@ export const mockProviders: Provider[] = [
         'Limited plan variety compared to larger providers',
         'Customer service can be slow during peak times',
         'Website interface feels dated',
-        'No innovative features or smart home integration'
+        'No new features or smart home integration'
       ],
       realCustomerThemes: [
         '"Rates are exactly what they promised"',
@@ -344,7 +344,7 @@ export const mockProviders: Provider[] = [
       whatTheyreGoodAt: [
         'Wide variety of plan options to choose from',
         'Established company with reliable power delivery',
-        'Innovative programs like free nights/weekends',
+        'New programs like free nights/weekends',
         'Good mobile app and online account management'
       ],
       whereTheyFallShort: [
@@ -615,7 +615,7 @@ export const mockProviders: Provider[] = [
     logo: 'https://assets.comparepower.com/images/atlantex_power.svg',
     rating: 4.0,
     reviewCount: 567,
-    description: 'Innovative electricity plans with free time periods and green energy options.',
+    description: 'New electricity plans with free time periods and green energy options.',
     serviceStates: ['texas'],
     plans: [
       {
@@ -763,7 +763,7 @@ export const mockProviders: Provider[] = [
         'Long-established company with reliable service',
         'Wide variety of plan options and terms',
         'Good mobile app and online account management',
-        'Innovative plans like free nights and weekends'
+        'New plans like free nights and weekends'
       ],
       whereTheyFallShort: [
         'Often not the cheapest option available',
@@ -824,7 +824,7 @@ export const mockProviders: Provider[] = [
         'Limited plan variety compared to larger providers',
         'Not available in all Texas markets',
         'Website could be more user-friendly',
-        'Fewer innovative features than competitors'
+        'Fewer new features than competitors'
       ],
       realCustomerThemes: [
         '"Rates stayed exactly what they promised"',

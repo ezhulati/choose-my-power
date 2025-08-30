@@ -121,7 +121,7 @@ export function StateElectricityPlansPage({ state }: StateElectricityPlansPagePr
             <div className="lg:w-80">
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder={`Enter ${stateData.abbreviation} ZIP for local rates`}
+                placeholder="Enter zip code"
               />
             </div>
           </div>

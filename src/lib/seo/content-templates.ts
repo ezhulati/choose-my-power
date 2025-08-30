@@ -66,32 +66,32 @@ export function generateCityHubContent(context: ContentContext): ContentTemplate
   
   const template: ContentTemplate = {
     hero: {
-      headline: `Compare ${cityName}, Texas Electricity Plans - Save ${seasonalModifier.savings}% ${seasonalModifier.period}`,
-      subheadline: `${context.planCount}+ electricity plans available in ${cityName}. Rates starting at ${context.lowestRate}¢/kWh with ${context.topProvider} and other top providers.`,
-      cta: `Find My ${cityName} Electricity Plan`,
+      headline: `Finally. ${cityName} Electricity That Makes Sense`,
+      subheadline: `Moving to ${cityName}? Here's why transferring your old plan usually backfires: Your old rate was based on your OLD home's size. "Fixed" rates aren't fixed—they change with usage. A plan for a 2-bedroom apartment costs way more in a 4-bedroom house.`,
+      cta: `Show Me Plans That Actually Work in ${cityName}`,
       benefits: [
-        `${context.planCount}+ plans from trusted Texas providers`,
-        `Rates as low as ${context.lowestRate}¢/kWh in ${cityName}`,
-        `${localUtility} service area coverage`,
-        `Free plan switching with no deposits`,
-        `100% renewable energy options available`
+        `${context.planCount} plans from quality providers (we filtered out the garbage)`,
+        `Real rates starting at ${context.lowestRate}¢/kWh—no teaser games`,
+        `We've been there, got fooled, figured it out for ${cityName}`,
+        `No sales calls after—promise`,
+        `10 minutes to pick, hundreds saved all year`
       ]
     },
-    introduction: `Finding the right electricity plan in ${cityName}, Texas doesn't have to be complicated. Our comprehensive comparison tool shows you all ${context.planCount} available electricity plans in your area, with transparent pricing and no hidden fees. ${cityName} residents served by ${localUtility} can choose from competitive rates starting at just ${context.lowestRate}¢/kWh.`,
+    introduction: `Finally, someone decoded ${cityName}'s electricity mess. Look, we got tricked by those "9.5¢ teaser rates" too—until we figured out the game. Now we show you ${context.planCount} plans that actually work, with real math instead of marketing BS. You'll find honest comparisons here, not 40-page contracts full of gotchas.`,
     keyPoints: [
-      `${cityName} is served by ${localUtility}, ensuring reliable electricity delivery throughout the city`,
-      `With ${context.planCount} available plans, ${cityName} residents have extensive choice in electricity providers`,
-      `Current market rates in ${cityName} range from ${context.lowestRate}¢/kWh to competitive variable options`,
-      `${seasonalModifier.context} makes it an ideal time to switch electricity plans in ${cityName}`,
-      `Popular plan types include fixed-rate, variable, and 100% renewable energy options`
+      `Here's what they don't tell you: ${localUtility} delivers your power no matter who you pick—companies just send bills`,
+      `We work with 12-15 quality providers in ${cityName} (not "all" providers—that's impossible)`,
+      `Your savings start the moment you switch—but only if you pick right`,
+      `${seasonalModifier.context} means smart ${cityName} families are switching now, before rates jump`,
+      `"Green" energy costs the same as regular—we'll show you real Texas wind power, not marketing fluff`
     ],
     comparison: {
-      title: `Why Choose ChooseMyPower for ${cityName} Electricity Plans?`,
-      description: `Unlike Power to Choose, we provide transparent comparisons of all electricity plans available in ${cityName}, Texas. Our platform eliminates confusing teaser rates and shows you real costs based on actual usage patterns.`,
-      callout: `${cityName} residents save an average of $${Math.round((context.averageRate - context.lowestRate) * 12)}+ per year by switching to lower-rate plans.`
+      title: `Why Smart ${cityName} Residents Skip Power to Choose`,
+      description: `Power to Choose lists 500+ plans designed to confuse you. We show ${context.planCount} that actually work. You'll find plans from trusted providers here—we already read the 40-page contracts and filtered out the tricks. No "free nights" that cost more, no F-rated companies, no bait-and-switch rates.`,
+      callout: `Moving warning: That "8.9¢" plan from your old apartment? In ${cityName}, it'll probably cost 14¢+ because your new home uses electricity differently. Don't transfer—compare fresh.`
     },
     faq: generateCityFAQ(cityName, context),
-    conclusion: `Ready to save on your ${cityName} electricity bill? Compare all ${context.planCount} available plans and switch to a better rate today. With transparent pricing and trusted providers like ${context.topProvider}, finding your perfect electricity plan has never been easier.`,
+    conclusion: `Look, ${cityName}'s electricity market is designed to trick you into overpaying. We've been there—got fooled, learned the hard way, figured it out. Now you get the shortcuts. Ten minutes here, hundreds saved all year. That's the deal.`,
     localContext: generateLocalContext(cityName, context)
   };
 
@@ -115,18 +115,18 @@ export function generateSingleFilterContent(context: ContentContext): ContentTem
   
   const template: ContentTemplate = {
     hero: {
-      headline: `${filterName} Electricity Plans in ${cityName}, TX - Compare & Save`,
-      subheadline: `${context.planCount} ${filterName.toLowerCase()} electricity plans available in ${cityName}. ${filterBenefits.primary} with rates from ${context.lowestRate}¢/kWh.`,
-      cta: `Compare ${filterName} Plans in ${cityName}`,
+      headline: `Finally. ${filterName} Plans in ${cityName} Without the Games`,
+      subheadline: `Tired of "${filterName.toLowerCase()}" plans that aren't really ${filterName.toLowerCase()}? We found ${context.planCount} that actually deliver what they promise. You'll find real rates from ${context.lowestRate}¢/kWh with zero fine-print tricks.`,
+      cta: `Show Me Real ${filterName} Options`,
       benefits: [
-        filterBenefits.primary,
-        filterBenefits.secondary,
-        `Available in ${cityName} through ${context.tdspName}`,
-        `${context.planCount} plans to choose from`,
-        `Starting at ${context.lowestRate}¢/kWh`
+        `${context.planCount} ${filterName.toLowerCase()} plans that aren't scams`,
+        `Actual prices starting at ${context.lowestRate}¢/kWh (at YOUR usage, not just 1000 kWh)`,
+        `We read the contracts so you don't have to`,
+        `What "${filterName.toLowerCase()}" really means (spoiler: not what you think)`,
+        `10 minutes to pick, no sales calls after`
       ]
     },
-    introduction: `${filterName} electricity plans offer ${cityName} residents ${filterBenefits.description}. With ${context.planCount} ${filterName.toLowerCase()} options available through ${context.tdspName}, you can find the perfect plan that matches your energy usage and budget preferences.`,
+    introduction: `Here's the truth about "${filterName.toLowerCase()}" plans in ${cityName}: Most companies use that label to trick you. We checked the fine print on dozens of plans and found ${context.planCount} that actually work like you'd expect. You'll find honest ${filterName.toLowerCase()} options here—no page 37 gotchas.`,
     keyPoints: [
       `${filterBenefits.keyPoint1} - ideal for ${cityName} residents who ${filterBenefits.idealFor}`,
       `${context.planCount} ${filterName.toLowerCase()} plans available from trusted Texas providers`,
@@ -135,12 +135,12 @@ export function generateSingleFilterContent(context: ContentContext): ContentTem
       `${filterBenefits.additionalBenefit} for enhanced value`
     ],
     comparison: {
-      title: `${filterName} vs. Other Plan Types in ${cityName}`,
-      description: `${filterBenefits.comparison} This makes ${filterName.toLowerCase()} plans particularly attractive for ${cityName} residents who ${filterBenefits.bestFor}.`,
-      callout: `${context.topProvider} offers competitive ${filterName.toLowerCase()} rates starting at ${context.lowestRate}¢/kWh in ${cityName}.`
+      title: `Why Most ${filterName} Plans in ${cityName} Are Fake`,
+      description: `Companies slap "${filterName.toLowerCase()}" on anything to get clicks. Like "fixed rates" that jump if you use 999 or 1001 kWh—that's not fixed. We found the ${context.planCount} plans that actually work like ${cityName} families expect.`,
+      callout: `Red flag: If a "${filterName.toLowerCase()}" plan needs 40 pages to explain itself, run. Real ${filterName.toLowerCase()} plans are simple.`
     },
     faq: generateFilterFAQ(filterName, cityName, context),
-    conclusion: `Choose from ${context.planCount} ${filterName.toLowerCase()} electricity plans in ${cityName}, Texas. Compare rates, terms, and benefits to find your ideal electricity plan with transparent pricing and trusted providers.`,
+    conclusion: `Stop falling for fake "${filterName.toLowerCase()}" marketing. We got burned by it too, then figured out which ${context.planCount} plans in ${cityName} actually deliver. Ten minutes to pick, then you're set. Simple.`,
     localContext: `${cityName} residents benefit from ${filterName.toLowerCase()} plans due to ${filterBenefits.localAdvantage}. The ${context.tdspName} service territory ensures reliable delivery of your chosen electricity plan.`
   };
 
@@ -165,18 +165,18 @@ export function generateMultiFilterContent(context: ContentContext): ContentTemp
   
   const template: ContentTemplate = {
     hero: {
-      headline: `${filterCombination} Electricity Plans in ${cityName}, TX`,
-      subheadline: `${context.planCount} ${filterCombination.toLowerCase()} plans combining ${primaryFilter.toLowerCase()} and ${secondaryFilter.toLowerCase()} benefits. Rates from ${context.lowestRate}¢/kWh.`,
-      cta: `Find ${filterCombination} Plans`,
+      headline: `Finally. ${filterCombination} Plans That Actually Work`,
+      subheadline: `Want ${primaryFilter.toLowerCase()} AND ${secondaryFilter.toLowerCase()}? Most ${cityName} companies force you to choose. We found ${context.planCount} plans that give you both without the usual compromises. You'll find real rates from ${context.lowestRate}¢/kWh.`,
+      cta: `Show Me ${filterCombination} That Works`,
       benefits: [
-        `Perfect combination: ${primaryFilter} + ${secondaryFilter}`,
-        `${context.planCount} specialized plans available`,
-        `Optimized for ${cityName} usage patterns`,
-        `Rates starting at ${context.lowestRate}¢/kWh`,
-        `Served by reliable ${context.tdspName} infrastructure`
+        `Real ${primaryFilter} + actual ${secondaryFilter} (not marketing fluff)`,
+        `${context.planCount} plans that passed our BS detector`,
+        `Built for how ${cityName} families actually use electricity`,
+        `True rates starting at ${context.lowestRate}¢/kWh (we did the math)`,
+        `${context.tdspName} delivers it all—same wires, better deal`
       ]
     },
-    introduction: `${filterCombination} electricity plans offer ${cityName} residents the perfect combination of ${getFilterBenefits(context.filters[0]).core} and ${getFilterBenefits(context.filters[1]).core}. These specialized plans are designed for customers who want ${getCombinationBenefits(context.filters).description}.`,
+    introduction: `Here's the game ${cityName} electricity companies play: Want ${primaryFilter.toLowerCase()}? Give up ${secondaryFilter.toLowerCase()}. Want both? "Sorry, pick one." We found ${context.planCount} plans that refuse to play this game. You'll find real ${getFilterBenefits(context.filters[0]).core} AND actual ${getFilterBenefits(context.filters[1]).core} here.`,
     keyPoints: [
       `${primaryFilter} provides ${getFilterBenefits(context.filters[0]).primary.toLowerCase()}`,
       `${secondaryFilter} adds ${getFilterBenefits(context.filters[1]).primary.toLowerCase()}`,
@@ -185,12 +185,12 @@ export function generateMultiFilterContent(context: ContentContext): ContentTemp
       `${context.tdspName} ensures reliable electricity delivery in ${cityName}`
     ],
     comparison: {
-      title: `Why Choose ${filterCombination} Plans in ${cityName}?`,
-      description: `${getCombinationBenefits(context.filters).advantage} This combination is particularly valuable for ${cityName} residents who ${getCombinationBenefits(context.filters).idealCustomer}.`,
-      callout: `${context.topProvider} leads ${cityName} with competitive ${filterCombination.toLowerCase()} rates at ${context.lowestRate}¢/kWh.`
+      title: `Why ${filterCombination} Actually Makes Sense in ${cityName}`,
+      description: `Here's what we discovered: ${getCombinationBenefits(context.filters).advantage} Perfect for ${cityName} families who ${getCombinationBenefits(context.filters).idealCustomer}. Everyone else is overpaying.`,
+      callout: `Heads up: ${context.topProvider} claims ${filterCombination.toLowerCase()} at ${context.lowestRate}¢/kWh, but check the usage bands. The rate jumps if you're off by 1 kWh.`
     },
     faq: generateCombinationFAQ(filterCombination, cityName, context),
-    conclusion: `Compare ${context.planCount} ${filterCombination.toLowerCase()} electricity plans in ${cityName}, Texas. These specialized plans offer the perfect balance of ${primaryFilter.toLowerCase()} and ${secondaryFilter.toLowerCase()} benefits for discerning electricity customers.`,
+    conclusion: `Finally, ${filterCombination.toLowerCase()} plans that don't force fake choices. We did the legwork to find ${context.planCount} real options for ${cityName} families. You get both ${primaryFilter.toLowerCase()} AND ${secondaryFilter.toLowerCase()} without compromise. Pick one, move on.`,
     localContext: `${cityName}'s ${context.population.toLocaleString()}+ residents benefit from ${filterCombination.toLowerCase()} plans that match local usage patterns and preferences. ${context.tdspName} infrastructure supports all plan types with reliable delivery.`
   };
 
@@ -214,33 +214,33 @@ export function generateProviderContent(context: ContentContext & { provider: st
   
   const template: ContentTemplate = {
     hero: {
-      headline: `${providerName} Electricity Plans in ${cityName}, TX - Compare Rates`,
-      subheadline: `${context.planCount} ${providerName} electricity plans available in ${cityName}. ${providerInfo.reputation} with rates starting at ${context.lowestRate}¢/kWh.`,
-      cta: `View ${providerName} Plans in ${cityName}`,
+      headline: `Finally. ${providerName} Plans in ${cityName} That Actually Work`,
+      subheadline: `${context.planCount} ${providerName} plans in ${cityName} that passed our BS detector. ${providerInfo.reputation} with honest rates from ${context.lowestRate}¢/kWh—no fine print games.`,
+      cta: `Show Me ${providerName} Plans That Work`,
       benefits: [
         providerInfo.primaryBenefit,
         providerInfo.secondaryBenefit,
-        `${context.planCount} plan options in ${cityName}`,
-        `Competitive rates from ${context.lowestRate}¢/kWh`,
-        `${context.tdspName} reliable service delivery`
+        `${context.planCount} vetted ${providerName} options in ${cityName}`,
+        `Real rates from ${context.lowestRate}¢/kWh (not teaser rates)`,
+        `${context.tdspName} delivers it all—same reliable service`
       ]
     },
-    introduction: `${providerName} offers ${cityName} residents ${providerInfo.description}. As ${providerInfo.marketPosition}, ${providerName} provides ${context.planCount} electricity plan options with competitive rates starting at ${context.lowestRate}¢/kWh through the ${context.tdspName} service territory.`,
+    introduction: `Here's the deal with ${providerName} in ${cityName}: ${providerInfo.description}. As ${providerInfo.marketPosition}, they've earned a spot in our quality lineup. You'll find ${context.planCount} ${providerName} plans that actually work, with rates from ${context.lowestRate}¢/kWh. No gotchas.`,
     keyPoints: [
-      `${providerName} ${providerInfo.experience} serving Texas electricity customers`,
-      `${context.planCount} diverse plan options available in ${cityName}`,
-      `${providerInfo.specialization} with focus on customer satisfaction`,
-      `Transparent pricing with rates starting at ${context.lowestRate}¢/kWh`,
-      `All plans include ${context.tdspName} delivery and standard regulatory fees`
+      `${providerName} ${providerInfo.experience}—they know Texas electricity`,
+      `${context.planCount} plan options that make sense for ${cityName} families`,
+      `${providerInfo.specialization} instead of the usual runaround`,
+      `Honest rates from ${context.lowestRate}¢/kWh with no hidden fees`,
+      `${context.tdspName} delivers your power—${providerName} just handles billing better`
     ],
     comparison: {
-      title: `${providerName} vs. Other Providers in ${cityName}`,
-      description: `${providerInfo.competitive_advantage} ${providerName}'s ${context.planCount} available plans in ${cityName} offer ${providerInfo.unique_value}.`,
-      callout: `${providerName} customers in ${cityName} benefit from ${providerInfo.customer_benefit} and competitive ${context.lowestRate}¢/kWh rates.`
+      title: `Why ${providerName} Made Our ${cityName} Quality Cut`,
+      description: `${providerInfo.competitive_advantage} ${providerName}'s ${context.planCount} available plans in ${cityName} offer ${providerInfo.unique_value}. We vetted dozens of providers—these are the ones that don't play games.`,
+      callout: `${providerName} customers in ${cityName} get ${providerInfo.customer_benefit} and honest ${context.lowestRate}¢/kWh rates. No surprises, no tricks.`
     },
     faq: generateProviderFAQ(providerName, cityName, context),
-    conclusion: `Choose ${providerName} for reliable electricity service in ${cityName}, Texas. With ${context.planCount} plan options and competitive rates starting at ${context.lowestRate}¢/kWh, ${providerName} delivers ${providerInfo.closing_value}.`,
-    localContext: `${providerName} serves ${cityName}'s ${context.population.toLocaleString()}+ residents through ${context.tdspName} infrastructure. Local customer support and ${providerInfo.local_advantage} make ${providerName} a trusted choice.`
+    conclusion: `Look, ${providerName} made our quality cut for ${cityName} for good reasons. ${context.planCount} solid plan options, rates from ${context.lowestRate}¢/kWh, and ${providerInfo.closing_value}. Simple choice, money saved.`,
+    localContext: `${providerName} serves ${cityName}'s ${context.population.toLocaleString()}+ residents through ${context.tdspName} infrastructure. Here's what matters: ${providerInfo.local_advantage} and they understand how to serve Texas families without the runaround.`
   };
 
   templateCache.set(cacheKey, template);
@@ -278,40 +278,40 @@ function formatFilterName(filter: string): string {
 function getFilterBenefits(filter: string) {
   const benefits: Record<string, any> = {
     '12-month': {
-      primary: 'Predictable rates for one full year',
-      secondary: 'Budget-friendly 12-month rate protection',
-      description: 'stable pricing and budget predictability',
-      keyPoint1: 'Rate protection for 12 months',
-      idealFor: 'want stable electricity costs',
-      additionalBenefit: 'No rate surprises for a full year',
-      comparison: '12-month plans provide the perfect balance of rate stability and flexibility.',
-      bestFor: 'value predictable monthly bills',
-      localAdvantage: 'local weather patterns and seasonal usage variations',
-      core: 'rate stability',
+      primary: 'Your rate stays locked for exactly 12 months',
+      secondary: 'Perfect balance of stability and flexibility', 
+      description: 'real rate protection that actually works',
+      keyPoint1: 'Rate protection that means something—no surprises for 12 months',
+      idealFor: 'want predictable bills without the 3-year commitment trap',
+      additionalBenefit: 'No rate games, no seasonal surprises',
+      comparison: 'Most 12-month plans are honest—unlike those "teaser rate" scams.',
+      bestFor: 'want stable bills but hate long commitments',
+      localAdvantage: 'Texas weather swings and seasonal usage patterns',
+      core: 'honest rate stability',
     },
     'fixed-rate': {
-      primary: 'Guaranteed rate that never changes',
-      secondary: 'Protection from market price fluctuations',
-      description: 'complete rate certainty throughout your contract term',
-      keyPoint1: 'Locked-in rate protection',
-      idealFor: 'prioritize budget certainty',
-      additionalBenefit: 'Protection from market volatility',
-      comparison: 'Fixed-rate plans eliminate the uncertainty of variable pricing.',
-      bestFor: 'want guaranteed stable rates',
-      localAdvantage: 'Texas market volatility and seasonal price swings',
-      core: 'price certainty',
+      primary: 'Your rate never changes (for real this time)',
+      secondary: 'Protection from Texas market craziness',
+      description: 'actual fixed rates that stay fixed',
+      keyPoint1: 'Rate locked in stone—not "fixed until we change it"',
+      idealFor: 'are tired of bill surprises and rate games',
+      additionalBenefit: 'Sleep well knowing your rate won\'t jump',
+      comparison: 'Real fixed rates vs. "fixed" rates that aren\'t really fixed.',
+      bestFor: 'want zero rate surprises',
+      localAdvantage: 'Texas market volatility and price manipulation',
+      core: 'actual price certainty',
     },
     'green-energy': {
-      primary: '100% renewable energy sourcing',
-      secondary: 'Environmental responsibility with competitive rates',
-      description: 'clean energy from wind and solar sources',
-      keyPoint1: 'Sustainable electricity from renewable sources',
-      idealFor: 'care about environmental impact',
-      additionalBenefit: 'Carbon-neutral electricity consumption',
-      comparison: 'Green energy plans support Texas renewable energy leadership.',
-      bestFor: 'prioritize environmental sustainability',
-      localAdvantage: 'Texas leadership in wind and solar energy production',
-      core: 'environmental benefits',
+      primary: 'Real Texas wind power (not just marketing)',
+      secondary: 'Costs the same as regular electricity',
+      description: 'actual clean energy from Texas wind farms',
+      keyPoint1: 'Support real Texas renewable energy—wind and solar that actually works',
+      idealFor: 'want to help the environment without paying extra',
+      additionalBenefit: 'Feel good about your electricity choice',
+      comparison: 'Real green energy vs. "green" marketing that means nothing.',
+      bestFor: 'care about Texas wind farms and solar',
+      localAdvantage: 'Texas leads the nation in wind power generation',
+      core: 'real environmental impact',
     }
   };
   return benefits[filter] || {
@@ -342,48 +342,48 @@ function getCombinationBenefits(filters: string[]) {
 function getProviderInfo(provider: string) {
   const providers: Record<string, any> = {
     'reliant-energy': {
-      reputation: 'Trusted Texas electricity provider since 1996',
-      primaryBenefit: 'Award-winning customer service',
-      secondaryBenefit: 'Innovative electricity plan options',
-      description: 'reliable electricity service with innovative plan features',
-      marketPosition: 'one of Texas\' most established electricity providers',
-      experience: 'has over 25 years of experience',
-      specialization: 'Focus on customer satisfaction and plan innovation',
-      competitive_advantage: 'Reliant Energy combines experience with innovation to deliver superior value.',
-      unique_value: 'flexible terms and customer-focused features',
-      customer_benefit: 'award-winning customer service',
-      closing_value: 'reliable service with innovative features',
-      local_advantage: 'established local presence'
+      reputation: 'Been around since 1996—they\'re not going anywhere',
+      primaryBenefit: 'Actually answers their customer service phone',
+      secondaryBenefit: 'Plan options that make sense',
+      description: 'reliable service without the runaround',
+      marketPosition: 'one of the Texas providers that doesn\'t play games',
+      experience: 'has been figuring out Texas electricity for 25+ years',
+      specialization: 'Customer service that doesn\'t make you want to scream',
+      competitive_advantage: 'Reliant combines experience with plans that actually work.',
+      unique_value: 'straightforward terms and customer support that helps',
+      customer_benefit: 'customer service that picks up the phone',
+      closing_value: 'reliable service without the headaches',
+      local_advantage: 'they know Texas and how things work here'
     },
     'txu-energy': {
-      reputation: 'Texas\' largest electricity provider',
-      primaryBenefit: 'Extensive plan variety and options',
-      secondaryBenefit: 'Proven reliability and customer base',
-      description: 'comprehensive electricity solutions with extensive plan variety',
-      marketPosition: 'Texas\' largest electricity provider',
-      experience: 'has been serving Texas for decades',
-      specialization: 'Comprehensive plan portfolio',
-      competitive_advantage: 'TXU Energy\'s market leadership ensures competitive rates and reliable service.',
-      unique_value: 'extensive plan variety and proven reliability',
-      customer_benefit: 'market-leading plan options',
-      closing_value: 'comprehensive solutions and reliable service',
-      local_advantage: 'extensive Texas market presence'
+      reputation: 'Texas\' biggest provider—love them or not, they\'re everywhere',
+      primaryBenefit: 'Tons of plan options',
+      secondaryBenefit: 'They\'re not going out of business',
+      description: 'comprehensive options with the staying power of being huge',
+      marketPosition: 'the biggest fish in the Texas electricity pond',
+      experience: 'has been doing this longer than most',
+      specialization: 'Every type of plan you can think of',
+      competitive_advantage: 'TXU\'s size means competitive rates and they\'ll be here tomorrow.',
+      unique_value: 'plan variety and "we\'re too big to fail" reliability',
+      customer_benefit: 'lots of choices and market stability',
+      closing_value: 'comprehensive options and company stability',
+      local_advantage: 'they\'re literally everywhere in Texas'
     }
   };
   
   return providers[provider] || {
-    reputation: 'Competitive Texas electricity provider',
-    primaryBenefit: 'Competitive electricity rates',
-    secondaryBenefit: 'Quality customer service',
-    description: 'reliable electricity service with competitive rates',
-    marketPosition: 'a competitive Texas electricity provider',
-    experience: 'brings years of experience',
-    specialization: 'Focus on competitive rates and service quality',
-    competitive_advantage: 'This provider offers competitive advantages in the Texas electricity market.',
-    unique_value: 'competitive rates and reliable service',
-    customer_benefit: 'quality service and competitive pricing',
-    closing_value: 'reliable electricity service',
-    local_advantage: 'local market knowledge'
+    reputation: 'One of the quality Texas providers we work with',
+    primaryBenefit: 'Honest rates without the games',
+    secondaryBenefit: 'Customer service that doesn\'t suck',
+    description: 'straightforward service and competitive rates',
+    marketPosition: 'a Texas provider that made our quality cut',
+    experience: 'knows the Texas electricity market',
+    specialization: 'Focuses on rates that work and service that helps',
+    competitive_advantage: 'This provider earned a spot in our quality lineup.',
+    unique_value: 'honest pricing and reliable service',
+    customer_benefit: 'decent service and fair pricing',
+    closing_value: 'reliable electricity without the runaround',
+    local_advantage: 'understands how Texas electricity actually works'
   };
 }
 
@@ -392,20 +392,24 @@ function getProviderInfo(provider: string) {
 function generateCityFAQ(cityName: string, context: ContentContext) {
   return [
     {
-      question: `How many electricity plans are available in ${cityName}, Texas?`,
-      answer: `${cityName} residents have access to ${context.planCount} electricity plans from various Texas electricity providers. These plans range from fixed-rate to variable-rate options, with competitive rates starting at ${context.lowestRate}¢/kWh.`
+      question: `I'm moving to ${cityName}. Should I transfer my current electricity plan?`,
+      answer: `No way. Here's why transferring your old plan usually backfires: Your old rate was based on your OLD home's size. "Fixed" rates aren't fixed—they change with usage. A plan for a 2-bedroom apartment costs way more in a 4-bedroom house. Moving to ${cityName}? Start fresh and save money.`
     },
     {
-      question: `Who is the electricity utility company in ${cityName}?`,
-      answer: `${cityName} is served by ${context.tdspName}, which is the Transmission and Distribution Service Provider (TDSP) responsible for maintaining power lines and delivering electricity to your home. You can choose your electricity provider while ${context.tdspName} handles delivery.`
+      question: `Why do you only show ${context.planCount} plans instead of hundreds like other sites?`,
+      answer: `Because we filtered out the garbage. Other sites show every plan to look "complete"—including F-rated companies and bait-and-switch rates. We work with 12-15 quality providers in ${cityName}. You'll find plans that actually work, not 500 ways to get scammed.`
     },
     {
-      question: `What is the lowest electricity rate available in ${cityName}?`,
-      answer: `The lowest electricity rate currently available in ${cityName} is ${context.lowestRate}¢/kWh from ${context.topProvider}. However, rates can vary based on your usage level and contract terms, so it's important to compare all available options.`
+      question: `Do you really work with "all" electricity providers in ${cityName}?`,
+      answer: `Honest answer: No. Nobody does. We work with quality providers that actually serve ${cityName}—about 12-15 companies. Other sites claim "all providers" but that's impossible. ${context.tdspName} delivers your power no matter who you pick. We focus on companies that won't trick you.`
     },
     {
-      question: `Can I switch electricity providers in ${cityName}?`,
-      answer: `Yes! ${cityName} is in the deregulated Texas electricity market, which means you can choose your electricity provider. You can switch providers at any time, though you may be subject to early termination fees if you break a current contract.`
+      question: `How do I pick the right electricity plan for my ${cityName} home?`,
+      answer: `Here's what works: Think about your budget first. You want predictable bills? Pick fixed rates. Want to gamble on market prices? Try variable. "Green" energy costs the same as regular but supports Texas wind farms. We explain what each actually means for your ${cityName} situation.`
+    },
+    {
+      question: `Are these ${cityName} rates what I'll actually pay?`,
+      answer: `Yes. We show real rates with all fees included—no "starting at" tricks or teaser rates that explode after 3 months. The rate you see is what you'll pay per kWh in ${cityName}. Your savings start the moment you switch to a better plan.`
     }
   ];
 }
@@ -413,16 +417,16 @@ function generateCityFAQ(cityName: string, context: ContentContext) {
 function generateFilterFAQ(filterName: string, cityName: string, context: ContentContext) {
   return [
     {
-      question: `What are ${filterName.toLowerCase()} electricity plans?`,
-      answer: `${filterName} electricity plans offer ${getFilterBenefits(context.filters[0]).description}. In ${cityName}, ${context.planCount} ${filterName.toLowerCase()} plans are available with rates starting at ${context.lowestRate}¢/kWh.`
+      question: `What's the truth about "${filterName.toLowerCase()}" electricity plans?`,
+      answer: `Here's what companies don't tell you: Half the plans labeled "${filterName.toLowerCase()}" aren't really ${filterName.toLowerCase()} at all. We found ${context.planCount} in ${cityName} that actually deliver ${getFilterBenefits(context.filters[0]).description} like you'd expect. Real rates from ${context.lowestRate}¢/kWh.`
     },
     {
-      question: `Are ${filterName.toLowerCase()} plans available in ${cityName}?`,
-      answer: `Yes, ${cityName} residents can choose from ${context.planCount} different ${filterName.toLowerCase()} electricity plans. These plans are offered by multiple providers and delivered through ${context.tdspName} infrastructure.`
+      question: `Why do some ${filterName.toLowerCase()} plans have 40 pages of fine print?`,
+      answer: `Because they're hiding something. Real ${filterName.toLowerCase()} plans are simple—you get ${getFilterBenefits(context.filters[0]).primary.toLowerCase()} like promised. If a ${cityName} company needs a novel to explain their "${filterName.toLowerCase()}" plan, run.`
     },
     {
-      question: `What are the benefits of ${filterName.toLowerCase()} plans?`,
-      answer: `${filterName} plans provide ${getFilterBenefits(context.filters[0]).primary.toLowerCase()} and ${getFilterBenefits(context.filters[0]).secondary.toLowerCase()}. This makes them ideal for ${cityName} residents who ${getFilterBenefits(context.filters[0]).idealFor}.`
+      question: `Who should pick ${filterName.toLowerCase()} plans in ${cityName}?`,
+      answer: `You'll love ${filterName.toLowerCase()} plans if you ${getFilterBenefits(context.filters[0]).idealFor} and want ${getFilterBenefits(context.filters[0]).core}. Perfect for ${cityName} families who are tired of bill surprises and want something that actually works as advertised.`
     }
   ];
 }
@@ -448,27 +452,27 @@ function generateProviderFAQ(providerName: string, cityName: string, context: Co
   const providerInfo = getProviderInfo(context.provider);
   return [
     {
-      question: `What ${providerName} electricity plans are available in ${cityName}?`,
-      answer: `${providerName} offers ${context.planCount} electricity plans in ${cityName}, Texas, with rates starting at ${context.lowestRate}¢/kWh. Plans include various term lengths and pricing structures to meet different customer needs.`
+      question: `Should I trust ${providerName} in ${cityName}?`,
+      answer: `${providerName} is ${providerInfo.marketPosition} and ${providerInfo.experience} serving Texas families. Here's what matters: ${context.tdspName} delivers your power no matter what—${providerName} just handles billing. They offer ${context.planCount} plans with rates from ${context.lowestRate}¢/kWh.`
     },
     {
-      question: `Is ${providerName} reliable in ${cityName}?`,
-      answer: `Yes, ${providerName} is ${providerInfo.marketPosition} with ${providerInfo.experience}. All electricity is delivered through ${context.tdspName} infrastructure, ensuring reliable service to ${cityName} customers.`
+      question: `What's actually different about ${providerName}?`,
+      answer: `Honest answer: ${providerInfo.primaryBenefit.toLowerCase()} and ${providerInfo.secondaryBenefit.toLowerCase()}. Look, most electricity companies do the same thing—send you bills. ${providerName} focuses on ${providerInfo.specialization.toLowerCase()}, which matters to ${cityName} families who want reliable service.`
     },
     {
-      question: `What makes ${providerName} different from other providers?`,
-      answer: `${providerName} stands out with ${providerInfo.primaryBenefit.toLowerCase()} and ${providerInfo.secondaryBenefit.toLowerCase()}. Their ${providerInfo.specialization.toLowerCase()} makes them a popular choice for ${cityName} residents.`
+      question: `Are ${providerName}'s rates in ${cityName} competitive?`,
+      answer: `Yes, you'll find competitive rates starting at ${context.lowestRate}¢/kWh. But here's the key: we only show ${providerName} plans that are actually available in your ${cityName} area. No bait-and-switch, no "rates vary by location" fine print.`
     }
   ];
 }
 
-// Local context generation for regional relevance
+// Local context generation with conversational, helpful tone
 function generateLocalContext(cityName: string, context: ContentContext): string {
   const localFactors = [
-    `${cityName} residents benefit from competitive electricity rates due to the city's location in the ${context.tdspName} service territory.`,
-    `With a population of ${context.population.toLocaleString()}, ${cityName} represents a significant portion of Texas electricity consumers.`,
-    `${cityName}'s ${getSeasonalModifier(context.seasonalContext).context.toLowerCase()} creates optimal conditions for electricity plan switching.`,
-    `Local infrastructure improvements by ${context.tdspName} ensure reliable electricity delivery throughout ${cityName}.`
+    `Here's what ${cityName} residents need to know: You're in ${context.tdspName}'s service territory, which means competitive rates and reliable delivery.`,
+    `With ${context.population.toLocaleString()}+ people, ${cityName} has serious buying power—providers want your business.`,
+    `${cityName}'s ${getSeasonalModifier(context.seasonalContext).context.toLowerCase()} makes this the perfect time to switch and start saving.`,
+    `Your electricity gets delivered the same way no matter who you pick—${context.tdspName} handles the wires, companies handle the billing.`
   ];
   
   return localFactors.join(' ');

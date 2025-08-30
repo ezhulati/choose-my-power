@@ -1,6 +1,6 @@
 /**
  * TrustSignals React Component
- * Comprehensive trust signals and social proof elements
+ * Complete trust signals and social proof elements
  * to build customer confidence and drive conversions
  */
 
@@ -304,7 +304,7 @@ const TrustSignals: React.FC<TrustSignalsProps> = ({
           <div className="guarantee-badge">
             <div className="guarantee-icon">🛡️</div>
             <div className="guarantee-content">
-              <div className="guarantee-title">100% Satisfaction Guarantee</div>
+              <div className="guarantee-title">We're Here to Help</div>
               <div className="guarantee-description">
                 Not happy with your plan? We'll help you switch at no extra cost within 30 days.
               </div>

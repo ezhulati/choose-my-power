@@ -145,7 +145,7 @@ export function CitySwitchProviderPage({ state, city }: CitySwitchProviderPagePr
             <div className="max-w-md mx-auto">
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder={`Enter ${cityData.name} ZIP to see providers`}
+                placeholder="Enter zip code"
               />
             </div>
           </div>

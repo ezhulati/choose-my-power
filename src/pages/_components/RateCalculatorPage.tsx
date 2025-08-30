@@ -86,14 +86,14 @@ export function RateCalculatorPage({}: RateCalculatorPageProps) {
               See What You'll Actually Pay Each Month
             </h1>
             <p className="text-lg text-gray-600 mb-8 max-w-3xl mx-auto">
-              Enter your usage to see real bills from every provider. 
+              Enter your usage to see real bills from our providers. 
               Find out exactly what your monthly bill would be with each plan.
             </p>
 
             <div className="max-w-md mx-auto">
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder="Enter ZIP code to see your exact rates"
+                placeholder="Enter zip code"
               />
             </div>
           </div>

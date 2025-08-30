@@ -155,7 +155,7 @@ export function ComparePlansPage({}: ComparePlansPageProps) {
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-green-100 max-w-4xl mx-auto">
               Compare specific electricity plans side-by-side. Analyze rates, contract terms, features, 
-              and costs to find the perfect plan for your usage and preferences.
+              and costs to find the best plan for your usage and preferences.
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-8">
@@ -180,7 +180,7 @@ export function ComparePlansPage({}: ComparePlansPageProps) {
             <div className="max-w-md mx-auto">
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder="Enter ZIP code for local plans"
+                placeholder="Enter zip code"
                 size="lg"
               />
               <p className="text-green-200 text-sm mt-2">Find plans available in your area</p>

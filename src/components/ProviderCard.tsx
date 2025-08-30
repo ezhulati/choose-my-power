@@ -62,7 +62,7 @@ export function ProviderCard({ provider, onCompare, onViewDetails, showPlans = f
         {/* Plans Preview */}
         {showPlans && provider.plans.length > 0 && (
           <div className="mb-4">
-            <h4 className="text-sm font-medium text-gray-900 mb-2">Popular Plans:</h4>
+            <h4 className="text-sm font-medium text-gray-900 mb-2">What they offer:</h4>
             <div className="space-y-2">
               {provider.plans.slice(0, 2).map((plan) => (
                 <div key={plan.id} className="flex justify-between items-center p-2 bg-gray-50 rounded">
@@ -100,7 +100,7 @@ export function ProviderCard({ provider, onCompare, onViewDetails, showPlans = f
               onClick={onViewDetails}
               className="flex-1 bg-texas-navy text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors text-sm font-medium"
             >
-              View Details
+              See Our Review
             </button>
           )}
           {onCompare && (
@@ -108,7 +108,7 @@ export function ProviderCard({ provider, onCompare, onViewDetails, showPlans = f
               onClick={onCompare}
               className="flex-1 border border-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
             >
-              Compare
+              Compare Options
             </button>
           )}
         </div>

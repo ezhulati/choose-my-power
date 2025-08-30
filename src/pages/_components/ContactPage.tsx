@@ -188,7 +188,7 @@ export function ContactPage({}: ContactPageProps) {
                   <label className="block text-sm font-medium text-gray-700 mb-1">ZIP Code</label>
                   <input
                     type="text"
-                    placeholder="77001"
+                    placeholder="Enter zip code"
                     value={formData.location}
                     onChange={(e) => setFormData({...formData, location: e.target.value})}
                     className="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"

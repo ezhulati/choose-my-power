@@ -298,7 +298,7 @@ export class EnhancedContentTemplateSystem {
       authoritative: [
         {
           headline: 'The Complete {city} Electricity Plan Authority',
-          subheadline: 'Comprehensive analysis of {planCount} {filter} plans with rates from {rate}. Industry-leading comparison platform.',
+          subheadline: 'Complete analysis of {planCount} {filter} plans with rates from {rate}. Top comparison platform.',
           primaryCTA: 'Access Full Analysis',
           secondaryCTA: 'Industry Report'
         },
@@ -354,7 +354,7 @@ export class EnhancedContentTemplateSystem {
           propositions.push('Go green without paying more - renewable energy plans at competitive rates.');
         }
         if (persona.priorities.includes('convenience')) {
-          propositions.push('Everything online, everything simple - compare, choose, and switch in one seamless experience.');
+          propositions.push('Everything online, everything simple - compare, choose, and switch in one smooth experience.');
         }
       });
     }
@@ -586,7 +586,7 @@ export class EnhancedContentTemplateSystem {
     entities.push({
       entityType: 'service',
       name: 'Electricity Plan Comparison',
-      description: `Comprehensive electricity plan comparison service for ${cityName} residents`,
+      description: `Complete electricity plan comparison service for ${cityName} residents`,
       properties: {
         serviceType: 'Energy Comparison',
         coverage: cityName,
@@ -1094,7 +1094,7 @@ export async function generateMassContent(
           userPersonas: [],
           conversionGoals: [{ type: 'comparison', priority: 1, targetAction: 'compare', ctaVariations: [] }],
           brandVoice: 'professional',
-          contentDepth: 'comprehensive',
+          contentDepth: 'complete',
           localContext: {
             averageRate: 0.12,
             seasonalTrends: [],

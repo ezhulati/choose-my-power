@@ -48,13 +48,13 @@ function getMetaTemplate(
     // Base city page
     base: {
       title: `${planCount} Electricity Plans in ${cityName} | Compare Rates & Save`,
-      description: `Compare ${planCount} electricity plans in ${cityName}. Find rates as low as ${lowestRate.toFixed(3)}¢/kWh with transparent pricing. Switch providers in minutes and save money.`,
+      description: `Compare ${planCount} electricity plans in ${cityName}. Find competitive rates from quality providers with transparent pricing. Switch providers in minutes and save money.`,
       h1: `${planCount} Electricity Plans in ${cityName}`,
       categoryContent: `
         <div class="category-intro">
           <p>Finding the right electricity plan in ${cityName} shouldn't be complicated. We've simplified the process by gathering ${planCount} current plans from trusted providers in the ${location} service area, so you can compare rates, contract terms, and features in one place.</p>
           
-          <p>Current rates in ${cityName} start as low as <strong>${lowestRate.toFixed(3)}¢ per kWh</strong> for average monthly usage. All prices shown include energy charges, transmission fees, and applicable taxes - no hidden surprises on your bill.</p>
+          <p>Current rates in ${cityName} start from competitive levels for average monthly usage. All prices shown include energy charges, transmission fees, and applicable taxes - no hidden surprises on your bill.</p>
           
           <p>Whether you're moving to a new home, your contract is expiring, or you're simply looking for a better deal, use our comparison tool to find the plan that fits your budget and energy needs.</p>
         </div>
@@ -64,13 +64,13 @@ function getMetaTemplate(
     // 12-month plans
     '12-month': {
       title: `${planCount} Best 12-Month Electricity Plans in ${cityName} | Fixed Rates`,
-      description: `Lock in stable rates with ${planCount} 12-month electricity plans in ${cityName}. Starting at ${lowestRate.toFixed(3)}¢/kWh with price protection and no long-term commitment.`,
+      description: `Lock in stable rates with ${planCount} 12-month electricity plans in ${cityName}. Starting from competitive rates with price protection and no long-term commitment.`,
       h1: `${planCount} 12-Month Electricity Plans in ${cityName}`,
       categoryContent: `
         <div class="category-intro">
-          <p>Looking for stable electricity rates without the long-term commitment? Our 12-month electricity plans in ${cityName} offer the perfect balance of price protection and flexibility.</p>
+          <p>Looking for stable electricity rates without the long-term commitment? Our 12-month electricity plans in ${cityName} offer the ideal balance of price protection and flexibility.</p>
           
-          <p>With ${planCount} annual plans currently available from trusted providers, you'll find competitive rates starting as low as <strong>${lowestRate.toFixed(3)}¢ per kWh</strong>. These contracts protect you from seasonal price spikes while avoiding the hefty early termination fees common with 24 or 36-month agreements.</p>
+          <p>With ${planCount} annual plans currently available from trusted providers, you'll find competitive rates starting from attractive levels. These contracts protect you from seasonal price spikes while avoiding the hefty early termination fees common with 24 or 36-month agreements.</p>
           
           <p><strong>Why Choose a 12-Month Plan?</strong></p>
           <ul>
@@ -88,17 +88,17 @@ function getMetaTemplate(
     // Fixed rate plans
     'fixed-rate': {
       title: `Fixed Rate Electricity Plans in ${cityName} | Lock Your Rate & Save`,
-      description: `Protect against rate increases with fixed-rate electricity in ${cityName}. ${planCount} plans starting at ${lowestRate.toFixed(3)}¢/kWh with guaranteed pricing.`,
+      description: `Protect against rate increases with fixed-rate electricity in ${cityName}. ${planCount} plans starting from competitive rates with stable pricing.`,
       h1: `Fixed Rate Electricity Plans in ${cityName}`,
       categoryContent: `
         <div class="category-intro">
           <p>Take control of your electricity costs with fixed-rate plans in ${cityName}. Unlike variable-rate plans that can increase without notice, fixed-rate electricity gives you predictable monthly bills and protection from market volatility.</p>
           
-          <p>Compare ${planCount} fixed-rate options from reputable providers, with rates starting at just <strong>${lowestRate.toFixed(3)}¢ per kWh</strong>. Your rate stays the same for the entire contract term, making budgeting simple and stress-free.</p>
+          <p>Compare ${planCount} fixed-rate options from reputable providers, with rates starting from competitive levels. Your rate stays the same for the entire contract term, making budgeting simple and stress-free.</p>
           
           <p><strong>Benefits of Fixed-Rate Plans:</strong></p>
           <ul>
-            <li>Rate guaranteed for entire contract term</li>
+            <li>Rate fixed for entire contract term</li>
             <li>Protection from seasonal price increases</li>
             <li>Predictable monthly electricity bills</li>
             <li>Budget-friendly for families and businesses</li>
@@ -112,13 +112,13 @@ function getMetaTemplate(
     // Green energy plans
     'green-energy': {
       title: `100% Green Energy Plans in ${cityName} | Renewable Electricity`,
-      description: `Go 100% renewable with green energy plans in ${cityName}. ${planCount} eco-friendly options from ${lowestRate.toFixed(3)}¢/kWh. Support Texas wind and solar power.`,
+      description: `Go 100% renewable with green energy plans in ${cityName}. ${planCount} eco-friendly options from quality providers. Support Texas wind and solar power.`,
       h1: `100% Renewable Energy Plans in ${cityName}`,
       categoryContent: `
         <div class="category-intro">
           <p>Make a positive environmental impact while saving money on electricity in ${cityName}. Our 100% renewable energy plans ensure your electricity usage is matched with renewable energy credits from Texas wind and solar farms.</p>
           
-          <p>Choose from ${planCount} green energy options starting at just <strong>${lowestRate.toFixed(3)}¢ per kWh</strong> - often competitive with traditional fossil fuel plans. Supporting renewable energy has never been more affordable or accessible.</p>
+          <p>Choose from ${planCount} green energy options starting from competitive rates - often comparable to traditional fossil fuel plans. Supporting renewable energy has never been more affordable or accessible.</p>
           
           <p><strong>Why Choose 100% Green Energy?</strong></p>
           <ul>
@@ -136,13 +136,13 @@ function getMetaTemplate(
     // Prepaid plans
     'prepaid': {
       title: `Prepaid Electricity Plans in ${cityName} | No Deposit Required`,
-      description: `Get electricity today with no deposit in ${cityName}. ${planCount} prepaid plans available starting at ${lowestRate.toFixed(3)}¢/kWh. No credit check required.`,
+      description: `Get electricity today with no deposit in ${cityName}. ${planCount} prepaid plans available starting from competitive rates. No credit check required.`,
       h1: `No Deposit Prepaid Electricity in ${cityName}`,
       categoryContent: `
         <div class="category-intro">
-          <p>Get your electricity connected today without a security deposit. Our prepaid electricity plans in ${cityName} offer same-day service with no credit check required - perfect for new residents, renters, or anyone looking to control their energy costs.</p>
+          <p>Get your electricity connected today without a security deposit. Our prepaid electricity plans in ${cityName} offer same-day service with no credit check required - ideal for new residents, renters, or anyone looking to control their energy costs.</p>
           
-          <p>Compare ${planCount} prepaid options with rates starting at <strong>${lowestRate.toFixed(3)}¢ per kWh</strong>. Pay as you go and never worry about surprise bills or reconnection fees.</p>
+          <p>Compare ${planCount} prepaid options with rates starting from competitive levels. Pay as you go and never worry about surprise bills or reconnection fees.</p>
           
           <p><strong>Benefits of Prepaid Electricity:</strong></p>
           <ul>
@@ -161,19 +161,19 @@ function getMetaTemplate(
     // High-value combinations
     '12-month,fixed-rate': {
       title: `12-Month Fixed Rate Electricity Plans in ${cityName} | Best Value`,
-      description: `Lock in stable 12-month fixed rates in ${cityName}. ${planCount} plans starting at ${lowestRate.toFixed(3)}¢/kWh with price protection and flexibility.`,
+      description: `Lock in stable 12-month fixed rates in ${cityName}. ${planCount} plans starting from competitive rates with price protection and flexibility.`,
       h1: `12-Month Fixed Rate Plans in ${cityName}`,
       categoryContent: `
         <div class="category-intro">
           <p>Get the best of both worlds with 12-month fixed-rate electricity plans in ${cityName}. Enjoy one full year of stable, predictable rates without the long-term commitment of 24 or 36-month contracts.</p>
           
-          <p>Our ${planCount} available plans start at just <strong>${lowestRate.toFixed(3)}¢ per kWh</strong> and offer the perfect balance of price protection and contract flexibility. Your rate is guaranteed for 12 months, protecting you from seasonal price spikes.</p>
+          <p>Our ${planCount} available plans start from competitive rates and offer the ideal balance of price protection and contract flexibility. Your rate is fixed for 12 months, protecting you from seasonal price spikes.</p>
           
           <p><strong>Why 12-Month Fixed Rate is the Sweet Spot:</strong></p>
           <ul>
             <li>One full year of rate protection</li>
             <li>Lower cancellation fees than longer contracts</li>
-            <li>Perfect for annual budgeting</li>
+            <li>Ideal for annual budgeting</li>
             <li>Flexibility to reassess after one year</li>
           </ul>
         </div>
@@ -182,26 +182,26 @@ function getMetaTemplate(
 
     'prepaid,no-deposit': {
       title: `No Deposit Prepaid Electricity in ${cityName} | Same Day Service`,
-      description: `Skip the deposit and get power today in ${cityName}. ${planCount} no deposit prepaid plans from ${lowestRate.toFixed(3)}¢/kWh. No credit check, instant approval.`,
+      description: `Skip the deposit and get power today in ${cityName}. ${planCount} no deposit prepaid plans from quality providers. No credit check, instant approval.`,
       h1: `No Deposit Prepaid Electricity Plans in ${cityName}`,
       categoryContent: `
         <div class="category-intro">
-          <p>Get electricity service in ${cityName} without paying a security deposit. Our no-deposit prepaid plans offer immediate activation with no credit check, perfect for anyone who needs power connected quickly.</p>
+          <p>Get electricity service in ${cityName} without paying a security deposit. Our no-deposit prepaid plans offer immediate activation with no credit check, ideal for anyone who needs power connected quickly.</p>
           
-          <p>Save $100-$300 in upfront costs with ${planCount} no-deposit options starting at <strong>${lowestRate.toFixed(3)}¢ per kWh</strong>. Simply prepay for your electricity usage and enjoy complete control over your energy spending.</p>
+          <p>Save $100-$300 in upfront costs with ${planCount} no-deposit options starting from competitive rates. Simply prepay for your electricity usage and enjoy complete control over your energy spending.</p>
         </div>
       `,
     },
 
     'green-energy,12-month': {
       title: `12-Month Green Energy Plans in ${cityName} | Renewable Fixed Rates`,
-      description: `Lock in 100% renewable energy for 12 months in ${cityName}. ${planCount} eco-friendly fixed plans from ${lowestRate.toFixed(3)}¢/kWh. Support Texas clean energy.`,
+      description: `Lock in 100% renewable energy for 12 months in ${cityName}. ${planCount} eco-friendly fixed plans from quality providers. Support Texas clean energy.`,
       h1: `12-Month 100% Green Energy Plans in ${cityName}`,
       categoryContent: `
         <div class="category-intro">
           <p>Combine environmental responsibility with rate stability. Our 12-month green energy plans in ${cityName} give you 100% renewable electricity with fixed pricing for a full year.</p>
           
-          <p>Choose from ${planCount} eco-friendly plans starting at <strong>${lowestRate.toFixed(3)}¢ per kWh</strong>. Support Texas wind and solar development while enjoying predictable monthly bills.</p>
+          <p>Choose from ${planCount} eco-friendly plans starting from competitive rates. Support Texas wind and solar development while enjoying predictable monthly bills.</p>
         </div>
       `,
     },
@@ -220,7 +220,7 @@ function generateFooterContent(city: string, filters: string[]): string {
         <h3>About Electricity Service in ${cityName}</h3>
         <p>${cityName} residents receive electricity through ${tdspInfo?.name}, part of Texas's deregulated energy market. This means you have the power to choose your electricity provider and plan, potentially saving hundreds of dollars per year compared to default utility rates.</p>
         
-        <p>The Texas electricity market serves over 8 million customers across deregulated areas, with average residential usage of 1,000-1,200 kWh per month. By comparing plans regularly, ${cityName} residents can take advantage of competitive rates and innovative plan features.</p>
+        <p>The Texas electricity market serves over 8 million customers across deregulated areas, with average residential usage of 1,000-1,200 kWh per month. By comparing plans regularly, ${cityName} residents can take advantage of competitive rates and new plan features.</p>
       </div>
       
       <div class="market-context">
@@ -284,7 +284,7 @@ function generateSchemaMarkup(options: FacetedMetaOptions): object[] {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     name: `Electricity Plans in ${cityName}`,
-    description: `Compare ${planCount} electricity plans in ${cityName}. Find rates as low as ${lowestRate.toFixed(3)}¢/kWh.`,
+    description: `Compare ${planCount} electricity plans in ${cityName}. Find competitive rates from quality providers.`,
     url: `https://choosemypower.org/electricity-plans/${city}/${filters.join('/')}/`,
     mainEntity: {
       '@type': 'Service',
@@ -385,7 +385,7 @@ function generateFAQSchema(cityName: string, filters: string[]) {
       name: `What are the benefits of fixed-rate electricity in ${cityName}?`,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: `Fixed-rate plans guarantee your electricity rate for the entire contract term, protecting you from market volatility and seasonal price spikes. This makes budgeting easier and provides peace of mind.`,
+        text: `Fixed-rate plans lock in your electricity rate for the entire contract term, protecting you from market volatility and seasonal price spikes. This makes budgeting easier and provides peace of mind.`,
       },
     },
     'green-energy': {

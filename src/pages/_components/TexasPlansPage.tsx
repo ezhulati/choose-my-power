@@ -246,7 +246,7 @@ export function TexasPlansPage({}: TexasPlansPageProps) {
               Texas Electricity Plans - Complete Guide & Analysis
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-4xl mx-auto">
-              Comprehensive analysis of {allTexasPlans.length} electricity plans from {texasProviders.length} providers. 
+              Complete analysis of {allTexasPlans.length} electricity plans from {texasProviders.length} providers. 
               Find fixed rate, green energy, prepaid, and specialty plans across all Texas markets.
             </p>
 
@@ -272,7 +272,7 @@ export function TexasPlansPage({}: TexasPlansPageProps) {
             <div className="max-w-md mx-auto">
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder="Enter Texas ZIP code"
+                placeholder="Enter zip code"
                 size="lg"
               />
               <p className="text-blue-200 text-sm mt-2">Find plans available in your area</p>
@@ -350,7 +350,7 @@ export function TexasPlansPage({}: TexasPlansPageProps) {
         <div className="mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Texas Plan Types - Find Your Perfect Match
+              Texas Plan Types - Find Your Best Match
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Each plan type serves different needs. Explore categories to find what works for your situation.

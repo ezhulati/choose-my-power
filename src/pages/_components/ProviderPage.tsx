@@ -36,7 +36,7 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
             onClick={() => navigate('/providers')}
             className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors"
           >
-            View All Providers
+            View Quality Providers
           </button>
         </div>
       </div>
@@ -96,7 +96,7 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                 <div>
                   {/* Hero's Journey Honest Header */}
                   <h1 className="text-3xl font-bold text-texas-navy mb-2">
-                    {provider.heroJourney?.honestHeader || `${provider.name} Review`}
+                    {provider.heroJourney?.honestHeader || `Here's What Real Customers Say About ${provider.name}`}
                   </h1>
                   
                   {/* Assessment Badge */}
@@ -132,8 +132,8 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                   <div className="bg-gray-50 border-l-4 border-texas-gold p-4 mb-4 rounded-r-lg">
                     <p className="text-sm font-medium text-gray-800 mb-1">Our Promise</p>
                     <p className="text-sm text-gray-600">
-                      Based on analysis of {provider.reviewCount.toLocaleString()} customer reviews • Updated monthly with current rates • 
-                      We don't get paid more to rank anyone higher
+                      Based on {provider.reviewCount.toLocaleString()} real customer experiences • We're honest about our provider partnerships • 
+                      Updated monthly so you get the current reality, not outdated info
                     </p>
                   </div>
                 </div>
@@ -147,7 +147,7 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                     className="bg-texas-red text-white px-6 py-3 rounded-lg hover:bg-texas-red-600 transition-colors font-medium inline-flex items-center"
                   >
                     <Zap className="h-4 w-4 mr-2" />
-                    See Their Best Plans
+                    See What {provider.name} Offers
                   </button>
                 )}
                 {provider.heroJourney?.recommendedAction === 'compare' && (
@@ -156,7 +156,7 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                     className="bg-texas-gold text-white px-6 py-3 rounded-lg hover:bg-texas-gold-600 transition-colors font-medium inline-flex items-center"
                   >
                     <Users className="h-4 w-4 mr-2" />
-                    Compare to Others
+                    Compare With Better Options
                   </button>
                 )}
                 {provider.heroJourney?.recommendedAction === 'avoid' && (
@@ -165,7 +165,7 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                     className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors font-medium inline-flex items-center"
                   >
                     <Users className="h-4 w-4 mr-2" />
-                    See Better Alternatives
+                    Find Better Alternatives
                   </button>
                 )}
                 <a
@@ -233,12 +233,12 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
         {selectedTab === 'overview' && (
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2 space-y-6">
-              {/* What They're Actually Good At */}
+              {/* What They're Good For */}
               {provider.heroJourney?.whatTheyreGoodAt && (
                 <div className="bg-white rounded-lg shadow-sm border p-6">
                   <div className="flex items-center mb-4">
                     <ThumbsUp className="h-6 w-6 text-green-600 mr-3" />
-                    <h3 className="text-xl font-semibold text-texas-navy">What They're Actually Good At</h3>
+                    <h3 className="text-xl font-semibold text-texas-navy">Good For...</h3>
                   </div>
                   <div className="space-y-3">
                     {provider.heroJourney.whatTheyreGoodAt.map((item, index) => (
@@ -251,12 +251,12 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                 </div>
               )}
 
-              {/* Where They Fall Short */}
+              {/* Not Great If */}
               {provider.heroJourney?.whereTheyFallShort && (
                 <div className="bg-white rounded-lg shadow-sm border p-6">
                   <div className="flex items-center mb-4">
                     <ThumbsDown className="h-6 w-6 text-red-600 mr-3" />
-                    <h3 className="text-xl font-semibold text-texas-navy">Where They Fall Short</h3>
+                    <h3 className="text-xl font-semibold text-texas-navy">Not Great If...</h3>
                   </div>
                   <div className="space-y-3">
                     {provider.heroJourney.whereTheyFallShort.map((item, index) => (
@@ -274,7 +274,7 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                 <div className="bg-white rounded-lg shadow-sm border p-6">
                   <div className="flex items-center mb-4">
                     <Users className="h-6 w-6 text-texas-navy mr-3" />
-                    <h3 className="text-xl font-semibold text-texas-navy">What Real Customers Say</h3>
+                    <h3 className="text-xl font-semibold text-texas-navy">What People Actually Experience</h3>
                   </div>
                   <div className="space-y-4">
                     {provider.heroJourney.realCustomerThemes.map((theme, index) => (
@@ -328,7 +328,7 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                       <Star className="h-6 w-6" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-texas-navy mb-2">Bottom Line: Should You Choose Them?</h3>
+                      <h3 className="text-lg font-semibold text-texas-navy mb-2">Our Honest Take</h3>
                       <p className="text-gray-800">{provider.heroJourney.bottomLine}</p>
                     </div>
                   </div>
@@ -339,7 +339,7 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
             <div className="space-y-6">
               {/* Quick Stats */}
               <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Facts</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">At A Glance</h3>
                 <div className="space-y-4">
                   <div className="flex justify-between">
                     <span className="text-gray-600">Customer Rating</span>
@@ -383,19 +383,21 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                   ))}
                 </div>
                 <p className="text-sm text-gray-700">
-                  Based on our analysis, these are the most competitive options from this provider - but still compare with other companies.
+                  These are their standout plans based on our analysis, but definitely shop around - other companies might beat these.
                 </p>
               </div>
             )}
 
             <div className="bg-white rounded-lg shadow-sm border p-6">
               <h3 className="text-xl font-semibold text-texas-navy mb-4">
-                {provider.assessment === 'good' ? 'Available Plans' : 
-                 provider.assessment === 'mixed' ? 'Plans Available (Read Fine Print)' : 
-                 'Plans Available (Consider Alternatives)'}
+                {provider.assessment === 'good' ? 'Their Current Plans' : 
+                 provider.assessment === 'mixed' ? 'Available Plans (Watch The Fine Print)' : 
+                 'Their Plans (But Consider These Alternatives First)'}
               </h3>
               <p className="text-gray-600 mb-6">
-                Rates shown are estimates. Always verify terms and conditions before signing up.
+                {provider.assessment === 'good' ? 'Here\'s what they\'re offering right now. Remember to compare with other providers too.' : 
+                 provider.assessment === 'mixed' ? 'These plans might work for you, but read the terms carefully and compare with others.' : 
+                 'We\'d honestly recommend checking out other providers first, but here\'s what they offer.'}
               </p>
               
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -437,7 +439,7 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                       onClick={() => navigate('/texas/houston/electricity-providers')}
                       className="w-full bg-texas-navy text-white py-2 rounded-lg hover:bg-blue-800 transition-colors text-sm font-medium"
                     >
-                      See Rates in Your Area
+                      Check Your Area's Rates
                     </button>
                   </div>
                 ))}

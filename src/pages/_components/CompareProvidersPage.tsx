@@ -51,21 +51,21 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
   const providerCategories = [
     {
       id: 'green',
-      name: 'Green Energy Leaders',
+      name: 'Actually Green Companies',
       icon: Leaf,
       color: 'green',
       providers: mockProviders.filter(p => p.plans.some(plan => plan.renewablePercent === 100)).slice(0, 3)
     },
     {
       id: 'service', 
-      name: 'Customer Service Champions',
+      name: 'Companies That Actually Help',
       icon: Headphones,
       color: 'blue',
       providers: mockProviders.sort((a, b) => b.rating - a.rating).slice(0, 3)
     },
     {
       id: 'value',
-      name: 'Best Value Providers',
+      name: 'Real Value (No Tricks)',
       icon: DollarSign,
       color: 'purple',
       providers: mockProviders.sort((a, b) => {
@@ -76,7 +76,7 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
     },
     {
       id: 'tech',
-      name: 'Technology Leaders',
+      name: 'Tech That Actually Works',
       icon: Battery,
       color: 'indigo',
       providers: mockProviders.filter(p => p.features.some(f => f.toLowerCase().includes('smart') || f.toLowerCase().includes('app'))).slice(0, 3)
@@ -131,11 +131,11 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Compare Electricity Providers - Expert Company Analysis
+              Which Provider Is Right for You?
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-4xl mx-auto">
-              Compare electricity companies side-by-side. Analyze customer service, coverage areas, 
-              specializations, and company performance to find the right provider for your needs.
+              We'll help you compare providers based on what actually matters - customer service that works, 
+              rates without surprises, and companies that do what they promise.
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-8">
@@ -160,7 +160,7 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
             <div className="max-w-md mx-auto">
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder="Enter ZIP code for local providers"
+                placeholder="Enter zip code"
                 size="lg"
               />
               <p className="text-blue-200 text-sm mt-2">Find providers serving your area</p>
@@ -288,7 +288,7 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
                             size="sm"
                             className="w-full"
                           >
-                            View Details
+                            See Our Review
                           </Button>
                           <Button
                             onClick={() => navigate(`/texas/houston/electricity-providers`)}
@@ -296,7 +296,7 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
                             size="sm"
                             className="w-full"
                           >
-                            See Plans & Rates
+                            Check Current Rates
                           </Button>
                         </div>
                       </TableCell>
@@ -312,7 +312,7 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
         {/* Provider Categories */}
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            Compare Providers by Specialization
+            Pick Providers That Excel at What You Need
           </h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
@@ -347,7 +347,7 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
               <h2 className="text-2xl font-bold text-gray-900">
                 {filterCategory === 'all' ? 'All' : providerCategories.find(c => c.id === filterCategory)?.name} Providers
               </h2>
-              <p className="text-gray-600">Select up to 4 providers to compare side-by-side</p>
+              <p className="text-gray-600">Pick up to 4 providers to compare what matters to you</p>
             </div>
             
             <div className="flex items-center space-x-4">
@@ -433,7 +433,7 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
 
                     {/* Provider Features */}
                     <div className="mb-4">
-                      <div className="text-sm text-gray-600 mb-2">Key Strengths:</div>
+                      <div className="text-sm text-gray-600 mb-2">What they're good at:</div>
                       <div className="space-y-1">
                         {provider.features.slice(0, 3).map((feature, index) => (
                           <div key={index} className="flex items-center text-xs text-muted-foreground">
@@ -451,7 +451,7 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
                         className="w-full"
                         size="sm"
                       >
-                        View Company Profile
+                        See Our Honest Review
                       </Button>
                       <Button
                         onClick={() => navigate(`/texas/houston/electricity-providers`)}
@@ -473,7 +473,7 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
         <Card className="p-8 mb-16">
           <CardHeader className="text-center">
             <CardTitle className="text-2xl mb-6">
-              How We Compare Electricity Providers
+              How We Actually Figure This Out
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -483,9 +483,9 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-lg mb-6">
                 <Icon icon="star" size={32} />
               </div>
-              <h3 className="text-lg font-semibold mb-4">Customer Satisfaction</h3>
+              <h3 className="text-lg font-semibold mb-4">What Real Customers Say</h3>
               <p className="text-gray-600 text-sm">
-                Customer ratings, review sentiment, and satisfaction scores from verified customers.
+                We read through thousands of actual customer reviews to see who's really doing a good job.
               </p>
             </div>
             
@@ -493,9 +493,9 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 text-green-600 rounded-lg mb-6">
                 <Icon icon="trending" size={32} />
               </div>
-              <h3 className="text-lg font-semibold mb-4">Competitive Pricing</h3>
+              <h3 className="text-lg font-semibold mb-4">Fair Pricing (No Tricks)</h3>
               <p className="text-gray-600 text-sm">
-                Rate competitiveness, fee structures, and overall value proposition analysis.
+                We look for companies with honest rates and no surprise fees that jack up your bill.
               </p>
             </div>
             
@@ -503,9 +503,9 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 text-purple-600 rounded-lg mb-6">
                 <Icon icon="tabler:headphones" size={32} />
               </div>
-              <h3 className="text-lg font-semibold mb-4">Service Quality</h3>
+              <h3 className="text-lg font-semibold mb-4">Service That Actually Works</h3>
               <p className="text-gray-600 text-sm">
-                Customer service responsiveness, billing accuracy, and support channel quality.
+                Can you reach them when there's a problem? Do they fix it? We track this stuff.
               </p>
             </div>
             
@@ -513,9 +513,9 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-100 text-orange-600 rounded-lg mb-6">
                 <Icon icon="tabler:award" size={32} />
               </div>
-              <h3 className="text-lg font-semibold mb-4">Plan Portfolio</h3>
+              <h3 className="text-lg font-semibold mb-4">Plans That Make Sense</h3>
               <p className="text-muted-foreground text-sm">
-                Plan variety, innovative features, and coverage of different customer needs.
+                Do they offer plans that actually fit different needs, or just marketing gimmicks?
               </p>
             </div>
           </div>
@@ -538,7 +538,7 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
                 variant="ghost"
                 className="text-green-600 hover:text-green-800 font-medium text-sm"
               >
-                Compare Plans →
+                Compare What Matters →
               </Button>
             </CardContent>
           </Card>
@@ -557,7 +557,7 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
                 variant="ghost"
                 className="text-purple-600 hover:text-purple-800 font-medium text-sm"
               >
-                Compare Rates →
+                Find Real Low Rates →
               </Button>
             </CardContent>
           </Card>
@@ -576,7 +576,7 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
                 variant="ghost"
                 className="text-texas-navy hover:text-texas-navy font-medium text-sm"
               >
-                View Rankings →
+                See Our Top Picks →
               </Button>
             </CardContent>
           </Card>

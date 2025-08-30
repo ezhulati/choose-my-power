@@ -115,7 +115,7 @@ export function CityNoDepositPage({ state, city }: CityNoDepositPageProps) {
             <div className="max-w-md mx-auto">
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder={`Enter ${cityData.name} ZIP for options`}
+                placeholder="Enter zip code"
               />
             </div>
           </div>

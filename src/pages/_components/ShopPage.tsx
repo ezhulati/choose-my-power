@@ -32,9 +32,9 @@ export function ShopPage({ category }: ShopPageProps) {
 
   const shopCategories = {
     'cheapest-electricity': {
-      title: 'Find the Cheapest Electricity Rates',
-      subtitle: 'Lowest Cost Options',
-      description: 'Compare the absolute lowest electricity rates from trusted providers. Save hundreds per year.',
+      title: 'Just Want It Cheap? We Get It.',
+      subtitle: 'The Actually Cheapest Plans',
+      description: 'No games. These are the lowest rates we found today. Not teaser rates. Not "if you use exactly 1000 kWh." Actually cheap.',
       icon: TrendingDown,
       color: 'green',
       features: [
@@ -45,9 +45,9 @@ export function ShopPage({ category }: ShopPageProps) {
       ]
     },
     'best-electricity-providers': {
-      title: 'Best Electricity Providers by Category',
-      subtitle: 'Expert-Ranked Companies',
-      description: 'Top-rated electricity companies ranked by specialization. Find providers that excel in what matters to you.',
+      title: 'Companies That Won\'t Make You Rage-Quit',
+      subtitle: 'The Ones People Actually Like',
+      description: 'These companies answer the phone. Fix problems. Don\'t surprise you with weird fees. Novel concept, right?',
       icon: Award,
       color: 'blue',
       features: [
@@ -58,9 +58,9 @@ export function ShopPage({ category }: ShopPageProps) {
       ]
     },
     'green-energy': {
-      title: 'Green Energy Plans - 100% Renewable',
-      subtitle: 'Environmental Champions',
-      description: 'Find 100% renewable electricity plans powered by Texas wind and solar energy.',
+      title: 'Real Green Energy (Not Greenwashing)',
+      subtitle: 'Actually From Wind & Solar',
+      description: 'These plans buy real renewable energy credits from Texas wind and solar farms. Not just marketing fluff.',
       icon: Leaf,
       color: 'green',
       features: [
@@ -71,9 +71,9 @@ export function ShopPage({ category }: ShopPageProps) {
       ]
     },
     'no-deposit-electricity': {
-      title: 'No Deposit Electricity Plans',
-      subtitle: 'Start Service Without Deposits',
-      description: 'Get electricity service without paying security deposits. Perfect for renters and new residents.',
+      title: 'No $400 Deposit Required',
+      subtitle: 'Keep Your Money',
+      description: 'Why give them hundreds upfront? These plans let you start service without the deposit shakedown.',
       icon: Shield,
       color: 'purple',
       features: [
@@ -90,10 +90,10 @@ export function ShopPage({ category }: ShopPageProps) {
   const shoppingByPriority = [
     {
       id: 'price',
-      title: 'Shop by Lowest Price',
+      title: 'Just Want It Cheap',
       icon: TrendingDown,
       color: 'green',
-      description: 'Find the absolute cheapest electricity rates and plans',
+      description: 'The actual lowest rates, not marketing tricks',
       options: [
         { name: 'Cheapest Overall Rates', href: '/shop/cheapest-electricity', price: '9.7¢/kWh' },
         { name: 'Best Value Fixed Plans', href: '/shop/cheapest-fixed-rates', price: '10.1¢/kWh' },
@@ -103,10 +103,10 @@ export function ShopPage({ category }: ShopPageProps) {
     },
     {
       id: 'service',
-      title: 'Shop by Service Quality',
+      title: 'Want Actual Service',
       icon: Headphones,
       color: 'blue',
-      description: 'Find providers with exceptional customer service and support',
+      description: 'Companies that answer the phone and fix problems',
       options: [
         { name: 'Top Customer Service', href: '/shop/best-customer-service', rating: '4.6★ Champion Energy' },
         { name: 'Local Texas Support', href: '/shop/local-support', rating: '4.4★ Reliant Energy' },
@@ -116,10 +116,10 @@ export function ShopPage({ category }: ShopPageProps) {
     },
     {
       id: 'green',
-      title: 'Shop by Environmental Impact',
+      title: 'Actually Want Green',
       icon: Leaf,
       color: 'green',
-      description: 'Find 100% renewable and environmentally friendly options',
+      description: 'Real renewable energy, not just marketing',
       options: [
         { name: '100% Wind & Solar Plans', href: '/shop/green-energy', green: '100% Renewable' },
         { name: 'Solar Buyback Programs', href: '/shop/solar-buyback', green: 'Sell Back to Grid' },
@@ -129,10 +129,10 @@ export function ShopPage({ category }: ShopPageProps) {
     },
     {
       id: 'features',
-      title: 'Shop by Special Features',
+      title: 'Want Something Specific',
       icon: Star,
       color: 'purple',
-      description: 'Find plans with unique features and benefits',
+      description: 'Free nights, no contracts, other special stuff',
       options: [
         { name: 'Free Nights & Weekends', href: '/shop/free-nights', feature: 'Free 9PM-6AM' },
         { name: 'Smart Home Integration', href: '/shop/smart-home', feature: 'Nest, Ring Compatible' },
@@ -187,7 +187,7 @@ export function ShopPage({ category }: ShopPageProps) {
               <div className="max-w-md mx-auto mb-8">
                 <ZipCodeSearch 
                   onSearch={handleZipSearch} 
-                  placeholder="Enter ZIP code to see options"
+                  placeholder="Enter zip code"
                   size="lg"
                 />
               </div>
@@ -208,7 +208,7 @@ export function ShopPage({ category }: ShopPageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="bg-white rounded-lg shadow-sm border p-8 mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-              Find Your Perfect {currentCategory.title.split(' ')[0]} Option
+              Find Your Best {currentCategory.title.split(' ')[0]} Option
             </h2>
 
             <div className="grid lg:grid-cols-2 gap-8">
@@ -299,40 +299,40 @@ export function ShopPage({ category }: ShopPageProps) {
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8">
-              Shop Electricity - Find Your Perfect Match
+              Let's Find a Plan That Doesn't Suck
             </h1>
             <p className="text-xl md:text-2xl mb-12 text-blue-100 max-w-4xl mx-auto leading-relaxed">
-              Shop electricity by what matters most to you. Whether you want the cheapest rates, 
-              best service, green energy, or special features - find exactly what you need.
+              300+ plans is stupid. Tell us what you actually care about - cheap? green? not getting screwed? 
+              We'll show you the 3-5 that make sense. Takes 2 minutes.
             </p>
 
             {/* Quick Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-12">
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
                 <div className="text-3xl font-bold">9.7¢</div>
-                <div className="text-blue-200 text-sm">Lowest Rate</div>
+                <div className="text-blue-200 text-sm">Actually Cheapest</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-                <div className="text-3xl font-bold">50+</div>
-                <div className="text-blue-200 text-sm">Providers</div>
+                <div className="text-3xl font-bold">12-15</div>
+                <div className="text-blue-200 text-sm">Good Companies</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-                <div className="text-3xl font-bold">300+</div>
-                <div className="text-blue-200 text-sm">Plans</div>
+                <div className="text-3xl font-bold">100+</div>
+                <div className="text-blue-200 text-sm">Real Options</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-                <div className="text-3xl font-bold">Free</div>
-                <div className="text-blue-200 text-sm">To Shop</div>
+                <div className="text-3xl font-bold">$0</div>
+                <div className="text-blue-200 text-sm">No Sales Pitch</div>
               </div>
             </div>
 
             <div className="max-w-md mx-auto">
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder="Enter ZIP code to start shopping"
+                placeholder="Enter zip code"
                 size="lg"
               />
-              <p className="text-blue-200 text-sm mt-2">Get personalized shopping results</p>
+              <p className="text-blue-200 text-sm mt-2">Shows what's actually available at your address</p>
             </div>
           </div>
         </div>
@@ -343,10 +343,10 @@ export function ShopPage({ category }: ShopPageProps) {
         <div className="mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Shop by What Matters Most to You
+              What Do You Actually Care About?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Different priorities require different approaches. Choose your main focus to see the best options.
+              Pick your top priority. We'll cut through the BS and show you what actually delivers.
             </p>
           </div>
 
@@ -402,7 +402,7 @@ export function ShopPage({ category }: ShopPageProps) {
         {/* Main Categories */}
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            Popular Shopping Categories
+            Or Browse by Category (If You Know What You Want)
           </h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -418,7 +418,7 @@ export function ShopPage({ category }: ShopPageProps) {
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{cat.title}</h3>
                 <p className="text-gray-600 text-sm mb-4">{cat.description}</p>
                 <div className="text-texas-navy font-medium text-sm flex items-center">
-                  Shop Now <ArrowRight className="h-4 w-4 ml-1" />
+                  See Plans <ArrowRight className="h-4 w-4 ml-1" />
                 </div>
               </button>
             ))}
@@ -428,7 +428,7 @@ export function ShopPage({ category }: ShopPageProps) {
         {/* Shopping Guide */}
         <div className="bg-white rounded-lg shadow-sm border p-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            Smart Shopping Guide
+            How to Not Get Screwed (3 Simple Rules)
           </h2>
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -436,10 +436,10 @@ export function ShopPage({ category }: ShopPageProps) {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-lg mb-6">
                 <Target className="h-8 w-8" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Define Your Priorities</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Know Your One Thing</h3>
               <p className="text-gray-600">
-                Decide what matters most: lowest price, green energy, customer service, 
-                or special features. This will guide your search.
+                Pick what matters most. Cheapest? Green? Won't screw you? 
+                Can't have everything, so pick your battle.
               </p>
             </div>
             
@@ -447,10 +447,10 @@ export function ShopPage({ category }: ShopPageProps) {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 text-green-600 rounded-lg mb-6">
                 <Calculator className="h-8 w-8" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Calculate Total Costs</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Do the Real Math</h3>
               <p className="text-gray-600">
-                Don't just compare rates per kWh. Include monthly fees, contract terms, 
-                and your actual usage for true cost comparison.
+                That 9.9¢ rate? Add the $9.95 monthly fee. The delivery charges. 
+                Suddenly it's 14¢. We do this math for you.
               </p>
             </div>
             
@@ -458,10 +458,10 @@ export function ShopPage({ category }: ShopPageProps) {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 text-purple-600 rounded-lg mb-6">
                 <Star className="h-8 w-8" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Read the Fine Print</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Watch for Traps</h3>
               <p className="text-gray-600">
-                Check contract length, cancellation fees, and rate change policies. 
-                Understand what you're agreeing to before signing up.
+                Cancellation fee? Rate jumps after 3 months? Usage windows? 
+                We flag this stuff so you don't get surprised.
               </p>
             </div>
           </div>

@@ -48,22 +48,22 @@ export function RatesPage({}: RatesPageProps) {
 
   const rateTools = [
     {
-      title: 'Electricity Rate Calculator',
-      description: 'Calculate your monthly electricity costs based on usage and compare different plans',
+      title: 'What Will I Actually Pay?',
+      description: 'Enter your usage, we add ALL the fees, show you the real monthly cost',
       href: '/rates/calculator',
       icon: Calculator,
       color: 'blue'
     },
     {
-      title: 'Compare Rates by State',
-      description: 'Side-by-side rate comparison from all providers in your area',
+      title: 'Who\'s Actually Cheapest?',
+      description: 'Real cost comparison - not just the teaser rates they advertise',
       href: '/compare/rates',
       icon: BarChart,
       color: 'green'
     },
     {
-      title: 'Rate Trends & Analysis',
-      description: 'Track electricity rate trends and get alerts when rates change',
+      title: 'Are Rates Going Up or Down?',
+      description: 'See if you should switch now or wait for better deals',
       href: '/rates/tracker',
       icon: TrendingDown,
       color: 'purple'
@@ -73,21 +73,21 @@ export function RatesPage({}: RatesPageProps) {
   const rateEducation = [
     {
       icon: DollarSign,
-      title: 'Rate vs Total Cost',
-      description: 'The lowest rate per kWh isn\'t always the cheapest option. Monthly fees can make a "higher" rate actually cost less overall.',
-      example: 'Plan A: 9¢/kWh + $10/month = $100/month vs Plan B: 11¢/kWh + $0/month = $110/month'
+      title: 'The Monthly Fee Trick',
+      description: 'That "low" 9¢ rate? They add a $9.95 fee. Suddenly the 11¢ plan with no fee is cheaper. We catch this for you.',
+      example: '9¢ + $10 fee = $100/mo. But 11¢ + no fee = $110/mo. Math matters.'
     },
     {
       icon: Calendar,
-      title: 'Fixed vs Variable Rates',
-      description: 'Fixed rates stay the same for your entire contract. Variable rates can change monthly based on market conditions.',
-      example: 'Fixed: Predictable bills, budget-friendly vs Variable: May start lower, can increase'
+      title: 'Fixed vs Variable (The Real Deal)',
+      description: 'Fixed = same price all year. Variable = they can jack it up anytime. Guess which one surprises people?',
+      example: 'Fixed: Sleep easy. Variable: Check your bill for surprises.'
     },
     {
       icon: Zap,
-      title: 'Usage Matters',
-      description: 'Your monthly usage affects which plans offer the best value. High and low usage customers benefit from different rate structures.',
-      example: 'High usage: Lower rates matter more vs Low usage: Monthly fees matter more'
+      title: 'The Usage Window Scam',
+      description: 'Some plans only give you the good rate if you use EXACTLY 1000 kWh. Use 999? Price jumps. Use 1001? Price jumps. Sneaky.',
+      example: 'Use 999 kWh = 15¢. Use 1000 kWh = 9¢. Use 1001 kWh = 15¢. See the problem?'
     }
   ];
 
@@ -102,11 +102,11 @@ export function RatesPage({}: RatesPageProps) {
             </div>
             
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Electricity Rates & Comparison Tools
+              What's Electricity Actually Cost Right Now?
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-purple-100 max-w-4xl mx-auto">
-              Compare current electricity rates, calculate costs, and understand pricing. 
-              Find the tools you need to make informed decisions about your electricity plan.
+              That 9.9¢ rate? Add fees and it's 14¢. We do the real math so you know what you'll actually pay. 
+              No surprises when your bill shows up.
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto mb-8">
@@ -131,10 +131,10 @@ export function RatesPage({}: RatesPageProps) {
             <div className="max-w-md mx-auto">
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder="Enter ZIP code for local rates"
+                placeholder="Enter zip code"
                 size="lg"
               />
-              <p className="text-blue-200 text-sm mt-2">Get personalized rates for your area</p>
+              <p className="text-blue-200 text-sm mt-2">See your actual costs, not marketing rates</p>
             </div>
           </div>
         </div>
@@ -145,10 +145,10 @@ export function RatesPage({}: RatesPageProps) {
         <div className="mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Electricity Rate Comparison Tools
+              Tools That Show You the Truth
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Use our comprehensive tools to compare rates, calculate costs, and find the best electricity deals.
+              We built these because we got tired of surprise bills. Now you can see exactly what you'll pay before signing up.
             </p>
           </div>
 
@@ -176,7 +176,7 @@ export function RatesPage({}: RatesPageProps) {
         {/* Current Rate Overview */}
         <div className="bg-white rounded-lg shadow-sm border p-8 mb-16">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            Current Rate Overview
+            What People Are Actually Paying Today
           </h2>
 
           <div className="mb-6 text-center">
@@ -227,10 +227,10 @@ export function RatesPage({}: RatesPageProps) {
         <div className="mb-16">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Understanding Electricity Rates
+              Quick Lesson: How They Try to Trick You
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Learn how electricity pricing works and what factors affect your monthly bill.
+              The advertised rate is never what you pay. Here's what they hope you won't notice.
             </p>
           </div>
 
@@ -254,7 +254,7 @@ export function RatesPage({}: RatesPageProps) {
         {/* Quick Rate Comparison */}
         <div className="bg-white rounded-lg shadow-sm border p-8 mb-16">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            Quick Rate Comparison for {stateData?.name}
+            Your Real Bill With Each Plan ({stateData?.name})
           </h2>
           
           <div className="mb-6 text-center">
@@ -314,11 +314,11 @@ export function RatesPage({}: RatesPageProps) {
         <div className="grid lg:grid-cols-2 gap-8">
           <div className="bg-white rounded-lg shadow-sm border p-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              Rates by Location
+              Different ZIP Code? Different Price.
             </h3>
             
             <p className="text-gray-600 mb-6">
-              Electricity rates vary by location due to different utility service areas and local market competition.
+              Yeah, it's weird. Your neighbor 2 miles away might have totally different options. Pick your exact spot.
             </p>
 
             <div className="space-y-4">
@@ -347,7 +347,7 @@ export function RatesPage({}: RatesPageProps) {
 
           <div className="bg-white rounded-lg shadow-sm border p-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              Rate Resources
+              Learn the Tricks They Use
             </h3>
             
             <div className="space-y-4">
@@ -355,32 +355,32 @@ export function RatesPage({}: RatesPageProps) {
                 onClick={() => navigate('/resources/guides/understanding-electricity-rates')}
                 className="w-full p-4 text-left border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
               >
-                <div className="font-medium text-gray-900 mb-1">Understanding Your Bill</div>
-                <div className="text-sm text-gray-600">Learn to read and understand all charges on your electric bill</div>
+                <div className="font-medium text-gray-900 mb-1">Decode Your Confusing Bill</div>
+                <div className="text-sm text-gray-600">What all those random charges actually mean (spoiler: half are BS)</div>
               </button>
               
               <button
                 onClick={() => navigate('/resources/guides/fixed-vs-variable')}
                 className="w-full p-4 text-left border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
               >
-                <div className="font-medium text-gray-900 mb-1">Fixed vs Variable Rates</div>
-                <div className="text-sm text-gray-600">Compare different rate structures and find what works for you</div>
+                <div className="font-medium text-gray-900 mb-1">Fixed vs Variable (Which Won't Bite You?)</div>
+                <div className="text-sm text-gray-600">One protects you, one can screw you. Guess which is which.</div>
               </button>
               
               <button
                 onClick={() => navigate('/resources/guides/rate-comparison')}
                 className="w-full p-4 text-left border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
               >
-                <div className="font-medium text-gray-900 mb-1">How to Compare Rates</div>
-                <div className="text-sm text-gray-600">Step-by-step guide to effective rate comparison</div>
+                <div className="font-medium text-gray-900 mb-1">Compare Like a Pro (Not a Sucker)</div>
+                <div className="text-sm text-gray-600">The 3-step method to see through their pricing games</div>
               </button>
               
               <button
                 onClick={() => navigate('/resources/faqs')}
                 className="w-full p-4 text-left border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
               >
-                <div className="font-medium text-gray-900 mb-1">Rate FAQs</div>
-                <div className="text-sm text-gray-600">Common questions about electricity rates and pricing</div>
+                <div className="font-medium text-gray-900 mb-1">Questions Everyone Asks</div>
+                <div className="text-sm text-gray-600">Why is my bill so high? Can they really do that? (Answers inside)</div>
               </button>
             </div>
           </div>

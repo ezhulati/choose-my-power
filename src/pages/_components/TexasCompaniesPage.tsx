@@ -54,7 +54,7 @@ export function TexasCompaniesPage({}: TexasCompaniesPageProps) {
       companies: [
         {
           name: 'Rhythm Energy',
-          highlight: 'All plans 100% renewable + innovative billing',
+          highlight: 'All plans 100% renewable + smart billing',
           rating: 4.4,
           specialization: 'Smart renewable energy with flexible features',
           strengths: ['100% Wind/Solar', 'Pick Your Due Date', 'Smart Alerts', 'Modern App'],
@@ -100,7 +100,7 @@ export function TexasCompaniesPage({}: TexasCompaniesPageProps) {
         },
         {
           name: 'Reliant Energy',
-          highlight: 'Houston-based with comprehensive support',
+          highlight: 'Houston-based with complete support',
           rating: 4.1,
           specialization: 'Large provider with local Texas presence',
           strengths: ['Houston Headquarters', 'Online Tools', 'Smart Home Bundles', 'Local Support'],
@@ -185,7 +185,7 @@ export function TexasCompaniesPage({}: TexasCompaniesPageProps) {
           name: 'TXU Energy',
           highlight: 'Digital tools and online account management',
           rating: 4.0,
-          specialization: 'Comprehensive digital platform',
+          specialization: 'Complete digital platform',
           strengths: ['Digital Tools', 'Online Management', 'Mobile App', 'Account Control'],
           serviceAreas: ['Statewide Texas'],
           slug: 'txu-energy'
@@ -306,7 +306,7 @@ export function TexasCompaniesPage({}: TexasCompaniesPageProps) {
             <div className="max-w-md mx-auto">
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder="Enter Texas ZIP code"
+                placeholder="Enter zip code"
                 size="lg"
               />
               <p className="text-red-200 text-sm mt-2">Find companies serving your area</p>

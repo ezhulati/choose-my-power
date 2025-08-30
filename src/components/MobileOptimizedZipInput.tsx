@@ -45,7 +45,7 @@ interface ComponentState {
 export const MobileOptimizedZipInput: React.FC<MobileOptimizedZipInputProps> = ({
   onLocationResolved,
   onError,
-  placeholder = "Enter your ZIP code",
+  placeholder = "75201",
   className = "",
   enableLocationDetection = true,
   showProgress = true,
@@ -117,18 +117,18 @@ export const MobileOptimizedZipInput: React.FC<MobileOptimizedZipInputProps> = (
     const trimmed = zipCode.trim().replace(/\D/g, '');
     
     if (!trimmed) {
-      return 'ZIP code is required';
+      return 'Need your ZIP code';
     }
     
     if (trimmed.length !== 5) {
-      return 'ZIP code must be exactly 5 digits';
+      return 'ZIP codes are 5 digits';
     }
     
     // Texas ZIP code range validation
     const zipNum = parseInt(trimmed, 10);
     if (zipNum < 73301 || zipNum > 79999) {
       if (zipNum < 75000 || zipNum > 79999) {
-        return 'Please enter a Texas ZIP code';
+        return 'That\'s not a Texas ZIP code';
       }
     }
     
@@ -681,7 +681,7 @@ export const MobileOptimizedZipInput: React.FC<MobileOptimizedZipInputProps> = (
                   className="clear-btn"
                   onClick={() => setState(prev => ({ ...prev, zipCode: '', error: null }))}
                   type="button"
-                  aria-label="Clear ZIP code"
+                  aria-label="Clear and start over"
                 >
                   ✕
                 </button>
@@ -731,7 +731,7 @@ export const MobileOptimizedZipInput: React.FC<MobileOptimizedZipInputProps> = (
                     handleAddressSubmit();
                   }
                 }}
-                placeholder="1234 Main Street"
+                placeholder="Your street address"
                 className="address-input-mobile"
                 disabled={state.isLoading}
                 autoComplete="street-address"
@@ -798,7 +798,7 @@ export const MobileOptimizedZipInput: React.FC<MobileOptimizedZipInputProps> = (
             <button 
               className="error-dismiss"
               onClick={() => setState(prev => ({ ...prev, error: null }))}
-              aria-label="Dismiss error"
+              aria-label="Close this message"
             >
               ✕
             </button>

@@ -1,7 +1,7 @@
 /**
  * Professional Loading States Component Suite
  * 
- * Comprehensive collection of loading indicators and animations designed for
+ * Complete collection of loading indicators and animations designed for
  * the ChooseMyPower electricity plan search system. Features Texas-themed
  * branding, accessibility compliance, and smooth animations.
  * 
@@ -140,16 +140,16 @@ interface ElectricitySearchLoaderProps {
 function ElectricitySearchLoader({ 
   size, 
   variant, 
-  message = 'Searching for electricity plans...', 
+  message = 'Getting all your options ready...', 
   duration 
 }: ElectricitySearchLoaderProps) {
   const [currentIcon, setCurrentIcon] = useState(0);
   
   const icons = [
-    { Icon: MapPin, label: 'Locating ZIP code' },
-    { Icon: Search, label: 'Finding providers' },
-    { Icon: Zap, label: 'Comparing rates' },
-    { Icon: Building, label: 'Checking availability' }
+    { Icon: MapPin, label: 'Looking up your area' },
+    { Icon: Search, label: 'Finding all your plans' },
+    { Icon: Zap, label: 'Comparing prices' },
+    { Icon: Building, label: 'Checking your utility' }
   ];
 
   useEffect(() => {
@@ -353,11 +353,11 @@ function ProgressiveLoader({
   size 
 }: ProgressiveLoaderProps) {
   const defaultSteps = [
-    'Validating ZIP code...',
-    'Detecting utility provider...',
-    'Fetching available plans...',
-    'Comparing rates and terms...',
-    'Preparing results...'
+    'Looking up your neighborhood...',
+    'Finding who serves you...',
+    'Getting all the plans...',
+    'Comparing prices...',
+    'Almost ready...'
   ];
 
   const displaySteps = steps.length > 0 ? steps : defaultSteps;
@@ -528,7 +528,7 @@ function SpinnerLoader({ size, variant }: { size: string; variant: string }) {
         'text-sm animate-pulse',
         variant === 'texas' ? 'text-texas-navy' : 'text-muted-foreground'
       )}>
-        Loading...
+        One sec...
       </div>
     </div>
   );

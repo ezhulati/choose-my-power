@@ -1,7 +1,7 @@
 /**
  * Advanced Address Input Component for TDSP Resolution
  * 
- * Provides split ZIP code and address collection with comprehensive validation,
+ * Provides split ZIP code and address collection with complete validation,
  * autocomplete suggestions, and progressive enhancement for precise TDSP determination.
  * 
  * Features:
@@ -516,7 +516,7 @@ export function AddressInput({
                 type="text"
                 value={zipCode}
                 onChange={handleZipChange}
-                placeholder="Enter Texas ZIP code"
+                placeholder="Enter zip code"
                 maxLength={5}
                 disabled={disabled || isLoadingCombined}
                 className={cn(
@@ -587,7 +587,7 @@ export function AddressInput({
                   type="text"
                   value={address}
                   onChange={handleAddressChange}
-                  placeholder="123 Main Street"
+                  placeholder="Street address (like 123 Main St)"
                   disabled={disabled || isLoadingCombined}
                   className={cn(
                     config.input,

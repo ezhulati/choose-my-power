@@ -38,7 +38,7 @@ export function BestPage({}: BestPageProps) {
       {
         id: 'green-energy-leader',
         title: 'Actually Green (Not Greenwashing)',
-        description: 'Who's really 100% renewable vs. just marketing BS',
+        description: 'Who\'s really 100% renewable vs. just marketing BS',
         icon: Leaf,
         color: 'green',
         winner: 'Rhythm Energy',
@@ -91,14 +91,14 @@ export function BestPage({}: BestPageProps) {
       },
       {
         id: 'technology-innovator',
-        title: 'Apps That Don't Suck',
+        title: 'Apps That Don\'t Suck',
         description: 'Working tech, not broken promises',
         icon: Battery,
         color: 'indigo',
         winner: 'Rhythm Energy',
         winnerRating: 4.4,
         winnerScore: '94/100',
-        analysis: 'Pioneering smart electricity with innovative app features and home integration',
+        analysis: 'Leading smart electricity with new app features and home integration',
         strengths: ['Smart Home Features', 'Modern App Interface', 'Usage Analytics', 'Innovation Leadership'],
         metrics: {
           'App Rating': '4.7★',
@@ -249,7 +249,7 @@ export function BestPage({}: BestPageProps) {
         provider: 'Frontier Utilities & Gexa Energy',
         winnerScore: '92/100',
         analysis: 'Highest bill credits available with usage-based qualification requirements',
-        strengths: ['$125 Monthly Credits', 'Usage-Based Rewards', 'Multiple Qualifying Plans', 'Guaranteed Credits'],
+        strengths: ['$125 Monthly Credits', 'Usage-Based Rewards', 'Multiple Qualifying Plans', 'Fixed Credits'],
         metrics: {
           'Max Credit': '$125/month',
           'Qualifying Plans': '6 plans',
@@ -266,7 +266,7 @@ export function BestPage({}: BestPageProps) {
         winner: '60-Day Guarantee',
         provider: 'TXU Energy & Multiple Providers',
         winnerScore: '90/100',
-        analysis: 'Industry-leading satisfaction guarantees with money-back protection',
+        analysis: 'Top satisfaction guarantees with money-back protection',
         strengths: ['60-Day Protection', 'Money-Back Guarantee', 'Risk-Free Trial', 'Customer Protection'],
         metrics: {
           'Guarantee Period': '60 days',
@@ -284,7 +284,7 @@ export function BestPage({}: BestPageProps) {
         winner: 'Smart Alerts & Controls',
         provider: 'Rhythm Energy & Reliant',
         winnerScore: '94/100',
-        analysis: 'Comprehensive smart home integration with usage analytics and device compatibility',
+        analysis: 'Complete smart home integration with usage analytics and device compatibility',
         strengths: ['Smart Device Integration', 'Usage Analytics', 'Automated Controls', 'Mobile App Excellence'],
         metrics: {
           'Smart Features': '15+',
@@ -304,7 +304,7 @@ export function BestPage({}: BestPageProps) {
         winner: 'Texas (ERCOT)',
         winnerScore: '96/100',
         analysis: 'Leading deregulated market with most choice, competition, and innovation',
-        strengths: ['100+ Provider Options', 'Innovative Plan Types', 'Competitive Rates', 'Strong Consumer Protection'],
+        strengths: ['100+ Provider Options', 'New Plan Types', 'Competitive Rates', 'Strong Consumer Protection'],
         metrics: {
           'Providers': '100+',
           'Market Age': '22 years',
@@ -375,7 +375,7 @@ export function BestPage({}: BestPageProps) {
     {
       icon: Eye,
       title: 'We Test Everything',
-      description: 'We sign up, call support, read contracts - the stuff they hope you won't do.',
+      description: 'We sign up, call support, read contracts - the stuff they hope you won\'t do.',
       factors: ['Industry expertise', 'Innovation tracking', 'Service assessment', 'Market analysis']
     },
     {
@@ -428,7 +428,7 @@ export function BestPage({}: BestPageProps) {
             <div className="max-w-md mx-auto">
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder="Enter ZIP code for local rankings"
+                placeholder="Enter zip code"
                 size="lg"
               />
               <p className="text-orange-200 text-sm mt-2">See who's actually best in YOUR area</p>

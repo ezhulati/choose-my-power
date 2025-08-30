@@ -8,6 +8,7 @@ import type { ApiParams, Plan } from '../../types/facets';
 import { filterMapper, type FilterValidationResult, type AppliedFilter } from '../api/filter-mapper';
 import { validateCitySlug, getTdspFromCity, formatCityName } from '../../config/tdsp-mapping';
 import { comparePowerClient } from '../api/comparepower-client';
+import { facetedMessaging, type FacetedMessage, type MessageContext } from './messaging-service';
 
 export interface FacetedRouteResult {
   isValid: boolean;
@@ -21,6 +22,7 @@ export interface FacetedRouteResult {
   redirectUrl: string | null;
   shouldIndex: boolean;
   canonicalUrl: string;
+  messaging: FacetedMessage;
 }
 
 export interface RouteValidationOptions {
@@ -67,7 +69,13 @@ export class FacetedRouter {
       error: null,
       redirectUrl: null,
       shouldIndex: false,
-      canonicalUrl: ''
+      canonicalUrl: '',
+      messaging: {
+        headline: '',
+        subheadline: '',
+        cta: '',
+        breadcrumbText: ''
+      }
     };
 
     try {

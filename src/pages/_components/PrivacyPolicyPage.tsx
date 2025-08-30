@@ -40,7 +40,8 @@ export function PrivacyPolicyPage({}: PrivacyPolicyPageProps) {
               Privacy Policy
             </h1>
             <p className="text-lg text-gray-600 mb-4 max-w-3xl mx-auto">
-              Your privacy is important to us. This policy explains how we collect, use, and protect your information.
+              We respect your privacy and believe you should know exactly how we handle your information. 
+              Here's our honest, straightforward explanation.
             </p>
             <p className="text-sm text-gray-500">Last updated: January 2024</p>
           </div>

@@ -233,7 +233,7 @@ const ConversionCTA: React.FC<ConversionCTAProps> = ({
       case 'guarantee':
         return {
           buttonText: 'Try Risk-Free for 30 Days',
-          subtitle: '100% satisfaction guaranteed',
+          subtitle: 'We\'re confident you\'ll be happy',
           icon: '🛡️'
         };
       case 'savings':
@@ -331,7 +331,7 @@ const ConversionCTA: React.FC<ConversionCTAProps> = ({
           {showGuarantee && (
             <div className="guarantee-badge">
               <span className="guarantee-icon">✅</span>
-              <span className="guarantee-text">30-day satisfaction guarantee</span>
+              <span className="guarantee-text">30-day support included</span>
             </div>
           )}
 

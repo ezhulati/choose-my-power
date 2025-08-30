@@ -198,7 +198,7 @@ export function CompareRatesPage({}: CompareRatesPageProps) {
             <div className="max-w-md mx-auto">
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder="Enter ZIP to see your rates"
+                placeholder="Enter zip code"
                 size="lg"
               />
               <p className="text-purple-200 text-sm mt-2">We'll show you exact rates for your area</p>

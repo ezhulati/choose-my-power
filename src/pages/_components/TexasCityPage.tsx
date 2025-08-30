@@ -91,12 +91,11 @@ export function TexasCityPage({ city }: TexasCityPageProps) {
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
               <h1 className="text-3xl md:text-4xl font-bold mb-6">
-                {cityData.name} Electricity - Compare TX Providers, Plans & Rates
+                Finally. {cityData.name} Electricity That Makes Sense
               </h1>
               
               <p className="text-lg text-red-100 mb-6">
-                Compare electricity providers in {cityData.name}, Texas. Find the cheapest rates from {cityProviders.length} trusted companies 
-                serving {cityData.population.toLocaleString()} residents. Switch today and save up to ${potentialSavings}/year on your electric bill.
+                Moving to {cityData.name}? Here's why transferring your old plan usually backfires: Your old rate was based on your OLD home's size. "Fixed" rates aren't fixed—they change with usage. A plan for a 2-bedroom apartment costs way more in a 4-bedroom house. We found {cityProviders.length} quality providers that actually work for your new {cityData.name} home.
               </p>
 
               {/* Enhanced Key Stats Row */}
@@ -127,7 +126,7 @@ export function TexasCityPage({ city }: TexasCityPageProps) {
               <h3 className="text-lg font-semibold mb-4">Get Exact Rates for Your Address</h3>
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder={`Enter ${cityData.name} ZIP`}
+                placeholder="Enter zip code"
               />
               <div className="mt-4 text-sm text-red-200">
                 <div className="font-medium mb-2">Popular {cityData.name} ZIP Codes:</div>
@@ -180,7 +179,7 @@ export function TexasCityPage({ city }: TexasCityPageProps) {
               onClick={() => navigate(`/compare/providers?city=${city}&state=texas`)}
               className="bg-texas-red text-white px-4 py-2 rounded-lg hover:bg-texas-red-600 transition-colors"
             >
-              Compare All Providers
+              Compare Quality Providers
             </button>
           </div>
 
@@ -302,7 +301,7 @@ export function TexasCityPage({ city }: TexasCityPageProps) {
                 <h4 className="text-lg font-semibold text-gray-900">Cheapest Plans</h4>
               </div>
               <p className="text-gray-600 mb-4">
-                Find the lowest electricity rates available in {cityData.name}. Perfect for budget-conscious customers.
+                Find the lowest electricity rates available in {cityData.name}. Ideal for budget-conscious customers.
               </p>
               <button
                 onClick={() => navigate(`/cheapest-electricity-${city}`)}

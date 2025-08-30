@@ -97,12 +97,11 @@ export function CityElectricityPlansPage({ state, city }: CityElectricityPlansPa
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
               <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                {cityData.name} Electricity Plans - Compare All Available Options
+                Finally. {cityData.name} Electricity That Makes Sense
               </h1>
               
               <p className="text-lg text-gray-600 mb-6">
-                Compare {allPlans.length} electricity plans available in {cityData.name}, {stateData.name}. 
-                Find fixed-rate, variable-rate, and green energy plans from {cityProviders.length} trusted providers.
+                Moving to {cityData.name}? Here's why transferring your old plan usually backfires: Your old rate was based on your OLD home's size. "Fixed" rates aren't fixed—they change with usage. A plan for a 2-bedroom apartment costs way more in a 4-bedroom house. We found {allPlans.length} quality plans that actually work for {cityData.name} families.
               </p>
 
               {/* Plan Type Overview */}
@@ -130,7 +129,7 @@ export function CityElectricityPlansPage({ state, city }: CityElectricityPlansPa
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Get Exact Plans for Your Address</h3>
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder={`Enter ${cityData.name} ZIP`}
+                placeholder="Enter zip code"
               />
               <div className="mt-4 text-sm text-gray-600">
                 <div className="font-medium mb-2">{cityData.name} ZIP Codes:</div>
@@ -158,35 +157,35 @@ export function CityElectricityPlansPage({ state, city }: CityElectricityPlansPa
             <div className="bg-white rounded-lg shadow-sm border p-6 mb-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
                 <Filter className="h-5 w-5 mr-2" />
-                Filter Plans
+                What's Important to You?
               </h3>
               
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Plan Type</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">How do you want your rate to work?</label>
                   <select
                     value={planTypeFilter}
                     onChange={(e) => setPlanTypeFilter(e.target.value as any)}
                     className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   >
-                    <option value="all">All Plan Types</option>
-                    <option value="fixed">Fixed Rate</option>
-                    <option value="variable">Variable Rate</option>
-                    <option value="indexed">Indexed Rate</option>
+                    <option value="all">Show me all types</option>
+                    <option value="fixed">Fixed Rate (Same rate all year)</option>
+                    <option value="variable">Variable Rate (Can change monthly)</option>
+                    <option value="indexed">Market Rate (Follows wholesale prices)</option>
                   </select>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Contract Length</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">How long do you want to commit?</label>
                   <select
                     value={termFilter}
                     onChange={(e) => setTermFilter(e.target.value as any)}
                     className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   >
-                    <option value="all">All Contract Lengths</option>
-                    <option value="12">12 Months</option>
-                    <option value="24">24 Months</option>
-                    <option value="36">36 Months</option>
+                    <option value="all">Any length is fine</option>
+                    <option value="12">12 Months (Most popular)</option>
+                    <option value="24">24 Months (Better rates)</option>
+                    <option value="36">36 Months (Lowest rates)</option>
                   </select>
                 </div>
 
@@ -198,7 +197,7 @@ export function CityElectricityPlansPage({ state, city }: CityElectricityPlansPa
                       onChange={(e) => setGreenFilter(e.target.checked)}
                       className="rounded border-gray-300 text-texas-navy focus:ring-blue-500"
                     />
-                    <span className="ml-2 text-sm text-gray-700">Green Energy Only</span>
+                    <span className="ml-2 text-sm text-gray-700">I want 100% clean energy</span>
                   </label>
                 </div>
               </div>

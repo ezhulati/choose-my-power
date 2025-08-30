@@ -54,15 +54,15 @@ export function ProvidersPage() {
   const providerCategories = [
     {
       id: 'green',
-      title: 'Best for Green Energy',
-      subtitle: '100% Renewable Power',
+      title: 'Actually Good for Green Energy',
+      subtitle: 'Real 100% Renewable Power',
       icon: Leaf,
       color: 'green',
-      description: 'Providers specializing in 100% renewable energy plans powered by wind and solar',
+      description: 'These providers don\'t just claim to be green - they actually deliver 100% renewable energy from Texas wind and solar',
       providers: [
         {
           name: 'Rhythm Energy',
-          highlight: 'All plans 100% renewable + flexible billing',
+          highlight: 'Every plan is actually 100% renewable, plus they let you pick your due date',
           rating: 4.4,
           features: ['100% Wind/Solar', 'Pick Your Due Date', 'No Hidden Fees', 'Bill Alerts'],
           slug: 'rhythm-energy',
@@ -70,7 +70,7 @@ export function ProvidersPage() {
         },
         {
           name: 'Gexa Energy',
-          highlight: '100% green since 2019 + low-cost green plans',
+          highlight: 'Been doing 100% green energy since 2019, with some of the best green rates around',
           rating: 4.3,
           features: ['Eco Saver Plus', '$100+ Bill Credits', '60-Day Guarantee', 'Green Certified'],
           slug: 'gexa-energy',
@@ -78,7 +78,7 @@ export function ProvidersPage() {
         },
         {
           name: 'Green Mountain Energy',
-          highlight: 'Longest-running green provider in Texas',
+          highlight: 'The original green provider in Texas - they\'ve been at this the longest',
           rating: 4.2,
           features: ['Carbon-Free Power', 'Environmental Leadership', 'Pollution-Free Plans', 'Solar Programs'],
           slug: 'green-mountain-energy',
@@ -88,15 +88,15 @@ export function ProvidersPage() {
     },
     {
       id: 'service',
-      title: 'Best for Customer Service',
-      subtitle: 'Top-Rated Support',
+      title: 'Won\'t Leave You Hanging',
+      subtitle: 'Customer Service That Works',
       icon: Headphones,
       color: 'blue',
-      description: 'Providers with exceptional customer support, local call centers, and high satisfaction ratings',
+      description: 'When you call these providers, you\'ll actually get help instead of runaround. Local call centers and real problem-solving',
       providers: [
         {
           name: 'APGE (American Powernet)',
-          highlight: 'Highest-rated for transparency & no gimmicks',
+          highlight: 'What you see is what you get - no surprise fees or confusing terms',
           rating: 4.1,
           features: ['Simple Plans', 'No Hidden Fees', 'Straightforward', 'Texas-Based'],
           slug: 'apge',
@@ -104,7 +104,7 @@ export function ProvidersPage() {
         },
         {
           name: 'Reliant Energy',
-          highlight: 'Local TX call centers + helpful tools & support',
+          highlight: 'When you call, you talk to someone in Texas who can actually help',
           rating: 4.1,
           features: ['Houston-Based', 'Same-Day Service', 'Online Tools', 'Smart Home Bundles'],
           slug: 'reliant-energy',
@@ -112,7 +112,7 @@ export function ProvidersPage() {
         },
         {
           name: 'Constellation Energy',
-          highlight: 'National provider with local support & home protection',
+          highlight: 'Big company resources but they still answer the phone and solve problems',
           rating: 3.9,
           features: ['Home Protection Plans', 'HVAC Monitoring', 'Usage Bill Credits', 'Multi-State'],
           slug: 'constellation-energy',
@@ -122,15 +122,15 @@ export function ProvidersPage() {
     },
     {
       id: 'rewards',
-      title: 'Best for Bill Credits & Rewards',
-      subtitle: 'Save More with Credits',
+      title: 'Credits You Can Actually Get',
+      subtitle: 'Bill Credits That Aren\'t Gimmicks',
       icon: DollarSign,
       color: 'purple',
-      description: 'Providers offering significant bill credits, usage rewards, and loyalty programs',
+      description: 'These providers offer bill credits and rewards you can actually earn without jumping through impossible hoops',
       providers: [
         {
           name: 'Frontier Utilities',
-          highlight: 'Usage-based bill credits + medium to large home focus',
+          highlight: 'Great if you use a lot of electricity - the more you use, the more you save',
           rating: 4.2,
           features: ['$125 Usage Credit', '60 Day Guarantee', 'Medium to Large Homes', 'Fixed Monthly Bills'],
           slug: 'frontier-utilities',
@@ -146,7 +146,7 @@ export function ProvidersPage() {
         },
         {
           name: '4Change Energy',
-          highlight: 'Simple rewards + satisfaction guarantee',
+          highlight: 'Straightforward rewards without tricks, plus they guarantee you\'ll be happy',
           rating: 3.9,
           features: ['$125 Bill Credit', '60 Day Guarantee', 'Simple Structure', 'Fixed Rates'],
           slug: '4change-energy',
@@ -156,15 +156,15 @@ export function ProvidersPage() {
     },
     {
       id: 'tech',
-      title: 'Best for Tech & Smart Homes',
-      subtitle: 'Smart Integration',
+      title: 'For Tech That Actually Works',
+      subtitle: 'Smart Home Integration Done Right',
       icon: Wifi,
       color: 'indigo',
-      description: 'Providers with smart home integration, dynamic pricing, and advanced technology features',
+      description: 'Smart home features that aren\'t just marketing buzz - real integration with devices you actually use',
       providers: [
         {
           name: 'Rhythm Energy',
-          highlight: 'Smart alerts + pick-your-due-date + modern app',
+          highlight: 'Actually useful smart features and an app that works like it should',
           rating: 4.4,
           features: ['Smart Alerts', 'Flexible Billing', 'Usage Analytics', 'Modern App'],
           slug: 'rhythm-energy',
@@ -172,7 +172,7 @@ export function ProvidersPage() {
         },
         {
           name: 'Reliant Energy',
-          highlight: 'Google Nest, Ring & smart thermostat bundles',
+          highlight: 'They bundle real smart home devices (Nest, Ring) that you actually want',
           rating: 4.1,
           features: ['Smart Device Bundles', 'Nest Integration', 'Energy Monitoring', 'Connected Home'],
           slug: 'reliant-energy',
@@ -190,15 +190,15 @@ export function ProvidersPage() {
     },
     {
       id: 'local',
-      title: 'Best for Local Texas Support',
-      subtitle: 'Texas-Based Companies',
+      title: 'Texas Companies That Care',
+      subtitle: 'Local Support, Local Jobs',
       icon: Heart,
       color: 'red',
-      description: 'Texas-owned and operated providers with local offices and community focus',
+      description: 'Texas-owned companies with real Texas offices and people who understand our market and weather',
       providers: [
         {
           name: 'Reliant Energy',
-          highlight: 'HQ in Houston + offices across Texas',
+          highlight: 'Houston headquarters with real Texas offices and local customer service',
           rating: 4.1,
           features: ['Houston Headquarters', 'Texas Offices', 'Local Jobs', 'Community Investment'],
           slug: 'reliant-energy',
@@ -206,7 +206,7 @@ export function ProvidersPage() {
         },
         {
           name: '4Change Energy',
-          highlight: 'Dallas-based + local charities & Texas-focused',
+          highlight: 'Dallas company that supports local charities and knows Texas markets',
           rating: 3.9,
           features: ['Dallas-Based', 'Local Charities', 'Texas-Focused', 'Community Giving'],
           slug: '4change-energy',
@@ -214,7 +214,7 @@ export function ProvidersPage() {
         },
         {
           name: 'APGE (American Powernet)',
-          highlight: 'Texas electricity provider with no gimmicks',
+          highlight: 'Texas provider that keeps things simple and honest - no confusing marketing',
           rating: 4.1,
           features: ['Texas Provider', 'Simple Plans', 'No Hidden Fees', 'Straightforward Service'],
           slug: 'apge',
@@ -224,15 +224,15 @@ export function ProvidersPage() {
     },
     {
       id: 'budget',
-      title: 'Best for Budget-Conscious',
-      subtitle: 'Lowest Rates & Fees',
+      title: 'Actually Cheap (No Hidden Fees)',
+      subtitle: 'Low Rates You Can Trust',
       icon: TrendingDown,
       color: 'green',
-      description: 'Providers offering the most competitive rates and minimal fees for budget-minded customers',
+      description: 'These providers keep rates low without sneaky fees that show up later on your bill',
       providers: [
         {
           name: 'APGE (American Powernet)',
-          highlight: 'SimpleSaver plans with rates starting at 9.7¢/kWh',
+          highlight: 'Their SimpleSaver plans start at 9.7¢/kWh with no monthly fees',
           rating: 4.1,
           features: ['9.7¢/kWh Rate', '$100 Bill Credit', 'No Monthly Fee', 'No Hidden Fees'],
           slug: 'apge',
@@ -240,7 +240,7 @@ export function ProvidersPage() {
         },
         {
           name: 'Gexa Energy',
-          highlight: 'Eco Saver Plus at 9.8¢/kWh + 100% green energy',
+          highlight: '100% green energy at just 9.8¢/kWh - best rate for renewable power',
           rating: 4.3,
           features: ['9.8¢/kWh Rate', '100% Green', '$125 Usage Credit', 'No Monthly Fee'],
           slug: 'gexa-energy',
@@ -248,7 +248,7 @@ export function ProvidersPage() {
         },
         {
           name: 'Discount Power',
-          highlight: 'Bill Credit Bundle with competitive 10.1¢/kWh rate',
+          highlight: 'Good rates at 10.1¢/kWh plus bill credits you can actually get',
           rating: 3.8,
           features: ['10.1¢/kWh Rate', '$125 Bill Credit', '90 Day Guarantee', 'Small to Medium Homes'],
           slug: 'discount-power',
@@ -294,23 +294,23 @@ export function ProvidersPage() {
   const benefits = [
     {
       icon: Shield,
-      title: 'Expert Categorization',
-      description: 'Providers organized by what they do best - green energy, service, savings, and more'
+      title: 'Real Categories That Matter',
+      description: 'We group providers by what they\'re actually good at, not their marketing claims'
     },
     {
       icon: Eye,
-      title: 'Real Customer Data',
-      description: 'Rankings based on actual customer reviews, ratings, and satisfaction scores'
+      title: 'Based on Real Experiences',
+      description: 'Our assessments come from thousands of actual customer experiences, not press releases'
     },
     {
       icon: ThumbsUp,
-      title: 'Category Leaders',
-      description: 'Find the #1 provider in each category based on performance and specialization'
+      title: 'No Fake Winners',
+      description: 'We don\'t crown providers \'best overall\' when they\'re not - we show you who\'s actually good at what'
     },
     {
       icon: Target,
-      title: 'Match Your Needs',
-      description: 'Choose providers that excel in what matters most to you personally'
+      title: 'Find Your Match',
+      description: 'Skip the ones that are wrong for your situation and focus on providers that actually fit'
     }
   ];
 
@@ -325,14 +325,14 @@ export function ProvidersPage() {
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Best Electricity Providers by Category
+              The Real Story on Texas Electricity Providers
             </h1>
             <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-blue-100">
-              Find Top-Rated Companies That Excel in What Matters to You
+              Honest Reviews from Someone Who's Done the Research
             </h2>
             <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-4xl mx-auto">
-              Don't settle for average. Find electricity providers that are #1 in green energy, customer service, 
-              savings, smart home tech, and more. Expert recommendations based on real customer data.
+              We've analyzed thousands of customer experiences so you don't have to. Here's what each provider 
+              is actually good at - and what they're not. No marketing fluff, just the truth.
             </p>
 
             {/* Quick Stats */}
@@ -358,7 +358,7 @@ export function ProvidersPage() {
             <div className="max-w-md mx-auto">
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder="Enter ZIP code to see local providers"
+                placeholder="Enter zip code"
                 size="lg"
               />
               <p className="text-blue-200 text-sm mt-2">Get personalized results for your area</p>
@@ -372,10 +372,10 @@ export function ProvidersPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Why Choose by Category?
+              Why We Sort Them This Way
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Not all electricity providers are the same. Find companies that excel in what matters most to you.
+              Every provider has their strengths and weaknesses. We'll help you find the ones that are actually good at what you need.
             </p>
           </div>
 
@@ -398,10 +398,10 @@ export function ProvidersPage() {
         <div className="mb-12">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Browse Best Providers by Category
+              What Each Provider Is Actually Good At
             </h2>
             <p className="text-lg text-gray-600">
-              Find providers that excel in what matters most to you
+              We've sorted them by what they do well, so you can focus on what matters to you
             </p>
           </div>
 
@@ -484,13 +484,13 @@ export function ProvidersPage() {
                         onClick={() => navigate(`/providers/${provider.slug}`)}
                         className="w-full bg-texas-navy text-white py-2 rounded-lg hover:bg-blue-800 transition-colors text-sm font-medium"
                       >
-                        View {provider.name} Details
+                        See What We Think About {provider.name}
                       </button>
                       <button
                         onClick={() => navigate(`/texas/houston/electricity-providers`)}
                         className="w-full border border-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
                       >
-                        See Plans & Rates
+                        Check Their Current Rates
                       </button>
                     </div>
                   </div>
@@ -502,19 +502,19 @@ export function ProvidersPage() {
                   onClick={() => navigate(`/compare/providers?category=${category.id}`)}
                   className="bg-texas-red text-white px-6 py-3 rounded-lg hover:bg-texas-red-600 transition-colors font-medium"
                 >
-                  Compare All {category.title.replace('Best for ', '')} Providers
+                  Compare All {category.title.replace('Actually Good for ', '').replace('Won\'t Leave You Hanging', 'Customer Service').replace('Credits You Can Actually Get', 'Bill Credit').replace('For Tech That Actually Works', 'Smart Home').replace('Texas Companies That Care', 'Local Texas').replace('Actually Cheap (No Hidden Fees)', 'Budget')} Options
                 </button>
               </div>
             </div>
           ))}
         </div>
 
-        {/* All Providers Directory */}
+        {/* Provider Directory */}
         <div className="bg-white rounded-lg shadow-sm border p-8 mb-12">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 space-y-4 md:space-y-0">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Complete Provider Directory</h2>
-              <p className="text-gray-600">Browse all {mockProviders.length} licensed electricity providers</p>
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">Every Licensed Provider in Texas</h2>
+              <p className="text-gray-600">All {mockProviders.length} licensed providers, with our honest take on each one</p>
             </div>
             
             <div className="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-4">
@@ -559,7 +559,7 @@ export function ProvidersPage() {
               onClick={() => navigate('/compare/providers')}
               className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors font-medium"
             >
-              View All Providers & Compare
+              See All Provider Reviews
             </button>
           </div>
         </div>
@@ -570,15 +570,15 @@ export function ProvidersPage() {
             <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 text-green-600 rounded-lg mb-4">
               <TrendingDown className="h-6 w-6" />
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">Find Cheapest Rates</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">Find Actually Cheap Rates</h3>
             <p className="text-gray-600 text-sm mb-4">
-              Compare providers offering the lowest electricity rates in your area.
+              The real lowest rates (without hidden fees that jack up your bill later).
             </p>
             <button
               onClick={() => navigate('/shop/cheapest-electricity')}
               className="text-green-600 hover:text-green-800 font-medium text-sm"
             >
-              Find Lowest Rates →
+              Find Real Low Rates →
             </button>
           </div>
 
@@ -586,15 +586,15 @@ export function ProvidersPage() {
             <div className="inline-flex items-center justify-center w-12 h-12 bg-texas-cream text-texas-navy rounded-lg mb-4">
               <Users className="h-6 w-6" />
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">Compare Side-by-Side</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">Compare What Actually Matters</h3>
             <p className="text-gray-600 text-sm mb-4">
-              Select multiple providers and compare them head-to-head.
+              Real side-by-side comparison of what you actually care about.
             </p>
             <button
               onClick={() => navigate('/compare/providers')}
               className="text-texas-navy hover:text-texas-navy font-medium text-sm"
             >
-              Start Comparing →
+              Compare What Matters →
             </button>
           </div>
 
@@ -602,15 +602,15 @@ export function ProvidersPage() {
             <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-100 text-purple-600 rounded-lg mb-4">
               <Award className="h-6 w-6" />
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">Top 5 Rankings</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">Our Honest Rankings</h3>
             <p className="text-gray-600 text-sm mb-4">
-              See our expert rankings of the best electricity providers.
+              The providers that are actually worth considering, ranked by category.
             </p>
             <button
               onClick={() => navigate('/compare/providers/top-5')}
               className="text-purple-600 hover:text-purple-800 font-medium text-sm"
             >
-              View Rankings →
+              See Our Top Picks →
             </button>
           </div>
 
@@ -618,15 +618,15 @@ export function ProvidersPage() {
             <div className="inline-flex items-center justify-center w-12 h-12 bg-orange-100 text-orange-600 rounded-lg mb-4">
               <MapPin className="h-6 w-6" />
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">Find by Location</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">What's Available Near You</h3>
             <p className="text-gray-600 text-sm mb-4">
-              See providers, rates, and service areas by specific locations.
+              See which providers actually serve your area and what they're charging.
             </p>
             <button
               onClick={() => navigate('/locations')}
               className="text-orange-600 hover:text-orange-800 font-medium text-sm"
             >
-              Browse Locations →
+              Check Your Area →
             </button>
           </div>
         </div>

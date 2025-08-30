@@ -72,30 +72,30 @@ function LocationsPage({}: LocationsPageProps) {
   const locationTypes = [
     {
       icon: Building,
-      title: 'States & Markets',
+      title: 'By State',
       count: mockStates.length,
-      description: 'Deregulated electricity markets with provider choice',
+      description: 'See which states let you pick your provider',
       action: () => navigate('/states')
     },
     {
       icon: Home,
-      title: 'Major Cities',
+      title: 'By City',
       count: totalCities,
-      description: 'Metropolitan areas with multiple provider options',
+      description: 'Your city probably has 10+ options you never knew about',
       action: () => navigate('/cities')
     },
     {
       icon: MapPin,
-      title: 'ZIP Codes',
+      title: 'By ZIP Code',
       count: `${totalZipCodes}+`,
-      description: 'Service areas with specific provider coverage',
+      description: 'Most accurate - shows exactly who serves your street',
       action: () => setShowAdvancedSearch(true)
     },
     {
       icon: Zap,
-      title: 'Utility Areas',
+      title: 'By Utility',
       count: `${Object.values(utilityCompanies).flat().length}`,
-      description: 'Transmission and distribution service territories',
+      description: 'The company that owns the wires (you can\'t change this one)',
       action: () => navigate('/utilities')
     }
   ];
@@ -118,19 +118,19 @@ function LocationsPage({}: LocationsPageProps) {
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8">
-              Location Intelligence - Electricity Market Analysis by Geography
+              Does Your Street Even Have Options?
             </h1>
             <p className="text-xl md:text-2xl mb-12 text-blue-100 max-w-4xl mx-auto leading-relaxed">
-              Comprehensive geographic analysis of electricity markets, providers, and opportunities. 
-              Master location-specific intelligence for states, cities, ZIP codes, and utility territories.
+              Some ZIP codes have 12 providers fighting for your business. Others have 2. 
+              Find out exactly who serves your address and what they're charging this week.
             </p>
 
             {/* Main ZIP Search */}
             <div className="mb-12">
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 max-w-2xl mx-auto">
-                <h2 className="text-2xl font-semibold text-white mb-6">Find Everything in Your Area</h2>
-                <ZipCodeSearch onSearch={handleZipSearch} size="lg" placeholder="Enter your ZIP code for location details" />
-                <p className="text-blue-200 text-sm mt-3">Get providers, plans, rates, utility info, and more</p>
+                <h2 className="text-2xl font-semibold text-white mb-6">What's Available at Your Address?</h2>
+                <ZipCodeSearch onSearch={handleZipSearch} size="lg" placeholder="Enter your ZIP code" />
+                <p className="text-blue-200 text-sm mt-3">See who actually serves your street (not just your city)</p>
               </div>
             </div>
 
@@ -138,19 +138,19 @@ function LocationsPage({}: LocationsPageProps) {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
                 <div className="text-3xl font-bold">{mockStates.length}</div>
-                <div className="text-blue-200 text-sm">States Covered</div>
+                <div className="text-blue-200 text-sm">States Where You Can Switch</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
                 <div className="text-3xl font-bold">{totalCities}</div>
-                <div className="text-blue-200 text-sm">Major Cities</div>
+                <div className="text-blue-200 text-sm">Cities We Cover</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
                 <div className="text-3xl font-bold">{totalProviders}</div>
-                <div className="text-blue-200 text-sm">Licensed Providers</div>
+                <div className="text-blue-200 text-sm">Companies to Choose From</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
                 <div className="text-3xl font-bold">{totalZipCodes}+</div>
-                <div className="text-blue-200 text-sm">ZIP Codes</div>
+                <div className="text-blue-200 text-sm">ZIP Codes Checked Daily</div>
               </div>
             </div>
           </div>
@@ -162,10 +162,10 @@ function LocationsPage({}: LocationsPageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Browse by Location Type
+              Not Sure Where to Start? Pick Your View.
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Find electricity information organized by states, cities, ZIP codes, and utility service areas.
+              Whether you know your ZIP code or just your city, we'll show you what's actually available.
             </p>
           </div>
 
@@ -193,8 +193,8 @@ function LocationsPage({}: LocationsPageProps) {
         <div className="mb-12">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-8">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Location Overview</h2>
-              <p className="text-lg text-gray-600">Compare electricity markets across different regions</p>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Where Are You Shopping?</h2>
+              <p className="text-lg text-gray-600">Different areas have wildly different options and prices</p>
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
@@ -204,9 +204,9 @@ function LocationsPage({}: LocationsPageProps) {
                 onChange={(e) => setSelectedRegion(e.target.value as any)}
                 className="border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               >
-                <option value="all">All Regions</option>
-                <option value="texas">Texas</option>
-                <option value="pennsylvania">Pennsylvania</option>
+                <option value="all">Show Everything</option>
+                <option value="texas">Just Texas</option>
+                <option value="pennsylvania">Just Pennsylvania</option>
               </select>
 
               {/* Metric Selector */}
@@ -215,10 +215,10 @@ function LocationsPage({}: LocationsPageProps) {
                 onChange={(e) => setSelectedMetric(e.target.value as any)}
                 className="border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               >
-                <option value="providers">Show Provider Count</option>
-                <option value="rates">Show Average Rates</option>
-                <option value="population">Show Population</option>
-                <option value="savings">Show Savings Potential</option>
+                <option value="providers">How Many Companies</option>
+                <option value="rates">What It Costs</option>
+                <option value="population">How Many People</option>
+                <option value="savings">How Much You Save</option>
               </select>
             </div>
           </div>
@@ -230,7 +230,7 @@ function LocationsPage({}: LocationsPageProps) {
           <div className="bg-white rounded-lg shadow-sm border p-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
               <Building className="h-6 w-6 mr-3 text-texas-navy" />
-              States & Markets
+              States Where You Can Actually Switch
             </h3>
             
             <div className="space-y-4">
@@ -324,7 +324,7 @@ function LocationsPage({}: LocationsPageProps) {
           <div className="bg-white rounded-lg shadow-sm border p-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
               <Home className="h-6 w-6 mr-3 text-green-600" />
-              Major Cities
+              Cities With the Most Options
             </h3>
             
             <div className="space-y-4 max-h-96 overflow-y-auto">
@@ -409,12 +409,12 @@ function LocationsPage({}: LocationsPageProps) {
         <div className="bg-white rounded-lg shadow-sm border p-8 mb-16">
           <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
             <Activity className="h-6 w-6 mr-3 text-orange-600" />
-            Utility Service Areas
+            Who Owns the Wires? (Utility Companies)
           </h3>
           
           <p className="text-gray-600 mb-8">
-            Understanding your utility company is important because they deliver electricity regardless of which provider you choose. 
-            They handle outages, maintain power lines, and appear on your bill for delivery charges.
+            Quick lesson: You pick who sells you electricity, but the utility company still owns the poles and wires. 
+            They fix outages, read your meter, and charge about half your bill for "delivery." Can't change them, but good to know who they are.
           </p>
 
           <div className="grid lg:grid-cols-2 gap-8">
@@ -453,11 +453,11 @@ function LocationsPage({}: LocationsPageProps) {
         <div className="bg-texas-cream-200 border border-blue-200 rounded-lg p-8 mb-16">
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              Try Sample ZIP Codes
+              Don't Know Your ZIP? Try These
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Click any ZIP code below to see comprehensive location information including providers, 
-              rates, utility service areas, and local market details.
+              Click any ZIP below to see exactly what's available there - who serves it, 
+              what they charge, and how much people save.
             </p>
           </div>
 
@@ -493,13 +493,13 @@ function LocationsPage({}: LocationsPageProps) {
             <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 text-green-600 rounded-lg mb-4">
               <TrendingDown className="h-6 w-6" />
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">Cheapest Rates</h3>
-            <p className="text-gray-600 text-sm mb-4">Find the lowest electricity rates in your area</p>
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">Want the Cheapest?</h3>
+            <p className="text-gray-600 text-sm mb-4">See who's actually cheapest right now</p>
             <button
               onClick={() => navigate('/shop/cheapest-electricity')}
               className="text-green-600 hover:text-green-800 font-medium text-sm"
             >
-              Find Cheapest Rates →
+              Show Me the Lowest →
             </button>
           </div>
 
@@ -507,13 +507,13 @@ function LocationsPage({}: LocationsPageProps) {
             <div className="inline-flex items-center justify-center w-12 h-12 bg-texas-cream text-texas-navy rounded-lg mb-4">
               <Calculator className="h-6 w-6" />
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">Rate Calculator</h3>
-            <p className="text-gray-600 text-sm mb-4">Calculate exact costs based on your usage</p>
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">What Will I Pay?</h3>
+            <p className="text-gray-600 text-sm mb-4">Calculate your actual monthly bill</p>
             <button
               onClick={() => navigate('/rates/calculator')}
               className="text-texas-navy hover:text-texas-navy font-medium text-sm"
             >
-              Calculate Costs →
+              Calculate My Bill →
             </button>
           </div>
 
@@ -521,13 +521,13 @@ function LocationsPage({}: LocationsPageProps) {
             <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-100 text-purple-600 rounded-lg mb-4">
               <Users className="h-6 w-6" />
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">Compare Providers</h3>
-            <p className="text-gray-600 text-sm mb-4">Side-by-side provider comparison</p>
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">Who's Actually Good?</h3>
+            <p className="text-gray-600 text-sm mb-4">Compare companies that won't suck</p>
             <button
               onClick={() => navigate('/compare/providers')}
               className="text-purple-600 hover:text-purple-800 font-medium text-sm"
             >
-              Compare Providers →
+              Compare Companies →
             </button>
           </div>
 
@@ -535,13 +535,13 @@ function LocationsPage({}: LocationsPageProps) {
             <div className="inline-flex items-center justify-center w-12 h-12 bg-orange-100 text-orange-600 rounded-lg mb-4">
               <Leaf className="h-6 w-6" />
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">Green Energy</h3>
-            <p className="text-gray-600 text-sm mb-4">100% renewable electricity options</p>
+            <h3 className="text-lg font-semibold text-gray-900 mb-3">Want Real Green?</h3>
+            <p className="text-gray-600 text-sm mb-4">Not just marketing - actual renewable</p>
             <button
               onClick={() => navigate('/shop/green-energy')}
               className="text-orange-600 hover:text-orange-800 font-medium text-sm"
             >
-              Go Green →
+              Show Green Options →
             </button>
           </div>
         </div>
@@ -550,18 +550,18 @@ function LocationsPage({}: LocationsPageProps) {
       {/* Final CTA */}
       <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-          <h2 className="text-3xl font-bold mb-4">Find Everything About Electricity in Your Area</h2>
+          <h2 className="text-3xl font-bold mb-4">Ready to See What's Available Where You Live?</h2>
           <p className="text-xl mb-8 text-blue-100 max-w-3xl mx-auto">
-            Get comprehensive information about providers, plans, rates, utility companies, 
-            and service areas for your specific location.
+            Enter your ZIP and we'll show you every provider, every plan, and exactly what 
+            your neighbors are paying. Takes 30 seconds.
           </p>
           
           <div className="max-w-md mx-auto mb-6">
-            <ZipCodeSearch onSearch={handleZipSearch} placeholder="Enter your ZIP code to explore" />
+            <ZipCodeSearch onSearch={handleZipSearch} placeholder="Your ZIP code" />
           </div>
           
           <p className="text-blue-200 text-sm">
-            Complete location-based electricity information and comparison tools
+            No games. Just facts about your exact location.
           </p>
         </div>
       </div>

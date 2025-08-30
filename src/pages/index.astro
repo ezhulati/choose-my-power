@@ -4,9 +4,8 @@ import StandardZipInput from '../components/StandardZipInput.astro';
 import { Zap, Shield, DollarSign, Clock, MapPin, Calculator, Leaf, Users, TrendingDown, Battery, Award, BarChart, Star, ArrowRight } from 'lucide-react';
 import { getCredibleMarketingText, DEFAULT_COUNTS } from '../lib/utils/dynamic-counts';
 
-const title = "Compare & Choose Texas Electricity | ChooseMyPower.org";
-const marketingText = getCredibleMarketingText(DEFAULT_COUNTS.providers, DEFAULT_COUNTS.plans);
-const description = marketingText.seoDescription;
+const title = "Finally. Texas Electricity That Makes Sense. | ChooseMyPower.org";
+const description = "No more 6.9¢ rates that cost 14¢. No more 40-page contracts. Just honest prices and straight answers from someone who's figured this out. Whether you're moving tomorrow or your rate just jumped, we'll get you sorted in 10 minutes.";
 
 // Homepage uses gradient background - no hero image needed
 ---
@@ -19,7 +18,7 @@ const description = marketingText.seoDescription;
     "@context": "https://schema.org",
     "@type": ["Organization", "WebSite"],
     "name": "ChooseMyPower.org",
-    "description": "{marketingText.seoDescription}",
+    "description": "No more 6.9¢ rates that cost 14¢. No more 40-page contracts. Just honest prices and straight answers from someone who's figured this out. Whether you're moving tomorrow or your rate just jumped, we'll get you sorted in 10 minutes.",
     "url": "https://choosemypower.org",
     "logo": "https://choosemypower.org/images/og-default.jpg",
     "sameAs": [
@@ -43,91 +42,60 @@ const description = marketingText.seoDescription;
   </script>
 
   <div class="bg-white">
-    <!-- Enhanced Texas-Themed Hero Section -->
+    <!-- Hero Section - Direct & Honest -->
     <section class="relative bg-gradient-to-br from-texas-navy via-blue-800 to-texas-navy overflow-hidden">
-      <!-- Background Pattern with Texas Energy Theme -->
+      <!-- Background Elements -->
       <div class="absolute inset-0 bg-black/20"></div>
-      <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;80&quot; height=&quot;80&quot; viewBox=&quot;0 0 80 80&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;0.08&quot;%3E%3Cpath d=&quot;M20 20l20-20v40L20 20zm20 20l20-20v40L40 40z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-      
-      <!-- Lightning Accent Elements -->
-      <div class="absolute top-20 left-10 w-32 h-32 opacity-10">
-        <svg viewBox="0 0 24 24" fill="currentColor" class="w-full h-full text-texas-gold">
-          <path d="M11 2L6 10h5v12l5-8h-5V2z"/>
-        </svg>
-      </div>
-      <div class="absolute bottom-20 right-10 w-24 h-24 opacity-8">
-        <svg viewBox="0 0 24 24" fill="currentColor" class="w-full h-full text-texas-gold">
-          <path d="M11 2L6 10h5v12l5-8h-5V2z"/>
-        </svg>
-      </div>
       
       <!-- Content Container -->
       <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="py-20 sm:py-24 lg:py-32">
           <div class="text-center">
-            <!-- Main Heading with Texas Pride -->
+            <!-- Main Heading - Relief & Authority -->
             <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight tracking-tight">
-              <span class="block">Compare & Choose</span>
+              <span class="block text-texas-gold font-extrabold">Finally.</span>
+              <span class="block">Texas Electricity</span>
               <span class="block bg-gradient-to-r from-texas-gold via-texas-gold-300 to-texas-gold bg-clip-text text-transparent">
-                Texas Electricity
+                That Makes Sense.
               </span>
             </h1>
             
-            <!-- Enhanced Subheading -->
+            <!-- Reality Check Statement -->
             <p class="text-lg sm:text-xl lg:text-2xl text-blue-100 max-w-4xl mx-auto mb-4 leading-relaxed">
-              {marketingText.heroText}
+              No more 6.9¢ rates that cost 14¢. No more 40-page contracts.<br>
+              Just honest prices and straight answers from someone who's figured this out.
             </p>
             
-            <!-- Trust Indicators Above Search -->
-            <div class="flex flex-wrap items-center justify-center gap-6 mb-10 text-blue-200">
-              <div class="flex items-center gap-2">
-                <svg class="w-5 h-5 text-texas-gold" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                </svg>
-                <span class="font-medium">Expert-Ranked</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <svg class="w-5 h-5 text-texas-gold" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                </svg>
-                <span class="font-medium">100% Free</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <svg class="w-5 h-5 text-texas-gold" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
-                </svg>
-                <span class="font-medium">Secure & Private</span>
-              </div>
+            <!-- Urgency Coverage -->
+            <div class="mb-8">
+              <p class="text-xl sm:text-2xl text-texas-gold font-semibold">
+                Whether you're moving tomorrow or your rate just jumped, we'll get you sorted in 10 minutes.
+              </p>
             </div>
             
-            <!-- Enhanced ZIP Code Search -->
+            <!-- ZIP Code Search -->
             <StandardZipInput 
               variant="hero" 
               size="lg"
               showTitle={true}
               showDescription={true}
               showStats={true}
-              customClass="mb-12"
+              customClass="mb-8"
             />
 
-            <!-- Enhanced Call-to-Action -->
-            <div class="text-center">
-              <p class="text-blue-200 text-lg font-medium mb-4">
-                Join thousands of Texans saving on electricity every month
-              </p>
-              <div class="flex flex-wrap items-center justify-center gap-8 text-blue-300">
-                <div class="flex items-center gap-2">
-                  <div class="w-2 h-2 bg-texas-gold rounded-full animate-pulse"></div>
-                  <span class="text-sm">Real-time rate comparison</span>
-                </div>
-                <div class="flex items-center gap-2">
-                  <div class="w-2 h-2 bg-texas-gold rounded-full animate-pulse"></div>
-                  <span class="text-sm">No hidden fees or charges</span>
-                </div>
-                <div class="flex items-center gap-2">
-                  <div class="w-2 h-2 bg-texas-gold rounded-full animate-pulse"></div>
-                  <span class="text-sm">Expert analysis & ratings</span>
-                </div>
+            <!-- Trust Signals -->
+            <div class="flex flex-wrap items-center justify-center gap-6 text-blue-200 text-sm">
+              <div class="flex items-center gap-2">
+                <div class="w-2 h-2 bg-texas-gold rounded-full"></div>
+                <span>100+ plans from quality providers</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-2 h-2 bg-texas-gold rounded-full"></div>
+                <span>No sign-up needed</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-2 h-2 bg-texas-gold rounded-full"></div>
+                <span>No spam. Just answers.</span>
               </div>
             </div>
           </div>
@@ -136,476 +104,424 @@ const description = marketingText.seoDescription;
 
     </section>
 
-    <!-- Enhanced Key Benefits with Texas Theme -->
+    <!-- How It Works - Simple 3-Step Process -->
     <section class="py-20 bg-gradient-to-b from-gray-50 to-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
           <h2 class="text-4xl md:text-5xl font-bold text-texas-navy mb-6">
-            Expert Analysis & Category Rankings
+            How We Help You Choose Right
           </h2>
-          <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            We analyze providers by specialization to help you find exactly what you need. 
-            Our expert rankings are based on rates, customer service, plan features, and value.
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Three simple steps. No sales calls. No personal information. Just the facts you need to decide.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <!-- Green Energy Leaders -->
-          <div class="group relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border-2 border-transparent hover:border-texas-gold-200">
-            <div class="absolute inset-0 bg-gradient-to-br from-texas-gold-50 to-transparent rounded-2xl opacity-50"></div>
-            <div class="relative">
-              <div class="w-20 h-20 bg-gradient-to-br from-texas-gold-100 to-texas-gold-200 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                <Leaf className="w-10 h-10 text-texas-gold" />
-              </div>
-              <h3 class="text-xl font-bold text-texas-navy mb-3 text-center">Green Energy Leaders</h3>
-              <p class="text-gray-600 text-center leading-relaxed">100% renewable specialists with competitive green rates and environmental impact reporting</p>
-              <div class="mt-4 text-center">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-texas-gold-100 text-texas-navy">
-                  {DEFAULT_COUNTS.providerText.replace('trusted', 'Green')}
-                </span>
-              </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <!-- Step 1 -->
+          <div class="text-center">
+            <div class="w-20 h-20 bg-texas-red rounded-full flex items-center justify-center mx-auto mb-6">
+              <span class="text-2xl font-bold text-white">1</span>
             </div>
+            <h3 class="text-2xl font-bold text-texas-navy mb-4">Enter Your ZIP</h3>
+            <p class="text-gray-600 leading-relaxed">
+              We find quality providers in your area. No phone number. No email. No spam.
+            </p>
           </div>
 
-          <!-- Service Champions -->
-          <div class="group relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border-2 border-transparent hover:border-texas-navy/20">
-            <div class="absolute inset-0 bg-gradient-to-br from-texas-navy/5 to-transparent rounded-2xl opacity-50"></div>
-            <div class="relative">
-              <div class="w-20 h-20 bg-gradient-to-br from-texas-navy/10 to-texas-navy/20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                <Users className="w-10 h-10 text-texas-navy" />
-              </div>
-              <h3 class="text-xl font-bold text-texas-navy mb-3 text-center">Service Champions</h3>
-              <p class="text-gray-600 text-center leading-relaxed">Top-rated customer service and satisfaction leaders with 24/7 support and quick resolution</p>
-              <div class="mt-4 text-center">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-texas-navy/10 text-texas-navy">
-                  Top Service Providers
-                </span>
-              </div>
+          <!-- Step 2 -->
+          <div class="text-center">
+            <div class="w-20 h-20 bg-texas-red rounded-full flex items-center justify-center mx-auto mb-6">
+              <span class="text-2xl font-bold text-white">2</span>
             </div>
+            <h3 class="text-2xl font-bold text-texas-navy mb-4">See Real Costs</h3>
+            <p class="text-gray-600 leading-relaxed">
+              We calculate what each plan actually costs you. No fine print surprises.
+            </p>
           </div>
 
-          <!-- Best Value -->
-          <div class="group relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border-2 border-transparent hover:border-texas-gold/50">
-            <div class="absolute inset-0 bg-gradient-to-br from-texas-gold/10 to-transparent rounded-2xl opacity-50"></div>
-            <div class="relative">
-              <div class="w-20 h-20 bg-gradient-to-br from-texas-gold/20 to-texas-gold/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                <TrendingDown className="w-10 h-10 text-texas-gold" />
-              </div>
-              <h3 class="text-xl font-bold text-texas-navy mb-3 text-center">Best Value</h3>
-              <p class="text-gray-600 text-center leading-relaxed">Lowest total costs with competitive rates, minimal fees, and transparent pricing structures</p>
-              <div class="mt-4 text-center">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-texas-gold-100 text-texas-navy">
-                  Best Value Options
-                </span>
-              </div>
+          <!-- Step 3 -->
+          <div class="text-center">
+            <div class="w-20 h-20 bg-texas-red rounded-full flex items-center justify-center mx-auto mb-6">
+              <span class="text-2xl font-bold text-white">3</span>
             </div>
+            <h3 class="text-2xl font-bold text-texas-navy mb-4">Pick the Winner</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Choose the plan that saves you the most money. Click through to sign up directly.
+            </p>
           </div>
+        </div>
 
-          <!-- Smart Plans -->
-          <div class="group relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border-2 border-transparent hover:border-texas-red/30">
-            <div class="absolute inset-0 bg-gradient-to-br from-texas-red/10 to-transparent rounded-2xl opacity-50"></div>
-            <div class="relative">
-              <div class="w-20 h-20 bg-gradient-to-br from-texas-red/20 to-texas-red/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                <Battery className="w-10 h-10 text-texas-red" />
-              </div>
-              <h3 class="text-xl font-bold text-texas-navy mb-3 text-center">Smart Plans</h3>
-              <p class="text-gray-600 text-center leading-relaxed">Advanced features like time-of-use rates, smart home integration, and usage analytics</p>
-              <div class="mt-4 text-center">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-texas-red-100 text-texas-navy">
-                  8+ Providers
-                </span>
-              </div>
+        <!-- Moving-Specific Warning -->
+        <div class="mt-12 mb-8 bg-texas-gold-50 rounded-xl p-8 border border-texas-gold-200">
+          <div class="text-center">
+            <h3 class="text-2xl font-bold text-texas-navy mb-4">Moving? Don't Transfer Your Old Plan</h3>
+            <div class="max-w-4xl mx-auto text-left space-y-4">
+              <p class="text-gray-700 leading-relaxed">
+                <strong>Here's why transferring is usually a mistake:</strong>
+              </p>
+              <ul class="text-gray-700 leading-relaxed space-y-2 ml-6">
+                <li class="flex items-start gap-2">
+                  <span class="text-texas-gold mt-1">•</span>
+                  <span>Your current plan's price is based on your OLD home's usage</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-texas-gold mt-1">•</span>
+                  <span>'Fixed rate' is misleading - it's actually a formula that changes based on how much electricity you use</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-texas-gold mt-1">•</span>
+                  <span>A plan that works for a 2-bedroom apartment will cost way more in a 4-bedroom house (or vice versa)</span>
+                </li>
+              </ul>
+              <p class="text-gray-700 leading-relaxed font-semibold text-center mt-6">
+                Let's find a plan that matches your NEW home instead. Takes the same 10 minutes as transferring, saves you money.
+              </p>
             </div>
           </div>
         </div>
 
-        <!-- Call to Action Below Benefits -->
-        <div class="mt-12 text-center">
-          <p class="text-lg text-gray-600 mb-6">Ready to find your perfect electricity plan?</p>
-          <a href="/compare" class="inline-flex items-center gap-2 bg-gradient-to-r from-texas-navy to-blue-800 text-white px-8 py-4 rounded-xl font-semibold hover:from-texas-navy/90 hover:to-blue-800/90 transition-all duration-300 shadow-lg hover:shadow-xl">
-            <BarChart className="w-5 h-5" />
-            Compare All Plans
+        <!-- CTA -->
+        <div class="mt-16 text-center">
+          <a href="#zipForm" class="inline-flex items-center gap-2 bg-texas-red text-white px-10 py-4 rounded-xl font-semibold text-lg hover:bg-texas-red-600 transition-all shadow-lg hover:shadow-xl">
+            Find My Right Plan
+            <ArrowRight className="w-5 h-5" />
           </a>
         </div>
       </div>
     </section>
 
-    <!-- Enhanced Quick Actions with Texas Branding -->
+    <!-- Conversational Path Selector -->
     <section class="py-20 bg-gradient-to-b from-texas-cream/30 to-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
           <h2 class="text-4xl md:text-5xl font-bold text-texas-navy mb-6">
-            Find Your Perfect Plan
+            What brings you here today?
           </h2>
-          <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Multiple pathways to discover electricity plans tailored to your unique needs and priorities.
-            Start your energy savings journey today.
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Tell us your situation and we'll show you exactly what you need to know.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <!-- Browse by Location -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Moving -->
           <div class="group relative">
-            <div class="absolute inset-0 bg-gradient-to-br from-texas-navy/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <a href="/texas" class="relative block bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 text-center border-2 border-transparent group-hover:border-texas-navy/20 transform group-hover:-translate-y-1">
-              <div class="w-20 h-20 bg-gradient-to-br from-texas-navy/10 to-texas-navy/20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <MapPin className="w-10 h-10 text-texas-navy" />
+            <a href="/moving" class="block bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 text-center border-2 border-transparent hover:border-texas-red/30">
+              <div class="w-16 h-16 bg-texas-red/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <MapPin className="w-8 h-8 text-texas-red" />
               </div>
-              <h3 class="text-2xl font-bold text-texas-navy mb-4">Browse by Location</h3>
-              <p class="text-gray-600 mb-6 leading-relaxed">
-                Discover providers and plans available in your specific Texas city or region. 
-                Get local market insights and city-specific recommendations.
+              <div class="bg-texas-red text-white px-4 py-2 rounded-full text-sm font-semibold mb-3">
+                I'm moving
+              </div>
+              <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                Need power on before you arrive? Your new home needs a plan that matches its size and your usage.
               </p>
-              <div class="flex items-center justify-center gap-2 text-texas-navy font-semibold group-hover:text-texas-navy/80 transition-colors">
-                <span>Explore 881 Cities</span>
-                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                </svg>
-              </div>
-              
-              <!-- Location Stats -->
-              <div class="mt-6 grid grid-cols-2 gap-4 pt-6 border-t border-gray-100">
-                <div class="text-center">
-                  <div class="text-lg font-bold text-texas-navy">4</div>
-                  <div class="text-xs text-gray-500 uppercase tracking-wide">Major Regions</div>
-                </div>
-                <div class="text-center">
-                  <div class="text-lg font-bold text-texas-navy">881</div>
-                  <div class="text-xs text-gray-500 uppercase tracking-wide">Cities Covered</div>
-                </div>
-              </div>
+              <span class="text-texas-red font-semibold text-sm group-hover:underline">
+                Get Power On Day One →
+              </span>
             </a>
           </div>
 
-          <!-- Compare Plans -->
+          <!-- High Bill -->
           <div class="group relative">
-            <div class="absolute inset-0 bg-gradient-to-br from-texas-gold/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <a href="/electricity-plans" class="relative block bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 text-center border-2 border-transparent group-hover:border-texas-gold/30 transform group-hover:-translate-y-1">
-              <div class="w-20 h-20 bg-gradient-to-br from-texas-gold/20 to-texas-gold/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <BarChart className="w-10 h-10 text-texas-gold" />
+            <a href="/high-bill" class="block bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 text-center border-2 border-transparent hover:border-texas-gold/50">
+              <div class="w-16 h-16 bg-texas-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <DollarSign className="w-8 h-8 text-texas-gold" />
               </div>
-              <h3 class="text-2xl font-bold text-texas-navy mb-4">Compare Plans</h3>
-              <p class="text-gray-600 mb-6 leading-relaxed">
-                Advanced side-by-side comparison of electricity rates, contract terms, features, 
-                and verified customer reviews from real Texas residents.
+              <div class="bg-texas-gold text-white px-4 py-2 rounded-full text-sm font-semibold mb-3">
+                My bill's too high
+              </div>
+              <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                That sinking feeling when you open the bill? Let's see what you should actually be paying.
               </p>
-              <div class="flex items-center justify-center gap-2 text-texas-navy font-semibold group-hover:text-texas-navy/80 transition-colors">
-                <span>Compare All Plans</span>
-                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                </svg>
-              </div>
-              
-              <!-- Comparison Stats -->
-              <div class="mt-6 grid grid-cols-2 gap-4 pt-6 border-t border-gray-100">
-                <div class="text-center">
-                  <div class="text-lg font-bold text-texas-navy">{DEFAULT_COUNTS.plans}+</div>
-                  <div class="text-xs text-gray-500 uppercase tracking-wide">Active Plans</div>
-                </div>
-                <div class="text-center">
-                  <div class="text-lg font-bold text-texas-navy">{DEFAULT_COUNTS.providers}</div>
-                  <div class="text-xs text-gray-500 uppercase tracking-wide">Providers</div>
-                </div>
-              </div>
+              <span class="text-texas-gold font-semibold text-sm group-hover:underline">
+                Show Me What I Should Pay →
+              </span>
             </a>
           </div>
 
-          <!-- Calculate Costs -->
+          <!-- Contract Ending -->
           <div class="group relative">
-            <div class="absolute inset-0 bg-gradient-to-br from-texas-red/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <a href="/rates/calculator" class="relative block bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 text-center border-2 border-transparent group-hover:border-texas-red/30 transform group-hover:-translate-y-1">
-              <div class="w-20 h-20 bg-gradient-to-br from-texas-red/20 to-texas-red/30 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Calculator className="w-10 h-10 text-texas-red" />
+            <a href="/contract-ending" class="block bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 text-center border-2 border-transparent hover:border-texas-navy/30">
+              <div class="w-16 h-16 bg-texas-navy/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Clock className="w-8 h-8 text-texas-navy" />
               </div>
-              <h3 class="text-2xl font-bold text-texas-navy mb-4">Calculate Costs</h3>
-              <p class="text-gray-600 mb-6 leading-relaxed">
-                Smart bill calculator that estimates your monthly costs based on actual usage patterns,
-                seasonal variations, and Texas climate considerations.
+              <div class="bg-texas-navy text-white px-4 py-2 rounded-full text-sm font-semibold mb-3">
+                Contract ending soon
+              </div>
+              <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                Got that renewal notice? Good timing. Let's find you something better before auto-renewal hits.
               </p>
-              <div class="flex items-center justify-center gap-2 text-texas-red font-semibold group-hover:text-texas-red/80 transition-colors">
-                <span>Calculate Savings</span>
-                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                </svg>
+              <span class="text-texas-navy font-semibold text-sm group-hover:underline">
+                Beat Auto-Renewal →
+              </span>
+            </a>
+          </div>
+
+          <!-- Need $0 Deposit -->
+          <div class="group relative">
+            <a href="/no-deposit" class="block bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 text-center border-2 border-transparent hover:border-green-500/30">
+              <div class="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Shield className="w-8 h-8 text-green-600" />
               </div>
-              
-              <!-- Calculator Stats -->
-              <div class="mt-6 grid grid-cols-2 gap-4 pt-6 border-t border-gray-100">
-                <div class="text-center">
-                  <div class="text-lg font-bold text-texas-red">$400</div>
-                  <div class="text-xs text-gray-500 uppercase tracking-wide">Avg. Savings</div>
-                </div>
-                <div class="text-center">
-                  <div class="text-lg font-bold text-texas-red">1M+</div>
-                  <div class="text-xs text-gray-500 uppercase tracking-wide">Calculations</div>
-                </div>
+              <div class="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-3">
+                Need $0 deposit
               </div>
+              <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                Why tie up money in deposits when you need it elsewhere? We'll find options that work for your situation.
+              </p>
+              <span class="text-green-600 font-semibold text-sm group-hover:underline">
+                Find No-Deposit Plans →
+              </span>
             </a>
           </div>
         </div>
 
-        <!-- Additional CTA Section -->
-        <div class="mt-16 text-center">
-          <div class="bg-gradient-to-r from-texas-navy to-blue-800 rounded-2xl p-8 text-white">
-            <h3 class="text-2xl font-bold mb-4">Not sure where to start?</h3>
-            <p class="text-blue-100 mb-6 max-w-2xl mx-auto">
-              Our electricity experts have analyzed every major Texas provider to help you make the best decision.
+        <!-- General CTA -->
+        <div class="mt-12 text-center">
+          <p class="text-lg text-gray-600 mb-6">
+            Not sure which fits? No problem.
+          </p>
+          <a href="#zipForm" class="inline-flex items-center gap-2 bg-texas-navy text-white px-8 py-3 rounded-xl font-semibold hover:bg-texas-navy/90 transition-all">
+            <BarChart className="w-5 h-5" />
+            Just Show Me What's Available
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why This Matters - Transformation Messaging -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-texas-navy mb-6">
+            The Real Cost of Doing Nothing
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Every month you stick with your current plan is money left on the table. Here's what Texas families actually save.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <!-- Average Family -->
+          <div class="bg-texas-cream-50 rounded-xl p-8 text-center border border-texas-cream-200">
+            <div class="text-4xl font-bold text-texas-navy mb-2">$347</div>
+            <div class="text-lg font-semibold text-texas-navy mb-3">Average Family Saves</div>
+            <p class="text-gray-600 text-sm">
+              Based on 1,200 kWh monthly usage switching from default rates to competitive plans
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a href="/providers" class="bg-white text-texas-navy px-8 py-3 rounded-xl font-semibold hover:bg-texas-cream transition-colors inline-flex items-center gap-2">
-                <Award className="w-5 h-5" />
-                View Expert Rankings
-              </a>
-              <a href="/resources" class="border border-white/30 text-white px-8 py-3 rounded-xl font-semibold hover:bg-white/10 transition-colors inline-flex items-center gap-2">
-                <Shield className="w-5 h-5" />
-                Learning Center
-              </a>
+          </div>
+
+          <!-- High Usage -->
+          <div class="bg-texas-gold-50 rounded-xl p-8 text-center border border-texas-gold-200">
+            <div class="text-4xl font-bold text-texas-navy mb-2">$642</div>
+            <div class="text-lg font-semibold text-texas-navy mb-3">High Usage Homes</div>
+            <p class="text-gray-600 text-sm">
+              Families using 2,000+ kWh benefit even more from switching to the right plan
+            </p>
+          </div>
+
+          <!-- Small Apartments -->
+          <div class="bg-texas-navy/5 rounded-xl p-8 text-center border border-texas-navy/10">
+            <div class="text-4xl font-bold text-texas-navy mb-2">$184</div>
+            <div class="text-lg font-semibold text-texas-navy mb-3">Small Apartments</div>
+            <p class="text-gray-600 text-sm">
+              Even low usage customers save hundreds by avoiding expensive default rates
+            </p>
+          </div>
+        </div>
+
+        <!-- The Problem -->
+        <div class="bg-texas-red-50 rounded-xl p-8 mb-12 border border-texas-red-200">
+          <h3 class="text-2xl font-bold text-texas-navy mb-4 text-center">
+            Here's the Problem Everyone Talks About
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <h4 class="font-bold text-texas-navy mb-3">Before Using Our Service</h4>
+              <ul class="space-y-2 text-gray-700">
+                <li class="flex items-start gap-2">
+                  <span class="text-texas-red mt-1">✗</span>
+                  <span>Confused by misleading "teaser rates"</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-texas-red mt-1">✗</span>
+                  <span>Stuck paying inflated default rates</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-texas-red mt-1">✗</span>
+                  <span>Overwhelmed by 100+ plan options</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-texas-red mt-1">✗</span>
+                  <span>Getting pestered by aggressive salespeople</span>
+                </li>
+              </ul>
             </div>
+            <div>
+              <h4 class="font-bold text-texas-navy mb-3">After Using Our Service</h4>
+              <ul class="space-y-2 text-gray-700">
+                <li class="flex items-start gap-2">
+                  <span class="text-green-600 mt-1">✓</span>
+                  <span>Crystal clear on total costs</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-green-600 mt-1">✓</span>
+                  <span>Paying fair market rates</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-green-600 mt-1">✓</span>
+                  <span>Confident in your choice</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-green-600 mt-1">✓</span>
+                  <span>Saving hundreds every year</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center">
+          <h3 class="text-2xl font-bold text-texas-navy mb-4">
+            Ready to Stop Overpaying?
+          </h3>
+          <p class="text-lg text-gray-600 mb-8">
+            Most people find their plan in about 10 minutes. You could be saving money by next month.
+          </p>
+          <a href="#zipForm" class="inline-flex items-center gap-2 bg-texas-red text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-texas-red-600 transition-all shadow-lg hover:shadow-xl">
+            Find My Best Plan Now
+            <ArrowRight className="w-5 h-5" />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Micro-Lessons Section -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-texas-navy mb-6">
+            Quick Electricity 101
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Complex made simple. Here's what you actually need to know.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- What's a kWh? -->
+          <div class="bg-texas-cream-50 rounded-xl p-6 border border-texas-cream-200">
+            <h3 class="text-xl font-bold text-texas-navy mb-3">What's a kWh?</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              Think of it like gas for your car. You pay per gallon of gas. You pay per kWh of electricity.
+            </p>
+            <p class="text-gray-700 leading-relaxed font-semibold">
+              Average Texas home uses about 1,000 per month. Now let's find your price per "gallon."
+            </p>
+          </div>
+
+          <!-- Why do rates vary? -->
+          <div class="bg-texas-gold-50 rounded-xl p-6 border border-texas-gold-200">
+            <h3 class="text-xl font-bold text-texas-navy mb-3">Why Do Rates Vary?</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              Same electricity, different middlemen. Like buying the same coffee at different shops.
+            </p>
+            <p class="text-gray-700 leading-relaxed font-semibold">
+              The coffee's identical, but one shop charges more. Let's find the shop that doesn't overcharge.
+            </p>
+          </div>
+
+          <!-- Fixed vs Variable? -->
+          <div class="bg-texas-navy/5 rounded-xl p-6 border border-texas-navy/10">
+            <h3 class="text-xl font-bold text-texas-navy mb-3">Fixed vs Variable?</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              Fixed = your rate stays the same all year. Variable = your rate changes with the market.
+            </p>
+            <p class="text-gray-700 leading-relaxed font-semibold">
+              Fixed is like locking in gas prices. Variable is like paying whatever's on the pump.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Enhanced Featured Providers with Professional Cards -->
-    <section class="py-20 bg-white">
+    <!-- Social Proof & Trust Signals -->
+    <section class="py-20 bg-gray-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold text-texas-navy mb-6">
-            Top-Rated Texas Providers
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-texas-navy mb-4">
+            We Only Show You the Good Ones
           </h2>
-          <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Hand-picked electricity providers based on customer satisfaction, competitive rates, 
-            and reliable service across Texas markets.
+          <p class="text-lg text-gray-600">
+            100+ plans from quality providers. No fly-by-night companies. No door-to-door scammers.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-          <!-- Gexa Energy - Featured Provider -->
-          <div class="group relative">
-            <div class="absolute inset-0 bg-gradient-to-br from-texas-gold-50 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div class="relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border-2 border-transparent group-hover:border-texas-gold-200">
-              <!-- Featured Badge -->
-              <div class="absolute top-0 right-0">
-                <div class="bg-gradient-to-r from-texas-gold to-texas-gold-600 text-white px-3 py-1 text-xs font-bold rounded-bl-lg">
-                  Featured
-                </div>
-              </div>
-
-              <!-- Provider Header -->
-              <div class="flex items-start gap-4 mb-6">
-                <div class="w-16 h-16 bg-texas-gold-100 rounded-lg flex items-center justify-center p-2">
-                  <Leaf className="w-8 h-8 text-texas-gold-600" />
-                </div>
-                <div class="flex-1">
-                  <h3 class="text-2xl font-bold text-texas-navy mb-1">Gexa Energy</h3>
-                  <div class="flex items-center gap-3">
-                    <div class="flex items-center gap-1">
-                      <Star className="w-4 h-4 text-texas-gold fill-current" />
-                      <span class="font-semibold text-sm">4.3</span>
-                    </div>
-                    <span class="text-sm text-gray-500">(2,847 reviews)</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Specialties -->
-              <div class="flex flex-wrap gap-2 mb-6">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-texas-gold-100 text-texas-navy">
-                  100% Green Energy
-                </span>
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-texas-navy/10 text-texas-navy">
-                  Service Champion
-                </span>
-              </div>
-
-              <!-- Description -->
-              <p class="text-gray-600 mb-6 leading-relaxed">
-                Leading renewable energy provider with 100% green electricity plans, 
-                satisfaction guarantees, and award-winning customer service.
-              </p>
-
-              <!-- Key Stats -->
-              <div class="grid grid-cols-2 gap-4 mb-6 p-4 bg-gray-50 rounded-lg">
-                <div class="text-center">
-                  <div class="text-lg font-bold text-texas-navy">9.8¢</div>
-                  <div class="text-xs text-gray-500">Starting Rate</div>
-                </div>
-                <div class="text-center">
-                  <div class="text-lg font-bold text-texas-navy">15+</div>
-                  <div class="text-xs text-gray-500">Plan Options</div>
-                </div>
-              </div>
-
-              <!-- Action Buttons -->
-              <div class="flex gap-3">
-                <a href="/providers/gexa-energy" class="flex-1 text-center py-2 px-4 border-2 border-texas-navy text-texas-navy rounded-lg font-semibold hover:bg-texas-navy hover:text-white transition-all">
-                  About Gexa Energy
-                </a>
-                <a href="/providers/gexa-energy/plans" class="flex-1 text-center py-2 px-4 bg-gradient-to-r from-texas-gold-600 to-texas-gold-700 text-white rounded-lg font-semibold hover:from-texas-gold-700 hover:to-texas-gold-800 transition-all">
-                  View Plans
-                </a>
-              </div>
+        <!-- Trust Indicators -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-texas-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Shield className="w-8 h-8 text-texas-gold" />
             </div>
+            <h3 class="font-bold text-texas-navy mb-2">Licensed & Regulated</h3>
+            <p class="text-gray-600 text-sm">
+              Every provider we work with is licensed by the Public Utility Commission of Texas
+            </p>
           </div>
-
-          <!-- Reliant Energy -->
-          <div class="group relative">
-            <div class="absolute inset-0 bg-gradient-to-br from-texas-navy/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div class="relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border-2 border-transparent group-hover:border-texas-navy/20">
-              <!-- Provider Header -->
-              <div class="flex items-start gap-4 mb-6">
-                <div class="w-16 h-16 bg-texas-navy/10 rounded-lg flex items-center justify-center p-2">
-                  <Shield className="w-8 h-8 text-texas-navy" />
-                </div>
-                <div class="flex-1">
-                  <h3 class="text-2xl font-bold text-texas-navy mb-1">Reliant Energy</h3>
-                  <div class="flex items-center gap-3">
-                    <div class="flex items-center gap-1">
-                      <Star className="w-4 h-4 text-texas-gold fill-current" />
-                      <span class="font-semibold text-sm">4.1</span>
-                    </div>
-                    <span class="text-sm text-gray-500">(5,234 reviews)</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Specialties -->
-              <div class="flex flex-wrap gap-2 mb-6">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-texas-navy/10 text-texas-navy">
-                  Trusted Brand
-                </span>
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-texas-gold-100 text-texas-navy">
-                  Green Options
-                </span>
-              </div>
-
-              <!-- Description -->
-              <p class="text-gray-600 mb-6 leading-relaxed">
-                Established provider with comprehensive plan options, bill protection features, 
-                and renewable energy choices for Texas families.
-              </p>
-
-              <!-- Key Stats -->
-              <div class="grid grid-cols-2 gap-4 mb-6 p-4 bg-gray-50 rounded-lg">
-                <div class="text-center">
-                  <div class="text-lg font-bold text-texas-navy">11.0¢</div>
-                  <div class="text-xs text-gray-500">Starting Rate</div>
-                </div>
-                <div class="text-center">
-                  <div class="text-lg font-bold text-texas-navy">25+</div>
-                  <div class="text-xs text-gray-500">Plan Options</div>
-                </div>
-              </div>
-
-              <!-- Action Buttons -->
-              <div class="flex gap-3">
-                <a href="/providers/reliant-energy" class="flex-1 text-center py-2 px-4 border-2 border-texas-navy text-texas-navy rounded-lg font-semibold hover:bg-texas-navy hover:text-white transition-all">
-                  About Reliant Energy
-                </a>
-                <a href="/providers/reliant-energy/plans" class="flex-1 text-center py-2 px-4 bg-gradient-to-r from-texas-navy to-blue-800 text-white rounded-lg font-semibold hover:from-texas-navy/90 hover:to-blue-800/90 transition-all">
-                  View Plans
-                </a>
-              </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-texas-navy/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Users className="w-8 h-8 text-texas-navy" />
             </div>
+            <h3 class="font-bold text-texas-navy mb-2">Real Customer Reviews</h3>
+            <p class="text-gray-600 text-sm">
+              We show honest ratings from actual Texas customers, not fake testimonials
+            </p>
           </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-texas-red/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <DollarSign className="w-8 h-8 text-texas-red" />
+            </div>
+            <h3 class="font-bold text-texas-navy mb-2">Always Free for You</h3>
+            <p class="text-gray-600 text-sm">
+              The electricity companies pay us when you sign up. You pay the same price either way, so why not get help?
+            </p>
+          </div>
+        </div>
 
-          <!-- TXU Energy -->
-          <div class="group relative">
-            <div class="absolute inset-0 bg-gradient-to-br from-texas-gold/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div class="relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border-2 border-transparent group-hover:border-texas-gold/30">
-              <!-- Provider Header -->
-              <div class="flex items-start gap-4 mb-6">
-                <div class="w-16 h-16 bg-texas-gold/20 rounded-lg flex items-center justify-center p-2">
-                  <Zap className="w-8 h-8 text-texas-gold" />
-                </div>
-                <div class="flex-1">
-                  <h3 class="text-2xl font-bold text-texas-navy mb-1">TXU Energy</h3>
-                  <div class="flex items-center gap-3">
-                    <div class="flex items-center gap-1">
-                      <Star className="w-4 h-4 text-texas-gold fill-current" />
-                      <span class="font-semibold text-sm">4.0</span>
-                    </div>
-                    <span class="text-sm text-gray-500">(3,921 reviews)</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Specialties -->
-              <div class="flex flex-wrap gap-2 mb-6">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-texas-red-100 text-texas-navy">
-                  Best Value
-                </span>
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-texas-cream-100 text-texas-navy">
-                  Smart Plans
-                </span>
-              </div>
-
-              <!-- Description -->
-              <p class="text-gray-600 mb-6 leading-relaxed">
-                Texas's largest electricity provider offering competitive rates, 
-                innovative smart home features, and flexible plan options.
+        <!-- Our Story - Trust Building -->
+        <div class="bg-texas-cream-50 rounded-xl p-8 mb-8 border border-texas-cream-200">
+          <div class="max-w-4xl mx-auto">
+            <h3 class="text-2xl font-bold text-texas-navy mb-6 text-center">
+              Why We Built This
+            </h3>
+            <div class="space-y-4 text-gray-700 leading-relaxed">
+              <p>
+                <strong>Back in 2009,</strong> we discovered firsthand how confusing electricity shopping in Texas could be. We had the power to choose, but using it effectively? That was hard.
               </p>
-
-              <!-- Key Stats -->
-              <div class="grid grid-cols-2 gap-4 mb-6 p-4 bg-gray-50 rounded-lg">
-                <div class="text-center">
-                  <div class="text-lg font-bold text-texas-navy">10.5¢</div>
-                  <div class="text-xs text-gray-500">Starting Rate</div>
-                </div>
-                <div class="text-center">
-                  <div class="text-lg font-bold text-texas-navy">30+</div>
-                  <div class="text-xs text-gray-500">Plan Options</div>
-                </div>
-              </div>
-
-              <!-- Action Buttons -->
-              <div class="flex gap-3">
-                <a href="/providers/txu-energy" class="flex-1 text-center py-2 px-4 border-2 border-texas-navy text-texas-navy rounded-lg font-semibold hover:bg-texas-navy hover:text-white transition-all">
-                  About TXU Energy
-                </a>
-                <a href="/providers/txu-energy/plans" class="flex-1 text-center py-2 px-4 bg-gradient-to-r from-texas-gold to-texas-gold-600 text-white rounded-lg font-semibold hover:from-texas-gold/90 hover:to-texas-gold-600/90 transition-all">
-                  View Plans
-                </a>
-              </div>
+              <p>
+                The bill came. Our "8.9¢" plan cost 16¢. We felt foolish. Then we realized – we weren't stupid. The system was just really complicated.
+              </p>
+              <p>
+                So we built tools to help Texans like us use their power of choice effectively. Clear comparisons. Real prices. No confusion.
+              </p>
+              <p class="font-semibold text-center">
+                Today, thousands of Texans use our tools every month. Not because we advertise. Because it works, and they tell their friends.
+              </p>
             </div>
           </div>
         </div>
 
-        <!-- Provider Categories -->
-        <div class="mb-12">
-          <h3 class="text-2xl font-bold text-texas-navy text-center mb-8">Browse by Specialization</h3>
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <a href="/providers/green-energy" class="group text-center p-6 bg-texas-gold-50 rounded-xl border border-texas-gold-100 hover:border-texas-gold-200 hover:bg-texas-gold-100 transition-all">
-              <Leaf className="w-8 h-8 text-texas-gold-600 mx-auto mb-3" />
-              <h4 class="font-semibold text-texas-navy mb-1">Green Energy</h4>
-              <p class="text-sm text-texas-navy">Green Options</p>
-            </a>
-            <a href="/providers/service-champions" class="group text-center p-6 bg-texas-navy/5 rounded-xl border border-texas-navy/10 hover:border-texas-navy/20 hover:bg-texas-navy/10 transition-all">
-              <Users className="w-8 h-8 text-texas-navy mx-auto mb-3" />
-              <h4 class="font-semibold text-texas-navy mb-1">Service Champions</h4>
-              <p class="text-sm text-texas-navy/70">Top Rated</p>
-            </a>
-            <a href="/providers/best-value" class="group text-center p-6 bg-texas-red-50 rounded-xl border border-texas-red-100 hover:border-texas-red-200 hover:bg-texas-red-100 transition-all">
-              <DollarSign className="w-8 h-8 text-texas-red-600 mx-auto mb-3" />
-              <h4 class="font-semibold text-texas-navy mb-1">Best Value</h4>
-              <p class="text-sm text-texas-red-600">Best Rates</p>
-            </a>
-            <a href="/providers/smart-plans" class="group text-center p-6 bg-texas-cream-100 rounded-xl border border-texas-cream-200 hover:border-texas-cream-300 hover:bg-texas-cream-200 transition-all">
-              <Battery className="w-8 h-8 text-texas-navy mx-auto mb-3" />
-              <h4 class="font-semibold text-texas-navy mb-1">Smart Plans</h4>
-              <p class="text-sm text-texas-navy/70">Smart Features</p>
-            </a>
-          </div>
-        </div>
-
-        <!-- Call to Action -->
-        <div class="text-center">
-          <p class="text-lg text-gray-600 mb-6">
-            Ready to explore all Texas electricity providers?
+        <!-- Final CTA -->
+        <div class="bg-texas-navy rounded-xl p-8 text-white text-center">
+          <h3 class="text-2xl font-bold mb-4">
+            Your Neighbors Are Saving Money Too
+          </h3>
+          <p class="text-blue-100 mb-6 max-w-2xl mx-auto">
+            Join them. Enter your ZIP code above and see what's really available in your area.
           </p>
-          <a href="/providers" class="inline-flex items-center gap-2 bg-gradient-to-r from-texas-navy to-blue-800 text-white px-10 py-4 rounded-xl font-bold text-lg hover:from-texas-navy/90 hover:to-blue-800/90 transition-all shadow-lg hover:shadow-xl">
-            <Award className="w-5 h-5" />
-            View All {DEFAULT_COUNTS.providerText.replace('trusted ', '').replace('licensed ', '')}
+          <a href="#zipForm" class="inline-flex items-center gap-2 bg-texas-red text-white px-8 py-3 rounded-xl font-semibold hover:bg-texas-red-600 transition-all">
+            Show Me My Options
             <ArrowRight className="w-5 h-5" />
           </a>
         </div>

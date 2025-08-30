@@ -102,7 +102,7 @@ export function StatePage({ state }: StatePageProps) {
             <div className="lg:w-80">
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder={`Enter ${stateData.abbreviation} ZIP code`}
+                placeholder="Enter zip code"
               />
             </div>
           </div>
@@ -124,7 +124,7 @@ export function StatePage({ state }: StatePageProps) {
                     onChange={(e) => setFilterType(e.target.value as any)}
                     className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   >
-                    <option value="all">All Plans</option>
+                    <option value="all">All Plan Types</option>
                     <option value="cheapest">Cheapest Rates</option>
                     <option value="green">Green Energy</option>
                     <option value="no-deposit">No Deposit</option>

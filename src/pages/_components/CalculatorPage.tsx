@@ -83,7 +83,7 @@ export function CalculatorPage() {
               Find Out What You'd Really Pay
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-green-100 max-w-4xl mx-auto">
-              See your actual monthly bills with every plan available. 
+              See your actual monthly bills with quality plans available. 
               Know exactly what you'd pay before you switch.
             </p>
 
@@ -287,7 +287,7 @@ export function CalculatorPage() {
                 onClick={() => navigate('/rates')}
                 className="bg-gray-600 text-white px-8 py-3 rounded-lg hover:bg-gray-700 transition-colors font-medium"
               >
-                Browse All Plans
+                Browse Quality Plans
               </button>
             </div>
           </div>

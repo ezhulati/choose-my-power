@@ -53,13 +53,13 @@ export function Homepage({ onNavigate }: HomepageProps) {
             <div className="max-w-md mx-auto mb-6 sm:mb-8">
               <ZipCodeSearch 
                 onSearch={handleZipSearch}
-                placeholder="Enter your ZIP code"
+                placeholder="Enter zip code"
                 size="lg"
               />
             </div>
 
             <div className="text-blue-200">
-              <p className="text-sm sm:text-base md:text-lg">{DEFAULT_COUNTS.providers} Expert-Ranked Providers • 6 Specializations • Free Comparison Tools</p>
+              <p className="text-sm sm:text-base md:text-lg">{DEFAULT_COUNTS.providers} providers we actually tested • All the real prices • No nonsense, just facts</p>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@ export function Homepage({ onNavigate }: HomepageProps) {
                 <Leaf className="w-6 h-6 sm:w-8 sm:h-8 text-green-600" />
               </div>
               <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">Actually Green (Not Greenwashed)</h3>
-              <p className="text-sm sm:text-base text-gray-600">Real 100% renewable energy, not marketing tricks</p>
+              <p className="text-sm sm:text-base text-gray-600">We checked - these are really 100% renewable, not just pretending</p>
             </div>
 
             <div className="text-center p-4 sm:p-6">
@@ -91,7 +91,7 @@ export function Homepage({ onNavigate }: HomepageProps) {
                 <Users className="w-6 h-6 sm:w-8 sm:h-8 text-texas-navy" />
               </div>
               <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">They Actually Answer the Phone</h3>
-              <p className="text-sm sm:text-base text-gray-600">Companies that pick up when you call, not send you to voicemail hell</p>
+              <p className="text-sm sm:text-base text-gray-600">We called them all. These ones actually pick up and help</p>
             </div>
 
             <div className="text-center p-4 sm:p-6">
@@ -185,7 +185,7 @@ export function Homepage({ onNavigate }: HomepageProps) {
               Market Coverage & Expert Analysis
             </h2>
             <p className="text-lg sm:text-xl text-gray-600">
-              Comprehensive coverage of deregulated electricity markets
+              Complete coverage of deregulated electricity markets
             </p>
           </div>
 
@@ -222,7 +222,7 @@ export function Homepage({ onNavigate }: HomepageProps) {
       <section className="py-8 sm:py-12 md:py-16 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
-            Ready to Find Your Perfect Provider?
+            Ready to Find Your Best Provider?
           </h2>
           <p className="text-lg sm:text-xl mb-6 sm:mb-8 text-blue-100">
             Join millions who have found the right electricity provider using our expert analysis

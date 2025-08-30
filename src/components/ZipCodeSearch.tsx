@@ -75,7 +75,7 @@ export interface ZipCodeSearchProps {
 
 export function ZipCodeSearch({
   onSearch,
-  placeholder = "Enter your Texas ZIP code",
+  placeholder = "Enter zip code",
   size = 'md',
   variant = 'texas',
   showSuggestions = true,
@@ -395,6 +395,7 @@ export function ZipCodeSearch({
             placeholder={placeholder}
             disabled={disabled}
             maxLength={5}
+            aria-placeholder="e.g., 75201"
             className={cn(
               'flex-1 pl-12 pr-20',
               config.input,
@@ -402,7 +403,7 @@ export function ZipCodeSearch({
               'focus:outline-none transition-all duration-200',
               disabled && 'cursor-not-allowed'
             )}
-            aria-label="ZIP code search"
+            aria-label="Enter your Texas ZIP code to find electricity plans"
             aria-describedby={error ? 'zip-error' : undefined}
             aria-expanded={showDropdown}
             aria-autocomplete="list"
@@ -435,7 +436,7 @@ export function ZipCodeSearch({
               style.button,
               'transition-all duration-200 flex items-center justify-center gap-2'
             )}
-            aria-label="Search electricity plans"
+            aria-label="Find your best electricity rates"
           >
             {isLoadingState ? (
               <div className="animate-spin">
@@ -444,7 +445,7 @@ export function ZipCodeSearch({
             ) : (
               <>
                 <Search className={config.icon} />
-                {size === 'xl' && <span>Search</span>}
+                {size === 'xl' && <span>Show me plans</span>}
               </>
             )}
           </Button>
@@ -454,7 +455,7 @@ export function ZipCodeSearch({
         {error && (
           <div id="zip-error" className="mt-2 flex items-center gap-2 text-texas-red">
             <AlertCircle className="h-4 w-4 flex-shrink-0" />
-            <span className="text-sm">{error.userMessage}</span>
+            <span className="text-sm">{error.userMessage || "Hmm, that ZIP doesn't look right. Mind double-checking it?"}</span>
           </div>
         )}
       </form>
@@ -510,9 +511,9 @@ export function ZipCodeSearch({
                       </div>
                       {suggestion.planCount && (
                         <div className="text-sm text-gray-500">
-                          {suggestion.planCount} plans available
+                          {suggestion.planCount} honest options here
                           {suggestion.metadata?.averageRate && (
-                            <span className="ml-2">• avg {suggestion.metadata.averageRate.toFixed(1)}¢/kWh</span>
+                            <span className="ml-2">• neighbors pay ~{suggestion.metadata.averageRate.toFixed(1)}¢/kWh</span>
                           )}
                         </div>
                       )}

@@ -66,29 +66,29 @@ export function Top5ProvidersPage({}: Top5ProvidersPageProps) {
   const categories = [
     { 
       id: 'overall',
-      name: 'Overall Champions',
-      description: 'Best combination of rates, service, and specialization',
+      name: 'Best All-Around',
+      description: 'Good rates, decent service, and they actually deliver what they promise',
       icon: Award,
       color: 'blue'
     },
     { 
       id: 'green',
-      name: 'Green Energy Leaders',
-      description: '100% renewable energy champions',
+      name: 'Actually Green',
+      description: 'Real 100% renewable energy, not just marketing claims',
       icon: Leaf,
       color: 'green'
     },
     {
       id: 'service',
-      name: 'Customer Service Excellence',
-      description: 'Highest satisfaction and support quality',
+      name: 'Won\'t Leave You Hanging',
+      description: 'They answer the phone and actually solve your problems',
       icon: Users,
       color: 'blue'
     },
     { 
       id: 'value',
-      name: 'Best Value Champions', 
-      description: 'Lowest total costs with quality service',
+      name: 'Actually Affordable', 
+      description: 'Low rates without hidden fees that surprise you later',
       icon: TrendingDown,
       color: 'green'
     }
@@ -105,32 +105,32 @@ export function Top5ProvidersPage({}: Top5ProvidersPageProps) {
 
   const rankingCriteria = {
     overall: [
-      'Customer satisfaction ratings',
-      'Competitive rates and fees',
-      'Plan variety and options',
-      'Service area coverage',
-      'Customer review volume'
+      'What real customers say about them',
+      'Honest rates without surprise fees',
+      'Plans that actually make sense',
+      'Where they actually provide service',
+      'Enough customer feedback to be reliable'
     ],
     value: [
-      'Lowest rates per kWh',
-      'Minimal monthly fees',
-      'No hidden charges',
-      'Contract value',
-      'Long-term savings potential'
+      'Really low rates (not teaser rates)',
+      'No sneaky monthly fees',
+      'What you see is what you pay',
+      'Fair contract terms',
+      'Rates that stay competitive over time'
     ],
     service: [
-      'Customer satisfaction scores',
-      'Response time to issues',
-      'Bill clarity and accuracy',
-      'Online account features',
-      'Customer review sentiment'
+      'People actually answer when you call',
+      'How fast they get back to you',
+      'Bills that make sense',
+      'Online tools that actually work',
+      'What real customers say about dealing with them'
     ],
     green: [
-      '100% renewable energy plans',
-      'Environmental certifications',
-      'Green energy variety',
-      'Sustainability programs',
-      'Carbon offset options'
+      'Actually 100% renewable (not just offsets)',
+      'Real environmental certifications',
+      'Green plans that don\'t cost a fortune',
+      'Actual wind and solar investments',
+      'They put their money where their mouth is'
     ]
   };
 
@@ -155,17 +155,17 @@ export function Top5ProvidersPage({}: Top5ProvidersPageProps) {
             </div>
             
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Top 5 Electricity Providers - 2024 Rankings
+              The 5 Providers We'd Actually Recommend
             </h1>
             <p className="text-lg text-gray-600 mb-8 max-w-4xl mx-auto">
-              Our expert rankings of the best electricity providers based on customer satisfaction, rates, 
-              and service quality. Updated monthly based on real customer data and market analysis.
+              After analyzing thousands of customer experiences, these are the providers we'd tell our friends and family to consider. 
+              No marketing fluff - just honest recommendations based on who actually delivers.
             </p>
 
             <div className="max-w-md mx-auto">
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder="Enter ZIP code to see local rankings"
+                placeholder="Enter zip code"
               />
             </div>
           </div>
@@ -175,7 +175,7 @@ export function Top5ProvidersPage({}: Top5ProvidersPageProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Category Selector */}
         <div className="mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Choose Ranking Category</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Pick What Matters Most to You</h2>
           <div className="grid md:grid-cols-4 gap-4">
             {categories.map((category) => (
               <button
@@ -284,7 +284,7 @@ export function Top5ProvidersPage({}: Top5ProvidersPageProps) {
                                   Why #{rank} for {categories.find(c => c.id === selectedCategory)?.name}:
                                 </div>
                                 <div className="text-sm text-gray-600">
-                                  {selectedCategory === 'overall' && rank === 1 && "Excellent balance of competitive rates, high customer satisfaction, and comprehensive plan options."}
+                                  {selectedCategory === 'overall' && rank === 1 && "Excellent balance of competitive rates, high customer satisfaction, and complete plan options."}
                                   {selectedCategory === 'overall' && rank === 2 && "Strong customer ratings with competitive pricing and reliable service across multiple states."}
                                   {selectedCategory === 'overall' && rank === 3 && "Good value proposition with decent rates and satisfactory customer service."}
                                   {selectedCategory === 'value' && rank === 1 && "Offers the most competitive rates with minimal fees and transparent pricing."}
@@ -401,7 +401,7 @@ export function Top5ProvidersPage({}: Top5ProvidersPageProps) {
                   onClick={() => navigate('/compare/providers')}
                   className="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg hover:bg-gray-50 transition-colors font-medium"
                 >
-                  Compare All Providers
+                  Compare Quality Providers
                 </button>
               </div>
             </div>

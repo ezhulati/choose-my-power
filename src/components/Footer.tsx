@@ -8,28 +8,28 @@ interface FooterProps {
 export function Footer({ onNavigate }: FooterProps) {
   const footerLinks = {
     'Compare': [
-      { name: 'Compare Providers', href: '/compare/providers' },
-      { name: 'Compare Plans', href: '/compare/plans' },
-      { name: 'Compare Rates', href: '/compare/rates' },
-      { name: 'Top 5 Providers', href: '/compare/providers/top-5' }
+      { name: 'Find Your Provider', href: '/compare/providers' },
+      { name: 'Browse Plans', href: '/compare/plans' },
+      { name: 'Check Rates', href: '/compare/rates' },
+      { name: 'Top-Rated Options', href: '/compare/providers/top-5' }
     ],
     'Shop': [
-      { name: 'Cheapest Electricity', href: '/shop/cheapest-electricity' },
-      { name: 'Best Providers', href: '/shop/best-electricity-providers' },
-      { name: 'Green Energy', href: '/shop/green-energy' },
-      { name: 'No Deposit Plans', href: '/shop/no-deposit-electricity' }
+      { name: 'Budget-Friendly Options', href: '/shop/cheapest-electricity' },
+      { name: 'Trusted Companies', href: '/shop/best-electricity-providers' },
+      { name: 'Green Energy Plans', href: '/shop/green-energy' },
+      { name: 'No Deposit Required', href: '/shop/no-deposit-electricity' }
     ],
     'Locations': [
-      { name: 'Texas', href: '/texas/electricity-providers' },
-      { name: 'Pennsylvania', href: '/pennsylvania/electricity-providers' },
-      { name: 'Ohio', href: '/ohio/electricity-providers' },
-      { name: 'All States', href: '/locations' }
+      { name: 'Texas Areas', href: '/texas/electricity-providers' },
+      { name: 'Pennsylvania Areas', href: '/pennsylvania/electricity-providers' },
+      { name: 'Ohio Areas', href: '/ohio/electricity-providers' },
+      { name: 'All Areas We Serve', href: '/locations' }
     ],
     'Resources': [
       { name: 'How to Switch', href: '/resources/guides/how-to-switch-providers' },
       { name: 'Rate Calculator', href: '/rates/calculator' },
-      { name: 'Electricity Guide', href: '/resources/guides' },
-      { name: 'FAQ', href: '/resources/faqs' }
+      { name: 'Energy Guides', href: '/resources/guides' },
+      { name: 'Common Questions', href: '/resources/faqs' }
     ]
   };
 
@@ -44,14 +44,14 @@ export function Footer({ onNavigate }: FooterProps) {
               <span className="text-xl font-bold">ChooseMyPower</span>
             </div>
             <p className="text-blue-200 mb-6 max-w-md">
-              Compare electricity providers, plans, and rates to find the best deal in your area. 
-              We help millions of customers save money on their electric bills.
+              Your friendly Texas electricity shopping guide. We help you compare plans and 
+              find the right fit for your home and budget - no tricks, just honest comparisons.
             </p>
             
             <div className="space-y-2 text-sm text-blue-200">
               <div className="flex items-center">
                 <Phone className="h-4 w-4 mr-2" />
-                <span>1-800-COMPARE</span>
+                <span>Questions? Give us a call</span>
               </div>
               <div className="flex items-center">
                 <Mail className="h-4 w-4 mr-2" />
@@ -59,7 +59,7 @@ export function Footer({ onNavigate }: FooterProps) {
               </div>
               <div className="flex items-center">
                 <MapPin className="h-4 w-4 mr-2" />
-                <span>Serving deregulated energy markets nationwide</span>
+                <span>Proudly serving Texas communities</span>
               </div>
             </div>
           </div>

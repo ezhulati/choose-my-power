@@ -90,65 +90,65 @@ export class ComparePowerApiError extends Error {
     
     switch (this.type) {
       case ApiErrorType.TIMEOUT:
-        return `The service is taking longer than usual to respond${cityName}. Please try again in a moment.`;
+        return `Things are moving a bit slow right now${cityName}. Let's give it another try?`;
       
       case ApiErrorType.NETWORK_ERROR:
-        return `We're experiencing connectivity issues${cityName}. Please check your internet connection and try again.`;
+        return `Hmm, we're having trouble connecting${cityName}. Mind checking your internet and trying again?`;
         
       case ApiErrorType.CONNECTION_REFUSED:
-        return `Connection to the electricity plan service was refused${cityName}. Please try again in a few minutes.`;
+        return `Our servers are being a bit shy right now${cityName}. Let's try again in just a minute?`;
       
       case ApiErrorType.RATE_LIMITED:
-        return `Too many requests have been made${cityName}. Please wait a moment before trying again.`;
+        return `Whoa, lots of folks are searching right now${cityName}! Just take a quick breather and try again?`;
         
       case ApiErrorType.GATEWAY_TIMEOUT:
-        return `The electricity plan service gateway timed out${cityName}. Please try again.`;
+        return `Our systems got a little backed up${cityName}. Ready to give it another shot?`;
       
       case ApiErrorType.SERVICE_UNAVAILABLE:
-        return `Our electricity plan service is temporarily unavailable${cityName}. Please try again in a few minutes.`;
+        return `We're doing some quick maintenance${cityName}. Check back in a few minutes - we'll be right back!`;
       
       case ApiErrorType.INVALID_TDSP:
-        return `We couldn't find electricity plans for your area${cityName}. Please verify your location is in a deregulated Texas market.`;
+        return `That area looks like it might not have retail electricity choice${cityName}. Double-check you're in a deregulated Texas market?`;
       
       case ApiErrorType.NO_PLANS_AVAILABLE:
-        return `No electricity plans are currently available${cityName}. Try adjusting your filters or check back later.`;
+        return `Hmm, we're not finding any plans that match right now${cityName}. Try loosening up those filters or check back soon?`;
       
       case ApiErrorType.INVALID_PARAMETERS:
-        return `Your search criteria${cityName} aren't valid. Please adjust your filters and try again.`;
+        return `Those search settings don't look quite right${cityName}. Mind tweaking them and trying again?`;
       
       case ApiErrorType.CIRCUIT_OPEN:
       case ApiErrorType.CIRCUIT_BREAKER_OPEN:
-        return `Our electricity plan service${cityName} is temporarily experiencing issues. We're working to restore it quickly.`;
+        return `We're having some technical hiccups${cityName}. Our team is on it and we'll be back up soon!`;
         
       case ApiErrorType.BATCH_PROCESSING_ERROR:
-        return `Error processing multiple electricity plan requests${phase}. Some results may be incomplete.`;
+        return `We're juggling a lot of requests${phase} and some got mixed up. Let's try that again?`;
         
       case ApiErrorType.MASS_DEPLOYMENT_ERROR:
-        return `Error during mass deployment process${phase}. Please check system status or contact support.`;
+        return `We're rolling out some updates${phase} and hit a snag. Check our status page or drop us a line if this keeps up!`;
         
       case ApiErrorType.TDSP_MAPPING_ERROR:
-        return `Error mapping your location to utility service area${cityName}. Please verify your address.`;
+        return `We're having trouble figuring out which utility serves you${cityName}. Can you double-check that address?`;
         
       case ApiErrorType.REDIS_ERROR:
-        return `Caching service error${cityName}. Data may load slower than usual.`;
+        return `Our quick-lookup system is having a moment${cityName}. Things might be a bit slower than usual.`;
       
       case ApiErrorType.UNAUTHORIZED:
-        return `Authentication error occurred${cityName}. Please refresh the page and try again.`;
+        return `Looks like we lost track of who you are${cityName}. Try refreshing the page?`;
       
       case ApiErrorType.FORBIDDEN:
-        return `Access denied to electricity plan data${cityName}. Please contact support if this continues.`;
+        return `Something's blocking access to your plan data${cityName}. If this keeps happening, give us a shout!`;
       
       case ApiErrorType.SERVER_ERROR:
-        return `Our servers are experiencing issues${cityName}. Please try again in a moment.`;
+        return `Our servers are having a rough day${cityName}. Give us a minute to sort this out?`;
       
       case ApiErrorType.DATA_VALIDATION_ERROR:
-        return `The electricity plan data${cityName} appears to be incomplete. Please try again or contact support.`;
+        return `Some of the plan info${cityName} looks a bit wonky. Try again, or let us know if it keeps acting up!`;
       
       case ApiErrorType.FALLBACK_UNAVAILABLE:
-        return `All electricity plan services${cityName} are currently unavailable. Please try again later.`;
+        return `Everything seems to be down for maintenance${cityName}. Check back in a bit - we're working on it!`;
       
       default:
-        return `An unexpected error occurred while fetching electricity plans${cityName}. Please try again.`;
+        return `Something weird just happened${cityName}. Want to give it another try?`;
     }
   }
 

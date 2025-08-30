@@ -118,7 +118,7 @@ export function getCredibleMarketingText(
   
   return {
     heroText: `Same electricity. Same wires. Different plan. Here's how to fix it.`,
-    footerText: `Expert analysis of ${providers} and ${plans}. Find the perfect match for your needs and save hundreds per year.`,
+    footerText: `Expert analysis of ${providers} and ${plans}. Find the right option for your needs and save hundreds per year.`,
     seoDescription: `Compare electricity plans and rates from ${providers}. Find the best energy deals with transparent pricing and easy switching.`
   };
 }

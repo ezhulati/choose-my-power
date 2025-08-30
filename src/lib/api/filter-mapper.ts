@@ -54,9 +54,16 @@ export const filterDefinitions: FilterDefinition[] = [
       return null;
     },
     displayName: (segment: string) => {
-      if (segment === 'month-to-month') return 'Month-to-Month';
+      if (segment === 'month-to-month') return 'Month-to-Month (Most flexible)';
       const match = segment.match(/(\d+)-month/);
-      return match ? `${match[1]}-Month Contract` : segment;
+      if (match) {
+        const months = match[1];
+        if (months === '12') return `${months}-Month (Most popular)`;
+        if (months === '24') return `${months}-Month (Better rates)`;
+        if (months === '36') return `${months}-Month (Lowest rates)`;
+        return `${months}-Month Contract`;
+      }
+      return segment;
     },
     isValid: (value: number) => [1, 6, 12, 18, 24, 36].includes(value),
     description: 'Contract length in months'
@@ -77,9 +84,9 @@ export const filterDefinitions: FilterDefinition[] = [
     },
     displayName: (segment: string) => {
       switch (segment) {
-        case 'fixed-rate': return 'Fixed Rate';
-        case 'variable-rate': return 'Variable Rate';
-        case 'indexed-rate': return 'Indexed Rate';
+        case 'fixed-rate': return 'Fixed Rate (Same all year)';
+        case 'variable-rate': return 'Variable Rate (Can change)';
+        case 'indexed-rate': return 'Market Rate (Follows wholesale)';
         default: return segment;
       }
     },
@@ -99,9 +106,9 @@ export const filterDefinitions: FilterDefinition[] = [
       return match ? parseInt(match[1]) : null;
     },
     displayName: (segment: string) => {
-      if (segment === 'green-energy' || segment === 'renewable') return '100% Green Energy';
+      if (segment === 'green-energy' || segment === 'renewable') return '100% Clean Energy (Wind & solar)';
       const match = segment.match(/(\d+)-green/);
-      return match ? `${match[1]}% Green Energy` : segment;
+      return match ? `${match[1]}% Clean Energy` : segment;
     },
     isValid: (value: number) => value >= 0 && value <= 100,
     conflictsWith: ['green_energy'],
@@ -132,12 +139,12 @@ export const filterDefinitions: FilterDefinition[] = [
     displayName: (segment: string) => {
       const displayMap: Record<string, string> = {
         'no-deposit': 'No Deposit Required',
-        'prepaid': 'Prepaid Plans',
+        'prepaid': 'Prepaid (Pay as you go)',
         'autopay-discount': 'AutoPay Discount',
-        'time-of-use': 'Time-of-Use',
+        'time-of-use': 'Time-of-Use (Cheaper at night)',
         'free-weekends': 'Free Weekends',
         'bill-credit': 'Bill Credit',
-        'no-contract': 'No Contract',
+        'no-contract': 'No Contract (Most flexible)',
         'smart-meter': 'Smart Meter Required'
       };
       return displayMap[segment] || segment;

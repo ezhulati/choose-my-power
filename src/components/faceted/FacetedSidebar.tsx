@@ -26,22 +26,22 @@ const FacetedSidebar: React.FC<FacetedSidebarProps> = ({
   const filterGroups: FilterGroup[] = [
     {
       type: 'term',
-      label: 'Contract Length',
+      label: 'How long do you want to commit?',
       filters: availableFilters.filter(f => f.type === 'term')
     },
     {
       type: 'rate_type', 
-      label: 'Rate Type',
+      label: 'How should your rate work?',
       filters: availableFilters.filter(f => f.type === 'rate_type')
     },
     {
       type: 'green_energy',
-      label: 'Green Energy',
+      label: 'Want clean energy?',
       filters: availableFilters.filter(f => f.type === 'green_energy')
     },
     {
       type: 'plan_features',
-      label: 'Plan Features',
+      label: 'Any special features?',
       filters: availableFilters.filter(f => f.type === 'plan_features')
     }
   ].filter(group => group.filters.length > 0);
@@ -114,10 +114,10 @@ const FacetedSidebar: React.FC<FacetedSidebarProps> = ({
         className="mobile-toggle lg:hidden"
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
-        aria-label="Toggle filters"
+        aria-label="Show filter options"
       >
         <span className="icon">⚙️</span>
-        <span>Filters</span>
+        <span>Find What Fits</span>
         {currentFilters.length > 0 && (
           <span className="filter-count">{currentFilters.length}</span>
         )}
@@ -127,7 +127,7 @@ const FacetedSidebar: React.FC<FacetedSidebarProps> = ({
       <div className={`sidebar-content ${isOpen ? 'open' : 'closed'}`}>
         {/* Header */}
         <div className="sidebar-header">
-          <h3 className="sidebar-title">Filter Plans</h3>
+          <h3 className="sidebar-title">What Matters to You?</h3>
           {currentFilters.length > 0 && (
             <button 
               className="clear-all-btn"
@@ -142,7 +142,7 @@ const FacetedSidebar: React.FC<FacetedSidebarProps> = ({
         {/* Active filters */}
         {currentFilters.length > 0 && (
           <div className="active-filters">
-            <h4 className="active-filters-title">Active Filters:</h4>
+            <h4 className="active-filters-title">You're looking for:</h4>
             <div className="active-filter-tags">
               {currentFilters.map(filter => {
                 const filterObj = availableFilters.find(f => f.value === filter);
@@ -151,7 +151,7 @@ const FacetedSidebar: React.FC<FacetedSidebarProps> = ({
                     key={filter}
                     className="filter-tag"
                     onClick={() => filterObj && handleFilterChange(filterObj, false)}
-                    aria-label={`Remove ${filterObj?.label} filter`}
+                    aria-label={`Stop filtering by ${filterObj?.label}`}
                   >
                     <span>{filterObj?.label || filter}</span>
                     <span className="remove-icon">×</span>
@@ -208,8 +208,7 @@ const FacetedSidebar: React.FC<FacetedSidebarProps> = ({
         {/* Help text */}
         <div className="sidebar-footer">
           <p className="help-text">
-            Select multiple filters to find plans that match your specific needs. 
-            All prices include energy and delivery charges.
+            Pick what's important to you. All prices include delivery and taxes—no surprises. We only show plans that actually work in your area.
           </p>
         </div>
       </div>

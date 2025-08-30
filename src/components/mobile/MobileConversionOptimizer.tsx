@@ -78,7 +78,7 @@ const defaultTrustSignals: TrustSignal[] = [
     type: 'certification',
     icon: '🏛️',
     title: 'Texas PUC Regulated',
-    description: 'All providers regulated by Public Utility Commission',
+    description: 'Our providers regulated by Public Utility Commission',
     priority: 3
   },
   {

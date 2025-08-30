@@ -85,7 +85,7 @@ export function CheapestElectricityLandingPage({ city, state }: CheapestElectric
   const benefits = [
     {
       icon: TrendingDown,
-      title: 'Guaranteed Lowest Rates',
+      title: 'Competitive Rates',
       description: `Find rates starting at ${lowestRate}¢/kWh in ${locationText}`
     },
     {
@@ -101,7 +101,7 @@ export function CheapestElectricityLandingPage({ city, state }: CheapestElectric
     {
       icon: Award,
       title: 'Trusted Providers Only',
-      description: 'All providers are licensed and regulated'
+      description: 'Our 14 providers are licensed and regulated'
     }
   ];
 
@@ -132,7 +132,7 @@ export function CheapestElectricityLandingPage({ city, state }: CheapestElectric
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
                 size="lg" 
-                placeholder={`Enter ${stateData?.abbreviation || 'your'} ZIP code for exact rates`}
+                placeholder="Enter zip code"
               />
               <p className="text-green-200 text-sm mt-2">Get personalized rates for your exact address</p>
             </div>
@@ -382,7 +382,7 @@ export function CheapestElectricityLandingPage({ city, state }: CheapestElectric
           <div className="max-w-md mx-auto">
             <ZipCodeSearch 
               onSearch={handleZipSearch} 
-              placeholder="Enter your ZIP code to start saving"
+              placeholder="Enter zip code"
             />
           </div>
         </div>

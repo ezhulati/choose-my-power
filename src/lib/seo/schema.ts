@@ -376,7 +376,7 @@ function generateFilterSpecificFAQs(cityName: string, filters: string[]): object
       name: `What are the benefits of fixed-rate electricity in ${cityName}?`,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: `Fixed-rate plans guarantee your electricity rate for the entire contract term, protecting you from market volatility and seasonal price spikes. This makes budgeting easier and provides peace of mind with predictable monthly bills.`
+        text: `Fixed-rate plans lock in your electricity rate for the entire contract term, protecting you from market volatility and seasonal price spikes. This makes budgeting easier and provides peace of mind with predictable monthly bills.`
       }
     },
     'green-energy': {
@@ -437,7 +437,7 @@ function getFilterDescription(filter: string): string {
   const descriptions: Record<string, string> = {
     '12-month': 'Annual electricity contracts with rate stability and flexibility',
     '24-month': 'Two-year electricity contracts with competitive long-term rates',
-    'fixed-rate': 'Electricity plans with guaranteed rates that never change during contract',
+    'fixed-rate': 'Electricity plans with fixed rates that never change during contract',
     'variable-rate': 'Electricity plans with rates that may fluctuate with market conditions',
     'green-energy': '100% renewable energy plans supporting Texas wind and solar power',
     'prepaid': 'Pay-as-you-go electricity plans with no deposit or credit check required',

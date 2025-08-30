@@ -54,7 +54,7 @@ export function ElectricityPlansPage({}: ElectricityPlansPageProps) {
       benefits: ['Lower starting rates', 'Market flexibility', 'No long-term commitment', 'Potential savings'],
       bestFor: ['Market watchers', 'Short-term residents', 'Rate switchers', 'Market optimizers'],
       contractLengths: ['Month-to-month', '3 months', '6 months'],
-      rateRange: '8.5¢ - 12.9¢'
+      rateRange: '9.1¢ - 12.9¢'
     },
     {
       id: 'green',
@@ -178,7 +178,7 @@ export function ElectricityPlansPage({}: ElectricityPlansPageProps) {
   const planComparison = [
     {
       category: 'Rate Stability',
-      fixed: 'Guaranteed rate for entire term',
+      fixed: 'Fixed rate for entire term',
       variable: 'Rates change with market conditions',
       green: 'Usually fixed but may include premium',
       prepaid: 'Typically fixed daily/weekly rates',
@@ -254,7 +254,7 @@ export function ElectricityPlansPage({}: ElectricityPlansPageProps) {
             <div className="max-w-md mx-auto">
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder="Enter ZIP code for local plans"
+                placeholder="Enter zip code"
                 size="lg"
               />
               <p className="text-blue-200 text-sm mt-2">Get personalized plan recommendations</p>
@@ -460,7 +460,7 @@ export function ElectricityPlansPage({}: ElectricityPlansPageProps) {
                 <div className="flex items-center justify-between mb-6">
                   <div>
                     <h3 className="text-2xl font-bold text-gray-900">{hub.state} Plans & Analysis</h3>
-                    <p className="text-gray-600">{hub.marketType} market with comprehensive plan options</p>
+                    <p className="text-gray-600">{hub.marketType} market with complete plan options</p>
                   </div>
                   <div className="text-right">
                     <div className="text-2xl font-bold text-green-600">{hub.avgRate}</div>

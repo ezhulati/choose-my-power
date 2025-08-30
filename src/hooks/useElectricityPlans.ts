@@ -25,6 +25,9 @@ import type {
   FilterRequest,
   AddressTDSPResolution,
   TdspInfo,
+} from '../types/electricity-plans';
+
+import {
   validateZipCode,
   validateTexasZipCode,
   getTdspFromZip,

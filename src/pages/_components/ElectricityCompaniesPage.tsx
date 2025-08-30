@@ -199,7 +199,7 @@ export function ElectricityCompaniesPage({}: ElectricityCompaniesPageProps) {
           specialization: 'Smart alerts, flexible billing, and modern technology',
           strengths: ['Smart Alerts', 'Flexible Billing', 'Modern App', 'Usage Analytics'],
           serviceStates: ['Texas'],
-          techFeatures: 'Industry-leading app and smart features',
+          techFeatures: 'Top app and smart features',
           companySize: 'Tech-focused innovator'
         },
         {
@@ -374,7 +374,7 @@ export function ElectricityCompaniesPage({}: ElectricityCompaniesPageProps) {
             <div className="max-w-md mx-auto">
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder="Enter ZIP code for local companies"
+                placeholder="Enter zip code"
                 size="lg"
               />
               <p className="text-blue-200 text-sm mt-2">Find companies serving your area</p>

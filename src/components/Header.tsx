@@ -20,20 +20,20 @@ export function Header({ onNavigate }: HeaderProps) {
       name: 'Compare',
       href: '/compare',
       dropdown: [
-        { name: 'Compare Providers', href: '/compare/providers' },
-        { name: 'Compare Plans', href: '/compare/plans' },
-        { name: 'Compare Rates', href: '/compare/rates' },
-        { name: 'Top 5 Providers', href: '/compare/providers/top-5' }
+        { name: 'Find Your Provider', href: '/compare/providers' },
+        { name: 'Browse Plans', href: '/compare/plans' },
+        { name: 'Check Rates', href: '/compare/rates' },
+        { name: 'Top-Rated Options', href: '/compare/providers/top-5' }
       ]
     },
     {
       name: 'Browse',
       href: '/browse',
       dropdown: [
-        { name: 'Electricity Companies', href: '/electricity-companies' },
-        { name: 'Electricity Plans', href: '/electricity-plans' },
-        { name: 'Best Rankings', href: '/best' },
-        { name: 'All Providers', href: '/providers' }
+        { name: 'Energy Companies', href: '/electricity-companies' },
+        { name: 'Available Plans', href: '/electricity-plans' },
+        { name: 'Top Choices', href: '/best' },
+        { name: 'Featured Options', href: '/providers' }
       ]
     },
     { name: 'Rates', href: '/rates' },
@@ -41,14 +41,14 @@ export function Header({ onNavigate }: HeaderProps) {
       name: 'Shop',
       href: '/shop',
       dropdown: [
-        { name: 'Cheapest Electricity', href: '/shop/cheapest-electricity' },
-        { name: 'Best Providers', href: '/shop/best-electricity-providers' },
+        { name: 'Budget-Friendly', href: '/shop/cheapest-electricity' },
+        { name: 'Trusted Companies', href: '/shop/best-electricity-providers' },
         { name: 'Green Energy', href: '/shop/green-energy' },
-        { name: 'No Deposit Plans', href: '/shop/no-deposit-electricity' }
+        { name: 'No Deposit Required', href: '/shop/no-deposit-electricity' }
       ]
     },
-    { name: 'Locations', href: '/locations' },
-    { name: 'Resources', href: '/resources' }
+    { name: 'Areas We Serve', href: '/locations' },
+    { name: 'Help & Guides', href: '/resources' }
   ];
 
   const handleNavClick = (item: NavigationItem) => {

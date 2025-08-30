@@ -44,14 +44,14 @@ export function CityPage({ state, city }: CityPageProps) {
                   Expanding Coverage in {stateData.name}
                 </h1>
                 <p className="text-lg text-gray-600 mb-8">
-                  We're working to add more cities in {stateData.name}. Meanwhile, you can view all providers 
+                  We're working to add more cities in {stateData.name}. Meanwhile, you can view quality providers 
                   available statewide or search by ZIP code to find options in your area.
                 </p>
                 
                 <div className="max-w-md mx-auto mb-8">
                   <ZipCodeSearch 
                     onSearch={(zipCode) => navigate(`/${state}/electricity-providers`)} 
-                    placeholder={`Enter ${stateData.abbreviation} ZIP code`}
+                    placeholder="Enter zip code"
                   />
                 </div>
                 
@@ -101,7 +101,7 @@ export function CityPage({ state, city }: CityPageProps) {
                 <div className="max-w-md mx-auto mb-8">
                   <ZipCodeSearch 
                     onSearch={(zipCode) => navigate('/texas/electricity-providers')} 
-                    placeholder="Enter your ZIP code to find providers"
+                    placeholder="Enter zip code"
                   />
                 </div>
                 
@@ -152,12 +152,11 @@ export function CityPage({ state, city }: CityPageProps) {
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
               <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                {cityData.name}, {stateData.name} Electricity Providers
+                Finally. {cityData.name} Electricity That Makes Sense
               </h1>
               
               <p className="text-lg text-gray-600 mb-6">
-                Compare electricity rates and plans from {cityProviders.length} providers serving {cityData.name}. 
-                Find the cheapest electricity rates for your home or business.
+                Moving to {cityData.name}? Here's why transferring your old plan usually backfires: Your old rate was based on your OLD home's size. "Fixed" rates aren't fixed—they change with usage. A plan for a 2-bedroom apartment costs way more in a 4-bedroom house. We found {cityProviders.length} quality providers that actually work for your new {cityData.name} home.
               </p>
 
               {/* City Stats */}
@@ -209,7 +208,7 @@ export function CityPage({ state, city }: CityPageProps) {
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Find Your ZIP Code</h3>
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder={`Enter ${cityData.name} ZIP`}
+                placeholder="Enter zip code"
               />
               <div className="mt-4 text-sm text-gray-600">
                 <div className="font-medium mb-2">Popular ZIP Codes:</div>
@@ -280,13 +279,13 @@ export function CityPage({ state, city }: CityPageProps) {
         <div className="mb-8">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold text-gray-900">
-              Electricity Providers in {cityData.name}
+              Quality Electricity Providers in {cityData.name}
             </h2>
             <button
               onClick={() => navigate(`/compare/providers`)}
               className="bg-texas-navy text-white px-6 py-2 rounded-lg hover:bg-blue-800 transition-colors"
             >
-              Compare All
+              Find Plans That Fit
             </button>
           </div>
 

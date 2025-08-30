@@ -150,7 +150,7 @@ export function StateNoDepositPage({ state }: StateNoDepositPageProps) {
             <div className="max-w-md mx-auto">
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder={`Enter ${stateData.abbreviation} ZIP for no-deposit options`}
+                placeholder="Enter zip code"
               />
             </div>
           </div>

@@ -5,8 +5,8 @@ import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import Icon from '../../components/ui/Icon.astro';
 import { Building2, Award, Users, TrendingUp, Star, Shield, Zap } from 'lucide-react';
 
-const title = "Compare Texas Electricity Providers | ChooseMyPower";
-const description = "Compare 50+ Texas electricity providers side-by-side. Expert ratings, customer reviews, and detailed analysis to help you choose the best provider.";
+const title = "Finally. Honest Reviews of Texas Electric Companies | ChooseMyPower";
+const description = "We tell you what each provider is actually like to deal with. Real customer experiences, hidden fees exposed, and who actually answers the phone when things go wrong.";
 ---
 
 <Layout title={title} description={description}>
@@ -23,14 +23,14 @@ const description = "Compare 50+ Texas electricity providers side-by-side. Exper
   <div class="bg-white">
     <!-- Hero Section -->
     <HeroBackground 
-      title="Compare Electricity Providers" 
-      subtitle="Side-by-side analysis of 50+ Texas electricity companies"
+      title="Finally. The Truth About Texas Electric Companies" 
+      subtitle="Who's actually good? Who's a nightmare? We tracked 50+ providers for you."
       heroType="compare"
     >
       <div class="mt-8 max-w-md mx-auto">
         <ZipCodeSearch 
           client:load
-          placeholder="Enter ZIP to see local providers"
+          placeholder="Enter zip code"
           className="w-full"
         />
       </div>
@@ -209,7 +209,7 @@ const description = "Compare 50+ Texas electricity providers side-by-side. Exper
               </div>
               <div class="flex items-center justify-between">
                 <span class="text-sm text-gray-600">Lowest Rate</span>
-                <span class="font-medium text-texas-gold-600">8.7¢/kWh</span>
+                <span class="font-medium text-texas-gold-600">9.1¢/kWh</span>
               </div>
               <div class="flex items-center justify-between">
                 <span class="text-sm text-gray-600">Green Energy</span>
@@ -289,7 +289,7 @@ const description = "Compare 50+ Texas electricity providers side-by-side. Exper
                 </td>
                 <td class="py-4 px-6">⭐⭐⭐⭐ (4.0)</td>
                 <td class="py-4 px-6">20+</td>
-                <td class="py-4 px-6 text-texas-gold-600 font-medium">8.7¢/kWh</td>
+                <td class="py-4 px-6 text-texas-gold-600 font-medium">9.1¢/kWh</td>
                 <td class="py-4 px-6">Available</td>
                 <td class="py-4 px-6">Smart Home, Solar Plans</td>
               </tr>

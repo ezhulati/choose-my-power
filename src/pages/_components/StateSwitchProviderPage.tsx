@@ -127,7 +127,7 @@ export function StateSwitchProviderPage({ state }: StateSwitchProviderPageProps)
     },
     {
       question: 'Will my electricity be shut off during the switch?',
-      answer: 'No, your electricity service will not be interrupted during the switching process. The transition happens seamlessly behind the scenes.'
+      answer: 'No, your electricity service will not be interrupted during the switching process. The transition happens smoothly behind the scenes.'
     },
     {
       question: 'Can I switch if I have an outstanding balance?',
@@ -167,7 +167,7 @@ export function StateSwitchProviderPage({ state }: StateSwitchProviderPageProps)
             <div className="max-w-md mx-auto">
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder={`Enter ${stateData.abbreviation} ZIP to get started`}
+                placeholder="Enter zip code"
               />
             </div>
           </div>

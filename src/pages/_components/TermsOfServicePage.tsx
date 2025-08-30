@@ -40,7 +40,8 @@ export function TermsOfServicePage({}: TermsOfServicePageProps) {
               Terms of Service
             </h1>
             <p className="text-lg text-gray-600 mb-4 max-w-3xl mx-auto">
-              These terms govern your use of ChooseMyPower and our electricity comparison services.
+              Here are the ground rules for using our site. We've written them in plain English 
+              so you know exactly what to expect when using our services.
             </p>
             <p className="text-sm text-gray-500">Last updated: January 2024</p>
           </div>

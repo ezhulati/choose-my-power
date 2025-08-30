@@ -258,7 +258,7 @@ const ProgressiveAddressInput: React.FC<ProgressiveAddressInputProps> = ({
             <input
               id="zipCode"
               type="text"
-              placeholder="Enter your ZIP code (e.g., 75201)"
+              placeholder="Enter zip code"
               value={formData.zipCode}
               onChange={(e) => handleZipCodeChange(e.target.value)}
               maxLength={5}

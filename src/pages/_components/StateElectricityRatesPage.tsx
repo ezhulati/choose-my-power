@@ -141,7 +141,7 @@ export function StateElectricityRatesPage({ state }: StateElectricityRatesPagePr
             <div className="lg:w-80">
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder={`Enter ${stateData.abbreviation} ZIP for exact rates`}
+                placeholder="Enter zip code"
               />
             </div>
           </div>
@@ -332,7 +332,7 @@ export function StateElectricityRatesPage({ state }: StateElectricityRatesPagePr
                   onClick={() => navigate(`/${state}/electricity-plans`)}
                   className="block w-full text-left p-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-texas-navy rounded-md transition-colors"
                 >
-                  Browse All Plans
+                  Browse Quality Plans
                 </button>
                 <button
                   onClick={() => navigate(`/compare/rates/by-state`)}

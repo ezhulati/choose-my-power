@@ -424,7 +424,7 @@ describe('QA WCAG 2.1 AA Accessibility Compliance', () => {
             <img src="complex-chart.png" alt="Electricity plan comparison chart" aria-describedby="chart-description" />
             <figcaption id="chart-description">
               Chart showing 5 electricity plans: TXU Fixed 12 at 11.5¢/kWh, 
-              Reliant Variable at 9.8¢/kWh, Direct Energy Green at 13.2¢/kWh
+              Reliant Variable at 10.2¢/kWh, Direct Energy Green at 13.2¢/kWh
             </figcaption>
           </figure>
         `;
@@ -859,7 +859,7 @@ describe('QA WCAG 2.1 AA Accessibility Compliance', () => {
           
           <main>
             <section>
-              <h1>Find Your Perfect Electricity Plan</h1>
+              <h1>Find Your Best Electricity Plan</h1>
               <article>
                 <h2>TXU Energy Simply Fixed 12</h2>
                 <p>Fixed rate plan with 12-month term</p>
@@ -1055,7 +1055,7 @@ describe('QA WCAG 2.1 AA Accessibility Compliance', () => {
             
             <main id="main">
               <section>
-                <h2>Find Your Perfect Electricity Plan</h2>
+                <h2>Find Your Best Electricity Plan</h2>
                 <form>
                   <label for="zip-search">Enter your ZIP code</label>
                   <input type="text" id="zip-search" pattern="[0-9]{5}" required />

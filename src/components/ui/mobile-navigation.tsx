@@ -31,10 +31,10 @@ export function MobileNavigation({ onNavigate, currentPath = '' }: MobileNavigat
       href: '/compare',
       icon: Search,
       children: [
-        { name: 'Compare Providers', href: '/compare/providers', description: 'Side-by-side comparison' },
-        { name: 'Compare Plans', href: '/compare/plans', description: 'Plan features & rates' },
-        { name: 'Compare Rates', href: '/compare/rates', description: 'Rate calculator' },
-        { name: 'Top 5 Providers', href: '/compare/providers/top-5', description: 'Best providers' }
+        { name: 'Compare Providers', href: '/compare/providers', description: 'See them side-by-side' },
+        { name: 'Compare Plans', href: '/compare/plans', description: 'Features and prices' },
+        { name: 'Compare Rates', href: '/compare/rates', description: 'Calculate your cost' },
+        { name: 'Top 5 Providers', href: '/compare/providers/top-5', description: 'Our best picks' }
       ]
     },
     {
@@ -42,10 +42,10 @@ export function MobileNavigation({ onNavigate, currentPath = '' }: MobileNavigat
       href: '/browse',
       icon: BookOpen,
       children: [
-        { name: 'Electricity Companies', href: '/electricity-companies', description: 'All providers' },
-        { name: 'Electricity Plans', href: '/electricity-plans', description: 'All plan types' },
-        { name: 'Best Rankings', href: '/best', description: 'Top-rated options' },
-        { name: 'All Providers', href: '/providers', description: 'Provider directory' }
+        { name: 'Electricity Companies', href: '/electricity-companies', description: 'Who we recommend' },
+        { name: 'Electricity Plans', href: '/electricity-plans', description: 'All your options' },
+        { name: 'Best Rankings', href: '/best', description: 'Top picks' },
+        { name: 'Our Providers', href: '/providers', description: 'Full list' }
       ]
     },
     {

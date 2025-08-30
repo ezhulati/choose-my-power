@@ -45,7 +45,7 @@ const SmartAddressInput: React.FC<SmartAddressInputProps> = ({
   onAddressResolved,
   onError,
   className = '',
-  placeholder = 'Enter ZIP code',
+  placeholder = '75201',
   autoFocus = false,
   disabled = false,
   required = false,
@@ -79,20 +79,20 @@ const SmartAddressInput: React.FC<SmartAddressInputProps> = ({
       if (analysis.isMultiTdsp && analysis.requiresAddressValidation) {
         setValidation({
           isValid: false,
-          message: `ZIP code ${zip} spans multiple utility areas. Complete address required for accurate rates.`,
+          message: `ZIP ${zip} is on the border. Need your street to show the right prices.`,
           type: 'warning'
         });
         setShowAddressForm(true);
       } else if (analysis.isMultiTdsp) {
         setValidation({
           isValid: true,
-          message: `Multiple utilities serve this area. Primary: ${analysis.primaryTdsp?.name}`,
+          message: `A couple utilities serve here. Main one: ${analysis.primaryTdsp?.name}`,
           type: 'info'
         });
       } else if (analysis.primaryTdsp) {
         setValidation({
           isValid: true,
-          message: `Served by ${analysis.primaryTdsp.name}`,
+          message: `You get ${analysis.primaryTdsp.name}`,
           type: 'success'
         });
         
@@ -226,7 +226,7 @@ const SmartAddressInput: React.FC<SmartAddressInputProps> = ({
           type="text"
           value={zipCode}
           onChange={(e) => handleZipCodeChange(e.target.value)}
-          placeholder={placeholder}
+          placeholder={placeholder || "Enter zip code"}
           className={`
             w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500
             ${validation?.type === 'error' ? 'border-red-500' : 
@@ -273,20 +273,20 @@ const SmartAddressInput: React.FC<SmartAddressInputProps> = ({
       {showAddressForm && (
         <form onSubmit={handleAddressSubmit} className="mt-4 p-4 bg-gray-50 rounded-lg space-y-4">
           <div>
-            <h4 className="font-medium text-gray-900 mb-3">Complete Address Required</h4>
+            <h4 className="font-medium text-gray-900 mb-3">We need a bit more info</h4>
             <p className="text-sm text-gray-600 mb-4">
-              Your ZIP code spans multiple utility service areas. Please provide your complete address for accurate rate comparison.
+              Your ZIP has multiple utilities - your street helps us show the right prices for you.
             </p>
           </div>
 
           <div>
             <label htmlFor="street" className="block text-sm font-medium text-gray-700 mb-1">
-              Street Address *
+              What street are you on?
             </label>
             <input
               id="street"
               type="text"
-              placeholder="123 Main Street"
+              placeholder="Your street address"
               value={addressForm.street}
               onChange={(e) => setAddressForm(prev => ({ ...prev, street: e.target.value }))}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
@@ -298,12 +298,12 @@ const SmartAddressInput: React.FC<SmartAddressInputProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label htmlFor="city" className="block text-sm font-medium text-gray-700 mb-1">
-                City
+                Which city?
               </label>
               <input
                 id="city"
                 type="text"
-                placeholder="Dallas"
+                placeholder="City name"
                 value={addressForm.city}
                 onChange={(e) => setAddressForm(prev => ({ ...prev, city: e.target.value }))}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
@@ -313,7 +313,7 @@ const SmartAddressInput: React.FC<SmartAddressInputProps> = ({
 
             <div>
               <label htmlFor="zip4" className="block text-sm font-medium text-gray-700 mb-1">
-                ZIP+4 (Optional)
+                Extra ZIP digits (if you know them)
               </label>
               <input
                 id="zip4"

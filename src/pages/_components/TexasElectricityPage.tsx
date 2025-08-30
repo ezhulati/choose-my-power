@@ -237,7 +237,7 @@ export function TexasElectricityPage({}: TexasElectricityPageProps) {
             <div className="max-w-md mx-auto">
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder="Enter Texas ZIP code"
+                placeholder="Enter zip code"
                 size="lg"
               />
               <p className="text-red-200 text-sm mt-2">Find providers and rates for your exact address</p>

@@ -192,7 +192,7 @@ export function ComparePage() {
             <div className="max-w-md mx-auto">
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder="Enter ZIP code to start comparing"
+                placeholder="Enter zip code"
                 size="lg"
               />
               <p className="text-blue-200 text-sm mt-2">See what you're actually paying vs. what you could pay</p>
@@ -363,7 +363,7 @@ export function ComparePage() {
 
           <div className="mt-8 text-center">
             <p className="text-gray-600 mb-6">
-              Each tool serves a different purpose in your decision-making process. Use them together for comprehensive analysis.
+              Each tool serves a different purpose in your decision-making process. Use them together for complete analysis.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button

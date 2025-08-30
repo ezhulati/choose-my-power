@@ -455,7 +455,7 @@ export function PlanResults({
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
             <Input
               type="text"
-              placeholder="Search plans..."
+              placeholder="Find a specific plan..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-10 w-64"
@@ -468,7 +468,7 @@ export function PlanResults({
             onValueChange={handleSortChange}
           >
             <SelectTrigger className="w-48">
-              <SelectValue placeholder="Sort by..." />
+              <SelectValue placeholder="How should we sort these?" />
             </SelectTrigger>
             <SelectContent>
               {sortOptions.map((option) => (

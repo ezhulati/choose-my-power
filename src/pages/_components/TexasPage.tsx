@@ -120,7 +120,7 @@ export const TexasPage: React.FC = () => {
               <Shield className="w-12 h-12 text-texas-navy mx-auto mb-4" />
               <h3 className="text-xl font-semibold mb-3">Regulated & Safe</h3>
               <p className="text-gray-600">
-                All providers are regulated by the Texas Public Utility Commission
+                Our providers are regulated by the Texas Public Utility Commission
               </p>
             </div>
             <div className="text-center">
@@ -145,7 +145,7 @@ export const TexasPage: React.FC = () => {
       <div className="py-16 bg-gradient-to-r from-texas-red to-texas-navy text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">
-            Ready to Find Your Perfect Texas Plan?
+            Ready to Find Your Best Texas Plan?
           </h2>
           <p className="text-xl mb-8 opacity-90">
             Enter your ZIP code to see personalized rates and plans in your area

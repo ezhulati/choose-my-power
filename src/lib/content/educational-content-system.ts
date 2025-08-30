@@ -1,7 +1,7 @@
 /**
- * Educational Content System - Comprehensive Guides and Resources
+ * Educational Content System - Complete Guides and Resources
  * 
- * Generates world-class educational content for electricity consumers
+ * Generates quality educational content for electricity consumers
  * covering all aspects of Texas deregulation, plan selection, and optimization.
  */
 

@@ -52,15 +52,15 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
         <div className="error-boundary">
           <div className="error-content">
             <div className="error-icon">⚠️</div>
-            <h2 className="error-title">Something went wrong</h2>
+            <h2 className="error-title">Well, That Didn't Work</h2>
             <p className="error-message">
-              We encountered an unexpected error. Please try refreshing the page.
+              Something broke on our side. A quick refresh usually fixes it.
             </p>
             <button 
               className="error-retry-btn"
               onClick={() => window.location.reload()}
             >
-              Refresh Page
+              Try Again
             </button>
             {process.env.NODE_ENV === 'development' && this.state.error && (
               <details className="error-details">

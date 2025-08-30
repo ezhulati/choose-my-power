@@ -129,9 +129,9 @@ const schemas = generateFacetedSchema({
   lowestRate
 });
 
-// Use faceted title and description generation - fix double TX issue
-const pageTitle = `Best Electricity Plans in ${cityName} | Compare Energy Rates`;
-const pageDescription = `Compare electricity plans in ${cityName}. Find the best energy rates and switch providers.`;
+// Use conversational messaging for title and description
+const pageTitle = `Find Your Best Electricity Rate in ${cityName}, TX | ChooseMyPower`;
+const pageDescription = `Moving to ${cityName}? Don't transfer your old plan. Get a rate matched to your new home's size and usage. Compare ${plans.length} plans from trusted providers and choose with confidence.`;
 
 // Get suggested filters using faceted system
 const suggestedFilters = facetedRouter.getSuggestedFilters(citySlug, filterSegments, 6);
@@ -199,13 +199,13 @@ const heroImage = getHeroImage({
           <!-- Page Header -->
           <div class="text-center">
             <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 drop-shadow-lg">
-              Find Your {cityName} Electricity Plan
+              Find Your Best Electricity Rate in {cityName}
             </h1>
             <p class="text-xl lg:text-2xl text-white/90 mb-6 drop-shadow-md leading-relaxed max-w-4xl mx-auto">
-              We've ranked all {plans.length} plans in {cityName} by what matters most. No confusing jargon. Just clear choices that save you money.
+              Moving to {cityName}? Don't transfer your old plan. Get a rate matched to your new home's size and usage—no overwhelming lists or confusing rates.
             </p>
             <div class="text-white/80 drop-shadow-sm">
-              <span class="text-lg lg:text-xl">PowerToChoose makes it confusing. We don't.</span>
+              <span class="text-lg lg:text-xl">We show {plans.length} plans from quality providers so you can choose with confidence.</span>
               {apiError && (
                 <span class="ml-2 text-texas-gold-200">• Loading plans...</span>
               )}

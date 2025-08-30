@@ -138,14 +138,14 @@ export function TexasMarketForecastPage({}: TexasMarketForecastPageProps) {
               Forecast & Market Outlook — 2025
             </h2>
             <p className="text-xl mb-8 text-blue-100 max-w-4xl mx-auto">
-              Comprehensive analysis of Texas electricity market trends, wholesale price forecasts, 
+              Complete analysis of Texas electricity market trends, wholesale price forecasts, 
               and what Dallas residents can expect in 2025.
             </p>
 
             <div className="max-w-md mx-auto">
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder="Enter Dallas ZIP for local rates"
+                placeholder="Enter zip code"
                 size="lg"
               />
             </div>

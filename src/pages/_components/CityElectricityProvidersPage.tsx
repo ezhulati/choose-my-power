@@ -79,11 +79,13 @@ export function CityElectricityProvidersPage({ state, city }: CityElectricityPro
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
               <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                {cityData.name} Electricity Providers - Compare Plans & Save
+                Finally. {cityData.name} Electricity Providers Without the Games
               </h1>
               
               <p className="text-lg text-gray-600 mb-6">
-                Compare electricity providers in {cityData.name}, {stateData.name}. Find the cheapest rates from {cityProviders.length} trusted companies serving {cityData.name} residents. Switch today and save up to ${potentialSavings}/year on your electric bill.
+                We work with {cityProviders.length} quality providers in {cityData.name}—not "all" providers (that's impossible). 
+                Here's who's actually good, who has the best rates, and who you should probably avoid. 
+                Could save you ${potentialSavings}/year by picking the right one.
               </p>
 
               {/* Enhanced Key Stats */}
@@ -113,22 +115,22 @@ export function CityElectricityProvidersPage({ state, city }: CityElectricityPro
                 <div className="flex items-center p-3 bg-gray-50 rounded-lg">
                   <Award className="h-5 w-5 text-texas-navy mr-3" />
                   <div>
-                    <div className="font-medium text-gray-900">Trusted Providers</div>
-                    <div className="text-sm text-gray-600">PUCT licensed & regulated</div>
+                    <div className="font-medium text-gray-900">All Legit Companies</div>
+                    <div className="text-sm text-gray-600">PUCT licensed (no scams here)</div>
                   </div>
                 </div>
                 <div className="flex items-center p-3 bg-gray-50 rounded-lg">
                   <Clock className="h-5 w-5 text-green-600 mr-3" />
                   <div>
-                    <div className="font-medium text-gray-900">Fast Connection</div>
-                    <div className="text-sm text-gray-600">Same day available</div>
+                    <div className="font-medium text-gray-900">Quick Switch</div>
+                    <div className="text-sm text-gray-600">Often same-day service</div>
                   </div>
                 </div>
                 <div className="flex items-center p-3 bg-gray-50 rounded-lg">
                   <TrendingDown className="h-5 w-5 text-purple-600 mr-3" />
                   <div>
-                    <div className="font-medium text-gray-900">Rate Protection</div>
-                    <div className="text-sm text-gray-600">Fixed rate plans</div>
+                    <div className="font-medium text-gray-900">No Rate Surprises</div>
+                    <div className="text-sm text-gray-600">Fixed rates available</div>
                   </div>
                 </div>
               </div>
@@ -136,10 +138,10 @@ export function CityElectricityProvidersPage({ state, city }: CityElectricityPro
 
             {/* ZIP Search Sidebar */}
             <div className="bg-white p-6 rounded-lg shadow-sm border h-fit">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Get Exact Rates for Your Address</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">What Will You Actually Pay?</h3>
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder={`Enter ${cityData.name} ZIP`}
+                placeholder="Enter zip code"
               />
               <div className="mt-4 text-sm text-gray-600">
                 <div className="font-medium mb-2">Popular {cityData.name} ZIP Codes:</div>
@@ -291,7 +293,7 @@ export function CityElectricityProvidersPage({ state, city }: CityElectricityPro
                 onClick={() => navigate(`/compare/providers?city=${city}&state=${state}`)}
                 className="bg-texas-navy text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors"
               >
-                Compare All Plans
+                Compare Quality Plans
               </button>
             </div>
 

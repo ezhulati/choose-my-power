@@ -196,7 +196,7 @@ export class PlanRepository {
             ${this.findDocumentLink(apiPlan.document_links, 'yrac')},
             ${true}, ${new Date()}
           )
-          ON CONFLICT (external_id) DO UPDATE SET
+          ON CONFLICT (external_id, tdsp_duns) DO UPDATE SET
             name = EXCLUDED.name,
             headline = EXCLUDED.headline,
             rate_500kwh = EXCLUDED.rate_500kwh,

@@ -153,7 +153,7 @@ export function CityElectricityRatesPage({ state, city }: CityElectricityRatesPa
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Get Exact Rates for Your ZIP Code</h3>
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder={`Enter ${cityData.name} ZIP`}
+                placeholder="Enter zip code"
               />
               <div className="mt-4 text-sm text-gray-600">
                 <div className="font-medium mb-2">{cityData.name} ZIP Codes:</div>

@@ -254,6 +254,67 @@ export class ComparePowerClient {
   }
 
   /**
+   * Professional database-first approach: Get plans with cache first, API fallback
+   * This is the method that should be used by the application for optimal performance
+   */
+  async getPlansWithCache(params: ApiParams): Promise<Plan[]> {
+    const startTime = Date.now();
+    const cityName = this.getCityNameFromTdsp(params.tdsp_duns);
+    
+    try {
+      // 1. First check database cache (professional sites prioritize this)
+      const dbCached = await planRepository.getPlansFromCache(params);
+      if (dbCached && dbCached.length > 0) {
+        console.log(`📦 Database cache hit for ${cityName} (${dbCached.length} plans)`);
+        this.metrics.cacheHits++;
+        return dbCached;
+      }
+
+      // 2. Check active database plans (if API cache is empty, use stored plans)
+      const activePlans = await planRepository.getActivePlans(params.tdsp_duns, params);
+      if (activePlans && activePlans.length > 0) {
+        console.log(`💾 Using active database plans for ${cityName} (${activePlans.length} plans)`);
+        
+        // Store in cache for future use with shorter TTL
+        await planRepository.setPlansCache(params, activePlans, 0.5); // 30 minutes
+        this.metrics.cacheHits++;
+        return activePlans;
+      }
+
+      // 3. Only make API call if no database data available (minimize API usage)
+      console.log(`🌐 No cached data for ${cityName}, fetching from API...`);
+      const plans = await this.fetchPlans(params);
+      
+      // Log API usage for monitoring
+      await planRepository.logApiCall(
+        'get_plans_fresh',
+        params,
+        200,
+        Date.now() - startTime,
+        undefined
+      );
+      
+      return plans;
+
+    } catch (error) {
+      console.error(`❌ Error fetching plans for ${cityName}:`, error);
+      
+      // Final fallback: try any available database data even if stale
+      try {
+        const fallbackPlans = await planRepository.getActivePlans(params.tdsp_duns);
+        if (fallbackPlans.length > 0) {
+          console.warn(`⚠️ Using stale database fallback for ${cityName} (${fallbackPlans.length} plans)`);
+          return fallbackPlans;
+        }
+      } catch (fallbackError) {
+        console.error('Database fallback failed:', fallbackError);
+      }
+      
+      throw error;
+    }
+  }
+
+  /**
    * Fetch plans directly from API with enhanced error handling
    */
   private async fetchFromApi(params: ApiParams): Promise<Plan[]> {

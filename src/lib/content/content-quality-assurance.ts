@@ -1,7 +1,7 @@
 /**
  * Content Quality Assurance System
  * 
- * Ensures all generated content meets world-class standards for:
+ * Ensures all generated content meets quality standards for:
  * - Content quality and depth
  * - SEO optimization
  * - User experience
