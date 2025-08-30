@@ -82,16 +82,16 @@ export function Homepage({ onNavigate }: HomepageProps) {
               <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
                 <Leaf className="w-6 h-6 sm:w-8 sm:h-8 text-green-600" />
               </div>
-              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">Green Energy Leaders</h3>
-              <p className="text-sm sm:text-base text-gray-600">100% renewable specialists with competitive green rates</p>
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">Actually Green (Not Greenwashed)</h3>
+              <p className="text-sm sm:text-base text-gray-600">Real 100% renewable energy, not marketing tricks</p>
             </div>
 
             <div className="text-center p-4 sm:p-6">
               <div className="w-12 h-12 sm:w-16 sm:h-16 bg-texas-cream rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
                 <Users className="w-6 h-6 sm:w-8 sm:h-8 text-texas-navy" />
               </div>
-              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">Service Champions</h3>
-              <p className="text-sm sm:text-base text-gray-600">Top-rated customer service and satisfaction leaders</p>
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">They Actually Answer the Phone</h3>
+              <p className="text-sm sm:text-base text-gray-600">Companies that pick up when you call, not send you to voicemail hell</p>
             </div>
 
             <div className="text-center p-4 sm:p-6">
