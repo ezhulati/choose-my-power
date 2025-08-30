@@ -27,7 +27,7 @@ const heroImage = getHeroImage({
 <Layout title={title} description={description}>
   <div class="bg-white">
     <!-- Municipal Utility Hero Section -->
-    <section class="relative bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 overflow-hidden">
+    <section class="relative bg-gradient-to-br from-texas-navy via-texas-navy/90 to-texas-navy/80 overflow-hidden">
       {heroImage && <div class="absolute inset-0 opacity-20">
         <img src={heroImage} alt={`${utilityInfo.cityDisplayName} electricity`} class="w-full h-full object-cover" />
       </div>}
@@ -46,17 +46,17 @@ const heroImage = getHeroImage({
             <!-- Main Heading -->
             <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 leading-tight">
               <span class="block">{utilityInfo.cityDisplayName}</span>
-              <span class="block text-blue-200">Municipal Utility</span>
+              <span class="block text-white/80">Municipal Utility</span>
             </h1>
             
             <!-- Utility Name -->
             <div class="flex items-center justify-center mb-6">
-              <Building className="w-8 h-8 text-blue-200 mr-3" />
+              <Building className="w-8 h-8 text-white/80 mr-3" />
               <h2 class="text-2xl sm:text-3xl font-semibold text-white">{utilityInfo.name}</h2>
             </div>
             
             <!-- Description -->
-            <p class="text-lg sm:text-xl text-blue-100 max-w-4xl mx-auto mb-8 leading-relaxed">
+            <p class="text-lg sm:text-xl text-white/90 max-w-4xl mx-auto mb-8 leading-relaxed">
               {utilityInfo.description}
             </p>
             
@@ -74,7 +74,7 @@ const heroImage = getHeroImage({
               </a>
               <a 
                 href="#rate-information"
-                class="inline-flex items-center px-8 py-4 bg-texas-navy text-white font-semibold rounded-lg hover:bg-blue-800 transition-colors shadow-lg"
+                class="inline-flex items-center px-8 py-4 bg-texas-red text-white font-semibold rounded-lg hover:bg-texas-red/90 transition-colors shadow-lg"
               >
                 <Info className="w-5 h-5 mr-2" />
                 Learn More

@@ -182,18 +182,18 @@ console.log(`✅ Faceted page processed: ${cityName} with ${filterResult.applied
           <div class="text-center">
             <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 drop-shadow-lg">
               {filterLabels.length > 0 
-                ? `${filterLabels.join(' + ')} Plans`
-                : `Electricity Plans`
+                ? `${filterLabels.join(' + ')} That Won't Screw You Over`
+                : `Who Actually Has Good Electricity Plans?`
               }
             </h1>
             <p class="text-xl lg:text-2xl text-white/90 mb-6 drop-shadow-md leading-relaxed max-w-4xl mx-auto">
               {filterLabels.length > 0 
-                ? `${filterLabels.join(' + ')} electricity plans in ${cityName}, Texas`
-                : `Compare electricity plans in ${cityName}, Texas`
+                ? `We found ${plans.length} ${filterLabels.join(' + ')} plans in ${cityName}. Here are the ones that actually work.`
+                : `We tested all ${plans.length} plans in ${cityName}. Here's what we learned so you don't get burned.`
               }
             </p>
             <div class="text-white/80 drop-shadow-sm">
-              <span class="text-lg lg:text-xl">{plans.length} plans available</span>
+              <span class="text-lg lg:text-xl">PowerToChoose shows confusing rates. We show what you'll actually pay.</span>
               {filterResult.warnings.length > 0 && (
                 <span class="ml-2 text-texas-gold-200">• {filterResult.warnings[0]}</span>
               )}
@@ -314,7 +314,7 @@ console.log(`✅ Faceted page processed: ${cityName} with ${filterResult.applied
     <!-- Related Links Section -->
     <div class="bg-texas-cream-100 py-12 mt-12">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-xl font-bold text-gray-900 mb-6">Popular Electricity Plan Options in {cityName}</h2>
+        <h2 class="text-xl font-bold text-gray-900 mb-6">What Are People Really Looking For in {cityName}?</h2>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {['12-month', '24-month', 'fixed-rate', 'green-energy', 'prepaid', 'no-deposit'].map((filter) => {
             const isActive = filterSegments.includes(filter);

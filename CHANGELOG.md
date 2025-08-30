@@ -48,6 +48,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **SEO**: Non-descriptive "Learn More" link text replaced with provider-specific descriptions
 - Updated provider card components and homepage links for better search engine optimization
 - **Security**: Content Security Policy violations in production deployment
+- **Critical**: Syntax error in ComparePage.tsx causing build failures (smart quote to escaped apostrophe)
 - Replaced 'unsafe-inline' scripts with specific SHA-256 hash-based authentication
 - Fixed CSS MIME type loading issues with proper /_astro/* asset headers
 - Enhanced asset caching with charset specifications for better browser compatibility

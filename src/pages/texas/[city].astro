@@ -199,13 +199,13 @@ const heroImage = getHeroImage({
           <!-- Page Header -->
           <div class="text-center">
             <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 drop-shadow-lg">
-              Electricity Plans
+              Find Your {cityName} Electricity Plan
             </h1>
             <p class="text-xl lg:text-2xl text-white/90 mb-6 drop-shadow-md leading-relaxed max-w-4xl mx-auto">
-              Compare electricity plans in {cityName}, Texas
+              We've ranked all {plans.length} plans in {cityName} by what matters most. No confusing jargon. Just clear choices that save you money.
             </p>
             <div class="text-white/80 drop-shadow-sm">
-              <span class="text-lg lg:text-xl">{plans.length} plans available</span>
+              <span class="text-lg lg:text-xl">PowerToChoose makes it confusing. We don't.</span>
               {apiError && (
                 <span class="ml-2 text-texas-gold-200">• Loading plans...</span>
               )}

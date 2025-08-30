@@ -98,16 +98,16 @@ export function Homepage({ onNavigate }: HomepageProps) {
               <div className="w-12 h-12 sm:w-16 sm:h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
                 <TrendingDown className="w-6 h-6 sm:w-8 sm:h-8 text-purple-600" />
               </div>
-              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">Best Value</h3>
-              <p className="text-sm sm:text-base text-gray-600">Lowest total costs with competitive rates and minimal fees</p>
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">Cheapest Without the Games</h3>
+              <p className="text-sm sm:text-base text-gray-600">Real total cost, all fees included. No teaser rates.</p>
             </div>
 
             <div className="text-center p-4 sm:p-6">
               <div className="w-12 h-12 sm:w-16 sm:h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
                 <Battery className="w-6 h-6 sm:w-8 sm:h-8 text-indigo-600" />
               </div>
-              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">Tech Innovation</h3>
-              <p className="text-sm sm:text-base text-gray-600">Smart home integration and advanced technology features</p>
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">Smart Home Ready</h3>
+              <p className="text-sm sm:text-base text-gray-600">Plans that work with your Nest, smart thermostat, and EV charger</p>
             </div>
           </div>
         </div>
@@ -133,8 +133,8 @@ export function Homepage({ onNavigate }: HomepageProps) {
             >
               <CardContent className="p-4 sm:p-6">
                 <Award className="w-6 h-6 sm:w-8 sm:h-8 text-texas-navy mb-2 sm:mb-3" />
-                <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">Best Companies</h3>
-                <p className="text-sm sm:text-base text-gray-600">Expert-ranked electricity companies by specialization</p>
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">Who's Actually Good?</h3>
+                <p className="text-sm sm:text-base text-gray-600">Honest rankings of which companies won't screw you over</p>
               </CardContent>
             </Card>
 
@@ -145,8 +145,8 @@ export function Homepage({ onNavigate }: HomepageProps) {
             >
               <CardContent className="p-4 sm:p-6">
                 <BarChart className="w-6 h-6 sm:w-8 sm:h-8 text-green-600 mb-2 sm:mb-3" />
-                <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">Compare Options</h3>
-                <p className="text-sm sm:text-base text-gray-600">Side-by-side comparison of companies, plans, and rates</p>
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">See Side-by-Side</h3>
+                <p className="text-sm sm:text-base text-gray-600">Compare real prices without the marketing BS</p>
               </CardContent>
             </Card>
 
@@ -157,8 +157,8 @@ export function Homepage({ onNavigate }: HomepageProps) {
             >
               <CardContent className="p-4 sm:p-6">
                 <Zap className="w-6 h-6 sm:w-8 sm:h-8 text-purple-600 mb-2 sm:mb-3" />
-                <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">Shop by Priority</h3>
-                <p className="text-sm sm:text-base text-gray-600">Find options based on price, service, green energy, or features</p>
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">What Matters Most?</h3>
+                <p className="text-sm sm:text-base text-gray-600">Cheapest rate, best service, green energy, or smart home features?</p>
               </CardContent>
             </Card>
 
@@ -169,8 +169,8 @@ export function Homepage({ onNavigate }: HomepageProps) {
             >
               <CardContent className="p-4 sm:p-6">
                 <Calculator className="w-6 h-6 sm:w-8 sm:h-8 text-orange-600 mb-2 sm:mb-3" />
-                <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">Calculate Costs</h3>
-                <p className="text-sm sm:text-base text-gray-600">See exact costs and savings based on your usage</p>
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2">What Will I Actually Pay?</h3>
+                <p className="text-sm sm:text-base text-gray-600">Get real monthly costs based on your actual usage</p>
               </CardContent>
             </Card>
           </div>

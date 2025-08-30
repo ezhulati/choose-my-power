@@ -121,7 +121,7 @@ export function ComparePage() {
     {
       icon: TrendingDown,
       title: 'Stop Overpaying',
-      description: 'Most Texans overpay by $35-50 per month. That's your car insurance payment right there.',
+      description: 'Most Texans overpay by $35-50 per month. That\'s your car insurance payment right there.',
       stat: '$420/year back in your pocket'
     },
     {
