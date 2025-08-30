@@ -339,7 +339,7 @@ export function ZipCodeSearch({
     default: {
       container: 'bg-background border border-input rounded-lg',
       input: 'bg-transparent border-0 focus:ring-2 focus:ring-ring',
-      button: 'bg-primary text-primary-foreground hover:bg-primary/90',
+      button: 'bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground',
       dropdown: 'bg-background border border-input'
     },
     texas: {
@@ -357,7 +357,7 @@ export function ZipCodeSearch({
     minimal: {
       container: 'bg-gray-50 border border-gray-200 rounded-lg',
       input: 'bg-transparent border-0 focus:ring-1 focus:ring-gray-400',
-      button: 'bg-gray-600 text-white hover:bg-gray-700',
+      button: 'bg-gray-600 text-white hover:bg-gray-700 hover:text-white',
       dropdown: 'bg-white border border-gray-200'
     }
   };
@@ -480,7 +480,7 @@ export function ZipCodeSearch({
                     config.dropdown,
                     index === highlightedIndex 
                       ? 'bg-texas-gold/10 text-texas-navy' 
-                      : 'hover:bg-gray-50',
+                      : 'hover:bg-gray-50 hover:text-gray-900',
                     index > 0 && 'border-t border-gray-100'
                   )}
                   role="option"

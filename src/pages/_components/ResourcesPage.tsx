@@ -7,51 +7,51 @@ interface ResourcesPageProps {
 export function ResourcesPage({}: ResourcesPageProps) {
   const guides = [
     {
-      title: 'How to Choose an Electricity Provider',
-      description: 'Complete guide to selecting the right provider for your needs',
+      title: 'How to Pick a Provider That Won\'t Screw You',
+      description: 'The real deal on choosing electricity providers - what they don\'t want you to know',
       href: '/resources/guides/choosing-a-provider',
       icon: Users,
-      category: 'Getting Started'
+      category: 'Don\'t Get Fooled'
     },
     {
-      title: 'Understanding Your Electricity Bill',
-      description: 'Learn to read and understand all charges on your electric bill',
+      title: 'What the Heck is a kWh and Why Should You Care?',
+      description: 'Decode your electric bill like a pro and spot the hidden fees',
       href: '/resources/guides/understanding-your-bill',
       icon: FileText,
-      category: 'Getting Started'
+      category: 'Money Matters'
     },
     {
-      title: 'How to Switch Providers',
-      description: 'Step-by-step process for changing electricity companies',
+      title: 'How to Switch Electric Companies (It\'s Easier Than You Think)',
+      description: 'Your lights stay on, your bill goes down - here\'s exactly how to do it',
       href: '/resources/guides/how-to-switch-providers',
       icon: Zap,
-      category: 'Switching'
+      category: 'Take Action'
     },
     {
-      title: 'Fixed vs Variable Rate Plans',
-      description: 'Compare different rate structures and find what works for you',
+      title: 'Fixed vs Variable: Which Won\'t Bite You Later?',
+      description: 'Plain English breakdown of rate types so you don\'t get surprised',
       href: '/resources/guides/fixed-vs-variable',
       icon: BookOpen,
-      category: 'Plan Types'
+      category: 'Smart Choices'
     }
   ];
 
   const tools = [
     {
-      title: 'Electricity Rate Calculator',
-      description: 'Calculate and compare monthly costs based on your usage',
+      title: 'Real Cost Calculator',
+      description: 'See what you\'ll actually pay (not the marketing rate they show you)',
       href: '/rates/calculator',
       icon: Calculator
     },
     {
-      title: 'Usage Estimator',
-      description: 'Estimate your monthly kWh usage by home size and appliances',
+      title: 'Usage Reality Check',
+      description: 'Figure out how much electricity you actually use (most people guess wrong)',
       href: '/resources/tools/usage-estimator',
       icon: Zap
     },
     {
-      title: 'Savings Calculator',
-      description: 'Calculate potential savings by switching providers',
+      title: 'Switching Savings Calculator',
+      description: 'Find out if switching is worth it or if you should wait',
       href: '/resources/tools/savings-calculator',
       icon: Calculator
     }
@@ -59,22 +59,22 @@ export function ResourcesPage({}: ResourcesPageProps) {
 
   const supportOptions = [
     {
-      title: 'Frequently Asked Questions',
-      description: 'Find answers to common questions about electricity providers',
+      title: 'Real Questions, Straight Answers',
+      description: 'No corporate BS - just honest answers to what you\'re actually wondering',
       href: '/resources/faqs',
       icon: HelpCircle,
       color: 'blue'
     },
     {
-      title: 'Contact Support',
-      description: 'Get personalized help with choosing electricity plans',
+      title: 'Need Help? We\'re Real Humans',
+      description: 'Talk to someone who actually understands Texas electricity (we\'re not salespeople)',
       href: '/resources/support/contact',
       icon: Phone,
       color: 'green'
     },
     {
-      title: 'File a Complaint',
-      description: 'Learn how to resolve issues with electricity providers',
+      title: 'Provider Screwed You Over?',
+      description: 'Here\'s how to fight back when electric companies don\'t play fair',
       href: '/resources/support/complaints',
       icon: Shield,
       color: 'orange'
@@ -88,11 +88,10 @@ export function ResourcesPage({}: ResourcesPageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center">
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Resources & Guides
+              Everything You Need to Not Get Screwed by Electric Companies
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Everything you need to know about choosing electricity providers, understanding plans, 
-              and making informed decisions about your electricity service.
+              The Texas electricity market is designed to confuse you. We're here to level the playing field with plain English guides that actually help you save money and avoid the traps.
             </p>
           </div>
         </div>
@@ -101,7 +100,7 @@ export function ResourcesPage({}: ResourcesPageProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Guides Section */}
         <div className="mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Educational Guides</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">No-BS Guides to Beat the System</h2>
           
           <div className="grid md:grid-cols-2 gap-6">
             {guides.map((guide, index) => (
@@ -138,7 +137,7 @@ export function ResourcesPage({}: ResourcesPageProps) {
 
         {/* Tools Section */}
         <div className="mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Calculation Tools</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">Tools That Actually Work</h2>
           
           <div className="grid md:grid-cols-3 gap-6">
             {tools.map((tool, index) => (
@@ -161,7 +160,7 @@ export function ResourcesPage({}: ResourcesPageProps) {
 
         {/* Support Section */}
         <div className="mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Get Help & Support</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">When You Need Backup</h2>
           
           <div className="grid md:grid-cols-3 gap-6">
             {supportOptions.map((option, index) => (
@@ -184,58 +183,58 @@ export function ResourcesPage({}: ResourcesPageProps) {
 
         {/* Quick Links */}
         <div className="bg-white rounded-lg shadow-sm border p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Popular Resources</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Reader Favorites</h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             <a
               href="/resources/guides/red-flags"
               className="p-4 text-left border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors block"
             >
-              <h3 className="font-medium text-gray-900 mb-1">Red Flags to Avoid</h3>
-              <p className="text-sm text-gray-600">Warning signs when choosing providers</p>
+              <h3 className="font-medium text-gray-900 mb-1">Scammer Alert: Red Flags</h3>
+              <p className="text-sm text-gray-600">How to spot the door-to-door vultures and phone scammers</p>
             </a>
             
             <a
               href="/resources/guides/green-energy"
               className="p-4 text-left border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors block"
             >
-              <h3 className="font-medium text-gray-900 mb-1">Green Energy Guide</h3>
-              <p className="text-sm text-gray-600">Everything about renewable energy plans</p>
+              <h3 className="font-medium text-gray-900 mb-1">Green Energy (The Real Story)</h3>
+              <p className="text-sm text-gray-600">What's actually green vs. marketing greenwashing</p>
             </a>
             
             <a
               href="/resources/guides/business-electricity"
               className="p-4 text-left border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors block"
             >
-              <h3 className="font-medium text-gray-900 mb-1">Business Electricity</h3>
-              <p className="text-sm text-gray-600">Commercial electricity considerations</p>
+              <h3 className="font-medium text-gray-900 mb-1">Business Electricity Survival</h3>
+              <p className="text-sm text-gray-600">Don't let them fleece your business too</p>
             </a>
             
             <a
               href="/resources/guides/moving-guide"
               className="p-4 text-left border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors block"
             >
-              <h3 className="font-medium text-gray-900 mb-1">Moving Guide</h3>
-              <p className="text-sm text-gray-600">Electricity setup for new residents</p>
+              <h3 className="font-medium text-gray-900 mb-1">New to Texas? Start Here</h3>
+              <p className="text-sm text-gray-600">Don't get taken advantage of on day one</p>
             </a>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
             <div className="bg-texas-cream-200 p-4 rounded-lg text-center">
-              <div className="text-2xl font-bold text-blue-900">25+</div>
-              <div className="text-sm text-texas-navy">Guides & Articles</div>
+              <div className="text-2xl font-bold text-blue-900">1000s</div>
+              <div className="text-sm text-texas-navy">Texans Helped</div>
             </div>
             <div className="bg-green-50 p-4 rounded-lg text-center">
-              <div className="text-2xl font-bold text-green-900">10+</div>
-              <div className="text-sm text-green-700">Calculation Tools</div>
+              <div className="text-2xl font-bold text-green-900">$500+</div>
+              <div className="text-sm text-green-700">Avg. Savings/Year</div>
             </div>
             <div className="bg-purple-50 p-4 rounded-lg text-center">
-              <div className="text-2xl font-bold text-purple-900">24/7</div>
-              <div className="text-sm text-purple-700">Support Available</div>
+              <div className="text-2xl font-bold text-purple-900">Zero</div>
+              <div className="text-sm text-purple-700">Sales Pressure</div>
             </div>
             <div className="bg-orange-50 p-4 rounded-lg text-center">
-              <div className="text-2xl font-bold text-orange-900">Free</div>
-              <div className="text-sm text-orange-700">All Resources</div>
+              <div className="text-2xl font-bold text-orange-900">100%</div>
+              <div className="text-sm text-orange-700">Honest Advice</div>
             </div>
           </div>
         </div>

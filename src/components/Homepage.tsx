@@ -44,7 +44,7 @@ export function Homepage({ onNavigate }: HomepageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6">
-              Compare & Choose Texas Electricity
+              Your Neighbor Pays Half What You Pay
             </h1>
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 text-blue-100 max-w-3xl mx-auto">
               {getCredibleMarketingText(DEFAULT_COUNTS.providers, DEFAULT_COUNTS.plans).heroText}
@@ -70,10 +70,10 @@ export function Homepage({ onNavigate }: HomepageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-10 md:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
-              Expert Analysis & Category Rankings
+              Which Companies Are Actually Good?
             </h2>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-              We analyze providers by specialization to help you find exactly what you need
+              We tested them all. Called support at 2am. Here's who's good, who's cheap, and who will ghost you.
             </p>
           </div>
 

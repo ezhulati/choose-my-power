@@ -11,6 +11,21 @@ export interface Provider {
   features: string[];
   contactPhone: string;
   website: string;
+  // Hero's journey messaging framework
+  assessment: 'good' | 'mixed' | 'bad';
+  heroJourney: {
+    honestHeader: string;
+    whatTheyreGoodAt: string[];
+    whereTheyFallShort: string[];
+    realCustomerThemes: string[];
+    bestPlans?: string[];
+    bottomLine: string;
+    recommendedAction: 'choose' | 'compare' | 'avoid';
+  };
+  marketingVsReality: {
+    marketingClaims: string[];
+    actualPerformance: string[];
+  };
 }
 
 export interface Plan {

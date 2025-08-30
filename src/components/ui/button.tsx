@@ -10,13 +10,13 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow hover:bg-primary/90",
+          "bg-primary text-primary-foreground shadow hover:bg-primary/90 hover:text-primary-foreground",
         destructive:
-          "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
+          "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90 hover:text-destructive-foreground",
         outline:
           "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
         secondary:
-          "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
+          "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 hover:text-secondary-foreground",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         // Texas-themed variants
@@ -33,7 +33,7 @@ const buttonVariants = cva(
         "texas-ghost":
           "text-texas-navy hover:bg-texas-navy/10 hover:text-texas-navy focus-visible:ring-texas-navy/30",
         "texas-cream":
-          "bg-texas-cream text-texas-navy border border-texas-cream hover:bg-texas-cream/80 shadow-sm focus-visible:ring-texas-gold/50",
+          "bg-texas-cream text-texas-navy border border-texas-cream hover:bg-texas-cream/80 hover:text-texas-navy shadow-sm focus-visible:ring-texas-gold/50",
       },
       size: {
         default: "h-12 px-4 py-3",

@@ -27,50 +27,50 @@ export function ResourcesFAQsPage({}: ResourcesFAQsPageProps) {
     {
       id: 'what-is-deregulation',
       category: 'choosing',
-      question: 'What does electricity deregulation mean?',
-      answer: 'Electricity deregulation means you have the power to choose your electricity provider. In deregulated states like Texas, you can shop for electricity plans just like you shop for cell phone or internet service. Your local utility still delivers the electricity, but you choose who supplies it and at what rate.'
+      question: 'What the heck is electricity deregulation anyway?',
+      answer: 'Think of it like this: your local utility company (like Oncor or CenterPoint) owns the power lines, but they don\'t get to sell you electricity anymore. Instead, you get to shop around for who supplies your power - kind of like choosing between AT&T and Verizon, except it\'s for electricity. The same wires deliver power to your house no matter who you choose.'
     },
     {
       id: 'how-to-choose-provider',
       category: 'choosing',
-      question: 'How do I choose the right electricity provider?',
-      answer: 'Compare providers based on: 1) Total monthly cost (not just the rate), 2) Contract terms and length, 3) Customer service ratings and reviews, 4) Green energy options if important to you, 5) Additional fees and charges. Use your actual monthly usage to calculate real costs.'
+      question: 'How do I pick a provider that won\'t screw me over?',
+      answer: 'First rule: ignore the big flashy rate they advertise - it\'s usually BS. Instead, look at what you\'ll actually pay each month based on how much electricity you use. Check reviews (especially complaints), avoid door-to-door salespeople like the plague, and read the fine print for hidden fees. If it sounds too good to be true, it probably is.'
     },
     {
       id: 'switching-process',
       category: 'switching',
-      question: 'How long does it take to switch electricity providers?',
-      answer: 'The switching process typically takes 1-2 billing cycles (30-60 days) to complete. However, you can sign up with a new provider immediately. Your new provider handles all the paperwork and coordination with your current provider.'
+      question: 'How long does switching actually take?',
+      answer: 'You can sign up in 5 minutes online, but the actual switch happens on your next meter reading date - usually 2-4 weeks later. You don\'t do anything except sign up. Your new company handles all the behind-the-scenes stuff. Think of it like switching cell phone carriers - same process.'
     },
     {
       id: 'service-interruption',
       category: 'switching',
-      question: 'Will my electricity be shut off when I switch providers?',
-      answer: 'No, your electricity service will not be interrupted when you switch providers. The transition happens seamlessly behind the scenes. The same power lines and infrastructure deliver electricity to your home regardless of which provider you choose.'
+      question: 'Will my power get shut off when I switch?',
+      answer: 'Nope, your lights stay on the whole time. It\'s the same power lines, same electricity - just a different company sending you the bill. It\'s like changing who manages your bank account; the money doesn\'t disappear while you switch banks.'
     },
     {
       id: 'fixed-vs-variable',
       category: 'plans',
-      question: 'What\'s the difference between fixed and variable rate plans?',
-      answer: 'Fixed-rate plans keep the same price per kWh throughout your entire contract, making your bills predictable. Variable-rate plans can change monthly based on market conditions - they may start lower but can increase over time. Fixed rates are generally better for budgeting.'
+      question: 'Fixed vs variable rates - which one won\'t bite me?',
+      answer: 'Fixed rate = same price the whole contract. Variable rate = they can change it whenever they want (and they usually do, and not in your favor). Variable rates are like teaser rates on credit cards - they hook you with a low price then jack it up. Stick with fixed unless you enjoy surprises on your electric bill.'
     },
     {
       id: 'green-energy-cost',
       category: 'plans',
-      question: 'Do green energy plans cost more?',
-      answer: 'Not necessarily. Many 100% renewable energy plans are competitively priced with traditional plans. Some green plans even cost less than conventional electricity. The price depends more on the provider and contract terms than the energy source.'
+      question: 'Do green energy plans actually cost more?',
+      answer: 'Usually not much, and sometimes they\'re even cheaper. The real trick is figuring out what\'s actually \'green\' versus marketing nonsense. Some companies just buy \'renewable energy credits\' (which is basically accounting magic) while others use actual wind and solar power. Do your homework on what \'green\' really means.'
     },
     {
       id: 'understanding-bill',
       category: 'billing',
-      question: 'Why is my electricity bill higher than the advertised rate?',
-      answer: 'Your bill includes more than just the electricity rate. It also includes: monthly service fees from your provider, delivery charges from your utility company, taxes, and sometimes other fees. Always compare total monthly costs, not just the per-kWh rate.'
+      question: 'Why is my bill way higher than that rate they advertised?',
+      answer: 'Because they\'re playing games with you. That \'rate\' they advertise often only applies if you use exactly 1,000 or 2,000 kWh. Use more or less, and boom - different rate. Plus they add monthly fees, connection fees, and who knows what else. This is why you should always look at the total monthly cost for YOUR usage, not their marketing number.'
     },
     {
       id: 'cancellation-fees',
       category: 'billing',
-      question: 'Can I cancel my electricity contract early?',
-      answer: 'Yes, but you may have to pay an early termination fee (ETF). The ETF amount varies by provider and is listed in your contract. Some providers offer no-fee plans or will waive the fee in certain circumstances like moving out of the service area.'
+      question: 'Can I get out of my contract if I hate my provider?',
+      answer: 'Yes, but they\'ll probably charge you an early termination fee - usually $100-300. It\'s like breaking a cell phone contract. Sometimes it\'s worth paying the fee if you\'ll save more money with a different provider. Do the math first. Some companies waive the fee if you\'re moving out of Texas.'
     },
     {
       id: 'deposit-required',
@@ -121,11 +121,10 @@ export function ResourcesFAQsPage({}: ResourcesFAQsPageProps) {
             </div>
             
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Frequently Asked Questions
+              Real Questions, Straight Answers
             </h1>
             <p className="text-lg text-gray-600 mb-8 max-w-3xl mx-auto">
-              Find answers to common questions about choosing electricity providers, switching service, 
-              and understanding your electricity options.
+              No corporate BS here. Just honest answers to the questions you're actually asking about Texas electricity. We've helped thousands of people figure this out.
             </p>
           </div>
         </div>
@@ -180,10 +179,9 @@ export function ResourcesFAQsPage({}: ResourcesFAQsPageProps) {
 
         {/* Help Section */}
         <div className="bg-white rounded-lg shadow-sm border p-8 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Still Have Questions?</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Still Confused? We Get It.</h2>
           <p className="text-gray-600 mb-6">
-            Can't find the answer you're looking for? Our support team is here to help you 
-            understand your electricity options and make informed decisions.
+            Texas electricity is needlessly complicated. If you can't find your answer here or want someone to walk you through your specific situation, just ask. We're real humans who've helped thousands of Texans figure this out.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

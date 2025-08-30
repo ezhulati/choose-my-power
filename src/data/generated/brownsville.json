@@ -1,0 +1,20 @@
+{
+  "citySlug": "brownsville-tx",
+  "cityDisplayName": "Brownsville, TX",
+  "tdspDuns": "MUNICIPAL",
+  "tdspName": "Brownsville Public Utilities Board",
+  "zone": "Valley",
+  "tier": 2,
+  "priority": 0.8,
+  "marketType": "municipal",
+  "redirectTo": "/texas/brownsville-tx/municipal-utility",
+  "plans": [],
+  "lastUpdated": "2024-12-18T22:38:00.000Z",
+  "planCount": 0,
+  "lowestRate": null,
+  "averageRate": null,
+  "meta": {
+    "description": "Brownsville, TX is served by Brownsville Public Utilities Board, a municipal utility. Residents cannot choose their retail electric provider.",
+    "keywords": "brownsville texas electricity, brownsville public utilities, brownsville municipal utility"
+  }
+}

@@ -55,10 +55,10 @@ export function CalculatorPage() {
   }, [monthlyUsage, selectedState]);
 
   const usagePresets = [
-    { label: 'Low Usage', value: 500, description: '1-2 bedroom apartment' },
-    { label: 'Average Usage', value: 1000, description: '2-3 bedroom home' },
-    { label: 'High Usage', value: 2000, description: '4+ bedroom home' },
-    { label: 'Very High Usage', value: 3000, description: 'Large home with pool/AC' }
+    { label: 'Small Apartment', value: 500, description: '1-2 bedrooms' },
+    { label: 'Average Home', value: 1000, description: '2-3 bedrooms' },
+    { label: 'Large House', value: 2000, description: '4+ bedrooms' },
+    { label: 'Extra Large', value: 3000, description: 'Big home with pool' }
   ];
 
   const topPlan = calculationResults[0];
@@ -80,16 +80,16 @@ export function CalculatorPage() {
             </div>
             
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Electricity Rate Calculator
+              Find Out What You'd Really Pay
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-green-100 max-w-4xl mx-auto">
-              Calculate your monthly electricity costs and compare plans. 
-              Find the best deal for your usage and save money on your electric bill.
+              See your actual monthly bills with every plan available. 
+              Know exactly what you'd pay before you switch.
             </p>
 
             {topPlan && (
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-lg max-w-2xl mx-auto">
-                <div className="text-lg mb-2">Your Best Option:</div>
+                <div className="text-lg mb-2">We found your best deal:</div>
                 <div className="text-3xl font-bold mb-2">
                   {topPlan.providerName} - {topPlan.name}
                 </div>
@@ -97,7 +97,7 @@ export function CalculatorPage() {
                   ${topPlan.totalMonthlyCost.toFixed(2)}/month
                   {potentialSavings > 0 && (
                     <span className="ml-2 text-green-200">
-                      (Save ${potentialSavings.toFixed(2)}/month)
+                      (You'd save ${potentialSavings.toFixed(2)}/month)
                     </span>
                   )}
                 </div>
@@ -111,13 +111,13 @@ export function CalculatorPage() {
         {/* Calculator Input */}
         <div className="bg-white rounded-lg shadow-sm border p-8 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            Calculate Your Costs
+            Tell Us About Your Usage
           </h2>
 
           <div className="grid lg:grid-cols-2 gap-8">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-4">
-                Monthly Usage (kWh)
+                How much electricity do you use each month?
               </label>
               <div className="mb-4">
                 <input
@@ -125,7 +125,7 @@ export function CalculatorPage() {
                   value={monthlyUsage}
                   onChange={(e) => setMonthlyUsage(parseInt(e.target.value) || 0)}
                   className="w-full border border-gray-300 rounded-md px-4 py-3 text-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
-                  placeholder="Enter your monthly kWh usage"
+                  placeholder="Type number from your bill (like 1,200)"
                 />
               </div>
 
@@ -150,7 +150,7 @@ export function CalculatorPage() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-4">
-                State/Market
+                Where do you live?
               </label>
               <select
                 value={selectedState}
@@ -165,25 +165,25 @@ export function CalculatorPage() {
 
               {calculationResults.length > 0 && (
                 <div className="bg-gray-50 rounded-lg p-6">
-                  <h3 className="font-medium text-gray-900 mb-4">Quick Stats</h3>
+                  <h3 className="font-medium text-gray-900 mb-4">What We Found</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Available Plans:</span>
+                      <span className="text-gray-600">Plans Compared:</span>
                       <span className="font-medium">{calculationResults.length}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Best Monthly Cost:</span>
+                      <span className="text-gray-600">Lowest Bill:</span>
                       <span className="font-medium text-green-600">
                         ${topPlan?.totalMonthlyCost.toFixed(2)}
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Average Monthly Cost:</span>
+                      <span className="text-gray-600">Average Bill:</span>
                       <span className="font-medium">${averageCost.toFixed(2)}</span>
                     </div>
                     {potentialSavings > 0 && (
                       <div className="flex justify-between border-t pt-3">
-                        <span className="text-gray-600">Potential Savings:</span>
+                        <span className="text-gray-600">You Could Save:</span>
                         <span className="font-bold text-green-600">
                           ${potentialSavings.toFixed(2)}/month
                         </span>
@@ -201,10 +201,10 @@ export function CalculatorPage() {
           <div className="bg-white rounded-lg shadow-sm border">
             <div className="p-6 border-b border-gray-200">
               <h2 className="text-2xl font-bold text-gray-900">
-                Calculation Results for {monthlyUsage} kWh/month
+                Here's What You'd Pay With Each Plan
               </h2>
               <p className="text-gray-600 mt-2">
-                Plans sorted by total monthly cost (including all fees)
+                Sorted from cheapest to most expensive (all fees included)
               </p>
             </div>
 
@@ -212,13 +212,13 @@ export function CalculatorPage() {
               <table className="w-full">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="text-left py-4 px-6 font-medium text-gray-900">Rank</th>
-                    <th className="text-left py-4 px-6 font-medium text-gray-900">Provider & Plan</th>
-                    <th className="text-right py-4 px-6 font-medium text-gray-900">Rate</th>
-                    <th className="text-right py-4 px-6 font-medium text-gray-900">Energy Cost</th>
-                    <th className="text-right py-4 px-6 font-medium text-gray-900">Monthly Fee</th>
-                    <th className="text-right py-4 px-6 font-medium text-gray-900">Total/Month</th>
-                    <th className="text-right py-4 px-6 font-medium text-gray-900">Annual Cost</th>
+                    <th className="text-left py-4 px-6 font-medium text-gray-900">Best Deal</th>
+                    <th className="text-left py-4 px-6 font-medium text-gray-900">Company & Plan</th>
+                    <th className="text-right py-4 px-6 font-medium text-gray-900">Price per kWh</th>
+                    <th className="text-right py-4 px-6 font-medium text-gray-900">Usage Cost</th>
+                    <th className="text-right py-4 px-6 font-medium text-gray-900">Service Fee</th>
+                    <th className="text-right py-4 px-6 font-medium text-gray-900">Your Monthly Bill</th>
+                    <th className="text-right py-4 px-6 font-medium text-gray-900">Yearly Total</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -281,13 +281,13 @@ export function CalculatorPage() {
                 onClick={() => navigate('/compare')}
                 className="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-colors font-medium mr-4"
               >
-                Compare More Plans
+                See More Options
               </button>
               <button
                 onClick={() => navigate('/rates')}
                 className="bg-gray-600 text-white px-8 py-3 rounded-lg hover:bg-gray-700 transition-colors font-medium"
               >
-                View All Rates
+                Browse All Plans
               </button>
             </div>
           </div>
@@ -298,14 +298,14 @@ export function CalculatorPage() {
           <div className="bg-white rounded-lg shadow-sm border p-8">
             <div className="flex items-center mb-4">
               <Info className="h-6 w-6 text-texas-navy mr-3" />
-              <h3 className="text-xl font-bold text-gray-900">How the Calculator Works</h3>
+              <h3 className="text-xl font-bold text-gray-900">How We Calculate Your Costs</h3>
             </div>
             <div className="space-y-4 text-gray-600">
               <p>
-                Our calculator uses your monthly kWh usage to estimate costs across all available electricity plans in your area.
+                We take your monthly usage and calculate what you'd pay with every available plan in your area.
               </p>
               <p>
-                <strong>Total Monthly Cost</strong> includes:
+                <strong>Your monthly bill</strong> includes:
               </p>
               <ul className="list-disc list-inside space-y-1 ml-4">
                 <li>Energy charges (kWh usage × rate per kWh)</li>
@@ -313,7 +313,7 @@ export function CalculatorPage() {
                 <li>Base charges and connection fees</li>
               </ul>
               <p>
-                Results are sorted by total monthly cost to help you find the best deal for your specific usage pattern.
+                We sort plans from cheapest to most expensive so you can quickly find your best deal.
               </p>
             </div>
           </div>
@@ -321,25 +321,25 @@ export function CalculatorPage() {
           <div className="bg-white rounded-lg shadow-sm border p-8">
             <div className="flex items-center mb-4">
               <TrendingUp className="h-6 w-6 text-green-600 mr-3" />
-              <h3 className="text-xl font-bold text-gray-900">Tips for Lower Bills</h3>
+              <h3 className="text-xl font-bold text-gray-900">How to Save More</h3>
             </div>
             <div className="space-y-4 text-gray-600">
               <div className="flex items-start">
                 <DollarSign className="h-5 w-5 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
                 <div>
-                  <strong>Compare total costs, not just rates.</strong> A higher rate with no monthly fee can be cheaper than a low rate with high fees.
+                  <strong>Look at the total bill, not just the rate.</strong> Sometimes a higher rate saves you money if there's no monthly fee.
                 </div>
               </div>
               <div className="flex items-start">
                 <Zap className="h-5 w-5 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
                 <div>
-                  <strong>Know your usage.</strong> Check past bills to understand your typical monthly kWh consumption.
+                  <strong>Use your real usage.</strong> Check your last few bills to find your average kWh.
                 </div>
               </div>
               <div className="flex items-start">
                 <BarChart className="h-5 w-5 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
                 <div>
-                  <strong>Consider contract length.</strong> Longer contracts may offer better rates but less flexibility.
+                  <strong>Think about commitment.</strong> Longer plans often cost less but lock you in.
                 </div>
               </div>
             </div>

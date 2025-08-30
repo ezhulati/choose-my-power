@@ -1,0 +1,10 @@
+<svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="80" fill="#0f2557" rx="4"/>
+  <text x="100" y="45" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="16" font-weight="bold">CONSTELLATION</text>
+  <circle cx="25" cy="25" r="2" fill="#f7931a"/>
+  <circle cx="35" cy="20" r="2" fill="#f7931a"/>
+  <circle cx="45" cy="25" r="2" fill="#f7931a"/>
+  <circle cx="30" cy="35" r="2" fill="#f7931a"/>
+  <circle cx="40" cy="32" r="2" fill="#f7931a"/>
+  <path d="M25,25 L35,20 L45,25 L40,32 L30,35 Z" stroke="#f7931a" stroke-width="1" fill="none"/>
+</svg>

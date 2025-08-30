@@ -37,8 +37,8 @@ export function BestPage({}: BestPageProps) {
     companies: [
       {
         id: 'green-energy-leader',
-        title: 'Best Green Energy Company',
-        description: 'Leading provider of 100% renewable electricity',
+        title: 'Actually Green (Not Greenwashing)',
+        description: 'Who's really 100% renewable vs. just marketing BS',
         icon: Leaf,
         color: 'green',
         winner: 'Rhythm Energy',
@@ -55,8 +55,8 @@ export function BestPage({}: BestPageProps) {
       },
       {
         id: 'customer-service-champion', 
-        title: 'Best Customer Service Company',
-        description: 'Highest satisfaction and support quality',
+        title: 'They Actually Answer the Phone',
+        description: 'Companies that fix problems instead of creating them',
         icon: Users,
         color: 'blue',
         winner: 'Champion Energy',
@@ -73,8 +73,8 @@ export function BestPage({}: BestPageProps) {
       },
       {
         id: 'best-value-leader',
-        title: 'Best Value Company',
-        description: 'Lowest total costs with quality service',
+        title: 'Cheapest Without the Gotchas',
+        description: 'Low rates that stay low, no surprise fees',
         icon: DollarSign,
         color: 'purple', 
         winner: 'APGE (American Powernet)',
@@ -91,8 +91,8 @@ export function BestPage({}: BestPageProps) {
       },
       {
         id: 'technology-innovator',
-        title: 'Best Technology Company',
-        description: 'Smart home integration and innovation',
+        title: 'Apps That Don't Suck',
+        description: 'Working tech, not broken promises',
         icon: Battery,
         color: 'indigo',
         winner: 'Rhythm Energy',
@@ -362,26 +362,26 @@ export function BestPage({}: BestPageProps) {
   const expertMethodology = [
     {
       icon: BarChart,
-      title: 'Quantitative Analysis',
-      description: 'Data-driven metrics including rates, fees, customer counts, and market share analysis.',
+      title: 'We Do the Math',
+      description: 'Real rates, all fees included, actual customer counts - not marketing numbers.',
       factors: ['Rate competitiveness', 'Fee structures', 'Market penetration', 'Growth metrics']
     },
     {
       icon: Users,
-      title: 'Customer Research',
-      description: 'Real customer reviews, satisfaction surveys, and complaint resolution tracking.',
+      title: 'We Listen to You',
+      description: 'Real reviews from real people - the good, bad, and ugly.',
       factors: ['Customer ratings', 'Review sentiment', 'Complaint ratios', 'Retention rates']
     },
     {
       icon: Eye,
-      title: 'Expert Evaluation',
-      description: 'Professional assessment of service quality, innovation, and market leadership.',
+      title: 'We Test Everything',
+      description: 'We sign up, call support, read contracts - the stuff they hope you won't do.',
       factors: ['Industry expertise', 'Innovation tracking', 'Service assessment', 'Market analysis']
     },
     {
       icon: Activity,
-      title: 'Performance Monitoring',
-      description: 'Continuous tracking of company and plan performance across all metrics.',
+      title: 'We Keep Checking',
+      description: 'Monthly updates because companies change (usually for the worse).',
       factors: ['Performance trends', 'Market changes', 'Competitive position', 'Quality monitoring']
     }
   ];
@@ -399,29 +399,29 @@ export function BestPage({}: BestPageProps) {
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Best Electricity Awards - Expert Rankings & Winners
+              Stop Guessing Who's Actually Good (We Did the Work)
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-orange-100 max-w-4xl mx-auto">
-              Definitive rankings of the best electricity providers, plans, rates, and markets. 
-              Expert analysis across 20+ categories with scoring methodology and winner profiles.
+              We tested them all. Called their support. Read the contracts. Tracked the complaints. 
+              Here's who actually delivers vs. who's just good at marketing.
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-8">
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-                <div className="text-3xl font-bold">20+</div>
-                <div className="text-orange-200 text-sm">Award Categories</div>
+                <div className="text-3xl font-bold">Real</div>
+                <div className="text-orange-200 text-sm">Testing Done</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-                <div className="text-3xl font-bold">100+</div>
-                <div className="text-orange-200 text-sm">Analysis Points</div>
+                <div className="text-3xl font-bold">Zero</div>
+                <div className="text-orange-200 text-sm">Paid Rankings</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-                <div className="text-3xl font-bold">Expert</div>
-                <div className="text-orange-200 text-sm">Methodology</div>
+                <div className="text-3xl font-bold">100%</div>
+                <div className="text-orange-200 text-sm">Honest Truth</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-                <div className="text-3xl font-bold">Monthly</div>
-                <div className="text-orange-200 text-sm">Updates</div>
+                <div className="text-3xl font-bold">Fresh</div>
+                <div className="text-orange-200 text-sm">Monthly Checks</div>
               </div>
             </div>
 
@@ -431,7 +431,7 @@ export function BestPage({}: BestPageProps) {
                 placeholder="Enter ZIP code for local rankings"
                 size="lg"
               />
-              <p className="text-orange-200 text-sm mt-2">Get location-specific rankings</p>
+              <p className="text-orange-200 text-sm mt-2">See who's actually best in YOUR area</p>
             </div>
           </div>
         </div>
@@ -442,10 +442,10 @@ export function BestPage({}: BestPageProps) {
         <div className="mb-12">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Expert Award Categories
+              The Winners (And Losers) in Each Category
             </h2>
             <p className="text-lg text-gray-600">
-              Comprehensive rankings across all aspects of electricity service
+              We tested everything so you don't have to. Here's who won and who to avoid.
             </p>
           </div>
 
@@ -511,13 +511,13 @@ export function BestPage({}: BestPageProps) {
                 onClick={() => navigate(`/providers/${winnerSpotlight.winner?.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`)}
                 className="bg-yellow-500 text-white px-8 py-3 rounded-lg hover:bg-yellow-600 transition-colors font-medium"
               >
-                View Winner Profile
+                Show Me Why They Won
               </button>
               <button
                 onClick={() => navigate(`/best/${winnerSpotlight.id}`)}
                 className="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg hover:bg-gray-50 transition-colors font-medium"
               >
-                Full Category Analysis
+                See All Winners & Losers
               </button>
             </div>
           </div>
@@ -593,7 +593,7 @@ export function BestPage({}: BestPageProps) {
         {/* Expert Methodology */}
         <div className="bg-white rounded-lg shadow-sm border p-8 mb-16">
           <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">
-            Our Expert Ranking Methodology
+            How We Actually Test This Stuff
           </h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">

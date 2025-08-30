@@ -1,0 +1,14 @@
+<svg width="120" height="60" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="taraGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ec4899;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#db2777;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="120" height="60" rx="8" fill="white" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="60" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="url(#taraGrad)">TARA</text>
+  <text x="60" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">ENERGY</text>
+  <polygon points="50,40 60,38 70,40 60,48" fill="url(#taraGrad)"/>
+  <circle cx="40" cy="45" r="2" fill="none" stroke="url(#taraGrad)" stroke-width="1.5"/>
+  <circle cx="80" cy="45" r="2" fill="none" stroke="url(#taraGrad)" stroke-width="1.5"/>
+</svg>

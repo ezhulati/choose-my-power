@@ -169,21 +169,21 @@ export function CompareRatesPage({}: CompareRatesPageProps) {
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Compare Electricity Rates - Real-Time Rate Analysis
+              Which Rate Is Really Cheaper?
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-purple-100 max-w-4xl mx-auto">
-              Compare current electricity rates with advanced calculators and cost analysis. 
-              Find the lowest rates and calculate exact savings based on your usage patterns.
+              See all available rates side by side. 
+              Find out exactly what you'd pay with your actual usage.
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-8">
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
                 <div className="text-3xl font-bold">{lowestRate.toFixed(1)}¢</div>
-                <div className="text-purple-200 text-sm">Lowest Rate</div>
+                <div className="text-purple-200 text-sm">Best Rate</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
                 <div className="text-3xl font-bold">{filteredPlans.length}</div>
-                <div className="text-purple-200 text-sm">Rate Options</div>
+                <div className="text-purple-200 text-sm">Plans Found</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
                 <div className="text-3xl font-bold">${lowestMonthlyCost.toFixed(0)}</div>
@@ -191,17 +191,17 @@ export function CompareRatesPage({}: CompareRatesPageProps) {
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
                 <div className="text-3xl font-bold">Live</div>
-                <div className="text-purple-200 text-sm">Rate Data</div>
+                <div className="text-purple-200 text-sm">Updates</div>
               </div>
             </div>
 
             <div className="max-w-md mx-auto">
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder="Enter ZIP code for exact rates"
+                placeholder="Enter ZIP to see your rates"
                 size="lg"
               />
-              <p className="text-purple-200 text-sm mt-2">Get precise rates for your location</p>
+              <p className="text-purple-200 text-sm mt-2">We'll show you exact rates for your area</p>
             </div>
           </div>
         </div>
@@ -211,7 +211,7 @@ export function CompareRatesPage({}: CompareRatesPageProps) {
         {/* Rate Insights Dashboard */}
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            Live Rate Analysis for {stateData?.name}
+            Current Rates in {stateData?.name}
           </h2>
           
           <div className="grid md:grid-cols-4 gap-6 mb-8">
@@ -234,7 +234,7 @@ export function CompareRatesPage({}: CompareRatesPageProps) {
         <Card className="p-8 mb-16">
           <CardHeader className="text-center">
             <CardTitle className="text-2xl mb-6">
-              Interactive Rate Calculator
+              Calculate Your Real Costs
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -244,7 +244,7 @@ export function CompareRatesPage({}: CompareRatesPageProps) {
             <div className="lg:col-span-1">
               <div className="space-y-6">
                 <div>
-                  <label className="block text-sm font-medium mb-2">State</label>
+                  <label className="block text-sm font-medium mb-2">Your Location</label>
                   <Select value={selectedState} onValueChange={setSelectedState}>
                     <SelectTrigger>
                       <SelectValue />
@@ -258,7 +258,7 @@ export function CompareRatesPage({}: CompareRatesPageProps) {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">Monthly Usage Profile</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-3">Pick your home size for accurate costs</label>
                   <div className="space-y-2">
                     {usageProfiles.map((profile) => (
                       <button
@@ -277,7 +277,7 @@ export function CompareRatesPage({}: CompareRatesPageProps) {
                           </div>
                           <div className="text-right">
                             <div className="font-bold text-purple-600">{profile.avgBill}</div>
-                            <div className="text-xs text-gray-500">avg bill</div>
+                            <div className="text-xs text-gray-500">typical</div>
                           </div>
                         </div>
                       </button>
@@ -287,7 +287,7 @@ export function CompareRatesPage({}: CompareRatesPageProps) {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium mb-2">Rate Type</label>
+                    <label className="block text-sm font-medium mb-2">Fixed or Variable?</label>
                     <Select value={rateType} onValueChange={(value) => setRateType(value as any)}>
                       <SelectTrigger>
                         <SelectValue />
@@ -301,13 +301,13 @@ export function CompareRatesPage({}: CompareRatesPageProps) {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium mb-2">Contract</label>
+                    <label className="block text-sm font-medium mb-2">Plan Length</label>
                     <Select value={contractLength} onValueChange={(value) => setContractLength(value as any)}>
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="all">Any Length</SelectItem>
+                        <SelectItem value="all">Show All</SelectItem>
                         <SelectItem value="12">12 Months</SelectItem>
                         <SelectItem value="24">24 Months</SelectItem>
                         <SelectItem value="36">36 Months</SelectItem>
@@ -322,16 +322,16 @@ export function CompareRatesPage({}: CompareRatesPageProps) {
             <div className="lg:col-span-2">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-semibold text-gray-900">
-                  Live Rate Comparison
+                  Your Rate Options
                 </h3>
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as any)}
                   className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                 >
-                  <option value="total-cost">Sort by Total Cost</option>
-                  <option value="rate">Sort by Rate</option>
-                  <option value="savings">Sort by Savings</option>
+                  <option value="total-cost">Cheapest Monthly Bill First</option>
+                  <option value="rate">Lowest Rate First</option>
+                  <option value="savings">Biggest Savings First</option>
                 </select>
               </div>
 
@@ -339,11 +339,11 @@ export function CompareRatesPage({}: CompareRatesPageProps) {
                 <table className="w-full text-sm">
                   <thead className="bg-gray-50 sticky top-0">
                     <tr>
-                      <th className="text-left py-3 px-4 font-medium text-gray-900">Provider</th>
-                      <th className="text-right py-3 px-4 font-medium text-gray-900">Rate</th>
-                      <th className="text-right py-3 px-4 font-medium text-gray-900">Monthly Cost</th>
-                      <th className="text-right py-3 px-4 font-medium text-gray-900">Annual Cost</th>
-                      <th className="text-right py-3 px-4 font-medium text-gray-900">Savings</th>
+                      <th className="text-left py-3 px-4 font-medium text-gray-900">Company</th>
+                      <th className="text-right py-3 px-4 font-medium text-gray-900">Price/kWh</th>
+                      <th className="text-right py-3 px-4 font-medium text-gray-900">Your Monthly Bill</th>
+                      <th className="text-right py-3 px-4 font-medium text-gray-900">Yearly Total</th>
+                      <th className="text-right py-3 px-4 font-medium text-gray-900">You Save</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -376,7 +376,7 @@ export function CompareRatesPage({}: CompareRatesPageProps) {
                               ${plan.monthlyCost.toFixed(2)}
                             </div>
                             {index === 0 && (
-                              <div className="text-xs text-green-600 font-medium">LOWEST</div>
+                              <div className="text-xs text-green-600 font-medium">BEST DEAL</div>
                             )}
                           </td>
                           <td className="py-3 px-4 text-right font-semibold">
@@ -398,7 +398,7 @@ export function CompareRatesPage({}: CompareRatesPageProps) {
               </div>
               
               <div className="mt-4 text-xs text-gray-500">
-                *Costs include electricity usage + monthly fees. Excludes taxes and utility delivery charges.
+                * Your actual bill will include taxes and delivery charges (usually $25-40 more)
               </div>
             </div>
           </div>

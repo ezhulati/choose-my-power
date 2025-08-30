@@ -1,0 +1,19 @@
+{
+  "citySlug": "amarillo-tx",
+  "cityDisplayName": "Amarillo, TX",
+  "tdspDuns": "007923311",
+  "tdspName": "AEP Texas North Company",
+  "zone": "North",
+  "tier": 2,
+  "priority": 0.75,
+  "marketType": "deregulated",
+  "plans": [],
+  "lastUpdated": "2024-12-18T22:38:00.000Z",
+  "planCount": 0,
+  "lowestRate": null,
+  "averageRate": null,
+  "meta": {
+    "description": "Compare electricity plans in Amarillo, TX. Find the best energy rates from licensed providers serving the AEP Texas North territory.",
+    "keywords": "amarillo texas electricity, amarillo energy plans, amarillo electric rates, aep electricity amarillo"
+  }
+}

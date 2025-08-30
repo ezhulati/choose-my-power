@@ -40,38 +40,38 @@ export function ContactPage({}: ContactPageProps) {
     {
       icon: MessageCircle,
       title: 'Live Chat',
-      description: 'Get instant help from our electricity experts',
+      description: 'Talk to someone who actually knows Texas electricity (not a bot)',
       action: 'Start Chat',
-      available: 'Available 24/7',
+      available: 'Mon-Fri 9AM-6PM CT',
       color: 'blue'
     },
     {
       icon: Phone,
       title: 'Phone Support',
-      description: 'Speak directly with our knowledgeable team',
+      description: 'Sometimes you just need to talk to a human who gets it',
       action: '1-800-CHOOSE-POWER',
-      available: 'Mon-Fri 8AM-8PM CT',
+      available: 'Mon-Fri 9AM-6PM CT',
       color: 'green'
     },
     {
       icon: Mail,
       title: 'Email Support',
-      description: 'Send us your questions and get detailed responses',
+      description: 'Write out your situation and we\'ll give you straight answers',
       action: 'support@choosemypower.org',
-      available: 'Response within 24 hours',
+      available: 'We respond within 24 hours',
       color: 'purple'
     }
   ];
 
   const commonTopics = [
-    'Help choosing a provider',
-    'Understanding my current bill',
-    'How to switch providers',
-    'Green energy options',
-    'Business electricity needs',
-    'Moving to a new home',
-    'No deposit options',
-    'Complaint about a provider'
+    'Which provider won\'t screw me over?',
+    'Why is my bill so damn high?',
+    'How do I switch without screwing up?',
+    'Is green energy actually worth it?',
+    'Help with business electricity',
+    'I\'m moving to Texas - now what?',
+    'I have bad credit - any options?',
+    'My provider is ripping me off'
   ];
 
   return (
@@ -89,11 +89,10 @@ export function ContactPage({}: ContactPageProps) {
 
           <div className="text-center">
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Contact Our Electricity Experts
+              Need Help? We're Real Humans.
             </h1>
             <p className="text-lg text-gray-600 mb-8 max-w-3xl mx-auto">
-              Get personalized help choosing electricity providers, understanding plans, and making 
-              informed decisions about your electricity service. Our team is here to help.
+              We can't sign you up for electricity (we're not salespeople), but we can help you understand your options and avoid getting screwed. We'll respond within 24 hours because we know this stuff is confusing.
             </p>
           </div>
         </div>
@@ -121,7 +120,7 @@ export function ContactPage({}: ContactPageProps) {
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Contact Form */}
           <div className="bg-white rounded-lg shadow-sm border p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Tell Us What's Going On</h2>
             
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid md:grid-cols-2 gap-4">
@@ -204,7 +203,7 @@ export function ContactPage({}: ContactPageProps) {
                   rows={4}
                   value={formData.message}
                   onChange={(e) => setFormData({...formData, message: e.target.value})}
-                  placeholder="Tell us how we can help you with your electricity needs..."
+                  placeholder="What's your electricity situation? The more details you give us, the better we can help..."
                   className="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 />
               </div>
@@ -243,19 +242,19 @@ export function ContactPage({}: ContactPageProps) {
               <div className="space-y-2 text-texas-navy">
                 <div className="flex justify-between">
                   <span>Live Chat:</span>
-                  <span className="font-medium">Immediate</span>
+                  <span className="font-medium">During business hours</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Phone:</span>
-                  <span className="font-medium">Immediate</span>
+                  <span className="font-medium">During business hours</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Email/Form:</span>
                   <span className="font-medium">Within 24 hours</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Complex Issues:</span>
-                  <span className="font-medium">1-2 business days</span>
+                  <span>Complex Stuff:</span>
+                  <span className="font-medium">We'll figure it out together</span>
                 </div>
               </div>
             </div>
@@ -263,12 +262,10 @@ export function ContactPage({}: ContactPageProps) {
             <div className="bg-green-50 border border-green-200 rounded-lg p-6">
               <div className="flex items-center mb-4">
                 <Users className="h-6 w-6 text-green-600 mr-3" />
-                <h3 className="text-lg font-semibold text-green-900">Our Team</h3>
+                <h3 className="text-lg font-semibold text-green-900">Who We Are</h3>
               </div>
               <p className="text-green-800 text-sm">
-                Our customer support team consists of licensed electricity experts who understand 
-                the complexities of deregulated energy markets. We're here to provide unbiased 
-                guidance to help you make the best decisions for your specific situation.
+                We're Texans who got tired of watching people get ripped off by electricity companies. We've been through the deregulated market mess ourselves and learned how it really works. We're not trying to sell you anything - just help you make sense of this deliberately confusing system.
               </p>
             </div>
 

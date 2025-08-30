@@ -163,12 +163,12 @@ console.log(`✅ Faceted page processed: ${cityName} with ${filterResult.applied
             <div class="flex items-center space-x-4 text-sm">
               {breadcrumbs.map((breadcrumb, index) => (
                 <Fragment key={breadcrumb.url}>
-                  {index > 0 && <span class="text-blue-200">/</span>}
+                  {index > 0 && <span class="text-white/60">/</span>}
                   <a 
                     href={breadcrumb.url}
                     class={index === breadcrumbs.length - 1 
                       ? "text-white font-medium drop-shadow-sm" 
-                      : "text-blue-200 hover:text-white transition-colors drop-shadow-sm"
+                      : "text-white/80 hover:text-white transition-colors drop-shadow-sm"
                     }
                   >
                     {breadcrumb.name}
@@ -186,16 +186,16 @@ console.log(`✅ Faceted page processed: ${cityName} with ${filterResult.applied
                 : `Electricity Plans`
               }
             </h1>
-            <p class="text-xl lg:text-2xl text-blue-100 mb-6 drop-shadow-md leading-relaxed max-w-4xl mx-auto">
+            <p class="text-xl lg:text-2xl text-white/90 mb-6 drop-shadow-md leading-relaxed max-w-4xl mx-auto">
               {filterLabels.length > 0 
                 ? `${filterLabels.join(' + ')} electricity plans in ${cityName}, Texas`
                 : `Compare electricity plans in ${cityName}, Texas`
               }
             </p>
-            <div class="text-blue-200 drop-shadow-sm">
+            <div class="text-white/80 drop-shadow-sm">
               <span class="text-lg lg:text-xl">{plans.length} plans available</span>
               {filterResult.warnings.length > 0 && (
-                <span class="ml-2 text-amber-200">• {filterResult.warnings[0]}</span>
+                <span class="ml-2 text-texas-gold-200">• {filterResult.warnings[0]}</span>
               )}
             </div>
 
@@ -211,7 +211,7 @@ console.log(`✅ Faceted page processed: ${cityName} with ${filterResult.applied
                       {filter.displayName}
                       <a
                         href={`/electricity-plans/${citySlug}/${filterSegments.filter(f => f !== filter.urlSegment).join('/')}`}
-                        class="ml-2 text-blue-200 hover:text-white transition-colors"
+                        class="ml-2 text-white/60 hover:text-white transition-colors"
                         title={`Remove ${filter.displayName} filter`}
                       >
                         ×
@@ -221,7 +221,7 @@ console.log(`✅ Faceted page processed: ${cityName} with ${filterResult.applied
                   {filterResult.appliedFilters.length > 0 && (
                     <a
                       href={`/electricity-plans/${citySlug}`}
-                      class="inline-flex items-center px-4 py-2 text-sm font-medium text-blue-200 hover:text-white transition-colors"
+                      class="inline-flex items-center px-4 py-2 text-sm font-medium text-white/70 hover:text-white transition-colors"
                     >
                       Clear All Filters
                     </a>

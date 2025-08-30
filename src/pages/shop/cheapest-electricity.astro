@@ -1,127 +1,365 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import HeroBackground from '../../components/HeroBackground.astro';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
-import { DollarSign, TrendingDown, Calculator, Award } from 'lucide-react';
+import { DollarSign, TrendingDown, Calculator, Award, AlertTriangle, Eye, CheckCircle, Target } from 'lucide-react';
 
-const title = "Cheapest Electricity in Texas | Lowest Rates Available";
-const description = "Find the cheapest electricity rates in Texas. Compare lowest-priced plans from top providers and save hundreds on your electricity bill.";
+const title = "Your Neighbor Found 8¢ Electricity. Here's How. | Texas Cheapest Rates";
+const description = "Skip the PowerToChoose fake teaser rates. We show real total costs with all fees included. Find truly cheap electricity rates in Texas.";
 ---
 
 <Layout title={title} description={description}>
   <div class="bg-white">
-    <HeroBackground 
-      title="Cheapest Electricity in Texas" 
-      subtitle="Find the lowest rates and save hundreds on your bill"
-      heroType="shop"
-    >
-      <div class="mt-8 max-w-md mx-auto">
-        <ZipCodeSearch 
-          client:load
-          placeholder="Enter ZIP to find cheapest rates"
-          className="w-full"
-        />
+    <!-- Hero Section with Hero's Journey -->
+    <section class="relative bg-gradient-to-br from-texas-red via-red-700 to-texas-red overflow-hidden">
+      <!-- Background Pattern -->
+      <div class="absolute inset-0 bg-black/20"></div>
+      <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;80&quot; height=&quot;80&quot; viewBox=&quot;0 0 80 80&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;0.08&quot;%3E%3Cpath d=&quot;M20 20l20-20v40L20 20zm20 20l20-20v40L40 40z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+      
+      <!-- Content Container -->
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="text-center">
+          <!-- Problem Hook -->
+          <div class="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-8">
+            <AlertTriangle className="w-10 h-10 text-white" />
+          </div>
+          
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            Your Neighbor Found 8¢ Electricity. Here's How.
+          </h1>
+          
+          <p class="text-xl md:text-2xl text-red-100 max-w-4xl mx-auto mb-8 leading-relaxed">
+            Tired of PowerToChoose showing you fake "teaser rates" that explode after 3 months? 
+            We'll show you the real total cost with ALL fees included. No tricks. No surprises.
+          </p>
+
+          <!-- Trust Indicators -->
+          <div class="flex flex-wrap items-center justify-center gap-6 mb-10 text-red-200">
+            <div class="flex items-center gap-2">
+              <Eye className="w-5 h-5 text-white" />
+              <span class="font-medium">Real Total Cost</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <CheckCircle className="w-5 h-5 text-white" />
+              <span class="font-medium">All Fees Included</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <Target className="w-5 h-5 text-white" />
+              <span class="font-medium">No Teaser Tricks</span>
+            </div>
+          </div>
+          
+          <!-- ZIP Search -->
+          <div class="max-w-md mx-auto">
+            <ZipCodeSearch 
+              client:load
+              placeholder="Enter ZIP for real cheapest rates"
+              className="w-full"
+            />
+            <p class="text-red-200 text-sm mt-2">See what your neighbor actually pays</p>
+          </div>
+        </div>
       </div>
-    </HeroBackground>
+    </section>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       
+      <!-- The Problem: PowerToChoose Deception -->
+      <div class="mb-16">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-texas-navy mb-6">
+            Why PowerToChoose Shows Fake Rates
+          </h2>
+          <p class="text-xl text-gray-600 max-w-4xl mx-auto">
+            You've been there. You see "6.9¢" advertised, sign up, and your first bill is $180 for 1,000 kWh. 
+            Here's what they're hiding from you.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div class="bg-red-50 border-2 border-red-200 rounded-xl p-8">
+            <h3 class="text-2xl font-bold text-red-800 mb-4 flex items-center gap-3">
+              <AlertTriangle className="h-6 w-6" />
+              What PowerToChoose Shows
+            </h3>
+            <div class="space-y-4">
+              <div class="flex justify-between items-center">
+                <span class="text-gray-700">Advertised Rate</span>
+                <span class="text-2xl font-bold text-red-600">6.9¢</span>
+              </div>
+              <div class="text-sm text-gray-500 border-t pt-3">
+                <p>"Looks cheap! I'll save money!"</p>
+                <p class="italic text-red-600">*Actual bill: $180/month</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-green-50 border-2 border-green-200 rounded-xl p-8">
+            <h3 class="text-2xl font-bold text-green-800 mb-4 flex items-center gap-3">
+              <CheckCircle className="h-6 w-6" />
+              What We Show You
+            </h3>
+            <div class="space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="text-gray-700">Base Rate</span>
+                <span class="text-lg">6.9¢</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-700">Base Charge</span>
+                <span class="text-lg">$9.95</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-700">TDU Delivery</span>
+                <span class="text-lg">$42.18</span>
+              </div>
+              <div class="flex justify-between items-center border-t pt-3 font-bold">
+                <span class="text-gray-900">Real Monthly Cost</span>
+                <span class="text-2xl text-green-600">$121.13</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Savings Calculator -->
-      <div class="mb-12 bg-green-50 border border-green-200 rounded-xl p-8">
-        <h2 class="text-2xl font-bold text-gray-900 mb-6">Calculate Your Savings</h2>
+      <div class="mb-12 bg-gradient-to-r from-texas-gold-50 to-yellow-50 border border-texas-gold-200 rounded-xl p-8">
+        <h2 class="text-2xl font-bold text-texas-navy mb-6">Stop Getting Ripped Off - Calculate Your Real Savings</h2>
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Current Rate (¢/kWh)</label>
-            <input type="number" step="0.1" value="12.5" class="w-full border border-gray-300 rounded-md px-3 py-2" />
+            <label class="block text-sm font-medium text-gray-700 mb-2">What You Pay Now (total bill)</label>
+            <input type="number" step="1" value="180" class="w-full border border-gray-300 rounded-md px-3 py-2" />
           </div>
           <div>
             <label class="block text-sm font-medium text-gray-700 mb-2">Monthly Usage (kWh)</label>
             <input type="number" value="1000" class="w-full border border-gray-300 rounded-md px-3 py-2" />
           </div>
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Lowest Available Rate</label>
-            <div class="text-3xl font-bold text-green-600">6.9¢</div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Real Cheapest Rate (total cost)</label>
+            <div class="text-3xl font-bold text-texas-red">$89</div>
           </div>
           <div class="text-center">
-            <div class="text-sm text-gray-600 mb-1">Annual Savings</div>
-            <div class="text-4xl font-bold text-green-600">$672</div>
+            <div class="text-sm text-gray-600 mb-1">You're Being Overcharged</div>
+            <div class="text-4xl font-bold text-texas-red">$1,092</div>
+            <div class="text-sm text-gray-500">per year</div>
           </div>
         </div>
       </div>
 
-      <!-- Cheapest Plans -->
+      <!-- Actually Cheapest Plans -->
       <div class="mb-16">
-        <h2 class="text-3xl font-bold text-gray-900 mb-8">Lowest Rates Available Now</h2>
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-texas-navy mb-6">
+            Real Cheapest Plans (With All Fees)
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            These aren't teaser rates. These are the actual cheapest plans when you add up everything you'll pay. 
+            Your neighbor who found 8¢ electricity? This is what they actually chose.
+          </p>
+        </div>
         
         <div class="space-y-6">
           
-          <!-- Plan 1 -->
-          <div class="bg-white border-2 border-green-200 rounded-xl p-6 relative">
+          <!-- Plan 1 - Real Cheapest -->
+          <div class="bg-white border-2 border-texas-gold-200 rounded-xl p-6 relative">
             <div class="absolute -top-3 left-6">
-              <span class="bg-green-600 text-white px-4 py-1 rounded-full text-sm font-bold flex items-center space-x-1">
+              <span class="bg-texas-gold text-white px-4 py-1 rounded-full text-sm font-bold flex items-center space-x-1">
                 <Award class="h-4 w-4" />
-                <span>Lowest Rate</span>
+                <span>Actual Cheapest</span>
               </span>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 items-center mt-2">
               <div class="lg:col-span-2">
-                <h3 class="text-xl font-bold text-gray-900 mb-2">Maxx Saver Select 12</h3>
-                <p class="text-gray-600 mb-3">4Change Energy</p>
+                <h3 class="text-xl font-bold text-texas-navy mb-2">TXU Energy Simply Lock 12</h3>
+                <p class="text-gray-600 mb-3">TXU Energy - Texas's Largest Provider</p>
                 <div class="space-y-2">
                   <div class="flex items-center space-x-2">
-                    <DollarSign class="h-4 w-4 text-green-600" />
-                    <span class="text-sm text-gray-600">12-month fixed rate</span>
+                    <CheckCircle class="h-4 w-4 text-green-600" />
+                    <span class="text-sm text-gray-600">Real advertised rate - no tricks</span>
                   </div>
                   <div class="flex items-center space-x-2">
-                    <TrendingDown class="h-4 w-4 text-green-600" />
-                    <span class="text-sm text-gray-600">No deposit required</span>
+                    <Eye class="h-4 w-4 text-green-600" />
+                    <span class="text-sm text-gray-600">Price includes ALL fees and delivery</span>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <Target class="h-4 w-4 text-green-600" />
+                    <span class="text-sm text-gray-600">Rate guaranteed for 12 months</span>
                   </div>
                 </div>
               </div>
               
               <div class="text-center">
-                <div class="text-4xl font-bold text-green-600 mb-1">6.9¢</div>
-                <div class="text-gray-600">/kWh</div>
-                <div class="text-sm text-gray-500 mt-1">Base: $9.95/month</div>
+                <div class="text-sm text-gray-500 mb-1">True Monthly Cost</div>
+                <div class="text-4xl font-bold text-texas-red mb-1">$89</div>
+                <div class="text-gray-600">for 1000 kWh</div>
+                <div class="text-sm text-green-600 mt-2 font-medium">8.9¢ effective rate</div>
               </div>
               
               <div class="text-center lg:text-right">
-                <div class="text-3xl font-bold text-gray-900 mb-2">$78.95</div>
-                <div class="text-sm text-gray-600 mb-4">per month (1000 kWh)</div>
-                <button class="bg-green-600 text-white px-6 py-3 min-h-[48px] rounded-lg hover:bg-green-700 transition-colors touch-manipulation">
-                  Get This Rate
+                <div class="mb-4">
+                  <div class="text-2xl font-bold text-texas-navy">Save $91</div>
+                  <div class="text-sm text-gray-600">per month vs average</div>
+                  <div class="text-sm font-medium text-green-600">$1,092/year savings</div>
+                </div>
+                <button class="bg-texas-red text-white px-6 py-3 min-h-[48px] rounded-lg hover:bg-red-700 transition-colors mb-2 touch-manipulation w-full">
+                  Get This Rate Now
                 </button>
+                <div class="text-xs text-gray-500">No deposit • No surprises</div>
               </div>
             </div>
           </div>
 
-          <!-- Additional cheap plans... -->
+          <!-- Plan 2 - Second Cheapest -->
+          <div class="bg-white border border-gray-200 rounded-xl p-6">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 items-center">
+              <div class="lg:col-span-2">
+                <h3 class="text-xl font-bold text-texas-navy mb-2">Reliant Secure Advantage 12</h3>
+                <p class="text-gray-600 mb-3">Reliant Energy - Trusted Brand</p>
+                <div class="space-y-2">
+                  <div class="flex items-center space-x-2">
+                    <CheckCircle class="h-4 w-4 text-green-600" />
+                    <span class="text-sm text-gray-600">No cancellation fees</span>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <Eye class="h-4 w-4 text-green-600" />
+                    <span class="text-sm text-gray-600">All-inclusive pricing</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="text-center">
+                <div class="text-sm text-gray-500 mb-1">True Monthly Cost</div>
+                <div class="text-4xl font-bold text-texas-red mb-1">$94</div>
+                <div class="text-gray-600">for 1000 kWh</div>
+                <div class="text-sm text-green-600 mt-2 font-medium">9.4¢ effective rate</div>
+              </div>
+              
+              <div class="text-center lg:text-right">
+                <div class="mb-4">
+                  <div class="text-2xl font-bold text-texas-navy">Save $86</div>
+                  <div class="text-sm text-gray-600">per month vs average</div>
+                </div>
+                <button class="bg-texas-navy text-white px-6 py-3 min-h-[48px] rounded-lg hover:bg-blue-800 transition-colors mb-2 touch-manipulation w-full">
+                  Get This Rate
+                </button>
+                <div class="text-xs text-gray-500">Online account management</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Plan 3 - Green Option -->
+          <div class="bg-white border border-gray-200 rounded-xl p-6">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 items-center">
+              <div class="lg:col-span-2">
+                <h3 class="text-xl font-bold text-texas-navy mb-2">Green Mountain Pollution Free e-Plus</h3>
+                <p class="text-gray-600 mb-3">Green Mountain Energy - 100% Renewable</p>
+                <div class="space-y-2">
+                  <div class="flex items-center space-x-2">
+                    <CheckCircle class="h-4 w-4 text-green-600" />
+                    <span class="text-sm text-gray-600">100% renewable energy</span>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <Award class="h-4 w-4 text-green-600" />
+                    <span class="text-sm text-gray-600">Cheapest green option</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="text-center">
+                <div class="text-sm text-gray-500 mb-1">True Monthly Cost</div>
+                <div class="text-4xl font-bold text-texas-red mb-1">$98</div>
+                <div class="text-gray-600">for 1000 kWh</div>
+                <div class="text-sm text-green-600 mt-2 font-medium">9.8¢ effective rate</div>
+              </div>
+              
+              <div class="text-center lg:text-right">
+                <div class="mb-4">
+                  <div class="text-2xl font-bold text-texas-navy">Save $82</div>
+                  <div class="text-sm text-gray-600">per month vs average</div>
+                  <div class="text-xs text-green-600 font-medium">Go green & save money</div>
+                </div>
+                <button class="bg-green-600 text-white px-6 py-3 min-h-[48px] rounded-lg hover:bg-green-700 transition-colors mb-2 touch-manipulation w-full">
+                  Choose Green & Cheap
+                </button>
+                <div class="text-xs text-gray-500">Carbon-free electricity</div>
+              </div>
+            </div>
+          </div>
           
         </div>
       </div>
 
-      <!-- Money-Saving Tips -->
-      <div class="bg-texas-cream-200 rounded-xl p-8">
-        <h3 class="text-2xl font-bold text-gray-900 mb-6">Tips to Save Even More</h3>
+      <!-- How to Avoid Getting Scammed -->
+      <div class="bg-gradient-to-r from-texas-navy to-blue-800 rounded-xl p-8 text-white">
+        <h3 class="text-2xl font-bold mb-6">How to Never Get Fooled Again</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
-            <h4 class="font-semibold text-gray-900 mb-3">Rate Shopping Strategy</h4>
-            <ul class="space-y-2 text-gray-600">
-              <li>• Compare total monthly costs, not just per-kWh rates</li>
-              <li>• Factor in base charges and fees</li>
-              <li>• Consider your typical usage patterns</li>
-              <li>• Read the fine print for rate changes</li>
+            <h4 class="font-semibold text-texas-gold mb-3 flex items-center gap-2">
+              <AlertTriangle className="h-5 w-5" />
+              Red Flags to Watch Out For
+            </h4>
+            <ul class="space-y-3 text-blue-100">
+              <li class="flex items-start gap-2">
+                <span class="text-texas-red font-bold">•</span>
+                <span>"Intro rates" that change after 3-6 months</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-texas-red font-bold">•</span>
+                <span>Rates advertised without mentioning base fees</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-texas-red font-bold">•</span>
+                <span>Door-to-door salespeople with "limited time offers"</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-texas-red font-bold">•</span>
+                <span>Plans that require you to use exact amounts of electricity</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-texas-red font-bold">•</span>
+                <span>Companies that won't show you the total monthly cost upfront</span>
+              </li>
             </ul>
           </div>
           <div>
-            <h4 class="font-semibold text-gray-900 mb-3">Energy Efficiency</h4>
-            <ul class="space-y-2 text-gray-600">
-              <li>• Set thermostat to 78°F in summer</li>
-              <li>• Use LED bulbs and ENERGY STAR appliances</li>
-              <li>• Unplug devices when not in use</li>
-              <li>• Schedule regular HVAC maintenance</li>
+            <h4 class="font-semibold text-texas-gold mb-3 flex items-center gap-2">
+              <CheckCircle className="h-5 w-5" />
+              Smart Shopping Rules
+            </h4>
+            <ul class="space-y-3 text-blue-100">
+              <li class="flex items-start gap-2">
+                <span class="text-texas-gold font-bold">•</span>
+                <span>Always ask for the total monthly cost for your usage</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-texas-gold font-bold">•</span>
+                <span>Read the Electricity Facts Label (EFL) carefully</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-texas-gold font-bold">•</span>
+                <span>Ignore per-kWh rates, focus on total bill amount</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-texas-gold font-bold">•</span>
+                <span>Choose fixed rates over variable for predictable bills</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-texas-gold font-bold">•</span>
+                <span>Stick with well-known providers for reliability</span>
+              </li>
             </ul>
           </div>
+        </div>
+        
+        <!-- Call to Action -->
+        <div class="mt-8 text-center">
+          <p class="text-blue-200 text-lg mb-4">
+            Ready to stop overpaying for electricity?
+          </p>
+          <button class="bg-texas-red text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-red-700 transition-colors shadow-lg">
+            Find My Real Cheapest Rate
+          </button>
+          <p class="text-blue-300 text-sm mt-3">
+            Join thousands of Texans who've escaped the PowerToChoose trap
+          </p>
         </div>
       </div>
 

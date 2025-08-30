@@ -9,24 +9,24 @@ const badgeVariants = cva(
     variants: {
       variant: {
         default:
-          "border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/80",
+          "border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/80 hover:text-primary-foreground",
         secondary:
-          "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
+          "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 hover:text-secondary-foreground",
         destructive:
-          "border-transparent bg-destructive text-destructive-foreground shadow hover:bg-destructive/80",
+          "border-transparent bg-destructive text-destructive-foreground shadow hover:bg-destructive/80 hover:text-destructive-foreground",
         outline: "text-foreground",
-        success: "border-transparent bg-texas-gold-100 text-texas-navy hover:bg-texas-gold-200",
-        warning: "border-transparent bg-orange-100 text-orange-800 hover:bg-orange-200",
-        info: "border-transparent bg-texas-navy/10 text-texas-navy hover:bg-texas-navy/20",
+        success: "border-transparent bg-texas-gold-100 text-texas-navy hover:bg-texas-gold-200 hover:text-texas-navy",
+        warning: "border-transparent bg-orange-100 text-orange-800 hover:bg-orange-200 hover:text-orange-900",
+        info: "border-transparent bg-texas-navy/10 text-texas-navy hover:bg-texas-navy/20 hover:text-texas-navy",
         // Texas-themed badges
-        "texas-primary": "border-transparent bg-texas-navy text-white shadow hover:bg-texas-navy/90",
-        "texas-secondary": "border-transparent bg-texas-red text-white shadow hover:bg-texas-red/90",
-        "texas-accent": "border-transparent bg-texas-gold text-texas-navy shadow hover:bg-texas-gold/90 font-semibold",
-        "texas-outline": "border-texas-navy text-texas-navy bg-transparent hover:bg-texas-navy/10",
-        "plan-type": "border-gray-200 bg-gray-50 text-gray-700 hover:bg-gray-100",
+        "texas-primary": "border-transparent bg-texas-navy text-white shadow hover:bg-texas-navy/90 hover:text-white",
+        "texas-secondary": "border-transparent bg-texas-red text-white shadow hover:bg-texas-red/90 hover:text-white",
+        "texas-accent": "border-transparent bg-texas-gold text-texas-navy shadow hover:bg-texas-gold/90 hover:text-texas-navy font-semibold",
+        "texas-outline": "border-texas-navy text-texas-navy bg-transparent hover:bg-texas-navy/10 hover:text-texas-navy",
+        "plan-type": "border-gray-200 bg-gray-50 text-gray-700 hover:bg-gray-100 hover:text-gray-800",
         "featured": "border-transparent bg-gradient-to-r from-texas-gold to-yellow-600 text-white shadow",
         "popular": "border-transparent bg-gradient-to-r from-texas-navy to-blue-800 text-white shadow",
-        "green-energy": "border-green-200 bg-green-50 text-green-700 hover:bg-green-100",
+        "green-energy": "border-green-200 bg-green-50 text-green-700 hover:bg-green-100 hover:text-green-800",
       },
     },
     defaultVariants: {

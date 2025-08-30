@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { mockProviders, mockStates } from '../../data/mockData';
-import { Star, Phone, Globe, MapPin, Zap, DollarSign, Calendar, Leaf } from 'lucide-react';
+import { Star, Phone, Globe, MapPin, Zap, DollarSign, Calendar, Leaf, CheckCircle, AlertTriangle, XCircle, ThumbsUp, ThumbsDown, Users } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
 declare global {
@@ -94,32 +94,80 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                   className="w-16 h-16 rounded-lg object-cover"
                 />
                 <div>
-                  <h1 className="text-3xl font-bold text-gray-900 mb-2">{provider.name}</h1>
-                  <div className="flex items-center space-x-4 mb-2">
-                    <div className="flex items-center">
-                      <Star className="h-5 w-5 text-yellow-400 fill-current" />
-                      <span className="text-lg font-semibold text-gray-900 ml-1">{provider.rating}</span>
-                      <span className="text-gray-500 ml-1">({provider.reviewCount} reviews)</span>
+                  {/* Hero's Journey Honest Header */}
+                  <h1 className="text-3xl font-bold text-texas-navy mb-2">
+                    {provider.heroJourney?.honestHeader || `${provider.name} Review`}
+                  </h1>
+                  
+                  {/* Assessment Badge */}
+                  <div className="flex items-center gap-4 mb-3">
+                    <div className="flex items-center gap-2">
+                      {provider.assessment === 'good' && (
+                        <div className="flex items-center bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                          <CheckCircle className="h-4 w-4 mr-1" />
+                          Recommended
+                        </div>
+                      )}
+                      {provider.assessment === 'mixed' && (
+                        <div className="flex items-center bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">
+                          <AlertTriangle className="h-4 w-4 mr-1" />
+                          Proceed with Caution
+                        </div>
+                      )}
+                      {provider.assessment === 'bad' && (
+                        <div className="flex items-center bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">
+                          <XCircle className="h-4 w-4 mr-1" />
+                          Not Recommended
+                        </div>
+                      )}
+                    </div>
+                    <div className="flex items-center text-gray-600">
+                      <Star className="h-4 w-4 text-yellow-400 fill-current mr-1" />
+                      <span className="font-medium">{provider.rating}</span>
+                      <span className="ml-1">({provider.reviewCount.toLocaleString()} reviews)</span>
                     </div>
                   </div>
-                  <p className="text-gray-600 max-w-2xl">{provider.description}</p>
+                  
+                  {/* Trust Signal */}
+                  <div className="bg-gray-50 border-l-4 border-texas-gold p-4 mb-4 rounded-r-lg">
+                    <p className="text-sm font-medium text-gray-800 mb-1">Our Promise</p>
+                    <p className="text-sm text-gray-600">
+                      Based on analysis of {provider.reviewCount.toLocaleString()} customer reviews • Updated monthly with current rates • 
+                      We don't get paid more to rank anyone higher
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              {/* Quick Actions */}
+              {/* Hero's Journey CTAs */}
               <div className="flex flex-wrap gap-4 mb-6">
-                <button
-                  onClick={() => navigate('/compare/providers')}
-                  className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors font-medium"
-                >
-                  Compare Plans
-                </button>
-                <button
-                  onClick={() => navigate(`/providers/${provider.slug}/vs`)}
-                  className="border border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors font-medium"
-                >
-                  Compare vs Others
-                </button>
+                {provider.heroJourney?.recommendedAction === 'choose' && (
+                  <button
+                    onClick={() => navigate(`/electricity-plans/texas/?provider=${provider.slug}`)}
+                    className="bg-texas-red text-white px-6 py-3 rounded-lg hover:bg-texas-red-600 transition-colors font-medium inline-flex items-center"
+                  >
+                    <Zap className="h-4 w-4 mr-2" />
+                    See Their Best Plans
+                  </button>
+                )}
+                {provider.heroJourney?.recommendedAction === 'compare' && (
+                  <button
+                    onClick={() => navigate('/compare/providers')}
+                    className="bg-texas-gold text-white px-6 py-3 rounded-lg hover:bg-texas-gold-600 transition-colors font-medium inline-flex items-center"
+                  >
+                    <Users className="h-4 w-4 mr-2" />
+                    Compare to Others
+                  </button>
+                )}
+                {provider.heroJourney?.recommendedAction === 'avoid' && (
+                  <button
+                    onClick={() => navigate('/providers')}
+                    className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors font-medium inline-flex items-center"
+                  >
+                    <Users className="h-4 w-4 mr-2" />
+                    See Better Alternatives
+                  </button>
+                )}
                 <a
                   href={provider.website}
                   target="_blank"
@@ -185,28 +233,107 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
         {selectedTab === 'overview' && (
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2 space-y-6">
-              {/* Features */}
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Key Features</h3>
-                <div className="grid md:grid-cols-2 gap-4">
-                  {provider.features.map((feature, index) => (
-                    <div key={index} className="flex items-center">
-                      <Zap className="h-5 w-5 text-green-600 mr-3 flex-shrink-0" />
-                      <span className="text-gray-700">{feature}</span>
-                    </div>
-                  ))}
+              {/* What They're Actually Good At */}
+              {provider.heroJourney?.whatTheyreGoodAt && (
+                <div className="bg-white rounded-lg shadow-sm border p-6">
+                  <div className="flex items-center mb-4">
+                    <ThumbsUp className="h-6 w-6 text-green-600 mr-3" />
+                    <h3 className="text-xl font-semibold text-texas-navy">What They're Actually Good At</h3>
+                  </div>
+                  <div className="space-y-3">
+                    {provider.heroJourney.whatTheyreGoodAt.map((item, index) => (
+                      <div key={index} className="flex items-start">
+                        <CheckCircle className="h-5 w-5 text-green-600 mr-3 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-700">{item}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
 
-              {/* Company Information */}
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">About {provider.name}</h3>
-                <p className="text-gray-600 mb-4">{provider.description}</p>
-                <p className="text-gray-600">
-                  {provider.name} serves customers across {provider.serviceStates.length} state{provider.serviceStates.length > 1 ? 's' : ''} 
-                  and offers a variety of electricity plans to meet different needs and budgets.
-                </p>
-              </div>
+              {/* Where They Fall Short */}
+              {provider.heroJourney?.whereTheyFallShort && (
+                <div className="bg-white rounded-lg shadow-sm border p-6">
+                  <div className="flex items-center mb-4">
+                    <ThumbsDown className="h-6 w-6 text-red-600 mr-3" />
+                    <h3 className="text-xl font-semibold text-texas-navy">Where They Fall Short</h3>
+                  </div>
+                  <div className="space-y-3">
+                    {provider.heroJourney.whereTheyFallShort.map((item, index) => (
+                      <div key={index} className="flex items-start">
+                        <XCircle className="h-5 w-5 text-red-500 mr-3 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-700">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* What Real Customers Say */}
+              {provider.heroJourney?.realCustomerThemes && (
+                <div className="bg-white rounded-lg shadow-sm border p-6">
+                  <div className="flex items-center mb-4">
+                    <Users className="h-6 w-6 text-texas-navy mr-3" />
+                    <h3 className="text-xl font-semibold text-texas-navy">What Real Customers Say</h3>
+                  </div>
+                  <div className="space-y-4">
+                    {provider.heroJourney.realCustomerThemes.map((theme, index) => (
+                      <blockquote key={index} className="bg-gray-50 border-l-4 border-texas-gold p-4 italic text-gray-700">
+                        {theme}
+                      </blockquote>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Marketing vs Reality */}
+              {provider.marketingVsReality && (
+                <div className="bg-white rounded-lg shadow-sm border p-6">
+                  <div className="flex items-center mb-4">
+                    <AlertTriangle className="h-6 w-6 text-yellow-600 mr-3" />
+                    <h3 className="text-xl font-semibold text-texas-navy">Marketing vs Reality</h3>
+                  </div>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <h4 className="font-medium text-gray-900 mb-3">What They Claim</h4>
+                      <ul className="space-y-2">
+                        {provider.marketingVsReality.marketingClaims.map((claim, index) => (
+                          <li key={index} className="text-sm text-gray-600 flex items-start">
+                            <span className="w-2 h-2 bg-yellow-400 rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                            {claim}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-gray-900 mb-3">What Actually Happens</h4>
+                      <ul className="space-y-2">
+                        {provider.marketingVsReality.actualPerformance.map((performance, index) => (
+                          <li key={index} className="text-sm text-gray-600 flex items-start">
+                            <span className="w-2 h-2 bg-texas-navy rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                            {performance}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Bottom Line */}
+              {provider.heroJourney?.bottomLine && (
+                <div className="bg-gradient-to-r from-texas-cream to-gray-50 rounded-lg border-2 border-texas-gold p-6">
+                  <div className="flex items-start">
+                    <div className="bg-texas-gold text-white p-2 rounded-lg mr-4">
+                      <Star className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-texas-navy mb-2">Bottom Line: Should You Choose Them?</h3>
+                      <p className="text-gray-800">{provider.heroJourney.bottomLine}</p>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="space-y-6">
@@ -241,10 +368,34 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
 
         {selectedTab === 'plans' && (
           <div className="space-y-6">
+            {/* Best Plans Callout */}
+            {provider.heroJourney?.bestPlans && provider.heroJourney.bestPlans.length > 0 && (
+              <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-lg p-6">
+                <div className="flex items-center mb-3">
+                  <Star className="h-6 w-6 text-texas-gold mr-2" />
+                  <h3 className="text-lg font-semibold text-texas-navy">Their Best Plans (If Any)</h3>
+                </div>
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {provider.heroJourney.bestPlans.map((planName, index) => (
+                    <span key={index} className="bg-texas-gold text-white px-3 py-1 rounded-full text-sm font-medium">
+                      {planName}
+                    </span>
+                  ))}
+                </div>
+                <p className="text-sm text-gray-700">
+                  Based on our analysis, these are the most competitive options from this provider - but still compare with other companies.
+                </p>
+              </div>
+            )}
+
             <div className="bg-white rounded-lg shadow-sm border p-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Available Plans</h3>
+              <h3 className="text-xl font-semibold text-texas-navy mb-4">
+                {provider.assessment === 'good' ? 'Available Plans' : 
+                 provider.assessment === 'mixed' ? 'Plans Available (Read Fine Print)' : 
+                 'Plans Available (Consider Alternatives)'}
+              </h3>
               <p className="text-gray-600 mb-6">
-                View current rates by selecting your location. Rates may vary by service area.
+                Rates shown are estimates. Always verify terms and conditions before signing up.
               </p>
               
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -83,17 +83,17 @@ export function RateCalculatorPage({}: RateCalculatorPageProps) {
             </div>
             
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Electricity Rate Calculator
+              See What You'll Actually Pay Each Month
             </h1>
             <p className="text-lg text-gray-600 mb-8 max-w-3xl mx-auto">
-              Calculate your exact monthly electricity costs with different providers and plans. 
-              Compare real costs based on your usage to find the best deal.
+              Enter your usage to see real bills from every provider. 
+              Find out exactly what your monthly bill would be with each plan.
             </p>
 
             <div className="max-w-md mx-auto">
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
-                placeholder="Enter ZIP for personalized rates"
+                placeholder="Enter ZIP code to see your exact rates"
               />
             </div>
           </div>
@@ -105,11 +105,11 @@ export function RateCalculatorPage({}: RateCalculatorPageProps) {
           {/* Calculator Controls */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-lg shadow-sm border p-6 sticky top-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Calculator Settings</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Tell Us About Your Home</h3>
               
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">State</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Where do you live?</label>
                   <select
                     value={selectedState}
                     onChange={(e) => setSelectedState(e.target.value)}
@@ -122,7 +122,7 @@ export function RateCalculatorPage({}: RateCalculatorPageProps) {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Home Type</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">What best describes your home?</label>
                   <select
                     value={homeType}
                     onChange={(e) => {
@@ -140,40 +140,40 @@ export function RateCalculatorPage({}: RateCalculatorPageProps) {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Monthly Usage (kWh)
+                    How much electricity did you use last month?
                   </label>
                   <input
                     type="number"
                     value={monthlyUsage}
                     onChange={(e) => setMonthlyUsage(e.target.value)}
                     className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="1000"
+                    placeholder="Like 1,200 kWh (check your bill)"
                   />
                   <p className="text-xs text-gray-500 mt-1">
-                    Find this number on your electricity bill
+                    Look for 'kWh used' on page 1 of your bill
                   </p>
                 </div>
               </div>
 
               {/* Quick Stats */}
               <div className="mt-6 pt-6 border-t">
-                <h4 className="font-medium text-gray-900 mb-3">Quick Results</h4>
+                <h4 className="font-medium text-gray-900 mb-3">Your Savings Snapshot</h4>
                 {sortedPlans.length > 0 && (
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Cheapest:</span>
+                      <span className="text-gray-600">Best Value:</span>
                       <span className="font-bold text-green-600">
                         ${sortedPlans[0].monthlyCost.toFixed(2)}/mo
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Most Expensive:</span>
+                      <span className="text-gray-600">Highest Cost:</span>
                       <span className="font-bold text-texas-red">
                         ${sortedPlans[sortedPlans.length - 1].monthlyCost.toFixed(2)}/mo
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Potential Savings:</span>
+                      <span className="text-gray-600">You Could Save:</span>
                       <span className="font-bold text-texas-navy">
                         ${(sortedPlans[sortedPlans.length - 1].monthlyCost - sortedPlans[0].monthlyCost).toFixed(2)}/mo
                       </span>
@@ -189,10 +189,10 @@ export function RateCalculatorPage({}: RateCalculatorPageProps) {
             <div className="bg-white rounded-lg shadow-sm border p-6">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-semibold text-gray-900">
-                  Calculated Costs for {monthlyUsage} kWh/month
+                  Here's What You'd Pay Each Month
                 </h2>
                 <div className="text-sm text-gray-500">
-                  {sortedPlans.length} plans compared
+                  Comparing {sortedPlans.length} plans for you
                 </div>
               </div>
 
@@ -200,12 +200,12 @@ export function RateCalculatorPage({}: RateCalculatorPageProps) {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-gray-200">
-                      <th className="text-left py-3">Provider</th>
-                      <th className="text-left py-3">Plan</th>
-                      <th className="text-right py-3">Rate</th>
-                      <th className="text-right py-3">Monthly Fee</th>
-                      <th className="text-right py-3">Monthly Cost</th>
-                      <th className="text-right py-3">Annual Cost</th>
+                      <th className="text-left py-3">Company</th>
+                      <th className="text-left py-3">Plan Name</th>
+                      <th className="text-right py-3">Price per kWh</th>
+                      <th className="text-right py-3">Service Fee</th>
+                      <th className="text-right py-3">Your Monthly Bill</th>
+                      <th className="text-right py-3">Yearly Total</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -244,7 +244,7 @@ export function RateCalculatorPage({}: RateCalculatorPageProps) {
                             ${plan.monthlyCost.toFixed(2)}
                           </div>
                           {index === 0 && (
-                            <div className="text-xs text-green-600 font-medium">CHEAPEST</div>
+                            <div className="text-xs text-green-600 font-medium">BEST DEAL</div>
                           )}
                         </td>
                         <td className="py-4 text-right font-semibold">
@@ -258,13 +258,13 @@ export function RateCalculatorPage({}: RateCalculatorPageProps) {
 
               <div className="mt-6 text-center">
                 <p className="text-sm text-gray-500 mb-4">
-                  *Costs include electricity usage + monthly fees. Excludes taxes and utility delivery charges.
+                  * Your actual bill will include taxes and delivery charges (usually $25-40 more)
                 </p>
                 <button
                   onClick={() => navigate(`/${selectedState}/electricity-providers`)}
                   className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors"
                 >
-                  View All {stateData?.name} Providers
+                  See More {stateData?.name} Plans
                 </button>
               </div>
             </div>
@@ -274,7 +274,7 @@ export function RateCalculatorPage({}: RateCalculatorPageProps) {
         {/* Calculator Tips */}
         <div className="mt-12 bg-white rounded-lg shadow-sm border p-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            Tips for Accurate Calculations
+            How to Get the Most Accurate Results
           </h2>
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -282,10 +282,10 @@ export function RateCalculatorPage({}: RateCalculatorPageProps) {
               <div className="inline-flex items-center justify-center w-12 h-12 bg-texas-cream text-texas-navy rounded-lg mb-4">
                 <Zap className="h-6 w-6" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Use Your Actual Usage</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">Check Your Past Bills</h3>
               <p className="text-gray-600 text-sm">
-                Look at your last 12 months of electricity bills to find your average monthly kWh usage. 
-                This gives you the most accurate cost comparison.
+                Find your average monthly kWh by looking at your last few bills. 
+                This helps you see what you'd really pay with each plan.
               </p>
             </div>
             
@@ -293,10 +293,10 @@ export function RateCalculatorPage({}: RateCalculatorPageProps) {
               <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 text-green-600 rounded-lg mb-4">
                 <DollarSign className="h-6 w-6" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Include All Fees</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">Watch for Hidden Costs</h3>
               <p className="text-gray-600 text-sm">
-                Our calculator includes monthly service fees, but remember to also consider connection fees 
-                and early termination fees when choosing a plan.
+                We show you monthly fees, but check for signup fees 
+                and cancellation penalties before you commit.
               </p>
             </div>
             
@@ -304,10 +304,10 @@ export function RateCalculatorPage({}: RateCalculatorPageProps) {
               <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-100 text-purple-600 rounded-lg mb-4">
                 <TrendingDown className="h-6 w-6" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Consider Seasonal Changes</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">Summer vs Winter Bills</h3>
               <p className="text-gray-600 text-sm">
-                Your usage may vary seasonally due to heating and cooling. Consider calculating 
-                costs for both high and low usage months.
+                Your AC and heating change your usage dramatically. Try calculating 
+                both your highest summer bill and lowest spring bill.
               </p>
             </div>
           </div>

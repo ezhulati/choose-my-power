@@ -1,0 +1,7 @@
+<svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="80" fill="#2c5aa0" rx="4"/>
+  <text x="100" y="30" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="16" font-weight="bold">ATLANTEX</text>
+  <text x="100" y="50" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="14">POWER</text>
+  <circle cx="25" cy="25" r="8" fill="#f7931a"/>
+  <path d="M21,29 L25,21 L29,29 Z" fill="#2c5aa0"/>
+</svg>

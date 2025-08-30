@@ -29,7 +29,7 @@ const heroImage = getHeroImage({
 <Layout title={title} description={description}>
   <div class="bg-white">
     <!-- Municipal Utility Hero Section -->
-    <section class="relative bg-gradient-to-br from-yellow-600 via-yellow-700 to-orange-800 overflow-hidden">
+    <section class="relative bg-gradient-to-br from-texas-gold-600 via-texas-gold-700 to-texas-red-800 overflow-hidden">
       {heroImage && <div class="absolute inset-0 opacity-20">
         <img src={heroImage} alt={`${utilityInfo.cityDisplayName} electricity`} class="w-full h-full object-cover" />
       </div>}
@@ -48,17 +48,17 @@ const heroImage = getHeroImage({
             <!-- Main Heading -->
             <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 leading-tight">
               <span class="block">{utilityInfo.cityDisplayName}</span>
-              <span class="block text-yellow-200">Municipal Utility</span>
+              <span class="block text-texas-gold-200">Municipal Utility</span>
             </h1>
             
             <!-- Utility Name -->
             <div class="flex items-center justify-center mb-6">
-              <Building className="w-8 h-8 text-yellow-200 mr-3" />
+              <Building className="w-8 h-8 text-texas-gold-200 mr-3" />
               <h2 class="text-2xl sm:text-3xl font-semibold text-white">{utilityInfo.name}</h2>
             </div>
             
             <!-- Description -->
-            <p class="text-lg sm:text-xl text-yellow-100 max-w-4xl mx-auto mb-8 leading-relaxed">
+            <p class="text-lg sm:text-xl text-white/90 max-w-4xl mx-auto mb-8 leading-relaxed">
               {utilityInfo.description}
             </p>
             
@@ -68,7 +68,7 @@ const heroImage = getHeroImage({
                 asChild
                 variant="outline" 
                 size="lg"
-                className="bg-white text-yellow-800 border-white hover:bg-gray-100 shadow-lg"
+                className="bg-white text-texas-gold-800 border-white hover:bg-gray-100 shadow-lg"
               >
                 <a 
                   href={utilityInfo.website}
@@ -83,7 +83,7 @@ const heroImage = getHeroImage({
               <Button 
                 asChild
                 size="lg"
-                className="bg-yellow-700 hover:bg-yellow-800 shadow-lg"
+                className="bg-texas-gold-700 hover:bg-texas-gold-800 shadow-lg"
               >
                 <a href="#rate-information">
                   <Info className="w-5 h-5 mr-2" />
@@ -111,7 +111,7 @@ const heroImage = getHeroImage({
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- No Choice in Provider -->
           <div class="bg-gray-50 rounded-lg p-8 text-center">
-            <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <div class="w-16 h-16 bg-texas-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
               <Shield className="w-8 h-8 text-texas-red" />
             </div>
             <h3 class="text-xl font-bold text-gray-900 mb-4">No Provider Choice</h3>
@@ -133,8 +133,8 @@ const heroImage = getHeroImage({
 
           <!-- Stable Service -->
           <div class="bg-gray-50 rounded-lg p-8 text-center">
-            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Zap className="w-8 h-8 text-green-600" />
+            <div class="w-16 h-16 bg-texas-gold-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <Zap className="w-8 h-8 text-texas-gold-600" />
             </div>
             <h3 class="text-xl font-bold text-gray-900 mb-4">Stable Service</h3>
             <p class="text-gray-600">

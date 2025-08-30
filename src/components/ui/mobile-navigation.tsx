@@ -151,7 +151,7 @@ export function MobileNavigation({ onNavigate, currentPath = '' }: MobileNavigat
                 variant="ghost"
                 size="default"
                 onClick={() => setIsOpen(false)}
-                className="text-white hover:bg-white hover:bg-opacity-20 p-3 min-h-[48px] min-w-[48px] touch-manipulation"
+                className="text-white hover:bg-white hover:bg-opacity-20 hover:text-white p-3 min-h-[48px] min-w-[48px] touch-manipulation"
                 aria-label="Close navigation menu"
               >
                 <X className="h-6 w-6" />
@@ -170,8 +170,8 @@ export function MobileNavigation({ onNavigate, currentPath = '' }: MobileNavigat
                         className={cn(
                           "flex-1 justify-start text-left p-4 min-h-[48px] touch-manipulation",
                           isActiveLink(item.href) 
-                            ? "bg-texas-navy text-white hover:bg-texas-navy hover:bg-opacity-90" 
-                            : "text-gray-700 hover:bg-gray-100"
+                            ? "bg-texas-navy text-white hover:bg-texas-navy hover:bg-opacity-90 hover:text-white" 
+                            : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                         )}
                       >
                         <item.icon className="h-5 w-5 mr-3" />

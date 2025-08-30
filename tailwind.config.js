@@ -59,11 +59,11 @@ export default {
             200: '#fecaca',
             300: '#fca5a5',
             400: '#f87171',
-            500: '#dc2626', // Primary Texas red
-            600: '#b91c1c',
-            700: '#991b1b',
-            800: '#7f1d1d',
-            900: '#4c1d1d',
+            500: '#BE0B31', // Primary Texas red (CORRECTED to match UI spec)
+            600: '#A50A2B',
+            700: '#8C0925',
+            800: '#73071F',
+            900: '#590519',
           },
           blue: {
             50: '#eff6ff',
@@ -102,11 +102,11 @@ export default {
             900: '#d69a27',
           }
         },
-        // Simplified brand colors for easier usage
+        // Simplified brand colors for easier usage (MUST match UI specification)
         'texas-navy': '#002868',
-        'texas-red': '#dc2626', 
-        'texas-gold': '#f59e0b',
-        'texas-cream': '#f8edd3'
+        'texas-red': '#BE0B31', 
+        'texas-gold': '#F59E0B',
+        'texas-cream': '#F8EDD3'
       },
       borderRadius: {
         lg: "var(--radius)",

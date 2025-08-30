@@ -1,96 +1,297 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import HeroBackground from '../../components/HeroBackground.astro';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
-import { Leaf, Sun, Wind, Zap } from 'lucide-react';
+import { Leaf, Sun, Wind, Zap, AlertTriangle, Eye, CheckCircle, Target, Factory, Recycle } from 'lucide-react';
 
-const title = "Green Energy Plans in Texas | 100% Renewable Electricity";
-const description = "Choose from 100% renewable energy plans in Texas. Solar, wind, and clean energy options from top green electricity providers.";
+const title = "Real Green Energy (Not Greenwashed BS) | Texas 100% Renewable Plans";
+const description = "Cut through fake green marketing. Find actually renewable electricity plans with verified wind and solar power. No greenwashing, just real clean energy.";
 ---
 
 <Layout title={title} description={description}>
   <div class="bg-white">
-    <HeroBackground 
-      title="Green Energy Plans" 
-      subtitle="Power your home with 100% renewable electricity"
-      variant="green"
-    >
-      <div class="mt-8 max-w-md mx-auto">
-        <ZipCodeSearch 
-          client:load
-          placeholder="Find green energy in your area"
-          className="w-full"
-        />
+    <!-- Hero Section with Anti-Greenwashing Message -->
+    <section class="relative bg-gradient-to-br from-green-600 via-green-700 to-green-800 overflow-hidden">
+      <!-- Background Pattern -->
+      <div class="absolute inset-0 bg-black/20"></div>
+      <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;80&quot; height=&quot;80&quot; viewBox=&quot;0 0 80 80&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;0.08&quot;%3E%3Cpath d=&quot;M20 20l20-20v40L20 20zm20 20l20-20v40L40 40z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+      
+      <!-- Content Container -->
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="text-center">
+          <!-- Problem Hook -->
+          <div class="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-8">
+            <AlertTriangle className="w-10 h-10 text-white" />
+          </div>
+          
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            Real Green Energy (Not Greenwashed BS)
+          </h1>
+          
+          <p class="text-xl md:text-2xl text-green-100 max-w-4xl mx-auto mb-8 leading-relaxed">
+            Tired of "green" plans that are just regular electricity with a leaf logo slapped on? 
+            We'll show you providers with actual wind farms and solar panels, not marketing tricks.
+          </p>
+
+          <!-- Trust Indicators -->
+          <div class="flex flex-wrap items-center justify-center gap-6 mb-10 text-green-200">
+            <div class="flex items-center gap-2">
+              <Eye className="w-5 h-5 text-texas-gold" />
+              <span class="font-medium">Verified Sources</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <Target className="w-5 h-5 text-texas-gold" />
+              <span class="font-medium">No Fake Claims</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <Recycle className="w-5 h-5 text-texas-gold" />
+              <span class="font-medium">Actually 100% Renewable</span>
+            </div>
+          </div>
+          
+          <!-- ZIP Search -->
+          <div class="max-w-md mx-auto">
+            <ZipCodeSearch 
+              client:load
+              placeholder="Find real green energy near you"
+              className="w-full"
+            />
+            <p class="text-green-200 text-sm mt-2">See verified renewable plans in your area</p>
+          </div>
+        </div>
       </div>
-    </HeroBackground>
+    </section>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       
-      <!-- Environmental Impact Calculator -->
-      <div class="mb-12 bg-green-50 border border-green-200 rounded-xl p-8">
-        <h2 class="text-2xl font-bold text-gray-900 mb-6">Your Environmental Impact</h2>
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div class="text-center">
-            <div class="text-3xl font-bold text-green-600">2,400</div>
-            <div class="text-sm text-gray-600">lbs CO₂ saved annually</div>
+      <!-- Greenwashing vs Real Green -->
+      <div class="mb-16">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-texas-navy mb-6">
+            How to Spot Fake Green Energy Plans
+          </h2>
+          <p class="text-xl text-gray-600 max-w-4xl mx-auto">
+            Companies love slapping leaves on their logos and calling themselves "green." 
+            Here's how to tell real renewable energy from corporate greenwashing.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div class="bg-red-50 border-2 border-red-200 rounded-xl p-8">
+            <h3 class="text-2xl font-bold text-red-800 mb-4 flex items-center gap-3">
+              <Factory className="h-6 w-6" />
+              Greenwashed BS Plans
+            </h3>
+            <div class="space-y-4">
+              <div class="border-l-4 border-red-300 pl-4">
+                <p class="font-semibold text-red-700">"Eco-Friendly" Plans</p>
+                <p class="text-red-600 text-sm mt-1">Just regular coal/gas power with carbon offsets (tree planting promises)</p>
+              </div>
+              <div class="border-l-4 border-red-300 pl-4">
+                <p class="font-semibold text-red-700">"Green Energy Mix" Plans</p>
+                <p class="text-red-600 text-sm mt-1">Maybe 10% renewable, 90% fossil fuels</p>
+              </div>
+              <div class="border-l-4 border-red-300 pl-4">
+                <p class="font-semibold text-red-700">"Nature" or "Earth" Named Plans</p>
+                <p class="text-red-600 text-sm mt-1">Marketing names with zero actual renewable content</p>
+              </div>
+              <div class="border-l-4 border-red-300 pl-4">
+                <p class="font-semibold text-red-700">"Sustainable" Plans</p>
+                <p class="text-red-600 text-sm mt-1">Vague promises, no specific renewable percentage</p>
+              </div>
+            </div>
           </div>
-          <div class="text-center">
-            <div class="text-3xl font-bold text-texas-navy">120</div>
-            <div class="text-sm text-gray-600">trees equivalent</div>
-          </div>
-          <div class="text-center">
-            <div class="text-3xl font-bold text-purple-600">5,000</div>
-            <div class="text-sm text-gray-600">miles not driven</div>
-          </div>
-          <div class="text-center">
-            <div class="text-3xl font-bold text-emerald-600">100%</div>
-            <div class="text-sm text-gray-600">renewable energy</div>
+
+          <div class="bg-green-50 border-2 border-green-200 rounded-xl p-8">
+            <h3 class="text-2xl font-bold text-green-800 mb-4 flex items-center gap-3">
+              <Wind className="h-6 w-6" />
+              Actually Green Plans
+            </h3>
+            <div class="space-y-4">
+              <div class="border-l-4 border-green-400 pl-4">
+                <p class="font-semibold text-green-700">100% Renewable Source</p>
+                <p class="text-green-700 text-sm mt-1">Clear statement: "100% wind" or "100% solar"</p>
+              </div>
+              <div class="border-l-4 border-green-400 pl-4">
+                <p class="font-semibold text-green-700">Named Wind/Solar Farms</p>
+                <p class="text-green-700 text-sm mt-1">They can tell you exactly where your power comes from</p>
+              </div>
+              <div class="border-l-4 border-green-400 pl-4">
+                <p class="font-semibold text-green-700">RECs (Renewable Energy Certificates)</p>
+                <p class="text-green-700 text-sm mt-1">Verified certificates proving renewable electricity purchase</p>
+              </div>
+              <div class="border-l-4 border-green-400 pl-4">
+                <p class="font-semibold text-green-700">EPA Green Power Partners</p>
+                <p class="text-green-700 text-sm mt-1">Third-party verification of renewable claims</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Green Plans -->
+      <!-- Environmental Impact Calculator -->
+      <div class="mb-12 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl p-8">
+        <h2 class="text-2xl font-bold text-texas-navy mb-6">Your Real Environmental Impact (With Actually Green Energy)</h2>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div class="text-center">
+            <div class="text-3xl font-bold text-green-600">2,400</div>
+            <div class="text-sm text-gray-600">lbs CO₂ saved annually</div>
+            <div class="text-xs text-green-700 mt-1">vs regular fossil fuel plan</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-texas-navy">120</div>
+            <div class="text-sm text-gray-600">trees equivalent</div>
+            <div class="text-xs text-green-700 mt-1">actual carbon impact</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-purple-600">5,000</div>
+            <div class="text-sm text-gray-600">miles not driven</div>
+            <div class="text-xs text-green-700 mt-1">carbon equivalence</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-emerald-600">100%</div>
+            <div class="text-sm text-gray-600">renewable energy</div>
+            <div class="text-xs text-green-700 mt-1">verified sources</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Actually Green Plans -->
       <div class="mb-16">
-        <h2 class="text-3xl font-bold text-gray-900 mb-8">Top Green Energy Plans</h2>
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-texas-navy mb-6">
+            Actually 100% Renewable Plans (Verified)
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            These plans come from real wind farms and solar installations. Not carbon offsets, 
+            not mixed sources, not marketing gimmicks. Just actual clean electrons.
+          </p>
+        </div>
         
         <div class="space-y-6">
           
-          <!-- Green Plan 1 -->
-          <div class="bg-white border-2 border-green-200 rounded-xl p-6">
-            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 items-center">
+          <!-- Green Mountain - Actually Green -->
+          <div class="bg-white border-2 border-green-200 rounded-xl p-6 relative">
+            <div class="absolute -top-3 left-6">
+              <span class="bg-green-600 text-white px-4 py-1 rounded-full text-sm font-bold flex items-center space-x-1">
+                <Leaf className="h-4 w-4" />
+                <span>Verified 100% Renewable</span>
+              </span>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 items-center mt-2">
               <div class="lg:col-span-2">
-                <div class="flex items-center space-x-3 mb-3">
-                  <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                    <Leaf class="h-6 w-6 text-green-600" />
-                  </div>
-                  <div>
-                    <h3 class="text-xl font-bold text-gray-900">Pollution Free e-Plus 12</h3>
-                    <p class="text-gray-600">Green Mountain Energy</p>
-                  </div>
-                </div>
+                <h3 class="text-xl font-bold text-texas-navy mb-2">Pollution Free e-Plus 12</h3>
+                <p class="text-gray-600 mb-3">Green Mountain Energy - EPA Green Power Partner</p>
                 <div class="space-y-2">
                   <div class="flex items-center space-x-2">
-                    <Wind class="h-4 w-4 text-green-600" />
-                    <span class="text-sm text-gray-600">100% Texas wind power</span>
+                    <Wind className="h-4 w-4 text-green-600" />
+                    <span class="text-sm text-gray-600">100% Texas wind farms (not offsets)</span>
                   </div>
                   <div class="flex items-center space-x-2">
-                    <Leaf class="h-4 w-4 text-green-600" />
-                    <span class="text-sm text-gray-600">Carbon-free electricity</span>
+                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span class="text-sm text-gray-600">RECs verified by EPA Green Power Partnership</span>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <Target className="h-4 w-4 text-green-600" />
+                    <span class="text-sm text-gray-600">Can name their wind farms if you ask</span>
                   </div>
                 </div>
               </div>
               
               <div class="text-center">
-                <div class="text-4xl font-bold text-green-600 mb-1">8.9¢</div>
-                <div class="text-gray-600">/kWh</div>
-                <div class="text-sm text-gray-500 mt-1">12-month fixed</div>
+                <div class="text-sm text-gray-500 mb-1">Monthly Cost</div>
+                <div class="text-4xl font-bold text-green-600 mb-1">$98</div>
+                <div class="text-gray-600">for 1000 kWh</div>
+                <div class="text-sm text-green-600 mt-2 font-medium">9.8¢ effective rate</div>
               </div>
               
               <div class="text-center lg:text-right">
-                <button class="bg-green-600 text-white px-6 py-3 min-h-[48px] rounded-lg hover:bg-green-700 transition-colors mb-2 touch-manipulation">
-                  Choose Green
+                <div class="mb-4">
+                  <div class="text-sm text-green-700 font-medium">Environmental Choice</div>
+                  <div class="text-lg font-bold text-texas-navy">+$8/mo</div>
+                  <div class="text-sm text-gray-600">vs cheapest fossil plan</div>
+                </div>
+                <button class="bg-green-600 text-white px-6 py-3 min-h-[48px] rounded-lg hover:bg-green-700 transition-colors mb-2 touch-manipulation w-full">
+                  Choose Actually Green
                 </button>
-                <div class="text-sm text-green-600 font-medium">Most Popular</div>
+                <div class="text-xs text-green-600">Worth it for real impact</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reliant Green Choice -->
+          <div class="bg-white border border-gray-200 rounded-xl p-6">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 items-center">
+              <div class="lg:col-span-2">
+                <h3 class="text-xl font-bold text-texas-navy mb-2">TrueSimple 100% Green 12</h3>
+                <p class="text-gray-600 mb-3">Reliant Energy - Major Provider</p>
+                <div class="space-y-2">
+                  <div class="flex items-center space-x-2">
+                    <Wind className="h-4 w-4 text-green-600" />
+                    <span class="text-sm text-gray-600">100% renewable sources</span>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <span class="text-sm text-gray-600">RECs purchased for every kWh</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="text-center">
+                <div class="text-sm text-gray-500 mb-1">Monthly Cost</div>
+                <div class="text-4xl font-bold text-green-600 mb-1">$104</div>
+                <div class="text-gray-600">for 1000 kWh</div>
+                <div class="text-sm text-green-600 mt-2 font-medium">10.4¢ effective rate</div>
+              </div>
+              
+              <div class="text-center lg:text-right">
+                <div class="mb-4">
+                  <div class="text-sm text-green-700 font-medium">Green from Big Name</div>
+                  <div class="text-lg font-bold text-texas-navy">+$14/mo</div>
+                  <div class="text-sm text-gray-600">vs cheapest plan</div>
+                </div>
+                <button class="bg-texas-navy text-white px-6 py-3 min-h-[48px] rounded-lg hover:bg-blue-800 transition-colors mb-2 touch-manipulation w-full">
+                  Go Green with Reliant
+                </button>
+                <div class="text-xs text-gray-500">Reliable brand</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gexa Green Choice -->
+          <div class="bg-white border border-gray-200 rounded-xl p-6">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 items-center">
+              <div class="lg:col-span-2">
+                <h3 class="text-xl font-bold text-texas-navy mb-2">Gexa Green 100% Wind 12</h3>
+                <p class="text-gray-600 mb-3">Gexa Energy - Green Specialists</p>
+                <div class="space-y-2">
+                  <div class="flex items-center space-x-2">
+                    <Wind className="h-4 w-4 text-green-600" />
+                    <span class="text-sm text-gray-600">100% Texas wind power</span>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <Sun className="h-4 w-4 text-orange-500" />
+                    <span class="text-sm text-gray-600">Solar options available</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="text-center">
+                <div class="text-sm text-gray-500 mb-1">Monthly Cost</div>
+                <div class="text-4xl font-bold text-green-600 mb-1">$101</div>
+                <div class="text-gray-600">for 1000 kWh</div>
+                <div class="text-sm text-green-600 mt-2 font-medium">10.1¢ effective rate</div>
+              </div>
+              
+              <div class="text-center lg:text-right">
+                <div class="mb-4">
+                  <div class="text-sm text-green-700 font-medium">Green Energy Focus</div>
+                  <div class="text-lg font-bold text-texas-navy">+$11/mo</div>
+                  <div class="text-sm text-gray-600">vs cheapest plan</div>
+                </div>
+                <button class="bg-green-600 text-white px-6 py-3 min-h-[48px] rounded-lg hover:bg-green-700 transition-colors mb-2 touch-manipulation w-full">
+                  Choose Gexa Green
+                </button>
+                <div class="text-xs text-gray-500">Green energy specialists</div>
               </div>
             </div>
           </div>
@@ -98,31 +299,71 @@ const description = "Choose from 100% renewable energy plans in Texas. Solar, wi
         </div>
       </div>
 
-      <!-- Green Energy Sources -->
-      <div class="bg-texas-cream-200 rounded-xl p-8">
-        <h3 class="text-2xl font-bold text-gray-900 mb-6">Texas Renewable Energy Sources</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="text-center">
-            <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Sun class="h-8 w-8 text-yellow-600" />
-            </div>
-            <h4 class="font-semibold text-gray-900 mb-2">Solar Power</h4>
-            <p class="text-sm text-gray-600">Clean energy from Texas sunshine, rapidly growing across the state with new solar farms.</p>
+      <!-- The Truth About Green Energy Costs -->
+      <div class="bg-gradient-to-r from-green-600 to-emerald-700 rounded-xl p-8 text-white">
+        <h3 class="text-2xl font-bold mb-6">The Truth About Going Green</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h4 class="font-semibold text-green-200 mb-3 flex items-center gap-2">
+              <CheckCircle className="h-5 w-5" />
+              What You're Actually Paying For
+            </h4>
+            <ul class="space-y-3 text-green-100">
+              <li class="flex items-start gap-2">
+                <span class="text-green-300 font-bold">•</span>
+                <span><strong>Real wind farms:</strong> Your money funds actual turbines spinning in Texas</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-300 font-bold">•</span>
+                <span><strong>Solar installations:</strong> More panels = more clean energy capacity</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-300 font-bold">•</span>
+                <span><strong>Grid improvements:</strong> Investment in renewable infrastructure</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-300 font-bold">•</span>
+                <span><strong>About $8-15 more per month:</strong> Small price for real environmental impact</span>
+              </li>
+            </ul>
           </div>
-          <div class="text-center">
-            <div class="w-16 h-16 bg-texas-cream rounded-full flex items-center justify-center mx-auto mb-4">
-              <Wind class="h-8 w-8 text-texas-navy" />
-            </div>
-            <h4 class="font-semibold text-gray-900 mb-2">Wind Energy</h4>
-            <p class="text-sm text-gray-600">Texas leads the nation in wind power generation, providing clean, abundant electricity.</p>
+          <div>
+            <h4 class="font-semibold text-yellow-200 mb-3 flex items-center gap-2">
+              <AlertTriangle className="h-5 w-5" />
+              Texas Renewable Reality Check
+            </h4>
+            <ul class="space-y-3 text-green-100">
+              <li class="flex items-start gap-2">
+                <span class="text-yellow-300 font-bold">•</span>
+                <span><strong>Texas leads the US</strong> in wind power generation (more than any other state)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-yellow-300 font-bold">•</span>
+                <span><strong>Our grid is separate</strong> from other states, so your green choice matters here</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-yellow-300 font-bold">•</span>
+                <span><strong>Wind farms visible</strong> from I-20, I-35, and US-84 - this stuff is real</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-yellow-300 font-bold">•</span>
+                <span><strong>Solar growing fast</strong> in West Texas where sun is abundant</span>
+              </li>
+            </ul>
           </div>
-          <div class="text-center">
-            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Zap class="h-8 w-8 text-green-600" />
-            </div>
-            <h4 class="font-semibold text-gray-900 mb-2">Other Renewables</h4>
-            <p class="text-sm text-gray-600">Including hydroelectric and biomass sources for a diverse clean energy portfolio.</p>
-          </div>
+        </div>
+        
+        <!-- Call to Action -->
+        <div class="mt-8 text-center">
+          <p class="text-green-200 text-lg mb-4">
+            Ready to power your home with actual clean energy?
+          </p>
+          <button class="bg-white text-green-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-green-50 transition-colors shadow-lg">
+            Find Verified Green Plans
+          </button>
+          <p class="text-green-300 text-sm mt-3">
+            No greenwashing. No fake offsets. Just real renewable electricity.
+          </p>
         </div>
       </div>
 

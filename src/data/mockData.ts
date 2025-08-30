@@ -10,6 +10,35 @@ export const mockProviders: Provider[] = [
     reviewCount: 1234,
     description: 'Texas electricity provider offering simple, low-rate plans with no gimmicks or hidden fees.',
     serviceStates: ['texas'],
+    assessment: 'good',
+    heroJourney: {
+      honestHeader: 'APGE Review: Actually Decent for Simple Plans',
+      whatTheyreGoodAt: [
+        'Genuinely competitive rates that match their advertising',
+        'No monthly base fees on most plans',
+        'Clear, straightforward contract terms',
+        'Consistent billing without surprise charges'
+      ],
+      whereTheyFallShort: [
+        'Limited plan variety compared to larger providers',
+        'Customer service can be slow during peak times',
+        'Website interface feels dated',
+        'No innovative features or smart home integration'
+      ],
+      realCustomerThemes: [
+        '"Rates are exactly what they promised"',
+        '"Simple billing, no surprises"',
+        '"Customer service takes forever but they do help"',
+        '"Not flashy but gets the job done"'
+      ],
+      bestPlans: ['SimpleSaver 11', 'SimpleSaver 12'],
+      bottomLine: 'A solid choice for customers who want honest rates without gimmicks. Not the cheapest, but predictable.',
+      recommendedAction: 'choose'
+    },
+    marketingVsReality: {
+      marketingClaims: ['No hidden fees', 'Simple plans', 'Competitive rates'],
+      actualPerformance: ['Actually true - fees are transparent', 'Plans are genuinely simple', 'Rates competitive for their tier']
+    },
     plans: [
       {
         id: 'apge-simplesaver-11',
@@ -58,6 +87,35 @@ export const mockProviders: Provider[] = [
     reviewCount: 2156,
     description: '100% green energy provider with excellent customer service and satisfaction guarantees.',
     serviceStates: ['texas'],
+    assessment: 'good',
+    heroJourney: {
+      honestHeader: 'Gexa Energy Review: Actually Good Green Energy Option',
+      whatTheyreGoodAt: [
+        'Legitimate 100% renewable energy from wind farms',
+        'Above-average customer service ratings',
+        '60-day satisfaction guarantee actually honored',
+        'Bill credits are real and applied correctly'
+      ],
+      whereTheyFallShort: [
+        'Green plans cost more than fossil fuel alternatives',
+        'Contract terms can be complex with multiple tiers',
+        'Rate increases after intro periods',
+        'Limited availability in some rural areas'
+      ],
+      realCustomerThemes: [
+        '"Love that it\'s actually green energy"',
+        '"Customer service is helpful and friendly"',
+        '"Bill went up after first year"',
+        '"Worth paying extra for clean energy"'
+      ],
+      bestPlans: ['Eco Saver Plus 12'],
+      bottomLine: 'Best choice if you want legitimate green energy and don\'t mind paying a premium for environmental benefits.',
+      recommendedAction: 'choose'
+    },
+    marketingVsReality: {
+      marketingClaims: ['100% clean energy', 'Excellent service', 'Bill credits'],
+      actualPerformance: ['Actually 100% renewable', 'Service is above average', 'Credits applied as promised']
+    },
     plans: [
       {
         id: 'gexa-eco-saver-plus-12',
@@ -280,6 +338,35 @@ export const mockProviders: Provider[] = [
     reviewCount: 3421,
     description: 'Major Texas electricity provider with diverse plan options and bill credits.',
     serviceStates: ['texas'],
+    assessment: 'mixed',
+    heroJourney: {
+      honestHeader: 'Reliant Energy Review: The Good and Bad',
+      whatTheyreGoodAt: [
+        'Wide variety of plan options to choose from',
+        'Established company with reliable power delivery',
+        'Innovative programs like free nights/weekends',
+        'Good mobile app and online account management'
+      ],
+      whereTheyFallShort: [
+        'Complex pricing structures with hidden details',
+        'Rates increase significantly after intro periods',
+        'Customer service wait times can be excessive',
+        'Bill credits often have usage requirements not clearly explained'
+      ],
+      realCustomerThemes: [
+        '"App is great but bills are confusing"',
+        '"Free nights only work if you use tons of power"',
+        '"Rate doubled after first year"',
+        '"Customer service put me on hold for 45 minutes"'
+      ],
+      bestPlans: ['Power Savings 24 plan'],
+      bottomLine: 'Large provider with options, but read the fine print carefully. Good for some, frustrating for others.',
+      recommendedAction: 'compare'
+    },
+    marketingVsReality: {
+      marketingClaims: ['Free nights', 'Locked rates', 'Bill credits'],
+      actualPerformance: ['Free only under specific high-usage conditions', 'Rate increases after promotional period', 'Credits have complex qualification requirements']
+    },
     plans: [
       {
         id: 'reliant-power-savings-24',
@@ -428,6 +515,34 @@ export const mockProviders: Provider[] = [
     reviewCount: 1234,
     description: 'Simple electricity plans with clear pricing and happiness guarantees.',
     serviceStates: ['texas'],
+    assessment: 'bad',
+    heroJourney: {
+      honestHeader: 'Just Energy Review: Proceed with Caution',
+      whatTheyreGoodAt: [
+        'Sometimes offers competitive intro rates',
+        'Simple plan names (though pricing isn\'t simple)',
+        'Available in most Texas markets'
+      ],
+      whereTheyFallShort: [
+        'History of customer complaints and lawsuits',
+        'Aggressive sales tactics and door-to-door marketing',
+        'Rates often increase dramatically after intro periods',
+        'Difficult cancellation process with high fees',
+        'Poor customer service ratings consistently'
+      ],
+      realCustomerThemes: [
+        '"They tricked me into switching"',
+        '"Bill tripled after 6 months"',
+        '"Impossible to reach customer service"',
+        '"Charged me $200 to cancel"'
+      ],
+      bottomLine: 'Significant red flags from customer reviews and regulatory complaints. Many better options available.',
+      recommendedAction: 'avoid'
+    },
+    marketingVsReality: {
+      marketingClaims: ['Simple plans', 'Happiness guarantee', 'No surprises'],
+      actualPerformance: ['Plans have complex variable pricing', 'Guarantee has strict limitations', 'Many customers report billing surprises']
+    },
     plans: [
       {
         id: 'just-power-plus-24',
@@ -602,7 +717,156 @@ export const mockProviders: Provider[] = [
     ],
     features: ['Prepaid Service', 'No Credit Check', 'No Deposit Required'],
     contactPhone: '855-854-8490',
-    website: 'https://www.paylesspower.com'
+    website: 'https://www.paylesspower.com',
+    assessment: 'mixed',
+    heroJourney: {
+      honestHeader: 'Payless Power Review: The Good and Bad',
+      whatTheyreGoodAt: [
+        'No credit check or deposit required',
+        'Prepaid service with usage control',
+        'Good for people with poor credit history',
+        'No long-term contract commitment'
+      ],
+      whereTheyFallShort: [
+        'Higher rates than traditional post-paid plans',
+        'Daily fees can add up quickly',
+        'Limited customer service hours',
+        'Prepaid model not for everyone'
+      ],
+      realCustomerThemes: [
+        '"Great for getting started with bad credit"',
+        '"Rates are high but at least no deposit"',
+        '"Daily fees add up more than expected"',
+        '"Good for controlling usage"'
+      ],
+      bottomLine: 'Useful option for people with credit issues, but you\'ll pay more for the convenience.',
+      recommendedAction: 'compare'
+    },
+    marketingVsReality: {
+      marketingClaims: ['No deposit', 'No credit check', 'Control your usage'],
+      actualPerformance: ['True - no deposit needed', 'True - no credit check', 'Prepaid helps but rates are higher']
+    }
+  },
+  {
+    id: 'txu-energy',
+    name: 'TXU Energy',
+    slug: 'txu-energy',
+    logo: 'https://assets.comparepower.com/images/txu_energy.svg',
+    rating: 3.8,
+    reviewCount: 4567,
+    description: 'One of Texas\' largest electricity providers with diverse plan options and established infrastructure.',
+    serviceStates: ['texas'],
+    assessment: 'mixed',
+    heroJourney: {
+      honestHeader: 'TXU Energy Review: The Good and Bad',
+      whatTheyreGoodAt: [
+        'Long-established company with reliable service',
+        'Wide variety of plan options and terms',
+        'Good mobile app and online account management',
+        'Innovative plans like free nights and weekends'
+      ],
+      whereTheyFallShort: [
+        'Often not the cheapest option available',
+        'Complex pricing with variable rate increases',
+        'Customer service can have long wait times',
+        'Free time plans have high usage requirements'
+      ],
+      realCustomerThemes: [
+        '"Reliable but expensive"',
+        '"Free nights only work if you use a lot of power"',
+        '"Customer service takes forever"',
+        '"Bills went up after the first year"'
+      ],
+      bestPlans: ['TXU Energy Oncor Electric Delivery 12'],
+      bottomLine: 'Large, established provider that\'s reliable but often pricier than alternatives. Good if you value brand recognition.',
+      recommendedAction: 'compare'
+    },
+    marketingVsReality: {
+      marketingClaims: ['Free nights', 'Texas\' #1 provider', 'Locked rates'],
+      actualPerformance: ['Free only with high usage', 'Large but not necessarily best value', 'Rates can increase after intro periods']
+    },
+    plans: [
+      {
+        id: 'txu-oncor-12',
+        providerId: 'txu-energy',
+        name: 'TXU Energy Oncor Electric Delivery 12',
+        type: 'fixed',
+        rate: 15.2,
+        termLength: 12,
+        renewablePercent: 23,
+        features: ['Fixed Rate', 'No Monthly Fee', 'Online Account Management'],
+        fees: { monthlyFee: 0, cancellationFee: 150, connectionFee: 0 }
+      }
+    ],
+    features: ['Brand Recognition', 'Diverse Plan Options', 'Mobile App'],
+    contactPhone: '1-800-242-9113',
+    website: 'https://www.txu.com'
+  },
+  {
+    id: 'champion-energy',
+    name: 'Champion Energy',
+    slug: 'champion-energy',
+    logo: 'https://assets.comparepower.com/images/champion_energy.svg',
+    rating: 4.0,
+    reviewCount: 1876,
+    description: 'Texas electricity provider focused on competitive rates and customer satisfaction.',
+    serviceStates: ['texas'],
+    assessment: 'good',
+    heroJourney: {
+      honestHeader: 'Champion Energy Review: Actually Decent',
+      whatTheyreGoodAt: [
+        'Competitive rates that match their advertising',
+        'Good customer service ratings',
+        'Straightforward contract terms',
+        'Reliable billing without surprises'
+      ],
+      whereTheyFallShort: [
+        'Limited plan variety compared to larger providers',
+        'Not available in all Texas markets',
+        'Website could be more user-friendly',
+        'Fewer innovative features than competitors'
+      ],
+      realCustomerThemes: [
+        '"Rates stayed exactly what they promised"',
+        '"Customer service actually picks up the phone"',
+        '"Simple plan, simple billing"',
+        '"Nothing fancy but reliable"'
+      ],
+      bestPlans: ['Champion Saver 12', 'Champion Select 24'],
+      bottomLine: 'Solid choice for customers who want honest rates and decent service without unnecessary complications.',
+      recommendedAction: 'choose'
+    },
+    marketingVsReality: {
+      marketingClaims: ['Competitive rates', 'Great service', 'No surprises'],
+      actualPerformance: ['Rates are genuinely competitive', 'Service is above average', 'Billing is transparent']
+    },
+    plans: [
+      {
+        id: 'champion-saver-12',
+        providerId: 'champion-energy',
+        name: 'Champion Saver 12',
+        type: 'fixed',
+        rate: 11.2,
+        termLength: 12,
+        renewablePercent: 30,
+        features: ['Fixed Rate', 'No Monthly Fee', '100% Wind Energy'],
+        fees: { monthlyFee: 0, cancellationFee: 150, connectionFee: 0 }
+      },
+      {
+        id: 'champion-select-24',
+        providerId: 'champion-energy',
+        name: 'Champion Select 24',
+        type: 'fixed',
+        rate: 10.8,
+        termLength: 24,
+        renewablePercent: 30,
+        features: ['Low Fixed Rate', '24 Month Term', 'Online Account'],
+        fees: { monthlyFee: 0, cancellationFee: 200, connectionFee: 0 }
+      }
+    ],
+    features: ['Competitive Rates', 'Good Service', 'Renewable Energy Options'],
+    contactPhone: '1-866-636-3271',
+    website: 'https://www.championenergy.com'
   }
 ];
 

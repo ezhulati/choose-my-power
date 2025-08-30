@@ -24,64 +24,64 @@ export function ResourcesGuidesPage({}: ResourcesGuidesPageProps) {
 
   const guides = [
     {
-      title: 'How to Choose an Electricity Provider',
-      description: 'Complete guide to selecting the right provider for your specific needs and situation.',
+      title: 'How to Pick a Provider That Won\'t Screw You Over',
+      description: 'The insider secrets on choosing providers - what they don\'t want you to know about their tricks.',
       category: 'getting-started',
       icon: Users,
       readTime: '8 min read',
       href: '/resources/guides/choosing-a-provider'
     },
     {
-      title: 'Understanding Your Electricity Bill',
-      description: 'Learn to read and understand every charge on your electric bill.',
+      title: 'What the Heck is a kWh and Why Should You Care?',
+      description: 'Decode your electric bill like a detective and catch the hidden fees they hope you miss.',
       category: 'getting-started',
       icon: Calculator,
       readTime: '6 min read',
       href: '/resources/guides/understanding-your-bill'
     },
     {
-      title: 'How to Switch Electricity Providers',
-      description: 'Step-by-step process for changing electricity companies without hassle.',
+      title: 'How to Switch Electric Companies (It\'s Easier Than You Think)',
+      description: 'Your lights stay on, the process is free, and it takes 5 minutes. Here\'s exactly what happens.',
       category: 'switching',
       icon: Zap,
       readTime: '7 min read',
       href: '/resources/guides/how-to-switch-providers'
     },
     {
-      title: 'Fixed vs Variable Rate Plans',
-      description: 'Compare different rate structures and find what works best for you.',
+      title: 'Fixed vs Variable: Which Won\'t Bite You Later?',
+      description: 'The real deal on rate types - including the one that looks cheap but will destroy your budget.',
       category: 'plans',
       icon: BookOpen,
       readTime: '5 min read',
       href: '/resources/guides/fixed-vs-variable'
     },
     {
-      title: 'Green Energy Plans Guide',
-      description: 'Everything you need to know about renewable electricity options.',
+      title: 'Green Energy: What\'s Actually Green vs. Marketing BS',
+      description: 'How to find truly renewable plans and avoid the greenwashing that\'s everywhere.',
       category: 'plans',
       icon: Leaf,
       readTime: '9 min read',
       href: '/resources/guides/green-energy'
     },
     {
-      title: 'Business Electricity Guide',
-      description: 'Commercial electricity considerations for business owners.',
+      title: 'Don\'t Let Them Fleece Your Business Too',
+      description: 'Commercial electricity is even trickier. Here\'s how to protect your bottom line.',
       category: 'business',
       icon: Building,
       readTime: '10 min read',
       href: '/resources/guides/business-electricity'
     },
     {
-      title: 'Moving to Texas Electricity Guide',
-      description: 'Everything new Texas residents need to know about choosing electricity.',
+      title: 'New to Texas? Don\'t Get Taken Advantage Of',
+      description: 'What every newcomer needs to know to avoid the rookie mistakes that cost hundreds.',
       category: 'getting-started',
       icon: Home,
       readTime: '12 min read',
       href: '/resources/guides/moving-guide'
     },
     {
-      title: 'Red Flags to Avoid',
-      description: 'Warning signs and scams to watch out for when choosing providers.',
+      title: 'Scammer Alert: How to Spot the Vultures',
+      description: 'Door-to-door scams, phone tricks, and bait-and-switch tactics - here\'s how they work.',
       category: 'getting-started',
       icon: Shield,
       readTime: '4 min read',
@@ -116,11 +116,10 @@ export function ResourcesGuidesPage({}: ResourcesGuidesPageProps) {
 
           <div className="text-center">
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Electricity Guides & Educational Resources
+              How to Beat the Texas Electricity Game
             </h1>
             <p className="text-lg text-gray-600 mb-8 max-w-3xl mx-auto">
-              Learn everything you need to know about choosing electricity providers, understanding plans, 
-              and making informed decisions about your electricity service.
+              No corporate doublespeak here. Just straight talk about how to navigate Texas electricity without getting ripped off. These guides will save you money and headaches.
             </p>
           </div>
         </div>
@@ -188,15 +187,15 @@ export function ResourcesGuidesPage({}: ResourcesGuidesPageProps) {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 text-green-600 rounded-lg mb-6">
                 <Users className="h-8 w-8" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">New to Texas?</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">Just Moved to Texas?</h3>
               <p className="text-gray-600 mb-4">
-                Moving to Texas and need to choose an electricity provider? Start here for everything you need to know.
+                Don't let them take advantage of you on day one. Here's what you need to know before the vultures circle.
               </p>
               <button
                 onClick={() => navigate('/resources/guides/moving-guide')}
                 className="text-green-600 hover:text-green-800 font-medium"
               >
-                Texas Moving Guide →
+                Newcomer Protection Guide →
               </button>
             </div>
 
@@ -204,15 +203,15 @@ export function ResourcesGuidesPage({}: ResourcesGuidesPageProps) {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-lg mb-6">
                 <Zap className="h-8 w-8" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Want to Switch?</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">Tired of High Bills?</h3>
               <p className="text-gray-600 mb-4">
-                Learn the simple process of switching electricity providers and what to expect during the transition.
+                Switching is easier than ordering pizza and could save you hundreds. Here's how it actually works.
               </p>
               <button
                 onClick={() => navigate('/resources/guides/how-to-switch-providers')}
                 className="text-texas-navy hover:text-texas-navy font-medium"
               >
-                Switching Guide →
+                Easy Switch Guide →
               </button>
             </div>
 
@@ -220,15 +219,15 @@ export function ResourcesGuidesPage({}: ResourcesGuidesPageProps) {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 text-purple-600 rounded-lg mb-6">
                 <Calculator className="h-8 w-8" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Confused by Plans?</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">All Plans Look the Same?</h3>
               <p className="text-gray-600 mb-4">
-                Understand the differences between fixed, variable, and indexed rate plans to choose wisely.
+                They're designed to confuse you. Here's how to cut through the BS and find the real differences.
               </p>
               <button
                 onClick={() => navigate('/resources/guides/fixed-vs-variable')}
                 className="text-purple-600 hover:text-purple-800 font-medium"
               >
-                Plan Types Guide →
+                Plan Decoder →
               </button>
             </div>
           </div>

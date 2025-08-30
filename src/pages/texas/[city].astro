@@ -181,12 +181,12 @@ const heroImage = getHeroImage({
             <div class="flex items-center space-x-4 text-sm">
               {breadcrumbs.map((breadcrumb, index) => (
                 <Fragment key={breadcrumb.url}>
-                  {index > 0 && <span class="text-blue-200">/</span>}
+                  {index > 0 && <span class="text-white/60">/</span>}
                   <a 
                     href={breadcrumb.url}
                     class={index === breadcrumbs.length - 1 
                       ? "text-white font-medium drop-shadow-sm" 
-                      : "text-blue-200 hover:text-white transition-colors drop-shadow-sm"
+                      : "text-white/80 hover:text-white transition-colors drop-shadow-sm"
                     }
                   >
                     {breadcrumb.name}
@@ -201,13 +201,13 @@ const heroImage = getHeroImage({
             <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 drop-shadow-lg">
               Electricity Plans
             </h1>
-            <p class="text-xl lg:text-2xl text-blue-100 mb-6 drop-shadow-md leading-relaxed max-w-4xl mx-auto">
+            <p class="text-xl lg:text-2xl text-white/90 mb-6 drop-shadow-md leading-relaxed max-w-4xl mx-auto">
               Compare electricity plans in {cityName}, Texas
             </p>
-            <div class="text-blue-200 drop-shadow-sm">
+            <div class="text-white/80 drop-shadow-sm">
               <span class="text-lg lg:text-xl">{plans.length} plans available</span>
               {apiError && (
-                <span class="ml-2 text-amber-200">• Loading plans...</span>
+                <span class="ml-2 text-texas-gold-200">• Loading plans...</span>
               )}
             </div>
           </div>
@@ -217,10 +217,10 @@ const heroImage = getHeroImage({
 
     <!-- Legacy Parameter Notice -->
     {hasLegacyParams && suggestedCanonicalUrl && (
-      <div class="bg-texas-cream-200 border border-blue-200 rounded-md p-4 mx-4 mb-6">
+      <div class="bg-texas-cream-200 border border-texas-navy/20 rounded-md p-4 mx-4 mb-6">
         <div class="flex">
           <div class="flex-shrink-0">
-            <svg class="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
+            <svg class="h-5 w-5 text-texas-navy" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
             </svg>
           </div>
@@ -230,7 +230,7 @@ const heroImage = getHeroImage({
             </h3>
             <div class="mt-2 text-sm text-texas-navy">
               <p>You've applied filters to your search. For the most up-to-date results, visit our enhanced filter page:</p>
-              <a href={suggestedCanonicalUrl} class="mt-2 inline-block font-medium text-texas-navy hover:text-blue-500">
+              <a href={suggestedCanonicalUrl} class="mt-2 inline-block font-medium text-texas-navy hover:text-texas-red">
                 View Filtered Results →
               </a>
             </div>
