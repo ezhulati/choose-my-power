@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Critical**: Multi-line trust badge display breaking responsive layout - fixed with white-space: nowrap CSS
 - **Critical**: PostCSS compilation error with @apply group utility - separated utility classes from CSS directives
 - **Critical**: ZIP form button click navigation issue on production site - button clicks now work identically to Enter key submissions
+- **Critical**: StandardZipInput.astro components returning JSON responses instead of navigating to city pages - replaced API endpoint submission with client-side navigation using inline JavaScript
+- **UI**: Footer navigation headings displaying across multiple lines breaking layout - added white-space: nowrap CSS for single-line formatting
 
 ### Added  
 - **Major**: StandardZipInputReact component for consistent ZIP input design across all React pages

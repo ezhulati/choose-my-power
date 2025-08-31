@@ -204,6 +204,12 @@ const marketingText = getCredibleMarketingText(DEFAULT_COUNTS.providers, DEFAULT
   white-space: nowrap; /* Ensure single-line */
 }
 
+/* Footer heading single-line formatting */
+.footer-heading {
+  white-space: nowrap; /* Prevent line breaks */
+  word-break: keep-all; /* Keep words together */
+}
+
 @media (max-width: 768px) {
   .trust-indicators {
     gap: 0.75rem;

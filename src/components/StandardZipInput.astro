@@ -93,7 +93,7 @@ const inputId = `zipInput-${uniqueId}`;
     </div>
   )}
   
-  <form id={formId} class="zip-form relative" action="/api/zip-lookup" method="GET">
+  <form id={formId} class="zip-form relative">
     <div class={`flex ${variantConfig.form}`}>
       <div class="flex-1 relative">
         <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
@@ -147,8 +147,88 @@ const inputId = `zipInput-${uniqueId}`;
   )}
 </div>
 
-<!-- Load ZIP lookup functionality from external optimized file -->
-<script src="/js/zip-lookup.js" defer></script>
+<!-- Inline ZIP lookup functionality for client-side navigation -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // ZIP to city mapping (key mappings for Texas)
+    const zipToCity = {
+      // Dallas area ZIP codes
+      '75001': 'addison', '75201': 'dallas', '75202': 'dallas', '75203': 'dallas',
+      '75204': 'dallas', '75205': 'dallas', '75206': 'dallas', '75207': 'dallas',
+      '75208': 'dallas', '75209': 'dallas', '75210': 'dallas', '75211': 'dallas',
+      '75212': 'dallas', '75214': 'dallas', '75215': 'dallas', '75216': 'dallas',
+      '75217': 'dallas', '75218': 'dallas', '75219': 'dallas', '75220': 'dallas',
+      '75221': 'dallas', '75222': 'dallas', '75223': 'dallas', '75224': 'dallas',
+      '75225': 'dallas', '75226': 'dallas', '75227': 'dallas', '75228': 'dallas',
+      '75229': 'dallas', '75230': 'dallas', '75231': 'dallas', '75232': 'dallas',
+      '75233': 'dallas', '75234': 'dallas', '75235': 'dallas', '75236': 'dallas',
+      '75237': 'dallas', '75238': 'dallas', '75240': 'dallas', '75241': 'dallas',
+      '75242': 'dallas', '75243': 'dallas', '75244': 'dallas', '75246': 'dallas',
+      '75247': 'dallas', '75248': 'dallas', '75249': 'dallas', '75250': 'dallas',
+      // Houston area ZIP codes  
+      '77001': 'houston', '77002': 'houston', '77003': 'houston', '77004': 'houston',
+      '77005': 'houston', '77006': 'houston', '77007': 'houston', '77008': 'houston',
+      '77009': 'houston', '77010': 'houston', '77011': 'houston', '77012': 'houston',
+      '77013': 'houston', '77014': 'houston', '77015': 'houston', '77016': 'houston',
+      '77017': 'houston', '77018': 'houston', '77019': 'houston', '77020': 'houston',
+      '77021': 'houston', '77022': 'houston', '77023': 'houston', '77024': 'houston',
+      '77025': 'houston', '77026': 'houston', '77027': 'houston', '77028': 'houston',
+      // Austin area ZIP codes
+      '78701': 'austin', '78702': 'austin', '78703': 'austin', '78704': 'austin',
+      '78705': 'austin', '78712': 'austin', '78717': 'austin', '78719': 'austin',
+      '78721': 'austin', '78722': 'austin', '78723': 'austin', '78724': 'austin',
+      '78725': 'austin', '78726': 'austin', '78727': 'austin', '78728': 'austin',
+      '78729': 'austin', '78730': 'austin', '78731': 'austin', '78732': 'austin',
+      // San Antonio area ZIP codes
+      '78201': 'san-antonio', '78202': 'san-antonio', '78203': 'san-antonio', '78204': 'san-antonio',
+      '78205': 'san-antonio', '78207': 'san-antonio', '78208': 'san-antonio', '78209': 'san-antonio',
+      '78210': 'san-antonio', '78211': 'san-antonio', '78212': 'san-antonio', '78213': 'san-antonio',
+      '78214': 'san-antonio', '78215': 'san-antonio', '78216': 'san-antonio', '78217': 'san-antonio',
+      // Fort Worth area ZIP codes
+      '76101': 'fort-worth', '76102': 'fort-worth', '76103': 'fort-worth', '76104': 'fort-worth',
+      '76105': 'fort-worth', '76106': 'fort-worth', '76107': 'fort-worth', '76108': 'fort-worth',
+      '76109': 'fort-worth', '76110': 'fort-worth', '76111': 'fort-worth', '76112': 'fort-worth',
+      // Plano ZIP codes
+      '75023': 'plano', '75024': 'plano', '75025': 'plano', '75074': 'plano',
+      '75075': 'plano', '75086': 'plano', '75093': 'plano', '75094': 'plano'
+    };
+
+    function getCityFromZip(zipCode) {
+      return zipToCity[zipCode] || null;
+    }
+
+    // Find all ZIP forms on the page
+    const zipForms = document.querySelectorAll('.zip-form');
+    
+    zipForms.forEach(form => {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Find the ZIP input within this specific form
+        const zipInput = form.querySelector('.zip-input');
+        const zipCode = zipInput ? zipInput.value.trim() : '';
+        
+        if (zipCode && zipCode.length === 5) {
+          const city = getCityFromZip(zipCode);
+          
+          if (city) {
+            // Direct navigation to city page
+            window.location.href = `/texas/${city}`;
+          } else {
+            // Fallback logic
+            if (zipCode.startsWith('7')) {
+              // Texas ZIP code, but city not in our mapping - go to Texas page
+              window.location.href = '/texas/electricity-providers';
+            } else {
+              // Not a Texas ZIP code or unknown - go to locations page
+              window.location.href = '/locations';
+            }
+          }
+        }
+      });
+    });
+  });
+</script>
 
 <style>
   /* Ensure consistent focus states */
