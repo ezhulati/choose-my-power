@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ZipCodeSearch } from '../../components/ZipCodeSearch';
+import StandardZipInputReact from '../../components/StandardZipInputReact';
 import { ProviderCard } from '../../components/ProviderCard';
 import { mockProviders, mockStates } from '../../data/mockData';
 import { 
@@ -362,9 +362,8 @@ export function ProvidersPage() {
             </div>
 
             <div className="max-w-md mx-auto">
-              <ZipCodeSearch 
+              <StandardZipInputReact 
                 onSearch={handleZipSearch} 
-                placeholder="Enter your ZIP code"
                 size="lg"
               />
               <p className="text-blue-200 text-sm mt-2">Get personalized provider results</p>

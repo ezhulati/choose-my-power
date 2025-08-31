@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ZipCodeSearch } from '../../components/ZipCodeSearch';
+import StandardZipInputReact from '../../components/StandardZipInputReact';
 import { mockStates, mockProviders, utilityCompanies } from '../../data/mockData';
 import { 
   MapPin, Search, TrendingDown, Users, Zap, Building, ArrowRight, Star, 
@@ -110,7 +110,7 @@ function LocationsPage({}: LocationsPageProps) {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white">
+      <div className="bg-gradient-to-br from-texas-navy via-blue-900 to-texas-navy text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center">
             <div className="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-8">
@@ -129,7 +129,7 @@ function LocationsPage({}: LocationsPageProps) {
             <div className="mb-12">
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 max-w-2xl mx-auto">
                 <h2 className="text-2xl font-semibold text-white mb-6">What's Available at Your Address?</h2>
-                <ZipCodeSearch onSearch={handleZipSearch} size="lg" placeholder="Enter your ZIP code" />
+                <StandardZipInputReact onSearch={handleZipSearch} size="lg" />
                 <p className="text-blue-200 text-sm mt-3">See who actually serves your street (not just your city)</p>
               </div>
             </div>
@@ -548,7 +548,7 @@ function LocationsPage({}: LocationsPageProps) {
       </div>
 
       {/* Final CTA */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white">
+      <div className="bg-gradient-to-br from-texas-navy via-blue-900 to-texas-navy text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to See What's Available Where You Live?</h2>
           <p className="text-xl mb-8 text-blue-100 max-w-3xl mx-auto">
@@ -557,7 +557,7 @@ function LocationsPage({}: LocationsPageProps) {
           </p>
           
           <div className="max-w-md mx-auto mb-6">
-            <ZipCodeSearch onSearch={handleZipSearch} placeholder="Your ZIP code" />
+            <StandardZipInputReact onSearch={handleZipSearch} size="lg" />
           </div>
           
           <p className="text-blue-200 text-sm">

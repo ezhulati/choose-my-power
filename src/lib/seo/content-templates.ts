@@ -53,7 +53,7 @@ const faqCache = new Map<string, any>();
 const localContextCache = new Map<string, string>();
 
 /**
- * City Hub Page Templates - Tier 1 Priority (e.g., /electricity-plans/dallas-tx/)
+ * City Hub Page Templates - Tier 1 Priority (e.g., /electricity-plans/dallas/)
  * Focus: Comprehensive city overview with local context
  */
 export function generateCityHubContent(context: ContentContext): ContentTemplate {
@@ -102,7 +102,7 @@ export function generateCityHubContent(context: ContentContext): ContentTemplate
 }
 
 /**
- * Single Filter Pages - Tier 2 Priority (e.g., /electricity-plans/dallas-tx/12-month/)
+ * Single Filter Pages - Tier 2 Priority (e.g., /electricity-plans/dallas/12-month/)
  * Focus: Specific filter benefits with comparative analysis
  */
 export function generateSingleFilterContent(context: ContentContext): ContentTemplate {
@@ -151,7 +151,7 @@ export function generateSingleFilterContent(context: ContentContext): ContentTem
 }
 
 /**
- * Multi-Filter Combination Pages - Tier 3 Priority (e.g., /electricity-plans/dallas-tx/12-month/fixed-rate/)
+ * Multi-Filter Combination Pages - Tier 3 Priority (e.g., /electricity-plans/dallas/12-month/fixed-rate/)
  * Focus: Highly targeted content for specific user intent
  */
 export function generateMultiFilterContent(context: ContentContext): ContentTemplate {
@@ -201,7 +201,7 @@ export function generateMultiFilterContent(context: ContentContext): ContentTemp
 }
 
 /**
- * Provider-Specific Pages (e.g., /electricity-plans/dallas-tx/reliant-energy/)
+ * Provider-Specific Pages (e.g., /electricity-plans/dallas/reliant-energy/)
  * Focus: Brand-specific benefits with local context
  */
 export function generateProviderContent(context: ContentContext & { provider: string }): ContentTemplate {

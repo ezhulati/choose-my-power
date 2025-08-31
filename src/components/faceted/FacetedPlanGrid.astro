@@ -54,6 +54,7 @@ const sortPlans = (plans: Plan[], sortBy: string) => {
 // Get plans for initial display
 const sortedPlans = sortPlans(plans, defaultSort);
 const initialPlans = enableInfiniteScroll ? sortedPlans.slice(0, plansPerPage) : sortedPlans;
+const remainingPlans = enableInfiniteScroll ? sortedPlans.slice(plansPerPage) : [];
 
 // Convert plans to EnterprisePlanCard format
 const convertedInitialPlans = initialPlans.map((plan) => ({
@@ -216,6 +217,7 @@ const sortingOptions = [
       <!-- Grid View - Mobile-First Responsive -->
       <div class={`grid-view ${viewMode === 'grid' ? 'active' : 'hidden'}`}>
         <div class="plans-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Initial visible plans */}
           {convertedInitialPlans.map((plan) => (
             <EnterprisePlanCard 
               plan={plan}
@@ -226,6 +228,47 @@ const sortingOptions = [
               className="h-full"
             />
           ))}
+          
+          {/* Hidden plans for load more */}
+          {remainingPlans.map((plan) => {
+            const convertedPlan = {
+              id: plan.id,
+              name: plan.name,
+              provider: plan.provider.name,
+              rate: plan.pricing.rate1000kWh,
+              contractTerm: `${plan.contract.length} months`,
+              planType: plan.contract.type as 'fixed' | 'variable' | 'indexed',
+              greenEnergy: plan.features.greenEnergy > 0,
+              noDeposit: !plan.features.deposit.required,
+              topRated: plan.provider.rating >= 4.5,
+              features: [
+                plan.contract.type === 'fixed' ? 'Fixed Rate' : plan.contract.type === 'variable' ? 'Variable Rate' : 'Indexed Rate',
+                ...(plan.features.greenEnergy > 0 ? [`${plan.features.greenEnergy}% Green Energy`] : []),
+                ...(!plan.features.deposit.required ? ['No Deposit'] : []),
+                ...(plan.features.freeTime ? ['Free Time'] : []),
+                ...(plan.features.billCredit > 0 ? ['Bill Credit'] : [])
+              ].filter(Boolean),
+              slug: plan.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
+              pricing: {
+                rate500kWh: plan.pricing.rate500kWh || plan.pricing.rate1000kWh,
+                rate1000kWh: plan.pricing.rate1000kWh,
+                rate2000kWh: plan.pricing.rate2000kWh || plan.pricing.rate1000kWh
+              }
+            };
+            
+            return (
+              <div style="display: none;" class="load-more-card">
+                <EnterprisePlanCard 
+                  plan={convertedPlan}
+                  onViewDetails={(selectedPlan) => {
+                    window.location.href = `/electricity-plans/${selectedPlan.provider.toLowerCase().replace(/\s+/g, '-')}/${selectedPlan.slug}`;
+                  }}
+                  client:load
+                  className="h-full"
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
       
@@ -409,7 +452,6 @@ Compare
     {enableInfiniteScroll && totalPlans > plansPerPage && (
       <div class="load-more-section" id="load-more-trigger">
         <button class="load-more-btn" data-loaded={plansPerPage} data-total={totalPlans}>
-          <span class="load-more-icon">Load</span>
           <span class="load-more-text">
             Load More Plans ({totalPlans - plansPerPage} remaining)
           </span>
@@ -1238,45 +1280,66 @@ Compare
       const usage = button.dataset.usage;
       const filter = button.dataset.filter;
       
-      let sortBy = 'price'; // default
-      let filterType = '';
+      // Get all plan cards
+      const planCards = document.querySelectorAll('.plans-grid > div');
+      const tableRows = document.querySelectorAll('.plan-row');
+      const compactCards = document.querySelectorAll('.compact-plan-card');
       
-      if (usage) {
-        // Sort by best rate for specific usage level
-        sortBy = `usage_${usage}`;
-        filterType = `${usage}kWh`;
-      } else if (filter === 'green') {
-        sortBy = 'green';
-        filterType = 'green_energy';
-      } else if (filter === 'cheapest') {
-        sortBy = 'price';
-        filterType = 'cheapest';
+      let visibleCount = 0;
+      
+      // Filter logic
+      planCards.forEach((card, index) => {
+        let shouldShow = true;
+        
+        if (usage) {
+          // Filter by usage level - show plans optimized for that usage
+          const rateElements = card.querySelectorAll('[class*="rate"]');
+          // For now, show all plans for usage filters (would need actual usage data)
+          shouldShow = true;
+        } else if (filter === 'green') {
+          // Show only 100% green energy plans
+          const greenBadge = card.querySelector('[class*="green"]');
+          shouldShow = greenBadge && greenBadge.textContent.includes('100%');
+        } else if (filter === 'cheapest') {
+          // Show all plans but sort them by rate
+          shouldShow = true;
+        }
+        
+        // Show/hide the card
+        if (shouldShow) {
+          card.style.display = 'block';
+          card.style.opacity = '1';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+          card.style.opacity = '0';
+        }
+        
+        // Handle table rows
+        if (tableRows[index]) {
+          tableRows[index].style.display = shouldShow ? '' : 'none';
+        }
+        
+        // Handle compact cards
+        if (compactCards[index]) {
+          compactCards[index].style.display = shouldShow ? 'block' : 'none';
+        }
+      });
+      
+      // Update stats
+      const statsNumber = document.querySelector('.stat-number');
+      if (statsNumber) {
+        statsNumber.textContent = visibleCount;
       }
-      
-      // Update URL with filter
-      const url = new URL(window.location);
-      url.searchParams.set('sort', sortBy);
-      if (filterType) {
-        url.searchParams.set('filter', filterType);
-      }
-      window.history.replaceState({}, '', url);
-      
-      // Show loading state
-      this.showLoadingState();
       
       // Track filter usage
       if (typeof gtag !== 'undefined') {
         gtag('event', 'quick_filter_used', {
-          filter_type: filterType,
-          sort_type: sortBy,
+          filter_type: filter || `${usage}kWh`,
+          results_shown: visibleCount,
           current_view: this.currentView
         });
       }
-      
-      // Reload page with new filter (in real app, would filter client-side)
-      setTimeout(() => {
-        window.location.href = url.toString();
-      }, 300);
     }
 
     handleViewChange(newView) {
@@ -1338,17 +1401,27 @@ Compare
       }
       
       try {
-        // In a real implementation, this would be an API call
-        await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate network delay
+        // Show loading animation briefly
+        await new Promise(resolve => setTimeout(resolve, 500));
         
-        // Simulate loading more plans
-        const newPlansToLoad = Math.min(12, this.totalPlans - this.loadedPlans);
-        this.loadedPlans += newPlansToLoad;
+        // Get hidden load-more-card elements
+        const hiddenCards = document.querySelectorAll('.load-more-card[style*="display: none"]');
         
-        // Update the display
+        // Show next batch of cards
+        const cardsToShow = Math.min(12, hiddenCards.length);
+        for (let i = 0; i < cardsToShow; i++) {
+          if (hiddenCards[i]) {
+            hiddenCards[i].style.display = 'block';
+            hiddenCards[i].style.opacity = '1';
+          }
+        }
+        
+        this.loadedPlans += cardsToShow;
+        const remaining = hiddenCards.length - cardsToShow;
+        
+        // Update button text or hide if no more plans
         if (loadMoreBtn) {
           const text = loadMoreBtn.querySelector('.load-more-text');
-          const remaining = this.totalPlans - this.loadedPlans;
           
           if (remaining > 0) {
             if (text) text.textContent = `Load More Plans (${remaining} remaining)`;

@@ -81,6 +81,13 @@ function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+// Card variants for styling consistency
+const cardVariants = {
+  default: "bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm",
+  elevated: "bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-lg hover:shadow-xl transition-shadow duration-200",
+  compact: "bg-card text-card-foreground flex flex-col gap-4 rounded-lg border py-4 shadow-sm",
+};
+
 export {
   Card,
   CardHeader,
@@ -89,4 +96,5 @@ export {
   CardAction,
   CardDescription,
   CardContent,
+  cardVariants,
 }

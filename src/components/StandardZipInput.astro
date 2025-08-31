@@ -75,6 +75,11 @@ const variants = {
 const sizeConfig = sizes[size];
 const variantConfig = variants[variant];
 
+// Generate unique IDs to prevent conflicts when multiple components exist on the same page
+const uniqueId = Math.random().toString(36).substr(2, 9);
+const formId = `zipForm-${uniqueId}`;
+const inputId = `zipInput-${uniqueId}`;
+
 // Using imported DEFAULT_COUNTS from dynamic-counts system
 ---
 
@@ -88,7 +93,7 @@ const variantConfig = variants[variant];
     </div>
   )}
   
-  <form id="zipForm" class="relative" action="/api/zip-lookup" method="GET">
+  <form id={formId} class="zip-form relative" action="/api/zip-lookup" method="GET">
     <div class={`flex ${variantConfig.form}`}>
       <div class="flex-1 relative">
         <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
@@ -99,11 +104,11 @@ const variantConfig = variants[variant];
         </div>
         <input
           type="text"
-          id="zipInput"
+          id={inputId}
           name="zip"
           maxlength="5"
           placeholder="ZIP code"
-          class={`w-full ${sizeConfig.input} text-gray-900 placeholder-gray-500 border-0 focus:ring-0 focus:outline-none font-medium tracking-wider`}
+          class={`zip-input w-full ${sizeConfig.input} text-gray-900 placeholder-gray-500 border-0 focus:ring-0 focus:outline-none font-medium tracking-wider`}
           autocomplete="postal-code"
           inputmode="numeric"
           required
@@ -147,7 +152,7 @@ const variantConfig = variants[variant];
 
 <style>
   /* Ensure consistent focus states */
-  #zipInput:focus {
+  .zip-input:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
   }

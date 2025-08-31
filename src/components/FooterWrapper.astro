@@ -97,8 +97,8 @@ const marketingText = getCredibleMarketingText(DEFAULT_COUNTS.providers, DEFAULT
         <h2 class="footer-heading">Browse by Location</h2>
         <ul class="footer-links">
           <li><a href="/texas" class="footer-link">Texas Providers</a></li>
-          <li><a href="/electricity-plans/dallas-tx" class="footer-link">Dallas Electricity</a></li>
-          <li><a href="/electricity-plans/houston-tx" class="footer-link">Houston Electricity</a></li>
+          <li><a href="/electricity-plans/dallas" class="footer-link">Dallas Electricity</a></li>
+          <li><a href="/electricity-plans/houston" class="footer-link">Houston Electricity</a></li>
           <li><a href="/electricity-plans/austin-tx" class="footer-link">Austin Electricity</a></li>
           <li><a href="/locations" class="footer-link">All Locations</a></li>
         </ul>
@@ -174,4 +174,47 @@ const marketingText = getCredibleMarketingText(DEFAULT_COUNTS.providers, DEFAULT
 </footer>
 
 <style>
+/* Trust badge styles for single-line formatting */
+.trust-indicators {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap; /* Prevent line breaks */
+}
+
+.trust-icon {
+  width: 1rem;
+  height: 1rem;
+  color: #16a34a; /* green-600 */
+  flex-shrink: 0;
+}
+
+.trust-badge {
+  font-size: 0.75rem; /* text-xs */
+  color: #16a34a; /* green-600 */
+  font-weight: 500;
+  white-space: nowrap; /* Ensure single-line */
+}
+
+@media (max-width: 768px) {
+  .trust-indicators {
+    gap: 0.75rem;
+  }
+  
+  .trust-item {
+    gap: 0.25rem;
+  }
+  
+  .trust-badge {
+    font-size: 0.7rem;
+  }
+}
 </style>

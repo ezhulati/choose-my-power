@@ -261,3 +261,66 @@
   NODE_ENV = "development"
   ASTRO_TELEMETRY_DISABLED = "1"
   MAX_CITIES = "10"
+
+# URL Redirects - 301 redirects for SEO preservation after removing -tx suffixes
+# Major Texas Cities
+[[redirects]]
+  from = "/texas/dallas-tx"
+  to = "/texas/dallas"
+  status = 301
+
+[[redirects]]
+  from = "/texas/houston-tx" 
+  to = "/texas/houston"
+  status = 301
+
+[[redirects]]
+  from = "/texas/austin-tx"
+  to = "/texas/austin"
+  status = 301
+
+[[redirects]]
+  from = "/texas/san-antonio-tx"
+  to = "/texas/san-antonio"
+  status = 301
+
+[[redirects]]
+  from = "/electricity-plans/dallas-tx"
+  to = "/electricity-plans/dallas"
+  status = 301
+
+[[redirects]]
+  from = "/electricity-plans/houston-tx"
+  to = "/electricity-plans/houston"
+  status = 301
+
+[[redirects]]
+  from = "/electricity-plans/austin-tx"
+  to = "/electricity-plans/austin"
+  status = 301
+
+[[redirects]]
+  from = "/electricity-plans/san-antonio-tx"
+  to = "/electricity-plans/san-antonio"
+  status = 301
+
+# Pattern-based redirects for all other cities
+[[redirects]]
+  from = "/texas/*-tx"
+  to = "/texas/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/texas/*-tx/*"
+  to = "/texas/:splat/*"
+  status = 301
+
+[[redirects]]
+  from = "/electricity-plans/*-tx"
+  to = "/electricity-plans/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/electricity-plans/*-tx/*"
+  to = "/electricity-plans/:splat/*"
+  status = 301

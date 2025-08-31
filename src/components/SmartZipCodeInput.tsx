@@ -497,7 +497,7 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
       {/* Address Input */}
       {state.step === 'address_input' && (
         <div className="address-input-section">
-          <div className="section-header">
+          <div className="section-header group">
             <h3>One Quick Thing - Your Street?</h3>
             <p>Your ZIP ({state.zipCode}) is right on the border. What street? That tells us which utility serves you.</p>
           </div>
@@ -531,7 +531,7 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
       {/* TDSP Selection */}
       {state.step === 'tdsp_selection' && state.tdspResult?.alternatives && (
         <div className="tdsp-selection-section">
-          <div className="section-header">
+          <div className="section-header group">
             <h3>Quick Check - Who's Your Utility?</h3>
             <p>You're right between two areas. Which name do you see on your current bill?</p>
           </div>

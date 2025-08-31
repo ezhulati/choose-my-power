@@ -41,7 +41,7 @@ export function Homepage({ onNavigate }: HomepageProps) {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section - Mobile-First Responsive */}
-      <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white py-12 sm:py-16 md:py-20 lg:py-24 xl:py-32">
+      <section className="bg-gradient-to-br from-texas-navy via-blue-900 to-texas-navy text-white py-12 sm:py-16 md:py-20 lg:py-24 xl:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <DynamicHeroMessaging />
@@ -215,7 +215,7 @@ export function Homepage({ onNavigate }: HomepageProps) {
       </section>
 
       {/* CTA Section - Mobile-Optimized */}
-      <section className="py-8 sm:py-12 md:py-16 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+      <section className="py-8 sm:py-12 md:py-16 bg-gradient-to-br from-texas-navy via-blue-900 to-texas-navy text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
             Ready to Find Your Best Provider?

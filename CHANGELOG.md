@@ -8,7 +8,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Fixed
+- **Critical**: Broken ZIP input functionality on all non-homepage pages preventing users from searching for electricity plans - restored intelligent ZIP-to-city mapping with proper fallback handling
+- **Critical**: Multiple redundant ZIP inputs on homepage causing user confusion - reduced from 4 to 3 strategic placements
+- **Critical**: Multi-line trust badge display breaking responsive layout - fixed with white-space: nowrap CSS
+- **Critical**: PostCSS compilation error with @apply group utility - separated utility classes from CSS directives
 - **Critical**: ZIP form button click navigation issue on production site - button clicks now work identically to Enter key submissions
+
+### Added  
+- **Major**: StandardZipInputReact component for consistent ZIP input design across all React pages
+- **Major**: Hero color consistency with dark blue gradient (from-texas-navy via-blue-900 to-texas-navy) applied site-wide
+- ZIP input functionality to /best page hero section
+- ZIP input functionality to /resources page with consistent styling
+- Single-line trust badge CSS with responsive mobile/desktop styling
+
+### Changed
+- Consolidated ZIP input components across React (.tsx) and Astro (.astro) pages for design consistency
+- Updated all non-homepage ZIP inputs to use intelligent city mapping logic from homepage
+- Applied homepage dark blue hero gradient to /resources, /providers, /rates, /locations, /electricity-companies, /compare, /best pages
+- Standardized ZIP input behavior to route users to correct city-specific electricity plan pages
+- Improved trust badge formatting in footer with proper CSS styling
 - **Critical**: Content Security Policy violations blocking zip-lookup.js script from loading on production - added script hash and disabled conflicting middleware CSP
 - **Critical**: TypeScript syntax errors preventing development server startup - fixed escaped quotes, template literals, and type assertions in SmartZipCodeInput.tsx, ZipCodeSearchAPI.tsx, and temporal-messaging-engine.ts
 

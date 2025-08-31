@@ -272,7 +272,7 @@ export function extractContextFromPath(pathname: string): HeroImageContext {
     return { pageType: 'state', location: 'texas' };
   }
   
-  // City pages: /texas/dallas-tx
+  // City pages: /texas/dallas
   if (segments[0] === 'texas' && segments.length === 2) {
     return { 
       pageType: 'city', 

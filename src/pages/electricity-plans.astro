@@ -7,7 +7,7 @@
 
 import Layout from '../layouts/Layout.astro';
 import HeroBackground from '../components/HeroBackground.astro';
-import { ZipCodeSearch } from '../components/ZipCodeSearch';
+import StandardZipInput from '../components/StandardZipInput.astro';
 import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
@@ -92,11 +92,14 @@ const samplePlans = [
         </div>
 
         <!-- Refined Search Input -->
-        <div class="max-w-md mx-auto mt-8">
-          <ZipCodeSearch 
-            client:load
-            placeholder="Enter your ZIP code to see plans"
-            className="w-full"
+        <div class="max-w-lg mx-auto mt-8">
+          <StandardZipInput 
+            variant="hero" 
+            size="lg"
+            showTitle={false}
+            showDescription={false}
+            showStats={false}
+            customClass="max-w-lg mx-auto"
           />
         </div>
       </div>

@@ -155,14 +155,14 @@ export function generateCityPages(): SitemapSection {
     const isMajorCity = MAJOR_CITIES.includes(citySlug);
     const config = isMajorCity ? PAGE_CONFIG.majorCityPages : PAGE_CONFIG.cityPages;
     
-    // City overview page: /texas/dallas-tx/
+    // City overview page: /texas/dallas/
     urls.push(createUrl(
       `/texas/${citySlug}/`,
       config.priority,
       config.changefreq
     ));
     
-    // City electricity plans page: /electricity-plans/dallas-tx/
+    // City electricity plans page: /electricity-plans/dallas/
     urls.push(createUrl(
       `/electricity-plans/${citySlug}/`,
       PAGE_CONFIG.cityPlanPages.priority,

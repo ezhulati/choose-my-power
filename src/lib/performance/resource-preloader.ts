@@ -95,8 +95,8 @@ export class ResourcePreloader {
         trigger: 'immediate',
         resources: [
           '/texas',
-          '/electricity-plans/dallas-tx/',
-          '/electricity-plans/houston-tx/',
+          '/electricity-plans/dallas/',
+          '/electricity-plans/houston/',
           // Faceted system assets handled by Astro's module system
         ]
       },
@@ -117,8 +117,8 @@ export class ResourcePreloader {
         priority: 'high',
         trigger: 'immediate',
         resources: [
-          '/electricity-plans/dallas-tx/',
-          '/electricity-plans/houston-tx/',
+          '/electricity-plans/dallas/',
+          '/electricity-plans/houston/',
           '/electricity-plans/austin-tx/',
           '/electricity-plans/san-antonio-tx/'
         ]

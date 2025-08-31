@@ -111,7 +111,7 @@ export class ContentOrchestrator {
   }
 
   /**
-   * Generate faceted navigation page content (e.g., /electricity-plans/dallas-tx/12-month/)
+   * Generate faceted navigation page content (e.g., /electricity-plans/dallas/12-month/)
    */
   async generateFacetedPageContent(citySlug: string, filters: string[]): Promise<PageContent> {
     const cacheKey = `faceted-${citySlug}-${filters.join('-')}`;

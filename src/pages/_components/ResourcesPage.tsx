@@ -1,5 +1,6 @@
 import React from 'react';
 import { BookOpen, Calculator, HelpCircle, Phone, FileText, Shield, Users, Zap } from 'lucide-react';
+import StandardZipInputReact from '../../components/StandardZipInputReact';
 
 interface ResourcesPageProps {
 }
@@ -84,16 +85,28 @@ export function ResourcesPage({}: ResourcesPageProps) {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-white border-b">
+      <div className="bg-gradient-to-br from-texas-navy via-blue-900 to-texas-navy text-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
               Texas Electricity Help That Actually Helps
             </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-blue-200 mb-8 max-w-3xl mx-auto">
               You've spent hours trying to figure this out. So did we. Here's everything we learned the hard way, 
               explained like we're helping a friend. No corporate nonsense. Just the stuff that actually matters.
             </p>
+            
+            <div className="max-w-md mx-auto mb-6">
+              <StandardZipInputReact 
+                size="lg"
+                variant="inline"
+                className="w-full"
+              />
+            </div>
+            
+            <div className="text-blue-200">
+              <p className="text-sm sm:text-base">Compare plans and providers • Find the best rates • Get honest advice</p>
+            </div>
           </div>
         </div>
       </div>

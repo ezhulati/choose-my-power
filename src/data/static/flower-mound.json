@@ -925,7 +925,7 @@
           }
         },
         {
-          "id": "68ad431ff95bf521995a3bcb",
+          "id": "68b2893a8ca16498d83895e8",
           "name": "Frontier Saver Plus 12",
           "provider": {
             "name": "Frontier Utilities",
@@ -934,10 +934,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.219,
-            "rate1000kWh": 0.089,
-            "rate2000kWh": 0.15,
-            "ratePerKwh": 0.089
+            "rate500kWh": 0.218,
+            "rate1000kWh": 0.088,
+            "rate2000kWh": 0.149,
+            "ratePerKwh": 0.088
           },
           "contract": {
             "length": 12,
@@ -1221,7 +1221,7 @@
           }
         },
         {
-          "id": "68ad4323f95bf521995a3bdd",
+          "id": "68b2893e8ca16498d838960a",
           "name": "Gexa Eco Saver Plus 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1230,10 +1230,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.219,
-            "rate1000kWh": 0.089,
-            "rate2000kWh": 0.15,
-            "ratePerKwh": 0.089
+            "rate500kWh": 0.218,
+            "rate1000kWh": 0.088,
+            "rate2000kWh": 0.149,
+            "ratePerKwh": 0.088
           },
           "contract": {
             "length": 12,
@@ -1258,7 +1258,7 @@
           }
         },
         {
-          "id": "68a01450e30bfeb00272158e",
+          "id": "68a01450e30bfeb002721590",
           "name": "Gexa Eco Saver Premier 12",
           "provider": {
             "name": "Gexa Energy",
@@ -2830,7 +2830,7 @@
           }
         },
         {
-          "id": "68b1345b890a850ebca0ccef",
+          "id": "68b285be8ca16498d8389597",
           "name": "Flex Forward",
           "provider": {
             "name": "TXU Energy",
@@ -2867,7 +2867,7 @@
           }
         },
         {
-          "id": "68b1345a890a850ebca0cce7",
+          "id": "68b285be8ca16498d8389591",
           "name": "Live Your Free 12",
           "provider": {
             "name": "TXU Energy",
@@ -2904,7 +2904,7 @@
           }
         },
         {
-          "id": "68b1345a890a850ebca0cce6",
+          "id": "68b285be8ca16498d8389590",
           "name": "Ultimate Season Pass 12",
           "provider": {
             "name": "TXU Energy",
@@ -2947,7 +2947,7 @@
           }
         },
         {
-          "id": "68b1345a890a850ebca0cce0",
+          "id": "68b285bd8ca16498d8389589",
           "name": "Free Nights & Solar Days 12 (8 pm)",
           "provider": {
             "name": "TXU Energy",
@@ -4205,7 +4205,7 @@
         }
       ],
       "count": 111,
-      "lowestRate": 0.089,
+      "lowestRate": 0.088,
       "highestRate": 0.226
     }
   }

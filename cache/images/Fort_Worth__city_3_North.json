@@ -1,0 +1,18 @@
+{
+  "cacheKey": "Fort_Worth__city_3_North",
+  "url": "/images/og/generated/city/Fort_Worth__city_3_North_1756602322291.jpg",
+  "localPath": "/Users/mbp-ez/Downloads/AI Library/Apps/CMP/choose-my-power/public/images/og/generated/city/Fort_Worth__city_3_North_1756602322291.jpg",
+  "generatedAt": "2025-08-31T01:05:22.291Z",
+  "context": {
+    "city": "Fort Worth",
+    "filters": [],
+    "planCount": 111,
+    "lowestRate": 999,
+    "topProviders": [],
+    "pageType": "city",
+    "cityTier": 3,
+    "tdspZone": "North",
+    "seasonalContext": "summer"
+  },
+  "expiresAt": "2025-09-30T01:05:22.960Z"
+}

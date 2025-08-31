@@ -25,12 +25,12 @@ const url = new URL(Astro.request.url);
 
 console.log(`🏙️  City page requested: ${city}`);
 
-// Format city slug to include -tx suffix for validation
+// Clean city slug (no -tx suffix needed)
 const citySlug = formatCitySlug(city || '');
 
-// Validate city exists using faceted system
+// Validate city exists using clean city names
 if (!city || !validateCitySlug(citySlug)) {
-  console.error(`Invalid city: ${city} (formatted as: ${citySlug})`);
+  console.error(`Invalid city: ${city} (cleaned as: ${citySlug})`);
   return Astro.redirect('/404', 404);
 }
 

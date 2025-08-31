@@ -216,7 +216,7 @@
           }
         },
         {
-          "id": "68b218a614f68bc678acd13e",
+          "id": "68b39b8c8ca16498d838b44e",
           "name": "12 Month GREEN (No Min Usage Fee)",
           "provider": {
             "name": "Constellation",
@@ -253,7 +253,7 @@
           }
         },
         {
-          "id": "68b218a614f68bc678acd13f",
+          "id": "68b39b8c8ca16498d838b450",
           "name": "12 Month Usage Bill Credit",
           "provider": {
             "name": "Constellation",
@@ -290,7 +290,7 @@
           }
         },
         {
-          "id": "68b218a614f68bc678acd13d",
+          "id": "68b39b8c8ca16498d838b44f",
           "name": "24 Month Usage Bill Credit",
           "provider": {
             "name": "Constellation",
@@ -962,7 +962,7 @@
           }
         },
         {
-          "id": "68ad431bf95bf521995a3ba7",
+          "id": "68b289368ca16498d83895c9",
           "name": "Frontier Saver Plus 12",
           "provider": {
             "name": "Frontier Utilities",
@@ -971,10 +971,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.233,
-            "rate1000kWh": 0.105,
-            "rate2000kWh": 0.166,
-            "ratePerKwh": 0.105
+            "rate500kWh": 0.232,
+            "rate1000kWh": 0.104,
+            "rate2000kWh": 0.165,
+            "ratePerKwh": 0.104
           },
           "contract": {
             "length": 12,
@@ -1147,7 +1147,7 @@
           }
         },
         {
-          "id": "68a01447751147f916dd176b",
+          "id": "68a01447751147f916dd176c",
           "name": "Gexa Eco Saver Advantage 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1258,7 +1258,7 @@
           }
         },
         {
-          "id": "68ad431cf95bf521995a3bb3",
+          "id": "68b28937535d11b00fc12961",
           "name": "Gexa Eco Saver Plus 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1267,10 +1267,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.233,
-            "rate1000kWh": 0.105,
-            "rate2000kWh": 0.166,
-            "ratePerKwh": 0.105
+            "rate500kWh": 0.232,
+            "rate1000kWh": 0.104,
+            "rate2000kWh": 0.165,
+            "ratePerKwh": 0.104
           },
           "contract": {
             "length": 12,
@@ -1295,7 +1295,7 @@
           }
         },
         {
-          "id": "68a01447751147f916dd176a",
+          "id": "68a01447751147f916dd176d",
           "name": "Gexa Eco Saver Premier 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1369,7 +1369,7 @@
           }
         },
         {
-          "id": "689193a0f03399b38e213175",
+          "id": "689193a0f03399b38e213176",
           "name": "Gexa Light Saver 12",
           "provider": {
             "name": "Gexa Energy",
@@ -2867,7 +2867,7 @@
           }
         },
         {
-          "id": "68b1343f890a850ebca0cc87",
+          "id": "68b285a5a192a454b93ba0cc",
           "name": "Flex Forward",
           "provider": {
             "name": "TXU Energy",
@@ -2904,7 +2904,7 @@
           }
         },
         {
-          "id": "68b1343e890a850ebca0cc6f",
+          "id": "68b285a4a192a454b93ba0b8",
           "name": "Live Your Free 12",
           "provider": {
             "name": "TXU Energy",
@@ -2941,7 +2941,7 @@
           }
         },
         {
-          "id": "68b1343e890a850ebca0cc70",
+          "id": "68b285a4a192a454b93ba0b9",
           "name": "Ultimate Season Pass 12",
           "provider": {
             "name": "TXU Energy",
@@ -2984,7 +2984,7 @@
           }
         },
         {
-          "id": "68b1343f890a850ebca0cc85",
+          "id": "68b285a5a192a454b93ba0ca",
           "name": "Free Nights & Solar Days 12 (8 pm)",
           "provider": {
             "name": "TXU Energy",
@@ -4242,7 +4242,7 @@
         }
       ],
       "count": 112,
-      "lowestRate": 0.105,
+      "lowestRate": 0.104,
       "highestRate": 0.243
     }
   }

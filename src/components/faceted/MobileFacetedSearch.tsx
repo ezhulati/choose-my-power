@@ -399,7 +399,7 @@ const MobileFacetedSearch: React.FC<MobileFacetedSearchProps> = ({
               {/* Contract Length */}
               <div className="filter-section">
                 <button
-                  className="section-header"
+                  className="section-header group"
                   onClick={() => setActiveSection(activeSection === 'contract' ? null : 'contract')}
                 >
                   <span>Contract Length</span>
@@ -424,7 +424,7 @@ const MobileFacetedSearch: React.FC<MobileFacetedSearchProps> = ({
               {/* Rate Type */}
               <div className="filter-section">
                 <button
-                  className="section-header"
+                  className="section-header group"
                   onClick={() => setActiveSection(activeSection === 'rateType' ? null : 'rateType')}
                 >
                   <span>Rate Type</span>
@@ -451,7 +451,7 @@ const MobileFacetedSearch: React.FC<MobileFacetedSearchProps> = ({
               {availableFacets?.providers && availableFacets.providers.length > 0 && (
                 <div className="filter-section">
                   <button
-                    className="section-header"
+                    className="section-header group"
                     onClick={() => setActiveSection(activeSection === 'providers' ? null : 'providers')}
                   >
                     <span>Providers</span>

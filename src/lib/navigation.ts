@@ -56,10 +56,10 @@ export const ROUTES = {
   SHOP: '/shop',
   
   // City-specific routes
-  HOUSTON: '/texas/houston-tx',
-  DALLAS: '/texas/dallas-tx',
-  AUSTIN: '/texas/austin-tx',
-  SAN_ANTONIO: '/texas/san-antonio-tx',
+  HOUSTON: '/texas/houston',
+  DALLAS: '/texas/dallas',
+  AUSTIN: '/texas/austin',
+  SAN_ANTONIO: '/texas/san-antonio',
   FORT_WORTH: '/texas/fort-worth-tx',
   EL_PASO: '/texas/el-paso-tx',
   

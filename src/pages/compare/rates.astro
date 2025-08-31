@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import HeroBackground from '../../components/HeroBackground.astro';
-import { ZipCodeSearch } from '../../components/ZipCodeSearch';
+import StandardZipInput from '../../components/StandardZipInput.astro';
 import { TrendingDown, TrendingUp, BarChart, Calendar, Calculator, DollarSign } from 'lucide-react';
 
 const title = "Finally. Electricity Rate Comparison That Shows What You'll Actually Pay";
@@ -27,10 +27,13 @@ const description = "Tired of rate shopping that makes no sense? We add up all t
       variant="rates"
     >
       <div class="mt-8 max-w-md mx-auto">
-        <ZipCodeSearch 
-          client:load
-          placeholder="Enter zip code"
-          className="w-full"
+        <StandardZipInput 
+          variant="inline" 
+          size="lg" 
+          showTitle={false} 
+          showDescription={false} 
+          showStats={false} 
+          customClass="max-w-lg mx-auto" 
         />
       </div>
     </HeroBackground>

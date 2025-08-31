@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { ZipCodeSearch } from '../../components/ZipCodeSearch';
+import StandardZipInput from '../../components/StandardZipInput.astro';
 import { DollarSign, CheckCircle, Users, Shield, AlertTriangle, Eye, Target, Heart, Zap, Home } from 'lucide-react';
 
 const title = "Electricity Without a Deposit | Texas No-Deposit Plans";
@@ -50,10 +50,13 @@ const description = "Escape $200+ deposits that trap you with bad providers. Fin
           
           <!-- ZIP Search -->
           <div class="max-w-md mx-auto">
-            <ZipCodeSearch 
-              client:load
-              placeholder="Find no-deposit plans near you"
-              className="w-full"
+            <StandardZipInput 
+              variant="inline" 
+              size="lg" 
+              showTitle={false} 
+              showDescription={false} 
+              showStats={false} 
+              customClass="max-w-lg mx-auto" 
             />
             <p class="text-orange-200 text-sm mt-2">Keep your cash, get your lights on</p>
           </div>

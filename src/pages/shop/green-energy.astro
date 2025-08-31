@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { ZipCodeSearch } from '../../components/ZipCodeSearch';
+import StandardZipInput from '../../components/StandardZipInput.astro';
 import { Leaf, Sun, Wind, Zap, AlertTriangle, Eye, CheckCircle, Target, Factory, Recycle } from 'lucide-react';
 
 const title = "Green Energy Plans | Texas 100% Renewable Plans";
@@ -50,10 +50,13 @@ const description = "Cut through fake green marketing. Find actually renewable e
           
           <!-- ZIP Search -->
           <div class="max-w-md mx-auto">
-            <ZipCodeSearch 
-              client:load
-              placeholder="Find real green energy near you"
-              className="w-full"
+            <StandardZipInput 
+              variant="inline" 
+              size="lg" 
+              showTitle={false} 
+              showDescription={false} 
+              showStats={false} 
+              customClass="max-w-lg mx-auto" 
             />
             <p class="text-green-200 text-sm mt-2">See verified renewable plans in your area</p>
           </div>

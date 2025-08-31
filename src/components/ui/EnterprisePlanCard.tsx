@@ -37,114 +37,122 @@ export const EnterprisePlanCard: React.FC<EnterprisePlanCardProps> = ({
   const getProviderLogo = (providerName: string) => {
     const provider = providerName.toLowerCase();
     
-    // Map Texas electricity providers to their actual CompareMore logo URLs
+    // Map Texas electricity providers to their actual logo URLs in public/logos/ (only existing files)
     if (provider.includes('frontier') || provider.includes('frontier utilities')) return { 
-      logoUrl: 'https://assets.comparepower.com/images/frontier_utilities.svg',
+      logoUrl: '/logos/frontier-utilities.svg',
       fallbackIcon: 'zap', 
       color: 'bg-blue-600', 
       textColor: 'text-white',
       name: 'Frontier Utilities' 
     };
-    if (provider.includes('gexa')) return { 
-      logoUrl: 'https://assets.comparepower.com/images/gexa_energy.svg',
-      fallbackIcon: 'zap', 
-      color: 'bg-blue-500', 
-      textColor: 'text-white',
-      name: 'Gexa Energy' 
-    };
-    if (provider.includes('4change') || provider.includes('4 change')) return { 
-      logoUrl: 'https://assets.comparepower.com/images/4change_energy.svg',
-      fallbackIcon: 'zap', 
-      color: 'bg-green-600', 
-      textColor: 'text-white',
-      name: '4Change Energy' 
-    };
     if (provider.includes('discount power')) return { 
-      logoUrl: 'https://assets.comparepower.com/images/discount_power.svg',
+      logoUrl: '/logos/discount-power.svg',
       fallbackIcon: 'zap', 
       color: 'bg-orange-600', 
       textColor: 'text-white',
       name: 'Discount Power' 
     };
-    if (provider.includes('cirro')) return { 
-      logoUrl: 'https://assets.comparepower.com/images/cirro_energy.svg',
-      fallbackIcon: 'zap', 
-      color: 'bg-purple-600', 
-      textColor: 'text-white',
-      name: 'Cirro Energy' 
-    };
     if (provider.includes('apge')) return { 
-      logoUrl: 'https://assets.comparepower.com/images/apge.svg',
+      logoUrl: '/logos/apge.svg',
       fallbackIcon: 'zap', 
       color: 'bg-indigo-600', 
       textColor: 'text-white',
       name: 'APGE' 
     };
     if (provider.includes('rhythm')) return { 
-      logoUrl: 'https://assets.comparepower.com/images/rhythm_energy.svg',
+      logoUrl: '/logos/rhythm-energy.svg',
       fallbackIcon: 'leaf', 
       color: 'bg-green-700', 
       textColor: 'text-white',
       name: 'Rhythm Energy' 
     };
     if (provider.includes('atlantex')) return { 
-      logoUrl: 'https://assets.comparepower.com/images/atlantex_power.svg',
+      logoUrl: '/logos/atlantex-power.svg',
       fallbackIcon: 'star', 
       color: 'bg-blue-700', 
       textColor: 'text-white',
       name: 'Atlantex Power' 
     };
-    if (provider.includes('just energy')) return { 
-      logoUrl: 'https://assets.comparepower.com/images/just_energy.svg',
-      fallbackIcon: 'zap', 
-      color: 'bg-red-600', 
-      textColor: 'text-white',
-      name: 'Just Energy' 
-    };
     if (provider.includes('tara energy')) return { 
-      logoUrl: 'https://assets.comparepower.com/images/tara_energy.svg',
+      logoUrl: '/logos/tara-energy.svg',
       fallbackIcon: 'zap', 
       color: 'bg-purple-500', 
       textColor: 'text-white',
       name: 'Tara Energy' 
     };
+    if (provider.includes('payless power')) return { 
+      logoUrl: '/logos/payless-power.svg',
+      fallbackIcon: 'zap', 
+      color: 'bg-red-500', 
+      textColor: 'text-white',
+      name: 'Payless Power' 
+    };
+    if (provider.includes('constellation')) return { 
+      logoUrl: '/logos/constellation.svg',
+      fallbackIcon: 'star', 
+      color: 'bg-blue-800', 
+      textColor: 'text-white',
+      name: 'Constellation' 
+    };
+    // Providers without available logos - use fallback icons with brand colors
+    if (provider.includes('gexa')) return { 
+      logoUrl: null,
+      fallbackIcon: 'zap', 
+      color: 'bg-blue-500', 
+      textColor: 'text-white',
+      name: 'Gexa Energy' 
+    };
+    if (provider.includes('4change') || provider.includes('4 change')) return { 
+      logoUrl: null,
+      fallbackIcon: 'leaf', 
+      color: 'bg-green-600', 
+      textColor: 'text-white',
+      name: '4Change Energy' 
+    };
+    if (provider.includes('cirro')) return { 
+      logoUrl: null,
+      fallbackIcon: 'zap', 
+      color: 'bg-purple-600', 
+      textColor: 'text-white',
+      name: 'Cirro Energy' 
+    };
+    if (provider.includes('just energy')) return { 
+      logoUrl: null,
+      fallbackIcon: 'zap', 
+      color: 'bg-red-600', 
+      textColor: 'text-white',
+      name: 'Just Energy' 
+    };
     if (provider.includes('reliant')) return { 
-      logoUrl: 'https://assets.comparepower.com/images/reliant.svg',
+      logoUrl: null,
       fallbackIcon: 'zap', 
       color: 'bg-blue-600', 
       textColor: 'text-white',
       name: 'Reliant Energy' 
     };
     if (provider.includes('direct energy')) return { 
-      logoUrl: 'https://assets.comparepower.com/images/direct_energy.svg',
+      logoUrl: null,
       fallbackIcon: 'zap', 
       color: 'bg-orange-600', 
       textColor: 'text-white',
       name: 'Direct Energy' 
     };
     if (provider.includes('green mountain')) return { 
-      logoUrl: 'https://assets.comparepower.com/images/green_mountain.svg',
+      logoUrl: null,
       fallbackIcon: 'leaf', 
       color: 'bg-green-600', 
       textColor: 'text-white',
       name: 'Green Mountain Energy' 
     };
     if (provider.includes('amigo energy')) return { 
-      logoUrl: 'https://assets.comparepower.com/images/amigo_energy.svg',
+      logoUrl: null,
       fallbackIcon: 'zap', 
       color: 'bg-yellow-600', 
       textColor: 'text-white',
       name: 'Amigo Energy' 
     };
-    if (provider.includes('payless power')) return { 
-      logoUrl: 'https://assets.comparepower.com/images/payless_power.svg',
-      fallbackIcon: 'zap', 
-      color: 'bg-red-500', 
-      textColor: 'text-white',
-      name: 'Payless Power' 
-    };
     if (provider.includes('txu')) return { 
-      logoUrl: 'https://assets.comparepower.com/images/txu_energy.svg',
+      logoUrl: null,
       fallbackIcon: 'zap', 
       color: 'bg-red-600', 
       textColor: 'text-white',

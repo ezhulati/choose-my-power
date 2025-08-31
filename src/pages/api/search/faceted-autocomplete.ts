@@ -206,7 +206,7 @@ function getFilterSuggestions(query: string, citySlug?: string): FacetedAutocomp
       label: filter.label,
       description: filter.description,
       category: 'Plan Filters',
-      url: citySlug ? `/electricity-plans/${citySlug}/${filter.pattern}/` : `/electricity-plans/dallas-tx/${filter.pattern}/`,
+      url: citySlug ? `/electricity-plans/${citySlug}/${filter.pattern}/` : `/electricity-plans/dallas/${filter.pattern}/`,
       count: Math.floor(Math.random() * 200) + 50, // Mock count
       icon: getFilterIcon(filter.pattern)
     }));

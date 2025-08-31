@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { ZipCodeSearch } from '../../components/ZipCodeSearch';
+import StandardZipInput from '../../components/StandardZipInput.astro';
 import { DollarSign, TrendingDown, Calculator, Award, AlertTriangle, Eye, CheckCircle, Target } from 'lucide-react';
 
 const title = "Compare Lowest Electricity Rates in Texas | Cheapest Plans";
@@ -42,10 +42,13 @@ const description = "Compare lowest electricity rates in Texas. Find affordable 
         
         <!-- ZIP Search -->
         <div class="max-w-md mx-auto mt-8">
-          <ZipCodeSearch 
-            client:load
-            placeholder="Enter your ZIP code"
-            className="w-full"
+          <StandardZipInput 
+            variant="inline" 
+            size="lg" 
+            showTitle={false} 
+            showDescription={false} 
+            showStats={false} 
+            customClass="max-w-lg mx-auto" 
           />
           <p class="text-blue-200 text-sm mt-2">Compare cheapest rates in your area</p>
         </div>

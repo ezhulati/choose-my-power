@@ -473,7 +473,7 @@ export class SEOTestSuite {
         topProvider: 'Reliant Energy',
         tdspName: 'Oncor',
         population: 1300000,
-        currentPath: '/electricity-plans/dallas-tx/12-month/',
+        currentPath: '/electricity-plans/dallas/12-month/',
         pageType: 'single-filter',
         priority: 0.8
       };

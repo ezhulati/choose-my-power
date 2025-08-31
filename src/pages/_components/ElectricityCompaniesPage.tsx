@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ZipCodeSearch } from '../../components/ZipCodeSearch';
+import StandardZipInputReact from '../../components/StandardZipInputReact';
 import { ProviderCard } from '../../components/ProviderCard';
 import { mockProviders, mockStates } from '../../data/mockData';
 import { 
@@ -337,7 +337,7 @@ export function ElectricityCompaniesPage({}: ElectricityCompaniesPageProps) {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white">
+      <div className="bg-gradient-to-br from-texas-navy via-blue-900 to-texas-navy text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
             <div className="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-8">
@@ -372,10 +372,10 @@ export function ElectricityCompaniesPage({}: ElectricityCompaniesPageProps) {
             </div>
 
             <div className="max-w-md mx-auto">
-              <ZipCodeSearch 
-                onSearch={handleZipSearch} 
-                placeholder="Enter zip code"
+              <StandardZipInputReact 
+                onSearch={handleZipSearch}
                 size="lg"
+                variant="inline"
               />
               <p className="text-blue-200 text-sm mt-2">Find companies serving your area</p>
             </div>

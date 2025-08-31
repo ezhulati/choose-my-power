@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ZipCodeSearch } from '../../components/ZipCodeSearch';
+import StandardZipInputReact from '../../components/StandardZipInputReact';
 import { mockProviders } from '../../data/mockData';
 import { 
   BarChart, Users, Calculator, Award, TrendingDown, Shield, Star, Zap, 
@@ -154,7 +154,7 @@ export function ComparePage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white">
+      <div className="bg-gradient-to-br from-texas-navy via-blue-900 to-texas-navy text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center">
             <div className="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-8">
@@ -162,7 +162,7 @@ export function ComparePage() {
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8">
-              Finally. Electric Bill Comparison That Makes Actual Sense.
+              Electric Bill Comparison That Makes Actual Sense
             </h1>
             <p className="text-xl md:text-2xl mb-12 text-blue-100 max-w-4xl mx-auto leading-relaxed">
               You've been to PowerToChoose. You've scrolled through 300 confusing plans. You're still confused and probably overpaying. 
@@ -190,10 +190,10 @@ export function ComparePage() {
             </div>
 
             <div className="max-w-md mx-auto">
-              <ZipCodeSearch 
-                onSearch={handleZipSearch} 
-                placeholder="Enter zip code"
+              <StandardZipInputReact 
+                onSearch={handleZipSearch}
                 size="lg"
+                variant="inline"
               />
               <p className="text-blue-200 text-sm mt-2">See what you're actually paying vs. what you could pay</p>
             </div>

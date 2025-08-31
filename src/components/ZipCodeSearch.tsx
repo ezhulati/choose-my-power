@@ -75,7 +75,7 @@ export interface ZipCodeSearchProps {
 
 export function ZipCodeSearch({
   onSearch,
-  placeholder = "Enter zip code",
+  placeholder = "ZIP code",
   size = 'md',
   variant = 'texas',
   showSuggestions = true,
@@ -309,27 +309,27 @@ export function ZipCodeSearch({
   // Size configurations
   const sizeConfig = {
     sm: {
-      input: 'h-9 text-sm px-3',
-      icon: 'h-4 w-4',
-      button: 'h-9 px-3 text-sm',
+      input: 'py-3 text-base px-3',
+      icon: 'h-5 w-5',
+      button: 'px-6 py-3',
       dropdown: 'text-sm'
     },
     md: {
-      input: 'h-11 text-base px-4',
-      icon: 'h-5 w-5',
-      button: 'h-11 px-4 text-base',
+      input: 'py-5 text-xl px-6',
+      icon: 'h-6 w-6',
+      button: 'px-10 py-5',
       dropdown: 'text-base'
     },
     lg: {
-      input: 'h-14 text-lg px-5',
-      icon: 'h-6 w-6',
-      button: 'h-14 px-6 text-lg',
+      input: 'py-6 text-2xl px-8',
+      icon: 'h-7 w-7',
+      button: 'px-12 py-6',
       dropdown: 'text-base'
     },
     xl: {
-      input: 'h-16 text-xl px-6',
+      input: 'py-6 text-2xl px-8',
       icon: 'h-7 w-7',
-      button: 'h-16 px-8 text-xl',
+      button: 'px-12 py-6',
       dropdown: 'text-lg'
     }
   };
@@ -445,7 +445,7 @@ export function ZipCodeSearch({
             ) : (
               <>
                 <Search className={config.icon} />
-                {size === 'xl' && <span>Show me plans</span>}
+                {size !== 'sm' && <span className="hidden sm:block">Find Plans</span>}
               </>
             )}
           </Button>

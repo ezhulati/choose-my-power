@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import HeroBackground from '../components/HeroBackground.astro';
+import StandardHero from '../components/StandardHero.astro';
 import { Badge } from '../components/ui/badge';
 import { Award, TrendingUp, Users, Shield, Leaf, DollarSign } from 'lucide-react';
 
@@ -11,12 +11,12 @@ const description = "Honest rankings of Texas electricity providers based on who
 <Layout title={title} description={description}>
   <div class="bg-white">
     <!-- Hero Section -->
-    <HeroBackground 
+    <StandardHero 
       title="The Companies That Won't Screw You Over" 
       subtitle="Real rankings based on actual customer experiences - not paid ads"
-      variant="awards"
-    >
-    </HeroBackground>
+      variant="interior"
+      showZipSearch={true}
+    />
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       

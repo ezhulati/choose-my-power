@@ -93,7 +93,7 @@ export class FacetedNavigationTester {
     // Test URL parsing
     const testCases = [
       {
-        path: '/electricity-plans/dallas-tx/12-month/fixed-rate',
+        path: '/electricity-plans/dallas/12-month/fixed-rate',
         expected: {
           citySlug: 'dallas-tx',
           filterState: {
@@ -103,7 +103,7 @@ export class FacetedNavigationTester {
         }
       },
       {
-        path: '/electricity-plans/houston-tx/green-energy/prepaid',
+        path: '/electricity-plans/houston/green-energy/prepaid',
         expected: {
           citySlug: 'houston-tx',
           filterState: {
@@ -147,7 +147,7 @@ export class FacetedNavigationTester {
 
     try {
       const url = urlStateManager.buildUrl('dallas-tx', filterState);
-      const expected = '/electricity-plans/dallas-tx/12-month/24-month/fixed-rate/green-energy/no-deposit/';
+      const expected = '/electricity-plans/dallas/12-month/24-month/fixed-rate/green-energy/no-deposit/';
       
       this.results.push({
         component: 'URL State Management',

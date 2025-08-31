@@ -1,0 +1,430 @@
+/**
+ * World-Class Filter Sidebar Styles
+ * Based on industry leader analysis and best practices
+ * Professional hierarchical filtering with smooth animations
+ */
+
+.world-class-filter-sidebar {
+  @apply bg-white border border-gray-200 rounded-xl shadow-lg;
+  @apply sticky top-6 w-full max-w-sm;
+  @apply overflow-hidden;
+  max-height: calc(100vh - 3rem);
+  overflow-y: auto;
+}
+
+/* Premium Header Section */
+.filter-header {
+  @apply relative overflow-hidden;
+  background: linear-gradient(135deg, #002868 0%, #1e40af 50%, #002868 100%);
+  @apply p-6 text-white;
+}
+
+.filter-header::before {
+  content: '';
+  @apply absolute inset-0 opacity-10;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.header-content {
+  @apply flex justify-between items-start mb-4 relative z-10;
+}
+
+.header-text {
+  @apply flex-1 mr-4;
+}
+
+.header-title {
+  @apply text-xl font-bold mb-1 text-white;
+}
+
+.header-subtitle {
+  @apply text-sm opacity-90 text-blue-100;
+}
+
+.clear-all-btn {
+  @apply bg-white/10 border-white/20 text-white hover:bg-white/20 backdrop-blur-sm;
+  @apply transition-all duration-200 hover:scale-105;
+}
+
+.results-counter {
+  @apply text-center relative z-10;
+}
+
+.results-number {
+  @apply text-2xl font-bold text-white;
+}
+
+.results-label {
+  @apply text-sm opacity-90 text-blue-100;
+}
+
+/* Active Filters Pills */
+.active-filters-section {
+  @apply p-4 border-b border-gray-100 bg-gradient-to-r from-texas-cream-50 to-gray-50;
+}
+
+.active-filters-title {
+  @apply text-sm font-semibold text-gray-900 mb-3;
+}
+
+.active-filters-pills {
+  @apply flex flex-wrap gap-2;
+}
+
+.active-filter-pill {
+  @apply bg-texas-navy text-white text-xs px-3 py-1 rounded-full;
+  @apply flex items-center gap-2 hover:bg-texas-navy/80 transition-colors;
+}
+
+.pill-remove-btn {
+  @apply hover:text-texas-red transition-colors cursor-pointer;
+  @apply text-sm font-bold;
+}
+
+/* Filter Sections */
+.filter-sections {
+  @apply divide-y divide-gray-100;
+}
+
+.filter-section {
+  @apply transition-all duration-200;
+}
+
+/* Section Headers */
+.section-header {
+  @apply w-full p-4 text-left flex items-center justify-between;
+  @apply hover:bg-texas-cream-50 transition-all duration-200;
+  @apply focus:outline-none focus:ring-2 focus:ring-texas-navy/20 focus:bg-texas-cream-50;
+  @apply cursor-pointer;
+}
+
+.section-header-left {
+  @apply flex items-center gap-3 flex-1;
+}
+
+.section-icon {
+  @apply w-8 h-8 flex items-center justify-center rounded-lg;
+  @apply bg-texas-cream-100 text-texas-navy group-hover:bg-texas-navy group-hover:text-white;
+  @apply transition-all duration-200;
+}
+
+.section-text {
+  @apply flex-1;
+}
+
+.section-title {
+  @apply text-sm font-semibold text-gray-900 group-hover:text-texas-navy;
+  @apply transition-colors duration-200;
+}
+
+.section-description {
+  @apply text-xs text-gray-600 mt-0.5 group-hover:text-gray-700;
+  @apply transition-colors duration-200;
+}
+
+.section-toggle {
+  @apply text-gray-400 group-hover:text-texas-navy transition-colors duration-200;
+}
+
+/* Section Content */
+.section-content {
+  @apply pb-4 animate-in slide-in-from-top-2 duration-300;
+}
+
+.filter-options {
+  @apply px-4 space-y-3;
+}
+
+/* Filter Options */
+.filter-option {
+  @apply flex items-start gap-3 cursor-pointer;
+  @apply hover:bg-texas-cream-50 rounded-lg p-2 -m-2;
+  @apply transition-all duration-200;
+}
+
+.filter-option.disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+.option-input {
+  @apply mt-0.5;
+}
+
+.filter-checkbox {
+  @apply h-4 w-4 rounded border-gray-300 text-texas-navy;
+  @apply focus:ring-texas-navy focus:ring-2 focus:ring-offset-0;
+  @apply transition-all duration-200;
+  @apply cursor-pointer;
+}
+
+.filter-checkbox:checked {
+  @apply bg-texas-navy border-texas-navy;
+}
+
+.filter-checkbox:hover {
+  @apply border-texas-navy/50;
+}
+
+.option-content {
+  @apply flex-1 min-w-0;
+}
+
+.option-main {
+  @apply space-y-1;
+}
+
+.option-label-row {
+  @apply flex items-center justify-between gap-2;
+}
+
+.option-label {
+  @apply text-sm font-medium text-gray-900 group-hover:text-texas-navy;
+  @apply transition-colors duration-200 cursor-pointer;
+}
+
+.option-badges {
+  @apply flex items-center gap-2 flex-shrink-0;
+}
+
+.popular-badge {
+  @apply bg-texas-gold text-white text-[10px] px-2 py-0.5 font-medium;
+  @apply rounded-full border-0;
+}
+
+.recommended-badge {
+  @apply bg-green-100 text-green-800 text-[10px] px-2 py-0.5 font-medium;
+  @apply rounded-full border-green-200;
+}
+
+.option-count {
+  @apply text-xs text-gray-500 font-medium;
+}
+
+.option-description {
+  @apply text-xs text-gray-600 mt-1 cursor-pointer;
+  @apply group-hover:text-gray-700 transition-colors duration-200;
+}
+
+/* Help Section */
+.help-section {
+  @apply p-4 bg-gradient-to-br from-texas-cream-50 to-texas-cream-100;
+  @apply border-t border-texas-cream-200;
+}
+
+.help-content {
+  @apply text-center;
+}
+
+.help-title {
+  @apply text-sm font-semibold text-gray-900 mb-2;
+}
+
+.help-text {
+  @apply text-xs text-gray-600 mb-3 leading-relaxed;
+}
+
+.help-btn {
+  @apply w-full bg-texas-navy hover:bg-texas-navy/90 text-white;
+  @apply text-xs font-medium py-2 px-4 rounded-lg;
+  @apply transition-all duration-200 hover:scale-105 shadow-sm hover:shadow-md;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 640px) {
+  .world-class-filter-sidebar {
+    @apply rounded-none shadow-xl;
+    max-height: 100vh;
+  }
+  
+  .filter-header {
+    @apply px-4 py-4;
+  }
+  
+  .header-title {
+    @apply text-lg;
+  }
+  
+  .section-header {
+    @apply p-3;
+  }
+  
+  .filter-options {
+    @apply px-3 space-y-2;
+  }
+  
+  .filter-option {
+    @apply p-1.5 -m-1.5;
+  }
+  
+  /* Enhanced touch targets for mobile */
+  .filter-checkbox {
+    @apply h-5 w-5;
+  }
+  
+  .section-icon {
+    @apply w-10 h-10;
+  }
+}
+
+/* Tablet Optimizations */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .world-class-filter-sidebar {
+    @apply max-w-xs;
+  }
+}
+
+/* Desktop Enhancements */
+@media (min-width: 1025px) {
+  .world-class-filter-sidebar {
+    @apply max-w-sm;
+  }
+  
+  /* Smooth hover effects for desktop */
+  .filter-option:hover .filter-checkbox {
+    @apply scale-110 shadow-sm;
+  }
+  
+  .section-header:hover .section-icon {
+    @apply scale-110 shadow-sm;
+  }
+}
+
+/* Loading States */
+.filter-option.loading {
+  @apply animate-pulse;
+}
+
+.filter-option.loading .option-label {
+  @apply bg-gray-200 text-transparent rounded;
+}
+
+.filter-option.loading .option-description {
+  @apply bg-gray-100 text-transparent rounded;
+}
+
+/* Accessibility Enhancements */
+@media (prefers-reduced-motion: reduce) {
+  .world-class-filter-sidebar *,
+  .world-class-filter-sidebar *::before,
+  .world-class-filter-sidebar *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .filter-header {
+    @apply bg-black text-white;
+  }
+  
+  .section-icon {
+    @apply bg-white text-black border border-gray-800;
+  }
+  
+  .filter-checkbox {
+    @apply border-2 border-gray-800;
+  }
+  
+  .filter-checkbox:checked {
+    @apply bg-black border-black;
+  }
+}
+
+/* Dark Mode Support (if needed) */
+@media (prefers-color-scheme: dark) {
+  .world-class-filter-sidebar {
+    @apply bg-gray-900 border-gray-700;
+  }
+  
+  .section-header {
+    @apply hover:bg-gray-800;
+  }
+  
+  .section-title {
+    @apply text-gray-100;
+  }
+  
+  .section-description {
+    @apply text-gray-400;
+  }
+  
+  .option-label {
+    @apply text-gray-200;
+  }
+  
+  .option-description {
+    @apply text-gray-400;
+  }
+  
+  .help-section {
+    @apply bg-gray-800;
+  }
+  
+  .help-title {
+    @apply text-gray-100;
+  }
+  
+  .help-text {
+    @apply text-gray-400;
+  }
+}
+
+/* Animation Classes */
+.animate-in {
+  animation-fill-mode: both;
+}
+
+.slide-in-from-top-2 {
+  animation-name: slide-in-from-top-2;
+}
+
+@keyframes slide-in-from-top-2 {
+  from {
+    transform: translateY(-0.5rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Focus Styles for Keyboard Navigation */
+.filter-option:focus-within {
+  @apply bg-texas-cream-50 ring-2 ring-texas-navy/20 ring-offset-2;
+}
+
+.section-header:focus-visible {
+  @apply ring-2 ring-texas-navy/50 ring-offset-2;
+}
+
+/* Custom Scrollbar */
+.world-class-filter-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.world-class-filter-sidebar::-webkit-scrollbar-track {
+  @apply bg-gray-100 rounded-full;
+}
+
+.world-class-filter-sidebar::-webkit-scrollbar-thumb {
+  @apply bg-texas-navy/30 rounded-full hover:bg-texas-navy/50;
+}
+
+/* Print Styles */
+@media print {
+  .world-class-filter-sidebar {
+    @apply shadow-none border-2 border-gray-800;
+    break-inside: avoid;
+  }
+  
+  .filter-header {
+    @apply bg-white text-black border-b border-gray-800;
+  }
+  
+  .section-icon {
+    @apply bg-white border border-gray-800;
+  }
+}

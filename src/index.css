@@ -1,3 +1,6 @@
+/* Import world-class filter styles */
+@import './styles/world-class-filters.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

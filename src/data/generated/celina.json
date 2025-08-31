@@ -925,7 +925,7 @@
           }
         },
         {
-          "id": "68ad431ef95bf521995a3bc3",
+          "id": "68b28939a192a454b93ba0d2",
           "name": "Frontier Saver Plus 12",
           "provider": {
             "name": "Frontier Utilities",
@@ -934,10 +934,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.216,
-            "rate1000kWh": 0.086,
-            "rate2000kWh": 0.146,
-            "ratePerKwh": 0.086
+            "rate500kWh": 0.215,
+            "rate1000kWh": 0.085,
+            "rate2000kWh": 0.145,
+            "ratePerKwh": 0.085
           },
           "contract": {
             "length": 12,
@@ -1184,7 +1184,7 @@
           }
         },
         {
-          "id": "68a0144de30bfeb002721578",
+          "id": "68a0144de30bfeb002721579",
           "name": "Gexa Eco Saver Lite 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1221,7 +1221,7 @@
           }
         },
         {
-          "id": "68ad4321b32f244848d52947",
+          "id": "68b2893c8ca16498d83895f2",
           "name": "Gexa Eco Saver Plus 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1230,10 +1230,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.216,
-            "rate1000kWh": 0.086,
-            "rate2000kWh": 0.146,
-            "ratePerKwh": 0.086
+            "rate500kWh": 0.215,
+            "rate1000kWh": 0.085,
+            "rate2000kWh": 0.145,
+            "ratePerKwh": 0.085
           },
           "contract": {
             "length": 12,
@@ -1258,7 +1258,7 @@
           }
         },
         {
-          "id": "68a0144ee30bfeb00272157a",
+          "id": "68a0144de30bfeb002721577",
           "name": "Gexa Eco Saver Premier 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1295,7 +1295,7 @@
           }
         },
         {
-          "id": "68a0144de30bfeb002721574",
+          "id": "68a0144de30bfeb002721575",
           "name": "Gexa Eco Saver Value 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1332,7 +1332,7 @@
           }
         },
         {
-          "id": "689193a7e8b1db9607773917",
+          "id": "689193a7e8b1db9607773919",
           "name": "Gexa Light Saver 12",
           "provider": {
             "name": "Gexa Energy",
@@ -2830,7 +2830,7 @@
           }
         },
         {
-          "id": "68b13451890a850ebca0ccd3",
+          "id": "68b285b58ca16498d8389569",
           "name": "Flex Forward",
           "provider": {
             "name": "TXU Energy",
@@ -2867,7 +2867,7 @@
           }
         },
         {
-          "id": "68b13450890a850ebca0ccc5",
+          "id": "68b285b68ca16498d838957e",
           "name": "Live Your Free 12",
           "provider": {
             "name": "TXU Energy",
@@ -2904,7 +2904,7 @@
           }
         },
         {
-          "id": "68b13451890a850ebca0ccce",
+          "id": "68b285b68ca16498d838956d",
           "name": "Free Nights & Solar Days 12 (8 pm)",
           "provider": {
             "name": "TXU Energy",
