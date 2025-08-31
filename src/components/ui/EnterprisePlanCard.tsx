@@ -3,6 +3,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardAction } from './card';
 import { Button } from './button';
 import { Badge } from './badge';
 import { Icon } from './Icon';
+import { PROVIDER_LOGO_URLS, PROVIDER_NAME_MAPPING } from '../../lib/logo/provider-mappings';
 
 interface EnterprisePlanCardProps {
   plan: {
@@ -33,139 +34,34 @@ export const EnterprisePlanCard: React.FC<EnterprisePlanCardProps> = ({
   onViewDetails,
   className = "",
 }) => {
-  // Real provider logo mapping from CompareMore CSV data
+  // Use direct logo mapping with external URLs
   const getProviderLogo = (providerName: string) => {
-    const provider = providerName.toLowerCase();
+    if (!providerName?.trim()) {
+      return {
+        logoUrl: null,
+        fallbackIcon: 'zap',
+        color: 'bg-texas-navy',
+        textColor: 'text-white',
+        name: 'Unknown Provider',
+        actualLogoUrl: null
+      };
+    }
     
-    // Map Texas electricity providers to their actual logo URLs in public/logos/ (only existing files)
-    if (provider.includes('frontier') || provider.includes('frontier utilities')) return { 
-      logoUrl: '/logos/frontier-utilities.svg',
-      fallbackIcon: 'zap', 
-      color: 'bg-blue-600', 
-      textColor: 'text-white',
-      name: 'Frontier Utilities' 
-    };
-    if (provider.includes('discount power')) return { 
-      logoUrl: '/logos/discount-power.svg',
-      fallbackIcon: 'zap', 
-      color: 'bg-orange-600', 
-      textColor: 'text-white',
-      name: 'Discount Power' 
-    };
-    if (provider.includes('apge')) return { 
-      logoUrl: '/logos/apge.svg',
-      fallbackIcon: 'zap', 
-      color: 'bg-indigo-600', 
-      textColor: 'text-white',
-      name: 'APGE' 
-    };
-    if (provider.includes('rhythm')) return { 
-      logoUrl: '/logos/rhythm-energy.svg',
-      fallbackIcon: 'leaf', 
-      color: 'bg-green-700', 
-      textColor: 'text-white',
-      name: 'Rhythm Energy' 
-    };
-    if (provider.includes('atlantex')) return { 
-      logoUrl: '/logos/atlantex-power.svg',
-      fallbackIcon: 'star', 
-      color: 'bg-blue-700', 
-      textColor: 'text-white',
-      name: 'Atlantex Power' 
-    };
-    if (provider.includes('tara energy')) return { 
-      logoUrl: '/logos/tara-energy.svg',
-      fallbackIcon: 'zap', 
-      color: 'bg-purple-500', 
-      textColor: 'text-white',
-      name: 'Tara Energy' 
-    };
-    if (provider.includes('payless power')) return { 
-      logoUrl: '/logos/payless-power.svg',
-      fallbackIcon: 'zap', 
-      color: 'bg-red-500', 
-      textColor: 'text-white',
-      name: 'Payless Power' 
-    };
-    if (provider.includes('constellation')) return { 
-      logoUrl: '/logos/constellation.svg',
-      fallbackIcon: 'star', 
-      color: 'bg-blue-800', 
-      textColor: 'text-white',
-      name: 'Constellation' 
-    };
-    // Providers without available logos - use fallback icons with brand colors
-    if (provider.includes('gexa')) return { 
-      logoUrl: null,
-      fallbackIcon: 'zap', 
-      color: 'bg-blue-500', 
-      textColor: 'text-white',
-      name: 'Gexa Energy' 
-    };
-    if (provider.includes('4change') || provider.includes('4 change')) return { 
-      logoUrl: null,
-      fallbackIcon: 'leaf', 
-      color: 'bg-green-600', 
-      textColor: 'text-white',
-      name: '4Change Energy' 
-    };
-    if (provider.includes('cirro')) return { 
-      logoUrl: null,
-      fallbackIcon: 'zap', 
-      color: 'bg-purple-600', 
-      textColor: 'text-white',
-      name: 'Cirro Energy' 
-    };
-    if (provider.includes('just energy')) return { 
-      logoUrl: null,
-      fallbackIcon: 'zap', 
-      color: 'bg-red-600', 
-      textColor: 'text-white',
-      name: 'Just Energy' 
-    };
-    if (provider.includes('reliant')) return { 
-      logoUrl: null,
-      fallbackIcon: 'zap', 
-      color: 'bg-blue-600', 
-      textColor: 'text-white',
-      name: 'Reliant Energy' 
-    };
-    if (provider.includes('direct energy')) return { 
-      logoUrl: null,
-      fallbackIcon: 'zap', 
-      color: 'bg-orange-600', 
-      textColor: 'text-white',
-      name: 'Direct Energy' 
-    };
-    if (provider.includes('green mountain')) return { 
-      logoUrl: null,
-      fallbackIcon: 'leaf', 
-      color: 'bg-green-600', 
-      textColor: 'text-white',
-      name: 'Green Mountain Energy' 
-    };
-    if (provider.includes('amigo energy')) return { 
-      logoUrl: null,
-      fallbackIcon: 'zap', 
-      color: 'bg-yellow-600', 
-      textColor: 'text-white',
-      name: 'Amigo Energy' 
-    };
-    if (provider.includes('txu')) return { 
-      logoUrl: null,
-      fallbackIcon: 'zap', 
-      color: 'bg-red-600', 
-      textColor: 'text-white',
-      name: 'TXU Energy' 
-    };
+    // Normalize provider name to match our mapping
+    const normalized = providerName.toLowerCase().trim();
+    const mappedName = PROVIDER_NAME_MAPPING[normalized] || normalized.replace(/[^a-z0-9]+/g, '-');
     
-    // Default for unknown providers
-    return { 
-      logoUrl: null,
-      fallbackIcon: 'zap', 
+    // Get logo URL from our comprehensive mapping
+    const logoUrl = PROVIDER_LOGO_URLS[mappedName];
+    
+    // Return standardized format with external logo URL
+    return {
+      logoUrl: logoUrl || null,
+      fallbackIcon: 'zap',
       color: 'bg-texas-navy', 
       textColor: 'text-white',
-      name: providerName 
+      name: providerName,
+      actualLogoUrl: logoUrl || null
     };
   };
 
@@ -219,9 +115,9 @@ export const EnterprisePlanCard: React.FC<EnterprisePlanCardProps> = ({
       <CardHeader className="p-4 pb-1 text-center">
         {/* Provider Logo */}
         <div className="w-20 h-12 mx-auto mb-2 flex items-center justify-center bg-transparent overflow-hidden">
-          {providerInfo.logoUrl ? (
+          {providerInfo.actualLogoUrl && !providerInfo.actualLogoUrl.startsWith('data:') ? (
             <img 
-              src={providerInfo.logoUrl} 
+              src={providerInfo.actualLogoUrl} 
               alt={`${providerInfo.name} logo`}
               className="max-w-full max-h-full object-contain"
               onError={(e) => {
@@ -234,10 +130,18 @@ export const EnterprisePlanCard: React.FC<EnterprisePlanCardProps> = ({
             />
           ) : null}
           <div 
-            className={`${providerInfo.color} ${providerInfo.textColor} p-2 rounded-lg flex items-center justify-center ${providerInfo.logoUrl ? 'hidden' : ''}`}
-            style={{ display: providerInfo.logoUrl ? 'none' : 'flex' }}
+            className={`${providerInfo.color} ${providerInfo.textColor} p-2 rounded-lg flex items-center justify-center ${providerInfo.actualLogoUrl && !providerInfo.actualLogoUrl.startsWith('data:') ? 'hidden' : ''}`}
+            style={{ display: providerInfo.actualLogoUrl && !providerInfo.actualLogoUrl.startsWith('data:') ? 'none' : 'flex' }}
           >
-            <Icon name={providerInfo.fallbackIcon as any} className="h-5 w-5" />
+            {providerInfo.actualLogoUrl && providerInfo.actualLogoUrl.startsWith('data:') ? (
+              <img 
+                src={providerInfo.actualLogoUrl} 
+                alt={`${providerInfo.name} logo`}
+                className="max-w-full max-h-full object-contain"
+              />
+            ) : (
+              <Icon name={providerInfo.fallbackIcon as any} className="h-5 w-5" />
+            )}
           </div>
         </div>
         

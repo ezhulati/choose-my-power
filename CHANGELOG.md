@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Fixed
+- **Critical**: Missing provider logos on plan list pages showing "PROVIDER" placeholders instead of actual logos - replaced with professional SVG logos from external URLs
+- **Critical**: Product page 500 errors caused by database-dependent logo service in client-side React components - implemented client-safe logo mapping system
+- **Critical**: EnterprisePlanCard components displaying fallback icons instead of actual provider branding - integrated CSV logo URLs for all major providers
+- **Critical**: Non-working "View Details" buttons in related products sections - added proper onClick handlers with navigation logic
 - **Critical**: Broken ZIP input functionality on all non-homepage pages preventing users from searching for electricity plans - restored intelligent ZIP-to-city mapping with proper fallback handling
 - **Critical**: Multiple redundant ZIP inputs on homepage causing user confusion - reduced from 4 to 3 strategic placements
 - **Critical**: Multi-line trust badge display breaking responsive layout - fixed with white-space: nowrap CSS
@@ -17,6 +21,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **UI**: Footer navigation headings displaying across multiple lines breaking layout - added white-space: nowrap CSS for single-line formatting
 
 ### Added  
+- **Major**: Enterprise-grade logo system with CSV integration using actual provider logo URLs from ComparePoser
+- **Major**: ProviderLogo component with intelligent matching and multiple fallback strategies
+- **Major**: External logo URL integration for 16+ major Texas electricity providers (https://assets.comparepower.com/images/)
+- **Major**: Database-backed logo service with client-safe mapping system for React components
 - **Major**: StandardZipInputReact component for consistent ZIP input design across all React pages
 - **Major**: Hero color consistency with dark blue gradient (from-texas-navy via-blue-900 to-texas-navy) applied site-wide
 - ZIP input functionality to /best page hero section

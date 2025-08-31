@@ -23,6 +23,7 @@ import {
   AlertCircle, 
   Info 
 } from 'lucide-react';
+import { ProviderLogo } from './ProviderLogo';
 
 interface PlanData {
   id: string;
@@ -118,10 +119,11 @@ export const ProductDetailsPageShadcn: React.FC<ProductDetailsPageShadcnProps> =
             <Card className="p-8">
               <CardHeader className="pb-6">
                 <div className="flex items-start gap-6 mb-6">
-                  <img
-                    src={`/logos/${planData.provider.slug}.svg`}
-                    alt={`${planData.provider.name} logo`}
-                    className="w-20 h-20 rounded-2xl object-cover border border-gray-200 shadow-sm"
+                  <ProviderLogo 
+                    providerName={planData.provider.name}
+                    size="xl"
+                    variant="rounded"
+                    className="w-20 h-20 rounded-2xl border border-gray-200 shadow-sm"
                   />
                   <div className="flex-1">
                     <CardTitle className="text-4xl font-bold text-gray-900 mb-3">
@@ -311,11 +313,16 @@ export const ProductDetailsPageShadcn: React.FC<ProductDetailsPageShadcnProps> =
               </CardHeader>
               <CardContent>
                 <div className="grid md:grid-cols-2 gap-6">
-                  {/* Mock related plans */}
+                  {/* Mock related plans with working buttons */}
                   <Card className="p-4 hover:shadow-md transition-shadow">
                     <CardContent className="p-0">
                       <div className="flex items-center gap-3 mb-3">
-                        <img src="/logos/txu-energy.svg" alt="TXU" className="w-10 h-10 rounded-lg" />
+                        <ProviderLogo 
+                          providerName="TXU Energy" 
+                          size="sm"
+                          variant="rounded"
+                          className="w-10 h-10"
+                        />
                         <div>
                           <h4 className="font-semibold text-gray-900">Electric Freedom 24</h4>
                           <p className="text-sm text-gray-600">TXU Energy</p>
@@ -323,7 +330,11 @@ export const ProductDetailsPageShadcn: React.FC<ProductDetailsPageShadcnProps> =
                       </div>
                       <div className="flex justify-between items-center">
                         <span className="text-2xl font-bold text-texas-navy">11.8¢</span>
-                        <Button size="sm" className="bg-texas-navy hover:bg-texas-red">
+                        <Button 
+                          size="sm" 
+                          className="bg-texas-navy hover:bg-texas-red"
+                          onClick={() => window.location.href = '/electricity-plans/txu-energy/electric-freedom-24'}
+                        >
                           View Details
                         </Button>
                       </div>
@@ -333,7 +344,12 @@ export const ProductDetailsPageShadcn: React.FC<ProductDetailsPageShadcnProps> =
                   <Card className="p-4 hover:shadow-md transition-shadow">
                     <CardContent className="p-0">
                       <div className="flex items-center gap-3 mb-3">
-                        <img src="/logos/direct-energy.svg" alt="Direct Energy" className="w-10 h-10 rounded-lg" />
+                        <ProviderLogo 
+                          providerName="Direct Energy" 
+                          size="sm"
+                          variant="rounded"
+                          className="w-10 h-10"
+                        />
                         <div>
                           <h4 className="font-semibold text-gray-900">Live Brighter 12</h4>
                           <p className="text-sm text-gray-600">Direct Energy</p>
@@ -341,7 +357,11 @@ export const ProductDetailsPageShadcn: React.FC<ProductDetailsPageShadcnProps> =
                       </div>
                       <div className="flex justify-between items-center">
                         <span className="text-2xl font-bold text-texas-navy">13.2¢</span>
-                        <Button size="sm" className="bg-texas-navy hover:bg-texas-red">
+                        <Button 
+                          size="sm" 
+                          className="bg-texas-navy hover:bg-texas-red"
+                          onClick={() => window.location.href = '/electricity-plans/direct-energy/live-brighter-12'}
+                        >
                           View Details
                         </Button>
                       </div>

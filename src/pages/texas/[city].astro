@@ -25,6 +25,13 @@ const url = new URL(Astro.request.url);
 
 console.log(`🏙️  City page requested: ${city}`);
 
+// Redirect URLs with -tx suffix to clean URLs (for development and production consistency)
+if (city && city.endsWith('-tx')) {
+  const cleanCity = city.replace(/-tx$/, '');
+  console.log(`🔄 Redirecting from ${city} to ${cleanCity}`);
+  return Astro.redirect(`/texas/${cleanCity}`, 301);
+}
+
 // Clean city slug (no -tx suffix needed)
 const citySlug = formatCitySlug(city || '');
 
