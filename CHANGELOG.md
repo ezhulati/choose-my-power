@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Feature**: Complete address search modal functionality for plan selection with ERCOT API integration
+- **Feature**: Full parameter passing to ComparePower (esiid, plan_id, zip_code, usage=1000) for seamless order flow
 - **Testing**: Comprehensive test report for AddressSearchModal component functionality and user experience validation
 
 ### Changed

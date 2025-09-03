@@ -1,0 +1,36 @@
+{
+  "timestamp": "2025-09-03T23:14:02.838Z",
+  "steps": [
+    {
+      "step": 1,
+      "description": "Plan page loaded successfully",
+      "status": "success"
+    },
+    {
+      "step": 2,
+      "description": "Modal opened successfully",
+      "status": "success"
+    },
+    {
+      "step": 3,
+      "description": "Address entered: 3031 Oliver st Apt 1214",
+      "status": "success"
+    },
+    {
+      "step": 4,
+      "description": "ZIP code entered: 75205",
+      "status": "success"
+    },
+    {
+      "step": 5,
+      "description": "Search results displayed",
+      "status": "success"
+    }
+  ],
+  "finalUrl": "",
+  "parametersFound": {},
+  "success": false,
+  "errors": [
+    "page.evaluate: SyntaxError: Failed to execute 'querySelector' on 'Document': 'p:has-text(\"3031 OLIVER ST APT 1214\"), [class*=\"font-medium\"]:has-text(\"3031 OLIVER ST APT 1214\")' is not a valid selector.\n    at eval (eval at evaluate (:291:30), <anonymous>:3:45)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+  ]
+}

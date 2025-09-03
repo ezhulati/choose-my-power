@@ -1,0 +1,36 @@
+{
+  "timestamp": "2025-09-03T23:11:42.468Z",
+  "steps": [
+    {
+      "step": 1,
+      "description": "Plan page loaded successfully",
+      "status": "success"
+    },
+    {
+      "step": 2,
+      "description": "Modal opened successfully",
+      "status": "success"
+    },
+    {
+      "step": 3,
+      "description": "Address entered: 3031 Oliver st Apt 1214",
+      "status": "success"
+    },
+    {
+      "step": 4,
+      "description": "ZIP code entered: 75205",
+      "status": "success"
+    },
+    {
+      "step": 5,
+      "description": "Search results displayed",
+      "status": "success"
+    }
+  ],
+  "finalUrl": "",
+  "parametersFound": {},
+  "success": false,
+  "errors": [
+    "page.waitForSelector: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('text=\"Plan Available!\"') to be visible\u001b[22m\n"
+  ]
+}

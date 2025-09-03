@@ -1,0 +1,64 @@
+{
+  "timestamp": "2025-09-03T23:15:01.219Z",
+  "steps": [
+    {
+      "step": 1,
+      "description": "Plan page loaded successfully",
+      "status": "success"
+    },
+    {
+      "step": 2,
+      "description": "Modal opened successfully",
+      "status": "success"
+    },
+    {
+      "step": 3,
+      "description": "Address entered: 3031 Oliver st Apt 1214",
+      "status": "success"
+    },
+    {
+      "step": 4,
+      "description": "ZIP code entered: 75205",
+      "status": "success"
+    },
+    {
+      "step": 5,
+      "description": "Search results displayed",
+      "status": "success"
+    },
+    {
+      "step": 6,
+      "description": "ESIID data extracted from search results",
+      "status": "success",
+      "data": {
+        "addressFound": true,
+        "addressText": "3031 OLIVER ST APT 1214",
+        "cardElement": "bg-card text-card-foreground flex flex-col gap-6 rounded-xl py-6 shadow-sm cursor-pointer border-2 transition-all duration-200 hover:border-texas-navy",
+        "cardHTML": "<div data-slot=\"card\" class=\"bg-card text-card-foreground flex flex-col gap-6 rounded-xl py-6 shadow-sm cursor-pointer border-2 transition-all duration-200 hover:border-texas-navy\"><div data-slot=\"card-content\" class=\"p-4\"><div class=\"flex items-start justify-between\"><div class=\"flex-1\"><p class=\"f"
+      }
+    },
+    {
+      "step": 7,
+      "description": "URL parameters verified - all required parameters present",
+      "status": "success",
+      "url": "https://orders.comparepower.com/order/service_location?esiid=10000000000000000001&plan_id=rhythm-saver-12&zip_code=75205&usage=1000",
+      "parameters": {
+        "esiid": "10000000000000000001",
+        "plan_id": "rhythm-saver-12",
+        "zip_code": "75205",
+        "usage": "1000"
+      }
+    }
+  ],
+  "finalUrl": "https://orders.comparepower.com/order/service_location?esiid=10000000000000000001&plan_id=rhythm-saver-12&zip_code=75205&usage=1000",
+  "parametersFound": {
+    "esiid": "10000000000000000001",
+    "plan_id": "rhythm-saver-12",
+    "zip_code": "75205",
+    "usage": "1000"
+  },
+  "success": true,
+  "errors": [],
+  "missingParams": [],
+  "incorrectParams": []
+}
