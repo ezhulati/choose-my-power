@@ -288,7 +288,7 @@ class NetworkProfiler {
 }
 
 // Mock server for testing
-let testServer: ChildProcess | null = null;
+const testServer: ChildProcess | null = null;
 
 // Test suite
 describe('Performance and Load Testing Suite', () => {

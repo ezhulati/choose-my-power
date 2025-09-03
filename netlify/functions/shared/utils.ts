@@ -3,7 +3,6 @@
  * Provides essential TDSP mapping and validation functionality
  */
 
-import { tdspMapping } from '../../../src/config/tdsp-mapping';
 import { multiTdspMapping } from '../../../src/config/multi-tdsp-mapping';
 
 // ZIP code to TDSP DUNS mapping
@@ -331,7 +330,7 @@ export function getTdspFromZip(zipCode: string): { duns: string; name: string; z
  * Check if ZIP code is in a deregulated Texas market
  */
 export function isTexasZip(zipCode: string): boolean {
-  return zipToTdspMapping.hasOwnProperty(zipCode);
+  return Object.prototype.hasOwnProperty.call(zipToTdspMapping, zipCode);
 }
 
 /**
@@ -353,7 +352,7 @@ export function getSupportedZipCodes(): string[] {
  */
 export function getZipCodesByTdsp(tdspDuns: string): string[] {
   return Object.entries(zipToTdspMapping)
-    .filter(([_, info]) => info.duns === tdspDuns)
+    .filter(([, info]) => info.duns === tdspDuns)
     .map(([zip]) => zip);
 }
 
@@ -375,7 +374,7 @@ export function getZoneFromTdsp(tdspDuns: string): string {
  * Check if ZIP code is in multi-TDSP configuration
  */
 export function isMultiTdspZip(zipCode: string): boolean {
-  return multiTdspMapping.hasOwnProperty(zipCode);
+  return Object.prototype.hasOwnProperty.call(multiTdspMapping, zipCode);
 }
 
 /**

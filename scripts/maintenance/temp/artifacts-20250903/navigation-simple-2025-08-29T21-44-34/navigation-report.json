@@ -1,0 +1,65 @@
+{
+  "timestamp": "2025-08-29T21:44:42.241Z",
+  "testType": "Navigation Links Verification",
+  "homepage": "http://localhost:4324",
+  "pageTests": [
+    {
+      "name": "Browse by Location",
+      "targetUrl": "http://localhost:4324/texas",
+      "actualUrl": "http://localhost:4324/texas",
+      "pageTitle": "Texas Electricity Providers & Plans | ChooseMyPower.org",
+      "success": false,
+      "hasContent": true,
+      "hasError": true,
+      "screenshot": "02-browse-by-location.png"
+    },
+    {
+      "name": "Compare Plans",
+      "targetUrl": "http://localhost:4324/compare",
+      "actualUrl": "http://localhost:4324/compare",
+      "pageTitle": "Compare Electricity Plans & Providers | Texas Energy Comparison",
+      "success": false,
+      "hasContent": true,
+      "hasError": true,
+      "screenshot": "03-compare-plans.png"
+    },
+    {
+      "name": "Calculate Costs",
+      "targetUrl": "http://localhost:4324/rates/calculator",
+      "actualUrl": "http://localhost:4324/rates/calculator",
+      "pageTitle": "Electricity Rate Calculator | Estimate Your Monthly Bill",
+      "success": false,
+      "hasContent": true,
+      "hasError": true,
+      "screenshot": "04-calculate-costs.png"
+    }
+  ],
+  "linkTests": [
+    {
+      "linkText": "Explore 881 Cities",
+      "expectedHref": "/texas",
+      "actualHref": null,
+      "correct": false
+    },
+    {
+      "linkText": "Compare All Plans",
+      "expectedHref": "/compare",
+      "actualHref": "/compare",
+      "correct": true
+    },
+    {
+      "linkText": "Calculate Savings",
+      "expectedHref": "/rates/calculator",
+      "actualHref": null,
+      "correct": false
+    }
+  ],
+  "summary": {
+    "pagesTotal": 3,
+    "pagesPassed": 0,
+    "pagesFailed": 3,
+    "linksTotal": 3,
+    "linksCorrect": 1,
+    "linksIncorrect": 2
+  }
+}

@@ -36,8 +36,7 @@ import { ComparePowerApiError, ApiErrorType } from "../../src/lib/api/errors";
 import { multiTdspMapping } from "../../src/config/multi-tdsp-mapping";
 import { resolveZipToTdsp, getZoneFromTdsp } from "./shared/utils";
 
-// Performance monitoring
-const startTime = Date.now();
+// Performance monitoring - remove unused startTime variable
 
 interface SearchPlansRequest {
   zipCode: string;
@@ -61,7 +60,7 @@ interface SearchPlansRequest {
 interface SearchPlansResponse {
   success: boolean;
   data?: {
-    plans: any[];
+    plans: Plan[];
     tdspInfo: {
       duns: string;
       name: string;
@@ -91,7 +90,7 @@ interface SearchPlansResponse {
     message: string;
     userMessage: string;
     retryable: boolean;
-    context?: any;
+    context?: Record<string, unknown>;
   };
   meta: {
     requestId: string;
@@ -102,7 +101,7 @@ interface SearchPlansResponse {
 }
 
 // Request validation schema
-function validateSearchPlansRequest(body: any): { isValid: boolean; errors: string[]; data?: SearchPlansRequest } {
+function validateSearchPlansRequest(body: unknown): { isValid: boolean; errors: string[]; data?: SearchPlansRequest } {
   const errors: string[] = [];
   
   // Required fields
@@ -347,7 +346,7 @@ function buildFilterParams(filters: SearchPlansRequest['filters']): Partial<ApiP
 }
 
 // Apply additional client-side filters
-function applyAdditionalFilters(plans: any[], filters: SearchPlansRequest['filters']): any[] {
+function applyAdditionalFilters(plans: Plan[], filters: SearchPlansRequest['filters']): Plan[] {
   let filtered = plans;
   
   // Filter by rate type
@@ -369,7 +368,7 @@ function applyAdditionalFilters(plans: any[], filters: SearchPlansRequest['filte
 
 // Enhanced error response builder
 function buildErrorResponse(
-  error: any, 
+  error: Error | ComparePowerApiError, 
   requestId: string, 
   responseTime: number
 ): SearchPlansResponse {
@@ -527,7 +526,7 @@ export default async function handler(request: Request, context: Context) {
     try {
       const text = await request.text();
       body = text ? JSON.parse(text) : {};
-    } catch (parseError) {
+    } catch {
       return new Response(
         JSON.stringify({
           success: false,

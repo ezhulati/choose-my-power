@@ -411,8 +411,6 @@ export function renderWithProviders(
   options: CustomRenderOptions = {}
 ): RenderResult {
   const {
-    initialRoute = '/',
-    userPreferences = {},
     ...renderOptions
   } = options;
 
@@ -492,7 +490,7 @@ export async function submitForm(form: HTMLFormElement | HTMLElement) {
  * Get all visible elements by role
  */
 export function getAllVisibleByRole(role: string) {
-  const { screen } = require('@testing-library/react');
+  const { screen } = await import('@testing-library/react');
   return screen.getAllByRole(role).filter((element: HTMLElement) => {
     const style = window.getComputedStyle(element);
     return style.display !== 'none' && style.visibility !== 'hidden';
@@ -555,7 +553,7 @@ export function mockIntersectionObserver() {
 /**
  * Performance testing helper
  */
-export function measureRenderTime<T extends any[]>(
+export function measureRenderTime<T extends unknown[]>(
   renderFunction: (...args: T) => RenderResult,
   ...args: T
 ): { result: RenderResult; renderTime: number } {

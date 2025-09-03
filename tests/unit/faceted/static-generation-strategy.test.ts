@@ -185,7 +185,7 @@ describe('StaticGenerationStrategy', () => {
       
       // All URLs should be properly formatted
       urls.forEach(url => {
-        expect(url).toMatch(/^\/electricity-plans\/[^\/]+\//);
+        expect(url).toMatch(/^\/electricity-plans\/[^/]+\//);
       });
     });
 

@@ -1,0 +1,1555 @@
+{
+  "auditInfo": {
+    "timestamp": "2025-08-29T21:59:38.138Z",
+    "baseUrl": "http://localhost:4326",
+    "totalLinksDiscovered": 58,
+    "totalLinksVisited": 14
+  },
+  "statistics": {
+    "totalTested": 197,
+    "totalPassed": 124,
+    "totalBroken": 48,
+    "totalIssues": 0,
+    "totalRedirects": 19,
+    "passRate": "62.94%"
+  },
+  "results": {
+    "passed": [
+      {
+        "url": "http://localhost:4326/",
+        "status": 200,
+        "text": "ChooseMyPower",
+        "context": "Main Navigation",
+        "title": "Compare & Choose Texas Electricity | ChooseMyPower.org"
+      },
+      {
+        "url": "http://localhost:4326/compare",
+        "status": 200,
+        "text": "Compare",
+        "context": "Main Navigation",
+        "title": "Compare Electricity Plans & Providers | Texas Energy Comparison"
+      },
+      {
+        "url": "http://localhost:4326/electricity-companies",
+        "status": 200,
+        "text": "Electricity Companies",
+        "context": "Main Navigation",
+        "title": "Best Electricity Companies in Texas | Top-Rated Energy Providers"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans",
+        "status": 200,
+        "text": "Electricity Plans",
+        "context": "Main Navigation",
+        "title": "Texas Electricity Plans | Browse All Available Plans"
+      },
+      {
+        "url": "http://localhost:4326/best",
+        "status": 200,
+        "text": "Best Rankings",
+        "context": "Main Navigation",
+        "title": "Best Texas Electricity Providers & Plans 2024 | Expert Rankings"
+      },
+      {
+        "url": "http://localhost:4326/providers",
+        "status": 200,
+        "text": "All Providers",
+        "context": "Main Navigation",
+        "title": "Texas Electricity Providers Directory | Compare Energy Companies"
+      },
+      {
+        "url": "http://localhost:4326/rates",
+        "status": 200,
+        "text": "Current Rates",
+        "context": "Main Navigation",
+        "title": "Texas Electricity Rates | Current Energy Prices & Rate Calculator"
+      },
+      {
+        "url": "http://localhost:4326/rates/calculator",
+        "status": 200,
+        "text": "Rate Calculator",
+        "context": "Main Navigation",
+        "title": "Electricity Rate Calculator | Estimate Your Monthly Bill"
+      },
+      {
+        "url": "http://localhost:4326/shop/cheapest-electricity",
+        "status": 200,
+        "text": "Cheapest Electricity",
+        "context": "Main Navigation",
+        "title": "Cheapest Electricity in Texas | Lowest Rates Available"
+      },
+      {
+        "url": "http://localhost:4326/shop/best-electricity-providers",
+        "status": 200,
+        "text": "Best Providers",
+        "context": "Main Navigation",
+        "title": "Best Electricity Providers in Texas | Top Rated Companies"
+      },
+      {
+        "url": "http://localhost:4326/shop/green-energy",
+        "status": 200,
+        "text": "Green Energy",
+        "context": "Main Navigation",
+        "title": "Green Energy Plans in Texas | 100% Renewable Electricity"
+      },
+      {
+        "url": "http://localhost:4326/shop/no-deposit-electricity",
+        "status": 200,
+        "text": "No Deposit Plans",
+        "context": "Main Navigation",
+        "title": "No Deposit Electricity Plans in Texas | Start Service Today"
+      },
+      {
+        "url": "http://localhost:4326/locations",
+        "status": 200,
+        "text": "Locations",
+        "context": "Main Navigation",
+        "title": "Electricity by Location | Find Providers in Your Area"
+      },
+      {
+        "url": "http://localhost:4326/resources",
+        "status": 200,
+        "text": "Resources",
+        "context": "Main Navigation",
+        "title": "Electricity Resources & Guides | Learn About Energy Deregulation"
+      },
+      {
+        "url": "http://localhost:4326/compare",
+        "status": 200,
+        "text": "Compare",
+        "context": "Main Navigation",
+        "title": "Compare Electricity Plans & Providers | Texas Energy Comparison"
+      },
+      {
+        "url": "http://localhost:4326/electricity-companies",
+        "status": 200,
+        "text": "Electricity Companies",
+        "context": "Main Navigation",
+        "title": "Best Electricity Companies in Texas | Top-Rated Energy Providers"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans",
+        "status": 200,
+        "text": "Electricity Plans",
+        "context": "Main Navigation",
+        "title": "Texas Electricity Plans | Browse All Available Plans"
+      },
+      {
+        "url": "http://localhost:4326/best",
+        "status": 200,
+        "text": "Best Rankings",
+        "context": "Main Navigation",
+        "title": "Best Texas Electricity Providers & Plans 2024 | Expert Rankings"
+      },
+      {
+        "url": "http://localhost:4326/providers",
+        "status": 200,
+        "text": "All Providers",
+        "context": "Main Navigation",
+        "title": "Texas Electricity Providers Directory | Compare Energy Companies"
+      },
+      {
+        "url": "http://localhost:4326/rates",
+        "status": 200,
+        "text": "Current Rates",
+        "context": "Main Navigation",
+        "title": "Texas Electricity Rates | Current Energy Prices & Rate Calculator"
+      },
+      {
+        "url": "http://localhost:4326/rates/calculator",
+        "status": 200,
+        "text": "Rate Calculator",
+        "context": "Main Navigation",
+        "title": "Electricity Rate Calculator | Estimate Your Monthly Bill"
+      },
+      {
+        "url": "http://localhost:4326/shop/cheapest-electricity",
+        "status": 200,
+        "text": "Cheapest Electricity",
+        "context": "Main Navigation",
+        "title": "Cheapest Electricity in Texas | Lowest Rates Available"
+      },
+      {
+        "url": "http://localhost:4326/shop/best-electricity-providers",
+        "status": 200,
+        "text": "Best Providers",
+        "context": "Main Navigation",
+        "title": "Best Electricity Providers in Texas | Top Rated Companies"
+      },
+      {
+        "url": "http://localhost:4326/shop/green-energy",
+        "status": 200,
+        "text": "Green Energy",
+        "context": "Main Navigation",
+        "title": "Green Energy Plans in Texas | 100% Renewable Electricity"
+      },
+      {
+        "url": "http://localhost:4326/shop/no-deposit-electricity",
+        "status": 200,
+        "text": "No Deposit Plans",
+        "context": "Main Navigation",
+        "title": "No Deposit Electricity Plans in Texas | Start Service Today"
+      },
+      {
+        "url": "http://localhost:4326/locations",
+        "status": 200,
+        "text": "Locations",
+        "context": "Main Navigation",
+        "title": "Electricity by Location | Find Providers in Your Area"
+      },
+      {
+        "url": "http://localhost:4326/resources",
+        "status": 200,
+        "text": "Resources",
+        "context": "Main Navigation",
+        "title": "Electricity Resources & Guides | Learn About Energy Deregulation"
+      },
+      {
+        "url": "http://localhost:4326/compare",
+        "status": 200,
+        "text": "Compare Plans",
+        "context": "Main Navigation",
+        "title": "Compare Electricity Plans & Providers | Texas Energy Comparison"
+      },
+      {
+        "url": "http://localhost:4326/shop/cheapest-electricity",
+        "status": 200,
+        "text": "Cheapest Electricity",
+        "context": "Main Navigation",
+        "title": "Cheapest Electricity in Texas | Lowest Rates Available"
+      },
+      {
+        "url": "http://localhost:4326/shop/best-electricity-providers",
+        "status": 200,
+        "text": "Best Providers",
+        "context": "Main Navigation",
+        "title": "Best Electricity Providers in Texas | Top Rated Companies"
+      },
+      {
+        "url": "http://localhost:4326/shop/green-energy",
+        "status": 200,
+        "text": "Green Energy",
+        "context": "Main Navigation",
+        "title": "Green Energy Plans in Texas | 100% Renewable Electricity"
+      },
+      {
+        "url": "http://localhost:4326/shop/no-deposit-electricity",
+        "status": 200,
+        "text": "No Deposit Plans",
+        "context": "Main Navigation",
+        "title": "No Deposit Electricity Plans in Texas | Start Service Today"
+      },
+      {
+        "url": "http://localhost:4326/texas",
+        "status": 200,
+        "text": "Texas Providers",
+        "context": "Main Navigation",
+        "title": "Texas Electricity Providers & Plans | ChooseMyPower.org"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/dallas-tx",
+        "status": 200,
+        "text": "Dallas Electricity",
+        "context": "Main Navigation",
+        "title": "Best Electricity Plans in Dallas TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/houston-tx",
+        "status": 200,
+        "text": "Houston Electricity",
+        "context": "Main Navigation",
+        "title": "Best Electricity Plans in Houston TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/locations",
+        "status": 200,
+        "text": "All Locations",
+        "context": "Main Navigation",
+        "title": "Electricity by Location | Find Providers in Your Area"
+      },
+      {
+        "url": "http://localhost:4326/rates/calculator",
+        "status": 200,
+        "text": "Rate Calculator",
+        "context": "Main Navigation",
+        "title": "Electricity Rate Calculator | Estimate Your Monthly Bill"
+      },
+      {
+        "url": "http://localhost:4326/resources/guides/how-to-switch-providers",
+        "status": 200,
+        "text": "How to Switch",
+        "context": "Main Navigation",
+        "title": "How to Switch Electricity Providers in Texas | Step-by-Step Guide 2024"
+      },
+      {
+        "url": "http://localhost:4326/best",
+        "status": 200,
+        "text": "Best Rankings",
+        "context": "Main Navigation",
+        "title": "Best Texas Electricity Providers & Plans 2024 | Expert Rankings"
+      },
+      {
+        "url": "http://localhost:4326/resources/faqs",
+        "status": 200,
+        "text": "FAQ",
+        "context": "Main Navigation",
+        "title": "Frequently Asked Questions | Texas Electricity Guide"
+      },
+      {
+        "url": "http://localhost:4326/about",
+        "status": 200,
+        "text": "About Us",
+        "context": "Main Navigation",
+        "title": "About ChooseMyPower | Texas Electricity Comparison Experts"
+      },
+      {
+        "url": "http://localhost:4326/careers",
+        "status": 200,
+        "text": "Careers",
+        "context": "Main Navigation",
+        "title": "Careers at ChooseMyPower | Join the Texas Energy Revolution"
+      },
+      {
+        "url": "http://localhost:4326/compare",
+        "status": 200,
+        "text": "/compare",
+        "context": "Main Navigation",
+        "title": "Compare Electricity Plans & Providers | Texas Energy Comparison"
+      },
+      {
+        "url": "http://localhost:4326/locations",
+        "status": 200,
+        "text": "/locations",
+        "context": "Main Navigation",
+        "title": "Electricity by Location | Find Providers in Your Area"
+      },
+      {
+        "url": "http://localhost:4326/resources",
+        "status": 200,
+        "text": "/resources",
+        "context": "Main Navigation",
+        "title": "Electricity Resources & Guides | Learn About Energy Deregulation"
+      },
+      {
+        "url": "http://localhost:4326/shop",
+        "status": 200,
+        "text": "/shop",
+        "context": "Main Navigation",
+        "title": "Shop Electricity Plans by Priority | Best Value, Green Energy, Service"
+      },
+      {
+        "url": "http://localhost:4326/rates",
+        "status": 200,
+        "text": "/rates",
+        "context": "Main Navigation",
+        "title": "Texas Electricity Rates | Current Energy Prices & Rate Calculator"
+      },
+      {
+        "url": "http://localhost:4326/providers",
+        "status": 200,
+        "text": "/providers",
+        "context": "Main Navigation",
+        "title": "Texas Electricity Providers Directory | Compare Energy Companies"
+      },
+      {
+        "url": "http://localhost:4326/electricity-companies",
+        "status": 200,
+        "text": "/electricity-companies",
+        "context": "Main Navigation",
+        "title": "Best Electricity Companies in Texas | Top-Rated Energy Providers"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans",
+        "status": 200,
+        "text": "/electricity-plans",
+        "context": "Main Navigation",
+        "title": "Texas Electricity Plans | Browse All Available Plans"
+      },
+      {
+        "url": "http://localhost:4326/texas",
+        "status": 200,
+        "text": "/texas",
+        "context": "Main Navigation",
+        "title": "Texas Electricity Providers & Plans | ChooseMyPower.org"
+      },
+      {
+        "url": "http://localhost:4326/texas/dallas-tx",
+        "status": 200,
+        "text": "dallas-tx",
+        "context": "City Pages",
+        "title": "Best Electricity Plans in Dallas TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/dallas-tx",
+        "status": 200,
+        "text": "dallas-tx plans",
+        "context": "City Plan Pages",
+        "title": "Best Electricity Plans in Dallas TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/texas/houston-tx",
+        "status": 200,
+        "text": "houston-tx",
+        "context": "City Pages",
+        "title": "Best Electricity Plans in Houston TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/houston-tx",
+        "status": 200,
+        "text": "houston-tx plans",
+        "context": "City Plan Pages",
+        "title": "Best Electricity Plans in Houston TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/texas/austin-tx/municipal-utility",
+        "status": 200,
+        "text": "austin-tx municipal",
+        "context": "Municipal Utility Pages",
+        "title": "Austin, TX Municipal Utility - Austin Energy"
+      },
+      {
+        "url": "http://localhost:4326/texas/fort-worth-tx",
+        "status": 200,
+        "text": "fort-worth-tx",
+        "context": "City Pages",
+        "title": "Best Electricity Plans in Fort Worth TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/fort-worth-tx",
+        "status": 200,
+        "text": "fort-worth-tx plans",
+        "context": "City Plan Pages",
+        "title": "Best Electricity Plans in Fort Worth TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/texas/san-antonio-tx/municipal-utility",
+        "status": 200,
+        "text": "san-antonio-tx municipal",
+        "context": "Municipal Utility Pages",
+        "title": "San Antonio, TX Municipal Utility - CPS Energy"
+      },
+      {
+        "url": "http://localhost:4326/texas/plano-tx",
+        "status": 200,
+        "text": "plano-tx",
+        "context": "City Pages",
+        "title": "Best Electricity Plans in Plano TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/plano-tx",
+        "status": 200,
+        "text": "plano-tx plans",
+        "context": "City Plan Pages",
+        "title": "Best Electricity Plans in Plano TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/texas/arlington-tx",
+        "status": 200,
+        "text": "arlington-tx",
+        "context": "City Pages",
+        "title": "Best Electricity Plans in Arlington TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/arlington-tx",
+        "status": 200,
+        "text": "arlington-tx plans",
+        "context": "City Plan Pages",
+        "title": "Best Electricity Plans in Arlington TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/texas/corpus-christi-tx",
+        "status": 200,
+        "text": "corpus-christi-tx",
+        "context": "City Pages",
+        "title": "Best Electricity Plans in Corpus Christi TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/corpus-christi-tx",
+        "status": 200,
+        "text": "corpus-christi-tx plans",
+        "context": "City Plan Pages",
+        "title": "Best Electricity Plans in Corpus Christi TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/texas/irving-tx",
+        "status": 200,
+        "text": "irving-tx",
+        "context": "City Pages",
+        "title": "Best Electricity Plans in Irving TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/irving-tx",
+        "status": 200,
+        "text": "irving-tx plans",
+        "context": "City Plan Pages",
+        "title": "Best Electricity Plans in Irving TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/texas/lubbock-tx",
+        "status": 200,
+        "text": "lubbock-tx",
+        "context": "City Pages",
+        "title": "Best Electricity Plans in Lubbock TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/lubbock-tx",
+        "status": 200,
+        "text": "lubbock-tx plans",
+        "context": "City Plan Pages",
+        "title": "Best Electricity Plans in Lubbock TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/texas/laredo-tx",
+        "status": 200,
+        "text": "laredo-tx",
+        "context": "City Pages",
+        "title": "Best Electricity Plans in Laredo TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/laredo-tx",
+        "status": 200,
+        "text": "laredo-tx plans",
+        "context": "City Plan Pages",
+        "title": "Best Electricity Plans in Laredo TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/texas/pasadena-tx",
+        "status": 200,
+        "text": "pasadena-tx",
+        "context": "City Pages",
+        "title": "Best Electricity Plans in Pasadena TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/pasadena-tx",
+        "status": 200,
+        "text": "pasadena-tx plans",
+        "context": "City Plan Pages",
+        "title": "Best Electricity Plans in Pasadena TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/texas/grand-prairie-tx",
+        "status": 200,
+        "text": "grand-prairie-tx",
+        "context": "City Pages",
+        "title": "Best Electricity Plans in Grand Prairie TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/grand-prairie-tx",
+        "status": 200,
+        "text": "grand-prairie-tx plans",
+        "context": "City Plan Pages",
+        "title": "Best Electricity Plans in Grand Prairie TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/texas/mesquite-tx",
+        "status": 200,
+        "text": "mesquite-tx",
+        "context": "City Pages",
+        "title": "Best Electricity Plans in Mesquite TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/mesquite-tx",
+        "status": 200,
+        "text": "mesquite-tx plans",
+        "context": "City Plan Pages",
+        "title": "Best Electricity Plans in Mesquite TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/texas/killeen-tx",
+        "status": 200,
+        "text": "killeen-tx",
+        "context": "City Pages",
+        "title": "Best Electricity Plans in Killeen TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/killeen-tx",
+        "status": 200,
+        "text": "killeen-tx plans",
+        "context": "City Plan Pages",
+        "title": "Best Electricity Plans in Killeen TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/texas/mcallen-tx",
+        "status": 200,
+        "text": "mcallen-tx",
+        "context": "City Pages",
+        "title": "Best Electricity Plans in Mcallen TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/mcallen-tx",
+        "status": 200,
+        "text": "mcallen-tx plans",
+        "context": "City Plan Pages",
+        "title": "Best Electricity Plans in Mcallen TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/texas/frisco-tx",
+        "status": 200,
+        "text": "frisco-tx",
+        "context": "City Pages",
+        "title": "Best Electricity Plans in Frisco TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/frisco-tx",
+        "status": 200,
+        "text": "frisco-tx plans",
+        "context": "City Plan Pages",
+        "title": "Best Electricity Plans in Frisco TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/compare#main-content",
+        "status": 200,
+        "text": "",
+        "context": "Discovered Links",
+        "title": "Compare Electricity Plans & Providers | Texas Energy Comparison"
+      },
+      {
+        "url": "http://localhost:4326/electricity-companies",
+        "status": 200,
+        "text": "",
+        "context": "Discovered Links",
+        "title": "Best Electricity Companies in Texas | Top-Rated Energy Providers"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans",
+        "status": 200,
+        "text": "",
+        "context": "Discovered Links",
+        "title": "Texas Electricity Plans | Browse All Available Plans"
+      },
+      {
+        "url": "http://localhost:4326/best",
+        "status": 200,
+        "text": "",
+        "context": "Discovered Links",
+        "title": "Best Texas Electricity Providers & Plans 2024 | Expert Rankings"
+      },
+      {
+        "url": "http://localhost:4326/providers",
+        "status": 200,
+        "text": "",
+        "context": "Discovered Links",
+        "title": "Texas Electricity Providers Directory | Compare Energy Companies"
+      },
+      {
+        "url": "http://localhost:4326/rates",
+        "status": 200,
+        "text": "",
+        "context": "Discovered Links",
+        "title": "Texas Electricity Rates | Current Energy Prices & Rate Calculator"
+      },
+      {
+        "url": "http://localhost:4326/rates/calculator",
+        "status": 200,
+        "text": "",
+        "context": "Discovered Links",
+        "title": "Electricity Rate Calculator | Estimate Your Monthly Bill"
+      },
+      {
+        "url": "http://localhost:4326/shop/cheapest-electricity",
+        "status": 200,
+        "text": "",
+        "context": "Discovered Links",
+        "title": "Cheapest Electricity in Texas | Lowest Rates Available"
+      },
+      {
+        "url": "http://localhost:4326/shop/best-electricity-providers",
+        "status": 200,
+        "text": "",
+        "context": "Discovered Links",
+        "title": "Best Electricity Providers in Texas | Top Rated Companies"
+      },
+      {
+        "url": "http://localhost:4326/shop/green-energy",
+        "status": 200,
+        "text": "",
+        "context": "Discovered Links",
+        "title": "Green Energy Plans in Texas | 100% Renewable Electricity"
+      },
+      {
+        "url": "http://localhost:4326/shop/no-deposit-electricity",
+        "status": 200,
+        "text": "",
+        "context": "Discovered Links",
+        "title": "No Deposit Electricity Plans in Texas | Start Service Today"
+      },
+      {
+        "url": "http://localhost:4326/locations",
+        "status": 200,
+        "text": "",
+        "context": "Discovered Links",
+        "title": "Electricity by Location | Find Providers in Your Area"
+      },
+      {
+        "url": "http://localhost:4326/resources",
+        "status": 200,
+        "text": "",
+        "context": "Discovered Links",
+        "title": "Electricity Resources & Guides | Learn About Energy Deregulation"
+      },
+      {
+        "url": "http://localhost:4326/texas",
+        "status": 200,
+        "text": "",
+        "context": "Discovered Links",
+        "title": "Texas Electricity Providers & Plans | ChooseMyPower.org"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/dallas-tx",
+        "status": 200,
+        "text": "",
+        "context": "Discovered Links",
+        "title": "Best Electricity Plans in Dallas TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/houston-tx",
+        "status": 200,
+        "text": "",
+        "context": "Discovered Links",
+        "title": "Best Electricity Plans in Houston TX, TX | Compare Energy Rates"
+      },
+      {
+        "url": "http://localhost:4326/resources/guides/how-to-switch-providers",
+        "status": 200,
+        "text": "",
+        "context": "Discovered Links",
+        "title": "How to Switch Electricity Providers in Texas | Step-by-Step Guide 2024"
+      },
+      {
+        "url": "http://localhost:4326/resources/faqs",
+        "status": 200,
+        "text": "",
+        "context": "Discovered Links",
+        "title": "Frequently Asked Questions | Texas Electricity Guide"
+      },
+      {
+        "url": "http://localhost:4326/about",
+        "status": 200,
+        "text": "",
+        "context": "Discovered Links",
+        "title": "About ChooseMyPower | Texas Electricity Comparison Experts"
+      },
+      {
+        "url": "http://localhost:4326/careers",
+        "status": 200,
+        "text": "",
+        "context": "Discovered Links",
+        "title": "Careers at ChooseMyPower | Join the Texas Energy Revolution"
+      },
+      {
+        "url": "http://localhost:4326/privacy-policy",
+        "status": 200,
+        "text": "",
+        "context": "Discovered Links",
+        "title": "Privacy Policy | ChooseMyPower.org"
+      },
+      {
+        "url": "http://localhost:4326/terms-of-service",
+        "status": 200,
+        "text": "",
+        "context": "Discovered Links",
+        "title": "Terms of Service | ChooseMyPower.org"
+      },
+      {
+        "url": "http://localhost:4326/accessibility",
+        "status": 200,
+        "text": "",
+        "context": "Discovered Links",
+        "title": "Accessibility Statement | ChooseMyPower WCAG Compliance"
+      },
+      {
+        "url": "http://localhost:4326/sitemap",
+        "status": 200,
+        "text": "",
+        "context": "Discovered Links",
+        "title": "Sitemap | ChooseMyPower.org - Texas Electricity Plan Navigation"
+      },
+      {
+        "url": "http://localhost:4326/providers/gexa-energy#main-content",
+        "status": 200,
+        "text": "",
+        "context": "Discovered Links",
+        "title": "Gexa Energy Electricity Plans & Reviews | Texas Energy Provider"
+      },
+      {
+        "url": "http://localhost:4326/providers/reliant-energy#main-content",
+        "status": 200,
+        "text": "",
+        "context": "Discovered Links",
+        "title": "Reliant Energy Electricity Plans & Reviews | Texas Energy Provider"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/dallas-tx/12-month",
+        "status": 200,
+        "text": "12-month",
+        "context": "Faceted Navigation",
+        "title": "12-Month Contract Electricity Plans in Dallas TX, TX | Compare Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/dallas-tx/24-month",
+        "status": 200,
+        "text": "24-month",
+        "context": "Faceted Navigation",
+        "title": "24-Month Contract Electricity Plans in Dallas TX, TX | Compare Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/dallas-tx/36-month",
+        "status": 200,
+        "text": "36-month",
+        "context": "Faceted Navigation",
+        "title": "36-Month Contract Electricity Plans in Dallas TX, TX | Compare Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/dallas-tx/fixed-rate",
+        "status": 200,
+        "text": "fixed-rate",
+        "context": "Faceted Navigation",
+        "title": "Fixed Rate Electricity Plans in Dallas TX, TX | Compare Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/dallas-tx/variable-rate",
+        "status": 200,
+        "text": "variable-rate",
+        "context": "Faceted Navigation",
+        "title": "Variable Rate Electricity Plans in Dallas TX, TX | Compare Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/dallas-tx/indexed-rate",
+        "status": 200,
+        "text": "indexed-rate",
+        "context": "Faceted Navigation",
+        "title": "Indexed Rate Electricity Plans in Dallas TX, TX | Compare Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/dallas-tx/green-energy",
+        "status": 200,
+        "text": "green-energy",
+        "context": "Faceted Navigation",
+        "title": "100% Green Energy Electricity Plans in Dallas TX, TX | Compare Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/dallas-tx/renewable",
+        "status": 200,
+        "text": "renewable",
+        "context": "Faceted Navigation",
+        "title": "100% Green Energy Electricity Plans in Dallas TX, TX | Compare Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/dallas-tx/12-month/fixed-rate",
+        "status": 200,
+        "text": "12-month/fixed-rate",
+        "context": "Faceted Navigation",
+        "title": "12-Month Contract + Fixed Rate Electricity Plans in Dallas TX, TX | Compare Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/dallas-tx/24-month/green-energy",
+        "status": 200,
+        "text": "24-month/green-energy",
+        "context": "Faceted Navigation",
+        "title": "24-Month Contract + 100% Green Energy Electricity Plans in Dallas TX, TX | Compare Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/dallas-tx/fixed-rate/renewable",
+        "status": 200,
+        "text": "fixed-rate/renewable",
+        "context": "Faceted Navigation",
+        "title": "Fixed Rate + 100% Green Energy Electricity Plans in Dallas TX, TX | Compare Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/dallas-tx/12-month/fixed-rate/green-energy",
+        "status": 200,
+        "text": "12-month/fixed-rate/green-energy",
+        "context": "Faceted Navigation",
+        "title": "12-Month Contract + Fixed Rate + 100% Green Energy Electricity Plans in Dallas TX, TX | Compare Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/houston-tx/12-month",
+        "status": 200,
+        "text": "houston-tx/12-month",
+        "context": "Multi-City Faceted Navigation",
+        "title": "12-Month Contract Electricity Plans in Houston TX, TX | Compare Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/houston-tx/fixed-rate",
+        "status": 200,
+        "text": "houston-tx/fixed-rate",
+        "context": "Multi-City Faceted Navigation",
+        "title": "Fixed Rate Electricity Plans in Houston TX, TX | Compare Rates"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/houston-tx/green-energy",
+        "status": 200,
+        "text": "houston-tx/green-energy",
+        "context": "Multi-City Faceted Navigation",
+        "title": "100% Green Energy Electricity Plans in Houston TX, TX | Compare Rates"
+      }
+    ],
+    "broken": [
+      {
+        "url": "http://localhost:4326/electricity-plans/austin-tx",
+        "status": 404,
+        "text": "Austin Electricity",
+        "context": "Main Navigation",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/resources/guides",
+        "status": 404,
+        "text": "Electricity Guide",
+        "context": "Main Navigation",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/resources/support/contact",
+        "status": 404,
+        "text": "Contact",
+        "context": "Main Navigation",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/press",
+        "status": 404,
+        "text": "Press",
+        "context": "Main Navigation",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/blog",
+        "status": 404,
+        "text": "Blog",
+        "context": "Main Navigation",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "https://www.reddit.com/r/withastro/",
+        "status": 403,
+        "text": "Join the official Astro community on Reddit",
+        "context": "Footer",
+        "error": "External link failed"
+      },
+      {
+        "url": "http://localhost:4326/texas/dallas-tx/municipal-utility",
+        "status": 404,
+        "text": "dallas-tx municipal",
+        "context": "Municipal Utility Pages",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/texas/houston-tx/municipal-utility",
+        "status": 404,
+        "text": "houston-tx municipal",
+        "context": "Municipal Utility Pages",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/texas/austin-tx",
+        "status": 404,
+        "text": "austin-tx",
+        "context": "City Pages",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/austin-tx",
+        "status": 404,
+        "text": "austin-tx plans",
+        "context": "City Plan Pages",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/texas/fort-worth-tx/municipal-utility",
+        "status": 404,
+        "text": "fort-worth-tx municipal",
+        "context": "Municipal Utility Pages",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/texas/san-antonio-tx",
+        "status": 404,
+        "text": "san-antonio-tx",
+        "context": "City Pages",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/san-antonio-tx",
+        "status": 404,
+        "text": "san-antonio-tx plans",
+        "context": "City Plan Pages",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/texas/plano-tx/municipal-utility",
+        "status": 404,
+        "text": "plano-tx municipal",
+        "context": "Municipal Utility Pages",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/texas/arlington-tx/municipal-utility",
+        "status": 404,
+        "text": "arlington-tx municipal",
+        "context": "Municipal Utility Pages",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/texas/corpus-christi-tx/municipal-utility",
+        "status": 404,
+        "text": "corpus-christi-tx municipal",
+        "context": "Municipal Utility Pages",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/texas/garland-tx",
+        "status": 404,
+        "text": "garland-tx",
+        "context": "City Pages",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/garland-tx",
+        "status": 404,
+        "text": "garland-tx plans",
+        "context": "City Plan Pages",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/texas/garland-tx/municipal-utility",
+        "status": 404,
+        "text": "garland-tx municipal",
+        "context": "Municipal Utility Pages",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/texas/irving-tx/municipal-utility",
+        "status": 404,
+        "text": "irving-tx municipal",
+        "context": "Municipal Utility Pages",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/texas/lubbock-tx/municipal-utility",
+        "status": 404,
+        "text": "lubbock-tx municipal",
+        "context": "Municipal Utility Pages",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/texas/laredo-tx/municipal-utility",
+        "status": 404,
+        "text": "laredo-tx municipal",
+        "context": "Municipal Utility Pages",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/texas/amarillo-tx",
+        "status": 404,
+        "text": "amarillo-tx",
+        "context": "City Pages",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/amarillo-tx",
+        "status": 404,
+        "text": "amarillo-tx plans",
+        "context": "City Plan Pages",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/texas/amarillo-tx/municipal-utility",
+        "status": 404,
+        "text": "amarillo-tx municipal",
+        "context": "Municipal Utility Pages",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/texas/brownsville-tx",
+        "status": 404,
+        "text": "brownsville-tx",
+        "context": "City Pages",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/brownsville-tx",
+        "status": 404,
+        "text": "brownsville-tx plans",
+        "context": "City Plan Pages",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/texas/brownsville-tx/municipal-utility",
+        "status": 404,
+        "text": "brownsville-tx municipal",
+        "context": "Municipal Utility Pages",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/texas/pasadena-tx/municipal-utility",
+        "status": 404,
+        "text": "pasadena-tx municipal",
+        "context": "Municipal Utility Pages",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/texas/grand-prairie-tx/municipal-utility",
+        "status": 404,
+        "text": "grand-prairie-tx municipal",
+        "context": "Municipal Utility Pages",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/texas/mesquite-tx/municipal-utility",
+        "status": 404,
+        "text": "mesquite-tx municipal",
+        "context": "Municipal Utility Pages",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/texas/killeen-tx/municipal-utility",
+        "status": 404,
+        "text": "killeen-tx municipal",
+        "context": "Municipal Utility Pages",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/texas/mcallen-tx/municipal-utility",
+        "status": 404,
+        "text": "mcallen-tx municipal",
+        "context": "Municipal Utility Pages",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/texas/frisco-tx/municipal-utility",
+        "status": 404,
+        "text": "frisco-tx municipal",
+        "context": "Municipal Utility Pages",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/austin-tx",
+        "status": 404,
+        "text": "",
+        "context": "Discovered Links",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/resources/guides",
+        "status": 404,
+        "text": "",
+        "context": "Discovered Links",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/resources/support/contact",
+        "status": 404,
+        "text": "",
+        "context": "Discovered Links",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/press",
+        "status": 404,
+        "text": "",
+        "context": "Discovered Links",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/blog",
+        "status": 404,
+        "text": "",
+        "context": "Discovered Links",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/dallas-tx/txu-energy",
+        "status": 404,
+        "text": "txu-energy",
+        "context": "Faceted Navigation",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/dallas-tx/reliant-energy",
+        "status": 404,
+        "text": "reliant-energy",
+        "context": "Faceted Navigation",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/dallas-tx/green-mountain-energy",
+        "status": 404,
+        "text": "green-mountain-energy",
+        "context": "Faceted Navigation",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/austin-tx/12-month",
+        "status": 404,
+        "text": "austin-tx/12-month",
+        "context": "Multi-City Faceted Navigation",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/austin-tx/fixed-rate",
+        "status": 404,
+        "text": "austin-tx/fixed-rate",
+        "context": "Multi-City Faceted Navigation",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/austin-tx/green-energy",
+        "status": 404,
+        "text": "austin-tx/green-energy",
+        "context": "Multi-City Faceted Navigation",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/san-antonio-tx/12-month",
+        "status": 404,
+        "text": "san-antonio-tx/12-month",
+        "context": "Multi-City Faceted Navigation",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/san-antonio-tx/fixed-rate",
+        "status": 404,
+        "text": "san-antonio-tx/fixed-rate",
+        "context": "Multi-City Faceted Navigation",
+        "error": "HTTP 404"
+      },
+      {
+        "url": "http://localhost:4326/electricity-plans/san-antonio-tx/green-energy",
+        "status": 404,
+        "text": "san-antonio-tx/green-energy",
+        "context": "Multi-City Faceted Navigation",
+        "error": "HTTP 404"
+      }
+    ],
+    "issues": [],
+    "redirects": [
+      {
+        "originalUrl": "http://localhost:4326/electricity-plans/austin-tx",
+        "finalUrl": "http://localhost:4326/404",
+        "status": 404,
+        "text": "Austin Electricity",
+        "context": "Main Navigation"
+      },
+      {
+        "originalUrl": "http://localhost:4326/electricity-plans/austin-tx",
+        "finalUrl": "http://localhost:4326/404",
+        "status": 404,
+        "text": "austin-tx plans",
+        "context": "City Plan Pages"
+      },
+      {
+        "originalUrl": "http://localhost:4326/electricity-plans/san-antonio-tx",
+        "finalUrl": "http://localhost:4326/404",
+        "status": 404,
+        "text": "san-antonio-tx plans",
+        "context": "City Plan Pages"
+      },
+      {
+        "originalUrl": "http://localhost:4326/electricity-plans/garland-tx",
+        "finalUrl": "http://localhost:4326/404",
+        "status": 404,
+        "text": "garland-tx plans",
+        "context": "City Plan Pages"
+      },
+      {
+        "originalUrl": "http://localhost:4326/electricity-plans/amarillo-tx",
+        "finalUrl": "http://localhost:4326/404",
+        "status": 404,
+        "text": "amarillo-tx plans",
+        "context": "City Plan Pages"
+      },
+      {
+        "originalUrl": "http://localhost:4326/electricity-plans/brownsville-tx",
+        "finalUrl": "http://localhost:4326/404",
+        "status": 404,
+        "text": "brownsville-tx plans",
+        "context": "City Plan Pages"
+      },
+      {
+        "originalUrl": "http://localhost:4326/compare#main-content",
+        "finalUrl": "http://localhost:4326/compare",
+        "status": 200,
+        "text": "",
+        "context": "Discovered Links"
+      },
+      {
+        "originalUrl": "http://localhost:4326/electricity-plans/austin-tx",
+        "finalUrl": "http://localhost:4326/404",
+        "status": 404,
+        "text": "",
+        "context": "Discovered Links"
+      },
+      {
+        "originalUrl": "http://localhost:4326/providers/gexa-energy#main-content",
+        "finalUrl": "http://localhost:4326/providers/gexa-energy",
+        "status": 200,
+        "text": "",
+        "context": "Discovered Links"
+      },
+      {
+        "originalUrl": "http://localhost:4326/providers/reliant-energy#main-content",
+        "finalUrl": "http://localhost:4326/providers/reliant-energy",
+        "status": 200,
+        "text": "",
+        "context": "Discovered Links"
+      },
+      {
+        "originalUrl": "http://localhost:4326/electricity-plans/dallas-tx/txu-energy",
+        "finalUrl": "http://localhost:4326/electricity-plans/dallas-tx/",
+        "status": 404,
+        "text": "txu-energy",
+        "context": "Faceted Navigation"
+      },
+      {
+        "originalUrl": "http://localhost:4326/electricity-plans/dallas-tx/reliant-energy",
+        "finalUrl": "http://localhost:4326/electricity-plans/dallas-tx/",
+        "status": 404,
+        "text": "reliant-energy",
+        "context": "Faceted Navigation"
+      },
+      {
+        "originalUrl": "http://localhost:4326/electricity-plans/dallas-tx/green-mountain-energy",
+        "finalUrl": "http://localhost:4326/electricity-plans/dallas-tx/",
+        "status": 404,
+        "text": "green-mountain-energy",
+        "context": "Faceted Navigation"
+      },
+      {
+        "originalUrl": "http://localhost:4326/electricity-plans/austin-tx/12-month",
+        "finalUrl": "http://localhost:4326/404",
+        "status": 404,
+        "text": "austin-tx/12-month",
+        "context": "Multi-City Faceted Navigation"
+      },
+      {
+        "originalUrl": "http://localhost:4326/electricity-plans/austin-tx/fixed-rate",
+        "finalUrl": "http://localhost:4326/404",
+        "status": 404,
+        "text": "austin-tx/fixed-rate",
+        "context": "Multi-City Faceted Navigation"
+      },
+      {
+        "originalUrl": "http://localhost:4326/electricity-plans/austin-tx/green-energy",
+        "finalUrl": "http://localhost:4326/404",
+        "status": 404,
+        "text": "austin-tx/green-energy",
+        "context": "Multi-City Faceted Navigation"
+      },
+      {
+        "originalUrl": "http://localhost:4326/electricity-plans/san-antonio-tx/12-month",
+        "finalUrl": "http://localhost:4326/404",
+        "status": 404,
+        "text": "san-antonio-tx/12-month",
+        "context": "Multi-City Faceted Navigation"
+      },
+      {
+        "originalUrl": "http://localhost:4326/electricity-plans/san-antonio-tx/fixed-rate",
+        "finalUrl": "http://localhost:4326/404",
+        "status": 404,
+        "text": "san-antonio-tx/fixed-rate",
+        "context": "Multi-City Faceted Navigation"
+      },
+      {
+        "originalUrl": "http://localhost:4326/electricity-plans/san-antonio-tx/green-energy",
+        "finalUrl": "http://localhost:4326/404",
+        "status": 404,
+        "text": "san-antonio-tx/green-energy",
+        "context": "Multi-City Faceted Navigation"
+      }
+    ],
+    "external": [
+      {
+        "url": "https://astro.build/integrations/",
+        "status": 200,
+        "text": "View all",
+        "context": "Main Navigation",
+        "result": "PASS - External"
+      },
+      {
+        "url": "https://docs.astro.build/en/getting-started/",
+        "status": 200,
+        "text": "Docs",
+        "context": "Footer",
+        "result": "PASS - External"
+      },
+      {
+        "url": "https://astro.build/themes/",
+        "status": 200,
+        "text": "Themes",
+        "context": "Footer",
+        "result": "PASS - External"
+      },
+      {
+        "url": "https://astro.build/integrations/",
+        "status": 200,
+        "text": "Integrations",
+        "context": "Footer",
+        "result": "PASS - External"
+      },
+      {
+        "url": "https://astro.build/showcase/",
+        "status": 200,
+        "text": "Site showcase",
+        "context": "Footer",
+        "result": "PASS - External"
+      },
+      {
+        "url": "https://astro.new/",
+        "status": 200,
+        "text": "Starter templates",
+        "context": "Footer",
+        "result": "PASS - External"
+      },
+      {
+        "url": "https://astro.build/blog/",
+        "status": 200,
+        "text": "Blog",
+        "context": "Footer",
+        "result": "PASS - External"
+      },
+      {
+        "url": "https://astro.build/case-studies/",
+        "status": 200,
+        "text": "Case studies",
+        "context": "Footer",
+        "result": "PASS - External"
+      },
+      {
+        "url": "https://astro.build/partnerships/",
+        "status": 200,
+        "text": "Partner with us",
+        "context": "Footer",
+        "result": "PASS - External"
+      },
+      {
+        "url": "https://astro.build/press/",
+        "status": 200,
+        "text": "Press",
+        "context": "Footer",
+        "result": "PASS - External"
+      },
+      {
+        "url": "https://astro.build/agencies/",
+        "status": 200,
+        "text": "Agencies",
+        "context": "Footer",
+        "result": "PASS - External"
+      },
+      {
+        "url": "https://github.com/withastro/astro/blob/main/CONTRIBUTING.md",
+        "status": 200,
+        "text": "Contributing",
+        "context": "Footer",
+        "result": "PASS - External"
+      },
+      {
+        "url": "https://opencollective.com/astrodotbuild",
+        "status": 200,
+        "text": "Sponsors",
+        "context": "Footer",
+        "result": "PASS - External"
+      },
+      {
+        "url": "https://astro.build/wallpapers/",
+        "status": 200,
+        "text": "Wallpapers",
+        "context": "Footer",
+        "result": "PASS - External"
+      },
+      {
+        "url": "https://shop.astro.build/",
+        "status": 200,
+        "text": "Swag Shop",
+        "context": "Footer",
+        "result": "PASS - External"
+      },
+      {
+        "url": "https://astro.build/telemetry/",
+        "status": 200,
+        "text": "Telemetry",
+        "context": "Footer",
+        "result": "PASS - External"
+      },
+      {
+        "url": "https://astro.build/privacy/",
+        "status": 200,
+        "text": "Privacy Policy",
+        "context": "Footer",
+        "result": "PASS - External"
+      },
+      {
+        "url": "https://astro.build/terms/",
+        "status": 200,
+        "text": "Terms of Service",
+        "context": "Footer",
+        "result": "PASS - External"
+      },
+      {
+        "url": "https://github.com/withastro/astro/blob/main/LICENSE",
+        "status": 200,
+        "text": "MIT License © 2025",
+        "context": "Footer",
+        "result": "PASS - External"
+      },
+      {
+        "url": "https://github.com/withastro/astro/graphs/contributors",
+        "status": 200,
+        "text": "Astro Contributors",
+        "context": "Footer",
+        "result": "PASS - External"
+      },
+      {
+        "url": "https://bsky.app/profile/astro.build",
+        "status": 200,
+        "text": "Follow Astro on Bluesky",
+        "context": "Footer",
+        "result": "PASS - External"
+      },
+      {
+        "url": "https://astro.build/chat",
+        "status": 200,
+        "text": "Join the Astro community on Discord",
+        "context": "Footer",
+        "result": "PASS - External"
+      },
+      {
+        "url": "https://github.com/withastro/astro",
+        "status": 200,
+        "text": "Go to Astro's GitHub repo",
+        "context": "Footer",
+        "result": "PASS - External"
+      },
+      {
+        "url": "https://m.webtoo.ls/@astro",
+        "status": 200,
+        "text": "Follow Astro on Mastodon",
+        "context": "Footer",
+        "result": "PASS - External"
+      },
+      {
+        "url": "https://x.com/astrodotbuild",
+        "status": 200,
+        "text": "Follow Astro on x.com (formerly Twitter)",
+        "context": "Footer",
+        "result": "PASS - External"
+      }
+    ]
+  },
+  "recommendations": [
+    {
+      "priority": "HIGH",
+      "category": "Broken Links",
+      "count": 48,
+      "action": "Fix or remove all broken links immediately",
+      "impact": "Critical - Affects user experience and SEO"
+    },
+    {
+      "priority": "LOW",
+      "category": "Redirects",
+      "count": 19,
+      "action": "Review redirect chains and update links where possible",
+      "impact": "Minor - May slightly affect page load times"
+    }
+  ]
+}

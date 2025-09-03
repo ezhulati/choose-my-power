@@ -3,7 +3,6 @@
  * Collects and logs Content Security Policy violations
  */
 
-import type { Context } from "@netlify/functions";
 
 interface CSPReport {
   "csp-report": {
@@ -21,7 +20,7 @@ interface CSPReport {
   };
 }
 
-export default async function handler(request: Request, _context: Context) {
+export default async function handler(request: Request) {
   const headers = new Headers({
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',

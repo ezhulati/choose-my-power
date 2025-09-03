@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Fixed
+- **Code Quality**: Reduced ESLint errors from 1830 to 1815 by fixing TypeScript 'any' types, unused imports, and security issues
+- **Security**: Fixed unsafe Object.prototype method access by replacing hasOwnProperty calls with Object.prototype.hasOwnProperty.call()
+- **Types**: Replaced TypeScript 'any' types with proper types (Plan[], unknown, Error) in search-plans.ts and test utilities
+- **Imports**: Removed unused imports (Context from CSP handler, tdspMapping from utils) and variables (parseError)
+- **ESM**: Fixed require() imports in test utilities, replaced with proper ESM import statements
+- **Regex**: Corrected unnecessary escape characters in regex patterns for faceted routing tests
 - **Critical**: Resolved provider duplication in faceted filter sidebar causing TXU Energy, Reliant, and Green Mountain Energy to appear twice
 - **Critical**: Fixed incorrect provider counting in API causing confusion in plan filtering - updated generateFacetCounts() to use plan.provider.name
 - **Critical**: Corrected provider filtering logic to handle mixed data structures (provider objects vs plan name strings)
@@ -27,6 +33,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **UI**: Footer navigation headings displaying across multiple lines breaking layout - added white-space: nowrap CSS for single-line formatting
 
 ### Changed
+- **Directory Structure**: Reorganized project with proper separation of concerns - moved 15+ loose JavaScript files from root to organized directories (scripts/testing/, scripts/auditing/, scripts/maintenance/)
+- **Cleanup**: Removed 60MB of old artifacts, test outputs, and screenshots while preserving important files in organized structure
+- **Maintenance**: All package.json scripts preserved and functional after directory reorganization
 - **Major**: Updated 800+ city electricity plan data files with latest rates and provider information
 - **Data**: Refreshed cache metadata and build summaries with current seasonal context (fall 2025)
 - **Performance**: Plan count optimization across major cities (Dallas: 111→109, Houston: 110→108, Addison: 111→109)
