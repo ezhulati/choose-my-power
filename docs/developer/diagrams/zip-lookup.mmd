@@ -1,0 +1,20 @@
+sequenceDiagram
+    participant User
+    participant Browser JS
+    participant Astro ZIP API
+    participant City Page
+
+    User->>Browser JS: Submit ZIP form
+    Browser JS->>Astro ZIP API: GET /api/zip-lookup?zip=75201 (AJAX)
+    alt Municipal ZIP
+      Astro ZIP API-->>Browser JS: {success:false, redirectUrl:/texas/:city/municipal-utility}
+      Browser JS->>User: Navigate to municipal page
+    else Deregulated ZIP
+      Astro ZIP API-->>Browser JS: {success:true, redirectUrl:/texas/:city}
+      Browser JS->>User: Navigate to /texas/:city
+      User->>City Page: GET /texas/:city
+      City Page->>ComparePowerClient: fetchPlans(tdsp_duns, usage=1000)
+      ComparePowerClient-->>City Page: plans
+      City Page-->>User: Render city overview
+    end
+

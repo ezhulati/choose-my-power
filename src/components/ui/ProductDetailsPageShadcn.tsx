@@ -4,6 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from './tabs';
 import { Badge } from './badge';
 import { Button } from './button';
 import { Slider } from './slider';
+import AddressSearchModal from './AddressSearchModal';
 import { 
   Breadcrumb, 
   BreadcrumbList, 
@@ -62,6 +63,7 @@ interface ProductDetailsPageShadcnProps {
 export const ProductDetailsPageShadcn: React.FC<ProductDetailsPageShadcnProps> = ({ planData }) => {
   const [usage, setUsage] = useState(1000);
   const [activeTab, setActiveTab] = useState('overview');
+  const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
 
   const calculateCosts = (kwh: number) => {
     const electricityCharge = (kwh * planData.rate) / 100;
@@ -78,6 +80,23 @@ export const ProductDetailsPageShadcn: React.FC<ProductDetailsPageShadcnProps> =
         className={`w-4 h-4 ${i < Math.floor(rating) ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} 
       />
     ));
+  };
+
+  const handleAddressSuccess = (esiid: string, address: string) => {
+    // Track successful address validation
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'plan_selection_with_address', {
+        plan_id: planData.id,
+        provider: planData.provider.name,
+        esiid: esiid,
+        validated_address: address
+      });
+    }
+    
+    // Close the modal
+    setIsAddressModalOpen(false);
+    
+    // The modal component handles the redirect to ComparePower
   };
 
   return (
@@ -426,7 +445,10 @@ export const ProductDetailsPageShadcn: React.FC<ProductDetailsPageShadcnProps> =
 
                 <CardFooter className="flex-col space-y-4">
                   {/* Primary CTA */}
-                  <Button className="w-full bg-texas-red hover:bg-texas-red-600 text-white py-4 px-6 text-lg font-bold">
+                  <Button 
+                    onClick={() => setIsAddressModalOpen(true)}
+                    className="w-full bg-texas-red hover:bg-texas-red-600 text-white py-4 px-6 text-lg font-bold"
+                  >
                     Select This Plan
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
@@ -479,6 +501,20 @@ export const ProductDetailsPageShadcn: React.FC<ProductDetailsPageShadcnProps> =
           </div>
         </div>
       </div>
+
+      {/* Address Search Modal */}
+      <AddressSearchModal
+        isOpen={isAddressModalOpen}
+        onClose={() => setIsAddressModalOpen(false)}
+        planData={{
+          id: planData.id,
+          name: planData.name,
+          provider: {
+            name: planData.provider.name
+          }
+        }}
+        onSuccess={handleAddressSuccess}
+      />
     </div>
   );
 };

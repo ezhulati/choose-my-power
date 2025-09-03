@@ -7,6 +7,9 @@ import { Button } from '../../../components/ui/button';
 import { getHeroImage } from '../../../lib/images/hero-image-mapper';
 import { municipalUtilities } from '../../../config/tdsp-mapping';
 import { Zap, Shield, DollarSign, Clock, MapPin, ExternalLink, Info, Phone, Globe, Building } from 'lucide-react';
+import EnhancedSection from '../../../components/ui/EnhancedSection.astro';
+import EnhancedCard from '../../../components/ui/EnhancedCard.astro';
+import AccentBox from '../../../components/ui/AccentBox.astro';
 
 const citySlug = 'austin-tx';
 const utilityInfo = municipalUtilities[citySlug];
@@ -94,10 +97,10 @@ const heroImage = getHeroImage({
           </div>
         </div>
       </div>
-    </section>
+    </EnhancedSection>
 
     <!-- Key Information Section -->
-    <section class="py-16 bg-white">
+    <EnhancedSection background="white" padding="lg">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
           <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -143,10 +146,10 @@ const heroImage = getHeroImage({
           </div>
         </div>
       </div>
-    </section>
+    </EnhancedSection>
 
     <!-- Austin Energy Specific Information -->
-    <section id="rate-information" class="py-16 bg-gray-50">
+    <EnhancedSection background="cream" padding="lg" id="rate-information">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-4xl mx-auto">
           <div class="text-center mb-12">
@@ -220,10 +223,10 @@ const heroImage = getHeroImage({
           </div>
         </div>
       </div>
-    </section>
+    </EnhancedSection>
 
     <!-- Alternative Options Section -->
-    <section class="py-16 bg-white">
+    <EnhancedSection background="white" padding="lg">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
           <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -254,10 +257,10 @@ const heroImage = getHeroImage({
           </a>
         </div>
       </div>
-    </section>
+    </EnhancedSection>
 
     <!-- Educational Content -->
-    <section class="py-16 bg-gray-50">
+    <EnhancedSection background="cream" padding="lg">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
           <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -291,6 +294,6 @@ const heroImage = getHeroImage({
           </ul>
         </div>
       </div>
-    </section>
+    </EnhancedSection>
   </div>
 </Layout>

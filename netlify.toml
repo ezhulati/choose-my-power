@@ -325,3 +325,31 @@
   from = "/electricity-plans/*-tx/*"
   to = "/electricity-plans/:splat/*"
   status = 301
+
+# Normalize trailing slashes for dynamic routes (Astro trailingSlash = "never")
+[[redirects]]
+  from = "/electricity-plans/*/"
+  to = "/electricity-plans/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/texas/*/"
+  to = "/texas/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/admin/*/"
+  to = "/admin/:splat"
+  status = 301
+
+# Trailing slash removal for faceted navigation
+[[redirects]]
+  from = "/electricity-plans/*/"
+  to = "/electricity-plans/:splat"
+  status = 301
+
+# Prevent indexing of internal admin pages
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

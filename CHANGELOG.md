@@ -166,6 +166,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Improved JavaScript error handling with fallback to server-side navigation
 - Added comprehensive logging and debugging for ZIP code lookup troubleshooting
 
+### Added
+- **Address Verification System**: Complete ERCOT API integration for service address validation with 3-step modal flow (Search → Results → Success)
+- **Plan Detail Routing**: New `/electricity-plans/plans/[provider]/[plan]` route structure with dynamic provider/plan support
+- **Address Search Modal**: Professional mobile-responsive modal with Texas branding and real-time search
+- **ERCOT API Proxy**: New API endpoints `/api/ercot/search` and `/api/ercot/validate` for CORS-safe ERCOT integration
+- **Success Flow**: "Plan available for your home" messaging with seamless redirect to ComparePower order system
+- **Developer Tools**: New admin developer section with architecture diagrams and runbooks
+- **Documentation**: Added Texas Chapter 25 regulations reference and developer flow diagrams
+
+### Fixed
+- **Critical**: "View Details" buttons in EnterprisePlanCard.tsx now navigate to correct plan detail pages instead of 404 errors
+- **Critical**: Plan card navigation URLs missing `/plans/` segment causing faceted navigation route conflicts
+- **Critical**: Trailing slash issues across all electricity plan URLs causing 404 redirects
+- **Critical**: Early termination fee messaging incorrectly stating fees apply when moving (corrected for Texas law compliance)
+- **Navigation**: Comprehensive URL generation fixes removing trailing slashes from faceted navigation
+- **Routing**: Fixed route precedence conflicts between plan details and faceted navigation
+- **Content**: Removed all sales language from filter display names and faceted messaging for professional presentation
+
+### Changed
+- **Messaging**: Updated all faceted navigation messaging to remove marketing language and provide accurate Texas regulation information
+- **URLs**: Implemented consistent trailing slash removal across all routes with Netlify redirects
+- **Plan Details**: Enhanced plan detail pages to support any provider/plan combination with server-side rendering
+- **Filter Display**: Cleaned up filter names removing promotional text (e.g., "12-Month (Most popular)" → "12-Month")
+- **Educational Content**: Updated switching provider guidance to accurately reflect Texas moving rights and early termination rules
+
 ## [1.2.0] - 2025-08-29
 
 ### Fixed

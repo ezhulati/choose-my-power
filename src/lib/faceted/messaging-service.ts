@@ -50,10 +50,10 @@ export class FacetedMessagingService {
     const { cityName, planCount } = context;
     
     return {
-      headline: `Finally. ${cityName} Electricity That Makes Sense`,
-      subheadline: `You've got ${planCount} electricity plans to choose from in ${cityName}. Most people pick wrong - here's how to pick right.`,
-      realityCheck: "Skip the teaser rates and marketing tricks - here's what you'll actually pay each month.",
-      promise: "No overwhelming lists, no sneaky math. Just honest help from someone who's figured this out.",
+      headline: `${cityName} Electricity Plans`,
+      subheadline: `${planCount} plans available in ${cityName}.`,
+      realityCheck: "Compare actual monthly costs at different usage levels.",
+      promise: "See detailed pricing breakdown for each plan.",
       cta: `Find Your ${cityName} Plan`,
       breadcrumbText: `${cityName} Plans`
     };
@@ -73,7 +73,7 @@ export class FacetedMessagingService {
       subheadline: filterMessages.subheadline,
       realityCheck: filterMessages.realityCheck,
       warning: filterMessages.warning,
-      promise: "We've done the homework on these plans so you don't have to.",
+      promise: "View detailed plan comparison and pricing information.",
       cta: `Find Your ${filter.displayName} Plan`,
       breadcrumbText: filter.displayName
     };
@@ -88,11 +88,11 @@ export class FacetedMessagingService {
     const combination = filterLabels.join(' + ');
     
     return {
-      headline: `Finally. ${combination} Plans That Don't Lie`,
-      subheadline: `Most companies make you pick one. We found ${planCount} plans in ${cityName} that deliver both.`,
-      realityCheck: "Check the usage bands. The rate jumps if you're off by 1 kWh.",
+      headline: `${combination} Plans in ${cityName}`,
+      subheadline: `${planCount} plans match your filters.`,
+      realityCheck: "Review contract terms and rate structure for each plan.",
       warning: this.getMultiFilterWarning(appliedFilters),
-      promise: `You'll see every ${combination.toLowerCase()} plan's real cost, not the marketing rate.`,
+      promise: `Compare detailed pricing for all ${combination.toLowerCase()} plans.`,
       cta: `Get Your ${combination} Plan`,
       breadcrumbText: combination
     };
@@ -133,40 +133,40 @@ export class FacetedMessagingService {
     switch (term) {
       case '12-month':
         return {
-          headline: `Finally. 12-Month Plans in ${cityName} That Actually Work`,
-          subheadline: `Half of them aren't really 12-month at all. Found ${planCount} that actually lock your rate for a full year.`,
-          realityCheck: "No rate jumps. No renewal games. Just honest 12-month pricing.",
+          headline: `12-Month Plans in ${cityName}`,
+          subheadline: `${planCount} 12-month contracts available.`,
+          realityCheck: "Rate remains fixed for the entire 12-month contract term.",
           warning: "If it has 40 pages of fine print, it's hiding something."
         };
       
       case '6-month':
         return {
-          headline: `Finally. 6-Month Plans in ${cityName} Without the Catch`,
-          subheadline: `Short-term doesn't mean expensive. ${planCount} fair options that won't trap you.`,
-          realityCheck: "These plans end when they say they'll end. Novel concept.",
+          headline: `6-Month Plans in ${cityName}`,
+          subheadline: `${planCount} short-term options available.`,
+          realityCheck: "Contract expires after 6 months as stated.",
           warning: "Watch out for auto-renewal clauses that lock you into year-long terms."
         };
       
       case '24-month':
         return {
-          headline: `Finally. 24-Month Plans in ${cityName} Worth Committing To`,
-          subheadline: `Two years is a long time. These ${planCount} plans actually earn your commitment.`,
-          realityCheck: "Lower rates in exchange for longer commitment. Fair trade when it's honest.",
-          warning: "Make sure there's no early termination fees if you move."
+          headline: `24-Month Plans in ${cityName}`,
+          subheadline: `${planCount} 24-month contracts available.`,
+          realityCheck: "Lower rates typically offered for longer contract terms.",
+          warning: "In Texas, you can cancel without penalty when moving. Early termination fees only apply when switching providers."
         };
       
       case 'month-to-month':
         return {
-          headline: `Finally. Flexible Plans in ${cityName} That Don't Punish You`,
-          subheadline: `No contracts doesn't mean triple the price anymore. ${planCount} options that make sense.`,
-          realityCheck: "Freedom has a small premium, but not a crazy one.",
+          headline: `Month-to-Month Plans in ${cityName}`,
+          subheadline: `${planCount} flexible contract options available.`,
+          realityCheck: "Month-to-month plans typically have higher rates than contract plans.",
           warning: "Some 'no contract' plans have higher rates than 12-month plans. We'll show you which ones."
         };
       
       default:
         return {
-          headline: `Finally. ${term} Plans in ${cityName} That Actually Work`,
-          subheadline: `Found ${planCount} ${term} plans that do what they promise.`,
+          headline: `${term} Plans in ${cityName}`,
+          subheadline: `${planCount} ${term} plans available.`,
           realityCheck: "We checked the fine print so you don't have to.",
           warning: "Contract terms matter more than advertised rates."
         };
@@ -180,32 +180,32 @@ export class FacetedMessagingService {
     switch (rateType) {
       case 'fixed-rate':
         return {
-          headline: `Finally. Fixed Rates in ${cityName} That Are Actually Fixed`,
-          subheadline: `Not 'fixed unless you use too much or too little.' These ${planCount} plans are actually fixed.`,
+          headline: `Fixed Rate Plans in ${cityName}`,
+          subheadline: `${planCount} fixed rate plans available.`,
           realityCheck: "Your rate stays the same whether you use 500 kWh or 2,000 kWh.",
           warning: "Read the Electricity Facts Label. Some 'fixed' plans have usage tiers."
         };
       
       case 'variable-rate':
         return {
-          headline: `Finally. Variable Rates in ${cityName} That Make Sense`,
-          subheadline: `We show when variable beats fixed (hint: rarely, but sometimes). ${planCount} honest options.`,
+          headline: `Variable Rate Plans in ${cityName}`,
+          subheadline: `${planCount} variable rate plans available.`,
           realityCheck: "Variable rates can go up or down with market conditions.",
           warning: "Most variable rates only go up. Check the rate history before signing."
         };
       
       case 'indexed':
         return {
-          headline: `Finally. Indexed Plans in ${cityName} Explained Honestly`,
-          subheadline: `Complex? Yes. Right for you? These ${planCount} plans might be worth the homework.`,
+          headline: `Indexed Plans in ${cityName}`,
+          subheadline: `${planCount} indexed plans available.`,
           realityCheck: "Your rate follows a public index plus a fixed markup.",
           warning: "You need to understand how the index works before you sign up."
         };
       
       default:
         return {
-          headline: `Finally. ${rateType} Plans in ${cityName} Without the Tricks`,
-          subheadline: `${planCount} ${rateType} plans that work like they should.`,
+          headline: `${rateType} Plans in ${cityName}`,
+          subheadline: `${planCount} ${rateType} plans available.`,
           realityCheck: "We explain exactly how your rate is calculated.",
           warning: "Rate structure affects your total cost more than the advertised price."
         };
@@ -217,8 +217,8 @@ export class FacetedMessagingService {
    */
   private getGreenEnergyMessaging(greenType: string, cityName: string, planCount: number) {
     return {
-      headline: `Finally. Green Energy in ${cityName} Without the Greenwashing`,
-      subheadline: `Real Texas wind and solar, not marketing certificates from Ohio. ${planCount} plans that are actually green.`,
+      headline: `Green Energy Plans in ${cityName}`,
+      subheadline: `${planCount} renewable energy plans available.`,
       realityCheck: "100% renewable means all your electricity comes from Texas wind and solar farms.",
       warning: "Some 'green' plans just buy cheap carbon credits. We show you the real renewable content."
     };
@@ -231,40 +231,40 @@ export class FacetedMessagingService {
     switch (feature) {
       case 'no-deposit':
         return {
-          headline: `Finally. $0 Deposit Plans in ${cityName} That Don't Suck`,
-          subheadline: `Good credit shouldn't mean paying deposits. ${planCount} options with $0 down.`,
+          headline: `No Deposit Plans in ${cityName}`,
+          subheadline: `${planCount} plans with no deposit required.`,
           realityCheck: "No security deposit required if you have decent credit.",
           warning: "Check if they waive deposits or if there are other fees that replace them."
         };
       
       case 'prepaid':
         return {
-          headline: `Finally. Prepaid Electricity in ${cityName} That's Not a Ripoff`,
-          subheadline: `Control your budget without paying poverty penalties. ${planCount} fair prepaid options.`,
+          headline: `Prepaid Plans in ${cityName}`,
+          subheadline: `${planCount} prepaid electricity options available.`,
           realityCheck: "Pay before you use, get exact usage tracking, no surprise bills.",
           warning: "Some prepaid plans charge daily fees that add up fast. We'll show you which ones."
         };
       
       case 'free-nights':
         return {
-          headline: `Finally. Free Nights Plans in ${cityName} That Actually Save Money`,
-          subheadline: `Free nights only help if you use electricity at night. ${planCount} plans worth considering.`,
+          headline: `Free Nights Plans in ${cityName}`,
+          subheadline: `${planCount} plans with free nighttime electricity.`,
           realityCheck: "Free electricity from 9 PM to 6 AM, but higher daytime rates.",
           warning: "You need to use 40%+ of your electricity at night for these to pay off."
         };
       
       case 'free-weekends':
         return {
-          headline: `Finally. Free Weekends Plans in ${cityName} That Make Sense`,
-          subheadline: `Weekend warriors can save real money. ${planCount} plans that actually deliver savings.`,
+          headline: `Free Weekends Plans in ${cityName}`,
+          subheadline: `${planCount} plans with free weekend electricity.`,
           realityCheck: "Free electricity Saturday and Sunday, but you pay more weekdays.",
           warning: "Only worth it if you use most of your electricity on weekends."
         };
       
       default:
         return {
-          headline: `Finally. ${feature} Plans in ${cityName} That Work`,
-          subheadline: `${planCount} ${feature} plans that deliver what they promise.`,
+          headline: `${feature} Plans in ${cityName}`,
+          subheadline: `${planCount} ${feature} plans available.`,
           realityCheck: "We checked the fine print on every special feature.",
           warning: "Special features often come with higher base rates. Make sure the math works."
         };
@@ -276,9 +276,9 @@ export class FacetedMessagingService {
    */
   private getProviderMessaging(providerName: string, cityName: string, planCount: number) {
     return {
-      headline: `Finally. ${providerName} Plans in ${cityName} That Make Sense`,
-      subheadline: `${planCount} ${providerName} plans analyzed. Here's what you actually get with each one.`,
-      realityCheck: `We show what ${providerName} is actually like to deal with.`,
+      headline: `${providerName} Plans in ${cityName}`,
+      subheadline: `${planCount} ${providerName} plans available.`,
+      realityCheck: `View customer service ratings and plan details for ${providerName}.`,
       warning: "Provider reputation matters as much as the rate. We track both."
     };
   }
@@ -288,8 +288,8 @@ export class FacetedMessagingService {
    */
   private getGenericFilterMessaging(filterName: string, cityName: string, planCount: number) {
     return {
-      headline: `Finally. ${filterName} Plans in ${cityName} That Actually Work`,
-      subheadline: `Half of them aren't really ${filterName} at all. Found ${planCount} that actually deliver.`,
+      headline: `${filterName} Plans in ${cityName}`,
+      subheadline: `${planCount} ${filterName} plans available.`,
       realityCheck: "We checked each plan to make sure it matches what you're looking for.",
       warning: "If it has 40 pages of fine print, it's hiding something."
     };
@@ -311,7 +311,7 @@ export class FacetedMessagingService {
     }
     
     if (filterTypes.includes('provider') && filterTypes.includes('rate_type')) {
-      return "Same provider can have very different customer service for different plan types.";
+      return "Compare contract terms and monthly fees for each plan.";
     }
     
     return "Multiple filters mean fewer options, but better matches. Check the total monthly cost.";

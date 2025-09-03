@@ -69,33 +69,41 @@ const samplePlans = [
 
 <Layout title={title} description={description}>
   <main class="min-h-screen bg-background">
-    <!-- Elegant Hero Section - Minimalist Design -->
-    <section class="bg-gradient-to-br from-texas-navy via-blue-800 to-texas-navy">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 text-center">
-        <Badge variant="texas-accent" className="mb-6 text-sm px-4 py-2">
-          All Texas Plans
-        </Badge>
+    <!-- Hero Section using EnhancedSection -->
+    <EnhancedSection 
+      background="gradient-navy" 
+      padding="xl" 
+      maxWidth="6xl"
+    >
+      <div class="text-center text-white">
+        <div class="inline-block mb-6">
+          <AccentBox accentColor="gold" background="white" padding="sm">
+            <span class="text-texas-navy font-medium text-sm">All Texas Plans</span>
+          </AccentBox>
+        </div>
         
         <!-- Enhanced Typography -->
         <div class="space-y-6">
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight max-w-4xl mx-auto">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-4xl mx-auto">
             Texas Electricity Plans with <span class="text-texas-gold">Real Rates</span>
           </h1>
           
           <p class="text-lg md:text-xl text-blue-100 font-normal max-w-3xl mx-auto leading-relaxed">
             You've seen the <strong class="text-texas-red">"6.9¢" rates that cost 14¢.</strong> We show actual monthly costs from 
-            <span class="text-white font-bold">{DEFAULT_COUNTS.providerText} across {DEFAULT_COUNTS.cities}+ Texas cities.</span>
+            <span class="font-bold">{DEFAULT_COUNTS.providerText} across {DEFAULT_COUNTS.cities}+ Texas cities.</span>
           </p>
           
-          <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 max-w-2xl mx-auto border border-white/20 shadow-xl">
-            <p class="text-lg text-white font-semibold">
-              <span class="text-texas-gold">Real pricing, no teaser rates.</span> 
-              Find your best electricity plan in minutes.
-            </p>
+          <div class="max-w-2xl mx-auto">
+            <AccentBox accentColor="gold" background="white" padding="lg">
+              <p class="text-lg text-texas-navy font-semibold">
+                <span class="text-texas-gold">Real pricing, no teaser rates.</span> 
+                Find your best electricity plan in minutes.
+              </p>
+            </AccentBox>
           </div>
         </div>
 
-        <!-- Refined Search Input -->
+        <!-- Search Input -->
         <div class="max-w-lg mx-auto mt-8">
           <StandardZipInput 
             variant="hero" 
@@ -107,36 +115,34 @@ const samplePlans = [
           />
         </div>
       </div>
-    </section>
+    </EnhancedSection>
 
-    <!-- Search and Filter Section using shadcn Card -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <Card variant="elevated" className="mb-8">
-        <CardContent className="p-6">
-          <div class="flex flex-col lg:flex-row gap-4 mb-6">
-            <div class="flex-1 relative">
-              <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-              <Input placeholder="Search plans by name or provider..." className="pl-10" />
-            </div>
-            <Button variant="texas-primary" size="lg">
-              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.121A1 1 0 013 6.414V4z" />
-              </svg>
-              Advanced Filters
-            </Button>
+    <!-- Search and Filter Section using EnhancedCard -->
+    <EnhancedSection background="white" padding="md">
+      <EnhancedCard variant="elevated" padding="lg">
+        <div class="flex flex-col lg:flex-row gap-4 mb-6">
+          <div class="flex-1 relative">
+            <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <Input placeholder="Search plans by name or provider..." className="pl-10" />
           </div>
-          
-          <div class="flex flex-wrap gap-3">
-            <Badge variant="texas-outline" className="cursor-pointer">Fixed Rate Plans</Badge>
-            <Badge variant="success" className="cursor-pointer">100% Renewable</Badge>
-            <Badge variant="texas-accent" className="cursor-pointer">No Deposit Required</Badge>
-            <Badge variant="info" className="cursor-pointer">Free Nights & Weekends</Badge>
-            <Badge variant="outline" className="cursor-pointer">12 Month Terms</Badge>
-          </div>
-        </CardContent>
-      </Card>
+          <Button variant="texas-primary" size="lg">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.121A1 1 0 013 6.414V4z" />
+            </svg>
+            Advanced Filters
+          </Button>
+        </div>
+        
+        <div class="flex flex-wrap gap-3">
+          <Badge variant="texas-outline" className="cursor-pointer">Fixed Rate Plans</Badge>
+          <Badge variant="success" className="cursor-pointer">100% Renewable</Badge>
+          <Badge variant="texas-accent" className="cursor-pointer">No Deposit Required</Badge>
+          <Badge variant="info" className="cursor-pointer">Free Nights & Weekends</Badge>
+          <Badge variant="outline" className="cursor-pointer">12 Month Terms</Badge>
+        </div>
+      </EnhancedCard>
 
       <!-- Enhanced Results Summary -->
       <EnhancedCard variant="gradient" padding="lg">
@@ -182,7 +188,7 @@ const samplePlans = [
           </p>
         </AccentBox>
       </div>
-    </div>
+    </EnhancedSection>
 
     <!-- Enhanced Information Section -->
     <EnhancedSection background="cream" padding="xl">

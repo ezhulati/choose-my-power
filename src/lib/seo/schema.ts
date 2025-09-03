@@ -346,7 +346,7 @@ function generateFAQSchema(options: SchemaGeneratorOptions): object {
       name: `Are there any fees for switching electricity providers in ${cityName}?`,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: `There are no fees from the utility company or government for switching electricity providers in Texas. However, you may have an early termination fee if you cancel your current plan before the contract ends. Check your current contract terms for details.`
+        text: `There are no fees from the utility company or government for switching electricity providers in Texas. Early termination fees may apply if you switch providers before your contract ends, but Texas law protects you from these fees if you're moving to a new address.`
       }
     }
   ];

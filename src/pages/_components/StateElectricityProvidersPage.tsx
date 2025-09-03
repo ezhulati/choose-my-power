@@ -3,6 +3,9 @@ import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { ProviderCard } from '../../components/ProviderCard';
 import { mockProviders, mockStates } from '../../data/mockData';
 import { MapPin, TrendingDown, Users, Zap, Filter, Calculator, Leaf, Shield } from 'lucide-react';
+import EnhancedSectionReact from '../../components/ui/EnhancedSectionReact';
+import EnhancedCardReact from '../../components/ui/EnhancedCardReact';
+import AccentBoxReact from '../../components/ui/AccentBoxReact';
 
 // Extend Window interface to include our navigation function
 declare global {
@@ -31,9 +34,9 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
   
   if (!stateData) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">State Not Found</h1>
+      <EnhancedSectionReact background="gray" padding="xl">
+        <EnhancedCardReact variant="elevated" padding="lg" className="text-center max-w-lg mx-auto">
+          <h1 className="text-2xl font-bold text-texas-navy mb-4">State Not Found</h1>
           <p className="text-gray-600 mb-8">The state you're looking for doesn't exist in our database.</p>
           <button
             onClick={() => navigate('/')}
@@ -41,8 +44,8 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
           >
             Return Home
           </button>
-        </div>
-      </div>
+        </EnhancedCardReact>
+      </EnhancedSectionReact>
     );
   }
 
@@ -68,10 +71,9 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-texas-cream/20">
       {/* Header */}
-      <div className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <EnhancedSectionReact background="white" padding="lg" className="border-b border-gray-200">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
             <div className="mb-6 lg:mb-0">
               <nav className="text-sm text-gray-500 mb-2">
@@ -136,14 +138,13 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
             ))}
           </div>
         </div>
-      </div>
+      </EnhancedSectionReact>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <EnhancedSectionReact background="cream" padding="lg">
         <div className="grid lg:grid-cols-4 gap-8">
           {/* Sidebar */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-lg shadow-sm border p-6 mb-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Filters</h3>
+            <EnhancedCardReact title="Filters" variant="elevated" className="mb-6">
               
               <div className="space-y-4">
                 <div>
@@ -173,11 +174,10 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
                   </select>
                 </div>
               </div>
-            </div>
+            </EnhancedCardReact>
 
             {/* Top Cities */}
-            <div className="bg-white rounded-lg shadow-sm border p-6 mb-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Major Cities</h3>
+            <EnhancedCardReact title="Major Cities" variant="elevated" className="mb-6">
               <div className="space-y-2">
                 {stateData.topCities.map((city) => (
                   <button
@@ -195,11 +195,10 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
                   </button>
                 ))}
               </div>
-            </div>
+            </EnhancedCardReact>
 
             {/* Utility Info */}
-            <div className="bg-white rounded-lg shadow-sm border p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Utility Companies</h3>
+            <EnhancedCardReact title="Utility Companies" variant="elevated">
               <div className="space-y-2">
                 {stateData.utilityCompanies.map((utility, index) => (
                   <button
@@ -211,7 +210,7 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
                   </button>
                 ))}
               </div>
-            </div>
+            </EnhancedCardReact>
           </div>
 
           {/* Main Content */}
@@ -239,11 +238,11 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
             </div>
 
             {/* State Market Information */}
-            <div className="bg-white rounded-lg shadow-sm border p-6 mb-8">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                {stateData.name} Electricity Market Overview
-              </h3>
-              
+            <EnhancedCardReact 
+              title={`${stateData.name} Electricity Market Overview`}
+              variant="elevated"
+              className="mb-8"
+            >
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <h4 className="font-medium text-gray-900 mb-3">Market Deregulation</h4>
@@ -280,7 +279,7 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
                   </div>
                 </div>
               </div>
-            </div>
+            </EnhancedCardReact>
 
             {/* Quick Actions */}
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
@@ -322,11 +321,10 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
             </div>
 
             {/* Category Leaders Preview */}
-            <div className="bg-white rounded-lg shadow-sm border p-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                Category Leaders in {stateData.name}
-              </h3>
-              
+            <EnhancedCardReact 
+              title={`Category Leaders in ${stateData.name}`}
+              variant="elevated"
+            >
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div className="text-center p-4 border border-gray-200 rounded-lg">
                   <Leaf className="h-8 w-8 text-green-600 mx-auto mb-2" />
@@ -365,10 +363,10 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
                   View all provider categories & expert rankings →
                 </button>
               </div>
-            </div>
+            </EnhancedCardReact>
           </div>
         </div>
-      </div>
+      </EnhancedSectionReact>
     </div>
   );
 }

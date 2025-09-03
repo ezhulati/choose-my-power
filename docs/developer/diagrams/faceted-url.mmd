@@ -1,0 +1,26 @@
+sequenceDiagram
+    participant User
+    participant FacetedRouter
+    participant FilterMapper
+    participant ComparePowerClient
+    participant Astro Page
+
+    User->>Astro Page: GET /electricity-plans/:city/[:filters]
+    Astro Page->>FacetedRouter: validateRoute(path, {requirePlans?})
+    FacetedRouter->>FacetedRouter: parse city + filters
+    FacetedRouter->>FacetedRouter: validate city → TDSP DUNS
+    FacetedRouter->>FilterMapper: mapFiltersToApiParams(city, filters, duns)
+    FilterMapper-->>FacetedRouter: {isValid, apiParams, appliedFilters}
+    FacetedRouter->>FacetedRouter: generate canonical URL (+shouldIndex)
+    alt requirePlans && isValid
+      FacetedRouter->>ComparePowerClient: fetchPlans(apiParams)
+      ComparePowerClient-->>FacetedRouter: plans
+    end
+    alt invalid
+      FacetedRouter-->>Astro Page: {redirectUrl or 404}
+      Astro Page-->>User: Redirect or 404
+    else valid
+      FacetedRouter-->>Astro Page: routeResult (canonical, shouldIndex, plans?)
+      Astro Page-->>User: Render page
+    end
+

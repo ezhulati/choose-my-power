@@ -141,6 +141,23 @@ function sanitizeString(input: string): string {
 
 export async function onRequest(context: APIContext, next: MiddlewareNext) {
   const { request, url } = context;
+  
+  // Handle trailing slash removal for faceted navigation routes
+  if (url.pathname !== '/' && url.pathname.endsWith('/')) {
+    // Only redirect faceted navigation routes to maintain consistency with trailingSlash: 'never'
+    if (url.pathname.startsWith('/electricity-plans/')) {
+      const newUrl = new URL(url);
+      newUrl.pathname = url.pathname.slice(0, -1); // Remove trailing slash
+      
+      return new Response(null, {
+        status: 301,
+        headers: {
+          'Location': newUrl.toString()
+        }
+      });
+    }
+  }
+  
   const response = await next();
 
   // Skip security headers for static assets in development

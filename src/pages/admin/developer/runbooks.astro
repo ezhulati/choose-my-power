@@ -1,0 +1,56 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { isAdminEnabled } from '../../../lib/utils/admin-guard';
+
+const title = 'Developer: Incident Runbooks';
+const description = 'Quick fix guides for routing, ZIP resolution, and plan caching.';
+---
+
+{!isAdminEnabled() ? Astro.redirect('/404', 404) : null}
+
+<Layout title={title} description={description} noIndex={true}>
+  <main class="min-h-screen bg-gray-50 py-10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold text-texas-navy mb-6">Incident Runbooks</h1>
+      <p class="text-gray-700 mb-6">Short, practical checklists for fast recovery. Keep these up to date after you change core code.</p>
+
+      <section class="space-y-6">
+        <div class="bg-white border rounded-lg p-5 shadow-sm">
+          <h2 class="text-xl font-semibold text-texas-navy mb-2">1) Routing/404/Trailing Slash</h2>
+          <ul class="list-disc ml-5 text-sm text-gray-700 space-y-1">
+            <li>Verify path has no trailing slash (trailingSlash: <code>never</code>).</li>
+            <li>Netlify redirects exist for <code>/electricity-plans/*/</code>, <code>/texas/*/</code>, <code>/admin/*/</code>.</li>
+            <li>Canonical and breadcrumb URLs emit without trailing slashes.</li>
+            <li>Inspect: <code>astro.config.mjs</code>, <code>netlify.toml</code>, <code>src/pages/electricity-plans/[...path].astro</code>, <code>src/pages/texas/[city].astro</code>, sitemaps.</li>
+          </ul>
+        </div>
+
+        <div class="bg-white border rounded-lg p-5 shadow-sm">
+          <h2 class="text-xl font-semibold text-texas-navy mb-2">2) ZIP Resolution (Form → City)</h2>
+          <ul class="list-disc ml-5 text-sm text-gray-700 space-y-1">
+            <li>Console shows script loaded; guard prevents double-init.</li>
+            <li><code>/api/zip-lookup</code> returns JSON for AJAX; 302 for HTML Accept.</li>
+            <li>Inspect: <code>public/js/zip-lookup.js</code>, <code>src/components/StandardZipInput.astro</code>, <code>src/pages/api/zip-lookup.ts</code>.</li>
+          </ul>
+        </div>
+
+        <div class="bg-white border rounded-lg p-5 shadow-sm">
+          <h2 class="text-xl font-semibold text-texas-navy mb-2">3) Plan Fetching/Caching/Latency</h2>
+          <ul class="list-disc ml-5 text-sm text-gray-700 space-y-1">
+            <li>Prefer DB-first path: <code>getPlansWithCache()</code>.</li>
+            <li>Check cache TTLs and warmers; inspect slow-request logs.</li>
+            <li>Inspect: <code>src/lib/api/comparepower-client.ts</code>, <code>src/lib/database/plan-repository.ts</code>.</li>
+          </ul>
+        </div>
+
+        <div class="bg-white border rounded-lg p-5 shadow-sm">
+          <h2 class="text-xl font-semibold text-texas-navy mb-2">4) Faceted URL Validation</h2>
+          <ul class="list-disc ml-5 text-sm text-gray-700 space-y-1">
+            <li>Confirm filterMapper patterns and canonical ordering.</li>
+            <li>Inspect: <code>src/lib/faceted/faceted-router.ts</code>.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </main>
+</Layout>

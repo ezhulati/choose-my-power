@@ -1,0 +1,3246 @@
+{
+  "timestamp": "2025-09-03T18:10:11.003Z",
+  "testUrl": "http://localhost:4324/electricity-plans/dallas",
+  "finalUrl": "http://localhost:4324/electricity-plans/dallas/reliant",
+  "networkLogs": [
+    {
+      "timestamp": "2025-09-03T18:10:09.168Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/electricity-plans/dallas/reliant",
+      "headers": {
+        "referer": "http://localhost:4324/electricity-plans/dallas",
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"macOS\""
+      },
+      "resourceType": "document"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.719Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/electricity-plans/dallas/reliant",
+      "headers": {
+        "connection": "keep-alive",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked",
+        "vary": "Origin",
+        "cache-control": "public, max-age=3600, s-maxage=7200",
+        "content-type": "text/html",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(self), payment=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-csp-nonce": "+TSNtA+auFpZKoGa680yew==",
+        "x-frame-options": "DENY",
+        "x-xss-protection": "1; mode=block"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.724Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/_astro/_state_.Cspq1bGy.css",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "dpr": "1",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/electricity-plans/dallas/reliant",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "resourceType": "stylesheet"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.725Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/@vite/client",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/electricity-plans/dallas/reliant",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.725Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/@fs/Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/astro/dist/runtime/client/dev-toolbar/entrypoint.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/electricity-plans/dallas/reliant",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.725Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/@fs/Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/astro/dist/runtime/client/dev-toolbar/entrypoint.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"259e-akTsu/6M5dfshAQKOnVYKiEomXk\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "52465",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.725Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/@id/astro:scripts/page.js",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/electricity-plans/dallas/reliant",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.725Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/src/index.css",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/electricity-plans/dallas/reliant",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.725Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/src/styles/dropdown-z-index-enterprise-solution.css",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/electricity-plans/dallas/reliant",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.725Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/src/styles/footer-modern.css",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/electricity-plans/dallas/reliant",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.725Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/src/styles/dynamic-messaging.css",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/electricity-plans/dallas/reliant",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.725Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/HeaderWrapper.astro?astro&type=style&index=0&lang.css",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/electricity-plans/dallas/reliant",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.725Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/FooterWrapper.astro?astro&type=style&index=0&lang.css",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/electricity-plans/dallas/reliant",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.725Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/src/layouts/Layout.astro?astro&type=style&index=0&lang.css",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/electricity-plans/dallas/reliant",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.725Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/src/layouts/Layout.astro?astro&type=style&index=1&lang.css",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/electricity-plans/dallas/reliant",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.725Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/src/layouts/Layout.astro?astro&type=style&index=2&lang.css",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/electricity-plans/dallas/reliant",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.725Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/src/layouts/Layout.astro?astro&type=style&index=3&lang.css",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/electricity-plans/dallas/reliant",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.725Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/HeaderWrapper.astro?astro&type=script&index=0&lang.ts",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/electricity-plans/dallas/reliant",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.726Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/.netlify/functions/health",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/electricity-plans/dallas/reliant",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-purpose": "prefetch",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "other"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.726Z",
+      "type": "RESPONSE",
+      "status": 404,
+      "url": "http://localhost:4324/_astro/_state_.Cspq1bGy.css",
+      "headers": {
+        "transfer-encoding": "chunked",
+        "keep-alive": "timeout=5",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "content-type": "text/html",
+        "vary": "Origin",
+        "connection": "keep-alive"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.727Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/@id/astro:scripts/page.js",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "608",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "etag": "W/\"5d-8H9NukbcW9eJPbCEuQ1uM3wzze0\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.727Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/src/styles/dropdown-z-index-enterprise-solution.css",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "24225",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "etag": "W/\"5ea1-9+cOhbg+lhjzWbytvRIpC+Lbh5U\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.727Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/src/styles/footer-modern.css",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "22724",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "etag": "W/\"58c4-oCtVIzU4OpbVwA1RbomHt2F4mwY\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.727Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/@id/__x00__astro:toolbar:internal",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/@fs/Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/astro/dist/runtime/client/dev-toolbar/entrypoint.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.727Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/helpers.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/@fs/Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/astro/dist/runtime/client/dev-toolbar/entrypoint.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.727Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/helpers.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"a48-QTShxp2Z4vIdJg5NFKKO/4SYPIA\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "14267",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.727Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/settings.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/@fs/Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/astro/dist/runtime/client/dev-toolbar/entrypoint.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.727Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/settings.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"4a9-jVLaZ5Opsbmd1O3s5HZDmi/vArU\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "6640",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.727Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/@vite/client",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "287617",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "etag": "W/\"c752-/xmJhy2/o/Wv1hNrYr/ZQp3DrSA\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.728Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/@id/astro:scripts/before-hydration.js",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/electricity-plans/dallas/reliant",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.728Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/virtual-modules/prefetch.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/@id/astro:scripts/page.js",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.728Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/virtual-modules/prefetch.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"47-dl2Jby0kVQ8q6crfV6NnlbQzStQ\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "518",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.729Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/src/index.css",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "224974",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "etag": "W/\"36ece-9Eymz5mZZ2OLXp0A+RkiPAexyaM\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.729Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/node_modules/vite/dist/client/env.mjs",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/@vite/client",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.729Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/src/styles/dynamic-messaging.css",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "2901",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "etag": "W/\"b55-gjalYAqjEhQ/tD7MabuV4oZP3YU\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.729Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/src/components/HeaderWrapper.astro?astro&type=style&index=0&lang.css",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "5185",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "etag": "W/\"1441-1Rz6UiXPWhJBUfVcnjDYq67kqEs\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.729Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/prefetch/index.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/astro/dist/virtual-modules/prefetch.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.729Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/prefetch/index.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"18e2-0zE/bLFA5ANRPAhmmES1t+tcCs0\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "34401",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.729Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/src/components/FooterWrapper.astro?astro&type=style&index=0&lang.css",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "3014",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "etag": "W/\"bc6-Td0tI3dTahogbhIfRmpA19NbuEQ\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.729Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/src/layouts/Layout.astro?astro&type=style&index=0&lang.css",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "1858",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "etag": "W/\"742-eJqKthMEkyb1fAOW+OL6QPbL+2c\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.729Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/src/layouts/Layout.astro?astro&type=style&index=1&lang.css",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "1253",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "etag": "W/\"4e5-pM1Z8Il9VDdyh77e8fCm7S4mp/I\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.730Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/src/layouts/Layout.astro?astro&type=style&index=2&lang.css",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "12585",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "etag": "W/\"3129-3nKd/sNKKeCjQm3Dv7JlY7SSiHc\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.730Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/src/components/HeaderWrapper.astro?astro&type=script&index=0&lang.ts",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "22473",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "etag": "W/\"546-rVKRtEJ9p90f5etiBcZs9gePZTo\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.730Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/src/layouts/Layout.astro?astro&type=style&index=3&lang.css",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "2685",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "etag": "W/\"a7d-80pJmbeWxNEZKPWEXJw6azirRB8\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.730Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/@id/__x00__astro:toolbar:internal",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "8955",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "etag": "W/\"5b8-5/p4NBi9aHXc/e+Q8mCekjh9XjY\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.730Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/@id/astro:scripts/before-hydration.js",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "988",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "etag": "W/\"a1-w0Eb6ONthIvPGaAjbUu7cRZqf10\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.730Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/@react-refresh",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/@id/astro:scripts/before-hydration.js",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.730Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/node_modules/vite/dist/client/env.mjs",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "5026",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "etag": "W/\"35f-Sujrrp2U3bSgv/TXNvvkK0fUvCE\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.732Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/astro.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/@fs/Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/astro/dist/runtime/client/dev-toolbar/entrypoint.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.732Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/astro.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"4baa-C6Hh3p+gW7PhWsDbyFzkiGJO5dY\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "109029",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.732Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/index.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/@fs/Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/astro/dist/runtime/client/dev-toolbar/entrypoint.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.732Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/index.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"1a0b-2JuiU8hvwH1o3hHL3AlRaocQRp0\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "37694",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.732Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/xray.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/@fs/Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/astro/dist/runtime/client/dev-toolbar/entrypoint.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.732Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/xray.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"1563-zm7dlfBwZjE+egjvXwUVFGPnl2s\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "30990",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.732Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/settings.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/@fs/Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/astro/dist/runtime/client/dev-toolbar/entrypoint.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.732Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/settings.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"1880-yvc1NLw2R2GSP5Tf+82Q+jH/fV8\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "35003",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.733Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/toolbar.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/@fs/Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/astro/dist/runtime/client/dev-toolbar/entrypoint.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.733Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/toolbar.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"3cef-U7r/20OTuiexTMNpXla6NTGfiAw\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "86326",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.733Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/index.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/@fs/Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/astro/dist/runtime/client/dev-toolbar/entrypoint.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.733Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/index.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"596-2TkwB6+7xSVNOO4wEescA9qb8Gw\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "6537",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.737Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.ttf",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "http://localhost:4324/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "resourceType": "font"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.737Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.ttf",
+      "headers": {
+        "content-encoding": "gzip",
+        "age": "58311",
+        "report-to": "{\"group\":\"apps-themes\",\"max_age\":2592000,\"endpoints\":[{\"url\":\"https://csp.withgoogle.com/csp/report-to/apps-themes\"}]}",
+        "x-content-type-options": "nosniff",
+        "expires": "Thu, 03 Sep 2026 01:58:13 GMT",
+        "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+        "date": "Wed, 03 Sep 2025 01:58:13 GMT",
+        "last-modified": "Wed, 28 May 2025 18:58:09 GMT",
+        "content-type": "font/ttf",
+        "vary": "Accept-Encoding",
+        "cache-control": "public, max-age=31536000",
+        "timing-allow-origin": "*",
+        "cross-origin-opener-policy": "same-origin; report-to=\"apps-themes\"",
+        "cross-origin-resource-policy": "cross-origin",
+        "content-security-policy-report-only": "require-trusted-types-for 'script'; report-uri https://csp.withgoogle.com/csp/apps-themes",
+        "accept-ranges": "bytes",
+        "access-control-allow-origin": "*",
+        "content-length": "158096",
+        "x-xss-protection": "0",
+        "server": "sffe"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.737Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYMZg.ttf",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "http://localhost:4324/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "resourceType": "font"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.737Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYMZg.ttf",
+      "headers": {
+        "content-encoding": "gzip",
+        "age": "58289",
+        "report-to": "{\"group\":\"apps-themes\",\"max_age\":2592000,\"endpoints\":[{\"url\":\"https://csp.withgoogle.com/csp/report-to/apps-themes\"}]}",
+        "x-content-type-options": "nosniff",
+        "expires": "Thu, 03 Sep 2026 01:58:35 GMT",
+        "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+        "date": "Wed, 03 Sep 2025 01:58:35 GMT",
+        "last-modified": "Wed, 28 May 2025 18:58:09 GMT",
+        "content-type": "font/ttf",
+        "vary": "Accept-Encoding",
+        "cache-control": "public, max-age=31536000",
+        "timing-allow-origin": "*",
+        "cross-origin-opener-policy": "same-origin; report-to=\"apps-themes\"",
+        "cross-origin-resource-policy": "cross-origin",
+        "content-security-policy-report-only": "require-trusted-types-for 'script'; report-uri https://csp.withgoogle.com/csp/apps-themes",
+        "accept-ranges": "bytes",
+        "access-control-allow-origin": "*",
+        "content-length": "162614",
+        "x-xss-protection": "0",
+        "server": "sffe"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.737Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYMZg.ttf",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "http://localhost:4324/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "resourceType": "font"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.737Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYMZg.ttf",
+      "headers": {
+        "content-encoding": "gzip",
+        "age": "57712",
+        "report-to": "{\"group\":\"apps-themes\",\"max_age\":2592000,\"endpoints\":[{\"url\":\"https://csp.withgoogle.com/csp/report-to/apps-themes\"}]}",
+        "x-content-type-options": "nosniff",
+        "expires": "Thu, 03 Sep 2026 02:08:12 GMT",
+        "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+        "date": "Wed, 03 Sep 2025 02:08:12 GMT",
+        "last-modified": "Wed, 28 May 2025 18:58:08 GMT",
+        "content-type": "font/ttf",
+        "vary": "Accept-Encoding",
+        "cache-control": "public, max-age=31536000",
+        "timing-allow-origin": "*",
+        "cross-origin-opener-policy": "same-origin; report-to=\"apps-themes\"",
+        "cross-origin-resource-policy": "cross-origin",
+        "content-security-policy-report-only": "require-trusted-types-for 'script'; report-uri https://csp.withgoogle.com/csp/apps-themes",
+        "accept-ranges": "bytes",
+        "access-control-allow-origin": "*",
+        "content-length": "163032",
+        "x-xss-protection": "0",
+        "server": "sffe"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.739Z",
+      "type": "RESPONSE",
+      "status": 404,
+      "url": "http://localhost:4324/.netlify/functions/health",
+      "headers": {
+        "transfer-encoding": "chunked",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "connection": "keep-alive",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(self), payment=()",
+        "x-csp-nonce": "C3Vev/9mopVbL1Hd3uXNtg==",
+        "keep-alive": "timeout=5",
+        "x-xss-protection": "1; mode=block",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "content-type": "text/html",
+        "vary": "Origin",
+        "x-frame-options": "DENY"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.739Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/@react-refresh",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "113132",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "etag": "W/\"5459-W4xlIRvs7CzM1FW1IVU0Uw0TIxA\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.739Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/icons.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/astro.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.740Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/icons.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"bd82-o5xIVd0AJT06SQ0KGZZ3IGSCHAg\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "277585",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.740Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/utils/icons.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/astro.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.740Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/utils/icons.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"42f-aqcn0CYmlcQmJypksU1tOJIuai0\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "5650",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.740Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/utils/window.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/astro.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.740Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/utils/window.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"5f8-pOpt7DS9h/qnh/DwD/bH9lW9NQg\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "7595",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.740Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/utils/highlight.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/index.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.740Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/utils/highlight.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"8c7-BnrBb8USrJkydFknEImn7DCTueo\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "11750",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.740Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/annotations.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/index.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.740Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/annotations.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"31b-s8nVFJtb2eX49iGqnQKiKRecc7w\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "3862",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.740Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/index.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/index.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.740Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/index.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"528-7CR/khw7O4SFzidN4a5/h26WgEw\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "7035",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.740Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-list-item.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/index.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.740Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-list-item.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"b55-9SfizRAfXEwZF/dLLi21FEmow7M\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "16740",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.740Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-list-window.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/index.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.740Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-list-window.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"23f6-UAxJBnp8Ox7ftaC6h0xjpOHs2Ko\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "52021",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.740Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-ui.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/index.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.740Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-ui.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"1627-nCyh2qay5XIcwVo2BE0+GIAO7bs\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "28018",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.740Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/html-escaper/esm/index.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/xray.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.741Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/html-escaper/esm/index.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"90d-/bcQXrmhCDkUiAafXnWfinLKnJs\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "12896",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.741Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/window.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/settings.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.741Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/window.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"cc9-fsGofoSxGGIOQxODoqzLEC0BvyQ\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "19284",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.741Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/badge.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/index.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.741Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/badge.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"b01-638PXeys4sFj3/o6Q7bBtlnsAJg\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "16480",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.741Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/button.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/index.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.741Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/button.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"1114-+K/dhc2gygTJFAAedRC+sRgoSqQ\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "25195",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.741Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/card.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/index.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.741Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/card.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"d28-MR8mKjsrE7/w+8sBHbFT0sS1zCE\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "19839",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.741Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/highlight.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/index.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.741Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/highlight.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"f15-yuyT6lV7HLGiMtZ+50NQ+XQxqiY\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "21660",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.741Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/icon.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/index.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.741Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/icon.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"3dc-/9EnNEd9G2Bm+gA9+CJIxperJV8\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "5667",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.741Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/radio-checkbox.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/index.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.741Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/radio-checkbox.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"b51-zOEuwA3tZ6iFdTDiabpZT79AKw4\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "16332",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.741Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/select.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/index.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.741Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/select.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"c24-YsYjnrBgqOBt0kqLLbrCLiM1SaE\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "18147",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.741Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/toggle.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/index.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.741Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/toggle.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"cbd-pRJMMzHqmqnFbQBHJbBSebHnF7E\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "19016",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.742Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/tooltip.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/index.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.742Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/tooltip.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"fe9-4h8sIBqyEe2GfgzZQ+wu4C5dkHA\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "23080",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.742Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/a11y.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/index.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.742Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/a11y.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"5b45-3BPVeVInEGofZCpd2vt9kNPIoOc\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "122184",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.742Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/perf.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/index.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.742Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/perf.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"114f-9MD+nwELzKg6a8cZldT1onUHR9s\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "23282",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.742Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/lightning-bolt-icon.svg",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "dpr": "1",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/electricity-plans/dallas/reliant",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "resourceType": "other"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.742Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/astro___aria-query.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/a11y.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.742Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/astro___aria-query.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"321e0-miggcIUOqElqPDpYbXExS3lmRJg\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "205280",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.742Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/astro___axobject-query.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/a11y.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.743Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/astro___axobject-query.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"1b796-Z/Xi/cABcHoEFtQqpP+9Sj/KY4Q\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "112534",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.743Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/ui/ProductDetailsPageShadcn.tsx",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/electricity-plans/dallas/reliant",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.743Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/@astrojs_react_client__js.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/electricity-plans/dallas/reliant",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.743Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/@astrojs_react_client__js.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"13d1-eLHtLKTj/2ZbUecHguCBbQuKiHg\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "5073",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.743Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-G3PMV62Z.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/.vite/deps/astro___aria-query.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.743Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-G3PMV62Z.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"5d9-6wRzMCCzieNLVIrKd7nF1XzrMAE\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "7968",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.743Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/lightning-bolt-icon.svg",
+      "headers": {
+        "cache-control": "no-cache",
+        "content-length": "329",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "etag": "W/\"329-1756423527772\"",
+        "content-type": "image/svg+xml",
+        "vary": "Origin",
+        "last-modified": "Thu, 28 Aug 2025 23:25:27 GMT"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.743Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-NXESFFTV.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/.vite/deps/@astrojs_react_client__js.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.743Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-NXESFFTV.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"e3864-tWQo+ZzuoqxUOGaDTi9blxocp8U\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "931940",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.743Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-DRWLMN53.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/.vite/deps/@astrojs_react_client__js.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.743Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-DRWLMN53.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"12ffa-/vfmzF747P3wpLpOv7bt4fOIE0k\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "77818",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.753Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/src/components/ui/ProductDetailsPageShadcn.tsx",
+      "headers": {
+        "cache-control": "no-cache",
+        "etag": "W/\"fe59-z6KZF4HqYZq0+VdtIH2VVpN7AoI\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "113716",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.753Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/favicon.svg",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "dpr": "1",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/electricity-plans/dallas/reliant",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "resourceType": "other"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.753Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/src/components/ui/ProductDetailsPageShadcn.tsx",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.754Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"90ab-WsSYlmg/CUBXaPWxobzUmGorpZI\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "37035",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.754Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/react.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/src/components/ui/ProductDetailsPageShadcn.tsx",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.754Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/react.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"b9-dtXtxWzOIPxoGIQDYfhUbk9lg58\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "1024",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.754Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/ui/card.tsx",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/src/components/ui/ProductDetailsPageShadcn.tsx",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.754Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/ui/tabs.tsx",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/src/components/ui/ProductDetailsPageShadcn.tsx",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.754Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/ui/badge.tsx",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/src/components/ui/ProductDetailsPageShadcn.tsx",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.754Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/ui/button.tsx",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/src/components/ui/ProductDetailsPageShadcn.tsx",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.754Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/ui/slider.tsx",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/src/components/ui/ProductDetailsPageShadcn.tsx",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.754Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/ui/breadcrumb.tsx",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/src/components/ui/ProductDetailsPageShadcn.tsx",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.754Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/lucide-react.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/src/components/ui/ProductDetailsPageShadcn.tsx",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.754Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/ui/ProviderLogo.tsx",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/src/components/ui/ProductDetailsPageShadcn.tsx",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.754Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/favicon.svg",
+      "headers": {
+        "cache-control": "no-cache",
+        "content-length": "365",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "etag": "W/\"365-1756423507049\"",
+        "content-type": "image/svg+xml",
+        "vary": "Origin",
+        "last-modified": "Thu, 28 Aug 2025 23:25:07 GMT"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.754Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/js/web-vitals.mjs",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/electricity-plans/dallas/reliant",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.759Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/src/components/ui/card.tsx",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "12761",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "etag": "W/\"17f6-z7LaMIYP6IYCKrgtL16GXh6PPOs\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.760Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/src/components/ui/badge.tsx",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "9652",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "etag": "W/\"1211-YSSqnKIOA8bb4rnsNMOnbmp4mXA\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.760Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/src/components/ui/tabs.tsx",
+      "headers": {
+        "cache-control": "no-cache",
+        "etag": "W/\"123d-ABjwFxw6QXA/84TOWTX1getmnjI\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "9420",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.760Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/src/components/ui/button.tsx",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "12382",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "etag": "W/\"15db-3nbGFTH4hKUSl6tbpVRWC1mNUPA\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.760Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/src/components/ui/slider.tsx",
+      "headers": {
+        "cache-control": "no-cache",
+        "etag": "W/\"14b4-hkitFcJkdZ/oED3XE8GLif2XjjQ\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "10311",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.760Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/src/components/ui/breadcrumb.tsx",
+      "headers": {
+        "cache-control": "no-cache",
+        "etag": "W/\"1b70-G4qufG9YvobRE4CxPM4HJh7vIh8\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "14031",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.760Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/js/web-vitals.mjs",
+      "headers": {
+        "cache-control": "no-cache",
+        "etag": "W/\"3187-1756442295045\"",
+        "access-control-allow-origin": "http://localhost:4324",
+        "content-length": "3187",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin",
+        "last-modified": "Fri, 29 Aug 2025 04:38:15 GMT"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.760Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/src/components/ui/ProviderLogo.tsx",
+      "headers": {
+        "cache-control": "no-cache",
+        "etag": "W/\"224c-w/QaVCUemNWZuuq6LDOTPgPE41I\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "22895",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.760Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/src/lib/utils.ts",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/src/components/ui/card.tsx",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.761Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/class-variance-authority.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/src/components/ui/badge.tsx",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.761Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/class-variance-authority.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"929-1oqKU9rkVv6EXgdZrHT6oLqx494\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "2345",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.761Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/@radix-ui_react-tabs.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/src/components/ui/tabs.tsx",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.761Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/@radix-ui_react-slot.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/src/components/ui/button.tsx",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.761Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/@radix-ui_react-slot.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"18f-bCyDRuysW+ukr2fjXahhm4kPdHw\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "2074",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.761Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/@radix-ui_react-slider.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/src/components/ui/slider.tsx",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.761Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/src/lib/logo/provider-mappings.ts",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/src/components/ui/ProviderLogo.tsx",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.761Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/lucide-react.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"bf176-Uk0JG3RwrsDafvYbMFmXSpAHkHM\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "782710",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.761Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-U7P2NEEE.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/.vite/deps/class-variance-authority.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.761Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-U7P2NEEE.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"272-lLdaNCqOK0QFYWnFfdFD5rGhoYk\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "626",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.761Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-TLMPZXCM.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/.vite/deps/@radix-ui_react-slot.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.761Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-TLMPZXCM.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"14db-wGKHICvGagaD6C7qs65ivrSFIVg\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "5339",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.762Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-6PXSGDAH.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/.vite/deps/@radix-ui_react-slot.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.762Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-6PXSGDAH.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"91f8-s3lzF68lX04B9MOpqJR/Ly2u2pc\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "37368",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.762Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/src/lib/utils.ts",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "734",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "etag": "W/\"d7-Kjhy8OiVxWXbABve4hIKTedERPw\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.762Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/@radix-ui_react-tabs.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"52c0-l+2HnCf3WTB8y1OacxPY3nKrX3w\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "21184",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.762Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/clsx.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/src/lib/utils.ts",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.762Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/clsx.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"ce-B4dXthnPzPB2IFrD05pgUzwYWHE\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "1157",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.762Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/tailwind-merge.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/src/lib/utils.ts",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.762Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/tailwind-merge.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"1652b-uYSaI72xCNZEuH7IsF1buX01f+w\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "91435",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.762Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-RGGSQVJY.js?v=1883c414",
+      "headers": {
+        "origin": "http://localhost:4324",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "viewport-width": "1280",
+        "referer": "http://localhost:4324/node_modules/.vite/deps/@radix-ui_react-tabs.js?v=1883c414",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0",
+        "dpr": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+      },
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.762Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/src/lib/logo/provider-mappings.ts",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "11864",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "etag": "W/\"fad-345zG/S+0SGctZSujAojvJkWlvQ\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.762Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/@radix-ui_react-slider.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"587f-mSJI7mdgjJEVKwSZKC2fpBb3ZHI\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "22655",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.763Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-RGGSQVJY.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"2ce1-4KCFpd00++BK5iO7BxV6zVZh0Jo\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "11489",
+        "date": "Wed, 03 Sep 2025 18:10:09 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.790Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "https://assets.comparepower.com/images/reliant.svg",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "http://localhost:4324/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "resourceType": "image"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.790Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "https://assets.comparepower.com/images/reliant.svg",
+      "headers": {
+        "x-goog-metageneration": "1",
+        "x-goog-hash": "crc32c=gOPz+g==, md5=/YEuR6ljejE43+Qp86fhkw==",
+        "cf-cache-status": "HIT",
+        "etag": "W/\"fd812e47a9637a3138dfe429f3a7e193\"",
+        "age": "156",
+        "content-encoding": "br",
+        "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=YpnwYB%2BS9DxEqyf2YaNMv6E5O2fdrgQdQwMAAHVL%2BMxdiSV3Y8v5dP4SEKFfrVPLtbLs8BqOtMF6CDGjfVmOzN7N2ivqMcmC3UFpxH3lPJzHMnvC\"}]}",
+        "x-goog-stored-content-encoding": "identity",
+        "expires": "Wed, 03 Sep 2025 19:07:28 GMT",
+        "x-goog-stored-content-length": "3944",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "image/svg+xml",
+        "last-modified": "Fri, 30 Aug 2024 21:00:08 GMT",
+        "vary": "accept-encoding",
+        "x-guploader-uploadid": "ABgVH880YyT7D-SlX1j_4tcYKf9lyqIPKuigP42IsBs2IILYrTtWD58uIUNejPdhKqBQvaPlFi8w",
+        "cache-control": "public, max-age=3600",
+        "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "x-goog-storage-class": "STANDARD",
+        "cf-ray": "979733ab9ff0c871-DFW",
+        "x-goog-generation": "1725051608089500",
+        "server": "cloudflare"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.790Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "https://assets.comparepower.com/images/txu_energy.svg",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "http://localhost:4324/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "resourceType": "image"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.790Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "https://assets.comparepower.com/images/txu_energy.svg",
+      "headers": {
+        "x-goog-metageneration": "1",
+        "x-goog-hash": "crc32c=Mi7Svg==, md5=BoaL9HFdn3WfzKAiQHZ9/g==",
+        "cf-cache-status": "HIT",
+        "etag": "W/\"06868bf4715d9f759fcca02240767dfe\"",
+        "age": "113",
+        "content-encoding": "br",
+        "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=O%2FjTYql4oQWSpQuKI6mm9rhVowtXzd8mKlwAiTdOn159433gJhRwxz%2FHfE6qIycbmulVzXT6u3lI5LavLRoGbiB0WQD%2BFPnrJA548N7thvzTJwnX\"}]}",
+        "x-goog-stored-content-encoding": "identity",
+        "expires": "Wed, 03 Sep 2025 19:08:11 GMT",
+        "x-goog-stored-content-length": "2330",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "image/svg+xml",
+        "last-modified": "Fri, 30 Aug 2024 21:00:08 GMT",
+        "vary": "accept-encoding",
+        "x-guploader-uploadid": "ABgVH8-8D3ixQCybZn3tqsS_FT5ksY5kDQl10iWi9ztkksw3fSqrdyI1zyUxFrsZzUujVkLh",
+        "cache-control": "public, max-age=3600",
+        "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "x-goog-storage-class": "STANDARD",
+        "cf-ray": "979733ab9ffcc871-DFW",
+        "x-goog-generation": "1725051608796776",
+        "server": "cloudflare"
+      },
+      "redirected": false
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.790Z",
+      "type": "REQUEST",
+      "method": "GET",
+      "url": "https://assets.comparepower.com/images/direct_energy.svg",
+      "headers": {
+        "sec-ch-ua-platform": "\"macOS\"",
+        "referer": "http://localhost:4324/",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+        "sec-ch-ua": "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\"",
+        "sec-ch-ua-mobile": "?0"
+      },
+      "resourceType": "image"
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.790Z",
+      "type": "RESPONSE",
+      "status": 200,
+      "url": "https://assets.comparepower.com/images/direct_energy.svg",
+      "headers": {
+        "x-goog-metageneration": "1",
+        "x-goog-hash": "crc32c=0VhbFA==, md5=5nClbqwq4wMYRcNNUuIyLQ==",
+        "cf-cache-status": "HIT",
+        "etag": "W/\"e670a56eac2ae3031845c34d52e2322d\"",
+        "age": "220",
+        "content-encoding": "br",
+        "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=36z5wDmgdZRp55iAyuk8KzZL1CvtiwdLe26l9TmHYY2ouKC%2BFwWowtD9ZtxbV%2Fi%2FXkgJzQj5icI3XHQjG5%2BSql1%2B4CcNCTnnNKATAy6xvge%2BgWKC\"}]}",
+        "x-goog-stored-content-encoding": "identity",
+        "expires": "Wed, 03 Sep 2025 19:06:24 GMT",
+        "x-goog-stored-content-length": "7656",
+        "date": "Wed, 03 Sep 2025 18:10:04 GMT",
+        "content-type": "image/svg+xml",
+        "last-modified": "Fri, 30 Aug 2024 21:00:06 GMT",
+        "vary": "accept-encoding",
+        "x-guploader-uploadid": "ABgVH89QtvqXPez-VHWJZFhXS5BMUt8V-WcKnfs_iUdf5nN8EArSMVNqazqFXrC99SgmPkOAaMAgusE",
+        "cache-control": "public, max-age=3600",
+        "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "x-goog-storage-class": "STANDARD",
+        "cf-ray": "979733ab9ff1c871-DFW",
+        "x-goog-generation": "1725051606656031",
+        "server": "cloudflare"
+      },
+      "redirected": false
+    }
+  ],
+  "consoleErrors": [
+    {
+      "timestamp": "2025-09-03T18:10:04.716Z",
+      "type": "CONSOLE_ERROR",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "location": {
+        "url": "http://localhost:4324/_astro/_state_.Cspq1bGy.css",
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:10:04.724Z",
+      "type": "CONSOLE_ERROR",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "location": {
+        "url": "http://localhost:4324/.netlify/functions/health",
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.726Z",
+      "type": "CONSOLE_ERROR",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "location": {
+        "url": "http://localhost:4324/_astro/_state_.Cspq1bGy.css",
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:10:09.739Z",
+      "type": "CONSOLE_ERROR",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "location": {
+        "url": "http://localhost:4324/.netlify/functions/health",
+        "lineNumber": 0,
+        "columnNumber": 0
+      }
+    }
+  ],
+  "summary": {
+    "totalRequests": 91,
+    "errorResponses": 2,
+    "redirects": 0,
+    "consoleErrors": 4
+  }
+}

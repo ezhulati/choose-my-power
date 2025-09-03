@@ -16,6 +16,9 @@
 import Layout from '../../layouts/Layout.astro';
 import HeroBackground from '../../components/HeroBackground.astro';
 import FacetedPlanGrid from '../../components/faceted/FacetedPlanGrid.astro';
+import EnhancedSection from '../../components/ui/EnhancedSection.astro';
+import EnhancedCard from '../../components/ui/EnhancedCard.astro';
+import AccentBox from '../../components/ui/AccentBox.astro';
 import { facetedRouter, validateAndFetchPlans } from '../../lib/faceted/faceted-router';
 import { filterMapper } from '../../lib/api/filter-mapper';
 import { generateFacetedMeta } from '../../lib/seo/meta-generator-scale';
@@ -41,6 +44,10 @@ const routeResult = await validateAndFetchPlans(path || '');
 if (!routeResult.isValid || routeResult.redirectUrl) {
   const redirectUrl = routeResult.redirectUrl || '/404';
   console.log(`↪️  Redirecting ${path} -> ${redirectUrl}`);
+  // If redirecting to 404, ensure correct status to avoid double-hop flicker
+  if (!routeResult.redirectUrl) {
+    return Astro.redirect('/404', 404);
+  }
   return Astro.redirect(redirectUrl);
 }
 
@@ -67,11 +74,11 @@ if (tdspInfo?.municipal) {
 
 // Ensure we have required data
 if (!filterResult || !tdspDuns) {
-  return Astro.redirect('/404');
+  return Astro.redirect('/404', 404);
 }
 
-// Generate SEO metadata using router data
-const currentUrl = `/electricity-plans/${filterSegments.join('/')}/`;
+// Generate SEO metadata using router data (no trailing slash; include city)
+const currentUrl = `/electricity-plans/${citySlug}${filterSegments.length ? '/' + filterSegments.join('/') : ''}`;
 const canonicalUrl = routerCanonicalUrl;
 
 // Calculate meta data
@@ -160,16 +167,16 @@ console.log(`✅ Faceted page processed: ${cityName} with ${filterResult.applied
   )}
 
   <main class="min-h-screen bg-gray-50">
-    <!-- Hero Section with Contextual Background -->
+    <!-- Hero Section using EnhancedSection -->
     <HeroBackground 
       imageUrl={heroImage} 
       overlayOpacity={0.75}
     >
-      <section class="text-white flex items-center justify-center min-h-[33vh] lg:min-h-[40vh]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <EnhancedSection background="transparent" padding="lg" maxWidth="7xl">
+        <div class="text-white text-center">
           <!-- Breadcrumb Navigation -->
           <nav class="mb-8" aria-label="Breadcrumb">
-            <div class="flex items-center space-x-4 text-sm">
+            <div class="flex items-center justify-center space-x-4 text-sm">
               {breadcrumbs.map((breadcrumb, index) => (
                 <Fragment key={breadcrumb.url}>
                   {index > 0 && <span class="text-white/60">/</span>}
@@ -188,11 +195,11 @@ console.log(`✅ Faceted page processed: ${cityName} with ${filterResult.applied
           </nav>
 
           <!-- Page Header -->
-          <div class="text-center">
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 drop-shadow-lg">
+          <div class="space-y-6">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold drop-shadow-lg">
               {messaging.headline}
             </h1>
-            <p class="text-xl lg:text-2xl text-white/90 mb-6 drop-shadow-md leading-relaxed max-w-4xl mx-auto">
+            <p class="text-xl lg:text-2xl text-white/90 drop-shadow-md leading-relaxed max-w-4xl mx-auto">
               {messaging.subheadline}
             </p>
             <div class="text-white/80 drop-shadow-sm">
@@ -207,7 +214,7 @@ console.log(`✅ Faceted page processed: ${cityName} with ${filterResult.applied
 
             <!-- Promise Section -->
             {messaging.promise && (
-              <div class="mt-6">
+              <div>
                 <p class="text-lg text-texas-cream-100 drop-shadow-sm max-w-3xl mx-auto">
                   {messaging.promise}
                 </p>
@@ -216,37 +223,37 @@ console.log(`✅ Faceted page processed: ${cityName} with ${filterResult.applied
 
             <!-- Active Filters -->
             {filterResult.appliedFilters.length > 0 && (
-              <div class="mt-8">
-                <div class="flex flex-wrap justify-center gap-3">
-                  {filterResult.appliedFilters.map((filter) => (
-                    <span 
-                      key={filter.urlSegment}
-                      class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-texas-navy/90 text-white backdrop-blur-sm shadow-sm"
-                    >
-                      {filter.displayName}
-                      <a
-                        href={`/electricity-plans/${citySlug}/${filterSegments.filter(f => f !== filter.urlSegment).join('/')}`}
-                        class="ml-2 text-white/60 hover:text-white transition-colors"
-                        title={`Remove ${filter.displayName} filter`}
-                      >
-                        ×
-                      </a>
-                    </span>
-                  ))}
-                  {filterResult.appliedFilters.length > 0 && (
+              <div class="flex flex-wrap justify-center gap-3">
+                {filterResult.appliedFilters.map((filter) => (
+                  <span 
+                    key={filter.urlSegment}
+                    class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-texas-navy/90 text-white backdrop-blur-sm shadow-sm"
+                  >
+                    {filter.displayName}
                     <a
-                      href={`/electricity-plans/${citySlug}`}
-                      class="inline-flex items-center px-4 py-2 text-sm font-medium text-white/70 hover:text-white transition-colors"
+                      href={filterSegments.filter(f => f !== filter.urlSegment).length > 0 
+                        ? `/electricity-plans/${citySlug}/${filterSegments.filter(f => f !== filter.urlSegment).join('/')}`
+                        : `/electricity-plans/${citySlug}`}
+                      class="ml-2 text-white/60 hover:text-white transition-colors"
+                      title={`Remove ${filter.displayName} filter`}
                     >
-                      Clear All Filters
+                      ×
                     </a>
-                  )}
-                </div>
+                  </span>
+                ))}
+                {filterResult.appliedFilters.length > 0 && (
+                  <a
+                    href={`/electricity-plans/${citySlug}`}
+                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-white/70 hover:text-white transition-colors"
+                  >
+                    Clear All Filters
+                  </a>
+                )}
               </div>
             )}
 
-            <!-- Conversational CTA -->
-            <div class="mt-8">
+            <!-- CTA Button -->
+            <div>
               <a
                 href={`#plans-grid`}
                 class="inline-flex items-center px-8 py-4 text-lg font-semibold bg-texas-red text-white rounded-xl shadow-lg hover:bg-texas-red-600 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
@@ -259,41 +266,43 @@ console.log(`✅ Faceted page processed: ${cityName} with ${filterResult.applied
             </div>
           </div>
         </div>
-      </section>
+      </EnhancedSection>
     </HeroBackground>
 
     <!-- Error Handling -->
     {apiError && (
-      <div class="bg-red-50 border border-red-200 rounded-md p-4 mx-4 mb-6">
-        <div class="flex">
-          <div class="flex-shrink-0">
-            <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
-            </svg>
-          </div>
-          <div class="ml-3">
-            <h3 class="text-sm font-medium text-red-800">
-              Unable to load electricity plans
-            </h3>
-            <div class="mt-2 text-sm text-red-700">
-              <p>We're experiencing technical difficulties. Please try again later or contact support.</p>
-              <p class="mt-1 text-xs">Error: {apiError}</p>
+      <EnhancedSection background="white" padding="md">
+        <AccentBox accentColor="red" padding="lg">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div class="ml-3">
+              <h3 class="text-sm font-medium text-red-800">
+                Unable to load electricity plans
+              </h3>
+              <div class="mt-2 text-sm text-red-700">
+                <p>We're experiencing technical difficulties. Please try again later or contact support.</p>
+                <p class="mt-1 text-xs">Error: {apiError}</p>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </AccentBox>
+      </EnhancedSection>
     )}
 
     <!-- Main Content -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+    <EnhancedSection background="white" padding="lg">
       <div class="lg:grid lg:grid-cols-4 lg:gap-8 xl:gap-12">
         <!-- Sidebar with Additional Filters -->
         <div class="lg:col-span-1 mb-8 lg:mb-0">
-          <div class="bg-white rounded-lg shadow p-6 lg:p-8">
+          <EnhancedCard variant="default" padding="lg">
             <h3 class="text-lg font-medium text-texas-navy mb-4">Refine Your Search</h3>
             
             <!-- Trust Signals -->
-            <div class="mb-6 p-4 bg-texas-cream-50 rounded-lg border border-texas-cream-200">
+            <AccentBox accentColor="navy" padding="md">
               <h4 class="text-sm font-semibold text-texas-navy mb-2">How We're Different</h4>
               <ul class="text-xs text-gray-700 space-y-1">
                 <li>• We only show quality plans from 12-15 trusted companies</li>
@@ -301,7 +310,7 @@ console.log(`✅ Faceted page processed: ${cityName} with ${filterResult.applied
                 <li>• The companies pay us, you pay the same either way</li>
                 <li>• No email required, no spam, no sales calls</li>
               </ul>
-            </div>
+            </AccentBox>
             <div class="space-y-4">
               {suggestedFilterDefinitions.map((item) => (
                 <div key={item.definition.type}>
@@ -342,7 +351,7 @@ console.log(`✅ Faceted page processed: ${cityName} with ${filterResult.applied
                 Questions? Call <span class="font-medium text-texas-navy">(855) 461-1100</span>
               </p>
             </div>
-          </div>
+          </EnhancedCard>
         </div>
 
         <!-- Plans Grid -->
@@ -360,10 +369,12 @@ console.log(`✅ Faceted page processed: ${cityName} with ${filterResult.applied
                 You'll see each plan's real cost, not the marketing rate. Takes 5 minutes.
               </p>
               {messaging.warning && (
-                <div class="mt-3 p-3 bg-texas-gold-50 border-l-4 border-texas-gold-400 rounded-r">
-                  <p class="text-sm text-texas-gold-800">
-                    <strong>Reality Check:</strong> {messaging.warning}
-                  </p>
+                <div class="mt-3">
+                  <AccentBox accentColor="gold" padding="md">
+                    <p class="text-sm text-texas-gold-800">
+                      <strong>Reality Check:</strong> {messaging.warning}
+                    </p>
+                  </AccentBox>
                 </div>
               )}
             </div>
@@ -379,11 +390,11 @@ console.log(`✅ Faceted page processed: ${cityName} with ${filterResult.applied
           />
         </div>
       </div>
-    </div>
+    </EnhancedSection>
 
     <!-- Related Links Section -->
-    <div class="bg-texas-cream-100 py-12 mt-12">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <EnhancedSection background="cream" padding="lg">
+      <div class="text-center mb-8">
         <h2 class="text-2xl font-bold text-texas-navy mb-4">
           {filterResult.appliedFilters.length > 0 
             ? `Other Options in ${cityName} Worth Considering`
@@ -396,29 +407,32 @@ console.log(`✅ Faceted page processed: ${cityName} with ${filterResult.applied
             : `Most people start with these plan types. Click to see what's available:`
           }
         </p>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {['12-month', '24-month', 'fixed-rate', 'green-energy', 'prepaid', 'no-deposit'].map((filter) => {
-            const isActive = filterSegments.includes(filter);
-            if (isActive) return null;
-            
-            const newUrl = `/electricity-plans/${citySlug}/${filter}`;
-            const definition = filterMapper.getDefinitionByPattern(filter);
-            const displayName = definition?.displayName(filter) || filter.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-            
-            return (
-              <a
-                key={filter}
-                href={newUrl}
-                class="bg-white p-4 rounded-xl shadow hover:shadow-lg hover:border-texas-navy/30 transition-all duration-300 border border-gray-200 hover:-translate-y-1 group"
-              >
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {['12-month', '24-month', 'fixed-rate', 'green-energy', 'prepaid', 'no-deposit'].map((filter) => {
+          const isActive = filterSegments.includes(filter);
+          if (isActive) return null;
+          
+          const newUrl = `/electricity-plans/${citySlug}/${filter}`;
+          const definition = filterMapper.getDefinitionByPattern(filter);
+          const displayName = definition?.displayName(filter) || filter.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+          
+          return (
+            <EnhancedCard 
+              key={filter}
+              variant="elevated" 
+              padding="sm"
+              hoverEffect={true}
+            >
+              <a href={newUrl} class="block group">
                 <div class="text-sm font-semibold text-texas-navy group-hover:text-texas-red transition-colors">{displayName}</div>
                 <div class="text-xs text-gray-600 mt-1">Popular in {cityName}</div>
               </a>
-            );
-          }).filter(Boolean)}
-        </div>
+            </EnhancedCard>
+          );
+        }).filter(Boolean)}
       </div>
-    </div>
+    </EnhancedSection>
   </main>
 </Layout>
-

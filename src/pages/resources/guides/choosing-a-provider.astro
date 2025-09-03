@@ -236,17 +236,21 @@ const description = "Real talk on choosing electricity providers in Texas. Learn
     </EnhancedSection>
 
         <!-- Section 3 -->
-        <section id="key-factors" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
-          <h2 class="text-3xl font-bold text-texas-navy mb-6">What Actually Matters</h2>
+        <section id="key-factors">
+          <EnhancedCard 
+            title="What Actually Matters"
+            variant="elevated"
+            padding="lg"
+          >
           
           <div class="grid md:grid-cols-2 gap-8">
             <div class="space-y-6">
               <div>
                 <h3 class="text-xl font-semibold text-texas-navy mb-3">1. The Rate (What You Actually Pay Per Unit)</h3>
                 <p class="text-gray-700 mb-4">Think of electricity like gas for your car - you pay per gallon (or in this case, per kilowatt-hour). A kilowatt-hour is just the unit they use to measure electricity, like gallons for gas.</p>
-                <div class="bg-yellow-50 p-4 rounded-lg">
-                  <p class="text-sm text-yellow-800"><strong>Here's what they hope you won't notice:</strong> That big rate they advertise? It might only apply if you use exactly 1,000 kWh. Use more or less, and surprise - different rate! Always ask "What's my rate at MY usage level?"</p>
-                </div>
+                <AccentBox accentColor="gold" padding="md">
+                  <p class="text-sm text-gray-700"><strong class="text-texas-navy">Here's what they hope you won't notice:</strong> That big rate they advertise? It might only apply if you use exactly 1,000 kWh. Use more or less, and surprise - different rate! Always ask "What's my rate at MY usage level?"</p>
+                </AccentBox>
               </div>
 
               <div>
@@ -274,9 +278,9 @@ const description = "Real talk on choosing electricity providers in Texas. Learn
               <div>
                 <h3 class="text-xl font-semibold text-texas-navy mb-3">4. The Breakup Fee</h3>
                 <p class="text-gray-700 mb-4">If you want out of your contract early, they'll charge you. Think of it like canceling a gym membership - they make it expensive on purpose.</p>
-                <div class="bg-red-50 p-4 rounded-lg">
-                  <p class="text-sm text-red-800"><strong>Watch out:</strong> I've seen companies charge $500+ to let you leave. That's insane. Anything over $200 is too much, and $150 or less is reasonable.</p>
-                </div>
+                <AccentBox accentColor="red" padding="md">
+                  <p class="text-sm text-gray-700"><strong class="text-texas-red">Watch out:</strong> I've seen companies charge $500+ to let you leave. That's insane. Anything over $200 is too much, and $150 or less is reasonable.</p>
+                </AccentBox>
               </div>
 
               <div>
@@ -302,127 +306,137 @@ const description = "Real talk on choosing electricity providers in Texas. Learn
               </div>
             </div>
           </div>
+          </EnhancedCard>
         </section>
 
         <!-- Section 4 -->
-        <section id="comparing-plans" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
-          <h2 class="text-3xl font-bold text-texas-navy mb-6">How to Compare Plans Effectively</h2>
+        <section id="comparing-plans">
+          <EnhancedCard 
+            title="How to Compare Plans Effectively"
+            variant="elevated"
+            padding="lg"
+          >
           
           <div class="mb-8">
             <h3 class="text-xl font-semibold text-texas-navy mb-4">Step 1: Know Your Usage</h3>
             <p class="text-gray-700 mb-4">Check your last 12 months of electricity bills to find your average monthly kWh usage. Texas households typically use:</p>
             <div class="grid md:grid-cols-3 gap-4 mb-6">
-              <div class="bg-texas-cream-200 p-4 rounded-lg text-center">
+              <AccentBox accentColor="navy" padding="md" className="text-center">
                 <div class="text-2xl font-bold text-texas-navy">600-900</div>
                 <div class="text-sm text-texas-navy">Apartments/Small homes</div>
-              </div>
-              <div class="bg-texas-cream-200 p-4 rounded-lg text-center">
+              </AccentBox>
+              <AccentBox accentColor="navy" padding="md" className="text-center">
                 <div class="text-2xl font-bold text-texas-navy">1000-1500</div>
                 <div class="text-sm text-texas-navy">Average homes</div>
-              </div>
-              <div class="bg-texas-cream-200 p-4 rounded-lg text-center">
+              </AccentBox>
+              <AccentBox accentColor="navy" padding="md" className="text-center">
                 <div class="text-2xl font-bold text-texas-navy">1500-3000</div>
                 <div class="text-sm text-texas-navy">Large homes/high usage</div>
-              </div>
+              </AccentBox>
             </div>
           </div>
 
           <div class="mb-8">
             <h3 class="text-xl font-semibold text-texas-navy mb-4">Step 2: Calculate True Cost</h3>
             <p class="text-gray-700 mb-4">Use this formula to compare plans accurately:</p>
-            <div class="bg-gray-50 p-6 rounded-lg">
+            <AccentBox accentColor="navy" padding="lg">
               <div class="text-center">
                 <strong class="text-lg text-texas-navy">Monthly Cost = (Your kWh × Rate per kWh) + Monthly Base Charges + TDSP Charges</strong>
               </div>
               <p class="text-sm text-gray-600 mt-4 text-center">Don't forget to include taxes and fees in your calculations</p>
-            </div>
+            </AccentBox>
           </div>
 
           <div class="mb-8">
             <h3 class="text-xl font-semibold text-texas-navy mb-4">Step 3: Use the Electricity Facts Label (EFL)</h3>
             <p class="text-gray-700 mb-4">Every provider must provide an EFL that shows exactly what you'll pay at different usage levels.</p>
             <div class="grid md:grid-cols-2 gap-6">
-              <div class="bg-green-50 p-6 rounded-lg">
-                <h4 class="font-semibold text-green-700 mb-3">✓ What to Look For</h4>
-                <ul class="text-sm text-green-700 space-y-1">
+              <AccentBox accentColor="navy" padding="lg">
+                <h4 class="font-semibold text-texas-navy mb-3">✓ What to Look For</h4>
+                <ul class="text-sm text-gray-700 space-y-1">
                   <li>• Average price per kWh at 500, 1000, and 2000 kWh</li>
                   <li>• All monthly fees clearly listed</li>
                   <li>• Contract terms and length</li>
                   <li>• Early termination fee amount</li>
                   <li>• Renewable energy percentage</li>
                 </ul>
-              </div>
-              <div class="bg-red-50 p-6 rounded-lg">
-                <h4 class="font-semibold text-red-700 mb-3">✗ Red Flags in EFLs</h4>
-                <ul class="text-sm text-red-700 space-y-1">
+              </AccentBox>
+              <AccentBox accentColor="red" padding="lg">
+                <h4 class="font-semibold text-texas-red mb-3">✗ Red Flags in EFLs</h4>
+                <ul class="text-sm text-gray-700 space-y-1">
                   <li>• Vastly different rates at different usage levels</li>
                   <li>• Unusually high monthly fees</li>
                   <li>• Introductory rates that expire quickly</li>
                   <li>• Confusing tier structures</li>
                   <li>• Missing or vague fee information</li>
                 </ul>
-              </div>
+              </AccentBox>
             </div>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-texas-navy mb-4">Step 4: Check the Fine Print</h3>
-            <div class="bg-yellow-50 p-6 rounded-lg">
-              <h4 class="font-semibold text-yellow-800 mb-3">⚠️ Critical Items to Review</h4>
-              <ul class="text-sm text-yellow-800 space-y-2">
-                <li>• <strong>Rate changes:</strong> Can your rate change during the contract?</li>
-                <li>• <strong>Auto-renewal terms:</strong> What happens when your contract expires?</li>
-                <li>• <strong>Promotional pricing:</strong> How long do introductory rates last?</li>
-                <li>• <strong>Usage credits:</strong> Do you get credits for using less electricity?</li>
-                <li>• <strong>Deposit requirements:</strong> Do you need to pay a security deposit?</li>
+            <AccentBox accentColor="gold" padding="lg">
+              <h4 class="font-semibold text-texas-navy mb-3">⚠️ Critical Items to Review</h4>
+              <ul class="text-sm text-gray-700 space-y-2">
+                <li>• <strong class="text-texas-gold">Rate changes:</strong> Can your rate change during the contract?</li>
+                <li>• <strong class="text-texas-gold">Auto-renewal terms:</strong> What happens when your contract expires?</li>
+                <li>• <strong class="text-texas-gold">Promotional pricing:</strong> How long do introductory rates last?</li>
+                <li>• <strong class="text-texas-gold">Usage credits:</strong> Do you get credits for using less electricity?</li>
+                <li>• <strong class="text-texas-gold">Deposit requirements:</strong> Do you need to pay a security deposit?</li>
               </ul>
-            </div>
+            </AccentBox>
           </div>
+          </EnhancedCard>
         </section>
 
         <!-- Section 5 -->
-        <section id="contract-terms" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
-          <h2 class="text-3xl font-bold text-texas-navy mb-6">Contract Terms & Fine Print</h2>
+        <section id="contract-terms">
+          <EnhancedCard 
+            title="Contract Terms & Fine Print"
+            variant="elevated"
+            padding="lg"
+          >
           
           <div class="grid md:grid-cols-2 gap-8">
             <div>
               <h3 class="text-xl font-semibold text-texas-navy mb-4">Understanding Your Contract</h3>
               <div class="space-y-4">
-                <div class="border border-gray-200 rounded-lg p-4">
-                  <h4 class="font-semibold text-gray-900 mb-2">Contract Start Date</h4>
+                <EnhancedCard variant="outlined" padding="md">
+                  <h4 class="font-semibold text-texas-navy mb-2">Contract Start Date</h4>
                   <p class="text-sm text-gray-600">Your contract typically begins on your next meter reading date, not the day you sign up.</p>
-                </div>
-                <div class="border border-gray-200 rounded-lg p-4">
-                  <h4 class="font-semibold text-gray-900 mb-2">Auto-Renewal Terms</h4>
+                </EnhancedCard>
+                <EnhancedCard variant="outlined" padding="md">
+                  <h4 class="font-semibold text-texas-navy mb-2">Auto-Renewal Terms</h4>
                   <p class="text-sm text-gray-600">Most contracts automatically renew into month-to-month terms, often at higher rates. You'll get a renewal notice 30-60 days before expiration.</p>
-                </div>
-                <div class="border border-gray-200 rounded-lg p-4">
-                  <h4 class="font-semibold text-gray-900 mb-2">Right of Rescission</h4>
+                </EnhancedCard>
+                <EnhancedCard variant="outlined" padding="md">
+                  <h4 class="font-semibold text-texas-navy mb-2">Right of Rescission</h4>
                   <p class="text-sm text-gray-600">Texas law gives you 3 business days to cancel any electricity contract without penalty after signing.</p>
-                </div>
+                </EnhancedCard>
               </div>
             </div>
 
             <div>
               <h3 class="text-xl font-semibold text-texas-navy mb-4">Common Contract Traps</h3>
               <div class="space-y-4">
-                <div class="border border-red-200 rounded-lg p-4 bg-red-50">
-                  <h4 class="font-semibold text-red-700 mb-2">Teaser Rates</h4>
-                  <p class="text-sm text-red-700">Very low introductory rates that jump significantly after a few months. Always check what your rate will be after the promotional period.</p>
-                </div>
-                <div class="border border-red-200 rounded-lg p-4 bg-red-50">
-                  <h4 class="font-semibold text-red-700 mb-2">Usage Requirements</h4>
-                  <p class="text-sm text-red-700">Some plans require you to use a minimum amount of electricity to get the advertised rate. Using less triggers penalty fees.</p>
-                </div>
-                <div class="border border-red-200 rounded-lg p-4 bg-red-50">
-                  <h4 class="font-semibold text-red-700 mb-2">Bill Credit Gimmicks</h4>
-                  <p class="text-sm text-red-700">Plans that advertise "$200 in bill credits" often have higher base rates that offset the credits over time.</p>
-                </div>
+                <AccentBox accentColor="red" padding="md">
+                  <h4 class="font-semibold text-texas-red mb-2">Teaser Rates</h4>
+                  <p class="text-sm text-gray-700">Very low introductory rates that jump significantly after a few months. Always check what your rate will be after the promotional period.</p>
+                </AccentBox>
+                <AccentBox accentColor="red" padding="md">
+                  <h4 class="font-semibold text-texas-red mb-2">Usage Requirements</h4>
+                  <p class="text-sm text-gray-700">Some plans require you to use a minimum amount of electricity to get the advertised rate. Using less triggers penalty fees.</p>
+                </AccentBox>
+                <AccentBox accentColor="red" padding="md">
+                  <h4 class="font-semibold text-texas-red mb-2">Bill Credit Gimmicks</h4>
+                  <p class="text-sm text-gray-700">Plans that advertise "$200 in bill credits" often have higher base rates that offset the credits over time.</p>
+                </AccentBox>
               </div>
             </div>
           </div>
 
-          <div class="mt-8 bg-texas-cream-200 p-6 rounded-lg">
+          <AccentBox accentColor="navy" padding="lg">
             <h3 class="text-lg font-semibold text-texas-navy mb-3">📋 Your Pre-Contract Checklist</h3>
             <div class="grid md:grid-cols-2 gap-4">
               <ul class="space-y-2 text-sm text-texas-navy">
@@ -438,69 +452,74 @@ const description = "Real talk on choosing electricity providers in Texas. Learn
                 <li>☐ Confirmed no hidden fees or usage requirements</li>
               </ul>
             </div>
-          </div>
+          </AccentBox>
+          </EnhancedCard>
         </section>
 
         <!-- Section 6 -->
-        <section id="red-flags" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
-          <h2 class="text-3xl font-bold text-texas-navy mb-6">Red Flags & Scams to Avoid</h2>
+        <section id="red-flags">
+          <EnhancedCard 
+            title="Red Flags & Scams to Avoid"
+            variant="elevated"
+            padding="lg"
+          >
           
-          <div class="bg-red-50 p-6 rounded-lg mb-8">
-            <h3 class="text-lg font-semibold text-red-800 mb-3">🚨 Fraud Alert</h3>
-            <p class="text-red-800">
-              <strong>15-20% of attempted electricity enrollments in Texas were fraudulent in early 2024.</strong> Door-to-door and telemarketing scams are especially common. Here's how to protect yourself:
+          <AccentBox accentColor="red" padding="lg">
+            <h3 class="text-lg font-semibold text-texas-red mb-3">🚨 Fraud Alert</h3>
+            <p class="text-gray-700">
+              <strong class="text-texas-red">15-20% of attempted electricity enrollments in Texas were fraudulent in early 2024.</strong> Door-to-door and telemarketing scams are especially common. Here's how to protect yourself:
             </p>
-          </div>
+          </AccentBox>
 
           <div class="grid md:grid-cols-2 gap-8">
             <div>
               <h3 class="text-xl font-semibold text-red-700 mb-4">🚨 Major Red Flags</h3>
               <div class="space-y-4">
-                <div class="border border-red-200 rounded-lg p-4">
-                  <h4 class="font-semibold text-red-700 mb-2">Door-to-Door Sales</h4>
-                  <p class="text-sm text-red-700">Legitimate providers rarely use door-to-door sales. Never give your account information or sign contracts with uninvited visitors.</p>
-                </div>
-                <div class="border border-red-200 rounded-lg p-4">
-                  <h4 class="font-semibold text-red-700 mb-2">Pressure Tactics</h4>
-                  <p class="text-sm text-red-700">"Sign today or lose this deal" is always a scam. Legitimate offers don't expire in hours.</p>
-                </div>
-                <div class="border border-red-200 rounded-lg p-4">
-                  <h4 class="font-semibold text-red-700 mb-2">Utility Impersonation</h4>
-                  <p class="text-sm text-red-700">Scammers claim to be from your utility company and threaten immediate disconnection unless you switch providers.</p>
-                </div>
-                <div class="border border-red-200 rounded-lg p-4">
-                  <h4 class="font-semibold text-red-700 mb-2">Too-Good-to-Be-True Rates</h4>
-                  <p class="text-sm text-red-700">Rates significantly below market average (under 8¢/kWh) usually have hidden fees or rate increases.</p>
-                </div>
+                <EnhancedCard variant="outlined" padding="md" accentColor="red">
+                  <h4 class="font-semibold text-texas-red mb-2">Door-to-Door Sales</h4>
+                  <p class="text-sm text-gray-700">Legitimate providers rarely use door-to-door sales. Never give your account information or sign contracts with uninvited visitors.</p>
+                </EnhancedCard>
+                <EnhancedCard variant="outlined" padding="md" accentColor="red">
+                  <h4 class="font-semibold text-texas-red mb-2">Pressure Tactics</h4>
+                  <p class="text-sm text-gray-700">"Sign today or lose this deal" is always a scam. Legitimate offers don't expire in hours.</p>
+                </EnhancedCard>
+                <EnhancedCard variant="outlined" padding="md" accentColor="red">
+                  <h4 class="font-semibold text-texas-red mb-2">Utility Impersonation</h4>
+                  <p class="text-sm text-gray-700">Scammers claim to be from your utility company and threaten immediate disconnection unless you switch providers.</p>
+                </EnhancedCard>
+                <EnhancedCard variant="outlined" padding="md" accentColor="red">
+                  <h4 class="font-semibold text-texas-red mb-2">Too-Good-to-Be-True Rates</h4>
+                  <p class="text-sm text-gray-700">Rates significantly below market average (under 8¢/kWh) usually have hidden fees or rate increases.</p>
+                </EnhancedCard>
               </div>
             </div>
 
             <div>
               <h3 class="text-xl font-semibold text-green-700 mb-4">✅ How to Verify Legitimacy</h3>
               <div class="space-y-4">
-                <div class="border border-green-200 rounded-lg p-4">
-                  <h4 class="font-semibold text-green-700 mb-2">Check REP Certification</h4>
-                  <p class="text-sm text-green-700">All legitimate providers must be certified. Search the Public Utility Commission of Texas (PUCT) website for their REP number.</p>
-                </div>
-                <div class="border border-green-200 rounded-lg p-4">
-                  <h4 class="font-semibold text-green-700 mb-2">Get Everything in Writing</h4>
-                  <p class="text-sm text-green-700">Request the Electricity Facts Label and Terms of Service document before signing anything.</p>
-                </div>
-                <div class="border border-green-200 rounded-lg p-4">
-                  <h4 class="font-semibold text-green-700 mb-2">Research Online First</h4>
-                  <p class="text-sm text-green-700">Use PowerToChoose.org or other comparison sites to research providers and rates before speaking with sales representatives.</p>
-                </div>
-                <div class="border border-green-200 rounded-lg p-4">
-                  <h4 class="font-semibold text-green-700 mb-2">Never Pay Upfront</h4>
-                  <p class="text-sm text-green-700">Legitimate providers don't require payment before service begins. Security deposits are collected after enrollment, if needed.</p>
-                </div>
+                <EnhancedCard variant="outlined" padding="md" accentColor="green">
+                  <h4 class="font-semibold text-texas-navy mb-2">Check REP Certification</h4>
+                  <p class="text-sm text-gray-700">All legitimate providers must be certified. Search the Public Utility Commission of Texas (PUCT) website for their REP number.</p>
+                </EnhancedCard>
+                <EnhancedCard variant="outlined" padding="md" accentColor="green">
+                  <h4 class="font-semibold text-texas-navy mb-2">Get Everything in Writing</h4>
+                  <p class="text-sm text-gray-700">Request the Electricity Facts Label and Terms of Service document before signing anything.</p>
+                </EnhancedCard>
+                <EnhancedCard variant="outlined" padding="md" accentColor="green">
+                  <h4 class="font-semibold text-texas-navy mb-2">Research Online First</h4>
+                  <p class="text-sm text-gray-700">Use PowerToChoose.org or other comparison sites to research providers and rates before speaking with sales representatives.</p>
+                </EnhancedCard>
+                <EnhancedCard variant="outlined" padding="md" accentColor="green">
+                  <h4 class="font-semibold text-texas-navy mb-2">Never Pay Upfront</h4>
+                  <p class="text-sm text-gray-700">Legitimate providers don't require payment before service begins. Security deposits are collected after enrollment, if needed.</p>
+                </EnhancedCard>
               </div>
             </div>
           </div>
 
-          <div class="mt-8 bg-yellow-50 p-6 rounded-lg">
-            <h3 class="text-lg font-semibold text-yellow-800 mb-3">🔍 Contract Warning Signs</h3>
-            <div class="grid md:grid-cols-2 gap-4 text-sm text-yellow-800">
+          <AccentBox accentColor="gold" padding="lg">
+            <h3 class="text-lg font-semibold text-texas-navy mb-3">🔍 Contract Warning Signs</h3>
+            <div class="grid md:grid-cols-2 gap-4 text-sm text-gray-700">
               <ul class="space-y-1">
                 <li>• Rates that vary dramatically by usage level</li>
                 <li>• Monthly fees over $20</li>
@@ -514,17 +533,22 @@ const description = "Real talk on choosing electricity providers in Texas. Learn
                 <li>• Missing or unclear fee disclosures</li>
               </ul>
             </div>
-          </div>
+          </AccentBox>
+          </EnhancedCard>
         </section>
 
         <!-- Section 7 -->
-        <section id="switching-process" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
-          <h2 class="text-3xl font-bold text-texas-navy mb-6">The Switching Process</h2>
+        <section id="switching-process">
+          <EnhancedCard 
+            title="The Switching Process"
+            variant="elevated"
+            padding="lg"
+          >
           
           <div class="mb-8">
             <h3 class="text-xl font-semibold text-texas-navy mb-4">What You'll Need</h3>
             <div class="grid md:grid-cols-2 gap-6">
-              <div class="bg-texas-cream-200 p-6 rounded-lg">
+              <AccentBox accentColor="navy" padding="lg">
                 <h4 class="font-semibold text-texas-navy mb-3">Required Information</h4>
                 <ul class="text-sm text-texas-navy space-y-2">
                   <li>• Your current electricity bill</li>
@@ -533,16 +557,16 @@ const description = "Real talk on choosing electricity providers in Texas. Learn
                   <li>• Social Security Number or Tax ID</li>
                   <li>• Contact information</li>
                 </ul>
-              </div>
-              <div class="bg-green-50 p-6 rounded-lg">
-                <h4 class="font-semibold text-green-700 mb-3">Optional Documents</h4>
+              </AccentBox>
+              <AccentBox accentColor="navy" padding="lg">
+                <h4 class="font-semibold text-texas-navy mb-3">Optional Documents</h4>
                 <ul class="text-sm text-green-700 space-y-2">
                   <li>• Previous 12 months of usage history</li>
                   <li>• Identity verification (driver's license)</li>
                   <li>• Proof of income (if required for deposits)</li>
                   <li>• Bank account info (for automatic payments)</li>
                 </ul>
-              </div>
+              </AccentBox>
             </div>
           </div>
 
@@ -588,47 +612,52 @@ const description = "Real talk on choosing electricity providers in Texas. Learn
           </div>
 
           <div class="grid md:grid-cols-2 gap-6">
-            <div class="bg-green-50 p-6 rounded-lg">
-              <h3 class="font-semibold text-green-700 mb-3">✅ What to Expect</h3>
-              <ul class="text-sm text-green-700 space-y-2">
+            <AccentBox accentColor="navy" padding="lg">
+              <h3 class="font-semibold text-texas-navy mb-3">✅ What to Expect</h3>
+              <ul class="text-sm text-gray-700 space-y-2">
                 <li>• No interruption to your electricity service</li>
                 <li>• Same power lines and utility company for outages</li>
                 <li>• New bills will come from your new provider</li>
                 <li>• Switch typically completes within 1-2 billing cycles</li>
               </ul>
-            </div>
-            <div class="bg-red-50 p-6 rounded-lg">
-              <h3 class="font-semibold text-red-700 mb-3">⚠️ Important Notes</h3>
-              <ul class="text-sm text-red-700 space-y-2">
+            </AccentBox>
+            <AccentBox accentColor="red" padding="lg">
+              <h3 class="font-semibold text-texas-red mb-3">⚠️ Important Notes</h3>
+              <ul class="text-sm text-gray-700 space-y-2">
                 <li>• Don't cancel your old service - it's automatic</li>
                 <li>• You may receive bills from both providers during transition</li>
                 <li>• Keep your 3-day cancellation window in mind</li>
                 <li>• Set a calendar reminder for contract expiration</li>
               </ul>
-            </div>
+            </AccentBox>
           </div>
+          </EnhancedCard>
         </section>
 
         <!-- Section 8 -->
-        <section id="next-steps" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
-          <h2 class="text-3xl font-bold text-texas-navy mb-6">Your Next Steps</h2>
+        <section id="next-steps">
+          <EnhancedCard 
+            title="Your Next Steps"
+            variant="elevated"
+            padding="lg"
+          >
           
           <div class="grid md:grid-cols-2 gap-8">
             <div>
               <h3 class="text-xl font-semibold text-texas-navy mb-4">Ready to Switch?</h3>
               <div class="space-y-4">
-                <div class="bg-texas-cream-200 p-4 rounded-lg">
+                <AccentBox accentColor="navy" padding="md">
                   <h4 class="font-semibold text-texas-navy mb-2">1. Gather Your Information</h4>
-                  <p class="text-sm text-texas-navy">Get your most recent electricity bill and identify your ESI ID.</p>
-                </div>
-                <div class="bg-texas-cream-200 p-4 rounded-lg">
+                  <p class="text-sm text-gray-700">Get your most recent electricity bill and identify your ESI ID.</p>
+                </AccentBox>
+                <AccentBox accentColor="navy" padding="md">
                   <h4 class="font-semibold text-texas-navy mb-2">2. Compare Plans</h4>
-                  <p class="text-sm text-texas-navy">Use our plan comparison tool to find the best rates for your usage level.</p>
-                </div>
-                <div class="bg-texas-cream-200 p-4 rounded-lg">
+                  <p class="text-sm text-gray-700">Use our plan comparison tool to find the best rates for your usage level.</p>
+                </AccentBox>
+                <AccentBox accentColor="navy" padding="md">
                   <h4 class="font-semibold text-texas-navy mb-2">3. Read the Fine Print</h4>
-                  <p class="text-sm text-texas-navy">Review the Electricity Facts Label and contract terms before enrolling.</p>
-                </div>
+                  <p class="text-sm text-gray-700">Review the Electricity Facts Label and contract terms before enrolling.</p>
+                </AccentBox>
               </div>
               
               <div class="mt-6 text-center">
@@ -641,27 +670,27 @@ const description = "Real talk on choosing electricity providers in Texas. Learn
             <div>
               <h3 class="text-xl font-semibold text-texas-navy mb-4">Need More Help?</h3>
               <div class="space-y-4">
-                <div class="border border-gray-200 rounded-lg p-4">
-                  <h4 class="font-semibold text-gray-900 mb-2">📞 Free Consultation</h4>
+                <EnhancedCard variant="outlined" padding="md">
+                  <h4 class="font-semibold text-texas-navy mb-2">📞 Free Consultation</h4>
                   <p class="text-sm text-gray-600">Call (877) 854-8463 to speak with an electricity plan specialist.</p>
-                </div>
-                <div class="border border-gray-200 rounded-lg p-4">
-                  <h4 class="font-semibold text-gray-900 mb-2">📧 Email Support</h4>
+                </EnhancedCard>
+                <EnhancedCard variant="outlined" padding="md">
+                  <h4 class="font-semibold text-texas-navy mb-2">📧 Email Support</h4>
                   <p class="text-sm text-gray-600">Send questions to support@choosemypower.org for detailed responses.</p>
-                </div>
-                <div class="border border-gray-200 rounded-lg p-4">
-                  <h4 class="font-semibold text-gray-900 mb-2">📚 Additional Resources</h4>
+                </EnhancedCard>
+                <EnhancedCard variant="outlined" padding="md">
+                  <h4 class="font-semibold text-texas-navy mb-2">📚 Additional Resources</h4>
                   <ul class="text-sm text-gray-600 space-y-1">
                     <li>• <a href="/resources/guides/understanding-your-bill" class="text-texas-navy hover:underline">Understanding Your Bill</a></li>
                     <li>• <a href="/resources/guides/fixed-vs-variable" class="text-texas-navy hover:underline">Fixed vs Variable Plans</a></li>
                     <li>• <a href="/resources/guides/green-energy" class="text-texas-navy hover:underline">Green Energy Options</a></li>
                   </ul>
-                </div>
+                </EnhancedCard>
               </div>
             </div>
           </div>
 
-          <div class="mt-8 bg-texas-cream p-6 rounded-lg">
+          <AccentBox accentColor="navy" padding="lg">
             <h3 class="text-lg font-semibold text-texas-navy mb-3">📋 Your Action Checklist</h3>
             <div class="grid md:grid-cols-2 gap-4 text-sm">
               <ul class="space-y-2">
@@ -677,11 +706,14 @@ const description = "Real talk on choosing electricity providers in Texas. Learn
                 <li>☐ Set calendar reminder for contract expiration</li>
               </ul>
             </div>
-          </div>
+          </AccentBox>
+          </EnhancedCard>
         </section>
       </div>
+    </EnhancedSection>
 
-      <!-- Footer CTA -->
+    <!-- Footer CTA -->
+    <EnhancedSection background="white" padding="lg">
       <div class="mt-16 text-center">
         <div class="bg-gradient-to-r from-texas-navy to-blue-800 text-white p-12 rounded-xl">
           <h2 class="text-3xl font-bold mb-4">Ready to Find Your Best Electricity Plan?</h2>
@@ -696,6 +728,6 @@ const description = "Real talk on choosing electricity providers in Texas. Learn
           </div>
         </div>
       </div>
-    </div>
+    </EnhancedSection>
   </div>
 </Layout>

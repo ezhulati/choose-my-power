@@ -101,8 +101,9 @@ if (hasGuarantee) contractHighlights.push('Satisfaction guarantee');
   {/* Card Footer */}
   <div className="px-6 pb-6">
     <button
-      onClick={() => navigate(`/electricity-plans/${plan.provider.name.toLowerCase().replace(/\s+/g, '-')}/${plan.name.toLowerCase().replace(/\s+/g, '-')}`)}
-      className="w-full bg-texas-navy text-white py-4 px-6 rounded-xl font-semibold text-lg hover:bg-texas-red transition-all duration-200 group-hover:bg-texas-red transform hover:scale-105"
+      class="view-details-btn w-full bg-texas-navy text-white py-4 px-6 rounded-xl font-semibold text-lg hover:bg-texas-red transition-all duration-200 group-hover:bg-texas-red transform hover:scale-105"
+      data-provider={plan.provider.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}
+      data-plan={plan.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}
     >
       View Details
     </button>
@@ -117,6 +118,30 @@ if (hasGuarantee) contractHighlights.push('Satisfaction guarantee');
   // Track plan card interactions and handle comparison functionality
   document.addEventListener('click', (event) => {
     const target = event.target as HTMLElement;
+    
+    // Handle view details clicks - navigate to plan detail page
+    if (target.classList.contains('view-details-btn') || target.closest('.view-details-btn')) {
+      const button = target.closest('.view-details-btn') as HTMLButtonElement;
+      if (button) {
+        const provider = button.dataset.provider;
+        const planName = button.dataset.plan;
+        
+        if (provider && planName) {
+          // Navigate to the plan detail page
+          const detailUrl = `/electricity-plans/plans/${provider}/${planName}`;
+          window.location.href = detailUrl;
+          
+          // Track the navigation for analytics
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'plan_details_view', {
+              provider: provider,
+              plan: planName,
+              page_url: window.location.pathname,
+            });
+          }
+        }
+      }
+    }
     
     // Track enrollment clicks
     if (target.classList.contains('enroll-btn') || target.closest('.enroll-btn')) {

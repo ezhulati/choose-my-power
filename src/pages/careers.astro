@@ -8,6 +8,7 @@
 import Layout from '../layouts/Layout.astro';
 import HeroBackground from '../components/HeroBackground.astro';
 import { Badge } from '../components/ui/badge';
+import EnhancedSection from '../components/ui/EnhancedSection.astro';
 
 const pageTitle = "Careers at ChooseMyPower | Join the Texas Energy Revolution";
 const pageDescription = "Join ChooseMyPower's mission to empower Texas consumers with transparent electricity plan comparisons. Competitive salaries, equity, and meaningful impact across 881 Texas cities.";
@@ -256,7 +257,7 @@ const deiInitiatives = [
   }
   </script>
 
-  <main class="min-h-screen bg-gray-50">
+  <EnhancedSection background="cream" padding="none" className="min-h-screen">
     <!-- Hero Section -->
     <HeroBackground 
       imageUrl={heroImage}
@@ -824,7 +825,7 @@ const deiInitiatives = [
         </p>
       </div>
     </div>
-  </main>
+  </EnhancedSection>
 </Layout>
 
 <style>

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Calculator, TrendingUp, DollarSign, Zap, Info, CheckCircle, BarChart } from 'lucide-react';
 import { mockProviders } from '../../data/mockData';
+import EnhancedSectionReact from '../../components/ui/EnhancedSectionReact';
+import EnhancedCardReact from '../../components/ui/EnhancedCardReact';
+import AccentBoxReact from '../../components/ui/AccentBoxReact';
 
 // Extend Window interface to include our navigation function
 declare global {
@@ -71,49 +74,51 @@ export function CalculatorPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-gradient-to-br from-green-600 via-green-700 to-green-800 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="text-center">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-8">
-              <Calculator className="h-10 w-10" />
-            </div>
-            
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Find Out What You'd Really Pay
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-green-100 max-w-4xl mx-auto">
-              See your actual monthly bills with quality plans available. 
-              Know exactly what you'd pay before you switch.
-            </p>
-
-            {topPlan && (
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-lg max-w-2xl mx-auto">
-                <div className="text-lg mb-2">We found your best deal:</div>
-                <div className="text-3xl font-bold mb-2">
-                  {topPlan.providerName} - {topPlan.name}
-                </div>
-                <div className="text-xl">
-                  ${topPlan.totalMonthlyCost.toFixed(2)}/month
-                  {potentialSavings > 0 && (
-                    <span className="ml-2 text-green-200">
-                      (You'd save ${potentialSavings.toFixed(2)}/month)
-                    </span>
-                  )}
-                </div>
-              </div>
-            )}
+      {/* Header using EnhancedSectionReact */}
+      <EnhancedSectionReact 
+        background="gradient-navy" 
+        padding="xl" 
+        maxWidth="7xl"
+      >
+        <div className="text-center text-white">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-8">
+            <Calculator className="h-10 w-10" />
           </div>
+          
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            Find Out What You'd Really Pay
+          </h1>
+          <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-4xl mx-auto">
+            See your actual monthly bills with quality plans available. 
+            Know exactly what you'd pay before you switch.
+          </p>
+
+          {topPlan && (
+            <AccentBoxReact accentColor="gold" background="white" padding="lg">
+              <div className="text-lg mb-2 text-texas-navy">We found your best deal:</div>
+              <div className="text-3xl font-bold mb-2 text-texas-navy">
+                {topPlan.providerName} - {topPlan.name}
+              </div>
+              <div className="text-xl text-texas-navy">
+                ${topPlan.totalMonthlyCost.toFixed(2)}/month
+                {potentialSavings > 0 && (
+                  <span className="ml-2 text-texas-gold">
+                    (You'd save ${potentialSavings.toFixed(2)}/month)
+                  </span>
+                )}
+              </div>
+            </AccentBoxReact>
+          )}
         </div>
-      </div>
+      </EnhancedSectionReact>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Calculator Input */}
-        <div className="bg-white rounded-lg shadow-sm border p-8 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            Tell Us About Your Usage
-          </h2>
-
+      <EnhancedSectionReact 
+        background="white" 
+        padding="lg"
+        title="Tell Us About Your Usage"
+        titleSize="md"
+      >
+        <EnhancedCardReact variant="default" padding="lg">
           <div className="grid lg:grid-cols-2 gap-8">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-4">
@@ -124,7 +129,7 @@ export function CalculatorPage() {
                   type="number"
                   value={monthlyUsage}
                   onChange={(e) => setMonthlyUsage(parseInt(e.target.value) || 0)}
-                  className="w-full border border-gray-300 rounded-md px-4 py-3 text-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                  className="w-full border border-gray-300 rounded-md px-4 py-3 text-lg focus:ring-2 focus:ring-texas-navy focus:border-texas-navy"
                   placeholder="Type number from your bill (like 1,200)"
                 />
               </div>
@@ -136,12 +141,12 @@ export function CalculatorPage() {
                     onClick={() => setMonthlyUsage(preset.value)}
                     className={`p-4 rounded-lg border-2 text-left transition-colors ${
                       monthlyUsage === preset.value
-                        ? 'border-green-500 bg-green-50 text-green-900'
-                        : 'border-gray-200 hover:border-green-300 hover:bg-green-50'
+                        ? 'border-texas-navy bg-texas-navy/5 text-texas-navy'
+                        : 'border-gray-200 hover:border-texas-navy/30 hover:bg-texas-navy/5'
                     }`}
                   >
                     <div className="font-medium">{preset.label}</div>
-                    <div className="text-2xl font-bold text-green-600 my-1">{preset.value} kWh</div>
+                    <div className="text-2xl font-bold text-texas-gold my-1">{preset.value} kWh</div>
                     <div className="text-sm text-gray-600">{preset.description}</div>
                   </button>
                 ))}
@@ -155,7 +160,7 @@ export function CalculatorPage() {
               <select
                 value={selectedState}
                 onChange={(e) => setSelectedState(e.target.value)}
-                className="w-full border border-gray-300 rounded-md px-4 py-3 text-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 mb-6"
+                className="w-full border border-gray-300 rounded-md px-4 py-3 text-lg focus:ring-2 focus:ring-texas-navy focus:border-texas-navy mb-6"
               >
                 <option value="texas">Texas</option>
                 <option value="pennsylvania">Pennsylvania</option>
@@ -164,7 +169,7 @@ export function CalculatorPage() {
               </select>
 
               {calculationResults.length > 0 && (
-                <div className="bg-gray-50 rounded-lg p-6">
+                <AccentBoxReact accentColor="navy" padding="lg">
                   <h3 className="font-medium text-gray-900 mb-4">What We Found</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between">
@@ -173,7 +178,7 @@ export function CalculatorPage() {
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">Lowest Bill:</span>
-                      <span className="font-medium text-green-600">
+                      <span className="font-medium text-texas-gold">
                         ${topPlan?.totalMonthlyCost.toFixed(2)}
                       </span>
                     </div>
@@ -184,23 +189,23 @@ export function CalculatorPage() {
                     {potentialSavings > 0 && (
                       <div className="flex justify-between border-t pt-3">
                         <span className="text-gray-600">You Could Save:</span>
-                        <span className="font-bold text-green-600">
+                        <span className="font-bold text-texas-gold">
                           ${potentialSavings.toFixed(2)}/month
                         </span>
                       </div>
                     )}
                   </div>
-                </div>
+                </AccentBoxReact>
               )}
             </div>
           </div>
-        </div>
+        </EnhancedCardReact>
 
         {/* Results */}
         {calculationResults.length > 0 && (
-          <div className="bg-white rounded-lg shadow-sm border">
+          <EnhancedCardReact variant="default" padding="sm">
             <div className="p-6 border-b border-gray-200">
-              <h2 className="text-2xl font-bold text-gray-900">
+              <h2 className="text-2xl font-bold text-texas-navy">
                 Here's What You'd Pay With Each Plan
               </h2>
               <p className="text-gray-600 mt-2">
@@ -226,18 +231,18 @@ export function CalculatorPage() {
                     <tr 
                       key={plan.id} 
                       className={`border-b border-gray-100 hover:bg-gray-50 ${
-                        index === 0 ? 'bg-green-50' : ''
+                        index === 0 ? 'bg-texas-gold/5' : ''
                       }`}
                     >
                       <td className="py-4 px-6">
                         <div className="flex items-center">
                           <span className={`font-bold text-lg ${
-                            index === 0 ? 'text-green-600' : 'text-gray-900'
+                            index === 0 ? 'text-texas-gold' : 'text-gray-900'
                           }`}>
                             #{index + 1}
                           </span>
                           {index === 0 && (
-                            <CheckCircle className="h-5 w-5 text-green-500 ml-2" />
+                            <CheckCircle className="h-5 w-5 text-texas-gold ml-2" />
                           )}
                         </div>
                       </td>
@@ -262,7 +267,7 @@ export function CalculatorPage() {
                       </td>
                       <td className="py-4 px-6 text-right">
                         <div className={`font-bold text-lg ${
-                          index === 0 ? 'text-green-600' : 'text-gray-900'
+                          index === 0 ? 'text-texas-gold' : 'text-gray-900'
                         }`}>
                           ${plan.totalMonthlyCost.toFixed(2)}
                         </div>
@@ -279,27 +284,29 @@ export function CalculatorPage() {
             <div className="p-6 bg-gray-50 text-center">
               <button
                 onClick={() => navigate('/compare')}
-                className="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-colors font-medium mr-4"
+                className="bg-texas-red text-white px-8 py-3 rounded-lg hover:bg-texas-red-600 transition-colors font-medium mr-4"
               >
                 See More Options
               </button>
               <button
                 onClick={() => navigate('/rates')}
-                className="bg-gray-600 text-white px-8 py-3 rounded-lg hover:bg-gray-700 transition-colors font-medium"
+                className="bg-texas-navy text-white px-8 py-3 rounded-lg hover:bg-texas-navy/90 transition-colors font-medium"
               >
                 Browse Quality Plans
               </button>
             </div>
-          </div>
+          </EnhancedCardReact>
         )}
 
         {/* Calculator Info */}
         <div className="mt-12 grid lg:grid-cols-2 gap-8">
-          <div className="bg-white rounded-lg shadow-sm border p-8">
-            <div className="flex items-center mb-4">
-              <Info className="h-6 w-6 text-texas-navy mr-3" />
-              <h3 className="text-xl font-bold text-gray-900">How We Calculate Your Costs</h3>
-            </div>
+          <EnhancedCardReact 
+            variant="default" 
+            padding="lg"
+            icon={<Info />}
+            iconColor="navy"
+            title="How We Calculate Your Costs"
+          >
             <div className="space-y-4 text-gray-600">
               <p>
                 We take your monthly usage and calculate what you'd pay with every available plan in your area.
@@ -316,36 +323,38 @@ export function CalculatorPage() {
                 We sort plans from cheapest to most expensive so you can quickly find your best deal.
               </p>
             </div>
-          </div>
+          </EnhancedCardReact>
 
-          <div className="bg-white rounded-lg shadow-sm border p-8">
-            <div className="flex items-center mb-4">
-              <TrendingUp className="h-6 w-6 text-green-600 mr-3" />
-              <h3 className="text-xl font-bold text-gray-900">How to Save More</h3>
-            </div>
+          <EnhancedCardReact 
+            variant="default" 
+            padding="lg"
+            icon={<TrendingUp />}
+            iconColor="gold"
+            title="How to Save More"
+          >
             <div className="space-y-4 text-gray-600">
               <div className="flex items-start">
-                <DollarSign className="h-5 w-5 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                <DollarSign className="h-5 w-5 text-texas-gold mr-2 mt-0.5 flex-shrink-0" />
                 <div>
                   <strong>Look at the total bill, not just the rate.</strong> Sometimes a higher rate saves you money if there's no monthly fee.
                 </div>
               </div>
               <div className="flex items-start">
-                <Zap className="h-5 w-5 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                <Zap className="h-5 w-5 text-texas-gold mr-2 mt-0.5 flex-shrink-0" />
                 <div>
                   <strong>Use your real usage.</strong> Check your last few bills to find your average kWh.
                 </div>
               </div>
               <div className="flex items-start">
-                <BarChart className="h-5 w-5 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                <BarChart className="h-5 w-5 text-texas-gold mr-2 mt-0.5 flex-shrink-0" />
                 <div>
                   <strong>Think about commitment.</strong> Longer plans often cost less but lock you in.
                 </div>
               </div>
             </div>
-          </div>
+          </EnhancedCardReact>
         </div>
-      </div>
+      </EnhancedSectionReact>
     </div>
   );
 }

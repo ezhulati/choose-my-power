@@ -78,7 +78,7 @@ if (filter === 'green-energy' || greenEnergy === '100') redirectSegments.push('g
 
 // Show notice about canonical URL for legacy parameters instead of redirecting
 const hasLegacyParams = redirectSegments.length > 0 || (filter || term || greenEnergy || rateType);
-const suggestedCanonicalUrl = hasLegacyParams ? `/electricity-plans/${city}/${redirectSegments.join('/')}/` : null;
+const suggestedCanonicalUrl = hasLegacyParams ? `/electricity-plans/${city}${redirectSegments.length ? '/' + redirectSegments.join('/') : ''}` : null;
 
 // Use faceted system for consistency - no filters for base city page
 const filterSegments: string[] = [];
@@ -97,7 +97,8 @@ try {
     display_usage: 1000 // Standard 1000 kWh usage
   };
   
-  plans = await comparePowerClient.fetchPlans(apiParams);
+  // Prefer DB-first path for lower latency and fewer API calls
+  plans = await comparePowerClient.getPlansWithCache(apiParams);
   
   console.log(`✅ Successfully fetched ${plans.length} plans for ${cityName}`);
 } catch (error) {
@@ -106,8 +107,8 @@ try {
 }
 
 // Generate SEO metadata using the same system as faceted pages
-const currentUrl = `/texas/${city}/`;
-const canonicalUrl = suggestedCanonicalUrl || `/electricity-plans/${city}/`; // Point to faceted URL as canonical
+const currentUrl = `/texas/${city}`;
+const canonicalUrl = suggestedCanonicalUrl || `/electricity-plans/${city}`; // Point to faceted URL as canonical
 const lowestRate = plans.length > 0 ? Math.min(...plans.map(p => parseFloat(p.rate) || 999)) : 0;
 const cityTier = tdspInfo.tier || 3;
 
@@ -125,8 +126,8 @@ const metaTags = await generateFacetedMeta({
 // Generate structured data using the same system
 const breadcrumbs = [
   { name: 'Home', url: '/' },
-  { name: 'Texas Electricity', url: '/texas/' },
-  { name: cityName.replace(', TX', ''), url: `/texas/${city}/` }
+  { name: 'Texas Electricity', url: '/texas' },
+  { name: cityName.replace(', TX', ''), url: `/texas/${city}` }
 ];
 
 const schemas = generateFacetedSchema({
@@ -303,7 +304,7 @@ const heroImage = getHeroImage({
                     </h4>
                     <div class="space-y-2">
                       {item.definition.urlPatterns.slice(0, item.definition.type === 'providers' ? 12 : 6).map((pattern) => {
-                        const newUrl = `/electricity-plans/${city}/${pattern}/`;
+                        const newUrl = `/electricity-plans/${city}/${pattern}`;
                         
                         return (
                           <a
@@ -372,7 +373,7 @@ const heroImage = getHeroImage({
         
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {['12-month', '24-month', 'fixed-rate', 'green-energy', 'prepaid', 'no-deposit'].map((filter) => {
-            const newUrl = `/electricity-plans/${city}/${filter}/`;
+            const newUrl = `/electricity-plans/${city}/${filter}`;
             const definition = filterMapper.getDefinitionByPattern(filter);
             const displayName = definition?.displayName(filter) || filter.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
             

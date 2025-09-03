@@ -8,6 +8,7 @@
 import Layout from '../layouts/Layout.astro';
 import HeroBackground from '../components/HeroBackground.astro';
 import { Badge } from '../components/ui/badge';
+import EnhancedSection from '../components/ui/EnhancedSection.astro';
 
 const pageTitle = "Accessibility Statement | ChooseMyPower WCAG Compliance";
 const pageDescription = "ChooseMyPower's commitment to web accessibility. Learn about our WCAG AA compliance efforts, accessibility features, and how to request accommodations.";
@@ -164,7 +165,7 @@ const testingTools = [
   }
   </script>
 
-  <main class="min-h-screen bg-gray-50">
+  <EnhancedSection background="cream" padding="none" className="min-h-screen">
     <!-- Hero Section -->
     <HeroBackground 
       imageUrl={heroImage}
@@ -627,7 +628,7 @@ const testingTools = [
         </a>
       </div>
     </div>
-  </main>
+  </EnhancedSection>
 </Layout>
 
 <style>

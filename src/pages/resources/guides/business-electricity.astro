@@ -10,16 +10,14 @@ const description = "Business electricity rates are even more confusing than res
 
 <Layout title={title} description={description}>
   <!-- Enhanced Hero Section -->
-  <section class="bg-gradient-to-br from-texas-navy via-blue-800 to-texas-navy text-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
-      <div class="text-center">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Business Electricity Survival Guide</h1>
-        <p class="text-xl text-blue-100 mb-8 leading-relaxed max-w-4xl mx-auto">
-          If you think residential electricity is confusing, wait until you see what they do to businesses. Commercial rates have even more tricks, hidden fees, and ways to separate you from your money. Whether you run a small shop or a big company, here's how to not get fleeced.
-        </p>
-      </div>
+  <EnhancedSection background="navy" padding="xl">
+    <div class="max-w-6xl mx-auto text-center">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-white">Business Electricity Survival Guide</h1>
+      <p class="text-xl text-blue-100 mb-8 leading-relaxed max-w-4xl mx-auto">
+        If you think residential electricity is confusing, wait until you see what they do to businesses. Commercial rates have even more tricks, hidden fees, and ways to separate you from your money. Whether you run a small shop or a big company, here's how to not get fleeced.
+      </p>
     </div>
-  </section>
+  </EnhancedSection>
 
   <!-- Enhanced Business Content -->
   <EnhancedSection background="cream" padding="xl">
@@ -53,18 +51,18 @@ const description = "Business electricity rates are even more confusing than res
         </div>
       </div>
 
-      <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 mb-8">
+      <EnhancedCard variant="elevated" padding="xl" className="mb-8">
         <h2 class="text-2xl font-bold text-texas-navy mb-4">Understanding Demand Charges</h2>
         <p class="text-gray-700 mb-4">
           Demand charges are based on your highest 15-minute usage peak during the month, measured in kilowatts (kW). This can significantly impact your electricity costs.
         </p>
         
-        <div class="bg-yellow-50 p-4 rounded-lg mb-4">
+        <AccentBox accentColor="gold" padding="md" className="mb-4">
           <h3 class="font-semibold text-yellow-800 mb-2">Example Demand Charge Impact</h3>
           <p class="text-sm text-yellow-700">
             If your business peaks at 100kW for just 15 minutes but averages 30kW, you'll pay demand charges on the full 100kW peak. This could add $500-1500 to your monthly bill.
           </p>
-        </div>
+        </AccentBox>
 
         <h3 class="text-lg font-semibold text-texas-navy mb-3">Strategies to Reduce Demand Charges</h3>
         <ul class="text-sm text-gray-700 space-y-2">
@@ -73,13 +71,13 @@ const description = "Business electricity rates are even more confusing than res
           <li>• Schedule heavy equipment use during off-peak hours</li>
           <li>• Consider energy storage solutions for peak shaving</li>
         </ul>
-      </div>
+      </EnhancedCard>
 
-      <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 mb-8">
+      <EnhancedCard variant="elevated" padding="xl" className="mb-8">
         <h2 class="text-2xl font-bold text-texas-navy mb-4">Choosing the Right Business Plan</h2>
         
         <div class="grid md:grid-cols-3 gap-6">
-          <div class="border border-gray-200 rounded-lg p-4">
+          <EnhancedCard variant="outlined" padding="md">
             <h3 class="font-semibold text-texas-navy mb-2">Small Retail/Office</h3>
             <p class="text-sm text-gray-600 mb-3">Under 25kW demand</p>
             <ul class="text-xs text-gray-600 space-y-1">
@@ -88,9 +86,9 @@ const description = "Business electricity rates are even more confusing than res
               <li>• No demand charges</li>
               <li>• 12-24 month terms</li>
             </ul>
-          </div>
+          </EnhancedCard>
           
-          <div class="border border-gray-200 rounded-lg p-4">
+          <EnhancedCard variant="outlined" padding="md">
             <h3 class="font-semibold text-texas-navy mb-2">Medium Business</h3>
             <p class="text-sm text-gray-600 mb-3">25-100kW demand</p>
             <ul class="text-xs text-gray-600 space-y-1">
@@ -99,9 +97,9 @@ const description = "Business electricity rates are even more confusing than res
               <li>• Energy efficiency programs</li>
               <li>• Flexible contract terms</li>
             </ul>
-          </div>
+          </EnhancedCard>
           
-          <div class="border border-gray-200 rounded-lg p-4">
+          <EnhancedCard variant="outlined" padding="md">
             <h3 class="font-semibold text-texas-navy mb-2">Large Enterprise</h3>
             <p class="text-sm text-gray-600 mb-3">Over 100kW demand</p>
             <ul class="text-xs text-gray-600 space-y-1">
@@ -110,19 +108,19 @@ const description = "Business electricity rates are even more confusing than res
               <li>• Load forecasting</li>
               <li>• Multi-year contracts</li>
             </ul>
-          </div>
+          </EnhancedCard>
         </div>
-      </div>
+      </EnhancedCard>
 
       <div class="text-center">
-        <div class="bg-gradient-to-r from-texas-navy to-blue-800 text-white p-8 rounded-xl">
-          <h2 class="text-2xl font-bold mb-4">Get Expert Help for Your Business</h2>
+        <AccentBox accentColor="navy" padding="xl">
+          <h2 class="text-2xl font-bold mb-4 text-white">Get Expert Help for Your Business</h2>
           <p class="text-lg mb-6 text-blue-100">Commercial electricity can be complex. Let our experts help you find the right plan for your business needs.</p>
           <a href="/contact" class="bg-texas-red text-white px-8 py-4 rounded-lg font-semibold hover:bg-texas-red-600 transition-colors">
             Get Business Consultation
           </a>
-        </div>
+        </AccentBox>
       </div>
     </div>
-  </div>
+  </EnhancedSection>
 </Layout>

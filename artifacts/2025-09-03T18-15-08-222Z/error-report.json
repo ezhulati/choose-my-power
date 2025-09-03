@@ -1,0 +1,679 @@
+{
+  "timestamp": "2025-09-03T18:15:20.491Z",
+  "error": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"filters-sidebar\"], .filters-sidebar, aside') to be visible\u001b[22m\n",
+  "stack": "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-testid=\"filters-sidebar\"], .filters-sidebar, aside') to be visible\u001b[22m\n\n    at debugTrailingSlash (/Users/mbp-ez/Downloads/AI Library/Apps/CMP/choose-my-power/debug-trailing-slash.js:79:16)",
+  "url": "http://localhost:4324/electricity-plans/houston",
+  "consoleLogs": [
+    "[2025-09-03T18:15:09.163Z] warning: <link rel=preload> has an unsupported `type` value",
+    "[2025-09-03T18:15:09.208Z] log: 🚧 SW: Service Worker disabled in development mode",
+    "[2025-09-03T18:15:09.229Z] error: Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "[2025-09-03T18:15:09.236Z] error: Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "[2025-09-03T18:15:09.239Z] debug: [vite] connecting...",
+    "[2025-09-03T18:15:09.242Z] debug: [astro] Initializing prefetch script",
+    "[2025-09-03T18:15:09.265Z] debug: [vite] connected.",
+    "[2025-09-03T18:15:09.322Z] info: %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+    "[2025-09-03T18:15:09.492Z] log: 📊 TTFB: 35.599999994039536",
+    "[2025-09-03T18:15:09.493Z] log: 📊 CLS: 0.00009078236818313598",
+    "[2025-09-03T18:15:09.493Z] log: 📊 CLS: 0.021076571428775785",
+    "[2025-09-03T18:15:09.493Z] log: 📊 FCP: 100",
+    "[2025-09-03T18:15:09.493Z] log: 📊 LCP: 100",
+    "[2025-09-03T18:15:11.713Z] log: 📊 FID: 8.099999994039536",
+    "[2025-09-03T18:15:12.609Z] warning: The resource http://localhost:4324/_astro/_state_.Cspq1bGy.css was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally."
+  ],
+  "networkRequests": [
+    {
+      "timestamp": "2025-09-03T18:15:09.141Z",
+      "method": "GET",
+      "url": "http://localhost:4324/electricity-plans/houston",
+      "resourceType": "document"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.161Z",
+      "method": "GET",
+      "url": "http://localhost:4324/_astro/_state_.Cspq1bGy.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.161Z",
+      "method": "GET",
+      "url": "http://localhost:4324/@vite/client",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.161Z",
+      "method": "GET",
+      "url": "http://localhost:4324/@fs/Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/astro/dist/runtime/client/dev-toolbar/entrypoint.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.161Z",
+      "method": "GET",
+      "url": "http://localhost:4324/@id/astro:scripts/page.js",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.161Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/index.css",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.161Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/styles/dropdown-z-index-enterprise-solution.css",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.161Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/styles/footer-modern.css",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.162Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/styles/dynamic-messaging.css",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.162Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/HeaderWrapper.astro?astro&type=style&index=0&lang.css",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.162Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/FooterWrapper.astro?astro&type=style&index=0&lang.css",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.162Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/layouts/Layout.astro?astro&type=style&index=0&lang.css",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.162Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/layouts/Layout.astro?astro&type=style&index=1&lang.css",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.162Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/layouts/Layout.astro?astro&type=style&index=2&lang.css",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.162Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/layouts/Layout.astro?astro&type=style&index=3&lang.css",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.162Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/HeroBackground.astro?astro&type=style&index=0&lang.css",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.162Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/faceted/FacetedPlanGrid.astro?astro&type=style&index=0&lang.css",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.163Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/HeaderWrapper.astro?astro&type=script&index=0&lang.ts",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.163Z",
+      "method": "GET",
+      "url": "http://localhost:4324/.netlify/functions/health",
+      "resourceType": "other"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.175Z",
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.ttf",
+      "resourceType": "font"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.175Z",
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYMZg.ttf",
+      "resourceType": "font"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.175Z",
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYMZg.ttf",
+      "resourceType": "font"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.178Z",
+      "method": "GET",
+      "url": "http://localhost:4324/@id/astro:scripts/before-hydration.js",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.178Z",
+      "method": "GET",
+      "url": "https://assets.comparepower.com/images/frontier_utilities.svg",
+      "resourceType": "image"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.178Z",
+      "method": "GET",
+      "url": "https://assets.comparepower.com/images/gexa_energy.svg",
+      "resourceType": "image"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.178Z",
+      "method": "GET",
+      "url": "https://assets.comparepower.com/images/discount_power.svg",
+      "resourceType": "image"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.178Z",
+      "method": "GET",
+      "url": "https://assets.comparepower.com/images/cirro_energy.svg",
+      "resourceType": "image"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.178Z",
+      "method": "GET",
+      "url": "https://assets.comparepower.com/images/apge.svg",
+      "resourceType": "image"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.178Z",
+      "method": "GET",
+      "url": "https://assets.comparepower.com/images/4change_energy.svg",
+      "resourceType": "image"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.178Z",
+      "method": "GET",
+      "url": "https://assets.comparepower.com/images/rhythm_energy.svg",
+      "resourceType": "image"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.178Z",
+      "method": "GET",
+      "url": "https://assets.comparepower.com/images/just_energy.svg",
+      "resourceType": "image"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.178Z",
+      "method": "GET",
+      "url": "https://assets.comparepower.com/images/atlantex_power.svg",
+      "resourceType": "image"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.179Z",
+      "method": "GET",
+      "url": "https://assets.comparepower.com/images/tara_energy.svg",
+      "resourceType": "image"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.179Z",
+      "method": "GET",
+      "url": "https://assets.comparepower.com/images/reliant.svg",
+      "resourceType": "image"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.179Z",
+      "method": "GET",
+      "url": "https://assets.comparepower.com/images/direct_energy.svg",
+      "resourceType": "image"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.187Z",
+      "method": "GET",
+      "url": "https://assets.comparepower.com/images/amigo_energy.svg",
+      "resourceType": "image"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.192Z",
+      "method": "GET",
+      "url": "https://assets.comparepower.com/images/green_mountain.svg",
+      "resourceType": "image"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.193Z",
+      "method": "GET",
+      "url": "https://assets.comparepower.com/images/payless_power.svg",
+      "resourceType": "image"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.197Z",
+      "method": "GET",
+      "url": "https://assets.comparepower.com/images/txu_energy.svg",
+      "resourceType": "image"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.208Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/faceted/FacetedPlanGrid.astro?astro&type=script&index=0&lang.ts",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.236Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/node_modules/vite/dist/client/env.mjs",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.236Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/virtual-modules/prefetch.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.236Z",
+      "method": "GET",
+      "url": "http://localhost:4324/@id/__x00__astro:toolbar:internal",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.237Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/helpers.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.237Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/settings.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.237Z",
+      "method": "GET",
+      "url": "http://localhost:4324/@react-refresh",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.239Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/prefetch/index.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.241Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/ui/EnterprisePlanCard.tsx",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.241Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/@astrojs_react_client__js.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.242Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/astro.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.242Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/index.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.242Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/xray.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.242Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/settings.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.242Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/toolbar.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.242Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/index.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.264Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.264Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/react.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.264Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/ui/card.tsx",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.264Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/ui/button.tsx",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.264Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/ui/badge.tsx",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.264Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/ui/Icon.tsx",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.265Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/lib/logo/provider-mappings.ts",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.265Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-NXESFFTV.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.265Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-DRWLMN53.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.265Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-G3PMV62Z.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.265Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/icons.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.265Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/utils/icons.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.266Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/utils/window.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.266Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/utils/highlight.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.266Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/annotations.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.266Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/index.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.266Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-list-item.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.266Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-list-window.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.266Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-ui.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.266Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/html-escaper/esm/index.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.266Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/window.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.266Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/badge.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.266Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/button.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.266Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/card.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.266Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/highlight.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.266Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/icon.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.266Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/radio-checkbox.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.266Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/select.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.266Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/toggle.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.266Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/tooltip.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.302Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/lib/utils.ts",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.302Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/@radix-ui_react-slot.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.302Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/class-variance-authority.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.308Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/@iconify_react.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.309Z",
+      "method": "GET",
+      "url": "http://localhost:4324/lightning-bolt-icon.svg",
+      "resourceType": "other"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.312Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/a11y.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.312Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/perf.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.340Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/clsx.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.340Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/tailwind-merge.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.341Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-TLMPZXCM.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.341Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-6PXSGDAH.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.341Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-U7P2NEEE.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.342Z",
+      "method": "GET",
+      "url": "http://localhost:4324/favicon.svg",
+      "resourceType": "other"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.345Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/astro___aria-query.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.345Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/astro___axobject-query.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.437Z",
+      "method": "GET",
+      "url": "http://localhost:4324/js/web-vitals.mjs",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.486Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/assets/logos/frontier_utilities.svg",
+      "resourceType": "fetch"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.495Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/assets/logos/apge.svg",
+      "resourceType": "fetch"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.496Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/assets/logos/rhythm_energy.svg",
+      "resourceType": "fetch"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.498Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/assets/logos/apge.svg",
+      "resourceType": "fetch"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.499Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/assets/logos/frontier_utilities.svg",
+      "resourceType": "fetch"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.500Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/assets/logos/apge.svg",
+      "resourceType": "fetch"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.501Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/assets/logos/rhythm_energy.svg",
+      "resourceType": "fetch"
+    },
+    {
+      "timestamp": "2025-09-03T18:15:09.502Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/assets/logos/apge.svg",
+      "resourceType": "fetch"
+    }
+  ]
+}

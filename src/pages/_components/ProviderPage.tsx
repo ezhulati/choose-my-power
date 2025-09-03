@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { mockProviders, mockStates } from '../../data/mockData';
 import { Star, Phone, Globe, MapPin, Zap, DollarSign, Calendar, Leaf, CheckCircle, AlertTriangle, XCircle, ThumbsUp, ThumbsDown, Users } from 'lucide-react';
+import EnhancedSectionReact from '../../components/ui/EnhancedSectionReact';
+import EnhancedCardReact from '../../components/ui/EnhancedCardReact';
+import AccentBoxReact from '../../components/ui/AccentBoxReact';
 
 // Extend Window interface to include our navigation function
 declare global {
@@ -28,9 +31,9 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
   
   if (!provider) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">Provider Not Found</h1>
+      <EnhancedSectionReact background="gray" padding="xl">
+        <EnhancedCardReact variant="elevated" padding="lg" className="text-center max-w-lg mx-auto">
+          <h1 className="text-2xl font-bold text-texas-navy mb-4">Provider Not Found</h1>
           <p className="text-gray-600 mb-8">The provider you're looking for doesn't exist in our database.</p>
           <button
             onClick={() => navigate('/providers')}
@@ -38,8 +41,8 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
           >
             View Licensed Companies
           </button>
-        </div>
-      </div>
+        </EnhancedCardReact>
+      </EnhancedSectionReact>
     );
   }
 
@@ -72,10 +75,9 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-texas-cream/20">
       {/* Header */}
-      <div className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <EnhancedSectionReact background="white" padding="lg" className="border-b border-gray-200">
           <nav className="text-sm text-gray-500 mb-4">
             <button onClick={() => navigate('/')} className="hover:text-texas-navy">Home</button>
             <span className="mx-2">/</span>
@@ -129,11 +131,11 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                   </div>
                   
                   {/* Simplified Trust Signal */}
-                  <div className="bg-texas-cream-50 border border-texas-gold-200 p-3 mb-4 rounded-lg">
+                  <AccentBoxReact accentColor="gold" padding="sm" className="mb-4">
                     <p className="text-sm text-gray-700">
                       Based on {provider.reviewCount.toLocaleString()} real customer reviews • Updated monthly
                     </p>
-                  </div>
+                  </AccentBoxReact>
                 </div>
               </div>
 
@@ -179,8 +181,7 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
             </div>
 
             {/* Contact Info */}
-            <div className="bg-gray-50 p-6 rounded-lg lg:w-80">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Contact Information</h3>
+            <EnhancedCardReact title="Contact Information" variant="gradient" padding="md" className="lg:w-80">
               <div className="space-y-3">
                 <div className="flex items-center">
                   <Phone className="h-5 w-5 text-gray-400 mr-3" />
@@ -199,15 +200,14 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                   </div>
                 </div>
               </div>
-            </div>
+            </EnhancedCardReact>
           </div>
         </div>
-      </div>
+      </EnhancedSectionReact>
 
       {/* Tabs */}
-      <div className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="flex space-x-8">
+      <EnhancedSectionReact background="white" padding="sm" className="border-b border-gray-200">
+        <nav className="flex space-x-8">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
@@ -222,22 +222,22 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                 <span>{tab.name}</span>
               </button>
             ))}
-          </nav>
-        </div>
-      </div>
+        </nav>
+      </EnhancedSectionReact>
 
       {/* Tab Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <EnhancedSectionReact background="cream" padding="lg">
         {selectedTab === 'overview' && (
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2 space-y-6">
               {/* What They're Good For */}
               {provider.heroJourney?.whatTheyreGoodAt && (
-                <div className="bg-white rounded-lg shadow-sm border p-6">
-                  <div className="flex items-center mb-4">
-                    <ThumbsUp className="h-6 w-6 text-green-600 mr-3" />
-                    <h3 className="text-xl font-semibold text-texas-navy">Good For...</h3>
-                  </div>
+                <EnhancedCardReact 
+                  title="Good For..."
+                  icon={<ThumbsUp className="h-6 w-6" />}
+                  iconColor="green"
+                  variant="elevated"
+                >
                   <div className="space-y-3">
                     {provider.heroJourney.whatTheyreGoodAt.map((item, index) => (
                       <div key={index} className="flex items-start">
@@ -246,16 +246,17 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                       </div>
                     ))}
                   </div>
-                </div>
+                </EnhancedCardReact>
               )}
 
               {/* Not Great If */}
               {provider.heroJourney?.whereTheyFallShort && (
-                <div className="bg-white rounded-lg shadow-sm border p-6">
-                  <div className="flex items-center mb-4">
-                    <ThumbsDown className="h-6 w-6 text-red-600 mr-3" />
-                    <h3 className="text-xl font-semibold text-texas-navy">Not Great If...</h3>
-                  </div>
+                <EnhancedCardReact 
+                  title="Not Great If..."
+                  icon={<ThumbsDown className="h-6 w-6" />}
+                  iconColor="red"
+                  variant="elevated"
+                >
                   <div className="space-y-3">
                     {provider.heroJourney.whereTheyFallShort.map((item, index) => (
                       <div key={index} className="flex items-start">
@@ -264,40 +265,42 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                       </div>
                     ))}
                   </div>
-                </div>
+                </EnhancedCardReact>
               )}
 
               {/* What Real Customers Say */}
               {provider.heroJourney?.realCustomerThemes && (
-                <div className="bg-white rounded-lg shadow-sm border p-6">
-                  <div className="flex items-center mb-4">
-                    <Users className="h-6 w-6 text-texas-navy mr-3" />
-                    <h3 className="text-xl font-semibold text-texas-navy">What People Actually Experience</h3>
-                  </div>
+                <EnhancedCardReact 
+                  title="What People Actually Experience"
+                  icon={<Users className="h-6 w-6" />}
+                  iconColor="navy"
+                  variant="elevated"
+                >
                   <div className="space-y-4">
                     {provider.heroJourney.realCustomerThemes.map((theme, index) => (
-                      <blockquote key={index} className="bg-gray-50 border-l-4 border-texas-gold p-4 italic text-gray-700">
+                      <AccentBoxReact key={index} accentColor="gold" background="light" className="italic text-gray-700">
                         {theme}
-                      </blockquote>
+                      </AccentBoxReact>
                     ))}
                   </div>
-                </div>
+                </EnhancedCardReact>
               )}
 
               {/* Marketing vs Reality */}
               {provider.marketingVsReality && (
-                <div className="bg-white rounded-lg shadow-sm border p-6">
-                  <div className="flex items-center mb-4">
-                    <AlertTriangle className="h-6 w-6 text-yellow-600 mr-3" />
-                    <h3 className="text-xl font-semibold text-texas-navy">Marketing vs Reality</h3>
-                  </div>
+                <EnhancedCardReact 
+                  title="Marketing vs Reality"
+                  icon={<AlertTriangle className="h-6 w-6" />}
+                  iconColor="gold"
+                  variant="elevated"
+                >
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <h4 className="font-medium text-gray-900 mb-3">What They Claim</h4>
                       <ul className="space-y-2">
                         {provider.marketingVsReality.marketingClaims.map((claim, index) => (
                           <li key={index} className="text-sm text-gray-600 flex items-start">
-                            <span className="w-2 h-2 bg-yellow-400 rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                            <span className="w-2 h-2 bg-texas-gold rounded-full mt-2 mr-2 flex-shrink-0"></span>
                             {claim}
                           </li>
                         ))}
@@ -315,12 +318,12 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                       </ul>
                     </div>
                   </div>
-                </div>
+                </EnhancedCardReact>
               )}
 
               {/* Bottom Line */}
               {provider.heroJourney?.bottomLine && (
-                <div className="bg-gradient-to-r from-texas-cream to-gray-50 rounded-lg border-2 border-texas-gold p-6">
+                <AccentBoxReact accentColor="gold" padding="lg" className="bg-gradient-to-r from-texas-cream to-texas-cream/50 border-2 border-texas-gold">
                   <div className="flex items-start">
                     <div className="bg-texas-gold text-white p-2 rounded-lg mr-4">
                       <Star className="h-6 w-6" />
@@ -330,14 +333,13 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                       <p className="text-gray-800">{provider.heroJourney.bottomLine}</p>
                     </div>
                   </div>
-                </div>
+                </AccentBoxReact>
               )}
             </div>
 
             <div className="space-y-6">
               {/* Quick Stats */}
-              <div className="bg-white rounded-lg shadow-sm border p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">At A Glance</h3>
+              <EnhancedCardReact title="At A Glance" variant="elevated">
                 <div className="space-y-4">
                   <div className="flex justify-between">
                     <span className="text-gray-600">Customer Rating</span>
@@ -359,7 +361,7 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                     <span className="font-semibold">{provider.plans.length}</span>
                   </div>
                 </div>
-              </div>
+              </EnhancedCardReact>
             </div>
           </div>
         )}
@@ -368,7 +370,7 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
           <div className="space-y-6">
             {/* Best Plans Callout */}
             {provider.heroJourney?.bestPlans && provider.heroJourney.bestPlans.length > 0 && (
-              <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-lg p-6">
+              <AccentBoxReact accentColor="green" padding="lg" className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200">
                 <div className="flex items-center mb-3">
                   <Star className="h-6 w-6 text-texas-gold mr-2" />
                   <h3 className="text-lg font-semibold text-texas-navy">Their Best Plans (If Any)</h3>
@@ -383,15 +385,15 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                 <p className="text-sm text-gray-700">
                   These are their standout plans based on our analysis, but definitely shop around - other companies might beat these.
                 </p>
-              </div>
+              </AccentBoxReact>
             )}
 
-            <div className="bg-white rounded-lg shadow-sm border p-6">
-              <h3 className="text-xl font-semibold text-texas-navy mb-4">
-                {provider.assessment === 'good' ? 'Their Current Plans' : 
-                 provider.assessment === 'mixed' ? 'Available Plans (Watch The Fine Print)' : 
-                 'Their Plans (But Consider These Alternatives First)'}
-              </h3>
+            <EnhancedCardReact 
+              title={provider.assessment === 'good' ? 'Their Current Plans' : 
+                     provider.assessment === 'mixed' ? 'Available Plans (Watch The Fine Print)' : 
+                     'Their Plans (But Consider These Alternatives First)'}
+              variant="elevated"
+            >
               <p className="text-gray-600 mb-6">
                 {provider.assessment === 'good' ? 'Here\'s what they\'re offering right now. Remember to compare with other providers too.' : 
                  provider.assessment === 'mixed' ? 'These plans might work for you, but read the terms carefully and compare with others.' : 
@@ -442,15 +444,14 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                   </div>
                 ))}
               </div>
-            </div>
+            </EnhancedCardReact>
           </div>
         )}
 
         {selectedTab === 'reviews' && (
           <div className="space-y-6">
-            <div className="bg-white rounded-lg shadow-sm border p-6">
+            <EnhancedCardReact title="Customer Reviews" variant="elevated">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-xl font-semibold text-gray-900">Customer Reviews</h3>
                 <div className="flex items-center space-x-2">
                   <Star className="h-5 w-5 text-yellow-400 fill-current" />
                   <span className="text-lg font-semibold">{provider.rating}</span>
@@ -493,13 +494,12 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                   </div>
                 ))}
               </div>
-            </div>
+            </EnhancedCardReact>
           </div>
         )}
 
         {selectedTab === 'service-areas' && (
-          <div className="bg-white rounded-lg shadow-sm border p-6">
-            <h3 className="text-xl font-semibold text-gray-900 mb-4">Service Areas</h3>
+          <EnhancedCardReact title="Service Areas" variant="elevated">
             <p className="text-gray-600 mb-6">
               {provider.name} provides electricity service in the following states:
             </p>
@@ -532,9 +532,9 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                 );
               })}
             </div>
-          </div>
+          </EnhancedCardReact>
         )}
-      </div>
+      </EnhancedSectionReact>
     </div>
   );
 }

@@ -54,14 +54,11 @@ export const filterDefinitions: FilterDefinition[] = [
       return null;
     },
     displayName: (segment: string) => {
-      if (segment === 'month-to-month') return 'Month-to-Month (Most flexible)';
+      if (segment === 'month-to-month') return 'Month-to-Month';
       const match = segment.match(/(\d+)-month/);
       if (match) {
         const months = match[1];
-        if (months === '12') return `${months}-Month (Most popular)`;
-        if (months === '24') return `${months}-Month (Better rates)`;
-        if (months === '36') return `${months}-Month (Lowest rates)`;
-        return `${months}-Month Contract`;
+        return `${months}-Month`;
       }
       return segment;
     },
@@ -84,9 +81,9 @@ export const filterDefinitions: FilterDefinition[] = [
     },
     displayName: (segment: string) => {
       switch (segment) {
-        case 'fixed-rate': return 'Fixed Rate (Same all year)';
-        case 'variable-rate': return 'Variable Rate (Can change)';
-        case 'indexed-rate': return 'Market Rate (Follows wholesale)';
+        case 'fixed-rate': return 'Fixed Rate';
+        case 'variable-rate': return 'Variable Rate';
+        case 'indexed-rate': return 'Market Rate';
         default: return segment;
       }
     },
@@ -106,7 +103,7 @@ export const filterDefinitions: FilterDefinition[] = [
       return match ? parseInt(match[1]) : null;
     },
     displayName: (segment: string) => {
-      if (segment === 'green-energy' || segment === 'renewable') return '100% Clean Energy (Wind & solar)';
+      if (segment === 'green-energy' || segment === 'renewable') return '100% Clean Energy';
       const match = segment.match(/(\d+)-green/);
       return match ? `${match[1]}% Clean Energy` : segment;
     },
@@ -139,12 +136,12 @@ export const filterDefinitions: FilterDefinition[] = [
     displayName: (segment: string) => {
       const displayMap: Record<string, string> = {
         'no-deposit': 'No Deposit Required',
-        'prepaid': 'Prepaid (Pay as you go)',
+        'prepaid': 'Prepaid',
         'autopay-discount': 'AutoPay Discount',
-        'time-of-use': 'Time-of-Use (Cheaper at night)',
+        'time-of-use': 'Time-of-Use',
         'free-weekends': 'Free Weekends',
         'bill-credit': 'Bill Credit',
-        'no-contract': 'No Contract (Most flexible)',
+        'no-contract': 'No Contract',
         'smart-meter': 'Smart Meter Required'
       };
       return displayMap[segment] || segment;
@@ -153,37 +150,66 @@ export const filterDefinitions: FilterDefinition[] = [
     description: 'Special plan features and requirements'
   },
 
-  // Provider Filters
+  // Provider Filters - Deduplicated and Expanded
   {
     type: 'provider',
-    urlPatterns: ['txu', 'txu-energy', 'reliant', 'reliant-energy', 'green-mountain', 'green-mountain-energy', 'gexa', 'direct-energy', 'discount-power'],
+    urlPatterns: [
+      'txu-energy', 'reliant', 'green-mountain-energy', 'gexa-energy', 
+      'direct-energy', 'discount-power', 'champion-energy', 'cirro-energy',
+      'frontier-utilities', '4change-energy', 'ambit-energy', 'amigo-energy',
+      'bounce-energy', 'chariot-energy', 'express-energy', 'infuse-energy',
+      'just-energy', 'pulse-power', 'rhythm-energy', 'veteran-energy'
+    ],
     apiParam: 'brand_id',
     valueTransform: (segment: string) => {
-      // This would need to be mapped to actual brand IDs from the API
+      // Unified mapping with no duplicates - prefer canonical brand names
       const providerMap: Record<string, string> = {
-        'txu': 'txu_energy',
         'txu-energy': 'txu_energy',
         'reliant': 'reliant',
-        'reliant-energy': 'reliant',
-        'green-mountain': 'green_mountain',
         'green-mountain-energy': 'green_mountain',
-        'gexa': 'gexa_energy',
+        'gexa-energy': 'gexa_energy',
         'direct-energy': 'direct_energy',
-        'discount-power': 'discount_power'
+        'discount-power': 'discount_power',
+        'champion-energy': 'champion_energy',
+        'cirro-energy': 'cirro_energy',
+        'frontier-utilities': 'frontier_utilities',
+        '4change-energy': '4change_energy',
+        'ambit-energy': 'ambit_energy',
+        'amigo-energy': 'amigo_energy',
+        'bounce-energy': 'bounce_energy',
+        'chariot-energy': 'chariot_energy',
+        'express-energy': 'express_energy',
+        'infuse-energy': 'infuse_energy',
+        'just-energy': 'just_energy',
+        'pulse-power': 'pulse_power',
+        'rhythm-energy': 'rhythm_energy',
+        'veteran-energy': 'veteran_energy'
       };
       return providerMap[segment] || segment.replace('-', '_');
     },
     displayName: (segment: string) => {
+      // Canonical display names - no duplicates
       const providerNames: Record<string, string> = {
-        'txu': 'TXU Energy',
         'txu-energy': 'TXU Energy',
         'reliant': 'Reliant',
-        'reliant-energy': 'Reliant',
-        'green-mountain': 'Green Mountain Energy',
         'green-mountain-energy': 'Green Mountain Energy',
-        'gexa': 'Gexa Energy',
+        'gexa-energy': 'Gexa Energy',
         'direct-energy': 'Direct Energy',
-        'discount-power': 'Discount Power'
+        'discount-power': 'Discount Power',
+        'champion-energy': 'Champion Energy',
+        'cirro-energy': 'Cirro Energy',
+        'frontier-utilities': 'Frontier Utilities',
+        '4change-energy': '4Change Energy',
+        'ambit-energy': 'Ambit Energy',
+        'amigo-energy': 'Amigo Energy',
+        'bounce-energy': 'Bounce Energy',
+        'chariot-energy': 'Chariot Energy',
+        'express-energy': 'Express Energy',
+        'infuse-energy': 'Infuse Energy',
+        'just-energy': 'Just Energy',
+        'pulse-power': 'Pulse Power',
+        'rhythm-energy': 'Rhythm Energy',
+        'veteran-energy': 'Veteran Energy'
       };
       return providerNames[segment] || segment.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase());
     },
@@ -535,10 +561,54 @@ export class FilterMapper {
   }
 
   /**
-   * Get filter definition by pattern
+   * Get filter definition by pattern with dynamic provider support
    */
   getDefinitionByPattern(pattern: string): FilterDefinition | undefined {
-    return this.definitions.get(pattern);
+    // First check if it's a static definition
+    const staticDef = this.definitions.get(pattern);
+    if (staticDef) return staticDef;
+    
+    // If not found but looks like a provider slug, create a dynamic definition
+    if (this.isProviderSlug(pattern)) {
+      return this.createDynamicProviderDefinition(pattern);
+    }
+    
+    return undefined;
+  }
+
+  /**
+   * Check if a pattern looks like a provider slug
+   */
+  private isProviderSlug(pattern: string): boolean {
+    // Basic heuristics for provider slug detection
+    // - Contains letters and hyphens
+    // - Not in other filter categories
+    const isValidSlug = /^[a-z0-9-]+$/.test(pattern) && pattern.length > 2;
+    const isNotOtherFilterType = !pattern.match(/^(\d+)-(month|kwh|green)$/) && 
+                                !['fixed-rate', 'variable-rate', 'indexed-rate', 'prepaid', 'no-deposit', 'autopay-discount'].includes(pattern);
+    
+    return isValidSlug && isNotOtherFilterType;
+  }
+
+  /**
+   * Create a dynamic provider definition for unknown providers
+   */
+  private createDynamicProviderDefinition(pattern: string): FilterDefinition {
+    return {
+      type: 'provider',
+      urlPatterns: [pattern],
+      apiParam: 'brand_id',
+      valueTransform: (segment: string) => segment.replace('-', '_'),
+      displayName: (segment: string) => {
+        // Convert slug to display name (e.g., "txu-energy" -> "TXU Energy")
+        return segment
+          .split('-')
+          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(' ');
+      },
+      isValid: (value: string) => typeof value === 'string' && value.length > 0,
+      description: 'Filter by electricity provider'
+    };
   }
 
   /**
@@ -564,6 +634,74 @@ export class FilterMapper {
       
       return a.length - b.length; // Prefer shorter matches
     });
+  }
+
+  /**
+   * Extract unique providers from plan data and create dynamic filter options
+   */
+  extractProvidersFromPlans(plans: Array<{ provider: { name: string } }>): string[] {
+    const uniqueProviders = new Set<string>();
+    const providerMap = new Map<string, string>(); // Display name -> URL slug
+
+    for (const plan of plans) {
+      const providerName = plan.provider.name;
+      if (providerName && providerName !== 'Unknown Provider') {
+        // Create URL-friendly slug
+        const urlSlug = this.createProviderSlug(providerName);
+        
+        // Avoid duplicates by checking if we already have this provider
+        // (handles cases like "TXU Energy" and "TXU" being the same provider)
+        const normalizedName = providerName.toLowerCase().replace(/\s+/g, '').replace(/energy|power|electric|company|corp|inc/g, '');
+        
+        let isDuplicate = false;
+        for (const [existingDisplay, existingSlug] of providerMap.entries()) {
+          const existingNormalized = existingDisplay.toLowerCase().replace(/\s+/g, '').replace(/energy|power|electric|company|corp|inc/g, '');
+          if (normalizedName === existingNormalized) {
+            isDuplicate = true;
+            break;
+          }
+        }
+        
+        if (!isDuplicate) {
+          providerMap.set(providerName, urlSlug);
+          uniqueProviders.add(urlSlug);
+        }
+      }
+    }
+
+    return Array.from(uniqueProviders).sort();
+  }
+
+  /**
+   * Create a URL-friendly slug from provider name
+   */
+  private createProviderSlug(providerName: string): string {
+    return providerName
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, '') // Remove special characters except spaces and hyphens
+      .replace(/\s+/g, '-') // Replace spaces with hyphens
+      .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+      .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+  }
+
+  /**
+   * Get available providers for a specific filter type context
+   * This method can be enhanced to return only providers that have plans 
+   * available for the current filter context
+   */
+  getAvailableProvidersForContext(
+    excludeTypes: FilterType[] = [],
+    dynamicProviders: string[] = []
+  ): { staticProviders: string[], dynamicProviders: string[] } {
+    // Get static providers from filter definition
+    const providerDef = this.filterDefinitions.find(def => def.type === 'provider');
+    const staticProviders = providerDef?.urlPatterns || [];
+    
+    // Return both static and dynamic providers
+    return {
+      staticProviders,
+      dynamicProviders: dynamicProviders.filter(provider => !staticProviders.includes(provider))
+    };
   }
 }
 

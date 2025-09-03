@@ -449,7 +449,7 @@ function generateBaseFAQs(cityName: string, planCount: number, lowestRate: numbe
     },
     {
       question: `Are there any fees to switch electricity companies in ${cityName}?`,
-      answer: `There are no fees to switch electricity companies in Texas. However, if you break an existing contract early, you may owe an early termination fee to your current company. New connections may have a setup fee, but switching between companies is free.`,
+      answer: `There are no fees to switch electricity companies in Texas. However, if you break an existing contract early by switching providers, you may owe an early termination fee to your current company. Important exception: Texas law protects you from early termination fees if you're moving to a new address.`,
       importance: 'medium'
     },
     {

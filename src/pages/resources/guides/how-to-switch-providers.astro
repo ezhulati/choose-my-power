@@ -38,25 +38,25 @@ const description = "Your lights stay on, the process is free, and it takes 5 mi
       <div class="grid md:grid-cols-3 gap-8">
         <EnhancedCard variant="elevated" padding="lg" className="text-center">
           <div class="text-4xl font-bold text-texas-red mb-3">14+</div>
-          <div class="text-gray-600">Days typical switch timeframe</div>
-        </div>
-        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
-          <div class="text-3xl font-bold text-texas-red mb-2">$0</div>
-          <div class="text-gray-600">Cost to switch providers</div>
-        </div>
-        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
-          <div class="text-3xl font-bold text-texas-red mb-2">3</div>
-          <div class="text-gray-600">Days to cancel after signing</div>
-        </div>
+          <div class="text-gray-700 font-medium">Days typical switch timeframe</div>
+        </EnhancedCard>
+        <EnhancedCard variant="elevated" padding="lg" className="text-center">
+          <div class="text-4xl font-bold text-texas-gold mb-3">$0</div>
+          <div class="text-gray-700 font-medium">Cost to switch providers</div>
+        </EnhancedCard>
+        <EnhancedCard variant="elevated" padding="lg" className="text-center">
+          <div class="text-4xl font-bold text-texas-navy mb-3">3</div>
+          <div class="text-gray-700 font-medium">Days to cancel after signing</div>
+        </EnhancedCard>
       </div>
 
       <!-- Quick Start Guide -->
-      <div class="bg-green-50 p-8 rounded-xl shadow-lg border border-green-200 mb-12">
-        <h2 class="text-2xl font-bold text-green-800 mb-6">✅ The TL;DR Version: Just Want to Do This?</h2>
+      <AccentBox accentColor="gold" padding="lg" className="mb-12">
+        <h2 class="text-2xl font-bold text-texas-navy mb-6">✅ The TL;DR Version: Just Want to Do This?</h2>
         <div class="grid md:grid-cols-2 gap-6">
           <div>
-            <h3 class="font-semibold text-green-700 mb-3">Grab This Stuff First:</h3>
-            <ul class="text-sm text-green-700 space-y-1">
+            <h3 class="font-semibold text-texas-navy mb-3">Grab This Stuff First:</h3>
+            <ul class="text-sm text-texas-navy space-y-2">
               <li>• Your current electricity bill</li>
               <li>• ESI ID (17-digit number on your bill)</li>
               <li>• Service address and contact info</li>
@@ -65,8 +65,8 @@ const description = "Your lights stay on, the process is free, and it takes 5 mi
             </ul>
           </div>
           <div>
-            <h3 class="font-semibold text-green-700 mb-3">Here's What Happens:</h3>
-            <ul class="text-sm text-green-700 space-y-1">
+            <h3 class="font-semibold text-texas-navy mb-3">Here's What Happens:</h3>
+            <ul class="text-sm text-texas-navy space-y-2">
               <li>• Pick a new provider & plan</li>
               <li>• Sign up online (takes 5 minutes)</li>
               <li>• Your new company does everything else</li>
@@ -75,17 +75,25 @@ const description = "Your lights stay on, the process is free, and it takes 5 mi
             </ul>
           </div>
         </div>
-        <div class="text-center mt-6">
-          <a href="/electricity-plans" class="bg-texas-red text-white px-8 py-4 rounded-lg font-semibold hover:bg-texas-red-600 transition-colors">
-            Show Me My Options →
+        <div class="text-center mt-8">
+          <a href="/electricity-plans" class="bg-texas-red text-white px-8 py-4 rounded-lg font-semibold hover:bg-texas-red-600 transition-all duration-200 inline-flex items-center gap-2 shadow-lg hover:shadow-xl hover:-translate-y-1">
+            Show Me My Options
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+            </svg>
           </a>
         </div>
-      </div>
+      </AccentBox>
 
-      <!-- Detailed Process -->
+    </div>
+  </EnhancedSection>
+
+  <!-- Detailed Process -->
+  <EnhancedSection background="white" padding="xl">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="space-y-12">
         <!-- Step 1 -->
-        <section class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+        <EnhancedCard variant="elevated" padding="lg">
           <div class="flex items-center mb-6">
             <div class="bg-texas-red text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mr-4">1</div>
             <h2 class="text-3xl font-bold text-texas-navy">Research and Compare Plans</h2>
@@ -139,16 +147,16 @@ const description = "Your lights stay on, the process is free, and it takes 5 mi
             </div>
           </div>
 
-          <div class="mt-8 bg-yellow-50 p-6 rounded-lg">
-            <h3 class="text-lg font-semibold text-yellow-800 mb-3">⚠️ Important: Read the Electricity Facts Label (EFL)</h3>
-            <p class="text-yellow-800">
+          <AccentBox accentColor="gold" padding="lg" className="mt-8">
+            <h3 class="text-lg font-semibold text-texas-navy mb-3">⚠️ Important: Read the Electricity Facts Label (EFL)</h3>
+            <p class="text-texas-navy">
               Every plan must provide an EFL showing exactly what you'll pay at 500, 1,000, and 2,000 kWh usage levels. Use this to compare total costs, not just the advertised rate.
             </p>
-          </div>
-        </section>
+          </AccentBox>
+        </EnhancedCard>
 
         <!-- Step 2 -->
-        <section class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+        <EnhancedCard variant="elevated" padding="lg">
           <div class="flex items-center mb-6">
             <div class="bg-texas-red text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mr-4">2</div>
             <h2 class="text-3xl font-bold text-texas-navy">Enroll with Your New Provider</h2>
@@ -159,15 +167,15 @@ const description = "Your lights stay on, the process is free, and it takes 5 mi
               <h3 class="text-xl font-semibold text-texas-navy mb-4">Enrollment Methods</h3>
               
               <div class="space-y-4">
-                <div class="border border-green-200 rounded-lg p-4 bg-green-50">
-                  <h4 class="font-semibold text-green-700 mb-2">Online Enrollment (Recommended)</h4>
-                  <ul class="text-sm text-green-700 space-y-1">
+                <AccentBox accentColor="navy" padding="md">
+                  <h4 class="font-semibold text-texas-navy mb-2">Online Enrollment (Recommended)</h4>
+                  <ul class="text-sm text-texas-navy space-y-1">
                     <li>• Fastest and most convenient</li>
                     <li>• Get instant confirmation</li>
                     <li>• Often includes online-only promotions</li>
                     <li>• Avoid high-pressure sales tactics</li>
                   </ul>
-                </div>
+                </AccentBox>
                 
                 <div class="border border-gray-200 rounded-lg p-4">
                   <h4 class="font-semibold text-gray-900 mb-2">Phone Enrollment</h4>
@@ -179,15 +187,15 @@ const description = "Your lights stay on, the process is free, and it takes 5 mi
                   </ul>
                 </div>
                 
-                <div class="border border-red-200 rounded-lg p-4 bg-red-50">
-                  <h4 class="font-semibold text-red-700 mb-2">Door-to-Door Sales (Avoid)</h4>
-                  <ul class="text-sm text-red-700 space-y-1">
+                <AccentBox accentColor="red" padding="md">
+                  <h4 class="font-semibold text-white mb-2">Door-to-Door Sales (Avoid)</h4>
+                  <ul class="text-sm text-white space-y-1">
                     <li>• High risk of scams and fraud</li>
                     <li>• Pressure tactics and misleading claims</li>
                     <li>• Never sign with door-to-door sellers</li>
                     <li>• Research online instead</li>
                   </ul>
-                </div>
+                </AccentBox>
               </div>
             </div>
 
@@ -226,10 +234,10 @@ const description = "Your lights stay on, the process is free, and it takes 5 mi
               Providers may require a security deposit (typically $100-300) based on your credit score. Many offer ways to waive deposits with auto-pay, good credit, or 12+ months payment history with previous providers.
             </p>
           </div>
-        </section>
+        </EnhancedCard>
 
         <!-- Step 3 -->
-        <section class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+        <EnhancedCard variant="elevated" padding="lg">
           <div class="flex items-center mb-6">
             <div class="bg-texas-red text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mr-4">3</div>
             <h2 class="text-3xl font-bold text-texas-navy">Review Your Enrollment</h2>
@@ -269,13 +277,13 @@ const description = "Your lights stay on, the process is free, and it takes 5 mi
             <div>
               <h3 class="text-xl font-semibold text-texas-navy mb-4">Your 3-Day Cancellation Window</h3>
               
-              <div class="bg-yellow-50 p-6 rounded-lg">
-                <h4 class="font-semibold text-yellow-800 mb-3">⏰ Right of Rescission</h4>
-                <p class="text-sm text-yellow-800 mb-4">
+              <AccentBox accentColor="gold" padding="lg">
+                <h4 class="font-semibold text-texas-navy mb-3">⏰ Right of Rescission</h4>
+                <p class="text-sm text-texas-navy mb-4">
                   Texas law gives you 3 business days to cancel any electricity contract without penalty after enrollment. This period starts when you receive your Welcome Letter.
                 </p>
                 
-                <div class="space-y-2 text-sm text-yellow-800">
+                <div class="space-y-2 text-sm text-texas-navy">
                   <h5 class="font-semibold">How to Cancel:</h5>
                   <ul class="space-y-1">
                     <li>• Call your new provider's customer service</li>
@@ -283,16 +291,16 @@ const description = "Your lights stay on, the process is free, and it takes 5 mi
                     <li>• Mail written notice (postmarked within 3 days)</li>
                   </ul>
                 </div>
-              </div>
+              </AccentBox>
             </div>
           </div>
 
           <div class="mt-8">
             <h3 class="text-xl font-semibold text-texas-navy mb-4">Review Your Welcome Letter Carefully</h3>
             <div class="grid md:grid-cols-2 gap-6">
-              <div class="bg-green-50 p-4 rounded-lg">
-                <h4 class="font-semibold text-green-700 mb-3">✅ Verify These Details:</h4>
-                <ul class="text-sm text-green-700 space-y-1">
+              <AccentBox accentColor="navy" padding="md">
+                <h4 class="font-semibold text-texas-navy mb-3">✅ Verify These Details:</h4>
+                <ul class="text-sm text-texas-navy space-y-1">
                   <li>• Rate per kWh matches what you agreed to</li>
                   <li>• Contract length is correct</li>
                   <li>• Monthly fees match the plan you selected</li>
@@ -300,11 +308,11 @@ const description = "Your lights stay on, the process is free, and it takes 5 mi
                   <li>• Early termination fee amount</li>
                   <li>• Promotional credits are included</li>
                 </ul>
-              </div>
+              </AccentBox>
               
-              <div class="bg-red-50 p-4 rounded-lg">
-                <h4 class="font-semibold text-red-700 mb-3">🚨 Red Flags to Watch For:</h4>
-                <ul class="text-sm text-red-700 space-y-1">
+              <AccentBox accentColor="red" padding="md">
+                <h4 class="font-semibold text-white mb-3">🚨 Red Flags to Watch For:</h4>
+                <ul class="text-sm text-white space-y-1">
                   <li>• Different rate than discussed</li>
                   <li>• Additional fees not mentioned</li>
                   <li>• Wrong contract length</li>
@@ -312,13 +320,13 @@ const description = "Your lights stay on, the process is free, and it takes 5 mi
                   <li>• Automatic renewal at higher rates</li>
                   <li>• Usage requirements not disclosed</li>
                 </ul>
-              </div>
+              </AccentBox>
             </div>
           </div>
-        </section>
+        </EnhancedCard>
 
         <!-- Step 4 -->
-        <section class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+        <EnhancedCard variant="elevated" padding="lg">
           <div class="flex items-center mb-6">
             <div class="bg-texas-red text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mr-4">4</div>
             <h2 class="text-3xl font-bold text-texas-navy">Complete the Switch</h2>
@@ -386,10 +394,10 @@ const description = "Your lights stay on, the process is free, and it takes 5 mi
               </div>
             </div>
           </div>
-        </section>
+        </EnhancedCard>
 
         <!-- Common Issues -->
-        <section class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+        <EnhancedCard variant="elevated" padding="lg">
           <h2 class="text-3xl font-bold text-texas-navy mb-6">Troubleshooting Common Issues</h2>
           
           <div class="grid md:grid-cols-2 gap-8">
@@ -397,28 +405,28 @@ const description = "Your lights stay on, the process is free, and it takes 5 mi
               <h3 class="text-xl font-semibold text-red-700 mb-4">🚨 Problems & Solutions</h3>
               
               <div class="space-y-4">
-                <div class="border border-red-200 rounded-lg p-4 bg-red-50">
-                  <h4 class="font-semibold text-red-700 mb-2">Switch is Delayed/Rejected</h4>
-                  <p class="text-sm text-red-700 mb-2"><strong>Common Causes:</strong></p>
-                  <ul class="text-xs text-red-700 space-y-1">
+                <AccentBox accentColor="red" padding="md">
+                  <h4 class="font-semibold text-white mb-2">Switch is Delayed/Rejected</h4>
+                  <p class="text-sm text-white mb-2"><strong>Common Causes:</strong></p>
+                  <ul class="text-xs text-white space-y-1">
                     <li>• Incorrect ESI ID or address</li>
                     <li>• Outstanding balance with current provider</li>
                     <li>• Failed credit check requiring deposit</li>
                   </ul>
-                  <p class="text-sm text-red-700 mt-2"><strong>Solution:</strong> Contact new provider immediately to resolve issues.</p>
-                </div>
+                  <p class="text-sm text-white mt-2"><strong>Solution:</strong> Contact new provider immediately to resolve issues.</p>
+                </AccentBox>
                 
-                <div class="border border-red-200 rounded-lg p-4 bg-red-50">
-                  <h4 class="font-semibold text-red-700 mb-2">Unexpected Cancellation Fees</h4>
-                  <p class="text-sm text-red-700 mb-2"><strong>Cause:</strong> Switching before contract expires</p>
-                  <p class="text-sm text-red-700"><strong>Solution:</strong> Calculate if savings justify the fee or wait until contract ends.</p>
-                </div>
+                <AccentBox accentColor="red" padding="md">
+                  <h4 class="font-semibold text-white mb-2">Unexpected Cancellation Fees</h4>
+                  <p class="text-sm text-white mb-2"><strong>Cause:</strong> Switching before contract expires</p>
+                  <p class="text-sm text-white"><strong>Solution:</strong> Calculate if savings justify the fee or wait until contract ends.</p>
+                </AccentBox>
                 
-                <div class="border border-red-200 rounded-lg p-4 bg-red-50">
-                  <h4 class="font-semibold text-red-700 mb-2">Wrong Rate on First Bill</h4>
-                  <p class="text-sm text-red-700 mb-2"><strong>Cause:</strong> Billing system errors or promo codes not applied</p>
-                  <p class="text-sm text-red-700"><strong>Solution:</strong> Contact customer service with your Welcome Letter as proof of agreed terms.</p>
-                </div>
+                <AccentBox accentColor="red" padding="md">
+                  <h4 class="font-semibold text-white mb-2">Wrong Rate on First Bill</h4>
+                  <p class="text-sm text-white mb-2"><strong>Cause:</strong> Billing system errors or promo codes not applied</p>
+                  <p class="text-sm text-white"><strong>Solution:</strong> Contact customer service with your Welcome Letter as proof of agreed terms.</p>
+                </AccentBox>
               </div>
             </div>
 
@@ -426,40 +434,40 @@ const description = "Your lights stay on, the process is free, and it takes 5 mi
               <h3 class="text-xl font-semibold text-green-700 mb-4">✅ Prevention Tips</h3>
               
               <div class="space-y-4">
-                <div class="bg-green-50 p-4 rounded-lg">
-                  <h4 class="font-semibold text-green-700 mb-2">Double-Check Your Information</h4>
-                  <p class="text-sm text-green-700">
+                <AccentBox accentColor="navy" padding="md">
+                  <h4 class="font-semibold text-texas-navy mb-2">Double-Check Your Information</h4>
+                  <p class="text-sm text-texas-navy">
                     Verify your ESI ID, service address, and personal information before submitting enrollment. Small errors can delay your switch by weeks.
                   </p>
-                </div>
+                </AccentBox>
                 
-                <div class="bg-green-50 p-4 rounded-lg">
-                  <h4 class="font-semibold text-green-700 mb-2">Pay Outstanding Balances</h4>
-                  <p class="text-sm text-green-700">
+                <AccentBox accentColor="navy" padding="md">
+                  <h4 class="font-semibold text-texas-navy mb-2">Pay Outstanding Balances</h4>
+                  <p class="text-sm text-texas-navy">
                     Ensure you're current with your existing provider. Outstanding balances often prevent switches from completing.
                   </p>
-                </div>
+                </AccentBox>
                 
-                <div class="bg-green-50 p-4 rounded-lg">
-                  <h4 class="font-semibold text-green-700 mb-2">Keep Documentation</h4>
-                  <p class="text-sm text-green-700">
+                <AccentBox accentColor="navy" padding="md">
+                  <h4 class="font-semibold text-texas-navy mb-2">Keep Documentation</h4>
+                  <p class="text-sm text-texas-navy">
                     Save your enrollment confirmation, Welcome Letter, and all communications. You'll need these to resolve any disputes.
                   </p>
-                </div>
+                </AccentBox>
                 
-                <div class="bg-green-50 p-4 rounded-lg">
-                  <h4 class="font-semibold text-green-700 mb-2">Set Up Monitoring</h4>
-                  <p class="text-sm text-green-700">
+                <AccentBox accentColor="navy" padding="md">
+                  <h4 class="font-semibold text-texas-navy mb-2">Set Up Monitoring</h4>
+                  <p class="text-sm text-texas-navy">
                     Check your first 2-3 bills carefully to ensure rates and credits are applied correctly. Early detection prevents larger problems.
                   </p>
-                </div>
+                </AccentBox>
               </div>
             </div>
           </div>
-        </section>
+        </EnhancedCard>
 
         <!-- Action Steps -->
-        <section class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+        <EnhancedCard variant="elevated" padding="lg">
           <h2 class="text-3xl font-bold text-texas-navy mb-6">Your Switching Checklist</h2>
           
           <div class="grid md:grid-cols-2 gap-8">
@@ -523,24 +531,24 @@ const description = "Your lights stay on, the process is free, and it takes 5 mi
               </div>
             </div>
           </div>
-        </section>
+        </EnhancedCard>
       </div>
 
       <!-- Footer CTA -->
-      <div class="mt-16 text-center">
-        <div class="bg-gradient-to-r from-texas-navy to-blue-800 text-white p-12 rounded-xl">
-          <h2 class="text-3xl font-bold mb-4">Ready to Switch and Start Saving?</h2>
+      <AccentBox accentColor="navy" padding="xl" className="mt-16">
+        <div class="text-center">
+          <h2 class="text-3xl font-bold mb-4 text-white">Ready to Switch and Start Saving?</h2>
           <p class="text-xl mb-8 text-blue-100">Compare plans from 100+ Texas providers and switch in minutes.</p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/electricity-plans" class="bg-texas-red text-white px-8 py-4 rounded-lg font-semibold hover:bg-texas-red-600 transition-colors">
+            <a href="/electricity-plans" class="bg-texas-red text-white px-8 py-4 rounded-lg font-semibold hover:bg-texas-red-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-1">
               Compare Plans Now
             </a>
-            <a href="/rates/calculator" class="bg-texas-gold text-texas-navy px-8 py-4 rounded-lg font-semibold hover:bg-texas-gold-600 transition-colors">
+            <a href="/rates/calculator" class="bg-texas-gold text-texas-navy px-8 py-4 rounded-lg font-semibold hover:bg-texas-gold-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-1">
               Calculate Your Savings
             </a>
           </div>
         </div>
-      </div>
+      </AccentBox>
     </div>
   </div>
 </Layout>

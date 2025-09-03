@@ -1,0 +1,41 @@
+sequenceDiagram
+    participant Page/Route
+    participant ComparePowerClient
+    participant RedisCache
+    participant PlanRepository (DB)
+    participant ComparePower API
+
+    Page/Route->>ComparePowerClient: getPlansWithCache(params)
+    ComparePowerClient->>PlanRepository (DB): getPlansFromCache(params)
+    alt Fresh DB cache exists
+      PlanRepository (DB)-->>ComparePowerClient: plans
+      ComparePowerClient-->>Page/Route: plans
+    else No DB cache
+      ComparePowerClient->>PlanRepository (DB): getActivePlans(tdsp, filters?)
+      alt Active plans exist
+        PlanRepository (DB)-->>ComparePowerClient: active plans
+        ComparePowerClient->>PlanRepository (DB): setPlansCache(ttl=30m)
+        ComparePowerClient-->>Page/Route: plans
+      else No active plans
+        ComparePowerClient->>RedisCache: get(params)
+        alt Redis hit
+          RedisCache-->>ComparePowerClient: plans
+          ComparePowerClient-->>Page/Route: plans
+        else Miss
+          ComparePowerClient->>PlanRepository (DB): getPlansFromCache(params)
+          alt DB cache hit
+            PlanRepository (DB)-->>ComparePowerClient: plans
+            ComparePowerClient-->>Page/Route: plans
+          else Miss
+            ComparePowerClient->>ComparePower API: GET /api/plans/current?... (retry/backoff)
+            ComparePower API-->>ComparePowerClient: raw plans[]
+            ComparePowerClient->>ComparePowerClient: clean + validate + transform
+            ComparePowerClient->>RedisCache: set(params, plans)
+            ComparePowerClient->>PlanRepository (DB): setPlansCache(ttl=1h)
+            ComparePowerClient->>PlanRepository (DB): storePlans(raw)
+            ComparePowerClient-->>Page/Route: plans
+          end
+        end
+      end
+    end
+

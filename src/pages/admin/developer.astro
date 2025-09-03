@@ -1,0 +1,39 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { isAdminEnabled } from '../../lib/utils/admin-guard';
+
+const title = 'Developer: Tools & Docs';
+const description = 'Index of developer utilities and documentation pages.';
+---
+
+{!isAdminEnabled() ? Astro.redirect('/404', 404) : null}
+
+<Layout title={title} description={description} noIndex={true}>
+  <main class="min-h-screen bg-gray-50 py-10">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold text-texas-navy mb-6">Developer Utilities</h1>
+      <p class="text-gray-700 mb-6">Quick links to internal developer pages.</p>
+
+      <ul class="space-y-3">
+        <li>
+          <a href="/admin/developer/architecture-flows" class="block p-4 rounded-md border bg-white hover:bg-gray-50">
+            <span class="font-semibold text-texas-navy">Architecture Flow Diagrams</span>
+            <span class="block text-sm text-gray-600">Sequence diagrams and code references for core flows.</span>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/developer/runbooks" class="block p-4 rounded-md border bg-white hover:bg-gray-50">
+            <span class="font-semibold text-texas-navy">Incident Runbooks</span>
+            <span class="block text-sm text-gray-600">Quick fixes for routing, ZIP, and caching issues.</span>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/performance-dashboard" class="block p-4 rounded-md border bg-white hover:bg-gray-50">
+            <span class="font-semibold text-texas-navy">Performance Dashboard</span>
+            <span class="block text-sm text-gray-600">Real-time metrics and Core Web Vitals.</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </main>
+</Layout>

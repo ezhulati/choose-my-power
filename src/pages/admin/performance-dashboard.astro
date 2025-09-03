@@ -6,11 +6,14 @@
  */
 
 import Layout from '../../layouts/Layout.astro';
+import { isAdminEnabled } from '../../lib/utils/admin-guard';
+import EnhancedCard from '../../components/ui/EnhancedCard.astro';
+import AccentBox from '../../components/ui/AccentBox.astro';
 
 // Authenticate user (in production, implement proper auth)
 const isAuthorized = true; // Replace with actual auth check
 
-if (!isAuthorized) {
+if (!isAuthorized || !isAdminEnabled()) {
   return Astro.redirect('/login');
 }
 
@@ -49,9 +52,9 @@ const getMockStats = () => ({
     }
   },
   slowestPages: [
-    { url: '/electricity-plans/houston/green-energy/12-month/', loadTime: 4200, city: 'Houston', filters: ['green-energy', '12-month'], timestamp: Date.now() - 120000 },
-    { url: '/electricity-plans/dallas/fixed-rate/24-month/', loadTime: 3890, city: 'Dallas', filters: ['fixed-rate', '24-month'], timestamp: Date.now() - 180000 },
-    { url: '/electricity-plans/austin-tx/prepaid/no-deposit/', loadTime: 3650, city: 'Austin', filters: ['prepaid', 'no-deposit'], timestamp: Date.now() - 240000 }
+    { url: '/electricity-plans/houston/green-energy/12-month', loadTime: 4200, city: 'Houston', filters: ['green-energy', '12-month'], timestamp: Date.now() - 120000 },
+    { url: '/electricity-plans/dallas/fixed-rate/24-month', loadTime: 3890, city: 'Dallas', filters: ['fixed-rate', '24-month'], timestamp: Date.now() - 180000 },
+    { url: '/electricity-plans/austin/prepaid/no-deposit', loadTime: 3650, city: 'Austin', filters: ['prepaid', 'no-deposit'], timestamp: Date.now() - 240000 }
   ],
   topErrors: []
 });
@@ -149,6 +152,9 @@ const healthStatus = healthScore >= 90 ? 'excellent' :
 
 const pageTitle = `Performance Dashboard - ChooseMyPower.org`;
 const pageDescription = `Real-time performance monitoring for ${perfStats.tierStats[1]?.requestCount || 0} tier-1 cities and ${perfStats.totalRequests} total requests.`;
+
+// Normalize trailing slashes for any URLs we render (align with trailingSlash: 'never')
+const normalizeUrl = (u: string) => (u && typeof u === 'string') ? u.replace(/\/+$/, '') : u;
 ---
 
 <Layout title={pageTitle} description={pageDescription} noIndex={true}>
@@ -158,6 +164,16 @@ const pageDescription = `Real-time performance monitoring for ${perfStats.tierSt
       <div class="mb-8">
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Performance Dashboard</h1>
         <p class="text-gray-600">Real-time monitoring for ChooseMyPower.org infrastructure</p>
+
+        <!-- Quick Links -->
+        <div class="mt-4">
+          <a href="/admin/developer" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 bg-white text-sm font-medium text-texas-navy hover:bg-gray-50">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6l4 2" />
+            </svg>
+            Developer Tools
+          </a>
+        </div>
         
         <!-- Overall Health Status -->
         <div class={`mt-4 p-4 rounded-lg border-2 ${
@@ -188,13 +204,13 @@ const pageDescription = `Real-time performance monitoring for ${perfStats.tierSt
       <!-- Key Metrics Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <!-- Average Response Time -->
-        <div class="bg-white p-6 rounded-lg shadow">
+        <EnhancedCard variant="elevated" padding="lg">
           <div class="flex items-center">
-            <div class="p-3 rounded-md bg-texas-cream">
+            <AccentBox accentColor="cream" padding="sm">
               <svg class="w-6 h-6 text-texas-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
-            </div>
+            </AccentBox>
             <div class="ml-4">
               <div class="text-2xl font-bold text-gray-900">
                 {Math.round(perfStats.averagePageLoadTime)}ms
@@ -202,16 +218,16 @@ const pageDescription = `Real-time performance monitoring for ${perfStats.tierSt
               <div class="text-sm text-gray-600">Avg Response Time</div>
             </div>
           </div>
-        </div>
+        </EnhancedCard>
 
         <!-- Total Requests -->
-        <div class="bg-white p-6 rounded-lg shadow">
+        <EnhancedCard variant="elevated" padding="lg">
           <div class="flex items-center">
-            <div class="p-3 rounded-md bg-green-100">
+            <AccentBox accentColor="green" padding="sm">
               <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
               </svg>
-            </div>
+            </AccentBox>
             <div class="ml-4">
               <div class="text-2xl font-bold text-gray-900">
                 {perfStats.totalRequests.toLocaleString()}
@@ -219,12 +235,12 @@ const pageDescription = `Real-time performance monitoring for ${perfStats.tierSt
               <div class="text-sm text-gray-600">Total Requests ({perfStats.timeRange}min)</div>
             </div>
           </div>
-        </div>
+        </EnhancedCard>
 
         <!-- Cache Hit Rate -->
-        <div class="bg-white p-6 rounded-lg shadow">
+        <EnhancedCard variant="elevated" padding="lg">
           <div class="flex items-center">
-            <div class="p-3 rounded-md bg-purple-100">
+            <AccentBox accentColor="navy" padding="sm">
               <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
               </svg>
@@ -487,7 +503,7 @@ const pageDescription = `Real-time performance monitoring for ${perfStats.tierSt
                 {perfStats.slowestPages.map((page, index) => (
                   <tr key={index}>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-texas-navy hover:text-texas-navy">
-                      <a href={page.url}>{page.url}</a>
+                      <a href={normalizeUrl(page.url)}>{normalizeUrl(page.url)}</a>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-texas-red">
                       {Math.round(page.loadTime)}ms

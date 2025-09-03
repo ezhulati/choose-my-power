@@ -3,6 +3,9 @@ import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { ProviderCard } from '../../components/ProviderCard';
 import { mockProviders, mockStates } from '../../data/mockData';
 import { MapPin, TrendingDown, Users, Zap, Filter } from 'lucide-react';
+import EnhancedSectionReact from '../../components/ui/EnhancedSectionReact';
+import EnhancedCardReact from '../../components/ui/EnhancedCardReact';
+import AccentBoxReact from '../../components/ui/AccentBoxReact';
 
 // Extend Window interface to include our navigation function
 declare global {
@@ -31,9 +34,9 @@ export function StatePage({ state }: StatePageProps) {
   
   if (!stateData) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">State Not Found</h1>
+      <EnhancedSectionReact background="gray" padding="xl">
+        <EnhancedCardReact variant="elevated" padding="lg" className="text-center max-w-lg mx-auto">
+          <h1 className="text-2xl font-bold text-texas-navy mb-4">State Not Found</h1>
           <p className="text-gray-600 mb-8">The state you're looking for doesn't exist in our database.</p>
           <button
             onClick={() => navigate('/')}
@@ -41,8 +44,8 @@ export function StatePage({ state }: StatePageProps) {
           >
             Return Home
           </button>
-        </div>
-      </div>
+        </EnhancedCardReact>
+      </EnhancedSectionReact>
     );
   }
 
@@ -62,10 +65,9 @@ export function StatePage({ state }: StatePageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-texas-cream/20">
       {/* Header */}
-      <div className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <EnhancedSectionReact background="white" padding="lg" className="border-b border-gray-200">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
             <div className="mb-6 lg:mb-0">
               <nav className="text-sm text-gray-500 mb-2">
@@ -107,15 +109,13 @@ export function StatePage({ state }: StatePageProps) {
             </div>
           </div>
         </div>
-      </div>
+      </EnhancedSectionReact>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <EnhancedSectionReact background="cream" padding="lg">
         <div className="grid lg:grid-cols-4 gap-8">
           {/* Sidebar */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-lg shadow-sm border p-6 mb-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Filters</h3>
-              
+            <EnhancedCardReact title="Filters" variant="elevated" className="mb-6">
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Plan Type</label>
@@ -144,11 +144,10 @@ export function StatePage({ state }: StatePageProps) {
                   </select>
                 </div>
               </div>
-            </div>
+            </EnhancedCardReact>
 
             {/* Top Cities */}
-            <div className="bg-white rounded-lg shadow-sm border p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Popular Cities</h3>
+            <EnhancedCardReact title="Popular Cities" variant="elevated">
               <div className="space-y-2">
                 {stateData.topCities.map((city) => (
                   <button
@@ -166,7 +165,7 @@ export function StatePage({ state }: StatePageProps) {
                   </button>
                 ))}
               </div>
-            </div>
+            </EnhancedCardReact>
           </div>
 
           {/* Main Content */}
@@ -194,11 +193,11 @@ export function StatePage({ state }: StatePageProps) {
             </div>
 
             {/* Market Information */}
-            <div className="mt-12 bg-white rounded-lg shadow-sm border p-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                {stateData.name} Electricity Market Information
-              </h3>
-              
+            <div className="mt-12">
+            <EnhancedCardReact 
+              title={`${stateData.name} Electricity Market Information`}
+              variant="elevated"
+            >
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <h4 className="font-medium text-gray-900 mb-2">Market Status</h4>
@@ -219,10 +218,11 @@ export function StatePage({ state }: StatePageProps) {
                   </ul>
                 </div>
               </div>
+            </EnhancedCardReact>
             </div>
           </div>
         </div>
-      </div>
+      </EnhancedSectionReact>
     </div>
   );
 }

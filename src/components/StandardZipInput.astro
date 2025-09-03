@@ -147,7 +147,8 @@ const inputId = `zipInput-${uniqueId}`;
   )}
 </div>
 
-<!-- ZIP lookup functionality is handled by /js/zip-lookup.js -->
+<!-- Ensure ZIP lookup script is available wherever this component is used -->
+<script src="/js/zip-lookup.js" defer></script>
 
 <style>
   /* Ensure consistent focus states */

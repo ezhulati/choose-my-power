@@ -1,0 +1,3530 @@
+{
+  "timestamp": "2025-09-03T18:16:48.805Z",
+  "investigation": "Trailing Slash Debug Analysis v2",
+  "pageAnalysis": {
+    "url": "http://localhost:4324/electricity-plans/houston/fixed-rate",
+    "totalLinks": 130,
+    "electricityPlanLinks": 44,
+    "potentialFilterLinks": 7
+  },
+  "fixedRateAnalysis": {
+    "found": true,
+    "linkData": {
+      "index": 37,
+      "href": "/electricity-plans/houston/fixed-rate",
+      "text": "Fixed Rate (Same all year)",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": true,
+      "hasRateInText": true
+    },
+    "candidates": 2
+  },
+  "trailingSlashAnalysis": {
+    "currentURL": "http://localhost:4324/electricity-plans/houston/fixed-rate",
+    "hasTrailingSlash": false,
+    "suspiciousLinks": 3
+  },
+  "networkAnalysis": {
+    "totalRequests": 91,
+    "failedRequests": 2,
+    "electricityPlanRequests": 1
+  },
+  "linkAnalysis": [
+    {
+      "index": 0,
+      "href": "#main-content",
+      "text": "Skip to main content",
+      "classes": "skip-link",
+      "id": null,
+      "parentTag": "BODY",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 1,
+      "href": "/",
+      "text": "ChooseMyPower",
+      "classes": "flex items-center space-x-1 sm:space-x-2 header-logo transition-colors",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 2,
+      "href": "/compare",
+      "text": "Compare",
+      "classes": "px-2 py-2 lg:px-3 lg:py-2 text-sm font-medium header-link rounded-md transition-colors",
+      "id": null,
+      "parentTag": "NAV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 3,
+      "href": "/electricity-companies",
+      "text": "Electricity Companies",
+      "classes": "block px-4 py-2 text-sm text-gray-700 hover:bg-texas-cream-200 hover:text-texas-navy transition-colors",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 4,
+      "href": "/electricity-plans",
+      "text": "Electricity Plans",
+      "classes": "block px-4 py-2 text-sm text-gray-700 hover:bg-texas-cream-200 hover:text-texas-navy transition-colors",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 5,
+      "href": "/best",
+      "text": "Best Rankings",
+      "classes": "block px-4 py-2 text-sm text-gray-700 hover:bg-texas-cream-200 hover:text-texas-navy transition-colors",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 6,
+      "href": "/providers",
+      "text": "Our Providers",
+      "classes": "block px-4 py-2 text-sm text-gray-700 hover:bg-texas-cream-200 hover:text-texas-navy transition-colors",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 7,
+      "href": "/rates",
+      "text": "Current Rates",
+      "classes": "block px-4 py-2 text-sm text-gray-700 hover:bg-texas-cream-200 hover:text-texas-navy transition-colors",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": true
+    },
+    {
+      "index": 8,
+      "href": "/rates/calculator",
+      "text": "Rate Calculator",
+      "classes": "block px-4 py-2 text-sm text-gray-700 hover:bg-texas-cream-200 hover:text-texas-navy transition-colors",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": true
+    },
+    {
+      "index": 9,
+      "href": "/shop/cheapest-electricity",
+      "text": "Cheapest Electricity",
+      "classes": "block px-4 py-2 text-sm text-gray-700 hover:bg-texas-cream-200 hover:text-texas-navy transition-colors",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 10,
+      "href": "/shop/best-electricity-providers",
+      "text": "Best Providers",
+      "classes": "block px-4 py-2 text-sm text-gray-700 hover:bg-texas-cream-200 hover:text-texas-navy transition-colors",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 11,
+      "href": "/shop/green-energy",
+      "text": "Green Energy",
+      "classes": "block px-4 py-2 text-sm text-gray-700 hover:bg-texas-cream-200 hover:text-texas-navy transition-colors",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 12,
+      "href": "/shop/no-deposit-electricity",
+      "text": "No Deposit Plans",
+      "classes": "block px-4 py-2 text-sm text-gray-700 hover:bg-texas-cream-200 hover:text-texas-navy transition-colors",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 13,
+      "href": "/locations",
+      "text": "Locations",
+      "classes": "px-2 py-2 lg:px-3 lg:py-2 text-sm font-medium header-link rounded-md transition-colors",
+      "id": null,
+      "parentTag": "NAV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 14,
+      "href": "/resources",
+      "text": "Resources",
+      "classes": "px-2 py-2 lg:px-3 lg:py-2 text-sm font-medium header-link rounded-md transition-colors",
+      "id": null,
+      "parentTag": "NAV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 15,
+      "href": "/compare",
+      "text": "Compare",
+      "classes": "block px-3 py-3 text-base font-medium text-gray-700 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors touch-manipulation",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 16,
+      "href": "/electricity-companies",
+      "text": "Electricity Companies",
+      "classes": "block px-3 py-2.5 text-sm text-gray-600 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors touch-manipulation",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 17,
+      "href": "/electricity-plans",
+      "text": "Electricity Plans",
+      "classes": "block px-3 py-2 text-sm text-gray-600 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 18,
+      "href": "/best",
+      "text": "Best Rankings",
+      "classes": "block px-3 py-2 text-sm text-gray-600 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 19,
+      "href": "/providers",
+      "text": "Our Providers",
+      "classes": "block px-3 py-2 text-sm text-gray-600 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 20,
+      "href": "/rates",
+      "text": "Current Rates",
+      "classes": "block px-3 py-2 text-sm text-gray-600 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": true
+    },
+    {
+      "index": 21,
+      "href": "/rates/calculator",
+      "text": "Rate Calculator",
+      "classes": "block px-3 py-2 text-sm text-gray-600 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": true
+    },
+    {
+      "index": 22,
+      "href": "/shop/cheapest-electricity",
+      "text": "Cheapest Electricity",
+      "classes": "block px-3 py-2 text-sm text-gray-600 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 23,
+      "href": "/shop/best-electricity-providers",
+      "text": "Best Providers",
+      "classes": "block px-3 py-2 text-sm text-gray-600 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 24,
+      "href": "/shop/green-energy",
+      "text": "Green Energy",
+      "classes": "block px-3 py-2 text-sm text-gray-600 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 25,
+      "href": "/shop/no-deposit-electricity",
+      "text": "No Deposit Plans",
+      "classes": "block px-3 py-2 text-sm text-gray-600 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 26,
+      "href": "/locations",
+      "text": "Locations",
+      "classes": "block px-3 py-2 text-base font-medium text-gray-700 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 27,
+      "href": "/resources",
+      "text": "Resources",
+      "classes": "block px-3 py-2 text-base font-medium text-gray-700 hover:text-texas-navy hover:bg-texas-cream-200 rounded-md transition-colors",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 28,
+      "href": "/",
+      "text": "Home",
+      "classes": "text-white/80 hover:text-white transition-colors drop-shadow-sm",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 29,
+      "href": "/texas",
+      "text": "Texas Electricity",
+      "classes": "text-white/80 hover:text-white transition-colors drop-shadow-sm",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 30,
+      "href": "/electricity-plans/houston",
+      "text": "Houston Plans",
+      "classes": "text-white font-medium drop-shadow-sm",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 31,
+      "href": "#plans-grid",
+      "text": "Find Your Houston Plan",
+      "classes": "inline-flex items-center px-8 py-4 text-lg font-semibold bg-texas-red text-white rounded-xl shadow-lg hover:bg-texas-red-600 hover:shadow-xl transition-all duration-300 hover:-translate-y-1",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 32,
+      "href": "/electricity-plans/houston/12-month",
+      "text": "12-Month (Most popular)",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 33,
+      "href": "/electricity-plans/houston/24-month",
+      "text": "24-Month (Better rates)",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": true
+    },
+    {
+      "index": 34,
+      "href": "/electricity-plans/houston/6-month",
+      "text": "6-Month Contract",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 35,
+      "href": "/electricity-plans/houston/36-month",
+      "text": "36-Month (Lowest rates)",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": true
+    },
+    {
+      "index": 36,
+      "href": "/electricity-plans/houston/month-to-month",
+      "text": "Month-to-Month (Most flexible)",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 37,
+      "href": "/electricity-plans/houston/fixed-rate",
+      "text": "Fixed Rate (Same all year)",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": true,
+      "hasRateInText": true
+    },
+    {
+      "index": 38,
+      "href": "/electricity-plans/houston/variable-rate",
+      "text": "Variable Rate (Can change)",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": true
+    },
+    {
+      "index": 39,
+      "href": "/electricity-plans/houston/indexed-rate",
+      "text": "Market Rate (Follows wholesale)",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": true
+    },
+    {
+      "index": 40,
+      "href": "/electricity-plans/houston/green-energy",
+      "text": "100% Clean Energy (Wind & solar)",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 41,
+      "href": "/electricity-plans/houston/100-green",
+      "text": "100% Clean Energy",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 42,
+      "href": "/electricity-plans/houston/50-green",
+      "text": "50% Clean Energy",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 43,
+      "href": "/electricity-plans/houston/25-green",
+      "text": "25% Clean Energy",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 44,
+      "href": "/electricity-plans/houston/renewable",
+      "text": "100% Clean Energy (Wind & solar)",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 45,
+      "href": "/electricity-plans/houston/no-deposit",
+      "text": "No Deposit Required",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 46,
+      "href": "/electricity-plans/houston/prepaid",
+      "text": "Prepaid (Pay as you go)",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 47,
+      "href": "/electricity-plans/houston/autopay-discount",
+      "text": "AutoPay Discount",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 48,
+      "href": "/electricity-plans/houston/free-weekends",
+      "text": "Free Weekends",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 49,
+      "href": "/electricity-plans/houston/bill-credit",
+      "text": "Bill Credit",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 50,
+      "href": "/electricity-plans/houston/no-contract",
+      "text": "No Contract (Most flexible)",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 51,
+      "href": "/electricity-plans/houston/txu-energy",
+      "text": "TXU Energy",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 52,
+      "href": "/electricity-plans/houston/reliant",
+      "text": "Reliant",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 53,
+      "href": "/electricity-plans/houston/green-mountain-energy",
+      "text": "Green Mountain Energy",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 54,
+      "href": "/electricity-plans/houston/gexa-energy",
+      "text": "Gexa Energy",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 55,
+      "href": "/electricity-plans/houston/direct-energy",
+      "text": "Direct Energy",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 56,
+      "href": "/electricity-plans/houston/discount-power",
+      "text": "Discount Power",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 57,
+      "href": "/electricity-plans/houston/champion-energy",
+      "text": "Champion Energy",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 58,
+      "href": "/electricity-plans/houston/cirro-energy",
+      "text": "Cirro Energy",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 59,
+      "href": "/electricity-plans/houston/500-kwh",
+      "text": "500 kWh Usage",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 60,
+      "href": "/electricity-plans/houston/1000-kwh",
+      "text": "1000 kWh Usage",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 61,
+      "href": "/electricity-plans/houston/2000-kwh",
+      "text": "2000 kWh Usage",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 62,
+      "href": "/electricity-plans/houston/low-usage",
+      "text": "Low Usage (500 kWh)",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 63,
+      "href": "/electricity-plans/houston/high-usage",
+      "text": "High Usage (2000 kWh)",
+      "classes": "block text-sm px-3 py-2 rounded-md transition-colors text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 64,
+      "href": "/enroll/68b7cf33206770f7c5636924?city=Houston&position=1",
+      "text": "Enroll",
+      "classes": "enroll-btn-small",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 65,
+      "href": "/enroll/68b7cf39206770f7c5636954?city=Houston&position=2",
+      "text": "Enroll",
+      "classes": "enroll-btn-small",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 66,
+      "href": "/enroll/68b5a0df206770f7c5631fd2?city=Houston&position=3",
+      "text": "Enroll",
+      "classes": "enroll-btn-small",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 67,
+      "href": "/enroll/68b5a0e0206770f7c5631fe1?city=Houston&position=4",
+      "text": "Enroll",
+      "classes": "enroll-btn-small",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 68,
+      "href": "/enroll/68b59e94206770f7c5631ee7?city=Houston&position=5",
+      "text": "Enroll",
+      "classes": "enroll-btn-small",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 69,
+      "href": "/enroll/68b59e95206770f7c5631eec?city=Houston&position=6",
+      "text": "Enroll",
+      "classes": "enroll-btn-small",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 70,
+      "href": "/enroll/68b70a43206770f7c5634f85?city=Houston&position=7",
+      "text": "Enroll",
+      "classes": "enroll-btn-small",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 71,
+      "href": "/enroll/68b6fc3e206770f7c5634d5c?city=Houston&position=8",
+      "text": "Enroll",
+      "classes": "enroll-btn-small",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 72,
+      "href": "/enroll/68b6fc3e206770f7c5634d5d?city=Houston&position=9",
+      "text": "Enroll",
+      "classes": "enroll-btn-small",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 73,
+      "href": "/enroll/68b862c4206770f7c5637bb1?city=Houston&position=10",
+      "text": "Enroll",
+      "classes": "enroll-btn-small",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 74,
+      "href": "/enroll/68b714d7206770f7c5635132?city=Houston&position=11",
+      "text": "Enroll",
+      "classes": "enroll-btn-small",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 75,
+      "href": "/enroll/68b84ddd206770f7c5637939?city=Houston&position=12",
+      "text": "Enroll",
+      "classes": "enroll-btn-small",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 76,
+      "href": "/enroll/68b7cf33206770f7c5636924?city=Houston&position=1",
+      "text": "Enroll Now",
+      "classes": "compact-enroll-btn",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 77,
+      "href": "/enroll/68b7cf39206770f7c5636954?city=Houston&position=2",
+      "text": "Enroll Now",
+      "classes": "compact-enroll-btn",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 78,
+      "href": "/enroll/68b5a0df206770f7c5631fd2?city=Houston&position=3",
+      "text": "Enroll Now",
+      "classes": "compact-enroll-btn",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 79,
+      "href": "/enroll/68b5a0e0206770f7c5631fe1?city=Houston&position=4",
+      "text": "Enroll Now",
+      "classes": "compact-enroll-btn",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 80,
+      "href": "/enroll/68b59e94206770f7c5631ee7?city=Houston&position=5",
+      "text": "Enroll Now",
+      "classes": "compact-enroll-btn",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 81,
+      "href": "/enroll/68b59e95206770f7c5631eec?city=Houston&position=6",
+      "text": "Enroll Now",
+      "classes": "compact-enroll-btn",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 82,
+      "href": "/enroll/68b70a43206770f7c5634f85?city=Houston&position=7",
+      "text": "Enroll Now",
+      "classes": "compact-enroll-btn",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 83,
+      "href": "/enroll/68b6fc3e206770f7c5634d5c?city=Houston&position=8",
+      "text": "Enroll Now",
+      "classes": "compact-enroll-btn",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 84,
+      "href": "/enroll/68b6fc3e206770f7c5634d5d?city=Houston&position=9",
+      "text": "Enroll Now",
+      "classes": "compact-enroll-btn",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 85,
+      "href": "/enroll/68b862c4206770f7c5637bb1?city=Houston&position=10",
+      "text": "Enroll Now",
+      "classes": "compact-enroll-btn",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 86,
+      "href": "/enroll/68b714d7206770f7c5635132?city=Houston&position=11",
+      "text": "Enroll Now",
+      "classes": "compact-enroll-btn",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 87,
+      "href": "/enroll/68b84ddd206770f7c5637939?city=Houston&position=12",
+      "text": "Enroll Now",
+      "classes": "compact-enroll-btn",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 88,
+      "href": "/electricity-plans/houston/12-month",
+      "text": "12-Month (Most popular) Popular in Houston",
+      "classes": "bg-white p-4 rounded-xl shadow hover:shadow-lg hover:border-texas-navy/30 transition-all duration-300 border border-gray-200 hover:-translate-y-1 group",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 89,
+      "href": "/electricity-plans/houston/24-month",
+      "text": "24-Month (Better rates) Popular in Houston",
+      "classes": "bg-white p-4 rounded-xl shadow hover:shadow-lg hover:border-texas-navy/30 transition-all duration-300 border border-gray-200 hover:-translate-y-1 group",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": true
+    },
+    {
+      "index": 90,
+      "href": "/electricity-plans/houston/fixed-rate",
+      "text": "Fixed Rate (Same all year) Popular in Houston",
+      "classes": "bg-white p-4 rounded-xl shadow hover:shadow-lg hover:border-texas-navy/30 transition-all duration-300 border border-gray-200 hover:-translate-y-1 group",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": true,
+      "hasRateInText": true
+    },
+    {
+      "index": 91,
+      "href": "/electricity-plans/houston/green-energy",
+      "text": "100% Clean Energy (Wind & solar) Popular in Houston",
+      "classes": "bg-white p-4 rounded-xl shadow hover:shadow-lg hover:border-texas-navy/30 transition-all duration-300 border border-gray-200 hover:-translate-y-1 group",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 92,
+      "href": "/electricity-plans/houston/prepaid",
+      "text": "Prepaid (Pay as you go) Popular in Houston",
+      "classes": "bg-white p-4 rounded-xl shadow hover:shadow-lg hover:border-texas-navy/30 transition-all duration-300 border border-gray-200 hover:-translate-y-1 group",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 93,
+      "href": "/electricity-plans/houston/no-deposit",
+      "text": "No Deposit Required Popular in Houston",
+      "classes": "bg-white p-4 rounded-xl shadow hover:shadow-lg hover:border-texas-navy/30 transition-all duration-300 border border-gray-200 hover:-translate-y-1 group",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 94,
+      "href": "tel:+18002667273",
+      "text": "1-800-COMPARE",
+      "classes": "contact-link",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 95,
+      "href": "mailto:support@choosemypower.org",
+      "text": "support@choosemypower.org",
+      "classes": "contact-link",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 96,
+      "href": "https://twitter.com/choosemypower",
+      "text": "Twitter",
+      "classes": "social-link",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 97,
+      "href": "https://facebook.com/choosemypower",
+      "text": "Facebook",
+      "classes": "social-link",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 98,
+      "href": "https://linkedin.com/company/choosemypower",
+      "text": "LinkedIn",
+      "classes": "social-link",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 99,
+      "href": "https://instagram.com/choosemypower",
+      "text": "Instagram",
+      "classes": "social-link",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 100,
+      "href": "/compare",
+      "text": "Compare Plans",
+      "classes": "footer-link",
+      "id": null,
+      "parentTag": "LI",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 101,
+      "href": "/shop/cheapest-electricity",
+      "text": "Cheapest Electricity",
+      "classes": "footer-link",
+      "id": null,
+      "parentTag": "LI",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 102,
+      "href": "/shop/best-electricity-providers",
+      "text": "Best Providers",
+      "classes": "footer-link",
+      "id": null,
+      "parentTag": "LI",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 103,
+      "href": "/shop/green-energy",
+      "text": "Green Energy",
+      "classes": "footer-link",
+      "id": null,
+      "parentTag": "LI",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 104,
+      "href": "/shop/no-deposit-electricity",
+      "text": "No Deposit Plans",
+      "classes": "footer-link",
+      "id": null,
+      "parentTag": "LI",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 105,
+      "href": "/texas",
+      "text": "Texas Providers",
+      "classes": "footer-link",
+      "id": null,
+      "parentTag": "LI",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 106,
+      "href": "/electricity-plans/dallas",
+      "text": "Dallas Electricity",
+      "classes": "footer-link",
+      "id": null,
+      "parentTag": "LI",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 107,
+      "href": "/electricity-plans/houston",
+      "text": "Houston Electricity",
+      "classes": "footer-link",
+      "id": null,
+      "parentTag": "LI",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 108,
+      "href": "/electricity-plans/austin-tx",
+      "text": "Austin Electricity",
+      "classes": "footer-link",
+      "id": null,
+      "parentTag": "LI",
+      "isElectricityPlanLink": true,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 109,
+      "href": "/locations",
+      "text": "All Locations",
+      "classes": "footer-link",
+      "id": null,
+      "parentTag": "LI",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 110,
+      "href": "/rates/calculator",
+      "text": "Rate Calculator",
+      "classes": "footer-link",
+      "id": null,
+      "parentTag": "LI",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": true
+    },
+    {
+      "index": 111,
+      "href": "/resources/guides/how-to-switch-providers",
+      "text": "How to Switch",
+      "classes": "footer-link",
+      "id": null,
+      "parentTag": "LI",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 112,
+      "href": "/best",
+      "text": "Best Rankings",
+      "classes": "footer-link",
+      "id": null,
+      "parentTag": "LI",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 113,
+      "href": "/resources/guides",
+      "text": "Electricity Guide",
+      "classes": "footer-link",
+      "id": null,
+      "parentTag": "LI",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 114,
+      "href": "/resources/faqs",
+      "text": "FAQ",
+      "classes": "footer-link",
+      "id": null,
+      "parentTag": "LI",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 115,
+      "href": "/about",
+      "text": "About Us",
+      "classes": "footer-link",
+      "id": null,
+      "parentTag": "LI",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 116,
+      "href": "/resources/support/contact",
+      "text": "Contact",
+      "classes": "footer-link",
+      "id": null,
+      "parentTag": "LI",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 117,
+      "href": "/careers",
+      "text": "Careers",
+      "classes": "footer-link",
+      "id": null,
+      "parentTag": "LI",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 118,
+      "href": "/press",
+      "text": "Press",
+      "classes": "footer-link",
+      "id": null,
+      "parentTag": "LI",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 119,
+      "href": "/blog",
+      "text": "Blog",
+      "classes": "footer-link",
+      "id": null,
+      "parentTag": "LI",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 120,
+      "href": "/privacy-policy",
+      "text": "Privacy Policy",
+      "classes": "legal-link",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 121,
+      "href": "/terms-of-service",
+      "text": "Terms of Service",
+      "classes": "legal-link",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 122,
+      "href": "/accessibility",
+      "text": "Accessibility",
+      "classes": "legal-link",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 123,
+      "href": "/sitemap",
+      "text": "Sitemap",
+      "classes": "legal-link",
+      "id": null,
+      "parentTag": "DIV",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 124,
+      "href": "https://astro.build/integrations/",
+      "text": "View all",
+      "classes": null,
+      "id": null,
+      "parentTag": "HEADER",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 125,
+      "href": "https://github.com/withastro/astro/issues/new/choose",
+      "text": "Report a Bug",
+      "classes": null,
+      "id": null,
+      "parentTag": "SECTION",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 126,
+      "href": "https://github.com/withastro/roadmap/discussions/new/choose",
+      "text": "Feedback",
+      "classes": null,
+      "id": null,
+      "parentTag": "SECTION",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 127,
+      "href": "https://docs.astro.build",
+      "text": "Documentation",
+      "classes": null,
+      "id": null,
+      "parentTag": "SECTION",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 128,
+      "href": "https://astro.build/chat",
+      "text": "Community",
+      "classes": null,
+      "id": null,
+      "parentTag": "SECTION",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    },
+    {
+      "index": 129,
+      "href": "https://docs.astro.build/en/reference/cli-reference/#astro-preferences",
+      "text": "Learn more",
+      "classes": null,
+      "id": null,
+      "parentTag": "SECTION",
+      "isElectricityPlanLink": false,
+      "hasFixedInText": false,
+      "hasRateInText": false
+    }
+  ],
+  "consoleLogs": [
+    "[2025-09-03T18:16:44.218Z] warning: <link rel=preload> has an unsupported `type` value",
+    "[2025-09-03T18:16:44.290Z] log: 🚧 SW: Service Worker disabled in development mode",
+    "[2025-09-03T18:16:44.292Z] error: Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "[2025-09-03T18:16:44.332Z] error: Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "[2025-09-03T18:16:44.343Z] debug: [vite] connecting...",
+    "[2025-09-03T18:16:44.358Z] debug: [astro] Initializing prefetch script",
+    "[2025-09-03T18:16:44.374Z] debug: [vite] connected.",
+    "[2025-09-03T18:16:44.401Z] info: %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+    "[2025-09-03T18:16:44.423Z] log: 📊 TTFB: 40.8999999910593",
+    "[2025-09-03T18:16:44.426Z] log: 📊 CLS: 0.01539206155538559",
+    "[2025-09-03T18:16:44.426Z] log: 📊 CLS: 0.020798998963832856",
+    "[2025-09-03T18:16:44.426Z] log: 📊 FCP: 116",
+    "[2025-09-03T18:16:44.426Z] log: 📊 LCP: 116",
+    "[2025-09-03T18:16:47.589Z] warning: The resource http://localhost:4324/_astro/_state_.Cspq1bGy.css was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+    "[2025-09-03T18:16:47.611Z] log: 📊 FID: 0.29999999701976776",
+    "[2025-09-03T18:16:48.164Z] warning: <link rel=preload> has an unsupported `type` value",
+    "[2025-09-03T18:16:48.165Z] log: 🚧 SW: Service Worker disabled in development mode",
+    "[2025-09-03T18:16:48.166Z] error: Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "[2025-09-03T18:16:48.185Z] error: Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "[2025-09-03T18:16:48.232Z] debug: [vite] connecting...",
+    "[2025-09-03T18:16:48.236Z] debug: [astro] Initializing prefetch script",
+    "[2025-09-03T18:16:48.264Z] debug: [vite] connected.",
+    "[2025-09-03T18:16:48.300Z] info: %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold",
+    "[2025-09-03T18:16:48.355Z] log: 📊 TTFB: 562.7000000029802",
+    "[2025-09-03T18:16:48.361Z] log: 📊 FCP: 608",
+    "[2025-09-03T18:16:48.361Z] log: 📊 LCP: 608",
+    "[2025-09-03T18:16:48.367Z] log: ✅ Found logo for Reliant Energy: https://assets.comparepower.com/images/reliant.svg",
+    "[2025-09-03T18:16:48.367Z] log: ✅ Found logo for TXU Energy: https://assets.comparepower.com/images/txu_energy.svg",
+    "[2025-09-03T18:16:48.367Z] log: ✅ Found logo for Direct Energy: https://assets.comparepower.com/images/direct_energy.svg"
+  ],
+  "networkRequests": [
+    {
+      "timestamp": "2025-09-03T18:16:47.597Z",
+      "method": "GET",
+      "url": "http://localhost:4324/electricity-plans/houston/fixed-rate",
+      "resourceType": "document"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.163Z",
+      "method": "GET",
+      "url": "http://localhost:4324/_astro/_state_.Cspq1bGy.css",
+      "resourceType": "stylesheet"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.163Z",
+      "method": "GET",
+      "url": "http://localhost:4324/@vite/client",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.163Z",
+      "method": "GET",
+      "url": "http://localhost:4324/@fs/Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/astro/dist/runtime/client/dev-toolbar/entrypoint.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.164Z",
+      "method": "GET",
+      "url": "http://localhost:4324/@id/astro:scripts/page.js",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.164Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/index.css",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.164Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/styles/dropdown-z-index-enterprise-solution.css",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.164Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/styles/footer-modern.css",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.164Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/styles/dynamic-messaging.css",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.164Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/HeaderWrapper.astro?astro&type=style&index=0&lang.css",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.164Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/FooterWrapper.astro?astro&type=style&index=0&lang.css",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.164Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/layouts/Layout.astro?astro&type=style&index=0&lang.css",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.164Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/layouts/Layout.astro?astro&type=style&index=1&lang.css",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.164Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/layouts/Layout.astro?astro&type=style&index=2&lang.css",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.164Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/layouts/Layout.astro?astro&type=style&index=3&lang.css",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.164Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/HeaderWrapper.astro?astro&type=script&index=0&lang.ts",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.165Z",
+      "method": "GET",
+      "url": "http://localhost:4324/.netlify/functions/health",
+      "resourceType": "other"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.165Z",
+      "method": "GET",
+      "url": "http://localhost:4324/@id/astro:scripts/before-hydration.js",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.177Z",
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.ttf",
+      "resourceType": "font"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.177Z",
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYMZg.ttf",
+      "resourceType": "font"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.178Z",
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYMZg.ttf",
+      "resourceType": "font"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.180Z",
+      "method": "GET",
+      "url": "http://localhost:4324/@id/__x00__astro:toolbar:internal",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.180Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/helpers.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.180Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/settings.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.225Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/virtual-modules/prefetch.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.225Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/node_modules/vite/dist/client/env.mjs",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.226Z",
+      "method": "GET",
+      "url": "http://localhost:4324/@react-refresh",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.229Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/prefetch/index.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.240Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/astro.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.240Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/index.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.241Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/xray.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.241Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/settings.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.241Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/toolbar.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.241Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/index.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.253Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/icons.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.253Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/utils/icons.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.254Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/utils/window.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.255Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/utils/highlight.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.255Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/annotations.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.255Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/index.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.255Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-list-item.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.255Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-list-window.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.256Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-ui.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.256Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/html-escaper/esm/index.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.256Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/window.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.257Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/badge.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.257Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/button.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.257Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/card.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.257Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/highlight.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.257Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/icon.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.258Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/radio-checkbox.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.258Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/select.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.258Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/toggle.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.258Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/tooltip.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.260Z",
+      "method": "GET",
+      "url": "http://localhost:4324/lightning-bolt-icon.svg",
+      "resourceType": "other"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.261Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/a11y.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.261Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/perf.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.264Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/ui/ProductDetailsPageShadcn.tsx",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.264Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/@astrojs_react_client__js.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.270Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/astro___aria-query.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.270Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/astro___axobject-query.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.279Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-NXESFFTV.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.279Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-DRWLMN53.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.279Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-G3PMV62Z.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.282Z",
+      "method": "GET",
+      "url": "http://localhost:4324/favicon.svg",
+      "resourceType": "other"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.300Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.301Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/react.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.301Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/ui/card.tsx",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.301Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/ui/tabs.tsx",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.301Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/ui/badge.tsx",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.301Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/ui/button.tsx",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.302Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/ui/slider.tsx",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.302Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/ui/breadcrumb.tsx",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.302Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/lucide-react.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.302Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/components/ui/ProviderLogo.tsx",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.327Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/@radix-ui_react-tabs.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.327Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/lib/utils.ts",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.327Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/@radix-ui_react-slider.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.327Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/@radix-ui_react-slot.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.328Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/class-variance-authority.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.328Z",
+      "method": "GET",
+      "url": "http://localhost:4324/src/lib/logo/provider-mappings.ts",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.333Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-TLMPZXCM.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.333Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-6PXSGDAH.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.333Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-U7P2NEEE.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.334Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-RGGSQVJY.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.335Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/clsx.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.335Z",
+      "method": "GET",
+      "url": "http://localhost:4324/node_modules/.vite/deps/tailwind-merge.js?v=1883c414",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.335Z",
+      "method": "GET",
+      "url": "http://localhost:4324/js/web-vitals.mjs",
+      "resourceType": "script"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.372Z",
+      "method": "GET",
+      "url": "https://assets.comparepower.com/images/reliant.svg",
+      "resourceType": "image"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.372Z",
+      "method": "GET",
+      "url": "https://assets.comparepower.com/images/txu_energy.svg",
+      "resourceType": "image"
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.373Z",
+      "method": "GET",
+      "url": "https://assets.comparepower.com/images/direct_energy.svg",
+      "resourceType": "image"
+    }
+  ],
+  "networkResponses": [
+    {
+      "timestamp": "2025-09-03T18:16:48.153Z",
+      "status": 200,
+      "url": "http://localhost:4324/electricity-plans/houston/fixed-rate",
+      "headers": {
+        "connection": "keep-alive",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "keep-alive": "timeout=5",
+        "transfer-encoding": "chunked",
+        "vary": "Origin",
+        "cache-control": "public, max-age=3600, s-maxage=7200",
+        "content-type": "text/html",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(self), payment=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-csp-nonce": "P2Bs9Rqaa87wrl0vw5Xvzg==",
+        "x-frame-options": "DENY",
+        "x-xss-protection": "1; mode=block"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.163Z",
+      "status": 200,
+      "url": "http://localhost:4324/@fs/Users/mbp-ez/Downloads/AI%20Library/Apps/CMP/choose-my-power/node_modules/astro/dist/runtime/client/dev-toolbar/entrypoint.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"259e-akTsu/6M5dfshAQKOnVYKiEomXk\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "52465",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.165Z",
+      "status": 404,
+      "url": "http://localhost:4324/_astro/_state_.Cspq1bGy.css",
+      "headers": {
+        "transfer-encoding": "chunked",
+        "keep-alive": "timeout=5",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "content-type": "text/html",
+        "vary": "Origin",
+        "connection": "keep-alive"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.177Z",
+      "status": 200,
+      "url": "https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.ttf",
+      "headers": {
+        "content-encoding": "gzip",
+        "age": "58711",
+        "report-to": "{\"group\":\"apps-themes\",\"max_age\":2592000,\"endpoints\":[{\"url\":\"https://csp.withgoogle.com/csp/report-to/apps-themes\"}]}",
+        "x-content-type-options": "nosniff",
+        "expires": "Thu, 03 Sep 2026 01:58:13 GMT",
+        "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+        "date": "Wed, 03 Sep 2025 01:58:13 GMT",
+        "last-modified": "Wed, 28 May 2025 18:58:09 GMT",
+        "content-type": "font/ttf",
+        "vary": "Accept-Encoding",
+        "cache-control": "public, max-age=31536000",
+        "timing-allow-origin": "*",
+        "cross-origin-opener-policy": "same-origin; report-to=\"apps-themes\"",
+        "cross-origin-resource-policy": "cross-origin",
+        "content-security-policy-report-only": "require-trusted-types-for 'script'; report-uri https://csp.withgoogle.com/csp/apps-themes",
+        "accept-ranges": "bytes",
+        "access-control-allow-origin": "*",
+        "content-length": "158096",
+        "x-xss-protection": "0",
+        "server": "sffe"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.177Z",
+      "status": 200,
+      "url": "https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYMZg.ttf",
+      "headers": {
+        "content-encoding": "gzip",
+        "age": "58689",
+        "report-to": "{\"group\":\"apps-themes\",\"max_age\":2592000,\"endpoints\":[{\"url\":\"https://csp.withgoogle.com/csp/report-to/apps-themes\"}]}",
+        "x-content-type-options": "nosniff",
+        "expires": "Thu, 03 Sep 2026 01:58:35 GMT",
+        "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+        "date": "Wed, 03 Sep 2025 01:58:35 GMT",
+        "last-modified": "Wed, 28 May 2025 18:58:09 GMT",
+        "content-type": "font/ttf",
+        "vary": "Accept-Encoding",
+        "cache-control": "public, max-age=31536000",
+        "timing-allow-origin": "*",
+        "cross-origin-opener-policy": "same-origin; report-to=\"apps-themes\"",
+        "cross-origin-resource-policy": "cross-origin",
+        "content-security-policy-report-only": "require-trusted-types-for 'script'; report-uri https://csp.withgoogle.com/csp/apps-themes",
+        "accept-ranges": "bytes",
+        "access-control-allow-origin": "*",
+        "content-length": "162614",
+        "x-xss-protection": "0",
+        "server": "sffe"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.178Z",
+      "status": 200,
+      "url": "https://fonts.gstatic.com/s/inter/v19/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYMZg.ttf",
+      "headers": {
+        "content-encoding": "gzip",
+        "age": "58112",
+        "report-to": "{\"group\":\"apps-themes\",\"max_age\":2592000,\"endpoints\":[{\"url\":\"https://csp.withgoogle.com/csp/report-to/apps-themes\"}]}",
+        "x-content-type-options": "nosniff",
+        "expires": "Thu, 03 Sep 2026 02:08:12 GMT",
+        "alt-svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+        "date": "Wed, 03 Sep 2025 02:08:12 GMT",
+        "last-modified": "Wed, 28 May 2025 18:58:08 GMT",
+        "content-type": "font/ttf",
+        "vary": "Accept-Encoding",
+        "cache-control": "public, max-age=31536000",
+        "timing-allow-origin": "*",
+        "cross-origin-opener-policy": "same-origin; report-to=\"apps-themes\"",
+        "cross-origin-resource-policy": "cross-origin",
+        "content-security-policy-report-only": "require-trusted-types-for 'script'; report-uri https://csp.withgoogle.com/csp/apps-themes",
+        "accept-ranges": "bytes",
+        "access-control-allow-origin": "*",
+        "content-length": "163032",
+        "x-xss-protection": "0",
+        "server": "sffe"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.179Z",
+      "status": 200,
+      "url": "http://localhost:4324/@id/astro:scripts/page.js",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "608",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "etag": "W/\"5d-8H9NukbcW9eJPbCEuQ1uM3wzze0\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.180Z",
+      "status": 200,
+      "url": "http://localhost:4324/src/styles/dropdown-z-index-enterprise-solution.css",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "24225",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "etag": "W/\"5ea1-9+cOhbg+lhjzWbytvRIpC+Lbh5U\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.180Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/helpers.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"a48-QTShxp2Z4vIdJg5NFKKO/4SYPIA\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "14267",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.181Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/settings.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"4a9-jVLaZ5Opsbmd1O3s5HZDmi/vArU\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "6640",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.181Z",
+      "status": 200,
+      "url": "http://localhost:4324/src/styles/footer-modern.css",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "22724",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "etag": "W/\"58c4-oCtVIzU4OpbVwA1RbomHt2F4mwY\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.181Z",
+      "status": 200,
+      "url": "http://localhost:4324/src/styles/dynamic-messaging.css",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "2901",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "etag": "W/\"b55-gjalYAqjEhQ/tD7MabuV4oZP3YU\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.181Z",
+      "status": 200,
+      "url": "http://localhost:4324/@vite/client",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "287617",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "etag": "W/\"c752-/xmJhy2/o/Wv1hNrYr/ZQp3DrSA\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.182Z",
+      "status": 200,
+      "url": "http://localhost:4324/src/index.css",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "225046",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "etag": "W/\"36f16-P44dMC8SONYY9ng67hpi9KGMWms\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.182Z",
+      "status": 200,
+      "url": "http://localhost:4324/src/components/HeaderWrapper.astro?astro&type=style&index=0&lang.css",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "5185",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "etag": "W/\"1441-1Rz6UiXPWhJBUfVcnjDYq67kqEs\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.182Z",
+      "status": 200,
+      "url": "http://localhost:4324/src/components/FooterWrapper.astro?astro&type=style&index=0&lang.css",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "3014",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "etag": "W/\"bc6-Td0tI3dTahogbhIfRmpA19NbuEQ\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.182Z",
+      "status": 200,
+      "url": "http://localhost:4324/src/layouts/Layout.astro?astro&type=style&index=0&lang.css",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "1858",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "etag": "W/\"742-eJqKthMEkyb1fAOW+OL6QPbL+2c\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.182Z",
+      "status": 200,
+      "url": "http://localhost:4324/src/layouts/Layout.astro?astro&type=style&index=1&lang.css",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "1253",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "etag": "W/\"4e5-pM1Z8Il9VDdyh77e8fCm7S4mp/I\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.182Z",
+      "status": 200,
+      "url": "http://localhost:4324/src/layouts/Layout.astro?astro&type=style&index=2&lang.css",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "12585",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "etag": "W/\"3129-3nKd/sNKKeCjQm3Dv7JlY7SSiHc\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.182Z",
+      "status": 200,
+      "url": "http://localhost:4324/src/layouts/Layout.astro?astro&type=style&index=3&lang.css",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "2685",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "etag": "W/\"a7d-80pJmbeWxNEZKPWEXJw6azirRB8\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.182Z",
+      "status": 200,
+      "url": "http://localhost:4324/src/components/HeaderWrapper.astro?astro&type=script&index=0&lang.ts",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "22473",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "etag": "W/\"546-rVKRtEJ9p90f5etiBcZs9gePZTo\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.185Z",
+      "status": 404,
+      "url": "http://localhost:4324/.netlify/functions/health",
+      "headers": {
+        "transfer-encoding": "chunked",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "connection": "keep-alive",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(self), payment=()",
+        "x-csp-nonce": "EFJi8j0aM0G0Q6Nwworf5A==",
+        "keep-alive": "timeout=5",
+        "x-xss-protection": "1; mode=block",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "content-type": "text/html",
+        "vary": "Origin",
+        "x-frame-options": "DENY"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.185Z",
+      "status": 200,
+      "url": "http://localhost:4324/@id/astro:scripts/before-hydration.js",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "988",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "etag": "W/\"a1-w0Eb6ONthIvPGaAjbUu7cRZqf10\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.225Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/virtual-modules/prefetch.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"47-dl2Jby0kVQ8q6crfV6NnlbQzStQ\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "518",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.225Z",
+      "status": 200,
+      "url": "http://localhost:4324/@id/__x00__astro:toolbar:internal",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "8955",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "etag": "W/\"5b8-5/p4NBi9aHXc/e+Q8mCekjh9XjY\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.229Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/prefetch/index.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"18e2-0zE/bLFA5ANRPAhmmES1t+tcCs0\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "34401",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.229Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/node_modules/vite/dist/client/env.mjs",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "5026",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "etag": "W/\"35f-Sujrrp2U3bSgv/TXNvvkK0fUvCE\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.229Z",
+      "status": 200,
+      "url": "http://localhost:4324/@react-refresh",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "113132",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "etag": "W/\"5459-W4xlIRvs7CzM1FW1IVU0Uw0TIxA\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.240Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/astro.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"4baa-C6Hh3p+gW7PhWsDbyFzkiGJO5dY\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "109029",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.240Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/index.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"1a0b-2JuiU8hvwH1o3hHL3AlRaocQRp0\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "37694",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.241Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/xray.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"1563-zm7dlfBwZjE+egjvXwUVFGPnl2s\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "30990",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.241Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/settings.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"1880-yvc1NLw2R2GSP5Tf+82Q+jH/fV8\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "35003",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.241Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/toolbar.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"3cef-U7r/20OTuiexTMNpXla6NTGfiAw\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "86326",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.241Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/index.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"596-2TkwB6+7xSVNOO4wEescA9qb8Gw\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "6537",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.253Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/icons.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"bd82-o5xIVd0AJT06SQ0KGZZ3IGSCHAg\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "277585",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.253Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/utils/icons.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"42f-aqcn0CYmlcQmJypksU1tOJIuai0\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "5650",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.254Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/utils/window.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"5f8-pOpt7DS9h/qnh/DwD/bH9lW9NQg\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "7595",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.255Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/utils/highlight.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"8c7-BnrBb8USrJkydFknEImn7DCTueo\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "11750",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.255Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/annotations.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"31b-s8nVFJtb2eX49iGqnQKiKRecc7w\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "3862",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.255Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/index.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"528-7CR/khw7O4SFzidN4a5/h26WgEw\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "7035",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.255Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-list-item.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"b55-9SfizRAfXEwZF/dLLi21FEmow7M\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "16740",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.255Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-list-window.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"23f6-UAxJBnp8Ox7ftaC6h0xjpOHs2Ko\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "52021",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.256Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/ui/audit-ui.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"1627-nCyh2qay5XIcwVo2BE0+GIAO7bs\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "28018",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.256Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/html-escaper/esm/index.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"90d-/bcQXrmhCDkUiAafXnWfinLKnJs\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "12896",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.257Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/window.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"cc9-fsGofoSxGGIOQxODoqzLEC0BvyQ\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "19284",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.257Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/badge.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"b01-638PXeys4sFj3/o6Q7bBtlnsAJg\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "16480",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.257Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/button.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"1114-+K/dhc2gygTJFAAedRC+sRgoSqQ\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "25195",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.257Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/card.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"d28-MR8mKjsrE7/w+8sBHbFT0sS1zCE\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "19839",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.257Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/highlight.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"f15-yuyT6lV7HLGiMtZ+50NQ+XQxqiY\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "21660",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.258Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/icon.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"3dc-/9EnNEd9G2Bm+gA9+CJIxperJV8\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "5667",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.258Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/radio-checkbox.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"b51-zOEuwA3tZ6iFdTDiabpZT79AKw4\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "16332",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.258Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/select.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"c24-YsYjnrBgqOBt0kqLLbrCLiM1SaE\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "18147",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.258Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/toggle.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"cbd-pRJMMzHqmqnFbQBHJbBSebHnF7E\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "19016",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.258Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/ui-library/tooltip.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"fe9-4h8sIBqyEe2GfgzZQ+wu4C5dkHA\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "23080",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.261Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/a11y.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"5b45-3BPVeVInEGofZCpd2vt9kNPIoOc\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "122184",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.261Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/astro/dist/runtime/client/dev-toolbar/apps/audit/rules/perf.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"114f-9MD+nwELzKg6a8cZldT1onUHR9s\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "23282",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.264Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/@astrojs_react_client__js.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"13d1-eLHtLKTj/2ZbUecHguCBbQuKiHg\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "5073",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.270Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/astro___aria-query.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"321e0-miggcIUOqElqPDpYbXExS3lmRJg\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "205280",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.270Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/astro___axobject-query.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"1b796-Z/Xi/cABcHoEFtQqpP+9Sj/KY4Q\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "112534",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.271Z",
+      "status": 200,
+      "url": "http://localhost:4324/lightning-bolt-icon.svg",
+      "headers": {
+        "cache-control": "no-cache",
+        "content-length": "329",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "etag": "W/\"329-1756423527772\"",
+        "content-type": "image/svg+xml",
+        "vary": "Origin",
+        "last-modified": "Thu, 28 Aug 2025 23:25:27 GMT"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.279Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-NXESFFTV.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"e3864-tWQo+ZzuoqxUOGaDTi9blxocp8U\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "931940",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.279Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-DRWLMN53.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"12ffa-/vfmzF747P3wpLpOv7bt4fOIE0k\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "77818",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.279Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-G3PMV62Z.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"5d9-6wRzMCCzieNLVIrKd7nF1XzrMAE\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "7968",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.280Z",
+      "status": 200,
+      "url": "http://localhost:4324/src/components/ui/ProductDetailsPageShadcn.tsx",
+      "headers": {
+        "cache-control": "no-cache",
+        "etag": "W/\"fe59-z6KZF4HqYZq0+VdtIH2VVpN7AoI\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "113716",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.301Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"90ab-WsSYlmg/CUBXaPWxobzUmGorpZI\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "37035",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.301Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/react.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"b9-dtXtxWzOIPxoGIQDYfhUbk9lg58\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "1024",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.321Z",
+      "status": 200,
+      "url": "http://localhost:4324/favicon.svg",
+      "headers": {
+        "cache-control": "no-cache",
+        "content-length": "365",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "etag": "W/\"365-1756423507049\"",
+        "content-type": "image/svg+xml",
+        "vary": "Origin",
+        "last-modified": "Thu, 28 Aug 2025 23:25:07 GMT"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.324Z",
+      "status": 200,
+      "url": "http://localhost:4324/src/components/ui/tabs.tsx",
+      "headers": {
+        "cache-control": "no-cache",
+        "etag": "W/\"123d-ABjwFxw6QXA/84TOWTX1getmnjI\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "9420",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.325Z",
+      "status": 200,
+      "url": "http://localhost:4324/src/components/ui/card.tsx",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "12761",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "etag": "W/\"17f6-z7LaMIYP6IYCKrgtL16GXh6PPOs\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.325Z",
+      "status": 200,
+      "url": "http://localhost:4324/src/components/ui/slider.tsx",
+      "headers": {
+        "cache-control": "no-cache",
+        "etag": "W/\"14b4-hkitFcJkdZ/oED3XE8GLif2XjjQ\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "10311",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.325Z",
+      "status": 200,
+      "url": "http://localhost:4324/src/components/ui/breadcrumb.tsx",
+      "headers": {
+        "cache-control": "no-cache",
+        "etag": "W/\"1b70-G4qufG9YvobRE4CxPM4HJh7vIh8\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "14031",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.326Z",
+      "status": 200,
+      "url": "http://localhost:4324/src/components/ui/badge.tsx",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "9652",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "etag": "W/\"1211-YSSqnKIOA8bb4rnsNMOnbmp4mXA\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.326Z",
+      "status": 200,
+      "url": "http://localhost:4324/src/components/ui/button.tsx",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "12382",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "etag": "W/\"15db-3nbGFTH4hKUSl6tbpVRWC1mNUPA\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.326Z",
+      "status": 200,
+      "url": "http://localhost:4324/src/components/ui/ProviderLogo.tsx",
+      "headers": {
+        "cache-control": "no-cache",
+        "etag": "W/\"224c-w/QaVCUemNWZuuq6LDOTPgPE41I\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "22895",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.326Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/lucide-react.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"bf176-Uk0JG3RwrsDafvYbMFmXSpAHkHM\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "782710",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.327Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/@radix-ui_react-slot.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"18f-bCyDRuysW+ukr2fjXahhm4kPdHw\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "2074",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.328Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/class-variance-authority.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"929-1oqKU9rkVv6EXgdZrHT6oLqx494\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "2345",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.333Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-TLMPZXCM.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"14db-wGKHICvGagaD6C7qs65ivrSFIVg\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "5339",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.333Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-6PXSGDAH.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"91f8-s3lzF68lX04B9MOpqJR/Ly2u2pc\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "37368",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.334Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-U7P2NEEE.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"272-lLdaNCqOK0QFYWnFfdFD5rGhoYk\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "626",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.334Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/@radix-ui_react-tabs.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"52c0-l+2HnCf3WTB8y1OacxPY3nKrX3w\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "21184",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.334Z",
+      "status": 200,
+      "url": "http://localhost:4324/src/lib/utils.ts",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "734",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "etag": "W/\"d7-Kjhy8OiVxWXbABve4hIKTedERPw\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.334Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/@radix-ui_react-slider.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"587f-mSJI7mdgjJEVKwSZKC2fpBb3ZHI\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "22655",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.334Z",
+      "status": 200,
+      "url": "http://localhost:4324/src/lib/logo/provider-mappings.ts",
+      "headers": {
+        "access-control-allow-origin": "http://localhost:4324",
+        "cache-control": "no-cache",
+        "content-length": "11864",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "etag": "W/\"fad-345zG/S+0SGctZSujAojvJkWlvQ\"",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.335Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/clsx.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"ce-B4dXthnPzPB2IFrD05pgUzwYWHE\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "1157",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.335Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/tailwind-merge.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"1652b-uYSaI72xCNZEuH7IsF1buX01f+w\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "91435",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.335Z",
+      "status": 200,
+      "url": "http://localhost:4324/node_modules/.vite/deps/chunk-RGGSQVJY.js?v=1883c414",
+      "headers": {
+        "cache-control": "max-age=31536000,immutable",
+        "etag": "W/\"2ce1-4KCFpd00++BK5iO7BxV6zVZh0Jo\"",
+        "connection": "keep-alive",
+        "access-control-allow-origin": "http://localhost:4324",
+        "keep-alive": "timeout=5",
+        "content-length": "11489",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.347Z",
+      "status": 200,
+      "url": "http://localhost:4324/js/web-vitals.mjs",
+      "headers": {
+        "cache-control": "no-cache",
+        "etag": "W/\"3187-1756442295045\"",
+        "access-control-allow-origin": "http://localhost:4324",
+        "content-length": "3187",
+        "date": "Wed, 03 Sep 2025 18:16:48 GMT",
+        "content-type": "text/javascript",
+        "vary": "Origin",
+        "last-modified": "Fri, 29 Aug 2025 04:38:15 GMT"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.372Z",
+      "status": 200,
+      "url": "https://assets.comparepower.com/images/reliant.svg",
+      "headers": {
+        "x-goog-metageneration": "1",
+        "x-goog-hash": "crc32c=gOPz+g==, md5=/YEuR6ljejE43+Qp86fhkw==",
+        "cf-cache-status": "HIT",
+        "etag": "W/\"fd812e47a9637a3138dfe429f3a7e193\"",
+        "age": "249",
+        "content-encoding": "br",
+        "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=9OyRN%2BtQXoQ4Q3ubIvyXXveY9HWA6F%2FaJTcJF8mPIeBUzsSNDSxqKUU5le%2Be4498YmfCWKFzNKtGb4BRgCw973YwzM9%2FW%2BaAMA7vZMsqXt6l1clssWA%3D\"}]}",
+        "x-goog-stored-content-encoding": "identity",
+        "expires": "Wed, 03 Sep 2025 19:12:35 GMT",
+        "x-goog-stored-content-length": "3944",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "image/svg+xml",
+        "last-modified": "Fri, 30 Aug 2024 21:00:08 GMT",
+        "vary": "accept-encoding",
+        "x-guploader-uploadid": "ABgVH880YyT7D-SlX1j_4tcYKf9lyqIPKuigP42IsBs2IILYrTtWD58uIUNejPdhKqBQvaPlFi8w",
+        "cache-control": "public, max-age=3600",
+        "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "x-goog-storage-class": "STANDARD",
+        "cf-ray": "97973d6cdef5f068-DFW",
+        "x-goog-generation": "1725051608089500",
+        "server": "cloudflare"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.372Z",
+      "status": 200,
+      "url": "https://assets.comparepower.com/images/txu_energy.svg",
+      "headers": {
+        "x-goog-metageneration": "1",
+        "x-goog-hash": "crc32c=Mi7Svg==, md5=BoaL9HFdn3WfzKAiQHZ9/g==",
+        "cf-cache-status": "HIT",
+        "etag": "W/\"06868bf4715d9f759fcca02240767dfe\"",
+        "age": "104",
+        "content-encoding": "br",
+        "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=W63FzYnV99UNXjDCxct3N5ebxeRSZSV4ty6MiceUu1DiXlvcjUjTQ%2FTH24KK4U%2FqoO1ni5WpsMTGwXaDDRJcovVt1fhNFqyu6LU57yMwI%2FjAWapGX28%3D\"}]}",
+        "x-goog-stored-content-encoding": "identity",
+        "expires": "Wed, 03 Sep 2025 19:15:00 GMT",
+        "x-goog-stored-content-length": "2330",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "image/svg+xml",
+        "last-modified": "Fri, 30 Aug 2024 21:00:08 GMT",
+        "vary": "accept-encoding",
+        "x-guploader-uploadid": "ABgVH8-8D3ixQCybZn3tqsS_FT5ksY5kDQl10iWi9ztkksw3fSqrdyI1zyUxFrsZzUujVkLh",
+        "cache-control": "public, max-age=3600",
+        "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "x-goog-storage-class": "STANDARD",
+        "cf-ray": "97973d6cdf00f068-DFW",
+        "x-goog-generation": "1725051608796776",
+        "server": "cloudflare"
+      }
+    },
+    {
+      "timestamp": "2025-09-03T18:16:48.373Z",
+      "status": 200,
+      "url": "https://assets.comparepower.com/images/direct_energy.svg",
+      "headers": {
+        "x-goog-metageneration": "1",
+        "x-goog-hash": "crc32c=0VhbFA==, md5=5nClbqwq4wMYRcNNUuIyLQ==",
+        "cf-cache-status": "HIT",
+        "etag": "W/\"e670a56eac2ae3031845c34d52e2322d\"",
+        "age": "1",
+        "content-encoding": "br",
+        "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=2mTuknJBOCsV1TU%2BrVBfzIIZ62XXrySqLozD%2BIXpZM76jKwws9abDpYBuvmVBGTcR7vahmQS18Lot3sXaD%2FRXAQgX9k%2BzBT62rp8tHoXT7yKMXRu14Q%3D\"}]}",
+        "x-goog-stored-content-encoding": "identity",
+        "expires": "Wed, 03 Sep 2025 19:16:43 GMT",
+        "x-goog-stored-content-length": "7656",
+        "date": "Wed, 03 Sep 2025 18:16:44 GMT",
+        "content-type": "image/svg+xml",
+        "last-modified": "Fri, 30 Aug 2024 21:00:06 GMT",
+        "vary": "accept-encoding",
+        "x-guploader-uploadid": "ABgVH89QtvqXPez-VHWJZFhXS5BMUt8V-WcKnfs_iUdf5nN8EArSMVNqazqFXrC99SgmPkOAaMAgusE",
+        "cache-control": "public, max-age=3600",
+        "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "x-goog-storage-class": "STANDARD",
+        "cf-ray": "97973d6cdef8f068-DFW",
+        "x-goog-generation": "1725051606656031",
+        "server": "cloudflare"
+      }
+    }
+  ]
+}

@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import StandardZipInputReact from '../../components/StandardZipInputReact';
 import { ProviderCard } from '../../components/ProviderCard';
 import { mockProviders, mockStates } from '../../data/mockData';
+import EnhancedSectionReact from '../../components/ui/EnhancedSectionReact';
+import EnhancedCardReact from '../../components/ui/EnhancedCardReact';
+import AccentBoxReact from '../../components/ui/AccentBoxReact';
 import { 
   Users, Star, TrendingDown, MapPin, Filter, Search, Building, Zap, 
   Award, Shield, Leaf, Clock, CheckCircle, Phone, Globe, ArrowRight,
@@ -316,131 +319,131 @@ export function ProvidersPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Elegant Hero Section */}
-      <div className="bg-gradient-to-br from-texas-navy via-blue-800 to-texas-navy text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
-          <div className="text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-6">
-              <Award className="h-8 w-8" />
-            </div>
+      {/* Hero Section using EnhancedSectionReact */}
+      <EnhancedSectionReact 
+        background="gradient-navy" 
+        padding="xl" 
+        maxWidth="7xl"
+      >
+        <div className="text-center text-white">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-6">
+            <Award className="h-8 w-8" />
+          </div>
+          
+          <div className="space-y-4">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight max-w-4xl mx-auto">
+              Texas Electricity Providers - Honest Reviews & Rankings
+            </h1>
             
-            <div className="space-y-4">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight max-w-4xl mx-auto">
-                Texas Electricity Providers - Honest Reviews & Rankings
-              </h1>
-              
-              <p className="text-base md:text-lg text-blue-100/80 font-normal max-w-3xl mx-auto leading-relaxed">
-                We've analyzed thousands of customer experiences to show you what each provider 
-                <span className="text-white font-medium"> is actually good at.</span> No marketing fluff, just honest rankings.
+            <p className="text-base md:text-lg text-blue-100/80 font-normal max-w-3xl mx-auto leading-relaxed">
+              We've analyzed thousands of customer experiences to show you what each provider 
+              <span className="text-white font-medium"> is actually good at.</span> No marketing fluff, just honest rankings.
+            </p>
+            
+            <AccentBoxReact accentColor="gold" background="white" padding="md">
+              <p className="text-sm text-texas-navy font-normal">
+                <span className="text-texas-gold font-medium">Real provider rankings</span> based on what they're genuinely good at.
               </p>
-              
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 max-w-2xl mx-auto border border-white/20">
-                <p className="text-sm text-white/90 font-normal">
-                  <span className="text-texas-gold font-medium">Real provider rankings</span> based on what they're genuinely good at.
-                </p>
-              </div>
-            </div>
+            </AccentBoxReact>
+          </div>
 
-            {/* Elegant Quick Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mt-8 mb-8">
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-                <div className="text-2xl font-bold">{mockProviders.length}</div>
-                <div className="text-blue-200 text-xs">Licensed Providers</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-                <div className="text-2xl font-bold">{lowestRate}¢</div>
-                <div className="text-blue-200 text-xs">Lowest Rate</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-                <div className="text-2xl font-bold">{avgRating}</div>
-                <div className="text-blue-200 text-xs">Avg Rating</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-                <div className="text-2xl font-bold">6</div>
-                <div className="text-blue-200 text-xs">Categories</div>
-              </div>
+          {/* Elegant Quick Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mt-8 mb-8">
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
+              <div className="text-2xl font-bold">{mockProviders.length}</div>
+              <div className="text-blue-200 text-xs">Licensed Providers</div>
             </div>
-
-            <div className="max-w-md mx-auto">
-              <StandardZipInputReact 
-                onSearch={handleZipSearch} 
-                size="lg"
-              />
-              <p className="text-blue-200 text-sm mt-2">Get personalized provider results</p>
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
+              <div className="text-2xl font-bold">{lowestRate}¢</div>
+              <div className="text-blue-200 text-xs">Lowest Rate</div>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
+              <div className="text-2xl font-bold">{avgRating}</div>
+              <div className="text-blue-200 text-xs">Avg Rating</div>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
+              <div className="text-2xl font-bold">6</div>
+              <div className="text-blue-200 text-xs">Categories</div>
             </div>
           </div>
+
+          <div className="max-w-md mx-auto">
+            <StandardZipInputReact 
+              onSearch={handleZipSearch} 
+              size="lg"
+            />
+            <p className="text-blue-200 text-sm mt-2">Get personalized provider results</p>
+          </div>
         </div>
-      </div>
+      </EnhancedSectionReact>
 
       {/* Benefits Section */}
-      <div className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-xl md:text-2xl font-semibold text-gray-900 mb-4">
-              Why We Sort Them This Way
-            </h2>
-            <p className="text-base text-gray-600 max-w-3xl mx-auto">
-              Every provider has their strengths and weaknesses. We'll help you find the ones that are actually good at what you need.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefits.map((benefit, index) => (
-              <div key={index} className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-lg mb-6">
-                  <benefit.icon className="h-8 w-8" />
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">{benefit.title}</h3>
-                <p className="text-sm text-gray-600">{benefit.description}</p>
-              </div>
-            ))}
-          </div>
+      <EnhancedSectionReact 
+        background="white" 
+        padding="xl"
+        title="Why We Sort Them This Way"
+        subtitle="Every provider has their strengths and weaknesses. We'll help you find the ones that are actually good at what you need."
+        titleSize="md"
+      >
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {benefits.map((benefit, index) => (
+            <EnhancedCardReact 
+              key={index} 
+              variant="default"
+              padding="lg"
+              icon={<benefit.icon />}
+              iconColor="navy"
+              title={benefit.title}
+              hoverEffect={false}
+            >
+              <p className="text-sm text-gray-600">{benefit.description}</p>
+            </EnhancedCardReact>
+          ))}
         </div>
-      </div>
+      </EnhancedSectionReact>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Category Filter */}
-        <div className="mb-12">
-          <div className="text-center mb-8">
-            <h2 className="text-xl md:text-2xl font-semibold text-gray-900 mb-4">
-              What Each Provider Is Actually Good At
-            </h2>
-            <p className="text-base text-gray-600">
-              We've sorted them by what they do well, so you can focus on what matters to you
-            </p>
-          </div>
-
-          <div className="flex flex-wrap justify-center gap-3 mb-8">
+      <EnhancedSectionReact 
+        background="gray" 
+        padding="lg"
+        title="What Each Provider Is Actually Good At"
+        subtitle="We've sorted them by what they do well, so you can focus on what matters to you"
+        titleSize="md"
+      >
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          <button
+            onClick={() => setSelectedCategory('all')}
+            className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+              selectedCategory === 'all'
+                ? 'bg-texas-navy text-white'
+                : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
+            }`}
+          >
+            All Categories
+          </button>
+          {providerCategories.map(category => (
             <button
-              onClick={() => setSelectedCategory('all')}
+              key={category.id}
+              onClick={() => setSelectedCategory(category.id as any)}
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                selectedCategory === 'all'
+                selectedCategory === category.id
                   ? 'bg-texas-navy text-white'
                   : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
               }`}
             >
-              All Categories
+              {category.title.replace('Best for ', '')}
             </button>
-            {providerCategories.map(category => (
-              <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id as any)}
-                className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                  selectedCategory === category.id
-                    ? 'bg-texas-navy text-white'
-                    : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
-                }`}
-              >
-                {category.title.replace('Best for ', '')}
-              </button>
-            ))}
-          </div>
+          ))}
         </div>
 
         {/* Provider Categories */}
         <div className="space-y-12 mb-16">
           {filteredCategories.map((category) => (
-            <div key={category.id} className="bg-white rounded-lg shadow-sm border p-8">
+            <EnhancedCardReact 
+              key={category.id} 
+              variant="default"
+              padding="lg"
+              hoverEffect={false}
+            >
               <div className="text-center mb-8">
                 <div className={`inline-flex items-center justify-center w-16 h-16 bg-${category.color}-100 text-${category.color}-600 rounded-lg mb-4`}>
                   <category.icon className="h-8 w-8" />
@@ -510,12 +513,15 @@ export function ProvidersPage() {
                   Compare All {category.title.replace('Actually Good for ', '').replace('Won\'t Leave You Hanging', 'Customer Service').replace('Credits You Can Actually Get', 'Bill Credit').replace('For Tech That Actually Works', 'Smart Home').replace('Texas Companies That Care', 'Local Texas').replace('Actually Cheap (No Hidden Fees)', 'Budget')} Options
                 </button>
               </div>
-            </div>
+            </EnhancedCardReact>
           ))}
         </div>
 
         {/* Provider Directory */}
-        <div className="bg-white rounded-lg shadow-sm border p-8 mb-12">
+        <EnhancedCardReact 
+          variant="default"
+          padding="lg"
+        >
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 space-y-4 md:space-y-0">
             <div>
               <h2 className="text-xl font-semibold text-gray-900 mb-2">Every Licensed Provider in Texas</h2>
@@ -567,15 +573,17 @@ export function ProvidersPage() {
               See All Provider Reviews
             </button>
           </div>
-        </div>
+        </EnhancedCardReact>
 
         {/* Quick Actions */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-white p-6 rounded-lg shadow-sm border text-center hover:shadow-md transition-shadow">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 text-green-600 rounded-lg mb-4">
-              <TrendingDown className="h-6 w-6" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">Find Actually Cheap Rates</h3>
+          <EnhancedCardReact 
+            variant="default" 
+            padding="lg"
+            icon={<TrendingDown />}
+            iconColor="green"
+            title="Find Actually Cheap Rates"
+          >
             <p className="text-gray-600 text-sm mb-4">
               The real lowest rates (without hidden fees that jack up your bill later).
             </p>
@@ -585,13 +593,15 @@ export function ProvidersPage() {
             >
               Find Real Low Rates →
             </button>
-          </div>
+          </EnhancedCardReact>
 
-          <div className="bg-white p-6 rounded-lg shadow-sm border text-center hover:shadow-md transition-shadow">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-texas-cream text-texas-navy rounded-lg mb-4">
-              <Users className="h-6 w-6" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">Compare What Actually Matters</h3>
+          <EnhancedCardReact 
+            variant="default" 
+            padding="lg"
+            icon={<Users />}
+            iconColor="navy"
+            title="Compare What Actually Matters"
+          >
             <p className="text-gray-600 text-sm mb-4">
               Real side-by-side comparison of what you actually care about.
             </p>
@@ -601,13 +611,15 @@ export function ProvidersPage() {
             >
               Compare What Matters →
             </button>
-          </div>
+          </EnhancedCardReact>
 
-          <div className="bg-white p-6 rounded-lg shadow-sm border text-center hover:shadow-md transition-shadow">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-100 text-purple-600 rounded-lg mb-4">
-              <Award className="h-6 w-6" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">Our Honest Rankings</h3>
+          <EnhancedCardReact 
+            variant="default" 
+            padding="lg"
+            icon={<Award />}
+            iconColor="navy"
+            title="Our Honest Rankings"
+          >
             <p className="text-gray-600 text-sm mb-4">
               The providers that are actually worth considering, ranked by category.
             </p>
@@ -617,13 +629,15 @@ export function ProvidersPage() {
             >
               See Our Top Picks →
             </button>
-          </div>
+          </EnhancedCardReact>
 
-          <div className="bg-white p-6 rounded-lg shadow-sm border text-center hover:shadow-md transition-shadow">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-orange-100 text-orange-600 rounded-lg mb-4">
-              <MapPin className="h-6 w-6" />
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">What's Available Near You</h3>
+          <EnhancedCardReact 
+            variant="default" 
+            padding="lg"
+            icon={<MapPin />}
+            iconColor="red"
+            title="What's Available Near You"
+          >
             <p className="text-gray-600 text-sm mb-4">
               See which providers actually serve your area and what they're charging.
             </p>
@@ -633,9 +647,9 @@ export function ProvidersPage() {
             >
               Check Your Area →
             </button>
-          </div>
+          </EnhancedCardReact>
         </div>
-      </div>
+      </EnhancedSectionReact>
     </div>
   );
 }

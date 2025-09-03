@@ -1,0 +1,18 @@
+{
+  "cacheKey": "Dallas__filtered_3_North",
+  "url": "/images/og/generated/filtered/Dallas__filtered_3_North_1756928754181.jpg",
+  "localPath": "/Users/mbp-ez/Downloads/AI Library/Apps/CMP/choose-my-power/public/images/og/generated/filtered/Dallas__filtered_3_North_1756928754181.jpg",
+  "generatedAt": "2025-09-03T19:45:54.181Z",
+  "context": {
+    "city": "Dallas",
+    "filters": [],
+    "planCount": 23,
+    "lowestRate": 999,
+    "topProviders": [],
+    "pageType": "filtered",
+    "cityTier": 3,
+    "tdspZone": "North",
+    "seasonalContext": "fall"
+  },
+  "expiresAt": "2025-10-03T19:45:54.897Z"
+}

@@ -82,7 +82,7 @@ export class FacetedRouter {
       // 1. Validate basic URL structure
       if (pathSegments.length === 0) {
         result.error = 'Invalid URL: No city specified';
-        result.redirectUrl = '/electricity-plans/';
+        result.redirectUrl = '/electricity-plans';
         return result;
       }
 
@@ -171,7 +171,7 @@ export class FacetedRouter {
 
     } catch (error) {
       result.error = `Route validation failed: ${error instanceof Error ? error.message : 'Unknown error'}`;
-      result.redirectUrl = opts.enableRedirects ? `/electricity-plans/${result.citySlug || 'dallas-tx'}/` : null;
+      result.redirectUrl = opts.enableRedirects ? `/electricity-plans/${result.citySlug || 'dallas'}` : null;
       return result;
     }
   }
@@ -194,7 +194,7 @@ export class FacetedRouter {
     }
 
     // Fallback to city page
-    return `/electricity-plans/${citySlug}/`;
+    return `/electricity-plans/${citySlug}`;
   }
 
   /**
@@ -251,15 +251,21 @@ export class FacetedRouter {
   private buildUrl(citySlug: string, filterSegments: string[]): string {
     const baseUrl = `/electricity-plans/${citySlug}`;
     if (filterSegments.length === 0) {
-      return `${baseUrl}/`;
+      return baseUrl;
     }
-    return `${baseUrl}/${filterSegments.join('/')}/`;
+    return `${baseUrl}/${filterSegments.join('/')}`;
   }
 
   /**
    * Get suggested filters for a given city and current filters
+   * Enhanced with dynamic provider extraction from actual plan data
    */
-  getSuggestedFilters(citySlug: string, currentFilters: string[], limit = 6): string[] {
+  async getSuggestedFilters(
+    citySlug: string, 
+    currentFilters: string[], 
+    availablePlans: Plan[] = [], 
+    limit = 6
+  ): Promise<string[]> {
     // Get applied filter types to exclude from suggestions
     const tdspDuns = getTdspFromCity(citySlug);
     if (!tdspDuns) return [];
@@ -275,9 +281,81 @@ export class FacetedRouter {
     for (const filterDef of availableFilters) {
       if (suggestions.length >= limit) break;
       
-      // Take the first pattern from each filter type
-      if (filterDef.urlPatterns.length > 0) {
-        suggestions.push(filterDef.urlPatterns[0]);
+      // Special handling for provider filters - use dynamic extraction if plans are available
+      if (filterDef.type === 'provider' && availablePlans.length > 0) {
+        const dynamicProviders = filterMapper.extractProvidersFromPlans(availablePlans);
+        const providerContext = filterMapper.getAvailableProvidersForContext(appliedTypes, dynamicProviders);
+        
+        // Prefer dynamic providers (from actual data) over static ones
+        const providersToShow = [
+          ...providerContext.dynamicProviders.slice(0, 3), // Show up to 3 dynamic providers
+          ...providerContext.staticProviders.slice(0, Math.max(1, 6 - providerContext.dynamicProviders.length))
+        ].slice(0, Math.min(6, limit));
+        
+        suggestions.push(...providersToShow);
+      } else {
+        // For non-provider filters, use the standard approach
+        // Prefer more popular/useful filters first
+        const prioritizedPatterns = this.prioritizeFilterPatterns(filterDef);
+        if (prioritizedPatterns.length > 0) {
+          suggestions.push(prioritizedPatterns[0]);
+        }
+      }
+    }
+
+    return suggestions.slice(0, limit);
+  }
+
+  /**
+   * Prioritize filter patterns based on usefulness and popularity
+   */
+  private prioritizeFilterPatterns(filterDef: any): string[] {
+    const patterns = filterDef.urlPatterns;
+    
+    // Define priority order for common filter types
+    const priorityMap: Record<string, string[]> = {
+      'term': ['12-month', '24-month', '6-month', '36-month', 'month-to-month'],
+      'rate_type': ['fixed-rate', 'variable-rate', 'indexed-rate'],
+      'green_energy': ['green-energy', '100-green', '50-green', '25-green'],
+      'plan_features': ['no-deposit', 'prepaid', 'autopay-discount', 'free-weekends', 'bill-credit', 'no-contract']
+    };
+    
+    const priorityOrder = priorityMap[filterDef.type] || [];
+    
+    // Sort patterns according to priority, with unprioritized ones at the end
+    return patterns.sort((a: string, b: string) => {
+      const aIndex = priorityOrder.indexOf(a);
+      const bIndex = priorityOrder.indexOf(b);
+      
+      if (aIndex !== -1 && bIndex !== -1) return aIndex - bIndex;
+      if (aIndex !== -1 && bIndex === -1) return -1;
+      if (aIndex === -1 && bIndex !== -1) return 1;
+      return 0;
+    });
+  }
+
+  /**
+   * Synchronous version for backward compatibility
+   */
+  getSuggestedFiltersSync(citySlug: string, currentFilters: string[], limit = 6): string[] {
+    // Get applied filter types to exclude from suggestions
+    const tdspDuns = getTdspFromCity(citySlug);
+    if (!tdspDuns) return [];
+
+    const filterResult = filterMapper.mapFiltersToApiParams(citySlug, currentFilters, tdspDuns);
+    const appliedTypes = filterResult.appliedFilters.map(f => f.type);
+
+    // Get available filters not already applied
+    const availableFilters = filterMapper.getAvailableFilters(appliedTypes);
+    
+    // Convert to URL patterns and limit
+    const suggestions: string[] = [];
+    for (const filterDef of availableFilters) {
+      if (suggestions.length >= limit) break;
+      
+      const prioritizedPatterns = this.prioritizeFilterPatterns(filterDef);
+      if (prioritizedPatterns.length > 0) {
+        suggestions.push(prioritizedPatterns[0]);
       }
     }
 
@@ -294,7 +372,7 @@ export class FacetedRouter {
     if (!tdspDuns) return [];
 
     // Start with city page
-    urls.push(`/electricity-plans/${citySlug}/`);
+    urls.push(`/electricity-plans/${citySlug}`);
 
     // Get all available filters
     const availableFilters = filterMapper.getAvailableFilters();
@@ -304,7 +382,7 @@ export class FacetedRouter {
       for (const pattern of filterDef.urlPatterns.slice(0, 2)) { // Limit patterns per type
         const testResult = filterMapper.mapFiltersToApiParams(citySlug, [pattern], tdspDuns);
         if (testResult.isValid) {
-          urls.push(`/electricity-plans/${citySlug}/${pattern}/`);
+          urls.push(`/electricity-plans/${citySlug}/${pattern}`);
         }
       }
     }
@@ -322,7 +400,7 @@ export class FacetedRouter {
       for (const combo of highValueCombinations) {
         const testResult = filterMapper.mapFiltersToApiParams(citySlug, combo, tdspDuns);
         if (testResult.isValid) {
-          urls.push(`/electricity-plans/${citySlug}/${combo.join('/')}/`);
+          urls.push(`/electricity-plans/${citySlug}/${combo.join('/')}`);            
         }
       }
     }
@@ -381,8 +459,8 @@ export class FacetedRouter {
   getBreadcrumbs(citySlug: string, cityName: string, appliedFilters: AppliedFilter[]): Array<{ name: string; url: string }> {
     const breadcrumbs = [
       { name: 'Home', url: '/' },
-      { name: 'Texas Electricity', url: '/texas/' },
-      { name: `${cityName} Plans`, url: `/electricity-plans/${citySlug}/` }
+      { name: 'Texas Electricity', url: '/texas' },
+      { name: `${cityName} Plans`, url: `/electricity-plans/${citySlug}` }
     ];
 
     // Add filter-specific breadcrumbs
@@ -391,7 +469,7 @@ export class FacetedRouter {
       currentPath += `/${filter.urlSegment}`;
       breadcrumbs.push({
         name: filter.displayName,
-        url: `${currentPath}/`
+        url: currentPath
       });
     }
 

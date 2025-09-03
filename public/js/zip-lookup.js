@@ -2,6 +2,16 @@
 // Using traditional script format to bypass module loading issues
 (function() {
   'use strict';
+  // Prevent double-initialization if script is included more than once
+  try {
+    if (window.__ZIP_LOOKUP_INITIALIZED__) {
+      console.log('🔁 ZIP lookup script already initialized, skipping re-init');
+      return;
+    }
+    window.__ZIP_LOOKUP_INITIALIZED__ = true;
+  } catch (e) {
+    // If window not accessible for some reason, continue safely
+  }
   
   // Debug logging for troubleshooting
   console.log('🔧 ZIP lookup script loaded');
@@ -28,6 +38,13 @@
   
   // Initialize each form individually
   zipForms.forEach((form, index) => {
+    // Skip if this form was already initialized
+    if (form.dataset && form.dataset.zipLookupInit === '1') {
+      return;
+    }
+    if (form.dataset) {
+      form.dataset.zipLookupInit = '1';
+    }
     const input = form.querySelector('.zip-input');
     const submitButton = form.querySelector('button[type="submit"]');
     

@@ -349,12 +349,12 @@ These plans are ideal for customers who understand energy markets and want direc
           title: 'When Should You Switch Providers?',
           content: `The best time to switch electricity providers is typically 30-60 days before your current contract expires. This gives you time to research options without pressure and avoid early termination fees.
 
-However, you can switch anytime - even mid-contract - though you may face early termination fees. Sometimes switching mid-contract makes sense if you're on a very expensive plan or if you're moving.
+However, you can switch anytime - even mid-contract - though you may face early termination fees when switching providers. Important: If you're moving, Texas law allows you to cancel without any early termination fees.
 
 Key timing considerations include seasonal rate changes, your usage patterns, and current market conditions.`,
           keyPoints: [
             'Switch 30-60 days before contract expiration',
-            'Can switch anytime but may face early termination fees',
+            'Can switch anytime but may face early termination fees (except when moving)',
             'Consider seasonal pricing patterns',
             'Review your contract annually',
             'Monitor rate changes on variable-rate plans'

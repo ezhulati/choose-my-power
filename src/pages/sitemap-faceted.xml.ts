@@ -64,7 +64,7 @@ function generateSitemapXML(entries: SitemapEntry[], baseUrl: string): string {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
   
   const xmlEntries = entries.map(entry => `  <url>
-    <loc>${entry.url.startsWith('http') ? entry.url : baseUrl + entry.url}</loc>
+    <loc>${(entry.url.startsWith('http') ? entry.url : baseUrl + entry.url).replace(/\/+$/, '')}</loc>
     <lastmod>${entry.lastmod}</lastmod>
     <changefreq>${entry.changefreq}</changefreq>
     <priority>${entry.priority}</priority>

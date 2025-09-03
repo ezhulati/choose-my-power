@@ -247,7 +247,7 @@ export const EnterprisePlanCard: React.FC<EnterprisePlanCardProps> = ({
             } else {
               // Fallback navigation when onViewDetails is not provided
               const providerSlug = plan.provider.toLowerCase().replace(/\s+/g, '-');
-              window.location.href = `/electricity-plans/${providerSlug}/${plan.slug}`;
+              window.location.href = `/electricity-plans/plans/${providerSlug}/${plan.slug}`;
             }
           }}
           className="w-full bg-texas-red hover:bg-texas-red-600 text-white font-semibold py-3 text-sm rounded-lg transition-all duration-200"

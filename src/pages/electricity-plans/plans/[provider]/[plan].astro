@@ -1,0 +1,64 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import { ProductDetailsPageShadcn } from '../../../../components/ui/ProductDetailsPageShadcn';
+
+// This page now uses server-side rendering to handle any provider/plan combination
+const { provider, plan } = Astro.params;
+
+// Convert URL slugs back to readable names for display
+const providerName = provider ? provider.split('-').map(word => 
+  word.charAt(0).toUpperCase() + word.slice(1)
+).join(' ') : 'Unknown Provider';
+
+const planName = plan ? plan.split('-').map(word => 
+  word.charAt(0).toUpperCase() + word.slice(1)
+).join(' ') : 'Unknown Plan';
+
+// Create plan data structure (in a real app, this would fetch from API)
+const planData = {
+  id: plan || 'unknown',
+  name: planName,
+  provider: {
+    name: providerName,
+    slug: provider || '',
+    logo: `/images/providers/${provider || 'default'}.png`,
+    rating: 4.1,
+    reviews: 1523,
+    description: `${providerName} is a trusted electricity provider serving Texas customers.`
+  },
+  rate: 11.8, // Default rate - in real app, fetch from API
+  type: 'fixed',
+  termLength: 12,
+  renewablePercent: 0,
+  fees: {
+    monthlyFee: 9.95,
+    cancellationFee: 175,
+    connectionFee: 0,
+    depositRequired: false
+  },
+  features: [
+    'Fixed rate for entire contract',
+    'Online account management',
+    'Paperless billing available',
+    'Mobile app included',
+    '24/7 customer support'
+  ],
+  highlights: [
+    'Competitive fixed rate',
+    'No hidden fees',
+    'Easy online enrollment'
+  ],
+  availability: {
+    cities: ['Dallas', 'Houston', 'Austin', 'San Antonio', 'Fort Worth'],
+    zipCodes: ['75001', '75002', '77001', '78701'],
+    tdsp: ['Oncor', 'CenterPoint Energy']
+  }
+};
+
+const title = `${planData.name} by ${planData.provider.name} - Full Plan Details | ChooseMyPower`;
+const description = `Complete details for ${planData.name}: ${planData.rate}¢/kWh fixed rate, ${planData.termLength}-month term. Compare features, read reviews, and sign up today.`;
+---
+
+<Layout title={title} description={description}>
+  <ProductDetailsPageShadcn planData={planData} client:load />
+</Layout>

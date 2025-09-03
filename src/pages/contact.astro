@@ -8,6 +8,9 @@
 import Layout from '../layouts/Layout.astro';
 import HeroBackground from '../components/HeroBackground.astro';
 import { Badge } from '../components/ui/badge';
+import EnhancedSection from '../components/ui/EnhancedSection.astro';
+import EnhancedCard from '../components/ui/EnhancedCard.astro';
+import AccentBox from '../components/ui/AccentBox.astro';
 
 const pageTitle = "Contact ChooseMyPower | Texas Electricity Experts";
 const pageDescription = "Contact ChooseMyPower for support with Texas electricity plans, partnership opportunities, media inquiries, or general questions. Multiple ways to reach our team.";
@@ -150,7 +153,7 @@ const faqItems = [
   }
   </script>
 
-  <main class="min-h-screen bg-gray-50">
+  <main class="min-h-screen">
     <!-- Hero Section -->
     <HeroBackground 
       imageUrl={heroImage}
@@ -423,7 +426,7 @@ const faqItems = [
 
         <div class="grid md:grid-cols-3 gap-8 mb-12">
           {locations.map((location) => (
-            <div key={location.name} class="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+            <EnhancedCard variant="elevated" padding="lg" className="hover:shadow-xl transition-shadow">
               <h3 class="text-xl font-bold text-texas-navy mb-3">{location.name}</h3>
               
               <div class="space-y-3 mb-4">
@@ -468,7 +471,7 @@ const faqItems = [
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
               </a>
-            </div>
+            </EnhancedCard>
           ))}
         </div>
       </div>

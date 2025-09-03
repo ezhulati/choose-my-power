@@ -26,13 +26,14 @@ export const GET: APIRoute = async ({ site }) => {
     
     // Generate sitemap entries
     const sitemapUrls: SitemapUrl[] = urls.map(url => {
-      const fullUrl = `${baseUrl}${url}`;
+      const normalizedPath = url.replace(/\/+$/, '');
+      const fullUrl = `${baseUrl}${normalizedPath}`;
       const segments = url.split('/').filter(Boolean);
       const citySlug = segments[2] || '';
       const filterCount = segments.length - 2; // Subtract 'electricity-plans' and city
       
       return {
-        loc: fullUrl,
+        loc: fullUrl.replace(/\/+$/, ''),
         lastmod: new Date().toISOString().split('T')[0],
         changefreq: getChangeFrequency(citySlug, filterCount),
         priority: getPriority(citySlug, filterCount)
@@ -61,7 +62,7 @@ export const GET: APIRoute = async ({ site }) => {
     const fallbackXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>${baseUrl}/electricity-plans/dallas/</loc>
+    <loc>${baseUrl}/electricity-plans/dallas</loc>
     <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -130,7 +131,7 @@ function getPriority(citySlug: string, filterCount: number): string {
 function generateSitemapXML(urls: SitemapUrl[]): string {
   const urlEntries = urls.map(url => 
     `  <url>
-    <loc>${escapeXml(url.loc)}</loc>
+    <loc>${escapeXml(url.loc.replace(/\/+$/, ''))}</loc>
     <lastmod>${url.lastmod}</lastmod>
     <changefreq>${url.changefreq}</changefreq>
     <priority>${url.priority}</priority>

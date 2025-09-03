@@ -54,7 +54,7 @@ const FilterBreadcrumb: React.FC<FilterBreadcrumbProps> = ({
       label: `${cityName} Plans`,
       type: 'navigation',
       value: null,
-      url: `/electricity-plans/${citySlug}/`,
+      url: `/electricity-plans/${citySlug}`,
       removable: false
     }
   ];
@@ -277,8 +277,8 @@ function buildRemoveFilterUrl(citySlug: string, filterType: string, value: any, 
   }
 
   return segments.length > 0 
-    ? `/electricity-plans/${citySlug}/${segments.join('/')}/`
-    : `/electricity-plans/${citySlug}/`;
+    ? `/electricity-plans/${citySlug}/${segments.join('/')}`
+    : `/electricity-plans/${citySlug}`;
 }
 
 /**

@@ -196,7 +196,7 @@ const FacetedPlanSearch: React.FC<FacetedPlanSearchProps> = ({
     setCurrentFilters(emptyFilters);
     
     // Update URL to base city page
-    const newUrl = `/electricity-plans/${citySlug}/`;
+    const newUrl = `/electricity-plans/${citySlug}`;
     window.history.pushState({}, '', newUrl);
   }, [citySlug]);
 
@@ -218,8 +218,8 @@ const FacetedPlanSearch: React.FC<FacetedPlanSearchProps> = ({
     }
     
     const newUrl = filterSegments.length > 0 
-      ? `/electricity-plans/${citySlug}/${filterSegments.join('/')}/`
-      : `/electricity-plans/${citySlug}/`;
+      ? `/electricity-plans/${citySlug}/${filterSegments.join('/')}`
+      : `/electricity-plans/${citySlug}`;
     
     window.history.replaceState({}, '', newUrl);
   }, [citySlug]);

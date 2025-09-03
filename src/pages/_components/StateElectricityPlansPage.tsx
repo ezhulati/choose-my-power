@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { mockProviders, mockStates } from '../../data/mockData';
 import { Calendar, Zap, TrendingDown, Leaf, Shield, Filter } from 'lucide-react';
+import EnhancedSectionReact from '../../components/ui/EnhancedSectionReact';
+import EnhancedCardReact from '../../components/ui/EnhancedCardReact';
+import AccentBoxReact from '../../components/ui/AccentBoxReact';
 
 // Extend Window interface to include our navigation function
 declare global {
@@ -31,17 +34,17 @@ export function StateElectricityPlansPage({ state }: StateElectricityPlansPagePr
   
   if (!stateData) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">State Not Found</h1>
+      <EnhancedSectionReact background="gray" padding="xl">
+        <EnhancedCardReact variant="elevated" padding="lg" className="text-center max-w-lg mx-auto">
+          <h1 className="text-2xl font-bold text-texas-navy mb-4">State Not Found</h1>
           <button
             onClick={() => navigate('/')}
             className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-texas-navy/90 transition-colors"
           >
             Return Home
           </button>
-        </div>
-      </div>
+        </EnhancedCardReact>
+      </EnhancedSectionReact>
     );
   }
 
@@ -72,10 +75,9 @@ export function StateElectricityPlansPage({ state }: StateElectricityPlansPagePr
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-texas-cream/20">
       {/* Header */}
-      <div className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <EnhancedSectionReact background="white" padding="lg" className="border-b border-gray-200">
           <nav className="text-sm text-gray-500 mb-4">
             <button onClick={() => navigate('/')} className="hover:text-texas-navy">Home</button>
             <span className="mx-2">/</span>
@@ -99,22 +101,22 @@ export function StateElectricityPlansPage({ state }: StateElectricityPlansPagePr
 
               {/* Plan Type Stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="bg-texas-cream-200 p-3 rounded-lg">
-                  <div className="text-2xl font-bold text-blue-900">{planTypeStats.fixed}</div>
+                <AccentBoxReact accentColor="navy" padding="sm" className="bg-texas-cream/30">
+                  <div className="text-2xl font-bold text-texas-navy">{planTypeStats.fixed}</div>
                   <div className="text-sm text-texas-navy">Fixed Rate Plans</div>
-                </div>
-                <div className="bg-orange-50 p-3 rounded-lg">
-                  <div className="text-2xl font-bold text-orange-900">{planTypeStats.variable}</div>
-                  <div className="text-sm text-orange-700">Variable Rate Plans</div>
-                </div>
-                <div className="bg-green-50 p-3 rounded-lg">
+                </AccentBoxReact>
+                <AccentBoxReact accentColor="gold" padding="sm" className="bg-texas-gold/10">
+                  <div className="text-2xl font-bold text-texas-gold-700">{planTypeStats.variable}</div>
+                  <div className="text-sm text-texas-gold-700">Variable Rate Plans</div>
+                </AccentBoxReact>
+                <AccentBoxReact accentColor="green" padding="sm" className="bg-green-50">
                   <div className="text-2xl font-bold text-green-900">{planTypeStats.green}</div>
                   <div className="text-sm text-green-700">Green Energy Plans</div>
-                </div>
-                <div className="bg-purple-50 p-3 rounded-lg">
-                  <div className="text-2xl font-bold text-purple-900">{allPlans.length}</div>
-                  <div className="text-sm text-purple-700">Total Plans</div>
-                </div>
+                </AccentBoxReact>
+                <AccentBoxReact accentColor="red" padding="sm" className="bg-texas-red/10">
+                  <div className="text-2xl font-bold text-texas-red-700">{allPlans.length}</div>
+                  <div className="text-sm text-texas-red-700">Total Plans</div>
+                </AccentBoxReact>
               </div>
             </div>
 
@@ -126,17 +128,19 @@ export function StateElectricityPlansPage({ state }: StateElectricityPlansPagePr
             </div>
           </div>
         </div>
-      </div>
+      </EnhancedSectionReact>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <EnhancedSectionReact background="cream" padding="lg">
         <div className="grid lg:grid-cols-4 gap-8">
           {/* Filters Sidebar */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-lg shadow-sm border p-6 mb-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                <Filter className="h-5 w-5 mr-2" />
-                Filter Plans
-              </h3>
+            <EnhancedCardReact 
+              title="Filter Plans"
+              icon={<Filter className="h-5 w-5" />}
+              iconColor="navy"
+              variant="elevated"
+              className="mb-6"
+            >
               
               <div className="space-y-4">
                 <div>
@@ -179,11 +183,10 @@ export function StateElectricityPlansPage({ state }: StateElectricityPlansPagePr
                   </label>
                 </div>
               </div>
-            </div>
+            </EnhancedCardReact>
 
             {/* Plan Type Guide */}
-            <div className="bg-white rounded-lg shadow-sm border p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Plan Types Explained</h3>
+            <EnhancedCardReact title="Plan Types Explained" variant="elevated">
               <div className="space-y-3 text-sm">
                 <div>
                   <div className="font-medium text-blue-900">Fixed Rate</div>
@@ -198,7 +201,7 @@ export function StateElectricityPlansPage({ state }: StateElectricityPlansPagePr
                   <div className="text-gray-600">100% renewable energy sources</div>
                 </div>
               </div>
-            </div>
+            </EnhancedCardReact>
           </div>
 
           {/* Plans List */}
@@ -298,11 +301,11 @@ export function StateElectricityPlansPage({ state }: StateElectricityPlansPagePr
             </div>
 
             {/* Educational Content */}
-            <div className="mt-12 bg-white rounded-lg shadow-sm border p-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                Choosing the Right Electricity Plan in {stateData.name}
-              </h3>
-              
+            <div className="mt-12">
+            <EnhancedCardReact 
+              title={`Choosing the Right Electricity Plan in ${stateData.name}`}
+              variant="elevated"
+            >
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h4 className="text-lg font-semibold text-gray-900 mb-3">Fixed vs Variable Rate Plans</h4>
@@ -334,10 +337,11 @@ export function StateElectricityPlansPage({ state }: StateElectricityPlansPagePr
                   </button>
                 </div>
               </div>
+            </EnhancedCardReact>
             </div>
           </div>
         </div>
-      </div>
+      </EnhancedSectionReact>
     </div>
   );
 }
