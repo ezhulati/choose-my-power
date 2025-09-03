@@ -17,6 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Alignment**: Fixed mixed text alignment - center-aligned section headers with left-aligned content lists for optimal readability
 
 ### Fixed
+- **Critical**: Unexpected '}' syntax error in architecture-flows/index.astro causing Netlify build failures - fixed mermaid diagram syntax with proper braces and HTML entity handling
+- **Critical**: JSX syntax errors in multiple React components with mismatched closing div tags - fixed ProviderPage.tsx:205, StateElectricityProvidersPage.tsx:140, and StateElectricityPlansPage.tsx:130
 - **Critical**: White text on white background contrast issues in AccentBox components causing invisible content in troubleshooting sections
 - **Critical**: Hero section badge contrast issues where "Free Process" text was barely visible against navy gradient background
 - **UI**: Insufficient visual separation between statistics cards (14+, $0, 3) and TL;DR sections - added proper spacer elements

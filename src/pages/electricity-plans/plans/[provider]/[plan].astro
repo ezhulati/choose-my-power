@@ -60,5 +60,5 @@ const description = `Complete details for ${planData.name}: ${planData.rate}¢/k
 ---
 
 <Layout title={title} description={description}>
-  <ProductDetailsPageShadcn planData={planData} client:load />
+  <ProductDetailsPageShadcn planData={planData} client:only="react" />
 </Layout>

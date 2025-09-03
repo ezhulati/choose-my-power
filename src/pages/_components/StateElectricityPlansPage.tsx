@@ -127,7 +127,6 @@ export function StateElectricityPlansPage({ state }: StateElectricityPlansPagePr
               />
             </div>
           </div>
-        </div>
       </EnhancedSectionReact>
 
       <EnhancedSectionReact background="cream" padding="lg">

@@ -216,7 +216,7 @@
           }
         },
         {
-          "id": "68b765b1206770f7c5635ac4",
+          "id": "68b8c8c185c2a35eef00e282",
           "name": "12 Month GREEN (No Min Usage Fee)",
           "provider": {
             "name": "Constellation",
@@ -253,7 +253,7 @@
           }
         },
         {
-          "id": "68b765b1206770f7c5635ac2",
+          "id": "68b8c8c085c2a35eef00e281",
           "name": "12 Month Usage Bill Credit",
           "provider": {
             "name": "Constellation",
@@ -290,7 +290,7 @@
           }
         },
         {
-          "id": "68b765b1206770f7c5635ac3",
+          "id": "68b8c8c185c2a35eef00e283",
           "name": "24 Month Usage Bill Credit",
           "provider": {
             "name": "Constellation",
@@ -999,7 +999,7 @@
           }
         },
         {
-          "id": "68b52c1e9df7fc01f8e66920",
+          "id": "68b7cf31206770f7c5636918",
           "name": "Frontier Saver Plus 12",
           "provider": {
             "name": "Frontier Utilities",
@@ -1008,10 +1008,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.23,
-            "rate1000kWh": 0.102,
-            "rate2000kWh": 0.163,
-            "ratePerKwh": 0.102
+            "rate500kWh": 0.234,
+            "rate1000kWh": 0.106,
+            "rate2000kWh": 0.167,
+            "ratePerKwh": 0.106
           },
           "contract": {
             "length": 12,
@@ -1295,7 +1295,7 @@
           }
         },
         {
-          "id": "68b52c2131ef27f4d3f62f67",
+          "id": "68b7cf36206770f7c563693b",
           "name": "Gexa Eco Saver Plus 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1304,10 +1304,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.23,
-            "rate1000kWh": 0.102,
-            "rate2000kWh": 0.163,
-            "ratePerKwh": 0.102
+            "rate500kWh": 0.234,
+            "rate1000kWh": 0.106,
+            "rate2000kWh": 0.167,
+            "ratePerKwh": 0.106
           },
           "contract": {
             "length": 12,
@@ -2904,7 +2904,7 @@
           }
         },
         {
-          "id": "68b6e022206770f7c5634982",
+          "id": "68b8583a206770f7c5637a59",
           "name": "Flex Forward",
           "provider": {
             "name": "TXU Energy",
@@ -2941,7 +2941,7 @@
           }
         },
         {
-          "id": "68b6e023206770f7c563498e",
+          "id": "68b8583a206770f7c5637a52",
           "name": "Free Nights & Solar Days 12 (8 pm)",
           "provider": {
             "name": "TXU Energy",
@@ -2978,7 +2978,7 @@
           }
         },
         {
-          "id": "68b7114d3533c5d683236ab9",
+          "id": "68b862c2206770f7c5637ba3",
           "name": "Rhythm Saver 12",
           "provider": {
             "name": "Rhythm Energy",
@@ -3015,7 +3015,7 @@
           }
         },
         {
-          "id": "68b7114e3533c5d683236aba",
+          "id": "68b862c2206770f7c5637ba7",
           "name": "Watt a Deal 12",
           "provider": {
             "name": "Rhythm Energy",
@@ -3024,10 +3024,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.194,
-            "rate1000kWh": 0.196,
+            "rate500kWh": 0.195,
+            "rate1000kWh": 0.197,
             "rate2000kWh": 0.135,
-            "ratePerKwh": 0.196
+            "ratePerKwh": 0.197
           },
           "contract": {
             "length": 12,
@@ -3052,7 +3052,7 @@
           }
         },
         {
-          "id": "68b70ddc206770f7c5634fe8",
+          "id": "68b85f41206770f7c5637b43",
           "name": "Simply Green 13",
           "provider": {
             "name": "Rhythm Energy",
@@ -3061,10 +3061,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.183,
-            "rate1000kWh": 0.17,
-            "rate2000kWh": 0.163,
-            "ratePerKwh": 0.17
+            "rate500kWh": 0.184,
+            "rate1000kWh": 0.171,
+            "rate2000kWh": 0.165,
+            "ratePerKwh": 0.171
           },
           "contract": {
             "length": 13,
@@ -3089,7 +3089,7 @@
           }
         },
         {
-          "id": "68b70ddc206770f7c5634fe6",
+          "id": "68b85f41206770f7c5637b42",
           "name": "Simply Green 23",
           "provider": {
             "name": "Rhythm Energy",
@@ -3098,10 +3098,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.182,
-            "rate1000kWh": 0.169,
-            "rate2000kWh": 0.162,
-            "ratePerKwh": 0.169
+            "rate500kWh": 0.184,
+            "rate1000kWh": 0.171,
+            "rate2000kWh": 0.164,
+            "ratePerKwh": 0.171
           },
           "contract": {
             "length": 23,
@@ -4162,7 +4162,7 @@
         }
       ],
       "count": 110,
-      "lowestRate": 0.102,
+      "lowestRate": 0.106,
       "highestRate": 0.235
     }
   }

@@ -84,18 +84,18 @@ participant ComparePowerClient
 participant Astro Page
 
 User-&gt;&gt;Astro Page: GET /electricity-plans/:city/[:filters]
-Astro Page-&gt;&gt;FacetedRouter: validateRoute(path, {requirePlans?})
+Astro Page-&gt;&gt;FacetedRouter: validateRoute(path, requirePlans)
 FacetedRouter-&gt;&gt;FacetedRouter: parse city + filters
 FacetedRouter-&gt;&gt;FacetedRouter: validate city → TDSP DUNS
 FacetedRouter-&gt;&gt;FilterMapper: mapFiltersToApiParams(city, filters, duns)
-FilterMapper--&gt;&gt;FacetedRouter: {isValid, apiParams, appliedFilters}
+FilterMapper--&gt;&gt;FacetedRouter: isValid, apiParams, appliedFilters
 FacetedRouter-&gt;&gt;FacetedRouter: canonical URL (+shouldIndex)
-alt requirePlans &amp;&amp; isValid
+alt requirePlans and isValid
   FacetedRouter-&gt;&gt;ComparePowerClient: fetchPlans(apiParams)
   ComparePowerClient--&gt;&gt;FacetedRouter: plans
 end
 alt invalid
-  FacetedRouter--&gt;&gt;Astro Page: {redirectUrl or 404}
+  FacetedRouter--&gt;&gt;Astro Page: redirectUrl or 404
   Astro Page--&gt;&gt;User: Redirect or 404
 else valid
   FacetedRouter--&gt;&gt;Astro Page: routeResult (canonical, shouldIndex, plans?)
@@ -125,10 +125,10 @@ participant City Page
 User-&gt;&gt;Browser JS: Submit ZIP form
 Browser JS-&gt;&gt;Astro ZIP API: GET /api/zip-lookup?zip=75201 (AJAX)
 alt Municipal ZIP
-  Astro ZIP API--&gt;&gt;Browser JS: {success:false, redirectUrl:/texas/:city/municipal-utility}
+  Astro ZIP API--&gt;&gt;Browser JS: success:false, redirectUrl:/texas/:city/municipal-utility
   Browser JS-&gt;&gt;User: Navigate to municipal page
 else Deregulated ZIP
-  Astro ZIP API--&gt;&gt;Browser JS: {success:true, redirectUrl:/texas/:city}
+  Astro ZIP API--&gt;&gt;Browser JS: success:true, redirectUrl:/texas/:city
   Browser JS-&gt;&gt;User: Navigate to /texas/:city
   User-&gt;&gt;City Page: GET /texas/:city
   City Page-&gt;&gt;ComparePowerClient: fetchPlans(tdsp_duns, usage=1000)

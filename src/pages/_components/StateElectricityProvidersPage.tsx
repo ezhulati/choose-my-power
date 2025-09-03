@@ -137,7 +137,6 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
               </button>
             ))}
           </div>
-        </div>
       </EnhancedSectionReact>
 
       <EnhancedSectionReact background="cream" padding="lg">

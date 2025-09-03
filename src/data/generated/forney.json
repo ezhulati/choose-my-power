@@ -99,7 +99,7 @@
           }
         },
         {
-          "id": "68b1a53f64bd2c63b1b109e5",
+          "id": "68b84e0e206770f7c563793b",
           "name": "Nights Free Plan - 12",
           "provider": {
             "name": "Amigo Energy",
@@ -108,10 +108,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.183,
-            "rate1000kWh": 0.178,
-            "rate2000kWh": 0.175,
-            "ratePerKwh": 0.178
+            "rate500kWh": 0.178,
+            "rate1000kWh": 0.173,
+            "rate2000kWh": 0.17,
+            "ratePerKwh": 0.173
           },
           "contract": {
             "length": 12,
@@ -925,7 +925,7 @@
           }
         },
         {
-          "id": "68b52c219df7fc01f8e6693a",
+          "id": "68b7cf34206770f7c563692d",
           "name": "Frontier Saver Plus 12",
           "provider": {
             "name": "Frontier Utilities",
@@ -934,10 +934,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.222,
-            "rate1000kWh": 0.093,
-            "rate2000kWh": 0.154,
-            "ratePerKwh": 0.093
+            "rate500kWh": 0.225,
+            "rate1000kWh": 0.096,
+            "rate2000kWh": 0.156,
+            "ratePerKwh": 0.096
           },
           "contract": {
             "length": 12,
@@ -1221,7 +1221,7 @@
           }
         },
         {
-          "id": "68b52c279df7fc01f8e66967",
+          "id": "68b7cf3b206770f7c563695b",
           "name": "Gexa Eco Saver Plus 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1230,10 +1230,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.222,
-            "rate1000kWh": 0.093,
-            "rate2000kWh": 0.154,
-            "ratePerKwh": 0.093
+            "rate500kWh": 0.225,
+            "rate1000kWh": 0.096,
+            "rate2000kWh": 0.156,
+            "ratePerKwh": 0.096
           },
           "contract": {
             "length": 12,
@@ -2830,7 +2830,7 @@
           }
         },
         {
-          "id": "68b6e031206770f7c56349bb",
+          "id": "68b7cbba206770f7c56368da",
           "name": "Flex Forward",
           "provider": {
             "name": "TXU Energy",
@@ -2867,7 +2867,7 @@
           }
         },
         {
-          "id": "68b6e031206770f7c56349bf",
+          "id": "68b7cbba206770f7c56368d3",
           "name": "Ultimate Season Pass 12",
           "provider": {
             "name": "TXU Energy",
@@ -2910,7 +2910,7 @@
           }
         },
         {
-          "id": "68b6e031206770f7c56349af",
+          "id": "68b7cbba206770f7c56368cc",
           "name": "Free Nights & Solar Days 12 (8 pm)",
           "provider": {
             "name": "TXU Energy",
@@ -2947,7 +2947,7 @@
           }
         },
         {
-          "id": "68b71153206770f7c5635088",
+          "id": "68b862c6206770f7c5637bb9",
           "name": "Rhythm Saver 12",
           "provider": {
             "name": "Rhythm Energy",
@@ -2984,7 +2984,7 @@
           }
         },
         {
-          "id": "68b71153206770f7c5635089",
+          "id": "68b862c6206770f7c5637bba",
           "name": "Watt a Deal 12",
           "provider": {
             "name": "Rhythm Energy",
@@ -3021,7 +3021,7 @@
           }
         },
         {
-          "id": "68b70de0206770f7c5635007",
+          "id": "68b85f45206770f7c5637b52",
           "name": "Simply Green 13",
           "provider": {
             "name": "Rhythm Energy",
@@ -3030,10 +3030,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.183,
-            "rate1000kWh": 0.169,
-            "rate2000kWh": 0.162,
-            "ratePerKwh": 0.169
+            "rate500kWh": 0.185,
+            "rate1000kWh": 0.17,
+            "rate2000kWh": 0.163,
+            "ratePerKwh": 0.17
           },
           "contract": {
             "length": 13,
@@ -3058,7 +3058,7 @@
           }
         },
         {
-          "id": "68b70de0206770f7c5635009",
+          "id": "68b85f44206770f7c5637b51",
           "name": "Simply Green 23",
           "provider": {
             "name": "Rhythm Energy",
@@ -3067,10 +3067,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.182,
-            "rate1000kWh": 0.167,
-            "rate2000kWh": 0.16,
-            "ratePerKwh": 0.167
+            "rate500kWh": 0.183,
+            "rate1000kWh": 0.169,
+            "rate2000kWh": 0.162,
+            "ratePerKwh": 0.169
           },
           "contract": {
             "length": 23,
@@ -3132,7 +3132,7 @@
           }
         },
         {
-          "id": "68b7115f206770f7c56350a8",
+          "id": "68b88615206770f7c5638091",
           "name": "SimpleSaver 12",
           "provider": {
             "name": "APGE",
@@ -3141,10 +3141,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.213,
-            "rate1000kWh": 0.109,
-            "rate2000kWh": 0.157,
-            "ratePerKwh": 0.109
+            "rate500kWh": 0.209,
+            "rate1000kWh": 0.105,
+            "rate2000kWh": 0.153,
+            "ratePerKwh": 0.105
           },
           "contract": {
             "length": 12,
@@ -3206,7 +3206,7 @@
           }
         },
         {
-          "id": "68b714de206770f7c563513e",
+          "id": "68b88d49206770f7c5638177",
           "name": "SimpleSaver 14",
           "provider": {
             "name": "APGE",
@@ -3215,10 +3215,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.214,
-            "rate1000kWh": 0.11,
-            "rate2000kWh": 0.158,
-            "ratePerKwh": 0.11
+            "rate500kWh": 0.208,
+            "rate1000kWh": 0.104,
+            "rate2000kWh": 0.152,
+            "ratePerKwh": 0.104
           },
           "contract": {
             "length": 14,
@@ -4131,7 +4131,7 @@
         }
       ],
       "count": 109,
-      "lowestRate": 0.093,
+      "lowestRate": 0.096,
       "highestRate": 0.232
     }
   }

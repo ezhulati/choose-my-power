@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from './card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './tabs';
