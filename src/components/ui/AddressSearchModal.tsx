@@ -167,8 +167,8 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
   const handleProceedToOrder = () => {
     if (selectedLocation) {
       onSuccess(selectedLocation.esiid, selectedLocation.address);
-      // Redirect to ComparePower order flow
-      const orderUrl = `https://orders.comparepower.com/order/service_location?esiid=${selectedLocation.esiid}&plan_id=${planData.id}`;
+      // Redirect to ComparePower order flow with all required parameters
+      const orderUrl = `https://orders.comparepower.com/order/service_location?esiid=${selectedLocation.esiid}&plan_id=${planData.id}&zip_code=${zipCode}&usage=1000`;
       window.open(orderUrl, '_blank');
     }
   };
