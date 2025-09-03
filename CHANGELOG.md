@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Critical**: Multiple redundant ZIP inputs on homepage causing user confusion - reduced from 4 to 3 strategic placements
 - **Critical**: Multi-line trust badge display breaking responsive layout - fixed with white-space: nowrap CSS
 - **Critical**: PostCSS compilation error with @apply group utility - separated utility classes from CSS directives
+- **UI Spacing**: Fixed visual spacing issues across electricity plans pages - enhanced container padding, improved grid gaps, added proper sidebar bottom spacing, and increased plan cards breathing room for better readability and professional appearance
 - **Critical**: ZIP form button click navigation issue on production site - button clicks now work identically to Enter key submissions
 - **Critical**: StandardZipInput.astro components returning JSON responses instead of navigating to city pages - replaced API endpoint submission with client-side navigation using inline JavaScript
 - **UI**: Footer navigation headings displaying across multiple lines breaking layout - added white-space: nowrap CSS for single-line formatting

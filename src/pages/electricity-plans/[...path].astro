@@ -107,11 +107,19 @@ const pageTitle = facetedRouter.generatePageTitle(cityName, filterResult.applied
 const pageDescription = facetedRouter.getFilterDescription(cityName, filterResult.appliedFilters);
 const filterLabels = filterResult.appliedFilters.map(f => f.displayName);
 
-// Generate internal linking suggestions using router
-const suggestedFilters = facetedRouter.getSuggestedFilters(citySlug, filterSegments, 6);
+// Generate internal linking suggestions using router (fallback to sync method for now)
+const suggestedFilters = facetedRouter.getSuggestedFiltersSync(citySlug, filterSegments, 6);
 const suggestedFilterDefinitions = suggestedFilters.map(pattern => ({
   pattern,
-  definition: filterMapper.getDefinitionByPattern(pattern)
+  definition: filterMapper.getDefinitionByPattern(pattern) || {
+    type: 'provider',
+    urlPatterns: [pattern],
+    apiParam: 'brand_id',
+    valueTransform: (segment: string) => segment.replace('-', '_'),
+    displayName: (segment: string) => segment.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase()),
+    isValid: (value: string) => typeof value === 'string' && value.length > 0,
+    description: 'Filter by electricity provider'
+  }
 })).filter(item => item.definition);
 
 // Get contextual hero image for this faceted page
@@ -277,11 +285,11 @@ console.log(`✅ Faceted page processed: ${cityName} with ${filterResult.applied
     )}
 
     <!-- Main Content -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div class="lg:grid lg:grid-cols-4 lg:gap-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+      <div class="lg:grid lg:grid-cols-4 lg:gap-8 xl:gap-12">
         <!-- Sidebar with Additional Filters -->
-        <div class="lg:col-span-1">
-          <div class="bg-white rounded-lg shadow p-6">
+        <div class="lg:col-span-1 mb-8 lg:mb-0">
+          <div class="bg-white rounded-lg shadow p-6 lg:p-8">
             <h3 class="text-lg font-medium text-texas-navy mb-4">Refine Your Search</h3>
             
             <!-- Trust Signals -->
@@ -301,11 +309,13 @@ console.log(`✅ Faceted page processed: ${cityName} with ${filterResult.applied
                     {item.definition.description}
                   </h4>
                   <div class="space-y-2">
-                    {item.definition.urlPatterns.slice(0, item.definition.type === 'providers' ? 12 : 6).map((pattern) => {
+                    {(item.definition.urlPatterns || [item.pattern]).slice(0, item.definition.type === 'provider' ? 8 : 6).map((pattern) => {
                       const isActive = filterSegments.includes(pattern);
-                      const newUrl = isActive
-                        ? `/electricity-plans/${citySlug}/${filterSegments.filter(f => f !== pattern).join('/')}`
-                        : `/electricity-plans/${citySlug}/${[...filterSegments, pattern].join('/')}`;
+                      const filteredSegments = filterSegments.filter(f => f !== pattern);
+                      const newSegments = isActive ? filteredSegments : [...filterSegments, pattern];
+                      const newUrl = newSegments.length > 0 
+                        ? `/electricity-plans/${citySlug}/${newSegments.join('/')}`
+                        : `/electricity-plans/${citySlug}`;
                       
                       return (
                         <a
@@ -317,13 +327,20 @@ console.log(`✅ Faceted page processed: ${cityName} with ${filterResult.applied
                               : 'text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy'
                           }`}
                         >
-                          {item.definition.displayName(pattern)}
+                          {item.definition.displayName ? item.definition.displayName(pattern) : pattern.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}
                         </a>
                       );
                     })}
                   </div>
                 </div>
               ))}
+            </div>
+            
+            <!-- Bottom Spacing for Sidebar -->
+            <div class="mt-8 pt-4 border-t border-gray-100">
+              <p class="text-xs text-gray-500 text-center">
+                Questions? Call <span class="font-medium text-texas-navy">(855) 461-1100</span>
+              </p>
             </div>
           </div>
         </div>

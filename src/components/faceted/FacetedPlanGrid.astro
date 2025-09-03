@@ -17,6 +17,7 @@ interface Props {
   viewMode?: 'grid' | 'table' | 'compact';
   enableInfiniteScroll?: boolean;
   plansPerPage?: number;
+  className?: string;
 }
 
 const { 
@@ -28,7 +29,8 @@ const {
   defaultSort = 'price',
   viewMode = 'grid',
   enableInfiniteScroll = true,
-  plansPerPage = 12
+  plansPerPage = 12,
+  className = ''
 } = Astro.props;
 
 // Plan sorting and filtering logic
@@ -104,7 +106,7 @@ const sortingOptions = [
 ];
 ---
 
-<div class="enhanced-plan-grid" data-city={city} data-total-plans={totalPlans}>
+<div class={`enhanced-plan-grid ${className}`} data-city={city} data-total-plans={totalPlans}>
   
   <!-- Grid Header with Statistics and Controls -->
   <div class="grid-header">
@@ -513,14 +515,30 @@ Compare
   /* Enhanced Plan Grid Styles - Mobile-First */
   .enhanced-plan-grid {
     @apply w-full;
-    /* Mobile-first spacing */
+    /* Mobile-first spacing with proper container padding */
+    padding: 1.5rem; /* 24px mobile */
     gap: 1rem; /* 16px mobile */
     margin-bottom: 2rem; /* 32px mobile */
+  }
+  
+  /* When not within an EnhancedCard, add background and border */
+  .enhanced-plan-grid:not(.in-card) {
+    border-radius: 0.75rem; /* 12px rounded corners */
+    background: linear-gradient(to bottom, #fefefe, #f9fafb);
+    border: 1px solid #e5e7eb;
+  }
+  
+  /* When within an EnhancedCard, adjust styling */
+  .enhanced-plan-grid.in-card {
+    background: transparent;
+    border: none;
+    border-radius: 0;
   }
   
   /* Tablet spacing */
   @media (min-width: 768px) {
     .enhanced-plan-grid {
+      padding: 2rem; /* 32px tablet */
       gap: 1.5rem; /* 24px tablet */
       margin-bottom: 2.5rem; /* 40px tablet */
     }
@@ -529,6 +547,7 @@ Compare
   /* Desktop spacing */
   @media (min-width: 1024px) {
     .enhanced-plan-grid {
+      padding: 2.5rem; /* 40px desktop */
       gap: 2rem; /* 32px desktop */
       margin-bottom: 3rem; /* 48px desktop */
     }
@@ -746,29 +765,33 @@ Compare
   /* Grid View Styles - Mobile-First */
   .plans-grid {
     @apply transition-all duration-300;
-    /* Mobile-first grid spacing */
-    gap: 1rem; /* 16px mobile */
-    margin-top: 1rem; /* 16px mobile */
+    /* Mobile-first grid spacing - enhanced */
+    gap: 1.5rem; /* 24px mobile */
+    margin-top: 1.5rem; /* 24px mobile */
+    padding: 0.5rem; /* 8px mobile padding */
   }
   
   @media (min-width: 640px) {
     .plans-grid {
-      gap: 1.25rem; /* 20px large mobile */
-      margin-top: 1.25rem;
+      gap: 1.75rem; /* 28px large mobile */
+      margin-top: 1.75rem;
+      padding: 0.75rem; /* 12px large mobile padding */
     }
   }
   
   @media (min-width: 768px) {
     .plans-grid {
-      gap: 1.5rem; /* 24px tablet */
-      margin-top: 1.5rem;
+      gap: 2rem; /* 32px tablet */
+      margin-top: 2rem;
+      padding: 1rem; /* 16px tablet padding */
     }
   }
   
   @media (min-width: 1024px) {
     .plans-grid {
-      gap: 2rem; /* 32px desktop */
-      margin-top: 2rem;
+      gap: 2.5rem; /* 40px desktop */
+      margin-top: 2.5rem;
+      padding: 1.25rem; /* 20px desktop padding */
     }
   }
   

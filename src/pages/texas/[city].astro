@@ -145,7 +145,7 @@ const pageTitle = `Find Your Best Electricity Rate in ${cityName}, TX | ChooseMy
 const pageDescription = `Moving to ${cityName}? Don't transfer your old plan. Get a rate matched to your new home's size and usage. Compare ${plans.length} plans from licensed electricity companies and choose with confidence.`;
 
 // Get suggested filters using faceted system
-const suggestedFilters = facetedRouter.getSuggestedFilters(citySlug, filterSegments, 6);
+const suggestedFilters = facetedRouter.getSuggestedFiltersSync(citySlug, filterSegments, 6);
 const suggestedFilterDefinitions = suggestedFilters.map(pattern => ({
   pattern,
   definition: filterMapper.getDefinitionByPattern(pattern)
@@ -273,11 +273,11 @@ const heroImage = getHeroImage({
     )}
 
     <!-- Main Content with Enhanced Faceted Layout -->
-    <EnhancedSection background="gray" padding="lg">
+    <EnhancedSection background="gray" padding="xl">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="lg:grid lg:grid-cols-4 lg:gap-8">
+        <div class="lg:grid lg:grid-cols-4 lg:gap-8 xl:gap-12">
           <!-- Enhanced Sidebar with ZIP Lookup and Filter Suggestions -->
-          <div class="lg:col-span-1">
+          <div class="lg:col-span-1 mb-8 lg:mb-0">
             <!-- Enhanced ZIP Lookup Section -->
             <EnhancedCard variant="elevated" padding="lg" className="mb-6">
               <h3 class="text-xl font-semibold text-texas-navy mb-4">Search Another Area</h3>
@@ -320,12 +320,15 @@ const heroImage = getHeroImage({
                 ))}
               </div>
             </EnhancedCard>
+            
+            <!-- Bottom Spacer for Mobile -->
+            <div class="mt-8 lg:hidden"></div>
           </div>
 
           <!-- Enhanced Plans Grid using Faceted Component -->
           <div class="lg:col-span-3 mt-8 lg:mt-0">
-            <EnhancedCard variant="elevated" padding="none">
-              <div class="p-6 border-b border-gray-200">
+            <EnhancedCard variant="elevated" padding="none" className="overflow-hidden">
+              <div class="p-6 lg:p-8 border-b border-gray-200">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
                   <div>
                     <h2 class="text-2xl font-bold text-texas-navy mb-2">
@@ -347,6 +350,7 @@ const heroImage = getHeroImage({
                 totalCount={plans.length}
                 loading={false}
                 error={apiError}
+                className="in-card"
               />
             </EnhancedCard>
           </div>
