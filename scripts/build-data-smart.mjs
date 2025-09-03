@@ -33,6 +33,7 @@ const BATCH_SIZE = parseInt(process.env.BATCH_SIZE || '10'); // Cities per batch
 const BATCH_DELAY_MS = parseInt(process.env.BATCH_DELAY_MS || '2000'); // Delay between batches
 const MAX_CITIES = parseInt(process.env.MAX_CITIES || '881'); // Max cities to process
 const TIER_PRIORITY = process.env.TIER_PRIORITY || 'auto'; // 'high', 'medium', 'low', 'auto'
+const API_TIMEOUT_MS = parseInt(process.env.API_TIMEOUT_MS || '30000'); // API timeout in milliseconds
 
 // Load full 881-city dataset
 let citiesDataset = null;
@@ -197,7 +198,7 @@ async function fetchPlans(params) {
         'Content-Type': 'application/json',
         'User-Agent': 'ChooseMyPower.org/1.0 Smart-Build',
       },
-      signal: AbortSignal.timeout(15000)
+      signal: AbortSignal.timeout(API_TIMEOUT_MS)
     });
 
     if (!response.ok) {
@@ -290,6 +291,26 @@ function formatCityName(citySlug) {
     .replace(' Tx', ', TX');
 }
 
+async function fetchPlansWithRetry(params, retries = 2) {
+  for (let attempt = 1; attempt <= retries + 1; attempt++) {
+    try {
+      return await fetchPlans(params);
+    } catch (error) {
+      const isTimeout = error.message.includes('aborted due to timeout') || error.name === 'TimeoutError';
+      const isLastAttempt = attempt === retries + 1;
+      
+      if (isTimeout && !isLastAttempt) {
+        console.log(`      ⚠️  Timeout on attempt ${attempt}/${retries + 1}, retrying in 3s...`);
+        await new Promise(resolve => setTimeout(resolve, 3000)); // Wait 3 seconds before retry
+        continue;
+      }
+      
+      // If not a timeout error or last attempt, throw the error
+      throw error;
+    }
+  }
+}
+
 async function buildFreshData() {
   console.log('🚀 Building fresh data with enterprise batching system...');
   
@@ -334,7 +355,7 @@ async function buildFreshData() {
         console.log(`   🏙️  ${city.name} (${city.tdspInfo.name})`);
         
         // Fetch base plans only (we can add filters later if needed)
-        const basePlans = await fetchPlans({
+        const basePlans = await fetchPlansWithRetry({
           tdsp_duns: city.tdspInfo.duns,
           display_usage: 1000
         });
@@ -518,6 +539,7 @@ async function smartBuild() {
   console.log(`   ⏰ Max Cache Age: ${MAX_CACHE_AGE_HOURS}h`);
   console.log(`   📦 Batch Size: ${BATCH_SIZE} cities`);
   console.log(`   ⏱️  Batch Delay: ${BATCH_DELAY_MS}ms`);
+  console.log(`   ⏰ API Timeout: ${API_TIMEOUT_MS}ms`);
   console.log(`   🎯 Max Cities: ${MAX_CITIES}`);
   console.log(`   🏆 Tier Priority: ${TIER_PRIORITY}`);
   

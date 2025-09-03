@@ -108,7 +108,6 @@ export function StatePage({ state }: StatePageProps) {
               />
             </div>
           </div>
-        </div>
       </EnhancedSectionReact>
 
       <EnhancedSectionReact background="cream" padding="lg">

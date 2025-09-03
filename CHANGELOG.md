@@ -42,6 +42,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Critical**: ZIP form button click navigation issue on production site - button clicks now work identically to Enter key submissions
 - **Critical**: StandardZipInput.astro components returning JSON responses instead of navigating to city pages - replaced API endpoint submission with client-side navigation using inline JavaScript
 - **UI**: Footer navigation headings displaying across multiple lines breaking layout - added white-space: nowrap CSS for single-line formatting
+- **Critical**: Netlify deployment timeout failures for manor-tx city - increased configurable API timeout from 15s to 30s default with API_TIMEOUT_MS environment variable
+- **Critical**: Electricity-plans page returning blank/500 errors due to JSX mismatch in StatePage.tsx - removed extra closing div tag causing "EnhancedSectionReact" component parsing errors
+- **Performance**: Added intelligent retry mechanism for API timeout errors with 3-second delays and up to 2 retry attempts per city to improve deployment reliability
 
 ### Changed
 - **Directory Structure**: Reorganized project with proper separation of concerns - moved 15+ loose JavaScript files from root to organized directories (scripts/testing/, scripts/auditing/, scripts/maintenance/)
