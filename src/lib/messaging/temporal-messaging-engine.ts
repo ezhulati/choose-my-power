@@ -155,7 +155,13 @@ export class TemporalMessagingEngine {
 
     switch (holiday.name) {
       case "Labor Day":
-        if (holiday.daysUntil === 0) {
+        if (holiday.daysSince && holiday.daysSince <= 7) {
+          // RECENTLY PAST LABOR DAY
+          return {
+            headline: "Post-Labor Day adulting mode.",
+            subheadline: "Summer's over. Fall rates kicking in. Time to get your situation sorted."
+          };
+        } else if (holiday.daysUntil === 0) {
           // IT'S LABOR DAY
           return {
             headline: "Labor Day. Ironic electricity shopping.",
@@ -168,10 +174,16 @@ export class TemporalMessagingEngine {
             subheadline: "Summer's over Monday. Time to lock in a good rate for fall."
           };
         } else if (holiday.daysUntil === 2 && dayName === 'Saturday') {
-          // SATURDAY OF LABOR DAY WEEKEND - THIS IS NOW
+          // SATURDAY OF LABOR DAY WEEKEND
           return {
             headline: "Labor Day weekend. Saturday electricity reality check.",
             subheadline: "End of summer, AC bills dropping soon. Time to lock in a good rate for fall."
+          };
+        } else if (holiday.daysUntil <= 7) {
+          // WEEK BEFORE LABOR DAY
+          return {
+            headline: "Labor Day approaching. Summer wind-down.",
+            subheadline: "End of peak AC season coming. Good time to lock in fall rates."
           };
         } else {
           return {
@@ -230,6 +242,46 @@ export class TemporalMessagingEngine {
             : "Resolution idea. Find a better electricity rate."
         };
 
+      case "Halloween":
+        return {
+          headline: holiday.daysUntil === 0
+            ? "Halloween night electricity check."
+            : "Halloween prep electricity audit.",
+          subheadline: holiday.daysUntil === 0
+            ? "Scary bills are worse than haunted houses."
+            : "Don't let your electricity rate give you nightmares."
+        };
+
+      case "Black Friday":
+        return {
+          headline: holiday.daysUntil === 0
+            ? "Black Friday. Shopping for electricity too?"
+            : "Black Friday prep mode.",
+          subheadline: holiday.daysUntil === 0
+            ? "Best deal today might be switching your electricity rate."
+            : "Shopping deals everywhere. Don't forget your electricity rate."
+        };
+
+      case "Mother's Day":
+        return {
+          headline: holiday.daysUntil === 0
+            ? "Happy Mother's Day. Mom energy savings."
+            : "Mother's Day prep electricity check.",
+          subheadline: holiday.daysUntil === 0
+            ? "Even Mom would approve of saving money on electricity."
+            : "Get your life together before Mom asks about your bills."
+        };
+
+      case "Father's Day":
+        return {
+          headline: holiday.daysUntil === 0
+            ? "Father's Day. Dad-level electricity comparison."
+            : "Father's Day prep adulting check.",
+          subheadline: holiday.daysUntil === 0
+            ? "Channel your inner dad: compare rates, save money, fix things."
+            : "Time to adult like Dad taught you. Starting with electricity."
+        };
+
       default:
         return isWeekend ? this.getWeekendMessage(ctx) : this.getWeekdayMessage(ctx);
     }
@@ -280,123 +332,137 @@ export class TemporalMessagingEngine {
   private getWeekendMessage(ctx: TemporalContext): MessagingBundle {
     const { dayName, timeOfDay, hour, season, holiday, specialPeriod } = ctx;
     
-    // Check for Labor Day weekend first - THIS IS CRITICAL FOR RIGHT NOW
-    if (holiday?.name === "Labor Day" && holiday.daysUntil === 2 && dayName === 'Saturday') {
-      switch (timeOfDay) {
-        case 'early-morning':
-          return {
-            headline: "Labor Day weekend. Early Saturday electricity mission.",
-            subheadline: "End of summer, rates about to drop. Smart to lock in a good one early."
-          };
-        
-        case 'morning':
-          return {
-            headline: "Saturday morning Labor Day weekend electricity audit.",
-            subheadline: "Summer's ending Monday. Lower fall rates coming. Good time to lock in now."
-          };
-        
-        case 'lunch':
-          return {
-            headline: "Labor Day weekend lunch break productivity.",
-            subheadline: "End of summer project. Find your rate before fall prices hit."
-          };
-        
-        case 'afternoon':
-          return {
-            headline: `${hour === 15 ? '3pm Labor Day weekend. Still untangling electricity contracts.' : 'Labor Day weekend Saturday afternoon.'}`,
-            subheadline: "End of summer. Beginning of higher rates. We read the fine print so you don't have to."
-          };
-        
-        case 'evening':
-          return {
-            headline: "Labor Day weekend Saturday night electricity research.",
-            subheadline: "Responsible weekend move. Summer ends Monday, rates go up Tuesday."
-          };
-        
-        case 'late-night':
-          return {
-            headline: "Late Labor Day weekend Saturday. Smart timing actually.",
-            subheadline: "End of summer insomnia? Might as well save money. Rates jump after the holiday."
-          };
-      }
-    }
+    // Season-aware weekend messaging
+    const seasonalContext = ctx.seasonalContext;
+    const currentMonth = ctx.month;
     
     if (dayName === 'Saturday') {
+      // Seasonal context for weekends
+      const seasonalSuffix = seasonalContext === 'summer-peak' 
+        ? "AC bills hitting hard this summer." 
+        : seasonalContext === 'winter-heating' 
+          ? "Heating costs adding up." 
+          : "Perfect weather for saving money.";
+      
       switch (timeOfDay) {
         case 'early-morning':
           return {
-            headline: "Saturday morning electricity shopping.",
-            subheadline: "You could do literally anything else. But here we are. No teaser rates that cost 14¢."
+            headline: currentMonth >= 10 && currentMonth <= 12
+              ? "Saturday morning fall electricity check."
+              : currentMonth >= 3 && currentMonth <= 5
+                ? "Saturday morning spring energy audit."
+                : "Saturday morning electricity shopping.",
+            subheadline: seasonalContext === 'summer-peak'
+              ? "Early start beats the heat and the high rates."
+              : "You could do literally anything else. But here we are. No teaser rates that cost 14¢."
           };
         
         case 'morning':
           return {
-            headline: "Saturday morning. Still dealing with Texas electricity.",
-            subheadline: `${DEFAULT_COUNTS.providers} companies, ${DEFAULT_COUNTS.plans} plans. We sorted the good from the garbage.`
+            headline: currentMonth >= 6 && currentMonth <= 9
+              ? "Saturday morning AC bill reality check."
+              : currentMonth >= 12 || currentMonth <= 2
+                ? "Saturday morning winter rate review."
+                : "Saturday morning. Still dealing with Texas electricity.",
+            subheadline: `${DEFAULT_COUNTS.providers} companies, ${DEFAULT_COUNTS.plans} plans. ${seasonalSuffix}`
           };
         
         case 'lunch':
           return {
-            headline: "Saturday lunch break. Electricity shopping.",
-            subheadline: "Not exactly weekend goals, but okay. Clear prices, straight answers."
+            headline: "Saturday lunch break productivity.",
+            subheadline: seasonalContext === 'summer-peak'
+              ? "Too hot to go out anyway. Might as well save money on AC costs."
+              : "Weekend project that actually pays you back. Clear prices, straight answers."
           };
         
         case 'afternoon':
           return {
-            headline: `${hour === 15 ? '3pm Saturday. Still untangling electricity contracts.' : 'Saturday afternoon. Electricity homework.'}`,
-            subheadline: "We read the fine print so you don't have to. Here's what's actually good."
+            headline: `${hour === 15 ? '3pm Saturday. Still untangling electricity contracts.' : 'Saturday afternoon electricity homework.'}`,
+            subheadline: seasonalContext === 'winter-heating'
+              ? "Cozy indoor project. We read the fine print so you don't have to."
+              : "We read the fine print so you don't have to. Here's what's actually good."
           };
         
         case 'evening':
           return {
-            headline: "Saturday night electricity research.",
-            subheadline: "Either very responsible or very bored. Clear prices, no teaser rates."
+            headline: currentMonth >= 11 || currentMonth <= 1
+              ? "Saturday night cozy electricity research."
+              : "Saturday night electricity research.",
+            subheadline: seasonalContext === 'summer-peak'
+              ? "Smart to stay in with the AC. Smarter to find a better rate."
+              : "Either very responsible or very bored. Clear prices, no teaser rates."
           };
         
         case 'late-night':
           return {
-            headline: "Late Saturday night. Electricity rates.",
-            subheadline: "Couldn't sleep? Might as well find a better rate. No teaser rates that cost 14¢."
+            headline: "Late Saturday night energy focus.",
+            subheadline: seasonalContext === 'summer-peak'
+              ? "Can't sleep in this heat? Might as well find cheaper AC power."
+              : "Couldn't sleep? Might as well find a better rate. No teaser rates that cost 14¢."
           };
       }
     }
     
-    // Sunday messaging
+    // Sunday messaging - seasonal and contextual
     switch (timeOfDay) {
       case 'early-morning':
         return {
-          headline: "Sunday morning. Getting your life together.",
-          subheadline: "Starting with electricity rates. Smart move. No teaser rates that cost 14¢."
+          headline: currentMonth >= 1 && currentMonth <= 3
+            ? "Sunday morning New Year energy audit."
+            : currentMonth >= 9 && currentMonth <= 11
+              ? "Sunday morning fall rate prep."
+              : "Sunday morning. Getting your life together.",
+          subheadline: seasonalContext === 'summer-peak'
+            ? "Before the week heats up. Smart to lock in cooling savings."
+            : "Starting with electricity rates. Smart move. No teaser rates that cost 14¢."
         };
       
       case 'morning':
         return {
-          headline: "Sunday morning electricity audit.",
-          subheadline: "Coffee in one hand, rate comparison in the other. Clear prices, straight answers."
+          headline: currentMonth >= 6 && currentMonth <= 8
+            ? "Sunday morning summer bill strategy."
+            : currentMonth >= 12 || currentMonth <= 2
+              ? "Sunday morning winter rate check."
+              : "Sunday morning electricity audit.",
+          subheadline: seasonalContext === 'summer-peak'
+            ? "Coffee and AC strategy session. Let's find you better cooling rates."
+            : "Coffee in one hand, rate comparison in the other. Clear prices, straight answers."
         };
       
       case 'lunch':
         return {
-          headline: "Sunday lunch break productivity.",
-          subheadline: "Weekend project that actually saves money. No 40-page contracts."
+          headline: "Sunday lunch break adulting.",
+          subheadline: seasonalContext === 'winter-heating'
+            ? "Cozy indoor productivity. Find heating bill relief while it's warm inside."
+            : "Weekend project that actually saves money. No 40-page contracts."
         };
       
       case 'afternoon':
         return {
-          headline: "Sunday afternoon. Adulting hard.",
-          subheadline: `We tested all ${DEFAULT_COUNTS.providers} providers. Here's who doesn't waste your time.`
+          headline: currentMonth >= 4 && currentMonth <= 5
+            ? "Sunday afternoon spring cleaning your rates."
+            : "Sunday afternoon. Adulting hard.",
+          subheadline: seasonalContext === 'summer-peak'
+            ? "AC season's here. Time to get the rates sorted before peak bills hit."
+            : `We tested all ${DEFAULT_COUNTS.providers} providers. Here's who doesn't waste your time.`
         };
       
       case 'evening':
         return {
           headline: "Sunday evening prep mode.",
-          subheadline: "Monday's coming. Fix your electricity rate while you can still think."
+          subheadline: seasonalContext === 'summer-peak'
+            ? "Monday's hot weather coming. Lock in your cooling rate tonight."
+            : currentMonth >= 8 && currentMonth <= 10
+              ? "Fall's coming. Perfect timing to prep your rates for season change."
+              : "Monday's coming. Fix your electricity rate while you can still think."
         };
       
       case 'late-night':
         return {
-          headline: "Sunday night electricity insomnia.",
-          subheadline: "Tomorrow's Monday. At least your rate will be sorted. No teaser rates."
+          headline: "Sunday night electricity focus.",
+          subheadline: seasonalContext === 'summer-peak'
+            ? "Too hot to sleep? Perfect time to find better AC rates."
+            : "Tomorrow's Monday. At least your rate will be sorted. No teaser rates."
         };
     }
   }
@@ -651,6 +717,39 @@ export class TemporalMessagingEngine {
         type: 'major' as const,
         date: new Date(year, 11, 25),
         activities: ['holiday cooking', 'family visits', 'gift wrapping', 'winter bills']
+      },
+      // Halloween
+      {
+        name: "Halloween",
+        type: 'seasonal' as const,
+        date: new Date(year, 9, 31),
+        activities: ['trick-or-treating', 'costume prep', 'candy shopping', 'decorating']
+      },
+      // Black Friday (day after Thanksgiving)
+      {
+        name: "Black Friday",
+        type: 'financial' as const,
+        date: (() => {
+          const thanksgiving = this.getFourthThursdayOfNovember(year);
+          const blackFriday = new Date(thanksgiving);
+          blackFriday.setDate(blackFriday.getDate() + 1);
+          return blackFriday;
+        })(),
+        activities: ['deal hunting', 'shopping', 'budget stress', 'holiday spending']
+      },
+      // Mother's Day (2nd Sunday in May)
+      {
+        name: "Mother's Day",
+        type: 'seasonal' as const,
+        date: this.getSecondSundayOfMay(year),
+        activities: ['family brunch', 'gift giving', 'mother appreciation', 'family time']
+      },
+      // Father's Day (3rd Sunday in June)
+      {
+        name: "Father's Day",
+        type: 'seasonal' as const,
+        date: this.getThirdSundayOfJune(year),
+        activities: ['BBQ', 'sports watching', 'dad gifts', 'family time']
       }
     ];
   }
@@ -776,6 +875,34 @@ export class TemporalMessagingEngine {
         thursdayCount++;
       }
       if (thursdayCount < 4) {
+        date.setDate(date.getDate() + 1);
+      }
+    }
+    return date;
+  }
+
+  private getSecondSundayOfMay(year: number): Date {
+    const date = new Date(year, 4, 1); // May 1
+    let sundayCount = 0;
+    while (sundayCount < 2) {
+      if (date.getDay() === 0) { // Sunday
+        sundayCount++;
+      }
+      if (sundayCount < 2) {
+        date.setDate(date.getDate() + 1);
+      }
+    }
+    return date;
+  }
+
+  private getThirdSundayOfJune(year: number): Date {
+    const date = new Date(year, 5, 1); // June 1
+    let sundayCount = 0;
+    while (sundayCount < 3) {
+      if (date.getDay() === 0) { // Sunday
+        sundayCount++;
+      }
+      if (sundayCount < 3) {
         date.setDate(date.getDate() + 1);
       }
     }

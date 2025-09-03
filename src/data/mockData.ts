@@ -1,4 +1,4 @@
-import { Provider, State, City } from '../types';
+import type { Provider, State, City } from '../types/index';
 
 export const mockProviders: Provider[] = [
   {

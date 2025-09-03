@@ -517,7 +517,7 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
               disabled={state.isLoading || !state.address.trim()}
               className="submit-button"
             >
-              {state.isLoading ? 'Looking it up...' : 'That's It'}
+              {state.isLoading ? 'Looking it up...' : "That's It"}
             </button>
           </div>
 

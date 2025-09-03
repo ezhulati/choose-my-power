@@ -1,27 +1,35 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import EnhancedSection from '../../../components/ui/EnhancedSection.astro';
+import EnhancedCard from '../../../components/ui/EnhancedCard.astro';
+import AccentBox from '../../../components/ui/AccentBox.astro';
 
 const title = "Fixed vs Variable: Which Won't Bite You Later? | Texas Guide 2024";
 const description = "Real talk on fixed vs variable electricity rates in Texas. Learn which plan type won't leave you with nasty surprises on your bill.";
 ---
 
 <Layout title={title} description={description}>
-  <div class="min-h-screen bg-gradient-to-b from-texas-cream to-gray-50">
-    <!-- Hero Section -->
-    <div class="bg-texas-navy text-white">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+  <!-- Enhanced Hero Section -->
+  <section class="bg-gradient-to-br from-texas-navy via-blue-800 to-texas-navy text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+      <div class="text-center">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
           Fixed vs Variable: Which Won't Bite You Later?
         </h1>
-        <p class="text-xl text-blue-100 mb-8 leading-relaxed">
+        <p class="text-xl text-blue-100 mb-8 leading-relaxed max-w-4xl mx-auto">
           Here's the thing nobody tells you upfront: most variable rate plans are designed to lure you in with a great rate, then quietly jack up your bill. Let me show you how to avoid this trap.
         </p>
-        <div class="flex flex-wrap gap-4">
-          <span class="bg-texas-red px-4 py-2 rounded-full text-sm font-medium">6 min read</span>
-          <span class="bg-texas-gold px-4 py-2 rounded-full text-sm font-medium text-texas-navy">Honest Analysis</span>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <AccentBox accentColor="red" padding="sm">
+            <span class="text-sm font-medium">6 min read</span>
+          </AccentBox>
+          <AccentBox accentColor="gold" padding="sm">
+            <span class="text-sm font-medium text-texas-navy">Honest Analysis</span>
+          </AccentBox>
         </div>
       </div>
     </div>
+  </section>
 
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <!-- Quick Comparison -->

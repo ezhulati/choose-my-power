@@ -14,6 +14,10 @@ import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
 import { Input } from '../components/ui/input';
 import { EnterprisePlanCard } from '../components/ui/EnterprisePlanCard';
 import { getCredibleMarketingText, DEFAULT_COUNTS } from '../lib/utils/dynamic-counts';
+import EnhancedSection from '../components/ui/EnhancedSection.astro';
+import EnhancedCard from '../components/ui/EnhancedCard.astro';
+import EnhancedList from '../components/ui/EnhancedList.astro';
+import AccentBox from '../components/ui/AccentBox.astro';
 
 const title = "Texas Electricity Plans - Compare Real Rates & Find Your Best Deal";
 const marketingText = getCredibleMarketingText(DEFAULT_COUNTS.providers, DEFAULT_COUNTS.plans);
@@ -72,20 +76,20 @@ const samplePlans = [
           All Texas Plans
         </Badge>
         
-        <!-- Refined Typography - Matching Homepage Proportions -->
-        <div class="space-y-4">
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold text-white leading-tight max-w-4xl mx-auto">
-            Texas Electricity Plans with Real Rates
+        <!-- Enhanced Typography -->
+        <div class="space-y-6">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight max-w-4xl mx-auto">
+            Texas Electricity Plans with <span class="text-texas-gold">Real Rates</span>
           </h1>
           
-          <p class="text-base md:text-lg text-blue-100/80 font-normal max-w-3xl mx-auto leading-relaxed">
-            You've seen the "6.9¢" rates that cost 14¢. We show actual monthly costs from 
-            <span class="text-white font-medium">{DEFAULT_COUNTS.providerText} across {DEFAULT_COUNTS.cities}+ Texas cities.</span>
+          <p class="text-lg md:text-xl text-blue-100 font-normal max-w-3xl mx-auto leading-relaxed">
+            You've seen the <strong class="text-texas-red">"6.9¢" rates that cost 14¢.</strong> We show actual monthly costs from 
+            <span class="text-white font-bold">{DEFAULT_COUNTS.providerText} across {DEFAULT_COUNTS.cities}+ Texas cities.</span>
           </p>
           
-          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 max-w-2xl mx-auto border border-white/20">
-            <p class="text-sm text-white/90 font-normal">
-              <span class="text-texas-gold font-medium">Real pricing, no teaser rates.</span> 
+          <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 max-w-2xl mx-auto border border-white/20 shadow-xl">
+            <p class="text-lg text-white font-semibold">
+              <span class="text-texas-gold">Real pricing, no teaser rates.</span> 
               Find your best electricity plan in minutes.
             </p>
           </div>
@@ -134,23 +138,29 @@ const samplePlans = [
         </CardContent>
       </Card>
 
-      <!-- Elegant Results Summary -->
-      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 py-4">
-        <div>
-          <h2 class="text-xl md:text-2xl font-semibold text-foreground mb-2">347 Plans Available</h2>
-          <p class="text-sm text-muted-foreground">Real rates from Texas electricity providers</p>
+      <!-- Enhanced Results Summary -->
+      <EnhancedCard variant="gradient" padding="lg">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold text-texas-navy mb-2">
+              <span class="text-texas-red">347 Plans</span> Available
+            </h2>
+            <p class="text-lg text-gray-700 font-medium">
+              Real rates from <strong class="text-texas-gold">licensed Texas electricity providers</strong>
+            </p>
+          </div>
+          <div class="flex items-center gap-4 mt-4 sm:mt-0">
+            <span class="text-lg font-semibold text-texas-navy">Sort by:</span>
+            <select class="border-2 border-texas-navy/20 rounded-xl px-4 py-3 text-base bg-white shadow-lg hover:border-texas-navy transition-colors focus:ring-4 focus:ring-texas-navy/20 focus:border-texas-navy">
+              <option>Lowest Rate First</option>
+              <option>Highest Customer Rating</option>
+              <option>Shortest Contract Term</option>
+              <option>Most Popular Plans</option>
+              <option>100% Green Energy</option>
+            </select>
+          </div>
         </div>
-        <div class="flex items-center gap-4 mt-4 sm:mt-0">
-          <span class="text-sm font-medium text-muted-foreground">Sort by:</span>
-          <select class="border border-input rounded-lg px-4 py-2 text-sm bg-background shadow-sm hover:border-texas-navy transition-colors">
-            <option>Lowest Rate First</option>
-            <option>Highest Customer Rating</option>
-            <option>Shortest Contract Term</option>
-            <option>Most Popular Plans</option>
-            <option>100% Green Energy</option>
-          </select>
-        </div>
-      </div>
+      </EnhancedCard>
 
       <!-- Professional Plan Cards Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -164,30 +174,79 @@ const samplePlans = [
         ))}
       </div>
 
-      <!-- More plans available on city pages -->
+      <!-- Enhanced More Plans Link -->
       <div class="text-center mt-12">
-        <p class="text-sm text-muted-foreground">
-          Showing sample plans • <a href="/texas/houston" class="text-texas-navy hover:underline">View all plans for Houston</a> or <a href="/texas/dallas" class="text-texas-navy hover:underline">Dallas</a>
-        </p>
+        <AccentBox accentColor="navy" padding="md">
+          <p class="text-lg text-gray-700 font-semibold">
+            Showing sample plans • <a href="/texas/houston" class="text-texas-navy hover:text-texas-red font-bold transition-colors">View all plans for Houston</a> or <a href="/texas/dallas" class="text-texas-navy hover:text-texas-red font-bold transition-colors">Dallas</a>
+          </p>
+        </AccentBox>
       </div>
     </div>
 
-    <!-- Elegant CTA Section -->
-    <div class="bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-xl mx-4 sm:mx-6 lg:mx-8 mb-8">
-      <div class="py-12 lg:py-16 px-6 lg:px-8 text-center">
-        <h2 class="text-xl md:text-2xl font-semibold text-texas-navy mb-4">
-          Still Need Help Finding the Right Plan?
-        </h2>
-        <p class="text-base text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-          Texas electricity is intentionally complicated. We've figured out the system. 
-          <span class="text-foreground font-medium">Get honest guidance from someone who won't try to sell you anything.</span>
-        </p>
-        
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button variant="texas-primary" size="default">Get Expert Help</Button>
-          <Button variant="outline" size="default">View Comparison Guide</Button>
-        </div>
+    <!-- Enhanced Information Section -->
+    <EnhancedSection background="cream" padding="xl">
+      <div class="grid md:grid-cols-3 gap-8 mb-16">
+        <EnhancedCard variant="elevated" padding="lg">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-texas-red/10 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-texas-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-texas-navy mb-4">Real Rates Only</h3>
+            <p class="text-lg text-gray-700 leading-relaxed">
+              No <strong class="text-texas-red">"teaser rates"</strong> that jump after 3 months. Every rate shown is what you'll actually pay.
+            </p>
+          </div>
+        </EnhancedCard>
+
+        <EnhancedCard variant="elevated" padding="lg">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-texas-gold/10 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-texas-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-texas-navy mb-4">Licensed Providers</h3>
+            <p class="text-lg text-gray-700 leading-relaxed">
+              Only companies <strong class="text-texas-gold">licensed by the Public Utility Commission</strong> of Texas. No scammers.
+            </p>
+          </div>
+        </EnhancedCard>
+
+        <EnhancedCard variant="elevated" padding="lg">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-texas-navy/10 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg class="w-8 h-8 text-texas-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-texas-navy mb-4">Always Free</h3>
+            <p class="text-lg text-gray-700 leading-relaxed">
+              We're paid by providers when you sign up. <strong class="text-texas-navy">You pay the same rate</strong> either way.
+            </p>
+          </div>
+        </EnhancedCard>
       </div>
-    </div>
+
+      <!-- Enhanced CTA Section -->
+      <EnhancedCard variant="gradient" padding="xl">
+        <div class="text-center">
+          <h2 class="text-3xl md:text-4xl font-bold text-texas-navy mb-6">
+            Still Need Help Finding the Right Plan?
+          </h2>
+          <p class="text-lg text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
+            Texas electricity is <strong class="text-texas-red">intentionally complicated.</strong> We've figured out the system. 
+            <span class="text-texas-navy font-bold">Get honest guidance from someone who won't try to sell you anything.</span>
+          </p>
+          
+          <div class="flex flex-col sm:flex-row gap-6 justify-center">
+            <Button variant="texas-primary" size="lg">Get Expert Help</Button>
+            <Button variant="outline" size="lg">View Comparison Guide</Button>
+          </div>
+        </div>
+      </EnhancedCard>
+    </EnhancedSection>
   </main>
 </Layout>

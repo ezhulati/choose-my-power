@@ -93,8 +93,8 @@ export default function StandardZipInputReact({
     <div className={`${variantConfig.container} ${className}`}>
       <form 
         onSubmit={handleSubmit}
-        className={`${variantConfig.form} flex items-stretch`}
-        data-zip-form="true"
+        className={`zip-form ${variantConfig.form} flex items-stretch`}
+        data-zip-form="react"
       >
         <div className="relative flex-1">
           <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
@@ -108,7 +108,7 @@ export default function StandardZipInputReact({
             value={zipCode}
             onChange={(e) => setZipCode(e.target.value.replace(/\D/g, '').slice(0, 5))}
             placeholder="ZIP code"
-            className={`${sizeConfig.input} w-full border-0 bg-transparent text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-0`}
+            className={`zip-input ${sizeConfig.input} w-full border-0 bg-transparent text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-0`}
             pattern="[0-9]{5}"
             maxLength={5}
             required

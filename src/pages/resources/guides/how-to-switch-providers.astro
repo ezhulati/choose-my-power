@@ -1,33 +1,43 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import EnhancedSection from '../../../components/ui/EnhancedSection.astro';
+import EnhancedCard from '../../../components/ui/EnhancedCard.astro';
+import EnhancedList from '../../../components/ui/EnhancedList.astro';
+import AccentBox from '../../../components/ui/AccentBox.astro';
 
 const title = "How to Switch Electric Companies (It's Easier Than You Think) | Texas 2024";
 const description = "Your lights stay on, the process is free, and it takes 5 minutes to sign up. Here's exactly how to switch without any drama.";
 ---
 
 <Layout title={title} description={description}>
-  <div class="min-h-screen bg-gradient-to-b from-texas-cream to-gray-50">
-    <!-- Hero Section -->
-    <div class="bg-texas-navy text-white">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+  <!-- Enhanced Hero Section -->
+  <section class="bg-gradient-to-br from-texas-navy via-blue-800 to-texas-navy text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+      <div class="text-center">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
           How to Switch Electric Companies (It's Easier Than You Think)
         </h1>
-        <p class="text-xl text-blue-100 mb-8 leading-relaxed">
+        <p class="text-xl text-blue-100 mb-8 leading-relaxed max-w-4xl mx-auto">
           Your lights stay on, the process is free, and it takes 5 minutes to sign up. Here's exactly what happens when you switch, why it won't hurt, and how to do it right the first time.
         </p>
-        <div class="flex flex-wrap gap-4">
-          <span class="bg-texas-red px-4 py-2 rounded-full text-sm font-medium">8 min read</span>
-          <span class="bg-texas-gold px-4 py-2 rounded-full text-sm font-medium text-texas-navy">Free Process</span>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <AccentBox accentColor="red" padding="sm">
+            <span class="text-sm font-medium">8 min read</span>
+          </AccentBox>
+          <AccentBox accentColor="gold" padding="sm">
+            <span class="text-sm font-medium text-texas-navy">Free Process</span>
+          </AccentBox>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <!-- Key Stats -->
-      <div class="grid md:grid-cols-3 gap-6 mb-12">
-        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
-          <div class="text-3xl font-bold text-texas-red mb-2">14+</div>
+  <!-- Enhanced Key Stats -->
+  <EnhancedSection background="cream" padding="lg">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-8">
+        <EnhancedCard variant="elevated" padding="lg" className="text-center">
+          <div class="text-4xl font-bold text-texas-red mb-3">14+</div>
           <div class="text-gray-600">Days typical switch timeframe</div>
         </div>
         <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">

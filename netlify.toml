@@ -214,11 +214,12 @@
   to = "/electricity-plans/:splat"
   status = 301
 
-# Fallback for SPA behavior (must be last)
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# Specific fallback for API routes only - DO NOT use catch-all to avoid masking 404s
+# The catch-all redirect was causing ZIP code navigation issues by masking legitimate 404s
+# [[redirects]]
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200
 
 # Edge Functions Configuration
 [functions]

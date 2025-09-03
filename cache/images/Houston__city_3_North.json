@@ -1,18 +1,18 @@
 {
   "cacheKey": "Houston__city_3_North",
-  "url": "/images/og/generated/city/Houston__city_3_North_1756602290435.jpg",
-  "localPath": "/Users/mbp-ez/Downloads/AI Library/Apps/CMP/choose-my-power/public/images/og/generated/city/Houston__city_3_North_1756602290435.jpg",
-  "generatedAt": "2025-08-31T01:04:50.435Z",
+  "url": "/images/og/generated/city/Houston__city_3_North_1756850117941.jpg",
+  "localPath": "/Users/mbp-ez/Downloads/AI Library/Apps/CMP/choose-my-power/public/images/og/generated/city/Houston__city_3_North_1756850117941.jpg",
+  "generatedAt": "2025-09-02T21:55:17.941Z",
   "context": {
     "city": "Houston",
     "filters": [],
-    "planCount": 110,
+    "planCount": 108,
     "lowestRate": 999,
     "topProviders": [],
     "pageType": "city",
     "cityTier": 3,
     "tdspZone": "North",
-    "seasonalContext": "summer"
+    "seasonalContext": "fall"
   },
-  "expiresAt": "2025-09-30T01:04:51.080Z"
+  "expiresAt": "2025-10-02T21:55:18.521Z"
 }

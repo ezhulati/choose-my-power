@@ -3,6 +3,10 @@ import Layout from '../../layouts/Layout.astro';
 import HeroBackground from '../../components/HeroBackground.astro';
 import StandardZipInput from '../../components/StandardZipInput.astro';
 import { Calculator, Clock, Zap, Leaf, DollarSign, Shield, Star } from 'lucide-react';
+import EnhancedSection from '../../components/ui/EnhancedSection.astro';
+import EnhancedCard from '../../components/ui/EnhancedCard.astro';
+import EnhancedList from '../../components/ui/EnhancedList.astro';
+import AccentBox from '../../components/ui/AccentBox.astro';
 
 const title = "Compare Texas Electricity Plans - Real Costs & Side-by-Side Analysis";
 const description = "Compare electricity plans with actual monthly costs, not teaser rates. Side-by-side analysis of 300+ Texas plans to find the best deal for your home.";
@@ -27,17 +31,17 @@ const description = "Compare electricity plans with actual monthly costs, not te
           <Calculator class="h-8 w-8 text-white" />
         </div>
         
-        <div class="space-y-4">
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold text-white leading-tight max-w-4xl mx-auto">
-            Compare Texas Electricity Plans Side-by-Side
+        <div class="space-y-6">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight max-w-4xl mx-auto">
+            Compare Texas Electricity Plans <span class="text-texas-gold">Side-by-Side</span>
           </h1>
           
-          <p class="text-base md:text-lg text-blue-100/80 font-normal max-w-3xl mx-auto leading-relaxed">
-            See actual monthly costs for 300+ Texas plans. 
-            <span class="text-white font-medium">No teaser rates, just real pricing</span> to help you make the right choice.
+          <p class="text-lg md:text-xl text-blue-100 font-normal max-w-3xl mx-auto leading-relaxed">
+            See actual monthly costs for <strong class="text-texas-red">300+ Texas plans.</strong> 
+            <span class="text-white font-bold">No teaser rates, just real pricing</span> to help you make the right choice.
           </p>
           
-          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 max-w-2xl mx-auto border border-white/20">
+          <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 max-w-2xl mx-auto border border-white/20 shadow-xl">
             <p class="text-sm text-white/90 font-normal">
               <span class="text-texas-gold font-medium">Real plan comparison</span> with honest monthly costs.
             </p>

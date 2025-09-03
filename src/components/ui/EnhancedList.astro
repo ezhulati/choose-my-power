@@ -1,0 +1,56 @@
+---
+/**
+ * Enhanced List Component
+ * Provides consistent list styling with Texas design system bullet points
+ */
+
+export interface Props {
+  items: string[];
+  bulletColor?: 'navy' | 'red' | 'gold' | 'green';
+  spacing?: 'sm' | 'md' | 'lg';
+  textSize?: 'base' | 'lg' | 'xl';
+  emphasizeFirst?: boolean;
+}
+
+const {
+  items = [],
+  bulletColor = 'navy',
+  spacing = 'md',
+  textSize = 'lg',
+  emphasizeFirst = false
+} = Astro.props;
+
+// Bullet color mappings
+const bulletColors = {
+  navy: 'bg-texas-navy',
+  red: 'bg-texas-red',
+  gold: 'bg-texas-gold',
+  green: 'bg-green-600'
+};
+
+// Spacing mappings
+const spacings = {
+  sm: 'space-y-2',
+  md: 'space-y-3',
+  lg: 'space-y-4'
+};
+
+// Text size mappings
+const textSizes = {
+  base: 'text-base',
+  lg: 'text-lg',
+  xl: 'text-xl'
+};
+---
+
+<ul class={spacings[spacing]}>
+  {items.map((item, index) => (
+    <li class="flex items-start">
+      <span class={`w-2 h-2 ${bulletColors[bulletColor]} rounded-full mt-3 mr-4 flex-shrink-0`}></span>
+      <span 
+        class={`${textSizes[textSize]} text-gray-700 leading-relaxed`}
+        set:html={item}
+      />
+    </li>
+  ))}
+</ul>

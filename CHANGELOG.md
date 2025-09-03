@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Fixed
+- **Critical**: Resolved calculator hydration error preventing rates calculator from loading on /rates/calculator page
+- **Critical**: Fixed module resolution conflicts between multiple City interface exports causing component failures
+- **Critical**: Corrected import statement in src/data/mockData.ts from named import to type import to resolve hydration issues
 - **Critical**: Missing provider logos on plan list pages showing "PROVIDER" placeholders instead of actual logos - replaced with professional SVG logos from external URLs
 - **Critical**: Product page 500 errors caused by database-dependent logo service in client-side React components - implemented client-safe logo mapping system
 - **Critical**: EnterprisePlanCard components displaying fallback icons instead of actual provider branding - integrated CSV logo URLs for all major providers
@@ -19,6 +22,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Critical**: ZIP form button click navigation issue on production site - button clicks now work identically to Enter key submissions
 - **Critical**: StandardZipInput.astro components returning JSON responses instead of navigating to city pages - replaced API endpoint submission with client-side navigation using inline JavaScript
 - **UI**: Footer navigation headings displaying across multiple lines breaking layout - added white-space: nowrap CSS for single-line formatting
+
+### Changed
+- **Major**: Updated 800+ city electricity plan data files with latest rates and provider information
+- **Data**: Refreshed cache metadata and build summaries with current seasonal context (fall 2025)
+- **Performance**: Plan count optimization across major cities (Dallas: 111→109, Houston: 110→108, Addison: 111→109)
+- Enhanced ZIP lookup functionality with improved error handling and user experience
+- Removed auto-submit behavior from ZIP forms for more deliberate user navigation
+- Improved form validation and success notification handling with duplicate prevention
 
 ### Added  
 - **Major**: Enterprise-grade logo system with CSV integration using actual provider logo URLs from ComparePoser

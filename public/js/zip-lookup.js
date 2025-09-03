@@ -123,6 +123,7 @@
 
     // Form submission handler with duplicate prevention and fallback
     let isSubmitting = false;
+    let hasShownNotification = false;
     form.addEventListener('submit', async function(e) {
       console.log(`🎯 Form ${form.id} submit event triggered`);
       
@@ -201,21 +202,24 @@
         // Success - use reliable form-based navigation
         console.log('✅ ZIP lookup successful:', result);
         
-        // Show success feedback briefly
-        const successMessage = document.createElement('div');
-        successMessage.className = 'zip-success-message mt-4 p-4 rounded-lg text-sm bg-green-50 border border-green-200 text-green-800';
-        successMessage.innerHTML = `
-          <div class="flex items-center">
-            <svg class="h-5 w-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-            </svg>
-            <div>
-              <strong>Found your area!</strong>
-              <p class="mt-1">Loading ${result.cityDisplayName} electricity plans...</p>
+        // Show success feedback briefly - but only once per form
+        if (!hasShownNotification) {
+          hasShownNotification = true;
+          const successMessage = document.createElement('div');
+          successMessage.className = 'zip-success-message mt-4 p-4 rounded-lg text-sm bg-green-50 border border-green-200 text-green-800';
+          successMessage.innerHTML = `
+            <div class="flex items-center">
+              <svg class="h-5 w-5 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <div>
+                <strong>Found your area!</strong>
+                <p class="mt-1">Loading ${result.cityDisplayName} electricity plans...</p>
+              </div>
             </div>
-          </div>
-        `;
-        form.parentNode.insertBefore(successMessage, form.nextSibling);
+          `;
+          form.parentNode.insertBefore(successMessage, form.nextSibling);
+        }
         
         // Multiple navigation strategies for maximum reliability
         console.log('🎯 Navigating to:', result.redirectUrl);
@@ -329,25 +333,7 @@
       }
     });
 
-    // Auto-submit on 5 digits (optional UX enhancement)
-    let autoSubmitTimeout = null;
-    input.addEventListener('input', function(e) {
-      // Clear any pending auto-submit
-      if (autoSubmitTimeout) {
-        clearTimeout(autoSubmitTimeout);
-        autoSubmitTimeout = null;
-      }
-      
-      if (e.target.value.length === 5) {
-        // Small delay to let user see the complete ZIP code
-        autoSubmitTimeout = setTimeout(() => {
-          if (!submitButton.disabled) {
-            form.dispatchEvent(new Event('submit', { bubbles: true }));
-          }
-          autoSubmitTimeout = null;
-        }, 500);
-      }
-    });
+    // Removed auto-submit functionality - users must click button to navigate
     
     }); // End of forEach loop for each form
   } // End of initZipLookup function

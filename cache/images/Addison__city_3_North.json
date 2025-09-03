@@ -1,18 +1,18 @@
 {
   "cacheKey": "Addison__city_3_North",
-  "url": "/images/og/generated/city/Addison__city_3_North_1756607885038.jpg",
-  "localPath": "/Users/mbp-ez/Downloads/AI Library/Apps/CMP/choose-my-power/public/images/og/generated/city/Addison__city_3_North_1756607885038.jpg",
-  "generatedAt": "2025-08-31T02:38:05.038Z",
+  "url": "/images/og/generated/city/Addison__city_3_North_1756850158324.jpg",
+  "localPath": "/Users/mbp-ez/Downloads/AI Library/Apps/CMP/choose-my-power/public/images/og/generated/city/Addison__city_3_North_1756850158324.jpg",
+  "generatedAt": "2025-09-02T21:55:58.324Z",
   "context": {
     "city": "Addison",
     "filters": [],
-    "planCount": 111,
+    "planCount": 109,
     "lowestRate": 999,
     "topProviders": [],
     "pageType": "city",
     "cityTier": 3,
     "tdspZone": "North",
-    "seasonalContext": "summer"
+    "seasonalContext": "fall"
   },
-  "expiresAt": "2025-09-30T02:38:05.602Z"
+  "expiresAt": "2025-10-02T21:55:59.251Z"
 }

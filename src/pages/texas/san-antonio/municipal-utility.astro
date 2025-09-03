@@ -1,0 +1,341 @@
+---
+// San Antonio Municipal Utility Information Page - CPS Energy
+import Layout from '../../../layouts/Layout.astro';
+import HeroBackground from '../../../components/HeroBackground.astro';
+import { Badge } from '../../../components/ui/badge';
+import { Button } from '../../../components/ui/button';
+import { getHeroImage } from '../../../lib/images/hero-image-mapper';
+import { municipalUtilities } from '../../../config/tdsp-mapping';
+import { Zap, Shield, DollarSign, Clock, MapPin, ExternalLink, Info, Phone, Globe, Building, XCircle, CheckCircle } from 'lucide-react';
+
+const citySlug = 'san-antonio';
+const utilityInfo = municipalUtilities[citySlug];
+
+if (!utilityInfo) {
+  return Astro.redirect('/404', 404);
+}
+
+const title = `${utilityInfo.cityDisplayName} Municipal Utility - ${utilityInfo.name}`;
+const description = `Learn about ${utilityInfo.name}, the municipal electric utility serving ${utilityInfo.cityDisplayName}. This area is not part of Texas's deregulated electricity market.`;
+
+// Get hero image for city
+const heroImage = getHeroImage({ 
+  pageType: 'city', 
+  city: citySlug,
+  filters: {} 
+});
+---
+
+<Layout title={title} description={description}>
+  <div class="bg-white">
+    <!-- Municipal Utility Hero Section -->
+    <section class="relative bg-gradient-to-br from-texas-gold-600 via-texas-gold-700 to-texas-red-800 overflow-hidden">
+      {heroImage && <div class="absolute inset-0 opacity-20">
+        <img src={heroImage} alt={`${utilityInfo.cityDisplayName} electricity`} class="w-full h-full object-cover" />
+      </div>}
+      <div class="absolute inset-0 bg-black opacity-20"></div>
+      
+      <!-- Content Container -->
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="py-16 sm:py-20 lg:py-24">
+          <div class="text-center">
+            <!-- Warning Badge -->
+            <Badge variant="texas-accent" className="inline-flex items-center gap-2 mb-6 py-2 px-4 text-lg">
+              <XCircle className="w-5 h-5" />
+              No Electricity Choice Available
+            </Badge>
+            
+            <!-- Main Heading -->
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 leading-tight">
+              <span class="block">{utilityInfo.cityDisplayName}</span>
+              <span class="block text-texas-gold-200">Not Deregulated</span>
+            </h1>
+            
+            <!-- Utility Name -->
+            <div class="flex items-center justify-center mb-6">
+              <Building className="w-8 h-8 text-texas-gold-200 mr-3" />
+              <h2 class="text-2xl sm:text-3xl font-semibold text-white">{utilityInfo.name}</h2>
+            </div>
+            
+            <!-- Clear Description -->
+            <p class="text-lg sm:text-xl text-white/90 max-w-4xl mx-auto mb-8 leading-relaxed">
+              <strong>San Antonio is not part of Texas's deregulated electricity market.</strong> {utilityInfo.description}
+            </p>
+            
+            <!-- Call to Action -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                asChild
+                variant="outline" 
+                size="lg"
+                className="bg-white text-texas-gold-800 border-white hover:bg-gray-100 shadow-lg"
+              >
+                <a 
+                  href={utilityInfo.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center justify-center text-white hover:text-white"
+                >
+                  <Globe className="w-5 h-5 mr-2" />
+                  Visit {utilityInfo.name}
+                  <ExternalLink className="w-4 h-4 ml-2" />
+                </a>
+              </Button>
+              <Button 
+                asChild
+                size="lg"
+                className="bg-texas-navy hover:bg-blue-800 shadow-lg"
+              >
+                <a 
+                  href="#deregulated-areas" 
+                  class="inline-flex items-center justify-center text-white hover:text-white"
+                >
+                  <CheckCircle className="w-5 h-5 mr-2" />
+                  Find Deregulated Areas
+                </a>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Information Section -->
+    <section class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Why You Can't Choose Your Electricity Provider
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Understanding San Antonio's regulated municipal utility system
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Municipal Utility -->
+          <div class="bg-red-50 rounded-lg p-8 text-center border-2 border-red-200">
+            <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <XCircle className="w-8 h-8 text-red-600" />
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Not Deregulated</h3>
+            <p class="text-gray-600">
+              San Antonio operates under a municipal utility system, not Texas's deregulated market. You cannot shop for electricity providers here.
+            </p>
+          </div>
+
+          <!-- Single Provider -->
+          <div class="bg-orange-50 rounded-lg p-8 text-center border-2 border-orange-200">
+            <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <Building className="w-8 h-8 text-orange-600" />
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Single Utility</h3>
+            <p class="text-gray-600">
+              CPS Energy is your only option for electricity service. Rates are set by the utility board, not through market competition.
+            </p>
+          </div>
+
+          <!-- Regulated Service -->
+          <div class="bg-blue-50 rounded-lg p-8 text-center border-2 border-blue-200">
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <Shield className="w-8 h-8 text-blue-600" />
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Regulated Service</h3>
+            <p class="text-gray-600">
+              Your electricity rates and service are regulated by the utility rather than determined by competitive market forces.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CPS Energy Specific Information -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Your Options with CPS Energy
+            </h2>
+            <p class="text-xl text-gray-600">
+              While you can't choose your provider, you still have choices
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Available Services -->
+            <div class="bg-white rounded-lg shadow-sm p-8">
+              <h3 class="text-2xl font-bold text-gray-900 mb-6">Available Services & Programs</h3>
+              <ul class="space-y-4">
+                <li class="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
+                  <span class="text-gray-700">GreenSaver renewable energy program</span>
+                </li>
+                <li class="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
+                  <span class="text-gray-700">Energy efficiency rebates and programs</span>
+                </li>
+                <li class="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
+                  <span class="text-gray-700">Solar installation and net metering</span>
+                </li>
+                <li class="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
+                  <span class="text-gray-700">Budget billing and payment assistance</span>
+                </li>
+                <li class="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
+                  <span class="text-gray-700">Time-of-use rate options</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="bg-white rounded-lg shadow-sm p-8">
+              <h3 class="text-2xl font-bold text-gray-900 mb-6">Contact CPS Energy</h3>
+              <div class="space-y-6">
+                <div>
+                  <h4 class="font-semibold text-gray-900 mb-2">Customer Service</h4>
+                  <div class="flex items-center">
+                    <Phone className="w-4 h-4 text-gray-600 mr-2" />
+                    <span class="text-gray-700">210-353-2222</span>
+                  </div>
+                </div>
+                
+                <div>
+                  <h4 class="font-semibold text-gray-900 mb-2">Emergency Outages</h4>
+                  <div class="flex items-center">
+                    <Phone className="w-4 h-4 text-gray-600 mr-2" />
+                    <span class="text-gray-700">210-353-4357</span>
+                  </div>
+                </div>
+                
+                <div>
+                  <h4 class="font-semibold text-gray-900 mb-2">Online Services</h4>
+                  <a 
+                    href="https://cpsenergy.com"
+                    target="_blank"
+                    rel="noopener noreferrer" 
+                    class="inline-flex items-center text-texas-navy hover:text-texas-navy transition-colors"
+                  >
+                    <Globe className="w-4 h-4 mr-2" />
+                    cpsenergy.com
+                    <ExternalLink className="w-3 h-3 ml-1" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Deregulated Areas Section -->
+    <section id="deregulated-areas" class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Looking for Electricity Choice?
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            If you're moving to or researching other Texas areas with deregulated electricity markets
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <a href="/texas/dallas" class="bg-white rounded-lg shadow-sm border-2 border-green-200 p-6 hover:shadow-md transition-all group hover:border-green-300">
+            <div class="flex items-center mb-4">
+              <CheckCircle className="w-6 h-6 text-green-600 mr-2" />
+              <h3 class="text-xl font-bold text-gray-900">Dallas Area</h3>
+            </div>
+            <p class="text-gray-600 mb-4">Multiple electricity providers to choose from with competitive rates and flexible plans</p>
+            <span class="text-texas-navy font-semibold group-hover:text-texas-navy transition-colors">Compare Dallas Plans →</span>
+          </a>
+
+          <a href="/texas/houston" class="bg-white rounded-lg shadow-sm border-2 border-green-200 p-6 hover:shadow-md transition-all group hover:border-green-300">
+            <div class="flex items-center mb-4">
+              <CheckCircle className="w-6 h-6 text-green-600 mr-2" />
+              <h3 class="text-xl font-bold text-gray-900">Houston Area</h3>
+            </div>
+            <p class="text-gray-600 mb-4">Extensive provider options with green energy plans and flexible contract terms</p>
+            <span class="text-texas-navy font-semibold group-hover:text-texas-navy transition-colors">Compare Houston Plans →</span>
+          </a>
+
+          <a href="/electricity-plans" class="bg-white rounded-lg shadow-sm border-2 border-green-200 p-6 hover:shadow-md transition-all group hover:border-green-300">
+            <div class="flex items-center mb-4">
+              <CheckCircle className="w-6 h-6 text-green-600 mr-2" />
+              <h3 class="text-xl font-bold text-gray-900">All Deregulated Areas</h3>
+            </div>
+            <p class="text-gray-600 mb-4">Explore electricity choice across all of Texas's deregulated markets</p>
+            <span class="text-texas-navy font-semibold group-hover:text-texas-navy transition-colors">Browse All Areas →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Educational Content -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Understanding Texas's Electricity Markets
+          </h2>
+        </div>
+
+        <div class="prose prose-lg prose-gray mx-auto max-w-4xl">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Deregulated vs. Non-Deregulated Areas</h3>
+          <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+            Most of Texas operates under a <strong class="text-texas-navy">deregulated electricity market</strong> where customers can choose their retail electricity provider and shop for competitive rates and plans. However, certain areas like San Antonio, Austin, and some smaller municipalities are <strong class="text-texas-red">not deregulated</strong> and are served by municipal utilities or electric cooperatives.
+          </p>
+
+          <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-8">Municipal Utilities: What This Means</h3>
+          <ul class="space-y-3 mb-6">
+            <li class="flex items-start text-lg text-gray-700">
+              <span class="w-2 h-2 bg-texas-red rounded-full mt-3 mr-3 flex-shrink-0"></span>
+              <span><strong class="text-texas-navy">No provider choice:</strong> You must use the local municipal utility</span>
+            </li>
+            <li class="flex items-start text-lg text-gray-700">
+              <span class="w-2 h-2 bg-texas-red rounded-full mt-3 mr-3 flex-shrink-0"></span>
+              <span><strong class="text-texas-navy">Regulated rates:</strong> Rates are set by the utility board, not market competition</span>
+            </li>
+            <li class="flex items-start text-lg text-gray-700">
+              <span class="w-2 h-2 bg-texas-red rounded-full mt-3 mr-3 flex-shrink-0"></span>
+              <span><strong class="text-texas-navy">Local accountability:</strong> Utility is owned and operated by your local government</span>
+            </li>
+            <li class="flex items-start text-lg text-gray-700">
+              <span class="w-2 h-2 bg-texas-red rounded-full mt-3 mr-3 flex-shrink-0"></span>
+              <span><strong class="text-texas-navy">Stable service:</strong> Often provides predictable rates and community-focused programs</span>
+            </li>
+          </ul>
+
+          <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-8">If You Want Electricity Choice</h3>
+          <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+            To have the ability to choose your electricity provider and shop for competitive rates, you would need to live in one of Texas's deregulated markets, which include:
+          </p>
+          <ul class="space-y-3 mb-6">
+            <li class="flex items-start text-lg text-gray-700">
+              <span class="w-2 h-2 bg-texas-gold rounded-full mt-3 mr-3 flex-shrink-0"></span>
+              <span><strong class="text-texas-navy">Dallas-Fort Worth area</strong> (served by Oncor)</span>
+            </li>
+            <li class="flex items-start text-lg text-gray-700">
+              <span class="w-2 h-2 bg-texas-gold rounded-full mt-3 mr-3 flex-shrink-0"></span>
+              <span><strong class="text-texas-navy">Houston area</strong> (served by CenterPoint Energy)</span>
+            </li>
+            <li class="flex items-start text-lg text-gray-700">
+              <span class="w-2 h-2 bg-texas-gold rounded-full mt-3 mr-3 flex-shrink-0"></span>
+              <span><strong class="text-texas-navy">Most areas served by AEP Texas</strong></span>
+            </li>
+            <li class="flex items-start text-lg text-gray-700">
+              <span class="w-2 h-2 bg-texas-gold rounded-full mt-3 mr-3 flex-shrink-0"></span>
+              <span><strong class="text-texas-navy">Parts of South Texas</strong> served by Texas-New Mexico Power</span>
+            </li>
+          </ul>
+
+          <p class="text-lg text-gray-700 leading-relaxed">
+            Use our comparison tools to explore options in deregulated areas if you're considering a move or researching electricity markets in Texas.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

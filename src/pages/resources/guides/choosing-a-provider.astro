@@ -1,5 +1,9 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import EnhancedSection from '../../../components/ui/EnhancedSection.astro';
+import EnhancedCard from '../../../components/ui/EnhancedCard.astro';
+import EnhancedList from '../../../components/ui/EnhancedList.astro';
+import AccentBox from '../../../components/ui/AccentBox.astro';
 
 const title = "How to Pick a Provider That Won't Screw You | Texas Guide 2024";
 const description = "Real talk on choosing electricity providers in Texas. Learn what they don't want you to know about rates, contracts, and scams. Updated for 2024.";
@@ -7,152 +11,229 @@ const description = "Real talk on choosing electricity providers in Texas. Learn
 
 <Layout title={title} description={description}>
   <div class="min-h-screen bg-gradient-to-b from-texas-cream to-gray-50">
-    <!-- Hero Section -->
-    <div class="bg-texas-navy text-white">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h1 class="text-4xl md:text-5xl font-bold mb-6">
-          How to Pick a Provider That Won't Screw You
-        </h1>
+    <EnhancedSection 
+      background="gradient-navy" 
+      padding="xl" 
+      maxWidth="4xl"
+      title="How to Pick a Provider That Won't Screw You"
+      titleSize="xl"
+      titleColor="red"
+    >
+      <div class="text-white">
         <p class="text-xl text-blue-100 mb-8 leading-relaxed">
           Look, the Texas electricity market is designed to confuse you. Electric companies hope you'll get overwhelmed and just pick whatever sounds good. I'm here to help you see through their tricks and find a plan that actually saves you money.
         </p>
         <div class="flex flex-wrap gap-4">
-          <span class="bg-texas-red px-4 py-2 rounded-full text-sm font-medium">12 min read</span>
-          <span class="bg-texas-gold px-4 py-2 rounded-full text-sm font-medium text-texas-navy">Updated Jan 2024</span>
+          <span class="bg-texas-red px-6 py-3 rounded-full text-sm font-semibold">12 min read</span>
+          <span class="bg-texas-gold px-6 py-3 rounded-full text-sm font-semibold text-texas-navy">Updated Jan 2024</span>
         </div>
       </div>
-    </div>
+    </EnhancedSection>
 
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <EnhancedSection background="white" padding="lg" maxWidth="4xl">
       <!-- Quick Stats -->
-      <div class="grid md:grid-cols-3 gap-6 mb-12">
-        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
-          <div class="text-3xl font-bold text-texas-red mb-2">100+</div>
-          <div class="text-gray-600">Ways to get confused (they call them "providers")</div>
-        </div>
-        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
-          <div class="text-3xl font-bold text-texas-red mb-2">85%</div>
-          <div class="text-gray-600">Of Texans who could save money but don't know how</div>
-        </div>
-        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
-          <div class="text-3xl font-bold text-texas-red mb-2">$300+</div>
-          <div class="text-gray-600">What you're probably overpaying every year</div>
-        </div>
+      <div class="grid md:grid-cols-3 gap-8 mb-16">
+        <EnhancedCard padding="lg" variant="elevated">
+          <div class="text-center">
+            <div class="text-4xl md:text-5xl font-bold text-texas-red mb-4">100+</div>
+            <p class="text-lg text-gray-700 leading-relaxed">Ways to get confused <span class="text-texas-navy font-semibold">(they call them "providers")</span></p>
+          </div>
+        </EnhancedCard>
+        
+        <EnhancedCard padding="lg" variant="elevated">
+          <div class="text-center">
+            <div class="text-4xl md:text-5xl font-bold text-texas-red mb-4">85%</div>
+            <p class="text-lg text-gray-700 leading-relaxed">Of Texans who <span class="text-texas-gold font-semibold">could save money</span> but don't know how</p>
+          </div>
+        </EnhancedCard>
+        
+        <EnhancedCard padding="lg" variant="elevated">
+          <div class="text-center">
+            <div class="text-4xl md:text-5xl font-bold text-texas-red mb-4">$300+</div>
+            <p class="text-lg text-gray-700 leading-relaxed">What you're probably <span class="text-texas-red font-semibold">overpaying every year</span></p>
+          </div>
+        </EnhancedCard>
       </div>
 
       <!-- Table of Contents -->
-      <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 mb-12">
-        <h2 class="text-2xl font-bold text-texas-navy mb-6">Table of Contents</h2>
-        <div class="grid md:grid-cols-2 gap-4">
-          <ul class="space-y-2">
-            <li><a href="#understanding-deregulation" class="text-texas-navy hover:text-texas-red transition-colors">1. Why This System is So Confusing</a></li>
-            <li><a href="#plan-types" class="text-texas-navy hover:text-texas-red transition-colors">2. The Main Types of Traps (I Mean Plans)</a></li>
-            <li><a href="#key-factors" class="text-texas-navy hover:text-texas-red transition-colors">3. What Actually Matters</a></li>
-            <li><a href="#comparing-plans" class="text-texas-navy hover:text-texas-red transition-colors">4. How to See Through the Nonsense</a></li>
-          </ul>
-          <ul class="space-y-2">
-            <li><a href="#contract-terms" class="text-texas-navy hover:text-texas-red transition-colors">5. The Fine Print They Hope You Won't Read</a></li>
-            <li><a href="#red-flags" class="text-texas-navy hover:text-texas-red transition-colors">6. How to Spot the Vultures</a></li>
-            <li><a href="#switching-process" class="text-texas-navy hover:text-texas-red transition-colors">7. Actually Making the Switch</a></li>
-            <li><a href="#next-steps" class="text-texas-navy hover:text-texas-red transition-colors">8. What to Do Right Now</a></li>
-          </ul>
+      <EnhancedCard 
+        title="Table of Contents" 
+        variant="elevated" 
+        padding="lg"
+      >
+        <div class="grid md:grid-cols-2 gap-6">
+          <EnhancedList 
+            items={[
+              '<a href="#understanding-deregulation" class="text-texas-navy hover:text-texas-red transition-colors font-semibold">1. Why This System is So Confusing</a>',
+              '<a href="#plan-types" class="text-texas-navy hover:text-texas-red transition-colors font-semibold">2. The Main Types of Traps (I Mean Plans)</a>',
+              '<a href="#key-factors" class="text-texas-navy hover:text-texas-red transition-colors font-semibold">3. What Actually Matters</a>'
+            ]}
+            bulletColor="gold"
+            spacing="md"
+          />
+          <EnhancedList 
+            items={[
+              '<a href="#red-flags" class="text-texas-navy hover:text-texas-red transition-colors font-semibold">4. Red Flags That Should Make You Run</a>',
+              '<a href="#comparison-strategy" class="text-texas-navy hover:text-texas-red transition-colors font-semibold">5. Smart Comparison Strategy</a>',
+              '<a href="#final-tips" class="text-texas-navy hover:text-texas-red transition-colors font-semibold">6. Final Pro Tips</a>'
+            ]}
+            bulletColor="gold"
+            spacing="md"
+          />
         </div>
-      </div>
+      </EnhancedCard>
 
       <!-- Main Content -->
-      <div class="space-y-12">
+      <div class="space-y-16">
         <!-- Section 1 -->
-        <section id="understanding-deregulation" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
-          <h2 class="text-3xl font-bold text-texas-navy mb-6">Why This System is So Confusing</h2>
-          
-          <div class="prose prose-lg max-w-none">
-            <p class="text-gray-700 mb-6">
-              Here's the deal: Back in 2002, Texas said "Let's make electricity competitive!" Sounds great, right? Instead of one company controlling everything, you get to choose. But here's what they don't tell you: the system was designed by the same companies that profit from your confusion.
-            </p>
-            
-            <div class="bg-yellow-50 p-6 rounded-lg mb-6">
-              <h3 class="text-lg font-semibold text-yellow-800 mb-3">💡 Quick lesson: Think of it like this</h3>
-              <p class="text-yellow-800">
-                Imagine if instead of one coffee shop in town, suddenly there were 100 coffee shops, but they all had different ways of pricing coffee. One charges by the cup, another by the hour you sit there, another gives you "free" coffee but charges $50/month membership. That's Texas electricity.
+        <section id="understanding-deregulation">
+          <EnhancedCard 
+            title="Why This System is So Confusing"
+            variant="elevated"
+            padding="lg"
+          >
+            <div class="space-y-8">
+              <p class="text-lg text-gray-700 leading-relaxed">
+                Here's the deal: Back in 2002, Texas said <strong class="text-texas-gold">"Let's make electricity competitive!"</strong> Sounds great, right? Instead of one company controlling everything, you get to choose. But here's what they don't tell you: <strong class="text-texas-red">the system was designed by the same companies that profit from your confusion.</strong>
               </p>
-            </div>
+              
+              <AccentBox accentColor="gold" padding="lg">
+                <h3 class="text-xl font-semibold text-texas-navy mb-3">💡 Quick lesson: Think of it like this</h3>
+                <p class="text-lg text-gray-700 leading-relaxed">
+                  Imagine if instead of one coffee shop in town, suddenly there were <strong class="text-texas-red">100 coffee shops</strong>, but they all had different ways of pricing coffee. One charges by the cup, another by the hour you sit there, another gives you "free" coffee but charges $50/month membership. <strong class="text-texas-navy">That's Texas electricity.</strong>
+                </p>
+              </AccentBox>
 
-            <div class="bg-texas-cream-200 p-6 rounded-lg mb-6">
-              <h3 class="text-xl font-semibold text-texas-navy mb-3">Here's How They Split Things Up</h3>
-              <ul class="space-y-2 text-gray-700">
-                <li><strong>Generation:</strong> Big power plants make the electricity (like farms growing food)</li>
-                <li><strong>Delivery:</strong> Your utility company (Oncor, CenterPoint, etc.) owns the power lines that bring electricity to your house - think of them like the roads. This part NEVER changes no matter who you choose.</li>
-                <li><strong>Sales:</strong> Electric companies (REPs) buy electricity wholesale and sell it to you - like grocery stores buying food from farms and selling it to you. This is where they make their money... and where you need to be careful.</li>
-              </ul>
-            </div>
+              <AccentBox accentColor="navy" padding="lg">
+                <h3 class="text-2xl font-bold text-texas-navy mb-4">Here's How They Split Things Up</h3>
+                <EnhancedList 
+                  items={[
+                    '<strong class="text-texas-gold">Generation:</strong> Big power plants make the electricity (like farms growing food)',
+                    '<strong class="text-texas-navy">Delivery:</strong> Your utility company (Oncor, CenterPoint, etc.) owns the power lines that bring electricity to your house - think of them like the roads. This part <strong class="text-texas-red">NEVER changes</strong> no matter who you choose.',
+                    '<strong class="text-texas-red">Sales:</strong> Electric companies (REPs) buy electricity wholesale and sell it to you - like grocery stores buying food from farms and selling it to you. This is where they make their money... and where you need to be careful.'
+                  ]}
+                  bulletColor="navy"
+                  spacing="lg"
+                  textSize="lg"
+                />
+              </AccentBox>
 
-            <p class="text-gray-700 mb-6">
-              <strong>Here's what they hope you won't notice:</strong> Those "delivery fees" (TDSP charges) on your bill? Same price no matter which company you choose. It's like paying the same road toll whether you drive a Honda or a BMW. The electric companies can't control these fees, but they'll sometimes hide their high rates by talking about the delivery fees instead.
-            </p>
-          </div>
+              <AccentBox accentColor="red" padding="lg">
+                <p class="text-lg text-gray-700 leading-relaxed">
+                  <strong class="text-texas-red">Here's what they hope you won't notice:</strong> Those "delivery fees" (TDSP charges) on your bill? <strong class="text-texas-navy">Same price no matter which company you choose.</strong> It's like paying the same road toll whether you drive a Honda or a BMW. The electric companies can't control these fees, but they'll sometimes hide their high rates by talking about the delivery fees instead.
+                </p>
+              </AccentBox>
+            </div>
+          </EnhancedCard>
         </section>
 
         <!-- Section 2 -->
-        <section id="plan-types" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
-          <h2 class="text-3xl font-bold text-texas-navy mb-6">The Main Types of Traps (I Mean Plans)</h2>
-          
-          <div class="grid md:grid-cols-2 gap-8">
-            <div class="space-y-6">
-              <div class="border border-green-200 rounded-lg p-6">
-                <h3 class="text-xl font-semibold text-green-700 mb-3">Fixed-Rate Plans (The Safe Choice)</h3>
-                <p class="text-gray-700 mb-4">Think of this like a gym membership - you pay the same amount every month for the whole contract. If you sign up for 12¢ per unit of electricity, that's what you'll pay whether electricity gets expensive or cheap.</p>
-                <div class="space-y-2 text-sm">
-                  <div class="flex items-center"><span class="text-green-600 mr-2">✓</span> Predictable monthly bills</div>
-                  <div class="flex items-center"><span class="text-green-600 mr-2">✓</span> Budget-friendly</div>
-                  <div class="flex items-center"><span class="text-green-600 mr-2">✓</span> Protected from market volatility</div>
-                </div>
-                <p class="text-sm text-gray-600 mt-4"><strong>Perfect for:</strong> Anyone who likes knowing what they'll pay (that's most of us)</p>
+        <section id="plan-types">
+          <EnhancedCard 
+            title="The Main Types of Traps (I Mean Plans)"
+            variant="elevated"
+            padding="lg"
+          >
+            <div class="grid md:grid-cols-2 gap-8">
+              <div class="space-y-8">
+                <EnhancedCard variant="outlined" padding="md" accentColor="green">
+                  <h3 class="text-2xl font-bold text-green-700 mb-4">Fixed-Rate Plans (The Safe Choice)</h3>
+                  <p class="text-lg text-gray-700 mb-6 leading-relaxed">Think of this like a gym membership - you pay the same amount every month for the whole contract. If you sign up for <strong class="text-texas-navy">12¢ per unit of electricity</strong>, that's what you'll pay whether electricity gets expensive or cheap.</p>
+                  
+                  <EnhancedList 
+                    items={[
+                      '<span class="text-green-600 font-semibold">✓ Predictable monthly bills</span>',
+                      '<span class="text-green-600 font-semibold">✓ Budget-friendly</span>',
+                      '<span class="text-green-600 font-semibold">✓ Protected from market volatility</span>'
+                    ]}
+                    bulletColor="green"
+                    spacing="sm"
+                  />
+                  
+                  <AccentBox accentColor="green" padding="sm">
+                    <p class="text-lg font-semibold text-gray-700">
+                      <strong class="text-green-600">Perfect for:</strong> Anyone who likes knowing what they'll pay <span class="text-texas-navy">(that's most of us)</span>
+                    </p>
+                  </AccentBox>
+                </EnhancedCard>
+
+                <EnhancedCard variant="outlined" padding="md" accentColor="red">
+                  <h3 class="text-2xl font-bold text-orange-700 mb-4">Variable-Rate Plans (The Wild Card)</h3>
+                  <p class="text-lg text-gray-700 mb-6 leading-relaxed">These are like agreeing to pay <strong class="text-texas-red">"whatever gas costs"</strong> without knowing if gas prices will be $2 or $6 per gallon. They can change your rate whenever they want, and guess which direction it usually goes?</p>
+                  
+                  <EnhancedList 
+                    items={[
+                      '<span class="text-texas-red font-semibold">✗ Unpredictable bills</span>',
+                      '<span class="text-green-600 font-semibold">✓ No early termination fees</span>',
+                      '<span class="text-texas-red font-semibold">✗ Rates often increase over time</span>'
+                    ]}
+                    bulletColor="red"
+                    spacing="sm"
+                  />
+                  
+                  <AccentBox accentColor="red" padding="sm">
+                    <p class="text-lg font-semibold text-gray-700">
+                      <strong class="text-texas-red">Only good for:</strong> People who plan to move in 3 months or <span class="text-texas-navy">like gambling with their electric bill</span>
+                    </p>
+                  </AccentBox>
+                </EnhancedCard>
               </div>
 
-              <div class="border border-orange-200 rounded-lg p-6">
-                <h3 class="text-xl font-semibold text-orange-700 mb-3">Variable-Rate Plans (The Wild Card)</h3>
-                <p class="text-gray-700 mb-4">These are like agreeing to pay "whatever gas costs" without knowing if gas prices will be $2 or $6 per gallon. They can change your rate whenever they want, and guess which direction it usually goes?</p>
-                <div class="space-y-2 text-sm">
-                  <div class="flex items-center"><span class="text-texas-red mr-2">✗</span> Unpredictable bills</div>
-                  <div class="flex items-center"><span class="text-green-600 mr-2">✓</span> No early termination fees</div>
-                  <div class="flex items-center"><span class="text-texas-red mr-2">✗</span> Rates often increase over time</div>
-                </div>
-                <p class="text-sm text-gray-600 mt-4"><strong>Only good for:</strong> People who plan to move in 3 months or like gambling with their electric bill</p>
+              <div class="space-y-8">
+                <EnhancedCard variant="outlined" padding="md" accentColor="gold">
+                  <h3 class="text-2xl font-bold text-purple-700 mb-4">Indexed Plans (The "Trust Me" Option)</h3>
+                  <p class="text-lg text-gray-700 mb-6 leading-relaxed">These follow natural gas prices plus the company's profit. So when natural gas goes up, your bill goes up. When it goes down, your bill goes down. <strong class="text-texas-navy">Sounds fair, but...</strong></p>
+                  
+                  <EnhancedList 
+                    items={[
+                      '<span class="text-green-600 font-semibold">✓ At least they\'re honest about it</span>',
+                      '<span class="text-texas-red font-semibold">✗ You need to watch gas prices like a trader</span>',
+                      '<span class="text-orange-600 font-semibold">~ Your bill changes every month</span>'
+                    ]}
+                    bulletColor="gold"
+                    spacing="sm"
+                  />
+                  
+                  <AccentBox accentColor="gold" padding="sm">
+                    <p class="text-lg font-semibold text-gray-700">
+                      <strong class="text-texas-gold">Best for:</strong> People who actually read the business section and <span class="text-texas-navy">enjoy uncertainty</span>
+                    </p>
+                  </AccentBox>
+                </EnhancedCard>
+
+                <EnhancedCard variant="outlined" padding="md" accentColor="navy">
+                  <h3 class="text-2xl font-bold text-texas-navy mb-4">Time-of-Use Plans (The "Night Owl Special")</h3>
+                  <p class="text-lg text-gray-700 mb-6 leading-relaxed">Electricity costs more during the day when everyone's using it, cheaper at night. Like <strong class="text-texas-gold">happy hour for electricity</strong>, except the expensive times are when you actually need power.</p>
+                  
+                  <EnhancedList 
+                    items={[
+                      '<span class="text-green-600 font-semibold">✓ Great if you do laundry at midnight</span>',
+                      '<span class="text-texas-red font-semibold">✗ Expensive when you\'re actually awake</span>',
+                      '<span class="text-orange-600 font-semibold">~ More complicated than your taxes</span>'
+                    ]}
+                    bulletColor="navy"
+                    spacing="sm"
+                  />
+                  
+                  <AccentBox accentColor="navy" padding="sm">
+                    <p class="text-lg font-semibold text-gray-700">
+                      <strong class="text-texas-navy">Best for:</strong> Night shift workers or people with <span class="text-texas-gold">very flexible schedules</span>
+                    </p>
+                  </AccentBox>
+                </EnhancedCard>
               </div>
             </div>
 
-            <div class="space-y-6">
-              <div class="border border-purple-200 rounded-lg p-6">
-                <h3 class="text-xl font-semibold text-purple-700 mb-3">Indexed Plans (The "Trust Me" Option)</h3>
-                <p class="text-gray-700 mb-4">These follow natural gas prices plus the company's profit. So when natural gas goes up, your bill goes up. When it goes down, your bill goes down. Sounds fair, but...</p>
-                <div class="space-y-2 text-sm">
-                  <div class="flex items-center"><span class="text-green-600 mr-2">✓</span> At least they're honest about it</div>
-                  <div class="flex items-center"><span class="text-texas-red mr-2">✗</span> You need to watch gas prices like a trader</div>
-                  <div class="flex items-center"><span class="text-orange-600 mr-2">~</span> Your bill changes every month</div>
-                </div>
-                <p class="text-sm text-gray-600 mt-4"><strong>Best for:</strong> People who actually read the business section and enjoy uncertainty</p>
-              </div>
-
-              <div class="border border-blue-200 rounded-lg p-6">
-                <h3 class="text-xl font-semibold text-texas-navy mb-3">Time-of-Use Plans (The "Night Owl Special")</h3>
-                <p class="text-gray-700 mb-4">Electricity costs more during the day when everyone's using it, cheaper at night. Like happy hour for electricity, except the expensive times are when you actually need power.</p>
-                <div class="space-y-2 text-sm">
-                  <div class="flex items-center"><span class="text-green-600 mr-2">✓</span> Great if you do laundry at midnight</div>
-                  <div class="flex items-center"><span class="text-texas-red mr-2">✗</span> Expensive when you're actually awake</div>
-                  <div class="flex items-center"><span class="text-orange-600 mr-2">~</span> More complicated than your taxes</div>
-                </div>
-                <p class="text-sm text-gray-600 mt-4"><strong>Best for:</strong> Night shift workers or people with very flexible schedules</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-8 bg-yellow-50 p-6 rounded-lg">
-            <h3 class="text-lg font-semibold text-yellow-800 mb-3">💡 Real talk from someone who's seen it all</h3>
-            <p class="text-yellow-800">
-              <strong>Unless you have a really specific situation, go with a fixed-rate plan for 12-18 months.</strong> I've watched thousands of people get burned by variable rates that started low and ended up costing $50+ extra per month. Don't be clever - be boring and save money.
-            </p>
-          </div>
+            <AccentBox accentColor="gold" padding="lg">
+              <h3 class="text-2xl font-semibold text-texas-navy mb-4">💡 Real talk from someone who's seen it all</h3>
+              <p class="text-lg text-gray-700 leading-relaxed">
+                <strong class="text-texas-red">Unless you have a really specific situation, go with a fixed-rate plan for 12-18 months.</strong> I've watched thousands of people get burned by variable rates that started low and ended up costing <strong class="text-texas-navy">$50+ extra per month.</strong> Don't be clever - <strong class="text-texas-gold">be boring and save money.</strong>
+              </p>
+            </AccentBox>
+          </EnhancedCard>
         </section>
+      </div>
+    </EnhancedSection>
 
         <!-- Section 3 -->
         <section id="key-factors" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">

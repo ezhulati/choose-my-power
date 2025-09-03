@@ -1,23 +1,29 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import EnhancedSection from '../../../components/ui/EnhancedSection.astro';
+import EnhancedCard from '../../../components/ui/EnhancedCard.astro';
+import EnhancedList from '../../../components/ui/EnhancedList.astro';
+import AccentBox from '../../../components/ui/AccentBox.astro';
 
 const title = "What the Heck is a kWh and Why Should You Care? | Texas Bill Guide 2024";
 const description = "Decode your electric bill like a pro and spot the hidden fees. Real talk on what you're actually paying for and how to catch billing tricks.";
 ---
 
 <Layout title={title} description={description}>
-  <div class="min-h-screen bg-gradient-to-b from-texas-cream to-gray-50">
-    <!-- Hero Section -->
-    <div class="bg-texas-navy text-white">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+  <!-- Enhanced Hero Section -->
+  <section class="bg-gradient-to-br from-texas-navy via-blue-800 to-texas-navy text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+      <div class="text-center">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
           What the Heck is a kWh and Why Should You Care?
         </h1>
-        <p class="text-xl text-blue-100 mb-8 leading-relaxed">
+        <p class="text-xl text-blue-100 mb-8 leading-relaxed max-w-4xl mx-auto">
           Your electric bill is probably more confusing than your taxes, and that's on purpose. Electric companies use complicated terminology and weird fees to hide how much you're really paying. Let me show you how to see through their tricks.
         </p>
-        <div class="flex flex-wrap gap-4">
-          <span class="bg-texas-red px-4 py-2 rounded-full text-sm font-medium">15 min read</span>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <AccentBox accentColor="red" padding="sm">
+            <span class="text-sm font-medium">15 min read</span>
+          </AccentBox>
           <span class="bg-texas-gold px-4 py-2 rounded-full text-sm font-medium text-texas-navy">Bill Detective Guide</span>
         </div>
       </div>

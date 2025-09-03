@@ -253,7 +253,7 @@ export const ZipCodeSearchAPI: React.FC<ZipCodeSearchAPIProps> = ({
           responseTime: planSearch.searchMeta.responseTime,
           confidence: planSearch.tdspInfo.confidence
         }
-      } as ElectricityPlanSearchResult);
+      });
     }
   }, [planSearch.plans, planSearch.searchMeta, planSearch.tdspInfo, state, onResults]);
 

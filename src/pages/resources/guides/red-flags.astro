@@ -1,52 +1,65 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import EnhancedSection from '../../../components/ui/EnhancedSection.astro';
+import EnhancedCard from '../../../components/ui/EnhancedCard.astro';
+import AccentBox from '../../../components/ui/AccentBox.astro';
 
 const title = "How to Spot the Vultures: Texas Electricity Scam Guide 2024";
 const description = "Don't get fooled by door-to-door electricity scammers and fake deals. Real talk on spotting the red flags before they take your money.";
 ---
 
 <Layout title={title} description={description}>
-  <div class="min-h-screen bg-gradient-to-b from-texas-cream to-gray-50">
-    <!-- Hero Section -->
-    <div class="bg-texas-navy text-white">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+  <!-- Enhanced Hero Section -->
+  <section class="bg-gradient-to-br from-texas-navy via-blue-800 to-texas-navy text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+      <div class="text-center">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
           How to Spot the Vultures
         </h1>
-        <p class="text-xl text-blue-100 mb-8 leading-relaxed">
+        <p class="text-xl text-blue-100 mb-8 leading-relaxed max-w-4xl mx-auto">
           Look, Texas electricity scammers are everywhere. They knock on your door, call during dinner, and set up booths at grocery stores. They're good at what they do, but once you know their tricks, they become pretty obvious. Let me show you what to watch out for.
         </p>
-        <div class="flex flex-wrap gap-4">
-          <span class="bg-texas-red px-4 py-2 rounded-full text-sm font-medium">7 min read</span>
-          <span class="bg-texas-gold px-4 py-2 rounded-full text-sm font-medium text-texas-navy">Scammer Alert</span>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <AccentBox accentColor="red" padding="sm">
+            <span class="text-sm font-medium">7 min read</span>
+          </AccentBox>
+          <AccentBox accentColor="gold" padding="sm">
+            <span class="text-sm font-medium text-texas-navy">Scammer Alert</span>
+          </AccentBox>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <!-- Warning Stats -->
-      <div class="bg-red-50 p-8 rounded-xl shadow-lg border-l-4 border-red-500 mb-12">
-        <h2 class="text-2xl font-bold text-red-800 mb-4">🚨 They're Coming for Your Money</h2>
-        <div class="grid md:grid-cols-3 gap-6">
+  <!-- Enhanced Warning Stats -->
+  <EnhancedSection background="cream" padding="lg">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <AccentBox accentColor="red" padding="lg" className="border-l-4 border-red-500">
+        <h2 class="text-3xl font-bold text-red-800 mb-6 text-center">🚨 They're Coming for Your Money</h2>
+        <div class="grid md:grid-cols-3 gap-8">
           <div class="text-center">
-            <div class="text-3xl font-bold text-red-700">20%</div>
-            <div class="text-sm text-texas-red">Of electricity enrollments attempted were fraudulent in 2024</div>
+            <div class="text-4xl font-bold text-red-700 mb-2">20%</div>
+            <div class="text-base font-medium text-texas-red">Of electricity enrollments attempted were fraudulent in 2024</div>
           </div>
           <div class="text-center">
-            <div class="text-3xl font-bold text-red-700">$500M</div>
-            <div class="text-sm text-texas-red">Lost to electricity scams in Texas annually</div>
+            <div class="text-4xl font-bold text-red-700 mb-2">$500M</div>
+            <div class="text-base font-medium text-texas-red">Lost to electricity scams in Texas annually</div>
           </div>
           <div class="text-center">
-            <div class="text-3xl font-bold text-red-700">60%</div>
-            <div class="text-sm text-texas-red">Of scams involve door-to-door sales</div>
+            <div class="text-4xl font-bold text-red-700 mb-2">60%</div>
+            <div class="text-base font-medium text-texas-red">Of scams involve door-to-door sales</div>
           </div>
         </div>
-      </div>
+      </AccentBox>
+    </div>
+  </EnhancedSection>
 
-      <!-- Major Red Flags -->
+  <!-- Enhanced Major Red Flags -->
+  <EnhancedSection background="white" padding="xl">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="space-y-12">
-        <section class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
-          <h2 class="text-3xl font-bold text-red-700 mb-6">🚨 Major Red Flags: Run Away Immediately</h2>
+        <EnhancedCard variant="elevated" padding="xl">
+          <h2 class="text-3xl md:text-4xl font-bold text-red-700 mb-8 text-center">🚨 Major Red Flags: Run Away Immediately</h2>
           
           <div class="grid md:grid-cols-2 gap-8">
             <div class="space-y-6">

@@ -1,91 +1,105 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import EnhancedSection from '../../../components/ui/EnhancedSection.astro';
+import EnhancedCard from '../../../components/ui/EnhancedCard.astro';
+import EnhancedList from '../../../components/ui/EnhancedList.astro';
+import AccentBox from '../../../components/ui/AccentBox.astro';
 
 const title = "Green Energy: The Real Story vs Marketing Nonsense | Texas Guide 2024";
 const description = "Want actual green energy in Texas? Learn what's really green vs marketing greenwashing. Don't pay extra for fake environmental benefits.";
 ---
 
 <Layout title={title} description={description}>
-  <div class="min-h-screen bg-gradient-to-b from-texas-cream to-gray-50">
-    <!-- Hero Section -->
-    <div class="bg-texas-navy text-white">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+  <!-- Enhanced Hero Section -->
+  <section class="bg-gradient-to-br from-texas-navy via-blue-800 to-texas-navy text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+      <div class="text-center">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
           Green Energy: The Real Story
         </h1>
-        <p class="text-xl text-blue-100 mb-8 leading-relaxed">
+        <p class="text-xl text-blue-100 mb-8 leading-relaxed max-w-4xl mx-auto">
           Here's the truth: Texas actually has tons of wind and solar power, so "green" energy isn't just feel-good marketing here. But companies love to slap "green" on plans and charge you extra for basically nothing. Let me show you what's actually green and what's just expensive marketing.
         </p>
-        <div class="flex flex-wrap gap-4">
-          <span class="bg-texas-red px-4 py-2 rounded-full text-sm font-medium">10 min read</span>
-          <span class="bg-texas-gold px-4 py-2 rounded-full text-sm font-medium text-texas-navy">Eco-Friendly</span>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <AccentBox accentColor="red" padding="sm">
+            <span class="text-sm font-medium">10 min read</span>
+          </AccentBox>
+          <AccentBox accentColor="gold" padding="sm">
+            <span class="text-sm font-medium text-texas-navy">Eco-Friendly</span>
+          </AccentBox>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <!-- Green Stats -->
-      <div class="grid md:grid-cols-3 gap-6 mb-12">
-        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
-          <div class="text-3xl font-bold text-green-600 mb-2">#1</div>
-          <div class="text-gray-600">State in renewable energy production</div>
-        </div>
-        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
-          <div class="text-3xl font-bold text-green-600 mb-2">37%</div>
-          <div class="text-gray-600">Of Texas electricity from renewables</div>
-        </div>
-        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
-          <div class="text-3xl font-bold text-green-600 mb-2">100%</div>
-          <div class="text-gray-600">Green plans available from 80+ providers</div>
-        </div>
+  <!-- Enhanced Green Stats Section -->
+  <EnhancedSection background="cream" padding="lg">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-8">
+        <EnhancedCard variant="elevated" padding="lg" className="text-center">
+          <div class="text-4xl font-bold text-green-600 mb-3">#1</div>
+          <div class="text-lg font-medium text-gray-700">State in renewable energy production</div>
+        </EnhancedCard>
+        <EnhancedCard variant="elevated" padding="lg" className="text-center">
+          <div class="text-4xl font-bold text-green-600 mb-3">37%</div>
+          <div class="text-lg font-medium text-gray-700">Of Texas electricity from renewables</div>
+        </EnhancedCard>
+        <EnhancedCard variant="elevated" padding="lg" className="text-center">
+          <div class="text-4xl font-bold text-green-600 mb-3">100%</div>
+          <div class="text-lg font-medium text-gray-700">Green plans available from 80+ providers</div>
+        </EnhancedCard>
       </div>
+    </div>
+  </EnhancedSection>
 
-      <!-- Main Content -->
+  <!-- Enhanced Main Content -->
+  <EnhancedSection background="white" padding="xl">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="space-y-12">
-        <section class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
-          <h2 class="text-3xl font-bold text-texas-navy mb-6">Understanding Green Energy in Texas</h2>
+        <EnhancedCard variant="elevated" padding="xl">
+          <h2 class="text-3xl md:text-4xl font-bold text-texas-navy mb-8 text-center">Understanding Green Energy in Texas</h2>
           
           <div class="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 class="text-xl font-semibold text-texas-navy mb-4">Texas Renewable Energy Overview</h3>
-              <p class="text-gray-700 mb-4">
+              <h3 class="text-2xl font-semibold text-texas-navy mb-4">Texas Renewable Energy Overview</h3>
+              <p class="text-lg text-gray-700 mb-6 leading-relaxed">
                 Texas generates more renewable energy than any other state, primarily from wind and solar. The state's deregulated electricity market allows you to choose providers that source energy from renewable sources.
               </p>
               
-              <div class="bg-green-50 p-4 rounded-lg mb-4">
-                <h4 class="font-semibold text-green-700 mb-2">Texas Renewable Energy Mix (2024)</h4>
-                <div class="space-y-2 text-sm text-green-700">
-                  <div class="flex justify-between"><span>Wind Energy:</span><span>28% of total generation</span></div>
-                  <div class="flex justify-between"><span>Solar Energy:</span><span>6% of total generation</span></div>
-                  <div class="flex justify-between"><span>Hydroelectric:</span><span>1% of total generation</span></div>
-                  <div class="flex justify-between"><span>Biomass:</span><span>2% of total generation</span></div>
+              <AccentBox accentColor="green" padding="md">
+                <h4 class="font-semibold text-green-700 mb-4 text-lg">Texas Renewable Energy Mix (2024)</h4>
+                <div class="space-y-3 text-base text-green-700">
+                  <div class="flex justify-between font-medium"><span>Wind Energy:</span><span>28% of total generation</span></div>
+                  <div class="flex justify-between font-medium"><span>Solar Energy:</span><span>6% of total generation</span></div>
+                  <div class="flex justify-between font-medium"><span>Hydroelectric:</span><span>1% of total generation</span></div>
+                  <div class="flex justify-between font-medium"><span>Biomass:</span><span>2% of total generation</span></div>
                 </div>
-              </div>
+              </AccentBox>
             </div>
 
             <div>
-              <h3 class="text-xl font-semibold text-texas-navy mb-4">How Green Plans Work</h3>
+              <h3 class="text-2xl font-semibold text-texas-navy mb-4">How Green Plans Work</h3>
               <div class="space-y-4">
-                <div class="border border-green-200 rounded-lg p-4">
-                  <h4 class="font-semibold text-green-700 mb-2">Renewable Energy Certificates (RECs)</h4>
-                  <p class="text-sm text-gray-700">
+                <EnhancedCard variant="outlined" padding="md" className="border-green-200">
+                  <h4 class="font-semibold text-green-700 mb-3 text-lg">Renewable Energy Certificates (RECs)</h4>
+                  <p class="text-base text-gray-700 leading-relaxed">
                     Most green plans use RECs to offset your electricity usage. For every kWh you use, your provider retires a REC from renewable energy generation.
                   </p>
-                </div>
+                </EnhancedCard>
                 
-                <div class="border border-green-200 rounded-lg p-4">
-                  <h4 class="font-semibold text-green-700 mb-2">Direct Renewable Sourcing</h4>
-                  <p class="text-sm text-gray-700">
+                <EnhancedCard variant="outlined" padding="md" className="border-green-200">
+                  <h4 class="font-semibold text-green-700 mb-3 text-lg">Direct Renewable Sourcing</h4>
+                  <p class="text-base text-gray-700 leading-relaxed">
                     Some providers directly purchase electricity from wind and solar farms, ensuring your power comes from renewable sources.
                   </p>
-                </div>
+                </EnhancedCard>
               </div>
             </div>
           </div>
-        </section>
+        </EnhancedCard>
 
-        <section class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
-          <h2 class="text-3xl font-bold text-texas-navy mb-6">Types of Green Energy Plans</h2>
+        <EnhancedCard variant="elevated" padding="xl">
+          <h2 class="text-3xl md:text-4xl font-bold text-texas-navy mb-8 text-center">Types of Green Energy Plans</h2>
           
           <div class="grid md:grid-cols-2 gap-8">
             <div class="space-y-6">

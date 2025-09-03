@@ -17,6 +17,10 @@ import { getHeroImage, extractContextFromPath } from '../../lib/images/hero-imag
 import { tdspMapping, municipalUtilities, formatCityName, validateCitySlug, getTdspFromCity, formatCitySlug } from '../../config/tdsp-mapping';
 import { comparePowerClient } from '../../lib/api/comparepower-client';
 import type { Plan } from '../../types/facets';
+import EnhancedSection from '../../components/ui/EnhancedSection.astro';
+import EnhancedCard from '../../components/ui/EnhancedCard.astro';
+import EnhancedList from '../../components/ui/EnhancedList.astro';
+import AccentBox from '../../components/ui/AccentBox.astro';
 
 export const prerender = false;
 
@@ -268,72 +272,101 @@ const heroImage = getHeroImage({
       </div>
     )}
 
-    <!-- Main Content with Faceted Layout -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div class="lg:grid lg:grid-cols-4 lg:gap-8">
-        <!-- Sidebar with ZIP Lookup and Filter Suggestions -->
-        <div class="lg:col-span-1">
-          <!-- ZIP Lookup Section -->
-          <div class="bg-white rounded-lg shadow p-6 mb-6">
-            <h3 class="text-lg font-medium text-gray-900 mb-4">Search Another Area</h3>
-            <StandardZipInput 
-              size="sm"
-              variant="compact"
-              showTitle={false}
-              showDescription={false}
-              customClass="w-full"
-            />
-          </div>
-          
-          <!-- Filter Suggestions -->
-          <div class="bg-white rounded-lg shadow p-6">
-            <h3 class="text-lg font-medium text-gray-900 mb-4">Refine Your Search</h3>
-            <div class="space-y-4">
-              {suggestedFilterDefinitions.map((item) => (
-                <div key={item.definition.type}>
-                  <h4 class="text-sm font-medium text-gray-700 mb-2">
-                    {item.definition.description}
-                  </h4>
-                  <div class="space-y-2">
-                    {item.definition.urlPatterns.slice(0, item.definition.type === 'providers' ? 12 : 6).map((pattern) => {
-                      const newUrl = `/electricity-plans/${city}/${pattern}/`;
-                      
-                      return (
-                        <a
-                          key={pattern}
-                          href={newUrl}
-                          class="block text-sm px-3 py-2 rounded-md transition-all duration-200 text-gray-600 hover:bg-texas-cream-100 hover:text-texas-navy"
-                        >
-                          {item.definition.displayName(pattern)}
-                        </a>
-                      );
-                    })}
+    <!-- Main Content with Enhanced Faceted Layout -->
+    <EnhancedSection background="gray" padding="lg">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="lg:grid lg:grid-cols-4 lg:gap-8">
+          <!-- Enhanced Sidebar with ZIP Lookup and Filter Suggestions -->
+          <div class="lg:col-span-1">
+            <!-- Enhanced ZIP Lookup Section -->
+            <EnhancedCard variant="elevated" padding="lg" className="mb-6">
+              <h3 class="text-xl font-semibold text-texas-navy mb-4">Search Another Area</h3>
+              <p class="text-sm text-gray-600 mb-4">Find electricity plans for any Texas city or ZIP code.</p>
+              <StandardZipInput 
+                size="sm"
+                variant="compact"
+                showTitle={false}
+                showDescription={false}
+                customClass="w-full"
+              />
+            </EnhancedCard>
+            
+            <!-- Enhanced Filter Suggestions -->
+            <EnhancedCard variant="gradient" padding="lg">
+              <h3 class="text-xl font-semibold text-texas-navy mb-4">Refine Your Search</h3>
+              <p class="text-sm text-gray-600 mb-6">Narrow down plans by your specific needs and preferences.</p>
+              <div class="space-y-6">
+                {suggestedFilterDefinitions.map((item) => (
+                  <div key={item.definition.type}>
+                    <h4 class="text-base font-medium text-texas-navy mb-3">
+                      {item.definition.description}
+                    </h4>
+                    <div class="space-y-2">
+                      {item.definition.urlPatterns.slice(0, item.definition.type === 'providers' ? 12 : 6).map((pattern) => {
+                        const newUrl = `/electricity-plans/${city}/${pattern}/`;
+                        
+                        return (
+                          <a
+                            key={pattern}
+                            href={newUrl}
+                            class="block text-sm px-3 py-2 rounded-lg transition-all duration-200 text-gray-700 hover:bg-texas-cream-200 hover:text-texas-navy font-medium bg-white/50"
+                          >
+                            {item.definition.displayName(pattern)}
+                          </a>
+                        );
+                      })}
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            </EnhancedCard>
           </div>
-        </div>
 
-        <!-- Plans Grid using Faceted Component -->
-        <div class="lg:col-span-3 mt-8 lg:mt-0">
-          <FacetedPlanGrid 
-            plans={plans}
-            city={cityName}
-            appliedFilters={appliedFilters}
-            totalCount={plans.length}
-            loading={false}
-            error={apiError}
-          />
+          <!-- Enhanced Plans Grid using Faceted Component -->
+          <div class="lg:col-span-3 mt-8 lg:mt-0">
+            <EnhancedCard variant="elevated" padding="none">
+              <div class="p-6 border-b border-gray-200">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                  <div>
+                    <h2 class="text-2xl font-bold text-texas-navy mb-2">
+                      Electricity Plans for {cityName.replace(', TX', '')}
+                    </h2>
+                    <p class="text-gray-600">Licensed providers • Real rates • No hidden fees</p>
+                  </div>
+                  {plans.length > 0 && (
+                    <AccentBox accentColor="gold" padding="sm" className="mt-4 sm:mt-0">
+                      <span class="text-sm font-semibold">{plans.length} Plans Available</span>
+                    </AccentBox>
+                  )}
+                </div>
+              </div>
+              <FacetedPlanGrid 
+                plans={plans}
+                city={cityName}
+                appliedFilters={appliedFilters}
+                totalCount={plans.length}
+                loading={false}
+                error={apiError}
+              />
+            </EnhancedCard>
+          </div>
         </div>
       </div>
-    </div>
+    </EnhancedSection>
 
-    <!-- Related Links Section using Faceted Design -->
-    <div class="bg-texas-cream-100 py-12 mt-12">
+    <!-- Enhanced Related Links Section -->
+    <EnhancedSection background="cream" padding="xl">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-xl font-bold text-gray-900 mb-6">Popular Electricity Plan Options in {cityName}</h2>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-texas-navy mb-4">
+            Popular Plan Options in {cityName.replace(', TX', '')}
+          </h2>
+          <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+            Explore specialized electricity plans tailored to your specific needs and preferences.
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {['12-month', '24-month', 'fixed-rate', 'green-energy', 'prepaid', 'no-deposit'].map((filter) => {
             const newUrl = `/electricity-plans/${city}/${filter}/`;
             const definition = filterMapper.getDefinitionByPattern(filter);
@@ -343,16 +376,49 @@ const heroImage = getHeroImage({
               <a
                 key={filter}
                 href={newUrl}
-                class="bg-white p-4 rounded-xl shadow hover:shadow-lg hover:border-texas-navy/30 transition-all duration-300 border border-gray-200 hover:-translate-y-1"
+                class="group bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl border border-gray-200 hover:border-texas-gold transition-all duration-300 hover:-translate-y-2 text-center"
               >
-                <div class="text-sm font-medium text-gray-900">{displayName}</div>
-                <div class="text-xs text-gray-500 mt-1">Plans in {cityName}</div>
+                <div class="w-12 h-12 bg-texas-navy/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-texas-gold/20 transition-colors">
+                  <svg class="w-6 h-6 text-texas-navy group-hover:text-texas-gold transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                  </svg>
+                </div>
+                <div class="text-base font-semibold text-texas-navy group-hover:text-texas-gold transition-colors mb-2">
+                  {displayName}
+                </div>
+                <div class="text-sm text-gray-600">Available in {cityName.replace(', TX', '')}</div>
               </a>
             );
           })}
         </div>
+        
+        <!-- Enhanced CTA Section -->
+        <div class="text-center mt-16">
+          <AccentBox accentColor="navy" padding="lg">
+            <h3 class="text-xl font-bold text-texas-navy mb-3">
+              Need Help Choosing the Right Plan?
+            </h3>
+            <p class="text-gray-700 mb-6 max-w-2xl mx-auto">
+              Texas electricity can be complicated. Get personalized recommendations based on your home size, usage patterns, and budget.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="/resources/guides/choosing-a-provider" class="inline-flex items-center px-6 py-3 bg-texas-red text-white font-semibold rounded-lg hover:bg-texas-red-600 transition-colors">
+                Get Expert Guidance
+                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+              <a href="/compare/plans" class="inline-flex items-center px-6 py-3 bg-texas-navy text-white font-semibold rounded-lg hover:bg-blue-800 transition-colors">
+                Compare All Plans
+                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                </svg>
+              </a>
+            </div>
+          </AccentBox>
+        </div>
       </div>
-    </div>
+    </EnhancedSection>
   </main>
 </Layout>
 
