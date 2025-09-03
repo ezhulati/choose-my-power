@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Fixed
+- **Critical**: Resolved provider duplication in faceted filter sidebar causing TXU Energy, Reliant, and Green Mountain Energy to appear twice
+- **Critical**: Fixed incorrect provider counting in API causing confusion in plan filtering - updated generateFacetCounts() to use plan.provider.name
+- **Critical**: Corrected provider filtering logic to handle mixed data structures (provider objects vs plan name strings)
 - **Critical**: Resolved calculator hydration error preventing rates calculator from loading on /rates/calculator page
 - **Critical**: Fixed module resolution conflicts between multiple City interface exports causing component failures
 - **Critical**: Corrected import statement in src/data/mockData.ts from named import to type import to resolve hydration issues

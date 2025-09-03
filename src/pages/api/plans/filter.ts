@@ -254,9 +254,10 @@ function applyClientSideFilters(plans: Plan[], filters: FilterRequest['filters']
   // Provider filter
   if (filters.providers && filters.providers.length > 0) {
     const providerNames = filters.providers.map(p => p.toLowerCase());
-    filteredPlans = filteredPlans.filter(plan => 
-      providerNames.some(name => plan.provider.toLowerCase().includes(name))
-    );
+    filteredPlans = filteredPlans.filter(plan => {
+      const planProvider = (plan.provider?.name || plan.provider || '').toString().toLowerCase();
+      return providerNames.some(name => planProvider.includes(name));
+    });
   }
 
   // Features filter (bill credit, free nights, etc.)
@@ -308,7 +309,7 @@ function generateFacetCounts(plans: Plan[]): FilterResponse['facetCounts'] {
     counts.greenEnergyLevels[greenLevel] = (counts.greenEnergyLevels[greenLevel] || 0) + 1;
 
     // Count providers
-    const provider = plan.provider || 'unknown';
+    const provider = (plan.provider?.name || plan.provider || 'unknown').toString();
     counts.providers[provider] = (counts.providers[provider] || 0) + 1;
 
     // Count price ranges
