@@ -76,7 +76,7 @@ const description = `No more "${lowestRate}¢" rates that cost 14¢. No more 40-
             />
             
             <!-- Trust Signals - Redesigned -->
-            <div class="flex flex-wrap items-center justify-center gap-4 text-center text-white/50 text-xs max-w-md mx-auto">
+            <div class="flex flex-wrap items-center justify-center gap-4 text-center text-white/80 text-sm max-w-md mx-auto">
               <span>{DEFAULT_COUNTS.planText} from licensed companies</span>
               <span>Free & takes 10 minutes</span>
               <span>Real prices, no surprises</span>
@@ -155,39 +155,37 @@ const description = `No more "${lowestRate}¢" rates that cost 14¢. No more 40-
       <!-- Two-Column Critical Information -->
       <div class="mt-16 mb-12 bg-texas-gold/5 border border-texas-gold/20 rounded-2xl p-10">
         <div class="text-center mb-10">
-          <h2 class="text-2xl md:text-3xl font-bold text-texas-navy mb-4">Critical Money-Saving Intel</h2>
+          <h2 class="text-3xl md:text-4xl font-bold text-texas-navy mb-4">Critical Money-Saving Intel</h2>
           <p class="text-lg text-gray-700 max-w-2xl mx-auto">Two situations where most Texans accidentally overpay. Don't be one of them.</p>
         </div>
         <div class="grid md:grid-cols-2 gap-10">
           <!-- Column 1: Moving Advice -->
           <EnhancedCard variant="elevated" padding="lg">
-            <div class="flex items-start mb-6">
-              <div class="w-12 h-12 bg-texas-gold/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                <MapPin className="w-6 h-6 text-texas-gold" />
+            <div class="text-center mb-6">
+              <div class="w-16 h-16 bg-texas-gold/10 rounded-full flex items-center justify-center mx-auto mb-4 flex-shrink-0">
+                <MapPin className="w-8 h-8 text-texas-gold" />
               </div>
-              <div>
-                <h3 class="text-2xl font-bold text-texas-navy mb-2">Moving? Don't Transfer Your Old Plan</h3>
-                <p class="text-lg text-gray-700 leading-relaxed font-semibold">
-                  Here's why transferring is usually a mistake:
-                </p>
-              </div>
+              <h3 class="text-2xl font-bold text-texas-navy mb-2">Moving? Don't Transfer Your Old Plan</h3>
+              <p class="text-base text-gray-700 leading-relaxed font-medium">
+                Here's why transferring is usually a mistake:
+              </p>
             </div>
-            <ul class="space-y-4 mb-6">
-              <li class="flex items-start text-lg text-gray-700">
+            <ul class="space-y-4 mb-6 text-left">
+              <li class="flex items-start text-base text-gray-700">
                 <span class="w-2 h-2 bg-texas-gold rounded-full mt-3 mr-4 flex-shrink-0"></span>
                 <span>Your current plan's price is based on your <strong class="text-texas-red">OLD home's usage</strong></span>
               </li>
-              <li class="flex items-start text-lg text-gray-700">
+              <li class="flex items-start text-base text-gray-700">
                 <span class="w-2 h-2 bg-texas-gold rounded-full mt-3 mr-4 flex-shrink-0"></span>
                 <span><strong class="text-texas-navy">'Fixed rate' is misleading</strong> - it's actually a formula that changes based on how much electricity you use</span>
               </li>
-              <li class="flex items-start text-lg text-gray-700">
+              <li class="flex items-start text-base text-gray-700">
                 <span class="w-2 h-2 bg-texas-gold rounded-full mt-3 mr-4 flex-shrink-0"></span>
                 <span>A plan that works for a 2-bedroom apartment will cost way more in a 4-bedroom house (or vice versa)</span>
               </li>
             </ul>
-            <div class="bg-texas-gold/10 border border-texas-gold/30 rounded-lg p-4">
-              <p class="text-lg text-texas-navy leading-relaxed font-semibold">
+            <div class="bg-texas-gold/10 border border-texas-gold/30 rounded-lg p-4 text-center">
+              <p class="text-base text-texas-navy leading-relaxed font-semibold">
                 Let's find a plan that matches your <strong class="text-texas-navy">NEW home</strong> instead. Takes the same 10 minutes as transferring, saves you money.
               </p>
             </div>
@@ -195,33 +193,31 @@ const description = `No more "${lowestRate}¢" rates that cost 14¢. No more 40-
           
           <!-- Column 2: Contract Expiration Advice -->
           <EnhancedCard variant="elevated" padding="lg">
-            <div class="flex items-start mb-6">
-              <div class="w-12 h-12 bg-texas-red/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                <Clock className="w-6 h-6 text-texas-red" />
+            <div class="text-center mb-6">
+              <div class="w-16 h-16 bg-texas-red/10 rounded-full flex items-center justify-center mx-auto mb-4 flex-shrink-0">
+                <Clock className="w-8 h-8 text-texas-red" />
               </div>
-              <div>
-                <h3 class="text-2xl font-bold text-texas-navy mb-2">Contract Expiring? Don't Go on Holdover</h3>
-                <p class="text-lg text-gray-700 leading-relaxed font-semibold">
-                  If you're on a holdover rate, shop now:
-                </p>
-              </div>
+              <h3 class="text-2xl font-bold text-texas-navy mb-2">Contract Expiring? Don't Go on Holdover</h3>
+              <p class="text-base text-gray-700 leading-relaxed font-medium">
+                If you're on a holdover rate, shop now:
+              </p>
             </div>
-            <ul class="space-y-4 mb-6">
-              <li class="flex items-start text-lg text-gray-700">
+            <ul class="space-y-4 mb-6 text-left">
+              <li class="flex items-start text-base text-gray-700">
                 <span class="w-2 h-2 bg-texas-red rounded-full mt-3 mr-4 flex-shrink-0"></span>
                 <span><strong class="text-texas-red">Anything will be cheaper</strong> than the holdover rate you're on</span>
               </li>
-              <li class="flex items-start text-lg text-gray-700">
+              <li class="flex items-start text-base text-gray-700">
                 <span class="w-2 h-2 bg-texas-red rounded-full mt-3 mr-4 flex-shrink-0"></span>
                 <span>In Texas, you have <strong class="text-texas-navy">14 days before your contract expires</strong> to switch without penalty</span>
               </li>
-              <li class="flex items-start text-lg text-gray-700">
+              <li class="flex items-start text-base text-gray-700">
                 <span class="w-2 h-2 bg-texas-red rounded-full mt-3 mr-4 flex-shrink-0"></span>
                 <span>Shop for a new plan every time your contract expires - <strong class="text-texas-red">don't renew</strong></span>
               </li>
             </ul>
-            <div class="bg-texas-red/10 border border-texas-red/30 rounded-lg p-4">
-              <p class="text-lg text-texas-navy leading-relaxed font-semibold">
+            <div class="bg-texas-red/10 border border-texas-red/30 rounded-lg p-4 text-center">
+              <p class="text-base text-texas-navy leading-relaxed font-semibold">
                 Best way to save: <strong class="text-texas-navy">shop every contract expiration.</strong> Never let your plan expire and go on holdover.
               </p>
             </div>
@@ -291,26 +287,26 @@ const description = `No more "${lowestRate}¢" rates that cost 14¢. No more 40-
         </EnhancedCard>
 
         <!-- Need $0 Deposit -->
-        <EnhancedCard variant="outlined" padding="lg" accentColor="green">
+        <EnhancedCard variant="outlined" padding="lg" accentColor="gold">
           <div class="flex items-start space-x-4 mb-4">
-            <div class="w-14 h-14 bg-green-500/5 rounded-2xl flex items-center justify-center flex-shrink-0">
-              <Shield className="w-7 h-7 text-green-600" />
+            <div class="w-14 h-14 bg-texas-gold/5 rounded-2xl flex items-center justify-center flex-shrink-0">
+              <Shield className="w-7 h-7 text-texas-gold" />
             </div>
             <div class="flex-1 min-w-0">
               <h3 class="text-xl font-bold text-texas-navy mb-2 leading-tight">Need $0 Deposit?</h3>
-              <div class="w-12 h-0.5 bg-green-500/30 mb-3"></div>
+              <div class="w-12 h-0.5 bg-texas-gold/30 mb-3"></div>
             </div>
           </div>
           <p class="text-gray-700 text-sm leading-relaxed">
-            Why tie up money in deposits when you need it elsewhere? We'll find <strong class="text-green-700">options that work</strong> for you.
+            Why tie up money in deposits when you need it elsewhere? We'll find <strong class="text-texas-gold">options that work</strong> for you.
           </p>
         </EnhancedCard>
       </div>
 
         <!-- Central Call-to-Action -->
         <div class="text-center">
-          <h3 class="text-2xl font-bold text-texas-navy mb-3">Ready to Find Your Best Rate?</h3>
-          <p class="text-lg text-gray-600 mb-6 max-w-2xl mx-auto">
+          <h3 class="text-3xl font-bold text-texas-navy mb-4">Ready to Find Your Best Rate?</h3>
+          <p class="text-base text-gray-700 mb-6 max-w-2xl mx-auto leading-relaxed">
             Whether you're moving, frustrated with high bills, or just want a better deal – it all starts with your ZIP code.
           </p>
           <StandardZipInput 
@@ -462,12 +458,12 @@ const description = `No more "${lowestRate}¢" rates that cost 14¢. No more 40-
       </div>
 
       <!-- Final CTA -->
-      <div class="bg-texas-navy text-white rounded-lg p-8 text-center">
-        <h3 class="text-2xl font-bold mb-4">
+      <div class="bg-texas-navy text-white rounded-xl p-10 text-center">
+        <h3 class="text-3xl font-bold mb-4">
           Your Neighbors Are Saving Money Too
         </h3>
-        <p class="text-blue-100 mb-6 max-w-2xl mx-auto">
-          Join them. Enter your ZIP code above and see what's really available in your area.
+        <p class="text-base text-white/90 mb-6 max-w-2xl mx-auto leading-relaxed">
+          Join them. Enter your ZIP code and see what's really available in your area.
         </p>
         <StandardZipInput 
           variant="compact" 

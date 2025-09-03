@@ -7,7 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- **Design System**: Applied comprehensive Texas brand standards across homepage and guide pages with texas-navy (#002868), texas-red (#dc2626), and texas-gold (#f59e0b) color palette
+- **Typography**: Enhanced text hierarchy with proper font sizes following design system scale - upgraded headings from text-2xl to text-3xl/text-4xl
+- **Spacing**: Standardized component spacing using design system values (mt-16, mt-20, mt-32) for consistent visual rhythm
+- **Alignment**: Fixed mixed text alignment - center-aligned section headers with left-aligned content lists for optimal readability
+
 ### Fixed
+- **Critical**: White text on white background contrast issues in AccentBox components causing invisible content in troubleshooting sections
+- **Critical**: Hero section badge contrast issues where "Free Process" text was barely visible against navy gradient background
+- **UI**: Insufficient visual separation between statistics cards (14+, $0, 3) and TL;DR sections - added proper spacer elements
+- **UI**: Generic green colors replaced with Texas brand gold for consistent $0 deposit card styling
 - **Code Quality**: Reduced ESLint errors from 1830 to 1815 by fixing TypeScript 'any' types, unused imports, and security issues
 - **Security**: Fixed unsafe Object.prototype method access by replacing hasOwnProperty calls with Object.prototype.hasOwnProperty.call()
 - **Types**: Replaced TypeScript 'any' types with proper types (Plan[], unknown, Error) in search-plans.ts and test utilities

@@ -21,12 +21,12 @@ const description = "Your lights stay on, the process is free, and it takes 5 mi
           Your lights stay on, the process is free, and it takes 5 minutes to sign up. Here's exactly what happens when you switch, why it won't hurt, and how to do it right the first time.
         </p>
         <div class="flex flex-wrap gap-4 justify-center">
-          <AccentBox accentColor="red" padding="sm">
-            <span class="text-sm font-medium">8 min read</span>
-          </AccentBox>
-          <AccentBox accentColor="gold" padding="sm">
+          <div class="bg-texas-red px-4 py-2 rounded-lg border border-texas-red">
+            <span class="text-sm font-medium text-white">8 min read</span>
+          </div>
+          <div class="bg-texas-gold px-4 py-2 rounded-lg border border-texas-gold">
             <span class="text-sm font-medium text-texas-navy">Free Process</span>
-          </AccentBox>
+          </div>
         </div>
       </div>
     </div>
@@ -50,13 +50,16 @@ const description = "Your lights stay on, the process is free, and it takes 5 mi
         </EnhancedCard>
       </div>
 
+      <!-- Spacer for visual separation -->
+      <div class="h-16"></div>
+
       <!-- Quick Start Guide -->
-      <AccentBox accentColor="gold" padding="lg" className="mb-12">
-        <h2 class="text-2xl font-bold text-texas-navy mb-6">✅ The TL;DR Version: Just Want to Do This?</h2>
-        <div class="grid md:grid-cols-2 gap-6">
+      <AccentBox accentColor="gold" padding="lg" className="mb-16">
+        <h2 class="text-3xl font-bold text-texas-navy mb-8">✅ The TL;DR Version: Just Want to Do This?</h2>
+        <div class="grid md:grid-cols-2 gap-8">
           <div>
-            <h3 class="font-semibold text-texas-navy mb-3">Grab This Stuff First:</h3>
-            <ul class="text-sm text-texas-navy space-y-2">
+            <h3 class="text-lg font-bold text-texas-navy mb-4">Grab This Stuff First:</h3>
+            <ul class="text-base text-gray-700 space-y-3">
               <li>• Your current electricity bill</li>
               <li>• ESI ID (17-digit number on your bill)</li>
               <li>• Service address and contact info</li>
@@ -65,8 +68,8 @@ const description = "Your lights stay on, the process is free, and it takes 5 mi
             </ul>
           </div>
           <div>
-            <h3 class="font-semibold text-texas-navy mb-3">Here's What Happens:</h3>
-            <ul class="text-sm text-texas-navy space-y-2">
+            <h3 class="text-lg font-bold text-texas-navy mb-4">Here's What Happens:</h3>
+            <ul class="text-base text-gray-700 space-y-3">
               <li>• Pick a new provider & plan</li>
               <li>• Sign up online (takes 5 minutes)</li>
               <li>• Your new company does everything else</li>
@@ -91,7 +94,7 @@ const description = "Your lights stay on, the process is free, and it takes 5 mi
   <!-- Detailed Process -->
   <EnhancedSection background="white" padding="xl">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="space-y-12">
+      <div class="space-y-16">
         <!-- Step 1 -->
         <EnhancedCard variant="elevated" padding="lg">
           <div class="flex items-center mb-6">
@@ -129,27 +132,27 @@ const description = "Your lights stay on, the process is free, and it takes 5 mi
             <div>
               <h3 class="text-xl font-semibold text-texas-navy mb-4">Where to Compare Plans</h3>
               <div class="space-y-4">
-                <div class="border border-gray-200 rounded-lg p-4">
-                  <h4 class="font-semibold text-gray-900 mb-2">PowerToChoose.org</h4>
-                  <p class="text-sm text-gray-600">Official Texas state website with all certified providers and their rates.</p>
+                <div class="border border-texas-navy/20 rounded-lg p-4 bg-white">
+                  <h4 class="font-semibold text-texas-navy mb-2">PowerToChoose.org</h4>
+                  <p class="text-sm text-gray-700">Official Texas state website with all certified providers and their rates.</p>
                 </div>
                 
-                <div class="border border-gray-200 rounded-lg p-4">
-                  <h4 class="font-semibold text-gray-900 mb-2">ChooseMyPower.org</h4>
-                  <p class="text-sm text-gray-600">Advanced filtering and comparison tools with detailed plan analysis.</p>
+                <div class="border border-texas-gold/20 rounded-lg p-4 bg-texas-gold/5">
+                  <h4 class="font-semibold text-texas-navy mb-2">ChooseMyPower.org</h4>
+                  <p class="text-sm text-gray-700">Advanced filtering and comparison tools with detailed plan analysis.</p>
                 </div>
                 
-                <div class="border border-gray-200 rounded-lg p-4">
-                  <h4 class="font-semibold text-gray-900 mb-2">Provider Websites</h4>
-                  <p class="text-sm text-gray-600">Check directly with providers for exclusive online deals and promotional rates.</p>
+                <div class="border border-texas-navy/20 rounded-lg p-4 bg-white">
+                  <h4 class="font-semibold text-texas-navy mb-2">Provider Websites</h4>
+                  <p class="text-sm text-gray-700">Check directly with providers for exclusive online deals and promotional rates.</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <AccentBox accentColor="gold" padding="lg" className="mt-8">
-            <h3 class="text-lg font-semibold text-texas-navy mb-3">⚠️ Important: Read the Electricity Facts Label (EFL)</h3>
-            <p class="text-texas-navy">
+          <AccentBox accentColor="gold" padding="lg" className="mt-12">
+            <h3 class="text-xl font-bold text-texas-navy mb-4">⚠️ Important: Read the Electricity Facts Label (EFL)</h3>
+            <p class="text-base text-gray-700 leading-relaxed">
               Every plan must provide an EFL showing exactly what you'll pay at 500, 1,000, and 2,000 kWh usage levels. Use this to compare total costs, not just the advertised rate.
             </p>
           </AccentBox>
@@ -167,18 +170,18 @@ const description = "Your lights stay on, the process is free, and it takes 5 mi
               <h3 class="text-xl font-semibold text-texas-navy mb-4">Enrollment Methods</h3>
               
               <div class="space-y-4">
-                <AccentBox accentColor="navy" padding="md">
+                <div class="bg-texas-navy/10 border-l-4 border-l-texas-navy rounded-lg p-4">
                   <h4 class="font-semibold text-texas-navy mb-2">Online Enrollment (Recommended)</h4>
-                  <ul class="text-sm text-texas-navy space-y-1">
+                  <ul class="text-sm text-gray-700 space-y-1">
                     <li>• Fastest and most convenient</li>
                     <li>• Get instant confirmation</li>
                     <li>• Often includes online-only promotions</li>
                     <li>• Avoid high-pressure sales tactics</li>
                   </ul>
-                </AccentBox>
+                </div>
                 
-                <div class="border border-gray-200 rounded-lg p-4">
-                  <h4 class="font-semibold text-gray-900 mb-2">Phone Enrollment</h4>
+                <div class="border border-texas-navy/20 rounded-lg p-4 bg-white">
+                  <h4 class="font-semibold text-texas-navy mb-2">Phone Enrollment</h4>
                   <ul class="text-sm text-gray-700 space-y-1">
                     <li>• Speak with a representative</li>
                     <li>• Ask questions about plan details</li>
@@ -203,34 +206,34 @@ const description = "Your lights stay on, the process is free, and it takes 5 mi
               <h3 class="text-xl font-semibold text-texas-navy mb-4">Information You'll Provide</h3>
               
               <div class="space-y-4">
-                <div class="bg-gray-50 p-4 rounded-lg">
-                  <h4 class="font-semibold text-gray-900 mb-3">Required Information:</h4>
+                <div class="bg-texas-cream/20 p-4 rounded-lg border border-texas-cream/40">
+                  <h4 class="font-semibold text-texas-navy mb-3">Required Information:</h4>
                   <ul class="text-sm text-gray-700 space-y-2">
-                    <li>• <strong>ESI ID:</strong> 17 or 22-digit number from your bill</li>
-                    <li>• <strong>Service Address:</strong> Where electricity is delivered</li>
-                    <li>• <strong>Mailing Address:</strong> Where you want bills sent</li>
-                    <li>• <strong>Social Security Number:</strong> For identity verification</li>
-                    <li>• <strong>Contact Information:</strong> Phone and email</li>
-                    <li>• <strong>Move-in Date:</strong> When service should start</li>
+                    <li>• <strong class="text-texas-navy">ESI ID:</strong> 17 or 22-digit number from your bill</li>
+                    <li>• <strong class="text-texas-navy">Service Address:</strong> Where electricity is delivered</li>
+                    <li>• <strong class="text-texas-navy">Mailing Address:</strong> Where you want bills sent</li>
+                    <li>• <strong class="text-texas-navy">Social Security Number:</strong> For identity verification</li>
+                    <li>• <strong class="text-texas-navy">Contact Information:</strong> Phone and email</li>
+                    <li>• <strong class="text-texas-navy">Move-in Date:</strong> When service should start</li>
                   </ul>
                 </div>
                 
-                <div class="bg-gray-50 p-4 rounded-lg">
-                  <h4 class="font-semibold text-gray-900 mb-3">Optional Information:</h4>
+                <div class="bg-texas-cream/20 p-4 rounded-lg border border-texas-cream/40">
+                  <h4 class="font-semibold text-texas-navy mb-3">Optional Information:</h4>
                   <ul class="text-sm text-gray-700 space-y-2">
-                    <li>• <strong>Bank Account:</strong> For automatic payments</li>
-                    <li>• <strong>ID Verification:</strong> Driver's license info</li>
-                    <li>• <strong>Employment Info:</strong> May be required for no-deposit offers</li>
-                    <li>• <strong>Previous Usage:</strong> To estimate your bills</li>
+                    <li>• <strong class="text-texas-navy">Bank Account:</strong> For automatic payments</li>
+                    <li>• <strong class="text-texas-navy">ID Verification:</strong> Driver's license info</li>
+                    <li>• <strong class="text-texas-navy">Employment Info:</strong> May be required for no-deposit offers</li>
+                    <li>• <strong class="text-texas-navy">Previous Usage:</strong> To estimate your bills</li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="mt-8 bg-texas-cream-200 p-6 rounded-lg">
-            <h3 class="text-lg font-semibold text-texas-navy mb-3">💡 Pro Tip: Security Deposits</h3>
-            <p class="text-texas-navy">
+          <div class="mt-12 bg-texas-cream/20 border border-texas-cream/40 p-8 rounded-lg">
+            <h3 class="text-xl font-bold text-texas-navy mb-4">💡 Pro Tip: Security Deposits</h3>
+            <p class="text-base text-gray-700 leading-relaxed">
               Providers may require a security deposit (typically $100-300) based on your credit score. Many offer ways to waive deposits with auto-pay, good credit, or 12+ months payment history with previous providers.
             </p>
           </div>
@@ -251,24 +254,24 @@ const description = "Your lights stay on, the process is free, and it takes 5 mi
                 <div class="flex items-start">
                   <div class="bg-texas-navy text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3 mt-1">1</div>
                   <div>
-                    <h4 class="font-semibold text-gray-900 mb-1">Immediate Confirmation</h4>
-                    <p class="text-sm text-gray-600">You'll receive an enrollment confirmation number and email confirmation immediately.</p>
+                    <h4 class="font-semibold text-texas-navy mb-1">Immediate Confirmation</h4>
+                    <p class="text-sm text-gray-700">You'll receive an enrollment confirmation number and email confirmation immediately.</p>
                   </div>
                 </div>
                 
                 <div class="flex items-start">
                   <div class="bg-texas-navy text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3 mt-1">2</div>
                   <div>
-                    <h4 class="font-semibold text-gray-900 mb-1">Welcome Package (3-5 days)</h4>
-                    <p class="text-sm text-gray-600">Your new provider sends a Welcome Letter with complete contract terms and conditions.</p>
+                    <h4 class="font-semibold text-texas-navy mb-1">Welcome Package (3-5 days)</h4>
+                    <p class="text-sm text-gray-700">Your new provider sends a Welcome Letter with complete contract terms and conditions.</p>
                   </div>
                 </div>
                 
                 <div class="flex items-start">
                   <div class="bg-texas-navy text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3 mt-1">3</div>
                   <div>
-                    <h4 class="font-semibold text-gray-900 mb-1">Switch Processing (14+ days)</h4>
-                    <p class="text-sm text-gray-600">Your new provider notifies your TDSP and processes the switch for your next meter reading date.</p>
+                    <h4 class="font-semibold text-texas-navy mb-1">Switch Processing (14+ days)</h4>
+                    <p class="text-sm text-gray-700">Your new provider notifies your TDSP and processes the switch for your next meter reading date.</p>
                   </div>
                 </div>
               </div>
@@ -298,9 +301,9 @@ const description = "Your lights stay on, the process is free, and it takes 5 mi
           <div class="mt-8">
             <h3 class="text-xl font-semibold text-texas-navy mb-4">Review Your Welcome Letter Carefully</h3>
             <div class="grid md:grid-cols-2 gap-6">
-              <AccentBox accentColor="navy" padding="md">
+              <div class="bg-texas-navy/10 border-l-4 border-l-texas-navy rounded-lg p-4">
                 <h4 class="font-semibold text-texas-navy mb-3">✅ Verify These Details:</h4>
-                <ul class="text-sm text-texas-navy space-y-1">
+                <ul class="text-sm text-gray-700 space-y-1">
                   <li>• Rate per kWh matches what you agreed to</li>
                   <li>• Contract length is correct</li>
                   <li>• Monthly fees match the plan you selected</li>
@@ -308,11 +311,11 @@ const description = "Your lights stay on, the process is free, and it takes 5 mi
                   <li>• Early termination fee amount</li>
                   <li>• Promotional credits are included</li>
                 </ul>
-              </AccentBox>
+              </div>
               
-              <AccentBox accentColor="red" padding="md">
-                <h4 class="font-semibold text-white mb-3">🚨 Red Flags to Watch For:</h4>
-                <ul class="text-sm text-white space-y-1">
+              <div class="bg-texas-red/10 border-l-4 border-l-texas-red rounded-lg p-4">
+                <h4 class="font-semibold text-texas-red mb-3">🚨 Red Flags to Watch For:</h4>
+                <ul class="text-sm text-gray-700 space-y-1">
                   <li>• Different rate than discussed</li>
                   <li>• Additional fees not mentioned</li>
                   <li>• Wrong contract length</li>
@@ -320,7 +323,7 @@ const description = "Your lights stay on, the process is free, and it takes 5 mi
                   <li>• Automatic renewal at higher rates</li>
                   <li>• Usage requirements not disclosed</li>
                 </ul>
-              </AccentBox>
+              </div>
             </div>
           </div>
         </EnhancedCard>
@@ -364,30 +367,30 @@ const description = "Your lights stay on, the process is free, and it takes 5 mi
               <h3 class="text-xl font-semibold text-texas-navy mb-4">Final Steps</h3>
               
               <div class="space-y-4">
-                <div class="border border-gray-200 rounded-lg p-4">
-                  <h4 class="font-semibold text-gray-900 mb-2">1. Pay Your Final Bill</h4>
-                  <p class="text-sm text-gray-600">
+                <div class="border border-texas-navy/20 rounded-lg p-4 bg-white">
+                  <h4 class="font-semibold text-texas-navy mb-2">1. Pay Your Final Bill</h4>
+                  <p class="text-sm text-gray-700">
                     Your old provider will send a final bill for electricity used before the switch date. Pay this promptly to avoid late fees and maintain good credit.
                   </p>
                 </div>
                 
-                <div class="border border-gray-200 rounded-lg p-4">
-                  <h4 class="font-semibold text-gray-900 mb-2">2. Set Up Account with New Provider</h4>
-                  <p class="text-sm text-gray-600">
+                <div class="border border-texas-gold/20 rounded-lg p-4 bg-texas-gold/5">
+                  <h4 class="font-semibold text-texas-navy mb-2">2. Set Up Account with New Provider</h4>
+                  <p class="text-sm text-gray-700">
                     Create your online account, set up auto-pay if desired, and choose paperless billing for potential discounts.
                   </p>
                 </div>
                 
-                <div class="border border-gray-200 rounded-lg p-4">
-                  <h4 class="font-semibold text-gray-900 mb-2">3. Monitor Your First Bills</h4>
-                  <p class="text-sm text-gray-600">
+                <div class="border border-texas-navy/20 rounded-lg p-4 bg-white">
+                  <h4 class="font-semibold text-texas-navy mb-2">3. Monitor Your First Bills</h4>
+                  <p class="text-sm text-gray-700">
                     Check that your new provider applies the correct rates and credits. Contact customer service immediately if you spot any errors.
                   </p>
                 </div>
                 
-                <div class="border border-gray-200 rounded-lg p-4">
-                  <h4 class="font-semibold text-gray-900 mb-2">4. Set Contract Expiration Reminder</h4>
-                  <p class="text-sm text-gray-600">
+                <div class="border border-texas-gold/20 rounded-lg p-4 bg-texas-gold/5">
+                  <h4 class="font-semibold text-texas-navy mb-2">4. Set Contract Expiration Reminder</h4>
+                  <p class="text-sm text-gray-700">
                     Put a calendar reminder 60 days before your contract expires to shop for new rates and avoid auto-renewal at higher prices.
                   </p>
                 </div>
@@ -402,65 +405,65 @@ const description = "Your lights stay on, the process is free, and it takes 5 mi
           
           <div class="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 class="text-xl font-semibold text-red-700 mb-4">🚨 Problems & Solutions</h3>
+              <h3 class="text-xl font-semibold text-texas-red mb-4">🚨 Problems & Solutions</h3>
               
               <div class="space-y-4">
-                <AccentBox accentColor="red" padding="md">
-                  <h4 class="font-semibold text-white mb-2">Switch is Delayed/Rejected</h4>
-                  <p class="text-sm text-white mb-2"><strong>Common Causes:</strong></p>
-                  <ul class="text-xs text-white space-y-1">
+                <div class="bg-texas-red/10 border-l-4 border-l-texas-red rounded-lg p-4">
+                  <h4 class="font-semibold text-texas-red mb-2">Switch is Delayed/Rejected</h4>
+                  <p class="text-sm text-gray-700 mb-2"><strong>Common Causes:</strong></p>
+                  <ul class="text-xs text-gray-600 space-y-1">
                     <li>• Incorrect ESI ID or address</li>
                     <li>• Outstanding balance with current provider</li>
                     <li>• Failed credit check requiring deposit</li>
                   </ul>
-                  <p class="text-sm text-white mt-2"><strong>Solution:</strong> Contact new provider immediately to resolve issues.</p>
-                </AccentBox>
+                  <p class="text-sm text-gray-700 mt-2"><strong>Solution:</strong> Contact new provider immediately to resolve issues.</p>
+                </div>
                 
-                <AccentBox accentColor="red" padding="md">
-                  <h4 class="font-semibold text-white mb-2">Unexpected Cancellation Fees</h4>
-                  <p class="text-sm text-white mb-2"><strong>Cause:</strong> Switching before contract expires</p>
-                  <p class="text-sm text-white"><strong>Solution:</strong> Calculate if savings justify the fee or wait until contract ends.</p>
-                </AccentBox>
+                <div class="bg-texas-red/10 border-l-4 border-l-texas-red rounded-lg p-4">
+                  <h4 class="font-semibold text-texas-red mb-2">Unexpected Cancellation Fees</h4>
+                  <p class="text-sm text-gray-700 mb-2"><strong>Cause:</strong> Switching before contract expires</p>
+                  <p class="text-sm text-gray-700"><strong>Solution:</strong> Calculate if savings justify the fee or wait until contract ends.</p>
+                </div>
                 
-                <AccentBox accentColor="red" padding="md">
-                  <h4 class="font-semibold text-white mb-2">Wrong Rate on First Bill</h4>
-                  <p class="text-sm text-white mb-2"><strong>Cause:</strong> Billing system errors or promo codes not applied</p>
-                  <p class="text-sm text-white"><strong>Solution:</strong> Contact customer service with your Welcome Letter as proof of agreed terms.</p>
-                </AccentBox>
+                <div class="bg-texas-red/10 border-l-4 border-l-texas-red rounded-lg p-4">
+                  <h4 class="font-semibold text-texas-red mb-2">Wrong Rate on First Bill</h4>
+                  <p class="text-sm text-gray-700 mb-2"><strong>Cause:</strong> Billing system errors or promo codes not applied</p>
+                  <p class="text-sm text-gray-700"><strong>Solution:</strong> Contact customer service with your Welcome Letter as proof of agreed terms.</p>
+                </div>
               </div>
             </div>
 
             <div>
-              <h3 class="text-xl font-semibold text-green-700 mb-4">✅ Prevention Tips</h3>
+              <h3 class="text-xl font-semibold text-texas-gold mb-4">✅ Prevention Tips</h3>
               
               <div class="space-y-4">
-                <AccentBox accentColor="navy" padding="md">
+                <div class="bg-texas-navy/10 border-l-4 border-l-texas-navy rounded-lg p-4">
                   <h4 class="font-semibold text-texas-navy mb-2">Double-Check Your Information</h4>
-                  <p class="text-sm text-texas-navy">
+                  <p class="text-sm text-gray-700">
                     Verify your ESI ID, service address, and personal information before submitting enrollment. Small errors can delay your switch by weeks.
                   </p>
-                </AccentBox>
+                </div>
                 
-                <AccentBox accentColor="navy" padding="md">
+                <div class="bg-texas-navy/10 border-l-4 border-l-texas-navy rounded-lg p-4">
                   <h4 class="font-semibold text-texas-navy mb-2">Pay Outstanding Balances</h4>
-                  <p class="text-sm text-texas-navy">
+                  <p class="text-sm text-gray-700">
                     Ensure you're current with your existing provider. Outstanding balances often prevent switches from completing.
                   </p>
-                </AccentBox>
+                </div>
                 
-                <AccentBox accentColor="navy" padding="md">
+                <div class="bg-texas-navy/10 border-l-4 border-l-texas-navy rounded-lg p-4">
                   <h4 class="font-semibold text-texas-navy mb-2">Keep Documentation</h4>
-                  <p class="text-sm text-texas-navy">
+                  <p class="text-sm text-gray-700">
                     Save your enrollment confirmation, Welcome Letter, and all communications. You'll need these to resolve any disputes.
                   </p>
-                </AccentBox>
+                </div>
                 
-                <AccentBox accentColor="navy" padding="md">
+                <div class="bg-texas-navy/10 border-l-4 border-l-texas-navy rounded-lg p-4">
                   <h4 class="font-semibold text-texas-navy mb-2">Set Up Monitoring</h4>
-                  <p class="text-sm text-texas-navy">
+                  <p class="text-sm text-gray-700">
                     Check your first 2-3 bills carefully to ensure rates and credits are applied correctly. Early detection prevents larger problems.
                   </p>
-                </AccentBox>
+                </div>
               </div>
             </div>
           </div>
@@ -471,62 +474,62 @@ const description = "Your lights stay on, the process is free, and it takes 5 mi
           <h2 class="text-3xl font-bold text-texas-navy mb-6">Your Switching Checklist</h2>
           
           <div class="grid md:grid-cols-2 gap-8">
-            <div>
-              <h3 class="text-xl font-semibold text-texas-navy mb-4">Before Switching:</h3>
-              <div class="space-y-2 text-sm">
-                <label class="flex items-center">
-                  <input type="checkbox" class="mr-3 text-texas-red">
-                  <span>Calculated my average monthly kWh usage</span>
+            <div class="bg-texas-cream/20 p-6 rounded-lg border border-texas-cream/40">
+              <h3 class="text-xl font-bold text-texas-navy mb-4 text-center">Before Switching:</h3>
+              <div class="space-y-3 text-sm">
+                <label class="flex items-start">
+                  <input type="checkbox" class="mr-3 mt-1 accent-texas-red">
+                  <span class="text-gray-700">Calculated my average monthly kWh usage</span>
                 </label>
-                <label class="flex items-center">
-                  <input type="checkbox" class="mr-3 text-texas-red">
-                  <span>Checked my current contract end date</span>
+                <label class="flex items-start">
+                  <input type="checkbox" class="mr-3 mt-1 accent-texas-red">
+                  <span class="text-gray-700">Checked my current contract end date</span>
                 </label>
-                <label class="flex items-center">
-                  <input type="checkbox" class="mr-3 text-texas-red">
-                  <span>Found my ESI ID on current bill</span>
+                <label class="flex items-start">
+                  <input type="checkbox" class="mr-3 mt-1 accent-texas-red">
+                  <span class="text-gray-700">Found my ESI ID on current bill</span>
                 </label>
-                <label class="flex items-center">
-                  <input type="checkbox" class="mr-3 text-texas-red">
-                  <span>Compared at least 3 different plans</span>
+                <label class="flex items-start">
+                  <input type="checkbox" class="mr-3 mt-1 accent-texas-red">
+                  <span class="text-gray-700">Compared at least 3 different plans</span>
                 </label>
-                <label class="flex items-center">
-                  <input type="checkbox" class="mr-3 text-texas-red">
-                  <span>Read the Electricity Facts Label</span>
+                <label class="flex items-start">
+                  <input type="checkbox" class="mr-3 mt-1 accent-texas-red">
+                  <span class="text-gray-700">Read the Electricity Facts Label</span>
                 </label>
-                <label class="flex items-center">
-                  <input type="checkbox" class="mr-3 text-texas-red">
-                  <span>Verified provider credentials</span>
+                <label class="flex items-start">
+                  <input type="checkbox" class="mr-3 mt-1 accent-texas-red">
+                  <span class="text-gray-700">Verified provider credentials</span>
                 </label>
               </div>
             </div>
 
-            <div>
-              <h3 class="text-xl font-semibold text-texas-navy mb-4">After Switching:</h3>
-              <div class="space-y-2 text-sm">
-                <label class="flex items-center">
-                  <input type="checkbox" class="mr-3 text-texas-red">
-                  <span>Reviewed Welcome Letter within 3 days</span>
+            <div class="bg-texas-gold/10 p-6 rounded-lg border border-texas-gold/30">
+              <h3 class="text-xl font-bold text-texas-navy mb-4 text-center">After Switching:</h3>
+              <div class="space-y-3 text-sm">
+                <label class="flex items-start">
+                  <input type="checkbox" class="mr-3 mt-1 accent-texas-gold">
+                  <span class="text-gray-700">Reviewed Welcome Letter within 3 days</span>
                 </label>
-                <label class="flex items-center">
-                  <input type="checkbox" class="mr-3 text-texas-red">
-                  <span>Set up online account with new provider</span>
+                <label class="flex items-start">
+                  <input type="checkbox" class="mr-3 mt-1 accent-texas-gold">
+                  <span class="text-gray-700">Set up online account with new provider</span>
                 </label>
-                <label class="flex items-center">
-                  <input type="checkbox" class="mr-3 text-texas-red">
-                  <span>Enabled auto-pay for discounts</span>
+                <label class="flex items-start">
+                  <input type="checkbox" class="mr-3 mt-1 accent-texas-gold">
+                  <span class="text-gray-700">Enabled auto-pay for discounts</span>
                 </label>
-                <label class="flex items-center">
-                  <input type="checkbox" class="mr-3 text-texas-red">
-                  <span>Paid final bill from old provider</span>
+                <label class="flex items-start">
+                  <input type="checkbox" class="mr-3 mt-1 accent-texas-gold">
+                  <span class="text-gray-700">Paid final bill from old provider</span>
                 </label>
-                <label class="flex items-center">
-                  <input type="checkbox" class="mr-3 text-texas-red">
-                  <span>Verified first bill rates are correct</span>
+                <label class="flex items-start">
+                  <input type="checkbox" class="mr-3 mt-1 accent-texas-gold">
+                  <span class="text-gray-700">Verified first bill rates are correct</span>
                 </label>
-                <label class="flex items-center">
-                  <input type="checkbox" class="mr-3 text-texas-red">
-                  <span>Set contract expiration reminder</span>
+                <label class="flex items-start">
+                  <input type="checkbox" class="mr-3 mt-1 accent-texas-gold">
+                  <span class="text-gray-700">Set contract expiration reminder</span>
                 </label>
               </div>
             </div>
@@ -535,20 +538,20 @@ const description = "Your lights stay on, the process is free, and it takes 5 mi
       </div>
 
       <!-- Footer CTA -->
-      <AccentBox accentColor="navy" padding="xl" className="mt-16">
+      <div class="mt-32 bg-texas-navy rounded-xl p-12 border-l-4 border-l-texas-gold">
         <div class="text-center">
-          <h2 class="text-3xl font-bold mb-4 text-white">Ready to Switch and Start Saving?</h2>
-          <p class="text-xl mb-8 text-blue-100">Compare plans from 100+ Texas providers and switch in minutes.</p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/electricity-plans" class="bg-texas-red text-white px-8 py-4 rounded-lg font-semibold hover:bg-texas-red-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-1">
+          <h2 class="text-4xl font-bold mb-6 text-white">Ready to Switch and Start Saving?</h2>
+          <p class="text-xl mb-10 text-white/90 max-w-2xl mx-auto leading-relaxed">Compare plans from 100+ Texas providers and switch in minutes.</p>
+          <div class="flex flex-col sm:flex-row gap-6 justify-center">
+            <a href="/electricity-plans" class="bg-texas-red text-white px-10 py-4 rounded-lg font-semibold hover:bg-texas-red-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-1">
               Compare Plans Now
             </a>
-            <a href="/rates/calculator" class="bg-texas-gold text-texas-navy px-8 py-4 rounded-lg font-semibold hover:bg-texas-gold-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-1">
+            <a href="/rates/calculator" class="bg-texas-gold text-texas-navy px-10 py-4 rounded-lg font-semibold hover:bg-texas-gold-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-1">
               Calculate Your Savings
             </a>
           </div>
         </div>
-      </AccentBox>
+      </div>
     </div>
   </div>
 </Layout>
