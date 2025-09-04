@@ -168,21 +168,9 @@
   status = 301
   force = true
 
-# SEO-Friendly Redirects
-[[redirects]]
-  from = "/electricity-plans/dallas"
-  to = "/electricity-plans/dallas-tx"
-  status = 301
-
-[[redirects]]
-  from = "/electricity-plans/houston"
-  to = "/electricity-plans/houston-tx"
-  status = 301
-
-[[redirects]]
-  from = "/electricity-plans/austin"
-  to = "/electricity-plans/austin-tx"
-  status = 301
+# REMOVED: SEO-Friendly Redirects causing redirect loops
+# These were conflicting with the URL normalization redirects below
+# The faceted navigation system handles city URL patterns internally
 
 # API Proxy (if needed)
 [[redirects]]
@@ -263,68 +251,7 @@
   ASTRO_TELEMETRY_DISABLED = "1"
   MAX_CITIES = "10"
 
-# URL Redirects - 301 redirects for SEO preservation after removing -tx suffixes
-# Major Texas Cities
-[[redirects]]
-  from = "/texas/dallas-tx"
-  to = "/texas/dallas"
-  status = 301
-
-[[redirects]]
-  from = "/texas/houston-tx" 
-  to = "/texas/houston"
-  status = 301
-
-[[redirects]]
-  from = "/texas/austin-tx"
-  to = "/texas/austin"
-  status = 301
-
-[[redirects]]
-  from = "/texas/san-antonio-tx"
-  to = "/texas/san-antonio"
-  status = 301
-
-[[redirects]]
-  from = "/electricity-plans/dallas-tx"
-  to = "/electricity-plans/dallas"
-  status = 301
-
-[[redirects]]
-  from = "/electricity-plans/houston-tx"
-  to = "/electricity-plans/houston"
-  status = 301
-
-[[redirects]]
-  from = "/electricity-plans/austin-tx"
-  to = "/electricity-plans/austin"
-  status = 301
-
-[[redirects]]
-  from = "/electricity-plans/san-antonio-tx"
-  to = "/electricity-plans/san-antonio"
-  status = 301
-
-# Pattern-based redirects for all other cities
-[[redirects]]
-  from = "/texas/*-tx"
-  to = "/texas/:splat"
-  status = 301
-
-[[redirects]]
-  from = "/texas/*-tx/*"
-  to = "/texas/:splat/*"
-  status = 301
-
-[[redirects]]
-  from = "/electricity-plans/*-tx"
-  to = "/electricity-plans/:splat"
-  status = 301
-
-[[redirects]]
-  from = "/electricity-plans/*-tx/*"
-  to = "/electricity-plans/:splat/*"
-  status = 301
+# Redirect patterns removed - faceted navigation handles clean URLs directly
 
 # Normalize trailing slashes for dynamic routes (Astro trailingSlash = "never")
 [[redirects]]

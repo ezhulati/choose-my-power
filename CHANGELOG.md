@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- **CRITICAL**: Fixed navigation failures (ERR_FAILED errors) caused by conflicting redirect loops in netlify.toml between /electricity-plans/dallas and /electricity-plans/dallas-tx patterns that prevented all site navigation from working
+
 ### Added
 - **🤖 MAJOR FEATURE**: Enterprise-grade LangGraph AI agent system with three intelligent agents:
   - **Plan Recommendation Agent**: Multi-step reasoning for intelligent electricity plan analysis with confidence scoring
