@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - **CRITICAL**: Fixed navigation failures (ERR_FAILED errors) caused by conflicting redirect loops in netlify.toml between /electricity-plans/dallas and /electricity-plans/dallas-tx patterns that prevented all site navigation from working
+- **CRITICAL**: Fixed massive 80MB serverless function bundle causing cold start failures and ERR_FAILED errors by switching to per-route functions and optimizing bundle externalization
 
 ### Added
 - **🤖 MAJOR FEATURE**: Enterprise-grade LangGraph AI agent system with three intelligent agents:

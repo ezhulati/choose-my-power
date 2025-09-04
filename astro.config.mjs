@@ -14,8 +14,8 @@ const getAdapter = () => {
     console.log('🌐 Using Netlify adapter for deployment');
     return netlify({
       dist: new URL('./dist/', import.meta.url),
-      edgeMiddleware: true,
-      functionPerRoute: false,
+      edgeMiddleware: false,
+      functionPerRoute: true,
     });
   } else {
     console.log('🔧 Using Node adapter for local development/build');
@@ -39,6 +39,21 @@ export default defineConfig({
   adapter: getAdapter(),
   site: 'https://choosemypower.org',
   trailingSlash: 'never',
+  
+  // Critical: Optimize bundle for serverless functions
+  vite: {
+    build: {
+      rollupOptions: {
+        external: [
+          // Externalize heavy dependencies that cause large bundles
+          'sharp',
+          '@astrojs/markdown-remark',
+          'vite',
+          'esbuild'
+        ]
+      }
+    }
+  },
   
   // Image optimization for Core Web Vitals
   image: {
