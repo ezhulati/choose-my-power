@@ -251,7 +251,7 @@ export const ZipCodeSearchAPI: React.FC<ZipCodeSearchAPIProps> = ({
           totalPlans: planSearch.searchMeta.totalPlans,
           method: planSearch.searchMeta.method,
           responseTime: planSearch.searchMeta.responseTime,
-          confidence: planSearch.tdspInfo.confidence
+          confidence: planSearch.tdspInfo?.confidence || 'unknown'
         }
       });
     }
