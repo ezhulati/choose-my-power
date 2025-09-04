@@ -183,7 +183,12 @@
       // Call our ZIP lookup API
       console.log(`📞 Making API call to /api/zip-lookup?zip=${zipCode}`);
       const url = `/api/zip-lookup?zip=${encodeURIComponent(zipCode)}`;
-      const res = await fetch(url, { redirect: 'follow' });
+      const res = await fetch(url, { 
+        redirect: 'follow',
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
 
       // Handle redirected responses (API might redirect directly)
       if (res.redirected) {
@@ -211,8 +216,9 @@
           result = await res.json();
         } catch (parseError) {
           console.error('❌ Failed to parse response as JSON:', parseError);
-          console.log('🔄 Redirecting to API URL as fallback');
-          window.location = url;
+          // Don't redirect to API URL, instead navigate to a sensible user-facing page
+          console.log('🔄 Navigating to Texas providers page as fallback');
+          window.location.href = zipCode.startsWith('7') ? '/texas/electricity-providers' : '/locations';
           return;
         }
       }
@@ -265,9 +271,9 @@
                 // Fallback 2: Use location.replace
                 window.location.replace(redirectUrl);
               } catch (navError3) {
-                console.error('❌ All navigation methods failed, using API URL as final fallback:', navError3);
-                // Final safety net: redirect to the API URL directly
-                window.location.href = url;
+                console.error('❌ All navigation methods failed, using Texas providers page as final fallback:', navError3);
+                // Final safety net: redirect to a user-facing page
+                window.location.href = '/texas/electricity-providers';
               }
             }
           }
@@ -308,8 +314,15 @@
       if (error.message.includes('API responded') || error.name === 'TypeError') {
         console.log('🔄 API failed, attempting robust fallback navigation');
         
-        // Try multiple navigation methods for fallback
-        const fallbackUrl = `/api/zip-lookup?zip=${encodeURIComponent(zipCode)}`;
+        // Try to determine a sensible fallback page based on ZIP code
+        let fallbackUrl = '/texas/electricity-providers'; // Default fallback
+        
+        // If it looks like a Texas ZIP (starts with 7), use Texas page
+        if (zipCode.startsWith('7')) {
+          fallbackUrl = '/texas/electricity-providers';
+        } else {
+          fallbackUrl = '/locations'; // Non-Texas or unknown
+        }
         
         try {
           window.location.href = fallbackUrl;
