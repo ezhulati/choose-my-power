@@ -49,13 +49,15 @@ const description = `No more "${lowestRate}¢" rates that cost 14¢. No more 40-
   </script>
 
   <div class="bg-white">
-    <!-- WORLD-CLASS HERO SECTION - Best-in-Class Design -->
-    <section class="relative min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-texas-navy via-blue-900 to-texas-navy overflow-hidden">
+    <!-- ENTERPRISE-GRADE HERO SECTION - Professional Texas Design -->
+    <section class="relative min-h-[95vh] flex items-center justify-center bg-gradient-to-br from-texas-navy via-blue-900 to-texas-navy overflow-hidden">
       <!-- Advanced Background Elements -->
       <div class="absolute inset-0">
-        <div class="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30"></div>
-        <div class="absolute top-0 left-1/4 w-96 h-96 bg-texas-gold/10 rounded-full blur-3xl animate-pulse"></div>
-        <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-texas-red/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20"></div>
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-texas-gold/8 rounded-full blur-3xl animate-pulse opacity-70"></div>
+        <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-texas-red/8 rounded-full blur-3xl animate-pulse delay-1000 opacity-70"></div>
+        <!-- Subtle pattern overlay -->
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.03"%3E%3Ccircle cx="30" cy="30" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-40"></div>
       </div>
       
       <!-- Content Container -->
@@ -66,43 +68,61 @@ const description = `No more "${lowestRate}¢" rates that cost 14¢. No more 40-
           
           <!-- Enhanced ZIP Code Search -->
           <div class="space-y-8">
-            <StandardZipInput 
-              variant="hero" 
-              size="lg"
-              showTitle={false}
-              showDescription={false}
-              showStats={false}
-              customClass="transform hover:scale-105 transition-all duration-300"
-            />
+            <div class="bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-white/20 max-w-2xl mx-auto">
+              <StandardZipInput 
+                variant="hero" 
+                size="lg"
+                showTitle={false}
+                showDescription={false}
+                showStats={false}
+                customClass="transform hover:scale-[1.02] transition-all duration-300"
+              />
+            </div>
             
-            <!-- Trust Signals - Redesigned -->
-            <div class="flex flex-wrap items-center justify-center gap-4 text-center text-white/80 text-sm max-w-md mx-auto">
-              <span>{DEFAULT_COUNTS.planText} from licensed companies</span>
-              <span>Free & takes 10 minutes</span>
-              <span>Real prices, no surprises</span>
+            <!-- Trust Signals - Professional Design -->
+            <div class="flex flex-wrap items-center justify-center gap-6 text-center text-white/90 text-base max-w-3xl mx-auto">
+              <div class="flex items-center gap-2">
+                <div class="w-2 h-2 bg-texas-gold rounded-full"></div>
+                <span class="font-medium">{DEFAULT_COUNTS.planText} from licensed companies</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-2 h-2 bg-texas-gold rounded-full"></div>
+                <span class="font-medium">Free & takes 10 minutes</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-2 h-2 bg-texas-gold rounded-full"></div>
+                <span class="font-medium">Real prices, no surprises</span>
+              </div>
             </div>
           </div>
           
-          <!-- Social Proof Indicator -->
-          <div class="text-blue-200 text-lg">
-            <span class="inline-flex items-center gap-2">
-              <span class="flex -space-x-2">
-                <div class="w-8 h-8 bg-texas-gold rounded-full border-2 border-white"></div>
-                <div class="w-8 h-8 bg-texas-red rounded-full border-2 border-white"></div>
-                <div class="w-8 h-8 bg-blue-500 rounded-full border-2 border-white"></div>
-                <div class="w-8 h-8 bg-texas-navy rounded-full border-2 border-white flex items-center justify-center text-xs text-white font-bold">+</div>
+          <!-- Social Proof Indicator - Enhanced Design -->
+          <div class="text-white/90 text-lg">
+            <div class="bg-white/10 backdrop-blur-sm rounded-full px-8 py-4 inline-flex items-center gap-4 border border-white/20">
+              <span class="flex -space-x-3">
+                <div class="w-10 h-10 bg-gradient-to-br from-texas-gold to-texas-gold-600 rounded-full border-3 border-white shadow-lg"></div>
+                <div class="w-10 h-10 bg-gradient-to-br from-texas-red to-texas-red-600 rounded-full border-3 border-white shadow-lg"></div>
+                <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full border-3 border-white shadow-lg"></div>
+                <div class="w-10 h-10 bg-gradient-to-br from-texas-navy to-blue-800 rounded-full border-3 border-white shadow-lg flex items-center justify-center text-sm text-white font-bold">5K+</div>
               </span>
-              Join thousands of Texans who've already found better rates
-            </span>
+              <span class="font-medium">
+                Join thousands of Texans who've already found better rates
+              </span>
+            </div>
           </div>
         </div>
       </div>
       
-      <!-- Scroll indicator -->
-      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/60 animate-bounce">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-        </svg>
+      <!-- Scroll indicator - Enhanced -->
+      <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2">
+        <div class="bg-white/10 backdrop-blur-sm rounded-full p-3 border border-white/20 animate-bounce">
+          <svg class="w-6 h-6 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          </svg>
+        </div>
+        <div class="text-center mt-2">
+          <span class="text-white/60 text-sm font-medium">Scroll to explore</span>
+        </div>
       </div>
     </section>
 
@@ -119,33 +139,36 @@ const description = `No more "${lowestRate}¢" rates that cost 14¢. No more 40-
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
         <!-- Step 1 -->
-        <EnhancedCard variant="elevated" padding="lg" className="text-center">
-          <div class="w-24 h-24 bg-gradient-to-br from-texas-red to-texas-red-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+        <EnhancedCard variant="elevated" padding="lg" className="text-center group hover:shadow-2xl transition-all duration-500">
+          <div class="w-24 h-24 bg-gradient-to-br from-texas-red to-texas-red-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl group-hover:scale-110 transition-transform duration-300">
             <span class="text-3xl font-bold text-white">1</span>
           </div>
-          <h3 class="text-2xl md:text-3xl font-bold text-texas-navy mb-4 text-center">Enter Your ZIP</h3>
+          <h3 class="text-2xl md:text-3xl font-bold text-texas-navy mb-6 text-center leading-tight">Enter Your ZIP</h3>
+          <div class="w-16 h-1 bg-texas-red/30 mx-auto mb-6 rounded-full"></div>
           <p class="text-lg text-gray-700 leading-relaxed text-center">
             See which companies compete in your area. <span class="text-texas-gold font-semibold">(Most states get just one choice.)</span>
           </p>
         </EnhancedCard>
 
         <!-- Step 2 -->
-        <EnhancedCard variant="elevated" padding="lg" className="text-center">
-          <div class="w-24 h-24 bg-gradient-to-br from-texas-red to-texas-red-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+        <EnhancedCard variant="elevated" padding="lg" className="text-center group hover:shadow-2xl transition-all duration-500">
+          <div class="w-24 h-24 bg-gradient-to-br from-texas-gold to-texas-gold-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl group-hover:scale-110 transition-transform duration-300">
             <span class="text-3xl font-bold text-white">2</span>
           </div>
-          <h3 class="text-2xl md:text-3xl font-bold text-texas-navy mb-4 text-center">Skip the Spreadsheets</h3>
+          <h3 class="text-2xl md:text-3xl font-bold text-texas-navy mb-6 text-center leading-tight">Skip the Spreadsheets</h3>
+          <div class="w-16 h-1 bg-texas-gold/30 mx-auto mb-6 rounded-full"></div>
           <p class="text-lg text-gray-700 leading-relaxed text-center">
             We already calculated what each plan actually costs. <span class="text-texas-navy font-semibold">No fine print math required.</span>
           </p>
         </EnhancedCard>
 
         <!-- Step 3 -->
-        <EnhancedCard variant="elevated" padding="lg" className="text-center">
-          <div class="w-24 h-24 bg-gradient-to-br from-texas-red to-texas-red-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+        <EnhancedCard variant="elevated" padding="lg" className="text-center group hover:shadow-2xl transition-all duration-500">
+          <div class="w-24 h-24 bg-gradient-to-br from-texas-navy to-blue-800 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl group-hover:scale-110 transition-transform duration-300">
             <span class="text-3xl font-bold text-white">3</span>
           </div>
-          <h3 class="text-2xl md:text-3xl font-bold text-texas-navy mb-4 text-center">Pick Your Winner</h3>
+          <h3 class="text-2xl md:text-3xl font-bold text-texas-navy mb-6 text-center leading-tight">Pick Your Winner</h3>
+          <div class="w-16 h-1 bg-texas-navy/30 mx-auto mb-6 rounded-full"></div>
           <p class="text-lg text-gray-700 leading-relaxed text-center">
             Choose from the best options. <span class="text-texas-gold font-semibold">Your freedom, your choice, your savings.</span>
           </p>
@@ -303,20 +326,25 @@ const description = `No more "${lowestRate}¢" rates that cost 14¢. No more 40-
         </EnhancedCard>
       </div>
 
-        <!-- Central Call-to-Action -->
+        <!-- Central Call-to-Action - Enhanced -->
         <div class="text-center">
-          <h3 class="text-3xl font-bold text-texas-navy mb-4">Ready to Find Your Best Rate?</h3>
-          <p class="text-base text-gray-700 mb-6 max-w-2xl mx-auto leading-relaxed">
-            Whether you're moving, frustrated with high bills, or just want a better deal – it all starts with your ZIP code.
-          </p>
-          <StandardZipInput 
-            variant="inline" 
-            size="lg"
-            showTitle={false}
-            showDescription={false}
-            showStats={false}
-            customClass="max-w-lg mx-auto"
-          />
+          <div class="bg-gradient-to-r from-texas-navy/5 via-texas-gold/5 to-texas-navy/5 rounded-3xl p-12 border border-texas-gold/20">
+            <h3 class="text-3xl md:text-4xl font-bold text-texas-navy mb-6 leading-tight">Ready to Find Your Best Rate?</h3>
+            <div class="w-24 h-1 bg-gradient-to-r from-texas-red via-texas-gold to-texas-navy mx-auto mb-6 rounded-full"></div>
+            <p class="text-lg text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed">
+              Whether you're moving, frustrated with high bills, or just want a better deal – it all starts with your ZIP code.
+            </p>
+            <div class="bg-white rounded-2xl p-6 shadow-lg max-w-lg mx-auto">
+              <StandardZipInput 
+                variant="inline" 
+                size="lg"
+                showTitle={false}
+                showDescription={false}
+                showStats={false}
+                customClass="w-full"
+              />
+            </div>
+          </div>
         </div>
     </EnhancedSection>
 
