@@ -218,7 +218,7 @@
           console.error('❌ Failed to parse response as JSON:', parseError);
           // Don't redirect to API URL, instead navigate to a sensible user-facing page
           console.log('🔄 Navigating to Texas providers page as fallback');
-          window.location.href = zipCode.startsWith('7') ? '/texas/electricity-providers' : '/locations';
+          window.location.href = zipCode.startsWith('7') ? '/texas' : '/locations';
           return;
         }
       }
@@ -271,9 +271,9 @@
                 // Fallback 2: Use location.replace
                 window.location.replace(redirectUrl);
               } catch (navError3) {
-                console.error('❌ All navigation methods failed, using Texas providers page as final fallback:', navError3);
+                console.error('❌ All navigation methods failed, using Texas page as final fallback:', navError3);
                 // Final safety net: redirect to a user-facing page
-                window.location.href = '/texas/electricity-providers';
+                window.location.href = '/texas';
               }
             }
           }
@@ -294,7 +294,7 @@
           }, 3000);
         } else if (result.errorType === 'not_found') {
           // ZIP not found - provide helpful fallback
-          showError(`${result.error} <a href="/texas/electricity-providers" class="underline font-semibold hover:text-red-900">Browse all Texas providers →</a>`);
+          showError(`${result.error} <a href="/texas" class="underline font-semibold hover:text-red-900">Browse all Texas providers →</a>`);
         } else if (result.errorType === 'invalid_zip') {
           // Invalid format
           showError(result.error);
@@ -315,11 +315,11 @@
         console.log('🔄 API failed, attempting robust fallback navigation');
         
         // Try to determine a sensible fallback page based on ZIP code
-        let fallbackUrl = '/texas/electricity-providers'; // Default fallback
+        let fallbackUrl = '/texas'; // Default fallback for Texas ZIPs
         
         // If it looks like a Texas ZIP (starts with 7), use Texas page
         if (zipCode.startsWith('7')) {
-          fallbackUrl = '/texas/electricity-providers';
+          fallbackUrl = '/texas';
         } else {
           fallbackUrl = '/locations'; // Non-Texas or unknown
         }
@@ -347,7 +347,7 @@
         }
       }
       
-      showError('Unable to process your request right now. Please try again or <a href="/texas/electricity-providers" class="underline font-semibold hover:text-red-900">browse all Texas providers →</a>');
+      showError('Unable to process your request right now. Please try again or <a href="/texas" class="underline font-semibold hover:text-red-900">browse all Texas providers →</a>');
     }
   });
 
