@@ -1,10 +1,10 @@
 {
-  "lastBuild": "2025-09-02T21:53:32.100Z",
+  "lastBuild": "2025-09-04T03:05:21.273Z",
   "cityHashes": {},
   "buildStats": {
-    "totalBuilds": 91,
-    "cachedBuilds": 82,
-    "apiBuilds": 9
+    "totalBuilds": 93,
+    "cachedBuilds": 83,
+    "apiBuilds": 10
   },
   "cities": [
     {
@@ -38,6 +38,6131 @@
     {
       "citySlug": "irving-tx",
       "cityName": "Irving",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "lake-dallas-tx",
+      "cityName": "Lake Dallas",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "mcallen-tx",
+      "cityName": "McAllen",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "mesquite-tx",
+      "cityName": "Mesquite",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "plano-tx",
+      "cityName": "Plano",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "laredo-tx",
+      "cityName": "Laredo",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "conroe-tx",
+      "cityName": "Conroe",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "pasadena-tx",
+      "cityName": "Pasadena",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "pearland-tx",
+      "cityName": "Pearland",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "carrollton-tx",
+      "cityName": "Carrollton",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "denton-tx",
+      "cityName": "Denton",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "frisco-tx",
+      "cityName": "Frisco",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "mckinney-tx",
+      "cityName": "McKinney",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "richardson-tx",
+      "cityName": "Richardson",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "tyler-tx",
+      "cityName": "Tyler",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "edinburg-tx",
+      "cityName": "Edinburg",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "killeen-tx",
+      "cityName": "Killeen",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "waco-tx",
+      "cityName": "Waco",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "abilene-tx",
+      "cityName": "Abilene",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "alvin-tx",
+      "cityName": "Alvin",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "balch-springs-tx",
+      "cityName": "Balch Springs",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "baytown-tx",
+      "cityName": "Baytown",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "bellaire-tx",
+      "cityName": "Bellaire",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "big-spring-tx",
+      "cityName": "Big Spring",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "brookshire-tx",
+      "cityName": "Brookshire",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "carrizo-springs-tx",
+      "cityName": "Carrizo Springs",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "channelview-tx",
+      "cityName": "Channelview",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "cypress-tx",
+      "cityName": "Cypress",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "deer-park-tx",
+      "cityName": "Deer Park",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "dickinson-tx",
+      "cityName": "Dickinson",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "fresno-tx",
+      "cityName": "Fresno",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "friendswood-tx",
+      "cityName": "Friendswood",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "fulshear-tx",
+      "cityName": "Fulshear",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "galena-park-tx",
+      "cityName": "Galena Park",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "galveston-tx",
+      "cityName": "Galveston",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "humble-tx",
+      "cityName": "Humble",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "katy-tx",
+      "cityName": "Katy",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "kemah-tx",
+      "cityName": "Kemah",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "kendleton-tx",
+      "cityName": "Kendleton",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "kingwood-tx",
+      "cityName": "Kingwood",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "la-porte-tx",
+      "cityName": "La Porte",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "league-city-tx",
+      "cityName": "League City",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "los-fresnos-tx",
+      "cityName": "Los Fresnos",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "magnolia-tx",
+      "cityName": "Magnolia",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "manvel-tx",
+      "cityName": "Manvel",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "missouri-city-tx",
+      "cityName": "Missouri City",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "montgomery-tx",
+      "cityName": "Montgomery",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "needville-tx",
+      "cityName": "Needville",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "payne-springs-tx",
+      "cityName": "Payne Springs",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "richland-springs-tx",
+      "cityName": "Richland Springs",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "richmond-tx",
+      "cityName": "Richmond",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "roaring-springs-tx",
+      "cityName": "Roaring Springs",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "rocksprings-tx",
+      "cityName": "Rocksprings",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "rosenberg-tx",
+      "cityName": "Rosenberg",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "santa-fe-tx",
+      "cityName": "Santa Fe",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "seabrook-tx",
+      "cityName": "Seabrook",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "spring-tx",
+      "cityName": "Spring",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "springtown-tx",
+      "cityName": "Springtown",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "stafford-tx",
+      "cityName": "Stafford",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "sugar-land-tx",
+      "cityName": "Sugar Land",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "sulphur-springs-tx",
+      "cityName": "Sulphur Springs",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "texas-city-tx",
+      "cityName": "Texas City",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "thompsons-tx",
+      "cityName": "Thompsons",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "tomball-tx",
+      "cityName": "Tomball",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "walnut-springs-tx",
+      "cityName": "Walnut Springs",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "addison-tx",
+      "cityName": "Addison",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "allen-tx",
+      "cityName": "Allen",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "athens-tx",
+      "cityName": "Athens",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "bedford-tx",
+      "cityName": "Bedford",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "canton-tx",
+      "cityName": "Canton",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "cedar-hill-tx",
+      "cityName": "Cedar Hill",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "coppell-tx",
+      "cityName": "Coppell",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "corsicana-tx",
+      "cityName": "Corsicana",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "denison-tx",
+      "cityName": "Denison",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "desoto-tx",
+      "cityName": "DeSoto",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "duncanville-tx",
+      "cityName": "Duncanville",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "ennis-tx",
+      "cityName": "Ennis",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "euless-tx",
+      "cityName": "Euless",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "farmers-branch-tx",
+      "cityName": "Farmers Branch",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "fate-tx",
+      "cityName": "Fate",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "flower-mound-tx",
+      "cityName": "Flower Mound",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "forney-tx",
+      "cityName": "Forney",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "fort-worth-tx",
+      "cityName": "Fort Worth",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "grand-prairie-tx",
+      "cityName": "Grand Prairie",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "grapevine-tx",
+      "cityName": "Grapevine",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "greenville-tx",
+      "cityName": "Greenville",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "havana-tx",
+      "cityName": "Havana",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "highland-park-tx",
+      "cityName": "Highland Park",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "hurst-tx",
+      "cityName": "Hurst",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "jacksonville-tx",
+      "cityName": "Jacksonville",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "kaufman-tx",
+      "cityName": "Kaufman",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "lancaster-tx",
+      "cityName": "Lancaster",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "lewisville-tx",
+      "cityName": "Lewisville",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "lufkin-tx",
+      "cityName": "Lufkin",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "mansfield-tx",
+      "cityName": "Mansfield",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "midlothian-tx",
+      "cityName": "Midlothian",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "murphy-tx",
+      "cityName": "Murphy",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "nacogdoches-tx",
+      "cityName": "Nacogdoches",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "overton-tx",
+      "cityName": "Overton",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "palestine-tx",
+      "cityName": "Palestine",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "palmhurst-tx",
+      "cityName": "Palmhurst",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "paris-tx",
+      "cityName": "Paris",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "pinehurst-tx",
+      "cityName": "Pinehurst",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "port-mansfield-tx",
+      "cityName": "Port Mansfield",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "rockwall-tx",
+      "cityName": "Rockwall",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "rowlett-tx",
+      "cityName": "Rowlett",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "sachse-tx",
+      "cityName": "Sachse",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "sherman-tx",
+      "cityName": "Sherman",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "sullivan-city-tx",
+      "cityName": "Sullivan City",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "sunnyvale-tx",
+      "cityName": "Sunnyvale",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "terrell-tx",
+      "cityName": "Terrell",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "university-park-tx",
+      "cityName": "University Park",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "van-alstyne-tx",
+      "cityName": "Van Alstyne",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "van-tx",
+      "cityName": "Van",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "waxahachie-tx",
+      "cityName": "Waxahachie",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "wylie-tx",
+      "cityName": "Wylie",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "alamo-tx",
+      "cityName": "Alamo",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "alice-tx",
+      "cityName": "Alice",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "aransas-pass-tx",
+      "cityName": "Aransas Pass",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "bay-city-tx",
+      "cityName": "Bay City",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "beeville-tx",
+      "cityName": "Beeville",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "blessing-tx",
+      "cityName": "Blessing",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "boling-tx",
+      "cityName": "Boling",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "brackettville-tx",
+      "cityName": "Brackettville",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "corpus-christi-tx",
+      "cityName": "Corpus Christi",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "crystal-city-tx",
+      "cityName": "Crystal City",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "del-rio-tx",
+      "cityName": "Del Rio",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "devine-tx",
+      "cityName": "Devine",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "donna-tx",
+      "cityName": "Donna",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "eagle-pass-tx",
+      "cityName": "Eagle Pass",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "east-bernard-tx",
+      "cityName": "East Bernard",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "el-campo-tx",
+      "cityName": "El Campo",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "fulton-tx",
+      "cityName": "Fulton",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "george-west-tx",
+      "cityName": "George West",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "harlingen-tx",
+      "cityName": "Harlingen",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "hebbronville-tx",
+      "cityName": "Hebbronville",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "ingleside-tx",
+      "cityName": "Ingleside",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "ingleside-on-the-bay-tx",
+      "cityName": "Ingleside On The Bay",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "la-feria-tx",
+      "cityName": "La Feria",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "matagorda-tx",
+      "cityName": "Matagorda",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "mathis-tx",
+      "cityName": "Mathis",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "mercedes-tx",
+      "cityName": "Mercedes",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "mission-tx",
+      "cityName": "Mission",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "nixon-tx",
+      "cityName": "Nixon",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "odem-tx",
+      "cityName": "Odem",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "palacios-tx",
+      "cityName": "Palacios",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "palmview-tx",
+      "cityName": "Palmview",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "penitas-tx",
+      "cityName": "Penitas",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "pharr-tx",
+      "cityName": "Pharr",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "point-comfort-tx",
+      "cityName": "Point Comfort",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "port-isabel-tx",
+      "cityName": "Port Isabel",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "port-lavaca-tx",
+      "cityName": "Port Lavaca",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "portland-tx",
+      "cityName": "Portland",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "poteet-tx",
+      "cityName": "Poteet",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "rio-grande-city-tx",
+      "cityName": "Rio Grande City",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "rio-hondo-tx",
+      "cityName": "Rio Hondo",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "rockport-tx",
+      "cityName": "Rockport",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "roma-tx",
+      "cityName": "Roma",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "san-benito-tx",
+      "cityName": "San Benito",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "san-juan-tx",
+      "cityName": "San Juan",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "santa-rosa-tx",
+      "cityName": "Santa Rosa",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "seadrift-tx",
+      "cityName": "Seadrift",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "sinton-tx",
+      "cityName": "Sinton",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "taft-tx",
+      "cityName": "Taft",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "three-rivers-tx",
+      "cityName": "Three Rivers",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "uvalde-tx",
+      "cityName": "Uvalde",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "victoria-tx",
+      "cityName": "Victoria",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "wallis-tx",
+      "cityName": "Wallis",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "weslaco-tx",
+      "cityName": "Weslaco",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "wharton-tx",
+      "cityName": "Wharton",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "zapata-tx",
+      "cityName": "Zapata",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "belton-tx",
+      "cityName": "Belton",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "benbrook-tx",
+      "cityName": "Benbrook",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "blue-mound-tx",
+      "cityName": "Blue Mound",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "burleson-tx",
+      "cityName": "Burleson",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "cleburne-tx",
+      "cityName": "Cleburne",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "colleyville-tx",
+      "cityName": "Colleyville",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "copperas-cove-tx",
+      "cityName": "Copperas Cove",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "crockett-tx",
+      "cityName": "Crockett",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "crowley-tx",
+      "cityName": "Crowley",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "elgin-tx",
+      "cityName": "Elgin",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "everman-tx",
+      "cityName": "Everman",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "forest-hill-tx",
+      "cityName": "Forest Hill",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "grapeland-tx",
+      "cityName": "Grapeland",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "haltom-city-tx",
+      "cityName": "Haltom City",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "harker-heights-tx",
+      "cityName": "Harker Heights",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "haslet-tx",
+      "cityName": "Haslet",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "hillsboro-tx",
+      "cityName": "Hillsboro",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "hutto-tx",
+      "cityName": "Hutto",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "joshua-tx",
+      "cityName": "Joshua",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "keller-tx",
+      "cityName": "Keller",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "luling-tx",
+      "cityName": "Luling",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "north-richland-hills-tx",
+      "cityName": "North Richland Hills",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "pflugerville-tx",
+      "cityName": "Pflugerville",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "richland-hills-tx",
+      "cityName": "Richland Hills",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "river-oaks-tx",
+      "cityName": "River Oaks",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "roanoke-tx",
+      "cityName": "Roanoke",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "round-rock-tx",
+      "cityName": "Round Rock",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "saginaw-tx",
+      "cityName": "Saginaw",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "southlake-tx",
+      "cityName": "Southlake",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "taylor-tx",
+      "cityName": "Taylor",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "temple-tx",
+      "cityName": "Temple",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "trophy-club-tx",
+      "cityName": "Trophy Club",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "watauga-tx",
+      "cityName": "Watauga",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "westworth-tx",
+      "cityName": "Westworth",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "white-settlement-tx",
+      "cityName": "White Settlement",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "whitney-tx",
+      "cityName": "Whitney",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "abbott-tx",
+      "cityName": "Abbott",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "abram-tx",
+      "cityName": "Abram",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "ackerly-tx",
+      "cityName": "Ackerly",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "albany-tx",
+      "cityName": "Albany",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "alleyton-tx",
+      "cityName": "Alleyton",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "alma-tx",
+      "cityName": "Alma",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "alpine-tx",
+      "cityName": "Alpine",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "alto-tx",
+      "cityName": "Alto",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "alton-tx",
+      "cityName": "Alton",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "alvarado-tx",
+      "cityName": "Alvarado",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "alvord-tx",
+      "cityName": "Alvord",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "andrews-tx",
+      "cityName": "Andrews",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "angleton-tx",
+      "cityName": "Angleton",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "angus-tx",
+      "cityName": "Angus",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "anna-tx",
+      "cityName": "Anna",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "annona-tx",
+      "cityName": "Annona",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "appleby-tx",
+      "cityName": "Appleby",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "archer-city-tx",
+      "cityName": "Archer City",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "argyle-tx",
+      "cityName": "Argyle",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "arp-tx",
+      "cityName": "Arp",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "asherton-tx",
+      "cityName": "Asherton",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "aspermont-tx",
+      "cityName": "Aspermont",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "aubrey-tx",
+      "cityName": "Aubrey",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "aurora-tx",
+      "cityName": "Aurora",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "austwell-tx",
+      "cityName": "Austwell",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "avoca-tx",
+      "cityName": "Avoca",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "azle-tx",
+      "cityName": "Azle",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "bacliff-tx",
+      "cityName": "Bacliff",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "bagwell-tx",
+      "cityName": "Bagwell",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "bailey-tx",
+      "cityName": "Bailey",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "baileys-prairie-tx",
+      "cityName": "Bailey's Prairie",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "bakersfield-tx",
+      "cityName": "Bakersfield",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "balmorhea-tx",
+      "cityName": "Balmorhea",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "bardwell-tx",
+      "cityName": "Bardwell",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "barksdale-tx",
+      "cityName": "Barksdale",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "barnhart-tx",
+      "cityName": "Barnhart",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "barry-tx",
+      "cityName": "Barry",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "barstow-tx",
+      "cityName": "Barstow",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "bayside-tx",
+      "cityName": "Bayside",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "bayview-tx",
+      "cityName": "Bayview",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "beasley-tx",
+      "cityName": "Beasley",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "bellevue-tx",
+      "cityName": "Bellevue",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "bellmead-tx",
+      "cityName": "Bellmead",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "bells-tx",
+      "cityName": "Bells",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "bellville-tx",
+      "cityName": "Bellville",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "belmont-tx",
+      "cityName": "Belmont",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "benavides-tx",
+      "cityName": "Benavides",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "benjamin-tx",
+      "cityName": "Benjamin",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "berclair-tx",
+      "cityName": "Berclair",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "beverly-hills-tx",
+      "cityName": "Beverly Hills",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "big-lake-tx",
+      "cityName": "Big Lake",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "big-wells-tx",
+      "cityName": "Big Wells",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "bishop-tx",
+      "cityName": "Bishop",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "blackwell-tx",
+      "cityName": "Blackwell",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "blooming-grove-tx",
+      "cityName": "Blooming Grove",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "bloomington-tx",
+      "cityName": "Bloomington",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "blossom-tx",
+      "cityName": "Blossom",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "blue-ridge-tx",
+      "cityName": "Blue Ridge",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "bluetown-tx",
+      "cityName": "Bluetown",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "bluff-dale-tx",
+      "cityName": "Bluff Dale",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "blum-tx",
+      "cityName": "Blum",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "bogata-tx",
+      "cityName": "Bogata",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "bonham-tx",
+      "cityName": "Bonham",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "boyd-tx",
+      "cityName": "Boyd",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "bradshaw-tx",
+      "cityName": "Bradshaw",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "brady-tx",
+      "cityName": "Brady",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "brazoria-tx",
+      "cityName": "Brazoria",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "breckenridge-tx",
+      "cityName": "Breckenridge",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "bridgeport-tx",
+      "cityName": "Bridgeport",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "bronte-tx",
+      "cityName": "Bronte",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "brookesmith-tx",
+      "cityName": "Brookesmith",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "brownsboro-tx",
+      "cityName": "Brownsboro",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "bruceville-eddy-tx",
+      "cityName": "Bruceville-Eddy",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "bruni-tx",
+      "cityName": "Bruni",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "bryson-tx",
+      "cityName": "Bryson",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "buckholts-tx",
+      "cityName": "Buckholts",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "buffalo-tx",
+      "cityName": "Buffalo",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "buffalo-gap-tx",
+      "cityName": "Buffalo Gap",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "bullard-tx",
+      "cityName": "Bullard",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "burke-tx",
+      "cityName": "Burke",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "burkett-tx",
+      "cityName": "Burkett",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "byers-tx",
+      "cityName": "Byers",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "bynum-tx",
+      "cityName": "Bynum",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "caddo-mills-tx",
+      "cityName": "Caddo Mills",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "cameron-tx",
+      "cityName": "Cameron",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "camp-wood-tx",
+      "cityName": "Camp Wood",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "campbell-tx",
+      "cityName": "Campbell",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "caney-city-tx",
+      "cityName": "Caney City",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "caps-tx",
+      "cityName": "Caps",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "carbon-tx",
+      "cityName": "Carbon",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "carlsbad-tx",
+      "cityName": "Carlsbad",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "carlton-tx",
+      "cityName": "Carlton",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "cashion-community-tx",
+      "cityName": "Cashion Community",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "catarina-tx",
+      "cityName": "Catarina",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "celeste-tx",
+      "cityName": "Celeste",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "celina-tx",
+      "cityName": "Celina",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "centerville-tx",
+      "cityName": "Centerville",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "chandler-tx",
+      "cityName": "Chandler",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "charlotte-tx",
+      "cityName": "Charlotte",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "childress-tx",
+      "cityName": "Childress",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "chillicothe-tx",
+      "cityName": "Chillicothe",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "chireno-tx",
+      "cityName": "Chireno",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "christine-tx",
+      "cityName": "Christine",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "christoval-tx",
+      "cityName": "Christoval",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "clarksville-tx",
+      "cityName": "Clarksville",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "clute-tx",
+      "cityName": "Clute",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "coahoma-tx",
+      "cityName": "Coahoma",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "cockrell-hill-tx",
+      "cityName": "Cockrell Hill",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "collinsville-tx",
+      "cityName": "Collinsville",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "columbus-tx",
+      "cityName": "Columbus",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "combes-tx",
+      "cityName": "Combes",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "commerce-tx",
+      "cityName": "Commerce",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "como-tx",
+      "cityName": "Como",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "comstock-tx",
+      "cityName": "Comstock",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "concepcion-tx",
+      "cityName": "Concepcion",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "cooper-tx",
+      "cityName": "Cooper",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "corinth-tx",
+      "cityName": "Corinth",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "cotulla-tx",
+      "cityName": "Cotulla",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "coupland-tx",
+      "cityName": "Coupland",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "covington-tx",
+      "cityName": "Covington",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "coyanosa-tx",
+      "cityName": "Coyanosa",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "crandall-tx",
+      "cityName": "Crandall",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "crane-tx",
+      "cityName": "Crane",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "crane-oil-field-tx",
+      "cityName": "Crane Oil Field",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "crawford-tx",
+      "cityName": "Crawford",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "cresson-tx",
+      "cityName": "Cresson",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "crosby-tx",
+      "cityName": "Crosby",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "cross-cut-tx",
+      "cityName": "Cross Cut",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "cross-roads-tx",
+      "cityName": "Cross Roads",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "crowell-tx",
+      "cityName": "Crowell",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "cumby-tx",
+      "cityName": "Cumby",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "cunningham-tx",
+      "cityName": "Cunningham",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "cushing-tx",
+      "cityName": "Cushing",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "da-costa-tx",
+      "cityName": "Da Costa",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "dalworthington-garden-tx",
+      "cityName": "Dalworthington Garden",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "damon-tx",
+      "cityName": "Damon",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "danbury-tx",
+      "cityName": "Danbury",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "dawson-tx",
+      "cityName": "Dawson",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "dayton-tx",
+      "cityName": "Dayton",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "dean-tx",
+      "cityName": "Dean",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "decatur-tx",
+      "cityName": "Decatur",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "deport-tx",
+      "cityName": "Deport",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "detroit-tx",
+      "cityName": "Detroit",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "diboll-tx",
+      "cityName": "Diboll",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "dickens-tx",
+      "cityName": "Dickens",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "dilley-tx",
+      "cityName": "Dilley",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "dish-tx",
+      "cityName": "Dish",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "dodd-city-tx",
+      "cityName": "Dodd City",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "doole-tx",
+      "cityName": "Doole",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "driscoll-tx",
+      "cityName": "Driscoll",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "eagle-lake-tx",
+      "cityName": "Eagle Lake",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "ector-tx",
+      "cityName": "Ector",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "edcouch-tx",
+      "cityName": "Edcouch",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "eden-tx",
+      "cityName": "Eden",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "edgecliff-tx",
+      "cityName": "Edgecliff",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "edgewood-tx",
+      "cityName": "Edgewood",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "edna-tx",
+      "cityName": "Edna",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "edom-tx",
+      "cityName": "Edom",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "edroy-tx",
+      "cityName": "Edroy",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "el-cenizo-tx",
+      "cityName": "El Cenizo",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "el-indio-tx",
+      "cityName": "El Indio",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "el-lago-tx",
+      "cityName": "El Lago",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "el-maton-tx",
+      "cityName": "El Maton",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "eldorado-tx",
+      "cityName": "Eldorado",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "electra-tx",
+      "cityName": "Electra",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "eliasville-tx",
+      "cityName": "Eliasville",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "elkhart-tx",
+      "cityName": "Elkhart",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "elsa-tx",
+      "cityName": "Elsa",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "emhouse-tx",
+      "cityName": "Emhouse",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "emory-tx",
+      "cityName": "Emory",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "enchanted-oaks-tx",
+      "cityName": "Enchanted Oaks",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "encinal-tx",
+      "cityName": "Encinal",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "encino-tx",
+      "cityName": "Encino",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "enloe-tx",
+      "cityName": "Enloe",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "eola-tx",
+      "cityName": "Eola",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "escobares-tx",
+      "cityName": "Escobares",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "eula-tx",
+      "cityName": "Eula",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "eureka-tx",
+      "cityName": "Eureka",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "eustace-tx",
+      "cityName": "Eustace",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "fairfield-tx",
+      "cityName": "Fairfield",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "fairview-tx",
+      "cityName": "Fairview",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "falfurrias-tx",
+      "cityName": "Falfurrias",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "farmers-valley-tx",
+      "cityName": "Farmers Valley",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "farmersville-tx",
+      "cityName": "Farmersville",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "ferris-tx",
+      "cityName": "Ferris",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "florence-tx",
+      "cityName": "Florence",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "forsan-tx",
+      "cityName": "Forsan",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "fort-chadbourne-tx",
+      "cityName": "Fort Chadbourne",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "fort-davis-tx",
+      "cityName": "Fort Davis",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "fort-stockton-tx",
+      "cityName": "Fort Stockton",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "frankston-tx",
+      "cityName": "Frankston",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "freeport-tx",
+      "cityName": "Freeport",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "freer-tx",
+      "cityName": "Freer",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "fronton-tx",
+      "cityName": "Fronton",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "frost-tx",
+      "cityName": "Frost",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "gail-tx",
+      "cityName": "Gail",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "gainesville-tx",
+      "cityName": "Gainesville",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "gallatin-tx",
+      "cityName": "Gallatin",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "ganado-tx",
+      "cityName": "Ganado",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "garciasville-tx",
+      "cityName": "Garciasville",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "garden-city-tx",
+      "cityName": "Garden City",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "gardendale-tx",
+      "cityName": "Gardendale",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "garrett-tx",
+      "cityName": "Garrett",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "garwood-tx",
+      "cityName": "Garwood",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "glenn-heights-tx",
+      "cityName": "Glenn Heights",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "glidden-tx",
+      "cityName": "Glidden",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "godley-tx",
+      "cityName": "Godley",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "goldthwaite-tx",
+      "cityName": "Goldthwaite",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "goliad-tx",
+      "cityName": "Goliad",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "golinda-tx",
+      "cityName": "Golinda",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "goodlow-tx",
+      "cityName": "Goodlow",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "gordon-tx",
+      "cityName": "Gordon",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "goree-tx",
+      "cityName": "Goree",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "graford-tx",
+      "cityName": "Graford",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "graham-tx",
+      "cityName": "Graham",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "grandfalls-tx",
+      "cityName": "Grandfalls",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "grandview-tx",
+      "cityName": "Grandview",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "granjeno-tx",
+      "cityName": "Granjeno",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "grayback-tx",
+      "cityName": "Grayback",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "gregory-tx",
+      "cityName": "Gregory",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "groesbeck-tx",
+      "cityName": "Groesbeck",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "gun-barrel-city-tx",
+      "cityName": "Gun Barrel City",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "gunter-tx",
+      "cityName": "Gunter",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "gustine-tx",
+      "cityName": "Gustine",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "guy-tx",
+      "cityName": "Guy",
+      "filtersBuilt": 1,
+      "totalPlans": 108,
+      "success": true
+    },
+    {
+      "citySlug": "hargill-tx",
+      "cityName": "Hargill",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "haskell-tx",
+      "cityName": "Haskell",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "hawley-tx",
+      "cityName": "Hawley",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "heath-tx",
+      "cityName": "Heath",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "hebron-tx",
+      "cityName": "Hebron",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "hempstead-tx",
+      "cityName": "Hempstead",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "henrietta-tx",
+      "cityName": "Henrietta",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "hermleigh-tx",
+      "cityName": "Hermleigh",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "hewitt-tx",
+      "cityName": "Hewitt",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "hext-tx",
+      "cityName": "Hext",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "hickory-creek-tx",
+      "cityName": "Hickory Creek",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "hidalgo-tx",
+      "cityName": "Hidalgo",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "hideaway-tx",
+      "cityName": "Hideaway",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "highlands-tx",
+      "cityName": "Highlands",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "hitchcock-tx",
+      "cityName": "Hitchcock",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "hockley-tx",
+      "cityName": "Hockley",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "holiday-lakes-tx",
+      "cityName": "Holiday Lakes",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "holland-tx",
+      "cityName": "Holland",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "holliday-tx",
+      "cityName": "Holliday",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "honey-grove-tx",
+      "cityName": "Honey Grove",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "howe-tx",
+      "cityName": "Howe",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "hubbard-tx",
+      "cityName": "Hubbard",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "hudson-tx",
+      "cityName": "Hudson",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "huffman-tx",
+      "cityName": "Huffman",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "huntington-tx",
+      "cityName": "Huntington",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "hutchins-tx",
+      "cityName": "Hutchins",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "imperial-oil-field-tx",
+      "cityName": "Imperial Oil Field",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "indian-lake-tx",
+      "cityName": "Indian Lake",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "inez-tx",
+      "cityName": "Inez",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "iowa-park-tx",
+      "cityName": "Iowa Park",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "ira-tx",
+      "cityName": "Ira",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "iraan-tx",
+      "cityName": "Iraan",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "italy-tx",
+      "cityName": "Italy",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "itasca-tx",
+      "cityName": "Itasca",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "jacksboro-tx",
+      "cityName": "Jacksboro",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "jarrell-tx",
+      "cityName": "Jarrell",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "jayton-tx",
+      "cityName": "Jayton",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "jermyn-tx",
+      "cityName": "Jermyn",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "jewett-tx",
+      "cityName": "Jewett",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "johntown-tx",
+      "cityName": "Johntown",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "jolly-tx",
+      "cityName": "Jolly",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "josephine-tx",
+      "cityName": "Josephine",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "jourdanton-tx",
+      "cityName": "Jourdanton",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "junction-tx",
+      "cityName": "Junction",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "justin-tx",
+      "cityName": "Justin",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "karnes-city-tx",
+      "cityName": "Karnes City",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "keene-tx",
+      "cityName": "Keene",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "kemp-tx",
+      "cityName": "Kemp",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "kenedy-tx",
+      "cityName": "Kenedy",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "kennedale-tx",
+      "cityName": "Kennedale",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "kerens-tx",
+      "cityName": "Kerens",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "kermit-tx",
+      "cityName": "Kermit",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "kingsville-tx",
+      "cityName": "Kingsville",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "knickerbocker-tx",
+      "cityName": "Knickerbocker",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "knippa-tx",
+      "cityName": "Knippa",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "knollwood-tx",
+      "cityName": "Knollwood",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "knott-tx",
+      "cityName": "Knott",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "knox-city-tx",
+      "cityName": "Knox City",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "kopperl-tx",
+      "cityName": "Kopperl",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "krugerville-tx",
+      "cityName": "Krugerville",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "krum-tx",
+      "cityName": "Krum",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "la-blanca-tx",
+      "cityName": "La Blanca",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "la-casita-tx",
+      "cityName": "La Casita",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "la-grulla-tx",
+      "cityName": "La Grulla",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "la-joya-tx",
+      "cityName": "La Joya",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "la-marque-tx",
+      "cityName": "La Marque",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "la-pryor-tx",
+      "cityName": "La Pryor",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "la-rosita-tx",
+      "cityName": "La Rosita",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "la-villa-tx",
+      "cityName": "La Villa",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "lacy-lakeview-tx",
+      "cityName": "Lacy Lakeview",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "ladonia-tx",
+      "cityName": "Ladonia",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "laguna-heights-tx",
+      "cityName": "Laguna Heights",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "laguna-vista-tx",
+      "cityName": "Laguna Vista",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "lake-bridgeport-tx",
+      "cityName": "Lake Bridgeport",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "lake-city-tx",
+      "cityName": "Lake City",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "lake-jackson-tx",
+      "cityName": "Lake Jackson",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "lake-worth-tx",
+      "cityName": "Lake Worth",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "lakeside-city-tx",
+      "cityName": "Lakeside City",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "lakeside-tx",
+      "cityName": "Lakeside",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "lakewood-tx",
+      "cityName": "Lakewood",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "lamar-tx",
+      "cityName": "Lamar",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "latexo-tx",
+      "cityName": "Latexo",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "laureles-tx",
+      "cityName": "Laureles",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "lavon-tx",
+      "cityName": "Lavon",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "lawn-tx",
+      "cityName": "Lawn",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "leakey-tx",
+      "cityName": "Leakey",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "leming-tx",
+      "cityName": "Leming",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "lenorah-tx",
+      "cityName": "Lenorah",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "leona-tx",
+      "cityName": "Leona",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "leonard-tx",
+      "cityName": "Leonard",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "leroy-tx",
+      "cityName": "Leroy",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "lindale-tx",
+      "cityName": "Lindale",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "lindsay-tx",
+      "cityName": "Lindsay",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "lipan-tx",
+      "cityName": "Lipan",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "little-elm-tx",
+      "cityName": "Little Elm",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "liverpool-tx",
+      "cityName": "Liverpool",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "lockett-tx",
+      "cityName": "Lockett",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "lohn-tx",
+      "cityName": "Lohn",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "lone-oak-tx",
+      "cityName": "Lone Oak",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "long-mott-tx",
+      "cityName": "Long Mott",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "loraine-tx",
+      "cityName": "Loraine",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "lorena-tx",
+      "cityName": "Lorena",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "los-ebanos-tx",
+      "cityName": "Los Ebanos",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "los-indios-tx",
+      "cityName": "Los Indios",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "lott-tx",
+      "cityName": "Lott",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "louise-tx",
+      "cityName": "Louise",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "lovelady-tx",
+      "cityName": "Lovelady",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "loving-tx",
+      "cityName": "Loving",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "lowry-crossing-tx",
+      "cityName": "Lowry Crossing",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "lozano-tx",
+      "cityName": "Lozano",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "lubbock-tx",
+      "cityName": "Lubbock",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "lucas-tx",
+      "cityName": "Lucas",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "lueders-tx",
+      "cityName": "Lueders",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "lyford-tx",
+      "cityName": "Lyford",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "lytle-tx",
+      "cityName": "Lytle",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "mabank-tx",
+      "cityName": "Mabank",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "malakoff-tx",
+      "cityName": "Malakoff",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "malone-tx",
+      "cityName": "Malone",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "manor-tx",
+      "cityName": "Manor",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "marathon-tx",
+      "cityName": "Marathon",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "marfa-tx",
+      "cityName": "Marfa",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "markham-tx",
+      "cityName": "Markham",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "marlin-tx",
+      "cityName": "Marlin",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "marquez-tx",
+      "cityName": "Marquez",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "mart-tx",
+      "cityName": "Mart",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "matador-tx",
+      "cityName": "Matador",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "matthews-tx",
+      "cityName": "Matthews",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "mccamey-tx",
+      "cityName": "McCamey",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "mccaulley-tx",
+      "cityName": "McCaulley",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "mcgregor-tx",
+      "cityName": "Mcgregor",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "mclendon-chisholm-tx",
+      "cityName": "Mclendon-Chisholm",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "meadows-place-tx",
+      "cityName": "Meadows Place",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "megargel-tx",
+      "cityName": "Megargel",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "melissa-tx",
+      "cityName": "Melissa",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "melvin-tx",
+      "cityName": "Melvin",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "menard-tx",
+      "cityName": "Menard",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "mereta-tx",
+      "cityName": "Mereta",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "merkel-tx",
+      "cityName": "Merkel",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "mertens-tx",
+      "cityName": "Mertens",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "mertzon-tx",
+      "cityName": "Mertzon",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "mexia-tx",
+      "cityName": "Mexia",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "midfield-tx",
+      "cityName": "Midfield",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "midkiff-tx",
+      "cityName": "Midkiff",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "midland-tx",
+      "cityName": "Midland",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "milano-tx",
+      "cityName": "Milano",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "mildred-tx",
+      "cityName": "Mildred",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "miles-tx",
+      "cityName": "Miles",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "milford-tx",
+      "cityName": "Milford",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "millersview-tx",
+      "cityName": "Millersview",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "mirando-city-tx",
+      "cityName": "Mirando City",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "monahans-tx",
+      "cityName": "Monahans",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "mont-belvieu-tx",
+      "cityName": "Mont Belvieu",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "montague-tx",
+      "cityName": "Montague",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "monte-alto-tx",
+      "cityName": "Monte Alto",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "moody-tx",
+      "cityName": "Moody",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "moore-tx",
+      "cityName": "Moore",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "moore-field-tx",
+      "cityName": "Moore Field",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "moran-tx",
+      "cityName": "Moran",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "morgan-tx",
+      "cityName": "Morgan",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "morgans-point-resort-tx",
+      "cityName": "Morgans Point Resort",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "mount-calm-tx",
+      "cityName": "Mount Calm",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "muenster-tx",
+      "cityName": "Muenster",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "mullin-tx",
+      "cityName": "Mullin",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "munday-tx",
+      "cityName": "Munday",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "murchison-tx",
+      "cityName": "Murchison",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "natalia-tx",
+      "cityName": "Natalia",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "navarro-tx",
+      "cityName": "Navarro",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "nevada-tx",
+      "cityName": "Nevada",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "new-chapel-hill-tx",
+      "cityName": "New Chapel Hill",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "new-summerfield-tx",
+      "cityName": "New Summerfield",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "newark-tx",
+      "cityName": "Newark",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "newcastle-tx",
+      "cityName": "Newcastle",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "neylandville-tx",
+      "cityName": "Neylandville",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "nocona-tx",
+      "cityName": "Nocona",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "nolanville-tx",
+      "cityName": "Nolanville",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "noonday-tx",
+      "cityName": "Noonday",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "nordheim-tx",
+      "cityName": "Nordheim",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "normandy-tx",
+      "cityName": "Normandy",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "normanna-tx",
+      "cityName": "Normanna",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "obrien-tx",
+      "cityName": "O'Brien",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "odonnell-tx",
+      "cityName": "O'Donnell",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "oak-grove-tx",
+      "cityName": "Oak Grove",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "oak-leaf-tx",
+      "cityName": "Oak Leaf",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "oak-point-tx",
+      "cityName": "Oak Point",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "oak-valley-tx",
+      "cityName": "Oak Valley",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "oakville-tx",
+      "cityName": "Oakville",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "oakwood-tx",
+      "cityName": "Oakwood",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "odessa-tx",
+      "cityName": "Odessa",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "oglesby-tx",
+      "cityName": "Oglesby",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "oilton-tx",
+      "cityName": "Oilton",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "oklaunion-tx",
+      "cityName": "Oklaunion",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "olmito-tx",
+      "cityName": "Olmito",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "olney-tx",
+      "cityName": "Olney",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "ovalo-tx",
+      "cityName": "Ovalo",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "ovilla-tx",
+      "cityName": "Ovilla",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "ozona-tx",
+      "cityName": "Ozona",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "paducah-tx",
+      "cityName": "Paducah",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "paint-rock-tx",
+      "cityName": "Paint Rock",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "palm-valley-tx",
+      "cityName": "Palm Valley",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "palmer-tx",
+      "cityName": "Palmer",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "pantego-tx",
+      "cityName": "Pantego",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "paradise-tx",
+      "cityName": "Paradise",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "parker-tx",
+      "cityName": "Parker",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "pattonville-tx",
+      "cityName": "Pattonville",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "pawnee-tx",
+      "cityName": "Pawnee",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "pearsall-tx",
+      "cityName": "Pearsall",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "pecan-gap-tx",
+      "cityName": "Pecan Gap",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "pecos-tx",
+      "cityName": "Pecos",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "penelope-tx",
+      "cityName": "Penelope",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "pernitas-point-tx",
+      "cityName": "Pernitas Point",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "petrolia-tx",
+      "cityName": "Petrolia",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "petronila-tx",
+      "cityName": "Petronila",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "pettus-tx",
+      "cityName": "Pettus",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "pilot-point-tx",
+      "cityName": "Pilot Point",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "pioneer-tx",
+      "cityName": "Pioneer",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "placedo-tx",
+      "cityName": "Placedo",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "pleasant-valley-tx",
+      "cityName": "Pleasant Valley",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "pledger-tx",
+      "cityName": "Pledger",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "point-tx",
+      "cityName": "Point",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "ponder-tx",
+      "cityName": "Ponder",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "port-aransas-tx",
+      "cityName": "Port Aransas",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "porter-tx",
+      "cityName": "Porter",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "pottsboro-tx",
+      "cityName": "Pottsboro",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "powell-tx",
+      "cityName": "Powell",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "powell-oil-field-tx",
+      "cityName": "Powell Oil Field",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "poynor-tx",
+      "cityName": "Poynor",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "premont-tx",
+      "cityName": "Premont",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "presidio-tx",
+      "cityName": "Presidio",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "primera-tx",
+      "cityName": "Primera",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "princeton-tx",
+      "cityName": "Princeton",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "progreso-tx",
+      "cityName": "Progreso",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "progreso-lakes-tx",
+      "cityName": "Progreso Lakes",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "prosper-tx",
+      "cityName": "Prosper",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "purdon-tx",
+      "cityName": "Purdon",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "putnam-tx",
+      "cityName": "Putnam",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "pyote-tx",
+      "cityName": "Pyote",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "quanah-tx",
+      "cityName": "Quanah",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "quemado-tx",
+      "cityName": "Quemado",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "quinlan-tx",
+      "cityName": "Quinlan",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "quitaque-tx",
+      "cityName": "Quitaque",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "rainbow-tx",
+      "cityName": "Rainbow",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "ramirez-tx",
+      "cityName": "Ramirez",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "rancho-viejo-tx",
+      "cityName": "Rancho Viejo",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "randolph-tx",
+      "cityName": "Randolph",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "rankin-tx",
+      "cityName": "Rankin",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "ravenna-tx",
+      "cityName": "Ravenna",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "raymondville-tx",
+      "cityName": "Raymondville",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "realitos-tx",
+      "cityName": "Realitos",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "red-oak-tx",
+      "cityName": "Red Oak",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "redford-tx",
+      "cityName": "Redford",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "refugio-tx",
+      "cityName": "Refugio",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "reno-tx",
+      "cityName": "Reno",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "retreat-tx",
+      "cityName": "Retreat",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "rhome-tx",
+      "cityName": "Rhome",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "rice-tx",
+      "cityName": "Rice",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "richland-tx",
+      "cityName": "Richland",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "riesel-tx",
+      "cityName": "Riesel",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "ringgold-tx",
+      "cityName": "Ringgold",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "rio-bravo-tx",
+      "cityName": "Rio Bravo",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "rio-vista-tx",
+      "cityName": "Rio Vista",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "rios-tx",
+      "cityName": "Rios",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "rising-star-tx",
+      "cityName": "Rising Star",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "robert-lee-tx",
+      "cityName": "Robert Lee",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "robinson-tx",
+      "cityName": "Robinson",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "rochelle-tx",
+      "cityName": "Rochelle",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "rochester-tx",
+      "cityName": "Rochester",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "rockdale-tx",
+      "cityName": "Rockdale",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "rogers-tx",
+      "cityName": "Rogers",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "rosalie-tx",
+      "cityName": "Rosalie",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "roscoe-tx",
+      "cityName": "Roscoe",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "rosebud-tx",
+      "cityName": "Rosebud",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "rosharon-tx",
+      "cityName": "Rosharon",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "rosser-tx",
+      "cityName": "Rosser",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "rowena-tx",
+      "cityName": "Rowena",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "roxton-tx",
+      "cityName": "Roxton",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "royse-city-tx",
+      "cityName": "Royse City",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "rule-tx",
+      "cityName": "Rule",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "runaway-bay-tx",
+      "cityName": "Runaway Bay",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "runge-tx",
+      "cityName": "Runge",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "rusk-tx",
+      "cityName": "Rusk",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "sabinal-tx",
+      "cityName": "Sabinal",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "sadler-tx",
+      "cityName": "Sadler",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "saint-jo-tx",
+      "cityName": "Saint Jo",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "salado-tx",
+      "cityName": "Salado",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "san-angelo-tx",
+      "cityName": "San Angelo",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "san-carlos-tx",
+      "cityName": "San Carlos",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "san-diego-tx",
+      "cityName": "San Diego",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "san-patricio-tx",
+      "cityName": "San Patricio",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "san-saba-tx",
+      "cityName": "San Saba",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "san-ygnacio-tx",
+      "cityName": "San Ygnacio",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "sanderson-tx",
+      "cityName": "Sanderson",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "sandia-tx",
+      "cityName": "Sandia",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "sansom-park-tx",
+      "cityName": "Sansom Park",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "santa-maria-tx",
+      "cityName": "Santa Maria",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "santa-monica-tx",
+      "cityName": "Santa Monica",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "saragosa-tx",
+      "cityName": "Saragosa",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "savoy-tx",
+      "cityName": "Savoy",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "seagoville-tx",
+      "cityName": "Seagoville",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "sealy-tx",
+      "cityName": "Sealy",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "sebastian-tx",
+      "cityName": "Sebastian",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "seco-mines-tx",
+      "cityName": "Seco Mines",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "sejita-tx",
+      "cityName": "Sejita",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "seven-sisters-tx",
+      "cityName": "Seven Sisters",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "shady-shores-tx",
+      "cityName": "Shady Shores",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "sheffield-tx",
+      "cityName": "Sheffield",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "sherwood-tx",
+      "cityName": "Sherwood",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "skidmore-tx",
+      "cityName": "Skidmore",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "smiley-tx",
+      "cityName": "Smiley",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "sonora-tx",
+      "cityName": "Sonora",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "south-padre-island-tx",
+      "cityName": "South Padre Island",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "spur-tx",
+      "cityName": "Spur",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "st-paul-tx",
+      "cityName": "St. Paul",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "stanton-tx",
+      "cityName": "Stanton",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "sterling-city-tx",
+      "cityName": "Sterling City",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "streetman-tx",
+      "cityName": "Streetman",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "sunset-tx",
+      "cityName": "Sunset",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "sweeny-tx",
+      "cityName": "Sweeny",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "talco-tx",
+      "cityName": "Talco",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "tankersley-tx",
+      "cityName": "Tankersley",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "tarzan-tx",
+      "cityName": "Tarzan",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "teague-tx",
+      "cityName": "Teague",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "tehuacana-tx",
+      "cityName": "Tehuacana",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "the-colony-tx",
+      "cityName": "The Colony",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "the-woodlands-tx",
+      "cityName": "The Woodlands",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "thorndale-tx",
+      "cityName": "Thorndale",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "thornton-tx",
+      "cityName": "Thornton",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "thorntonville-tx",
+      "cityName": "Thorntonville",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "thrall-tx",
+      "cityName": "Thrall",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "throckmorton-tx",
+      "cityName": "Throckmorton",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "tienditas-tx",
+      "cityName": "Tienditas",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "tioga-tx",
+      "cityName": "Tioga",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "tira-tx",
+      "cityName": "Tira",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "tivoli-tx",
+      "cityName": "Tivoli",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "tolar-tx",
+      "cityName": "Tolar",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "tom-bean-tx",
+      "cityName": "Tom Bean",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "tool-tx",
+      "cityName": "Tool",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "toyah-tx",
+      "cityName": "Toyah",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "trent-tx",
+      "cityName": "Trent",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "trenton-tx",
+      "cityName": "Trenton",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "trinidad-tx",
+      "cityName": "Trinidad",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "troup-tx",
+      "cityName": "Troup",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "troy-tx",
+      "cityName": "Troy",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "tuleta-tx",
+      "cityName": "Tuleta",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "turkey-tx",
+      "cityName": "Turkey",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "tuscola-tx",
+      "cityName": "Tuscola",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "tye-tx",
+      "cityName": "Tye",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "tynan-tx",
+      "cityName": "Tynan",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "valentine-tx",
+      "cityName": "Valentine",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "valera-tx",
+      "cityName": "Valera",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "valley-view-tx",
+      "cityName": "Valley View",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "venus-tx",
+      "cityName": "Venus",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "veribest-tx",
+      "cityName": "Veribest",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "vernon-tx",
+      "cityName": "Vernon",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "wadsworth-tx",
+      "cityName": "Wadsworth",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "wall-tx",
+      "cityName": "Wall",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "waller-tx",
+      "cityName": "Waller",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "water-valley-tx",
+      "cityName": "Water Valley",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "webster-tx",
+      "cityName": "Webster",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "weesatche-tx",
+      "cityName": "Weesatche",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "weinert-tx",
+      "cityName": "Weinert",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "weir-tx",
+      "cityName": "Weir",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "wells-tx",
+      "cityName": "Wells",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "west-columbia-tx",
+      "cityName": "West Columbia",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "west-tx",
+      "cityName": "West",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "westbrook-tx",
+      "cityName": "Westbrook",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "westhoff-tx",
+      "cityName": "Westhoff",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "westminster-tx",
+      "cityName": "Westminster",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "westover-hills-tx",
+      "cityName": "Westover Hills",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "whitehouse-tx",
+      "cityName": "Whitehouse",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "whitewright-tx",
+      "cityName": "Whitewright",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "wickett-tx",
+      "cityName": "Wickett",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "wills-point-tx",
+      "cityName": "Wills Point",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "wilmer-tx",
+      "cityName": "Wilmer",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "windom-tx",
+      "cityName": "Windom",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "wingate-tx",
+      "cityName": "Wingate",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "wink-tx",
+      "cityName": "Wink",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "winter-haven-tx",
+      "cityName": "Winter Haven",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "wolfe-city-tx",
+      "cityName": "Wolfe City",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "woodsboro-tx",
+      "cityName": "Woodsboro",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "woodson-tx",
+      "cityName": "Woodson",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "woodway-tx",
+      "cityName": "Woodway",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "wortham-tx",
+      "cityName": "Wortham",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "yantis-tx",
+      "cityName": "Yantis",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "yates-oil-field-tx",
+      "cityName": "Yates Oil Field",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "yorktown-tx",
+      "cityName": "Yorktown",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "zavalla-tx",
+      "cityName": "Zavalla",
+      "filtersBuilt": 1,
+      "totalPlans": 110,
+      "success": true
+    },
+    {
+      "citySlug": "aledo-tx",
+      "cityName": "Aledo",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "annetta-tx",
+      "cityName": "Annetta",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "annetta-north-tx",
+      "cityName": "Annetta North",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "annetta-south-tx",
+      "cityName": "Annetta South",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "anson-tx",
+      "cityName": "Anson",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "baird-tx",
+      "cityName": "Baird",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "ballinger-tx",
+      "cityName": "Ballinger",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "bangs-tx",
+      "cityName": "Bangs",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "blanket-tx",
+      "cityName": "Blanket",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "brownwood-tx",
+      "cityName": "Brownwood",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "burkburnett-tx",
+      "cityName": "Burkburnett",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "chico-tx",
+      "cityName": "Chico",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "cisco-tx",
+      "cityName": "Cisco",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "clifton-tx",
+      "cityName": "Clifton",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "clyde-tx",
+      "cityName": "Clyde",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "colorado-city-tx",
+      "cityName": "Colorado City",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "comanche-tx",
+      "cityName": "Comanche",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "cool-tx",
+      "cityName": "Cool",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "coolidge-tx",
+      "cityName": "Coolidge",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "cross-plains-tx",
+      "cityName": "Cross Plains",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "de-leon-tx",
+      "cityName": "De Leon",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "dublin-tx",
+      "cityName": "Dublin",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "early-tx",
+      "cityName": "Early",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "eastland-tx",
+      "cityName": "Eastland",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "gatesville-tx",
+      "cityName": "Gatesville",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "glen-rose-tx",
+      "cityName": "Glen Rose",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "gorman-tx",
+      "cityName": "Gorman",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "granbury-tx",
+      "cityName": "Granbury",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "granger-tx",
+      "cityName": "Granger",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "hamilton-tx",
+      "cityName": "Hamilton",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "hamlin-tx",
+      "cityName": "Hamlin",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "hico-tx",
+      "cityName": "Hico",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "hudson-oaks-tx",
+      "cityName": "Hudson Oaks",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "iredell-tx",
+      "cityName": "Iredell",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "lamesa-tx",
+      "cityName": "Lamesa",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "may-tx",
+      "cityName": "May",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "maypearl-tx",
+      "cityName": "Maypearl",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "meridian-tx",
+      "cityName": "Meridian",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "millsap-tx",
+      "cityName": "Millsap",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "mineral-wells-tx",
+      "cityName": "Mineral Wells",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "mingus-tx",
+      "cityName": "Mingus",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "pleasanton-tx",
+      "cityName": "Pleasanton",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "ranger-tx",
+      "cityName": "Ranger",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "roby-tx",
+      "cityName": "Roby",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "rotan-tx",
+      "cityName": "Rotan",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "santa-anna-tx",
+      "cityName": "Santa Anna",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "santo-tx",
+      "cityName": "Santo",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "snyder-tx",
+      "cityName": "Snyder",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "southmayd-tx",
+      "cityName": "Southmayd",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "stamford-tx",
+      "cityName": "Stamford",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "stephenville-tx",
+      "cityName": "Stephenville",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "strawn-tx",
+      "cityName": "Strawn",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "sweetwater-tx",
+      "cityName": "Sweetwater",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "valley-mills-tx",
+      "cityName": "Valley Mills",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "weatherford-tx",
+      "cityName": "Weatherford",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "wichita-falls-tx",
+      "cityName": "Wichita Falls",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "willow-park-tx",
+      "cityName": "Willow Park",
+      "filtersBuilt": 1,
+      "totalPlans": 109,
+      "success": true
+    },
+    {
+      "citySlug": "winters-tx",
+      "cityName": "Winters",
       "filtersBuilt": 1,
       "totalPlans": 109,
       "success": true

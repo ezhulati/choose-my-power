@@ -1,0 +1,4132 @@
+{
+  "citySlug": "aledo-tx",
+  "cityName": "Aledo",
+  "tdsp": {
+    "duns": "007923311",
+    "name": "AEP Texas North Company",
+    "zone": "North",
+    "tier": 3,
+    "priority": 0.36
+  },
+  "baseApiUrl": "aledo",
+  "filters": {
+    "no-filters": {
+      "plans": [
+        {
+          "id": "68b5a47c206770f7c5632088",
+          "name": "Simply Days Free - 12",
+          "provider": {
+            "name": "Amigo Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.201,
+            "rate1000kWh": 0.187,
+            "rate2000kWh": 0.181,
+            "ratePerKwh": 0.187
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 0,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "9:00 am-4:00 pm",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a47c206770f7c563208d",
+          "name": "Simply Days Free - 24",
+          "provider": {
+            "name": "Amigo Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.195,
+            "rate1000kWh": 0.181,
+            "rate2000kWh": 0.175,
+            "ratePerKwh": 0.181
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 0,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "9:00 am-4:00 pm",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b1a53f64bd2c63b1b109e3",
+          "name": "Nights Free Plan - 12",
+          "provider": {
+            "name": "Amigo Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.195,
+            "rate1000kWh": 0.19,
+            "rate2000kWh": 0.187,
+            "ratePerKwh": 0.19
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 26.3,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "Off-peak hours",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b17a69890a850ebca0d57e",
+          "name": "12th Month Free - 12",
+          "provider": {
+            "name": "Amigo Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.191,
+            "rate1000kWh": 0.191,
+            "rate2000kWh": 0.191,
+            "ratePerKwh": 0.191
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 31.5,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a444206770f7c5632083",
+          "name": "Secure Energy - 24",
+          "provider": {
+            "name": "Amigo Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.207,
+            "rate1000kWh": 0.184,
+            "rate2000kWh": 0.183,
+            "ratePerKwh": 0.184
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 31.5,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b900e34030b9912e39ac68",
+          "name": "12 Month GREEN (No Min Usage Fee)",
+          "provider": {
+            "name": "Constellation",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.183,
+            "rate1000kWh": 0.18,
+            "rate2000kWh": 0.179,
+            "ratePerKwh": 0.18
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 30.4,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b900e34030b9912e39ac67",
+          "name": "12 Month Usage Bill Credit",
+          "provider": {
+            "name": "Constellation",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.196,
+            "rate1000kWh": 0.157,
+            "rate2000kWh": 0.166,
+            "ratePerKwh": 0.157
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 30.4,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b900e34030b9912e39ac66",
+          "name": "24 Month Usage Bill Credit",
+          "provider": {
+            "name": "Constellation",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.201,
+            "rate1000kWh": 0.162,
+            "rate2000kWh": 0.171,
+            "ratePerKwh": 0.162
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 30.4,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a4f4206770f7c5632092",
+          "name": "Value Wise - 12",
+          "provider": {
+            "name": "Tara Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.226,
+            "rate1000kWh": 0.148,
+            "rate2000kWh": 0.184,
+            "ratePerKwh": 0.148
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 31.5,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a4f4206770f7c5632097",
+          "name": "Value Wise - 24",
+          "provider": {
+            "name": "Tara Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.228,
+            "rate1000kWh": 0.15,
+            "rate2000kWh": 0.186,
+            "ratePerKwh": 0.15
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 31.5,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b1a44b64bd2c63b1b10961",
+          "name": "Weekends Free Plan - 24",
+          "provider": {
+            "name": "Tara Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.184,
+            "rate1000kWh": 0.179,
+            "rate2000kWh": 0.177,
+            "ratePerKwh": 0.179
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 31.5,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "Off-peak hours",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a320206770f7c563200c",
+          "name": "Mega Saver - 24",
+          "provider": {
+            "name": "Just Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.188,
+            "rate1000kWh": 0.185,
+            "rate2000kWh": 0.109,
+            "ratePerKwh": 0.185
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 15,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a321206770f7c5632010",
+          "name": "Power Plus - 12",
+          "provider": {
+            "name": "Just Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.226,
+            "rate1000kWh": 0.123,
+            "rate2000kWh": 0.172,
+            "ratePerKwh": 0.123
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 26.3,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b56ef21953b8b6defd5d1d",
+          "name": "Simple Choice - 12",
+          "provider": {
+            "name": "Just Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.175,
+            "rate1000kWh": 0.167,
+            "rate2000kWh": 0.163,
+            "ratePerKwh": 0.167
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 26.3,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b56ef21953b8b6defd5d1c",
+          "name": "Basics - 12",
+          "provider": {
+            "name": "Just Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.172,
+            "rate1000kWh": 0.169,
+            "rate2000kWh": 0.168,
+            "ratePerKwh": 0.169
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 31.5,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b56ef21953b8b6defd5d1a",
+          "name": "Basics - 24",
+          "provider": {
+            "name": "Just Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.176,
+            "rate1000kWh": 0.173,
+            "rate2000kWh": 0.172,
+            "ratePerKwh": 0.173
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 31.5,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a321206770f7c5632015",
+          "name": "Power Plus - 24",
+          "provider": {
+            "name": "Just Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.23,
+            "rate1000kWh": 0.127,
+            "rate2000kWh": 0.176,
+            "ratePerKwh": 0.127
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 31.5,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b56ef21953b8b6defd5d1b",
+          "name": "Simple Choice - 24",
+          "provider": {
+            "name": "Just Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.179,
+            "rate1000kWh": 0.171,
+            "rate2000kWh": 0.167,
+            "ratePerKwh": 0.171
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 31.5,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b6fc3b206770f7c5634d30",
+          "name": "Cash Money 12",
+          "provider": {
+            "name": "4Change Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.225,
+            "rate1000kWh": 0.166,
+            "rate2000kWh": 0.182,
+            "ratePerKwh": 0.166
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 6,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b6fc3b206770f7c5634d2a",
+          "name": "Power Maxx Saver 12",
+          "provider": {
+            "name": "4Change Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.21,
+            "rate1000kWh": 0.201,
+            "rate2000kWh": 0.147,
+            "ratePerKwh": 0.201
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 6,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b6fc3b206770f7c5634d28",
+          "name": "Power Maxx Saver 24",
+          "provider": {
+            "name": "4Change Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.21,
+            "rate1000kWh": 0.201,
+            "rate2000kWh": 0.147,
+            "ratePerKwh": 0.201
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 480,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 6,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b6fc3b206770f7c5634d2c",
+          "name": "Maxx Saver Value 12",
+          "provider": {
+            "name": "4Change Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.243,
+            "rate1000kWh": 0.115,
+            "rate2000kWh": 0.176,
+            "ratePerKwh": 0.115
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 9,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b6fc3b206770f7c5634d2d",
+          "name": "Power Savvy Saver 12",
+          "provider": {
+            "name": "4Change Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.205,
+            "rate1000kWh": 0.191,
+            "rate2000kWh": 0.18,
+            "ratePerKwh": 0.191
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 9,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b6fc3b206770f7c5634d2f",
+          "name": "Maxx Saver Value 24",
+          "provider": {
+            "name": "4Change Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.243,
+            "rate1000kWh": 0.115,
+            "rate2000kWh": 0.176,
+            "ratePerKwh": 0.115
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 480,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 9,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b52c1c31ef27f4d3f62f57",
+          "name": "Frontier Saver Deluxe 12",
+          "provider": {
+            "name": "Frontier Utilities",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.217,
+            "rate1000kWh": 0.213,
+            "rate2000kWh": 0.162,
+            "ratePerKwh": 0.213
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 30.4,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b7cf30206770f7c5636907",
+          "name": "Frontier Saver Plus 12",
+          "provider": {
+            "name": "Frontier Utilities",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.243,
+            "rate1000kWh": 0.115,
+            "rate2000kWh": 0.176,
+            "ratePerKwh": 0.115
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 30.4,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b52c1c31ef27f4d3f62f56",
+          "name": "Frontier Saver Premier 12",
+          "provider": {
+            "name": "Frontier Utilities",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.225,
+            "rate1000kWh": 0.222,
+            "rate2000kWh": 0.146,
+            "ratePerKwh": 0.222
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 30.4,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b52c1c31ef27f4d3f62f54",
+          "name": "Frontier Saver Value 12",
+          "provider": {
+            "name": "Frontier Utilities",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.169,
+            "rate1000kWh": 0.216,
+            "rate2000kWh": 0.239,
+            "ratePerKwh": 0.216
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 30.4,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b52c1c31ef27f4d3f62f52",
+          "name": "Frontier Saver Value Plus 12",
+          "provider": {
+            "name": "Frontier Utilities",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.25,
+            "rate1000kWh": 0.172,
+            "rate2000kWh": 0.208,
+            "ratePerKwh": 0.172
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 30.4,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b52c1c31ef27f4d3f62f58",
+          "name": "Light Saver 12",
+          "provider": {
+            "name": "Frontier Utilities",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.182,
+            "rate1000kWh": 0.171,
+            "rate2000kWh": 0.162,
+            "ratePerKwh": 0.171
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 30.4,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b52c1d4d20ab31b85cadf1",
+          "name": "Gexa Eco Saver Advantage 12",
+          "provider": {
+            "name": "Gexa Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.218,
+            "rate1000kWh": 0.214,
+            "rate2000kWh": 0.163,
+            "ratePerKwh": 0.214
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b52c1d4d20ab31b85cadee",
+          "name": "Gexa Eco Saver Edge Plus 12",
+          "provider": {
+            "name": "Gexa Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.255,
+            "rate1000kWh": 0.152,
+            "rate2000kWh": 0.2,
+            "ratePerKwh": 0.152
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b52c1d4d20ab31b85cade8",
+          "name": "Gexa Eco Saver Lite 12",
+          "provider": {
+            "name": "Gexa Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.171,
+            "rate1000kWh": 0.218,
+            "rate2000kWh": 0.242,
+            "ratePerKwh": 0.218
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b7cf34206770f7c563692b",
+          "name": "Gexa Eco Saver Plus 12",
+          "provider": {
+            "name": "Gexa Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.243,
+            "rate1000kWh": 0.115,
+            "rate2000kWh": 0.176,
+            "ratePerKwh": 0.115
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b52c1d4d20ab31b85cadeb",
+          "name": "Gexa Eco Saver Premier 12",
+          "provider": {
+            "name": "Gexa Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.225,
+            "rate1000kWh": 0.222,
+            "rate2000kWh": 0.146,
+            "ratePerKwh": 0.222
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b52c1d4d20ab31b85cadec",
+          "name": "Gexa Eco Saver Value 12",
+          "provider": {
+            "name": "Gexa Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.249,
+            "rate1000kWh": 0.171,
+            "rate2000kWh": 0.207,
+            "ratePerKwh": 0.171
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b52c1d4d20ab31b85cadf0",
+          "name": "Gexa Light Saver 12",
+          "provider": {
+            "name": "Gexa Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.183,
+            "rate1000kWh": 0.172,
+            "rate2000kWh": 0.163,
+            "ratePerKwh": 0.172
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a27f206770f7c5631ff1",
+          "name": "Pollution Free Conserve 12 Preferred",
+          "provider": {
+            "name": "Green Mountain",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.213,
+            "rate1000kWh": 0.205,
+            "rate2000kWh": 0.21,
+            "ratePerKwh": 0.205
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a0e1206770f7c5631fe5",
+          "name": "Pollution Free Green Savings Plus 12 Preferred",
+          "provider": {
+            "name": "Green Mountain",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.255,
+            "rate1000kWh": 0.252,
+            "rate2000kWh": 0.175,
+            "ratePerKwh": 0.252
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b528b89df7fc01f8e66822",
+          "name": "Pollution Free e-Plus 12 Preferred",
+          "provider": {
+            "name": "Green Mountain",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.204,
+            "rate1000kWh": 0.201,
+            "rate2000kWh": 0.199,
+            "ratePerKwh": 0.201
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a27f206770f7c5631ff6",
+          "name": "Pollution Free Conserve 24 Preferred",
+          "provider": {
+            "name": "Green Mountain",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.213,
+            "rate1000kWh": 0.205,
+            "rate2000kWh": 0.21,
+            "ratePerKwh": 0.205
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a0e1206770f7c5631fea",
+          "name": "Pollution Free Green Savings Plus 24 Preferred",
+          "provider": {
+            "name": "Green Mountain",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.249,
+            "rate1000kWh": 0.246,
+            "rate2000kWh": 0.169,
+            "ratePerKwh": 0.246
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b528b89df7fc01f8e66820",
+          "name": "Pollution Free e-Plus 24 Preferred",
+          "provider": {
+            "name": "Green Mountain",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.204,
+            "rate1000kWh": 0.201,
+            "rate2000kWh": 0.199,
+            "ratePerKwh": 0.201
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a0df206770f7c5631fd1",
+          "name": "Bill Credit Bundle 12",
+          "provider": {
+            "name": "Discount Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.277,
+            "rate1000kWh": 0.149,
+            "rate2000kWh": 0.209,
+            "ratePerKwh": 0.149
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a0e0206770f7c5631fe0",
+          "name": "Bill Credit Bundle 24",
+          "provider": {
+            "name": "Discount Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.277,
+            "rate1000kWh": 0.149,
+            "rate2000kWh": 0.209,
+            "ratePerKwh": 0.149
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b528b89df7fc01f8e66826",
+          "name": "Wise Buy Basic 24 Online",
+          "provider": {
+            "name": "Discount Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.2,
+            "rate1000kWh": 0.177,
+            "rate2000kWh": 0.175,
+            "ratePerKwh": 0.177
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a0df206770f7c5631fd6",
+          "name": "Bill Credit Bundle 2000 kWh 12",
+          "provider": {
+            "name": "Discount Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.229,
+            "rate1000kWh": 0.226,
+            "rate2000kWh": 0.149,
+            "ratePerKwh": 0.226
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b528b89df7fc01f8e66821",
+          "name": "Essential Saver 12",
+          "provider": {
+            "name": "Discount Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.182,
+            "rate1000kWh": 0.179,
+            "rate2000kWh": 0.177,
+            "ratePerKwh": 0.179
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a0e0206770f7c5631fdb",
+          "name": "Bill Credit Bundle 2000 kWh 24",
+          "provider": {
+            "name": "Discount Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.229,
+            "rate1000kWh": 0.226,
+            "rate2000kWh": 0.149,
+            "ratePerKwh": 0.226
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b528ba31ef27f4d3f62f4f",
+          "name": "Reliant Basic Power 12 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.21,
+            "rate1000kWh": 0.187,
+            "rate2000kWh": 0.185,
+            "ratePerKwh": 0.187
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b59e96206770f7c5631efa",
+          "name": "Reliant Power Savings 12 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.232,
+            "rate1000kWh": 0.179,
+            "rate2000kWh": 0.202,
+            "ratePerKwh": 0.179
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b528b931ef27f4d3f62f4c",
+          "name": "Reliant Basic Power 24 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.23,
+            "rate1000kWh": 0.207,
+            "rate2000kWh": 0.205,
+            "ratePerKwh": 0.207
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b59e97206770f7c5631f0a",
+          "name": "Reliant Power Savings 24 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.232,
+            "rate1000kWh": 0.179,
+            "rate2000kWh": 0.202,
+            "ratePerKwh": 0.179
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a280206770f7c5631ffb",
+          "name": "Reliant Conservation 12 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.197,
+            "rate1000kWh": 0.189,
+            "rate2000kWh": 0.194,
+            "ratePerKwh": 0.189
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b59e96206770f7c5631f00",
+          "name": "Reliant Power Savings 2,000 kWh 12 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.255,
+            "rate1000kWh": 0.252,
+            "rate2000kWh": 0.175,
+            "ratePerKwh": 0.252
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b528ba31ef27f4d3f62f4e",
+          "name": "Reliant Pure Power 12 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.202,
+            "rate1000kWh": 0.194,
+            "rate2000kWh": 0.189,
+            "ratePerKwh": 0.194
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a280206770f7c5632000",
+          "name": "Reliant Conservation 24 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.197,
+            "rate1000kWh": 0.189,
+            "rate2000kWh": 0.194,
+            "ratePerKwh": 0.189
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b59e97206770f7c5631f05",
+          "name": "Reliant Power Savings 2,000 kWh 24 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.249,
+            "rate1000kWh": 0.246,
+            "rate2000kWh": 0.169,
+            "ratePerKwh": 0.246
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b528ba31ef27f4d3f62f4d",
+          "name": "Reliant Pure Power 24 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.202,
+            "rate1000kWh": 0.194,
+            "rate2000kWh": 0.189,
+            "ratePerKwh": 0.194
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b59e98206770f7c5631f0f",
+          "name": "Reliant Truly Free Nights 100% Solar 12 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.21,
+            "rate1000kWh": 0.207,
+            "rate2000kWh": 0.205,
+            "ratePerKwh": 0.207
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "Off-peak hours",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b59e98206770f7c5631f15",
+          "name": "Reliant Truly Free Weekends 100% Solar 12 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.21,
+            "rate1000kWh": 0.207,
+            "rate2000kWh": 0.205,
+            "ratePerKwh": 0.207
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "Off-peak hours",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b59e94206770f7c5631ee6",
+          "name": "Simple Bill Credit 12",
+          "provider": {
+            "name": "Cirro Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.277,
+            "rate1000kWh": 0.149,
+            "rate2000kWh": 0.209,
+            "ratePerKwh": 0.149
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b59e94206770f7c5631eeb",
+          "name": "Simple Bill Credit 24",
+          "provider": {
+            "name": "Cirro Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.277,
+            "rate1000kWh": 0.149,
+            "rate2000kWh": 0.209,
+            "ratePerKwh": 0.149
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b528ba9df7fc01f8e6682d",
+          "name": "Smart Value 24",
+          "provider": {
+            "name": "Cirro Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.212,
+            "rate1000kWh": 0.179,
+            "rate2000kWh": 0.192,
+            "ratePerKwh": 0.179
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b528ba9df7fc01f8e6682b",
+          "name": "Smart Value 12",
+          "provider": {
+            "name": "Cirro Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.208,
+            "rate1000kWh": 0.175,
+            "rate2000kWh": 0.188,
+            "ratePerKwh": 0.175
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 21,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b528ba9df7fc01f8e6682e",
+          "name": "Simple Advantage 12",
+          "provider": {
+            "name": "Cirro Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.182,
+            "rate1000kWh": 0.179,
+            "rate2000kWh": 0.177,
+            "ratePerKwh": 0.179
+          },
+          "contract": {
+            "length": 12,
+            "type": "variable",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b59e95206770f7c5631ef0",
+          "name": "Simple Bill Credit Bundle 2000 kWh 12",
+          "provider": {
+            "name": "Cirro Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.229,
+            "rate1000kWh": 0.226,
+            "rate2000kWh": 0.149,
+            "ratePerKwh": 0.226
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b528b99df7fc01f8e6682a",
+          "name": "Simple Advantage 24",
+          "provider": {
+            "name": "Cirro Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.182,
+            "rate1000kWh": 0.179,
+            "rate2000kWh": 0.177,
+            "ratePerKwh": 0.179
+          },
+          "contract": {
+            "length": 24,
+            "type": "variable",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b59e95206770f7c5631ef5",
+          "name": "Simple Bill Credit Bundle 2000 kWh 24",
+          "provider": {
+            "name": "Cirro Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.229,
+            "rate1000kWh": 0.226,
+            "rate2000kWh": 0.149,
+            "ratePerKwh": 0.226
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a0dd206770f7c5631fc2",
+          "name": "Live Brighter Lite 12",
+          "provider": {
+            "name": "Direct Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.182,
+            "rate1000kWh": 0.179,
+            "rate2000kWh": 0.182,
+            "ratePerKwh": 0.179
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b528b89df7fc01f8e66825",
+          "name": "Live Brighter 1K+ 24",
+          "provider": {
+            "name": "Direct Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.204,
+            "rate1000kWh": 0.191,
+            "rate2000kWh": 0.179,
+            "ratePerKwh": 0.191
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a0de206770f7c5631fc7",
+          "name": "Live Brighter Lite 24",
+          "provider": {
+            "name": "Direct Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.182,
+            "rate1000kWh": 0.179,
+            "rate2000kWh": 0.182,
+            "ratePerKwh": 0.179
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a0de206770f7c5631fcc",
+          "name": "Twelve Hour Power 12",
+          "provider": {
+            "name": "Direct Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.247,
+            "rate1000kWh": 0.235,
+            "rate2000kWh": 0.229,
+            "ratePerKwh": 0.235
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "Off-peak hours",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b528b89df7fc01f8e66823",
+          "name": "Bright Secure 12",
+          "provider": {
+            "name": "Direct Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.193,
+            "rate1000kWh": 0.185,
+            "rate2000kWh": 0.18,
+            "ratePerKwh": 0.185
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 35,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b64553206770f7c5633545",
+          "name": "6 Month - Prepaid",
+          "provider": {
+            "name": "Payless Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.19,
+            "rate1000kWh": 0.191,
+            "rate2000kWh": 0.176,
+            "ratePerKwh": 0.191
+          },
+          "contract": {
+            "length": 6,
+            "type": "fixed",
+            "earlyTerminationFee": 99,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 26,
+            "billCredit": 0,
+            "deposit": {
+              "required": true,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b64553206770f7c5633544",
+          "name": "12 Month - Prepaid",
+          "provider": {
+            "name": "Payless Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.193,
+            "rate1000kWh": 0.194,
+            "rate2000kWh": 0.179,
+            "ratePerKwh": 0.194
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 99,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 26.2,
+            "billCredit": 0,
+            "deposit": {
+              "required": true,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b869cb206770f7c5637cb7",
+          "name": "Flex Forward",
+          "provider": {
+            "name": "TXU Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.214,
+            "rate1000kWh": 0.201,
+            "rate2000kWh": 0.195,
+            "ratePerKwh": 0.201
+          },
+          "contract": {
+            "length": 1,
+            "type": "fixed",
+            "earlyTerminationFee": 0,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 9,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b869ca206770f7c5637cb0",
+          "name": "Free Nights & Solar Days 12 (8 pm)",
+          "provider": {
+            "name": "TXU Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.222,
+            "rate1000kWh": 0.209,
+            "rate2000kWh": 0.203,
+            "ratePerKwh": 0.209
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b862c0206770f7c5637b94",
+          "name": "Rhythm Saver 12",
+          "provider": {
+            "name": "Rhythm Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.217,
+            "rate1000kWh": 0.119,
+            "rate2000kWh": 0.17,
+            "ratePerKwh": 0.119
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b862c0206770f7c5637b93",
+          "name": "Watt a Deal 12",
+          "provider": {
+            "name": "Rhythm Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.207,
+            "rate1000kWh": 0.208,
+            "rate2000kWh": 0.147,
+            "ratePerKwh": 0.208
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b85f3f206770f7c5637b34",
+          "name": "Simply Green 13",
+          "provider": {
+            "name": "Rhythm Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.188,
+            "rate1000kWh": 0.175,
+            "rate2000kWh": 0.168,
+            "ratePerKwh": 0.175
+          },
+          "contract": {
+            "length": 13,
+            "type": "fixed",
+            "earlyTerminationFee": 260,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b85f3f206770f7c5637b33",
+          "name": "Simply Green 23",
+          "provider": {
+            "name": "Rhythm Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.186,
+            "rate1000kWh": 0.173,
+            "rate2000kWh": 0.167,
+            "ratePerKwh": 0.173
+          },
+          "contract": {
+            "length": 23,
+            "type": "fixed",
+            "earlyTerminationFee": 460,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b6f544206770f7c5634c62",
+          "name": "Ultra Flex 1",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.211,
+            "rate1000kWh": 0.203,
+            "rate2000kWh": 0.199,
+            "ratePerKwh": 0.203
+          },
+          "contract": {
+            "length": 1,
+            "type": "fixed",
+            "earlyTerminationFee": 0,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b714c9206770f7c563510d",
+          "name": "SimpleSaver 12",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.223,
+            "rate1000kWh": 0.12,
+            "rate2000kWh": 0.168,
+            "ratePerKwh": 0.12
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b714ca206770f7c5635112",
+          "name": "True Simple 12",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.17,
+            "rate1000kWh": 0.167,
+            "rate2000kWh": 0.165,
+            "ratePerKwh": 0.167
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b714ca206770f7c563510f",
+          "name": "SimpleSaver 14",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.229,
+            "rate1000kWh": 0.126,
+            "rate2000kWh": 0.174,
+            "ratePerKwh": 0.126
+          },
+          "contract": {
+            "length": 14,
+            "type": "fixed",
+            "earlyTerminationFee": 250,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b714c9206770f7c563510b",
+          "name": "True Simple 14",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.171,
+            "rate1000kWh": 0.168,
+            "rate2000kWh": 0.166,
+            "ratePerKwh": 0.168
+          },
+          "contract": {
+            "length": 14,
+            "type": "fixed",
+            "earlyTerminationFee": 250,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b714ca206770f7c5635110",
+          "name": "SimpleSaver 24",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.232,
+            "rate1000kWh": 0.129,
+            "rate2000kWh": 0.177,
+            "ratePerKwh": 0.129
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 250,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b714ca206770f7c5635113",
+          "name": "True Simple 24",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.178,
+            "rate1000kWh": 0.175,
+            "rate2000kWh": 0.173,
+            "ratePerKwh": 0.175
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 250,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b714c9206770f7c563510c",
+          "name": "SimpleSaver 36",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.234,
+            "rate1000kWh": 0.131,
+            "rate2000kWh": 0.179,
+            "ratePerKwh": 0.131
+          },
+          "contract": {
+            "length": 36,
+            "type": "fixed",
+            "earlyTerminationFee": 350,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b714c9206770f7c563510e",
+          "name": "True Simple 36",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.182,
+            "rate1000kWh": 0.179,
+            "rate2000kWh": 0.177,
+            "ratePerKwh": 0.179
+          },
+          "contract": {
+            "length": 36,
+            "type": "fixed",
+            "earlyTerminationFee": 350,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5c348206770f7c563246e",
+          "name": "Radiance1000  12",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.242,
+            "rate1000kWh": 0.139,
+            "rate2000kWh": 0.188,
+            "ratePerKwh": 0.139
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5c348206770f7c5632462",
+          "name": "Radiance2000  12",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.243,
+            "rate1000kWh": 0.24,
+            "rate2000kWh": 0.139,
+            "ratePerKwh": 0.24
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5c349206770f7c5632478",
+          "name": "Luminous 24",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.176,
+            "rate1000kWh": 0.173,
+            "rate2000kWh": 0.172,
+            "ratePerKwh": 0.173
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 480,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5c348206770f7c563246a",
+          "name": "Radiance1000  24",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.248,
+            "rate1000kWh": 0.145,
+            "rate2000kWh": 0.194,
+            "ratePerKwh": 0.145
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5c348206770f7c563246f",
+          "name": "Radiance2000  24",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.249,
+            "rate1000kWh": 0.246,
+            "rate2000kWh": 0.145,
+            "ratePerKwh": 0.246
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5c349206770f7c563247a",
+          "name": "Luminous 36",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.179,
+            "rate1000kWh": 0.176,
+            "rate2000kWh": 0.175,
+            "ratePerKwh": 0.176
+          },
+          "contract": {
+            "length": 36,
+            "type": "fixed",
+            "earlyTerminationFee": 720,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5c348206770f7c5632465",
+          "name": "Radiance1000  36",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.251,
+            "rate1000kWh": 0.148,
+            "rate2000kWh": 0.197,
+            "ratePerKwh": 0.148
+          },
+          "contract": {
+            "length": 36,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5c348206770f7c5632473",
+          "name": "Radiance2000  36",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.252,
+            "rate1000kWh": 0.249,
+            "rate2000kWh": 0.148,
+            "ratePerKwh": 0.249
+          },
+          "contract": {
+            "length": 36,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5c348206770f7c5632471",
+          "name": "Luminous Nights 12",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.177,
+            "rate1000kWh": 0.173,
+            "rate2000kWh": 0.172,
+            "ratePerKwh": 0.173
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "9:00 PM-9:00 AM",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5c348206770f7c5632467",
+          "name": "Luminous Weekends 12",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.191,
+            "rate1000kWh": 0.188,
+            "rate2000kWh": 0.186,
+            "ratePerKwh": 0.188
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "Off-peak hours",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5c348206770f7c5632472",
+          "name": "Luminous Nights 24",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.183,
+            "rate1000kWh": 0.179,
+            "rate2000kWh": 0.178,
+            "ratePerKwh": 0.179
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 480,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "9:00 PM-9:00 AM",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5c348206770f7c5632464",
+          "name": "Luminous Weekends 24",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.198,
+            "rate1000kWh": 0.195,
+            "rate2000kWh": 0.193,
+            "ratePerKwh": 0.195
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 480,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "Off-peak hours",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5c348206770f7c563246d",
+          "name": "Luminous Nights 36",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.186,
+            "rate1000kWh": 0.182,
+            "rate2000kWh": 0.181,
+            "ratePerKwh": 0.182
+          },
+          "contract": {
+            "length": 36,
+            "type": "fixed",
+            "earlyTerminationFee": 720,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "9:00 PM-9:00 AM",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5c348206770f7c5632469",
+          "name": "Luminous Weekends 36",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.201,
+            "rate1000kWh": 0.198,
+            "rate2000kWh": 0.196,
+            "ratePerKwh": 0.198
+          },
+          "contract": {
+            "length": 36,
+            "type": "fixed",
+            "earlyTerminationFee": 720,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "Off-peak hours",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5c348206770f7c5632476",
+          "name": "Luminous 12",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.17,
+            "rate1000kWh": 0.167,
+            "rate2000kWh": 0.166,
+            "ratePerKwh": 0.167
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 35,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5c348206770f7c5632461",
+          "name": "Luminous Green 12",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.173,
+            "rate1000kWh": 0.17,
+            "rate2000kWh": 0.169,
+            "ratePerKwh": 0.17
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5c348206770f7c563246b",
+          "name": "Luminous Green 24",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.18,
+            "rate1000kWh": 0.177,
+            "rate2000kWh": 0.176,
+            "ratePerKwh": 0.177
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 480,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5c348206770f7c563246c",
+          "name": "Luminous Green 36",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.184,
+            "rate1000kWh": 0.181,
+            "rate2000kWh": 0.18,
+            "ratePerKwh": 0.181
+          },
+          "contract": {
+            "length": 36,
+            "type": "fixed",
+            "earlyTerminationFee": 720,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS NORTH COMPANY"
+            ]
+          }
+        }
+      ],
+      "count": 109,
+      "lowestRate": 0.115,
+      "highestRate": 0.252
+    }
+  }
+}
