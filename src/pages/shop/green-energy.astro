@@ -87,24 +87,17 @@ const description = "Cut through fake green marketing. Find actually renewable e
               <Factory className="h-6 w-6" />
               Greenwashing Plans
             </h3>
-            <EnhancedList bulletColor="red" className="space-y-4">
-              <div>
-                <p class="font-semibold text-red-700 text-base">"Eco-Friendly" Plans</p>
-                <p class="text-red-600 text-sm mt-1">Just regular coal/gas power with carbon offsets (tree planting promises)</p>
-              </div>
-              <div>
-                <p class="font-semibold text-red-700 text-base">"Green Energy Mix" Plans</p>
-                <p class="text-red-600 text-sm mt-1">Maybe 10% renewable, 90% fossil fuels</p>
-              </div>
-              <div>
-                <p class="font-semibold text-red-700 text-base">"Nature" or "Earth" Named Plans</p>
-                <p class="text-red-600 text-sm mt-1">Marketing names with zero actual renewable content</p>
-              </div>
-              <div>
-                <p class="font-semibold text-red-700 text-base">"Sustainable" Plans</p>
-                <p class="text-red-600 text-sm mt-1">Vague promises, no specific renewable percentage</p>
-              </div>
-            </EnhancedList>
+            <EnhancedList 
+              bulletColor="red" 
+              textSize="base"
+              spacing="lg"
+              items={[
+                '<p class="font-semibold text-red-700 text-base">"Eco-Friendly" Plans</p><p class="text-red-600 text-sm mt-1">Just regular coal/gas power with carbon offsets (tree planting promises)</p>',
+                '<p class="font-semibold text-red-700 text-base">"Green Energy Mix" Plans</p><p class="text-red-600 text-sm mt-1">Maybe 10% renewable, 90% fossil fuels</p>',
+                '<p class="font-semibold text-red-700 text-base">"Nature" or "Earth" Named Plans</p><p class="text-red-600 text-sm mt-1">Marketing names with zero actual renewable content</p>',
+                '<p class="font-semibold text-red-700 text-base">"Sustainable" Plans</p><p class="text-red-600 text-sm mt-1">Vague promises, no specific renewable percentage</p>'
+              ]}
+            />
           </EnhancedCard>
 
           <EnhancedCard variant="outlined" padding="lg" className="border-green-200 bg-green-50">
@@ -112,24 +105,17 @@ const description = "Cut through fake green marketing. Find actually renewable e
               <Wind className="h-6 w-6" />
               Actually Green Plans
             </h3>
-            <EnhancedList bulletColor="green" className="space-y-4">
-              <div>
-                <p class="font-semibold text-green-700 text-base">100% Renewable Source</p>
-                <p class="text-green-700 text-sm mt-1">Clear statement: "100% wind" or "100% solar"</p>
-              </div>
-              <div>
-                <p class="font-semibold text-green-700 text-base">Named Wind/Solar Farms</p>
-                <p class="text-green-700 text-sm mt-1">They can tell you exactly where your power comes from</p>
-              </div>
-              <div>
-                <p class="font-semibold text-green-700 text-base">RECs (Renewable Energy Certificates)</p>
-                <p class="text-green-700 text-sm mt-1">Verified certificates proving renewable electricity purchase</p>
-              </div>
-              <div>
-                <p class="font-semibold text-green-700 text-base">EPA Green Power Partners</p>
-                <p class="text-green-700 text-sm mt-1">Third-party verification of renewable claims</p>
-              </div>
-            </EnhancedList>
+            <EnhancedList 
+              bulletColor="green" 
+              textSize="base"
+              spacing="lg"
+              items={[
+                '<p class="font-semibold text-green-700 text-base">100% Renewable Source</p><p class="text-green-700 text-sm mt-1">Clear statement: "100% wind" or "100% solar"</p>',
+                '<p class="font-semibold text-green-700 text-base">Named Wind/Solar Farms</p><p class="text-green-700 text-sm mt-1">They can tell you exactly where your power comes from</p>',
+                '<p class="font-semibold text-green-700 text-base">RECs (Renewable Energy Certificates)</p><p class="text-green-700 text-sm mt-1">Verified certificates proving renewable electricity purchase</p>',
+                '<p class="font-semibold text-green-700 text-base">EPA Green Power Partners</p><p class="text-green-700 text-sm mt-1">Third-party verification of renewable claims</p>'
+              ]}
+            />
           </EnhancedCard>
         </div>
       </div>
@@ -325,24 +311,36 @@ const description = "Cut through fake green marketing. Find actually renewable e
                 <CheckCircle className="h-6 w-6" />
                 What You're Actually Paying For
               </h4>
-              <EnhancedList bulletColor="green" className="text-green-100 space-y-4">
-                <span><strong class="text-white">Real wind farms:</strong> Your money funds actual turbines spinning in Texas</span>
-                <span><strong class="text-white">Solar installations:</strong> More panels = more clean energy capacity</span>
-                <span><strong class="text-white">Grid improvements:</strong> Investment in renewable infrastructure</span>
-                <span><strong class="text-white">About $8-15 more per month:</strong> Small price for real environmental impact</span>
-              </EnhancedList>
+              <EnhancedList 
+                bulletColor="green" 
+                textSize="base"
+                spacing="lg"
+                textColor="text-green-100"
+                items={[
+                  '<strong class="text-white">Real wind farms:</strong> Your money funds actual turbines spinning in Texas',
+                  '<strong class="text-white">Solar installations:</strong> More panels = more clean energy capacity',
+                  '<strong class="text-white">Grid improvements:</strong> Investment in renewable infrastructure',
+                  '<strong class="text-white">About $8-15 more per month:</strong> Small price for real environmental impact'
+                ]}
+              />
             </div>
             <div>
               <h4 class="font-semibold text-yellow-200 mb-6 flex items-center gap-3 text-lg">
                 <AlertTriangle className="h-6 w-6" />
                 Texas Renewable Reality Check
               </h4>
-              <EnhancedList bulletColor="gold" className="text-green-100 space-y-4">
-                <span><strong class="text-white">Texas leads the US</strong> in wind power generation (more than any other state)</span>
-                <span><strong class="text-white">Our grid is separate</strong> from other states, so your green choice matters here</span>
-                <span><strong class="text-white">Wind farms visible</strong> from I-20, I-35, and US-84 - this stuff is real</span>
-                <span><strong class="text-white">Solar growing fast</strong> in West Texas where sun is abundant</span>
-              </EnhancedList>
+              <EnhancedList 
+                bulletColor="gold" 
+                textSize="base"
+                spacing="lg"
+                textColor="text-green-100"
+                items={[
+                  '<strong class="text-white">Texas leads the US</strong> in wind power generation (more than any other state)',
+                  '<strong class="text-white">Our grid is separate</strong> from other states, so your green choice matters here',
+                  '<strong class="text-white">Wind farms visible</strong> from I-20, I-35, and US-84 - this stuff is real',
+                  '<strong class="text-white">Solar growing fast</strong> in West Texas where sun is abundant'
+                ]}
+              />
             </div>
           </div>
           

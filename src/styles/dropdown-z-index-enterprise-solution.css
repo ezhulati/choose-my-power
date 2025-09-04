@@ -20,9 +20,10 @@
  */
 
 /* ========== CRITICAL Z-INDEX CONSTANTS ========== */
+/* Updated to align with main z-index system in index.css */
 :root {
-  --dropdown-z-index: 99999;
-  --mobile-nav-z-index: 98000;
+  --dropdown-z-index: 120; /* Matches --z-dropdown-menu from main system */
+  --mobile-nav-z-index: 420; /* Matches --z-mobile-side-menu from main system */
   --hero-z-index: 1;
   --background-z-index: 1;
 }
@@ -203,17 +204,18 @@ section,
 
 /* ========== OVERLAY AND MODAL PROTECTION ========== */
 /* Ensure dropdowns appear above overlays but below modals */
+/* Updated to align with main z-index system */
 
 .overlay,
 .backdrop,
 .modal-backdrop {
-  z-index: 90000 !important; /* Below dropdowns */
+  z-index: 90 !important; /* Below dropdowns, above content */
 }
 
 .modal,
 .dialog,
 .popup {
-  z-index: 100000 !important; /* Above dropdowns */
+  z-index: 210 !important; /* Above dropdowns - matches --z-dialog-content */
 }
 
 /* ========== THIRD-PARTY LIBRARY OVERRIDES ========== */

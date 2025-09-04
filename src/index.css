@@ -89,6 +89,9 @@
     --z-backdrop: 200;
     --z-modal: 210;
     --z-dialog: 220;
+    --z-dialog-overlay: 200;
+    --z-dialog-content: 210;
+    --z-dialog-close: 220;
     
     --z-sidebar: 300;
     --z-sidebar-overlay: 310;

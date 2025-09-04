@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from './dialog';
 import { Button } from './button';
 import { Input } from './input';
@@ -36,6 +36,7 @@ interface AddressSearchModalProps {
     provider: {
       name: string;
     };
+    apiPlanId?: string; // Real MongoDB ObjectId from API
   };
   onSuccess: (esiid: string, address: string) => void;
 }
@@ -52,53 +53,101 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
   const [selectedLocation, setSelectedLocation] = useState<ESIIDLocation | null>(null);
   const [isSearching, setIsSearching] = useState(false);
   const [isValidating, setIsValidating] = useState(false);
+  const [validatingEsiid, setValidatingEsiid] = useState<string | null>(null);
   const [searchError, setSearchError] = useState<string | null>(null);
   const [step, setStep] = useState<'search' | 'results' | 'success'>('search');
+  
+  // Use refs to prevent stale closures and manage cleanup
+  const debounceTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const abortControllerRef = useRef<AbortController | null>(null);
+  const lastSearchRef = useRef<{ address: string; zipCode: string } | null>(null);
 
   // Reset state when modal opens/closes
   useEffect(() => {
     if (!isOpen) {
+      // Clean up any pending operations
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current);
+        debounceTimerRef.current = null;
+      }
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+        abortControllerRef.current = null;
+      }
+      
+      // Reset state
       setAddress('');
       setZipCode('');
       setSearchResults([]);
       setSelectedLocation(null);
       setSearchError(null);
+      setValidatingEsiid(null);
       setStep('search');
+      setIsSearching(false);
+      lastSearchRef.current = null;
+    } else {
+      // Focus first input when modal opens
+      setTimeout(() => {
+        document.getElementById('address')?.focus();
+      }, 100);
     }
   }, [isOpen]);
 
-  // Auto-search as user types (with debouncing)
+  // Keyboard navigation support
   useEffect(() => {
-    if (address.length >= 3 && zipCode.length === 5) {
-      const timeoutId = setTimeout(() => {
-        handleSearch();
-      }, 500);
-      
-      return () => clearTimeout(timeoutId);
-    }
-  }, [address, zipCode]);
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
 
-  const handleSearch = async () => {
-    if (!address.trim() || zipCode.length !== 5) {
-      setSearchError('Please enter a valid address and 5-digit ZIP code');
+    if (isOpen) {
+      document.addEventListener('keydown', handleKeyDown);
+      return () => document.removeEventListener('keydown', handleKeyDown);
+    }
+  }, [isOpen, onClose]);
+
+  // Memoized search function to prevent recreation
+  const performSearch = useCallback(async (searchAddress: string, searchZip: string) => {
+    // Prevent duplicate searches for same values
+    if (lastSearchRef.current && 
+        lastSearchRef.current.address === searchAddress && 
+        lastSearchRef.current.zipCode === searchZip) {
       return;
+    }
+
+    // Cancel any in-flight request
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
     }
 
     setIsSearching(true);
     setSearchError(null);
+    
+    // Create new abort controller for this request
+    const abortController = new AbortController();
+    abortControllerRef.current = abortController;
+    
+    // Store the search parameters to prevent duplicates
+    lastSearchRef.current = { address: searchAddress, zipCode: searchZip };
 
     try {
-      // Call our API proxy to search for ESIIDs
       const response = await fetch('/api/ercot/search', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          address: address,
-          zipCode: zipCode
-        })
+          address: searchAddress,
+          zipCode: searchZip
+        }),
+        signal: abortController.signal
       });
+
+      // Check if request was aborted
+      if (abortController.signal.aborted) {
+        return;
+      }
 
       if (!response.ok) {
         const errorData = await response.json();
@@ -107,26 +156,86 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
 
       const locations: ESIIDLocation[] = await response.json();
       
-      if (locations.length === 0) {
-        setSearchError('No service locations found for this address. Please check your address and try again.');
-        setSearchResults([]);
-      } else {
-        setSearchResults(locations);
-        setStep('results');
+      // Only update state if this request wasn't aborted
+      if (!abortController.signal.aborted) {
+        if (locations.length === 0) {
+          setSearchError('No service locations found for this address. Please check your address and try again.');
+          setSearchResults([]);
+        } else {
+          setSearchResults(locations);
+          setStep('results');
+        }
       }
-    } catch (error) {
+    } catch (error: any) {
+      // Ignore abort errors
+      if (error.name === 'AbortError') {
+        return;
+      }
+      
       console.error('ERCOT API search error:', error);
       setSearchError('Unable to search for service locations. Please try again.');
     } finally {
-      setIsSearching(false);
+      // Only update searching state if this was the current request
+      if (abortControllerRef.current === abortController) {
+        setIsSearching(false);
+        abortControllerRef.current = null;
+      }
     }
+  }, []);
+
+  // Auto-search with proper debouncing (no dependency on isSearching!)
+  useEffect(() => {
+    // Clear any existing timer
+    if (debounceTimerRef.current) {
+      clearTimeout(debounceTimerRef.current);
+      debounceTimerRef.current = null;
+    }
+
+    // Check if we should search
+    if (address.length >= 3 && zipCode.length === 5) {
+      // Set up new debounce timer
+      debounceTimerRef.current = setTimeout(() => {
+        performSearch(address, zipCode);
+      }, 1200); // Increased debounce time for better UX
+    }
+
+    // Cleanup function
+    return () => {
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current);
+        debounceTimerRef.current = null;
+      }
+    };
+  }, [address, zipCode, performSearch]); // Removed isSearching dependency!
+
+  // Manual search handler
+  const handleSearch = async () => {
+    if (!address.trim() || zipCode.length !== 5) {
+      setSearchError('Please enter a valid address and 5-digit ZIP code');
+      return;
+    }
+
+    // Clear any pending auto-search
+    if (debounceTimerRef.current) {
+      clearTimeout(debounceTimerRef.current);
+      debounceTimerRef.current = null;
+    }
+
+    await performSearch(address, zipCode);
   };
 
   const handleSelectLocation = async (location: ESIIDLocation) => {
+    // Prevent multiple rapid clicks
+    if (isValidating) return;
+    
     setIsValidating(true);
+    setValidatingEsiid(location.esiid);
     setSearchError(null);
 
     try {
+      // Add a small delay to prevent fidgety behavior
+      await new Promise(resolve => setTimeout(resolve, 300));
+      
       // Get detailed ESIID information via our API proxy
       const response = await fetch('/api/ercot/validate', {
         method: 'POST',
@@ -163,14 +272,29 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
       setSearchError('Unable to validate this service location. Please try another address.');
     } finally {
       setIsValidating(false);
+      setValidatingEsiid(null);
     }
   };
 
   const handleProceedToOrder = () => {
     if (selectedLocation) {
       onSuccess(selectedLocation.esiid, selectedLocation.address);
-      // Redirect to ComparePower order flow with all required parameters
-      const orderUrl = `https://orders.comparepower.com/order/service_location?esiid=${selectedLocation.esiid}&plan_id=${planData.id}&zip_code=${zipCode}&usage=1000`;
+      
+      // Use the actual plan ID from the plan data
+      // Priority: apiPlanId (real MongoDB ObjectId from API) > id (fallback)
+      const actualPlanId = planData.apiPlanId || planData.id;
+      
+      // Use the user's selected ESIID from the address search results
+      const orderUrl = `https://orders.comparepower.com/order/service_location?esiid=${selectedLocation.esiid}&plan_id=${actualPlanId}&usage=1000&zip_code=${zipCode}`;
+      
+      console.log(`Opening ComparePower order page:`, {
+        esiid: selectedLocation.esiid,
+        planId: actualPlanId,
+        planName: planData.name,
+        provider: planData.provider.name,
+        address: selectedLocation.address
+      });
+      
       window.open(orderUrl, '_blank');
     }
   };
@@ -198,7 +322,10 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
             placeholder="123 Main Street"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
-            className="w-full"
+            className="w-full focus-visible:ring-2 focus-visible:ring-texas-navy/50 focus-visible:border-texas-navy"
+            autoComplete="street-address"
+            disabled={isSearching}
+            required
           />
         </div>
 
@@ -213,13 +340,30 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
             value={zipCode}
             onChange={(e) => setZipCode(e.target.value.replace(/\D/g, '').slice(0, 5))}
             maxLength={5}
-            className="w-full"
+            className="w-full focus-visible:ring-2 focus-visible:ring-texas-navy/50 focus-visible:border-texas-navy"
+            autoComplete="postal-code"
+            inputMode="numeric"
+            disabled={isSearching}
+            required
           />
         </div>
 
+        {/* Show searching indicator */}
+        {isSearching && address.length >= 3 && zipCode.length === 5 && (
+          <div className="flex items-center text-sm text-gray-600">
+            <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+            Searching for service locations...
+          </div>
+        )}
+
         {searchError && (
-          <div className="flex items-center p-3 text-sm text-red-800 bg-red-50 border border-red-200 rounded-md">
-            <AlertCircle className="h-4 w-4 mr-2 flex-shrink-0" />
+          <div 
+            className="flex items-center p-3 text-sm text-red-800 bg-red-50 border border-red-200 rounded-md"
+            role="alert"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            <AlertCircle className="h-4 w-4 mr-2 flex-shrink-0" aria-hidden="true" />
             {searchError}
           </div>
         )}
@@ -227,7 +371,8 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
         <Button
           onClick={handleSearch}
           disabled={!address.trim() || zipCode.length !== 5 || isSearching}
-          className="w-full bg-texas-navy hover:bg-texas-navy/90 text-white"
+          className="w-full bg-texas-navy hover:bg-texas-navy/90 text-white disabled:bg-gray-300 disabled:text-gray-500 transition-all duration-200"
+          type="button"
         >
           {isSearching ? (
             <>
@@ -262,10 +407,20 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
           <Card 
             key={location.esiid}
             className={cn(
-              "cursor-pointer border-2 transition-all duration-200 hover:border-texas-navy",
-              isValidating && "opacity-50 cursor-not-allowed"
+              "cursor-pointer border-2 transition-all duration-200 hover:border-texas-navy hover:shadow-md active:scale-[0.98]",
+              validatingEsiid === location.esiid && "border-texas-red bg-red-50",
+              isValidating && validatingEsiid !== location.esiid && "opacity-30 cursor-not-allowed pointer-events-none"
             )}
-            onClick={() => !isValidating && handleSelectLocation(location)}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              if (!isValidating) {
+                handleSelectLocation(location);
+              }
+            }}
+            role="button"
+            tabIndex={0}
+            aria-label={`Select service location: ${location.address}, ${location.city}, ${location.state} ${location.zip}`}
           >
             <CardContent className="p-4">
               <div className="flex items-start justify-between">
@@ -281,10 +436,13 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
                     <Badge variant="outline" className="text-xs">
                       {location.meter_type}
                     </Badge>
+                    <Badge variant="outline" className="text-xs bg-texas-cream border-texas-gold/30 text-texas-navy font-mono">
+                      ESIID: {location.esiid}
+                    </Badge>
                   </div>
                 </div>
-                {isValidating ? (
-                  <Loader2 className="h-5 w-5 text-gray-400 animate-spin flex-shrink-0 ml-2" />
+                {validatingEsiid === location.esiid ? (
+                  <Loader2 className="h-5 w-5 text-texas-red animate-spin flex-shrink-0 ml-2" />
                 ) : (
                   <ArrowRight className="h-5 w-5 text-gray-400 flex-shrink-0 ml-2" />
                 )}
@@ -295,8 +453,13 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
       </div>
 
       {searchError && (
-        <div className="flex items-center p-3 text-sm text-red-800 bg-red-50 border border-red-200 rounded-md">
-          <AlertCircle className="h-4 w-4 mr-2 flex-shrink-0" />
+        <div 
+          className="flex items-center p-3 text-sm text-red-800 bg-red-50 border border-red-200 rounded-md"
+          role="alert"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          <AlertCircle className="h-4 w-4 mr-2 flex-shrink-0" aria-hidden="true" />
           {searchError}
         </div>
       )}
@@ -376,13 +539,19 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent 
+        className="sm:max-w-md"
+        aria-describedby="address-search-description"
+      >
         <DialogHeader>
-          <DialogTitle className="flex items-center gap-2">
-            <MapPin className="h-5 w-5 text-texas-navy" />
+          <DialogTitle 
+            className="flex items-center gap-2"
+            id="address-search-title"
+          >
+            <MapPin className="h-5 w-5 text-texas-navy" aria-hidden="true" />
             Check Service Availability
           </DialogTitle>
-          <DialogDescription>
+          <DialogDescription id="address-search-description">
             Verify that this electricity plan is available at your service address.
           </DialogDescription>
         </DialogHeader>

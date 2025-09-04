@@ -1,0 +1,50 @@
+{
+  "brokenUrl": {
+    "full": "https://orders.comparepower.com/order/service_location?esiid=10698838736794883&plan_id=68b84e0e206770f7c563793b&usage=1000&zip_code=75205",
+    "base": "https://orders.comparepower.com/order/service_location",
+    "parameters": {
+      "esiid": "10698838736794883",
+      "plan_id": "68b84e0e206770f7c563793b",
+      "usage": "1000",
+      "zip_code": "75205"
+    }
+  },
+  "workingUrl": {
+    "full": "https://orders.comparepower.com/order/service_location?esiid=10443720007962125&plan_id=68b84e0e206770f7c563793b&usage=1000&zip_code=75205",
+    "base": "https://orders.comparepower.com/order/service_location",
+    "parameters": {
+      "esiid": "10443720007962125",
+      "plan_id": "68b84e0e206770f7c563793b",
+      "usage": "1000",
+      "zip_code": "75205"
+    }
+  },
+  "differences": {
+    "esiid": {
+      "broken": "10698838736794883",
+      "working": "10443720007962125",
+      "different": true
+    },
+    "plan_id": {
+      "broken": "68b84e0e206770f7c563793b",
+      "working": "68b84e0e206770f7c563793b",
+      "different": false
+    },
+    "usage": {
+      "broken": "1000",
+      "working": "1000",
+      "different": false
+    },
+    "zip_code": {
+      "broken": "75205",
+      "working": "75205",
+      "different": false
+    }
+  },
+  "esiidAnalysis": {
+    "brokenValid": true,
+    "workingValid": true,
+    "bothValid": true,
+    "pattern": "/^\\d{17}$/"
+  }
+}

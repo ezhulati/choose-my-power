@@ -10,6 +10,8 @@ export interface Props {
   spacing?: 'sm' | 'md' | 'lg';
   textSize?: 'base' | 'lg' | 'xl';
   emphasizeFirst?: boolean;
+  textColor?: string;
+  className?: string;
 }
 
 const {
@@ -17,7 +19,9 @@ const {
   bulletColor = 'navy',
   spacing = 'md',
   textSize = 'lg',
-  emphasizeFirst = false
+  emphasizeFirst = false,
+  textColor = 'text-gray-700',
+  className = ''
 } = Astro.props;
 
 // Bullet color mappings
@@ -43,12 +47,12 @@ const textSizes = {
 };
 ---
 
-<ul class={spacings[spacing]}>
+<ul class={`${spacings[spacing]} ${className}`}>
   {items.map((item, index) => (
     <li class="flex items-start">
       <span class={`w-2 h-2 ${bulletColors[bulletColor]} rounded-full mt-3 mr-4 flex-shrink-0`}></span>
       <span 
-        class={`${textSizes[textSize]} text-gray-700 leading-relaxed`}
+        class={`${textSizes[textSize]} ${textColor} leading-relaxed`}
         set:html={item}
       />
     </li>

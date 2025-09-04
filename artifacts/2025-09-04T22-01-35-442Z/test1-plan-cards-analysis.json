@@ -1,0 +1,30 @@
+{
+  "count": 327,
+  "gridClasses": "grid grid-cols-3 gap-1",
+  "hasThreeColumns": true,
+  "hasFourColumns": false,
+  "computedColumns": "54.875px 54.8906px 54.8906px",
+  "actualColumnCount": 3,
+  "firstCardWidth": 55,
+  "containerWidth": 173,
+  "expectedWidth3Col": 58,
+  "expectedWidth4Col": 43,
+  "isCloserTo3Col": true,
+  "cardsSample": [
+    {
+      "width": 55,
+      "height": 48,
+      "className": "text-center py-1.5 bg-white rounded border"
+    },
+    {
+      "width": 55,
+      "height": 48,
+      "className": "text-center py-1.5 bg-white rounded border border-texas-navy"
+    },
+    {
+      "width": 55,
+      "height": 48,
+      "className": "text-center py-1.5 bg-white rounded border"
+    }
+  ]
+}

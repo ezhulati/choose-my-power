@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESIID Display Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-2xl mx-auto">
+        <h1 class="text-3xl font-bold text-texas-navy mb-6">ESIID Display Test</h1>
+        
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h2 class="text-xl font-semibold mb-4">Test Address Search</h2>
+            
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">Address:</label>
+                <input id="address" type="text" value="123 Main St" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md">
+            </div>
+            
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700">ZIP Code:</label>
+                <input id="zipCode" type="text" value="75001" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md">
+            </div>
+            
+            <button onclick="searchAddress()" class="bg-texas-red text-white px-6 py-2 rounded-md hover:bg-texas-red-600">
+                Search Address
+            </button>
+            
+            <div id="results" class="mt-6"></div>
+        </div>
+    </div>
+
+    <script>
+        async function searchAddress() {
+            const address = document.getElementById('address').value;
+            const zipCode = document.getElementById('zipCode').value;
+            const resultsDiv = document.getElementById('results');
+            
+            resultsDiv.innerHTML = '<p class="text-gray-600">Searching...</p>';
+            
+            try {
+                const response = await fetch('/api/ercot/search', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ address, zipCode })
+                });
+                
+                if (response.ok) {
+                    const locations = await response.json();
+                    displayResults(locations);
+                } else {
+                    resultsDiv.innerHTML = '<p class="text-red-600">Error: API request failed</p>';
+                }
+            } catch (error) {
+                resultsDiv.innerHTML = '<p class="text-red-600">Error: ' + error.message + '</p>';
+            }
+        }
+        
+        function displayResults(locations) {
+            const resultsDiv = document.getElementById('results');
+            
+            if (locations.length === 0) {
+                resultsDiv.innerHTML = '<p class="text-gray-600">No locations found.</p>';
+                return;
+            }
+            
+            let html = '<h3 class="text-lg font-semibold mb-3">Search Results:</h3>';
+            
+            locations.forEach((location, index) => {
+                html += `
+                    <div class="border border-gray-200 rounded-lg p-4 mb-4 hover:shadow-md transition-shadow">
+                        <h4 class="font-medium text-gray-900 mb-2">${location.address}</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                ${location.tdsp || 'Unknown TDSP'}
+                            </span>
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                ${location.meter_type || 'Unknown Type'}
+                            </span>
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 font-mono">
+                                ESIID: ${location.esiid || 'Not Available'}
+                            </span>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            resultsDiv.innerHTML = html;
+        }
+    </script>
+    
+    <style>
+        .text-texas-navy { color: #002868; }
+        .bg-texas-red { background-color: #dc2626; }
+        .bg-texas-red:hover { background-color: #b91c1c; }
+    </style>
+</body>
+</html>

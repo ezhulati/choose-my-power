@@ -303,26 +303,38 @@ const description = "Compare lowest electricity rates in Texas. Find affordable 
                 <AlertTriangle className="h-6 w-6" />
                 Red Flags to Watch Out For
               </h4>
-              <EnhancedList bulletColor="red" className="text-blue-100 space-y-4">
-                <span>"Intro rates" that change after 3-6 months</span>
-                <span>Rates advertised without mentioning base fees</span>
-                <span>Door-to-door salespeople with "limited time offers"</span>
-                <span>Plans that require you to use exact amounts of electricity</span>
-                <span>Companies that won't show you the total monthly cost upfront</span>
-              </EnhancedList>
+              <EnhancedList 
+                bulletColor="red" 
+                textSize="base"
+                spacing="lg"
+                textColor="text-blue-100"
+                items={[
+                  '"Intro rates" that change after 3-6 months',
+                  'Rates advertised without mentioning base fees',
+                  'Door-to-door salespeople with "limited time offers"',
+                  'Plans that require you to use exact amounts of electricity',
+                  'Companies that won\'t show you the total monthly cost upfront'
+                ]}
+              />
             </div>
             <div>
               <h4 class="font-semibold text-texas-gold mb-6 flex items-center gap-3 text-lg">
                 <CheckCircle className="h-6 w-6" />
                 Smart Shopping Rules
               </h4>
-              <EnhancedList bulletColor="gold" className="text-blue-100 space-y-4">
-                <span>Always ask for the total monthly cost for your usage</span>
-                <span>Read the Electricity Facts Label (EFL) carefully</span>
-                <span>Ignore per-kWh rates, focus on total bill amount</span>
-                <span>Choose fixed rates over variable for predictable bills</span>
-                <span>Stick with well-known providers for reliability</span>
-              </EnhancedList>
+              <EnhancedList 
+                bulletColor="gold" 
+                textSize="base"
+                spacing="lg"
+                textColor="text-blue-100"
+                items={[
+                  'Always ask for the total monthly cost for your usage',
+                  'Read the Electricity Facts Label (EFL) carefully',
+                  'Ignore per-kWh rates, focus on total bill amount',
+                  'Choose fixed rates over variable for predictable bills',
+                  'Stick with well-known providers for reliability'
+                ]}
+              />
             </div>
           </div>
           

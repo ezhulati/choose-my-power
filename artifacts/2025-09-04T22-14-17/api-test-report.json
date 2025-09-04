@@ -1,0 +1,28 @@
+{
+  "timestamp": "2025-09-04T22:14:17.940Z",
+  "testType": "API Direct Test",
+  "testAddress": "123 Main St, 75001",
+  "searchAPI": {
+    "status": 200,
+    "success": true,
+    "resultsCount": 1,
+    "results": [
+      {
+        "esiid": "10443720007962125",
+        "address": "123 Main St",
+        "city": "Dallas",
+        "state": "TX",
+        "zip": "75001",
+        "tdsp": "Oncor Electric Delivery",
+        "meter_type": "Electric"
+      }
+    ]
+  },
+  "esiidVerification": {
+    "esiidFound": "10443720007962125",
+    "esiidCount": 1,
+    "tdspFound": "Oncor Electric Delivery",
+    "meterTypeFound": "Electric"
+  },
+  "testPassed": true
+}

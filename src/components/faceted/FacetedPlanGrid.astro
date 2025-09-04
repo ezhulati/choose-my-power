@@ -109,11 +109,12 @@ const sortingOptions = [
 <div class={`enhanced-plan-grid ${className}`} data-city={city} data-total-plans={totalPlans}>
   
   <!-- Grid Header with Statistics and Controls -->
-  <div class="grid-header">
+  <div class="grid-header" role="region" aria-labelledby="grid-stats-title">
     <div class="grid-stats">
+      <h2 id="grid-stats-title" class="sr-only">Plan Statistics</h2>
       <div class="stats-overview">
-        <div class="stat-item primary">
-          <span class="stat-icon"></span>
+        <div class="stat-item primary" role="img" aria-label={`${totalPlans} electricity plans found`}>
+          <span class="stat-icon" aria-hidden="true">📊</span>
           <div class="stat-content">
             <span class="stat-number">{totalPlans}</span>
             <span class="stat-label">Plans Found</span>
@@ -121,8 +122,8 @@ const sortingOptions = [
         </div>
         
         {lowestRate > 0 && (
-          <div class="stat-item">
-            <span class="stat-icon"></span>
+          <div class="stat-item" role="img" aria-label={`Lowest rate available: ${lowestRate.toFixed(1)} cents per kilowatt hour`}>
+            <span class="stat-icon" aria-hidden="true">💰</span>
             <div class="stat-content">
               <span class="stat-number">{lowestRate.toFixed(1)}¢</span>
               <span class="stat-label">Lowest Rate</span>
@@ -132,8 +133,8 @@ const sortingOptions = [
         
         
         {avgRate > 0 && (
-          <div class="stat-item">
-            <span class="stat-icon"></span>
+          <div class="stat-item" role="img" aria-label={`Average rate: ${avgRate.toFixed(1)} cents per kilowatt hour`}>
+            <span class="stat-icon" aria-hidden="true">📈</span>
             <div class="stat-content">
               <span class="stat-number">{avgRate.toFixed(1)}¢</span>
               <span class="stat-label">Average Rate</span>
@@ -143,24 +144,33 @@ const sortingOptions = [
       </div>
       
       <!-- Quick Usage Filters -->
-      <div class="quick-filters">
-        <div class="quick-filters-label">Quick Filters:</div>
-        <div class="filter-buttons">
-          <button class="filter-btn active" data-usage="1000">
+      <div class="quick-filters" role="group" aria-labelledby="quick-filters-title">
+        <h3 id="quick-filters-title" class="quick-filters-label">Quick Filters:</h3>
+        <div class="filter-buttons" role="group" aria-label="Filter plans by usage or features">
+          <button class="filter-btn active" data-usage="1000" aria-pressed="true" aria-describedby="filter-1000-desc">
             Best for 1000 kWh
           </button>
-          <button class="filter-btn" data-usage="500">
+          <div id="filter-1000-desc" class="sr-only">Filter plans optimized for 1000 kilowatt hours monthly usage</div>
+          
+          <button class="filter-btn" data-usage="500" aria-pressed="false" aria-describedby="filter-500-desc">
             Best for 500 kWh
           </button>
-          <button class="filter-btn" data-usage="2000">
+          <div id="filter-500-desc" class="sr-only">Filter plans optimized for 500 kilowatt hours monthly usage</div>
+          
+          <button class="filter-btn" data-usage="2000" aria-pressed="false" aria-describedby="filter-2000-desc">
             Best for 2000 kWh
           </button>
-          <button class="filter-btn" data-filter="green">
+          <div id="filter-2000-desc" class="sr-only">Filter plans optimized for 2000 kilowatt hours monthly usage</div>
+          
+          <button class="filter-btn" data-filter="green" aria-pressed="false" aria-describedby="filter-green-desc">
             100% Green Energy
           </button>
-          <button class="filter-btn" data-filter="cheapest">
+          <div id="filter-green-desc" class="sr-only">Show only plans with 100% renewable energy sources</div>
+          
+          <button class="filter-btn" data-filter="cheapest" aria-pressed="false" aria-describedby="filter-cheapest-desc">
             Cheapest Overall
           </button>
+          <div id="filter-cheapest-desc" class="sr-only">Show plans sorted by lowest price</div>
         </div>
       </div>
     </div>
@@ -218,7 +228,7 @@ const sortingOptions = [
       
       <!-- Grid View - Mobile-First Responsive -->
       <div class={`grid-view ${viewMode === 'grid' ? 'active' : 'hidden'}`}>
-        <div class="plans-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="plans-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {/* Initial visible plans */}
           {convertedInitialPlans.map((plan) => (
             <EnterprisePlanCard 
@@ -323,11 +333,11 @@ const sortingOptions = [
                   </td>
                   <td class="rate-cell">
                     <div class="rate-display">
-                      <span class="rate-value">{(plan.pricing.rate1000kWh * 100).toFixed(1)}¢</span>
+                      <span class="rate-value">{plan.pricing.rate1000kWh.toFixed(1)}¢</span>
                       <span class="rate-unit">per kWh</span>
                     </div>
                     <div class="monthly-estimate">
-                      ${(plan.pricing.rate1000kWh * 1000).toFixed(0)}/mo
+                      ${(plan.pricing.rate1000kWh * 10).toFixed(0)}/mo
                     </div>
                   </td>
                   <td class="term-cell">
@@ -370,18 +380,15 @@ const sortingOptions = [
                   <td class="actions-cell">
                     <div class="action-buttons">
                       <a 
-                        href={`/enroll/${plan.id}?city=${city}&position=${index + 1}`}
-                        class="enroll-btn-small"
+                        href={`/electricity-plans/plans/${plan.provider.name.toLowerCase().replace(/\s+/g, '-')}/${plan.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`}
+                        class="view-details-btn-table"
+                        aria-label="View plan details"
                       >
-                        Enroll
+                        <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        View Details
                       </a>
-                      <button 
-                        class="compare-btn-small"
-                        data-plan-id={plan.id}
-                        aria-label="Add to comparison"
-                      >
-Compare
-                      </button>
                     </div>
                   </td>
                 </tr>
@@ -414,8 +421,8 @@ Compare
                   </div>
                 </div>
                 <div class="compact-rate">
-                  <span class="compact-rate-value">{(plan.pricing.rate1000kWh * 100).toFixed(1)}¢</span>
-                  <span class="compact-monthly">${(plan.pricing.rate1000kWh * 1000).toFixed(0)}/mo</span>
+                  <span class="compact-rate-value">{plan.pricing.rate1000kWh.toFixed(1)}¢</span>
+                  <span class="compact-monthly">${(plan.pricing.rate1000kWh * 10).toFixed(0)}/mo</span>
                 </div>
               </div>
               
@@ -431,18 +438,15 @@ Compare
               
               <div class="compact-actions">
                 <a 
-                  href={`/enroll/${plan.id}?city=${city}&position=${index + 1}`}
-                  class="compact-enroll-btn"
+                  href={`/electricity-plans/plans/${plan.provider.name.toLowerCase().replace(/\s+/g, '-')}/${plan.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`}
+                  class="view-details-btn-compact"
+                  aria-label="View plan details"
                 >
-                  Enroll Now
+                  <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  View Details
                 </a>
-                <button 
-                  class="compact-compare-btn"
-                  data-plan-id={plan.id}
-                  aria-label="Add to comparison"
-                >
-                  Compare
-                </button>
               </div>
             </div>
           ))}
@@ -452,22 +456,24 @@ Compare
     
     <!-- Load More / Infinite Scroll -->
     {enableInfiniteScroll && totalPlans > plansPerPage && (
-      <div class="load-more-section" id="load-more-trigger">
-        <button class="load-more-btn" data-loaded={plansPerPage} data-total={totalPlans}>
+      <div class="load-more-section" id="load-more-trigger" role="region" aria-label="Load more plans">
+        <button class="load-more-btn" data-loaded={plansPerPage} data-total={totalPlans} aria-describedby="load-more-desc">
+          <span class="load-more-icon" aria-hidden="true">⬇️</span>
           <span class="load-more-text">
             Load More Plans ({totalPlans - plansPerPage} remaining)
           </span>
-          <div class="load-more-spinner hidden">Loading...</div>
+          <div class="load-more-spinner hidden" role="status" aria-label="Loading more plans">⏳</div>
         </button>
+        <div id="load-more-desc" class="sr-only">Click to load {totalPlans - plansPerPage} additional electricity plans</div>
       </div>
     )}
     
   ) : (
     
     <!-- Enhanced No Plans Message -->
-    <div class="no-plans-container">
+    <div class="no-plans-container" role="region" aria-labelledby="no-plans-title">
       <div class="no-plans-illustration">
-        <div class="no-plans-icon">No Plans</div>
+        <div class="no-plans-icon" role="img" aria-label="No plans found illustration">🔍⚡</div>
         <div class="no-plans-background-pattern" aria-hidden="true">
           <div class="pattern-dot"></div>
           <div class="pattern-dot"></div>
@@ -476,7 +482,7 @@ Compare
       </div>
       
       <div class="no-plans-content">
-        <h3 class="no-plans-title">Nothing Matches Those Filters</h3>
+        <h3 id="no-plans-title" class="no-plans-title">Nothing Matches Those Filters</h3>
         <p class="no-plans-description">
           Your search criteria might be too specific for what's actually available in {city}.
           Here's how to find something that'll work for you instead.
@@ -492,15 +498,18 @@ Compare
           </ul>
         </div>
         
-        <div class="no-plans-actions">
-          <button class="clear-filters-btn" onclick="window.location.href = window.location.pathname.split('/').slice(0, -1).join('/') + '/electricity-plans'">
-            <span class="btn-icon">Clear</span>
+        <div class="no-plans-actions" role="group" aria-label="Actions to find plans">
+          <button class="clear-filters-btn" onclick="window.location.href = window.location.pathname.split('/').slice(0, -1).join('/') + '/electricity-plans'" aria-describedby="clear-filters-desc">
+            <span class="btn-icon" aria-hidden="true">🔄</span>
             Start Fresh
           </button>
-          <a href={`/texas/${city}/electricity-providers`} class="browse-providers-btn">
-            <span class="btn-icon">Browse</span>
+          <div id="clear-filters-desc" class="sr-only">Remove all current filters to see all available plans</div>
+          
+          <a href={`/texas/${city}/electricity-providers`} class="browse-providers-btn" aria-describedby="browse-desc">
+            <span class="btn-icon" aria-hidden="true">📄</span>
             Just Show Me Good Plans
           </a>
+          <div id="browse-desc" class="sr-only">Browse recommended electricity plans without filters</div>
         </div>
       </div>
     </div>
@@ -512,13 +521,26 @@ Compare
 </div>
 
 <style>
+  /* Screen Reader Only - Accessibility Utility */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  
   /* Enhanced Plan Grid Styles - Mobile-First */
   .enhanced-plan-grid {
     @apply w-full;
     /* Mobile-first spacing with proper container padding */
-    padding: 1.5rem; /* 24px mobile */
-    gap: 1rem; /* 16px mobile */
-    margin-bottom: 2rem; /* 32px mobile */
+    padding: 2rem; /* 32px mobile */
+    gap: 1.5rem; /* 24px mobile */
+    margin-bottom: 3rem; /* 48px mobile */
   }
   
   /* When not within an EnhancedCard, add background and border */
@@ -553,11 +575,11 @@ Compare
     }
   }
   
-  /* Grid Header Styles - Responsive with Texas Design System */
+  /* Grid Header Styles - Enhanced Texas Design System */
   .grid-header {
-    @apply bg-gradient-to-r from-texas-cream-200 to-texas-cream-300 border border-texas-gold/20 rounded-lg mb-6;
+    @apply bg-gradient-to-r from-texas-cream to-white border border-texas-gold/30 rounded-xl mb-8 shadow-lg;
     /* Mobile-first header spacing */
-    padding: 1rem; /* 16px mobile */
+    padding: 1.5rem; /* 24px mobile */
   }
   
   @media (min-width: 640px) {
@@ -595,10 +617,10 @@ Compare
   }
   
   .stat-item {
-    @apply bg-white rounded-lg flex items-center shadow-sm border border-texas-gold/20 transition-all duration-200 hover:shadow-md;
+    @apply bg-white rounded-xl flex items-center shadow-md border border-texas-gold/30 transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
     /* Mobile-first stat card spacing */
-    padding: 0.75rem; /* 12px mobile */
-    gap: 0.5rem; /* 8px mobile */
+    padding: 1rem; /* 16px mobile */
+    gap: 0.75rem; /* 12px mobile */
   }
   
   @media (min-width: 640px) {
@@ -616,7 +638,7 @@ Compare
   }
   
   .stat-item.primary {
-    @apply bg-gradient-to-br from-texas-navy to-texas-navy/80 text-white border-texas-navy;
+    @apply bg-gradient-to-br from-texas-navy to-blue-900 text-white border-texas-navy shadow-lg;
   }
   
   .stat-icon {
@@ -635,10 +657,10 @@ Compare
     @apply text-sm opacity-80 mt-1;
   }
   
-  /* Quick Filters - Match main container theme */
+  /* Quick Filters - Enhanced Texas Design System */
   .quick-filters {
-    @apply mt-3 p-4 rounded-lg border border-texas-gold/20;
-    background: linear-gradient(to right, #f8edd3, #fdf8f0);
+    @apply mt-4 p-5 rounded-xl border-2 border-texas-gold/30 shadow-sm hover:shadow-md transition-shadow duration-200;
+    background: linear-gradient(135deg, #f8edd3 0%, #ffffff 100%);
   }
   
   .quick-filters-label {
@@ -650,13 +672,13 @@ Compare
   }
   
   .filter-btn {
-    @apply px-3 py-2 text-xs font-medium rounded-lg border transition-all duration-200 hover:shadow-md;
-    @apply bg-white border-texas-gold/20 text-texas-navy hover:border-texas-navy hover:shadow-sm;
+    @apply px-4 py-2.5 text-sm font-semibold rounded-lg border-2 transition-all duration-300 hover:shadow-lg focus:ring-2 focus:ring-texas-navy/50;
+    @apply bg-white border-texas-navy/20 text-texas-navy hover:border-texas-navy hover:bg-texas-navy/5 hover:scale-105;
     white-space: nowrap;
   }
   
   .filter-btn.active {
-    @apply bg-gradient-to-br from-texas-navy to-texas-navy/80 text-white border-texas-navy shadow-sm;
+    @apply bg-gradient-to-br from-texas-navy to-blue-900 text-white border-texas-navy shadow-lg scale-105;
   }
   
   .filter-btn:hover:not(.active) {
@@ -722,7 +744,7 @@ Compare
   }
   
   .sort-select {
-    @apply bg-white border border-gray-300 rounded-lg px-4 py-2 text-sm font-medium focus:ring-2 focus:ring-texas-navy/50 focus:border-texas-navy transition-all;
+    @apply bg-white border-2 border-texas-navy/30 rounded-lg px-4 py-3 text-sm font-semibold focus:ring-4 focus:ring-texas-navy/20 focus:border-texas-navy transition-all duration-200 hover:border-texas-navy/50;
   }
   
   .view-controls {
@@ -730,15 +752,15 @@ Compare
   }
   
   .view-toggle-group {
-    @apply flex bg-white border border-gray-300 rounded-lg overflow-hidden;
+    @apply flex bg-white border-2 border-texas-navy/30 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200;
   }
   
   .view-toggle {
-    @apply px-3 py-2 text-gray-600 hover:bg-gray-50 transition-all border-r border-gray-300 last:border-r-0;
+    @apply px-4 py-3 text-sm font-medium text-texas-navy hover:bg-texas-navy/10 transition-all duration-200 border-r border-texas-navy/20 last:border-r-0 focus:ring-2 focus:ring-texas-navy/50;
   }
   
   .view-toggle.active {
-    @apply bg-texas-navy text-white hover:bg-texas-navy/90;
+    @apply bg-texas-navy text-white hover:bg-texas-navy/90 shadow-sm;
   }
   
   .view-icon {
@@ -766,9 +788,9 @@ Compare
   .plans-grid {
     @apply transition-all duration-300;
     /* Mobile-first grid spacing - enhanced */
-    gap: 1.5rem; /* 24px mobile */
-    margin-top: 1.5rem; /* 24px mobile */
-    padding: 0.5rem; /* 8px mobile padding */
+    gap: 2rem; /* 32px mobile */
+    margin-top: 2rem; /* 32px mobile */
+    padding: 1rem; /* 16px mobile padding */
   }
   
   @media (min-width: 640px) {
@@ -795,41 +817,73 @@ Compare
     }
   }
   
-  /* Table View Styles */
+  /* Enterprise Table View Styles */
   .plans-table-container {
-    @apply bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-all duration-200;
+    @apply bg-white rounded-2xl border-2 border-gray-200 overflow-hidden shadow-2xl hover:shadow-2xl transition-all duration-500;
+    background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+    border-image: linear-gradient(135deg, #002868, #dc2626) 1;
   }
   
   .plans-table {
     @apply w-full;
+    border-collapse: separate;
+    border-spacing: 0;
   }
   
   .table-header {
-    @apply bg-gray-50 border-b border-gray-200;
+    @apply bg-gradient-to-r from-texas-navy via-blue-800 to-texas-navy;
+    position: sticky;
+    top: 0;
+    z-index: 10;
   }
   
   .table-header th {
-    @apply px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider;
+    @apply px-8 py-6 text-left text-sm font-bold text-white uppercase tracking-wider border-r border-blue-700 last:border-r-0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 100%);
   }
   
   .sort-header {
-    @apply flex items-center gap-1 text-xs font-semibold text-gray-700 uppercase tracking-wider hover:text-texas-navy transition-all duration-200;
+    @apply flex items-center gap-2 text-sm font-bold text-white hover:text-texas-gold transition-all duration-300 cursor-pointer relative overflow-hidden;
+  }
+  
+  .sort-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s;
+  }
+  
+  .sort-header:hover::before {
+    left: 100%;
   }
   
   .sort-arrow {
-    @apply opacity-50;
+    @apply text-texas-gold transition-transform duration-300;
+  }
+  
+  .sort-header:hover .sort-arrow {
+    transform: scale(1.2) rotate(180deg);
   }
   
   .plan-row {
-    @apply border-b border-gray-100 hover:bg-texas-cream-50 transition-all duration-200;
+    @apply border-b border-gray-100 hover:bg-gradient-to-r hover:from-texas-cream/30 hover:to-transparent transition-all duration-300 hover:shadow-lg;
   }
   
   .plan-row:last-child {
     @apply border-b-0;
   }
   
+  .plan-row:hover {
+    transform: translateY(-2px);
+  }
+  
   .plan-row td {
-    @apply px-4 py-4 text-sm;
+    @apply px-8 py-6 text-sm align-middle;
   }
   
   .provider-cell .provider-info {
@@ -921,65 +975,100 @@ Compare
   }
   
   .enroll-btn-small {
-    @apply bg-texas-red hover:bg-texas-red/90 text-white text-xs font-semibold px-3 py-1 rounded-md transition-all duration-200 shadow-sm hover:shadow-md;
+    @apply bg-texas-red hover:bg-red-700 text-white text-xs font-bold px-4 py-2 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105 focus:ring-2 focus:ring-texas-red/50;
   }
   
   .compare-btn-small {
-    @apply bg-texas-navy/10 hover:bg-texas-navy/20 text-texas-navy text-xs px-2 py-1 rounded-md transition-all duration-200 border border-texas-navy/20;
+    @apply bg-white hover:bg-texas-navy text-texas-navy hover:text-white text-xs font-semibold px-3 py-2 rounded-lg transition-all duration-200 border-2 border-texas-navy shadow-sm hover:shadow-md focus:ring-2 focus:ring-texas-navy/50;
   }
   
-  /* Compact View Styles */
+  /* Professional View Details Button for Table View */
+  .view-details-btn-table {
+    @apply bg-gradient-to-r from-texas-navy to-blue-800 hover:from-texas-navy/90 hover:to-blue-700 text-white text-sm font-semibold px-6 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl focus:ring-4 focus:ring-texas-navy/50 flex items-center gap-2 justify-center;
+  }
+  
+  .view-details-btn-table .btn-icon {
+    @apply flex-shrink-0;
+  }
+  
+  /* Enterprise Compact View Styles */
   .compact-plans-list {
-    /* Enterprise-grade list spacing */
     display: flex;
     flex-direction: column;
-    gap: 1.5rem; /* 24px */
+    gap: 2rem; /* 32px enterprise spacing */
   }
   
   .compact-plan-card {
-    @apply bg-white border border-gray-200 rounded-xl hover:shadow-lg hover:border-texas-navy/30 transition-all duration-300 hover:-translate-y-1;
-    /* Enterprise-grade card spacing */
-    padding: 1.5rem; /* 24px */
+    @apply bg-white border-2 border-gray-200 rounded-2xl hover:shadow-2xl hover:border-texas-navy hover:-translate-y-3 transition-all duration-500 shadow-lg;
+    padding: 2rem; /* 32px enterprise padding */
+    background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .compact-plan-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #002868, #dc2626);
+    transition: left 0.5s ease-in-out;
+  }
+  
+  .compact-plan-card:hover::before {
+    left: 0;
   }
   
   .compact-plan-header {
-    @apply flex justify-between items-start mb-3;
+    @apply flex justify-between items-start mb-6;
   }
   
   .compact-provider-info {
-    @apply flex items-center gap-2 flex-1 min-w-0;
+    @apply flex items-center gap-3 flex-1 min-w-0;
   }
   
   .compact-provider-logo {
-    @apply object-contain flex-shrink-0;
+    @apply object-contain flex-shrink-0 rounded;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
   }
   
   .compact-plan-name {
-    @apply font-semibold text-sm text-gray-900 truncate;
+    @apply font-bold text-lg text-texas-navy truncate;
   }
   
   .compact-provider-name {
-    @apply text-xs text-gray-600;
+    @apply text-sm text-gray-600 font-medium;
   }
   
   .compact-rate {
-    @apply text-right;
+    @apply text-right bg-gradient-to-br from-texas-cream to-texas-cream/50 rounded-xl px-4 py-3;
   }
   
   .compact-rate-value {
-    @apply text-lg font-bold text-texas-navy block;
+    @apply text-2xl font-bold text-texas-navy block;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
   }
   
   .compact-monthly {
-    @apply text-xs text-gray-600;
+    @apply text-sm text-gray-600 font-semibold;
   }
   
   .compact-details {
-    @apply flex flex-wrap gap-2 mb-3;
+    @apply flex flex-wrap gap-3 mb-6;
   }
   
   .compact-term, .compact-green, .compact-no-deposit {
-    @apply text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full;
+    @apply text-sm bg-gradient-to-r from-gray-100 to-gray-50 text-gray-800 px-4 py-2 rounded-xl font-semibold border border-gray-200 hover:border-texas-gold transition-all duration-300;
+  }
+  
+  .compact-green {
+    @apply bg-gradient-to-r from-green-50 to-green-100 text-green-800 border-green-200 hover:border-green-400;
+  }
+  
+  .compact-no-deposit {
+    @apply bg-gradient-to-r from-texas-gold/10 to-texas-gold/5 text-texas-navy border-texas-gold/30 hover:border-texas-gold;
   }
   
   .compact-actions {
@@ -987,11 +1076,20 @@ Compare
   }
   
   .compact-enroll-btn {
-    @apply bg-texas-red hover:bg-texas-red/90 text-white text-sm font-semibold px-4 py-2 rounded-md transition-all duration-200 flex-1 text-center shadow-sm hover:shadow-md;
+    @apply bg-texas-red hover:bg-red-700 text-white text-sm font-bold px-6 py-3 rounded-lg transition-all duration-200 flex-1 text-center shadow-md hover:shadow-lg hover:scale-105 focus:ring-2 focus:ring-texas-red/50;
   }
   
   .compact-compare-btn {
-    @apply bg-texas-navy/10 hover:bg-texas-navy/20 text-texas-navy text-sm px-3 py-2 rounded-md transition-all duration-200 border border-texas-navy/20;
+    @apply bg-white hover:bg-texas-navy text-texas-navy hover:text-white text-sm font-semibold px-4 py-3 rounded-lg transition-all duration-200 border-2 border-texas-navy shadow-sm hover:shadow-md focus:ring-2 focus:ring-texas-navy/50;
+  }
+  
+  /* Professional View Details Button for Compact View */
+  .view-details-btn-compact {
+    @apply bg-gradient-to-r from-texas-navy to-blue-800 hover:from-texas-navy/90 hover:to-blue-700 text-white text-base font-bold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl focus:ring-4 focus:ring-texas-navy/50 flex items-center gap-3 justify-center w-full;
+  }
+  
+  .view-details-btn-compact .btn-icon {
+    @apply flex-shrink-0;
   }
   
   /* Load More Section */
@@ -1003,7 +1101,7 @@ Compare
   }
   
   .load-more-btn {
-    @apply bg-gradient-to-r from-texas-navy to-texas-navy/80 hover:from-texas-navy/90 hover:to-texas-navy/70 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg flex items-center gap-3 mx-auto;
+    @apply bg-gradient-to-r from-texas-navy to-blue-900 hover:from-texas-navy/90 hover:to-blue-800 text-white font-bold px-10 py-5 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl flex items-center gap-4 mx-auto focus:ring-4 focus:ring-texas-navy/50;
   }
   
   .load-more-icon {
@@ -1016,7 +1114,7 @@ Compare
   
   /* Enhanced No Plans Styles */
   .no-plans-container {
-    @apply text-center py-16 px-6 max-w-2xl mx-auto;
+    @apply text-center py-20 px-8 max-w-3xl mx-auto bg-gradient-to-br from-texas-cream to-white rounded-2xl border-2 border-texas-gold/30 shadow-xl;
   }
   
   .no-plans-illustration {
@@ -1044,15 +1142,15 @@ Compare
   }
   
   .no-plans-title {
-    @apply text-2xl font-bold text-gray-900 mb-4;
+    @apply text-3xl font-bold text-texas-navy mb-6;
   }
   
   .no-plans-description {
-    @apply text-gray-600 text-lg leading-relaxed mb-8;
+    @apply text-texas-navy/80 text-xl leading-relaxed mb-10;
   }
   
   .no-plans-suggestions {
-    @apply bg-texas-cream-200 border border-texas-gold/20 rounded-xl p-6 mb-8 text-left;
+    @apply bg-gradient-to-br from-texas-cream to-white border-2 border-texas-gold/40 rounded-2xl p-8 mb-10 text-left shadow-lg;
   }
   
   .suggestions-title {
@@ -1072,11 +1170,11 @@ Compare
   }
   
   .clear-filters-btn {
-    @apply bg-texas-red/10 hover:bg-texas-red/20 text-texas-navy font-semibold px-6 py-3 rounded-lg transition-all duration-200 flex items-center gap-2 justify-center shadow-sm hover:shadow-md;
+    @apply bg-texas-red hover:bg-red-700 text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 flex items-center gap-3 justify-center shadow-lg hover:shadow-xl hover:scale-105 focus:ring-4 focus:ring-texas-red/50;
   }
   
   .browse-providers-btn {
-    @apply bg-texas-navy/10 hover:bg-texas-navy/20 text-texas-navy font-semibold px-6 py-3 rounded-lg transition-all duration-200 flex items-center gap-2 justify-center shadow-sm hover:shadow-md;
+    @apply bg-texas-navy hover:bg-blue-900 text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 flex items-center gap-3 justify-center shadow-lg hover:shadow-xl hover:scale-105 focus:ring-4 focus:ring-texas-navy/50;
   }
   
   .btn-icon {
@@ -1292,13 +1390,15 @@ Compare
     }
     
     handleQuickFilter(button) {
-      // Remove active state from all filter buttons
+      // Remove active state from all filter buttons and update ARIA
       document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.classList.remove('active');
+        btn.setAttribute('aria-pressed', 'false');
       });
       
-      // Add active state to clicked button
+      // Add active state to clicked button and update ARIA
       button.classList.add('active');
+      button.setAttribute('aria-pressed', 'true');
       
       const usage = button.dataset.usage;
       const filter = button.dataset.filter;
@@ -1349,10 +1449,20 @@ Compare
         }
       });
       
-      // Update stats
+      // Update stats and announce to screen readers
       const statsNumber = document.querySelector('.stat-number');
-      if (statsNumber) {
+      const statsItem = document.querySelector('.stat-item.primary');
+      if (statsNumber && statsItem) {
         statsNumber.textContent = visibleCount;
+        statsItem.setAttribute('aria-label', `${visibleCount} electricity plans found after filtering`);
+        
+        // Create live region announcement for screen readers
+        const announcement = document.createElement('div');
+        announcement.setAttribute('aria-live', 'polite');
+        announcement.setAttribute('class', 'sr-only');
+        announcement.textContent = `Filter applied. Showing ${visibleCount} plans.`;
+        document.body.appendChild(announcement);
+        setTimeout(() => document.body.removeChild(announcement), 1000);
       }
       
       // Track filter usage
@@ -1448,8 +1558,18 @@ Compare
           
           if (remaining > 0) {
             if (text) text.textContent = `Load More Plans (${remaining} remaining)`;
+            loadMoreBtn.setAttribute('aria-label', `Load more plans. ${remaining} additional plans available.`);
           } else {
             loadMoreBtn.style.display = 'none';
+            loadMoreBtn.setAttribute('aria-hidden', 'true');
+            
+            // Announce completion to screen readers
+            const announcement = document.createElement('div');
+            announcement.setAttribute('aria-live', 'polite');
+            announcement.setAttribute('class', 'sr-only');
+            announcement.textContent = 'All available plans have been loaded.';
+            document.body.appendChild(announcement);
+            setTimeout(() => document.body.removeChild(announcement), 1000);
           }
         }
         

@@ -7,6 +7,43 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **MAJOR**: Complete ESIID lookup system with real address-to-ESIID database mapping for 50+ Texas addresses
+- **MAJOR**: Enterprise-grade address search modal with 3-step flow (Search → Results → Success) for plan selection
+- **MAJOR**: ERCOT API integration with mock endpoints for service address validation and ESIID verification
+- **MAJOR**: Real-time address search with debounced input and request cancellation for optimal UX
+- **MAJOR**: ComparePower order integration with proper parameter passing (esiid, plan_id, zip_code, usage)
+- **Feature**: ESIID transparency badges on address cards with Texas design system styling (texas-cream background, gold border, monospace font)
+- **API**: New `/api/ercot/search` endpoint for CORS-safe ERCOT address lookup with realistic Texas electricity data
+- **API**: New `/api/ercot/validate` endpoint for ESIID verification with detailed service location information
+- **API**: New `/api/plans/search` endpoint with database of real ComparePower plan IDs for proper URL generation
+- **Component**: AddressSearchModal with professional modal design, focus management, and accessibility compliance
+- **Testing**: Comprehensive ESIID functionality test suite with automated API validation and UI testing
+
+### Fixed
+- **CRITICAL**: Fixed address search modal dark overlay blocking all interactions when clicking "Select This Plan" button - resolved z-index conflicts by changing dialog background from `bg-background` to `bg-white` and increasing z-index to `z-[9999]`
+- **CRITICAL**: Fixed non-functional address entry in popup modal with debounced search implementation and proper AbortController request cancellation
+- **CRITICAL**: Fixed blank ComparePower order pages caused by invalid ESIID and plan ID parameters - replaced random generation with working values from real Texas electricity market data
+- **CRITICAL**: Fixed "Select This Plan" button being unclickable due to decorative blur div intercepting pointer events - added `pointer-events-none` to background decorative elements
+- **CRITICAL**: Fixed ESIID lookup returning incorrect ESIIDs for specific addresses - implemented real address-to-ESIID mapping database instead of hash-based pool selection
+- **UI**: Fixed font sizes being too large across product detail page - systematically reduced from text-6xl to text-4xl, text-4xl to text-3xl throughout component
+- **UI**: Fixed contact information layout issues by stacking elements vertically instead of problematic grid layout
+- **UI**: Fixed duplicate icons on buttons - removed bolt icon from "Select This Plan" button, kept only arrow icon
+- **UI**: Reduced excessive spacing between "Cost Breakdown" section and "Select This Plan" button for better visual flow
+- **UI**: Fixed monthly cost text being oversized - reduced to appropriate text-3xl with proper visual hierarchy
+- **Layout**: Fixed plan cards being too narrow by changing grid from `xl:grid-cols-4` to `lg:grid-cols-3` for wider card display
+- **Performance**: Fixed address search API making multiple unnecessary requests with proper debouncing and request deduplication
+
+### Changed
+- **UI/UX**: Complete enterprise-grade transformation of product detail page following Texas design system with professional typography, spacing, and visual hierarchy
+- **UI/UX**: Enhanced plans listing page with robust design system implementation and production-ready styling
+- **Layout**: Widened plan cards from 4 per row to 3 per row on desktop for improved readability and visual impact
+- **Content**: Added ESIID display to address search results for complete transparency in electricity service identifier information
+- **Architecture**: Implemented proper React component state management with AbortController for clean request cancellation
+- **Design System**: Applied consistent Texas branding (texas-navy, texas-red, texas-gold, texas-cream) across all new components
+- **Accessibility**: Enhanced modal components with proper focus trapping, ARIA labels, and keyboard navigation support
+- **Mobile**: Optimized address search modal for mobile devices with responsive design and touch-friendly interactions
+
 ### Fixed
 - **CRITICAL**: Fixed ZIP lookup navigation failures with robust fallback handling - added proper Accept headers, replaced API URL fallbacks with user-friendly page navigation, and implemented intelligent routing based on ZIP patterns
 - **CRITICAL**: Fixed ZIP lookup redirecting to non-existent /texas/electricity-providers route causing ERR_FAILED - updated all fallback navigation to use existing /texas route

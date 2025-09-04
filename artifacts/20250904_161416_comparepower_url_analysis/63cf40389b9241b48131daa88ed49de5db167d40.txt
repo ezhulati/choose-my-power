@@ -1,0 +1,3 @@
+{"sent_at":"2025-09-04T21:16:14.728Z","sdk":{"name":"sentry.javascript.browser","version":"7.30.0"}}
+{"type":"session"}
+{"sid":"c6d16e4438224f3a810ed5bb636f0697","init":true,"started":"2025-09-04T21:16:14.728Z","timestamp":"2025-09-04T21:16:14.728Z","status":"ok","errors":0,"attrs":{"release":"\"bb3fecad250bd1de02a89c9bcc601cf8b616724f\"","environment":"PRD","user_agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"}}
