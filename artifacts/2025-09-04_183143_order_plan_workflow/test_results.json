@@ -1,0 +1,30 @@
+{
+  "timestamp": "2025-09-04T23:31:55.538Z",
+  "testResults": [
+    {
+      "step": 1,
+      "description": "Navigate to plan page",
+      "url": "http://localhost:4324/electricity-plans/plans/frontier-utilities/frontier-saver-plus-12",
+      "success": true,
+      "timestamp": "2025-09-04T23:31:46.718Z"
+    },
+    {
+      "step": 2,
+      "description": "Click Select This Plan button",
+      "success": true,
+      "timestamp": "2025-09-04T23:31:50.286Z"
+    },
+    {
+      "step": "error",
+      "description": "Test failed with error",
+      "error": "locator.waitFor: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('input[name=\"address\"], input[placeholder*=\"address\"], input[placeholder*=\"Address\"]').first() to be visible\u001b[22m\n",
+      "success": false,
+      "timestamp": "2025-09-04T23:31:55.537Z"
+    }
+  ],
+  "summary": {
+    "totalSteps": 3,
+    "passedSteps": 2,
+    "failedSteps": 1
+  }
+}

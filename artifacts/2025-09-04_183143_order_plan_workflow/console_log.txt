@@ -1,0 +1,42 @@
+[2025-09-04T23:31:55.537Z] warning: <link rel=preload> has an unsupported `type` value
+[2025-09-04T23:31:55.537Z] log: 🚧 SW: Service Worker disabled in development mode
+[2025-09-04T23:31:55.537Z] error: Failed to load resource: the server responded with a status of 404 (Not Found)
+[2025-09-04T23:31:55.537Z] error: Failed to load resource: the server responded with a status of 404 (Not Found)
+[2025-09-04T23:31:55.537Z] debug: [vite] connecting...
+[2025-09-04T23:31:55.537Z] debug: [astro] Initializing prefetch script
+[2025-09-04T23:31:55.537Z] debug: [vite] connected.
+[2025-09-04T23:31:55.537Z] log: 📊 TTFB: 415.39999997615814
+[2025-09-04T23:31:55.537Z] log: 📊 FCP: 460
+[2025-09-04T23:31:55.537Z] log: 📊 LCP: 460
+[2025-09-04T23:31:55.537Z] info: %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+[2025-09-04T23:31:55.537Z] log: ✅ Found logo for Frontier Utilities: https://assets.comparepower.com/images/frontier_utilities.svg
+[2025-09-04T23:31:55.537Z] log: ✅ Found logo for TXU Energy: https://assets.comparepower.com/images/txu_energy.svg
+[2025-09-04T23:31:55.537Z] log: ✅ Found logo for Direct Energy: https://assets.comparepower.com/images/direct_energy.svg
+[2025-09-04T23:31:55.537Z] log: 📊 LCP: 700
+[2025-09-04T23:31:55.537Z] error: Warning: Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?%s%s 
+
+Check the render method of `Primitive.div.SlotClone`. 
+    at DialogOverlay (http://localhost:4324/src/components/ui/dialog.tsx?t=1757016886621:44:3)
+    at http://localhost:4324/node_modules/.vite/deps/chunk-TLMPZXCM.js?v=b51414e9:79:13
+    at http://localhost:4324/node_modules/.vite/deps/chunk-TLMPZXCM.js?v=b51414e9:56:13
+    at http://localhost:4324/node_modules/.vite/deps/chunk-HF6BDQTY.js?v=b51414e9:133:13
+    at http://localhost:4324/node_modules/.vite/deps/@radix-ui_react-dialog.js?v=b51414e9:471:22
+    at Presence (http://localhost:4324/node_modules/.vite/deps/chunk-T2A2N43I.js?v=b51414e9:36:11)
+    at Provider (http://localhost:4324/node_modules/.vite/deps/chunk-HF6BDQTY.js?v=b51414e9:55:15)
+    at DialogPortal (http://localhost:4324/node_modules/.vite/deps/@radix-ui_react-dialog.js?v=b51414e9:1419:11)
+    at DialogPortal (http://localhost:4324/src/components/ui/dialog.tsx?t=1757016886621:26:6)
+    at DialogContent (http://localhost:4324/src/components/ui/dialog.tsx?t=1757016886621:69:3)
+    at Provider (http://localhost:4324/node_modules/.vite/deps/chunk-HF6BDQTY.js?v=b51414e9:55:15)
+    at Dialog (http://localhost:4324/node_modules/.vite/deps/@radix-ui_react-dialog.js?v=b51414e9:1359:5)
+    at Dialog (http://localhost:4324/src/components/ui/dialog.tsx?t=1757016886621:8:6)
+    at AddressSearchModal (http://localhost:4324/src/components/ui/AddressSearchModal.tsx?t=1757023576594:20:3)
+    at div
+    at ProductDetailsPageShadcn (http://localhost:4324/src/components/ui/ProductDetailsPageShadcn.tsx:30:44)
+[2025-09-04T23:31:55.537Z] error: `DialogContent` requires a `DialogTitle` for the component to be accessible for screen reader users.
+
+If you want to hide the `DialogTitle`, you can wrap it with our VisuallyHidden component.
+
+For more information, see https://radix-ui.com/primitives/docs/components/dialog
+[2025-09-04T23:31:55.537Z] warning: Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[2025-09-04T23:31:55.537Z] log: 📊 FID: 1.7999999821186066
+[2025-09-04T23:31:55.537Z] warning: The resource http://localhost:4324/_astro/_state_.Cspq1bGy.css was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.

@@ -1,0 +1,57 @@
+{
+  "timestamp": "2025-09-04T23:34:10.310Z",
+  "testResults": [
+    {
+      "step": 1,
+      "description": "Navigate to plan page",
+      "url": "http://localhost:4324/electricity-plans/plans/frontier-utilities/frontier-saver-plus-12",
+      "success": true,
+      "timestamp": "2025-09-04T23:33:19.511Z"
+    },
+    {
+      "step": 2,
+      "description": "Click Select This Plan button",
+      "success": true,
+      "timestamp": "2025-09-04T23:33:23.082Z"
+    },
+    {
+      "step": 3,
+      "description": "Fill address form",
+      "address": "123 Main St",
+      "zipCode": "75001",
+      "success": true,
+      "timestamp": "2025-09-04T23:33:27.352Z"
+    },
+    {
+      "step": 4,
+      "description": "Click Check Availability",
+      "success": true,
+      "timestamp": "2025-09-04T23:33:41.801Z"
+    },
+    {
+      "step": 5,
+      "description": "Select address from results",
+      "success": true,
+      "timestamp": "2025-09-04T23:33:55.052Z"
+    },
+    {
+      "step": 6,
+      "description": "Complete workflow to Order This Plan",
+      "currentUrl": "http://localhost:4324/electricity-plans/plans/frontier-utilities/frontier-saver-plus-12",
+      "success": true,
+      "timestamp": "2025-09-04T23:34:10.307Z"
+    },
+    {
+      "step": 7,
+      "description": "Click Order This Plan and capture redirect",
+      "success": false,
+      "error": "Order button not found",
+      "timestamp": "2025-09-04T23:34:10.309Z"
+    }
+  ],
+  "summary": {
+    "totalSteps": 7,
+    "passedSteps": 6,
+    "failedSteps": 1
+  }
+}

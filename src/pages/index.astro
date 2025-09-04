@@ -427,33 +427,36 @@ const description = `No more "${lowestRate}¢" rates that cost 14¢. No more 40-
         </p>
       </div>
 
-      <!-- Trust Indicators -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-        <EnhancedCard variant="elevated" padding="lg" className="text-center">
-          <div class="w-20 h-20 bg-gradient-to-br from-texas-gold to-texas-gold-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-            <Shield className="w-10 h-10 text-white" />
+      <!-- Trust Indicators - Enhanced Design -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-16">
+        <EnhancedCard variant="elevated" padding="lg" className="text-center group hover:shadow-2xl transition-all duration-500">
+          <div class="w-24 h-24 bg-gradient-to-br from-texas-gold to-texas-gold-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl group-hover:scale-110 transition-transform duration-300">
+            <Shield className="w-12 h-12 text-white" />
           </div>
           <h3 class="text-2xl font-bold text-texas-navy mb-4 text-center">Licensed & Regulated</h3>
+          <div class="w-16 h-1 bg-texas-gold/30 mx-auto mb-4 rounded-full"></div>
           <p class="text-lg text-gray-700 leading-relaxed text-center">
             Every provider we work with is <strong class="text-texas-gold">licensed by the Public Utility Commission of Texas</strong>
           </p>
         </EnhancedCard>
         
-        <EnhancedCard variant="elevated" padding="lg" className="text-center">
-          <div class="w-20 h-20 bg-gradient-to-br from-texas-navy to-blue-800 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-            <Users className="w-10 h-10 text-white" />
+        <EnhancedCard variant="elevated" padding="lg" className="text-center group hover:shadow-2xl transition-all duration-500">
+          <div class="w-24 h-24 bg-gradient-to-br from-texas-navy to-blue-800 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl group-hover:scale-110 transition-transform duration-300">
+            <Users className="w-12 h-12 text-white" />
           </div>
           <h3 class="text-2xl font-bold text-texas-navy mb-4 text-center">Real Customer Reviews</h3>
+          <div class="w-16 h-1 bg-texas-navy/30 mx-auto mb-4 rounded-full"></div>
           <p class="text-lg text-gray-700 leading-relaxed text-center">
             We show <strong class="text-texas-navy">honest ratings from actual Texas customers,</strong> not fake testimonials
           </p>
         </EnhancedCard>
         
-        <EnhancedCard variant="elevated" padding="lg" className="text-center">
-          <div class="w-20 h-20 bg-gradient-to-br from-texas-red to-texas-red-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-            <DollarSign className="w-10 h-10 text-white" />
+        <EnhancedCard variant="elevated" padding="lg" className="text-center group hover:shadow-2xl transition-all duration-500">
+          <div class="w-24 h-24 bg-gradient-to-br from-texas-red to-texas-red-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl group-hover:scale-110 transition-transform duration-300">
+            <DollarSign className="w-12 h-12 text-white" />
           </div>
           <h3 class="text-2xl font-bold text-texas-navy mb-4 text-center">Always Free for You</h3>
+          <div class="w-16 h-1 bg-texas-red/30 mx-auto mb-4 rounded-full"></div>
           <p class="text-lg text-gray-700 leading-relaxed text-center">
             The electricity companies pay us when you sign up. <strong class="text-texas-red">You pay the same price either way,</strong> so why not get help?
           </p>
@@ -485,22 +488,40 @@ const description = `No more "${lowestRate}¢" rates that cost 14¢. No more 40-
         </div>
       </div>
 
-      <!-- Final CTA -->
-      <div class="bg-texas-navy text-white rounded-xl p-10 text-center">
-        <h3 class="text-3xl font-bold mb-4">
-          Your Neighbors Are Saving Money Too
-        </h3>
-        <p class="text-base text-white/90 mb-6 max-w-2xl mx-auto leading-relaxed">
-          Join them. Enter your ZIP code and see what's really available in your area.
-        </p>
-        <StandardZipInput 
-          variant="compact" 
-          size="md"
-          showTitle={false}
-          showDescription={false}
-          showStats={false}
-          customClass="max-w-sm mx-auto"
-        />
+      <!-- Final CTA - Enhanced -->
+      <div class="bg-gradient-to-br from-texas-navy via-blue-900 to-texas-navy text-white rounded-3xl p-12 text-center shadow-2xl border border-white/10">
+        <div class="relative">
+          <!-- Background decoration -->
+          <div class="absolute -top-6 -left-6 w-12 h-12 bg-texas-gold/20 rounded-full blur-lg"></div>
+          <div class="absolute -bottom-4 -right-4 w-8 h-8 bg-texas-red/20 rounded-full blur-lg"></div>
+          
+          <h3 class="text-3xl md:text-4xl font-bold mb-6 leading-tight">
+            Your Neighbors Are Saving Money Too
+          </h3>
+          <div class="w-24 h-1 bg-gradient-to-r from-texas-gold via-white to-texas-gold mx-auto mb-6 rounded-full"></div>
+          <p class="text-lg text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
+            Join them. Enter your ZIP code and see what's really available in your area.
+          </p>
+          
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 max-w-md mx-auto border border-white/20">
+            <StandardZipInput 
+              variant="compact" 
+              size="md"
+              showTitle={false}
+              showDescription={false}
+              showStats={false}
+              customClass="w-full"
+            />
+          </div>
+          
+          <!-- Trust indicator -->
+          <div class="mt-6 flex items-center justify-center gap-2 text-white/70">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path>
+            </svg>
+            <span class="text-sm font-medium">Free, secure, and takes 2 minutes</span>
+          </div>
+        </div>
       </div>
     </EnhancedSection>
   </div>

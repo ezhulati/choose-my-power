@@ -110,11 +110,14 @@ export const EnterprisePlanCard: React.FC<EnterprisePlanCardProps> = ({
   const planTypeInfo = getPlanTypeInfo(plan.planType);
 
   return (
-    <Card className={`group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-gray-200 hover:border-texas-navy/30 bg-white ${className}`}>
+    <Card className={`group hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border-2 border-gray-200 hover:border-texas-gold bg-gradient-to-br from-white to-gray-50 relative overflow-hidden ${className}`}>
+      {/* Texas Brand Accent Border */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-texas-navy via-texas-red to-texas-gold"></div>
+      
       {/* Provider Header - Stacked Layout */}
-      <CardHeader className="p-4 pb-1 text-center">
-        {/* Provider Logo */}
-        <div className="w-20 h-12 mx-auto mb-2 flex items-center justify-center bg-transparent overflow-hidden">
+      <CardHeader className="p-6 pb-3 text-center relative">
+        {/* Provider Logo with Enhanced Styling */}
+        <div className="w-24 h-14 mx-auto mb-3 flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-xl border border-gray-200 shadow-sm group-hover:shadow-md transition-all duration-300 overflow-hidden">
           {providerInfo.actualLogoUrl && !providerInfo.actualLogoUrl.startsWith('data:') ? (
             <img 
               src={providerInfo.actualLogoUrl} 
@@ -130,7 +133,7 @@ export const EnterprisePlanCard: React.FC<EnterprisePlanCardProps> = ({
             />
           ) : null}
           <div 
-            className={`${providerInfo.color} ${providerInfo.textColor} p-2 rounded-lg flex items-center justify-center ${providerInfo.actualLogoUrl && !providerInfo.actualLogoUrl.startsWith('data:') ? 'hidden' : ''}`}
+            className={`${providerInfo.color} ${providerInfo.textColor} p-3 rounded-xl flex items-center justify-center shadow-sm ${providerInfo.actualLogoUrl && !providerInfo.actualLogoUrl.startsWith('data:') ? 'hidden' : ''}`}
             style={{ display: providerInfo.actualLogoUrl && !providerInfo.actualLogoUrl.startsWith('data:') ? 'none' : 'flex' }}
           >
             {providerInfo.actualLogoUrl && providerInfo.actualLogoUrl.startsWith('data:') ? (
@@ -140,40 +143,43 @@ export const EnterprisePlanCard: React.FC<EnterprisePlanCardProps> = ({
                 className="max-w-full max-h-full object-contain"
               />
             ) : (
-              <Icon name={providerInfo.fallbackIcon as any} className="h-5 w-5" />
+              <Icon name={providerInfo.fallbackIcon as any} className="h-6 w-6" />
             )}
           </div>
         </div>
         
         {/* Provider Name */}
-        <div className="text-sm font-semibold text-gray-900 mb-1">
+        <div className="text-sm font-bold text-texas-navy mb-2">
           {providerInfo.name}
         </div>
         
         {/* Plan Name */}
-        <h3 className="text-base font-bold text-gray-900 leading-snug mb-2">
+        <h3 className="text-lg font-bold text-gray-900 leading-tight mb-3">
           {plan.name}
         </h3>
         
-        {/* Feature Badges */}
-        <div className="flex flex-wrap justify-center gap-1 mb-1">
+        {/* Feature Badges - Enhanced with Texas Design System */}
+        <div className="flex flex-wrap justify-center gap-2 mb-3">
           {/* Green Energy Badge */}
           {plan.greenEnergy && (
-            <Badge className="bg-green-100 text-green-800 border-green-300 text-[10px] font-medium px-2 py-1">
-              100% Green Energy
+            <Badge className="bg-gradient-to-r from-green-100 to-green-50 text-green-800 border-green-300 text-xs font-semibold px-3 py-1.5 rounded-full shadow-sm">
+              <Icon name="leaf" className="h-3 w-3 mr-1" />
+              100% Green
             </Badge>
           )}
           
-          {/* No Deposit Badge - Only for prepaid or variable month-to-month plans */}
-          {(plan.planType === 'variable' && plan.contractTerm?.toLowerCase().includes('month-to-month')) && (
-            <Badge className="bg-blue-100 text-blue-800 border-blue-300 text-[10px] font-medium px-2 py-1">
+          {/* No Deposit Badge */}
+          {plan.noDeposit && (
+            <Badge className="bg-gradient-to-r from-texas-gold/20 to-texas-gold/10 text-texas-gold border-texas-gold/30 text-xs font-semibold px-3 py-1.5 rounded-full shadow-sm">
+              <Icon name="shield" className="h-3 w-3 mr-1" />
               No Deposit
             </Badge>
           )}
           
           {/* Top Rated Badge */}
           {plan.topRated && (
-            <Badge className="bg-yellow-100 text-yellow-800 border-yellow-300 text-[10px] font-medium px-2 py-1">
+            <Badge className="bg-gradient-to-r from-texas-red/20 to-texas-red/10 text-texas-red border-texas-red/30 text-xs font-semibold px-3 py-1.5 rounded-full shadow-sm">
+              <Icon name="star" className="h-3 w-3 mr-1" />
               Top Rated
             </Badge>
           )}
@@ -181,65 +187,66 @@ export const EnterprisePlanCard: React.FC<EnterprisePlanCardProps> = ({
       </CardHeader>
 
       {/* Plan Details */}
-      <CardContent className="px-4 pb-0 pt-0 space-y-0">
+      <CardContent className="px-6 pb-0 pt-0 space-y-0">
 
-        {/* Pricing Table for Different Usage Levels */}
-        <div className="bg-gray-50 rounded-lg border p-3 mb-3">
-          <div className="text-[10px] font-medium text-gray-600 mb-2 text-center">Monthly Usage Pricing</div>
-          <div className="grid grid-cols-3 gap-1">
-            <div className="text-center py-1.5 bg-white rounded border">
-              <div className="text-sm font-bold text-texas-navy">
+        {/* Enhanced Pricing Table with Texas Design System */}
+        <div className="bg-gradient-to-r from-gray-50 to-texas-cream/20 rounded-xl border-2 border-gray-200 p-4 mb-4 shadow-sm">
+          <div className="text-xs font-bold text-texas-navy mb-3 text-center">Monthly Usage Pricing</div>
+          <div className="grid grid-cols-3 gap-2">
+            <div className="text-center py-2 bg-white rounded-lg border shadow-sm hover:shadow-md transition-shadow duration-200">
+              <div className="text-base font-bold text-gray-900">
                 {plan.pricing?.rate500kWh ? `${plan.pricing.rate500kWh.toFixed(1)}¢` : formatRate(plan.rate)}
               </div>
-              <div className="text-[9px] text-gray-600">500 kWh</div>
+              <div className="text-xs text-gray-600 font-medium">500 kWh</div>
             </div>
-            <div className="text-center py-1.5 bg-white rounded border border-texas-navy">
-              <div className="text-sm font-bold text-texas-navy">
+            <div className="text-center py-2 bg-gradient-to-b from-texas-navy to-blue-800 text-white rounded-lg border-2 border-texas-navy shadow-md">
+              <div className="text-base font-bold">
                 {plan.pricing?.rate1000kWh ? `${plan.pricing.rate1000kWh.toFixed(1)}¢` : formatRate(plan.rate)}
               </div>
-              <div className="text-[9px] text-texas-navy font-medium">1000 kWh</div>
+              <div className="text-xs font-semibold">1000 kWh</div>
+              <div className="text-[10px] opacity-90">Most Common</div>
             </div>
-            <div className="text-center py-1.5 bg-white rounded border">
-              <div className="text-sm font-bold text-texas-navy">
+            <div className="text-center py-2 bg-white rounded-lg border shadow-sm hover:shadow-md transition-shadow duration-200">
+              <div className="text-base font-bold text-gray-900">
                 {plan.pricing?.rate2000kWh ? `${plan.pricing.rate2000kWh.toFixed(1)}¢` : formatRate(plan.rate)}
               </div>
-              <div className="text-[9px] text-gray-600">2000 kWh</div>
+              <div className="text-xs text-gray-600 font-medium">2000 kWh</div>
             </div>
           </div>
           
-          {/* Monthly Bill Totals */}
-          <div className="mt-2 pt-2 border-t border-gray-200">
-            <div className="text-[9px] font-medium text-gray-500 mb-1 text-center">Estimated Monthly Bill</div>
-            <div className="grid grid-cols-3 gap-1 text-center">
-              <div className="text-xs font-semibold text-gray-700">
+          {/* Enhanced Monthly Bill Totals */}
+          <div className="mt-3 pt-3 border-t border-gray-300">
+            <div className="text-xs font-bold text-gray-700 mb-2 text-center">Estimated Monthly Bill</div>
+            <div className="grid grid-cols-3 gap-2 text-center">
+              <div className="text-sm font-bold text-gray-700">
                 ${plan.pricing?.rate500kWh ? ((plan.pricing.rate500kWh * 500) / 100).toFixed(0) : Math.round((parseFloat(plan.rate.toString()) * 500) / 100)}
               </div>
-              <div className="text-xs font-semibold text-texas-navy">
+              <div className="text-sm font-bold text-white bg-texas-gold/90 rounded px-2 py-1">
                 ${plan.pricing?.rate1000kWh ? ((plan.pricing.rate1000kWh * 1000) / 100).toFixed(0) : Math.round((parseFloat(plan.rate.toString()) * 1000) / 100)}
               </div>
-              <div className="text-xs font-semibold text-gray-700">
+              <div className="text-sm font-bold text-gray-700">
                 ${plan.pricing?.rate2000kWh ? ((plan.pricing.rate2000kWh * 2000) / 100).toFixed(0) : Math.round((parseFloat(plan.rate.toString()) * 2000) / 100)}
               </div>
             </div>
           </div>
         </div>
 
-        {/* Contract & Type Info */}
-        <div className="grid grid-cols-2 gap-2 text-center mt-3">
-          <div className="py-1.5 px-2 bg-white border rounded-lg">
-            <div className="text-sm font-semibold text-gray-900">{plan.contractTerm}</div>
-            <div className="text-[10px] text-gray-500">Contract</div>
+        {/* Enhanced Contract & Type Info */}
+        <div className="grid grid-cols-2 gap-3 text-center mt-4">
+          <div className="py-3 px-3 bg-white border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-md hover:border-texas-navy/30 transition-all duration-200">
+            <div className="text-base font-bold text-texas-navy">{plan.contractTerm}</div>
+            <div className="text-xs text-gray-600 font-medium">Contract</div>
           </div>
-          <div className="py-1.5 px-2 bg-white border rounded-lg">
-            <div className="text-sm font-semibold text-gray-900">{planTypeInfo.label}</div>
-            <div className="text-[10px] text-gray-500">Rate Type</div>
+          <div className="py-3 px-3 bg-white border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-md hover:border-texas-navy/30 transition-all duration-200">
+            <div className="text-base font-bold text-texas-navy">{planTypeInfo.label}</div>
+            <div className="text-xs text-gray-600 font-medium">Rate Type</div>
           </div>
         </div>
 
       </CardContent>
 
-      {/* CTA Button */}
-      <CardFooter className="p-4 pt-2">
+      {/* Enhanced CTA Button */}
+      <CardFooter className="p-6 pt-4">
         <Button
           onClick={() => {
             if (onViewDetails) {
@@ -250,10 +257,14 @@ export const EnterprisePlanCard: React.FC<EnterprisePlanCardProps> = ({
               window.location.href = `/electricity-plans/plans/${providerSlug}/${plan.slug}`;
             }
           }}
-          className="w-full bg-texas-red hover:bg-texas-red-600 text-white font-semibold py-3 text-sm rounded-lg transition-all duration-200"
+          className="w-full bg-gradient-to-r from-texas-red to-texas-red-600 hover:from-texas-red-600 hover:to-texas-red-700 text-white font-bold py-4 text-base rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 relative overflow-hidden"
         >
-          View Details
-          <Icon name="arrow-right" className="h-4 w-4 ml-2 group-hover:translate-x-0.5 transition-transform" />
+          <span className="relative z-10 flex items-center justify-center">
+            View Plan Details
+            <Icon name="arrow-right" className="h-5 w-5 ml-3 group-hover:translate-x-1 transition-transform duration-300" />
+          </span>
+          {/* Button shine effect */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
         </Button>
       </CardFooter>
     </Card>

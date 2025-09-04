@@ -1,0 +1,27 @@
+[
+  {
+    "url": "http://localhost:4324/api/plans/search?name=Frontier%20Saver%20Plus%2012&provider=Frontier%20Utilities",
+    "method": "GET",
+    "timestamp": "2025-09-04T23:33:17.623Z"
+  },
+  {
+    "url": "https://assets.comparepower.com/images/frontier_utilities.svg",
+    "method": "GET",
+    "timestamp": "2025-09-04T23:33:17.626Z"
+  },
+  {
+    "url": "https://assets.comparepower.com/images/txu_energy.svg",
+    "method": "GET",
+    "timestamp": "2025-09-04T23:33:19.825Z"
+  },
+  {
+    "url": "https://assets.comparepower.com/images/direct_energy.svg",
+    "method": "GET",
+    "timestamp": "2025-09-04T23:33:19.825Z"
+  },
+  {
+    "url": "http://localhost:4324/api/ercot/search",
+    "method": "POST",
+    "timestamp": "2025-09-04T23:33:27.351Z"
+  }
+]

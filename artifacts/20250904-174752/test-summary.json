@@ -1,0 +1,8 @@
+{
+  "testUrl": "http://localhost:4324/electricity-plans/plans/gexa-energy/gexa-eco-saver-plus-12",
+  "buttonFound": true,
+  "buttonSelector": "button:has-text(\"Select This Plan\")",
+  "modalFound": true,
+  "finalUrl": "http://localhost:4324/electricity-plans/plans/gexa-energy/gexa-eco-saver-plus-12",
+  "timestamp": "2025-09-04T22:49:38.948Z"
+}

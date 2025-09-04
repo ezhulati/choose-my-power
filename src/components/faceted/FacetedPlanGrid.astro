@@ -332,12 +332,19 @@ const sortingOptions = [
                     </div>
                   </td>
                   <td class="rate-cell">
-                    <div class="rate-display">
-                      <span class="rate-value">{plan.pricing.rate1000kWh.toFixed(1)}¢</span>
-                      <span class="rate-unit">per kWh</span>
-                    </div>
-                    <div class="monthly-estimate">
-                      ${(plan.pricing.rate1000kWh * 10).toFixed(0)}/mo
+                    <div class="multi-usage-rates">
+                      <div class="usage-rate">
+                        <span class="rate-value">{(plan.pricing.rate500kWh || plan.pricing.rate1000kWh).toFixed(1)}¢</span>
+                        <span class="usage-label">500kWh</span>
+                      </div>
+                      <div class="usage-rate featured">
+                        <span class="rate-value">{plan.pricing.rate1000kWh.toFixed(1)}¢</span>
+                        <span class="usage-label">1000kWh</span>
+                      </div>
+                      <div class="usage-rate">
+                        <span class="rate-value">{(plan.pricing.rate2000kWh || plan.pricing.rate1000kWh).toFixed(1)}¢</span>
+                        <span class="usage-label">2000kWh</span>
+                      </div>
                     </div>
                   </td>
                   <td class="term-cell">
@@ -421,8 +428,20 @@ const sortingOptions = [
                   </div>
                 </div>
                 <div class="compact-rate">
-                  <span class="compact-rate-value">{plan.pricing.rate1000kWh.toFixed(1)}¢</span>
-                  <span class="compact-monthly">${(plan.pricing.rate1000kWh * 10).toFixed(0)}/mo</span>
+                  <div class="compact-multi-usage">
+                    <div class="compact-usage-row">
+                      <span class="compact-rate-small">{(plan.pricing.rate500kWh || plan.pricing.rate1000kWh).toFixed(1)}¢</span>
+                      <span class="compact-usage-small">500kWh</span>
+                    </div>
+                    <div class="compact-usage-row featured">
+                      <span class="compact-rate-value">{plan.pricing.rate1000kWh.toFixed(1)}¢</span>
+                      <span class="compact-usage-main">1000kWh</span>
+                    </div>
+                    <div class="compact-usage-row">
+                      <span class="compact-rate-small">{(plan.pricing.rate2000kWh || plan.pricing.rate1000kWh).toFixed(1)}¢</span>
+                      <span class="compact-usage-small">2000kWh</span>
+                    </div>
+                  </div>
                 </div>
               </div>
               
@@ -819,15 +838,40 @@ const sortingOptions = [
   
   /* Enterprise Table View Styles */
   .plans-table-container {
-    @apply bg-white rounded-2xl border-2 border-gray-200 overflow-hidden shadow-2xl hover:shadow-2xl transition-all duration-500;
+    @apply bg-white rounded-2xl border-2 border-gray-200 overflow-x-auto shadow-2xl hover:shadow-2xl transition-all duration-500;
     background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
     border-image: linear-gradient(135deg, #002868, #dc2626) 1;
+    min-width: 100%;
+    /* Ensure horizontal scroll is visible when needed */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #002868 #f3f4f6;
+  }
+  
+  /* Custom scrollbar styling for better visibility */
+  .plans-table-container::-webkit-scrollbar {
+    height: 12px;
+  }
+  
+  .plans-table-container::-webkit-scrollbar-track {
+    background: #f3f4f6;
+    border-radius: 6px;
+  }
+  
+  .plans-table-container::-webkit-scrollbar-thumb {
+    background: #002868;
+    border-radius: 6px;
+  }
+  
+  .plans-table-container::-webkit-scrollbar-thumb:hover {
+    background: #dc2626;
   }
   
   .plans-table {
     @apply w-full;
     border-collapse: separate;
     border-spacing: 0;
+    min-width: 800px; /* Reduced for compact fit */
   }
   
   .table-header {
@@ -838,7 +882,7 @@ const sortingOptions = [
   }
   
   .table-header th {
-    @apply px-8 py-6 text-left text-sm font-bold text-white uppercase tracking-wider border-r border-blue-700 last:border-r-0;
+    @apply px-3 py-4 text-left text-xs font-bold text-white uppercase tracking-wider border-r border-blue-700 last:border-r-0;
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 100%);
   }
@@ -883,7 +927,7 @@ const sortingOptions = [
   }
   
   .plan-row td {
-    @apply px-8 py-6 text-sm align-middle;
+    @apply px-3 py-4 text-sm align-middle;
   }
   
   .provider-cell .provider-info {
@@ -902,20 +946,32 @@ const sortingOptions = [
     @apply text-gray-600 text-xs;
   }
   
-  .rate-cell .rate-display {
-    @apply flex items-baseline gap-1;
+  .rate-cell .multi-usage-rates {
+    @apply flex flex-col gap-1;
+  }
+  
+  .rate-cell .usage-rate {
+    @apply flex items-center justify-between;
+  }
+  
+  .rate-cell .usage-rate.featured {
+    @apply bg-texas-navy/10 rounded px-2 py-1;
   }
   
   .rate-cell .rate-value {
-    @apply text-lg font-bold text-texas-navy;
+    @apply text-sm font-bold text-texas-navy;
   }
   
-  .rate-cell .rate-unit {
-    @apply text-xs text-gray-600;
+  .rate-cell .usage-rate.featured .rate-value {
+    @apply text-base font-bold text-texas-navy;
   }
   
-  .rate-cell .monthly-estimate {
-    @apply text-xs text-gray-500;
+  .rate-cell .usage-label {
+    @apply text-xs text-gray-600 font-medium;
+  }
+  
+  .rate-cell .usage-rate.featured .usage-label {
+    @apply text-xs text-texas-navy font-semibold;
   }
   
   .term-cell .term-length {
@@ -982,9 +1038,9 @@ const sortingOptions = [
     @apply bg-white hover:bg-texas-navy text-texas-navy hover:text-white text-xs font-semibold px-3 py-2 rounded-lg transition-all duration-200 border-2 border-texas-navy shadow-sm hover:shadow-md focus:ring-2 focus:ring-texas-navy/50;
   }
   
-  /* Professional View Details Button for Table View */
+  /* Professional View Details Button for Table View - Compact */
   .view-details-btn-table {
-    @apply bg-gradient-to-r from-texas-navy to-blue-800 hover:from-texas-navy/90 hover:to-blue-700 text-white text-sm font-semibold px-6 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl focus:ring-4 focus:ring-texas-navy/50 flex items-center gap-2 justify-center;
+    @apply bg-gradient-to-r from-texas-navy to-blue-800 hover:from-texas-navy/90 hover:to-blue-700 text-white text-xs font-semibold px-3 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg focus:ring-2 focus:ring-texas-navy/50 flex items-center gap-1 justify-center;
   }
   
   .view-details-btn-table .btn-icon {
@@ -1090,6 +1146,35 @@ const sortingOptions = [
   
   .view-details-btn-compact .btn-icon {
     @apply flex-shrink-0;
+  }
+
+  /* Multi-usage pricing styles for compact view */
+  .compact-multi-usage {
+    @apply flex flex-col gap-1;
+  }
+
+  .compact-usage-row {
+    @apply flex items-center justify-between;
+  }
+
+  .compact-usage-row.featured {
+    @apply bg-texas-navy/10 rounded px-2 py-1;
+  }
+
+  .compact-rate-small {
+    @apply text-xs font-semibold text-texas-navy;
+  }
+
+  .compact-usage-small {
+    @apply text-xs text-gray-600 font-medium;
+  }
+
+  .compact-rate-value {
+    @apply text-lg font-bold text-texas-navy;
+  }
+
+  .compact-usage-main {
+    @apply text-xs text-texas-navy font-semibold;
   }
   
   /* Load More Section */
@@ -1256,6 +1341,38 @@ const sortingOptions = [
     background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
     background-size: 200px 100%;
     animation: shimmer 1.5s infinite;
+  }
+
+  /* Professional Table Column Styling - Compact */
+  .provider-col {
+    width: 25%;
+    min-width: 180px;
+  }
+
+  .rate-col {
+    width: 15%;
+    min-width: 80px;
+  }
+
+  .term-col {
+    width: 12%;
+    min-width: 70px;
+  }
+
+  .features-col {
+    width: 22%;
+    min-width: 120px;
+  }
+
+  .rating-col {
+    width: 12%;
+    min-width: 70px;
+  }
+
+  .actions-col {
+    width: 14%;
+    min-width: 110px;
+    text-align: center;
   }
 </style>
 

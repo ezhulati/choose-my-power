@@ -66,6 +66,7 @@ const term = url.searchParams.get('term');
 const greenEnergy = url.searchParams.get('green');
 const rateType = url.searchParams.get('type');
 const sort = url.searchParams.get('sort');
+const view = url.searchParams.get('view') || 'grid';
 
 // Set canonical URL to point to faceted navigation for legacy parameters
 let redirectSegments: string[] = [];
@@ -430,6 +431,7 @@ const heroImage = getHeroImage({
                   loading={false}
                   error={apiError}
                   className="enterprise-grid"
+                  viewMode={view as 'grid' | 'table' | 'compact'}
                 />
               </div>
             </div>

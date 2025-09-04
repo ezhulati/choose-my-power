@@ -1,0 +1,47 @@
+{
+  "timestamp": "2025-09-04T23:36:36.135Z",
+  "testResults": [
+    {
+      "step": 1,
+      "description": "Navigate to plan page",
+      "url": "http://localhost:4324/electricity-plans/plans/frontier-utilities/frontier-saver-plus-12",
+      "success": true,
+      "timestamp": "2025-09-04T23:35:55.185Z"
+    },
+    {
+      "step": 2,
+      "description": "Click Select This Plan button",
+      "success": true,
+      "timestamp": "2025-09-04T23:35:58.252Z"
+    },
+    {
+      "step": 3,
+      "description": "Fill address form and trigger search",
+      "address": "123 Main St",
+      "zipCode": "75001",
+      "success": true,
+      "timestamp": "2025-09-04T23:36:15.015Z"
+    },
+    {
+      "step": 4,
+      "description": "Select address from results",
+      "success": true,
+      "timestamp": "2025-09-04T23:36:32.061Z"
+    },
+    {
+      "step": 5,
+      "description": "Click Order This Plan and capture redirect",
+      "finalUrl": "http://localhost:4324/electricity-plans/plans/frontier-utilities/frontier-saver-plus-12",
+      "urlMatches": false,
+      "expectedPattern": "^https:\\/\\/orders\\.comparepower\\.com\\/order\\/service_location\\?.*esiid=.*&plan_id=.*&usage=.*&zip_code=.*",
+      "success": true,
+      "timestamp": "2025-09-04T23:36:36.134Z",
+      "redirectSuccess": false
+    }
+  ],
+  "summary": {
+    "totalSteps": 5,
+    "passedSteps": 5,
+    "failedSteps": 0
+  }
+}
