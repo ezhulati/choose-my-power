@@ -29,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Alignment**: Fixed mixed text alignment - center-aligned section headers with left-aligned content lists for optimal readability
 
 ### Fixed
+- **🔧 CRITICAL**: ZIP code form displaying raw JSON response instead of redirecting to city pages - enhanced JavaScript form interception, removed empty action attribute, and improved redirect URL handling
 - **Critical**: Updated electricity data generation for all Texas cities with fresh plan and pricing information
 - **Critical**: Netlify deployment failure due to missing @radix-ui/react-dialog dependency required by AddressSearchModal component
 - **Critical**: Unexpected '}' syntax error in architecture-flows/index.astro causing Netlify build failures - fixed mermaid diagram syntax with proper braces and HTML entity handling

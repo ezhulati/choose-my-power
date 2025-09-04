@@ -141,17 +141,15 @@
     // Form submission handler with duplicate prevention and fallback
     let isSubmitting = false;
     let hasShownNotification = false;
+    
+    // Enhanced form submission handler
     form.addEventListener('submit', async function(e) {
       console.log(`🎯 Form ${form.id} submit event triggered`);
       
-      // Try to prevent default, but handle gracefully if it fails
-      try {
-        e.preventDefault();
-        console.log(`✅ Form ${form.id} default prevented, handling with JavaScript`);
-      } catch (preventError) {
-        console.warn(`⚠️ Could not prevent form ${form.id} default:`, preventError);
-        return; // Let browser handle submission
-      }
+      // CRITICAL: Always prevent default form submission
+      e.preventDefault();
+      e.stopPropagation();
+      console.log(`✅ Form ${form.id} default prevented, handling with JavaScript`);
       
       // Prevent duplicate submissions for this specific form
       if (isSubmitting) {
@@ -206,10 +204,17 @@
         result = await res.json();
         console.log('📦 API JSON response:', result);
       } else {
-        // API returned HTML/redirect instead of JSON
-        console.log('🔄 API returned non-JSON, redirecting to API URL directly');
-        window.location = url;
-        return;
+        // API returned HTML/redirect instead of JSON - this shouldn't happen with our API
+        console.warn('⚠️ API returned non-JSON content type:', ct);
+        console.log('🔄 Attempting to parse as JSON anyway...');
+        try {
+          result = await res.json();
+        } catch (parseError) {
+          console.error('❌ Failed to parse response as JSON:', parseError);
+          console.log('🔄 Redirecting to API URL as fallback');
+          window.location = url;
+          return;
+        }
       }
 
       setLoadingState(false);
@@ -239,25 +244,26 @@
         }
         
         // Multiple navigation strategies for maximum reliability
-        console.log('🎯 Navigating to:', result.redirectUrl);
+        const redirectUrl = result.redirectUrl || result.redirectURL;
+        console.log('🎯 Navigating to:', redirectUrl);
         
         // Add small delay to prevent "page can't be found" flash on dynamic routes
         setTimeout(() => {
           try {
             // Primary: Use window.location.href for most reliable navigation
-            window.location.href = result.redirectUrl;
+            window.location.href = redirectUrl;
           } catch (navError) {
             console.warn('⚠️ window.location.href failed, trying alternatives:', navError);
             
             try {
               // Fallback 1: Use window.location assignment
-              window.location = result.redirectUrl;
+              window.location = redirectUrl;
             } catch (navError2) {
               console.warn('⚠️ window.location assignment failed, trying replace:', navError2);
               
               try {
                 // Fallback 2: Use location.replace
-                window.location.replace(result.redirectUrl);
+                window.location.replace(redirectUrl);
               } catch (navError3) {
                 console.error('❌ All navigation methods failed, using API URL as final fallback:', navError3);
                 // Final safety net: redirect to the API URL directly
