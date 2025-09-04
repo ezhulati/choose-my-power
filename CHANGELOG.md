@@ -16,8 +16,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Integration**: Seamless integration with existing ComparePower API, Redis cache, database, and TDSP mapping systems
 - **Testing**: Comprehensive LangGraph integration test suite with health checks and performance monitoring
 - **Documentation**: Complete usage guide and API reference for all AI agent functionality
-- **Scripts**: New npm scripts for agent testing, health monitoring, metrics, and pipeline management
+- **Scripts**: New npm scripts for agent testing, health monitoring, metrics, and pipeline management (agents:test, agents:health, agents:metrics, agents:pipeline)
 - **Dependencies**: LangChain ecosystem (@langchain/core, @langchain/anthropic, @langchain/langgraph) for Claude 3.5 Sonnet integration
+- **Documentation**: AI_QUICK_REFERENCE.md for immediate agent usage guide
+- **Documentation**: docs/AI_SETUP_GUIDE.md for comprehensive setup and configuration instructions
+- **Testing**: scripts/test-anthropic-connection.mjs utility for validating Anthropic API connectivity and Claude 3.5 Sonnet integration
 - **Feature**: Complete address search modal functionality for plan selection with ERCOT API integration
 - **Feature**: Full parameter passing to ComparePower (esiid, plan_id, zip_code, usage=1000) for seamless order flow
 - **Testing**: Comprehensive test report for AddressSearchModal component functionality and user experience validation

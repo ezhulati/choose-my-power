@@ -107,7 +107,8 @@
     "agents:pipeline": "node -e 'import(\"./src/lib/agents/data-pipeline-agent.js\").then(m => m.dataPipelineAgent.runPipeline().then(r => console.log(r)))'",
     "agents:pipeline:stream": "node -e 'import(\"./src/lib/agents/data-pipeline-agent.js\").then(async m => { const stream = await m.dataPipelineAgent.streamPipeline(); for await (const update of stream) console.log(update); })'",
     "agents:recommend": "node -e 'import(\"./src/lib/agents/plan-recommendation-agent.js\").then(m => m.planRecommendationAgent.recommend(\"Find me a good plan\", \"houston-tx\").then(r => console.log(r)))'",
-    "agents:chat": "node -e 'import(\"./src/lib/agents/support-chatbot-agent.js\").then(m => m.supportChatbotAgent.chat(\"Hello\").then(r => console.log(r)))'"
+    "agents:chat": "node -e 'import(\"./src/lib/agents/support-chatbot-agent.js\").then(m => m.supportChatbotAgent.chat(\"Hello\").then(r => console.log(r)))'",
+    "agents:connect": "node scripts/test-anthropic-connection.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
