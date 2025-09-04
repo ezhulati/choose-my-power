@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Alignment**: Fixed mixed text alignment - center-aligned section headers with left-aligned content lists for optimal readability
 
 ### Fixed
+- **Critical**: Netlify deployment failure due to missing @radix-ui/react-dialog dependency required by AddressSearchModal component
 - **Critical**: Unexpected '}' syntax error in architecture-flows/index.astro causing Netlify build failures - fixed mermaid diagram syntax with proper braces and HTML entity handling
 - **Critical**: JSX syntax errors in multiple React components with mismatched closing div tags - fixed ProviderPage.tsx:205, StateElectricityProvidersPage.tsx:140, and StateElectricityPlansPage.tsx:130
 - **Critical**: White text on white background contrast issues in AccentBox components causing invisible content in troubleshooting sections
