@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
+import { getCityFromZip } from '../../config/tdsp-mapping';
 import { mockProviders, mockStates } from '../../data/mockData';
 import { 
   TrendingDown, Leaf, Shield, Clock, Zap, Calculator, Users, Award, 
@@ -149,14 +150,30 @@ export function ShopPage({ category }: ShopPageProps) {
   };
 
   const handleZipSearch = (zipCode: string) => {
-    // For Texas ZIP codes, navigate to electricity plans for shopping
-    if (zipCode.match(/^7[0-9]{4}$/)) {
-      const url = category ? `/electricity-plans/texas/${zipCode}?category=${category}` : `/electricity-plans/texas/${zipCode}`;
+    console.log('ShopPage handleZipSearch called with ZIP:', zipCode);
+    
+    // Try to find the city for this ZIP code
+    const city = getCityFromZip(zipCode);
+    console.log('City lookup result:', city);
+    
+    if (city) {
+      console.log('Navigating to city page:', `/texas/${city}`);
+      // Navigate to city page with category parameter if applicable
+      const url = category ? `/texas/${city}?category=${category}` : `/texas/${city}`;
       navigate(url);
     } else {
-      // For other states, go to general electricity plans
-      const url = category ? `/electricity-plans?category=${category}` : `/electricity-plans`;
-      navigate(url);
+      console.log('ZIP code not found in mapping, checking pattern...');
+      // ZIP code not found, try to determine state by ZIP code pattern
+      if (zipCode.startsWith('7')) {
+        console.log('Texas ZIP code detected, going to Texas page');
+        // Texas ZIP code, but city not in our mapping - go to Texas page
+        const url = category ? `/texas?category=${category}` : `/texas`;
+        navigate(url);
+      } else {
+        console.log('Unknown ZIP code, going to locations page');
+        // Not a Texas ZIP code or unknown - go to locations page
+        navigate('/locations');
+      }
     }
   };
 
@@ -188,9 +205,9 @@ export function ShopPage({ category }: ShopPageProps) {
                 {currentCategory.description}
               </p>
 
-              <div className="max-w-md mx-auto mb-8">
+              <div className="max-w-md mx-auto mb-6 sm:mb-8">
                 <ZipCodeSearch 
-                  onSearch={handleZipSearch} 
+                  onSearch={handleZipSearch}
                   placeholder="Enter zip code"
                   size="lg"
                 />
@@ -355,13 +372,16 @@ export function ShopPage({ category }: ShopPageProps) {
               </div>
             </div>
 
-            <div className="max-w-md mx-auto">
+            <div className="max-w-md mx-auto mb-6 sm:mb-8">
               <ZipCodeSearch 
-                onSearch={handleZipSearch} 
+                onSearch={handleZipSearch}
                 placeholder="Enter zip code"
                 size="lg"
               />
-              <p className="text-blue-200 text-sm mt-2">Shows what's actually available at your address</p>
+            </div>
+
+            <div className="text-blue-200">
+              <p className="text-sm sm:text-base md:text-lg">Shows what's actually available at your address</p>
             </div>
           </div>
         </div>
