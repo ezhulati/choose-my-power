@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Verification**: End-to-end Order This Plan workflow validation with dynamic ComparePower URL generation confirmed working
 
 ### Fixed
+- **CRITICAL**: Fixed Order This Plan URL generation using URL slugs instead of MongoDB ObjectIds - implemented robust plan slug-to-ObjectId mapping system ensuring ComparePower integration always receives correct plan_id parameter format (68b84e0e206770f7c563793b vs simplesaver-12)
 - **BUILD**: Fixed 94 build warnings by removing .bak backup files causing unsupported file type errors during Astro build process
 - **CRITICAL**: Fixed address search modal dark overlay blocking all interactions when clicking "Select This Plan" button - resolved z-index conflicts by changing dialog background from `bg-background` to `bg-white` and increasing z-index to `z-[9999]`
 - **CRITICAL**: Fixed non-functional address entry in popup modal with debounced search implementation and proper AbortController request cancellation

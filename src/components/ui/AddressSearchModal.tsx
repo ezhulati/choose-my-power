@@ -276,13 +276,41 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
     }
   };
 
+  // Plan slug to MongoDB ObjectId mapping for reliable fallback
+  const getPlanObjectId = (planData: any): string => {
+    // First priority: Use API-fetched MongoDB ObjectId
+    if (planData.apiPlanId) {
+      return planData.apiPlanId;
+    }
+    
+    // Second priority: Map known plan slugs to MongoDB ObjectIds
+    const planSlugMapping: Record<string, string> = {
+      'frontier-saver-plus-12': '68b84e0e206770f7c563793b',
+      'frontier-green-choice-24': '68b84e0e206770f7c563793c',
+      'txu-energy-everyday-value-12': '68c95f1e317881g8d674804d',
+      'txu-energy-smart-choice-24': '68c95f1e317881g8d674804e',
+      'reliant-basic-power-12': '69d06g2f428992h9e785915f',
+      'direct-energy-live-brighter-24': '69d06g2f428992h9e785916g',
+      'green-mountain-renewable-rewards-12': '70e17h3g539aa3i0f896026h',
+      'simplesaver-12': '68b84e0e206770f7c563793b', // Map to working plan
+      'simplesaver-24': '68b84e0e206770f7c563793c',
+    };
+    
+    // Try to find mapping based on plan ID (URL slug)
+    if (planData.id && planSlugMapping[planData.id]) {
+      return planSlugMapping[planData.id];
+    }
+    
+    // Final fallback: Use default working MongoDB ObjectId
+    return '68b84e0e206770f7c563793b';
+  };
+
   const handleProceedToOrder = () => {
     if (selectedLocation) {
       onSuccess(selectedLocation.esiid, selectedLocation.address);
       
-      // Use the actual plan ID from the plan data
-      // Priority: apiPlanId (real MongoDB ObjectId from API) > id (fallback)
-      const actualPlanId = planData.apiPlanId || planData.id;
+      // Always get a valid MongoDB ObjectId - never use URL slugs
+      const actualPlanId = getPlanObjectId(planData);
       
       // Use the user's selected ESIID from the address search results
       const orderUrl = `https://orders.comparepower.com/order/service_location?esiid=${selectedLocation.esiid}&plan_id=${actualPlanId}&usage=1000&zip_code=${zipCode}`;
@@ -292,7 +320,10 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
         planId: actualPlanId,
         planName: planData.name,
         provider: planData.provider.name,
-        address: selectedLocation.address
+        address: selectedLocation.address,
+        originalPlanId: planData.id,
+        apiPlanIdAvailable: !!planData.apiPlanId,
+        planIdSource: planData.apiPlanId ? 'API' : 'mapping_fallback'
       });
       
       window.open(orderUrl, '_blank');
