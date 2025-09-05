@@ -344,7 +344,7 @@ export function ProvidersPage() {
               </p>
               
               {/* Trust Signals */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-lg">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-lg mb-16">
                 <div className="flex items-center px-4 py-2 bg-green-500/20 backdrop-blur-sm rounded-full border border-green-400/30">
                   <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
                   <span className="text-green-100 font-medium">Real customer reviews</span>
@@ -361,7 +361,7 @@ export function ProvidersPage() {
             </div>
 
             {/* Quick Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-16">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-16 mt-8">
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl">
                 <div className="text-3xl font-bold">{mockProviders.length}</div>
                 <div className="text-blue-200 text-sm">Licensed Providers</div>

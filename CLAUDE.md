@@ -516,6 +516,15 @@ gap-4 md:gap-6 lg:gap-8
 .texas-shadow {
   @apply shadow-md shadow-texas-red/10;
 }
+
+/* Trust Signals - Must maintain proper spacing */
+.trust-signals {
+  @apply flex flex-col sm:flex-row items-center justify-center gap-4 text-lg mb-16;
+}
+
+.trust-signals + * {
+  @apply mt-8; /* CRITICAL: Following content needs mt-8 for symmetrical spacing */
+}
 ```
 
 ### ♿ Accessibility Guidelines
@@ -553,6 +562,7 @@ gap-4 md:gap-6 lg:gap-8
 - ❌ Don't skip hover/focus states on buttons/links
 - ❌ **CRITICAL:** Never use `absolute inset-0 bg-black/20` without `relative` positioning on the parent container - this causes overlay bleed beyond hero sections
 - ❌ Don't use `shadow-lg` - use `shadow-md` for professional, lighter shadows
+- ❌ **CRITICAL:** Trust signals must have proper spacing from subsequent content - use `mt-8` on the following element to match hero section symmetry
 
 ### 🔄 Maintenance Protocol
 

@@ -184,7 +184,7 @@ export function ComparePage() {
               </p>
               
               {/* Trust Signals */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-lg">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-lg mb-16">
                 <div className="flex items-center px-4 py-2 bg-green-500/20 backdrop-blur-sm rounded-full border border-green-400/30">
                   <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
                   <span className="text-green-100 font-medium">300+ plans analyzed daily</span>

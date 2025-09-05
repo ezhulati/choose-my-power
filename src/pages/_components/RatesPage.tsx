@@ -118,7 +118,7 @@ export function RatesPage({}: RatesPageProps) {
               </p>
               
               {/* Trust Signals */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-lg">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-lg mb-16">
                 <div className="flex items-center px-4 py-2 bg-green-500/20 backdrop-blur-sm rounded-full border border-green-400/30">
                   <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
                   <span className="text-green-100 font-medium">Real math, no surprises</span>
@@ -134,7 +134,7 @@ export function RatesPage({}: RatesPageProps) {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-12 mt-8">
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
                 <div className="text-3xl font-bold">{lowestRate.toFixed(1)}¢</div>
                 <div className="text-blue-200 text-sm">Lowest Rate</div>

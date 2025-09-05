@@ -214,7 +214,7 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
               </div>
             </EnhancedCardReact>
           </div>
-      </EnhancedSectionReact>
+      </div>
 
       {/* Tabs */}
       <EnhancedSectionReact background="white" padding="sm" className="border-b border-gray-200">

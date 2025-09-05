@@ -18,6 +18,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Added critical DON'T rules for shadow usage and overlay positioning
 
 ### Fixed
+- **CRITICAL BUILD**: Fixed JSX syntax error in ProviderPage.tsx causing Netlify deployment failures
+  - Corrected mismatched closing tag on line 217 (`</EnhancedSectionReact>` → `</div>`)
+  - Resolved Netlify build error preventing production deployments
 - **REMOVED**: Hardcoded ESID mappings in old `/api/ercot/search` endpoint
 - **ENHANCED**: AddressSearchModal now uses dynamic ESID generation via `/api/ercot/search-dynamic`
 - **CLEANED**: Removed unused files with hardcoded plan IDs (`AddressSearchModalFixed.tsx`)
@@ -32,6 +35,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **SPACING**: Fixed spacing between trust signal badges and statistics on Texas page
 
 ### Changed
+- **DATA UPDATE**: Refreshed Texas electricity plan data for 750+ cities across all TDSP territories
+  - Updated generated plan data with latest pricing and availability information
+  - Synchronized static and generated data files for consistency
+  - Maintained dynamic Plan ID system while updating underlying data
 - **UPGRADED**: ESID search system from hardcoded database to dynamic generation based on ZIP codes
 - **STRENGTHENED**: Validation pipeline to prevent hardcoded plan/ESID values in source code
 - **IMPROVED**: Hero section padding standardized to `py-32 lg:py-40` for proper breathing room
