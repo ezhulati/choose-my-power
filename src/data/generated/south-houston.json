@@ -1,19 +1,19 @@
 {
-  "citySlug": "irving-tx",
-  "cityName": "Irving",
+  "citySlug": "south-houston-tx",
+  "cityName": "South Houston",
   "tdsp": {
-    "duns": "1039940674000",
-    "name": "Oncor Electric Delivery",
-    "zone": "North",
+    "duns": "957877905",
+    "name": "CenterPoint Energy Houston Electric",
+    "zone": "Coast",
     "tier": 1,
-    "priority": 0.8
+    "priority": 0.9
   },
-  "baseApiUrl": "irving",
+  "baseApiUrl": "south-houston",
   "filters": {
     "no-filters": {
       "plans": [
         {
-          "id": "68b5a47c206770f7c563208a",
+          "id": "68b5a47c206770f7c5632089",
           "name": "Simply Days Free - 12",
           "provider": {
             "name": "Amigo Energy",
@@ -22,10 +22,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.188,
-            "rate1000kWh": 0.174,
-            "rate2000kWh": 0.167,
-            "ratePerKwh": 0.174
+            "rate500kWh": 0.198,
+            "rate1000kWh": 0.183,
+            "rate2000kWh": 0.175,
+            "ratePerKwh": 0.183
           },
           "contract": {
             "length": 12,
@@ -51,12 +51,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b5a47c206770f7c563208f",
+          "id": "68b5a47c206770f7c563208e",
           "name": "Simply Days Free - 24",
           "provider": {
             "name": "Amigo Energy",
@@ -65,10 +65,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.183,
-            "rate1000kWh": 0.169,
-            "rate2000kWh": 0.162,
-            "ratePerKwh": 0.169
+            "rate500kWh": 0.192,
+            "rate1000kWh": 0.177,
+            "rate2000kWh": 0.169,
+            "ratePerKwh": 0.177
           },
           "contract": {
             "length": 24,
@@ -94,12 +94,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b84e0e206770f7c563793b",
+          "id": "68b84e0e206770f7c563793a",
           "name": "Nights Free Plan - 12",
           "provider": {
             "name": "Amigo Energy",
@@ -137,12 +137,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b17a6c890a850ebca0d5ad",
+          "id": "68b17a6b890a850ebca0d59d",
           "name": "12th Month Free - 12",
           "provider": {
             "name": "Amigo Energy",
@@ -151,10 +151,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.174,
-            "rate1000kWh": 0.174,
-            "rate2000kWh": 0.174,
-            "ratePerKwh": 0.174
+            "rate500kWh": 0.183,
+            "rate1000kWh": 0.183,
+            "rate2000kWh": 0.183,
+            "ratePerKwh": 0.183
           },
           "contract": {
             "length": 12,
@@ -174,12 +174,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b5a444206770f7c5632085",
+          "id": "68b5a444206770f7c5632084",
           "name": "Secure Energy - 24",
           "provider": {
             "name": "Amigo Energy",
@@ -188,10 +188,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.192,
-            "rate1000kWh": 0.168,
-            "rate2000kWh": 0.166,
-            "ratePerKwh": 0.168
+            "rate500kWh": 0.201,
+            "rate1000kWh": 0.176,
+            "rate2000kWh": 0.174,
+            "ratePerKwh": 0.176
           },
           "contract": {
             "length": 24,
@@ -211,12 +211,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b5a4f4206770f7c5632094",
+          "id": "68b5a4f4206770f7c5632093",
           "name": "Value Wise - 12",
           "provider": {
             "name": "Tara Energy",
@@ -225,9 +225,9 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.214,
+            "rate500kWh": 0.215,
             "rate1000kWh": 0.135,
-            "rate2000kWh": 0.171,
+            "rate2000kWh": 0.17,
             "ratePerKwh": 0.135
           },
           "contract": {
@@ -248,12 +248,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b5a4f5206770f7c5632099",
+          "id": "68b5a4f5206770f7c5632098",
           "name": "Value Wise - 24",
           "provider": {
             "name": "Tara Energy",
@@ -262,9 +262,9 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.217,
+            "rate500kWh": 0.218,
             "rate1000kWh": 0.138,
-            "rate2000kWh": 0.174,
+            "rate2000kWh": 0.173,
             "ratePerKwh": 0.138
           },
           "contract": {
@@ -285,12 +285,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b1a44b64bd2c63b1b10963",
+          "id": "68b1a44b64bd2c63b1b10962",
           "name": "Weekends Free Plan - 24",
           "provider": {
             "name": "Tara Energy",
@@ -299,10 +299,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.169,
-            "rate1000kWh": 0.164,
-            "rate2000kWh": 0.162,
-            "ratePerKwh": 0.164
+            "rate500kWh": 0.173,
+            "rate1000kWh": 0.168,
+            "rate2000kWh": 0.166,
+            "ratePerKwh": 0.168
           },
           "contract": {
             "length": 24,
@@ -328,12 +328,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b5a320206770f7c563200e",
+          "id": "68b5a320206770f7c563200d",
           "name": "Mega Saver - 24",
           "provider": {
             "name": "Just Energy",
@@ -342,10 +342,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.194,
-            "rate1000kWh": 0.19,
-            "rate2000kWh": 0.113,
-            "ratePerKwh": 0.19
+            "rate500kWh": 0.201,
+            "rate1000kWh": 0.196,
+            "rate2000kWh": 0.119,
+            "ratePerKwh": 0.196
           },
           "contract": {
             "length": 24,
@@ -365,12 +365,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b5a321206770f7c5632012",
+          "id": "68b84ddd206770f7c5637939",
           "name": "Power Plus - 12",
           "provider": {
             "name": "Just Energy",
@@ -379,10 +379,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.212,
-            "rate1000kWh": 0.108,
-            "rate2000kWh": 0.156,
-            "ratePerKwh": 0.108
+            "rate500kWh": 0.214,
+            "rate1000kWh": 0.109,
+            "rate2000kWh": 0.157,
+            "ratePerKwh": 0.109
           },
           "contract": {
             "length": 12,
@@ -402,12 +402,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b56ef7206770f7c56318db",
+          "id": "68b56ef6206770f7c56318cf",
           "name": "Simple Choice - 12",
           "provider": {
             "name": "Just Energy",
@@ -416,10 +416,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.165,
-            "rate1000kWh": 0.156,
-            "rate2000kWh": 0.152,
-            "ratePerKwh": 0.156
+            "rate500kWh": 0.171,
+            "rate1000kWh": 0.161,
+            "rate2000kWh": 0.156,
+            "ratePerKwh": 0.161
           },
           "contract": {
             "length": 12,
@@ -439,12 +439,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b56ef7206770f7c56318dd",
+          "id": "68b56ef6206770f7c56318cc",
           "name": "Basics - 12",
           "provider": {
             "name": "Just Energy",
@@ -453,10 +453,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.161,
-            "rate1000kWh": 0.157,
-            "rate2000kWh": 0.155,
-            "ratePerKwh": 0.157
+            "rate500kWh": 0.167,
+            "rate1000kWh": 0.162,
+            "rate2000kWh": 0.16,
+            "ratePerKwh": 0.162
           },
           "contract": {
             "length": 12,
@@ -476,12 +476,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b56ef7206770f7c56318e0",
+          "id": "68b56ef6206770f7c56318d0",
           "name": "Basics - 24",
           "provider": {
             "name": "Just Energy",
@@ -490,10 +490,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.165,
-            "rate1000kWh": 0.161,
-            "rate2000kWh": 0.159,
-            "ratePerKwh": 0.161
+            "rate500kWh": 0.171,
+            "rate1000kWh": 0.166,
+            "rate2000kWh": 0.164,
+            "ratePerKwh": 0.166
           },
           "contract": {
             "length": 24,
@@ -513,12 +513,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b5a321206770f7c5632017",
+          "id": "68b5a321206770f7c5632016",
           "name": "Power Plus - 24",
           "provider": {
             "name": "Just Energy",
@@ -527,10 +527,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.22,
-            "rate1000kWh": 0.116,
-            "rate2000kWh": 0.164,
-            "ratePerKwh": 0.116
+            "rate500kWh": 0.226,
+            "rate1000kWh": 0.121,
+            "rate2000kWh": 0.169,
+            "ratePerKwh": 0.121
           },
           "contract": {
             "length": 24,
@@ -550,12 +550,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b56ef7206770f7c56318de",
+          "id": "68b56ef6206770f7c56318cb",
           "name": "Simple Choice - 24",
           "provider": {
             "name": "Just Energy",
@@ -564,10 +564,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.169,
-            "rate1000kWh": 0.16,
-            "rate2000kWh": 0.156,
-            "ratePerKwh": 0.16
+            "rate500kWh": 0.174,
+            "rate1000kWh": 0.164,
+            "rate2000kWh": 0.159,
+            "ratePerKwh": 0.164
           },
           "contract": {
             "length": 24,
@@ -587,12 +587,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b9f00f77bde898d6bdfaf6",
+          "id": "68b9f00ed281abff58c2a42f",
           "name": "Cash Money 12",
           "provider": {
             "name": "4Change Energy",
@@ -601,10 +601,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.224,
-            "rate1000kWh": 0.164,
-            "rate2000kWh": 0.18,
-            "ratePerKwh": 0.164
+            "rate500kWh": 0.233,
+            "rate1000kWh": 0.173,
+            "rate2000kWh": 0.188,
+            "ratePerKwh": 0.173
           },
           "contract": {
             "length": 12,
@@ -624,12 +624,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b9f00f77bde898d6bdfaf5",
+          "id": "68b9f00ed281abff58c2a430",
           "name": "One Rate 12",
           "provider": {
             "name": "4Change Energy",
@@ -638,10 +638,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.181,
-            "rate1000kWh": 0.172,
-            "rate2000kWh": 0.167,
-            "ratePerKwh": 0.172
+            "rate500kWh": 0.185,
+            "rate1000kWh": 0.175,
+            "rate2000kWh": 0.17,
+            "ratePerKwh": 0.175
           },
           "contract": {
             "length": 12,
@@ -661,12 +661,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b9f00f77bde898d6bdfaf4",
+          "id": "68b9f00ed281abff58c2a431",
           "name": "Power Maxx Saver 12",
           "provider": {
             "name": "4Change Energy",
@@ -675,10 +675,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.192,
-            "rate1000kWh": 0.183,
-            "rate2000kWh": 0.128,
-            "ratePerKwh": 0.183
+            "rate500kWh": 0.194,
+            "rate1000kWh": 0.184,
+            "rate2000kWh": 0.129,
+            "ratePerKwh": 0.184
           },
           "contract": {
             "length": 12,
@@ -698,12 +698,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b9f00f77bde898d6bdfaf2",
+          "id": "68b9f00ed281abff58c2a433",
           "name": "One Rate 24",
           "provider": {
             "name": "4Change Energy",
@@ -712,10 +712,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.182,
-            "rate1000kWh": 0.172,
-            "rate2000kWh": 0.168,
-            "ratePerKwh": 0.172
+            "rate500kWh": 0.188,
+            "rate1000kWh": 0.178,
+            "rate2000kWh": 0.173,
+            "ratePerKwh": 0.178
           },
           "contract": {
             "length": 24,
@@ -735,12 +735,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b9f00f77bde898d6bdfaf1",
+          "id": "68b9f00dd281abff58c2a42c",
           "name": "Power Maxx Saver 24",
           "provider": {
             "name": "4Change Energy",
@@ -749,10 +749,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.192,
-            "rate1000kWh": 0.183,
-            "rate2000kWh": 0.128,
-            "ratePerKwh": 0.183
+            "rate500kWh": 0.194,
+            "rate1000kWh": 0.184,
+            "rate2000kWh": 0.129,
+            "ratePerKwh": 0.184
           },
           "contract": {
             "length": 24,
@@ -772,12 +772,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b9f00f77bde898d6bdfaf8",
+          "id": "68b9f00ed281abff58c2a42e",
           "name": "Maxx Saver Value 12",
           "provider": {
             "name": "4Change Energy",
@@ -786,10 +786,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.225,
-            "rate1000kWh": 0.096,
-            "rate2000kWh": 0.156,
-            "ratePerKwh": 0.096
+            "rate500kWh": 0.229,
+            "rate1000kWh": 0.099,
+            "rate2000kWh": 0.159,
+            "ratePerKwh": 0.099
           },
           "contract": {
             "length": 12,
@@ -809,12 +809,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b9f00f77bde898d6bdfaf3",
+          "id": "68b9f00ed281abff58c2a432",
           "name": "Power Savvy Saver 12",
           "provider": {
             "name": "4Change Energy",
@@ -823,10 +823,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.205,
-            "rate1000kWh": 0.191,
-            "rate2000kWh": 0.179,
-            "ratePerKwh": 0.191
+            "rate500kWh": 0.22,
+            "rate1000kWh": 0.205,
+            "rate2000kWh": 0.193,
+            "ratePerKwh": 0.205
           },
           "contract": {
             "length": 12,
@@ -846,12 +846,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b9f00f77bde898d6bdfaf7",
+          "id": "68b9f00dd281abff58c2a42d",
           "name": "Maxx Saver Value 24",
           "provider": {
             "name": "4Change Energy",
@@ -860,10 +860,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.225,
-            "rate1000kWh": 0.096,
-            "rate2000kWh": 0.156,
-            "ratePerKwh": 0.096
+            "rate500kWh": 0.229,
+            "rate1000kWh": 0.099,
+            "rate2000kWh": 0.159,
+            "ratePerKwh": 0.099
           },
           "contract": {
             "length": 24,
@@ -883,12 +883,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b52c219df7fc01f8e66939",
+          "id": "68b52c209df7fc01f8e6692d",
           "name": "Frontier Saver Deluxe 12",
           "provider": {
             "name": "Frontier Utilities",
@@ -897,10 +897,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.197,
-            "rate1000kWh": 0.193,
-            "rate2000kWh": 0.141,
-            "ratePerKwh": 0.193
+            "rate500kWh": 0.205,
+            "rate1000kWh": 0.2,
+            "rate2000kWh": 0.148,
+            "ratePerKwh": 0.2
           },
           "contract": {
             "length": 12,
@@ -920,12 +920,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b7cf34206770f7c563692d",
+          "id": "68b7cf33206770f7c5636924",
           "name": "Frontier Saver Plus 12",
           "provider": {
             "name": "Frontier Utilities",
@@ -934,10 +934,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.225,
-            "rate1000kWh": 0.096,
-            "rate2000kWh": 0.156,
-            "ratePerKwh": 0.096
+            "rate500kWh": 0.229,
+            "rate1000kWh": 0.099,
+            "rate2000kWh": 0.159,
+            "ratePerKwh": 0.099
           },
           "contract": {
             "length": 12,
@@ -957,12 +957,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b52c219df7fc01f8e6693b",
+          "id": "68b52c209df7fc01f8e66932",
           "name": "Frontier Saver Premier 12",
           "provider": {
             "name": "Frontier Utilities",
@@ -971,10 +971,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.209,
-            "rate1000kWh": 0.205,
-            "rate2000kWh": 0.128,
-            "ratePerKwh": 0.205
+            "rate500kWh": 0.214,
+            "rate1000kWh": 0.209,
+            "rate2000kWh": 0.132,
+            "ratePerKwh": 0.209
           },
           "contract": {
             "length": 12,
@@ -994,12 +994,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b52c219df7fc01f8e6693e",
+          "id": "68b52c209df7fc01f8e6692f",
           "name": "Frontier Saver Value 12",
           "provider": {
             "name": "Frontier Utilities",
@@ -1008,268 +1008,9 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.156,
-            "rate1000kWh": 0.202,
-            "rate2000kWh": 0.225,
-            "ratePerKwh": 0.202
-          },
-          "contract": {
-            "length": 12,
-            "type": "fixed",
-            "earlyTerminationFee": 150,
-            "autoRenewal": false,
-            "satisfactionGuarantee": false
-          },
-          "features": {
-            "greenEnergy": 30.4,
-            "billCredit": 0,
-            "deposit": {
-              "required": false,
-              "amount": 0
-            }
-          },
-          "availability": {
-            "enrollmentType": "both",
-            "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
-            ]
-          }
-        },
-        {
-          "id": "68b52c219df7fc01f8e6693c",
-          "name": "Frontier Saver Value Plus 12",
-          "provider": {
-            "name": "Frontier Utilities",
-            "logo": "",
-            "rating": 0,
-            "reviewCount": 0
-          },
-          "pricing": {
-            "rate500kWh": 0.238,
-            "rate1000kWh": 0.159,
-            "rate2000kWh": 0.195,
-            "ratePerKwh": 0.159
-          },
-          "contract": {
-            "length": 12,
-            "type": "fixed",
-            "earlyTerminationFee": 150,
-            "autoRenewal": false,
-            "satisfactionGuarantee": false
-          },
-          "features": {
-            "greenEnergy": 30.4,
-            "billCredit": 0,
-            "deposit": {
-              "required": false,
-              "amount": 0
-            }
-          },
-          "availability": {
-            "enrollmentType": "both",
-            "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
-            ]
-          }
-        },
-        {
-          "id": "68b52c219df7fc01f8e6693d",
-          "name": "Light Saver 12",
-          "provider": {
-            "name": "Frontier Utilities",
-            "logo": "",
-            "rating": 0,
-            "reviewCount": 0
-          },
-          "pricing": {
-            "rate500kWh": 0.173,
-            "rate1000kWh": 0.161,
-            "rate2000kWh": 0.151,
-            "ratePerKwh": 0.161
-          },
-          "contract": {
-            "length": 12,
-            "type": "fixed",
-            "earlyTerminationFee": 150,
-            "autoRenewal": false,
-            "satisfactionGuarantee": false
-          },
-          "features": {
-            "greenEnergy": 30.4,
-            "billCredit": 0,
-            "deposit": {
-              "required": false,
-              "amount": 0
-            }
-          },
-          "availability": {
-            "enrollmentType": "both",
-            "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
-            ]
-          }
-        },
-        {
-          "id": "68b52c279df7fc01f8e6696c",
-          "name": "Gexa Eco Saver Advantage 12",
-          "provider": {
-            "name": "Gexa Energy",
-            "logo": "",
-            "rating": 0,
-            "reviewCount": 0
-          },
-          "pricing": {
-            "rate500kWh": 0.198,
-            "rate1000kWh": 0.194,
-            "rate2000kWh": 0.142,
-            "ratePerKwh": 0.194
-          },
-          "contract": {
-            "length": 12,
-            "type": "fixed",
-            "earlyTerminationFee": 150,
-            "autoRenewal": false,
-            "satisfactionGuarantee": false
-          },
-          "features": {
-            "greenEnergy": 100,
-            "billCredit": 0,
-            "deposit": {
-              "required": false,
-              "amount": 0
-            }
-          },
-          "availability": {
-            "enrollmentType": "both",
-            "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
-            ]
-          }
-        },
-        {
-          "id": "68b52c279df7fc01f8e66972",
-          "name": "Gexa Eco Saver Edge Plus 12",
-          "provider": {
-            "name": "Gexa Energy",
-            "logo": "",
-            "rating": 0,
-            "reviewCount": 0
-          },
-          "pricing": {
-            "rate500kWh": 0.229,
-            "rate1000kWh": 0.124,
-            "rate2000kWh": 0.172,
-            "ratePerKwh": 0.124
-          },
-          "contract": {
-            "length": 12,
-            "type": "fixed",
-            "earlyTerminationFee": 150,
-            "autoRenewal": false,
-            "satisfactionGuarantee": false
-          },
-          "features": {
-            "greenEnergy": 100,
-            "billCredit": 0,
-            "deposit": {
-              "required": false,
-              "amount": 0
-            }
-          },
-          "availability": {
-            "enrollmentType": "both",
-            "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
-            ]
-          }
-        },
-        {
-          "id": "68b52c279df7fc01f8e66968",
-          "name": "Gexa Eco Saver Lite 12",
-          "provider": {
-            "name": "Gexa Energy",
-            "logo": "",
-            "rating": 0,
-            "reviewCount": 0
-          },
-          "pricing": {
-            "rate500kWh": 0.156,
-            "rate1000kWh": 0.202,
-            "rate2000kWh": 0.225,
-            "ratePerKwh": 0.202
-          },
-          "contract": {
-            "length": 12,
-            "type": "fixed",
-            "earlyTerminationFee": 150,
-            "autoRenewal": false,
-            "satisfactionGuarantee": false
-          },
-          "features": {
-            "greenEnergy": 100,
-            "billCredit": 0,
-            "deposit": {
-              "required": false,
-              "amount": 0
-            }
-          },
-          "availability": {
-            "enrollmentType": "both",
-            "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
-            ]
-          }
-        },
-        {
-          "id": "68b7cf3b206770f7c563695b",
-          "name": "Gexa Eco Saver Plus 12",
-          "provider": {
-            "name": "Gexa Energy",
-            "logo": "",
-            "rating": 0,
-            "reviewCount": 0
-          },
-          "pricing": {
-            "rate500kWh": 0.225,
-            "rate1000kWh": 0.096,
-            "rate2000kWh": 0.156,
-            "ratePerKwh": 0.096
-          },
-          "contract": {
-            "length": 12,
-            "type": "fixed",
-            "earlyTerminationFee": 150,
-            "autoRenewal": false,
-            "satisfactionGuarantee": false
-          },
-          "features": {
-            "greenEnergy": 100,
-            "billCredit": 0,
-            "deposit": {
-              "required": false,
-              "amount": 0
-            }
-          },
-          "availability": {
-            "enrollmentType": "both",
-            "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
-            ]
-          }
-        },
-        {
-          "id": "68b52c279df7fc01f8e6696b",
-          "name": "Gexa Eco Saver Premier 12",
-          "provider": {
-            "name": "Gexa Energy",
-            "logo": "",
-            "rating": 0,
-            "reviewCount": 0
-          },
-          "pricing": {
-            "rate500kWh": 0.209,
+            "rate500kWh": 0.16,
             "rate1000kWh": 0.205,
-            "rate2000kWh": 0.128,
+            "rate2000kWh": 0.227,
             "ratePerKwh": 0.205
           },
           "contract": {
@@ -1280,6 +1021,117 @@
             "satisfactionGuarantee": false
           },
           "features": {
+            "greenEnergy": 30.4,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b52c209df7fc01f8e66931",
+          "name": "Frontier Saver Value Plus 12",
+          "provider": {
+            "name": "Frontier Utilities",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.246,
+            "rate1000kWh": 0.166,
+            "rate2000kWh": 0.201,
+            "ratePerKwh": 0.166
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 30.4,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b52c209df7fc01f8e6692e",
+          "name": "Light Saver 12",
+          "provider": {
+            "name": "Frontier Utilities",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.181,
+            "rate1000kWh": 0.168,
+            "rate2000kWh": 0.158,
+            "ratePerKwh": 0.168
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 30.4,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b52c249df7fc01f8e66952",
+          "name": "Gexa Eco Saver Advantage 12",
+          "provider": {
+            "name": "Gexa Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.206,
+            "rate1000kWh": 0.201,
+            "rate2000kWh": 0.149,
+            "ratePerKwh": 0.201
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
             "greenEnergy": 100,
             "billCredit": 0,
             "deposit": {
@@ -1290,12 +1142,160 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b52c279df7fc01f8e6696e",
+          "id": "68b52c249df7fc01f8e6694f",
+          "name": "Gexa Eco Saver Edge Plus 12",
+          "provider": {
+            "name": "Gexa Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.239,
+            "rate1000kWh": 0.134,
+            "rate2000kWh": 0.181,
+            "ratePerKwh": 0.134
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b52c249df7fc01f8e66953",
+          "name": "Gexa Eco Saver Lite 12",
+          "provider": {
+            "name": "Gexa Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.159,
+            "rate1000kWh": 0.204,
+            "rate2000kWh": 0.226,
+            "ratePerKwh": 0.204
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b7cf39206770f7c5636954",
+          "name": "Gexa Eco Saver Plus 12",
+          "provider": {
+            "name": "Gexa Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.229,
+            "rate1000kWh": 0.099,
+            "rate2000kWh": 0.159,
+            "ratePerKwh": 0.099
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b52c249df7fc01f8e66959",
+          "name": "Gexa Eco Saver Premier 12",
+          "provider": {
+            "name": "Gexa Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.214,
+            "rate1000kWh": 0.209,
+            "rate2000kWh": 0.132,
+            "ratePerKwh": 0.209
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b52c249df7fc01f8e66956",
           "name": "Gexa Eco Saver Value 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1304,10 +1304,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.238,
-            "rate1000kWh": 0.159,
-            "rate2000kWh": 0.195,
-            "ratePerKwh": 0.159
+            "rate500kWh": 0.246,
+            "rate1000kWh": 0.166,
+            "rate2000kWh": 0.201,
+            "ratePerKwh": 0.166
           },
           "contract": {
             "length": 12,
@@ -1327,12 +1327,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b52c279df7fc01f8e6696a",
+          "id": "68b52c249df7fc01f8e6695c",
           "name": "Gexa Light Saver 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1341,10 +1341,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.174,
-            "rate1000kWh": 0.162,
-            "rate2000kWh": 0.152,
-            "ratePerKwh": 0.162
+            "rate500kWh": 0.182,
+            "rate1000kWh": 0.169,
+            "rate2000kWh": 0.159,
+            "ratePerKwh": 0.169
           },
           "contract": {
             "length": 12,
@@ -1364,12 +1364,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b5a27f206770f7c5631ff3",
+          "id": "68b5a27f206770f7c5631ff2",
           "name": "Pollution Free Conserve 12 Preferred",
           "provider": {
             "name": "Green Mountain",
@@ -1378,10 +1378,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.184,
-            "rate1000kWh": 0.175,
-            "rate2000kWh": 0.18,
-            "ratePerKwh": 0.175
+            "rate500kWh": 0.189,
+            "rate1000kWh": 0.179,
+            "rate2000kWh": 0.184,
+            "ratePerKwh": 0.179
           },
           "contract": {
             "length": 12,
@@ -1401,12 +1401,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b5a0e1206770f7c5631fe7",
+          "id": "68b5a0e1206770f7c5631fe6",
           "name": "Pollution Free Green Savings Plus 12 Preferred",
           "provider": {
             "name": "Green Mountain",
@@ -1415,7 +1415,7 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.231,
+            "rate500kWh": 0.232,
             "rate1000kWh": 0.227,
             "rate2000kWh": 0.149,
             "ratePerKwh": 0.227
@@ -1438,12 +1438,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b528be9df7fc01f8e66859",
+          "id": "68b528bc9df7fc01f8e66843",
           "name": "Pollution Free e-Plus 12 Preferred",
           "provider": {
             "name": "Green Mountain",
@@ -1452,7 +1452,7 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.186,
+            "rate500kWh": 0.187,
             "rate1000kWh": 0.182,
             "rate2000kWh": 0.179,
             "ratePerKwh": 0.182
@@ -1475,12 +1475,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b5a280206770f7c5631ff8",
+          "id": "68b5a280206770f7c5631ff7",
           "name": "Pollution Free Conserve 24 Preferred",
           "provider": {
             "name": "Green Mountain",
@@ -1489,10 +1489,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.184,
-            "rate1000kWh": 0.175,
-            "rate2000kWh": 0.18,
-            "ratePerKwh": 0.175
+            "rate500kWh": 0.189,
+            "rate1000kWh": 0.179,
+            "rate2000kWh": 0.184,
+            "ratePerKwh": 0.179
           },
           "contract": {
             "length": 24,
@@ -1512,12 +1512,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b5a0e1206770f7c5631fec",
+          "id": "68b5a0e1206770f7c5631feb",
           "name": "Pollution Free Green Savings Plus 24 Preferred",
           "provider": {
             "name": "Green Mountain",
@@ -1526,10 +1526,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.221,
-            "rate1000kWh": 0.217,
-            "rate2000kWh": 0.139,
-            "ratePerKwh": 0.217
+            "rate500kWh": 0.228,
+            "rate1000kWh": 0.223,
+            "rate2000kWh": 0.145,
+            "ratePerKwh": 0.223
           },
           "contract": {
             "length": 24,
@@ -1549,12 +1549,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b528bd9df7fc01f8e66857",
+          "id": "68b528bc9df7fc01f8e66841",
           "name": "Pollution Free e-Plus 24 Preferred",
           "provider": {
             "name": "Green Mountain",
@@ -1563,7 +1563,7 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.186,
+            "rate500kWh": 0.187,
             "rate1000kWh": 0.182,
             "rate2000kWh": 0.179,
             "ratePerKwh": 0.182
@@ -1586,12 +1586,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b5a0df206770f7c5631fd3",
+          "id": "68b5a0df206770f7c5631fd2",
           "name": "Bill Credit Bundle 12",
           "provider": {
             "name": "Discount Power",
@@ -1600,7 +1600,7 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.228,
+            "rate500kWh": 0.229,
             "rate1000kWh": 0.099,
             "rate2000kWh": 0.159,
             "ratePerKwh": 0.099
@@ -1623,12 +1623,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b5a0e0206770f7c5631fe2",
+          "id": "68b5a0e0206770f7c5631fe1",
           "name": "Bill Credit Bundle 24",
           "provider": {
             "name": "Discount Power",
@@ -1637,7 +1637,7 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.228,
+            "rate500kWh": 0.229,
             "rate1000kWh": 0.099,
             "rate2000kWh": 0.159,
             "ratePerKwh": 0.099
@@ -1660,12 +1660,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b528be9df7fc01f8e66868",
+          "id": "68b528bc9df7fc01f8e6684a",
           "name": "Wise Buy Basic 24 Online",
           "provider": {
             "name": "Discount Power",
@@ -1674,7 +1674,7 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.182,
+            "rate500kWh": 0.183,
             "rate1000kWh": 0.158,
             "rate2000kWh": 0.155,
             "ratePerKwh": 0.158
@@ -1697,12 +1697,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b5a0df206770f7c5631fd8",
+          "id": "68b5a0df206770f7c5631fd7",
           "name": "Bill Credit Bundle 2000 kWh 12",
           "provider": {
             "name": "Discount Power",
@@ -1711,7 +1711,7 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.211,
+            "rate500kWh": 0.212,
             "rate1000kWh": 0.207,
             "rate2000kWh": 0.129,
             "ratePerKwh": 0.207
@@ -1734,12 +1734,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b528be9df7fc01f8e6686a",
+          "id": "68b528bc9df7fc01f8e66847",
           "name": "Essential Saver 12",
           "provider": {
             "name": "Discount Power",
@@ -1748,7 +1748,7 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.163,
+            "rate500kWh": 0.164,
             "rate1000kWh": 0.159,
             "rate2000kWh": 0.156,
             "ratePerKwh": 0.159
@@ -1771,12 +1771,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b5a0e0206770f7c5631fdd",
+          "id": "68b5a0e0206770f7c5631fdc",
           "name": "Bill Credit Bundle 2000 kWh 24",
           "provider": {
             "name": "Discount Power",
@@ -1785,7 +1785,7 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.211,
+            "rate500kWh": 0.212,
             "rate1000kWh": 0.207,
             "rate2000kWh": 0.129,
             "ratePerKwh": 0.207
@@ -1808,12 +1808,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b528c39df7fc01f8e66896",
+          "id": "68b528c09df7fc01f8e66883",
           "name": "Reliant Basic Power 12 plan",
           "provider": {
             "name": "Reliant",
@@ -1822,7 +1822,7 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.192,
+            "rate500kWh": 0.193,
             "rate1000kWh": 0.168,
             "rate2000kWh": 0.165,
             "ratePerKwh": 0.168
@@ -1845,12 +1845,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b59e96206770f7c5631efd",
+          "id": "68b59e96206770f7c5631efb",
           "name": "Reliant Power Savings 12 plan",
           "provider": {
             "name": "Reliant",
@@ -1859,7 +1859,7 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.209,
+            "rate500kWh": 0.21,
             "rate1000kWh": 0.155,
             "rate2000kWh": 0.177,
             "ratePerKwh": 0.155
@@ -1882,12 +1882,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b528c39df7fc01f8e66897",
+          "id": "68b528c09df7fc01f8e6687f",
           "name": "Reliant Basic Power 24 plan",
           "provider": {
             "name": "Reliant",
@@ -1896,7 +1896,7 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.206,
+            "rate500kWh": 0.207,
             "rate1000kWh": 0.182,
             "rate2000kWh": 0.179,
             "ratePerKwh": 0.182
@@ -1919,12 +1919,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b59e97206770f7c5631f0c",
+          "id": "68b59e97206770f7c5631f0b",
           "name": "Reliant Power Savings 24 plan",
           "provider": {
             "name": "Reliant",
@@ -1933,7 +1933,7 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.209,
+            "rate500kWh": 0.21,
             "rate1000kWh": 0.155,
             "rate2000kWh": 0.177,
             "ratePerKwh": 0.155
@@ -1956,12 +1956,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b5a280206770f7c5631ffd",
+          "id": "68b5a280206770f7c5631ffc",
           "name": "Reliant Conservation 12 plan",
           "provider": {
             "name": "Reliant",
@@ -1970,7 +1970,7 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.178,
+            "rate500kWh": 0.179,
             "rate1000kWh": 0.169,
             "rate2000kWh": 0.174,
             "ratePerKwh": 0.169
@@ -1993,12 +1993,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b59e96206770f7c5631f02",
+          "id": "68b59e96206770f7c5631f01",
           "name": "Reliant Power Savings 2,000 kWh 12 plan",
           "provider": {
             "name": "Reliant",
@@ -2007,7 +2007,7 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.231,
+            "rate500kWh": 0.232,
             "rate1000kWh": 0.227,
             "rate2000kWh": 0.149,
             "ratePerKwh": 0.227
@@ -2030,12 +2030,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b528c39df7fc01f8e66899",
+          "id": "68b528c09df7fc01f8e66880",
           "name": "Reliant Pure Power 12 plan",
           "provider": {
             "name": "Reliant",
@@ -2044,7 +2044,7 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.183,
+            "rate500kWh": 0.184,
             "rate1000kWh": 0.174,
             "rate2000kWh": 0.169,
             "ratePerKwh": 0.174
@@ -2067,12 +2067,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b5a280206770f7c5632002",
+          "id": "68b5a280206770f7c5632001",
           "name": "Reliant Conservation 24 plan",
           "provider": {
             "name": "Reliant",
@@ -2081,7 +2081,7 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.178,
+            "rate500kWh": 0.179,
             "rate1000kWh": 0.169,
             "rate2000kWh": 0.174,
             "ratePerKwh": 0.169
@@ -2104,12 +2104,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b59e97206770f7c5631f07",
+          "id": "68b59e97206770f7c5631f06",
           "name": "Reliant Power Savings 2,000 kWh 24 plan",
           "provider": {
             "name": "Reliant",
@@ -2118,7 +2118,7 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.227,
+            "rate500kWh": 0.228,
             "rate1000kWh": 0.223,
             "rate2000kWh": 0.145,
             "ratePerKwh": 0.223
@@ -2141,12 +2141,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b528c39df7fc01f8e66898",
+          "id": "68b528c09df7fc01f8e66884",
           "name": "Reliant Pure Power 24 plan",
           "provider": {
             "name": "Reliant",
@@ -2155,7 +2155,7 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.183,
+            "rate500kWh": 0.184,
             "rate1000kWh": 0.174,
             "rate2000kWh": 0.169,
             "ratePerKwh": 0.174
@@ -2178,12 +2178,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b59e98206770f7c5631f12",
+          "id": "68b59e98206770f7c5631f10",
           "name": "Reliant Truly Free Nights 100% Solar 12 plan",
           "provider": {
             "name": "Reliant",
@@ -2192,7 +2192,7 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.196,
+            "rate500kWh": 0.197,
             "rate1000kWh": 0.192,
             "rate2000kWh": 0.189,
             "ratePerKwh": 0.192
@@ -2221,12 +2221,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b59e98206770f7c5631f18",
+          "id": "68b59e98206770f7c5631f16",
           "name": "Reliant Truly Free Weekends 100% Solar 12 plan",
           "provider": {
             "name": "Reliant",
@@ -2235,7 +2235,7 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.196,
+            "rate500kWh": 0.197,
             "rate1000kWh": 0.192,
             "rate2000kWh": 0.189,
             "ratePerKwh": 0.192
@@ -2264,12 +2264,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b59e94206770f7c5631ee8",
+          "id": "68b59e94206770f7c5631ee7",
           "name": "Simple Bill Credit 12",
           "provider": {
             "name": "Cirro Energy",
@@ -2278,7 +2278,7 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.228,
+            "rate500kWh": 0.229,
             "rate1000kWh": 0.099,
             "rate2000kWh": 0.159,
             "ratePerKwh": 0.099
@@ -2301,12 +2301,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b59e95206770f7c5631eed",
+          "id": "68b59e95206770f7c5631eec",
           "name": "Simple Bill Credit 24",
           "provider": {
             "name": "Cirro Energy",
@@ -2315,7 +2315,7 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.228,
+            "rate500kWh": 0.229,
             "rate1000kWh": 0.099,
             "rate2000kWh": 0.159,
             "ratePerKwh": 0.099
@@ -2338,12 +2338,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b528c39df7fc01f8e66893",
+          "id": "68b528c09df7fc01f8e66889",
           "name": "Smart Value 24",
           "provider": {
             "name": "Cirro Energy",
@@ -2352,7 +2352,7 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.193,
+            "rate500kWh": 0.194,
             "rate1000kWh": 0.159,
             "rate2000kWh": 0.171,
             "ratePerKwh": 0.159
@@ -2375,12 +2375,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b528c39df7fc01f8e66891",
+          "id": "68b528c09df7fc01f8e66886",
           "name": "Smart Value 12",
           "provider": {
             "name": "Cirro Energy",
@@ -2389,7 +2389,7 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.189,
+            "rate500kWh": 0.19,
             "rate1000kWh": 0.155,
             "rate2000kWh": 0.167,
             "ratePerKwh": 0.155
@@ -2412,12 +2412,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b528c39df7fc01f8e66894",
+          "id": "68b528c09df7fc01f8e66887",
           "name": "Simple Advantage 12",
           "provider": {
             "name": "Cirro Energy",
@@ -2426,7 +2426,7 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.163,
+            "rate500kWh": 0.164,
             "rate1000kWh": 0.159,
             "rate2000kWh": 0.156,
             "ratePerKwh": 0.159
@@ -2449,12 +2449,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b59e95206770f7c5631ef2",
+          "id": "68b59e95206770f7c5631ef1",
           "name": "Simple Bill Credit Bundle 2000 kWh 12",
           "provider": {
             "name": "Cirro Energy",
@@ -2463,7 +2463,7 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.211,
+            "rate500kWh": 0.212,
             "rate1000kWh": 0.207,
             "rate2000kWh": 0.129,
             "ratePerKwh": 0.207
@@ -2486,12 +2486,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b528c39df7fc01f8e66892",
+          "id": "68b528c19df7fc01f8e6688b",
           "name": "Simple Advantage 24",
           "provider": {
             "name": "Cirro Energy",
@@ -2500,7 +2500,7 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.163,
+            "rate500kWh": 0.164,
             "rate1000kWh": 0.159,
             "rate2000kWh": 0.156,
             "ratePerKwh": 0.159
@@ -2523,12 +2523,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b59e96206770f7c5631ef7",
+          "id": "68b59e95206770f7c5631ef6",
           "name": "Simple Bill Credit Bundle 2000 kWh 24",
           "provider": {
             "name": "Cirro Energy",
@@ -2537,7 +2537,7 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.211,
+            "rate500kWh": 0.212,
             "rate1000kWh": 0.207,
             "rate2000kWh": 0.129,
             "ratePerKwh": 0.207
@@ -2560,12 +2560,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b5a0dd206770f7c5631fc4",
+          "id": "68b5a0dd206770f7c5631fc3",
           "name": "Live Brighter Lite 12",
           "provider": {
             "name": "Direct Energy",
@@ -2574,10 +2574,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.159,
-            "rate1000kWh": 0.155,
-            "rate2000kWh": 0.157,
-            "ratePerKwh": 0.155
+            "rate500kWh": 0.164,
+            "rate1000kWh": 0.159,
+            "rate2000kWh": 0.161,
+            "ratePerKwh": 0.159
           },
           "contract": {
             "length": 12,
@@ -2597,12 +2597,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b528bd9df7fc01f8e66855",
+          "id": "68b528bc9df7fc01f8e66842",
           "name": "Live Brighter 1K+ 24",
           "provider": {
             "name": "Direct Energy",
@@ -2611,7 +2611,7 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.186,
+            "rate500kWh": 0.187,
             "rate1000kWh": 0.172,
             "rate2000kWh": 0.159,
             "ratePerKwh": 0.172
@@ -2634,12 +2634,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b5a0de206770f7c5631fc9",
+          "id": "68b5a0de206770f7c5631fc8",
           "name": "Live Brighter Lite 24",
           "provider": {
             "name": "Direct Energy",
@@ -2648,10 +2648,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.159,
-            "rate1000kWh": 0.155,
-            "rate2000kWh": 0.157,
-            "ratePerKwh": 0.155
+            "rate500kWh": 0.164,
+            "rate1000kWh": 0.159,
+            "rate2000kWh": 0.161,
+            "ratePerKwh": 0.159
           },
           "contract": {
             "length": 24,
@@ -2671,12 +2671,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b5a0de206770f7c5631fce",
+          "id": "68b5a0de206770f7c5631fcd",
           "name": "Twelve Hour Power 12",
           "provider": {
             "name": "Direct Energy",
@@ -2685,10 +2685,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.244,
-            "rate1000kWh": 0.232,
-            "rate2000kWh": 0.225,
-            "ratePerKwh": 0.232
+            "rate500kWh": 0.248,
+            "rate1000kWh": 0.236,
+            "rate2000kWh": 0.229,
+            "ratePerKwh": 0.236
           },
           "contract": {
             "length": 12,
@@ -2714,12 +2714,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b528bd9df7fc01f8e66856",
+          "id": "68b528bc9df7fc01f8e66840",
           "name": "Bright Secure 12",
           "provider": {
             "name": "Direct Energy",
@@ -2728,10 +2728,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.168,
-            "rate1000kWh": 0.159,
-            "rate2000kWh": 0.154,
-            "ratePerKwh": 0.159
+            "rate500kWh": 0.175,
+            "rate1000kWh": 0.165,
+            "rate2000kWh": 0.16,
+            "ratePerKwh": 0.165
           },
           "contract": {
             "length": 12,
@@ -2751,12 +2751,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b64557206770f7c563356d",
+          "id": "68b64556206770f7c5633567",
           "name": "6 Month - Prepaid",
           "provider": {
             "name": "Payless Power",
@@ -2765,10 +2765,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.178,
-            "rate1000kWh": 0.179,
-            "rate2000kWh": 0.164,
-            "ratePerKwh": 0.179
+            "rate500kWh": 0.182,
+            "rate1000kWh": 0.182,
+            "rate2000kWh": 0.167,
+            "ratePerKwh": 0.182
           },
           "contract": {
             "length": 6,
@@ -2788,12 +2788,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b64557206770f7c563356e",
+          "id": "68b64556206770f7c5633566",
           "name": "12 Month - Prepaid",
           "provider": {
             "name": "Payless Power",
@@ -2802,10 +2802,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.182,
-            "rate1000kWh": 0.183,
-            "rate2000kWh": 0.168,
-            "ratePerKwh": 0.183
+            "rate500kWh": 0.187,
+            "rate1000kWh": 0.187,
+            "rate2000kWh": 0.172,
+            "ratePerKwh": 0.187
           },
           "contract": {
             "length": 12,
@@ -2825,12 +2825,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68ba6ec74030b9912e39d490",
+          "id": "68ba6ec04030b9912e39d46f",
           "name": "Flex Forward",
           "provider": {
             "name": "TXU Energy",
@@ -2839,10 +2839,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.196,
-            "rate1000kWh": 0.182,
-            "rate2000kWh": 0.175,
-            "ratePerKwh": 0.182
+            "rate500kWh": 0.207,
+            "rate1000kWh": 0.192,
+            "rate2000kWh": 0.185,
+            "ratePerKwh": 0.192
           },
           "contract": {
             "length": 1,
@@ -2862,55 +2862,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68ba6ec74030b9912e39d484",
-          "name": "Ultimate Season Pass 12",
-          "provider": {
-            "name": "TXU Energy",
-            "logo": "",
-            "rating": 0,
-            "reviewCount": 0
-          },
-          "pricing": {
-            "rate500kWh": 0.206,
-            "rate1000kWh": 0.192,
-            "rate2000kWh": 0.185,
-            "ratePerKwh": 0.192
-          },
-          "contract": {
-            "length": 12,
-            "type": "fixed",
-            "earlyTerminationFee": 150,
-            "autoRenewal": false,
-            "satisfactionGuarantee": false
-          },
-          "features": {
-            "greenEnergy": 9,
-            "billCredit": 0,
-            "freeTime": {
-              "hours": "Off-peak hours",
-              "days": [
-                "All"
-              ]
-            },
-            "deposit": {
-              "required": false,
-              "amount": 0
-            }
-          },
-          "availability": {
-            "enrollmentType": "both",
-            "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
-            ]
-          }
-        },
-        {
-          "id": "68ba6ec74030b9912e39d48a",
+          "id": "68ba6ec04030b9912e39d46e",
           "name": "Free Nights & Solar Days 12 (8 pm)",
           "provider": {
             "name": "TXU Energy",
@@ -2919,10 +2876,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.21,
-            "rate1000kWh": 0.195,
-            "rate2000kWh": 0.188,
-            "ratePerKwh": 0.195
+            "rate500kWh": 0.214,
+            "rate1000kWh": 0.199,
+            "rate2000kWh": 0.192,
+            "ratePerKwh": 0.199
           },
           "contract": {
             "length": 12,
@@ -2942,12 +2899,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68bb05f54030b9912e39e496",
+          "id": "68bb05f34030b9912e39e491",
           "name": "Rhythm Saver 12",
           "provider": {
             "name": "Rhythm Energy",
@@ -2956,10 +2913,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.195,
-            "rate1000kWh": 0.096,
-            "rate2000kWh": 0.146,
-            "ratePerKwh": 0.096
+            "rate500kWh": 0.201,
+            "rate1000kWh": 0.101,
+            "rate2000kWh": 0.152,
+            "ratePerKwh": 0.101
           },
           "contract": {
             "length": 12,
@@ -2979,12 +2936,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68bb05f54030b9912e39e498",
+          "id": "68bb05f34030b9912e39e492",
           "name": "Watt a Deal 12",
           "provider": {
             "name": "Rhythm Energy",
@@ -2993,10 +2950,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.19,
-            "rate1000kWh": 0.191,
-            "rate2000kWh": 0.129,
-            "ratePerKwh": 0.191
+            "rate500kWh": 0.195,
+            "rate1000kWh": 0.195,
+            "rate2000kWh": 0.132,
+            "ratePerKwh": 0.195
           },
           "contract": {
             "length": 12,
@@ -3016,12 +2973,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68bb025a4030b9912e39e434",
+          "id": "68bb02584030b9912e39e42f",
           "name": "Simply Green 13",
           "provider": {
             "name": "Rhythm Energy",
@@ -3030,10 +2987,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.185,
-            "rate1000kWh": 0.171,
-            "rate2000kWh": 0.164,
-            "ratePerKwh": 0.171
+            "rate500kWh": 0.19,
+            "rate1000kWh": 0.175,
+            "rate2000kWh": 0.168,
+            "ratePerKwh": 0.175
           },
           "contract": {
             "length": 13,
@@ -3053,12 +3010,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68bb025a4030b9912e39e436",
+          "id": "68bb02584030b9912e39e430",
           "name": "Simply Green 23",
           "provider": {
             "name": "Rhythm Energy",
@@ -3067,10 +3024,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.184,
-            "rate1000kWh": 0.17,
-            "rate2000kWh": 0.163,
-            "ratePerKwh": 0.17
+            "rate500kWh": 0.187,
+            "rate1000kWh": 0.173,
+            "rate2000kWh": 0.165,
+            "ratePerKwh": 0.173
           },
           "contract": {
             "length": 23,
@@ -3090,12 +3047,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b6f554206770f7c5634c9d",
+          "id": "68b6f54f206770f7c5634c96",
           "name": "Ultra Flex 1",
           "provider": {
             "name": "APGE",
@@ -3104,10 +3061,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.199,
-            "rate1000kWh": 0.19,
-            "rate2000kWh": 0.186,
-            "ratePerKwh": 0.19
+            "rate500kWh": 0.209,
+            "rate1000kWh": 0.199,
+            "rate2000kWh": 0.194,
+            "ratePerKwh": 0.199
           },
           "contract": {
             "length": 1,
@@ -3127,12 +3084,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68bb1ae84030b9912e39e6da",
+          "id": "68b9f72d77bde898d6bdfb1c",
           "name": "SimpleSaver 12",
           "provider": {
             "name": "APGE",
@@ -3141,10 +3098,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.199,
-            "rate1000kWh": 0.095,
-            "rate2000kWh": 0.143,
-            "ratePerKwh": 0.095
+            "rate500kWh": 0.204,
+            "rate1000kWh": 0.099,
+            "rate2000kWh": 0.147,
+            "ratePerKwh": 0.099
           },
           "contract": {
             "length": 12,
@@ -3164,12 +3121,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b9fab64030b9912e39c755",
+          "id": "68b714d7206770f7c5635136",
           "name": "True Simple 12",
           "provider": {
             "name": "APGE",
@@ -3178,10 +3135,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.158,
-            "rate1000kWh": 0.154,
-            "rate2000kWh": 0.152,
-            "ratePerKwh": 0.154
+            "rate500kWh": 0.163,
+            "rate1000kWh": 0.158,
+            "rate2000kWh": 0.156,
+            "ratePerKwh": 0.158
           },
           "contract": {
             "length": 12,
@@ -3201,12 +3158,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b9de8a4030b9912e39c468",
+          "id": "68b9f72d77bde898d6bdfb1e",
           "name": "SimpleSaver 14",
           "provider": {
             "name": "APGE",
@@ -3215,10 +3172,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.201,
-            "rate1000kWh": 0.097,
-            "rate2000kWh": 0.145,
-            "ratePerKwh": 0.097
+            "rate500kWh": 0.203,
+            "rate1000kWh": 0.098,
+            "rate2000kWh": 0.146,
+            "ratePerKwh": 0.098
           },
           "contract": {
             "length": 14,
@@ -3238,12 +3195,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b9fab64030b9912e39c754",
+          "id": "68b9faaf4030b9912e39c74e",
           "name": "True Simple 14",
           "provider": {
             "name": "APGE",
@@ -3252,10 +3209,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.157,
-            "rate1000kWh": 0.153,
-            "rate2000kWh": 0.151,
-            "ratePerKwh": 0.153
+            "rate500kWh": 0.162,
+            "rate1000kWh": 0.157,
+            "rate2000kWh": 0.155,
+            "ratePerKwh": 0.157
           },
           "contract": {
             "length": 14,
@@ -3275,12 +3232,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b9f7314030b9912e39c6ed",
+          "id": "68b9f72d77bde898d6bdfb1f",
           "name": "SimpleSaver 24",
           "provider": {
             "name": "APGE",
@@ -3289,10 +3246,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.207,
-            "rate1000kWh": 0.103,
-            "rate2000kWh": 0.151,
-            "ratePerKwh": 0.103
+            "rate500kWh": 0.215,
+            "rate1000kWh": 0.11,
+            "rate2000kWh": 0.158,
+            "ratePerKwh": 0.11
           },
           "contract": {
             "length": 24,
@@ -3312,12 +3269,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b9fab64030b9912e39c756",
+          "id": "68b9faaf4030b9912e39c74d",
           "name": "True Simple 24",
           "provider": {
             "name": "APGE",
@@ -3326,10 +3283,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.163,
-            "rate1000kWh": 0.159,
-            "rate2000kWh": 0.157,
-            "ratePerKwh": 0.159
+            "rate500kWh": 0.168,
+            "rate1000kWh": 0.163,
+            "rate2000kWh": 0.161,
+            "ratePerKwh": 0.163
           },
           "contract": {
             "length": 24,
@@ -3349,12 +3306,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b9f7314030b9912e39c6ee",
+          "id": "68b9f72d77bde898d6bdfb1d",
           "name": "SimpleSaver 36",
           "provider": {
             "name": "APGE",
@@ -3363,10 +3320,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.214,
-            "rate1000kWh": 0.11,
-            "rate2000kWh": 0.158,
-            "ratePerKwh": 0.11
+            "rate500kWh": 0.225,
+            "rate1000kWh": 0.12,
+            "rate2000kWh": 0.168,
+            "ratePerKwh": 0.12
           },
           "contract": {
             "length": 36,
@@ -3386,12 +3343,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b9fab64030b9912e39c753",
+          "id": "68b714d7206770f7c5635134",
           "name": "True Simple 36",
           "provider": {
             "name": "APGE",
@@ -3400,10 +3357,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.169,
-            "rate1000kWh": 0.165,
-            "rate2000kWh": 0.163,
-            "ratePerKwh": 0.165
+            "rate500kWh": 0.172,
+            "rate1000kWh": 0.167,
+            "rate2000kWh": 0.165,
+            "ratePerKwh": 0.167
           },
           "contract": {
             "length": 36,
@@ -3423,12 +3380,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b991414030b9912e39bc03",
+          "id": "68b991394030b9912e39bbe7",
           "name": "Radiance1000  12",
           "provider": {
             "name": "Atlantex Power",
@@ -3437,10 +3394,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.226,
-            "rate1000kWh": 0.122,
-            "rate2000kWh": 0.17,
-            "ratePerKwh": 0.122
+            "rate500kWh": 0.232,
+            "rate1000kWh": 0.127,
+            "rate2000kWh": 0.174,
+            "ratePerKwh": 0.127
           },
           "contract": {
             "length": 12,
@@ -3460,12 +3417,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b991414030b9912e39bc02",
+          "id": "68b991394030b9912e39bbe5",
           "name": "Radiance2000  12",
           "provider": {
             "name": "Atlantex Power",
@@ -3474,10 +3431,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.229,
-            "rate1000kWh": 0.225,
-            "rate2000kWh": 0.123,
-            "ratePerKwh": 0.225
+            "rate500kWh": 0.234,
+            "rate1000kWh": 0.229,
+            "rate2000kWh": 0.126,
+            "ratePerKwh": 0.229
           },
           "contract": {
             "length": 12,
@@ -3497,12 +3454,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b991414030b9912e39bbfd",
+          "id": "68b991394030b9912e39bbe4",
           "name": "Luminous 24",
           "provider": {
             "name": "Atlantex Power",
@@ -3511,10 +3468,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.171,
-            "rate1000kWh": 0.167,
-            "rate2000kWh": 0.165,
-            "ratePerKwh": 0.167
+            "rate500kWh": 0.177,
+            "rate1000kWh": 0.172,
+            "rate2000kWh": 0.169,
+            "ratePerKwh": 0.172
           },
           "contract": {
             "length": 24,
@@ -3534,12 +3491,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b991424030b9912e39bc04",
+          "id": "68b991394030b9912e39bbef",
           "name": "Radiance1000  24",
           "provider": {
             "name": "Atlantex Power",
@@ -3548,10 +3505,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.231,
-            "rate1000kWh": 0.127,
-            "rate2000kWh": 0.175,
-            "ratePerKwh": 0.127
+            "rate500kWh": 0.237,
+            "rate1000kWh": 0.132,
+            "rate2000kWh": 0.179,
+            "ratePerKwh": 0.132
           },
           "contract": {
             "length": 24,
@@ -3571,12 +3528,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b991414030b9912e39bbfc",
+          "id": "68b991394030b9912e39bbf1",
           "name": "Radiance2000  24",
           "provider": {
             "name": "Atlantex Power",
@@ -3585,10 +3542,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.234,
-            "rate1000kWh": 0.23,
-            "rate2000kWh": 0.128,
-            "ratePerKwh": 0.23
+            "rate500kWh": 0.239,
+            "rate1000kWh": 0.234,
+            "rate2000kWh": 0.131,
+            "ratePerKwh": 0.234
           },
           "contract": {
             "length": 24,
@@ -3608,12 +3565,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b991424030b9912e39bc09",
+          "id": "68b991394030b9912e39bbed",
           "name": "Luminous 36",
           "provider": {
             "name": "Atlantex Power",
@@ -3622,10 +3579,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.173,
-            "rate1000kWh": 0.169,
-            "rate2000kWh": 0.167,
-            "ratePerKwh": 0.169
+            "rate500kWh": 0.179,
+            "rate1000kWh": 0.174,
+            "rate2000kWh": 0.171,
+            "ratePerKwh": 0.174
           },
           "contract": {
             "length": 36,
@@ -3645,12 +3602,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b991424030b9912e39bc05",
+          "id": "68b991394030b9912e39bbf2",
           "name": "Radiance1000  36",
           "provider": {
             "name": "Atlantex Power",
@@ -3659,10 +3616,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.233,
-            "rate1000kWh": 0.129,
-            "rate2000kWh": 0.177,
-            "ratePerKwh": 0.129
+            "rate500kWh": 0.239,
+            "rate1000kWh": 0.134,
+            "rate2000kWh": 0.181,
+            "ratePerKwh": 0.134
           },
           "contract": {
             "length": 36,
@@ -3682,12 +3639,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b991414030b9912e39bc00",
+          "id": "68b991394030b9912e39bbe8",
           "name": "Radiance2000  36",
           "provider": {
             "name": "Atlantex Power",
@@ -3696,10 +3653,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.236,
-            "rate1000kWh": 0.232,
-            "rate2000kWh": 0.13,
-            "ratePerKwh": 0.232
+            "rate500kWh": 0.241,
+            "rate1000kWh": 0.236,
+            "rate2000kWh": 0.133,
+            "ratePerKwh": 0.236
           },
           "contract": {
             "length": 36,
@@ -3719,12 +3676,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b991424030b9912e39bc0e",
+          "id": "68b991394030b9912e39bbea",
           "name": "Luminous Nights 12",
           "provider": {
             "name": "Atlantex Power",
@@ -3733,10 +3690,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.167,
-            "rate1000kWh": 0.163,
-            "rate2000kWh": 0.161,
-            "ratePerKwh": 0.163
+            "rate500kWh": 0.173,
+            "rate1000kWh": 0.168,
+            "rate2000kWh": 0.166,
+            "ratePerKwh": 0.168
           },
           "contract": {
             "length": 12,
@@ -3762,56 +3719,13 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b991414030b9912e39bbff",
+          "id": "68b991394030b9912e39bbe6",
           "name": "Luminous Weekends 12",
-          "provider": {
-            "name": "Atlantex Power",
-            "logo": "",
-            "rating": 0,
-            "reviewCount": 0
-          },
-          "pricing": {
-            "rate500kWh": 0.167,
-            "rate1000kWh": 0.163,
-            "rate2000kWh": 0.161,
-            "ratePerKwh": 0.163
-          },
-          "contract": {
-            "length": 12,
-            "type": "fixed",
-            "earlyTerminationFee": 240,
-            "autoRenewal": false,
-            "satisfactionGuarantee": false
-          },
-          "features": {
-            "greenEnergy": 7,
-            "billCredit": 0,
-            "freeTime": {
-              "hours": "Off-peak hours",
-              "days": [
-                "All"
-              ]
-            },
-            "deposit": {
-              "required": false,
-              "amount": 0
-            }
-          },
-          "availability": {
-            "enrollmentType": "both",
-            "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
-            ]
-          }
-        },
-        {
-          "id": "68b991424030b9912e39bc08",
-          "name": "Luminous Nights 24",
           "provider": {
             "name": "Atlantex Power",
             "logo": "",
@@ -3825,6 +3739,49 @@
             "ratePerKwh": 0.167
           },
           "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "Off-peak hours",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68b991394030b9912e39bbe2",
+          "name": "Luminous Nights 24",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.177,
+            "rate1000kWh": 0.172,
+            "rate2000kWh": 0.17,
+            "ratePerKwh": 0.172
+          },
+          "contract": {
             "length": 24,
             "type": "fixed",
             "earlyTerminationFee": 480,
@@ -3848,12 +3805,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b991424030b9912e39bc0b",
+          "id": "68b991394030b9912e39bbe9",
           "name": "Luminous Weekends 24",
           "provider": {
             "name": "Atlantex Power",
@@ -3862,10 +3819,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.171,
-            "rate1000kWh": 0.167,
-            "rate2000kWh": 0.165,
-            "ratePerKwh": 0.167
+            "rate500kWh": 0.176,
+            "rate1000kWh": 0.171,
+            "rate2000kWh": 0.169,
+            "ratePerKwh": 0.171
           },
           "contract": {
             "length": 24,
@@ -3891,12 +3848,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b991424030b9912e39bc0d",
+          "id": "68b991394030b9912e39bbeb",
           "name": "Luminous Nights 36",
           "provider": {
             "name": "Atlantex Power",
@@ -3905,10 +3862,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.174,
-            "rate1000kWh": 0.169,
-            "rate2000kWh": 0.167,
-            "ratePerKwh": 0.169
+            "rate500kWh": 0.178,
+            "rate1000kWh": 0.174,
+            "rate2000kWh": 0.171,
+            "ratePerKwh": 0.174
           },
           "contract": {
             "length": 36,
@@ -3934,12 +3891,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b991424030b9912e39bc0a",
+          "id": "68b991394030b9912e39bbe3",
           "name": "Luminous Weekends 36",
           "provider": {
             "name": "Atlantex Power",
@@ -3948,10 +3905,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.173,
-            "rate1000kWh": 0.169,
-            "rate2000kWh": 0.167,
-            "ratePerKwh": 0.169
+            "rate500kWh": 0.178,
+            "rate1000kWh": 0.173,
+            "rate2000kWh": 0.171,
+            "ratePerKwh": 0.173
           },
           "contract": {
             "length": 36,
@@ -3977,12 +3934,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b991424030b9912e39bc06",
+          "id": "68b991394030b9912e39bbec",
           "name": "Luminous 12",
           "provider": {
             "name": "Atlantex Power",
@@ -3991,10 +3948,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.166,
-            "rate1000kWh": 0.162,
-            "rate2000kWh": 0.16,
-            "ratePerKwh": 0.162
+            "rate500kWh": 0.173,
+            "rate1000kWh": 0.168,
+            "rate2000kWh": 0.165,
+            "ratePerKwh": 0.168
           },
           "contract": {
             "length": 12,
@@ -4014,12 +3971,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b991424030b9912e39bc07",
+          "id": "68b991394030b9912e39bbf3",
           "name": "Luminous Green 12",
           "provider": {
             "name": "Atlantex Power",
@@ -4028,10 +3985,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.17,
-            "rate1000kWh": 0.166,
-            "rate2000kWh": 0.164,
-            "ratePerKwh": 0.166
+            "rate500kWh": 0.176,
+            "rate1000kWh": 0.171,
+            "rate2000kWh": 0.168,
+            "ratePerKwh": 0.171
           },
           "contract": {
             "length": 12,
@@ -4051,12 +4008,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b991414030b9912e39bc01",
+          "id": "68b991394030b9912e39bbee",
           "name": "Luminous Green 24",
           "provider": {
             "name": "Atlantex Power",
@@ -4065,10 +4022,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.175,
-            "rate1000kWh": 0.171,
-            "rate2000kWh": 0.169,
-            "ratePerKwh": 0.171
+            "rate500kWh": 0.181,
+            "rate1000kWh": 0.176,
+            "rate2000kWh": 0.173,
+            "ratePerKwh": 0.176
           },
           "contract": {
             "length": 24,
@@ -4088,12 +4045,12 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         },
         {
-          "id": "68b991424030b9912e39bc0c",
+          "id": "68b991394030b9912e39bbf0",
           "name": "Luminous Green 36",
           "provider": {
             "name": "Atlantex Power",
@@ -4102,10 +4059,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.177,
-            "rate1000kWh": 0.173,
-            "rate2000kWh": 0.171,
-            "ratePerKwh": 0.173
+            "rate500kWh": 0.183,
+            "rate1000kWh": 0.178,
+            "rate2000kWh": 0.175,
+            "ratePerKwh": 0.178
           },
           "contract": {
             "length": 36,
@@ -4125,14 +4082,14 @@
           "availability": {
             "enrollmentType": "both",
             "serviceAreas": [
-              "ONCOR ELECTRIC DELIVERY COMPANY"
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
             ]
           }
         }
       ],
-      "count": 109,
-      "lowestRate": 0.095,
-      "highestRate": 0.232
+      "count": 108,
+      "lowestRate": 0.098,
+      "highestRate": 0.236
     }
   }
 }
