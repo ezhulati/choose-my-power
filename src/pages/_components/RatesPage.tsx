@@ -93,23 +93,48 @@ export function RatesPage({}: RatesPageProps) {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-gradient-to-br from-texas-navy via-blue-900 to-texas-navy text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      {/* Professional Hero Section */}
+      <div className="relative bg-gradient-to-br from-texas-navy via-blue-800 to-texas-navy text-white">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-40">
           <div className="text-center">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-8">
-              <Calculator className="h-10 w-10" />
+            {/* Professional Badge */}
+            <div className="inline-flex items-center px-6 py-3 mb-8 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full">
+              <Calculator className="w-5 h-5 text-texas-gold mr-3" />
+              <span className="font-semibold text-lg">Texas Electricity Rates</span>
             </div>
             
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              What's Electricity Actually Cost Right Now?
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-purple-100 max-w-4xl mx-auto">
-              That 9.9¢ rate? Add fees and it's 14¢. We do the real math so you know what you'll actually pay. 
-              No surprises when your bill shows up.
-            </p>
+            {/* Enhanced Typography */}
+            <div className="space-y-12 max-w-5xl mx-auto">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+                What's Electricity
+                <span className="block text-texas-gold mt-2">Actually Cost?</span>
+              </h1>
+              
+              <p className="text-2xl md:text-3xl text-white/90 font-light max-w-4xl mx-auto leading-relaxed">
+                <span className="text-texas-red font-semibold">That 9.9¢ rate?</span> 
+                <span className="text-white font-semibold">Add fees, it's 14¢.</span> 
+                <span className="text-white/80">We do the real math.</span>
+              </p>
+              
+              {/* Trust Signals */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-lg">
+                <div className="flex items-center px-4 py-2 bg-green-500/20 backdrop-blur-sm rounded-full border border-green-400/30">
+                  <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+                  <span className="text-green-100 font-medium">Real math, no surprises</span>
+                </div>
+                <div className="flex items-center px-4 py-2 bg-blue-500/20 backdrop-blur-sm rounded-full border border-blue-400/30">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
+                  <span className="text-blue-100 font-medium">All fees included</span>
+                </div>
+                <div className="flex items-center px-4 py-2 bg-texas-red/20 backdrop-blur-sm rounded-full border border-texas-red/30">
+                  <div className="w-2 h-2 bg-texas-red-200 rounded-full mr-2"></div>
+                  <span className="text-red-100 font-medium">Updated daily</span>
+                </div>
+              </div>
+            </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto mb-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-12">
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
                 <div className="text-3xl font-bold">{lowestRate.toFixed(1)}¢</div>
                 <div className="text-blue-200 text-sm">Lowest Rate</div>
@@ -133,7 +158,7 @@ export function RatesPage({}: RatesPageProps) {
                 onSearch={handleZipSearch} 
                 size="lg"
               />
-              <p className="text-blue-200 text-sm mt-2">See your actual costs, not marketing rates</p>
+              <p className="text-blue-200 text-lg mt-3 font-medium">See your actual costs, not marketing rates</p>
             </div>
           </div>
         </div>
@@ -143,7 +168,7 @@ export function RatesPage({}: RatesPageProps) {
         {/* Rate Tools */}
         <div className="mb-16">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-texas-navy mb-4">
               Tools That Show You the Truth
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -153,16 +178,16 @@ export function RatesPage({}: RatesPageProps) {
 
           <div className="grid md:grid-cols-3 gap-8">
             {rateTools.map((tool, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow">
-                <div className="p-8 text-center">
-                  <div className={`inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-lg mb-6`}>
-                    <tool.icon className="h-8 w-8" />
+              <div key={index} className="bg-white rounded-3xl shadow-lg border border-gray-200 hover:shadow-xl hover:border-texas-navy transition-all duration-300 group">
+                <div className="p-10 text-center">
+                  <div className="inline-flex items-center justify-center w-20 h-20 bg-texas-cream text-texas-navy rounded-3xl mb-8 group-hover:scale-110 transition-transform duration-300">
+                    <tool.icon className="h-10 w-10" />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4">{tool.title}</h3>
-                  <p className="text-gray-600 mb-6">{tool.description}</p>
+                  <h3 className="text-2xl font-bold text-texas-navy mb-6">{tool.title}</h3>
+                  <p className="text-gray-600 mb-8 leading-relaxed">{tool.description}</p>
                   <button
                     onClick={() => navigate(tool.href)}
-                    className={`bg-texas-red text-white px-6 py-3 rounded-lg hover:bg-texas-red-600 transition-colors font-medium w-full`}
+                    className="bg-texas-red text-white px-8 py-4 rounded-xl hover:bg-texas-red-600 transition-all duration-300 font-semibold w-full shadow-lg hover:shadow-xl"
                   >
                     Open Tool
                   </button>

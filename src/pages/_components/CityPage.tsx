@@ -204,10 +204,11 @@ export function CityPage({ state, city }: CityPageProps) {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Usage Calculator */}
-        <div className="bg-white rounded-lg shadow-sm border p-6 mb-8">
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">
+        <div className="mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-texas-navy mb-8 text-center">
             Estimated Monthly Costs in {cityData.name}
-          </h3>
+          </h2>
+          <div className="bg-white rounded-3xl shadow-lg border border-gray-200 p-8">
           
           <div className="flex space-x-4 mb-4">
             {Object.keys(usageRates).map((usage) => (
@@ -243,12 +244,13 @@ export function CityPage({ state, city }: CityPageProps) {
               <div className="text-sm text-texas-navy">annual estimate</div>
             </div>
           </div>
+          </div>
         </div>
 
         {/* Providers */}
-        <div className="mb-8">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-gray-900">
+        <div className="mb-16">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-texas-navy">
               Quality Electricity Providers in {cityData.name}
             </h2>
             <Button
@@ -307,9 +309,9 @@ export function CityPage({ state, city }: CityPageProps) {
         </div>
 
         {/* Local Information */}
-        <Card className="shadow-sm">
+        <Card className="shadow-lg border border-gray-200 rounded-3xl">
           <CardHeader>
-            <h3 className="text-xl font-semibold text-gray-900">
+            <h3 className="text-3xl font-bold text-texas-navy">
               About Electricity Service in {cityData.name}
             </h3>
           </CardHeader>

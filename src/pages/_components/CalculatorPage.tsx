@@ -74,43 +74,66 @@ export function CalculatorPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header using EnhancedSectionReact */}
-      <EnhancedSectionReact 
-        background="gradient-navy" 
-        padding="xl" 
-        maxWidth="7xl"
-      >
-        <div className="text-center text-white">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-8">
-            <Calculator className="h-10 w-10" />
-          </div>
-          
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Find Out What You'd Really Pay
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-4xl mx-auto">
-            See your actual monthly bills with quality plans available. 
-            Know exactly what you'd pay before you switch.
-          </p>
+      {/* Professional Hero Section */}
+      <div className="relative bg-gradient-to-br from-texas-navy via-blue-800 to-texas-navy text-white">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-40">
+          <div className="text-center">
+            {/* Professional Badge */}
+            <div className="inline-flex items-center px-6 py-3 mb-8 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full">
+              <Calculator className="w-5 h-5 text-texas-gold mr-3" />
+              <span className="font-semibold text-lg">Texas Bill Calculator</span>
+            </div>
+            
+            {/* Enhanced Typography */}
+            <div className="space-y-12 max-w-5xl mx-auto">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+                What Would You
+                <span className="block text-texas-gold mt-2">Really Pay?</span>
+              </h1>
+              
+              <p className="text-2xl md:text-3xl text-white/90 font-light max-w-4xl mx-auto leading-relaxed">
+                <span className="text-texas-red font-semibold">Stop guessing.</span> 
+                <span className="text-white font-semibold">See your actual monthly bill</span> 
+                <span className="text-white/80">with any Texas electricity plan.</span>
+              </p>
+              
+              {/* Trust Signals */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-lg">
+                <div className="flex items-center px-4 py-2 bg-green-500/20 backdrop-blur-sm rounded-full border border-green-400/30">
+                  <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+                  <span className="text-green-100 font-medium">All fees included</span>
+                </div>
+                <div className="flex items-center px-4 py-2 bg-blue-500/20 backdrop-blur-sm rounded-full border border-blue-400/30">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
+                  <span className="text-blue-100 font-medium">Real-time rates</span>
+                </div>
+                <div className="flex items-center px-4 py-2 bg-texas-red/20 backdrop-blur-sm rounded-full border border-texas-red/30">
+                  <div className="w-2 h-2 bg-texas-red-200 rounded-full mr-2"></div>
+                  <span className="text-red-100 font-medium">Instant results</span>
+                </div>
+              </div>
+            </div>
 
-          {topPlan && (
-            <AccentBoxReact accentColor="gold" background="white" padding="lg">
-              <div className="text-lg mb-2 text-texas-navy">We found your best deal:</div>
-              <div className="text-3xl font-bold mb-2 text-texas-navy">
-                {topPlan.providerName} - {topPlan.name}
+            {topPlan && (
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl px-8 py-6 mt-12 max-w-2xl mx-auto">
+                <div className="text-xl mb-3 text-texas-gold font-semibold">✓ Your Best Deal Found:</div>
+                <div className="text-3xl font-bold mb-3 text-white">
+                  {topPlan.providerName} - {topPlan.name}
+                </div>
+                <div className="text-2xl text-white font-semibold">
+                  ${topPlan.totalMonthlyCost.toFixed(2)}/month
+                  {potentialSavings > 0 && (
+                    <div className="text-lg text-texas-gold mt-2">
+                      You'd save ${potentialSavings.toFixed(2)}/month vs average
+                    </div>
+                  )}
+                </div>
               </div>
-              <div className="text-xl text-texas-navy">
-                ${topPlan.totalMonthlyCost.toFixed(2)}/month
-                {potentialSavings > 0 && (
-                  <span className="ml-2 text-texas-gold">
-                    (You'd save ${potentialSavings.toFixed(2)}/month)
-                  </span>
-                )}
-              </div>
-            </AccentBoxReact>
-          )}
+            )}
+          </div>
         </div>
-      </EnhancedSectionReact>
+      </div>
 
       <EnhancedSectionReact 
         background="white" 

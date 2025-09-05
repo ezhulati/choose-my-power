@@ -27,7 +27,13 @@ export function RateCalculatorPage({}: RateCalculatorPageProps) {
   const [homeType, setHomeType] = useState('average');
 
   const handleZipSearch = (zipCode: string) => {
-    navigate(`/${selectedState}/houston/electricity-providers`);
+    // For Texas ZIP codes, navigate to electricity plans with rate calculator context
+    if (zipCode.match(/^7[0-9]{4}$/)) {
+      navigate(`/electricity-plans/texas/${zipCode}?calculator=true`);
+    } else {
+      // For other states, go to general electricity plans
+      navigate(`/electricity-plans`);
+    }
   };
 
   const stateData = mockStates.find(s => s.slug === selectedState);
@@ -66,31 +72,56 @@ export function RateCalculatorPage({}: RateCalculatorPageProps) {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => navigate('/')} className="hover:text-texas-navy">Home</button>
+      {/* Professional Hero Section */}
+      <div className="relative bg-gradient-to-br from-texas-navy via-blue-800 to-texas-navy text-white">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-40">
+          <nav className="text-sm text-blue-200 mb-8">
+            <button onClick={() => navigate('/')} className="hover:text-white transition-colors">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => navigate('/rates')} className="hover:text-texas-navy">Rates</button>
+            <button onClick={() => navigate('/rates')} className="hover:text-white transition-colors">Rates</button>
             <span className="mx-2">/</span>
-            <span>Calculator</span>
+            <span className="text-white">Calculator</span>
           </nav>
 
           <div className="text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-lg mb-6">
-              <Calculator className="h-8 w-8" />
+            {/* Professional Badge */}
+            <div className="inline-flex items-center px-6 py-3 mb-8 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full">
+              <Calculator className="w-5 h-5 text-texas-gold mr-3" />
+              <span className="font-semibold text-lg">Real Bill Calculator</span>
             </div>
             
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              See What You'll Actually Pay Each Month
-            </h1>
-            <p className="text-lg text-gray-600 mb-8 max-w-3xl mx-auto">
-              Enter your usage to see real bills from our providers. 
-              Find out exactly what your monthly bill would be with each plan.
-            </p>
+            {/* Enhanced Typography */}
+            <div className="space-y-12 max-w-5xl mx-auto">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+                See What You'll
+                <span className="block text-texas-gold mt-2">Actually Pay</span>
+              </h1>
+              
+              <p className="text-2xl md:text-3xl text-white/90 font-light max-w-4xl mx-auto leading-relaxed">
+                <span className="text-texas-red font-semibold">No more surprises.</span> 
+                <span className="text-white font-semibold">Calculate your real monthly bill</span> 
+                <span className="text-white/80">with any Texas electricity plan.</span>
+              </p>
+              
+              {/* Trust Signals */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-lg">
+                <div className="flex items-center px-4 py-2 bg-green-500/20 backdrop-blur-sm rounded-full border border-green-400/30">
+                  <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+                  <span className="text-green-100 font-medium">Exact calculations</span>
+                </div>
+                <div className="flex items-center px-4 py-2 bg-blue-500/20 backdrop-blur-sm rounded-full border border-blue-400/30">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
+                  <span className="text-blue-100 font-medium">Real rates</span>
+                </div>
+                <div className="flex items-center px-4 py-2 bg-texas-red/20 backdrop-blur-sm rounded-full border border-texas-red/30">
+                  <div className="w-2 h-2 bg-texas-red-200 rounded-full mr-2"></div>
+                  <span className="text-red-100 font-medium">No hidden fees</span>
+                </div>
+              </div>
+            </div>
 
-            <div className="max-w-md mx-auto">
+            <div className="max-w-md mx-auto mt-12">
               <ZipCodeSearch 
                 onSearch={handleZipSearch} 
                 placeholder="Enter zip code"
@@ -104,8 +135,8 @@ export function RateCalculatorPage({}: RateCalculatorPageProps) {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Calculator Controls */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-lg shadow-sm border p-6 sticky top-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Tell Us About Your Home</h3>
+            <div className="bg-white rounded-3xl shadow-md border border-gray-200 p-8 sticky top-6">
+              <h3 className="text-2xl font-bold text-texas-navy mb-6">Tell Us About Your Home</h3>
               
               <div className="space-y-4">
                 <div>
@@ -186,9 +217,9 @@ export function RateCalculatorPage({}: RateCalculatorPageProps) {
 
           {/* Results */}
           <div className="lg:col-span-2">
-            <div className="bg-white rounded-lg shadow-sm border p-6">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-semibold text-gray-900">
+            <div className="bg-white rounded-3xl shadow-md border border-gray-200 p-8">
+              <div className="flex items-center justify-between mb-8">
+                <h2 className="text-3xl font-bold text-texas-navy">
                   Here's What You'd Pay Each Month
                 </h2>
                 <div className="text-sm text-gray-500">
@@ -262,7 +293,7 @@ export function RateCalculatorPage({}: RateCalculatorPageProps) {
                 </p>
                 <button
                   onClick={() => navigate(`/${selectedState}/electricity-providers`)}
-                  className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-texas-navy/90 transition-colors"
+                  className="bg-texas-red text-white px-8 py-4 rounded-xl hover:bg-texas-red-600 transition-all duration-300 font-semibold text-lg shadow-md hover:shadow-xl"
                 >
                   See More {stateData?.name} Plans
                 </button>
@@ -272,44 +303,46 @@ export function RateCalculatorPage({}: RateCalculatorPageProps) {
         </div>
 
         {/* Calculator Tips */}
-        <div className="mt-12 bg-white rounded-lg shadow-sm border p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+        <div className="mt-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-texas-navy mb-12 text-center">
             How to Get the Most Accurate Results
           </h2>
+          <div className="bg-white rounded-3xl shadow-md border border-gray-200 p-12">
           
           <div className="grid md:grid-cols-3 gap-8">
-            <div>
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-texas-cream text-texas-navy rounded-lg mb-4">
-                <Zap className="h-6 w-6" />
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Zap className="h-8 w-8" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Check Your Past Bills</h3>
-              <p className="text-gray-600 text-sm">
+              <h3 className="text-2xl font-bold text-texas-navy mb-4">Check Your Past Bills</h3>
+              <p className="text-gray-600 leading-relaxed">
                 Find your average monthly kWh by looking at your last few bills. 
                 This helps you see what you'd really pay with each plan.
               </p>
             </div>
             
-            <div>
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 text-green-600 rounded-lg mb-4">
-                <DollarSign className="h-6 w-6" />
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 text-green-600 rounded-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                <DollarSign className="h-8 w-8" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Watch for Hidden Costs</h3>
-              <p className="text-gray-600 text-sm">
+              <h3 className="text-2xl font-bold text-texas-navy mb-4">Watch for Hidden Costs</h3>
+              <p className="text-gray-600 leading-relaxed">
                 We show you monthly fees, but check for signup fees 
                 and cancellation penalties before you commit.
               </p>
             </div>
             
-            <div>
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-100 text-purple-600 rounded-lg mb-4">
-                <TrendingDown className="h-6 w-6" />
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 text-purple-600 rounded-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                <TrendingDown className="h-8 w-8" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">Summer vs Winter Bills</h3>
-              <p className="text-gray-600 text-sm">
+              <h3 className="text-2xl font-bold text-texas-navy mb-4">Summer vs Winter Bills</h3>
+              <p className="text-gray-600 leading-relaxed">
                 Your AC and heating change your usage dramatically. Try calculating 
                 both your highest summer bill and lowest spring bill.
               </p>
             </div>
+          </div>
           </div>
         </div>
       </div>

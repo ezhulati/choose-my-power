@@ -319,88 +319,103 @@ export function ProvidersPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section using EnhancedSectionReact */}
-      <EnhancedSectionReact 
-        background="gradient-navy" 
-        padding="xl" 
-        maxWidth="7xl"
-      >
-        <div className="text-center text-white">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-6">
-            <Award className="h-8 w-8" />
-          </div>
-          
-          <div className="space-y-4">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight max-w-4xl mx-auto">
-              Texas Electricity Providers - Honest Reviews & Rankings
-            </h1>
+      {/* Professional Hero Section */}
+      <div className="relative bg-gradient-to-br from-texas-navy via-blue-800 to-texas-navy text-white">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-40">
+          <div className="text-center">
+            {/* Professional Badge */}
+            <div className="inline-flex items-center px-6 py-3 mb-8 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full">
+              <Award className="w-5 h-5 text-texas-gold mr-3" />
+              <span className="font-semibold text-lg">Texas Provider Rankings</span>
+            </div>
             
-            <p className="text-base md:text-lg text-blue-100/80 font-normal max-w-3xl mx-auto leading-relaxed">
-              We've analyzed thousands of customer experiences to show you what each provider 
-              <span className="text-white font-medium"> is actually good at.</span> No marketing fluff, just honest rankings.
-            </p>
-            
-            <AccentBoxReact accentColor="gold" background="white" padding="md">
-              <p className="text-sm text-texas-navy font-normal">
-                <span className="text-texas-gold font-medium">Real provider rankings</span> based on what they're genuinely good at.
+            {/* Enhanced Typography */}
+            <div className="space-y-12 max-w-5xl mx-auto">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+                Who's Actually
+                <span className="block text-texas-gold mt-2">Good at What?</span>
+              </h1>
+              
+              <p className="text-2xl md:text-3xl text-white/90 font-light max-w-4xl mx-auto leading-relaxed">
+                <span className="text-texas-red font-semibold">Every provider has strengths.</span> 
+                <span className="text-white font-semibold">Some hide their weaknesses.</span> 
+                <span className="text-white/80">We'll tell you who's actually good at what you need.</span>
               </p>
-            </AccentBoxReact>
-          </div>
+              
+              {/* Trust Signals */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-lg">
+                <div className="flex items-center px-4 py-2 bg-green-500/20 backdrop-blur-sm rounded-full border border-green-400/30">
+                  <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+                  <span className="text-green-100 font-medium">Real customer reviews</span>
+                </div>
+                <div className="flex items-center px-4 py-2 bg-blue-500/20 backdrop-blur-sm rounded-full border border-blue-400/30">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
+                  <span className="text-blue-100 font-medium">6 honest categories</span>
+                </div>
+                <div className="flex items-center px-4 py-2 bg-texas-red/20 backdrop-blur-sm rounded-full border border-texas-red/30">
+                  <div className="w-2 h-2 bg-texas-red-200 rounded-full mr-2"></div>
+                  <span className="text-red-100 font-medium">No marketing BS</span>
+                </div>
+              </div>
+            </div>
 
-          {/* Elegant Quick Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mt-8 mb-8">
-            <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-              <div className="text-2xl font-bold">{mockProviders.length}</div>
-              <div className="text-blue-200 text-xs">Licensed Providers</div>
+            {/* Quick Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-16">
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl">
+                <div className="text-3xl font-bold">{mockProviders.length}</div>
+                <div className="text-blue-200 text-sm">Licensed Providers</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl">
+                <div className="text-3xl font-bold">{lowestRate}¢</div>
+                <div className="text-blue-200 text-sm">Lowest Rate</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl">
+                <div className="text-3xl font-bold">{avgRating}</div>
+                <div className="text-blue-200 text-sm">Avg Rating</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl">
+                <div className="text-3xl font-bold">6</div>
+                <div className="text-blue-200 text-sm">Categories</div>
+              </div>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-              <div className="text-2xl font-bold">{lowestRate}¢</div>
-              <div className="text-blue-200 text-xs">Lowest Rate</div>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-              <div className="text-2xl font-bold">{avgRating}</div>
-              <div className="text-blue-200 text-xs">Avg Rating</div>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-              <div className="text-2xl font-bold">6</div>
-              <div className="text-blue-200 text-xs">Categories</div>
-            </div>
-          </div>
 
-          <div className="max-w-md mx-auto">
-            <StandardZipInputReact 
-              onSearch={handleZipSearch} 
-              size="lg"
-            />
-            <p className="text-blue-200 text-sm mt-2">Get personalized provider results</p>
+            <div className="max-w-md mx-auto">
+              <StandardZipInputReact 
+                onSearch={handleZipSearch} 
+                size="lg"
+              />
+              <p className="text-blue-200 text-sm mt-2">Get personalized provider results</p>
+            </div>
           </div>
         </div>
-      </EnhancedSectionReact>
+      </div>
 
       {/* Benefits Section */}
-      <EnhancedSectionReact 
-        background="white" 
-        padding="xl"
-        title="Why We Sort Them This Way"
-        subtitle="Every provider has their strengths and weaknesses. We'll help you find the ones that are actually good at what you need."
-        titleSize="md"
-      >
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {benefits.map((benefit, index) => (
-            <EnhancedCardReact 
-              key={index} 
-              variant="default"
-              padding="lg"
-              icon={<benefit.icon />}
-              iconColor="navy"
-              title={benefit.title}
-              hoverEffect={false}
-            >
-              <p className="text-sm text-gray-600">{benefit.description}</p>
-            </EnhancedCardReact>
-          ))}
+      <div className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-texas-navy mb-4">
+              Why We Sort Them This Way
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Every provider has their strengths and weaknesses. We'll help you find the ones that are actually good at what you need.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {benefits.map((benefit, index) => (
+              <div key={index} className="bg-white p-8 rounded-3xl shadow-lg border border-gray-200 hover:shadow-xl hover:border-texas-navy transition-all duration-300 text-center group">
+                <div className="inline-flex items-center justify-center w-20 h-20 bg-texas-cream text-texas-navy rounded-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <benefit.icon className="h-10 w-10" />
+                </div>
+                <h3 className="text-xl font-bold text-texas-navy mb-4">{benefit.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </EnhancedSectionReact>
+      </div>
 
       <EnhancedSectionReact 
         background="gray" 
@@ -576,78 +591,70 @@ export function ProvidersPage() {
         </EnhancedCardReact>
 
         {/* Quick Actions */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <EnhancedCardReact 
-            variant="default" 
-            padding="lg"
-            icon={<TrendingDown />}
-            iconColor="green"
-            title="Find Actually Cheap Rates"
-          >
-            <p className="text-gray-600 text-sm mb-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="bg-white p-8 rounded-3xl shadow-lg border border-gray-200 hover:shadow-xl hover:border-texas-navy transition-all duration-300 text-center group">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 text-green-600 rounded-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
+              <TrendingDown className="h-8 w-8" />
+            </div>
+            <h3 className="text-xl font-bold text-texas-navy mb-3">Find Actually Cheap Rates</h3>
+            <p className="text-gray-600 mb-4 leading-relaxed">
               The real lowest rates (without hidden fees that jack up your bill later).
             </p>
             <button
               onClick={() => navigate('/shop/cheapest-electricity')}
-              className="text-green-600 hover:text-green-800 font-medium text-sm"
+              className="text-green-600 hover:text-green-800 font-semibold group-hover:translate-x-2 transition-transform duration-200"
             >
               Find Real Low Rates →
             </button>
-          </EnhancedCardReact>
+          </div>
 
-          <EnhancedCardReact 
-            variant="default" 
-            padding="lg"
-            icon={<Users />}
-            iconColor="navy"
-            title="Compare What Actually Matters"
-          >
-            <p className="text-gray-600 text-sm mb-4">
+          <div className="bg-white p-8 rounded-3xl shadow-lg border border-gray-200 hover:shadow-xl hover:border-texas-navy transition-all duration-300 text-center group">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
+              <Users className="h-8 w-8" />
+            </div>
+            <h3 className="text-xl font-bold text-texas-navy mb-3">Compare What Actually Matters</h3>
+            <p className="text-gray-600 mb-4 leading-relaxed">
               Real side-by-side comparison of what you actually care about.
             </p>
             <button
               onClick={() => navigate('/compare/providers')}
-              className="text-texas-navy hover:text-texas-navy font-medium text-sm"
+              className="text-texas-navy hover:text-texas-red font-semibold group-hover:translate-x-2 transition-transform duration-200"
             >
               Compare What Matters →
             </button>
-          </EnhancedCardReact>
+          </div>
 
-          <EnhancedCardReact 
-            variant="default" 
-            padding="lg"
-            icon={<Award />}
-            iconColor="navy"
-            title="Our Honest Rankings"
-          >
-            <p className="text-gray-600 text-sm mb-4">
+          <div className="bg-white p-8 rounded-3xl shadow-lg border border-gray-200 hover:shadow-xl hover:border-texas-navy transition-all duration-300 text-center group">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 text-purple-600 rounded-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
+              <Award className="h-8 w-8" />
+            </div>
+            <h3 className="text-xl font-bold text-texas-navy mb-3">Our Honest Rankings</h3>
+            <p className="text-gray-600 mb-4 leading-relaxed">
               The providers that are actually worth considering, ranked by category.
             </p>
             <button
               onClick={() => navigate('/compare/providers/top-5')}
-              className="text-purple-600 hover:text-purple-800 font-medium text-sm"
+              className="text-purple-600 hover:text-purple-800 font-semibold group-hover:translate-x-2 transition-transform duration-200"
             >
               See Our Top Picks →
             </button>
-          </EnhancedCardReact>
+          </div>
 
-          <EnhancedCardReact 
-            variant="default" 
-            padding="lg"
-            icon={<MapPin />}
-            iconColor="red"
-            title="What's Available Near You"
-          >
-            <p className="text-gray-600 text-sm mb-4">
+          <div className="bg-white p-8 rounded-3xl shadow-lg border border-gray-200 hover:shadow-xl hover:border-texas-navy transition-all duration-300 text-center group">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-100 text-orange-600 rounded-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
+              <MapPin className="h-8 w-8" />
+            </div>
+            <h3 className="text-xl font-bold text-texas-navy mb-3">What's Available Near You</h3>
+            <p className="text-gray-600 mb-4 leading-relaxed">
               See which providers actually serve your area and what they're charging.
             </p>
             <button
               onClick={() => navigate('/locations')}
-              className="text-orange-600 hover:text-orange-800 font-medium text-sm"
+              className="text-orange-600 hover:text-orange-800 font-semibold group-hover:translate-x-2 transition-transform duration-200"
             >
               Check Your Area →
             </button>
-          </EnhancedCardReact>
+          </div>
         </div>
       </EnhancedSectionReact>
     </div>

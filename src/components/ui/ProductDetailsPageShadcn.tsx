@@ -99,23 +99,39 @@ export const ProductDetailsPageShadcn: React.FC<ProductDetailsPageShadcnProps> =
   // Fetch real plan ID from ComparePower API
   React.useEffect(() => {
     const fetchRealPlanId = async () => {
+      // Skip if plan already has a valid MongoDB ObjectId
+      if (planData.id && /^[a-f0-9]{24}$/i.test(planData.id)) {
+        console.log(`[ProductDetails] Plan already has valid MongoDB ID: ${planData.id}`);
+        setRealPlanId(planData.id);
+        return;
+      }
+
       try {
-        // Search for the plan by name/provider to get the real MongoDB ObjectId
-        const response = await fetch(`/api/plans/search?name=${encodeURIComponent(planData.name)}&provider=${encodeURIComponent(planData.provider.name)}`);
+        console.log(`[ProductDetails] Fetching real plan ID for: "${planData.name}" by "${planData.provider.name}"`);
+        
+        // Include city in the search if available
+        const cityParam = currentCitySlug ? `&city=${encodeURIComponent(currentCitySlug)}` : '';
+        const response = await fetch(`/api/plans/search?name=${encodeURIComponent(planData.name)}&provider=${encodeURIComponent(planData.provider.name)}${cityParam}`);
+        
         if (response.ok) {
           const searchResults = await response.json();
           if (searchResults && searchResults.length > 0) {
+            console.log(`[ProductDetails] Fetched plan ID from API: ${searchResults[0].id}`);
             setRealPlanId(searchResults[0].id);
+          } else {
+            console.warn(`[ProductDetails] No plan found via API for: "${planData.name}" by "${planData.provider.name}"`);
           }
+        } else {
+          console.warn('[ProductDetails] API response not OK:', response.status);
         }
       } catch (error) {
-        console.warn('Could not fetch real plan ID from API:', error);
+        console.warn('[ProductDetails] Could not fetch real plan ID from API:', error);
         // Will use fallback ObjectId in modal
       }
     };
     
     fetchRealPlanId();
-  }, [planData.name, planData.provider.name]);
+  }, [planData.name, planData.provider.name, planData.id, currentCitySlug]);
 
   const calculateCosts = (kwh: number) => {
     const electricityCharge = (kwh * planData.rate) / 100;
@@ -1088,7 +1104,8 @@ export const ProductDetailsPageShadcn: React.FC<ProductDetailsPageShadcnProps> =
           provider: {
             name: planData.provider.name
           },
-          apiPlanId: realPlanId
+          // Priority: Use plan's actual MongoDB ID first, then fallback to API-fetched ID
+          apiPlanId: planData.id && /^[a-f0-9]{24}$/i.test(planData.id) ? planData.id : realPlanId
         }}
         onSuccess={handleAddressSuccess}
       />

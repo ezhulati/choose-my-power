@@ -9,32 +9,55 @@ const description = "Real talk on fixed vs variable electricity rates in Texas. 
 ---
 
 <Layout title={title} description={description}>
-  <!-- Enhanced Hero Section -->
-  <EnhancedSection background="navy" padding="xl">
-    <div class="max-w-6xl mx-auto text-center">
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-white">
-        Fixed vs Variable: Which Won't Bite You Later?
-      </h1>
-      <p class="text-xl text-blue-100 mb-8 leading-relaxed max-w-4xl mx-auto">
-        Here's the thing nobody tells you upfront: most variable rate plans are designed to lure you in with a great rate, then quietly jack up your bill. Let me show you how to avoid this trap.
-      </p>
-      <div class="flex flex-wrap gap-4 justify-center">
-        <AccentBox accentColor="red" padding="sm">
-          <span class="text-sm font-medium">6 min read</span>
-        </AccentBox>
-        <AccentBox accentColor="gold" padding="sm">
-          <span class="text-sm font-medium text-texas-navy">Honest Analysis</span>
-        </AccentBox>
+  <!-- Professional Hero Section -->
+  <div class="relative bg-gradient-to-br from-texas-navy via-blue-800 to-texas-navy text-white">
+    <div class="absolute inset-0 bg-black/20"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-40">
+      <div class="text-center">
+        {/* Professional Badge */}
+        <div class="inline-flex items-center px-6 py-3 mb-8 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full">
+          <span class="font-semibold text-lg text-texas-gold">⚖️ Honest Rate Analysis</span>
+        </div>
+        
+        {/* Enhanced Typography */}
+        <div class="space-y-12 max-w-5xl mx-auto">
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+            Fixed vs Variable:
+            <span class="block text-texas-gold mt-2">Which Won't Bite?</span>
+          </h1>
+          
+          <p class="text-2xl md:text-3xl text-white/90 font-light max-w-4xl mx-auto leading-relaxed">
+            <span class="text-texas-red font-semibold">Variable rate plans are bait and switch.</span> 
+            <span class="text-white font-semibold">Learn to spot the traps</span> 
+            <span class="text-white/80">and protect your wallet.</span>
+          </p>
+          
+          {/* Trust Signals */}
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 text-lg">
+            <div class="flex items-center px-4 py-2 bg-green-500/20 backdrop-blur-sm rounded-full border border-green-400/30">
+              <div class="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+              <span class="text-green-100 font-medium">6 min read</span>
+            </div>
+            <div class="flex items-center px-4 py-2 bg-blue-500/20 backdrop-blur-sm rounded-full border border-blue-400/30">
+              <div class="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
+              <span class="text-blue-100 font-medium">Real data analysis</span>
+            </div>
+            <div class="flex items-center px-4 py-2 bg-texas-red/20 backdrop-blur-sm rounded-full border border-texas-red/30">
+              <div class="w-2 h-2 bg-texas-red-200 rounded-full mr-2"></div>
+              <span class="text-red-100 font-medium">No BS guide</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </EnhancedSection>
+  </div>
 
-  <EnhancedSection background="white" padding="xl">
-    <div class="max-w-4xl mx-auto">
-      <!-- Quick Comparison -->
-      <div class="grid md:grid-cols-2 gap-8 mb-12">
-        <EnhancedCard variant="elevated" padding="lg" className="border-l-4 border-green-500">
-          <h2 class="text-2xl font-bold text-green-700 mb-4">Fixed Rate Plans (The Boring Choice That Works)</h2>
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <!-- Enhanced Quick Comparison -->
+    <div class="grid md:grid-cols-2 gap-10 mb-20">
+      <div class="bg-white p-10 rounded-3xl shadow-md border border-gray-200 border-l-8 border-green-500">
+        <h2 class="text-3xl font-bold text-green-700 mb-6">Fixed Rate Plans (The Boring Choice That Works)</h2>
           <div class="space-y-3 text-sm">
             <div class="flex items-center"><span class="text-green-600 mr-2">✓</span>You know exactly what you'll pay</div>
             <div class="flex items-center"><span class="text-green-600 mr-2">✓</span>Rate stays the same (no surprises)</div>
@@ -43,13 +66,13 @@ const description = "Real talk on fixed vs variable electricity rates in Texas. 
             <div class="flex items-center"><span class="text-texas-red mr-2">✗</span>Pay a fee to leave early</div>
             <div class="flex items-center"><span class="text-texas-red mr-2">✗</span>Stuck if rates drop (rare)</div>
           </div>
-          <AccentBox accentColor="green" padding="sm" className="mt-4">
-            <strong class="text-green-800">Perfect for:</strong> <span class="text-green-700">Anyone who doesn't want to think about their electric bill</span>
-          </AccentBox>
-        </EnhancedCard>
+        <div class="bg-green-50 p-4 rounded-2xl border border-green-200 mt-6">
+          <strong class="text-green-800">Perfect for:</strong> <span class="text-green-700">Anyone who doesn't want to think about their electric bill</span>
+        </div>
+      </div>
 
-        <EnhancedCard variant="elevated" padding="lg" className="border-l-4 border-orange-500">
-          <h2 class="text-2xl font-bold text-orange-700 mb-4">Variable Rate Plans (The Bait and Switch)</h2>
+      <div class="bg-white p-10 rounded-3xl shadow-md border border-gray-200 border-l-8 border-orange-500">
+        <h2 class="text-3xl font-bold text-orange-700 mb-6">Variable Rate Plans (The Bait and Switch)</h2>
           <div class="space-y-3 text-sm">
             <div class="flex items-center"><span class="text-green-600 mr-2">✓</span>No penalty to leave</div>
             <div class="flex items-center"><span class="text-green-600 mr-2">✓</span>Might save money if rates drop (rarely happens)</div>
@@ -58,16 +81,16 @@ const description = "Real talk on fixed vs variable electricity rates in Texas. 
             <div class="flex items-center"><span class="text-texas-red mr-2">✗</span>Usually goes up after the honeymoon period</div>
             <div class="flex items-center"><span class="text-texas-red mr-2">✗</span>Companies love these because they make more money</div>
           </div>
-          <AccentBox accentColor="orange" padding="sm" className="mt-4">
-            <strong class="text-orange-800">Only good for:</strong> <span class="text-orange-700">Short-term situations or people who watch rates like hawks</span>
-          </AccentBox>
-        </EnhancedCard>
+        <div class="bg-orange-50 p-4 rounded-2xl border border-orange-200 mt-6">
+          <strong class="text-orange-800">Only good for:</strong> <span class="text-orange-700">Short-term situations or people who watch rates like hawks</span>
+        </div>
+      </div>
       </div>
 
-      <!-- Detailed Analysis -->
-      <div class="space-y-12">
-        <EnhancedCard variant="elevated" padding="xl">
-          <h2 class="text-3xl font-bold text-texas-navy mb-6">Fixed Rate Plans: Boring But Smart</h2>
+    <!-- Enhanced Detailed Analysis -->
+    <div class="space-y-16">
+      <section class="bg-white p-12 rounded-3xl shadow-md border border-gray-200">
+        <h2 class="text-4xl font-bold text-texas-navy mb-8">Fixed Rate Plans: Boring But Smart</h2>
           
           <div class="grid md:grid-cols-2 gap-8">
             <div>
@@ -76,46 +99,46 @@ const description = "Real talk on fixed vs variable electricity rates in Texas. 
                 Think of it like a gym membership - you agree to pay the same amount every month for the whole contract. If you sign up for 12.5¢ per unit of electricity (they call it a kilowatt-hour), that's what you pay whether electricity gets expensive or cheap in Texas.
               </p>
               
-              <AccentBox accentColor="gold" padding="md" className="mb-4">
+              <div class="bg-yellow-50 p-6 rounded-2xl border border-yellow-200 mb-6">
                 <h4 class="font-semibold text-yellow-800 mb-2">💡 Quick lesson: What's a kilowatt-hour?</h4>
                 <p class="text-sm text-yellow-800">It's just how they measure electricity, like gallons for gas. A 100-watt light bulb running for 10 hours uses 1 kilowatt-hour. Your whole house probably uses 30-50 per day.</p>
-              </AccentBox>
+              </div>
               
-              <AccentBox accentColor="navy" padding="md" className="mb-4">
-                <h4 class="font-semibold text-white mb-2">What Your Bill Actually Looks Like</h4>
+              <div class="bg-texas-navy p-6 rounded-2xl border border-blue-300 mb-6">
+                <h4 class="font-semibold text-white mb-3">What Your Bill Actually Looks Like</h4>
                 <div class="text-sm text-white">
-                  <div class="flex justify-between"><span>Electricity you used (1,000 units × 12.5¢)</span><span>$125.00</span></div>
-                  <div class="flex justify-between"><span>Monthly "service fee" (their profit)</span><span>$9.95</span></div>
-                  <div class="flex justify-between"><span>Delivery fees (same for everyone)</span><span>$18.50</span></div>
-                  <div class="border-t pt-2 flex justify-between font-semibold"><span>Total</span><span>$153.45</span></div>
+                  <div class="flex justify-between py-1"><span>Electricity you used (1,000 units × 12.5¢)</span><span>$125.00</span></div>
+                  <div class="flex justify-between py-1"><span>Monthly "service fee" (their profit)</span><span>$9.95</span></div>
+                  <div class="flex justify-between py-1"><span>Delivery fees (same for everyone)</span><span>$18.50</span></div>
+                  <div class="border-t border-blue-400 pt-2 mt-2 flex justify-between font-semibold"><span>Total</span><span>$153.45</span></div>
                 </div>
-                <p class="text-xs text-white mt-2">With fixed rates, this total is predictable every month (unless you use way more or less electricity)</p>
-              </AccentBox>
+                <p class="text-xs text-blue-100 mt-3">With fixed rates, this total is predictable every month (unless you use way more or less electricity)</p>
+              </div>
             </div>
 
             <div>
               <h3 class="text-xl font-semibold text-texas-navy mb-4">Contract Terms</h3>
               <div class="space-y-4">
-                <EnhancedCard variant="outlined" padding="md">
-                  <h4 class="font-semibold text-gray-900 mb-2">Contract Lengths</h4>
-                  <ul class="text-sm text-gray-700 space-y-1">
+                <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200">
+                  <h4 class="font-semibold text-gray-900 mb-3">Contract Lengths</h4>
+                  <ul class="text-sm text-gray-700 space-y-2">
                     <li>• 6 months: Higher rates, more flexibility</li>
                     <li>• 12 months: Most popular, balanced rates</li>
                     <li>• 24-36 months: Best rates, longest commitment</li>
                   </ul>
-                </EnhancedCard>
+                </div>
                 
-                <EnhancedCard variant="outlined" padding="md">
-                  <h4 class="font-semibold text-gray-900 mb-2">Early Termination Fees</h4>
+                <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200">
+                  <h4 class="font-semibold text-gray-900 mb-3">Early Termination Fees</h4>
                   <p class="text-sm text-gray-700">Typically $150-295 if you cancel before your contract expires. Some providers waive fees if you move outside their service area.</p>
-                </EnhancedCard>
+                </div>
               </div>
             </div>
           </div>
-        </section>
+      </section>
 
-        <section class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
-          <h2 class="text-3xl font-bold text-texas-navy mb-6">Variable Rate Plans: The Trap You Should Avoid</h2>
+      <section class="bg-white p-12 rounded-3xl shadow-md border border-gray-200">
+        <h2 class="text-4xl font-bold text-texas-navy mb-8">Variable Rate Plans: The Trap You Should Avoid</h2>
           
           <div class="grid md:grid-cols-2 gap-8">
             <div>
@@ -158,8 +181,8 @@ const description = "Real talk on fixed vs variable electricity rates in Texas. 
           </div>
         </section>
 
-        <section class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
-          <h2 class="text-3xl font-bold text-texas-navy mb-6">Cost Analysis: Which Saves More Money?</h2>
+      <section class="bg-white p-12 rounded-3xl shadow-md border border-gray-200">
+        <h2 class="text-4xl font-bold text-texas-navy mb-8">Cost Analysis: Which Saves More Money?</h2>
           
           <div class="mb-8">
             <div class="bg-yellow-50 p-6 rounded-lg">
@@ -202,8 +225,8 @@ const description = "Real talk on fixed vs variable electricity rates in Texas. 
           </div>
         </section>
 
-        <section class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
-          <h2 class="text-3xl font-bold text-texas-navy mb-6">Which Plan Type is Right for You?</h2>
+      <section class="bg-white p-12 rounded-3xl shadow-md border border-gray-200">
+        <h2 class="text-4xl font-bold text-texas-navy mb-8">Which Plan Type is Right for You?</h2>
           
           <div class="grid md:grid-cols-2 gap-8">
             <div>
@@ -258,8 +281,8 @@ const description = "Real talk on fixed vs variable electricity rates in Texas. 
           </div>
         </section>
 
-        <section class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
-          <h2 class="text-3xl font-bold text-texas-navy mb-6">Expert Recommendations</h2>
+      <section class="bg-white p-12 rounded-3xl shadow-md border border-gray-200">
+        <h2 class="text-4xl font-bold text-texas-navy mb-8">Expert Recommendations</h2>
           
           <div class="space-y-6">
             <div class="bg-texas-cream-200 p-6 rounded-lg">
@@ -300,21 +323,20 @@ const description = "Real talk on fixed vs variable electricity rates in Texas. 
         </section>
       </div>
 
-      <!-- Footer CTA -->
-      <div class="mt-16 text-center">
-        <AccentBox accentColor="navy" padding="xl">
-          <h2 class="text-3xl font-bold mb-4 text-white">Ready to Find the Right Plan Type?</h2>
-          <p class="text-xl mb-8 text-blue-100">Compare fixed and variable rates from 100+ Texas providers.</p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/electricity-plans" class="bg-texas-red text-white px-8 py-4 rounded-lg font-semibold hover:bg-texas-red-600 transition-colors">
-              Browse Fixed Rate Plans
-            </a>
-            <a href="/rates/calculator" class="bg-texas-gold text-texas-navy px-8 py-4 rounded-lg font-semibold hover:bg-texas-gold-600 transition-colors">
-              Calculate Your Costs
-            </a>
-          </div>
-        </AccentBox>
+    <!-- Enhanced Footer CTA -->
+    <div class="mt-20 text-center">
+      <div class="bg-gradient-to-r from-texas-navy to-blue-800 p-12 rounded-3xl text-white shadow-2xl">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to Find the Right Plan Type?</h2>
+        <p class="text-xl md:text-2xl mb-10 text-blue-100 max-w-3xl mx-auto">Compare fixed and variable rates from 100+ Texas providers and start saving.</p>
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+          <a href="/electricity-plans" class="bg-texas-red text-white px-10 py-5 rounded-2xl font-semibold text-lg hover:bg-texas-red-600 transition-all duration-300 shadow-md hover:shadow-xl">
+            Browse Fixed Rate Plans
+          </a>
+          <a href="/rates/calculator" class="bg-texas-gold text-texas-navy px-10 py-5 rounded-2xl font-semibold text-lg hover:bg-texas-gold-600 transition-all duration-300 shadow-md hover:shadow-xl">
+            Calculate Your Costs
+          </a>
+        </div>
       </div>
     </div>
-  </EnhancedSection>
+  </div>
 </Layout>

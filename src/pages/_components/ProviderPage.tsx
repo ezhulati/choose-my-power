@@ -75,87 +75,99 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-texas-cream/20">
-      {/* Header */}
-      <EnhancedSectionReact background="white" padding="lg" className="border-b border-gray-200">
-          <nav className="text-sm text-gray-500 mb-4">
-            <button onClick={() => navigate('/')} className="hover:text-texas-navy">Home</button>
+    <div className="min-h-screen bg-gray-50">
+      {/* Professional Hero Section */}
+      <div className="relative bg-gradient-to-br from-texas-navy via-blue-800 to-texas-navy text-white">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+          <nav className="text-sm text-blue-200 mb-8">
+            <button onClick={() => navigate('/')} className="hover:text-white transition-colors">Home</button>
             <span className="mx-2">/</span>
-            <button onClick={() => navigate('/providers')} className="hover:text-texas-navy">Providers</button>
+            <button onClick={() => navigate('/providers')} className="hover:text-white transition-colors">Providers</button>
             <span className="mx-2">/</span>
-            <span>{provider.name}</span>
+            <span className="text-white">{provider.name}</span>
           </nav>
 
-          <div className="flex flex-col lg:flex-row lg:items-start lg:space-x-8">
+          <div className="flex flex-col lg:flex-row lg:items-start lg:space-x-12">
             {/* Provider Info */}
             <div className="flex-1">
-              <div className="flex items-start space-x-4 mb-6">
-                <img
-                  src={provider.logo}
-                  alt={`${provider.name} logo`}
-                  className="w-16 h-16 rounded-lg object-cover"
-                />
-                <div>
-                  {/* Hero's Journey Honest Header */}
-                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-texas-navy mb-2">
-                    {provider.heroJourney?.honestHeader || `Here's What Real Customers Say About ${provider.name}`}
+              <div className="flex items-start space-x-6 mb-8">
+                <div className="flex-shrink-0">
+                  <img
+                    src={provider.logo}
+                    alt={`${provider.name} logo`}
+                    className="w-20 h-20 rounded-3xl object-cover border-2 border-white/20"
+                  />
+                </div>
+                <div className="flex-1">
+                  {/* Professional Badge */}
+                  <div className="inline-flex items-center px-6 py-3 mb-6 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full">
+                    <Zap className="w-5 h-5 text-texas-gold mr-3" />
+                    <span className="font-semibold text-lg">Provider Analysis</span>
+                  </div>
+                  
+                  {/* Enhanced Typography */}
+                  <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+                    {provider.name}
+                    <span className="block text-texas-gold mt-2 text-3xl md:text-4xl lg:text-5xl">Deep Dive Analysis</span>
                   </h1>
                   
-                  {/* Assessment Badge */}
-                  <div className="flex items-center gap-4 mb-3">
-                    <div className="flex items-center gap-2">
+                  {/* Enhanced Assessment Badge */}
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
+                    <div className="flex items-center gap-3">
                       {provider.assessment === 'good' && (
-                        <div className="flex items-center bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-                          <CheckCircle className="h-4 w-4 mr-1" />
-                          Recommended
+                        <div className="flex items-center bg-green-500/20 backdrop-blur-sm text-green-100 px-4 py-2 rounded-full border border-green-400/30">
+                          <CheckCircle className="h-5 w-5 mr-2" />
+                          <span className="font-semibold">Recommended</span>
                         </div>
                       )}
                       {provider.assessment === 'mixed' && (
-                        <div className="flex items-center bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">
-                          <AlertTriangle className="h-4 w-4 mr-1" />
-                          Proceed with Caution
+                        <div className="flex items-center bg-yellow-500/20 backdrop-blur-sm text-yellow-100 px-4 py-2 rounded-full border border-yellow-400/30">
+                          <AlertTriangle className="h-5 w-5 mr-2" />
+                          <span className="font-semibold">Proceed with Caution</span>
                         </div>
                       )}
                       {provider.assessment === 'bad' && (
-                        <div className="flex items-center bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">
-                          <XCircle className="h-4 w-4 mr-1" />
-                          Not Recommended
+                        <div className="flex items-center bg-red-500/20 backdrop-blur-sm text-red-100 px-4 py-2 rounded-full border border-red-400/30">
+                          <XCircle className="h-5 w-5 mr-2" />
+                          <span className="font-semibold">Not Recommended</span>
                         </div>
                       )}
                     </div>
-                    <div className="flex items-center text-gray-600">
-                      <Star className="h-4 w-4 text-yellow-400 fill-current mr-1" />
-                      <span className="font-medium">{provider.rating}</span>
-                      <span className="ml-1">({provider.reviewCount.toLocaleString()} reviews)</span>
+                    <div className="flex items-center text-white/90">
+                      <Star className="h-5 w-5 text-texas-gold fill-current mr-2" />
+                      <span className="font-semibold text-lg">{provider.rating}</span>
+                      <span className="ml-2 text-white/70">({provider.reviewCount.toLocaleString()} reviews)</span>
                     </div>
                   </div>
                   
-                  {/* Simplified Trust Signal */}
-                  <AccentBoxReact accentColor="gold" padding="sm" className="mb-4">
-                    <p className="text-sm text-gray-700">
-                      Based on {provider.reviewCount.toLocaleString()} real customer reviews • Updated monthly
+                  {/* Enhanced Trust Signal */}
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl px-6 py-4 mb-6">
+                    <p className="text-white/90 font-medium">
+                      <span className="text-texas-gold">✓</span> Based on {provider.reviewCount.toLocaleString()} real customer reviews
+                      <span className="text-white/70 ml-2">• Updated monthly</span>
                     </p>
-                  </AccentBoxReact>
+                  </div>
                 </div>
               </div>
 
-              {/* Hero's Journey CTAs */}
-              <div className="flex flex-wrap gap-4 mb-6">
+              {/* Enhanced CTAs */}
+              <div className="flex flex-wrap gap-6 mb-8">
                 {provider.heroJourney?.recommendedAction === 'choose' && (
                   <button
                     onClick={() => navigate(`/electricity-plans/texas/?provider=${provider.slug}`)}
-                    className="bg-texas-red text-white px-6 py-3 rounded-lg hover:bg-texas-red-600 transition-colors font-medium inline-flex items-center"
+                    className="bg-texas-red text-white px-8 py-4 rounded-xl hover:bg-texas-red-600 transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl inline-flex items-center"
                   >
-                    <Zap className="h-4 w-4 mr-2" />
+                    <Zap className="h-6 w-6 mr-3" />
                     See What {provider.name} Offers
                   </button>
                 )}
                 {provider.heroJourney?.recommendedAction === 'compare' && (
                   <button
                     onClick={() => navigate('/compare/providers')}
-                    className="bg-texas-gold text-white px-6 py-3 rounded-lg hover:bg-texas-gold-600 transition-colors font-medium inline-flex items-center"
+                    className="bg-texas-gold text-white px-8 py-4 rounded-xl hover:bg-texas-gold-600 transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl inline-flex items-center"
                   >
-                    <Users className="h-4 w-4 mr-2" />
+                    <Users className="h-6 w-6 mr-3" />
                     Compare With Better Options
                   </button>
                 )}

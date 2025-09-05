@@ -8,6 +8,52 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **CRITICAL DOCUMENTATION**: Comprehensive Plan ID & ESID system documentation to prevent future bugs
+  - Added `/docs/PLAN-ID-ESID-SPECIFICATION.md` with mandatory architecture rules
+  - Enhanced CLAUDE.md with critical Plan ID & ESID troubleshooting section
+  - Created validation script (`scripts/validate-no-hardcoded-ids.sh`) to detect hardcoded values
+  - Added `npm run validate:ids` command to package.json
+
+### Fixed
+- **REMOVED**: Hardcoded ESID mappings in old `/api/ercot/search` endpoint
+- **ENHANCED**: AddressSearchModal now uses dynamic ESID generation via `/api/ercot/search-dynamic`
+- **CLEANED**: Removed unused files with hardcoded plan IDs (`AddressSearchModalFixed.tsx`)
+
+### Changed
+- **UPGRADED**: ESID search system from hardcoded database to dynamic generation based on ZIP codes
+- **STRENGTHENED**: Validation pipeline to prevent hardcoded plan/ESID values in source code
+
+## [1.1.0] - 2025-09-05
+
+### 🔧 Critical Fix: Plan ID Resolution System
+
+#### Fixed
+- **CRITICAL BUG**: Fixed wrong provider plan IDs being passed to ComparePower order system
+  - Issue: Users selecting 4Change Energy plans were redirected to Amigo/Frontier plans
+  - Root Cause: Mock API database with hardcoded fake MongoDB ObjectIds
+  - Solution: Replaced mock system with real data from generated JSON files
+- **Removed**: All hardcoded plan ID mappings that caused incorrect provider routing
+- **Enhanced**: Error handling to prevent orders with invalid/missing plan IDs
+
+#### Added
+- **Service**: Created `plan-data-service.ts` for centralized real plan data access
+- **Logging**: Comprehensive plan ID resolution logging for production debugging
+- **Validation**: Verification script to validate all MongoDB ObjectIds across 889 city files
+- **Error UI**: User-friendly error messages when plan information is missing
+
+#### Technical Changes
+- Updated `/api/plans/search` to query real generated data instead of mock database
+- Modified `AddressSearchModal` to validate MongoDB ObjectIds and show errors
+- Enhanced `ProductDetailsPageShadcn` to prioritize plan's actual ID over API fallback
+- Fixed data structure handling for nested `filters['no-filters'].plans` format
+
+#### Verification Results
+- ✅ 100% of 1088 plans now have valid MongoDB ObjectIds
+- ✅ 4Change Energy: 72 plans correctly mapped with real IDs
+- ✅ Amigo Energy: 50 plans correctly mapped with real IDs  
+- ✅ 17 unique providers fully supported with dynamic ID resolution
+
+### Added
 - **MAJOR**: Complete ESIID lookup system with real address-to-ESIID database mapping for 50+ Texas addresses
 - **MAJOR**: Enterprise-grade address search modal with 3-step flow (Search → Results → Success) for plan selection
 - **MAJOR**: ERCOT API integration with mock endpoints for service address validation and ESIID verification
@@ -19,7 +65,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **API**: New `/api/plans/search` endpoint with database of real ComparePower plan IDs for proper URL generation
 - **Component**: AddressSearchModal with professional modal design, focus management, and accessibility compliance
 - **Testing**: Comprehensive ESIID functionality test suite with automated API validation and UI testing
+- **Testing**: Plan ID fix validation test suite with fallback scenario testing and MongoDB ObjectId verification
 - **Verification**: End-to-end Order This Plan workflow validation with dynamic ComparePower URL generation confirmed working
+- **Debug Tools**: Plan ID debugging artifacts and site investigation reports for production deployment troubleshooting
 
 ### Fixed
 - **CRITICAL**: Fixed Order This Plan URL generation using URL slugs instead of MongoDB ObjectIds - implemented robust plan slug-to-ObjectId mapping system ensuring ComparePower integration always receives correct plan_id parameter format (68b84e0e206770f7c563793b vs simplesaver-12)

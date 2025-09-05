@@ -55,6 +55,7 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
   const [isValidating, setIsValidating] = useState(false);
   const [validatingEsiid, setValidatingEsiid] = useState<string | null>(null);
   const [searchError, setSearchError] = useState<string | null>(null);
+  const [planError, setPlanError] = useState<string | null>(null);
   const [step, setStep] = useState<'search' | 'results' | 'success'>('search');
   
   // Use refs to prevent stale closures and manage cleanup
@@ -81,6 +82,7 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
       setSearchResults([]);
       setSelectedLocation(null);
       setSearchError(null);
+      setPlanError(null);
       setValidatingEsiid(null);
       setStep('search');
       setIsSearching(false);
@@ -132,7 +134,7 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
     lastSearchRef.current = { address: searchAddress, zipCode: searchZip };
 
     try {
-      const response = await fetch('/api/ercot/search', {
+      const response = await fetch('/api/ercot/search-dynamic', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -276,58 +278,75 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
     }
   };
 
-  // Plan slug to MongoDB ObjectId mapping for reliable fallback
-  const getPlanObjectId = (planData: any): string => {
+  // Get the MongoDB ObjectId for the plan
+  const getPlanObjectId = (planData: any): string | null => {
     // First priority: Use API-fetched MongoDB ObjectId
     if (planData.apiPlanId) {
+      console.log('[AddressModal] Using apiPlanId:', planData.apiPlanId);
       return planData.apiPlanId;
     }
     
-    // Second priority: Map known plan slugs to MongoDB ObjectIds
-    const planSlugMapping: Record<string, string> = {
-      'frontier-saver-plus-12': '68b84e0e206770f7c563793b',
-      'frontier-green-choice-24': '68b84e0e206770f7c563793c',
-      'txu-energy-everyday-value-12': '68c95f1e317881g8d674804d',
-      'txu-energy-smart-choice-24': '68c95f1e317881g8d674804e',
-      'reliant-basic-power-12': '69d06g2f428992h9e785915f',
-      'direct-energy-live-brighter-24': '69d06g2f428992h9e785916g',
-      'green-mountain-renewable-rewards-12': '70e17h3g539aa3i0f896026h',
-      'simplesaver-12': '68b84e0e206770f7c563793b', // Map to working plan
-      'simplesaver-24': '68b84e0e206770f7c563793c',
-    };
-    
-    // Try to find mapping based on plan ID (URL slug)
-    if (planData.id && planSlugMapping[planData.id]) {
-      return planSlugMapping[planData.id];
+    // Second priority: Use plan's own ID if it's a valid MongoDB ObjectId (24 hex chars)
+    if (planData.id && /^[a-f0-9]{24}$/i.test(planData.id)) {
+      console.log('[AddressModal] Using plan.id:', planData.id);
+      return planData.id;
     }
     
-    // Final fallback: Use default working MongoDB ObjectId
-    return '68b84e0e206770f7c563793b';
+    // No valid plan ID found - this is an error condition
+    console.error('[AddressModal] No valid plan ID found for:', {
+      planName: planData.name,
+      provider: planData.provider?.name,
+      planId: planData.id,
+      apiPlanId: planData.apiPlanId
+    });
+    
+    return null;
   };
 
   const handleProceedToOrder = () => {
-    if (selectedLocation) {
-      onSuccess(selectedLocation.esiid, selectedLocation.address);
-      
-      // Always get a valid MongoDB ObjectId - never use URL slugs
-      const actualPlanId = getPlanObjectId(planData);
-      
-      // Use the user's selected ESIID from the address search results
-      const orderUrl = `https://orders.comparepower.com/order/service_location?esiid=${selectedLocation.esiid}&plan_id=${actualPlanId}&usage=1000&zip_code=${zipCode}`;
-      
-      console.log(`Opening ComparePower order page:`, {
-        esiid: selectedLocation.esiid,
-        planId: actualPlanId,
-        planName: planData.name,
-        provider: planData.provider.name,
-        address: selectedLocation.address,
-        originalPlanId: planData.id,
-        apiPlanIdAvailable: !!planData.apiPlanId,
-        planIdSource: planData.apiPlanId ? 'API' : 'mapping_fallback'
-      });
-      
-      window.open(orderUrl, '_blank');
+    if (!selectedLocation) {
+      console.error('[AddressModal] No location selected');
+      return;
     }
+    
+    // Get the actual MongoDB ObjectId for the plan
+    const actualPlanId = getPlanObjectId(planData);
+    
+    // Check if we have a valid plan ID
+    if (!actualPlanId) {
+      setPlanError('Unable to process order. Plan information is missing or invalid. Please contact support.');
+      console.error('[AddressModal] Cannot proceed with order - no valid plan ID', {
+        planName: planData.name,
+        provider: planData.provider?.name,
+        planDataId: planData.id,
+        apiPlanId: planData.apiPlanId
+      });
+      return;
+    }
+    
+    // Clear any previous errors
+    setPlanError(null);
+    
+    // Notify parent component of success
+    onSuccess(selectedLocation.esiid, selectedLocation.address);
+    
+    // Build the order URL with user's selected ESIID and the correct plan ID
+    const orderUrl = `https://orders.comparepower.com/order/service_location?esiid=${selectedLocation.esiid}&plan_id=${actualPlanId}&usage=1000&zip_code=${zipCode}`;
+    
+    console.log('[AddressModal] Opening ComparePower order page:', {
+      esiid: selectedLocation.esiid,
+      planId: actualPlanId,
+      planName: planData.name,
+      provider: planData.provider.name,
+      address: selectedLocation.address,
+      zipCode: zipCode,
+      originalPlanId: planData.id,
+      apiPlanIdAvailable: !!planData.apiPlanId,
+      planIdSource: planData.apiPlanId ? 'API' : (planData.id ? 'plan.id' : 'none')
+    });
+    
+    // Open the order page in a new tab
+    window.open(orderUrl, '_blank');
   };
 
   const renderSearchStep = () => (
@@ -534,6 +553,18 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
             </div>
           </CardContent>
         </Card>
+      )}
+
+      {planError && (
+        <div 
+          className="flex items-center p-3 text-sm text-red-800 bg-red-50 border border-red-200 rounded-md"
+          role="alert"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          <AlertCircle className="h-4 w-4 mr-2 flex-shrink-0" aria-hidden="true" />
+          {planError}
+        </div>
       )}
 
       <div className="flex gap-3">

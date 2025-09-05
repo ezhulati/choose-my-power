@@ -175,8 +175,8 @@ console.log(`✅ Faceted page processed: ${cityName} with ${filterResult.applied
       <EnhancedSection background="transparent" padding="lg" maxWidth="7xl">
         <div class="text-white text-center">
           <!-- Breadcrumb Navigation -->
-          <nav class="mb-8" aria-label="Breadcrumb">
-            <div class="flex items-center justify-center space-x-4 text-sm">
+          <nav class="mb-8 w-full mx-auto" aria-label="Breadcrumb">
+            <div class="flex items-center justify-center space-x-4 text-sm w-full max-w-none mx-auto">
               {breadcrumbs.map((breadcrumb, index) => (
                 <Fragment key={breadcrumb.url}>
                   {index > 0 && <span class="text-white/60">/</span>}

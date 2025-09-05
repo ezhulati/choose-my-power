@@ -243,7 +243,7 @@ export const ZipCodeSearchAPI: React.FC<ZipCodeSearchAPIProps> = ({
   // Effect to handle successful results
   useEffect(() => {
     if (planSearch.plans.length > 0 && planSearch.searchMeta && planSearch.tdspInfo) {
-      onResults?({
+      onResults?.({
         plans: planSearch.plans,
         zipCode: state.zipCode,
         address: state.address || undefined,

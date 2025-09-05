@@ -27,7 +27,13 @@ export function ComparePage() {
   };
 
   const handleZipSearch = (zipCode: string) => {
-    navigate(`/texas/houston/electricity-providers`);
+    // For Texas ZIP codes, navigate to electricity plans for comparison
+    if (zipCode.match(/^7[0-9]{4}$/)) {
+      navigate(`/electricity-plans/texas/${zipCode}`);
+    } else {
+      // For other states, go to general electricity plans
+      navigate(`/electricity-plans`);
+    }
   };
 
   const comparisonTypes = [
@@ -153,76 +159,85 @@ export function ComparePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <div className="bg-gradient-to-br from-texas-navy via-blue-900 to-texas-navy text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      {/* Professional Hero Section */}
+      <div className="relative bg-gradient-to-br from-texas-navy via-blue-800 to-texas-navy text-white">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="text-center">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-8">
-              <BarChart className="h-10 w-10" />
+            {/* Professional Badge */}
+            <div className="inline-flex items-center px-6 py-3 mb-8 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full">
+              <BarChart className="w-5 h-5 text-texas-gold mr-3" />
+              <span className="font-semibold text-lg">Texas Electricity Comparison</span>
             </div>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8">
-              Electric Bill Comparison That Makes Actual Sense
-            </h1>
-            <p className="text-xl md:text-2xl mb-12 text-blue-100 max-w-4xl mx-auto leading-relaxed">
-              You've been to PowerToChoose. You've scrolled through 300 confusing plans. You're still confused and probably overpaying. 
-              We've been there too. Here's what we figured out - organized so you'll be done in 10 minutes.
-            </p>
-
-            {/* Quick Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-12">
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-                <div className="text-3xl font-bold">$420</div>
-                <div className="text-blue-200 text-sm">Your neighbor saves</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-                <div className="text-3xl font-bold">10 min</div>
-                <div className="text-blue-200 text-sm">To find savings</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-                <div className="text-3xl font-bold">Zero</div>
-                <div className="text-blue-200 text-sm">Sales Nonsense</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-                <div className="text-3xl font-bold">100%</div>
-                <div className="text-blue-200 text-sm">Honest Truth</div>
+            {/* Enhanced Typography */}
+            <div className="space-y-8 max-w-5xl mx-auto">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+                Compare Texas Plans
+                <span className="block text-texas-gold mt-2">Without the Confusion</span>
+              </h1>
+              
+              <p className="text-2xl md:text-3xl text-white/90 font-light max-w-4xl mx-auto leading-relaxed">
+                <span class="text-texas-red font-semibold">You've been to PowerToChoose.</span> 
+                <span class="text-white font-semibold">Still confused?</span> 
+                <span class="text-white/80">We get it. Here's the truth.</span>
+              </p>
+              
+              {/* Trust Signals */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-lg">
+                <div className="flex items-center px-4 py-2 bg-green-500/20 backdrop-blur-sm rounded-full border border-green-400/30">
+                  <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+                  <span className="text-green-100 font-medium">300+ plans analyzed daily</span>
+                </div>
+                <div className="flex items-center px-4 py-2 bg-blue-500/20 backdrop-blur-sm rounded-full border border-blue-400/30">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
+                  <span className="text-blue-100 font-medium">Real customer reviews</span>
+                </div>
+                <div className="flex items-center px-4 py-2 bg-texas-red/20 backdrop-blur-sm rounded-full border border-texas-red/30">
+                  <div className="w-2 h-2 bg-texas-red-200 rounded-full mr-2"></div>
+                  <span className="text-red-100 font-medium">No sales nonsense</span>
+                </div>
               </div>
             </div>
 
-            <div className="max-w-md mx-auto">
-              <StandardZipInputReact 
-                onSearch={handleZipSearch}
-                size="lg"
-                variant="inline"
-              />
-              <p className="text-blue-200 text-sm mt-2">See what you're actually paying vs. what you could pay</p>
+            {/* Professional Search Input */}
+            <div className="max-w-2xl mx-auto mt-12">
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                <p className="text-xl font-semibold mb-6 text-white/90">Enter Your ZIP Code to Start Comparing</p>
+                <StandardZipInputReact 
+                  onSearch={handleZipSearch}
+                  size="lg"
+                  variant="hero"
+                />
+                <p className="text-white/70 text-lg mt-4">See what you're actually paying vs. what you could pay</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Why Compare Section */}
-      <div className="py-16 bg-white">
+      {/* Why Compare Section - Professional Cards */}
+      <div className="bg-gradient-to-b from-texas-cream/20 to-white py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Your Neighbor Saves $400/Year. You Can Too.
+          <div className="text-center mb-20">
+            <h2 className="text-5xl font-bold text-texas-navy mb-8 leading-tight">
+              Your Neighbor Saves $400/Year
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
               They figured out the system. They know which plans are actually cheap and which companies won't screw them over. 
-              Here's exactly what they do different.
+              <strong className="text-texas-red">Here's exactly what they do different.</strong>
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid lg:grid-cols-4 gap-12">
             {whyCompare.map((reason, index) => (
-              <div key={index} className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-lg mb-6">
-                  <reason.icon className="h-8 w-8" />
+              <div key={index} className="bg-white border-2 border-gray-200 rounded-3xl p-10 text-center shadow-lg hover:shadow-2xl hover:border-texas-gold transition-all duration-300 group">
+                <div className="w-20 h-20 bg-gradient-to-br from-texas-gold/10 to-texas-gold/20 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:from-texas-gold/20 group-hover:to-texas-gold/30 transition-all duration-300">
+                  <reason.icon className="h-10 w-10 text-texas-gold" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">{reason.title}</h3>
-                <p className="text-gray-600 mb-4">{reason.description}</p>
-                <div className="font-bold text-texas-navy">{reason.stat}</div>
+                <h3 className="text-3xl font-bold text-texas-navy mb-6 group-hover:text-texas-gold transition-colors">{reason.title}</h3>
+                <p className="text-xl text-gray-700 leading-relaxed mb-6">{reason.description}</p>
+                <div className="text-2xl font-bold text-texas-red">{reason.stat}</div>
               </div>
             ))}
           </div>
@@ -232,22 +247,22 @@ export function ComparePage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Main Comparison Tools */}
         <div className="mb-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Three Ways to Compare (Pick Your Battle)
+          <div className="text-center mb-20">
+            <h2 className="text-5xl font-bold text-texas-navy mb-8 leading-tight">
+              Three Ways to Compare
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              You can't compare everything at once - that's why PowerToChoose is useless. Pick what matters most to you. 
+            <p className="text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+              You can't compare everything at once - that's why PowerToChoose is useless. <strong className="text-texas-red">Pick what matters most to you.</strong> 
               We'll show you exactly what you need to know, nothing else.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-12">
             {comparisonTypes.map((type, index) => (
               <div 
                 key={type.id} 
-                className={`bg-white rounded-lg shadow-sm border hover:shadow-lg transition-all duration-300 overflow-hidden ${
-                  selectedComparison === type.id ? 'ring-2 ring-blue-500 shadow-lg' : ''
+                className={`bg-white border-2 border-gray-200 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group hover:border-texas-red ${
+                  selectedComparison === type.id ? 'ring-2 ring-texas-red shadow-2xl border-texas-red' : ''
                 }`}
               >
                 {/* Card Header */}
@@ -307,10 +322,10 @@ export function ComparePage() {
                   {/* CTA */}
                   <button
                     onClick={() => navigate(`/compare/${type.id}`)}
-                    className={`w-full bg-${type.color}-600 text-white py-3 rounded-lg hover:bg-${type.color}-700 transition-colors font-medium flex items-center justify-center`}
+                    className="w-full bg-gradient-to-r from-texas-red to-texas-red-700 text-white py-4 rounded-xl hover:from-texas-red-600 hover:to-texas-red-800 transition-all duration-300 font-bold text-lg flex items-center justify-center transform hover:scale-105 shadow-lg"
                   >
                     {type.id === 'providers' ? 'Show Me Who\'s Good' : type.id === 'plans' ? 'Find My Best Plan' : 'Calculate My Real Bill'}
-                    <ArrowRight className="h-4 w-4 ml-2" />
+                    <ArrowRight className="h-5 w-5 ml-2" />
                   </button>
                 </div>
               </div>

@@ -109,25 +109,50 @@ function LocationsPage({}: LocationsPageProps) {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <div className="bg-gradient-to-br from-texas-navy via-blue-900 to-texas-navy text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      {/* Professional Hero Section */}
+      <div className="relative bg-gradient-to-br from-texas-navy via-blue-900 to-texas-navy text-white">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-40">
           <div className="text-center">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg mb-8">
-              <MapPin className="h-10 w-10" />
+            {/* Professional Badge */}
+            <div className="inline-flex items-center px-6 py-3 mb-8 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full">
+              <MapPin className="w-5 h-5 text-texas-gold mr-3" />
+              <span className="font-semibold text-lg">Texas Locations & Coverage</span>
             </div>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8">
-              Does Your Street Even Have Options?
-            </h1>
-            <p className="text-xl md:text-2xl mb-12 text-blue-100 max-w-4xl mx-auto leading-relaxed">
-              Some ZIP codes have 12 providers fighting for your business. Others have 2. 
-              Find out exactly who serves your address and what they're charging this week.
-            </p>
+            {/* Enhanced Typography */}
+            <div className="space-y-12 max-w-5xl mx-auto">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+                Does Your Street
+                <span className="block text-texas-gold mt-2">Even Have Options?</span>
+              </h1>
+              
+              <p className="text-2xl md:text-3xl text-white/90 font-light max-w-4xl mx-auto leading-relaxed">
+                <span className="text-texas-red font-semibold">Some ZIP codes have 12 providers.</span> 
+                <span className="text-white font-semibold">Others have 2.</span> 
+                <span className="text-white/80">Find out who actually serves your address.</span>
+              </p>
+              
+              {/* Trust Signals */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-lg">
+                <div className="flex items-center px-4 py-2 bg-green-500/20 backdrop-blur-sm rounded-full border border-green-400/30">
+                  <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+                  <span className="text-green-100 font-medium">Street-level accuracy</span>
+                </div>
+                <div className="flex items-center px-4 py-2 bg-blue-500/20 backdrop-blur-sm rounded-full border border-blue-400/30">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
+                  <span className="text-blue-100 font-medium">880+ Texas cities</span>
+                </div>
+                <div className="flex items-center px-4 py-2 bg-texas-red/20 backdrop-blur-sm rounded-full border border-texas-red/30">
+                  <div className="w-2 h-2 bg-texas-red-200 rounded-full mr-2"></div>
+                  <span className="text-red-100 font-medium">Real-time rates</span>
+                </div>
+              </div>
+            </div>
 
             {/* Main ZIP Search */}
             <div className="mb-12">
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 max-w-2xl mx-auto">
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-10 max-w-2xl mx-auto">
                 <h2 className="text-2xl font-semibold text-white mb-6">What's Available at Your Address?</h2>
                 <StandardZipInputReact onSearch={handleZipSearch} size="lg" />
                 <p className="text-blue-200 text-sm mt-3">See who actually serves your street (not just your city)</p>
@@ -135,20 +160,20 @@ function LocationsPage({}: LocationsPageProps) {
             </div>
 
             {/* Location Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-16">
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl">
                 <div className="text-3xl font-bold">{mockStates.length}</div>
                 <div className="text-blue-200 text-sm">States Where You Can Switch</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl">
                 <div className="text-3xl font-bold">{totalCities}</div>
                 <div className="text-blue-200 text-sm">Cities We Cover</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl">
                 <div className="text-3xl font-bold">{totalProviders}</div>
                 <div className="text-blue-200 text-sm">Companies to Choose From</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl">
                 <div className="text-3xl font-bold">{totalZipCodes}+</div>
                 <div className="text-blue-200 text-sm">ZIP Codes Checked Daily</div>
               </div>
@@ -161,7 +186,7 @@ function LocationsPage({}: LocationsPageProps) {
       <div className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-texas-navy mb-4">
               Not Sure Where to Start? Pick Your View.
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -174,14 +199,14 @@ function LocationsPage({}: LocationsPageProps) {
               <button
                 key={index}
                 onClick={type.action}
-                className="bg-white p-8 rounded-lg shadow-sm border hover:shadow-md transition-shadow text-center group"
+                className="bg-white p-8 rounded-3xl shadow-lg border border-gray-200 hover:shadow-xl hover:border-texas-navy transition-all duration-300 text-center group"
               >
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-lg mb-6 group-hover:bg-texas-navy group-hover:text-white transition-colors">
-                  <type.icon className="h-8 w-8" />
+                <div className="inline-flex items-center justify-center w-20 h-20 bg-texas-cream text-texas-navy rounded-3xl mb-6 group-hover:bg-texas-navy group-hover:text-white transition-all duration-300 group-hover:scale-110">
+                  <type.icon className="h-10 w-10" />
                 </div>
-                <div className="text-3xl font-bold text-gray-900 mb-2">{type.count}</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">{type.title}</h3>
-                <p className="text-gray-600">{type.description}</p>
+                <div className="text-4xl font-bold text-texas-navy mb-2">{type.count}</div>
+                <h3 className="text-xl font-bold text-texas-navy mb-4">{type.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{type.description}</p>
               </button>
             ))}
           </div>
@@ -488,58 +513,58 @@ function LocationsPage({}: LocationsPageProps) {
         </div>
 
         {/* Quick Actions */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-white p-6 rounded-lg shadow-sm border text-center hover:shadow-md transition-shadow">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 text-green-600 rounded-lg mb-4">
-              <TrendingDown className="h-6 w-6" />
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="bg-white p-8 rounded-3xl shadow-lg border border-gray-200 text-center hover:shadow-xl hover:border-texas-navy transition-all duration-300 group">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 text-green-600 rounded-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
+              <TrendingDown className="h-8 w-8" />
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">Want the Cheapest?</h3>
-            <p className="text-gray-600 text-sm mb-4">See who's actually cheapest right now</p>
+            <h3 className="text-xl font-bold text-texas-navy mb-3">Want the Cheapest?</h3>
+            <p className="text-gray-600 mb-4 leading-relaxed">See who's actually cheapest right now</p>
             <button
               onClick={() => navigate('/shop/cheapest-electricity')}
-              className="text-green-600 hover:text-green-800 font-medium text-sm"
+              className="text-green-600 hover:text-green-800 font-semibold group-hover:translate-x-2 transition-transform duration-200"
             >
               Show Me the Lowest →
             </button>
           </div>
 
-          <div className="bg-white p-6 rounded-lg shadow-sm border text-center hover:shadow-md transition-shadow">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-texas-cream text-texas-navy rounded-lg mb-4">
-              <Calculator className="h-6 w-6" />
+          <div className="bg-white p-8 rounded-3xl shadow-lg border border-gray-200 text-center hover:shadow-xl hover:border-texas-navy transition-all duration-300 group">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
+              <Calculator className="h-8 w-8" />
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">What Will I Pay?</h3>
-            <p className="text-gray-600 text-sm mb-4">Calculate your actual monthly bill</p>
+            <h3 className="text-xl font-bold text-texas-navy mb-3">What Will I Pay?</h3>
+            <p className="text-gray-600 mb-4 leading-relaxed">Calculate your actual monthly bill</p>
             <button
               onClick={() => navigate('/rates/calculator')}
-              className="text-texas-navy hover:text-texas-navy font-medium text-sm"
+              className="text-texas-navy hover:text-texas-red font-semibold group-hover:translate-x-2 transition-transform duration-200"
             >
               Calculate My Bill →
             </button>
           </div>
 
-          <div className="bg-white p-6 rounded-lg shadow-sm border text-center hover:shadow-md transition-shadow">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-100 text-purple-600 rounded-lg mb-4">
-              <Users className="h-6 w-6" />
+          <div className="bg-white p-8 rounded-3xl shadow-lg border border-gray-200 text-center hover:shadow-xl hover:border-texas-navy transition-all duration-300 group">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 text-purple-600 rounded-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
+              <Users className="h-8 w-8" />
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">Who's Actually Good?</h3>
-            <p className="text-gray-600 text-sm mb-4">Compare companies that won't suck</p>
+            <h3 className="text-xl font-bold text-texas-navy mb-3">Who's Actually Good?</h3>
+            <p className="text-gray-600 mb-4 leading-relaxed">Compare companies that won't suck</p>
             <button
               onClick={() => navigate('/compare/providers')}
-              className="text-purple-600 hover:text-purple-800 font-medium text-sm"
+              className="text-purple-600 hover:text-purple-800 font-semibold group-hover:translate-x-2 transition-transform duration-200"
             >
               Compare Companies →
             </button>
           </div>
 
-          <div className="bg-white p-6 rounded-lg shadow-sm border text-center hover:shadow-md transition-shadow">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-orange-100 text-orange-600 rounded-lg mb-4">
-              <Leaf className="h-6 w-6" />
+          <div className="bg-white p-8 rounded-3xl shadow-lg border border-gray-200 text-center hover:shadow-xl hover:border-texas-navy transition-all duration-300 group">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-orange-100 text-orange-600 rounded-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
+              <Leaf className="h-8 w-8" />
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-3">Want Real Green?</h3>
-            <p className="text-gray-600 text-sm mb-4">Not just marketing - actual renewable</p>
+            <h3 className="text-xl font-bold text-texas-navy mb-3">Want Real Green?</h3>
+            <p className="text-gray-600 mb-4 leading-relaxed">Not just marketing - actual renewable</p>
             <button
               onClick={() => navigate('/shop/green-energy')}
-              className="text-orange-600 hover:text-orange-800 font-medium text-sm"
+              className="text-orange-600 hover:text-orange-800 font-semibold group-hover:translate-x-2 transition-transform duration-200"
             >
               Show Green Options →
             </button>

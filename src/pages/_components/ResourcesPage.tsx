@@ -84,18 +84,47 @@ export function ResourcesPage({}: ResourcesPageProps) {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-gradient-to-br from-texas-navy via-blue-900 to-texas-navy text-white border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      {/* Professional Hero Section */}
+      <div className="relative bg-gradient-to-br from-texas-navy via-blue-800 to-texas-navy text-white">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-              Texas Electricity Help That Actually Helps
-            </h1>
-            <p className="text-xl text-blue-200 mb-8 max-w-3xl mx-auto">
-              You've spent hours trying to figure this out. So did we. Here's everything we learned the hard way, 
-              explained like we're helping a friend. No corporate nonsense. Just the stuff that actually matters.
-            </p>
+            {/* Professional Badge */}
+            <div className="inline-flex items-center px-6 py-3 mb-8 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full">
+              <BookOpen className="w-5 h-5 text-texas-gold mr-3" />
+              <span className="font-semibold text-lg">Texas Electricity Resources</span>
+            </div>
             
+            {/* Enhanced Typography */}
+            <div className="space-y-8 max-w-5xl mx-auto">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+                Finally. Texas Help
+                <span className="block text-texas-gold mt-2">That Actually Helps</span>
+              </h1>
+              
+              <p className="text-2xl md:text-3xl text-white/90 font-light max-w-4xl mx-auto leading-relaxed">
+                <span className="text-texas-red font-semibold">You've spent hours.</span> 
+                <span className="text-white font-semibold">We've been there.</span> 
+                <span className="text-white/80">Here's everything we learned the hard way.</span>
+              </p>
+              
+              {/* Trust Signals */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-lg">
+                <div className="flex items-center px-4 py-2 bg-green-500/20 backdrop-blur-sm rounded-full border border-green-400/30">
+                  <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+                  <span className="text-green-100 font-medium">No corporate nonsense</span>
+                </div>
+                <div className="flex items-center px-4 py-2 bg-blue-500/20 backdrop-blur-sm rounded-full border border-blue-400/30">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
+                  <span className="text-blue-100 font-medium">Real experience</span>
+                </div>
+                <div className="flex items-center px-4 py-2 bg-texas-red/20 backdrop-blur-sm rounded-full border border-texas-red/30">
+                  <div className="w-2 h-2 bg-texas-red-200 rounded-full mr-2"></div>
+                  <span className="text-red-100 font-medium">Actually helpful</span>
+                </div>
+              </div>
+            </div>
+
             <div className="max-w-md mx-auto mb-6">
               <StandardZipInputReact 
                 size="lg"
@@ -105,7 +134,7 @@ export function ResourcesPage({}: ResourcesPageProps) {
             </div>
             
             <div className="text-blue-200">
-              <p className="text-sm sm:text-base">Compare plans and providers • Find the best rates • Get honest advice</p>
+              <p className="text-lg font-medium">Compare plans and providers • Find the best rates • Get honest advice</p>
             </div>
           </div>
         </div>
@@ -113,23 +142,23 @@ export function ResourcesPage({}: ResourcesPageProps) {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Guides Section */}
-        <div className="mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">The Stuff We Wish Someone Had Told Us</h2>
+        <div className="mb-24">
+          <h2 className="text-3xl md:text-4xl font-bold text-texas-navy mb-8">The Stuff We Wish Someone Had Told Us</h2>
           
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-10">
             {guides.map((guide, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow">
+              <div key={index} className="bg-white p-8 rounded-3xl shadow-md border border-gray-200 hover:shadow-xl hover:border-texas-navy transition-all duration-300 group">
                 <div className="flex items-start">
-                  <div className="inline-flex items-center justify-center w-12 h-12 bg-texas-cream text-texas-navy rounded-lg mr-4 flex-shrink-0">
-                    <guide.icon className="h-6 w-6" />
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-texas-cream text-texas-navy rounded-3xl mr-6 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                    <guide.icon className="h-8 w-8" />
                   </div>
                   <div className="flex-1">
-                    <div className="text-sm text-texas-navy font-medium mb-1">{guide.category}</div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{guide.title}</h3>
-                    <p className="text-gray-600 mb-4">{guide.description}</p>
+                    <div className="text-sm text-texas-navy font-semibold mb-2">{guide.category}</div>
+                    <h3 className="text-xl font-bold text-texas-navy mb-3">{guide.title}</h3>
+                    <p className="text-gray-600 mb-6 leading-relaxed">{guide.description}</p>
                     <a
                       href={guide.href}
-                      className="text-texas-navy hover:text-texas-navy font-medium text-sm inline-block"
+                      className="text-texas-red hover:text-texas-red-600 font-semibold group-hover:translate-x-2 transition-transform duration-200 inline-block"
                     >
                       Read Guide →
                     </a>
@@ -139,10 +168,10 @@ export function ResourcesPage({}: ResourcesPageProps) {
             ))}
           </div>
 
-          <div className="text-center mt-8">
+          <div className="text-center mt-12">
             <a
               href="/resources/guides"
-              className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-texas-navy/90 transition-colors inline-block"
+              className="bg-texas-navy text-white px-8 py-4 rounded-xl hover:bg-texas-navy/90 transition-colors font-semibold text-lg shadow-md hover:shadow-xl"
             >
               View All Guides
             </a>
@@ -150,20 +179,20 @@ export function ResourcesPage({}: ResourcesPageProps) {
         </div>
 
         {/* Tools Section */}
-        <div className="mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Calculators That Don't Lie to You</h2>
+        <div className="mb-24">
+          <h2 className="text-3xl md:text-4xl font-bold text-texas-navy mb-8">Calculators That Don't Lie to You</h2>
           
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-10">
             {tools.map((tool, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 text-green-600 rounded-lg mb-6">
-                  <tool.icon className="h-8 w-8" />
+              <div key={index} className="bg-white p-8 rounded-3xl shadow-md border border-gray-200 hover:shadow-xl hover:border-texas-navy transition-all duration-300 text-center group">
+                <div className="inline-flex items-center justify-center w-20 h-20 bg-green-100 text-green-600 rounded-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <tool.icon className="h-10 w-10" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{tool.title}</h3>
-                <p className="text-gray-600 mb-6">{tool.description}</p>
+                <h3 className="text-2xl font-bold text-texas-navy mb-4">{tool.title}</h3>
+                <p className="text-gray-600 mb-8 leading-relaxed">{tool.description}</p>
                 <a
                   href={tool.href}
-                  className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors w-full inline-block text-center"
+                  className="bg-green-600 text-white px-8 py-4 rounded-xl hover:bg-green-700 transition-all duration-300 w-full inline-block text-center font-semibold shadow-md hover:shadow-xl"
                 >
                   Use Tool
                 </a>
@@ -173,20 +202,20 @@ export function ResourcesPage({}: ResourcesPageProps) {
         </div>
 
         {/* Support Section */}
-        <div className="mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">When Stuff Goes Wrong (And It Will)</h2>
+        <div className="mb-24">
+          <h2 className="text-3xl md:text-4xl font-bold text-texas-navy mb-8">When Stuff Goes Wrong (And It Will)</h2>
           
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-10">
             {supportOptions.map((option, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-sm border hover:shadow-md transition-shadow text-center">
-                <div className={`inline-flex items-center justify-center w-16 h-16 bg-${option.color}-100 text-${option.color}-600 rounded-lg mb-6`}>
-                  <option.icon className="h-8 w-8" />
+              <div key={index} className="bg-white p-8 rounded-3xl shadow-md border border-gray-200 hover:shadow-xl hover:border-texas-navy transition-all duration-300 text-center group">
+                <div className={`inline-flex items-center justify-center w-20 h-20 bg-${option.color}-100 text-${option.color}-600 rounded-3xl mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  <option.icon className="h-10 w-10" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{option.title}</h3>
-                <p className="text-gray-600 mb-6">{option.description}</p>
+                <h3 className="text-2xl font-bold text-texas-navy mb-4">{option.title}</h3>
+                <p className="text-gray-600 mb-8 leading-relaxed">{option.description}</p>
                 <a
                   href={option.href}
-                  className={`bg-${option.color}-600 text-white px-6 py-3 rounded-lg hover:bg-${option.color}-700 transition-colors w-full inline-block text-center`}
+                  className={`bg-${option.color}-600 text-white px-8 py-4 rounded-xl hover:bg-${option.color}-700 transition-all duration-300 w-full inline-block text-center font-semibold shadow-md hover:shadow-xl`}
                 >
                   Get Help
                 </a>
@@ -196,59 +225,59 @@ export function ResourcesPage({}: ResourcesPageProps) {
         </div>
 
         {/* Quick Links */}
-        <div className="bg-white rounded-lg shadow-sm border p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">The Most-Read Stuff (Because Everyone Gets Tricked By This)</h2>
+        <div className="bg-white rounded-3xl shadow-md border border-gray-200 p-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-texas-navy mb-12 text-center">The Most-Read Stuff (Because Everyone Gets Tricked By This)</h2>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             <a
               href="/resources/guides/red-flags"
-              className="p-4 text-left border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors block"
+              className="p-6 text-left border-2 border-gray-200 rounded-2xl hover:bg-gray-50 hover:border-texas-navy transition-all duration-300 block group"
             >
-              <h3 className="font-medium text-gray-900 mb-1">Scammer Alert: Red Flags</h3>
-              <p className="text-sm text-gray-600">How to spot the door-to-door vultures and phone scammers</p>
+              <h3 className="font-bold text-texas-navy mb-2 group-hover:text-texas-red">Scammer Alert: Red Flags</h3>
+              <p className="text-gray-600 leading-relaxed">How to spot the door-to-door vultures and phone scammers</p>
             </a>
             
             <a
               href="/resources/guides/green-energy"
-              className="p-4 text-left border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors block"
+              className="p-6 text-left border-2 border-gray-200 rounded-2xl hover:bg-gray-50 hover:border-texas-navy transition-all duration-300 block group"
             >
-              <h3 className="font-medium text-gray-900 mb-1">Green Energy (The Real Story)</h3>
-              <p className="text-sm text-gray-600">What's actually green vs. marketing greenwashing</p>
+              <h3 className="font-bold text-texas-navy mb-2 group-hover:text-texas-red">Green Energy (The Real Story)</h3>
+              <p className="text-gray-600 leading-relaxed">What's actually green vs. marketing greenwashing</p>
             </a>
             
             <a
               href="/resources/guides/business-electricity"
-              className="p-4 text-left border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors block"
+              className="p-6 text-left border-2 border-gray-200 rounded-2xl hover:bg-gray-50 hover:border-texas-navy transition-all duration-300 block group"
             >
-              <h3 className="font-medium text-gray-900 mb-1">Business Electricity Survival</h3>
-              <p className="text-sm text-gray-600">Don't let them fleece your business too</p>
+              <h3 className="font-bold text-texas-navy mb-2 group-hover:text-texas-red">Business Electricity Survival</h3>
+              <p className="text-gray-600 leading-relaxed">Don't let them fleece your business too</p>
             </a>
             
             <a
               href="/resources/guides/moving-guide"
-              className="p-4 text-left border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors block"
+              className="p-6 text-left border-2 border-gray-200 rounded-2xl hover:bg-gray-50 hover:border-texas-navy transition-all duration-300 block group"
             >
-              <h3 className="font-medium text-gray-900 mb-1">New to Texas? Start Here</h3>
-              <p className="text-sm text-gray-600">Don't get taken advantage of on day one</p>
+              <h3 className="font-bold text-texas-navy mb-2 group-hover:text-texas-red">New to Texas? Start Here</h3>
+              <p className="text-gray-600 leading-relaxed">Don't get taken advantage of on day one</p>
             </a>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
-            <div className="bg-texas-cream-200 p-4 rounded-lg text-center">
-              <div className="text-2xl font-bold text-blue-900">1000s</div>
-              <div className="text-sm text-texas-navy">Texans Helped</div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            <div className="bg-texas-cream p-6 rounded-2xl text-center shadow-md">
+              <div className="text-3xl font-bold text-texas-navy">1000s</div>
+              <div className="text-texas-navy font-medium">Texans Helped</div>
             </div>
-            <div className="bg-green-50 p-4 rounded-lg text-center">
-              <div className="text-2xl font-bold text-green-900">$500+</div>
-              <div className="text-sm text-green-700">Avg. Savings/Year</div>
+            <div className="bg-green-50 p-6 rounded-2xl text-center shadow-md">
+              <div className="text-3xl font-bold text-green-900">$500+</div>
+              <div className="text-green-700 font-medium">Avg. Savings/Year</div>
             </div>
-            <div className="bg-purple-50 p-4 rounded-lg text-center">
-              <div className="text-2xl font-bold text-purple-900">Zero</div>
-              <div className="text-sm text-purple-700">Sales Pressure</div>
+            <div className="bg-purple-50 p-6 rounded-2xl text-center shadow-md">
+              <div className="text-3xl font-bold text-purple-900">Zero</div>
+              <div className="text-purple-700 font-medium">Sales Pressure</div>
             </div>
-            <div className="bg-orange-50 p-4 rounded-lg text-center">
-              <div className="text-2xl font-bold text-orange-900">100%</div>
-              <div className="text-sm text-orange-700">Honest Advice</div>
+            <div className="bg-orange-50 p-6 rounded-2xl text-center shadow-md">
+              <div className="text-3xl font-bold text-orange-900">100%</div>
+              <div className="text-orange-700 font-medium">Honest Advice</div>
             </div>
           </div>
         </div>

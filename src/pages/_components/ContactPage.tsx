@@ -271,28 +271,28 @@ export function ContactPage({}: ContactPageProps) {
 
             <div className="bg-white rounded-lg shadow-sm border p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Links</h3>
-              <div className="space-y-2">
+              <div className="space-y-3">
                 <button
                   onClick={() => navigate('/resources/faqs')}
-                  className="w-full text-left p-2 text-sm text-texas-navy hover:text-texas-navy hover:underline"
+                  className="w-full text-left p-3 text-sm text-texas-navy hover:text-texas-red hover:underline transition-colors font-medium"
                 >
                   Frequently Asked Questions →
                 </button>
                 <button
                   onClick={() => navigate('/resources/guides')}
-                  className="w-full text-left p-2 text-sm text-texas-navy hover:text-texas-navy hover:underline"
+                  className="w-full text-left p-3 text-sm text-texas-navy hover:text-texas-red hover:underline transition-colors font-medium"
                 >
                   Educational Guides →
                 </button>
                 <button
                   onClick={() => navigate('/rates/calculator')}
-                  className="w-full text-left p-2 text-sm text-texas-navy hover:text-texas-navy hover:underline"
+                  className="w-full text-left p-3 text-sm text-texas-navy hover:text-texas-red hover:underline transition-colors font-medium"
                 >
                   Rate Calculator →
                 </button>
                 <button
                   onClick={() => navigate('/compare/providers')}
-                  className="w-full text-left p-2 text-sm text-texas-navy hover:text-texas-navy hover:underline"
+                  className="w-full text-left p-3 text-sm text-texas-navy hover:text-texas-red hover:underline transition-colors font-medium"
                 >
                   Compare Providers →
                 </button>

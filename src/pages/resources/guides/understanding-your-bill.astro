@@ -10,45 +10,70 @@ const description = "Decode your electric bill like a pro and spot the hidden fe
 ---
 
 <Layout title={title} description={description}>
-  <!-- Enhanced Hero Section -->
-  <section class="bg-gradient-to-br from-texas-navy via-blue-800 to-texas-navy text-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+  <!-- Professional Hero Section -->
+  <div class="relative bg-gradient-to-br from-texas-navy via-blue-800 to-texas-navy text-white">
+    <div class="absolute inset-0 bg-black/20"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-40">
       <div class="text-center">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-          What the Heck is a kWh and Why Should You Care?
-        </h1>
-        <p class="text-xl text-blue-100 mb-8 leading-relaxed max-w-4xl mx-auto">
-          Your electric bill is probably more confusing than your taxes, and that's on purpose. Electric companies use complicated terminology and weird fees to hide how much you're really paying. Let me show you how to see through their tricks.
-        </p>
-        <div class="flex flex-wrap gap-4 justify-center">
-          <AccentBox accentColor="red" padding="sm">
-            <span class="text-sm font-medium">15 min read</span>
-          </AccentBox>
-          <span class="bg-texas-gold px-4 py-2 rounded-full text-sm font-medium text-texas-navy">Bill Detective Guide</span>
+        {/* Professional Badge */}
+        <div class="inline-flex items-center px-6 py-3 mb-8 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full">
+          <span class="font-semibold text-lg text-texas-gold">📋 Bill Detective Guide</span>
+        </div>
+        
+        {/* Enhanced Typography */}
+        <div class="space-y-12 max-w-5xl mx-auto">
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+            What the Heck is a
+            <span class="block text-texas-gold mt-2">kWh?</span>
+          </h1>
+          
+          <p class="text-2xl md:text-3xl text-white/90 font-light max-w-4xl mx-auto leading-relaxed">
+            <span class="text-texas-red font-semibold">Your electric bill is deliberately confusing.</span> 
+            <span class="text-white font-semibold">Learn to decode the tricks</span> 
+            <span class="text-white/80">and spot hidden fees like a pro.</span>
+          </p>
+          
+          {/* Trust Signals */}
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 text-lg">
+            <div class="flex items-center px-4 py-2 bg-green-500/20 backdrop-blur-sm rounded-full border border-green-400/30">
+              <div class="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+              <span class="text-green-100 font-medium">15 min read</span>
+            </div>
+            <div class="flex items-center px-4 py-2 bg-blue-500/20 backdrop-blur-sm rounded-full border border-blue-400/30">
+              <div class="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
+              <span class="text-blue-100 font-medium">Expert insights</span>
+            </div>
+            <div class="flex items-center px-4 py-2 bg-texas-red/20 backdrop-blur-sm rounded-full border border-texas-red/30">
+              <div class="w-2 h-2 bg-texas-red-200 rounded-full mr-2"></div>
+              <span class="text-red-100 font-medium">No hidden tricks</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <!-- Key Stats -->
-      <div class="grid md:grid-cols-3 gap-6 mb-12">
-        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
-          <div class="text-3xl font-bold text-texas-red mb-2">40%</div>
-          <div class="text-gray-600">Of your bill goes to the delivery guys (not your electric company)</div>
-        </div>
-        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
-          <div class="text-3xl font-bold text-texas-red mb-2">$180</div>
-          <div class="text-gray-600">What most Texans actually pay (more than they should)</div>
-        </div>
-        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
-          <div class="text-3xl font-bold text-texas-red mb-2">12¢</div>
-          <div class="text-gray-600">Average rate per kWh in Texas</div>
-        </div>
-      </div>
+  </div>
 
-      <!-- Table of Contents -->
-      <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 mb-12">
-        <h2 class="text-2xl font-bold text-texas-navy mb-6">Table of Contents</h2>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <!-- Key Stats with Enhanced Design -->
+    <div class="grid md:grid-cols-3 gap-8 mb-16">
+      <div class="bg-white p-8 rounded-3xl shadow-md border border-gray-200 text-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+        <div class="text-4xl md:text-5xl font-bold text-texas-red mb-3">40%</div>
+        <div class="text-gray-600 font-medium">Of your bill goes to delivery (not your electric company)</div>
+      </div>
+      <div class="bg-white p-8 rounded-3xl shadow-md border border-gray-200 text-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+        <div class="text-4xl md:text-5xl font-bold text-texas-red mb-3">$180</div>
+        <div class="text-gray-600 font-medium">What most Texans actually pay (way too much)</div>
+      </div>
+      <div class="bg-white p-8 rounded-3xl shadow-md border border-gray-200 text-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+        <div class="text-4xl md:text-5xl font-bold text-texas-red mb-3">12¢</div>
+        <div class="text-gray-600 font-medium">Average rate per kWh in Texas</div>
+      </div>
+    </div>
+
+    <!-- Enhanced Table of Contents -->
+    <div class="bg-white p-10 rounded-3xl shadow-md border border-gray-200 mb-16">
+      <h2 class="text-3xl font-bold text-texas-navy mb-8 text-center">Your Bill Breakdown Guide</h2>
         <div class="grid md:grid-cols-2 gap-4">
           <ul class="space-y-2">
             <li><a href="#bill-overview" class="text-texas-navy hover:text-texas-red transition-colors">1. What All This Stuff Means</a></li>
@@ -68,7 +93,7 @@ const description = "Decode your electric bill like a pro and spot the hidden fe
       <!-- Main Content -->
       <div class="space-y-12">
         <!-- Section 1 -->
-        <section id="bill-overview" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+        <section id="bill-overview" class="bg-white p-10 rounded-3xl shadow-md border border-gray-200">
           <h2 class="text-3xl font-bold text-texas-navy mb-6">Your Texas Electricity Bill at a Glance</h2>
           
           <div class="prose prose-lg max-w-none mb-8">
@@ -116,7 +141,7 @@ const description = "Decode your electric bill like a pro and spot the hidden fe
         </section>
 
         <!-- Section 2 -->
-        <EnhancedCard variant="elevated" padding="xl" id="energy-charges">
+        <section id="energy-charges" class="bg-white p-10 rounded-3xl shadow-md border border-gray-200">
           <h2 class="text-3xl font-bold text-texas-navy mb-6">Energy Charges Explained</h2>
           
           <p class="text-gray-700 mb-6">
@@ -128,15 +153,15 @@ const description = "Decode your electric bill like a pro and spot the hidden fe
               <h3 class="text-xl font-semibold text-texas-navy mb-4">Rate Structure Types</h3>
               
               <div class="space-y-4">
-                <AccentBox accentColor="green" padding="md">
+                <div class="bg-green-50 p-6 rounded-2xl border border-green-200">
                   <h4 class="font-semibold text-green-700 mb-2">Fixed Rate (Most Common)</h4>
                   <p class="text-sm text-gray-700 mb-2">One rate per kWh for all usage during your contract term.</p>
                   <div class="bg-gray-50 p-3 rounded text-xs">
                     <strong>Example:</strong> 12.5¢/kWh × 1,000 kWh = $125.00
                   </div>
-                </AccentBox>
+                </div>
                 
-                <AccentBox accentColor="orange" padding="md">
+                <div class="bg-orange-50 p-6 rounded-2xl border border-orange-200">
                   <h4 class="font-semibold text-orange-700 mb-2">Tiered/Stepped Rate</h4>
                   <p class="text-sm text-gray-700 mb-2">Different rates for different usage levels.</p>
                   <div class="bg-gray-50 p-3 rounded text-xs">
@@ -145,9 +170,9 @@ const description = "Decode your electric bill like a pro and spot the hidden fe
                     Next 500 kWh: 14¢/kWh = $70<br>
                     Total: $120
                   </div>
-                </AccentBox>
+                </div>
                 
-                <AccentBox accentColor="navy" padding="md">
+                <div class="bg-texas-navy p-6 rounded-2xl border border-blue-300">
                   <h4 class="font-semibold text-white mb-2">Time-of-Use</h4>
                   <p class="text-sm text-blue-100 mb-2">Different rates for different times of day.</p>
                   <div class="bg-gray-50 p-3 rounded text-xs text-gray-800">
@@ -156,19 +181,19 @@ const description = "Decode your electric bill like a pro and spot the hidden fe
                     Off-Peak: 9¢/kWh<br>
                     Night: 9.5¢/kWh
                   </div>
-                </AccentBox>
+                </div>
               </div>
             </div>
 
             <div>
               <h3 class="text-xl font-semibold text-texas-navy mb-4">Understanding Your Rate</h3>
               
-              <AccentBox accentColor="gold" padding="lg" className="mb-6">
+              <div class="bg-yellow-50 p-8 rounded-2xl border border-yellow-300 mb-6">
                 <h4 class="font-semibold text-yellow-800 mb-3">⚠️ Important: Check Your Usage Level</h4>
                 <p class="text-sm text-yellow-800">
                   Many plans have different rates depending on how much electricity you use. The rate advertised may only apply at specific usage levels (often 1,000 or 2,000 kWh).
                 </p>
-              </AccentBox>
+              </div>
 
               <div class="space-y-4">
                 <div>
@@ -192,18 +217,18 @@ const description = "Decode your electric bill like a pro and spot the hidden fe
               </div>
             </div>
           </div>
-        </EnhancedCard>
+        </section>
 
         <!-- Section 3 -->
-        <EnhancedCard variant="elevated" padding="xl" id="tdsp-charges">
+        <section id="tdsp-charges" class="bg-white p-10 rounded-3xl shadow-md border border-gray-200">
           <h2 class="text-3xl font-bold text-texas-navy mb-6">TDSP Delivery Charges (The Big One!)</h2>
           
-          <AccentBox accentColor="red" padding="lg" className="mb-8">
+          <div class="bg-red-50 p-8 rounded-2xl border border-red-200 mb-8">
             <h3 class="text-lg font-semibold text-red-800 mb-3">🔍 Critical Information</h3>
             <p class="text-red-800">
               <strong>TDSP charges typically account for 35-45% of your total electricity bill</strong> and are the same regardless of which retail provider you choose. These charges pay for maintaining the power lines, transformers, and infrastructure that delivers electricity to your home.
             </p>
-          </AccentBox>
+          </div>
 
           <div class="grid md:grid-cols-2 gap-8">
             <div>
@@ -271,7 +296,7 @@ const description = "Decode your electric bill like a pro and spot the hidden fe
         </section>
 
         <!-- Section 4 -->
-        <section id="fees-taxes" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+        <section id="fees-taxes" class="bg-white p-10 rounded-3xl shadow-md border border-gray-200">
           <h2 class="text-3xl font-bold text-texas-navy mb-6">Fees and Taxes Breakdown</h2>
           
           <div class="grid md:grid-cols-2 gap-8">
@@ -362,7 +387,7 @@ const description = "Decode your electric bill like a pro and spot the hidden fe
         </section>
 
         <!-- Section 5 -->
-        <section id="usage-details" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+        <section id="usage-details" class="bg-white p-10 rounded-3xl shadow-md border border-gray-200">
           <h2 class="text-3xl font-bold text-texas-navy mb-6">Reading Your Usage Details</h2>
           
           <div class="grid md:grid-cols-2 gap-8">
@@ -457,7 +482,7 @@ const description = "Decode your electric bill like a pro and spot the hidden fe
         </section>
 
         <!-- Section 6 -->
-        <section id="billing-errors" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+        <section id="billing-errors" class="bg-white p-10 rounded-3xl shadow-md border border-gray-200">
           <h2 class="text-3xl font-bold text-texas-navy mb-6">Spotting and Resolving Billing Errors</h2>
           
           <div class="grid md:grid-cols-2 gap-8">
@@ -562,7 +587,7 @@ const description = "Decode your electric bill like a pro and spot the hidden fe
         </section>
 
         <!-- Section 7 -->
-        <section id="saving-tips" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+        <section id="saving-tips" class="bg-white p-10 rounded-3xl shadow-md border border-gray-200">
           <h2 class="text-3xl font-bold text-texas-navy mb-6">Expert Cost-Saving Tips</h2>
           
           <div class="grid md:grid-cols-2 gap-8">
@@ -655,7 +680,7 @@ const description = "Decode your electric bill like a pro and spot the hidden fe
         </section>
 
         <!-- Section 8 -->
-        <section id="contact-info" class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+        <section id="contact-info" class="bg-white p-10 rounded-3xl shadow-md border border-gray-200">
           <h2 class="text-3xl font-bold text-texas-navy mb-6">Get Help & Support</h2>
           
           <div class="grid md:grid-cols-2 gap-8">
@@ -722,21 +747,20 @@ const description = "Decode your electric bill like a pro and spot the hidden fe
         </section>
       </div>
 
-      <!-- Footer CTA -->
-      <div class="mt-16 text-center">
-        <AccentBox accentColor="navy" padding="xl">
-          <h2 class="text-3xl font-bold mb-4 text-white">Take Control of Your Electricity Costs</h2>
-          <p class="text-xl mb-8 text-blue-100">Now that you understand your bill, find a better rate and start saving.</p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/electricity-plans" class="bg-texas-red text-white px-8 py-4 rounded-lg font-semibold hover:bg-texas-red-600 transition-colors">
-              Find Better Rates
-            </a>
-            <a href="/resources/guides/choosing-a-provider" class="bg-texas-gold text-texas-navy px-8 py-4 rounded-lg font-semibold hover:bg-texas-gold-600 transition-colors">
-              How to Choose a Provider
-            </a>
-          </div>
-        </AccentBox>
+    <!-- Enhanced Footer CTA -->
+    <div class="mt-20 text-center">
+      <div class="bg-gradient-to-r from-texas-navy to-blue-800 p-12 rounded-3xl text-white shadow-2xl">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">Take Control of Your Electricity Costs</h2>
+        <p class="text-xl md:text-2xl mb-10 text-blue-100 max-w-3xl mx-auto">Now that you understand your bill, find a better rate and start saving real money.</p>
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+          <a href="/electricity-plans" class="bg-texas-red text-white px-10 py-5 rounded-2xl font-semibold text-lg hover:bg-texas-red-600 transition-all duration-300 shadow-md hover:shadow-xl">
+            Find Better Rates
+          </a>
+          <a href="/resources/guides/choosing-a-provider" class="bg-texas-gold text-texas-navy px-10 py-5 rounded-2xl font-semibold text-lg hover:bg-texas-gold-600 transition-all duration-300 shadow-md hover:shadow-xl">
+            How to Choose a Provider
+          </a>
+        </div>
       </div>
     </div>
-  </EnhancedSection>
+  </div>
 </Layout>

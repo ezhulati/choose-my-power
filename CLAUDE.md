@@ -39,6 +39,44 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm run health:check` - Check system health
 - `npm run cache:stats` - View cache statistics
 
+## CRITICAL: Plan ID & ESID System Architecture
+
+### ⚠️ **NEVER USE HARDCODED PLAN IDs or ESIDs** ⚠️
+
+This system was previously affected by a critical bug where hardcoded plan IDs caused wrong plans to be ordered. The system is now 100% dynamic and must remain so.
+
+#### **Plan ID Resolution Flow** (MUST BE DYNAMIC)
+1. **User selects plan** → Plan data includes name, provider, city context
+2. **ProductDetailsPageShadcn.tsx** → Calls `/api/plans/search` with plan name + provider + city
+3. **API returns MongoDB ObjectId** → Real plan ID from generated data files
+4. **AddressSearchModal.tsx** → Uses `getPlanObjectId()` to validate and extract plan ID
+5. **Order URL contains correct plan ID** → Passed to ComparePower order system
+
+#### **ESID Resolution Flow** (MUST BE ADDRESS-BASED)
+1. **User enters address** → Street address + ZIP code
+2. **ERCOT validation API** → Generates ESID based on ZIP code pattern
+3. **TDSP mapping** → Determines utility territory from ESID
+4. **Order URL contains user's ESID** → Actual service location ID
+
+### **Critical Files That Handle Plan/ESID IDs**
+- `src/components/ui/AddressSearchModal.tsx` - Plan ID validation & order URL generation
+- `src/components/ui/ProductDetailsPageShadcn.tsx` - API plan ID fetching
+- `src/pages/api/plans/search.ts` - Plan ID resolution from real data
+- `src/lib/api/plan-data-service.ts` - Dynamic plan data retrieval
+- `src/pages/api/ercot/validate.ts` - ESID generation from address
+
+### **Verification Commands**
+```bash
+# Test plan ID resolution (must return real MongoDB ObjectIds)
+curl "http://localhost:4325/api/plans/search?name=Cash%20Money%2012&provider=4Change%20Energy&city=dallas"
+
+# Test ESID generation (must be address-based)
+curl -X POST "http://localhost:4325/api/ercot/validate" -H "Content-Type: application/json" -d '{"esiid": "10123456789012345"}'
+
+# Verify no hardcoded plan IDs in source code
+grep -r "68b[0-9a-f]\{21\}" src/ --exclude-dir=data
+```
+
 ## Architecture Overview
 
 ### Core Technologies
@@ -140,6 +178,39 @@ Located in `src/config/`, handles Texas utility territories:
 - Use `npm run db:test` to verify database connectivity
 - Check environment variables for database configuration
 - Ensure proper SSL configuration for production
+
+### Plan ID & ESID Issues (CRITICAL)
+**⚠️ If users report wrong plans being ordered or address validation failures:**
+
+#### Plan ID Troubleshooting
+```bash
+# 1. Test plan ID resolution for affected provider
+curl "http://localhost:4325/api/plans/search?name=PLAN_NAME&provider=PROVIDER_NAME&city=CITY"
+
+# 2. Check for hardcoded plan IDs in source code (should return ZERO results)
+grep -r "68b[0-9a-f]\{21\}" src/ --exclude-dir=data
+
+# 3. Verify plan data service is using real data files
+ls -la src/data/generated/dallas.json
+```
+
+#### ESID Troubleshooting
+```bash
+# 1. Test ESID generation
+curl -X POST "http://localhost:4325/api/ercot/validate" -H "Content-Type: application/json" -d '{"esiid": "10123456789012345"}'
+
+# 2. Check for hardcoded ESIDs (should return ZERO results)  
+grep -r "10[0-9]\{15\}" src/ --exclude-dir=test
+
+# 3. Verify TDSP mapping is address-based
+# Different ZIP patterns should generate different TDSPs
+```
+
+#### Emergency Response
+- **DO NOT** add hardcoded fallback plan IDs
+- **DO NOT** use default ESIDs
+- Show error messages instead of wrong data
+- Check `/docs/PLAN-ID-ESID-SPECIFICATION.md` for complete requirements
 
 ## SEO & Content Strategy
 This platform generates 2000+ pages dynamically. Key patterns:
@@ -427,6 +498,15 @@ gap-4 md:gap-6 lg:gap-8
   @apply bg-gradient-to-r from-texas-navy via-blue-800 to-texas-navy;
 }
 
+/* Professional Hero Section with Proper Overlay Containment */
+.professional-hero {
+  @apply relative bg-gradient-to-br from-texas-navy via-blue-800 to-texas-navy text-white;
+}
+
+.professional-hero-overlay {
+  @apply absolute inset-0 bg-black/20;
+}
+
 /* Section Backgrounds */
 .section-cream {
   @apply bg-gradient-to-b from-texas-cream to-gray-50;
@@ -434,7 +514,7 @@ gap-4 md:gap-6 lg:gap-8
 
 /* Texas Themed Shadows */
 .texas-shadow {
-  @apply shadow-lg shadow-texas-red/10;
+  @apply shadow-md shadow-texas-red/10;
 }
 ```
 
@@ -471,6 +551,8 @@ gap-4 md:gap-6 lg:gap-8
 - ❌ Don't use less than text-sm for body text
 - ❌ Don't create custom spacing outside the scale
 - ❌ Don't skip hover/focus states on buttons/links
+- ❌ **CRITICAL:** Never use `absolute inset-0 bg-black/20` without `relative` positioning on the parent container - this causes overlay bleed beyond hero sections
+- ❌ Don't use `shadow-lg` - use `shadow-md` for professional, lighter shadows
 
 ### 🔄 Maintenance Protocol
 

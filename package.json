@@ -27,6 +27,7 @@
     "preview:local": "LOCAL_BUILD=true astro preview",
     "astro": "astro",
     "lint": "eslint .",
+    "validate:ids": "./scripts/validate-no-hardcoded-ids.sh",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
