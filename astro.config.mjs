@@ -15,7 +15,6 @@ const getAdapter = () => {
     return netlify({
       dist: new URL('./dist/', import.meta.url),
       edgeMiddleware: false,
-      functionPerRoute: true,
     });
   } else {
     console.log('🔧 Using Node adapter for local development/build');
