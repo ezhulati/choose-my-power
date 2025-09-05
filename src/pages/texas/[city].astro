@@ -22,7 +22,14 @@ import EnhancedCard from '../../components/ui/EnhancedCard.astro';
 import EnhancedList from '../../components/ui/EnhancedList.astro';
 import AccentBox from '../../components/ui/AccentBox.astro';
 
-export const prerender = false;
+export const prerender = true;
+
+export async function getStaticPaths() {
+  // Generate static paths for all cities in the TDSP mapping
+  return Object.keys(tdspMapping).map(citySlug => ({
+    params: { city: citySlug }
+  }));
+}
 
 const { city } = Astro.params;
 const url = new URL(Astro.request.url);

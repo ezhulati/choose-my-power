@@ -18,6 +18,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Added critical DON'T rules for shadow usage and overlay positioning
 
 ### Fixed
+- **CRITICAL ROUTING**: Fixed city page navigation from ZIP code search causing ERR_FAILED errors
+  - Changed texas/[city].astro from SSR (prerender: false) to static prerendering (prerender: true)
+  - Added getStaticPaths() to generate routes for all 880+ Texas cities at build time
+  - Fixed ZIP code search navigation (75205 → dallas) that was failing with "This site can't be reached"
+  - Resolved "Unable to search for service locations" user experience issue
 - **CRITICAL BUILD**: Fixed JSX syntax error in ProviderPage.tsx causing Netlify deployment failures
   - Corrected mismatched closing tag on line 217 (`</EnhancedSectionReact>` → `</div>`)
   - Added missing closing div tag in hero section (line 217) to fix unclosed JSX element
