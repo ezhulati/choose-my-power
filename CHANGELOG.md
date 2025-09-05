@@ -13,15 +13,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Enhanced CLAUDE.md with critical Plan ID & ESID troubleshooting section
   - Created validation script (`scripts/validate-no-hardcoded-ids.sh`) to detect hardcoded values
   - Added `npm run validate:ids` command to package.json
+- **DESIGN SYSTEM**: Enhanced Texas design system documentation with hero overlay best practices
+  - Added professional hero section patterns with proper overlay containment
+  - Added critical DON'T rules for shadow usage and overlay positioning
 
 ### Fixed
 - **REMOVED**: Hardcoded ESID mappings in old `/api/ercot/search` endpoint
 - **ENHANCED**: AddressSearchModal now uses dynamic ESID generation via `/api/ercot/search-dynamic`
 - **CLEANED**: Removed unused files with hardcoded plan IDs (`AddressSearchModalFixed.tsx`)
+- **CRITICAL UX**: Fixed hardcoded Houston navigation across 15+ page components
+  - ZIP code searches now route to actual electricity plans instead of non-existent pages
+  - ElectricityCompaniesPage, ComparePage, RateCalculatorPage, ShopPage routing fixed
+  - Users can now successfully find plans for their ZIP codes
+- **DESIGN**: Fixed hero section overlay bleed issues across all pages
+  - Added `relative` positioning to hero containers to contain `absolute inset-0 bg-black/20` overlays
+  - Prevents dark shadow extending beyond hero section boundaries
+- **VISUAL**: Replaced harsh `shadow-lg` with professional `shadow-md` across all components
+- **SPACING**: Fixed spacing between trust signal badges and statistics on Texas page
 
 ### Changed
 - **UPGRADED**: ESID search system from hardcoded database to dynamic generation based on ZIP codes
 - **STRENGTHENED**: Validation pipeline to prevent hardcoded plan/ESID values in source code
+- **IMPROVED**: Hero section padding standardized to `py-32 lg:py-40` for proper breathing room
 
 ## [1.1.0] - 2025-09-05
 
