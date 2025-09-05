@@ -1,0 +1,4138 @@
+{
+  "citySlug": "highland-park-tx",
+  "cityName": "Highland Park",
+  "tdsp": {
+    "duns": "1039940674000",
+    "name": "Oncor Electric Delivery",
+    "zone": "North",
+    "tier": 3,
+    "priority": 0.48
+  },
+  "baseApiUrl": "highland-park",
+  "filters": {
+    "no-filters": {
+      "plans": [
+        {
+          "id": "68b5a47c206770f7c563208a",
+          "name": "Simply Days Free - 12",
+          "provider": {
+            "name": "Amigo Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.188,
+            "rate1000kWh": 0.174,
+            "rate2000kWh": 0.167,
+            "ratePerKwh": 0.174
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 0,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "9:00 am-4:00 pm",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a47c206770f7c563208f",
+          "name": "Simply Days Free - 24",
+          "provider": {
+            "name": "Amigo Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.183,
+            "rate1000kWh": 0.169,
+            "rate2000kWh": 0.162,
+            "ratePerKwh": 0.169
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 0,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "9:00 am-4:00 pm",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b84e0e206770f7c563793b",
+          "name": "Nights Free Plan - 12",
+          "provider": {
+            "name": "Amigo Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.178,
+            "rate1000kWh": 0.173,
+            "rate2000kWh": 0.17,
+            "ratePerKwh": 0.173
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 26.3,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "Off-peak hours",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b17a6c890a850ebca0d5ad",
+          "name": "12th Month Free - 12",
+          "provider": {
+            "name": "Amigo Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.174,
+            "rate1000kWh": 0.174,
+            "rate2000kWh": 0.174,
+            "ratePerKwh": 0.174
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 31.5,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a444206770f7c5632085",
+          "name": "Secure Energy - 24",
+          "provider": {
+            "name": "Amigo Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.192,
+            "rate1000kWh": 0.168,
+            "rate2000kWh": 0.166,
+            "ratePerKwh": 0.168
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 31.5,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a4f4206770f7c5632094",
+          "name": "Value Wise - 12",
+          "provider": {
+            "name": "Tara Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.214,
+            "rate1000kWh": 0.135,
+            "rate2000kWh": 0.171,
+            "ratePerKwh": 0.135
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 31.5,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a4f5206770f7c5632099",
+          "name": "Value Wise - 24",
+          "provider": {
+            "name": "Tara Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.217,
+            "rate1000kWh": 0.138,
+            "rate2000kWh": 0.174,
+            "ratePerKwh": 0.138
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 31.5,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b1a44b64bd2c63b1b10963",
+          "name": "Weekends Free Plan - 24",
+          "provider": {
+            "name": "Tara Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.169,
+            "rate1000kWh": 0.164,
+            "rate2000kWh": 0.162,
+            "ratePerKwh": 0.164
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 31.5,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "Off-peak hours",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a320206770f7c563200e",
+          "name": "Mega Saver - 24",
+          "provider": {
+            "name": "Just Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.194,
+            "rate1000kWh": 0.19,
+            "rate2000kWh": 0.113,
+            "ratePerKwh": 0.19
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 15,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a321206770f7c5632012",
+          "name": "Power Plus - 12",
+          "provider": {
+            "name": "Just Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.212,
+            "rate1000kWh": 0.108,
+            "rate2000kWh": 0.156,
+            "ratePerKwh": 0.108
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 26.3,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b56ef7206770f7c56318db",
+          "name": "Simple Choice - 12",
+          "provider": {
+            "name": "Just Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.165,
+            "rate1000kWh": 0.156,
+            "rate2000kWh": 0.152,
+            "ratePerKwh": 0.156
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 26.3,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b56ef7206770f7c56318dd",
+          "name": "Basics - 12",
+          "provider": {
+            "name": "Just Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.161,
+            "rate1000kWh": 0.157,
+            "rate2000kWh": 0.155,
+            "ratePerKwh": 0.157
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 31.5,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b56ef7206770f7c56318e0",
+          "name": "Basics - 24",
+          "provider": {
+            "name": "Just Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.165,
+            "rate1000kWh": 0.161,
+            "rate2000kWh": 0.159,
+            "ratePerKwh": 0.161
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 31.5,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a321206770f7c5632017",
+          "name": "Power Plus - 24",
+          "provider": {
+            "name": "Just Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.22,
+            "rate1000kWh": 0.116,
+            "rate2000kWh": 0.164,
+            "ratePerKwh": 0.116
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 31.5,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b56ef7206770f7c56318de",
+          "name": "Simple Choice - 24",
+          "provider": {
+            "name": "Just Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.169,
+            "rate1000kWh": 0.16,
+            "rate2000kWh": 0.156,
+            "ratePerKwh": 0.16
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 175,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 31.5,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b9f00f77bde898d6bdfaf6",
+          "name": "Cash Money 12",
+          "provider": {
+            "name": "4Change Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.224,
+            "rate1000kWh": 0.164,
+            "rate2000kWh": 0.18,
+            "ratePerKwh": 0.164
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 6,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b9f00f77bde898d6bdfaf5",
+          "name": "One Rate 12",
+          "provider": {
+            "name": "4Change Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.181,
+            "rate1000kWh": 0.172,
+            "rate2000kWh": 0.167,
+            "ratePerKwh": 0.172
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 6,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b9f00f77bde898d6bdfaf4",
+          "name": "Power Maxx Saver 12",
+          "provider": {
+            "name": "4Change Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.192,
+            "rate1000kWh": 0.183,
+            "rate2000kWh": 0.128,
+            "ratePerKwh": 0.183
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 6,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b9f00f77bde898d6bdfaf2",
+          "name": "One Rate 24",
+          "provider": {
+            "name": "4Change Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.182,
+            "rate1000kWh": 0.172,
+            "rate2000kWh": 0.168,
+            "ratePerKwh": 0.172
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 480,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 6,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b9f00f77bde898d6bdfaf1",
+          "name": "Power Maxx Saver 24",
+          "provider": {
+            "name": "4Change Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.192,
+            "rate1000kWh": 0.183,
+            "rate2000kWh": 0.128,
+            "ratePerKwh": 0.183
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 480,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 6,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b9f00f77bde898d6bdfaf8",
+          "name": "Maxx Saver Value 12",
+          "provider": {
+            "name": "4Change Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.225,
+            "rate1000kWh": 0.096,
+            "rate2000kWh": 0.156,
+            "ratePerKwh": 0.096
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 9,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b9f00f77bde898d6bdfaf3",
+          "name": "Power Savvy Saver 12",
+          "provider": {
+            "name": "4Change Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.205,
+            "rate1000kWh": 0.191,
+            "rate2000kWh": 0.179,
+            "ratePerKwh": 0.191
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 9,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b9f00f77bde898d6bdfaf7",
+          "name": "Maxx Saver Value 24",
+          "provider": {
+            "name": "4Change Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.225,
+            "rate1000kWh": 0.096,
+            "rate2000kWh": 0.156,
+            "ratePerKwh": 0.096
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 480,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 9,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b52c219df7fc01f8e66939",
+          "name": "Frontier Saver Deluxe 12",
+          "provider": {
+            "name": "Frontier Utilities",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.197,
+            "rate1000kWh": 0.193,
+            "rate2000kWh": 0.141,
+            "ratePerKwh": 0.193
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 30.4,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b7cf34206770f7c563692d",
+          "name": "Frontier Saver Plus 12",
+          "provider": {
+            "name": "Frontier Utilities",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.225,
+            "rate1000kWh": 0.096,
+            "rate2000kWh": 0.156,
+            "ratePerKwh": 0.096
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 30.4,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b52c219df7fc01f8e6693b",
+          "name": "Frontier Saver Premier 12",
+          "provider": {
+            "name": "Frontier Utilities",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.209,
+            "rate1000kWh": 0.205,
+            "rate2000kWh": 0.128,
+            "ratePerKwh": 0.205
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 30.4,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b52c219df7fc01f8e6693e",
+          "name": "Frontier Saver Value 12",
+          "provider": {
+            "name": "Frontier Utilities",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.156,
+            "rate1000kWh": 0.202,
+            "rate2000kWh": 0.225,
+            "ratePerKwh": 0.202
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 30.4,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b52c219df7fc01f8e6693c",
+          "name": "Frontier Saver Value Plus 12",
+          "provider": {
+            "name": "Frontier Utilities",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.238,
+            "rate1000kWh": 0.159,
+            "rate2000kWh": 0.195,
+            "ratePerKwh": 0.159
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 30.4,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b52c219df7fc01f8e6693d",
+          "name": "Light Saver 12",
+          "provider": {
+            "name": "Frontier Utilities",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.173,
+            "rate1000kWh": 0.161,
+            "rate2000kWh": 0.151,
+            "ratePerKwh": 0.161
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 30.4,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b52c279df7fc01f8e6696c",
+          "name": "Gexa Eco Saver Advantage 12",
+          "provider": {
+            "name": "Gexa Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.198,
+            "rate1000kWh": 0.194,
+            "rate2000kWh": 0.142,
+            "ratePerKwh": 0.194
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b52c279df7fc01f8e66972",
+          "name": "Gexa Eco Saver Edge Plus 12",
+          "provider": {
+            "name": "Gexa Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.229,
+            "rate1000kWh": 0.124,
+            "rate2000kWh": 0.172,
+            "ratePerKwh": 0.124
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b52c279df7fc01f8e66968",
+          "name": "Gexa Eco Saver Lite 12",
+          "provider": {
+            "name": "Gexa Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.156,
+            "rate1000kWh": 0.202,
+            "rate2000kWh": 0.225,
+            "ratePerKwh": 0.202
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b7cf3b206770f7c563695b",
+          "name": "Gexa Eco Saver Plus 12",
+          "provider": {
+            "name": "Gexa Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.225,
+            "rate1000kWh": 0.096,
+            "rate2000kWh": 0.156,
+            "ratePerKwh": 0.096
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b52c279df7fc01f8e6696b",
+          "name": "Gexa Eco Saver Premier 12",
+          "provider": {
+            "name": "Gexa Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.209,
+            "rate1000kWh": 0.205,
+            "rate2000kWh": 0.128,
+            "ratePerKwh": 0.205
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b52c279df7fc01f8e6696e",
+          "name": "Gexa Eco Saver Value 12",
+          "provider": {
+            "name": "Gexa Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.238,
+            "rate1000kWh": 0.159,
+            "rate2000kWh": 0.195,
+            "ratePerKwh": 0.159
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b52c279df7fc01f8e6696a",
+          "name": "Gexa Light Saver 12",
+          "provider": {
+            "name": "Gexa Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.174,
+            "rate1000kWh": 0.162,
+            "rate2000kWh": 0.152,
+            "ratePerKwh": 0.162
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a27f206770f7c5631ff3",
+          "name": "Pollution Free Conserve 12 Preferred",
+          "provider": {
+            "name": "Green Mountain",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.184,
+            "rate1000kWh": 0.175,
+            "rate2000kWh": 0.18,
+            "ratePerKwh": 0.175
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a0e1206770f7c5631fe7",
+          "name": "Pollution Free Green Savings Plus 12 Preferred",
+          "provider": {
+            "name": "Green Mountain",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.231,
+            "rate1000kWh": 0.227,
+            "rate2000kWh": 0.149,
+            "ratePerKwh": 0.227
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b528be9df7fc01f8e66859",
+          "name": "Pollution Free e-Plus 12 Preferred",
+          "provider": {
+            "name": "Green Mountain",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.186,
+            "rate1000kWh": 0.182,
+            "rate2000kWh": 0.179,
+            "ratePerKwh": 0.182
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a280206770f7c5631ff8",
+          "name": "Pollution Free Conserve 24 Preferred",
+          "provider": {
+            "name": "Green Mountain",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.184,
+            "rate1000kWh": 0.175,
+            "rate2000kWh": 0.18,
+            "ratePerKwh": 0.175
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a0e1206770f7c5631fec",
+          "name": "Pollution Free Green Savings Plus 24 Preferred",
+          "provider": {
+            "name": "Green Mountain",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.221,
+            "rate1000kWh": 0.217,
+            "rate2000kWh": 0.139,
+            "ratePerKwh": 0.217
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b528bd9df7fc01f8e66857",
+          "name": "Pollution Free e-Plus 24 Preferred",
+          "provider": {
+            "name": "Green Mountain",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.186,
+            "rate1000kWh": 0.182,
+            "rate2000kWh": 0.179,
+            "ratePerKwh": 0.182
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a0df206770f7c5631fd3",
+          "name": "Bill Credit Bundle 12",
+          "provider": {
+            "name": "Discount Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.228,
+            "rate1000kWh": 0.099,
+            "rate2000kWh": 0.159,
+            "ratePerKwh": 0.099
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a0e0206770f7c5631fe2",
+          "name": "Bill Credit Bundle 24",
+          "provider": {
+            "name": "Discount Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.228,
+            "rate1000kWh": 0.099,
+            "rate2000kWh": 0.159,
+            "ratePerKwh": 0.099
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b528be9df7fc01f8e66868",
+          "name": "Wise Buy Basic 24 Online",
+          "provider": {
+            "name": "Discount Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.182,
+            "rate1000kWh": 0.158,
+            "rate2000kWh": 0.155,
+            "ratePerKwh": 0.158
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a0df206770f7c5631fd8",
+          "name": "Bill Credit Bundle 2000 kWh 12",
+          "provider": {
+            "name": "Discount Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.211,
+            "rate1000kWh": 0.207,
+            "rate2000kWh": 0.129,
+            "ratePerKwh": 0.207
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b528be9df7fc01f8e6686a",
+          "name": "Essential Saver 12",
+          "provider": {
+            "name": "Discount Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.163,
+            "rate1000kWh": 0.159,
+            "rate2000kWh": 0.156,
+            "ratePerKwh": 0.159
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a0e0206770f7c5631fdd",
+          "name": "Bill Credit Bundle 2000 kWh 24",
+          "provider": {
+            "name": "Discount Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.211,
+            "rate1000kWh": 0.207,
+            "rate2000kWh": 0.129,
+            "ratePerKwh": 0.207
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b528c39df7fc01f8e66896",
+          "name": "Reliant Basic Power 12 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.192,
+            "rate1000kWh": 0.168,
+            "rate2000kWh": 0.165,
+            "ratePerKwh": 0.168
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b59e96206770f7c5631efd",
+          "name": "Reliant Power Savings 12 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.209,
+            "rate1000kWh": 0.155,
+            "rate2000kWh": 0.177,
+            "ratePerKwh": 0.155
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b528c39df7fc01f8e66897",
+          "name": "Reliant Basic Power 24 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.206,
+            "rate1000kWh": 0.182,
+            "rate2000kWh": 0.179,
+            "ratePerKwh": 0.182
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b59e97206770f7c5631f0c",
+          "name": "Reliant Power Savings 24 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.209,
+            "rate1000kWh": 0.155,
+            "rate2000kWh": 0.177,
+            "ratePerKwh": 0.155
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a280206770f7c5631ffd",
+          "name": "Reliant Conservation 12 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.178,
+            "rate1000kWh": 0.169,
+            "rate2000kWh": 0.174,
+            "ratePerKwh": 0.169
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b59e96206770f7c5631f02",
+          "name": "Reliant Power Savings 2,000 kWh 12 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.231,
+            "rate1000kWh": 0.227,
+            "rate2000kWh": 0.149,
+            "ratePerKwh": 0.227
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b528c39df7fc01f8e66899",
+          "name": "Reliant Pure Power 12 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.183,
+            "rate1000kWh": 0.174,
+            "rate2000kWh": 0.169,
+            "ratePerKwh": 0.174
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a280206770f7c5632002",
+          "name": "Reliant Conservation 24 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.178,
+            "rate1000kWh": 0.169,
+            "rate2000kWh": 0.174,
+            "ratePerKwh": 0.169
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b59e97206770f7c5631f07",
+          "name": "Reliant Power Savings 2,000 kWh 24 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.227,
+            "rate1000kWh": 0.223,
+            "rate2000kWh": 0.145,
+            "ratePerKwh": 0.223
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b528c39df7fc01f8e66898",
+          "name": "Reliant Pure Power 24 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.183,
+            "rate1000kWh": 0.174,
+            "rate2000kWh": 0.169,
+            "ratePerKwh": 0.174
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b59e98206770f7c5631f12",
+          "name": "Reliant Truly Free Nights 100% Solar 12 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.196,
+            "rate1000kWh": 0.192,
+            "rate2000kWh": 0.189,
+            "ratePerKwh": 0.192
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "Off-peak hours",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b59e98206770f7c5631f18",
+          "name": "Reliant Truly Free Weekends 100% Solar 12 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.196,
+            "rate1000kWh": 0.192,
+            "rate2000kWh": 0.189,
+            "ratePerKwh": 0.192
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "Off-peak hours",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b59e94206770f7c5631ee8",
+          "name": "Simple Bill Credit 12",
+          "provider": {
+            "name": "Cirro Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.228,
+            "rate1000kWh": 0.099,
+            "rate2000kWh": 0.159,
+            "ratePerKwh": 0.099
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b59e95206770f7c5631eed",
+          "name": "Simple Bill Credit 24",
+          "provider": {
+            "name": "Cirro Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.228,
+            "rate1000kWh": 0.099,
+            "rate2000kWh": 0.159,
+            "ratePerKwh": 0.099
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b528c39df7fc01f8e66893",
+          "name": "Smart Value 24",
+          "provider": {
+            "name": "Cirro Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.193,
+            "rate1000kWh": 0.159,
+            "rate2000kWh": 0.171,
+            "ratePerKwh": 0.159
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b528c39df7fc01f8e66891",
+          "name": "Smart Value 12",
+          "provider": {
+            "name": "Cirro Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.189,
+            "rate1000kWh": 0.155,
+            "rate2000kWh": 0.167,
+            "ratePerKwh": 0.155
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 21,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b528c39df7fc01f8e66894",
+          "name": "Simple Advantage 12",
+          "provider": {
+            "name": "Cirro Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.163,
+            "rate1000kWh": 0.159,
+            "rate2000kWh": 0.156,
+            "ratePerKwh": 0.159
+          },
+          "contract": {
+            "length": 12,
+            "type": "variable",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b59e95206770f7c5631ef2",
+          "name": "Simple Bill Credit Bundle 2000 kWh 12",
+          "provider": {
+            "name": "Cirro Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.211,
+            "rate1000kWh": 0.207,
+            "rate2000kWh": 0.129,
+            "ratePerKwh": 0.207
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b528c39df7fc01f8e66892",
+          "name": "Simple Advantage 24",
+          "provider": {
+            "name": "Cirro Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.163,
+            "rate1000kWh": 0.159,
+            "rate2000kWh": 0.156,
+            "ratePerKwh": 0.159
+          },
+          "contract": {
+            "length": 24,
+            "type": "variable",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b59e96206770f7c5631ef7",
+          "name": "Simple Bill Credit Bundle 2000 kWh 24",
+          "provider": {
+            "name": "Cirro Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.211,
+            "rate1000kWh": 0.207,
+            "rate2000kWh": 0.129,
+            "ratePerKwh": 0.207
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a0dd206770f7c5631fc4",
+          "name": "Live Brighter Lite 12",
+          "provider": {
+            "name": "Direct Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.159,
+            "rate1000kWh": 0.155,
+            "rate2000kWh": 0.157,
+            "ratePerKwh": 0.155
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b528bd9df7fc01f8e66855",
+          "name": "Live Brighter 1K+ 24",
+          "provider": {
+            "name": "Direct Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.186,
+            "rate1000kWh": 0.172,
+            "rate2000kWh": 0.159,
+            "ratePerKwh": 0.172
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a0de206770f7c5631fc9",
+          "name": "Live Brighter Lite 24",
+          "provider": {
+            "name": "Direct Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.159,
+            "rate1000kWh": 0.155,
+            "rate2000kWh": 0.157,
+            "ratePerKwh": 0.155
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b5a0de206770f7c5631fce",
+          "name": "Twelve Hour Power 12",
+          "provider": {
+            "name": "Direct Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.244,
+            "rate1000kWh": 0.232,
+            "rate2000kWh": 0.225,
+            "ratePerKwh": 0.232
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 20,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "Off-peak hours",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b528bd9df7fc01f8e66856",
+          "name": "Bright Secure 12",
+          "provider": {
+            "name": "Direct Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.168,
+            "rate1000kWh": 0.159,
+            "rate2000kWh": 0.154,
+            "ratePerKwh": 0.159
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 35,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b64557206770f7c563356d",
+          "name": "6 Month - Prepaid",
+          "provider": {
+            "name": "Payless Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.178,
+            "rate1000kWh": 0.179,
+            "rate2000kWh": 0.164,
+            "ratePerKwh": 0.179
+          },
+          "contract": {
+            "length": 6,
+            "type": "fixed",
+            "earlyTerminationFee": 99,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 26,
+            "billCredit": 0,
+            "deposit": {
+              "required": true,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b64557206770f7c563356e",
+          "name": "12 Month - Prepaid",
+          "provider": {
+            "name": "Payless Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.182,
+            "rate1000kWh": 0.183,
+            "rate2000kWh": 0.168,
+            "ratePerKwh": 0.183
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 99,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 26.2,
+            "billCredit": 0,
+            "deposit": {
+              "required": true,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68ba6ec74030b9912e39d48f",
+          "name": "Flex Forward",
+          "provider": {
+            "name": "TXU Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.196,
+            "rate1000kWh": 0.182,
+            "rate2000kWh": 0.175,
+            "ratePerKwh": 0.182
+          },
+          "contract": {
+            "length": 1,
+            "type": "fixed",
+            "earlyTerminationFee": 0,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 9,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68ba6ec74030b9912e39d484",
+          "name": "Ultimate Season Pass 12",
+          "provider": {
+            "name": "TXU Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.206,
+            "rate1000kWh": 0.192,
+            "rate2000kWh": 0.185,
+            "ratePerKwh": 0.192
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 9,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "Off-peak hours",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68ba6ec74030b9912e39d48a",
+          "name": "Free Nights & Solar Days 12 (8 pm)",
+          "provider": {
+            "name": "TXU Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.21,
+            "rate1000kWh": 0.195,
+            "rate2000kWh": 0.188,
+            "ratePerKwh": 0.195
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68bb05f54030b9912e39e496",
+          "name": "Rhythm Saver 12",
+          "provider": {
+            "name": "Rhythm Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.195,
+            "rate1000kWh": 0.096,
+            "rate2000kWh": 0.146,
+            "ratePerKwh": 0.096
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68bb05f54030b9912e39e498",
+          "name": "Watt a Deal 12",
+          "provider": {
+            "name": "Rhythm Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.19,
+            "rate1000kWh": 0.191,
+            "rate2000kWh": 0.129,
+            "ratePerKwh": 0.191
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68bb025a4030b9912e39e434",
+          "name": "Simply Green 13",
+          "provider": {
+            "name": "Rhythm Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.185,
+            "rate1000kWh": 0.171,
+            "rate2000kWh": 0.164,
+            "ratePerKwh": 0.171
+          },
+          "contract": {
+            "length": 13,
+            "type": "fixed",
+            "earlyTerminationFee": 260,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68bb025a4030b9912e39e436",
+          "name": "Simply Green 23",
+          "provider": {
+            "name": "Rhythm Energy",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.184,
+            "rate1000kWh": 0.17,
+            "rate2000kWh": 0.163,
+            "ratePerKwh": 0.17
+          },
+          "contract": {
+            "length": 23,
+            "type": "fixed",
+            "earlyTerminationFee": 460,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b6f554206770f7c5634c9d",
+          "name": "Ultra Flex 1",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.199,
+            "rate1000kWh": 0.19,
+            "rate2000kWh": 0.186,
+            "ratePerKwh": 0.19
+          },
+          "contract": {
+            "length": 1,
+            "type": "fixed",
+            "earlyTerminationFee": 0,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68bb1ae84030b9912e39e6da",
+          "name": "SimpleSaver 12",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.199,
+            "rate1000kWh": 0.095,
+            "rate2000kWh": 0.143,
+            "ratePerKwh": 0.095
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b9fab64030b9912e39c755",
+          "name": "True Simple 12",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.158,
+            "rate1000kWh": 0.154,
+            "rate2000kWh": 0.152,
+            "ratePerKwh": 0.154
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b9de8a4030b9912e39c468",
+          "name": "SimpleSaver 14",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.201,
+            "rate1000kWh": 0.097,
+            "rate2000kWh": 0.145,
+            "ratePerKwh": 0.097
+          },
+          "contract": {
+            "length": 14,
+            "type": "fixed",
+            "earlyTerminationFee": 250,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b9fab64030b9912e39c754",
+          "name": "True Simple 14",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.157,
+            "rate1000kWh": 0.153,
+            "rate2000kWh": 0.151,
+            "ratePerKwh": 0.153
+          },
+          "contract": {
+            "length": 14,
+            "type": "fixed",
+            "earlyTerminationFee": 250,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b9f7314030b9912e39c6ed",
+          "name": "SimpleSaver 24",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.207,
+            "rate1000kWh": 0.103,
+            "rate2000kWh": 0.151,
+            "ratePerKwh": 0.103
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 250,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b9fab64030b9912e39c756",
+          "name": "True Simple 24",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.163,
+            "rate1000kWh": 0.159,
+            "rate2000kWh": 0.157,
+            "ratePerKwh": 0.159
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 250,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b9f7314030b9912e39c6ee",
+          "name": "SimpleSaver 36",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.214,
+            "rate1000kWh": 0.11,
+            "rate2000kWh": 0.158,
+            "ratePerKwh": 0.11
+          },
+          "contract": {
+            "length": 36,
+            "type": "fixed",
+            "earlyTerminationFee": 350,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b9fab64030b9912e39c753",
+          "name": "True Simple 36",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.169,
+            "rate1000kWh": 0.165,
+            "rate2000kWh": 0.163,
+            "ratePerKwh": 0.165
+          },
+          "contract": {
+            "length": 36,
+            "type": "fixed",
+            "earlyTerminationFee": 350,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b991414030b9912e39bc03",
+          "name": "Radiance1000  12",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.226,
+            "rate1000kWh": 0.122,
+            "rate2000kWh": 0.17,
+            "ratePerKwh": 0.122
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b991414030b9912e39bc02",
+          "name": "Radiance2000  12",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.229,
+            "rate1000kWh": 0.225,
+            "rate2000kWh": 0.123,
+            "ratePerKwh": 0.225
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b991414030b9912e39bbfd",
+          "name": "Luminous 24",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.171,
+            "rate1000kWh": 0.167,
+            "rate2000kWh": 0.165,
+            "ratePerKwh": 0.167
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 480,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b991424030b9912e39bc04",
+          "name": "Radiance1000  24",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.231,
+            "rate1000kWh": 0.127,
+            "rate2000kWh": 0.175,
+            "ratePerKwh": 0.127
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b991414030b9912e39bbfc",
+          "name": "Radiance2000  24",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.234,
+            "rate1000kWh": 0.23,
+            "rate2000kWh": 0.128,
+            "ratePerKwh": 0.23
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b991424030b9912e39bc09",
+          "name": "Luminous 36",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.173,
+            "rate1000kWh": 0.169,
+            "rate2000kWh": 0.167,
+            "ratePerKwh": 0.169
+          },
+          "contract": {
+            "length": 36,
+            "type": "fixed",
+            "earlyTerminationFee": 720,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b991424030b9912e39bc05",
+          "name": "Radiance1000  36",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.233,
+            "rate1000kWh": 0.129,
+            "rate2000kWh": 0.177,
+            "ratePerKwh": 0.129
+          },
+          "contract": {
+            "length": 36,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b991414030b9912e39bc00",
+          "name": "Radiance2000  36",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.236,
+            "rate1000kWh": 0.232,
+            "rate2000kWh": 0.13,
+            "ratePerKwh": 0.232
+          },
+          "contract": {
+            "length": 36,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b991424030b9912e39bc0e",
+          "name": "Luminous Nights 12",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.167,
+            "rate1000kWh": 0.163,
+            "rate2000kWh": 0.161,
+            "ratePerKwh": 0.163
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "9:00 PM-9:00 AM",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b991414030b9912e39bbff",
+          "name": "Luminous Weekends 12",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.167,
+            "rate1000kWh": 0.163,
+            "rate2000kWh": 0.161,
+            "ratePerKwh": 0.163
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "Off-peak hours",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b991424030b9912e39bc08",
+          "name": "Luminous Nights 24",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.172,
+            "rate1000kWh": 0.167,
+            "rate2000kWh": 0.165,
+            "ratePerKwh": 0.167
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 480,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "9:00 PM-9:00 AM",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b991424030b9912e39bc0b",
+          "name": "Luminous Weekends 24",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.171,
+            "rate1000kWh": 0.167,
+            "rate2000kWh": 0.165,
+            "ratePerKwh": 0.167
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 480,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "Off-peak hours",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b991424030b9912e39bc0d",
+          "name": "Luminous Nights 36",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.174,
+            "rate1000kWh": 0.169,
+            "rate2000kWh": 0.167,
+            "ratePerKwh": 0.169
+          },
+          "contract": {
+            "length": 36,
+            "type": "fixed",
+            "earlyTerminationFee": 720,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "9:00 PM-9:00 AM",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b991424030b9912e39bc0a",
+          "name": "Luminous Weekends 36",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.173,
+            "rate1000kWh": 0.169,
+            "rate2000kWh": 0.167,
+            "ratePerKwh": 0.169
+          },
+          "contract": {
+            "length": 36,
+            "type": "fixed",
+            "earlyTerminationFee": 720,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 7,
+            "billCredit": 0,
+            "freeTime": {
+              "hours": "Off-peak hours",
+              "days": [
+                "All"
+              ]
+            },
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b991424030b9912e39bc06",
+          "name": "Luminous 12",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.166,
+            "rate1000kWh": 0.162,
+            "rate2000kWh": 0.16,
+            "ratePerKwh": 0.162
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 35,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b991424030b9912e39bc07",
+          "name": "Luminous Green 12",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.17,
+            "rate1000kWh": 0.166,
+            "rate2000kWh": 0.164,
+            "ratePerKwh": 0.166
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 240,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b991414030b9912e39bc01",
+          "name": "Luminous Green 24",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.175,
+            "rate1000kWh": 0.171,
+            "rate2000kWh": 0.169,
+            "ratePerKwh": 0.171
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 480,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68b991424030b9912e39bc0c",
+          "name": "Luminous Green 36",
+          "provider": {
+            "name": "Atlantex Power",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.177,
+            "rate1000kWh": 0.173,
+            "rate2000kWh": 0.171,
+            "ratePerKwh": 0.173
+          },
+          "contract": {
+            "length": 36,
+            "type": "fixed",
+            "earlyTerminationFee": 720,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 100,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        }
+      ],
+      "count": 109,
+      "lowestRate": 0.095,
+      "highestRate": 0.232
+    }
+  }
+}

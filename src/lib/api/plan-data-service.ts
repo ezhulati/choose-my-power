@@ -242,7 +242,14 @@ export async function getUniqueProviders(citySlug: string = 'dallas'): Promise<s
   try {
     const cityData = await loadCityData(citySlug);
     
-    if (!cityData || !cityData.plans) {
+    if (!cityData) {
+      return [];
+    }
+    
+    // Get plans from the correct location in the data structure
+    const plans = cityData.filters?.['no-filters']?.plans || cityData.plans || [];
+    
+    if (plans.length === 0) {
       return [];
     }
     

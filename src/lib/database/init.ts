@@ -5,6 +5,7 @@
 
 import { db } from '../../config/database.js';
 import { CREATE_TABLES_SQL } from './schema.ts';
+import { loadCityData } from '../api/plan-data-service.ts';
 
 /**
  * Initialize database tables and seed basic data
@@ -25,6 +26,9 @@ export async function initializeDatabase() {
     
     // Seed providers
     await seedProviderData();
+    
+    // Seed electricity plans from generated data files
+    await seedElectricityPlans();
     
     console.log('✅ Database initialization complete');
     return { success: true };
@@ -237,6 +241,117 @@ async function seedProviderData() {
 }
 
 /**
+ * Seed electricity plans from generated JSON data files
+ */
+async function seedElectricityPlans() {
+  console.log('🔄 Seeding electricity plans from generated data...');
+  
+  // List of major cities to seed plans from
+  const cities = ['dallas', 'houston', 'arlington', 'irving', 'south-houston'];
+  let totalPlansSeeded = 0;
+  
+  for (const citySlug of cities) {
+    try {
+      console.log(`Loading plans for ${citySlug}...`);
+      const cityData = await loadCityData(citySlug);
+      
+      if (!cityData) {
+        console.warn(`No city data found for ${citySlug}`);
+        continue;
+      }
+      
+      const plans = cityData.filters?.['no-filters']?.plans || cityData.plans || [];
+      
+      if (plans.length === 0) {
+        console.warn(`No plans found for ${citySlug}`);
+        continue;
+      }
+      
+      // Get the city ID and TDSP from database
+      const cityRecord = await db.query('SELECT id, tdsp_duns FROM cities WHERE slug = $1', [citySlug]);
+      if (!cityRecord || cityRecord.length === 0) {
+        console.warn(`City ${citySlug} not found in database`);
+        continue;
+      }
+      
+      const cityId = cityRecord[0].id;
+      const tdspDuns = cityRecord[0].tdsp_duns;
+      
+      // Get TDSP ID
+      const tdspRecord = await db.query('SELECT id FROM tdsp WHERE duns_number = $1', [tdspDuns]);
+      if (!tdspRecord || tdspRecord.length === 0) {
+        console.warn(`TDSP ${tdspDuns} not found in database`);
+        continue;
+      }
+      
+      const tdspId = tdspRecord[0].id;
+      
+      for (const plan of plans) {
+        try {
+          // Get or create provider
+          let providerRecord = await db.query('SELECT id FROM providers WHERE name = $1', [plan.provider.name]);
+          let providerId;
+          
+          if (!providerRecord || providerRecord.length === 0) {
+            // Create provider if doesn't exist
+            const newProvider = await db.query(`
+              INSERT INTO providers (name, legal_name, logo_filename)
+              VALUES ($1, $2, $3)
+              RETURNING id
+            `, [plan.provider.name, plan.provider.name, '']);
+            providerId = newProvider[0].id;
+          } else {
+            providerId = providerRecord[0].id;
+          }
+          
+          // Insert electricity plan
+          await db.query(`
+            INSERT INTO electricity_plans (
+              id, name, provider_id, city_id, tdsp_id,
+              rate_500kwh, rate_1000kwh, rate_2000kwh, rate_per_kwh,
+              contract_length_months, contract_type, early_termination_fee,
+              green_energy_percentage, bill_credit, has_free_time,
+              deposit_required, deposit_amount, plan_data
+            )
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18)
+            ON CONFLICT (id) DO NOTHING
+          `, [
+            plan.id,
+            plan.name,
+            providerId,
+            cityId,
+            tdspId,
+            plan.pricing?.rate500kWh || 0,
+            plan.pricing?.rate1000kWh || 0,
+            plan.pricing?.rate2000kWh || 0,
+            plan.pricing?.ratePerKwh || 0,
+            plan.contract?.length || 12,
+            plan.contract?.type || 'fixed',
+            plan.contract?.earlyTerminationFee || 0,
+            plan.features?.greenEnergy || 0,
+            plan.features?.billCredit || 0,
+            !!plan.features?.freeTime,
+            plan.features?.deposit?.required || false,
+            plan.features?.deposit?.amount || 0,
+            JSON.stringify(plan)
+          ]);
+          
+          totalPlansSeeded++;
+        } catch (planError) {
+          console.warn(`Failed to insert plan ${plan.id} (${plan.name}):`, planError.message);
+        }
+      }
+      
+      console.log(`✅ Seeded ${plans.length} plans for ${citySlug}`);
+    } catch (error) {
+      console.warn(`Failed to process city ${citySlug}:`, error.message);
+    }
+  }
+  
+  console.log(`✅ Electricity plans seeded: ${totalPlansSeeded} total plans`);
+}
+
+/**
  * Check if database is properly initialized
  */
 export async function checkDatabaseHealth() {
@@ -244,12 +359,14 @@ export async function checkDatabaseHealth() {
     const [tdspCount] = await db.query('SELECT COUNT(*) as count FROM tdsp');
     const [cityCount] = await db.query('SELECT COUNT(*) as count FROM cities');
     const [providerCount] = await db.query('SELECT COUNT(*) as count FROM providers');
+    const [planCount] = await db.query('SELECT COUNT(*) as count FROM electricity_plans');
     
     return {
       healthy: true,
       tdsp_count: tdspCount.count,
       city_count: cityCount.count,
       provider_count: providerCount.count,
+      plan_count: planCount.count,
       timestamp: new Date().toISOString()
     };
   } catch (error) {

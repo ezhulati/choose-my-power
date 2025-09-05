@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { findPlanByNameAndProvider, getUniqueProviders } from '../../../lib/api/plan-data-service';
+import { findPlanByNameAndProviderDB, getUniqueProvidersDB, hasPlansInDatabase } from '../../../lib/services/plan-database-service';
 
 interface PlanSearchResult {
   id: string; // MongoDB ObjectId
@@ -51,8 +52,33 @@ export const GET: APIRoute = async ({ url, request }) => {
 
     console.log(`[API] Searching for plan: "${name}" by provider: "${provider}" in city: ${citySlug}`);
 
-    // Use the real plan data service to find the plan
-    const matchedPlan = await findPlanByNameAndProvider(name, provider, citySlug);
+    // Check if database has plan data, use database if available, otherwise fall back to JSON files
+    const hasDbPlans = await hasPlansInDatabase();
+    
+    let matchedPlan;
+    if (hasDbPlans) {
+      console.log('[API] Using database for plan search');
+      const dbPlan = await findPlanByNameAndProviderDB(name, provider, citySlug);
+      if (dbPlan) {
+        // Convert database plan to expected format
+        matchedPlan = {
+          id: dbPlan.id,
+          name: dbPlan.name,
+          provider: {
+            name: dbPlan.provider.name
+          },
+          pricing: {
+            rate1000kWh: dbPlan.pricing.rate1000kWh
+          },
+          term: {
+            length: dbPlan.contract.lengthMonths
+          }
+        };
+      }
+    } else {
+      console.log('[API] Falling back to JSON file search');
+      matchedPlan = await findPlanByNameAndProvider(name, provider, citySlug);
+    }
 
     if (matchedPlan) {
       // Format the response to match expected structure
@@ -75,8 +101,10 @@ export const GET: APIRoute = async ({ url, request }) => {
     } else {
       console.warn(`[API] No matching plan found for "${name}" by "${provider}" in ${citySlug}`);
       
-      // Log available providers for debugging
-      const availableProviders = await getUniqueProviders(citySlug);
+      // Log available providers for debugging (use database if available)
+      const availableProviders = hasDbPlans 
+        ? await getUniqueProvidersDB(citySlug)
+        : await getUniqueProviders(citySlug);
       console.log(`[API] Available providers in ${citySlug}: ${availableProviders.join(', ')}`);
       
       return new Response(JSON.stringify([]), {
