@@ -1,0 +1,194 @@
+{
+  "timestamp": "2025-09-05T00:04:53.402Z",
+  "site": "https://choose-my-power.netlify.app",
+  "browsers": [
+    {
+      "name": "chromium",
+      "pages": [
+        {
+          "name": "homepage",
+          "url": "/",
+          "fullUrl": "https://choose-my-power.netlify.app/",
+          "loadTime": 0,
+          "finalUrl": "https://choose-my-power.netlify.app/",
+          "status": 200,
+          "consoleErrors": [
+            {
+              "type": "error",
+              "text": "Refused to apply style from 'https://choose-my-power.netlify.app/_astro/_state_.Cspq1bGy.css' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled.",
+              "location": {
+                "url": "https://choose-my-power.netlify.app/",
+                "lineNumber": 0,
+                "columnNumber": 0
+              }
+            }
+          ],
+          "consoleWarnings": [
+            {
+              "type": "warning",
+              "text": "<link rel=preload> has an unsupported `type` value",
+              "location": {
+                "url": "https://choose-my-power.netlify.app/",
+                "lineNumber": 0,
+                "columnNumber": 0
+              }
+            }
+          ],
+          "failedRequests": [],
+          "screenshots": [
+            {
+              "name": "initial",
+              "path": "./artifacts/20250904_190225_site_investigation/homepage_chromium_initial.png",
+              "timestamp": 1757030694775
+            },
+            {
+              "name": "after-wait",
+              "path": "./artifacts/20250904_190225_site_investigation/homepage_chromium_after_wait.png",
+              "timestamp": 1757030698301
+            },
+            {
+              "name": "error",
+              "path": "./artifacts/20250904_190225_site_investigation/homepage_chromium_error.png",
+              "timestamp": 1757030698866
+            }
+          ],
+          "loadingStates": [
+            {
+              "timestamp": 1757030693707,
+              "state": "navigation-start"
+            },
+            {
+              "timestamp": 1757030694142,
+              "state": "domcontentloaded"
+            },
+            {
+              "timestamp": 1757030697776,
+              "state": "after-3s-wait"
+            }
+          ],
+          "responseTime": 0,
+          "analysis": {
+            "contentLength": 75985,
+            "visibleTextLength": 5615,
+            "hasSpinner": false,
+            "hasChooseMyPowerContent": true,
+            "isBlankPage": false
+          },
+          "error": "page.reload: net::ERR_FAILED\nCall log:\n\u001b[2m  - waiting for navigation until \"domcontentloaded\"\u001b[22m\n"
+        },
+        {
+          "name": "texas",
+          "url": "/texas/",
+          "fullUrl": "https://choose-my-power.netlify.app/texas/",
+          "loadTime": 0,
+          "finalUrl": "",
+          "status": "",
+          "consoleErrors": [],
+          "consoleWarnings": [],
+          "failedRequests": [],
+          "screenshots": [
+            {
+              "name": "error",
+              "path": "./artifacts/20250904_190225_site_investigation/texas_chromium_error.png",
+              "timestamp": 1757030699235
+            }
+          ],
+          "loadingStates": [
+            {
+              "timestamp": 1757030698893,
+              "state": "navigation-start"
+            }
+          ],
+          "responseTime": 0,
+          "error": "page.goto: net::ERR_FAILED at https://choose-my-power.netlify.app/texas/\nCall log:\n\u001b[2m  - navigating to \"https://choose-my-power.netlify.app/texas/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+        },
+        {
+          "name": "electricity-plans",
+          "url": "/electricity-plans/",
+          "fullUrl": "https://choose-my-power.netlify.app/electricity-plans/",
+          "loadTime": 0,
+          "finalUrl": "",
+          "status": "",
+          "consoleErrors": [],
+          "consoleWarnings": [],
+          "failedRequests": [],
+          "screenshots": [
+            {
+              "name": "error",
+              "path": "./artifacts/20250904_190225_site_investigation/electricity-plans_chromium_error.png",
+              "timestamp": 1757030699460
+            }
+          ],
+          "loadingStates": [
+            {
+              "timestamp": 1757030699260,
+              "state": "navigation-start"
+            }
+          ],
+          "responseTime": 0,
+          "error": "page.goto: net::ERR_FAILED at https://choose-my-power.netlify.app/electricity-plans/\nCall log:\n\u001b[2m  - navigating to \"https://choose-my-power.netlify.app/electricity-plans/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+        },
+        {
+          "name": "houston",
+          "url": "/texas/houston/",
+          "fullUrl": "https://choose-my-power.netlify.app/texas/houston/",
+          "loadTime": 0,
+          "finalUrl": "",
+          "status": "",
+          "consoleErrors": [],
+          "consoleWarnings": [],
+          "failedRequests": [],
+          "screenshots": [
+            {
+              "name": "error",
+              "path": "./artifacts/20250904_190225_site_investigation/houston_chromium_error.png",
+              "timestamp": 1757030699658
+            }
+          ],
+          "loadingStates": [
+            {
+              "timestamp": 1757030699486,
+              "state": "navigation-start"
+            }
+          ],
+          "responseTime": 0,
+          "error": "page.goto: net::ERR_FAILED at https://choose-my-power.netlify.app/texas/houston/\nCall log:\n\u001b[2m  - navigating to \"https://choose-my-power.netlify.app/texas/houston/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+        },
+        {
+          "name": "dallas-plans",
+          "url": "/electricity-plans/dallas-tx/",
+          "fullUrl": "https://choose-my-power.netlify.app/electricity-plans/dallas-tx/",
+          "loadTime": 0,
+          "finalUrl": "",
+          "status": "",
+          "consoleErrors": [],
+          "consoleWarnings": [],
+          "failedRequests": [],
+          "screenshots": [
+            {
+              "name": "error",
+              "path": "./artifacts/20250904_190225_site_investigation/dallas-plans_chromium_error.png",
+              "timestamp": 1757030699857
+            }
+          ],
+          "loadingStates": [
+            {
+              "timestamp": 1757030699682,
+              "state": "navigation-start"
+            }
+          ],
+          "responseTime": 0,
+          "error": "page.goto: net::ERR_FAILED at https://choose-my-power.netlify.app/electricity-plans/dallas-tx/\nCall log:\n\u001b[2m  - navigating to \"https://choose-my-power.netlify.app/electricity-plans/dallas-tx/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+        }
+      ],
+      "totalConsoleErrors": 1,
+      "totalNetworkErrors": 0
+    }
+  ],
+  "summary": {
+    "totalErrors": 1,
+    "failedRequests": 0,
+    "pagesWithIssues": 0,
+    "commonIssues": []
+  }
+}

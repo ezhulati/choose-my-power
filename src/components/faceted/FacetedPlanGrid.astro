@@ -553,11 +553,11 @@ const sortingOptions = [
     border: 0;
   }
   
-  /* Enhanced Plan Grid Styles - Mobile-First */
+  /* Enhanced Plan Grid Styles - Mobile-First - Reduced padding for wider cards */
   .enhanced-plan-grid {
     @apply w-full;
-    /* Mobile-first spacing with proper container padding */
-    padding: 2rem; /* 32px mobile */
+    /* Mobile-first spacing with reduced container padding for wider cards */
+    padding: 1rem; /* 16px mobile - reduced from 32px */
     gap: 1.5rem; /* 24px mobile */
     margin-bottom: 3rem; /* 48px mobile */
   }
@@ -576,19 +576,19 @@ const sortingOptions = [
     border-radius: 0;
   }
   
-  /* Tablet spacing */
+  /* Tablet spacing - reduced padding */
   @media (min-width: 768px) {
     .enhanced-plan-grid {
-      padding: 2rem; /* 32px tablet */
+      padding: 1.25rem; /* 20px tablet - reduced from 32px */
       gap: 1.5rem; /* 24px tablet */
       margin-bottom: 2.5rem; /* 40px tablet */
     }
   }
   
-  /* Desktop spacing */
+  /* Desktop spacing - reduced padding */
   @media (min-width: 1024px) {
     .enhanced-plan-grid {
-      padding: 2.5rem; /* 40px desktop */
+      padding: 1.5rem; /* 24px desktop - reduced from 40px */
       gap: 2rem; /* 32px desktop */
       margin-bottom: 3rem; /* 48px desktop */
     }
@@ -803,49 +803,49 @@ const sortingOptions = [
     @apply opacity-100 pointer-events-auto relative;
   }
   
-  /* Grid View Styles - Mobile-First */
+  /* Grid View Styles - Mobile-First - Optimized spacing */
   .plans-grid {
     @apply transition-all duration-300;
-    /* Mobile-first grid spacing - enhanced */
-    gap: 2rem; /* 32px mobile */
+    /* Mobile-first grid spacing - reduced padding, optimized gaps */
+    gap: 1.5rem; /* 24px mobile - reduced from 32px */
     margin-top: 2rem; /* 32px mobile */
-    padding: 1rem; /* 16px mobile padding */
+    padding: 0.5rem; /* 8px mobile padding - reduced from 16px */
   }
   
   @media (min-width: 640px) {
     .plans-grid {
-      gap: 1.75rem; /* 28px large mobile */
+      gap: 1.25rem; /* 20px large mobile - reduced from 28px */
       margin-top: 1.75rem;
-      padding: 0.75rem; /* 12px large mobile padding */
+      padding: 0.25rem; /* 4px large mobile padding - reduced from 12px */
     }
   }
   
   @media (min-width: 768px) {
     .plans-grid {
-      gap: 2rem; /* 32px tablet */
+      gap: 1.5rem; /* 24px tablet - reduced from 32px */
       margin-top: 2rem;
-      padding: 1rem; /* 16px tablet padding */
+      padding: 0.5rem; /* 8px tablet padding - reduced from 16px */
     }
   }
   
   @media (min-width: 1024px) {
     .plans-grid {
-      gap: 2.5rem; /* 40px desktop */
+      gap: 1.75rem; /* 28px desktop - reduced from 40px */
       margin-top: 2.5rem;
-      padding: 1.25rem; /* 20px desktop padding */
+      padding: 0.75rem; /* 12px desktop padding - reduced from 20px */
     }
   }
   
   /* Enterprise Table View Styles */
   .plans-table-container {
-    @apply bg-white rounded-2xl border-2 border-gray-200 overflow-x-auto shadow-2xl hover:shadow-2xl transition-all duration-500;
+    @apply bg-white rounded-2xl overflow-x-auto shadow-2xl hover:shadow-2xl transition-all duration-500;
     background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
-    border-image: linear-gradient(135deg, #002868, #dc2626) 1;
     min-width: 100%;
     /* Ensure horizontal scroll is visible when needed */
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
     scrollbar-color: #002868 #f3f4f6;
+    border: none; /* Remove all borders */
   }
   
   /* Custom scrollbar styling for better visibility */
@@ -872,6 +872,7 @@ const sortingOptions = [
     border-collapse: separate;
     border-spacing: 0;
     min-width: 800px; /* Reduced for compact fit */
+    border: none; /* Remove table border */
   }
   
   .table-header {
@@ -882,9 +883,10 @@ const sortingOptions = [
   }
   
   .table-header th {
-    @apply px-3 py-4 text-left text-xs font-bold text-white uppercase tracking-wider border-r border-blue-700 last:border-r-0;
+    @apply px-3 py-4 text-left text-xs font-bold text-white uppercase tracking-wider;
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+    border: none; /* Remove all borders from header cells */
   }
   
   .sort-header {
