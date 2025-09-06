@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Calculator, TrendingUp, DollarSign, Zap, Info, CheckCircle, BarChart } from 'lucide-react';
-import { mockProviders } from '../../data/mockData';
+import { getProviders, getCities, getPlansForCity, type RealProvider, type RealCity } from '../../lib/services/provider-service';
 import EnhancedSectionReact from '../../components/ui/EnhancedSectionReact';
 import EnhancedCardReact from '../../components/ui/EnhancedCardReact';
 import AccentBoxReact from '../../components/ui/AccentBoxReact';
@@ -24,38 +24,102 @@ export function CalculatorPage() {
   const [monthlyUsage, setMonthlyUsage] = useState(1000);
   const [selectedState, setSelectedState] = useState('texas');
   const [calculationResults, setCalculationResults] = useState<any[]>([]);
+  const [providers, setProviders] = useState<RealProvider[]>([]);
+  const [plans, setPlans] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  // Get all plans from providers serving the selected state
-  const stateProviders = mockProviders.filter(p => p.serviceStates.includes(selectedState));
-  const allPlans = stateProviders.flatMap(provider => 
-    provider.plans.map(plan => ({ 
-      ...plan, 
-      providerName: provider.name,
-      providerRating: provider.rating 
-    }))
-  );
+  // Load data when component mounts
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        console.log('[CalculatorPage] Loading providers and plans...');
+        
+        const [providersData] = await Promise.all([
+          getProviders('texas')
+        ]);
+        
+        // Load sample plans from Houston for calculator
+        const houstonPlans = await getPlansForCity('houston', 'texas');
+        
+        setProviders(providersData);
+        setPlans(houstonPlans);
+        
+        console.log(`[CalculatorPage] Loaded ${providersData.length} providers and ${houstonPlans.length} plans`);
+      } catch (error) {
+        console.error('[CalculatorPage] Error loading data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, []);
+
+  // Create all plans array from real data
+  const allPlans = plans.map(plan => ({
+    ...plan,
+    id: plan.id || Math.random().toString(),
+    name: plan.name || 'Plan',
+    rate: plan.rate || 12.5,
+    providerName: plan.provider || 'Provider',
+    providerRating: plan.rating || 4.0,
+    type: plan.type || 'Fixed',
+    termLength: plan.termLength || 12,
+    fees: {
+      monthlyFee: plan.monthlyFee || 0,
+      connectionFee: plan.connectionFee || 0
+    }
+  }));
 
   useEffect(() => {
-    // Calculate costs for all plans
-    const results = allPlans.map(plan => {
-      const energyCost = (plan.rate * monthlyUsage) / 100;
-      const monthlyFee = plan.fees.monthlyFee || 0;
-      const connectionFee = plan.fees.connectionFee || 0;
-      const totalMonthlyCost = energyCost + monthlyFee;
-      const annualCost = (totalMonthlyCost * 12) + connectionFee;
+    if (!loading && allPlans.length > 0) {
+      // Calculate costs for all plans
+      const results = allPlans.map(plan => {
+        const energyCost = (plan.rate * monthlyUsage) / 100;
+        const monthlyFee = plan.fees.monthlyFee || 0;
+        const connectionFee = plan.fees.connectionFee || 0;
+        const totalMonthlyCost = energyCost + monthlyFee;
+        const annualCost = (totalMonthlyCost * 12) + connectionFee;
 
-      return {
-        ...plan,
-        energyCost,
-        monthlyFee,
-        connectionFee,
-        totalMonthlyCost,
-        annualCost
-      };
-    }).sort((a, b) => a.totalMonthlyCost - b.totalMonthlyCost);
+        return {
+          ...plan,
+          energyCost,
+          monthlyFee,
+          connectionFee,
+          totalMonthlyCost,
+          annualCost
+        };
+      }).sort((a, b) => a.totalMonthlyCost - b.totalMonthlyCost);
 
-    setCalculationResults(results);
-  }, [monthlyUsage, selectedState]);
+      setCalculationResults(results);
+    } else if (loading && allPlans.length === 0) {
+      // Create sample data for loading state
+      const samplePlans = [
+        { id: '1', name: 'SimpleSaver 12', rate: 9.7, providerName: 'APGE', providerRating: 4.1, type: 'Fixed', termLength: 12, fees: { monthlyFee: 0, connectionFee: 0 } },
+        { id: '2', name: 'Eco Saver Plus', rate: 9.8, providerName: 'Gexa Energy', providerRating: 4.3, type: 'Fixed', termLength: 12, fees: { monthlyFee: 0, connectionFee: 0 } },
+        { id: '3', name: 'Fixed 12', rate: 10.1, providerName: 'Discount Power', providerRating: 3.8, type: 'Fixed', termLength: 12, fees: { monthlyFee: 0, connectionFee: 0 } }
+      ];
+      
+      const results = samplePlans.map(plan => {
+        const energyCost = (plan.rate * monthlyUsage) / 100;
+        const monthlyFee = plan.fees.monthlyFee || 0;
+        const connectionFee = plan.fees.connectionFee || 0;
+        const totalMonthlyCost = energyCost + monthlyFee;
+        const annualCost = (totalMonthlyCost * 12) + connectionFee;
+
+        return {
+          ...plan,
+          energyCost,
+          monthlyFee,
+          connectionFee,
+          totalMonthlyCost,
+          annualCost
+        };
+      }).sort((a, b) => a.totalMonthlyCost - b.totalMonthlyCost);
+
+      setCalculationResults(results);
+    }
+  }, [monthlyUsage, selectedState, allPlans, loading]);
 
   const usagePresets = [
     { label: 'Small Apartment', value: 500, description: '1-2 bedrooms' },

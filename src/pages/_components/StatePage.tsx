@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { ProviderCard } from '../../components/ProviderCard';
-import { mockProviders, mockStates } from '../../data/mockData';
+import { getProviders, getCities, type RealProvider, type RealCity } from '../../lib/services/provider-service';
 import { MapPin, TrendingDown, Users, Zap, Filter } from 'lucide-react';
 import EnhancedSectionReact from '../../components/ui/EnhancedSectionReact';
 import EnhancedCardReact from '../../components/ui/EnhancedCardReact';
@@ -29,39 +29,51 @@ export function StatePage({ state }: StatePageProps) {
   };
   const [sortBy, setSortBy] = useState<'rating' | 'price' | 'popularity'>('rating');
   const [filterType, setFilterType] = useState<'all' | 'cheapest' | 'green' | 'no-deposit'>('all');
+  const [providers, setProviders] = useState<RealProvider[]>([]);
+  const [cities, setCities] = useState<RealCity[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const stateData = mockStates.find(s => s.slug === state);
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        console.log(`[StatePage] Loading data for state: ${state}`);
+        
+        const [providersData, citiesData] = await Promise.all([
+          getProviders(state),
+          getCities(state)
+        ]);
+        
+        setProviders(providersData);
+        setCities(citiesData);
+        console.log(`[StatePage] Loaded ${providersData.length} providers and ${citiesData.length} cities`);
+      } catch (error) {
+        console.error(`[StatePage] Error loading data for ${state}:`, error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, [state]);
+
+  const stateData = {
+    slug: state,
+    name: state === 'texas' ? 'Texas' : state.charAt(0).toUpperCase() + state.slice(1),
+    averageRate: providers.length > 0 ? (providers.reduce((sum, p) => sum + (p.averageRate || 12.5), 0) / providers.length).toFixed(1) : '12.5',
+    isDeregulated: state === 'texas',
+    topCities: cities.slice(0, 10)
+  };
   
-  if (!stateData) {
-    return (
-      <EnhancedSectionReact background="gray" padding="xl">
-        <EnhancedCardReact variant="elevated" padding="lg" className="text-center max-w-lg mx-auto">
-          <h1 className="text-2xl font-bold text-texas-navy mb-4">State Not Found</h1>
-          <p className="text-gray-600 mb-8">The state you're looking for doesn't exist in our database.</p>
-          <button
-            onClick={() => navigate('/')}
-            className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-texas-navy/90 transition-colors"
-          >
-            Return Home
-          </button>
-        </EnhancedCardReact>
-      </EnhancedSectionReact>
-    );
-  }
-
-  const stateProviders = mockProviders.filter(p => 
-    p.serviceStates.includes(stateData.slug)
-  );
+  const stateProviders = providers;
 
   const handleZipSearch = (zipCode: string) => {
-    // Mock routing for ZIP search
-    const cityRoutes: { [key: string]: string } = {
-      '77001': '/texas/houston/electricity-providers',
-      '75201': '/texas/dallas/electricity-providers'
-    };
-    
-    const route = cityRoutes[zipCode] || `/${state}/electricity-providers`;
-    navigate(route);
+    const city = cities.find(c => c.zipCodes?.includes(zipCode));
+    if (city) {
+      navigate(`/${state}/${city.slug}/electricity-providers`);
+    } else {
+      // Default to the state page
+      navigate(`/${state}/electricity-providers`);
+    }
   };
 
   return (
@@ -81,7 +93,7 @@ export function StatePage({ state }: StatePageProps) {
               </h1>
               
               <p className="text-lg text-gray-600 mb-6">
-                Compare electricity providers and plans in {stateData.name}. Find the cheapest rates from {stateProviders.length} licensed electricity companies.
+                Compare electricity providers and plans in {stateData.name}. Find the cheapest rates from {loading ? '100+' : stateProviders.length} licensed electricity companies.
               </p>
 
               {/* Quick Stats */}
@@ -92,7 +104,7 @@ export function StatePage({ state }: StatePageProps) {
                 </div>
                 <div className="flex items-center">
                   <Users className="h-4 w-4 text-texas-navy mr-2" />
-                  <span className="text-gray-600"><strong>{stateProviders.length}</strong> Providers</span>
+                  <span className="text-gray-600"><strong>{loading ? '100+' : stateProviders.length}</strong> Providers</span>
                 </div>
                 <div className="flex items-center">
                   <Zap className="h-4 w-4 text-yellow-600 mr-2" />

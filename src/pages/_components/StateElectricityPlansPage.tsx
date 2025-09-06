@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
-import { mockProviders, mockStates } from '../../data/mockData';
+import { getProviders, getCities, getPlansForCity, type RealProvider, type RealCity } from '../../lib/services/provider-service';
 import { Calendar, Zap, TrendingDown, Leaf, Shield, Filter } from 'lucide-react';
 import EnhancedSectionReact from '../../components/ui/EnhancedSectionReact';
 import EnhancedCardReact from '../../components/ui/EnhancedCardReact';
@@ -29,8 +29,45 @@ export function StateElectricityPlansPage({ state }: StateElectricityPlansPagePr
   const [planTypeFilter, setPlanTypeFilter] = useState<'all' | 'fixed' | 'variable' | 'indexed'>('all');
   const [termFilter, setTermFilter] = useState<'all' | '12' | '24' | '36'>('all');
   const [greenFilter, setGreenFilter] = useState<boolean>(false);
+  const [providers, setProviders] = useState<RealProvider[]>([]);
+  const [cities, setCities] = useState<RealCity[]>([]);
+  const [allPlans, setAllPlans] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const stateData = mockStates.find(s => s.slug === state);
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        console.log(`[StateElectricityPlansPage] Loading data for state: ${state}`);
+        
+        const [providersData, citiesData] = await Promise.all([
+          getProviders(state),
+          getCities(state)
+        ]);
+        
+        setProviders(providersData);
+        setCities(citiesData);
+        
+        // Get plans from the major city as a representative sample
+        const majorCity = citiesData[0] || { slug: 'houston', name: 'Houston' };
+        const cityPlans = await getPlansForCity(majorCity.slug, state);
+        setAllPlans(cityPlans);
+        
+        console.log(`[StateElectricityPlansPage] Loaded ${cityPlans.length} plans`);
+      } catch (error) {
+        console.error(`[StateElectricityPlansPage] Error loading data for ${state}:`, error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, [state]);
+
+  const stateData = {
+    slug: state,
+    name: state === 'texas' ? 'Texas' : state.charAt(0).toUpperCase() + state.slice(1),
+    topCities: cities.slice(0, 10)
+  };
   
   if (!stateData) {
     return (
@@ -48,30 +85,27 @@ export function StateElectricityPlansPage({ state }: StateElectricityPlansPagePr
     );
   }
 
-  const stateProviders = mockProviders.filter(p => p.serviceStates.includes(stateData.slug));
-  const allPlans = stateProviders.flatMap(provider => 
-    provider.plans.map(plan => ({ ...plan, providerName: provider.name, providerSlug: provider.slug }))
-  );
+  const stateProviders = providers;
 
   const filteredPlans = allPlans.filter(plan => {
-    if (planTypeFilter !== 'all' && plan.type !== planTypeFilter) return false;
-    if (termFilter !== 'all' && plan.termLength !== parseInt(termFilter)) return false;
-    if (greenFilter && plan.renewablePercent < 100) return false;
+    if (planTypeFilter !== 'all' && (plan.planType || plan.type) !== planTypeFilter) return false;
+    if (termFilter !== 'all' && (plan.termLength || plan.term) !== parseInt(termFilter)) return false;
+    if (greenFilter && (plan.renewablePercent < 100 && plan.planType !== 'green')) return false;
     return true;
   });
 
   const handleZipSearch = (zipCode: string) => {
-    const city = stateData.topCities.find(c => c.zipCodes.includes(zipCode));
+    const city = cities.find(c => c.zipCodes?.includes(zipCode));
     if (city) {
       navigate(`/${state}/${city.slug}/electricity-plans`);
     }
   };
 
   const planTypeStats = {
-    fixed: allPlans.filter(p => p.type === 'fixed').length,
-    variable: allPlans.filter(p => p.type === 'variable').length,
-    indexed: allPlans.filter(p => p.type === 'indexed').length,
-    green: allPlans.filter(p => p.renewablePercent === 100).length
+    fixed: allPlans.filter(p => (p.planType || p.type) === 'fixed').length,
+    variable: allPlans.filter(p => (p.planType || p.type) === 'variable').length,
+    indexed: allPlans.filter(p => (p.planType || p.type) === 'indexed').length,
+    green: allPlans.filter(p => p.renewablePercent === 100 || (p.planType || p.type) === 'green').length
   };
 
   return (
@@ -95,7 +129,7 @@ export function StateElectricityPlansPage({ state }: StateElectricityPlansPagePr
               </h1>
               
               <p className="text-lg text-gray-600 mb-6">
-                Compare {allPlans.length} electricity plans from {stateProviders.length} providers in {stateData.name}. 
+                Compare {loading ? '300+' : allPlans.length} electricity plans from {loading ? '100+' : stateProviders.length} providers in {stateData.name}. 
                 Find fixed-rate, variable-rate, and green energy plans that fit your needs.
               </p>
 

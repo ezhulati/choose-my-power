@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { getCityFromZip } from '../../config/tdsp-mapping';
-import { mockProviders, mockStates } from '../../data/mockData';
+import { getProviders, getCities, getPlansForCity, type RealProvider, type RealCity } from '../../lib/services/provider-service';
 import { 
   TrendingDown, Leaf, Shield, Clock, Zap, Calculator, Users, Award, 
   DollarSign, Star, CheckCircle, Target, ArrowRight, Filter,
@@ -30,6 +30,38 @@ export function ShopPage({ category }: ShopPageProps) {
   };
   const [selectedUsage, setSelectedUsage] = useState<'low' | 'average' | 'high'>('average');
   const [selectedPriority, setSelectedPriority] = useState<'price' | 'service' | 'green' | 'features'>('price');
+  const [providers, setProviders] = useState<RealProvider[]>([]);
+  const [cities, setCities] = useState<RealCity[]>([]);
+  const [plans, setPlans] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        console.log('[ShopPage] Loading shop data...');
+        
+        const [providersData, citiesData] = await Promise.all([
+          getProviders('texas'),
+          getCities('texas')
+        ]);
+        
+        setProviders(providersData);
+        setCities(citiesData);
+        
+        // Load sample plans from Houston for general shopping
+        const houstonPlans = await getPlansForCity('houston', 'texas');
+        setPlans(houstonPlans);
+        
+        console.log(`[ShopPage] Loaded ${providersData.length} providers and ${houstonPlans.length} plans`);
+      } catch (error) {
+        console.error('[ShopPage] Error loading data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, []);
 
   const shopCategories = {
     'cheapest-electricity': {

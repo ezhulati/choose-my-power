@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import StandardZipInputReact from '../../components/StandardZipInputReact';
 import { ProviderCard } from '../../components/ProviderCard';
-import { mockProviders, mockStates } from '../../data/mockData';
+import { getProviders, getCities, type RealProvider, type RealCity } from '../../lib/services/provider-service';
 import { 
   Building, Users, Star, TrendingDown, MapPin, Search, Zap, 
   Award, Shield, Leaf, Phone, Globe, ArrowRight, CheckCircle,
@@ -31,6 +31,32 @@ export function ElectricityCompaniesPage({}: ElectricityCompaniesPageProps) {
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'green' | 'service' | 'value' | 'tech' | 'local'>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState<'rating' | 'plans' | 'alphabetical'>('rating');
+  const [providers, setProviders] = useState<RealProvider[]>([]);
+  const [cities, setCities] = useState<RealCity[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        console.log('[ElectricityCompaniesPage] Loading providers and cities...');
+        
+        const [providersData, citiesData] = await Promise.all([
+          getProviders('texas'),
+          getCities('texas')
+        ]);
+        
+        setProviders(providersData);
+        setCities(citiesData);
+        console.log(`[ElectricityCompaniesPage] Loaded ${providersData.length} providers and ${citiesData.length} cities`);
+      } catch (error) {
+        console.error('[ElectricityCompaniesPage] Error loading data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, []);
 
   const handleZipSearch = (zipCode: string) => {
     // For Texas ZIP codes, navigate to electricity plans page
@@ -285,7 +311,7 @@ export function ElectricityCompaniesPage({}: ElectricityCompaniesPageProps) {
     ? companyCategories 
     : companyCategories.filter(cat => cat.id === selectedCategory);
 
-  const allCompanies = mockProviders.filter(provider => {
+  const allCompanies = providers.filter(provider => {
     if (searchQuery && !provider.name.toLowerCase().includes(searchQuery.toLowerCase())) {
       return false;
     }
@@ -385,7 +411,7 @@ export function ElectricityCompaniesPage({}: ElectricityCompaniesPageProps) {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-12 mt-8">
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-                <div className="text-3xl font-bold">{mockProviders.length}</div>
+                <div className="text-3xl font-bold">{loading ? '100+' : providers.length}</div>
                 <div className="text-blue-200 text-sm">Licensed Companies</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
@@ -695,7 +721,7 @@ export function ElectricityCompaniesPage({}: ElectricityCompaniesPageProps) {
           <div className="flex items-center justify-between mb-8">
             <div>
               <h2 className="text-2xl font-bold text-gray-900 mb-2">Complete Company Directory</h2>
-              <p className="text-gray-600">Browse all {mockProviders.length} licensed electricity companies</p>
+              <p className="text-gray-600">Browse all {loading ? '100+' : providers.length} licensed electricity companies</p>
             </div>
             
             <div className="flex items-center space-x-4">

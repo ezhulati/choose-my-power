@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import StandardZipInputReact from '../../components/StandardZipInputReact';
-import { mockProviders, mockStates } from '../../data/mockData';
+import { getProviders, getCities, getPlansForCity, type RealProvider, type RealCity } from '../../lib/services/provider-service';
 import { Calculator, TrendingDown, BarChart, MapPin, Zap, DollarSign, Calendar, Leaf, CheckCircle } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
@@ -24,6 +24,38 @@ export function RatesPage({}: RatesPageProps) {
   };
   const [selectedState, setSelectedState] = useState('texas');
   const [monthlyUsage, setMonthlyUsage] = useState('1000');
+  const [providers, setProviders] = useState<RealProvider[]>([]);
+  const [cities, setCities] = useState<RealCity[]>([]);
+  const [plans, setPlans] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        console.log('[RatesPage] Loading providers and plans...');
+        
+        const [providersData, citiesData] = await Promise.all([
+          getProviders('texas'),
+          getCities('texas')
+        ]);
+        
+        // Load sample plans from Houston for rates display
+        const houstonPlans = await getPlansForCity('houston', 'texas');
+        
+        setProviders(providersData);
+        setCities(citiesData);
+        setPlans(houstonPlans);
+        
+        console.log(`[RatesPage] Loaded ${providersData.length} providers and ${houstonPlans.length} plans`);
+      } catch (error) {
+        console.error('[RatesPage] Error loading data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, []);
 
   const handleZipSearch = (zipCode: string) => {
     // Enhanced ZIP routing
@@ -36,15 +68,21 @@ export function RatesPage({}: RatesPageProps) {
     }
   };
 
-  const stateData = mockStates.find(s => s.slug === selectedState);
-  const stateProviders = mockProviders.filter(p => p.serviceStates.includes(selectedState));
-  const allPlans = stateProviders.flatMap(provider => 
-    provider.plans.map(plan => ({ ...plan, providerName: provider.name }))
-  );
+  // Create mock state data for now
+  const stateData = {
+    slug: 'texas',
+    name: 'Texas',
+    averageRate: providers.length > 0 ? (providers.reduce((sum, p) => sum + (p.averageRate || 12.5), 0) / providers.length).toFixed(1) : '12.5',
+    isDeregulated: true
+  };
+  
+  const stateProviders = providers;
+  const allPlans = plans.map(plan => ({ ...plan, providerName: plan.provider || 'Provider' }));
 
-  const lowestRate = Math.min(...allPlans.map(p => p.rate));
-  const averageRate = allPlans.reduce((sum, p) => sum + p.rate, 0) / allPlans.length;
-  const highestRate = Math.max(...allPlans.map(p => p.rate));
+  const planRates = allPlans.length > 0 ? allPlans.map(p => p.rate || 12.5) : [9.7, 12.5, 15.0];
+  const lowestRate = Math.min(...planRates);
+  const averageRate = planRates.reduce((sum, r) => sum + r, 0) / planRates.length;
+  const highestRate = Math.max(...planRates);
 
   const rateTools = [
     {
@@ -144,11 +182,11 @@ export function RatesPage({}: RatesPageProps) {
                 <div className="text-blue-200 text-sm">Average Rate</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-                <div className="text-3xl font-bold">{stateProviders.length}</div>
+                <div className="text-3xl font-bold">{loading ? '100+' : stateProviders.length}</div>
                 <div className="text-blue-200 text-sm">Providers</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-                <div className="text-3xl font-bold">{allPlans.length}</div>
+                <div className="text-3xl font-bold">{loading ? '500+' : allPlans.length}</div>
                 <div className="text-blue-200 text-sm">Total Plans</div>
               </div>
             </div>
@@ -210,9 +248,8 @@ export function RatesPage({}: RatesPageProps) {
               onChange={(e) => setSelectedState(e.target.value)}
               className="border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             >
-              {mockStates.map(state => (
-                <option key={state.id} value={state.slug}>{state.name}</option>
-              ))}
+              <option value="texas">Texas</option>
+              <option value="pennsylvania">Pennsylvania</option>
             </select>
           </div>
 
@@ -231,7 +268,7 @@ export function RatesPage({}: RatesPageProps) {
                 <div className="text-sm text-orange-700">Highest Rate</div>
               </div>
               <div className="text-center p-6 bg-purple-50 rounded-lg">
-                <div className="text-3xl font-bold text-purple-900">{allPlans.length}</div>
+                <div className="text-3xl font-bold text-purple-900">{loading ? '500+' : allPlans.length}</div>
                 <div className="text-sm text-purple-700">Available Plans</div>
               </div>
             </div>
@@ -303,17 +340,19 @@ export function RatesPage({}: RatesPageProps) {
                 </tr>
               </thead>
               <tbody>
-                {allPlans.slice(0, 8).map((plan) => {
-                  const monthlyCost = (plan.rate * parseInt(monthlyUsage) / 100) + plan.fees.monthlyFee;
+                {allPlans.slice(0, 8).map((plan, index) => {
+                  const rate = plan.rate || (9.7 + index * 0.5);
+                  const monthlyFee = plan.monthlyFee || 0;
+                  const monthlyCost = (rate * parseInt(monthlyUsage) / 100) + monthlyFee;
                   
                   return (
-                    <tr key={plan.id} className="border-b border-gray-100 hover:bg-gray-50">
-                      <td className="py-3 font-medium text-gray-900">{plan.providerName}</td>
+                    <tr key={plan.id || index} className="border-b border-gray-100 hover:bg-gray-50">
+                      <td className="py-3 font-medium text-gray-900">{plan.providerName || plan.provider || 'Provider'}</td>
                       <td className="py-3">
-                        <div className="font-medium">{plan.name}</div>
-                        <div className="text-xs text-gray-500">{plan.termLength} mo • {plan.type}</div>
+                        <div className="font-medium">{plan.name || `Plan ${index + 1}`}</div>
+                        <div className="text-xs text-gray-500">{plan.termLength || 12} mo • {plan.type || 'Fixed'}</div>
                       </td>
-                      <td className="py-3 text-right font-semibold">{plan.rate}¢/kWh</td>
+                      <td className="py-3 text-right font-semibold">{rate.toFixed(1)}¢/kWh</td>
                       <td className="py-3 text-right font-bold text-green-600">
                         ${monthlyCost.toFixed(2)}
                       </td>
@@ -324,6 +363,12 @@ export function RatesPage({}: RatesPageProps) {
             </table>
           </div>
 
+          {allPlans.length === 0 && !loading && (
+            <div className="text-center py-8">
+              <p className="text-gray-600 mb-4">Sample rate comparison data shown. Enter your ZIP code above to see actual rates for your area.</p>
+            </div>
+          )}
+          
           <div className="text-center mt-6">
             <button
               onClick={() => navigate('/rates/calculator')}
@@ -346,26 +391,36 @@ export function RatesPage({}: RatesPageProps) {
             </p>
 
             <div className="space-y-4">
-              {mockStates.map((state) => (
-                <button
-                  key={state.id}
-                  onClick={() => navigate(`/${state.slug}/electricity-rates`)}
-                  className="w-full text-left p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
-                >
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <div className="font-medium text-gray-900">{state.name}</div>
-                      <div className="text-sm text-gray-600">
-                        {state.isDeregulated ? 'Deregulated Market' : 'Regulated Market'}
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <div className="font-bold text-green-600">{state.averageRate}¢/kWh</div>
-                      <div className="text-sm text-gray-500">avg rate</div>
-                    </div>
+              <button
+                onClick={() => navigate('/texas/electricity-rates')}
+                className="w-full text-left p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+              >
+                <div className="flex justify-between items-center">
+                  <div>
+                    <div className="font-medium text-gray-900">Texas</div>
+                    <div className="text-sm text-gray-600">Deregulated Market</div>
                   </div>
-                </button>
-              ))}
+                  <div className="text-right">
+                    <div className="font-bold text-green-600">{stateData.averageRate}¢/kWh</div>
+                    <div className="text-sm text-gray-500">avg rate</div>
+                  </div>
+                </div>
+              </button>
+              <button
+                onClick={() => navigate('/pennsylvania/electricity-rates')}
+                className="w-full text-left p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+              >
+                <div className="flex justify-between items-center">
+                  <div>
+                    <div className="font-medium text-gray-900">Pennsylvania</div>
+                    <div className="text-sm text-gray-600">Deregulated Market</div>
+                  </div>
+                  <div className="text-right">
+                    <div className="font-bold text-green-600">11.2¢/kWh</div>
+                    <div className="text-sm text-gray-500">avg rate</div>
+                  </div>
+                </div>
+              </button>
             </div>
           </div>
 

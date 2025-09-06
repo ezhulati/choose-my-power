@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { ProviderCard } from '../../components/ProviderCard';
-import { mockProviders, mockStates } from '../../data/mockData';
+import { getProviders, getCities, type RealProvider, type RealCity } from '../../lib/services/provider-service';
 import { 
   Building, Users, Star, TrendingDown, Leaf, Shield, Award, 
   DollarSign, Headphones, Heart, Battery, Crown, Medal, Trophy,
@@ -30,12 +30,37 @@ export function TexasCompaniesPage({}: TexasCompaniesPageProps) {
   };
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'green' | 'service' | 'value' | 'tech' | 'local'>('all');
   const [sortBy, setSortBy] = useState<'rating' | 'price' | 'popularity'>('rating');
+  const [providers, setProviders] = useState<RealProvider[]>([]);
+  const [cities, setCities] = useState<RealCity[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const texasData = mockStates.find(s => s.slug === 'texas')!;
-  const texasProviders = mockProviders.filter(p => p.serviceStates.includes('texas'));
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        console.log('[TexasCompaniesPage] Loading Texas companies data...');
+        
+        const [providersData, citiesData] = await Promise.all([
+          getProviders('texas'),
+          getCities('texas')
+        ]);
+        
+        setProviders(providersData);
+        setCities(citiesData);
+        console.log(`[TexasCompaniesPage] Loaded ${providersData.length} providers`);
+      } catch (error) {
+        console.error('[TexasCompaniesPage] Error loading data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, []);
+
+  const texasProviders = providers;
 
   const handleZipSearch = (zipCode: string) => {
-    const city = texasData.topCities.find(c => c.zipCodes.includes(zipCode));
+    const city = cities.find(c => c.zipCodes?.includes(zipCode));
     if (city) {
       navigate(`/texas/${city.slug}/electricity-companies`);
     } else {
@@ -280,13 +305,13 @@ export function TexasCompaniesPage({}: TexasCompaniesPageProps) {
               Texas Electricity Companies - Expert Analysis & Rankings
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-red-100 max-w-4xl mx-auto">
-              Complete directory of {texasProviders.length} electricity companies serving Texas. 
+              Complete directory of {loading ? '100+' : texasProviders.length} electricity companies serving Texas. 
               Expert rankings by specialization help you find the right company for your needs.
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-8">
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-                <div className="text-3xl font-bold">{texasProviders.length}</div>
+                <div className="text-3xl font-bold">{loading ? '100+' : texasProviders.length}</div>
                 <div className="text-red-200 text-sm">Licensed Companies</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
@@ -475,17 +500,50 @@ export function TexasCompaniesPage({}: TexasCompaniesPageProps) {
             Complete Texas Company Directory
           </h2>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {texasProviders.slice(0, 12).map((provider) => (
-              <ProviderCard
-                key={provider.id}
-                provider={provider}
-                onViewDetails={() => navigate(`/providers/${provider.slug}`)}
-                onCompare={() => navigate(`/compare/providers`)}
-                showPlans
-              />
-            ))}
-          </div>
+          {loading ? (
+            <div className="text-center py-12">
+              <div className="text-gray-600">Loading Texas companies...</div>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {texasProviders.slice(0, 12).map((provider) => (
+                <div key={provider.id} className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+                  <div className="text-center mb-4">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{provider.name}</h3>
+                    <div className="text-sm text-gray-600 mb-2">
+                      {provider.averageRate ? `Avg ${provider.averageRate}¢/kWh` : 'Competitive Rates'}
+                    </div>
+                    {provider.rating && (
+                      <div className="flex items-center justify-center mb-2">
+                        <Star className="h-4 w-4 text-yellow-400 fill-current mr-1" />
+                        <span className="font-medium">{provider.rating}</span>
+                      </div>
+                    )}
+                  </div>
+                  
+                  <div className="mb-4">
+                    <div className="text-sm text-gray-600 mb-2">Plan Count:</div>
+                    <div className="font-medium">{provider.planCount || 'Multiple'} plans available</div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <button
+                      onClick={() => navigate(`/providers/${provider.slug}`)}
+                      className="w-full bg-texas-red text-white py-2 rounded-lg hover:bg-texas-red-600 transition-colors text-sm font-medium"
+                    >
+                      View Company Profile
+                    </button>
+                    <button
+                      onClick={() => navigate(`/texas/houston/electricity-providers`)}
+                      className="w-full border border-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
+                    >
+                      See Plans & Rates
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
 
           <div className="text-center mt-8">
             <button

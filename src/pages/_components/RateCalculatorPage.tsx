@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
-import { mockProviders, mockStates } from '../../data/mockData';
+import { getProviders, getCities, type RealProvider, type RealCity } from '../../lib/services/provider-service';
 import { Calculator, TrendingDown, DollarSign, Zap, Star } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
@@ -25,6 +25,22 @@ export function RateCalculatorPage({}: RateCalculatorPageProps) {
   const [selectedState, setSelectedState] = useState('texas');
   const [monthlyUsage, setMonthlyUsage] = useState('1000');
   const [homeType, setHomeType] = useState('average');
+  const [providers, setProviders] = useState<RealProvider[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const providersData = await getProviders('texas');
+        setProviders(providersData);
+      } catch (error) {
+        console.error('[RateCalculatorPage] Error loading data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadData();
+  }, []);
 
   const handleZipSearch = (zipCode: string) => {
     // For Texas ZIP codes, navigate to electricity plans with rate calculator context
@@ -36,8 +52,8 @@ export function RateCalculatorPage({}: RateCalculatorPageProps) {
     }
   };
 
-  const stateData = mockStates.find(s => s.slug === selectedState);
-  const stateProviders = mockProviders.filter(p => p.serviceStates.includes(selectedState));
+  const stateData = { slug: 'texas', name: 'Texas', averageRate: '12.5', isDeregulated: true };
+  const stateProviders = providers;
   const allPlans = stateProviders.flatMap(provider => 
     provider.plans.map(plan => ({ 
       ...plan, 

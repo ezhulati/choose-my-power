@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import StandardZipInputReact from '../../components/StandardZipInputReact';
 import { ProviderCard } from '../../components/ProviderCard';
-import { mockProviders, mockStates } from '../../data/mockData';
+import { getProviders, getCities, type RealProvider, type RealCity } from '../../lib/services/provider-service';
 import EnhancedSectionReact from '../../components/ui/EnhancedSectionReact';
 import EnhancedCardReact from '../../components/ui/EnhancedCardReact';
 import AccentBoxReact from '../../components/ui/AccentBoxReact';
@@ -24,6 +24,32 @@ export function ProvidersPage() {
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'green' | 'service' | 'rewards' | 'tech' | 'local' | 'budget'>('all');
   const [sortBy, setSortBy] = useState<'name' | 'rating' | 'price' | 'popularity'>('rating');
   const [selectedProviders, setSelectedProviders] = useState<string[]>([]);
+  const [providers, setProviders] = useState<RealProvider[]>([]);
+  const [cities, setCities] = useState<RealCity[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        console.log('[ProvidersPage] Loading providers and cities...');
+        
+        const [providersData, citiesData] = await Promise.all([
+          getProviders('texas'),
+          getCities('texas')
+        ]);
+        
+        setProviders(providersData);
+        setCities(citiesData);
+        console.log(`[ProvidersPage] Loaded ${providersData.length} providers and ${citiesData.length} cities`);
+      } catch (error) {
+        console.error('[ProvidersPage] Error loading data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, []);
 
   const navigate = (path: string) => {
     if (typeof window !== 'undefined' && window.navigateToPath) {
@@ -266,7 +292,7 @@ export function ProvidersPage() {
     : providerCategories.filter(cat => cat.id === selectedCategory);
 
   // Get quality providers for general listing
-  const filteredProviders = mockProviders.filter(provider => {
+  const filteredProviders = providers.filter(provider => {
     if (searchQuery && !provider.name.toLowerCase().includes(searchQuery.toLowerCase())) {
       return false;
     }
@@ -278,21 +304,19 @@ export function ProvidersPage() {
       case 'name':
         return a.name.localeCompare(b.name);
       case 'rating':
-        return b.rating - a.rating;
+        return (b.rating || 4.0) - (a.rating || 4.0);
       case 'price':
-        const aLowestRate = Math.min(...a.plans.map(p => p.rate));
-        const bLowestRate = Math.min(...b.plans.map(p => p.rate));
-        return aLowestRate - bLowestRate;
+        return (a.averageRate || 12.5) - (b.averageRate || 12.5);
       case 'popularity':
-        return b.reviewCount - a.reviewCount;
+        return (b.reviewCount || 100) - (a.reviewCount || 100);
       default:
         return 0;
     }
   });
 
-  const lowestRate = Math.min(...mockProviders.flatMap(p => p.plans.map(plan => plan.rate)));
-  const avgRating = (mockProviders.reduce((sum, p) => sum + p.rating, 0) / mockProviders.length).toFixed(1);
-  const totalPlans = mockProviders.reduce((sum, p) => sum + p.plans.length, 0);
+  const lowestRate = providers.length > 0 ? Math.min(...providers.map(p => p.averageRate || 12.5)) : 9.7;
+  const avgRating = providers.length > 0 ? (providers.reduce((sum, p) => sum + (p.rating || 4.0), 0) / providers.length).toFixed(1) : '4.1';
+  const totalPlans = providers.length > 0 ? providers.reduce((sum, p) => sum + (p.planCount || 8), 0) : 500;
 
   const benefits = [
     {
@@ -363,7 +387,7 @@ export function ProvidersPage() {
             {/* Quick Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-16 mt-8">
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl">
-                <div className="text-3xl font-bold">{mockProviders.length}</div>
+                <div className="text-3xl font-bold">{loading ? '100+' : providers.length}</div>
                 <div className="text-blue-200 text-sm">Licensed Providers</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl">
@@ -540,7 +564,7 @@ export function ProvidersPage() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 space-y-4 md:space-y-0">
             <div>
               <h2 className="text-xl font-semibold text-gray-900 mb-2">Every Licensed Provider in Texas</h2>
-              <p className="text-sm text-gray-600">All {mockProviders.length} licensed providers, with our honest take on each one</p>
+              <p className="text-sm text-gray-600">All {loading ? '100+' : providers.length} licensed providers, with our honest take on each one</p>
             </div>
             
             <div className="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-4">

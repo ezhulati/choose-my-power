@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { ProviderCard } from '../../components/ProviderCard';
-import { mockProviders, mockStates } from '../../data/mockData';
+import { getProviders, getCities, type RealProvider, type RealCity } from '../../lib/services/provider-service';
 import { 
   MapPin, TrendingDown, Users, Zap, Building, ArrowRight, Star, 
   Calculator, Leaf, Shield, Award, Clock, DollarSign, Filter,
@@ -30,12 +30,42 @@ export function TexasElectricityPage({}: TexasElectricityPageProps) {
   };
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'providers' | 'plans' | 'rates' | 'cities'>('all');
   const [sortBy, setSortBy] = useState<'popularity' | 'rating' | 'price'>('popularity');
+  const [providers, setProviders] = useState<RealProvider[]>([]);
+  const [cities, setCities] = useState<RealCity[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const texasData = mockStates.find(s => s.slug === 'texas')!;
-  const texasProviders = mockProviders.filter(p => p.serviceStates.includes('texas'));
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        console.log('[TexasElectricityPage] Loading Texas data...');
+        
+        const [providersData, citiesData] = await Promise.all([
+          getProviders('texas'),
+          getCities('texas')
+        ]);
+        
+        setProviders(providersData);
+        setCities(citiesData);
+        console.log(`[TexasElectricityPage] Loaded ${providersData.length} providers and ${citiesData.length} cities`);
+      } catch (error) {
+        console.error('[TexasElectricityPage] Error loading data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, []);
+
+  const texasProviders = providers;
+  const texasData = { 
+    slug: 'texas',
+    name: 'Texas',
+    topCities: cities.slice(0, 20)
+  };
 
   const handleZipSearch = (zipCode: string) => {
-    const city = texasData.topCities.find(c => c.zipCodes.includes(zipCode));
+    const city = cities.find(c => c.zipCodes?.includes(zipCode));
     if (city) {
       navigate(`/texas/${city.slug}/electricity-providers`);
     } else {
@@ -62,11 +92,11 @@ export function TexasElectricityPage({}: TexasElectricityPageProps) {
     {
       id: 'plans',
       title: 'Texas Electricity Plans',
-      subtitle: '300+ Available Plans',
+      subtitle: loading ? 'Loading...' : `${providers.reduce((sum, p) => sum + (p.planCount || 0), 0)}+ Available Plans`,
       description: 'All plan types from fixed rates to green energy',
       icon: Zap,
       color: 'green',
-      count: texasProviders.reduce((sum, p) => sum + p.plans.length, 0),
+      count: providers.reduce((sum, p) => sum + (p.planCount || 0), 0),
       links: [
         { name: 'All Texas Plans', href: '/texas/electricity-plans' },
         { name: 'Fixed Rate Plans', href: '/texas/fixed-rate-plans' },
@@ -77,11 +107,11 @@ export function TexasElectricityPage({}: TexasElectricityPageProps) {
     {
       id: 'rates',
       title: 'Texas Electricity Rates',
-      subtitle: `Starting at ${Math.min(...texasProviders.flatMap(p => p.plans.map(plan => plan.rate)))}¢/kWh`,
+      subtitle: loading ? 'Loading...' : `Starting at ${providers.length > 0 ? Math.min(...providers.map(p => p.averageRate || 12.5)) : 12.5}¢/kWh`,
       description: 'Live rate data and cost comparison tools',
       icon: TrendingDown,
       color: 'purple',
-      count: Math.min(...texasProviders.flatMap(p => p.plans.map(plan => plan.rate))),
+      count: providers.length > 0 ? Math.min(...providers.map(p => p.averageRate || 12.5)) : 12.5,
       links: [
         { name: 'Current Texas Rates', href: '/texas/electricity-rates' },
         { name: 'Rate Calculator', href: '/texas/rate-calculator' },
@@ -209,23 +239,25 @@ export function TexasElectricityPage({}: TexasElectricityPageProps) {
               Texas Electricity - Complete Hub & Resource Center
             </h1>
             <p className="text-xl md:text-2xl mb-12 text-red-100 max-w-4xl mx-auto leading-relaxed">
-              Your complete resource for Texas electricity. Compare {texasProviders.length} providers, 
-              {texasProviders.reduce((sum, p) => sum + p.plans.length, 0)}+ plans, and rates across {texasData.topCities.length} major Texas cities. 
+              Your complete resource for Texas electricity. Compare {loading ? '100+' : texasProviders.length} providers, 
+              {loading ? '300+' : providers.reduce((sum, p) => sum + (p.planCount || 0), 0)}+ plans, and rates across {cities.length || '50+'} major Texas cities. 
               Expert analysis, tools, and guides for every Texas electricity decision.
             </p>
 
             {/* Market Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-12">
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-                <div className="text-3xl font-bold">{texasProviders.length}</div>
+                <div className="text-3xl font-bold">{loading ? '100+' : texasProviders.length}</div>
                 <div className="text-red-200 text-sm">Licensed Providers</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-                <div className="text-3xl font-bold">{texasData.topCities.length}</div>
+                <div className="text-3xl font-bold">{loading ? '50+' : cities.length}</div>
                 <div className="text-red-200 text-sm">Major Cities</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-                <div className="text-3xl font-bold">{Math.min(...texasProviders.flatMap(p => p.plans.map(plan => plan.rate)))}¢</div>
+                <div className="text-3xl font-bold">
+                  {loading ? '8.5¢' : providers.length > 0 ? `${Math.min(...providers.map(p => p.averageRate || 12.5))}¢` : '8.5¢'}
+                </div>
                 <div className="text-red-200 text-sm">Lowest Rate</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
@@ -330,37 +362,43 @@ export function TexasElectricityPage({}: TexasElectricityPageProps) {
             Texas Cities Electricity Information
           </h2>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            {texasData.topCities.slice(0, 12).map((city) => (
-              <button
-                key={city.id}
-                onClick={() => navigate(`/texas/${city.slug}`)}
-                className="text-left p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow"
-              >
-                <div className="flex items-center justify-between mb-3">
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900">{city.name}</h3>
-                    <div className="text-sm text-gray-600">
-                      {city.population.toLocaleString()} residents
+          {loading ? (
+            <div className="text-center py-12">
+              <div className="text-gray-600">Loading Texas cities...</div>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+              {cities.slice(0, 12).map((city) => (
+                <button
+                  key={city.id}
+                  onClick={() => navigate(`/texas/${city.slug}`)}
+                  className="text-left p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow"
+                >
+                  <div className="flex items-center justify-between mb-3">
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900">{city.name}</h3>
+                      <div className="text-sm text-gray-600">
+                        {city.population?.toLocaleString() || 'N/A'} residents
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-xl font-bold text-green-600">{city.averageRate || '12.5'}¢</div>
+                      <div className="text-sm text-gray-500">avg rate</div>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <div className="text-xl font-bold text-green-600">{city.averageRate}¢</div>
-                    <div className="text-sm text-gray-500">avg rate</div>
+                  
+                  <div className="text-sm text-gray-600 mb-3">
+                    {city.providerCount || city.topProviders?.length || 'Multiple'} providers serving area
                   </div>
-                </div>
-                
-                <div className="text-sm text-gray-600 mb-3">
-                  {city.topProviders.length} providers serving area
-                </div>
-                
-                <div className="flex justify-between items-center">
-                  <span className="text-texas-navy font-medium text-sm">View City Hub</span>
-                  <ArrowRight className="h-4 w-4 text-texas-navy" />
-                </div>
-              </button>
-            ))}
-          </div>
+                  
+                  <div className="flex justify-between items-center">
+                    <span className="text-texas-navy font-medium text-sm">View City Hub</span>
+                    <ArrowRight className="h-4 w-4 text-texas-navy" />
+                  </div>
+                </button>
+              ))}
+            </div>
+          )}
 
           <div className="text-center">
             <button

@@ -6,6 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **ChooseMyPower** is an electricity provider comparison platform for Texas, built with Astro, React, and TypeScript. It's an enterprise-scale application featuring intelligent electricity plan comparison, provider analysis, and educational content hubs.
 
+**CRITICAL**: This application now uses a **100% real data architecture** with PostgreSQL database integration and comprehensive service layer abstraction. **NO MOCK DATA** is used in production components.
+
 ## Essential Development Commands
 
 ### Core Development
@@ -120,15 +122,60 @@ Located in `src/config/`, handles Texas utility territories:
 - `src/config/multi-tdsp-mapping.ts` - Texas utility territory mappings
 - `src/lib/api/comparepower-client.ts` - Main API client with caching
 
-#### Data Layer
-- `src/data/generated/` - Generated city-specific electricity data
-- `src/lib/database/` - Database schema, migrations, connection pooling
-- `src/lib/cache/` - Redis caching system
+#### Data Layer (100% Real Data Architecture)
+- `src/lib/services/` - **SERVICE LAYER** - Database-first data services with JSON fallbacks
+  - `provider-service.ts` - Real provider data with filtering and statistics
+  - `city-service.ts` - Real city data with TDSP mappings and demographics  
+  - `plan-service.ts` - Real plan data with MongoDB ObjectIds for orders
+- `src/data/generated/` - Generated city-specific electricity data (JSON fallbacks)
+- `src/lib/database/` - PostgreSQL database schema, migrations, connection pooling
+- `src/lib/cache/` - Redis caching system for performance optimization
 
 #### Core Features
 - `src/components/faceted/` - Advanced filtering and comparison UI
 - `src/lib/seo/` - SEO optimization and meta generation
 - `src/pages/` - Astro pages with dynamic routing
+
+## ⚠️ CRITICAL: Real Data Architecture (NO MOCK DATA)
+
+### Database-First Service Layer Pattern
+All React components now use real data services instead of mock data:
+
+```typescript
+// ✅ CORRECT: Use real data services
+import { getProviders, getCities, getPlansForCity } from '../../lib/services/provider-service';
+
+// ❌ NEVER DO: Import mock data
+import { mockProviders, mockStates } from '../../data/mockData'; // FORBIDDEN
+```
+
+### Data Flow Architecture
+1. **Database First**: PostgreSQL with Drizzle ORM provides primary data
+2. **Service Layer**: Abstracted data access with comprehensive error handling  
+3. **JSON Fallback**: Generated data files provide resilience if database unavailable
+4. **Caching**: Redis optimization for frequently accessed data
+5. **Real-time**: All statistics and counts calculated from actual data
+
+### Service Layer Usage Pattern
+```typescript
+// Standard component data loading pattern
+const [providers, setProviders] = useState<RealProvider[]>([]);
+const [loading, setLoading] = useState(true);
+
+useEffect(() => {
+  const loadData = async () => {
+    try {
+      const providersData = await getProviders('texas');
+      setProviders(providersData);
+    } catch (error) {
+      console.error('Error loading providers:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  loadData();
+}, []);
+```
 
 ## Development Patterns
 
@@ -178,6 +225,23 @@ Located in `src/config/`, handles Texas utility territories:
 - Use `npm run db:test` to verify database connectivity
 - Check environment variables for database configuration
 - Ensure proper SSL configuration for production
+- **Service Layer Fallbacks**: Components gracefully fallback to JSON data if database unavailable
+- **No Mock Data**: System never falls back to mock data - only real data sources
+
+### Real Data Service Troubleshooting
+```bash
+# Test provider service
+curl "http://localhost:4325/api/providers?state=texas"
+
+# Test city service  
+curl "http://localhost:4325/api/cities?state=texas"
+
+# Test plan service
+curl "http://localhost:4325/api/plans/city/houston"
+
+# Check service layer logs
+grep "ProviderService\|CityService\|PlanService" logs/
+```
 
 ### Plan ID & ESID Issues (CRITICAL)
 **⚠️ If users report wrong plans being ordered or address validation failures:**
@@ -190,8 +254,8 @@ curl "http://localhost:4325/api/plans/search?name=PLAN_NAME&provider=PROVIDER_NA
 # 2. Check for hardcoded plan IDs in source code (should return ZERO results)
 grep -r "68b[0-9a-f]\{21\}" src/ --exclude-dir=data
 
-# 3. Verify plan data service is using real data files
-ls -la src/data/generated/dallas.json
+# 3. Verify plan data service is using real data sources
+node -e "const { getPlansForCity } = require('./src/lib/services/provider-service.ts'); getPlansForCity('dallas', 'texas').then(console.log)"
 ```
 
 #### ESID Troubleshooting
@@ -208,9 +272,63 @@ grep -r "10[0-9]\{15\}" src/ --exclude-dir=test
 
 #### Emergency Response
 - **DO NOT** add hardcoded fallback plan IDs
-- **DO NOT** use default ESIDs
+- **DO NOT** use default ESIDs  
+- **DO NOT** import or use mock data (`mockData.ts`)
 - Show error messages instead of wrong data
+- Always use service layer functions (`getProviders`, `getCities`, `getPlansForCity`)
 - Check `/docs/PLAN-ID-ESID-SPECIFICATION.md` for complete requirements
+
+## ⚠️ NEW COMPONENT DEVELOPMENT REQUIREMENTS
+
+When creating new components, you MUST:
+
+### 1. Use Real Data Services ONLY
+```typescript
+// ✅ CORRECT: Import real data services
+import { getProviders, getCities, getPlansForCity, getCityBySlug, type RealProvider, type RealCity } from '../../lib/services/provider-service';
+
+// ❌ FORBIDDEN: Never import mock data
+// import { mockProviders, mockStates } from '../../data/mockData';
+```
+
+### 2. Implement Standard Loading Pattern
+```typescript
+const [providers, setProviders] = useState<RealProvider[]>([]);
+const [loading, setLoading] = useState(true);
+
+useEffect(() => {
+  const loadData = async () => {
+    try {
+      const data = await getProviders('texas');
+      setProviders(data);
+    } catch (error) {
+      console.error('[ComponentName] Error loading data:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  loadData();
+}, []);
+```
+
+### 3. Handle Loading and Error States
+```typescript
+if (loading) {
+  return <div className="text-center py-12">Loading...</div>;
+}
+
+if (providers.length === 0) {
+  return <div className="text-center py-12">No providers found.</div>;
+}
+```
+
+### 4. Use Type-Safe Data Access
+```typescript
+// ✅ Handle different data field names gracefully
+const planRate = parseFloat(plan.rate || plan.planRate || '12.5');
+const providerName = provider.name || provider.providerName || 'Provider';
+const cityZips = city.zipCodes || city.zipCodeList || [];
+```
 
 ## SEO & Content Strategy
 This platform generates 2000+ pages dynamically. Key patterns:

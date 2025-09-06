@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
-import { mockProviders, mockStates } from '../../data/mockData';
+import { getProviders, getCities, getPlansForCity, type RealProvider, type RealCity } from '../../lib/services/provider-service';
 import { Icon } from '../../components/ui/Icon';
 import { Card, CardHeader, CardContent, CardTitle, CardDescription } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
@@ -9,6 +9,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '.
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../components/ui/select';
 import { Input } from '../../components/ui/input';
 import { Separator } from '../../components/ui/separator';
+import { Shield, TrendingDown, Leaf, DollarSign, Clock } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
 declare global {
@@ -34,9 +35,46 @@ export function ComparePlansPage({}: ComparePlansPageProps) {
   const [termFilter, setTermFilter] = useState<'all' | '12' | '24' | '36'>('all');
   const [monthlyUsage, setMonthlyUsage] = useState('1000');
   const [showComparison, setShowComparison] = useState(false);
+  const [providers, setProviders] = useState<RealProvider[]>([]);
+  const [cities, setCities] = useState<RealCity[]>([]);
+  const [plans, setPlans] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        console.log('[ComparePlansPage] Loading plans data...');
+        
+        const [providersData, citiesData] = await Promise.all([
+          getProviders('texas'),
+          getCities('texas')
+        ]);
+        
+        setProviders(providersData);
+        setCities(citiesData);
+        
+        // Get plans from Houston as representative sample
+        const houstonPlans = await getPlansForCity('houston', 'texas');
+        setPlans(houstonPlans);
+        
+        console.log(`[ComparePlansPage] Loaded ${houstonPlans.length} plans`);
+      } catch (error) {
+        console.error('[ComparePlansPage] Error loading data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, []);
 
   const handleZipSearch = (zipCode: string) => {
-    navigate(`/texas/houston/electricity-plans`);
+    const city = cities.find(c => c.zipCodes?.includes(zipCode));
+    if (city) {
+      navigate(`/texas/${city.slug}/electricity-plans`);
+    } else {
+      navigate(`/texas/houston/electricity-plans`);
+    }
   };
 
   const planTypes = [
@@ -47,7 +85,7 @@ export function ComparePlansPage({}: ComparePlansPageProps) {
       color: 'blue',
       description: 'Rates locked for entire contract term',
       benefits: ['Predictable bills', 'Budget protection', 'Rate stability', 'No surprise increases'],
-      count: 150
+      count: loading ? 150 : plans.filter(p => (p.planType || p.type) === 'fixed').length
     },
     {
       id: 'variable',
@@ -56,7 +94,7 @@ export function ComparePlansPage({}: ComparePlansPageProps) {
       color: 'orange',
       description: 'Rates can change monthly with market',
       benefits: ['Market flexibility', 'Potential savings', 'No long commitment', 'Lower starting rates'],
-      count: 85
+      count: loading ? 85 : plans.filter(p => (p.planType || p.type) === 'variable').length
     },
     {
       id: 'green',
@@ -65,7 +103,7 @@ export function ComparePlansPage({}: ComparePlansPageProps) {
       color: 'green',
       description: '100% renewable energy sources',
       benefits: ['Environmental impact', 'Wind & solar power', 'Carbon neutral', 'Green certificates'],
-      count: 95
+      count: loading ? 95 : plans.filter(p => (p.planType || p.type) === 'green' || p.renewablePercent === 100).length
     },
     {
       id: 'prepaid',
@@ -74,7 +112,7 @@ export function ComparePlansPage({}: ComparePlansPageProps) {
       color: 'purple',
       description: 'Pay before you use electricity',
       benefits: ['No credit check', 'Usage control', 'No deposits', 'Flexible terms'],
-      count: 45
+      count: loading ? 45 : plans.filter(p => (p.planType || p.type) === 'prepaid' || p.name?.toLowerCase().includes('prepaid')).length
     },
     {
       id: 'free-time',
@@ -82,32 +120,28 @@ export function ComparePlansPage({}: ComparePlansPageProps) {
       icon: Clock,
       color: 'indigo',
       description: 'Free electricity during specific hours',
-      benefits: ['Free nights/weekends', 'High usage savings', 'Time-based value', 'Peak shifting'],
-      count: 35
+      benefits: ['Free night hours', 'Weekend benefits', 'Usage shifting', 'Large home savings'],
+      count: loading ? 25 : plans.filter(p => (p.planType || p.type) === 'free-time' || p.name?.toLowerCase().includes('free')).length
     }
   ];
 
   // Get all plans with provider info
-  const allPlans = mockProviders.flatMap(provider => 
-    provider.plans.map(plan => ({ 
-      ...plan, 
-      providerName: provider.name, 
-      providerSlug: provider.slug,
-      providerRating: provider.rating,
-      providerLogo: provider.logo
-    }))
-  );
+  const allPlans = plans.map(plan => ({
+    ...plan,
+    providerName: plan.providerName || plan.provider || 'Provider',
+    id: plan.id || `${plan.name}-${Math.random()}`
+  }));
 
   // Apply filters
   const filteredPlans = allPlans.filter(plan => {
     if (planTypeFilter !== 'all') {
-      if (planTypeFilter === 'green' && plan.renewablePercent < 100) return false;
-      if (planTypeFilter === 'prepaid' && !plan.name.toLowerCase().includes('prepaid')) return false;
-      if (planTypeFilter === 'free-time' && !plan.name.toLowerCase().includes('free')) return false;
-      if (planTypeFilter === 'fixed' && plan.type !== 'fixed') return false;
-      if (planTypeFilter === 'variable' && plan.type !== 'variable') return false;
+      if (planTypeFilter === 'green' && (plan.renewablePercent < 100 && (plan.planType || plan.type) !== 'green')) return false;
+      if (planTypeFilter === 'prepaid' && !(plan.name?.toLowerCase().includes('prepaid') || (plan.planType || plan.type) === 'prepaid')) return false;
+      if (planTypeFilter === 'free-time' && !(plan.name?.toLowerCase().includes('free') || (plan.planType || plan.type) === 'free-time')) return false;
+      if (planTypeFilter === 'fixed' && (plan.planType || plan.type) !== 'fixed') return false;
+      if (planTypeFilter === 'variable' && (plan.planType || plan.type) !== 'variable') return false;
     }
-    if (termFilter !== 'all' && plan.termLength !== parseInt(termFilter)) return false;
+    if (termFilter !== 'all' && (plan.termLength || plan.term) !== parseInt(termFilter)) return false;
     return true;
   });
 

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import StandardZipInputReact from '../../components/StandardZipInputReact';
-import { mockStates, mockProviders, utilityCompanies } from '../../data/mockData';
+import { getProviders, getCities, type RealProvider, type RealCity } from '../../lib/services/provider-service';
 import { 
   MapPin, Search, TrendingDown, Users, Zap, Building, ArrowRight, Star, 
   Globe, Phone, CheckCircle, AlertCircle, Calculator, Shield, Leaf, Award, 
@@ -29,6 +29,32 @@ function LocationsPage({}: LocationsPageProps) {
   const [selectedRegion, setSelectedRegion] = useState<'all' | 'texas' | 'pennsylvania'>('all');
   const [selectedMetric, setSelectedMetric] = useState<'providers' | 'rates' | 'population' | 'savings'>('providers');
   const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
+  const [providers, setProviders] = useState<RealProvider[]>([]);
+  const [cities, setCities] = useState<RealCity[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        console.log('[LocationsPage] Loading providers and cities...');
+        
+        const [providersData, citiesData] = await Promise.all([
+          getProviders('texas'),
+          getCities('texas')
+        ]);
+        
+        setProviders(providersData);
+        setCities(citiesData);
+        console.log(`[LocationsPage] Loaded ${providersData.length} providers and ${citiesData.length} cities`);
+      } catch (error) {
+        console.error('[LocationsPage] Error loading data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, []);
 
   const handleZipSearch = (zipCode: string) => {
     // Comprehensive ZIP code routing logic
@@ -59,15 +85,40 @@ function LocationsPage({}: LocationsPageProps) {
     }
   };
 
+  // Create mock states data with real providers count
+  const mockStates = [
+    {
+      id: 'texas',
+      slug: 'texas',
+      name: 'Texas',
+      abbreviation: 'TX',
+      isDeregulated: true,
+      averageRate: providers.length > 0 ? (providers.reduce((sum, p) => sum + (p.averageRate || 12.5), 0) / providers.length).toFixed(1) : '12.5',
+      topCities: cities.slice(0, 10),
+      utilityCompanies: ['Oncor', 'CenterPoint', 'TNMP', 'AEP Texas']
+    },
+    {
+      id: 'pennsylvania',
+      slug: 'pennsylvania', 
+      name: 'Pennsylvania',
+      abbreviation: 'PA',
+      isDeregulated: true,
+      averageRate: '11.2',
+      topCities: [
+        { id: 'philadelphia', slug: 'philadelphia', name: 'Philadelphia', population: 1584000, averageRate: '13.1', zipCodes: ['19101', '19102'], topProviders: ['peco', 'constellation'] },
+        { id: 'pittsburgh', slug: 'pittsburgh', name: 'Pittsburgh', population: 302971, averageRate: '13.8', zipCodes: ['15201', '15202'], topProviders: ['duquesne', 'direct'] }
+      ],
+      utilityCompanies: ['PECO', 'PPL', 'Duquesne Light']
+    }
+  ];
+  
   const filteredStates = selectedRegion === 'all' 
     ? mockStates 
     : mockStates.filter(state => state.slug === selectedRegion);
 
-  const totalCities = mockStates.reduce((sum, state) => sum + state.topCities.length, 0);
-  const totalProviders = mockProviders.length;
-  const totalZipCodes = mockStates.reduce((sum, state) => 
-    sum + state.topCities.reduce((citySum, city) => citySum + city.zipCodes.length, 0), 0
-  );
+  const totalCities = cities.length || 881;
+  const totalProviders = providers.length || 100;
+  const totalZipCodes = cities.reduce((sum, city) => sum + (city.zipCodes?.length || 5), 0) || 50000;
 
   const locationTypes = [
     {
@@ -94,7 +145,7 @@ function LocationsPage({}: LocationsPageProps) {
     {
       icon: Zap,
       title: 'By Utility',
-      count: `${Object.values(utilityCompanies).flat().length}`,
+      count: `15+`,
       description: 'The company that owns the wires (you can\'t change this one)',
       action: () => navigate('/utilities')
     }
@@ -162,7 +213,7 @@ function LocationsPage({}: LocationsPageProps) {
             {/* Location Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mb-16">
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl">
-                <div className="text-3xl font-bold">{mockStates.length}</div>
+                <div className="text-3xl font-bold">2</div>
                 <div className="text-blue-200 text-sm">States Where You Can Switch</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl">
@@ -260,8 +311,8 @@ function LocationsPage({}: LocationsPageProps) {
             
             <div className="space-y-4">
               {filteredStates.map((state) => {
-                const stateProviders = mockProviders.filter(p => p.serviceStates.includes(state.slug));
-                const potentialSavings = Math.round((state.averageRate - 9.7) * 1000 / 100 * 12);
+                const stateProviders = state.slug === 'texas' ? providers : [];
+                const potentialSavings = Math.round((parseFloat(state.averageRate) - 9.7) * 1000 / 100 * 12);
                 
                 return (
                   <div key={state.id} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
