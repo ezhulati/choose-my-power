@@ -16,13 +16,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **DESIGN SYSTEM**: Enhanced Texas design system documentation with hero overlay best practices
   - Added professional hero section patterns with proper overlay containment
   - Added critical DON'T rules for shadow usage and overlay positioning
+- **DATABASE INTEGRATION**: Real electricity plan data with MongoDB ObjectIds
+  - Added `seedElectricityPlans()` function to populate database with real plan data from generated JSON files
+  - Created `plan-database-service.ts` for database-driven plan searches with fallback to JSON files
+  - Enhanced database health checks to include electricity plan counts
+  - Support for 500+ real electricity plans with valid MongoDB ObjectIds in production database
 
 ### Fixed
+- **CRITICAL DEPLOYMENT**: Fixed Redis connection timeouts causing 18-minute Netlify build failures
+  - Added intelligent build environment detection to disable Redis during static site generation
+  - Prevents "getaddrinfo ENOTFOUND host" errors during build process
+  - Gracefully falls back to memory-only caching during builds while maintaining Redis functionality in production
+  - Detects build environments: NODE_ENV=development, ASTRO_BUILD, NETLIFY, CI, build command arguments
 - **CRITICAL ROUTING**: Fixed city page navigation from ZIP code search causing ERR_FAILED errors
   - Changed texas/[city].astro from SSR (prerender: false) to static prerendering (prerender: true)
   - Added getStaticPaths() to generate routes for all 880+ Texas cities at build time
   - Fixed ZIP code search navigation (75205 → dallas) that was failing with "This site can't be reached"
   - Resolved "Unable to search for service locations" user experience issue
+- **PLAN SEARCH BUG**: Fixed undefined variable error in `getUniqueProviders()` function
+  - Corrected reference from undefined `plans` to proper `cityData.filters['no-filters'].plans`
+  - Added fallback for different city data structures to prevent runtime errors
 - **CRITICAL BUILD**: Fixed JSX syntax error in ProviderPage.tsx causing Netlify deployment failures
   - Corrected mismatched closing tag on line 217 (`</EnhancedSectionReact>` → `</div>`)
   - Added missing closing div tag in hero section (line 217) to fix unclosed JSX element
@@ -50,6 +63,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **UPGRADED**: ESID search system from hardcoded database to dynamic generation based on ZIP codes
 - **STRENGTHENED**: Validation pipeline to prevent hardcoded plan/ESID values in source code
 - **IMPROVED**: Hero section padding standardized to `py-32 lg:py-40` for proper breathing room
+- **PLAN SEARCH API**: Enhanced plan search to use database when available with JSON fallback
+  - Updated `/api/plans/search` to check for database plan data before using JSON files
+  - Maintains backward compatibility with existing JSON-based plan data service
+  - Enables real MongoDB ObjectIds for plan ordering when database is available
 
 ## [1.1.0] - 2025-09-05
 

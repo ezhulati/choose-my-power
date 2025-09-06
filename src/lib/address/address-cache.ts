@@ -87,9 +87,17 @@ export class AddressCache {
   };
 
   constructor(config: Partial<CacheConfig> = {}) {
+    // Detect build/static generation environment and disable Redis
+    const isBuildTime = process.env.NODE_ENV === 'development' || 
+                       process.env.ASTRO_BUILD === 'true' ||
+                       process.env.NETLIFY === 'true' ||
+                       process.env.CI === 'true' ||
+                       process.argv.includes('build') ||
+                       process.argv.includes('astro');
+
     this.config = {
       enableMemoryCache: true,
-      enableRedisCache: Boolean(process.env.REDIS_URL),
+      enableRedisCache: Boolean(process.env.REDIS_URL) && !isBuildTime,
       enableDatabaseCache: true,
       enableFileCache: true,
       memoryMaxSize: 1000, // entries

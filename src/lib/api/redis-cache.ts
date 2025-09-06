@@ -89,6 +89,19 @@ export class RedisCache {
       return;
     }
 
+    // Detect build/static generation environment and disable Redis
+    const isBuildTime = process.env.NODE_ENV === 'development' || 
+                       process.env.ASTRO_BUILD === 'true' ||
+                       process.env.NETLIFY === 'true' ||
+                       process.env.CI === 'true' ||
+                       process.argv.includes('build') ||
+                       process.argv.includes('astro');
+
+    if (isBuildTime) {
+      console.log('Build environment detected, using memory cache only (Redis disabled)');
+      return;
+    }
+
     try {
       // Dynamic import for Redis to handle environments where it's not available
       const Redis = await import('ioredis').catch(() => null);
@@ -679,8 +692,16 @@ export function createCache(config: Partial<CacheConfig> = {}): RedisCache {
   const isProduction = process.env.NODE_ENV === 'production';
   const isMassDeployment = process.env.MASS_DEPLOYMENT === 'true';
   
+  // Detect build/static generation environment and disable Redis
+  const isBuildTime = process.env.NODE_ENV === 'development' || 
+                     process.env.ASTRO_BUILD === 'true' ||
+                     process.env.NETLIFY === 'true' ||
+                     process.env.CI === 'true' ||
+                     process.argv.includes('build') ||
+                     process.argv.includes('astro');
+
   const defaultConfig: CacheConfig = {
-    redis: process.env.REDIS_URL ? {
+    redis: process.env.REDIS_URL && !isBuildTime ? {
       url: process.env.REDIS_URL,
       maxRetries: isProduction ? 5 : 3,
       retryDelayMs: isProduction ? 1000 : 2000,
