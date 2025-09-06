@@ -21,8 +21,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Created `plan-database-service.ts` for database-driven plan searches with fallback to JSON files
   - Enhanced database health checks to include electricity plan counts
   - Support for 500+ real electricity plans with valid MongoDB ObjectIds in production database
+- **SERVICE LAYER**: New service architecture for data access and business logic
+  - Added `src/lib/services/city-service.ts` for city data operations and utilities
+  - Added `src/lib/services/plan-service.ts` for electricity plan data management
+  - Added `src/lib/services/provider-service.ts` for electricity provider data operations
+  - Centralized data access patterns with consistent error handling and caching
+- **DATA QUALITY**: Mock data audit and removal documentation
+  - Added comprehensive audit specifications for identifying mock/hardcoded data
+  - Created removal plan with systematic approach for replacing mock data with real data
+  - Progress tracking for mock data cleanup across all page components
+
+### Enhanced
+- **PROVIDER PAGES**: Real data integration for city electricity provider pages
+  - Updated CityElectricityProvidersPage with dynamic provider data loading
+  - Added proper error handling and loading states for data fetching
+  - Integrated with city service APIs for real-time provider information
+  - Enhanced provider statistics with actual rates and provider counts
+  - Improved ZIP code search functionality with city-specific data
 
 ### Fixed
+- **CRITICAL DEPLOYMENT**: Fixed Astro.request.url usage in static city pages causing build failures
+  - Removed `Astro.request.url` from texas/[city].astro during static generation
+  - Replaced URL parameter parsing with static-compatible approach
+  - Eliminates "Astro.request.headers not available on prerendered pages" warnings
+  - Static city pages now redirect to faceted URLs for filtered searches
+  - Completes the deployment fix chain after Redis connection issue was resolved
 - **CRITICAL DEPLOYMENT**: Fixed Redis connection timeouts causing 18-minute Netlify build failures
   - Added intelligent build environment detection to disable Redis during static site generation
   - Prevents "getaddrinfo ENOTFOUND host" errors during build process

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
-import { mockProviders, mockStates } from '../../data/mockData';
+import { getProviders, type RealProvider } from '../../lib/services/provider-service';
 import { Icon } from '../../components/ui/Icon';
 import { Card, CardHeader, CardContent, CardTitle, CardDescription } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
@@ -28,10 +28,33 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
       window.location.href = path;
     }
   };
+  
   const [selectedProviders, setSelectedProviders] = useState<string[]>([]);
   const [sortBy, setSortBy] = useState<'rating' | 'price' | 'reviews' | 'plans'>('rating');
   const [filterCategory, setFilterCategory] = useState<'all' | 'green' | 'service' | 'value' | 'tech' | 'local'>('all');
   const [showComparison, setShowComparison] = useState(false);
+  
+  const [providers, setProviders] = useState<RealProvider[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Load real provider data
+  useEffect(() => {
+    async function loadProviders() {
+      try {
+        setLoading(true);
+        const providersData = await getProviders('texas');
+        setProviders(providersData);
+      } catch (err) {
+        console.error('Error loading providers:', err);
+        setError('Failed to load provider data');
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadProviders();
+  }, []);
 
   const handleZipSearch = (zipCode: string) => {
     navigate(`/texas/houston/electricity-providers`);

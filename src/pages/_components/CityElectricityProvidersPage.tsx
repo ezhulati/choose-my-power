@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { ProviderCard } from '../../components/ProviderCard';
-import { mockProviders, mockStates } from '../../data/mockData';
+import { getProvidersForCity, type RealProvider } from '../../lib/services/provider-service';
+import { getCityBySlug, type RealCity } from '../../lib/services/city-service';
 import { MapPin, TrendingDown, Users, Zap, Calculator, Star, Award, Clock, Filter, Leaf } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
@@ -25,41 +26,87 @@ export function CityElectricityProvidersPage({ state, city }: CityElectricityPro
       window.location.href = path;
     }
   };
+  
   const [sortBy, setSortBy] = useState<'rating' | 'price' | 'popularity'>('rating');
   const [planTypeFilter, setPlanTypeFilter] = useState<'all' | 'fixed' | 'variable' | 'green'>('all');
   const [showCalculator, setShowCalculator] = useState(false);
   const [monthlyUsage, setMonthlyUsage] = useState('1000');
-
-  const stateData = mockStates.find(s => s.slug === state);
-  const cityData = stateData?.topCities.find(c => c.slug === city);
   
-  if (!stateData || !cityData) {
+  const [providers, setProviders] = useState<RealProvider[]>([]);
+  const [cityData, setCityData] = useState<RealCity | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Load real data on component mount
+  useEffect(() => {
+    async function loadData() {
+      try {
+        setLoading(true);
+        const [cityInfo, cityProviders] = await Promise.all([
+          getCityBySlug(city),
+          getProvidersForCity(city)
+        ]);
+        
+        if (!cityInfo) {
+          setError('City not found');
+          return;
+        }
+        
+        setCityData(cityInfo);
+        setProviders(cityProviders);
+      } catch (err) {
+        console.error('Error loading city data:', err);
+        setError('Failed to load city information. Please try again.');
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadData();
+  }, [state, city]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-texas-navy mb-4">Loading...</h1>
+          <p className="text-gray-600">Getting the latest provider information for {city}...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !cityData) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">City Not Found</h1>
+          <p className="text-gray-600 mb-6">{error || 'The requested city could not be found.'}</p>
           <button
             onClick={() => navigate(`/${state}/electricity-providers`)}
             className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-texas-navy/90 transition-colors"
           >
-            View {stateData?.name || 'State'} Providers
+            View {state.charAt(0).toUpperCase() + state.slice(1)} Providers
           </button>
         </div>
       </div>
     );
   }
 
-  const cityProviders = mockProviders.filter(p => 
-    cityData.topProviders.includes(p.id)
-  );
+  const cityProviders = providers;
 
   const handleZipSearch = (zipCode: string) => {
     navigate(`/${state}/${city}/${zipCode}`);
   };
 
-  const lowestRate = Math.min(...cityProviders.flatMap(p => p.plans.map(plan => plan.rate)));
-  const avgRate = cityData.averageRate;
+  // Calculate stats from real data
+  const avgRate = cityData.average_rate || 12.0;
+  const lowestRate = cityData.lowest_rate || avgRate - 2.0;
   const potentialSavings = Math.round((avgRate - lowestRate) * parseInt(monthlyUsage) / 100 * 12);
+  const stateName = state.charAt(0).toUpperCase() + state.slice(1);
+  const cityName = cityData.name;
+  const cityPopulation = cityData.population || 50000;
+  const zipCodes = cityData.zip_codes || [];
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -70,20 +117,20 @@ export function CityElectricityProvidersPage({ state, city }: CityElectricityPro
             <button onClick={() => navigate('/')} className="hover:text-texas-navy">Home</button>
             <span className="mx-2">/</span>
             <button onClick={() => navigate(`/${state}/electricity-providers`)} className="hover:text-texas-navy">
-              {stateData.name}
+              {stateName}
             </button>
             <span className="mx-2">/</span>
-            <span>{cityData.name} Electricity Providers</span>
+            <span>{cityName} Electricity Providers</span>
           </nav>
 
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
-                {cityData.name} Electricity Providers
+                {cityName} Electricity Providers
               </h1>
               
               <p className="text-lg text-gray-600 mb-6">
-                We work with {cityProviders.length} licensed electricity companies in {cityData.name}—not "all" providers (that's impossible). 
+                We work with {cityProviders.length} licensed electricity companies in {cityName}—not "all" providers (that's impossible). 
                 Here's who's actually good, who has the best rates, and who you should probably avoid. 
                 Could save you ${potentialSavings}/year by picking the right one.
               </p>
@@ -144,9 +191,9 @@ export function CityElectricityProvidersPage({ state, city }: CityElectricityPro
                 placeholder="Enter zip code"
               />
               <div className="mt-4 text-sm text-gray-600">
-                <div className="font-medium mb-2">Popular {cityData.name} ZIP Codes:</div>
+                <div className="font-medium mb-2">Popular {cityName} ZIP Codes:</div>
                 <div className="grid grid-cols-2 gap-2">
-                  {cityData.zipCodes.slice(0, 4).map((zip) => (
+                  {zipCodes.slice(0, 4).map((zip) => (
                     <button
                       key={zip}
                       onClick={() => handleZipSearch(zip)}
@@ -287,7 +334,7 @@ export function CityElectricityProvidersPage({ state, city }: CityElectricityPro
           <div className="lg:col-span-3">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-xl font-semibold text-gray-900">
-                {cityProviders.length} Electricity Companies in {cityData.name}
+                {cityProviders.length} Electricity Companies in {cityName}
               </h2>
               <button
                 onClick={() => navigate(`/compare/providers?city=${city}&state=${state}`)}
@@ -301,8 +348,22 @@ export function CityElectricityProvidersPage({ state, city }: CityElectricityPro
               {cityProviders.map((provider) => (
                 <ProviderCard
                   key={provider.id}
-                  provider={provider}
-                  onViewDetails={() => navigate(`/providers/${provider.slug}`)}
+                  provider={{
+                    id: provider.id.toString(),
+                    name: provider.name,
+                    slug: provider.name.toLowerCase().replace(/\s+/g, '-'),
+                    rating: provider.rating || 4.5,
+                    reviewCount: provider.review_count || 100,
+                    logo: provider.logo_filename || '',
+                    plans: [{
+                      id: `${provider.id}-basic`,
+                      name: 'Basic Plan',
+                      rate: provider.average_rate || 12.0,
+                      term: 12
+                    }],
+                    serviceStates: [state]
+                  }}
+                  onViewDetails={() => navigate(`/providers/${provider.name.toLowerCase().replace(/\s+/g, '-')}`)}
                   onCompare={() => navigate(`/compare/providers`)}
                   showPlans
                 />
@@ -312,36 +373,36 @@ export function CityElectricityProvidersPage({ state, city }: CityElectricityPro
             {/* SEO Content Section */}
             <div className="bg-white rounded-lg shadow-sm border p-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                Why Choose an Electricity Provider in {cityData.name}?
+                Why Choose an Electricity Provider in {cityName}?
               </h2>
               
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                    About {cityData.name} Electricity Market
+                    About {cityName} Electricity Market
                   </h3>
                   <p className="text-gray-600 mb-4">
-                    {cityData.name} residents benefit from {stateData.name}'s deregulated electricity market, 
+                    {cityName} residents benefit from {stateName}'s deregulated electricity market, 
                     which allows you to choose from {cityProviders.length} competitive electricity providers. 
-                    With an average rate of {avgRate}¢ per kWh and a population of {cityData.population.toLocaleString()}, 
-                    {cityData.name} offers numerous options for residential and business electricity service.
+                    With an average rate of {avgRate.toFixed(1)}¢ per kWh and a population of {cityPopulation.toLocaleString()}, 
+                    {cityName} offers numerous options for residential and business electricity service.
                   </p>
                   
-                  <h4 className="font-medium text-gray-900 mb-2">Popular {cityData.name} Neighborhoods:</h4>
+                  <h4 className="font-medium text-gray-900 mb-2">Popular {cityName} Neighborhoods:</h4>
                   <div className="text-sm text-gray-600">
-                    Residents in ZIP codes {cityData.zipCodes.slice(0, 3).join(', ')} and surrounding areas 
+                    Residents in ZIP codes {zipCodes.slice(0, 3).join(', ')} and surrounding areas 
                     can choose from all available providers listed above.
                   </div>
                 </div>
                 
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                    How to Switch Electricity Providers in {cityData.name}
+                    How to Switch Electricity Providers in {cityName}
                   </h3>
                   <ol className="text-gray-600 space-y-2 text-sm">
                     <li className="flex items-start">
                       <span className="bg-texas-navy text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-3 mt-0.5">1</span>
-                      Compare rates from {cityData.name} electricity providers above
+                      Compare rates from {cityName} electricity providers above
                     </li>
                     <li className="flex items-start">
                       <span className="bg-texas-navy text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-3 mt-0.5">2</span>
@@ -362,7 +423,7 @@ export function CityElectricityProvidersPage({ state, city }: CityElectricityPro
                       onClick={() => navigate(`/${state}/${city}/switch-provider`)}
                       className="text-texas-navy hover:text-texas-navy font-medium text-sm"
                     >
-                      Complete {cityData.name} switching guide →
+                      Complete {cityName} switching guide →
                     </button>
                   </div>
                 </div>

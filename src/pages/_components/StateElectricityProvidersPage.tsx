@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { ProviderCard } from '../../components/ProviderCard';
-import { mockProviders, mockStates } from '../../data/mockData';
+import { getProviders, type RealProvider } from '../../lib/services/provider-service';
+import { getCities, type RealCity } from '../../lib/services/city-service';
 import { MapPin, TrendingDown, Users, Zap, Filter, Calculator, Leaf, Shield } from 'lucide-react';
 import EnhancedSectionReact from '../../components/ui/EnhancedSectionReact';
 import EnhancedCardReact from '../../components/ui/EnhancedCardReact';
@@ -27,17 +28,54 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
       window.location.href = path;
     }
   };
+  
   const [sortBy, setSortBy] = useState<'rating' | 'price' | 'popularity'>('rating');
   const [filterType, setFilterType] = useState<'all' | 'cheapest' | 'green' | 'no-deposit'>('all');
+  const [providers, setProviders] = useState<RealProvider[]>([]);
+  const [cities, setCities] = useState<RealCity[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const stateData = mockStates.find(s => s.slug === state);
-  
-  if (!stateData) {
+  // Load real data on component mount
+  useEffect(() => {
+    async function loadData() {
+      try {
+        setLoading(true);
+        const [providersData, citiesData] = await Promise.all([
+          getProviders(state),
+          getCities(state)
+        ]);
+        
+        setProviders(providersData);
+        setCities(citiesData);
+      } catch (err) {
+        console.error('Error loading state data:', err);
+        setError('Failed to load state information. Please try again.');
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadData();
+  }, [state]);
+
+  if (loading) {
     return (
       <EnhancedSectionReact background="gray" padding="xl">
         <EnhancedCardReact variant="elevated" padding="lg" className="text-center max-w-lg mx-auto">
-          <h1 className="text-2xl font-bold text-texas-navy mb-4">State Not Found</h1>
-          <p className="text-gray-600 mb-8">The state you're looking for doesn't exist in our database.</p>
+          <h1 className="text-2xl font-bold text-texas-navy mb-4">Loading...</h1>
+          <p className="text-gray-600">Getting the latest provider information...</p>
+        </EnhancedCardReact>
+      </EnhancedSectionReact>
+    );
+  }
+
+  if (error) {
+    return (
+      <EnhancedSectionReact background="gray" padding="xl">
+        <EnhancedCardReact variant="elevated" padding="lg" className="text-center max-w-lg mx-auto">
+          <h1 className="text-2xl font-bold text-texas-navy mb-4">Error Loading Data</h1>
+          <p className="text-gray-600 mb-8">{error}</p>
           <button
             onClick={() => navigate('/')}
             className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-texas-navy/90 transition-colors"
@@ -49,13 +87,36 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
     );
   }
 
-  const stateProviders = mockProviders.filter(p => 
-    p.serviceStates.includes(stateData.slug)
-  );
+  // Check if we have providers for this state
+  if (providers.length === 0) {
+    return (
+      <EnhancedSectionReact background="gray" padding="xl">
+        <EnhancedCardReact variant="elevated" padding="lg" className="text-center max-w-lg mx-auto">
+          <h1 className="text-2xl font-bold text-texas-navy mb-4">State Not Available</h1>
+          <p className="text-gray-600 mb-8">No providers found for this state. We currently serve Texas markets.</p>
+          <button
+            onClick={() => navigate('/')}
+            className="bg-texas-navy text-white px-6 py-3 rounded-lg hover:bg-texas-navy/90 transition-colors"
+          >
+            Return Home
+          </button>
+        </EnhancedCardReact>
+      </EnhancedSectionReact>
+    );
+  }
+
+  // Calculate state statistics from real data
+  const totalProviders = providers.length;
+  const averageRate = providers.length > 0 
+    ? providers.reduce((sum, p) => sum + (p.average_rate || 0), 0) / providers.length 
+    : 0;
+  const majorCities = cities.filter(c => c.is_major_city).slice(0, 10);
+  const isDeregulated = state === 'texas'; // Texas is deregulated
+  const stateName = state.charAt(0).toUpperCase() + state.slice(1);
 
   const handleZipSearch = (zipCode: string) => {
-    // Find city for ZIP code
-    const city = stateData.topCities.find(c => c.zipCodes.includes(zipCode));
+    // Find city for ZIP code from real cities data
+    const city = cities.find(c => c.zip_codes?.includes(zipCode));
     if (city) {
       navigate(`/${state}/${city.slug}/electricity-providers`);
     } else {
@@ -79,36 +140,36 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
               <nav className="text-sm text-gray-500 mb-2">
                 <button onClick={() => navigate('/')} className="hover:text-texas-navy">Home</button>
                 <span className="mx-2">/</span>
-                <span>{stateData.name}</span>
+                <span>{stateName}</span>
                 <span className="mx-2">/</span>
                 <span>Electricity Providers</span>
               </nav>
               
               <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                {stateData.name} Electricity Providers
+                {stateName} Electricity Providers
               </h1>
               
               <p className="text-lg text-gray-600 mb-6">
-                Compare electricity providers and plans in {stateData.name}. Find the cheapest rates from {stateProviders.length} licensed electricity companies serving {stateData.isDeregulated ? 'deregulated' : 'regulated'} markets.
+                Compare electricity providers and plans in {stateName}. Find the cheapest rates from {totalProviders} licensed electricity companies serving {isDeregulated ? 'deregulated' : 'regulated'} markets.
               </p>
 
               {/* Quick Stats */}
               <div className="flex flex-wrap gap-6 text-sm">
                 <div className="flex items-center">
                   <TrendingDown className="h-4 w-4 text-green-600 mr-2" />
-                  <span className="text-gray-600">Avg Rate: <strong>{stateData.averageRate}¢/kWh</strong></span>
+                  <span className="text-gray-600">Avg Rate: <strong>{averageRate.toFixed(1)}¢/kWh</strong></span>
                 </div>
                 <div className="flex items-center">
                   <Users className="h-4 w-4 text-texas-navy mr-2" />
-                  <span className="text-gray-600"><strong>{stateProviders.length}</strong> Providers</span>
+                  <span className="text-gray-600"><strong>{totalProviders}</strong> Providers</span>
                 </div>
                 <div className="flex items-center">
                   <Zap className="h-4 w-4 text-yellow-600 mr-2" />
-                  <span className="text-gray-600">Market: <strong>{stateData.isDeregulated ? 'Deregulated' : 'Regulated'}</strong></span>
+                  <span className="text-gray-600">Market: <strong>{isDeregulated ? 'Deregulated' : 'Regulated'}</strong></span>
                 </div>
                 <div className="flex items-center">
                   <MapPin className="h-4 w-4 text-purple-600 mr-2" />
-                  <span className="text-gray-600"><strong>{stateData.topCities.length}</strong> Major Cities</span>
+                  <span className="text-gray-600"><strong>{majorCities.length}</strong> Major Cities</span>
                 </div>
               </div>
             </div>
@@ -178,10 +239,10 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
             {/* Top Cities */}
             <EnhancedCardReact title="Major Cities" variant="elevated" className="mb-6">
               <div className="space-y-2">
-                {stateData.topCities.map((city) => (
+                {majorCities.map((city) => (
                   <button
-                    key={city.id}
-                    onClick={() => navigate(`/${stateData.slug}/${city.slug}/electricity-providers`)}
+                    key={city.slug}
+                    onClick={() => navigate(`/${state}/${city.slug}/electricity-providers`)}
                     className="block w-full text-left p-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-texas-navy rounded-md transition-colors"
                   >
                     <div className="flex items-center justify-between">
@@ -189,7 +250,7 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
                         <MapPin className="h-4 w-4 mr-2" />
                         <span>{city.name}</span>
                       </div>
-                      <span className="text-xs text-gray-500">{city.averageRate}¢</span>
+                      <span className="text-xs text-gray-500">{city.average_rate?.toFixed(1) || '0.0'}¢</span>
                     </div>
                   </button>
                 ))}
@@ -199,10 +260,11 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
             {/* Utility Info */}
             <EnhancedCardReact title="Utility Companies" variant="elevated">
               <div className="space-y-2">
-                {stateData.utilityCompanies.map((utility, index) => (
+                {/* Get unique TDSPs from cities */}
+                {Array.from(new Set(cities.map(c => c.tdsp?.name).filter(Boolean))).slice(0, 8).map((utility, index) => (
                   <button
                     key={index}
-                    onClick={() => navigate(`/${state}/utilities/${utility.toLowerCase().replace(/\s+/g, '-')}`)}
+                    onClick={() => navigate(`/${state}/utilities/${utility!.toLowerCase().replace(/\s+/g, '-')}`)}
                     className="block w-full text-left p-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-texas-navy rounded-md transition-colors"
                   >
                     {utility}
@@ -216,7 +278,7 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
           <div className="lg:col-span-3">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-xl font-semibold text-gray-900">
-                {stateProviders.length} Providers Available in {stateData.name}
+                {providers.length} Providers Available in {stateName}
               </h2>
               <div className="flex items-center space-x-2 text-sm text-gray-500">
                 <Filter className="h-4 w-4" />
@@ -225,11 +287,25 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
             </div>
 
             <div className="grid md:grid-cols-2 gap-6 mb-8">
-              {stateProviders.map((provider) => (
+              {providers.map((provider) => (
                 <ProviderCard
                   key={provider.id}
-                  provider={provider}
-                  onViewDetails={() => navigate(`/providers/${provider.slug}`)}
+                  provider={{
+                    id: provider.id.toString(),
+                    name: provider.name,
+                    slug: provider.name.toLowerCase().replace(/\s+/g, '-'),
+                    rating: provider.rating || 4.5,
+                    reviewCount: provider.review_count || 100,
+                    logo: provider.logo_filename || '',
+                    plans: [{
+                      id: `${provider.id}-basic`,
+                      name: 'Basic Plan',
+                      rate: provider.average_rate || 12.0,
+                      term: 12
+                    }],
+                    serviceStates: [state]
+                  }}
+                  onViewDetails={() => navigate(`/providers/${provider.name.toLowerCase().replace(/\s+/g, '-')}`)}
                   onCompare={() => navigate(`/compare/providers`)}
                   showPlans
                 />
@@ -238,7 +314,7 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
 
             {/* State Market Information */}
             <EnhancedCardReact 
-              title={`${stateData.name} Electricity Market Overview`}
+              title={`${stateName} Electricity Market Overview`}
               variant="elevated"
               className="mb-8"
             >
@@ -246,9 +322,9 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
                 <div>
                   <h4 className="font-medium text-gray-900 mb-3">Market Deregulation</h4>
                   <p className="text-gray-600 text-sm mb-4">
-                    {stateData.isDeregulated 
-                      ? `${stateData.name} deregulated its electricity market, allowing residents to choose their electricity provider. This competition has led to better rates and service options.`
-                      : `${stateData.name} has a regulated electricity market where your utility company provides electricity service.`
+                    {isDeregulated 
+                      ? `${stateName} deregulated its electricity market, allowing residents to choose their electricity provider. This competition has led to better rates and service options.`
+                      : `${stateName} has a regulated electricity market where your utility company provides electricity service.`
                     }
                   </p>
                   
@@ -257,7 +333,7 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
                       onClick={() => navigate(`/${state}/market-info/deregulation`)}
                       className="text-texas-navy hover:text-texas-navy text-sm font-medium"
                     >
-                      Learn about {stateData.name} deregulation →
+                      Learn about {stateName} deregulation →
                     </button>
                   </div>
                 </div>
@@ -265,7 +341,7 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
                 <div>
                   <h4 className="font-medium text-gray-900 mb-3">How to Switch</h4>
                   <p className="text-gray-600 text-sm mb-4">
-                    Switching electricity providers in {stateData.name} is free and easy. Your new provider handles the entire process, and there's no interruption to your service.
+                    Switching electricity providers in {stateName} is free and easy. Your new provider handles the entire process, and there's no interruption to your service.
                   </p>
                   
                   <div className="space-y-2">
@@ -321,7 +397,7 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
 
             {/* Category Leaders Preview */}
             <EnhancedCardReact 
-              title={`Category Leaders in ${stateData.name}`}
+              title={`Category Leaders in ${stateName}`}
               variant="elevated"
             >
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">

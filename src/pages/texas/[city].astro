@@ -32,7 +32,6 @@ export async function getStaticPaths() {
 }
 
 const { city } = Astro.params;
-const url = new URL(Astro.request.url);
 
 console.log(`🏙️  City page requested: ${city}`);
 
@@ -67,26 +66,13 @@ if (tdspInfo.municipal && municipalUtilities[citySlug]) {
   return Astro.redirect(`/texas/${citySlug}/municipal-utility`, 302);
 }
 
-// Handle legacy URL parameters by showing appropriate content
-const filter = url.searchParams.get('filter');
-const term = url.searchParams.get('term');
-const greenEnergy = url.searchParams.get('green');
-const rateType = url.searchParams.get('type');
-const sort = url.searchParams.get('sort');
-const view = url.searchParams.get('view') || 'grid';
+// Static city pages don't handle URL parameters - they redirect to faceted URLs
+// This is a design choice for better SEO and consistent user experience
+const view = 'grid';
 
-// Set canonical URL to point to faceted navigation for legacy parameters
-let redirectSegments: string[] = [];
-if (filter === '12-month' || term === '12') redirectSegments.push('12-month');
-else if (term && ['6', '24', '36'].includes(term)) redirectSegments.push(`${term}-month`);
-if (filter === 'fixed-rate' || rateType === 'fixed') redirectSegments.push('fixed-rate');
-else if (rateType === 'variable') redirectSegments.push('variable-rate');
-else if (rateType === 'indexed') redirectSegments.push('indexed-rate');
-if (filter === 'green-energy' || greenEnergy === '100') redirectSegments.push('green-energy');
-
-// Show notice about canonical URL for legacy parameters instead of redirecting
-const hasLegacyParams = redirectSegments.length > 0 || (filter || term || greenEnergy || rateType);
-const suggestedCanonicalUrl = hasLegacyParams ? `/electricity-plans/${city}${redirectSegments.length ? '/' + redirectSegments.join('/') : ''}` : null;
+// Static pages always point to faceted URLs as canonical
+const hasLegacyParams = false;
+const suggestedCanonicalUrl = null;
 
 // Use faceted system for consistency - no filters for base city page
 const filterSegments: string[] = [];
