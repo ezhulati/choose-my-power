@@ -176,7 +176,7 @@ export class PlanRepository {
           ) VALUES (
             ${apiPlan._id}, ${providerId}, ${tdspDuns}, ${apiPlan.product.name},
             ${apiPlan.product.family}, ${apiPlan.product.term},
-            ${this.determineRateType(apiPlan.product)}, ${apiPlan.product.percent_green || 0},
+            ${this.determineRateType(apiPlan.product)}, ${Math.round(apiPlan.product.percent_green || 0)},
             ${apiPlan.product.headline}, ${apiPlan.product.description},
             ${apiPlan.product.early_termination_fee || 0},
             ${apiPlan.product.is_pre_pay || false}, ${apiPlan.product.is_time_of_use || false},

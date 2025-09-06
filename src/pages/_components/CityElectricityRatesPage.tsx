@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
-import { mockProviders, mockStates } from '../../data/mockData';
+import { getProviders, getCities, getPlansForCity, type RealProvider, type RealCity } from '../../lib/services/provider-service';
 import { TrendingDown, Calculator, BarChart, DollarSign, Clock, Zap, Award } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
@@ -26,11 +26,51 @@ export function CityElectricityRatesPage({ state, city }: CityElectricityRatesPa
   };
   const [selectedUsage, setSelectedUsage] = useState('1000');
   const [showComparison, setShowComparison] = useState(true);
+  const [providers, setProviders] = useState<RealProvider[]>([]);
+  const [cities, setCities] = useState<RealCity[]>([]);
+  const [plans, setPlans] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const stateData = mockStates.find(s => s.slug === state);
-  const cityData = stateData?.topCities.find(c => c.slug === city);
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const [providersData, citiesData, cityPlans] = await Promise.all([
+          getProviders(state),
+          getCities(state),
+          getPlansForCity(city, state)
+        ]);
+        setProviders(providersData);
+        setCities(citiesData);
+        setPlans(cityPlans);
+      } catch (error) {
+        console.error('[CityElectricityRatesPage] Error loading data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadData();
+  }, [state, city]);
+
+  const stateData = {
+    slug: state,
+    name: state.charAt(0).toUpperCase() + state.slice(1),
+    averageRate: providers.length > 0 ? (providers.reduce((sum, p) => sum + (p.averageRate || 12.5), 0) / providers.length).toFixed(1) : '12.5',
+    isDeregulated: state === 'texas'
+  };
+  const cityData = cities.find(c => c.slug === city);
   
-  if (!stateData || !cityData) {
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-texas-navy mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading {city} electricity rates...</p>
+        </div>
+      </div>
+    );
+  }
+  
+  if (!cityData || providers.length === 0) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
@@ -46,9 +86,7 @@ export function CityElectricityRatesPage({ state, city }: CityElectricityRatesPa
     );
   }
 
-  const cityProviders = mockProviders.filter(p => 
-    cityData.topProviders.includes(p.id)
-  );
+  const cityProviders = providers.slice(0, 10); // Show top providers
 
   const allPlans = cityProviders.flatMap(provider => 
     provider.plans.map(plan => ({ 

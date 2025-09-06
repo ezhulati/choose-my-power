@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
-import { mockProviders, mockStates } from '../../data/mockData';
+import { getProviders, getCities, getPlansForCity, type RealProvider, type RealCity } from '../../lib/services/provider-service';
 import { Icon } from '../../components/ui/Icon';
 import { Card, CardHeader, CardContent, CardTitle, CardDescription } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
@@ -34,13 +34,39 @@ export function CompareRatesPage({}: CompareRatesPageProps) {
   const [rateType, setRateType] = useState<'all' | 'fixed' | 'variable'>('all');
   const [contractLength, setContractLength] = useState<'all' | '12' | '24' | '36'>('all');
   const [sortBy, setSortBy] = useState<'rate' | 'total-cost' | 'savings'>('total-cost');
+  const [providers, setProviders] = useState<RealProvider[]>([]);
+  const [cities, setCities] = useState<RealCity[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const [providersData, citiesData] = await Promise.all([
+          getProviders(selectedState),
+          getCities(selectedState)
+        ]);
+        setProviders(providersData);
+        setCities(citiesData);
+      } catch (error) {
+        console.error('[CompareRatesPage] Error loading data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadData();
+  }, [selectedState]);
 
   const handleZipSearch = (zipCode: string) => {
     navigate(`/texas/houston/electricity-rates`);
   };
 
-  const stateData = mockStates.find(s => s.slug === selectedState);
-  const stateProviders = mockProviders.filter(p => p.serviceStates.includes(selectedState));
+  const stateData = {
+    slug: selectedState,
+    name: selectedState.charAt(0).toUpperCase() + selectedState.slice(1),
+    averageRate: providers.length > 0 ? (providers.reduce((sum, p) => sum + (p.averageRate || 12.5), 0) / providers.length).toFixed(1) : '12.5',
+    isDeregulated: selectedState === 'texas'
+  };
+  const stateProviders = providers;
   
   // Get all plans with provider info
   const allPlans = stateProviders.flatMap(provider => 

@@ -77,21 +77,21 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
       name: 'Actually Green Companies',
       icon: Leaf,
       color: 'green',
-      providers: mockProviders.filter(p => p.plans.some(plan => plan.renewablePercent === 100)).slice(0, 3)
+      providers: providers.filter(p => p.plans.some(plan => plan.renewablePercent === 100)).slice(0, 3)
     },
     {
       id: 'service', 
       name: 'Companies That Actually Help',
       icon: Headphones,
       color: 'blue',
-      providers: mockProviders.sort((a, b) => b.rating - a.rating).slice(0, 3)
+      providers: providers.sort((a, b) => b.rating - a.rating).slice(0, 3)
     },
     {
       id: 'value',
       name: 'Real Value (No Tricks)',
       icon: DollarSign,
       color: 'purple',
-      providers: mockProviders.sort((a, b) => {
+      providers: providers.sort((a, b) => {
         const aLowestRate = Math.min(...a.plans.map(p => p.rate));
         const bLowestRate = Math.min(...b.plans.map(p => p.rate));
         return aLowestRate - bLowestRate;
@@ -102,11 +102,11 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
       name: 'Tech That Actually Works',
       icon: Battery,
       color: 'indigo',
-      providers: mockProviders.filter(p => p.features.some(f => f.toLowerCase().includes('smart') || f.toLowerCase().includes('app'))).slice(0, 3)
+      providers: providers.filter(p => p.features.some(f => f.toLowerCase().includes('smart') || f.toLowerCase().includes('app'))).slice(0, 3)
     }
   ];
 
-  const filteredProviders = mockProviders.filter(provider => {
+  const filteredProviders = providers.filter(provider => {
     if (filterCategory === 'all') return true;
     
     const category = providerCategories.find(cat => cat.id === filterCategory);
@@ -131,7 +131,7 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
   });
 
   const selectedProviderData = selectedProviders.map(id => 
-    mockProviders.find(p => p.id === id)
+    providers.find(p => p.id === id)
   ).filter(Boolean);
 
   const comparisonMetrics = [
@@ -163,7 +163,7 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-8">
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
-                <div className="text-3xl font-bold">{mockProviders.length}</div>
+                <div className="text-3xl font-bold">{providers.length}</div>
                 <div className="text-blue-200 text-sm">Licensed Providers</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-lg">
@@ -201,7 +201,7 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
                 <span className="font-medium">Comparing {selectedProviders.length} Providers:</span>
                 <div className="flex items-center space-x-2">
                   {selectedProviders.slice(0, 3).map((id) => {
-                    const provider = mockProviders.find(p => p.id === id);
+                    const provider = providers.find(p => p.id === id);
                     return provider ? (
                       <div key={id} className="flex items-center bg-white/20 rounded-full px-3 py-1">
                         <span className="text-sm mr-2">{provider.name}</span>

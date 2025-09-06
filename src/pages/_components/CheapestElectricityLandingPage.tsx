@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { ProviderCard } from '../../components/ProviderCard';
-import { mockProviders, mockStates } from '../../data/mockData';
+import { getProviders, getCities, getPlansForCity, type RealProvider, type RealCity } from '../../lib/services/provider-service';
 import { TrendingDown, Calculator, Award, Clock, Shield, Star, DollarSign } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
@@ -26,19 +26,47 @@ export function CheapestElectricityLandingPage({ city, state }: CheapestElectric
     }
   };
   const [monthlyUsage, setMonthlyUsage] = useState('1000');
+  const [providers, setProviders] = useState<RealProvider[]>([]);
+  const [cities, setCities] = useState<RealCity[]>([]);
+  const [plans, setPlans] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const stateData = state ? mockStates.find(s => s.slug === state) : null;
-  const cityData = stateData?.topCities.find(c => c.slug === city);
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const [providersData, citiesData] = await Promise.all([
+          getProviders(state || 'texas'),
+          getCities(state || 'texas')
+        ]);
+        setProviders(providersData);
+        setCities(citiesData);
+        
+        if (city) {
+          const cityPlans = await getPlansForCity(city, state || 'texas');
+          setPlans(cityPlans);
+        }
+      } catch (error) {
+        console.error('[CheapestElectricityLandingPage] Error loading data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadData();
+  }, [city, state]);
+
+  const stateData = {
+    slug: state || 'texas',
+    name: (state || 'texas').charAt(0).toUpperCase() + (state || 'texas').slice(1),
+    averageRate: providers.length > 0 ? (providers.reduce((sum, p) => sum + (p.averageRate || 12.5), 0) / providers.length).toFixed(1) : '12.5',
+    isDeregulated: (state || 'texas') === 'texas'
+  };
+  const cityData = cities.find(c => c.slug === city);
   
   // Get relevant providers
-  const relevantProviders = state 
-    ? mockProviders.filter(p => p.serviceStates.includes(state))
-    : mockProviders;
+  const relevantProviders = providers;
 
   // Filter by city if specified
-  const finalProviders = city && cityData 
-    ? relevantProviders.filter(p => cityData.topProviders.includes(p.id))
-    : relevantProviders;
+  const finalProviders = relevantProviders;
 
   // Get all plans and sort by rate
   const allPlans = finalProviders.flatMap(provider => 

@@ -29,6 +29,39 @@ export interface RealProvider {
   no_deposit_available?: boolean;
 }
 
+export interface RealCity {
+  id: number;
+  name: string;
+  slug: string;
+  state: string;
+  zipCodes?: string[];
+  county?: string;
+  tdsp?: string;
+  plan_count?: number;
+  avg_rate?: number;
+  population?: number;
+}
+
+export interface RealPlan {
+  id: string;
+  name: string;
+  provider: {
+    name: string;
+    logo?: string;
+    rating?: number;
+  };
+  rate: number;
+  term: number;
+  features?: {
+    greenEnergy?: number;
+    deposit?: { required: boolean; amount?: number };
+    cancellation?: { fee: number };
+    contract?: { type: string };
+  };
+  city?: string;
+  state?: string;
+}
+
 /**
  * Get all providers from database or generated data files
  */
@@ -325,6 +358,200 @@ async function getProvidersFromGeneratedData(state?: string): Promise<RealProvid
 async function getProviderFromGeneratedData(providerName: string): Promise<RealProvider | null> {
   const providers = await getProvidersFromGeneratedData();
   return providers.find(p => p.name.toLowerCase() === providerName.toLowerCase()) || null;
+}
+
+/**
+ * Get all cities from database or generated data files
+ */
+export async function getCities(state?: string): Promise<RealCity[]> {
+  try {
+    console.log(`[ProviderService] Getting cities for state: ${state || 'all'}`);
+    
+    // Try database first
+    if (await hasDatabaseConnection()) {
+      const cities = await getCitiesFromDatabase(state);
+      if (cities.length > 0) {
+        console.log(`[ProviderService] Found ${cities.length} cities from database`);
+        return cities;
+      }
+    }
+    
+    // Fallback to generated data files
+    const cities = await getCitiesFromGeneratedData(state);
+    console.log(`[ProviderService] Found ${cities.length} cities from generated data`);
+    return cities;
+    
+  } catch (error) {
+    console.error('[ProviderService] Error getting cities:', error);
+    return [];
+  }
+}
+
+/**
+ * Get a specific city by slug
+ */
+export async function getCityBySlug(citySlug: string): Promise<RealCity | null> {
+  try {
+    console.log(`[ProviderService] Getting city: ${citySlug}`);
+    
+    // Load city data
+    const cityData = await loadCityData(citySlug);
+    if (!cityData) {
+      console.warn(`[ProviderService] City ${citySlug} not found`);
+      return null;
+    }
+    
+    return {
+      id: Math.abs(hashCode(citySlug)),
+      name: cityData.city || citySlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+      slug: citySlug,
+      state: cityData.state || 'texas',
+      zipCodes: cityData.zipCodes || [],
+      tdsp: cityData.tdsp,
+      plan_count: cityData.filters?.['no-filters']?.plans?.length || cityData.plans?.length || 0
+    };
+    
+  } catch (error) {
+    console.error(`[ProviderService] Error getting city ${citySlug}:`, error);
+    return null;
+  }
+}
+
+/**
+ * Get plans for a specific city
+ */
+export async function getPlansForCity(citySlug: string, state?: string): Promise<RealPlan[]> {
+  try {
+    console.log(`[ProviderService] Getting plans for city: ${citySlug}`);
+    
+    // Load city data
+    const cityData = await loadCityData(citySlug);
+    if (!cityData) {
+      console.warn(`[ProviderService] No city data found for ${citySlug}`);
+      return [];
+    }
+    
+    // Extract plans from city data
+    const plans = cityData.filters?.['no-filters']?.plans || cityData.plans || [];
+    
+    const realPlans: RealPlan[] = plans.map(plan => ({
+      id: plan.id || `${plan.provider?.name}-${plan.name}`.toLowerCase().replace(/\s+/g, '-'),
+      name: plan.name || plan.planName,
+      provider: {
+        name: plan.provider?.name || plan.providerName,
+        logo: plan.provider?.logo,
+        rating: plan.provider?.rating
+      },
+      rate: parseFloat(plan.rate || plan.planRate || '0'),
+      term: parseInt(plan.term || '12'),
+      features: {
+        greenEnergy: plan.features?.greenEnergy || 0,
+        deposit: {
+          required: plan.features?.deposit?.required || false,
+          amount: plan.features?.deposit?.amount || 0
+        },
+        cancellation: {
+          fee: plan.features?.cancellation?.fee || 0
+        },
+        contract: {
+          type: plan.features?.contract?.type || 'fixed'
+        }
+      },
+      city: citySlug,
+      state: state || 'texas'
+    }));
+    
+    console.log(`[ProviderService] Found ${realPlans.length} plans for ${citySlug}`);
+    return realPlans;
+    
+  } catch (error) {
+    console.error(`[ProviderService] Error getting plans for city ${citySlug}:`, error);
+    return [];
+  }
+}
+
+/**
+ * Database city queries
+ */
+async function getCitiesFromDatabase(state?: string): Promise<RealCity[]> {
+  try {
+    const query = `
+      SELECT 
+        c.id,
+        c.name,
+        c.slug,
+        c.state,
+        c.zip_codes,
+        c.county,
+        c.tdsp,
+        COUNT(ep.id) as plan_count,
+        AVG(ep.rate_1000kwh) as avg_rate
+      FROM cities c
+      LEFT JOIN electricity_plans ep ON c.id = ep.city_id
+      ${state ? 'WHERE LOWER(c.state) = LOWER($1)' : ''}
+      GROUP BY c.id, c.name, c.slug, c.state, c.zip_codes, c.county, c.tdsp
+      ORDER BY c.name
+    `;
+    
+    const results = await db.query(query, state ? [state] : []);
+    
+    return results.map(row => ({
+      id: row.id,
+      name: row.name,
+      slug: row.slug,
+      state: row.state,
+      zipCodes: row.zip_codes || [],
+      county: row.county,
+      tdsp: row.tdsp,
+      plan_count: parseInt(row.plan_count) || 0,
+      avg_rate: parseFloat(row.avg_rate) || 0
+    }));
+    
+  } catch (error) {
+    console.error('[ProviderService] Database query error for cities:', error);
+    return [];
+  }
+}
+
+/**
+ * Generated data fallback for cities
+ */
+async function getCitiesFromGeneratedData(state?: string): Promise<RealCity[]> {
+  try {
+    // Define major Texas cities that we have data for
+    const texasCities = [
+      'dallas', 'houston', 'austin', 'san-antonio', 'fort-worth',
+      'arlington', 'plano', 'garland', 'irving', 'lubbock',
+      'amarillo', 'corpus-christi', 'brownsville', 'mcallen'
+    ];
+    
+    const cities: RealCity[] = [];
+    
+    for (const citySlug of texasCities) {
+      try {
+        const cityData = await loadCityData(citySlug);
+        if (cityData) {
+          cities.push({
+            id: Math.abs(hashCode(citySlug)),
+            name: cityData.city || citySlug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+            slug: citySlug,
+            state: cityData.state || 'texas',
+            zipCodes: cityData.zipCodes || [],
+            tdsp: cityData.tdsp,
+            plan_count: cityData.filters?.['no-filters']?.plans?.length || cityData.plans?.length || 0
+          });
+        }
+      } catch (cityError) {
+        console.warn(`[ProviderService] Error loading city ${citySlug}:`, cityError.message);
+      }
+    }
+    
+    return cities.sort((a, b) => a.name.localeCompare(b.name));
+    
+  } catch (error) {
+    console.error('[ProviderService] Error getting cities from generated data:', error);
+    return [];
+  }
 }
 
 /**

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
-import { mockProviders, mockStates } from '../../data/mockData';
+import { getProviders, getCities, type RealProvider, type RealCity } from '../../lib/services/provider-service';
 import { TrendingDown, Calculator, BarChart, Info, MapPin, Zap } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
@@ -25,10 +25,47 @@ export function StateElectricityRatesPage({ state }: StateElectricityRatesPagePr
   };
   const [selectedUsage, setSelectedUsage] = useState<'500' | '1000' | '1500' | '2000'>('1000');
   const [showBreakdown, setShowBreakdown] = useState(false);
+  const [providers, setProviders] = useState<RealProvider[]>([]);
+  const [cities, setCities] = useState<RealCity[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const stateData = mockStates.find(s => s.slug === state);
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const [providersData, citiesData] = await Promise.all([
+          getProviders(state),
+          getCities(state)
+        ]);
+        setProviders(providersData);
+        setCities(citiesData);
+      } catch (error) {
+        console.error('[StateElectricityRatesPage] Error loading data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadData();
+  }, [state]);
+
+  const stateData = {
+    slug: state,
+    name: state.charAt(0).toUpperCase() + state.slice(1),
+    averageRate: providers.length > 0 ? (providers.reduce((sum, p) => sum + (p.averageRate || 12.5), 0) / providers.length).toFixed(1) : '12.5',
+    isDeregulated: state === 'texas'
+  };
   
-  if (!stateData) {
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-texas-navy mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading {state} electricity rates...</p>
+        </div>
+      </div>
+    );
+  }
+  
+  if (providers.length === 0) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
@@ -44,7 +81,7 @@ export function StateElectricityRatesPage({ state }: StateElectricityRatesPagePr
     );
   }
 
-  const stateProviders = mockProviders.filter(p => p.serviceStates.includes(stateData.slug));
+  const stateProviders = providers;
   const allPlans = stateProviders.flatMap(provider => 
     provider.plans.map(plan => ({ ...plan, providerName: provider.name, providerSlug: provider.slug }))
   );

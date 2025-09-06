@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
-import { mockStates } from '../../data/mockData';
 import { TrendingDown, TrendingUp, BarChart, Zap, DollarSign, AlertTriangle, CheckCircle, Calendar, Activity, Globe, Calculator, Info, ArrowRight, ExternalLink } from 'lucide-react';
 
 // Extend Window interface to include our navigation function

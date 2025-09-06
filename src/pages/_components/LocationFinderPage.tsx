@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
-import { mockStates, mockProviders } from '../../data/mockData';
+import { getProviders, getCities, type RealProvider, type RealCity } from '../../lib/services/provider-service';
 import { MapPin, Search, TrendingDown, Users, Zap, Building, ArrowRight, Star, Globe, Phone, CheckCircle, AlertCircle, Calculator, Shield, Leaf, Award, Clock, Eye, Target, Home } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
@@ -25,6 +25,27 @@ export function LocationFinderPage({}: LocationFinderPageProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedRegion, setSelectedRegion] = useState<'all' | 'texas' | 'pennsylvania'>('all');
   const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
+  const [providers, setProviders] = useState<RealProvider[]>([]);
+  const [cities, setCities] = useState<RealCity[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const [providersData, citiesData] = await Promise.all([
+          getProviders('texas'),
+          getCities('texas')
+        ]);
+        setProviders(providersData);
+        setCities(citiesData);
+      } catch (error) {
+        console.error('[LocationFinderPage] Error loading data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadData();
+  }, []);
 
   const handleZipSearch = (zipCode: string) => {
     // Complete ZIP code routing logic
@@ -136,6 +157,16 @@ export function LocationFinderPage({}: LocationFinderPageProps) {
     }
   ];
 
+  const mockStates = [
+    {
+      slug: 'texas',
+      name: 'Texas',
+      averageRate: providers.length > 0 ? (providers.reduce((sum, p) => sum + (p.averageRate || 12.5), 0) / providers.length).toFixed(1) : '12.5',
+      isDeregulated: true,
+      topCities: cities.slice(0, 10)
+    }
+  ];
+
   const filteredStates = selectedRegion === 'all' 
     ? mockStates 
     : mockStates.filter(state => state.slug === selectedRegion);
@@ -149,7 +180,7 @@ export function LocationFinderPage({}: LocationFinderPageProps) {
       });
 
   const totalCities = mockStates.reduce((sum, state) => sum + state.topCities.length, 0);
-  const totalProviders = mockProviders.length;
+  const totalProviders = providers.length;
   const deregulatedStates = mockStates.filter(state => state.isDeregulated);
 
   const benefits = [
@@ -394,7 +425,7 @@ export function LocationFinderPage({}: LocationFinderPageProps) {
                         </div>
                         <div className="flex items-center">
                           <Users className="h-4 w-4 mr-2" />
-                          {mockProviders.filter(p => p.serviceStates.includes(state.slug)).length} Providers
+                          {providers.length} Providers
                         </div>
                       </div>
                     </div>

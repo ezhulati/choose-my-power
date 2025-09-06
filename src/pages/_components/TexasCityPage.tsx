@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { ProviderCard } from '../../components/ProviderCard';
-import { mockProviders, mockStates } from '../../data/mockData';
+import { getProviders, getCities, getPlansForCity, type RealProvider, type RealCity } from '../../lib/services/provider-service';
 import { MapPin, TrendingDown, Users, Zap, Calculator, Star, Award, Clock, Filter, Phone, Globe, Building, Calendar, Shield, Leaf } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
@@ -27,9 +27,50 @@ export function TexasCityPage({ city }: TexasCityPageProps) {
   const [sortBy, setSortBy] = useState<'rating' | 'price' | 'popularity'>('rating');
   const [showCalculator, setShowCalculator] = useState(false);
   const [monthlyUsage, setMonthlyUsage] = useState('1000');
+  const [providers, setProviders] = useState<RealProvider[]>([]);
+  const [cities, setCities] = useState<RealCity[]>([]);
+  const [plans, setPlans] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const texasData = mockStates.find(s => s.slug === 'texas')!;
-  const cityData = texasData.topCities.find(c => c.slug === city);
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const [providersData, citiesData, cityPlans] = await Promise.all([
+          getProviders('texas'),
+          getCities('texas'),
+          getPlansForCity(city, 'texas')
+        ]);
+        setProviders(providersData);
+        setCities(citiesData);
+        setPlans(cityPlans);
+      } catch (error) {
+        console.error('[TexasCityPage] Error loading data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadData();
+  }, [city]);
+
+  const texasData = {
+    slug: 'texas',
+    name: 'Texas',
+    averageRate: providers.length > 0 ? (providers.reduce((sum, p) => sum + (p.averageRate || 12.5), 0) / providers.length).toFixed(1) : '12.5',
+    isDeregulated: true,
+    topCities: cities
+  };
+  const cityData = cities.find(c => c.slug === city);
+  
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-texas-navy mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading {city} providers...</p>
+        </div>
+      </div>
+    );
+  }
   
   if (!cityData) {
     return (
@@ -50,9 +91,7 @@ export function TexasCityPage({ city }: TexasCityPageProps) {
     );
   }
 
-  const cityProviders = mockProviders.filter(p => 
-    cityData.topProviders.includes(p.id)
-  );
+  const cityProviders = providers;
 
   const handleZipSearch = (zipCode: string) => {
     navigate(`/texas/${city}/${zipCode}/electricity-providers`);

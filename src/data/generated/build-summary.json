@@ -1,43 +1,25 @@
 {
-  "buildType": "cached",
-  "buildTime": "2025-09-06T01:21:17.185Z",
-  "duration": 442,
-  "apiCalls": 0,
   "cities": [
     {
-      "citySlug": "houston-tx",
-      "cityName": "Houston",
-      "filtersBuilt": 1,
-      "totalPlans": 108,
-      "success": true
-    },
-    {
-      "citySlug": "south-houston-tx",
-      "cityName": "South Houston",
-      "filtersBuilt": 1,
-      "totalPlans": 108,
-      "success": true
-    },
-    {
-      "citySlug": "arlington-tx",
-      "cityName": "Arlington",
-      "filtersBuilt": 1,
-      "totalPlans": 109,
-      "success": true
-    },
-    {
       "citySlug": "dallas-tx",
-      "cityName": "Dallas",
-      "filtersBuilt": 1,
-      "totalPlans": 109,
-      "success": true
+      "cityName": "Dallas TX",
+      "filtersBuilt": 4,
+      "totalPlans": 109
     },
     {
-      "citySlug": "irving-tx",
-      "cityName": "Irving",
-      "filtersBuilt": 1,
-      "totalPlans": 109,
-      "success": true
+      "citySlug": "fort-worth-tx",
+      "cityName": "Fort Worth TX",
+      "filtersBuilt": 4,
+      "totalPlans": 109
+    },
+    {
+      "citySlug": "houston-tx",
+      "cityName": "Houston TX",
+      "filtersBuilt": 4,
+      "totalPlans": 108
     }
-  ]
+  ],
+  "totalPlans": 326,
+  "buildTime": "2025-09-06T02:46:06.166Z",
+  "errors": []
 }

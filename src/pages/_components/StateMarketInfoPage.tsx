@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { mockStates, utilityCompanies } from '../../data/mockData';
+import React, { useState, useEffect } from 'react';
+import { getProviders, getCities, type RealProvider, type RealCity } from '../../lib/services/provider-service';
 import { BarChart, TrendingUp, Users, Zap, Building, Scale, Info, Calendar } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
@@ -23,10 +23,75 @@ export function StateMarketInfoPage({ state }: StateMarketInfoPageProps) {
     }
   };
   const [activeTab, setActiveTab] = useState<'overview' | 'deregulation' | 'usage' | 'regulations'>('overview');
+  const [providers, setProviders] = useState<RealProvider[]>([]);
+  const [cities, setCities] = useState<RealCity[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const stateData = mockStates.find(s => s.slug === state);
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const [providersData, citiesData] = await Promise.all([
+          getProviders(state),
+          getCities(state)
+        ]);
+        setProviders(providersData);
+        setCities(citiesData);
+      } catch (error) {
+        console.error('[StateMarketInfoPage] Error loading data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadData();
+  }, [state]);
+
+  const stateData = {
+    slug: state,
+    name: state.charAt(0).toUpperCase() + state.slice(1),
+    averageRate: providers.length > 0 ? (providers.reduce((sum, p) => sum + (p.averageRate || 12.5), 0) / providers.length).toFixed(1) : '12.5',
+    isDeregulated: state === 'texas',
+    topCities: cities.slice(0, 10)
+  };
   
-  if (!stateData) {
+  const utilityCompanies = [
+    {
+      name: 'Oncor Electric Delivery',
+      abbreviation: 'ONCOR',
+      serviceArea: 'North and West Texas',
+      customers: '3.8 million'
+    },
+    {
+      name: 'CenterPoint Energy',
+      abbreviation: 'CNP',
+      serviceArea: 'Houston Metro Area',
+      customers: '2.5 million'
+    },
+    {
+      name: 'AEP Texas',
+      abbreviation: 'AEP',
+      serviceArea: 'South and West Texas', 
+      customers: '1.2 million'
+    },
+    {
+      name: 'TNMP',
+      abbreviation: 'TNMP',
+      serviceArea: 'East and South Texas',
+      customers: '280,000'
+    }
+  ];
+  
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-texas-navy mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading {state} market information...</p>
+        </div>
+      </div>
+    );
+  }
+  
+  if (providers.length === 0) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">

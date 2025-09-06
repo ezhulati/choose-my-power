@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { ProviderCard } from '../../components/ProviderCard';
-import { mockProviders, mockStates } from '../../data/mockData';
+import { getProviders, getCities, type RealProvider, type RealCity } from '../../lib/services/provider-service';
 import { Shield, CreditCard, Clock, CheckCircle, AlertTriangle, DollarSign } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
@@ -25,10 +25,47 @@ export function StateNoDepositPage({ state }: StateNoDepositPageProps) {
     }
   };
   const [creditScore, setCreditScore] = useState<'excellent' | 'good' | 'fair' | 'poor'>('good');
+  const [providers, setProviders] = useState<RealProvider[]>([]);
+  const [cities, setCities] = useState<RealCity[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const stateData = mockStates.find(s => s.slug === state);
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const [providersData, citiesData] = await Promise.all([
+          getProviders(state),
+          getCities(state)
+        ]);
+        setProviders(providersData);
+        setCities(citiesData);
+      } catch (error) {
+        console.error('[StateNoDepositPage] Error loading data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadData();
+  }, [state]);
+
+  const stateData = {
+    slug: state,
+    name: state.charAt(0).toUpperCase() + state.slice(1),
+    averageRate: providers.length > 0 ? (providers.reduce((sum, p) => sum + (p.averageRate || 12.5), 0) / providers.length).toFixed(1) : '12.5',
+    isDeregulated: state === 'texas'
+  };
   
-  if (!stateData) {
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-texas-navy mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading {state} no-deposit options...</p>
+        </div>
+      </div>
+    );
+  }
+  
+  if (providers.length === 0) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
@@ -45,7 +82,7 @@ export function StateNoDepositPage({ state }: StateNoDepositPageProps) {
     );
   }
 
-  const stateProviders = mockProviders.filter(p => p.serviceStates.includes(stateData.slug));
+  const stateProviders = providers;
   
   // Mock no-deposit options - in real app, this would be filtered from actual data
   const noDepositOptions = stateProviders.map(provider => ({

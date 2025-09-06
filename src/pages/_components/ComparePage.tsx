@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import StandardZipInputReact from '../../components/StandardZipInputReact';
-import { mockProviders } from '../../data/mockData';
+import { getProviders, getCities, type RealProvider, type RealCity } from '../../lib/services/provider-service';
 import { 
   BarChart, Users, Calculator, Award, TrendingDown, Shield, Star, Zap, 
   ArrowRight, CheckCircle, Target, Eye, ThumbsUp, Filter, Building,
@@ -16,6 +16,27 @@ declare global {
 
 export function ComparePage() {
   const [selectedComparison, setSelectedComparison] = useState<'providers' | 'plans' | 'rates' | null>(null);
+  const [providers, setProviders] = useState<RealProvider[]>([]);
+  const [cities, setCities] = useState<RealCity[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const [providersData, citiesData] = await Promise.all([
+          getProviders('texas'),
+          getCities('texas')
+        ]);
+        setProviders(providersData);
+        setCities(citiesData);
+      } catch (error) {
+        console.error('[ComparePage] Error loading data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadData();
+  }, []);
 
   const navigate = (path: string) => {
     if (typeof window !== 'undefined' && window.navigateToPath) {

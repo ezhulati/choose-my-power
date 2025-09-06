@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { ProviderCard } from '../../components/ProviderCard';
-import { mockProviders } from '../../data/mockData';
+import { getProviders, getCities, type RealProvider, type RealCity } from '../../lib/services/provider-service';
 import { Award, Star, TrendingDown, Users, Shield, Trophy, Medal, Crown, CheckCircle, Target } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
@@ -24,6 +24,27 @@ export function Top5ProvidersPage({}: Top5ProvidersPageProps) {
     }
   };
   const [selectedCategory, setSelectedCategory] = useState<'overall' | 'value' | 'service' | 'green'>('overall');
+  const [providers, setProviders] = useState<RealProvider[]>([]);
+  const [cities, setCities] = useState<RealCity[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const [providersData, citiesData] = await Promise.all([
+          getProviders('texas'),
+          getCities('texas')
+        ]);
+        setProviders(providersData);
+        setCities(citiesData);
+      } catch (error) {
+        console.error('[Top5ProvidersPage] Error loading data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadData();
+  }, []);
 
   const handleZipSearch = (zipCode: string) => {
     navigate(`/texas/houston/electricity-providers`);
@@ -31,7 +52,7 @@ export function Top5ProvidersPage({}: Top5ProvidersPageProps) {
 
   // Create rankings based on different criteria
   const rankings = {
-    overall: mockProviders
+    overall: providers
       .map(p => ({
         ...p,
         score: (p.rating * 20) + (p.reviewCount / 100) + (50 - Math.min(...p.plans.map(plan => plan.rate)))
@@ -39,7 +60,7 @@ export function Top5ProvidersPage({}: Top5ProvidersPageProps) {
       .sort((a, b) => b.score - a.score)
       .slice(0, 5),
     
-    value: mockProviders
+    value: providers
       .map(p => ({
         ...p,
         score: 50 - Math.min(...p.plans.map(plan => plan.rate)) + (p.rating * 5)
@@ -47,11 +68,11 @@ export function Top5ProvidersPage({}: Top5ProvidersPageProps) {
       .sort((a, b) => b.score - a.score)
       .slice(0, 5),
     
-    service: mockProviders
+    service: providers
       .sort((a, b) => (b.rating * b.reviewCount) - (a.rating * a.reviewCount))
       .slice(0, 5),
     
-    green: mockProviders
+    green: providers
       .filter(p => p.plans.some(plan => plan.renewablePercent === 100))
       .sort((a, b) => {
         const aGreenPlans = a.plans.filter(plan => plan.renewablePercent === 100).length;

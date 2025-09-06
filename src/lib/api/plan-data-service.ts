@@ -6,8 +6,25 @@
  * ensuring the correct plan IDs are used throughout the application.
  */
 
-import { promises as fs } from 'fs';
-import path from 'path';
+// Check if running in server environment
+const isServer = typeof window === 'undefined' && typeof process !== 'undefined';
+
+// Dynamic import helper for Node.js modules
+async function getNodeModules() {
+  if (!isServer) {
+    throw new Error('Node.js modules only available on server side');
+  }
+  
+  const [fsModule, pathModule] = await Promise.all([
+    import('fs'),
+    import('path')
+  ]);
+  
+  return {
+    fs: fsModule.promises,
+    path: pathModule.default
+  };
+}
 
 interface Plan {
   id: string; // MongoDB ObjectId
@@ -57,6 +74,12 @@ const cacheTimestamps = new Map<string, number>();
  */
 export async function loadCityData(citySlug: string): Promise<CityData | null> {
   try {
+    // Return null immediately if not on server
+    if (!isServer) {
+      console.warn(`[PlanDataService] loadCityData called on client side for ${citySlug} - returning null`);
+      return null;
+    }
+
     // Check cache first
     const cached = cityDataCache.get(citySlug);
     const cachedTime = cacheTimestamps.get(citySlug);
@@ -65,6 +88,9 @@ export async function loadCityData(citySlug: string): Promise<CityData | null> {
       console.log(`[PlanDataService] Using cached data for city: ${citySlug}`);
       return cached;
     }
+
+    // Get Node.js modules dynamically
+    const { fs, path } = await getNodeModules();
 
     // Construct file path - handle both server and build contexts
     const dataDir = process.env.NODE_ENV === 'production' 

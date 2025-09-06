@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- **CRITICAL DATABASE CONFIGURATION**: Resolved Neon PostgreSQL connection and constraint errors
+  - Fixed "⚠️ Database not configured - using mock database functions" by adding dotenv import to database.js
+  - Added missing UNIQUE(external_id, tdsp_duns) constraint to electricity_plans table
+  - Fixed "invalid input syntax for type integer" by converting decimal percent_green values to integers
+  - Database operations now use real Neon PostgreSQL instead of fallback mock functions
+  - Plan storage properly handles ON CONFLICT specifications with correct constraints
+
 ### Added
 - **DYNAMIC USAGE**: User-configurable monthly usage in ComparePower order URLs
   - Added usage input field to AddressSearchModal with validation (1-10,000 kWh range)

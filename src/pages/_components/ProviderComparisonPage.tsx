@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { mockProviders, mockStates } from '../../data/mockData';
+import React, { useState, useEffect } from 'react';
+import { getProviders, getCities, type RealProvider, type RealCity } from '../../lib/services/provider-service';
 import { Star, TrendingDown, Calendar, Leaf, DollarSign, Users, Shield, Phone, CheckCircle, X } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
@@ -26,10 +26,37 @@ export function ProviderComparisonPage({ providerA, providerB, state }: Provider
   };
   const [selectedUsage, setSelectedUsage] = useState('1000');
   const [comparisonMetric, setComparisonMetric] = useState<'rate' | 'total-cost' | 'features'>('rate');
+  const [providers, setProviders] = useState<RealProvider[]>([]);
+  const [cities, setCities] = useState<RealCity[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const provider1 = mockProviders.find(p => p.slug === providerA);
-  const provider2 = mockProviders.find(p => p.slug === providerB);
-  const stateData = state ? mockStates.find(s => s.slug === state) : null;
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const [providersData, citiesData] = await Promise.all([
+          getProviders(state || 'texas'),
+          getCities(state || 'texas')
+        ]);
+        setProviders(providersData);
+        setCities(citiesData);
+      } catch (error) {
+        console.error('[ProviderComparisonPage] Error loading data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadData();
+  }, [state]);
+
+  const provider1 = providers.find(p => p.slug === providerA) || providers[0];
+  const provider2 = providers.find(p => p.slug === providerB) || providers[1];
+  
+  const stateData = state ? {
+    slug: state,
+    name: state.charAt(0).toUpperCase() + state.slice(1),
+    averageRate: providers.length > 0 ? (providers.reduce((sum, p) => sum + (p.averageRate || 12.5), 0) / providers.length).toFixed(1) : '12.5',
+    isDeregulated: state === 'texas'
+  } : null;
   
   if (!provider1 || !provider2) {
     return (
