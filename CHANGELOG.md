@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Fixed
+- **CRITICAL BUILD WARNINGS**: Resolved Astro.request.headers warnings and StatePage runtime errors
+  - Fixed middleware header access during prerendering by changing prerender from true to false in city and state pages
+  - Added missing utilityCompanies property to StatePage stateData object to prevent "Cannot read properties of undefined" error
+  - Both src/pages/texas/[city].astro and src/pages/[state].astro now properly handle middleware request context
+  - Build process now completes without Astro.request.headers warnings or runtime errors
 - **CRITICAL DATABASE CONFIGURATION**: Resolved Neon PostgreSQL connection and constraint errors
   - Fixed "⚠️ Database not configured - using mock database functions" by adding dotenv import to database.js
   - Added missing UNIQUE(external_id, tdsp_duns) constraint to electricity_plans table

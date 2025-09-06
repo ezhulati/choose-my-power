@@ -61,7 +61,15 @@ export function StatePage({ state }: StatePageProps) {
     name: state === 'texas' ? 'Texas' : state.charAt(0).toUpperCase() + state.slice(1),
     averageRate: providers.length > 0 ? (providers.reduce((sum, p) => sum + (p.averageRate || 12.5), 0) / providers.length).toFixed(1) : '12.5',
     isDeregulated: state === 'texas',
-    topCities: cities.slice(0, 10)
+    topCities: cities.slice(0, 10),
+    utilityCompanies: state === 'texas' ? [
+      'Oncor Electric Delivery',
+      'CenterPoint Energy',
+      'AEP Texas',
+      'TNMP (Texas New Mexico Power)'
+    ] : [
+      'Local Utility Company'
+    ]
   };
   
   const stateProviders = providers;
