@@ -49,6 +49,7 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
 }) => {
   const [address, setAddress] = useState('');
   const [zipCode, setZipCode] = useState('');
+  const [usage, setUsage] = useState(1000);
   const [searchResults, setSearchResults] = useState<ESIIDLocation[]>([]);
   const [selectedLocation, setSelectedLocation] = useState<ESIIDLocation | null>(null);
   const [isSearching, setIsSearching] = useState(false);
@@ -79,6 +80,7 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
       // Reset state
       setAddress('');
       setZipCode('');
+      setUsage(1000);
       setSearchResults([]);
       setSelectedLocation(null);
       setSearchError(null);
@@ -330,8 +332,8 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
     // Notify parent component of success
     onSuccess(selectedLocation.esiid, selectedLocation.address);
     
-    // Build the order URL with user's selected ESIID and the correct plan ID
-    const orderUrl = `https://orders.comparepower.com/order/service_location?esiid=${selectedLocation.esiid}&plan_id=${actualPlanId}&usage=1000&zip_code=${zipCode}`;
+    // Build the order URL with user's selected ESIID, plan ID, and usage
+    const orderUrl = `https://orders.comparepower.com/order/service_location?esiid=${selectedLocation.esiid}&plan_id=${actualPlanId}&usage=${usage}&zip_code=${zipCode}`;
     
     console.log('[AddressModal] Opening ComparePower order page:', {
       esiid: selectedLocation.esiid,
@@ -340,6 +342,7 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
       provider: planData.provider.name,
       address: selectedLocation.address,
       zipCode: zipCode,
+      usage: usage,
       originalPlanId: planData.id,
       apiPlanIdAvailable: !!planData.apiPlanId,
       planIdSource: planData.apiPlanId ? 'API' : (planData.id ? 'plan.id' : 'none')
@@ -396,6 +399,51 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
             disabled={isSearching}
             required
           />
+        </div>
+
+        <div>
+          <label htmlFor="usage" className="block text-sm font-medium text-gray-700 mb-1">
+            Monthly Usage (kWh)
+          </label>
+          <div className="relative">
+            <Input
+              id="usage"
+              type="number"
+              placeholder="1000"
+              value={usage}
+              onChange={(e) => setUsage(Math.max(1, Math.min(10000, parseInt(e.target.value) || 1000)))}
+              min="1"
+              max="10000"
+              step="50"
+              className="w-full focus-visible:ring-2 focus-visible:ring-texas-navy/50 focus-visible:border-texas-navy pr-12"
+              disabled={isSearching}
+              required
+            />
+            <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-sm text-gray-500">
+              kWh
+            </span>
+          </div>
+          <div className="flex gap-2 mt-2">
+            {[500, 1000, 1500, 2000].map(preset => (
+              <button
+                key={preset}
+                type="button"
+                onClick={() => setUsage(preset)}
+                className={cn(
+                  "px-2 py-1 text-xs rounded border transition-colors",
+                  usage === preset 
+                    ? "bg-texas-navy text-white border-texas-navy" 
+                    : "bg-white text-gray-600 border-gray-300 hover:border-texas-navy hover:text-texas-navy"
+                )}
+                disabled={isSearching}
+              >
+                {preset}
+              </button>
+            ))}
+          </div>
+          <p className="text-xs text-gray-500 mt-1">
+            Check your recent electricity bill. Most homes use 500-2000 kWh per month.
+          </p>
         </div>
 
         {/* Show searching indicator */}

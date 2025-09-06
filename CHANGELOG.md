@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **DYNAMIC USAGE**: User-configurable monthly usage in ComparePower order URLs
+  - Added usage input field to AddressSearchModal with validation (1-10,000 kWh range)
+  - Included preset buttons for common usage amounts (500, 1000, 1500, 2000 kWh)
+  - Enhanced UX with helpful guidance text and visual feedback for usage selection
+  - All ComparePower order parameters now fully dynamic: esiid, plan_id, usage, zip_code
 - **CRITICAL DOCUMENTATION**: Comprehensive Plan ID & ESID system documentation to prevent future bugs
   - Added `/docs/PLAN-ID-ESID-SPECIFICATION.md` with mandatory architecture rules
   - Enhanced CLAUDE.md with critical Plan ID & ESID troubleshooting section
