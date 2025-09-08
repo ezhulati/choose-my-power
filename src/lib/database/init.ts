@@ -14,8 +14,8 @@ export async function initializeDatabase() {
   try {
     console.log('🔄 Initializing database...');
     
-    // Create all tables
-    await db.query(CREATE_TABLES_SQL);
+    // Create all tables (split into individual statements for Neon)
+    await createTables();
     console.log('✅ Database tables created successfully');
 
     // Seed TDSP data
@@ -36,6 +36,27 @@ export async function initializeDatabase() {
   } catch (error) {
     console.error('❌ Database initialization failed:', error);
     throw error;
+  }
+}
+
+/**
+ * Create database tables individually (Neon requires single statements)
+ */
+async function createTables() {
+  const statements = CREATE_TABLES_SQL
+    .split(';')
+    .map(s => s.trim())
+    .filter(s => s.length > 0 && !s.startsWith('--'));
+
+  for (const statement of statements) {
+    try {
+      await db.query(statement);
+    } catch (error) {
+      // Skip "already exists" errors, but log other errors
+      if (!error.message.includes('already exists')) {
+        console.warn(`Warning executing SQL: ${error.message}`);
+      }
+    }
   }
 }
 

@@ -1,0 +1,182 @@
+openapi: 3.0.3
+info:
+  title: Address Validation API
+  description: API for validating and standardizing service addresses for electricity plan enrollment
+  version: 1.0.0
+
+paths:
+  /api/address/validate:
+    post:
+      summary: Validate and standardize a service address
+      description: |
+        Validates a user-entered address using USPS standardization and prepares it for ESID lookup.
+        Returns standardized address with validation status and suggestions for corrections if needed.
+      operationId: validateAddress
+      tags:
+        - Address Validation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - street
+                - city
+                - state
+                - zipCode
+              properties:
+                street:
+                  type: string
+                  minLength: 1
+                  maxLength: 100
+                  example: "123 Main Street"
+                  description: "Street number and name"
+                unit:
+                  type: string
+                  maxLength: 20
+                  example: "Apt 4B"
+                  description: "Optional apartment/unit number"
+                city:
+                  type: string
+                  minLength: 1
+                  maxLength: 50
+                  example: "Dallas"
+                  description: "City name"
+                state:
+                  type: string
+                  enum: ["TX"]
+                  example: "TX"
+                  description: "State (Texas only)"
+                zipCode:
+                  type: string
+                  pattern: "^[0-9]{5}$"
+                  example: "75201"
+                  description: "5-digit ZIP code"
+                zipPlus4:
+                  type: string
+                  pattern: "^[0-9]{4}$"
+                  example: "1234"
+                  description: "Optional ZIP+4 extension"
+                sessionId:
+                  type: string
+                  format: uuid
+                  description: "Optional session tracking ID"
+      responses:
+        '200':
+          description: Address validation completed (may be successful or failed)
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - success
+                  - originalAddress
+                  - validationStatus
+                properties:
+                  success:
+                    type: boolean
+                    description: "Overall operation success"
+                  originalAddress:
+                    $ref: '#/components/schemas/ServiceAddress'
+                  standardizedAddress:
+                    $ref: '#/components/schemas/ServiceAddress'
+                    description: "USPS-corrected address (only if validation successful)"
+                  validationStatus:
+                    type: string
+                    enum: [
+                      "VALID",
+                      "CORRECTED", 
+                      "AMBIGUOUS",
+                      "INVALID",
+                      "NOT_FOUND"
+                    ]
+                    description: "Address validation result status"
+                  confidence:
+                    type: number
+                    minimum: 0
+                    maximum: 1
+                    example: 0.95
+                    description: "Validation confidence score"
+                  suggestions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ServiceAddress'
+                    description: "Alternative address corrections"
+                  errorMessage:
+                    type: string
+                    example: "Address not found. Please check the street number and name."
+                    description: "User-friendly error message"
+                  canRetry:
+                    type: boolean
+                    description: "Whether user can retry with corrections"
+        '400':
+          description: Invalid request format
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    ServiceAddress:
+      type: object
+      required:
+        - street
+        - city  
+        - state
+        - zipCode
+      properties:
+        street:
+          type: string
+          example: "123 Main Street"
+        unit:
+          type: string
+          example: "Apt 4B"
+          nullable: true
+        city:
+          type: string
+          example: "Dallas"
+        state:
+          type: string
+          example: "TX"
+        zipCode:
+          type: string
+          pattern: "^[0-9]{5}$"
+          example: "75201"
+        zipPlus4:
+          type: string
+          pattern: "^[0-9]{4}$"
+          example: "1234"
+          nullable: true
+    
+    ErrorResponse:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+          example: "VALIDATION_ERROR"
+        message:
+          type: string
+          example: "Invalid address format"
+        details:
+          type: object
+          description: "Additional error context"
+        retryAfter:
+          type: integer
+          description: "Seconds to wait before retry (for rate limiting)"

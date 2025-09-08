@@ -26,3 +26,18 @@ dist-ssr
 
 # Local Netlify folder
 .netlify
+
+# Test artifacts and reports
+test-results/
+tests/screenshots/
+coverage/
+.coverage/
+playwright-report/
+lighthouse-reports/
+performance-reports/
+*.har
+
+# Temporary files
+temp/
+tmp/
+.cache/

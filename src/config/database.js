@@ -19,7 +19,14 @@ console.log('🔧 Database URL configured:', !!dbUrl);
 if (dbUrl) {
   const sql = neon(dbUrl);
   db = {
-    query: sql,
+    async query(queryText, params) {
+      const result = await sql(queryText, params);
+      // Wrap the result to match expected interface
+      return {
+        rows: result,
+        rowCount: Array.isArray(result) ? result.length : 0
+      };
+    },
     sql: sql  // Expose the raw client as well
   };
 } else {

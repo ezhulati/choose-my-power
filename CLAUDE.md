@@ -29,17 +29,25 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm run test:e2e` - Run Playwright end-to-end tests
 - `npm run test:e2e:ui` - Run E2E tests with UI
 - `npm run test:all` - Run both unit and E2E tests
+- `npm run test:api` - Test production API endpoints
+- `npm run test:integration` - Run integration tests
+- `npm run test:faceted` - Test faceted navigation system
 
 ### Quality & Performance
 - `npm run lint` - Run ESLint
+- `npm run validate:ids` - Validate no hardcoded plan/ESID IDs
 - `npm run perf:test` - Run performance test suite
+- `npm run perf:test:critical` - Run critical performance tests only
 - `npm run security:audit` - Security audit and scan
+- `npm run security:scan` - ESLint security scan
 
 ### Production Operations
 - `npm run production:deploy` - Deploy to production
 - `npm run production:validate` - Validate production readiness
 - `npm run health:check` - Check system health
 - `npm run cache:stats` - View cache statistics
+- `npm run db:health` - Database health check
+- `npm run db:metrics` - Database performance metrics
 
 ## CRITICAL: Plan ID & ESID System Architecture
 
@@ -204,10 +212,13 @@ useEffect(() => {
 
 ## Important Environment Variables
 - `NODE_ENV=production` - Production build mode
+- `LOCAL_BUILD=true` - Use Node adapter for local builds
 - `USE_CACHED_DATA=false` - Force fresh data generation  
 - `MAX_CITIES=N` - Limit data generation for testing
 - `BATCH_SIZE=N` - Control API request batching
 - `BATCH_DELAY_MS=N` - Control API request delays
+- `TIER_PRIORITY=high` - Use high-priority cities for tier1 builds
+- `FORCE_REBUILD=true` - Force complete rebuild of data
 
 ## Common Troubleshooting
 
@@ -223,6 +234,9 @@ useEffect(() => {
 
 ### Database Issues
 - Use `npm run db:test` to verify database connectivity
+- Use `npm run db:health` to check database health status
+- Use `npm run db:metrics` to view performance metrics
+- Use `npm run db:optimize` to optimize database for production
 - Check environment variables for database configuration
 - Ensure proper SSL configuration for production
 - **Service Layer Fallbacks**: Components gracefully fallback to JSON data if database unavailable
@@ -698,3 +712,86 @@ gap-4 md:gap-6 lg:gap-8
 4. Brand consistency check
 
 **This design system should be referenced for ALL design decisions and updated whenever new patterns are established.**
+
+## Address Validation & ESID Lookup Patterns
+
+**Feature Branch**: `004-when-user-selects` - Address ESID validation for plan selection
+**Service Pattern**: Multi-step validation with dynamic ESID generation (never hardcoded)
+
+### Core Services (Use These Patterns)
+- `address-validation-service.ts` - USPS standardization with error recovery
+- `esid-lookup-service.ts` - ERCOT API integration with caching
+- `plan-availability-service.ts` - TDSP territory validation
+
+### API Endpoints
+- `POST /api/address/validate` - Address standardization with suggestions
+- `POST /api/esid/lookup` - Dynamic ESID generation (constitutional requirement)  
+- `POST /api/plan/availability` - Plan territory compatibility
+
+### React Components
+- `AddressValidationForm.tsx` - Multi-step address entry with validation
+- `ESIDLookupModal.tsx` - ESID display and plan availability confirmation
+
+**Performance Requirements**: <200ms address validation, <300ms ESID lookup, <500ms total flow
+
+## ZIP Code Lookup Integration Patterns
+
+**Feature Branch**: `005-zip-code-lookup` - ZIP lookup form integration with address validation
+**Integration Pattern**: Seamless handoff from ZIP validation to full address entry
+
+### Integration Services (Extend Existing)
+- `zip-validation-service.ts` - Texas ZIP code validation with TDSP mapping
+- `analytics-service.ts` - Form interaction tracking and metrics
+- Existing `AddressSearchModal.tsx` - Receives validated ZIP for full address entry
+
+### API Integration Points
+- `POST /api/zip/validate` - ZIP validation with service territory lookup
+- `POST /api/analytics/form-interaction` - User interaction analytics
+- Existing address validation endpoints for modal integration
+
+### React Component Integration
+- ZIP lookup forms integrate seamlessly with `AddressSearchModal`
+- Validated ZIP codes pre-fill address modal for enhanced UX
+- Preserve all existing address validation functionality
+
+### Data Flow Pattern
+1. **ZIP Entry** → User enters ZIP in lookup form
+2. **ZIP Validation** → Service validates ZIP and determines TDSP territory  
+3. **Success Handoff** → Valid ZIP opens AddressSearchModal with pre-filled data
+4. **Error Handling** → Invalid ZIP shows suggestions and retry options
+5. **Analytics Tracking** → All interactions logged for optimization
+
+**Performance Requirements**: <200ms ZIP validation, <300ms service territory lookup, <500ms total flow
+
+## Functional ZIP Code Navigation Patterns
+
+**Feature Branch**: `006-functional-zip-code` - Direct ZIP code to city plans navigation
+**Navigation Pattern**: Clean ZIP entry → direct city plans page redirect (no intermediate pages)
+
+### Current Issues Fixed
+- **Legacy Redirect Problem**: `/api/zip-lookup` redirected to `/texas/{city}` instead of `/electricity-plans/{city-tx}/`
+- **Partial Rendering**: Plan data loading delays caused incomplete page renders
+- **Intermediate Pages**: Users saw error pages between ZIP entry and plans display
+
+### Updated Navigation Flow
+- `zip-validation-service.ts` - Correct redirect URLs to `/electricity-plans/{city-slug}/`
+- Direct navigation without intermediate stops
+- Full page rendering before display to users
+- Real-time button state management (inactive until valid ZIP)
+
+### API Endpoints (New/Fixed)
+- `POST /api/zip/navigate` - ZIP validation with direct plans page redirect
+- `GET /api/zip/validate-city-plans` - Pre-validate plan availability
+- Legacy `/api/zip-lookup` updated to use correct redirect URLs
+
+### Performance Requirements
+- <200ms ZIP validation response time
+- <500ms total navigation from ZIP entry to full page load
+- <300ms plan availability pre-validation
+- Zero intermediate pages or partial loading states visible
+
+### Constitutional Compliance
+- Real data only (no mock data, PostgreSQL + JSON fallbacks)
+- Dynamic plan ID resolution (no hardcoded values)
+- Full page rendering (FR-005 compliance)
+- Error handling without navigation (FR-006 compliance)

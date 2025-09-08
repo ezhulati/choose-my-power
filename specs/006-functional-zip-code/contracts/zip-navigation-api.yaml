@@ -1,0 +1,317 @@
+openapi: 3.0.3
+info:
+  title: ZIP Code to City Plans Navigation API
+  description: API contract for functional ZIP code entry that redirects users directly to city-specific plans list
+  version: 1.0.0
+  contact:
+    name: ChooseMyPower Development Team
+
+servers:
+  - url: http://localhost:4324
+    description: Development server
+  - url: https://choose-my-power.netlify.app
+    description: Production server
+
+paths:
+  /api/zip/navigate:
+    post:
+      summary: Validate ZIP code and generate city plans page redirect URL
+      description: |
+        Validates a 5-digit ZIP code, maps it to a Texas city, and returns the redirect URL 
+        for the city-specific electricity plans page. Ensures no intermediate pages in navigation flow.
+      operationId: validateZipAndNavigate
+      tags:
+        - ZIP Navigation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - zipCode
+              properties:
+                zipCode:
+                  type: string
+                  pattern: '^[0-9]{5}$'
+                  description: 5-digit US ZIP code
+                  example: "75201"
+                validatePlansAvailable:
+                  type: boolean
+                  description: Whether to pre-validate that plans are available before returning redirect URL
+                  default: true
+                  example: true
+      responses:
+        '200':
+          description: ZIP code validated successfully, redirect URL generated
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - success
+                  - redirectUrl
+                  - cityName
+                  - citySlug
+                  - tdspTerritory
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                    description: Validation succeeded
+                  redirectUrl:
+                    type: string
+                    pattern: '^/electricity-plans/[a-z0-9-]+-tx/?$'
+                    example: "/electricity-plans/dallas-tx/"
+                    description: Direct URL to city plans page (no intermediate pages)
+                  cityName:
+                    type: string
+                    example: "Dallas"
+                    description: Human-readable city name
+                  citySlug:
+                    type: string
+                    pattern: '^[a-z0-9-]+-tx$'
+                    example: "dallas-tx"
+                    description: URL-safe city identifier with -tx suffix
+                  tdspTerritory:
+                    type: string
+                    example: "Oncor"
+                    description: Transmission and Distribution Service Provider name
+                  planCount:
+                    type: integer
+                    minimum: 0
+                    example: 47
+                    description: Number of electricity plans available for this city
+                  validationTime:
+                    type: number
+                    example: 145
+                    description: Validation time in milliseconds (must be <200ms)
+        '400':
+          description: Invalid ZIP code provided
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - success
+                  - error
+                  - errorCode
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    example: "Invalid ZIP code format. Please enter a 5-digit ZIP code."
+                    description: User-friendly error message
+                  errorCode:
+                    type: string
+                    enum: 
+                      - INVALID_FORMAT
+                      - NOT_TEXAS
+                      - NOT_DEREGULATED
+                      - NO_PLANS_AVAILABLE
+                    example: "INVALID_FORMAT"
+                    description: Machine-readable error code
+                  suggestions:
+                    type: array
+                    items:
+                      type: string
+                    example: ["Please check your ZIP code", "Texas ZIP codes start with 7"]
+                    description: Actionable suggestions for user
+        '500':
+          description: Internal server error during validation
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - success
+                  - error
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    example: "Unable to validate ZIP code at this time. Please try again."
+                    description: User-friendly error message
+                  retryAfter:
+                    type: integer
+                    example: 5000
+                    description: Suggested retry delay in milliseconds
+
+  /api/zip/validate-city-plans:
+    get:
+      summary: Pre-validate that electricity plans are available for a city
+      description: |
+        Validates that a city has electricity plans available before navigation.
+        Used to prevent navigation to empty plans pages.
+      operationId: validateCityPlansAvailable
+      tags:
+        - ZIP Navigation
+      parameters:
+        - name: citySlug
+          in: query
+          required: true
+          schema:
+            type: string
+            pattern: '^[a-z0-9-]+-tx$'
+          example: "dallas-tx"
+          description: City slug with -tx suffix
+        - name: tdspTerritory
+          in: query
+          required: false
+          schema:
+            type: string
+          example: "Oncor"
+          description: TDSP territory for additional validation
+      responses:
+        '200':
+          description: Plan availability validated
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - plansAvailable
+                  - planCount
+                  - citySlug
+                properties:
+                  plansAvailable:
+                    type: boolean
+                    example: true
+                    description: Whether electricity plans are available
+                  planCount:
+                    type: integer
+                    minimum: 0
+                    example: 47
+                    description: Number of plans available
+                  citySlug:
+                    type: string
+                    example: "dallas-tx"
+                    description: Validated city slug
+                  lastUpdated:
+                    type: string
+                    format: date-time
+                    example: "2025-01-09T10:30:00Z"
+                    description: When plan data was last updated
+        '404':
+          description: City not found or no plans available
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - plansAvailable
+                  - reason
+                properties:
+                  plansAvailable:
+                    type: boolean
+                    example: false
+                  reason:
+                    type: string
+                    enum:
+                      - CITY_NOT_FOUND
+                      - NO_PLANS_AVAILABLE
+                      - TDSP_NOT_SUPPORTED
+                    example: "NO_PLANS_AVAILABLE"
+                    description: Why plans are not available
+
+components:
+  schemas:
+    ZipNavigationRequest:
+      type: object
+      required:
+        - zipCode
+      properties:
+        zipCode:
+          type: string
+          pattern: '^[0-9]{5}$'
+          description: 5-digit US ZIP code
+          example: "75201"
+        validatePlansAvailable:
+          type: boolean
+          description: Whether to pre-validate plan availability
+          default: true
+
+    ZipNavigationResponse:
+      type: object
+      required:
+        - success
+        - redirectUrl
+        - cityName
+        - citySlug
+        - tdspTerritory
+      properties:
+        success:
+          type: boolean
+          example: true
+        redirectUrl:
+          type: string
+          pattern: '^/electricity-plans/[a-z0-9-]+-tx/?$'
+          example: "/electricity-plans/dallas-tx/"
+          description: Direct redirect URL (no intermediate pages)
+        cityName:
+          type: string
+          example: "Dallas"
+        citySlug:
+          type: string
+          pattern: '^[a-z0-9-]+-tx$'
+          example: "dallas-tx"
+        tdspTerritory:
+          type: string
+          example: "Oncor"
+        planCount:
+          type: integer
+          minimum: 0
+          example: 47
+        validationTime:
+          type: number
+          example: 145
+          description: Must be <200ms per FR requirements
+
+    ZipNavigationError:
+      type: object
+      required:
+        - success
+        - error
+        - errorCode
+      properties:
+        success:
+          type: boolean
+          example: false
+        error:
+          type: string
+          example: "Invalid ZIP code format"
+        errorCode:
+          type: string
+          enum:
+            - INVALID_FORMAT
+            - NOT_TEXAS
+            - NOT_DEREGULATED
+            - NO_PLANS_AVAILABLE
+            - VALIDATION_TIMEOUT
+            - SERVICE_UNAVAILABLE
+        suggestions:
+          type: array
+          items:
+            type: string
+          example: ["Please enter a 5-digit ZIP code", "Texas ZIP codes start with 7"]
+
+# Performance Requirements (from FR specs)
+x-performance-requirements:
+  zipValidation: "<200ms response time"
+  totalNavigation: "<500ms from ZIP entry to full page load"
+  planDataValidation: "<300ms for pre-validation check"
+  
+# Business Rules (from FR specs)  
+x-business-rules:
+  - "FR-001: System MUST validate ZIP code input and only accept valid 5-digit US ZIP codes"
+  - "FR-002: System MUST map valid ZIP codes to their corresponding Texas cities using real geographic data"
+  - "FR-003: System MUST redirect users directly to city-specific plans URL without intermediate pages"
+  - "FR-004: System MUST display only real electricity plans with current rates from correct TDSP territory"
+  - "FR-005: System MUST ensure full page rendering with no partial loading states visible to end users"
+  - "FR-006: System MUST handle invalid ZIP codes with clear error messaging without triggering navigation"
+  - "FR-007: System MUST provide smooth user experience with no broken redirects or 404 errors"
+  - "FR-008: System MUST ensure ZIP code button remains inactive until valid ZIP code is entered"

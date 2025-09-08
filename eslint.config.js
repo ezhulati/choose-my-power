@@ -59,7 +59,29 @@ export default tseslint.config(
           selector: 'Literal[value=/focus:ring-blue-[0-9]+/]',
           message: 'Use texas-navy for focus rings. Replace with focus:ring-texas-navy'
         }
-      ]
+      ],
+      
+      // API Endpoint Rules for ZIP Navigation Feature
+      'no-hardcoded-zip-codes': 'off', // Custom rule would need implementation
+      '@typescript-eslint/no-explicit-any': ['error', {
+        ignoreRestArgs: false
+      }],
+      'prefer-const': 'error',
+      'no-console': ['warn', { allow: ['warn', 'error'] }]
     },
+  },
+  // Additional config for API files
+  {
+    files: ['src/pages/api/**/*.{ts,js}'],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        Astro: 'readonly'
+      }
+    },
+    rules: {
+      'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
+      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }]
+    }
   }
 );

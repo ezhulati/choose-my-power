@@ -1,0 +1,264 @@
+openapi: 3.0.3
+info:
+  title: ZIP Code Lookup Integration API
+  description: API contracts for ZIP code lookup form integration with existing address validation system
+  version: 1.0.0
+  
+paths:
+  /api/zip/validate:
+    post:
+      summary: Validate ZIP code for Texas electricity service
+      description: Extends existing ZIP validation endpoint for integration with address search modal
+      tags:
+        - ZIP Validation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ZIPValidationRequest'
+            examples:
+              valid_zip:
+                summary: Valid Texas ZIP code
+                value:
+                  zipCode: "75201"
+                  citySlug: "dallas"
+                  sessionId: "session_123"
+              invalid_zip:
+                summary: Invalid ZIP code
+                value:
+                  zipCode: "90210"
+                  citySlug: "dallas"
+      responses:
+        '200':
+          description: ZIP validation completed (may be valid or invalid)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ZIPValidationResult'
+              examples:
+                valid_response:
+                  summary: Valid ZIP with plans available
+                  value:
+                    zipCode: "75201"
+                    isValid: true
+                    tdsp: "Oncor Electric Delivery"
+                    citySlug: "dallas"
+                    redirectUrl: "/electricity-plans/dallas-tx"
+                    availablePlans: 45
+                    errorMessage: null
+                    suggestions: []
+                invalid_response:
+                  summary: Invalid ZIP with suggestions
+                  value:
+                    zipCode: "90210"
+                    isValid: false
+                    tdsp: null
+                    citySlug: null
+                    redirectUrl: null
+                    availablePlans: 0
+                    errorMessage: "ZIP code 90210 is not in Texas service territory"
+                    suggestions: ["75201", "75202", "75203"]
+        '400':
+          description: Bad request (malformed ZIP code)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorResponse'
+
+  /api/analytics/form-interaction:
+    post:
+      summary: Track ZIP lookup form interactions
+      description: Analytics endpoint for tracking user interactions with ZIP lookup forms
+      tags:
+        - Analytics
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormInteractionRequest'
+            examples:
+              form_submit:
+                summary: Successful form submission
+                value:
+                  zipCode: "75201"
+                  cityPage: "/texas/dallas"
+                  action: "submit"
+                  duration: 2500
+                  deviceType: "desktop"
+                  success: true
+                  sessionId: "session_123"
+      responses:
+        '200':
+          description: Interaction tracked successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+        '400':
+          description: Invalid interaction data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorResponse'
+
+components:
+  schemas:
+    ZIPValidationRequest:
+      type: object
+      required:
+        - zipCode
+        - citySlug
+      properties:
+        zipCode:
+          type: string
+          pattern: '^\d{5}$'
+          example: "75201"
+          description: 5-digit ZIP code to validate
+        citySlug:
+          type: string
+          example: "dallas"
+          description: City page slug for context
+        sessionId:
+          type: string
+          example: "session_123"
+          description: Optional session tracking identifier
+    
+    ZIPValidationResult:
+      type: object
+      required:
+        - zipCode
+        - isValid
+        - availablePlans
+        - suggestions
+      properties:
+        zipCode:
+          type: string
+          example: "75201"
+          description: The ZIP code that was validated
+        isValid:
+          type: boolean
+          example: true
+          description: Whether ZIP code is valid for Texas electricity service
+        tdsp:
+          type: string
+          nullable: true
+          example: "Oncor Electric Delivery"
+          description: Transmission/Distribution Service Provider
+        citySlug:
+          type: string
+          nullable: true
+          example: "dallas"
+          description: City page slug for redirection
+        redirectUrl:
+          type: string
+          nullable: true
+          example: "/electricity-plans/dallas-tx"
+          description: URL to redirect user for plan selection
+        availablePlans:
+          type: integer
+          minimum: 0
+          example: 45
+          description: Number of available electricity plans
+        errorMessage:
+          type: string
+          nullable: true
+          example: "ZIP code 90210 is not in Texas service territory"
+          description: Error message for invalid ZIP codes
+        suggestions:
+          type: array
+          items:
+            type: string
+          maxItems: 3
+          example: ["75201", "75202", "75203"]
+          description: Suggested alternative ZIP codes
+    
+    FormInteractionRequest:
+      type: object
+      required:
+        - zipCode
+        - cityPage
+        - action
+        - duration
+        - deviceType
+        - success
+      properties:
+        zipCode:
+          type: string
+          example: "75201"
+          description: ZIP code entered by user
+        cityPage:
+          type: string
+          example: "/texas/dallas"
+          description: City page where form was accessed
+        action:
+          type: string
+          enum: [focus, input, submit, error, redirect]
+          example: "submit"
+          description: Type of user interaction
+        duration:
+          type: integer
+          minimum: 0
+          example: 2500
+          description: Time spent on interaction in milliseconds
+        deviceType:
+          type: string
+          enum: [mobile, desktop, tablet]
+          example: "desktop"
+          description: User's device type
+        success:
+          type: boolean
+          example: true
+          description: Whether the interaction was successful
+        sessionId:
+          type: string
+          example: "session_123"
+          description: Optional session tracking identifier
+    
+    APIErrorResponse:
+      type: object
+      required:
+        - error
+        - message
+        - timestamp
+      properties:
+        error:
+          type: string
+          example: "VALIDATION_ERROR"
+          description: Error code identifier
+        message:
+          type: string
+          example: "Invalid ZIP code format"
+          description: Human-readable error message
+        details:
+          type: object
+          additionalProperties: true
+          description: Additional error context
+        timestamp:
+          type: string
+          format: date-time
+          example: "2025-09-06T10:30:00Z"
+          description: When the error occurred
+
+tags:
+  - name: ZIP Validation
+    description: ZIP code validation operations
+  - name: Analytics
+    description: User interaction analytics

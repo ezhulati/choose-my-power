@@ -1,0 +1,320 @@
+openapi: 3.0.3
+info:
+  title: ZIP Code Lookup API
+  description: API for validating ZIP codes and redirecting to appropriate electricity plans
+  version: 1.0.0
+  contact:
+    name: ChooseMyPower Development Team
+
+servers:
+  - url: https://choose-my-power.netlify.app/api
+    description: Production server
+  - url: http://localhost:4324/api  
+    description: Development server
+
+paths:
+  /zip/validate:
+    post:
+      summary: Validate ZIP code and get TDSP information
+      description: Validates a ZIP code, determines the associated TDSP, and provides redirection information
+      operationId: validateZipCode
+      tags:
+        - ZIP Validation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - zipCode
+                - citySlug
+              properties:
+                zipCode:
+                  type: string
+                  pattern: '^\d{5}$'
+                  description: 5-digit ZIP code to validate
+                  example: "75201"
+                citySlug:
+                  type: string
+                  pattern: '^[a-z0-9\-]+$'
+                  description: City slug from the source page
+                  example: "dallas-tx"
+                sessionId:
+                  type: string
+                  format: uuid
+                  description: Optional session identifier for analytics
+      responses:
+        '200':
+          description: ZIP code validation successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ZipValidationResponse'
+        '400':
+          description: Invalid request format
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: ZIP code validation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ZipValidationResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /zip/city/{citySlug}:
+    get:
+      summary: Get valid ZIP codes for a city
+      description: Returns list of ZIP codes that are valid for the specified city
+      operationId: getCityZipCodes
+      tags:
+        - ZIP Validation
+      parameters:
+        - name: citySlug
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '^[a-z0-9\-]+$'
+          description: City slug identifier
+          example: "houston-tx"
+      responses:
+        '200':
+          description: City ZIP codes retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CityZipCodesResponse'
+        '404':
+          description: City not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /analytics/form-interaction:
+    post:
+      summary: Track form interaction for analytics
+      description: Records user interactions with ZIP code lookup forms
+      operationId: trackFormInteraction
+      tags:
+        - Analytics
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormInteractionRequest'
+      responses:
+        '201':
+          description: Interaction tracked successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+        '400':
+          description: Invalid request format
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    ZipValidationResponse:
+      type: object
+      required:
+        - zipCode
+        - isValid
+      properties:
+        zipCode:
+          type: string
+          pattern: '^\d{5}$'
+          description: The validated ZIP code
+          example: "75201"
+        isValid:
+          type: boolean
+          description: Whether the ZIP code is valid for Texas electricity service
+          example: true
+        tdsp:
+          type: string
+          nullable: true
+          description: Associated TDSP (utility territory) if valid
+          example: "oncor"
+        citySlug:
+          type: string
+          nullable: true
+          description: Correct city slug for this ZIP code (may differ from request)
+          example: "dallas-tx"
+        redirectUrl:
+          type: string
+          format: uri
+          nullable: true
+          description: URL to redirect user for plan comparison
+          example: "/electricity-plans/dallas-tx?zip=75201"
+        availablePlans:
+          type: integer
+          minimum: 0
+          description: Number of plans available for this ZIP code
+          example: 42
+        errorMessage:
+          type: string
+          nullable: true
+          description: Human-readable error message if validation failed
+          example: "ZIP code 90210 is not in Texas electricity service area"
+        suggestions:
+          type: array
+          items:
+            type: string
+            pattern: '^\d{5}$'
+          description: Suggested ZIP codes if the input was close but invalid
+          example: ["75202", "75203", "75204"]
+
+    CityZipCodesResponse:
+      type: object
+      required:
+        - citySlug
+        - cityName
+        - zipCodes
+      properties:
+        citySlug:
+          type: string
+          description: City identifier
+          example: "houston-tx"
+        cityName:
+          type: string
+          description: Human-readable city name
+          example: "Houston"
+        zipCodes:
+          type: array
+          items:
+            type: object
+            required:
+              - zipCode
+              - tdsp
+            properties:
+              zipCode:
+                type: string
+                pattern: '^\d{5}$'
+                example: "77001"
+              tdsp:
+                type: string
+                example: "centerpoint"
+              planCount:
+                type: integer
+                minimum: 0
+                example: 38
+          description: List of valid ZIP codes for this city
+        totalZipCodes:
+          type: integer
+          minimum: 0
+          description: Total number of ZIP codes in this city
+          example: 156
+
+    FormInteractionRequest:
+      type: object
+      required:
+        - zipCode
+        - cityPage
+        - action
+        - deviceType
+      properties:
+        zipCode:
+          type: string
+          pattern: '^\d{0,5}$'
+          description: ZIP code being entered (may be partial)
+          example: "7520"
+        cityPage:
+          type: string
+          description: Source city page
+          example: "dallas-tx"
+        action:
+          type: string
+          enum: [focus, input, submit, error, redirect]
+          description: Type of interaction
+          example: "submit"
+        timestamp:
+          type: string
+          format: date-time
+          description: When the interaction occurred
+          example: "2025-09-06T14:30:00Z"
+        duration:
+          type: integer
+          minimum: 0
+          description: Time spent on form in milliseconds
+          example: 5000
+        deviceType:
+          type: string
+          enum: [mobile, desktop, tablet]
+          description: Device type
+          example: "mobile"
+        sessionId:
+          type: string
+          format: uuid
+          description: User session identifier
+        success:
+          type: boolean
+          description: Whether the interaction was successful
+          example: true
+
+    ErrorResponse:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+          description: Error code identifier
+          example: "INVALID_ZIP_FORMAT"
+        message:
+          type: string
+          description: Human-readable error message
+          example: "ZIP code must be exactly 5 digits"
+        details:
+          type: object
+          additionalProperties: true
+          description: Additional error context
+        timestamp:
+          type: string
+          format: date-time
+          description: When the error occurred
+          example: "2025-09-06T14:30:00Z"
+
+  securitySchemes: {}
+
+tags:
+  - name: ZIP Validation
+    description: ZIP code validation and TDSP lookup operations
+  - name: Analytics
+    description: Form interaction tracking for business intelligence

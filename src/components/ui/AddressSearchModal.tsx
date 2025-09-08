@@ -13,9 +13,11 @@ import {
   AlertCircle, 
   Loader2,
   ArrowRight,
-  Home
+  Home,
+  Info
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
+import { validateZipCode, getValidationMessage, type ZipCodeValidationResult } from '../../lib/validation/zip-code-validator';
 
 interface ESIIDLocation {
   esiid: string;
@@ -58,6 +60,8 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
   const [searchError, setSearchError] = useState<string | null>(null);
   const [planError, setPlanError] = useState<string | null>(null);
   const [step, setStep] = useState<'search' | 'results' | 'success'>('search');
+  const [zipValidation, setZipValidation] = useState<ZipCodeValidationResult | null>(null);
+  const [showZipValidation, setShowZipValidation] = useState(false);
   
   // Use refs to prevent stale closures and manage cleanup
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null);
@@ -88,6 +92,8 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
       setValidatingEsiid(null);
       setStep('search');
       setIsSearching(false);
+      setZipValidation(null);
+      setShowZipValidation(false);
       lastSearchRef.current = null;
     } else {
       // Focus first input when modal opens
@@ -110,6 +116,35 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
       return () => document.removeEventListener('keydown', handleKeyDown);
     }
   }, [isOpen, onClose]);
+
+  // Real-time ZIP code validation effect
+  // Implements FR-007: Real-time validation feedback
+  useEffect(() => {
+    if (!zipCode) {
+      setZipValidation(null);
+      setShowZipValidation(false);
+      return;
+    }
+
+    // Show validation feedback after user has typed at least 3 characters
+    if (zipCode.length >= 3) {
+      const validation = validateZipCode(zipCode, {
+        strictTexasOnly: true,
+        requireDeregulated: true,
+        provideFeedback: true
+      });
+      
+      setZipValidation(validation);
+      setShowZipValidation(true);
+      
+      // Clear search error if ZIP becomes valid
+      if (validation.isValid && searchError) {
+        setSearchError(null);
+      }
+    } else {
+      setShowZipValidation(false);
+    }
+  }, [zipCode, searchError]);
 
   // Memoized search function to prevent recreation
   const performSearch = useCallback(async (searchAddress: string, searchZip: string) => {
@@ -195,12 +230,20 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
       debounceTimerRef.current = null;
     }
 
-    // Check if we should search
+    // Check if we should search - require valid ZIP code
     if (address.length >= 3 && zipCode.length === 5) {
-      // Set up new debounce timer
-      debounceTimerRef.current = setTimeout(() => {
-        performSearch(address, zipCode);
-      }, 1200); // Increased debounce time for better UX
+      // Validate ZIP code before auto-search
+      const zipValidationResult = validateZipCode(zipCode, {
+        strictTexasOnly: true,
+        requireDeregulated: true
+      });
+      
+      if (zipValidationResult.isValid) {
+        // Set up new debounce timer for auto-search
+        debounceTimerRef.current = setTimeout(() => {
+          performSearch(address, zipCode);
+        }, 1200); // Increased debounce time for better UX
+      }
     }
 
     // Cleanup function
@@ -212,10 +255,23 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
     };
   }, [address, zipCode, performSearch]); // Removed isSearching dependency!
 
-  // Manual search handler
+  // Manual search handler with ZIP validation
+  // Implements FR-004: Error messages for invalid ZIP codes
   const handleSearch = async () => {
-    if (!address.trim() || zipCode.length !== 5) {
-      setSearchError('Please enter a valid address and 5-digit ZIP code');
+    if (!address.trim()) {
+      setSearchError('Please enter a valid address');
+      return;
+    }
+
+    // Validate ZIP code before search
+    const zipValidationResult = validateZipCode(zipCode, {
+      strictTexasOnly: true,
+      requireDeregulated: true
+    });
+
+    if (!zipValidationResult.isValid) {
+      const message = getValidationMessage(zipValidationResult);
+      setSearchError(message.message);
       return;
     }
 
@@ -386,19 +442,79 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
           <label htmlFor="zipcode" className="block text-sm font-medium text-gray-700 mb-1">
             ZIP Code
           </label>
-          <Input
-            id="zipcode"
-            type="text"
-            placeholder="75201"
-            value={zipCode}
-            onChange={(e) => setZipCode(e.target.value.replace(/\D/g, '').slice(0, 5))}
-            maxLength={5}
-            className="w-full focus-visible:ring-2 focus-visible:ring-texas-navy/50 focus-visible:border-texas-navy"
-            autoComplete="postal-code"
-            inputMode="numeric"
-            disabled={isSearching}
-            required
-          />
+          <div className="relative">
+            <Input
+              id="zipcode"
+              type="text"
+              placeholder="75201"
+              value={zipCode}
+              onChange={(e) => setZipCode(e.target.value.replace(/\D/g, '').slice(0, 5))}
+              maxLength={5}
+              className={cn(
+                "w-full focus-visible:ring-2 focus-visible:ring-texas-navy/50 focus-visible:border-texas-navy pr-10",
+                showZipValidation && zipValidation && (
+                  zipValidation.isValid 
+                    ? "border-green-300 focus-visible:border-green-500 focus-visible:ring-green-500/50"
+                    : "border-red-300 focus-visible:border-red-500 focus-visible:ring-red-500/50"
+                )
+              )}
+              autoComplete="postal-code"
+              inputMode="numeric"
+              disabled={isSearching}
+              required
+            />
+            {/* Real-time validation indicator */}
+            {showZipValidation && zipValidation && (
+              <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                {zipValidation.isValid ? (
+                  <CheckCircle className="h-4 w-4 text-green-600" />
+                ) : (
+                  <AlertCircle className="h-4 w-4 text-red-600" />
+                )}
+              </div>
+            )}
+          </div>
+          
+          {/* Real-time validation feedback */}
+          {showZipValidation && zipValidation && (
+            <div className={cn(
+              "mt-2 p-2 rounded-md text-sm flex items-start gap-2",
+              zipValidation.isValid 
+                ? "bg-green-50 border border-green-200"
+                : "bg-red-50 border border-red-200"
+            )}>
+              {zipValidation.isValid ? (
+                <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0 mt-0.5" />
+              ) : (
+                <AlertCircle className="h-4 w-4 text-red-600 flex-shrink-0 mt-0.5" />
+              )}
+              <div className="flex-1">
+                <div className={cn(
+                  "font-medium",
+                  zipValidation.isValid ? "text-green-800" : "text-red-800"
+                )}>
+                  {(() => {
+                    const message = getValidationMessage(zipValidation);
+                    return message.message;
+                  })()}
+                </div>
+                {zipValidation.isValid && zipValidation.requiresAddressValidation && (
+                  <div className="text-yellow-700 mt-1 flex items-start gap-1">
+                    <Info className="h-3 w-3 flex-shrink-0 mt-0.5" />
+                    <span className="text-xs">Address validation may be required for accurate plan availability</span>
+                  </div>
+                )}
+                {zipValidation.city && (
+                  <div className={cn(
+                    "text-xs mt-1",
+                    zipValidation.isValid ? "text-green-700" : "text-red-700"
+                  )}>
+                    {zipValidation.city}, Texas • {zipValidation.tdsp?.name || 'Utility TBD'}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
         </div>
 
         <div>
@@ -468,7 +584,12 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
 
         <Button
           onClick={handleSearch}
-          disabled={!address.trim() || zipCode.length !== 5 || isSearching}
+          disabled={
+            !address.trim() || 
+            zipCode.length !== 5 || 
+            isSearching ||
+            (zipValidation && !zipValidation.isValid)
+          }
           className="w-full bg-texas-navy hover:bg-texas-navy/90 text-white disabled:bg-gray-300 disabled:text-gray-500 transition-all duration-200"
           type="button"
         >

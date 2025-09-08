@@ -34,7 +34,7 @@ import type {
  * ZIP Code validation schema
  * Supports 5-digit and 9-digit (ZIP+4) formats
  */
-export const ZipCodeSchema = z.string()
+export const BasicZipCodeSchema = z.string()
   .regex(/^\d{5}(-\d{4})?$/, 'Invalid ZIP code format')
   .transform(zip => zip.replace('-', ''))
   .refine(zip => zip.length === 5 || zip.length === 9, 'ZIP code must be 5 or 9 digits');
@@ -42,7 +42,7 @@ export const ZipCodeSchema = z.string()
 /**
  * Texas ZIP code validation (must start with 7)
  */
-export const TexasZipCodeSchema = ZipCodeSchema
+export const TexasZipCodeSchema = BasicZipCodeSchema
   .refine(zip => zip.startsWith('7'), 'ZIP code must be in Texas (start with 7)');
 
 /**

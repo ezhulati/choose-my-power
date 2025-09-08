@@ -1,0 +1,221 @@
+openapi: 3.0.3
+info:
+  title: Plan Availability API  
+  description: API for checking if electricity plans are available at specific ESID locations
+  version: 1.0.0
+
+paths:
+  /api/plan/availability:
+    post:
+      summary: Check plan availability at ESID location
+      description: |
+        Verifies whether a selected electricity plan is available for service at the specified ESID.
+        Checks TDSP territory coverage, plan service area, and any service restrictions.
+        Provides alternative plan suggestions if the selected plan is unavailable.
+      operationId: checkPlanAvailability  
+      tags:
+        - Plan Availability
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - planId
+                - esid
+              properties:
+                planId:
+                  type: string
+                  pattern: "^[0-9a-fA-F]{24}$"
+                  example: "60c72b2f4f1a4c0015e8b123"
+                  description: "Selected plan MongoDB ObjectId (dynamically resolved)"
+                esid:
+                  type: string
+                  pattern: "^[0-9]{17}$"
+                  example: "10123456789012345"
+                  description: "17-digit Electric Service Identifier"
+                address:
+                  $ref: '#/components/schemas/ServiceAddress'
+                  description: "Service address for context"
+                sessionId:
+                  type: string
+                  format: uuid
+                  description: "Optional session tracking ID"
+                includeAlternatives:
+                  type: boolean
+                  default: true
+                  description: "Include alternative plan suggestions"
+      responses:
+        '200':
+          description: Plan availability check completed
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - success
+                  - planId
+                  - esid
+                  - available
+                properties:
+                  success:
+                    type: boolean
+                    description: "Overall operation success"
+                  planId:
+                    type: string
+                    example: "60c72b2f4f1a4c0015e8b123"
+                    description: "Checked plan ID"
+                  esid:
+                    type: string
+                    example: "10123456789012345"
+                    description: "Target ESID"
+                  available:
+                    type: boolean
+                    description: "Whether plan is available at this ESID"
+                  availabilityStatus:
+                    type: string
+                    enum: [
+                      "AVAILABLE",
+                      "UNAVAILABLE_TERRITORY",
+                      "UNAVAILABLE_RESTRICTIONS", 
+                      "UNAVAILABLE_CAPACITY",
+                      "TEMPORARILY_UNAVAILABLE"
+                    ]
+                    description: "Detailed availability status"
+                  reason:
+                    type: string
+                    example: "Plan not available in Oncor territory"
+                    description: "Explanation if unavailable"
+                  tdspCompatibility:
+                    type: object
+                    properties:
+                      requiredTdsp:
+                        type: string
+                        example: "oncor"
+                      actualTdsp:
+                        type: string
+                        example: "centerpoint"  
+                      compatible:
+                        type: boolean
+                    description: "TDSP compatibility information"
+                  planDetails:
+                    type: object
+                    properties:
+                      planName:
+                        type: string
+                        example: "Green Choice 12"
+                      providerName:
+                        type: string
+                        example: "TXU Energy"
+                      rate:
+                        type: number
+                        example: 12.5
+                      termMonths:
+                        type: integer
+                        example: 12
+                    description: "Selected plan information"
+                  alternativePlans:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        planId:
+                          type: string
+                        planName:
+                          type: string
+                        providerName:
+                          type: string
+                        rate:
+                          type: number
+                        termMonths:
+                          type: integer
+                        reason:
+                          type: string
+                          example: "Similar rate, same provider"
+                    description: "Suggested alternative plans (if requested)"
+                  enrollmentUrl:
+                    type: string
+                    format: uri
+                    example: "https://compare-power.com/enroll?plan=60c72b2f4f1a4c0015e8b123&esid=10123456789012345"
+                    description: "Direct enrollment URL (if available)"
+                  estimatedActivation:
+                    type: string
+                    example: "1-3 business days"
+                    description: "Expected service activation timeframe"
+        '400':
+          description: Invalid request (missing or invalid plan/ESID)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Plan or ESID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    ServiceAddress:
+      type: object
+      required:
+        - street
+        - city  
+        - state
+        - zipCode
+      properties:
+        street:
+          type: string
+          example: "123 Main Street"
+        unit:
+          type: string
+          example: "Apt 4B"
+          nullable: true
+        city:
+          type: string
+          example: "Dallas"
+        state:
+          type: string
+          example: "TX"
+        zipCode:
+          type: string
+          pattern: "^[0-9]{5}$"
+          example: "75201"
+        zipPlus4:
+          type: string
+          pattern: "^[0-9]{4}$"
+          example: "1234"
+          nullable: true
+    
+    ErrorResponse:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+          example: "PLAN_NOT_AVAILABLE"
+        message:
+          type: string
+          example: "Selected plan is not available at this service location"
+        details:
+          type: object
+          description: "Additional error context"
+        retryAfter:
+          type: integer
+          description: "Seconds to wait before retry (for rate limiting)"
