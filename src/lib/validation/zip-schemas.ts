@@ -289,20 +289,4 @@ export const validatePerformanceConstraints = (
   return { isValid, warning };
 };
 
-// Export all schemas for external use
-export {
-  ZipCodeSchema,
-  PartialZipCodeSchema,
-  CitySlugSchema,
-  SessionIdSchema,
-  DeviceTypeSchema,
-  FormActionSchema,
-  ZIPValidationRequestSchema,
-  FormInteractionRequestSchema,
-  ZIPValidationResponseSchema,
-  CityZipCodesResponseSchema,
-  APIErrorResponseSchema,
-  ZIPFormDataSchema,
-  ProgressiveZIPSchema,
-  ZIPSubmissionSchema
-};
+// All schemas are already exported individually above

@@ -35,7 +35,7 @@
 1. **ROOT CAUSE RESOLUTION**: Fixed legacy API redirect URL generation
    - **OLD WRONG**: `/texas/${citySlug}` 
    - **NEW CORRECT**: `/electricity-plans/${citySlug}/`
-   - **Location**: `src/pages/api/zip/navigate.ts` line 195
+   - **Location**: `src/pages/api/zip-lookup.ts` line 195
 
 2. **Performance**: All API responses < 200ms (constitutional requirement met)
 

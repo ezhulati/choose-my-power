@@ -27,6 +27,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Ensured full page rendering with real TDSP and plan data
   - Performance targets: <200ms ZIP validation, <300ms TDSP lookup, <500ms total user flow
   - Progressive validation starting at 3 characters with actionable error messages
+- **CRITICAL BUILD ERROR**: Fixed Netlify deployment failure due to duplicate exports
+  - Resolved "Multiple exports with the same name 'ZipCodeSchema'" error in src/lib/validation/zip-schemas.ts
+  - Removed redundant export block that was duplicating individual schema exports
+  - Build process now completes successfully without TypeScript export conflicts
 
 ### Fixed
 - **CRITICAL BUILD WARNINGS**: Resolved Astro.request.headers warnings and StatePage runtime errors

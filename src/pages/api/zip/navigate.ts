@@ -26,10 +26,10 @@ export const POST: APIRoute = async ({ request }) => {
     } catch (error) {
       return new Response(JSON.stringify({
         success: false,
+        error: 'Invalid JSON in request body',
         errorCode: 'INVALID_FORMAT',
-        errorMessage: 'Invalid JSON in request body',
         suggestions: ['Ensure request body contains valid JSON with zipCode field']
-      } as ZIPNavigationResponse), {
+      }), {
         status: 400,
         headers: { 'Content-Type': 'application/json' }
       });
@@ -41,10 +41,10 @@ export const POST: APIRoute = async ({ request }) => {
     if (!zipCode || typeof zipCode !== 'string') {
       return new Response(JSON.stringify({
         success: false,
+        error: 'zipCode is required and must be a string',
         errorCode: 'INVALID_FORMAT',
-        errorMessage: 'zipCode is required and must be a string',
         suggestions: ['Provide a valid ZIP code string']
-      } as ZIPNavigationResponse), {
+      }), {
         status: 400,
         headers: { 'Content-Type': 'application/json' }
       });
@@ -69,7 +69,7 @@ export const POST: APIRoute = async ({ request }) => {
       return new Response(JSON.stringify({
         success: false,
         errorCode: formatValidation.errorCode,
-        errorMessage: formatValidation.errorMessage,
+        error: formatValidation.errorMessage,
         suggestions: formatValidation.suggestions,
         validationTime: Date.now() - startTime
       } as ZIPNavigationResponse), {
@@ -92,7 +92,7 @@ export const POST: APIRoute = async ({ request }) => {
       return new Response(JSON.stringify({
         success: false,
         errorCode: texasValidation.errorCode,
-        errorMessage: texasValidation.errorMessage,
+        error: texasValidation.errorMessage,
         suggestions: texasValidation.suggestions,
         validationTime: Date.now() - startTime
       } as ZIPNavigationResponse), {
@@ -114,7 +114,7 @@ export const POST: APIRoute = async ({ request }) => {
       return new Response(JSON.stringify({
         success: false,
         errorCode: 'NOT_FOUND' as ZIPErrorCode,
-        errorMessage: `ZIP code ${zipCode} not found in Texas database`,
+        error: `ZIP code ${zipCode} not found in Texas database`,
         suggestions: [
           'Check if ZIP code is correct',
           'Texas ZIP codes start with 7',
@@ -140,7 +140,7 @@ export const POST: APIRoute = async ({ request }) => {
       return new Response(JSON.stringify({
         success: false,
         errorCode: 'NOT_DEREGULATED' as ZIPErrorCode,
-        errorMessage: `ZIP code ${zipCode} is in a regulated electricity market`,
+        error: `ZIP code ${zipCode} is in a regulated electricity market`,
         suggestions: [
           'This area is served by a regulated utility',
           'Deregulated areas in Texas include Houston, Dallas, Austin, Fort Worth',
@@ -170,7 +170,7 @@ export const POST: APIRoute = async ({ request }) => {
           return new Response(JSON.stringify({
             success: false,
             errorCode: 'NO_PLANS' as ZIPErrorCode,
-            errorMessage: `No electricity plans available for ${cityData.name}`,
+            error: `No electricity plans available for ${cityData.name}`,
             suggestions: [
               'Try a nearby city ZIP code',
               'Check back later as plans are updated regularly',
@@ -249,7 +249,7 @@ export const POST: APIRoute = async ({ request }) => {
     return new Response(JSON.stringify({
       success: false,
       errorCode: 'API_ERROR' as ZIPErrorCode,
-      errorMessage: 'Internal server error processing ZIP code',
+      error: 'Internal server error processing ZIP code',
       suggestions: [
         'Try again in a moment',
         'Contact support if problem persists'
