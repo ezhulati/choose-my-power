@@ -1,0 +1,21 @@
+---
+// Main Plans Listing Page
+// T005: Create plans page routes - index.astro
+import Layout from '../../layouts/Layout.astro';
+import PlansListingPage from '../../components/plans/PlansListingPage';
+
+// SSR data loading for plans pages (will be implemented in T040)
+const city = 'dallas'; // TODO: Get from URL params or user location
+const title = `Electricity Plans in ${city.charAt(0).toUpperCase() + city.slice(1)}, Texas`;
+const description = `Compare 50+ electricity plans in ${city}, Texas. Find the best rates, contract terms, and green energy options with real-time filtering and side-by-side comparison.`;
+---
+
+<Layout 
+  title={title}
+  description={description}
+  keywords={`electricity plans, ${city} texas, power rates, energy comparison, deregulated electricity`}
+>
+  <main class="min-h-screen bg-gradient-to-b from-texas-cream to-gray-50">
+    <PlansListingPage client:load city={city} />
+  </main>
+</Layout>

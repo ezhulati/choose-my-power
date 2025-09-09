@@ -1,0 +1,671 @@
+openapi: 3.0.3
+info:
+  title: Advanced Plans Listing & Comparison API
+  description: API contracts for Texas electricity plans listing, filtering, and comparison functionality
+  version: 1.0.0
+  contact:
+    name: ChooseMyPower Engineering
+    url: https://choosemypower.com
+
+servers:
+  - url: http://localhost:4324/api
+    description: Local development server
+  - url: https://choosemypower.netlify.app/api
+    description: Production server
+
+paths:
+  /plans/list:
+    get:
+      summary: Get filtered electricity plans for service area
+      description: Retrieve electricity plans with real-time filtering capabilities (FR-001, FR-002)
+      parameters:
+        - name: city
+          in: query
+          required: true
+          schema:
+            type: string
+          example: "dallas"
+          description: Texas city for service area determination
+        
+        - name: zipCode
+          in: query
+          required: false
+          schema:
+            type: string
+            pattern: '^\d{5}$'
+          example: "75201"
+          description: Optional ZIP code for precise service area
+          
+        - name: contractLengths
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
+              enum: [1, 6, 12, 24, 36]
+          style: form
+          explode: true
+          example: [12, 24]
+          description: Filter by contract length in months
+          
+        - name: rateTypes
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+              enum: ["fixed", "variable", "indexed"]
+          style: form
+          explode: true
+          example: ["fixed"]
+          description: Filter by rate type
+          
+        - name: minRate
+          in: query
+          required: false
+          schema:
+            type: number
+            minimum: 0
+          example: 8.5
+          description: Minimum rate per kWh in cents
+          
+        - name: maxRate
+          in: query
+          required: false
+          schema:
+            type: number
+            minimum: 0
+          example: 15.0
+          description: Maximum rate per kWh in cents
+          
+        - name: providers
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
+          example: ["Reliant Energy", "TXU Energy"]
+          description: Filter by electricity providers
+          
+        - name: minGreenEnergy
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+            maximum: 100
+          example: 50
+          description: Minimum renewable energy percentage
+          
+        - name: sortBy
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: ["price", "rating", "contract", "provider", "green"]
+            default: "price"
+          description: Sort criteria (FR-006)
+          
+        - name: sortOrder
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: ["asc", "desc"]
+            default: "asc"
+          description: Sort order
+          
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 50
+          description: Maximum number of plans to return
+          
+      responses:
+        '200':
+          description: Successfully retrieved filtered plans
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  plans:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ElectricityPlan'
+                  totalCount:
+                    type: integer
+                    description: Total plans matching filter criteria
+                  filterCounts:
+                    type: object
+                    description: Count of plans for each filter option (FR-004)
+                    additionalProperties:
+                      type: integer
+                  appliedFilters:
+                    $ref: '#/components/schemas/PlanFilter'
+                  responseTime:
+                    type: number
+                    description: Processing time in milliseconds (performance monitoring)
+              example:
+                plans:
+                  - id: "67b1234567890123456789ab"
+                    planName: "Reliant Secure Advantage 12"
+                    providerName: "Reliant Energy"
+                    baseRate: 12.4
+                    rateType: "fixed"
+                    contractLength: 12
+                    greenEnergyPercentage: 22
+                totalCount: 47
+                filterCounts:
+                  "12-month": 23
+                  "24-month": 18
+                  "fixed-rate": 35
+                responseTime: 185
+                
+        '400':
+          description: Invalid filter parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+                
+        '404':
+          description: No plans found for service area
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+                
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /plans/compare:
+    get:
+      summary: Get detailed comparison data for selected plans
+      description: Retrieve comprehensive comparison data for up to 4 plans (FR-003)
+      parameters:
+        - name: planIds
+          in: query
+          required: true
+          schema:
+            type: array
+            items:
+              type: string
+              pattern: '^[0-9a-fA-F]{24}$'
+            minItems: 2
+            maxItems: 4
+          style: form
+          explode: true
+          example: ["67b1234567890123456789ab", "67b1234567890123456789ac"]
+          description: Array of plan IDs to compare (MongoDB ObjectIds)
+          
+        - name: focusAreas
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+              enum: ["price", "features", "contract", "green", "provider"]
+          style: form
+          explode: true
+          example: ["price", "features"]
+          description: Comparison focus areas for prioritization
+          
+        - name: usageKwh
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 500
+            maximum: 3000
+            default: 1000
+          description: Monthly usage in kWh for cost calculations
+          
+      responses:
+        '200':
+          description: Successfully retrieved comparison data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  comparisonData:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ElectricityPlan'
+                  costAnalysis:
+                    $ref: '#/components/schemas/CostAnalysis'
+                  featureMatrix:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/FeatureComparison'
+                  recommendation:
+                    type: object
+                    properties:
+                      recommendedPlanId:
+                        type: string
+                      reasons:
+                        type: array
+                        items:
+                          type: string
+                      confidenceScore:
+                        type: number
+                        minimum: 0
+                        maximum: 1
+                  responseTime:
+                    type: number
+              example:
+                comparisonData: [...]
+                costAnalysis:
+                  monthlyEstimates: [124.50, 132.10, 118.75, 145.20]
+                  firstYearTotal: [1494.00, 1585.20, 1425.00, 1742.40]
+                  averageRate: [12.45, 13.21, 11.88, 14.52]
+                  savingsVsFirst: [0, -91.20, 69.00, -248.40]
+                responseTime: 245
+                
+        '400':
+          description: Invalid plan IDs or parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+                
+        '404':
+          description: One or more plans not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /plans/suggestions:
+    get:
+      summary: Get smart filter suggestions for zero results
+      description: Provide intelligent filter suggestions when no plans match criteria (FR-011)
+      parameters:
+        - name: currentFilters
+          in: query
+          required: true
+          schema:
+            type: string
+          description: JSON-encoded current filter state
+          example: '{"contractLengths":[6],"rateTypes":["fixed"],"minRate":5.0,"maxRate":8.0}'
+          
+        - name: city
+          in: query
+          required: true
+          schema:
+            type: string
+          example: "houston"
+          
+      responses:
+        '200':
+          description: Successfully generated filter suggestions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  suggestions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        filterCategory:
+                          type: string
+                        suggestion:
+                          type: string
+                        expectedResults:
+                          type: integer
+                        priority:
+                          type: string
+                          enum: ["high", "medium", "low"]
+                  alternativeFilters:
+                    $ref: '#/components/schemas/PlanFilter'
+                  nearbyOptions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ElectricityPlan'
+                    maxItems: 5
+              example:
+                suggestions:
+                  - filterCategory: "priceRange"
+                    suggestion: "Increase maximum rate to $10.50/kWh"
+                    expectedResults: 12
+                    priority: "high"
+                  - filterCategory: "contractLength"
+                    suggestion: "Include 12-month contracts"
+                    expectedResults: 8
+                    priority: "medium"
+                    
+        '400':
+          description: Invalid filter parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /analytics/filter-interaction:
+    post:
+      summary: Track user filter interactions for optimization
+      description: Record user behavior for analytics and filter suggestion improvement
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sessionId:
+                  type: string
+                filterType:
+                  type: string
+                filterValue:
+                  type: string
+                resultCount:
+                  type: integer
+                responseTime:
+                  type: number
+                timestamp:
+                  type: string
+                  format: date-time
+                userAgent:
+                  type: string
+              required: [sessionId, filterType, filterValue, resultCount, responseTime]
+              example:
+                sessionId: "sess_abc123def456"
+                filterType: "contractLength"
+                filterValue: "12"
+                resultCount: 23
+                responseTime: 187
+                timestamp: "2025-01-09T15:30:00Z"
+                userAgent: "Mozilla/5.0..."
+                
+      responses:
+        '201':
+          description: Interaction recorded successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  recorded:
+                    type: boolean
+                  sessionId:
+                    type: string
+                    
+        '400':
+          description: Invalid interaction data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    ElectricityPlan:
+      type: object
+      required:
+        - id
+        - planName
+        - providerName
+        - baseRate
+        - rateType
+        - contractLength
+      properties:
+        id:
+          type: string
+          pattern: '^[0-9a-fA-F]{24}$'
+          description: MongoDB ObjectId (constitutional requirement)
+          example: "67b1234567890123456789ab"
+        planName:
+          type: string
+          example: "Reliant Secure Advantage 12"
+        providerName:
+          type: string
+          example: "Reliant Energy"
+        baseRate:
+          type: number
+          minimum: 0
+          example: 12.4
+          description: Rate per kWh in cents
+        rateType:
+          type: string
+          enum: ["fixed", "variable", "indexed"]
+          example: "fixed"
+        contractLength:
+          type: integer
+          enum: [1, 6, 12, 24, 36]
+          example: 12
+        monthlyFee:
+          type: number
+          minimum: 0
+          example: 9.95
+        connectionFee:
+          type: number
+          minimum: 0
+          example: 0
+        earlyTerminationFee:
+          type: number
+          minimum: 0
+          example: 150
+        estimatedMonthlyCost:
+          type: number
+          minimum: 0
+          example: 124.50
+          description: Based on 1000 kWh usage
+        greenEnergyPercentage:
+          type: integer
+          minimum: 0
+          maximum: 100
+          example: 22
+        planFeatures:
+          type: array
+          items:
+            type: string
+          example: ["No deposit required", "Online account management"]
+        planType:
+          type: string
+          example: "Basic"
+        promotionalOffers:
+          type: array
+          items:
+            type: string
+          example: ["First month free"]
+        serviceArea:
+          type: array
+          items:
+            type: string
+          example: ["75201", "75202", "75203"]
+        tdspTerritory:
+          type: string
+          example: "Oncor"
+        availability:
+          type: string
+          enum: ["active", "limited", "discontinued"]
+          example: "active"
+        providerRating:
+          type: number
+          minimum: 1
+          maximum: 5
+          example: 4.2
+        customerServiceHours:
+          type: string
+          example: "24/7"
+        paymentOptions:
+          type: array
+          items:
+            type: string
+          example: ["Auto-pay", "Online", "Phone"]
+        totalFirstYearCost:
+          type: number
+          minimum: 0
+          example: 1494.00
+        averageRateIncludingFees:
+          type: number
+          minimum: 0
+          example: 12.45
+        lastUpdated:
+          type: string
+          format: date-time
+          example: "2025-01-09T10:00:00Z"
+          
+    PlanFilter:
+      type: object
+      properties:
+        city:
+          type: string
+          example: "dallas"
+        zipCode:
+          type: string
+          pattern: '^\d{5}$'
+          example: "75201"
+        contractLengths:
+          type: array
+          items:
+            type: integer
+            enum: [1, 6, 12, 24, 36]
+          example: [12, 24]
+        rateTypes:
+          type: array
+          items:
+            type: string
+            enum: ["fixed", "variable", "indexed"]
+          example: ["fixed"]
+        minRate:
+          type: number
+          minimum: 0
+          example: 8.5
+        maxRate:
+          type: number
+          minimum: 0
+          example: 15.0
+        maxMonthlyFee:
+          type: number
+          minimum: 0
+          example: 9.95
+        includePromotions:
+          type: boolean
+          example: true
+        minGreenEnergy:
+          type: integer
+          minimum: 0
+          maximum: 100
+          example: 50
+        requiredFeatures:
+          type: array
+          items:
+            type: string
+          example: ["No deposit required"]
+        excludeEarlyTerminationFee:
+          type: boolean
+          example: false
+        selectedProviders:
+          type: array
+          items:
+            type: string
+          example: ["Reliant Energy", "TXU Energy"]
+        minProviderRating:
+          type: number
+          minimum: 1
+          maximum: 5
+          example: 3.5
+        sortBy:
+          type: string
+          enum: ["price", "rating", "contract", "provider", "green"]
+          example: "price"
+        sortOrder:
+          type: string
+          enum: ["asc", "desc"]
+          example: "asc"
+        activeFiltersCount:
+          type: integer
+          minimum: 0
+          example: 3
+        lastApplied:
+          type: string
+          format: date-time
+          example: "2025-01-09T15:30:00Z"
+          
+    CostAnalysis:
+      type: object
+      properties:
+        monthlyEstimates:
+          type: array
+          items:
+            type: number
+          description: Monthly cost estimates for each plan
+          example: [124.50, 132.10, 118.75, 145.20]
+        firstYearTotal:
+          type: array
+          items:
+            type: number
+          description: Total first year cost including all fees
+          example: [1494.00, 1585.20, 1425.00, 1742.40]
+        averageRate:
+          type: array
+          items:
+            type: number
+          description: Effective rate per kWh including fees
+          example: [12.45, 13.21, 11.88, 14.52]
+        savingsVsFirst:
+          type: array
+          items:
+            type: number
+          description: Annual savings compared to most expensive option
+          example: [0, -91.20, 69.00, -248.40]
+          
+    FeatureComparison:
+      type: object
+      properties:
+        featureName:
+          type: string
+          example: "No deposit required"
+        planAvailability:
+          type: array
+          items:
+            type: boolean
+          description: Feature availability for each plan
+          example: [true, false, true, true]
+        importance:
+          type: string
+          enum: ["high", "medium", "low"]
+          example: "medium"
+          
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
+        details:
+          type: object
+          description: Additional error details
+        timestamp:
+          type: string
+          format: date-time
+      example:
+        error: "No plans found for specified criteria"
+        code: "PLANS_NOT_FOUND"
+        details:
+          appliedFilters:
+            city: "austin"
+            maxRate: 8.0
+          suggestedAction: "Try increasing the maximum rate or removing some filters"
+        timestamp: "2025-01-09T15:30:00Z"

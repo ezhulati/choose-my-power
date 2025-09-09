@@ -1,0 +1,508 @@
+openapi: 3.0.3
+info:
+  title: Texas ZIP Code Coverage API
+  version: 1.0.0
+  description: API endpoints for comprehensive Texas ZIP code to city mapping and territory validation
+  
+servers:
+  - url: https://choose-my-power.netlify.app/api
+    description: Production server
+  - url: http://localhost:4325/api
+    description: Development server
+
+paths:
+  /zip/coverage-bulk:
+    post:
+      summary: Bulk ZIP code coverage validation
+      description: Validate multiple ZIP codes and return comprehensive territory mappings
+      operationId: validateBulkZIPCoverage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                zipCodes:
+                  type: array
+                  items:
+                    type: string
+                    pattern: '^\d{5}$'
+                  minItems: 1
+                  maxItems: 1000
+                validateAccuracy:
+                  type: boolean
+                  default: true
+                  description: Whether to cross-validate against external sources
+              required:
+                - zipCodes
+      responses:
+        '200':
+          description: Bulk validation results
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ZIPCoverageResult'
+                  summary:
+                    type: object
+                    properties:
+                      totalRequested:
+                        type: integer
+                      validMappings:
+                        type: integer
+                      invalidZIPs:
+                        type: integer
+                      conflicts:
+                        type: integer
+                      processingTime:
+                        type: integer
+                        description: Total processing time in milliseconds
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /zip/coverage-sync:
+    post:
+      summary: Trigger external data source synchronization
+      description: Manually trigger sync from ERCOT, PUCT, and TDSP APIs
+      operationId: syncExternalSources
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sources:
+                  type: array
+                  items:
+                    enum: [ercot, puct, oncor, centerpoint, aep_north, aep_central, tnmp]
+                  default: [ercot, puct, oncor, centerpoint, aep_north, aep_central, tnmp]
+                forceRefresh:
+                  type: boolean
+                  default: false
+                  description: Force refresh even if data is recent
+                dryRun:
+                  type: boolean
+                  default: false
+                  description: Validate changes without applying them
+      responses:
+        '202':
+          description: Sync process initiated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  syncId:
+                    type: string
+                    format: uuid
+                  estimatedDuration:
+                    type: integer
+                    description: Estimated sync duration in seconds
+                  statusEndpoint:
+                    type: string
+                    description: Endpoint to check sync status
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          description: Unauthorized - Admin access required
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /zip/coverage-status:
+    get:
+      summary: Get current ZIP code coverage statistics
+      description: Return comprehensive coverage metrics and gap analysis
+      operationId: getCoverageStatus
+      parameters:
+        - name: tdsp
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [oncor, centerpoint, aep_north, aep_central, tnmp]
+          description: Filter by specific TDSP
+        - name: serviceType
+          in: query
+          required: false
+          schema:
+            $ref: '#/components/schemas/ServiceType'
+          description: Filter by service type
+      responses:
+        '200':
+          description: Coverage statistics
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  coverageStats:
+                    type: object
+                    properties:
+                      totalZIPCodes:
+                        type: integer
+                        description: Total Texas ZIP codes
+                      mappedZIPCodes:
+                        type: integer
+                        description: ZIP codes with city mappings
+                      deregulatedCoverage:
+                        type: number
+                        format: float
+                        description: Percentage of deregulated areas covered
+                      lastUpdated:
+                        type: string
+                        format: date-time
+                      accuracyScore:
+                        type: number
+                        format: float
+                        minimum: 0
+                        maximum: 100
+                        description: Overall accuracy percentage
+                  gapAnalysis:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        region:
+                          type: string
+                        missingZIPs:
+                          type: integer
+                        priorityLevel:
+                          enum: [high, medium, low]
+                  tdspBreakdown:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        tdsp:
+                          type: string
+                        coverage:
+                          type: number
+                          format: float
+                        zipCount:
+                          type: integer
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /zip/coverage-gaps:
+    get:
+      summary: Identify ZIP code coverage gaps
+      description: Return list of ZIP codes in deregulated areas without city mappings
+      operationId: getCoverageGaps
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 1000
+            default: 100
+        - name: priority
+          in: query
+          required: false
+          schema:
+            enum: [high, medium, low]
+          description: Filter by gap priority level
+        - name: region
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Filter by Texas region
+      responses:
+        '200':
+          description: Coverage gaps identified
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  gaps:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        zipCode:
+                          type: string
+                          pattern: '^\d{5}$'
+                        estimatedCity:
+                          type: string
+                          nullable: true
+                        estimatedTDSP:
+                          type: string
+                          nullable: true
+                        priority:
+                          enum: [high, medium, low]
+                        reason:
+                          type: string
+                          description: Why this ZIP is unmapped
+                        suggestedSources:
+                          type: array
+                          items:
+                            type: string
+                          description: Recommended data sources to resolve
+                  totalGaps:
+                    type: integer
+                  recommendations:
+                    type: array
+                    items:
+                      type: string
+                    description: Actions to improve coverage
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /zip/enhanced-lookup:
+    get:
+      summary: Enhanced ZIP code lookup with fallback logic
+      description: Lookup ZIP code with intelligent fallback to nearest territories
+      operationId: enhancedZIPLookup
+      parameters:
+        - name: zipCode
+          in: query
+          required: true
+          schema:
+            type: string
+            pattern: '^\d{5}$'
+        - name: includeFallback
+          in: query
+          required: false
+          schema:
+            type: boolean
+            default: true
+          description: Include nearest territory suggestions if exact match not found
+        - name: validatePlans
+          in: query
+          required: false
+          schema:
+            type: boolean
+            default: true
+          description: Validate plan availability in target city
+      responses:
+        '200':
+          description: ZIP lookup result with enhanced data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnhancedZIPResult'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          description: ZIP code not found with fallback suggestions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    enum: [false]
+                  zipCode:
+                    type: string
+                  error:
+                    type: string
+                  errorType:
+                    enum: [not_found, not_texas, non_deregulated]
+                  fallbackSuggestions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ZIPCoverageResult'
+                  nearestCities:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        citySlug:
+                          type: string
+                        distance:
+                          type: number
+                          description: Distance in miles
+                        hasPlans:
+                          type: boolean
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+components:
+  schemas:
+    ServiceType:
+      type: string
+      enum: [deregulated, municipal, cooperative, regulated]
+      
+    ZIPCoverageResult:
+      type: object
+      properties:
+        zipCode:
+          type: string
+          pattern: '^\d{5}$'
+        success:
+          type: boolean
+        citySlug:
+          type: string
+          nullable: true
+        cityDisplayName:
+          type: string
+          nullable: true
+        tdspDuns:
+          type: string
+          nullable: true
+        tdspName:
+          type: string
+          nullable: true
+        serviceType:
+          $ref: '#/components/schemas/ServiceType'
+        isActive:
+          type: boolean
+        confidence:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 100
+        lastValidated:
+          type: string
+          format: date-time
+        planCount:
+          type: integer
+          minimum: 0
+          nullable: true
+        redirectUrl:
+          type: string
+          format: uri
+          nullable: true
+        dataSource:
+          type: string
+          description: Primary data source for this mapping
+        conflicts:
+          type: array
+          items:
+            type: object
+            properties:
+              source:
+                type: string
+              conflictingValue:
+                type: string
+              confidence:
+                type: number
+          description: Data source conflicts if any
+
+    EnhancedZIPResult:
+      allOf:
+        - $ref: '#/components/schemas/ZIPCoverageResult'
+        - type: object
+          properties:
+            territory:
+              type: object
+              properties:
+                coordinates:
+                  type: object
+                  properties:
+                    latitude:
+                      type: number
+                    longitude:
+                      type: number
+                boundaries:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      lat:
+                        type: number
+                      lng:
+                        type: number
+            planAvailability:
+              type: object
+              properties:
+                totalPlans:
+                  type: integer
+                competitiveRate:
+                  type: number
+                  format: float
+                  nullable: true
+                avgRate:
+                  type: number
+                  format: float
+                  nullable: true
+                topProviders:
+                  type: array
+                  items:
+                    type: string
+            validationDetails:
+              type: object
+              properties:
+                method:
+                  enum: [exact_match, tdsp_api, ercot_territory, fallback_nearest]
+                sources:
+                  type: array
+                  items:
+                    type: string
+                validatedAt:
+                  type: string
+                  format: date-time
+                nextValidation:
+                  type: string
+                  format: date-time
+
+  responses:
+    BadRequest:
+      description: Invalid request parameters
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                enum: [false]
+              error:
+                type: string
+              details:
+                type: object
+                
+    RateLimited:
+      description: Rate limit exceeded
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                enum: [false]
+              error:
+                type: string
+              retryAfter:
+                type: integer
+                description: Seconds until retry allowed
+                
+    ServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                enum: [false]
+              error:
+                type: string
+              errorId:
+                type: string
+                format: uuid
+                description: Error tracking ID

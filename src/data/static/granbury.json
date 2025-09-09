@@ -216,7 +216,7 @@
           }
         },
         {
-          "id": "68b900e34030b9912e39ac68",
+          "id": "68c080963e75ee2af59b175c",
           "name": "12 Month GREEN (No Min Usage Fee)",
           "provider": {
             "name": "Constellation",
@@ -225,10 +225,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.183,
-            "rate1000kWh": 0.18,
-            "rate2000kWh": 0.179,
-            "ratePerKwh": 0.18
+            "rate500kWh": 0.188,
+            "rate1000kWh": 0.185,
+            "rate2000kWh": 0.184,
+            "ratePerKwh": 0.185
           },
           "contract": {
             "length": 12,
@@ -253,7 +253,7 @@
           }
         },
         {
-          "id": "68b900e34030b9912e39ac67",
+          "id": "68c080963e75ee2af59b175d",
           "name": "12 Month Usage Bill Credit",
           "provider": {
             "name": "Constellation",
@@ -262,10 +262,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.196,
-            "rate1000kWh": 0.157,
-            "rate2000kWh": 0.166,
-            "ratePerKwh": 0.157
+            "rate500kWh": 0.199,
+            "rate1000kWh": 0.161,
+            "rate2000kWh": 0.169,
+            "ratePerKwh": 0.161
           },
           "contract": {
             "length": 12,
@@ -290,7 +290,7 @@
           }
         },
         {
-          "id": "68b900e34030b9912e39ac66",
+          "id": "68c080963e75ee2af59b175e",
           "name": "24 Month Usage Bill Credit",
           "provider": {
             "name": "Constellation",
@@ -299,10 +299,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.201,
-            "rate1000kWh": 0.162,
-            "rate2000kWh": 0.171,
-            "ratePerKwh": 0.162
+            "rate500kWh": 0.206,
+            "rate1000kWh": 0.167,
+            "rate2000kWh": 0.176,
+            "ratePerKwh": 0.167
           },
           "contract": {
             "length": 24,
@@ -703,7 +703,7 @@
           }
         },
         {
-          "id": "68b6fc3b206770f7c5634d30",
+          "id": "68b9f00b4030b9912e39c5e1",
           "name": "Cash Money 12",
           "provider": {
             "name": "4Change Energy",
@@ -740,7 +740,7 @@
           }
         },
         {
-          "id": "68b6fc3b206770f7c5634d2a",
+          "id": "68b9f00b4030b9912e39c5e3",
           "name": "Power Maxx Saver 12",
           "provider": {
             "name": "4Change Energy",
@@ -749,9 +749,9 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.21,
+            "rate500kWh": 0.209,
             "rate1000kWh": 0.201,
-            "rate2000kWh": 0.147,
+            "rate2000kWh": 0.146,
             "ratePerKwh": 0.201
           },
           "contract": {
@@ -777,7 +777,7 @@
           }
         },
         {
-          "id": "68b6fc3b206770f7c5634d28",
+          "id": "68b9f00b4030b9912e39c5e5",
           "name": "Power Maxx Saver 24",
           "provider": {
             "name": "4Change Energy",
@@ -786,9 +786,9 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.21,
+            "rate500kWh": 0.209,
             "rate1000kWh": 0.201,
-            "rate2000kWh": 0.147,
+            "rate2000kWh": 0.146,
             "ratePerKwh": 0.201
           },
           "contract": {
@@ -814,7 +814,7 @@
           }
         },
         {
-          "id": "68b6fc3b206770f7c5634d2c",
+          "id": "68b9f00a4030b9912e39c5df",
           "name": "Maxx Saver Value 12",
           "provider": {
             "name": "4Change Energy",
@@ -851,7 +851,7 @@
           }
         },
         {
-          "id": "68b6fc3b206770f7c5634d2d",
+          "id": "68b9f00a4030b9912e39c5e0",
           "name": "Power Savvy Saver 12",
           "provider": {
             "name": "4Change Energy",
@@ -888,7 +888,7 @@
           }
         },
         {
-          "id": "68b6fc3b206770f7c5634d2f",
+          "id": "68b9f00b4030b9912e39c5e6",
           "name": "Maxx Saver Value 24",
           "provider": {
             "name": "4Change Energy",
@@ -962,7 +962,7 @@
           }
         },
         {
-          "id": "68b7cf30206770f7c5636907",
+          "id": "68bbc3a140d57074fedfdd29",
           "name": "Frontier Saver Plus 12",
           "provider": {
             "name": "Frontier Utilities",
@@ -972,9 +972,9 @@
           },
           "pricing": {
             "rate500kWh": 0.243,
-            "rate1000kWh": 0.115,
-            "rate2000kWh": 0.176,
-            "ratePerKwh": 0.115
+            "rate1000kWh": 0.114,
+            "rate2000kWh": 0.175,
+            "ratePerKwh": 0.114
           },
           "contract": {
             "length": 12,
@@ -999,7 +999,7 @@
           }
         },
         {
-          "id": "68b52c1c31ef27f4d3f62f56",
+          "id": "68bbc3a140d57074fedfdd28",
           "name": "Frontier Saver Premier 12",
           "provider": {
             "name": "Frontier Utilities",
@@ -1010,7 +1010,7 @@
           "pricing": {
             "rate500kWh": 0.225,
             "rate1000kWh": 0.222,
-            "rate2000kWh": 0.146,
+            "rate2000kWh": 0.145,
             "ratePerKwh": 0.222
           },
           "contract": {
@@ -1036,7 +1036,7 @@
           }
         },
         {
-          "id": "68b52c1c31ef27f4d3f62f54",
+          "id": "68bbc3a140d57074fedfdd2a",
           "name": "Frontier Saver Value 12",
           "provider": {
             "name": "Frontier Utilities",
@@ -1045,10 +1045,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.169,
-            "rate1000kWh": 0.216,
-            "rate2000kWh": 0.239,
-            "ratePerKwh": 0.216
+            "rate500kWh": 0.164,
+            "rate1000kWh": 0.211,
+            "rate2000kWh": 0.235,
+            "ratePerKwh": 0.211
           },
           "contract": {
             "length": 12,
@@ -1221,7 +1221,7 @@
           }
         },
         {
-          "id": "68b52c1d4d20ab31b85cade8",
+          "id": "68bbc3a34030b9912e39f89e",
           "name": "Gexa Eco Saver Lite 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1230,10 +1230,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.171,
-            "rate1000kWh": 0.218,
-            "rate2000kWh": 0.242,
-            "ratePerKwh": 0.218
+            "rate500kWh": 0.165,
+            "rate1000kWh": 0.212,
+            "rate2000kWh": 0.236,
+            "ratePerKwh": 0.212
           },
           "contract": {
             "length": 12,
@@ -1258,7 +1258,7 @@
           }
         },
         {
-          "id": "68b7cf34206770f7c563692b",
+          "id": "68bbc3a24030b9912e39f899",
           "name": "Gexa Eco Saver Plus 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1268,9 +1268,9 @@
           },
           "pricing": {
             "rate500kWh": 0.243,
-            "rate1000kWh": 0.115,
-            "rate2000kWh": 0.176,
-            "ratePerKwh": 0.115
+            "rate1000kWh": 0.114,
+            "rate2000kWh": 0.175,
+            "ratePerKwh": 0.114
           },
           "contract": {
             "length": 12,
@@ -1295,7 +1295,7 @@
           }
         },
         {
-          "id": "68b52c1d4d20ab31b85cadeb",
+          "id": "68bbc3a34030b9912e39f89c",
           "name": "Gexa Eco Saver Premier 12",
           "provider": {
             "name": "Gexa Energy",
@@ -1306,7 +1306,7 @@
           "pricing": {
             "rate500kWh": 0.225,
             "rate1000kWh": 0.222,
-            "rate2000kWh": 0.146,
+            "rate2000kWh": 0.145,
             "ratePerKwh": 0.222
           },
           "contract": {
@@ -2867,7 +2867,7 @@
           }
         },
         {
-          "id": "68b869cb206770f7c5637cb7",
+          "id": "68bfb4a8cb5b03e4c2e7f0df",
           "name": "Flex Forward",
           "provider": {
             "name": "TXU Energy",
@@ -2904,7 +2904,7 @@
           }
         },
         {
-          "id": "68b869ca206770f7c5637cb0",
+          "id": "68bfb4a8cb5b03e4c2e7f0e4",
           "name": "Free Nights & Solar Days 12 (8 pm)",
           "provider": {
             "name": "TXU Energy",
@@ -2941,7 +2941,7 @@
           }
         },
         {
-          "id": "68b862c0206770f7c5637b94",
+          "id": "68c04bd1a4a0c10d804cf20e",
           "name": "Rhythm Saver 12",
           "provider": {
             "name": "Rhythm Energy",
@@ -2978,7 +2978,7 @@
           }
         },
         {
-          "id": "68b862c0206770f7c5637b93",
+          "id": "68c04bd2a4a0c10d804cf20f",
           "name": "Watt a Deal 12",
           "provider": {
             "name": "Rhythm Energy",
@@ -3015,7 +3015,7 @@
           }
         },
         {
-          "id": "68b85f3f206770f7c5637b34",
+          "id": "68c0485edc7ff2dfc549f978",
           "name": "Simply Green 13",
           "provider": {
             "name": "Rhythm Energy",
@@ -3024,10 +3024,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.188,
-            "rate1000kWh": 0.175,
-            "rate2000kWh": 0.168,
-            "ratePerKwh": 0.175
+            "rate500kWh": 0.191,
+            "rate1000kWh": 0.178,
+            "rate2000kWh": 0.171,
+            "ratePerKwh": 0.178
           },
           "contract": {
             "length": 13,
@@ -3052,7 +3052,7 @@
           }
         },
         {
-          "id": "68b85f3f206770f7c5637b33",
+          "id": "68c044b6ab90063b261c3f63",
           "name": "Simply Green 23",
           "provider": {
             "name": "Rhythm Energy",
@@ -3061,10 +3061,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.186,
-            "rate1000kWh": 0.173,
-            "rate2000kWh": 0.167,
-            "ratePerKwh": 0.173
+            "rate500kWh": 0.19,
+            "rate1000kWh": 0.177,
+            "rate2000kWh": 0.17,
+            "ratePerKwh": 0.177
           },
           "contract": {
             "length": 23,
@@ -3126,7 +3126,7 @@
           }
         },
         {
-          "id": "68b714c9206770f7c563510d",
+          "id": "68bf085dda9fdbcb9da2efb2",
           "name": "SimpleSaver 12",
           "provider": {
             "name": "APGE",
@@ -3135,10 +3135,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.223,
-            "rate1000kWh": 0.12,
-            "rate2000kWh": 0.168,
-            "ratePerKwh": 0.12
+            "rate500kWh": 0.218,
+            "rate1000kWh": 0.115,
+            "rate2000kWh": 0.163,
+            "ratePerKwh": 0.115
           },
           "contract": {
             "length": 12,
@@ -3200,7 +3200,7 @@
           }
         },
         {
-          "id": "68b714ca206770f7c563510f",
+          "id": "68bf085dda9fdbcb9da2efb1",
           "name": "SimpleSaver 14",
           "provider": {
             "name": "APGE",
@@ -3209,10 +3209,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.229,
-            "rate1000kWh": 0.126,
-            "rate2000kWh": 0.174,
-            "ratePerKwh": 0.126
+            "rate500kWh": 0.217,
+            "rate1000kWh": 0.114,
+            "rate2000kWh": 0.162,
+            "ratePerKwh": 0.114
           },
           "contract": {
             "length": 14,
@@ -3237,7 +3237,7 @@
           }
         },
         {
-          "id": "68b714c9206770f7c563510b",
+          "id": "68b9faa177bde898d6bdfb2e",
           "name": "True Simple 14",
           "provider": {
             "name": "APGE",
@@ -3246,10 +3246,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.171,
-            "rate1000kWh": 0.168,
-            "rate2000kWh": 0.166,
-            "ratePerKwh": 0.168
+            "rate500kWh": 0.169,
+            "rate1000kWh": 0.166,
+            "rate2000kWh": 0.164,
+            "ratePerKwh": 0.166
           },
           "contract": {
             "length": 14,
@@ -3274,7 +3274,7 @@
           }
         },
         {
-          "id": "68b714ca206770f7c5635110",
+          "id": "68b9f721d281abff58c2a44c",
           "name": "SimpleSaver 24",
           "provider": {
             "name": "APGE",
@@ -3283,10 +3283,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.232,
-            "rate1000kWh": 0.129,
-            "rate2000kWh": 0.177,
-            "ratePerKwh": 0.129
+            "rate500kWh": 0.22,
+            "rate1000kWh": 0.117,
+            "rate2000kWh": 0.165,
+            "ratePerKwh": 0.117
           },
           "contract": {
             "length": 24,
@@ -3348,7 +3348,7 @@
           }
         },
         {
-          "id": "68b714c9206770f7c563510c",
+          "id": "68bf085dda9fdbcb9da2efb4",
           "name": "SimpleSaver 36",
           "provider": {
             "name": "APGE",
@@ -3357,10 +3357,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.234,
-            "rate1000kWh": 0.131,
-            "rate2000kWh": 0.179,
-            "ratePerKwh": 0.131
+            "rate500kWh": 0.23,
+            "rate1000kWh": 0.127,
+            "rate2000kWh": 0.175,
+            "ratePerKwh": 0.127
           },
           "contract": {
             "length": 36,
@@ -3422,7 +3422,7 @@
           }
         },
         {
-          "id": "68b5c348206770f7c563246e",
+          "id": "68b991284030b9912e39bbb1",
           "name": "Radiance1000  12",
           "provider": {
             "name": "Atlantex Power",
@@ -3431,10 +3431,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.242,
-            "rate1000kWh": 0.139,
-            "rate2000kWh": 0.188,
-            "ratePerKwh": 0.139
+            "rate500kWh": 0.247,
+            "rate1000kWh": 0.144,
+            "rate2000kWh": 0.193,
+            "ratePerKwh": 0.144
           },
           "contract": {
             "length": 12,
@@ -3459,7 +3459,7 @@
           }
         },
         {
-          "id": "68b5c348206770f7c5632462",
+          "id": "68b991284030b9912e39bba8",
           "name": "Radiance2000  12",
           "provider": {
             "name": "Atlantex Power",
@@ -3468,10 +3468,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.243,
-            "rate1000kWh": 0.24,
-            "rate2000kWh": 0.139,
-            "ratePerKwh": 0.24
+            "rate500kWh": 0.248,
+            "rate1000kWh": 0.245,
+            "rate2000kWh": 0.144,
+            "ratePerKwh": 0.245
           },
           "contract": {
             "length": 12,
@@ -3496,7 +3496,7 @@
           }
         },
         {
-          "id": "68b5c349206770f7c5632478",
+          "id": "68b991284030b9912e39bbad",
           "name": "Luminous 24",
           "provider": {
             "name": "Atlantex Power",
@@ -3505,10 +3505,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.176,
-            "rate1000kWh": 0.173,
-            "rate2000kWh": 0.172,
-            "ratePerKwh": 0.173
+            "rate500kWh": 0.181,
+            "rate1000kWh": 0.178,
+            "rate2000kWh": 0.177,
+            "ratePerKwh": 0.178
           },
           "contract": {
             "length": 24,
@@ -3533,7 +3533,7 @@
           }
         },
         {
-          "id": "68b5c348206770f7c563246a",
+          "id": "68b991274030b9912e39bba0",
           "name": "Radiance1000  24",
           "provider": {
             "name": "Atlantex Power",
@@ -3542,10 +3542,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.248,
-            "rate1000kWh": 0.145,
-            "rate2000kWh": 0.194,
-            "ratePerKwh": 0.145
+            "rate500kWh": 0.252,
+            "rate1000kWh": 0.149,
+            "rate2000kWh": 0.198,
+            "ratePerKwh": 0.149
           },
           "contract": {
             "length": 24,
@@ -3570,7 +3570,7 @@
           }
         },
         {
-          "id": "68b5c348206770f7c563246f",
+          "id": "68b991294030b9912e39bbb4",
           "name": "Radiance2000  24",
           "provider": {
             "name": "Atlantex Power",
@@ -3579,10 +3579,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.249,
-            "rate1000kWh": 0.246,
-            "rate2000kWh": 0.145,
-            "ratePerKwh": 0.246
+            "rate500kWh": 0.254,
+            "rate1000kWh": 0.251,
+            "rate2000kWh": 0.15,
+            "ratePerKwh": 0.251
           },
           "contract": {
             "length": 24,
@@ -3607,7 +3607,7 @@
           }
         },
         {
-          "id": "68b5c349206770f7c563247a",
+          "id": "68b991284030b9912e39bbac",
           "name": "Luminous 36",
           "provider": {
             "name": "Atlantex Power",
@@ -3616,10 +3616,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.179,
-            "rate1000kWh": 0.176,
-            "rate2000kWh": 0.175,
-            "ratePerKwh": 0.176
+            "rate500kWh": 0.184,
+            "rate1000kWh": 0.181,
+            "rate2000kWh": 0.18,
+            "ratePerKwh": 0.181
           },
           "contract": {
             "length": 36,
@@ -3644,7 +3644,7 @@
           }
         },
         {
-          "id": "68b5c348206770f7c5632465",
+          "id": "68b991274030b9912e39bb9d",
           "name": "Radiance1000  36",
           "provider": {
             "name": "Atlantex Power",
@@ -3653,10 +3653,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.251,
-            "rate1000kWh": 0.148,
-            "rate2000kWh": 0.197,
-            "ratePerKwh": 0.148
+            "rate500kWh": 0.255,
+            "rate1000kWh": 0.152,
+            "rate2000kWh": 0.201,
+            "ratePerKwh": 0.152
           },
           "contract": {
             "length": 36,
@@ -3681,7 +3681,7 @@
           }
         },
         {
-          "id": "68b5c348206770f7c5632473",
+          "id": "68b991284030b9912e39bbaf",
           "name": "Radiance2000  36",
           "provider": {
             "name": "Atlantex Power",
@@ -3690,10 +3690,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.252,
-            "rate1000kWh": 0.249,
-            "rate2000kWh": 0.148,
-            "ratePerKwh": 0.249
+            "rate500kWh": 0.256,
+            "rate1000kWh": 0.253,
+            "rate2000kWh": 0.152,
+            "ratePerKwh": 0.253
           },
           "contract": {
             "length": 36,
@@ -3718,7 +3718,7 @@
           }
         },
         {
-          "id": "68b5c348206770f7c5632471",
+          "id": "68b991274030b9912e39bb9b",
           "name": "Luminous Nights 12",
           "provider": {
             "name": "Atlantex Power",
@@ -3727,10 +3727,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.177,
-            "rate1000kWh": 0.173,
-            "rate2000kWh": 0.172,
-            "ratePerKwh": 0.173
+            "rate500kWh": 0.182,
+            "rate1000kWh": 0.179,
+            "rate2000kWh": 0.177,
+            "ratePerKwh": 0.179
           },
           "contract": {
             "length": 12,
@@ -3761,7 +3761,7 @@
           }
         },
         {
-          "id": "68b5c348206770f7c5632467",
+          "id": "68b991284030b9912e39bba7",
           "name": "Luminous Weekends 12",
           "provider": {
             "name": "Atlantex Power",
@@ -3770,10 +3770,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.191,
-            "rate1000kWh": 0.188,
-            "rate2000kWh": 0.186,
-            "ratePerKwh": 0.188
+            "rate500kWh": 0.197,
+            "rate1000kWh": 0.194,
+            "rate2000kWh": 0.192,
+            "ratePerKwh": 0.194
           },
           "contract": {
             "length": 12,
@@ -3804,7 +3804,7 @@
           }
         },
         {
-          "id": "68b5c348206770f7c5632472",
+          "id": "68b991284030b9912e39bbb2",
           "name": "Luminous Nights 24",
           "provider": {
             "name": "Atlantex Power",
@@ -3813,10 +3813,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.183,
-            "rate1000kWh": 0.179,
-            "rate2000kWh": 0.178,
-            "ratePerKwh": 0.179
+            "rate500kWh": 0.187,
+            "rate1000kWh": 0.184,
+            "rate2000kWh": 0.182,
+            "ratePerKwh": 0.184
           },
           "contract": {
             "length": 24,
@@ -3847,7 +3847,7 @@
           }
         },
         {
-          "id": "68b5c348206770f7c5632464",
+          "id": "68b991274030b9912e39bba4",
           "name": "Luminous Weekends 24",
           "provider": {
             "name": "Atlantex Power",
@@ -3856,10 +3856,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.198,
-            "rate1000kWh": 0.195,
-            "rate2000kWh": 0.193,
-            "ratePerKwh": 0.195
+            "rate500kWh": 0.203,
+            "rate1000kWh": 0.199,
+            "rate2000kWh": 0.198,
+            "ratePerKwh": 0.199
           },
           "contract": {
             "length": 24,
@@ -3890,7 +3890,7 @@
           }
         },
         {
-          "id": "68b5c348206770f7c563246d",
+          "id": "68b991284030b9912e39bbae",
           "name": "Luminous Nights 36",
           "provider": {
             "name": "Atlantex Power",
@@ -3899,10 +3899,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.186,
-            "rate1000kWh": 0.182,
-            "rate2000kWh": 0.181,
-            "ratePerKwh": 0.182
+            "rate500kWh": 0.19,
+            "rate1000kWh": 0.186,
+            "rate2000kWh": 0.185,
+            "ratePerKwh": 0.186
           },
           "contract": {
             "length": 36,
@@ -3933,7 +3933,7 @@
           }
         },
         {
-          "id": "68b5c348206770f7c5632469",
+          "id": "68b991274030b9912e39bba1",
           "name": "Luminous Weekends 36",
           "provider": {
             "name": "Atlantex Power",
@@ -3942,10 +3942,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.201,
-            "rate1000kWh": 0.198,
-            "rate2000kWh": 0.196,
-            "ratePerKwh": 0.198
+            "rate500kWh": 0.205,
+            "rate1000kWh": 0.202,
+            "rate2000kWh": 0.2,
+            "ratePerKwh": 0.202
           },
           "contract": {
             "length": 36,
@@ -3976,7 +3976,7 @@
           }
         },
         {
-          "id": "68b5c348206770f7c5632476",
+          "id": "68b991284030b9912e39bbab",
           "name": "Luminous 12",
           "provider": {
             "name": "Atlantex Power",
@@ -3985,10 +3985,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.17,
-            "rate1000kWh": 0.167,
-            "rate2000kWh": 0.166,
-            "ratePerKwh": 0.167
+            "rate500kWh": 0.175,
+            "rate1000kWh": 0.172,
+            "rate2000kWh": 0.171,
+            "ratePerKwh": 0.172
           },
           "contract": {
             "length": 12,
@@ -4013,7 +4013,7 @@
           }
         },
         {
-          "id": "68b5c348206770f7c5632461",
+          "id": "68b991284030b9912e39bbaa",
           "name": "Luminous Green 12",
           "provider": {
             "name": "Atlantex Power",
@@ -4022,10 +4022,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.173,
-            "rate1000kWh": 0.17,
-            "rate2000kWh": 0.169,
-            "ratePerKwh": 0.17
+            "rate500kWh": 0.179,
+            "rate1000kWh": 0.176,
+            "rate2000kWh": 0.175,
+            "ratePerKwh": 0.176
           },
           "contract": {
             "length": 12,
@@ -4050,7 +4050,7 @@
           }
         },
         {
-          "id": "68b5c348206770f7c563246b",
+          "id": "68b991274030b9912e39bb9c",
           "name": "Luminous Green 24",
           "provider": {
             "name": "Atlantex Power",
@@ -4059,10 +4059,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.18,
-            "rate1000kWh": 0.177,
-            "rate2000kWh": 0.176,
-            "ratePerKwh": 0.177
+            "rate500kWh": 0.185,
+            "rate1000kWh": 0.182,
+            "rate2000kWh": 0.181,
+            "ratePerKwh": 0.182
           },
           "contract": {
             "length": 24,
@@ -4087,7 +4087,7 @@
           }
         },
         {
-          "id": "68b5c348206770f7c563246c",
+          "id": "68b991284030b9912e39bbb0",
           "name": "Luminous Green 36",
           "provider": {
             "name": "Atlantex Power",
@@ -4096,10 +4096,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.184,
-            "rate1000kWh": 0.181,
-            "rate2000kWh": 0.18,
-            "ratePerKwh": 0.181
+            "rate500kWh": 0.188,
+            "rate1000kWh": 0.185,
+            "rate2000kWh": 0.184,
+            "ratePerKwh": 0.185
           },
           "contract": {
             "length": 36,
@@ -4125,8 +4125,8 @@
         }
       ],
       "count": 109,
-      "lowestRate": 0.115,
-      "highestRate": 0.252
+      "lowestRate": 0.114,
+      "highestRate": 0.253
     }
   }
 }

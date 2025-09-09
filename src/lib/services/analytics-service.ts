@@ -1,8 +1,13 @@
 /**
- * Analytics Service - Enhanced for ZIP Navigation System
- * Task T017 from tasks.md
+ * Analytics Service - Enhanced for ZIP Coverage System
+ * Integrates database infrastructure with privacy-focused analytics
  * Constitutional compliance: Privacy-focused analytics, no PII storage
  */
+
+import { db } from '../database/init';
+import { validationLogs, zipCodeMappings } from '../database/schema';
+import { eq, and, desc, gte, count, avg, sql } from 'drizzle-orm';
+import type { FormInteractionRequest, FormInteraction, InteractionPattern } from '../../types/zip-validation';
 
 export interface AnalyticsMetrics {
   totalInteractions: number;
@@ -18,12 +23,13 @@ export class AnalyticsService {
   private zipValidations: any[] = [];
   private cityValidations: any[] = [];
   private interactions: any[] = [];
+  private batchQueue: any[] = [];
   private batchTimeout: NodeJS.Timeout | null = null;
   private readonly batchSize = 10;
   private readonly batchDelay = 5000; // 5 seconds
 
   /**
-   * Track ZIP code validation attempts
+   * Track ZIP code validation attempts with database integration
    */
   async trackZIPValidation(data: {
     zipCode: string;
@@ -33,7 +39,28 @@ export class AnalyticsService {
     tdspTerritory?: string;
     planCount?: number;
     validationTime: number;
+    source?: string;
+    confidence?: number;
   }): Promise<void> {
+    try {
+      // Store in database for persistence
+      await db.insert(validationLogs).values({
+        zipCode: data.zipCode,
+        isValid: data.success,
+        source: data.source || 'web_form',
+        confidence: data.confidence || (data.success ? 90 : 0),
+        citySlug: data.cityName ? this.cityNameToSlug(data.cityName) : undefined,
+        tdspDuns: data.tdspTerritory ? this.tdspNameToDuns(data.tdspTerritory) : undefined,
+        errorMessage: data.errorCode,
+        processingTime: data.validationTime,
+        validatedAt: new Date()
+      }).catch(error => {
+        console.error('[Analytics] Database insert failed:', error);
+        // Continue with in-memory tracking
+      });
+    } catch (dbError) {
+      console.error('[Analytics] Database tracking failed:', dbError);
+    }
     try {
       const record = {
         timestamp: new Date().toISOString(),
@@ -65,6 +92,322 @@ export class AnalyticsService {
       // Don't throw - analytics failures shouldn't break functionality
     }
   }
+
+  /**
+   * Get ZIP validation metrics from database
+   */
+  async getZIPValidationMetricsFromDB(dateRange?: [Date, Date]): Promise<{
+    totalValidations: number;
+    successRate: number;
+    averageTime: number;
+    topSources: Array<{ source: string; count: number }>;
+    topCities: Array<{ city: string; count: number }>;
+    confidenceDistribution: { avg: number; min: number; max: number };
+  }> {
+    try {
+      const baseQuery = db.select({
+        total: count(),
+        successful: sql<number>`sum(case when ${validationLogs.isValid} then 1 else 0 end)`,
+        avgTime: avg(validationLogs.processingTime),
+        avgConfidence: avg(validationLogs.confidence),
+        minConfidence: sql<number>`min(${validationLogs.confidence})`,
+        maxConfidence: sql<number>`max(${validationLogs.confidence})`
+      }).from(validationLogs);
+
+      // Apply date filter if provided
+      const query = dateRange
+        ? baseQuery.where(and(
+            gte(validationLogs.validatedAt, dateRange[0]),
+            gte(dateRange[1], validationLogs.validatedAt)
+          ))
+        : baseQuery;
+
+      const metrics = await query;
+      const result = metrics[0];
+
+      if (!result || Number(result.total) === 0) {
+        return {
+          totalValidations: 0,
+          successRate: 0,
+          averageTime: 0,
+          topSources: [],
+          topCities: [],
+          confidenceDistribution: { avg: 0, min: 0, max: 0 }
+        };
+      }
+
+      // Get top sources
+      const topSources = await db
+        .select({
+          source: validationLogs.source,
+          count: count()
+        })
+        .from(validationLogs)
+        .groupBy(validationLogs.source)
+        .orderBy(desc(count()))
+        .limit(5);
+
+      // Get top cities (successful validations only)
+      const topCities = await db
+        .select({
+          citySlug: validationLogs.citySlug,
+          count: count()
+        })
+        .from(validationLogs)
+        .where(eq(validationLogs.isValid, true))
+        .groupBy(validationLogs.citySlug)
+        .orderBy(desc(count()))
+        .limit(10);
+
+      return {
+        totalValidations: Number(result.total),
+        successRate: Number(result.successful) / Number(result.total),
+        averageTime: Number(result.avgTime) || 0,
+        topSources: topSources.map(s => ({
+          source: s.source || 'unknown',
+          count: Number(s.count)
+        })),
+        topCities: topCities.map(c => ({
+          city: c.citySlug || 'unknown',
+          count: Number(c.count)
+        })),
+        confidenceDistribution: {
+          avg: Math.round(Number(result.avgConfidence) || 0),
+          min: Number(result.minConfidence) || 0,
+          max: Number(result.maxConfidence) || 0
+        }
+      };
+
+    } catch (error) {
+      console.error('[Analytics] Error getting DB metrics:', error);
+      // Fallback to in-memory metrics
+      return this.getZIPValidationMetrics();
+    }
+  }
+
+  /**
+   * Get comprehensive ZIP coverage analytics
+   */
+  async getZIPCoverageAnalytics(): Promise<{
+    totalMappedZips: number;
+    coverageByTdsp: Array<{ tdsp: string; zipCount: number; avgConfidence: number }>;
+    lowConfidenceZips: Array<{ zipCode: string; confidence: number; citySlug: string }>;
+    recentValidations: number;
+    dataFreshness: { oldest: string; newest: string; avgAge: number };
+  }> {
+    try {
+      // Get total mapped ZIP codes
+      const totalMapped = await db
+        .select({ count: count() })
+        .from(zipCodeMappings);
+
+      // Get coverage by TDSP
+      const coverageByTdsp = await db
+        .select({
+          tdspDuns: zipCodeMappings.tdspDuns,
+          zipCount: count(),
+          avgConfidence: avg(zipCodeMappings.confidence)
+        })
+        .from(zipCodeMappings)
+        .groupBy(zipCodeMappings.tdspDuns)
+        .orderBy(desc(count()));
+
+      // Get low confidence mappings that need attention
+      const lowConfidenceZips = await db
+        .select({
+          zipCode: zipCodeMappings.zipCode,
+          confidence: zipCodeMappings.confidence,
+          citySlug: zipCodeMappings.citySlug
+        })
+        .from(zipCodeMappings)
+        .where(sql`${zipCodeMappings.confidence} < 70`)
+        .orderBy(zipCodeMappings.confidence)
+        .limit(50);
+
+      // Get recent validations (last 24 hours)
+      const yesterday = new Date(Date.now() - 24 * 60 * 60 * 1000);
+      const recentValidations = await db
+        .select({ count: count() })
+        .from(validationLogs)
+        .where(gte(validationLogs.validatedAt, yesterday));
+
+      // Get data freshness metrics
+      const freshnessMetrics = await db
+        .select({
+          oldest: sql<string>`min(${zipCodeMappings.lastValidated})`,
+          newest: sql<string>`max(${zipCodeMappings.lastValidated})`,
+          avgAge: sql<number>`avg(extract(epoch from (now() - ${zipCodeMappings.lastValidated})) / 86400)` // Days
+        })
+        .from(zipCodeMappings);
+
+      const freshness = freshnessMetrics[0] || { oldest: null, newest: null, avgAge: 0 };
+
+      return {
+        totalMappedZips: Number(totalMapped[0].count),
+        coverageByTdsp: coverageByTdsp.map(c => ({
+          tdsp: this.dunsToTdspName(c.tdspDuns),
+          zipCount: Number(c.zipCount),
+          avgConfidence: Math.round(Number(c.avgConfidence) || 0)
+        })),
+        lowConfidenceZips: lowConfidenceZips.map(z => ({
+          zipCode: z.zipCode,
+          confidence: z.confidence,
+          citySlug: z.citySlug
+        })),
+        recentValidations: Number(recentValidations[0].count),
+        dataFreshness: {
+          oldest: freshness.oldest || new Date().toISOString(),
+          newest: freshness.newest || new Date().toISOString(),
+          avgAge: Math.round(Number(freshness.avgAge) || 0)
+        }
+      };
+
+    } catch (error) {
+      console.error('[Analytics] Error getting coverage analytics:', error);
+      return {
+        totalMappedZips: 0,
+        coverageByTdsp: [],
+        lowConfidenceZips: [],
+        recentValidations: 0,
+        dataFreshness: {
+          oldest: new Date().toISOString(),
+          newest: new Date().toISOString(),
+          avgAge: 0
+        }
+      };
+    }
+  }
+
+  /**
+   * Track data quality issues for monitoring
+   */
+  async trackDataQualityIssue(issue: {
+    type: 'missing_mapping' | 'low_confidence' | 'api_failure' | 'stale_data';
+    zipCode?: string;
+    citySlug?: string;
+    tdspDuns?: string;
+    severity: 'low' | 'medium' | 'high' | 'critical';
+    description: string;
+    source: string;
+  }): Promise<void> {
+    try {
+      // In production, this would insert into a data_quality_issues table
+      const qualityIssue = {
+        ...issue,
+        timestamp: new Date().toISOString(),
+        id: `quality_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+      };
+
+      // For now, log with structured format for monitoring
+      console.warn('[Analytics] Data Quality Issue:', qualityIssue);
+
+      // Track in memory for immediate access
+      if (!this.dataQualityIssues) {
+        this.dataQualityIssues = [];
+      }
+      this.dataQualityIssues.push(qualityIssue);
+
+      // Keep only recent issues to prevent memory growth
+      if (this.dataQualityIssues.length > 1000) {
+        this.dataQualityIssues = this.dataQualityIssues.slice(-1000);
+      }
+
+    } catch (error) {
+      console.error('[Analytics] Error tracking data quality issue:', error);
+    }
+  }
+
+  /**
+   * Get data quality summary for monitoring dashboard
+   */
+  async getDataQualitySummary(hours = 24): Promise<{
+    totalIssues: number;
+    criticalIssues: number;
+    issuesByType: Record<string, number>;
+    issuesBySeverity: Record<string, number>;
+    recentTrends: Array<{ hour: string; issueCount: number }>;
+  }> {
+    try {
+      const cutoffTime = new Date(Date.now() - hours * 60 * 60 * 1000);
+      const issues = (this.dataQualityIssues || []).filter(
+        issue => new Date(issue.timestamp) >= cutoffTime
+      );
+
+      const issuesByType: Record<string, number> = {};
+      const issuesBySeverity: Record<string, number> = {};
+
+      issues.forEach(issue => {
+        issuesByType[issue.type] = (issuesByType[issue.type] || 0) + 1;
+        issuesBySeverity[issue.severity] = (issuesBySeverity[issue.severity] || 0) + 1;
+      });
+
+      // Generate hourly trends
+      const hourlyTrends: Record<string, number> = {};
+      issues.forEach(issue => {
+        const hour = new Date(issue.timestamp).toISOString().slice(0, 13);
+        hourlyTrends[hour] = (hourlyTrends[hour] || 0) + 1;
+      });
+
+      const recentTrends = Object.entries(hourlyTrends)
+        .map(([hour, issueCount]) => ({ hour, issueCount }))
+        .sort((a, b) => a.hour.localeCompare(b.hour))
+        .slice(-24); // Last 24 hours
+
+      return {
+        totalIssues: issues.length,
+        criticalIssues: issues.filter(i => i.severity === 'critical').length,
+        issuesByType,
+        issuesBySeverity,
+        recentTrends
+      };
+
+    } catch (error) {
+      console.error('[Analytics] Error getting data quality summary:', error);
+      return {
+        totalIssues: 0,
+        criticalIssues: 0,
+        issuesByType: {},
+        issuesBySeverity: {},
+        recentTrends: []
+      };
+    }
+  }
+
+  // Helper methods for database integration
+
+  private cityNameToSlug(cityName: string): string {
+    return cityName.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') + '-tx';
+  }
+
+  private tdspNameToDuns(tdspName: string): string | undefined {
+    const tdspMapping: Record<string, string> = {
+      'oncor': '1039940674000',
+      'centerpoint': '957877905',
+      'austin energy': '104857401',
+      'cps energy': '104857402',
+      'aep texas north': '103994067421',
+      'aep texas central': '103994067422',
+      'tnmp': '104994067401'
+    };
+
+    return tdspMapping[tdspName.toLowerCase()] || undefined;
+  }
+
+  private dunsToTdspName(duns: string): string {
+    const dunsMapping: Record<string, string> = {
+      '1039940674000': 'Oncor Electric Delivery',
+      '957877905': 'CenterPoint Energy Houston Electric',
+      '104857401': 'Austin Energy',
+      '104857402': 'CPS Energy',
+      '103994067421': 'AEP Texas North',
+      '103994067422': 'AEP Texas Central',
+      '104994067401': 'Texas-New Mexico Power'
+    };
+
+    return dunsMapping[duns] || `TDSP-${duns.slice(-4)}`;
+  }
+
+  private dataQualityIssues: any[];
 
   /**
    * Track city plans validation
@@ -156,21 +499,22 @@ export class AnalyticsService {
   async trackFormInteraction(interaction: FormInteractionRequest): Promise<void> {
     try {
       // Validate the interaction request
-      const validatedInteraction = validateFormInteractionRequest(interaction);
+      const validatedInteraction = this.validateFormInteractionRequest(interaction);
       
-      // Create FormInteraction model
-      const interactionModel = FormInteractionModel.create({
+      // Create interaction record
+      const interactionRecord = {
         zipCode: validatedInteraction.zipCode,
         cityPage: validatedInteraction.cityPage,
         action: validatedInteraction.action,
         duration: validatedInteraction.duration,
         deviceType: validatedInteraction.deviceType,
         success: validatedInteraction.success,
-        sessionId: validatedInteraction.sessionId
-      });
+        sessionId: validatedInteraction.sessionId,
+        timestamp: new Date()
+      };
 
       // Add to batch queue for efficient processing
-      this.batchQueue.push(interactionModel.toJSON());
+      this.batchQueue.push(interactionRecord);
       
       // Process batch if it reaches size limit
       if (this.batchQueue.length >= this.batchSize) {
@@ -182,7 +526,7 @@ export class AnalyticsService {
 
       // Real-time tracking for critical actions
       if (validatedInteraction.action === 'submit' || validatedInteraction.action === 'error') {
-        await this.processInteractionImmediately(interactionModel.toJSON());
+        await this.processInteractionImmediately(interactionRecord);
       }
 
     } catch (error) {
@@ -360,6 +704,20 @@ export class AnalyticsService {
     };
   }
 
+  // Validation helper
+  private validateFormInteractionRequest(interaction: any): FormInteractionRequest {
+    // Basic validation - in production would use a proper validation library
+    return {
+      zipCode: interaction.zipCode || '',
+      cityPage: interaction.cityPage || '',
+      action: interaction.action || 'unknown',
+      duration: Number(interaction.duration) || 0,
+      deviceType: interaction.deviceType || 'desktop',
+      success: Boolean(interaction.success),
+      sessionId: interaction.sessionId || `session_${Date.now()}`
+    };
+  }
+
   // Private helper methods
 
   private async processBatch(): Promise<void> {
@@ -497,6 +855,9 @@ export class AnalyticsService {
   clearAnalytics(): void {
     this.interactions = [];
     this.batchQueue = [];
+    this.zipValidations = [];
+    this.cityValidations = [];
+    this.dataQualityIssues = [];
     if (this.batchTimeout) {
       clearTimeout(this.batchTimeout);
       this.batchTimeout = null;

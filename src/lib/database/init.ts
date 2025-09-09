@@ -5,7 +5,11 @@
 
 import { db } from '../../config/database.js';
 import { CREATE_TABLES_SQL } from './schema.ts';
+import { INITIAL_TDSP_DATA, INITIAL_DATA_SOURCES } from './zip-coverage-schema.ts';
 import { loadCityData } from '../api/plan-data-service.ts';
+
+// Export db for use by other services
+export { db };
 
 /**
  * Initialize database tables and seed basic data
@@ -18,8 +22,14 @@ export async function initializeDatabase() {
     await createTables();
     console.log('✅ Database tables created successfully');
 
-    // Seed TDSP data
+    // Seed TDSP data (existing system)
     await seedTDSPData();
+    
+    // Seed ZIP coverage TDSP data (new coverage system)
+    await seedZIPCoverageTDSPData();
+    
+    // Seed ZIP coverage data sources
+    await seedZIPCoverageDataSources();
     
     // Seed initial cities
     await seedCityData();
@@ -373,6 +383,73 @@ async function seedElectricityPlans() {
 }
 
 /**
+ * Seed ZIP coverage TDSP data
+ */
+async function seedZIPCoverageTDSPData() {
+  for (const tdsp of INITIAL_TDSP_DATA) {
+    try {
+      await db.query(`
+        INSERT INTO tdsp_info (duns, name, zone, service_area, is_active, contact_info)
+        VALUES ($1, $2, $3, $4, $5, $6)
+        ON CONFLICT (duns) DO UPDATE SET
+          name = EXCLUDED.name,
+          zone = EXCLUDED.zone,
+          service_area = EXCLUDED.service_area,
+          is_active = EXCLUDED.is_active,
+          contact_info = EXCLUDED.contact_info,
+          last_updated = NOW()
+      `, [
+        tdsp.duns,
+        tdsp.name,
+        tdsp.zone,
+        JSON.stringify(tdsp.service_area),
+        tdsp.is_active,
+        JSON.stringify(tdsp.contact_info)
+      ]);
+    } catch (error) {
+      console.warn(`Warning: Failed to insert ZIP coverage TDSP ${tdsp.name}:`, error.message);
+    }
+  }
+  
+  console.log('✅ ZIP coverage TDSP data seeded');
+}
+
+/**
+ * Seed ZIP coverage data sources
+ */
+async function seedZIPCoverageDataSources() {
+  for (const source of INITIAL_DATA_SOURCES) {
+    try {
+      await db.query(`
+        INSERT INTO data_sources (name, type, endpoint, is_active, priority, rate_limits, sync_status, last_sync, next_sync)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, NOW(), NOW() + INTERVAL '1 hour')
+        ON CONFLICT (name) DO UPDATE SET
+          type = EXCLUDED.type,
+          endpoint = EXCLUDED.endpoint,
+          is_active = EXCLUDED.is_active,
+          priority = EXCLUDED.priority,
+          rate_limits = EXCLUDED.rate_limits,
+          sync_status = EXCLUDED.sync_status,
+          last_sync = NOW(),
+          next_sync = NOW() + INTERVAL '1 hour'
+      `, [
+        source.name,
+        source.type,
+        source.endpoint,
+        source.is_active,
+        source.priority,
+        JSON.stringify(source.rate_limits),
+        source.sync_status
+      ]);
+    } catch (error) {
+      console.warn(`Warning: Failed to insert ZIP coverage data source ${source.name}:`, error.message);
+    }
+  }
+  
+  console.log('✅ ZIP coverage data sources seeded');
+}
+
+/**
  * Check if database is properly initialized
  */
 export async function checkDatabaseHealth() {
@@ -382,12 +459,20 @@ export async function checkDatabaseHealth() {
     const [providerCount] = await db.query('SELECT COUNT(*) as count FROM providers');
     const [planCount] = await db.query('SELECT COUNT(*) as count FROM electricity_plans');
     
+    // Check ZIP coverage system health
+    const [zipTdspCount] = await db.query('SELECT COUNT(*) as count FROM tdsp_info');
+    const [dataSourceCount] = await db.query('SELECT COUNT(*) as count FROM data_sources');
+    const [zipMappingCount] = await db.query('SELECT COUNT(*) as count FROM zip_code_mappings');
+    
     return {
       healthy: true,
       tdsp_count: tdspCount.count,
       city_count: cityCount.count,
       provider_count: providerCount.count,
       plan_count: planCount.count,
+      zip_coverage_tdsp_count: zipTdspCount.count,
+      zip_data_source_count: dataSourceCount.count,
+      zip_mapping_count: zipMappingCount.count,
       timestamp: new Date().toISOString()
     };
   } catch (error) {

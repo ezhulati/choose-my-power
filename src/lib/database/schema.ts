@@ -1,7 +1,16 @@
 /**
  * Database Schema for ChooseMyPower Electricity Data
- * Defines tables for plans, providers, pricing, and caching
+ * Defines tables for plans, providers, pricing, caching, and ZIP coverage
  */
+
+import { ZIP_COVERAGE_TABLES_SQL } from './zip-coverage-schema.ts';
+
+// Export ZIP coverage schema tables
+export { validationLogs } from './schema/validation-log';
+export { zipCodeMappings } from './schema/zip-code-mapping';
+export { cityTerritories } from './schema/city-territory';
+export { dataSources } from './schema/data-source';
+export { tdspInfo } from './schema/tdsp-info';
 
 export interface Provider {
   id: string;
@@ -547,4 +556,6 @@ CREATE TRIGGER update_leads_updated_at BEFORE UPDATE ON leads
 
 CREATE TRIGGER update_provider_cache_updated_at BEFORE UPDATE ON provider_cache
   FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
+${ZIP_COVERAGE_TABLES_SQL}
 `;
