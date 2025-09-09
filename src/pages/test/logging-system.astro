@@ -1,0 +1,398 @@
+---
+/**
+ * Logging System Testing Page
+ * Task T036: Add comprehensive error logging
+ * Phase 3.5 Polish & Validation: Error logging and performance monitoring validation
+ */
+
+import Layout from '../../layouts/Layout.astro';
+import LoggingTester from '../../components/testing/LoggingTester';
+
+const title = 'Logging System Testing - ChooseMyPower.org';
+const description = 'Test and validate comprehensive error logging and performance monitoring systems';
+---
+
+<Layout title={title} description={description}>
+  <main class="min-h-screen bg-gray-50 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="bg-white rounded-xl shadow-sm p-8 mb-8">
+        <div class="flex items-center justify-between">
+          <div>
+            <h1 class="text-3xl font-bold text-texas-navy mb-3">
+              📊 Logging System Testing
+            </h1>
+            <p class="text-gray-600 text-lg">
+              Test comprehensive error logging, performance monitoring, and analytics systems
+            </p>
+          </div>
+          <div class="text-right">
+            <div class="text-sm text-gray-500">Task T036</div>
+            <div class="text-sm font-medium text-texas-navy">Phase 3.5 Polish & Validation</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Logging System Tester -->
+      <div class="bg-white rounded-xl shadow-sm p-8 mb-8">
+        <h2 class="text-2xl font-bold text-texas-navy mb-6">
+          🔧 Interactive Logging Tester
+        </h2>
+        <p class="text-gray-600 mb-6">
+          Test error tracking, performance monitoring, and logging infrastructure in real-time.
+        </p>
+        <LoggingTester client:load />
+      </div>
+
+      <!-- System Overview -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+        <!-- Error Tracking -->
+        <div class="bg-white rounded-xl shadow-sm p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-xl font-bold text-texas-navy">🚨 Error Tracking</h3>
+            <div class="w-3 h-3 bg-green-500 rounded-full" id="error-tracking-status"></div>
+          </div>
+          <div class="space-y-3">
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">Total Errors:</span>
+              <span class="font-medium" id="total-errors">Loading...</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">Error Categories:</span>
+              <span class="font-medium" id="error-categories">Loading...</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">Auto-Retry Enabled:</span>
+              <span class="font-medium text-green-600">Yes</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">Pattern Detection:</span>
+              <span class="font-medium text-green-600">Active</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Performance Monitoring -->
+        <div class="bg-white rounded-xl shadow-sm p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-xl font-bold text-texas-navy">⚡ Performance Monitor</h3>
+            <div class="w-3 h-3 bg-green-500 rounded-full" id="performance-status"></div>
+          </div>
+          <div class="space-y-3">
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">Core Web Vitals:</span>
+              <span class="font-medium" id="cwv-status">Loading...</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">Resource Timing:</span>
+              <span class="font-medium text-green-600">Tracked</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">Memory Monitoring:</span>
+              <span class="font-medium" id="memory-status">Loading...</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">API Timing:</span>
+              <span class="font-medium text-green-600">Enabled</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Logging Infrastructure -->
+        <div class="bg-white rounded-xl shadow-sm p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-xl font-bold text-texas-navy">📝 Logging System</h3>
+            <div class="w-3 h-3 bg-green-500 rounded-full" id="logging-status"></div>
+          </div>
+          <div class="space-y-3">
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">Log Level:</span>
+              <span class="font-medium" id="log-level">Loading...</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">Remote Logging:</span>
+              <span class="font-medium" id="remote-logging">Loading...</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">Buffer Size:</span>
+              <span class="font-medium">100 entries</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">Auto-Flush:</span>
+              <span class="font-medium text-green-600">5s interval</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Logging Features -->
+      <div class="bg-white rounded-xl shadow-sm p-8 mb-8">
+        <h3 class="text-xl font-bold text-texas-navy mb-6">
+          🎯 Logging Features & Capabilities
+        </h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Structured Logging -->
+          <div class="border border-gray-200 rounded-lg p-4">
+            <div class="flex items-center mb-3">
+              <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+                <span class="text-blue-600 text-sm">📋</span>
+              </div>
+              <h4 class="font-semibold text-texas-navy">Structured Logging</h4>
+            </div>
+            <ul class="text-xs text-gray-600 space-y-1">
+              <li>• JSON-formatted log entries</li>
+              <li>• Contextual metadata</li>
+              <li>• Timestamp standardization</li>
+              <li>• Log level filtering</li>
+            </ul>
+          </div>
+
+          <!-- Error Classification -->
+          <div class="border border-gray-200 rounded-lg p-4">
+            <div class="flex items-center mb-3">
+              <div class="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center mr-3">
+                <span class="text-red-600 text-sm">🔍</span>
+              </div>
+              <h4 class="font-semibold text-texas-navy">Error Classification</h4>
+            </div>
+            <ul class="text-xs text-gray-600 space-y-1">
+              <li>• Pattern-based categorization</li>
+              <li>• Severity level assignment</li>
+              <li>• Auto-retry logic</li>
+              <li>• User-friendly messages</li>
+            </ul>
+          </div>
+
+          <!-- Performance Tracking -->
+          <div class="border border-gray-200 rounded-lg p-4">
+            <div class="flex items-center mb-3">
+              <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+                <span class="text-green-600 text-sm">⚡</span>
+              </div>
+              <h4 class="font-semibold text-texas-navy">Performance Tracking</h4>
+            </div>
+            <ul class="text-xs text-gray-600 space-y-1">
+              <li>• Core Web Vitals monitoring</li>
+              <li>• Resource timing analysis</li>
+              <li>• Memory usage tracking</li>
+              <li>• API response times</li>
+            </ul>
+          </div>
+
+          <!-- Security & Privacy -->
+          <div class="border border-gray-200 rounded-lg p-4">
+            <div class="flex items-center mb-3">
+              <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
+                <span class="text-purple-600 text-sm">🔒</span>
+              </div>
+              <h4 class="font-semibold text-texas-navy">Security & Privacy</h4>
+            </div>
+            <ul class="text-xs text-gray-600 space-y-1">
+              <li>• Sensitive data sanitization</li>
+              <li>• Rate limiting protection</li>
+              <li>• PII redaction</li>
+              <li>• Secure transmission</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Error Patterns & Examples -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <!-- Error Patterns -->
+        <div class="bg-white rounded-xl shadow-sm p-8">
+          <h3 class="text-xl font-bold text-texas-navy mb-4">
+            🧩 Error Pattern Detection
+          </h3>
+          <div class="space-y-4">
+            <div class="border-l-4 border-red-500 pl-4">
+              <h4 class="font-semibold text-red-700">Network Errors</h4>
+              <p class="text-sm text-gray-600">
+                Automatic retry with exponential backoff. User sees: "Connection issue detected."
+              </p>
+            </div>
+            <div class="border-l-4 border-yellow-500 pl-4">
+              <h4 class="font-semibold text-yellow-700">Validation Errors</h4>
+              <p class="text-sm text-gray-600">
+                No retry, immediate user feedback. User sees: "Please check your input."
+              </p>
+            </div>
+            <div class="border-l-4 border-blue-500 pl-4">
+              <h4 class="font-semibold text-blue-700">System Errors</h4>
+              <p class="text-sm text-gray-600">
+                Automatic retry with fallback. User sees: "System temporarily unavailable."
+              </p>
+            </div>
+            <div class="border-l-4 border-purple-500 pl-4">
+              <h4 class="font-semibold text-purple-700">Security Errors</h4>
+              <p class="text-sm text-gray-600">
+                No retry, immediate escalation. User sees: "Security issue detected."
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Performance Metrics -->
+        <div class="bg-white rounded-xl shadow-sm p-8">
+          <h3 class="text-xl font-bold text-texas-navy mb-4">
+            📈 Performance Metrics
+          </h3>
+          <div class="space-y-4">
+            <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+              <span class="text-sm font-medium">First Contentful Paint</span>
+              <span class="text-sm text-green-600" id="fcp-metric">Loading...</span>
+            </div>
+            <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+              <span class="text-sm font-medium">Largest Contentful Paint</span>
+              <span class="text-sm text-green-600" id="lcp-metric">Loading...</span>
+            </div>
+            <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+              <span class="text-sm font-medium">First Input Delay</span>
+              <span class="text-sm text-green-600" id="fid-metric">Loading...</span>
+            </div>
+            <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+              <span class="text-sm font-medium">Cumulative Layout Shift</span>
+              <span class="text-sm text-green-600" id="cls-metric">Loading...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- API Endpoints -->
+      <div class="bg-white rounded-xl shadow-sm p-8">
+        <h3 class="text-xl font-bold text-texas-navy mb-6">
+          🔌 Logging API Endpoints
+        </h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Error Logging API -->
+          <div class="border border-gray-200 rounded-lg p-6">
+            <div class="flex items-center justify-between mb-4">
+              <h4 class="font-semibold text-texas-navy">Error Logging API</h4>
+              <span class="px-2 py-1 bg-red-100 text-red-800 text-xs rounded">POST</span>
+            </div>
+            <code class="text-sm text-gray-600 mb-3 block">/api/logging/errors</code>
+            <div class="space-y-2 text-xs">
+              <div><strong>Purpose:</strong> Collect client-side errors</div>
+              <div><strong>Rate Limit:</strong> 50 errors/minute per client</div>
+              <div><strong>Features:</strong> Classification, sanitization, retry logic</div>
+              <div><strong>Response:</strong> Error ID, user message, suggestions</div>
+            </div>
+          </div>
+
+          <!-- Performance Logging API -->
+          <div class="border border-gray-200 rounded-lg p-6">
+            <div class="flex items-center justify-between mb-4">
+              <h4 class="font-semibold text-texas-navy">Performance Logging API</h4>
+              <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">POST</span>
+            </div>
+            <code class="text-sm text-gray-600 mb-3 block">/api/logging/performance</code>
+            <div class="space-y-2 text-xs">
+              <div><strong>Purpose:</strong> Collect performance metrics</div>
+              <div><strong>Rate Limit:</strong> 20 reports/minute per client</div>
+              <div><strong>Features:</strong> Core Web Vitals, resource timing</div>
+              <div><strong>Response:</strong> Report ID, warnings, recommendations</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  // Initialize logging system testing page
+  async function initializeLoggingTest() {
+    try {
+      // Import logging systems
+      const { logger } = await import('../../lib/logging/logger');
+      const { getErrorStats } = await import('../../lib/logging/error-tracker');
+      const { getPerformanceStats } = await import('../../lib/logging/performance-monitor');
+
+      // Update error tracking status
+      try {
+        const errorStats = getErrorStats();
+        document.getElementById('total-errors').textContent = errorStats.total.toString();
+        document.getElementById('error-categories').textContent = Object.keys(errorStats.byCategory).length.toString();
+      } catch (error) {
+        document.getElementById('total-errors').textContent = 'Error';
+        document.getElementById('error-categories').textContent = 'Error';
+      }
+
+      // Update performance status
+      try {
+        const perfStats = getPerformanceStats();
+        document.getElementById('cwv-status').textContent = Object.keys(perfStats.coreWebVitals).length > 0 ? 'Active' : 'Pending';
+        
+        // Update Core Web Vitals display
+        if (perfStats.coreWebVitals.FCP) {
+          document.getElementById('fcp-metric').textContent = `${perfStats.coreWebVitals.FCP.toFixed(0)}ms`;
+        }
+        if (perfStats.coreWebVitals.LCP) {
+          document.getElementById('lcp-metric').textContent = `${perfStats.coreWebVitals.LCP.toFixed(0)}ms`;
+        }
+        if (perfStats.coreWebVitals.FID) {
+          document.getElementById('fid-metric').textContent = `${perfStats.coreWebVitals.FID.toFixed(0)}ms`;
+        }
+        if (perfStats.coreWebVitals.CLS) {
+          document.getElementById('cls-metric').textContent = perfStats.coreWebVitals.CLS.toFixed(3);
+        }
+      } catch (error) {
+        document.getElementById('cwv-status').textContent = 'Error';
+      }
+
+      // Update memory status
+      if (performance.memory) {
+        const memoryMB = (performance.memory.usedJSHeapSize / 1024 / 1024).toFixed(1);
+        document.getElementById('memory-status').textContent = `${memoryMB}MB`;
+      } else {
+        document.getElementById('memory-status').textContent = 'Not Available';
+      }
+
+      // Update logging configuration
+      document.getElementById('log-level').textContent = 
+        import.meta.env.MODE === 'development' ? 'debug' : 'warn';
+      document.getElementById('remote-logging').textContent = 
+        import.meta.env.ENABLE_REMOTE_LOGGING === 'true' ? 'Enabled' : 'Disabled';
+
+      logger.info('Logging system test page initialized', {
+        component: 'LoggingTestPage',
+        action: 'page_initialized'
+      });
+
+    } catch (error) {
+      console.error('[LoggingTest] Failed to initialize logging test page:', error);
+    }
+  }
+
+  // Initialize when page loads
+  document.addEventListener('DOMContentLoaded', initializeLoggingTest);
+</script>
+
+<style>
+  /* Custom styles for logging test page */
+  .status-indicator {
+    transition: background-color 0.3s ease;
+  }
+
+  .metric-card {
+    transition: all 0.3s ease;
+  }
+
+  .metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  code {
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    background-color: #f8f9fa;
+    padding: 2px 4px;
+    border-radius: 3px;
+  }
+
+  .progress-ring {
+    transition: stroke-dasharray 0.8s ease-in-out;
+  }
+</style>

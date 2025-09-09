@@ -1,4 +1,8 @@
 {
+  "buildType": "cached",
+  "buildTime": "2025-09-09T23:15:06.110Z",
+  "duration": 505,
+  "apiCalls": 0,
   "cities": [
     {
       "citySlug": "houston-tx",
@@ -6160,13 +6164,5 @@
       "totalPlans": 109,
       "success": true
     }
-  ],
-  "totalPlans": 96125,
-  "buildTime": "2025-09-09T19:34:20.788Z",
-  "errors": [],
-  "apiCalls": 880,
-  "batchesProcessed": 88,
-  "skippedCities": 0,
-  "buildType": "stale-refresh",
-  "duration": 273852
+  ]
 }

@@ -1,0 +1,17 @@
+---
+export const prerender = false;
+
+const { path } = Astro.params;
+---
+
+<html>
+<head>
+    <title>Catch-All Test</title>
+</head>
+<body>
+    <h1>Catch-All Route Test</h1>
+    <p>Path received: {path}</p>
+    <p>Astro.params: {JSON.stringify(Astro.params)}</p>
+    <p>Astro.url.pathname: {Astro.url.pathname}</p>
+</body>
+</html>
