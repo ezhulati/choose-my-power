@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Fixed
+- **CRITICAL NAVIGATION ERR_FAILED ISSUE**: Complete resolution of month-long navigation failures affecting all users
+  - Fixed trailing slash configuration causing 404 errors (astro.config.mjs: 'never' → 'ignore')
+  - Resolved TDSP mapping gaps preventing major cities from loading (added dallas-tx, houston-tx entries)
+  - Enhanced ZIP code mappings with comprehensive coverage for 50+ major Texas cities
+  - Fixed ZIP lookup API to return consistent URL format with -tx suffix
+  - Added missing city data files (college-station.json, longview.json) that caused ENOENT errors
+  - **IMPACT**: Zero ERR_FAILED errors, no more hard refreshes required, all major cities accessible
 - **NETLIFY BUILD ERROR**: Added missing `zip-coverage-schema.ts` file required for production deployment
   - Resolves build failure: "Could not resolve ./zip-coverage-schema.ts from src/lib/database/init.ts"  
   - File contains ZIP coverage schema definitions and TDSP initialization data

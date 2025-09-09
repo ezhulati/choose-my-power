@@ -37,7 +37,7 @@ export default defineConfig({
   // Conditional adapter: Node for local, Netlify for deployment
   adapter: getAdapter(),
   site: 'https://choosemypower.org',
-  trailingSlash: 'never',
+  trailingSlash: 'ignore',
   
   // Critical: Optimize bundle for serverless functions
   vite: {

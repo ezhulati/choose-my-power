@@ -12,8 +12,8 @@ import type {
   DataSource 
 } from '../types/zip-navigation';
 
-// Import real ZIP mappings data (JSON fallback)
-import zipMappingsData from '../../data/zip-mappings/texas-deregulated-zips.json';
+// Import enhanced ZIP mappings data with comprehensive coverage (JSON fallback)
+import zipMappingsData from '../../data/zip-mappings/texas-deregulated-zips-enhanced.json';
 
 // Import plan data service for real plan counts
 import { loadCityData } from '../api/plan-data-service';
