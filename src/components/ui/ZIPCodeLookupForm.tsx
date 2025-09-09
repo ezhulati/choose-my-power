@@ -1,6 +1,7 @@
 /**
  * ZIPCodeLookupForm React Component - Enhanced for ZIP Navigation
- * Task T018 from tasks.md
+ * Phase 3.4 Enhancement: Integrated with ZIP routing service and caching
+ * Task T028: ZIP lookup modal integration with enhanced routing
  * Constitutional compliance: Texas design system with responsive mobile-first design
  */
 
@@ -8,15 +9,17 @@ import React, { useState, useCallback } from 'react';
 import type { 
   ZIPNavigationRequest,
   ZIPNavigationResponse,
-  ZIPErrorCode
+  ZIPErrorCode,
+  ZIPRoutingResult
 } from '../../types/zip-navigation';
 
 interface ZIPCodeLookupFormProps {
   cityName?: string;
   placeholder?: string;
   className?: string;
-  onSuccess?: (response: ZIPNavigationResponse) => void;
+  onSuccess?: (response: ZIPRoutingResult) => void;
   onError?: (error: string) => void;
+  showPerformanceMetrics?: boolean; // Show cache performance for development
 }
 
 export const ZIPCodeLookupForm: React.FC<ZIPCodeLookupFormProps> = ({
@@ -24,12 +27,20 @@ export const ZIPCodeLookupForm: React.FC<ZIPCodeLookupFormProps> = ({
   placeholder = 'Enter 5-digit ZIP code',
   className = '',
   onSuccess,
-  onError
+  onError,
+  showPerformanceMetrics = false
 }) => {
   const [zipCode, setZipCode] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string>('');
   const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [recoveryActions, setRecoveryActions] = useState<string[]>([]);
+  const [helpfulTips, setHelpfulTips] = useState<string[]>([]);
+  const [performanceData, setPerformanceData] = useState<{
+    responseTime: number;
+    cached: boolean;
+    cacheSource?: string;
+  } | null>(null);
 
   // Validate ZIP code format (client-side)
   const isZipValid = zipCode.length === 5 && /^\d{5}$/.test(zipCode);
@@ -40,9 +51,11 @@ export const ZIPCodeLookupForm: React.FC<ZIPCodeLookupFormProps> = ({
     setZipCode(value);
     setError('');
     setSuggestions([]);
+    setRecoveryActions([]);
+    setHelpfulTips([]);
   }, []);
 
-  // Handle form submission
+  // Handle form submission with enhanced ZIP routing service
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -51,41 +64,53 @@ export const ZIPCodeLookupForm: React.FC<ZIPCodeLookupFormProps> = ({
     setIsLoading(true);
     setError('');
     setSuggestions([]);
+    setRecoveryActions([]);
+    setHelpfulTips([]);
+    setPerformanceData(null);
 
     try {
-      const request: ZIPNavigationRequest = {
-        zipCode,
-        validatePlansAvailable: true
-      };
+      const startTime = Date.now();
 
-      const response = await fetch('/api/zip/navigate', {
+      // Use the enhanced ZIP routing service
+      const response = await fetch('/api/zip/route', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(request)
+        body: JSON.stringify({ zipCode })
       });
 
-      const data: ZIPNavigationResponse = await response.json();
+      const data: ZIPRoutingResult = await response.json();
+      const clientResponseTime = Date.now() - startTime;
 
-      if (data.success && data.redirectUrl) {
+      // Store performance data for display
+      setPerformanceData({
+        responseTime: data.responseTime,
+        cached: data.cached,
+        cacheSource: response.headers.get('X-Cache-Source') || undefined
+      });
+
+      if (data.success && data.data) {
         // Success - redirect to plans page
         if (onSuccess) {
           onSuccess(data);
         } else {
-          window.location.href = data.redirectUrl;
+          window.location.href = data.data.redirectUrl;
         }
       } else {
-        // Handle error response
-        const errorMsg = data.errorMessage || 'ZIP code validation failed';
+        // Handle error response with enhanced recovery information
+        const errorMsg = data.error?.message || 'ZIP code validation failed';
         setError(errorMsg);
-        setSuggestions(data.suggestions || []);
+        setSuggestions(data.error?.suggestions || []);
+        setRecoveryActions(data.error?.recoveryActions || []);
+        setHelpfulTips(data.error?.helpfulTips || []);
         
         if (onError) {
           onError(errorMsg);
         }
       }
     } catch (err) {
+      console.error('[ZIPCodeLookupForm] Routing error:', err);
       const errorMsg = 'Service temporarily unavailable. Please try again.';
       setError(errorMsg);
       
@@ -99,9 +124,13 @@ export const ZIPCodeLookupForm: React.FC<ZIPCodeLookupFormProps> = ({
 
   // Handle suggestion click
   const handleSuggestionClick = useCallback((suggestedZip: string) => {
-    setZipCode(suggestedZip);
+    // Extract just the ZIP code part (remove description)
+    const cleanZip = suggestedZip.split(' ')[0];
+    setZipCode(cleanZip);
     setError('');
     setSuggestions([]);
+    setRecoveryActions([]);
+    setHelpfulTips([]);
     
     // Auto-submit with suggested ZIP
     setTimeout(() => {
@@ -209,6 +238,18 @@ export const ZIPCodeLookupForm: React.FC<ZIPCodeLookupFormProps> = ({
                 {error}
               </p>
               
+              {/* Recovery Actions */}
+              {recoveryActions.length > 0 && (
+                <div className="mt-3">
+                  <p className="text-sm font-medium text-red-800">What you can do:</p>
+                  <ul className="mt-2 text-sm text-red-700 space-y-1">
+                    {recoveryActions.map((action, index) => (
+                      <li key={index}>• {action}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
               {/* Suggestions */}
               {suggestions.length > 0 && (
                 <div className="mt-3">
@@ -229,6 +270,46 @@ export const ZIPCodeLookupForm: React.FC<ZIPCodeLookupFormProps> = ({
                   </div>
                 </div>
               )}
+
+              {/* Helpful Tips */}
+              {helpfulTips.length > 0 && (
+                <div className="mt-3">
+                  <p className="text-sm font-medium text-red-800">💡 Helpful Tips:</p>
+                  <ul className="mt-2 text-sm text-red-700 space-y-1">
+                    {helpfulTips.map((tip, index) => (
+                      <li key={index}>• {tip}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Performance metrics (development mode) */}
+      {showPerformanceMetrics && performanceData && (
+        <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+          <h5 className="text-sm font-semibold text-blue-800 mb-2">Performance Metrics</h5>
+          <div className="grid grid-cols-3 gap-4 text-xs">
+            <div>
+              <span className="text-blue-600 font-medium">Response Time:</span>
+              <br />
+              <span className="text-blue-800">{performanceData.responseTime}ms</span>
+            </div>
+            <div>
+              <span className="text-blue-600 font-medium">Cache Status:</span>
+              <br />
+              <span className={`${performanceData.cached ? 'text-green-600' : 'text-orange-600'}`}>
+                {performanceData.cached ? 'HIT' : 'MISS'}
+              </span>
+            </div>
+            <div>
+              <span className="text-blue-600 font-medium">Cache Source:</span>
+              <br />
+              <span className="text-blue-800">
+                {performanceData.cacheSource || 'fresh'}
+              </span>
             </div>
           </div>
         </div>

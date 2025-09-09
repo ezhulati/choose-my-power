@@ -1,0 +1,250 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "ZIP Code Validation API",
+    "description": "Enhanced ZIP code validation for comprehensive Texas deregulated area coverage",
+    "version": "2.0.0",
+    "contact": {
+      "name": "ChooseMyPower Development",
+      "email": "dev@choosemypower.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://choosemypower.netlify.app/api",
+      "description": "Production API"
+    },
+    {
+      "url": "http://localhost:4325/api",
+      "description": "Development API"
+    }
+  ],
+  "paths": {
+    "/zip/validate": {
+      "post": {
+        "summary": "Validate ZIP code and resolve to deregulated city",
+        "description": "Enhanced ZIP validation with precise city resolution for all Texas deregulated areas",
+        "operationId": "validateZipCode",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "zipCode": {
+                    "type": "string",
+                    "pattern": "^[0-9]{5}$",
+                    "description": "5-digit ZIP code"
+                  },
+                  "zipPlus4": {
+                    "type": "string",
+                    "pattern": "^[0-9]{4}$",
+                    "description": "Optional ZIP+4 for more precise mapping"
+                  }
+                },
+                "required": ["zipCode"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "ZIP code validated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean", "example": true },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "zipCode": { "type": "string", "example": "75701" },
+                        "city": {
+                          "type": "object",
+                          "properties": {
+                            "name": { "type": "string", "example": "Tyler" },
+                            "slug": { "type": "string", "example": "tyler" },
+                            "state": { "type": "string", "example": "texas" },
+                            "isDeregulated": { "type": "boolean", "example": true },
+                            "planCount": { "type": "integer", "example": 42 }
+                          }
+                        },
+                        "tdspTerritory": {
+                          "type": "object", 
+                          "properties": {
+                            "name": { "type": "string", "example": "Oncor" },
+                            "code": { "type": "string", "example": "ONCOR" }
+                          }
+                        },
+                        "routingUrl": { "type": "string", "example": "/electricity-plans/tyler-tx/" },
+                        "confidence": { "type": "integer", "minimum": 1, "maximum": 5 }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "ZIP code not found in deregulated areas",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean", "example": false },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": { "type": "string", "example": "ZIP_NOT_DEREGULATED" },
+                        "message": { "type": "string", "example": "This area is served by an electric cooperative" },
+                        "suggestedAction": { "type": "string", "example": "Contact your local electric cooperative" },
+                        "cooperativeInfo": {
+                          "type": "object",
+                          "properties": {
+                            "name": { "type": "string", "example": "Cherokee County Electric Cooperative" },
+                            "phone": { "type": "string", "example": "(903) 683-2416" },
+                            "website": { "type": "string", "example": "https://ccec.coop" }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ZIP code format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean", "example": false },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": { "type": "string", "example": "INVALID_ZIP_FORMAT" },
+                        "message": { "type": "string", "example": "ZIP code must be 5 digits" },
+                        "field": { "type": "string", "example": "zipCode" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/zip/lookup/{zipCode}": {
+      "get": {
+        "summary": "Direct ZIP code to city routing information",
+        "description": "Get routing information for a specific ZIP code",
+        "operationId": "lookupZipCode",
+        "parameters": [
+          {
+            "name": "zipCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[0-9]{5}$"
+            },
+            "description": "5-digit ZIP code"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ZIP lookup successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean", "example": true },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "zipCode": { "type": "string", "example": "78401" },
+                        "redirectUrl": { "type": "string", "example": "/electricity-plans/corpus-christi-tx/" },
+                        "cityName": { "type": "string", "example": "Corpus Christi" },
+                        "marketStatus": { "type": "string", "enum": ["active", "limited", "transitioning"] }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/deregulated-areas": {
+      "get": {
+        "summary": "List all supported deregulated cities",
+        "description": "Get complete list of Texas deregulated areas with coverage information",
+        "operationId": "getDeregulatedAreas",
+        "responses": {
+          "200": {
+            "description": "Deregulated areas retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean", "example": true },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "totalCities": { "type": "integer", "example": 25 },
+                        "totalZipCodes": { "type": "integer", "example": 2000 },
+                        "lastUpdated": { "type": "string", "format": "date-time" },
+                        "cities": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": { "type": "string", "example": "Tyler" },
+                              "slug": { "type": "string", "example": "tyler" },
+                              "region": { "type": "string", "example": "East Texas" },
+                              "zipCodeCount": { "type": "integer", "example": 15 },
+                              "planCount": { "type": "integer", "example": 42 },
+                              "tdspTerritory": { "type": "string", "example": "Oncor" },
+                              "marketStatus": { "type": "string", "example": "active" }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "properties": {
+          "success": { "type": "boolean", "example": false },
+          "error": {
+            "type": "object",
+            "properties": {
+              "code": { "type": "string" },
+              "message": { "type": "string" },
+              "details": { "type": "object" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

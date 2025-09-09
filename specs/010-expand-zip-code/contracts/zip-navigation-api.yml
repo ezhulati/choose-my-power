@@ -1,0 +1,570 @@
+openapi: 3.0.3
+info:
+  title: Enhanced ZIP Code Navigation API
+  description: |
+    Extended ZIP code validation and navigation API for comprehensive Texas deregulated area coverage.
+    Replaces overly broad ZIP ranges with precise city-specific routing.
+  version: 2.0.0
+  contact:
+    name: ChooseMyPower Development Team
+    email: dev@choosemypower.com
+
+servers:
+  - url: https://choose-my-power.netlify.app/api
+    description: Production server
+  - url: http://localhost:4324/api
+    description: Development server
+
+paths:
+  /zip/navigate:
+    post:
+      summary: Enhanced ZIP code navigation with comprehensive coverage
+      description: |
+        Validates ZIP code and returns navigation URL with enhanced coverage for all Texas deregulated areas.
+        Replaces legacy broad ZIP range mappings with precise city-specific routing.
+      operationId: navigateByZip
+      tags:
+        - ZIP Navigation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ZIPNavigationRequest'
+            examples:
+              tyler_zip:
+                summary: Tyler, Texas ZIP code
+                value:
+                  zipCode: "75701"
+                  validatePlansAvailable: true
+              corpus_christi_zip:
+                summary: Corpus Christi, Texas ZIP code
+                value:
+                  zipCode: "78401"
+                  validatePlansAvailable: true
+              municipal_utility:
+                summary: Austin municipal utility
+                value:
+                  zipCode: "78704"
+                  validatePlansAvailable: false
+      responses:
+        '200':
+          description: Successful ZIP code validation and navigation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ZIPNavigationSuccess'
+              examples:
+                tyler_success:
+                  summary: Successful Tyler ZIP navigation
+                  value:
+                    success: true
+                    redirectUrl: "/electricity-plans/tyler/"
+                    cityName: "Tyler"
+                    citySlug: "tyler-tx"
+                    stateName: "Texas"
+                    stateSlug: "texas"
+                    tdspTerritory: "Oncor Electric Delivery"
+                    serviceTerritory: "103994067400"
+                    planCount: 24
+                    hasPlans: true
+                    validationTime: 89
+                    processedAt: "2025-09-09T15:30:00.000Z"
+                    source: "database"
+                municipal_utility:
+                  summary: Austin municipal utility result
+                  value:
+                    success: true
+                    redirectUrl: "/texas/austin-tx/municipal-utility"
+                    cityName: "Austin"
+                    citySlug: "austin-tx"
+                    stateName: "Texas"
+                    stateSlug: "texas"
+                    tdspTerritory: "Austin Energy"
+                    serviceTerritory: "MUNICIPAL"
+                    planCount: 0
+                    hasPlans: false
+                    isMunicipalUtility: true
+                    validationTime: 65
+                    processedAt: "2025-09-09T15:30:00.000Z"
+                    source: "database"
+        '400':
+          description: Invalid ZIP code or validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ZIPNavigationError'
+              examples:
+                invalid_format:
+                  summary: Invalid ZIP code format
+                  value:
+                    success: false
+                    errorCode: "INVALID_FORMAT"
+                    error: "ZIP code must be 5 digits"
+                    suggestions:
+                      - "Enter a 5-digit ZIP code"
+                      - "Texas ZIP codes start with 7"
+                    validationTime: 12
+                not_found:
+                  summary: ZIP code not found in coverage area
+                  value:
+                    success: false
+                    errorCode: "NOT_FOUND"
+                    error: "ZIP code 79999 not found in Texas database"
+                    suggestions:
+                      - "Check if ZIP code is correct"
+                      - "Texas ZIP codes start with 7"
+                      - "Try a nearby ZIP code"
+                    validationTime: 45
+                cooperative_area:
+                  summary: Electric cooperative service area
+                  value:
+                    success: false
+                    errorCode: "COOPERATIVE"
+                    error: "This area is served by an electric cooperative"
+                    suggestions:
+                      - "Contact your local electric cooperative directly"
+                      - "Cooperatives provide fixed-rate electricity service"
+                      - "You cannot choose an electricity provider in this area"
+                    validationTime: 67
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ZIPNavigationError'
+              examples:
+                api_error:
+                  summary: System error
+                  value:
+                    success: false
+                    errorCode: "API_ERROR"
+                    error: "Internal server error processing ZIP code"
+                    suggestions:
+                      - "Try again in a moment"
+                      - "Contact support if problem persists"
+                    validationTime: 156
+
+  /zip/coverage-status:
+    get:
+      summary: Get ZIP code coverage status
+      description: Check coverage status for ZIP codes without full validation
+      operationId: getCoverageStatus
+      tags:
+        - ZIP Coverage
+      parameters:
+        - name: zipCode
+          in: query
+          required: true
+          schema:
+            type: string
+            pattern: '^\d{5}$'
+          description: 5-digit ZIP code to check
+          example: "75701"
+      responses:
+        '200':
+          description: Coverage status information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CoverageStatus'
+              examples:
+                covered:
+                  summary: ZIP code is covered
+                  value:
+                    zipCode: "75701"
+                    isCovered: true
+                    cityName: "Tyler"
+                    marketType: "DEREGULATED"
+                    tdspTerritory: "Oncor Electric Delivery"
+                    lastUpdated: "2025-09-09T00:00:00.000Z"
+                not_covered:
+                  summary: ZIP code not covered
+                  value:
+                    zipCode: "79999"
+                    isCovered: false
+                    reason: "ZIP code not in coverage database"
+                    lastUpdated: "2025-09-09T00:00:00.000Z"
+
+  /zip/test-plan-availability:
+    post:
+      summary: Test ComparePower API integration for ZIP code
+      description: |
+        Development/testing endpoint to verify ComparePower pricing API integration.
+        Returns both ZIP validation result and direct ComparePower API response.
+      operationId: testPlanAvailability
+      tags:
+        - ZIP Testing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - zipCode
+              properties:
+                zipCode:
+                  type: string
+                  pattern: '^\d{5}$'
+                  description: 5-digit ZIP code to test
+                  example: "75701"
+                usageKwh:
+                  type: number
+                  minimum: 500
+                  maximum: 5000
+                  description: Monthly usage for plan filtering
+                  default: 1000
+                  example: 1000
+      responses:
+        '200':
+          description: Plan availability test results
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - zipCode
+                  - zipValidation
+                  - comparePowerApiCall
+                properties:
+                  zipCode:
+                    type: string
+                    description: ZIP code tested
+                    example: "75701"
+                  zipValidation:
+                    $ref: '#/components/schemas/ZIPNavigationSuccess'
+                  comparePowerApiCall:
+                    type: object
+                    properties:
+                      endpoint:
+                        type: string
+                        description: ComparePower API endpoint called
+                        example: "https://pricing.api.comparepower.com/api/plans/current"
+                      queryParams:
+                        type: object
+                        properties:
+                          group:
+                            type: string
+                            example: "default"
+                          tdsp_duns:
+                            type: string
+                            example: "103994067400"
+                          display_usage:
+                            type: number
+                            example: 1000
+                      responseTime:
+                        type: integer
+                        description: ComparePower API response time in ms
+                        example: 234
+                      planCount:
+                        type: integer
+                        description: Number of plans returned by ComparePower
+                        example: 24
+                      success:
+                        type: boolean
+                        description: Whether ComparePower API call succeeded
+                        example: true
+
+  /zip/bulk-validate:
+    post:
+      summary: Validate multiple ZIP codes at once
+      description: Bulk validation endpoint for administrative and analytics purposes
+      operationId: bulkValidateZips
+      tags:
+        - ZIP Validation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkValidationRequest'
+            example:
+              zipCodes: ["75701", "78401", "79401", "78704"]
+              includeMetadata: true
+      responses:
+        '200':
+          description: Bulk validation results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkValidationResponse'
+
+components:
+  schemas:
+    ZIPNavigationRequest:
+      type: object
+      required:
+        - zipCode
+      properties:
+        zipCode:
+          type: string
+          pattern: '^\d{5}$'
+          description: 5-digit ZIP code to validate
+          example: "75701"
+        validatePlansAvailable:
+          type: boolean
+          description: Whether to check for available electricity plans
+          default: false
+        usageKwh:
+          type: number
+          minimum: 0
+          maximum: 50000
+          description: Optional monthly usage in kWh for plan filtering
+          example: 1000
+
+    ZIPNavigationSuccess:
+      type: object
+      required:
+        - success
+        - redirectUrl
+        - cityName
+        - citySlug
+        - stateName
+        - stateSlug
+        - tdspTerritory
+        - serviceTerritory
+        - validationTime
+        - processedAt
+        - source
+      properties:
+        success:
+          type: boolean
+          enum: [true]
+          description: Indicates successful validation
+        redirectUrl:
+          type: string
+          format: uri-reference
+          description: Target URL for navigation
+          example: "/electricity-plans/tyler/"
+        cityName:
+          type: string
+          description: Full city name
+          example: "Tyler"
+        citySlug:
+          type: string
+          description: URL-safe city identifier
+          example: "tyler-tx"
+        stateName:
+          type: string
+          enum: ["Texas"]
+          description: State name
+        stateSlug:
+          type: string
+          enum: ["texas"]
+          description: URL-safe state identifier
+        tdspTerritory:
+          type: string
+          description: TDU service provider name
+          example: "Oncor Electric Delivery"
+        serviceTerritory:
+          type: string
+          description: TDU DUNS number in ComparePower API format for pricing calls
+          example: "103994067400"
+        planCount:
+          type: integer
+          minimum: 0
+          description: Number of available plans (if validated)
+          example: 24
+        hasPlans:
+          type: boolean
+          description: Whether electricity plans are available
+        isMunicipalUtility:
+          type: boolean
+          description: Whether this is a municipal utility area
+          default: false
+        validationTime:
+          type: integer
+          minimum: 0
+          description: Processing time in milliseconds
+          example: 89
+        processedAt:
+          type: string
+          format: date-time
+          description: Validation timestamp
+        source:
+          type: string
+          enum: ["database", "cache", "fallback"]
+          description: Data source used for validation
+
+    ZIPNavigationError:
+      type: object
+      required:
+        - success
+        - errorCode
+        - error
+        - validationTime
+      properties:
+        success:
+          type: boolean
+          enum: [false]
+          description: Indicates validation failure
+        errorCode:
+          $ref: '#/components/schemas/ZIPErrorCode'
+        error:
+          type: string
+          description: Human-readable error message
+          example: "ZIP code 79999 not found in Texas database"
+        suggestions:
+          type: array
+          items:
+            type: string
+          description: Helpful suggestions for the user
+          example:
+            - "Check if ZIP code is correct"
+            - "Texas ZIP codes start with 7"
+        validationTime:
+          type: integer
+          minimum: 0
+          description: Processing time in milliseconds
+          example: 45
+
+    ZIPErrorCode:
+      type: string
+      enum:
+        - INVALID_FORMAT
+        - NOT_TEXAS
+        - NOT_FOUND
+        - NOT_DEREGULATED
+        - MUNICIPAL_UTILITY
+        - COOPERATIVE
+        - NO_PLANS
+        - API_ERROR
+      description: |
+        Error classification codes:
+        * `INVALID_FORMAT` - ZIP code format is invalid
+        * `NOT_TEXAS` - ZIP code is outside Texas
+        * `NOT_FOUND` - ZIP code not found in database
+        * `NOT_DEREGULATED` - Area is regulated market
+        * `MUNICIPAL_UTILITY` - Municipal utility service area
+        * `COOPERATIVE` - Electric cooperative service area
+        * `NO_PLANS` - No electricity plans available
+        * `API_ERROR` - System or database error
+
+    CoverageStatus:
+      type: object
+      required:
+        - zipCode
+        - isCovered
+        - lastUpdated
+      properties:
+        zipCode:
+          type: string
+          pattern: '^\d{5}$'
+          description: ZIP code checked
+          example: "75701"
+        isCovered:
+          type: boolean
+          description: Whether ZIP code is in coverage database
+        cityName:
+          type: string
+          description: City name (if covered)
+          example: "Tyler"
+        marketType:
+          type: string
+          enum: ["DEREGULATED", "MUNICIPAL", "COOPERATIVE"]
+          description: Type of electricity market
+        tdspTerritory:
+          type: string
+          description: TDU service provider name
+          example: "Oncor Electric Delivery"
+        reason:
+          type: string
+          description: Reason for no coverage (if not covered)
+          example: "ZIP code not in coverage database"
+        lastUpdated:
+          type: string
+          format: date-time
+          description: Last coverage data update
+
+    BulkValidationRequest:
+      type: object
+      required:
+        - zipCodes
+      properties:
+        zipCodes:
+          type: array
+          items:
+            type: string
+            pattern: '^\d{5}$'
+          minItems: 1
+          maxItems: 100
+          description: Array of ZIP codes to validate
+          example: ["75701", "78401", "79401"]
+        includeMetadata:
+          type: boolean
+          description: Include detailed metadata in response
+          default: false
+
+    BulkValidationResponse:
+      type: object
+      required:
+        - totalRequested
+        - totalProcessed
+        - results
+        - processedAt
+      properties:
+        totalRequested:
+          type: integer
+          minimum: 1
+          description: Number of ZIP codes requested
+        totalProcessed:
+          type: integer
+          minimum: 0
+          description: Number of ZIP codes successfully processed
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/BulkValidationResult'
+          description: Individual validation results
+        processedAt:
+          type: string
+          format: date-time
+          description: Bulk processing timestamp
+
+    BulkValidationResult:
+      type: object
+      required:
+        - zipCode
+        - isValid
+        - isTexas
+      properties:
+        zipCode:
+          type: string
+          description: ZIP code validated
+        isValid:
+          type: boolean
+          description: Whether ZIP code format is valid
+        isTexas:
+          type: boolean
+          description: Whether ZIP code is in Texas
+        isDeregulated:
+          type: boolean
+          description: Whether area has competitive market
+        cityName:
+          type: string
+          description: City name (if valid)
+        errorCode:
+          $ref: '#/components/schemas/ZIPErrorCode'
+        validationTime:
+          type: integer
+          description: Processing time in milliseconds
+
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: Optional API key for rate limiting and analytics
+
+security: []
+
+tags:
+  - name: ZIP Navigation
+    description: Primary ZIP code to city navigation endpoints
+  - name: ZIP Coverage
+    description: Coverage status and availability checking
+  - name: ZIP Validation  
+    description: Bulk validation and administrative endpoints
+  - name: ZIP Testing
+    description: Development endpoints for ComparePower API integration testing

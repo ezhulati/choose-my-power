@@ -180,14 +180,19 @@
     setLoadingState(true);
 
     try {
-      // Call our ZIP lookup API
-      console.log(`📞 Making API call to /api/zip-lookup?zip=${zipCode}`);
-      const url = `/api/zip-lookup?zip=${encodeURIComponent(zipCode)}`;
-      const res = await fetch(url, { 
-        redirect: 'follow',
+      // Call our ZIP navigation API (NEW: uses proper endpoint)
+      console.log(`📞 Making API call to /api/zip/navigate with ZIP: ${zipCode}`);
+      const url = `/api/zip/navigate`;
+      const res = await fetch(url, {
+        method: 'POST',
         headers: {
+          'Content-Type': 'application/json',
           'Accept': 'application/json'
-        }
+        },
+        body: JSON.stringify({
+          zipCode: zipCode,
+          validatePlansAvailable: true
+        })
       });
 
       // Handle redirected responses (API might redirect directly)
@@ -216,9 +221,9 @@
           result = await res.json();
         } catch (parseError) {
           console.error('❌ Failed to parse response as JSON:', parseError);
-          // Don't redirect to API URL, instead navigate to a sensible user-facing page
-          console.log('🔄 Navigating to Texas providers page as fallback');
-          window.location.href = zipCode.startsWith('7') ? '/texas' : '/locations';
+          // Don't redirect to API URL, show proper error instead
+          console.log('🔄 API returned invalid response, showing error to user');
+          showError('Unable to process your ZIP code right now. Please try again or <a href="/electricity-plans" class="underline font-semibold hover:text-red-900">browse all electricity plans →</a>');
           return;
         }
       }
@@ -294,7 +299,7 @@
           }, 3000);
         } else if (result.errorType === 'not_found') {
           // ZIP not found - provide helpful fallback
-          showError(`${result.error} <a href="/texas" class="underline font-semibold hover:text-red-900">Browse all Texas providers →</a>`);
+          showError(`${result.error} <a href="/electricity-plans" class="underline font-semibold hover:text-red-900">Browse all electricity plans →</a>`);
         } else if (result.errorType === 'invalid_zip') {
           // Invalid format
           showError(result.error);
@@ -317,37 +322,12 @@
         // Try to determine a sensible fallback page based on ZIP code
         let fallbackUrl = '/texas'; // Default fallback for Texas ZIPs
         
-        // If it looks like a Texas ZIP (starts with 7), use Texas page
-        if (zipCode.startsWith('7')) {
-          fallbackUrl = '/texas';
-        } else {
-          fallbackUrl = '/locations'; // Non-Texas or unknown
-        }
-        
-        try {
-          window.location.href = fallbackUrl;
-          return; // Don't show error if redirect works
-        } catch (fallbackError1) {
-          console.warn('⚠️ Fallback href failed, trying location assignment:', fallbackError1);
-          
-          try {
-            window.location = fallbackUrl;
-            return;
-          } catch (fallbackError2) {
-            console.warn('⚠️ Fallback location assignment failed, trying replace:', fallbackError2);
-            
-            try {
-              window.location.replace(fallbackUrl);
-              return;
-            } catch (fallbackError3) {
-              console.error('❌ All fallback navigation methods failed:', fallbackError3);
-              // Continue to show error message below
-            }
-          }
-        }
+        // Show error instead of redirecting to generic pages
+        showError('Unable to process your ZIP code right now. Please try again or <a href="/electricity-plans" class="underline font-semibold hover:text-red-900">browse all electricity plans →</a>');
+        return;
       }
       
-      showError('Unable to process your request right now. Please try again or <a href="/texas" class="underline font-semibold hover:text-red-900">browse all Texas providers →</a>');
+      showError('Unable to process your request right now. Please try again or <a href="/electricity-plans" class="underline font-semibold hover:text-red-900">browse all electricity plans →</a>');
     }
   });
 

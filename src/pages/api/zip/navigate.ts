@@ -127,8 +127,45 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    // Step 4: Validate deregulated market (not regulated)
+    // Step 4: Check if this is a deregulated market or municipal utility
     const tdspData = await tdspService.getTDSPByZIP(zipCode);
+    
+    // Handle municipal utilities (like Austin) differently  
+    if (!cityData.isDeregulated) {
+      // This is a municipal utility - redirect to special page
+      const municipalRedirectUrl = `/texas/${cityData.slug}/municipal-utility`;
+      
+      await analyticsService.trackZIPValidation({
+        zipCode,
+        success: true, // Municipal utility is a valid result, just different flow
+        errorCode: 'MUNICIPAL_UTILITY',
+        cityName: cityData.name,
+        tdspTerritory: cityData.primaryTdsp,
+        validationTime: Date.now() - startTime
+      });
+
+      return new Response(JSON.stringify({
+        success: true,
+        redirectUrl: municipalRedirectUrl,
+        cityName: cityData.name,
+        citySlug: cityData.slug,
+        stateName: 'Texas',
+        stateSlug: 'texas',
+        tdspTerritory: cityData.primaryTdsp,
+        serviceTerritory: tdspData?.code || 'MUNICIPAL',
+        planCount: 0,
+        hasPlans: false,
+        isMunicipalUtility: true,
+        validationTime: Date.now() - startTime,
+        processedAt: new Date().toISOString(),
+        source: 'database'
+      } as ZIPNavigationResponse), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+    
+    // For deregulated areas, check TDSP data
     if (!tdspData?.isDeregulated) {
       await analyticsService.trackZIPValidation({
         zipCode,
@@ -143,7 +180,7 @@ export const POST: APIRoute = async ({ request }) => {
         error: `ZIP code ${zipCode} is in a regulated electricity market`,
         suggestions: [
           'This area is served by a regulated utility',
-          'Deregulated areas in Texas include Houston, Dallas, Austin, Fort Worth',
+          'Deregulated areas in Texas include Houston, Dallas, Fort Worth',
           'Contact your local utility directly for service'
         ],
         validationTime: Date.now() - startTime
@@ -191,8 +228,9 @@ export const POST: APIRoute = async ({ request }) => {
     // Step 6: Generate correct redirect URL (FIXES legacy bug!)
     // OLD WRONG: `/texas/${citySlug}` 
     // NEW CORRECT: `/electricity-plans/${citySlug}/`
-    // Note: cityData.slug already includes -tx suffix
-    const redirectUrl = `/electricity-plans/${cityData.slug}/`;
+    // FIX: Remove -tx suffix to match route expectations
+    const citySlugWithoutSuffix = cityData.slug.replace(/-tx$/, '');
+    const redirectUrl = `/electricity-plans/${citySlugWithoutSuffix}/`;
 
     // Step 7: Track successful validation
     const validationTime = Date.now() - startTime;

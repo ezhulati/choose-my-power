@@ -1,0 +1,93 @@
+---
+/**
+ * Test Page: ZIP Lookup Modal Integration
+ * Phase 3.4 Enhancement: T028 demonstration
+ * Shows enhanced ZIP routing with caching and performance metrics
+ */
+
+import Layout from '../../layouts/Layout.astro';
+import ZIPLookupTestPage from '../../components/test/ZIPLookupTestPage';
+---
+
+<Layout title="ZIP Lookup Integration Test - ChooseMyPower">
+  <main class="bg-gray-50 min-h-screen py-12">
+    <div class="max-w-4xl mx-auto px-4">
+      <!-- Page Header -->
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-texas-navy mb-4">
+          Enhanced ZIP Lookup Integration
+        </h1>
+        <p class="text-lg text-gray-600">
+          Phase 3.4 Enhancement: ZIP routing service with Redis caching and analytics
+        </p>
+        <div class="mt-4 text-sm text-blue-600">
+          <span class="bg-blue-100 px-3 py-1 rounded-full">Task T028: Modal Integration Complete</span>
+        </div>
+      </div>
+
+      <!-- Integration Examples -->
+      <div class="test-forms-container">
+        <ZIPLookupTestPage client:load />
+      </div>
+
+      <!-- Integration Notes -->
+      <div class="mt-12 bg-white rounded-xl shadow-lg p-8">
+        <h3 class="text-xl font-bold text-texas-navy mb-4">Integration Features</h3>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h4 class="font-semibold text-gray-800 mb-3">🚀 Performance Enhancements</h4>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li>• Redis caching with fallback cache</li>
+              <li>• Sub-second response times on cache hits</li>
+              <li>• Analytics tracking for optimization</li>
+              <li>• Intelligent cache warm-up</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="font-semibold text-gray-800 mb-3">🎯 User Experience</h4>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li>• Real-time ZIP validation</li>
+              <li>• Smart error recovery with suggestions</li>
+              <li>• Direct navigation to plans pages</li>
+              <li>• Mobile-optimized responsive design</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- API Endpoints -->
+        <div class="mt-8">
+          <h4 class="font-semibold text-gray-800 mb-3">🔗 API Integration</h4>
+          <div class="bg-gray-50 rounded-lg p-4">
+            <div class="grid md:grid-cols-3 gap-4 text-sm">
+              <div>
+                <code class="text-blue-600 font-mono">POST /api/zip/route</code>
+                <p class="text-gray-600 mt-1">Enhanced ZIP routing with caching</p>
+              </div>
+              <div>
+                <code class="text-blue-600 font-mono">GET /api/deregulated-areas</code>
+                <p class="text-gray-600 mt-1">Cached area coverage data</p>
+              </div>
+              <div>
+                <code class="text-blue-600 font-mono">GET /api/analytics/zip-navigation</code>
+                <p class="text-gray-600 mt-1">Performance and usage analytics</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Test Instructions -->
+      <div class="mt-8 bg-blue-50 border border-blue-200 rounded-lg p-6">
+        <h4 class="font-semibold text-blue-800 mb-3">🧪 Testing Instructions</h4>
+        <ol class="list-decimal list-inside space-y-2 text-sm text-blue-700">
+          <li>Enter a Texas ZIP code (try: 75701, 77001, 76101)</li>
+          <li>Notice the performance metrics in development mode</li>
+          <li>Try the same ZIP code again to see caching in action</li>
+          <li>Test invalid ZIP codes to see error handling</li>
+        </ol>
+      </div>
+    </div>
+  </main>
+</Layout>

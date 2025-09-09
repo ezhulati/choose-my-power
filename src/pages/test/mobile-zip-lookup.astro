@@ -1,0 +1,290 @@
+---
+/**
+ * Test Page: Mobile-Responsive ZIP Lookup Forms
+ * Task T032: Mobile-optimized ZIP lookup demonstration
+ * Phase 3.5 Polish & Validation: Responsive design showcase
+ */
+
+import Layout from '../../layouts/Layout.astro';
+import ResponsiveZIPLookupForm from '../../components/ui/ResponsiveZIPLookupForm';
+import MobileZIPLookupForm from '../../components/mobile/MobileZIPLookupForm';
+---
+
+<Layout title="Mobile ZIP Lookup Test - ChooseMyPower">
+  <main class="bg-gray-50 min-h-screen py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <!-- Page Header -->
+      <div class="text-center mb-8">
+        <h1 class="text-3xl font-bold text-texas-navy mb-4">
+          Mobile-Responsive ZIP Lookup
+        </h1>
+        <p class="text-lg text-gray-600">
+          Task T032: Mobile-optimized ZIP lookup forms with responsive design
+        </p>
+        <div class="mt-4 text-sm text-green-600">
+          <span class="bg-green-100 px-3 py-1 rounded-full">Phase 3.5 Polish & Validation</span>
+        </div>
+      </div>
+
+      <!-- Device Detection Info -->
+      <div class="mb-8 p-4 bg-blue-50 rounded-xl border border-blue-200">
+        <h3 class="text-lg font-semibold text-blue-800 mb-2">Device Detection</h3>
+        <div id="device-info" class="text-sm text-blue-700">
+          <p>Screen Width: <span id="screen-width">-</span>px</p>
+          <p>Screen Height: <span id="screen-height">-</span>px</p>
+          <p>Touch Support: <span id="touch-support">-</span></p>
+          <p>User Agent: <span id="user-agent" class="text-xs">-</span></p>
+          <p>Viewport: <span id="viewport-class">-</span></p>
+        </div>
+      </div>
+
+      <!-- Responsive ZIP Lookup (Auto-detecting) -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-texas-navy mb-6">Responsive ZIP Lookup (Auto-Detect)</h2>
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+          <p class="text-gray-600 mb-6">
+            This component automatically switches between desktop and mobile optimized versions based on screen size and touch capabilities.
+          </p>
+          <ResponsiveZIPLookupForm 
+            client:load 
+            variant="hero"
+            cityName="Texas"
+            showPerformanceMetrics={true}
+          />
+        </div>
+      </div>
+
+      <!-- Mobile Variants Showcase -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-texas-navy mb-6">Mobile ZIP Lookup Variants</h2>
+        
+        <!-- Hero Variant -->
+        <div class="mb-8">
+          <h3 class="text-lg font-semibold text-gray-800 mb-4">Hero Variant</h3>
+          <div class="bg-gradient-to-r from-texas-navy to-blue-800 p-6 rounded-xl">
+            <MobileZIPLookupForm 
+              client:load 
+              variant="hero"
+              cityName="Dallas"
+              placeholder="Enter ZIP code"
+              showPerformanceMetrics={true}
+            />
+          </div>
+        </div>
+
+        <!-- Compact Variant -->
+        <div class="mb-8">
+          <h3 class="text-lg font-semibold text-gray-800 mb-4">Compact Variant</h3>
+          <div class="bg-white p-6 rounded-xl border border-gray-200">
+            <MobileZIPLookupForm 
+              client:load 
+              variant="compact"
+              cityName="Houston"
+              placeholder="ZIP code"
+              showPerformanceMetrics={true}
+            />
+          </div>
+        </div>
+
+        <!-- Inline Variant -->
+        <div class="mb-8">
+          <h3 class="text-lg font-semibold text-gray-800 mb-4">Inline Variant</h3>
+          <div class="bg-gray-100 p-6 rounded-xl">
+            <MobileZIPLookupForm 
+              client:load 
+              variant="inline"
+              cityName="Austin"
+              placeholder="Enter ZIP"
+              showPerformanceMetrics={true}
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Comparison -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-texas-navy mb-6">Mobile Optimization Features</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">📱 Mobile Enhancements</h3>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li>• Touch-optimized button sizes (44px minimum)</li>
+              <li>• Larger input fields with better touch targets</li>
+              <li>• Auto-scroll to form on focus</li>
+              <li>• Expandable error sections to save space</li>
+              <li>• One-handed operation friendly layout</li>
+              <li>• Haptic feedback simulation</li>
+              <li>• Optimized typography for small screens</li>
+              <li>• Swipe-friendly suggestion buttons</li>
+            </ul>
+          </div>
+          
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">🖥️ Desktop Features</h3>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li>• Hover states and micro-interactions</li>
+              <li>• Keyboard navigation support</li>
+              <li>• Detailed error information always visible</li>
+              <li>• Mouse-optimized suggestion layout</li>
+              <li>• Performance metrics display</li>
+              <li>• Expanded help text</li>
+              <li>• Multi-column suggestion layout</li>
+              <li>• Tooltip and popover support</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Performance Testing -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-texas-navy mb-6">Performance Testing</h2>
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+          <h3 class="text-lg font-semibold text-gray-900 mb-4">Quick Test ZIP Codes</h3>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <button 
+              class="test-zip-btn px-4 py-2 bg-texas-red text-white rounded-lg hover:bg-red-700 transition-colors"
+              data-zip="75701"
+            >
+              75701 (Tyler)
+            </button>
+            <button 
+              class="test-zip-btn px-4 py-2 bg-texas-red text-white rounded-lg hover:bg-red-700 transition-colors"
+              data-zip="77001"
+            >
+              77001 (Houston)
+            </button>
+            <button 
+              class="test-zip-btn px-4 py-2 bg-texas-red text-white rounded-lg hover:bg-red-700 transition-colors"
+              data-zip="75201"
+            >
+              75201 (Dallas)
+            </button>
+            <button 
+              class="test-zip-btn px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
+              data-zip="99999"
+            >
+              99999 (Error)
+            </button>
+          </div>
+          <p class="text-sm text-gray-600 mt-4">
+            Click any button to auto-fill the responsive form above and test performance
+          </p>
+        </div>
+      </div>
+
+      <!-- Technical Implementation -->
+      <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <h2 class="text-xl font-bold text-texas-navy mb-4">Technical Implementation</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div>
+            <h4 class="font-semibold text-gray-800 mb-3">🎯 Responsive Design</h4>
+            <ul class="space-y-1 text-sm text-gray-600">
+              <li>• Breakpoint: 768px mobile</li>
+              <li>• Touch detection</li>
+              <li>• Orientation handling</li>
+              <li>• Progressive enhancement</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="font-semibold text-gray-800 mb-3">🚀 Performance</h4>
+            <ul class="space-y-1 text-sm text-gray-600">
+              <li>• Component code splitting</li>
+              <li>• Lazy loading</li>
+              <li>• Touch debouncing</li>
+              <li>• Minimal re-renders</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="font-semibold text-gray-800 mb-3">♿ Accessibility</h4>
+            <ul class="space-y-1 text-sm text-gray-600">
+              <li>• ARIA labels</li>
+              <li>• Keyboard navigation</li>
+              <li>• Screen reader support</li>
+              <li>• Focus management</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  // Update device detection info
+  function updateDeviceInfo() {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const touchSupport = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    
+    document.getElementById('screen-width').textContent = width.toString();
+    document.getElementById('screen-height').textContent = height.toString();
+    document.getElementById('touch-support').textContent = touchSupport ? 'Yes' : 'No';
+    document.getElementById('user-agent').textContent = navigator.userAgent;
+    
+    let viewportClass = 'unknown';
+    if (width < 640) viewportClass = 'mobile-sm';
+    else if (width < 768) viewportClass = 'mobile';
+    else if (width < 1024) viewportClass = 'tablet';
+    else if (width < 1280) viewportClass = 'desktop';
+    else viewportClass = 'desktop-lg';
+    
+    document.getElementById('viewport-class').textContent = viewportClass;
+  }
+
+  // Test ZIP code buttons
+  function initTestButtons() {
+    document.querySelectorAll('.test-zip-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const zipCode = btn.dataset.zip;
+        // Find the first ZIP input on the page and fill it
+        const zipInput = document.querySelector('input[name="zipCode"]');
+        if (zipInput && zipCode) {
+          zipInput.value = zipCode;
+          zipInput.dispatchEvent(new Event('input', { bubbles: true }));
+          
+          // Scroll to the form
+          zipInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          zipInput.focus();
+        }
+      });
+    });
+  }
+
+  // Initialize on load
+  document.addEventListener('DOMContentLoaded', () => {
+    updateDeviceInfo();
+    initTestButtons();
+  });
+
+  // Update on resize
+  window.addEventListener('resize', updateDeviceInfo);
+  window.addEventListener('orientationchange', () => {
+    setTimeout(updateDeviceInfo, 100);
+  });
+</script>
+
+<style>
+  /* Mobile-specific optimizations */
+  @media (max-width: 768px) {
+    .test-zip-btn {
+      font-size: 14px;
+      padding: 12px 16px;
+      touch-action: manipulation;
+    }
+  }
+  
+  /* Ensure proper touch targets */
+  .test-zip-btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Smooth scrolling for mobile */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+</style>

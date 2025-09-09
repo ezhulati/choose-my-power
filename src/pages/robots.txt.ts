@@ -1,19 +1,21 @@
 /**
- * Robots.txt endpoint for Astro
- * Returns robots.txt with sitemap references and crawling instructions
+ * Robots.txt Generation for SEO
+ * Task T033: Dynamic robots.txt with sitemap references
+ * Phase 3.5 Polish & Validation: Search engine guidance
  */
 
 import type { APIRoute } from 'astro';
-import { generateRobotsTxt } from '../lib/seo/sitemap';
+import { zipNavigationSEOService } from '../lib/seo/zip-navigation-seo';
 
 export const GET: APIRoute = async () => {
-  const robotsTxt = generateRobotsTxt();
+  // Generate robots.txt directives using SEO service
+  const robotsDirectives = zipNavigationSEOService.generateRobotsDirectives();
   
-  return new Response(robotsTxt, {
+  return new Response(robotsDirectives.join('\n'), {
     status: 200,
     headers: {
-      'Content-Type': 'text/plain; charset=utf-8',
-      'Cache-Control': 'public, max-age=86400', // Cache for 24 hours
+      'Content-Type': 'text/plain',
+      'Cache-Control': 'public, max-age=7200, s-maxage=14400' // 2 hour cache, 4 hour CDN
     }
   });
 };

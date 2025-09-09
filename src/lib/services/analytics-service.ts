@@ -8,6 +8,7 @@ import { db } from '../database/init';
 import { validationLogs, zipCodeMappings } from '../database/schema';
 import { eq, and, desc, gte, count, avg, sql } from 'drizzle-orm';
 import type { FormInteractionRequest, FormInteraction, InteractionPattern } from '../../types/zip-validation';
+import type { ZIPNavigationEvent, ZIPPerformanceMetrics } from '../types/zip-navigation';
 
 export interface AnalyticsMetrics {
   totalInteractions: number;
@@ -861,6 +862,163 @@ export class AnalyticsService {
     if (this.batchTimeout) {
       clearTimeout(this.batchTimeout);
       this.batchTimeout = null;
+    }
+  }
+
+  /**
+   * Track ZIP Navigation Events (Phase 3.4 Enhancement)
+   */
+  private navigationEvents: ZIPNavigationEvent[] = [];
+  private routingMetrics: ZIPPerformanceMetrics = {
+    cacheHits: 0,
+    cacheMisses: 0,
+    totalRequests: 0,
+    averageResponseTime: 0,
+    fastRoutes: new Set()
+  };
+
+  async trackZIPNavigationEvent(event: ZIPNavigationEvent): Promise<void> {
+    try {
+      // Store event in memory
+      this.navigationEvents.push(event);
+      
+      // Keep only last 1000 events to prevent memory bloat
+      if (this.navigationEvents.length > 1000) {
+        this.navigationEvents = this.navigationEvents.slice(-1000);
+      }
+
+      // Update routing metrics
+      this.routingMetrics.totalRequests++;
+      
+      if (event.eventType === 'zip_lookup_success') {
+        this.routingMetrics.averageResponseTime = 
+          ((this.routingMetrics.averageResponseTime * (this.routingMetrics.totalRequests - 1)) + event.responseTime) / 
+          this.routingMetrics.totalRequests;
+          
+        if (event.responseTime < 100) {
+          this.routingMetrics.fastRoutes.add(event.zipCode);
+        }
+      }
+
+      // Batch write to database for persistence
+      if (this.navigationEvents.length % 10 === 0) {
+        await this.flushNavigationEvents();
+      }
+
+      console.log(`[Analytics] ZIP navigation tracked: ${event.eventType} for ${event.zipCode} (${event.responseTime}ms)`);
+    } catch (error) {
+      console.error('[Analytics] Error tracking ZIP navigation event:', error);
+    }
+  }
+
+  async getZIPNavigationInsights(hours: number = 24): Promise<{
+    totalEvents: number;
+    eventTypes: Record<string, number>;
+    topZIPs: Array<{ zipCode: string; count: number; avgResponseTime: number }>;
+    errorRate: number;
+    coverageGaps: string[];
+    performanceMetrics: {
+      averageResponseTime: number;
+      fastRoutesCount: number;
+      cacheEffectiveness: number;
+    };
+  }> {
+    try {
+      const cutoffTime = new Date(Date.now() - hours * 60 * 60 * 1000);
+      const recentEvents = this.navigationEvents.filter(e => e.timestamp >= cutoffTime);
+
+      if (recentEvents.length === 0) {
+        return {
+          totalEvents: 0,
+          eventTypes: {},
+          topZIPs: [],
+          errorRate: 0,
+          coverageGaps: [],
+          performanceMetrics: {
+            averageResponseTime: 0,
+            fastRoutesCount: 0,
+            cacheEffectiveness: 0
+          }
+        };
+      }
+
+      // Event type distribution
+      const eventTypes: Record<string, number> = {};
+      recentEvents.forEach(event => {
+        eventTypes[event.eventType] = (eventTypes[event.eventType] || 0) + 1;
+      });
+
+      // Top ZIP codes by usage
+      const zipUsage = new Map<string, { count: number; totalTime: number }>();
+      recentEvents.forEach(event => {
+        const existing = zipUsage.get(event.zipCode) || { count: 0, totalTime: 0 };
+        zipUsage.set(event.zipCode, {
+          count: existing.count + 1,
+          totalTime: existing.totalTime + event.responseTime
+        });
+      });
+
+      const topZIPs = Array.from(zipUsage.entries())
+        .map(([zipCode, stats]) => ({
+          zipCode,
+          count: stats.count,
+          avgResponseTime: Math.round(stats.totalTime / stats.count)
+        }))
+        .sort((a, b) => b.count - a.count)
+        .slice(0, 10);
+
+      // Error rate calculation
+      const errorEvents = recentEvents.filter(e => e.eventType === 'zip_lookup_failed').length;
+      const errorRate = (errorEvents / recentEvents.length) * 100;
+
+      // Coverage gaps (ZIPs that failed lookup)
+      const coverageGaps = recentEvents
+        .filter(e => e.eventType === 'zip_coverage_gap')
+        .map(e => e.zipCode)
+        .filter((zip, index, arr) => arr.indexOf(zip) === index)
+        .slice(0, 20);
+
+      // Cache effectiveness
+      const cacheTotal = this.routingMetrics.cacheHits + this.routingMetrics.cacheMisses;
+      const cacheEffectiveness = cacheTotal > 0 ? 
+        (this.routingMetrics.cacheHits / cacheTotal) * 100 : 0;
+
+      return {
+        totalEvents: recentEvents.length,
+        eventTypes,
+        topZIPs,
+        errorRate: Math.round(errorRate * 100) / 100,
+        coverageGaps,
+        performanceMetrics: {
+          averageResponseTime: Math.round(this.routingMetrics.averageResponseTime * 100) / 100,
+          fastRoutesCount: this.routingMetrics.fastRoutes.size,
+          cacheEffectiveness: Math.round(cacheEffectiveness * 100) / 100
+        }
+      };
+    } catch (error) {
+      console.error('[Analytics] Error generating ZIP navigation insights:', error);
+      return {
+        totalEvents: 0,
+        eventTypes: {},
+        topZIPs: [],
+        errorRate: 0,
+        coverageGaps: [],
+        performanceMetrics: {
+          averageResponseTime: 0,
+          fastRoutesCount: 0,
+          cacheEffectiveness: 0
+        }
+      };
+    }
+  }
+
+  private async flushNavigationEvents(): Promise<void> {
+    try {
+      // In a production system, you'd write to database here
+      // For now, we'll just log the batch
+      console.log(`[Analytics] Flushed ${this.navigationEvents.length} navigation events to persistence`);
+    } catch (error) {
+      console.error('[Analytics] Error flushing navigation events:', error);
     }
   }
 

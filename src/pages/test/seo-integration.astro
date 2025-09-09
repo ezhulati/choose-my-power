@@ -1,0 +1,356 @@
+---
+/**
+ * Test Page: SEO Integration Demonstration
+ * Task T033: Integrate SEO service with city pages
+ * Phase 3.5 Polish & Validation: Dynamic SEO metadata integration showcase
+ */
+
+import Layout from '../../layouts/Layout.astro';
+import CityPageSEOIntegration from '../../components/seo/CityPageSEOIntegration';
+---
+
+<Layout title="SEO Integration Test - ChooseMyPower">
+  <main class="bg-gray-50 min-h-screen py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      <!-- Page Header -->
+      <div class="text-center mb-8">
+        <h1 class="text-3xl font-bold text-texas-navy mb-4">
+          SEO Integration Testing
+        </h1>
+        <p class="text-lg text-gray-600">
+          Task T033: Dynamic SEO metadata integration with city electricity plans pages
+        </p>
+        <div class="mt-4 text-sm text-green-600">
+          <span class="bg-green-100 px-3 py-1 rounded-full">Phase 3.5 Polish & Validation</span>
+        </div>
+      </div>
+
+      <!-- Live SEO Demonstration -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-texas-navy mb-6">Live SEO Metadata Application</h2>
+        <div class="bg-gradient-to-r from-texas-navy to-blue-800 text-white p-6 rounded-xl mb-6">
+          <h3 class="text-xl font-semibold mb-2">Dallas Electricity Plans</h3>
+          <p class="text-blue-100">
+            This page demonstrates automatic SEO metadata application. Check the page title, meta tags, and structured data.
+          </p>
+        </div>
+        
+        <!-- SEO Integration Component (applies metadata automatically) -->
+        <CityPageSEOIntegration 
+          client:load 
+          zipCode="75201"
+          cityName="dallas"
+          citySlug="dallas-tx"
+          countyName="Dallas County"
+          marketZone="North"
+          tdspTerritory="oncor"
+          planCount={109}
+          avgRate={12.5}
+          isDeregulated={true}
+          showDebugInfo={true}
+        />
+      </div>
+
+      <!-- Multiple City Examples -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-texas-navy mb-6">Multi-City SEO Examples</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          
+          <!-- Houston Example -->
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">🏙️ Houston (Coast Market)</h3>
+            <div class="text-sm text-gray-600 mb-4">
+              <div>ZIP: 77001 | Market: Coast | TDSP: CenterPoint</div>
+              <div>Plans: 156 | Avg Rate: 11.8¢/kWh | Deregulated: Yes</div>
+            </div>
+            <CityPageSEOIntegration 
+              client:load 
+              zipCode="77001"
+              cityName="houston"
+              citySlug="houston-tx"
+              countyName="Harris County"
+              marketZone="Coast"
+              tdspTerritory="centerpoint"
+              planCount={156}
+              avgRate={11.8}
+              isDeregulated={true}
+              showDebugInfo={false}
+            />
+            <div class="mt-4 p-3 bg-blue-50 rounded-lg">
+              <p class="text-sm text-blue-700">
+                SEO metadata generated and applied automatically. Title includes plan count and average rate.
+              </p>
+            </div>
+          </div>
+
+          <!-- Austin Example -->
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">🎵 Austin (Central Market)</h3>
+            <div class="text-sm text-gray-600 mb-4">
+              <div>ZIP: 78701 | Market: Central | TDSP: Austin Energy</div>
+              <div>Plans: 23 | Avg Rate: 10.2¢/kWh | Deregulated: No</div>
+            </div>
+            <CityPageSEOIntegration 
+              client:load 
+              zipCode="78701"
+              cityName="austin"
+              citySlug="austin-tx"
+              countyName="Travis County"
+              marketZone="Central"
+              tdspTerritory="austin-energy"
+              planCount={23}
+              avgRate={10.2}
+              isDeregulated={false}
+              showDebugInfo={false}
+            />
+            <div class="mt-4 p-3 bg-orange-50 rounded-lg">
+              <p class="text-sm text-orange-700">
+                Municipal utility area with different SEO approach. Structured data reflects non-deregulated status.
+              </p>
+            </div>
+          </div>
+
+          <!-- San Antonio Example -->
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">🌮 San Antonio (South Market)</h3>
+            <div class="text-sm text-gray-600 mb-4">
+              <div>ZIP: 78201 | Market: South | TDSP: CPS Energy</div>
+              <div>Plans: 18 | Avg Rate: 9.8¢/kWh | Deregulated: No</div>
+            </div>
+            <CityPageSEOIntegration 
+              client:load 
+              zipCode="78201"
+              cityName="san-antonio"
+              citySlug="san-antonio-tx"
+              countyName="Bexar County"
+              marketZone="South"
+              tdspTerritory="cps-energy"
+              planCount={18}
+              avgRate={9.8}
+              isDeregulated={false}
+              showDebugInfo={false}
+            />
+            <div class="mt-4 p-3 bg-purple-50 rounded-lg">
+              <p class="text-sm text-purple-700">
+                Municipal utility with competitive options. SEO emphasizes available choices and rates.
+              </p>
+            </div>
+          </div>
+
+          <!-- Fort Worth Example -->
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">🤠 Fort Worth (North Market)</h3>
+            <div class="text-sm text-gray-600 mb-4">
+              <div>ZIP: 76101 | Market: North | TDSP: Oncor</div>
+              <div>Plans: 98 | Avg Rate: 13.1¢/kWh | Deregulated: Yes</div>
+            </div>
+            <CityPageSEOIntegration 
+              client:load 
+              zipCode="76101"
+              cityName="fort-worth"
+              citySlug="fort-worth-tx"
+              countyName="Tarrant County"
+              marketZone="North"
+              tdspTerritory="oncor"
+              planCount={98}
+              avgRate={13.1}
+              isDeregulated={true}
+              showDebugInfo={false}
+            />
+            <div class="mt-4 p-3 bg-green-50 rounded-lg">
+              <p class="text-sm text-green-700">
+                DFW metropolitan area with full deregulation. SEO highlights competitive market options.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO API Testing -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-texas-navy mb-6">SEO API Testing</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          
+          <!-- API Endpoints -->
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">📡 API Endpoints</h3>
+            <div class="space-y-3 text-sm">
+              <div>
+                <strong>City Metadata:</strong>
+                <code class="block bg-gray-100 p-2 rounded mt-1 text-xs">
+                  GET /api/seo/city-metadata?zipCode=75201&cityName=dallas&...
+                </code>
+              </div>
+              <div>
+                <strong>ZIP Lookup:</strong>
+                <code class="block bg-gray-100 p-2 rounded mt-1 text-xs">
+                  GET /api/seo/zip-lookup?zipCode=75201
+                </code>
+              </div>
+              <div>
+                <strong>Sitemap:</strong>
+                <code class="block bg-gray-100 p-2 rounded mt-1 text-xs">
+                  GET /api/seo/sitemap?format=xml
+                </code>
+              </div>
+            </div>
+          </div>
+
+          <!-- Test Buttons -->
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">🧪 Quick Tests</h3>
+            <div class="space-y-3">
+              <button 
+                class="test-api-btn w-full px-4 py-2 bg-texas-red text-white rounded-lg hover:bg-red-700 transition-colors"
+                data-url="/api/seo/city-metadata?zipCode=75201&cityName=dallas&citySlug=dallas-tx&marketZone=North&planCount=109&avgRate=12.5&isDeregulated=true"
+                data-name="Dallas City Metadata"
+              >
+                Test Dallas SEO Metadata
+              </button>
+              <button 
+                class="test-api-btn w-full px-4 py-2 bg-texas-navy text-white rounded-lg hover:bg-blue-800 transition-colors"
+                data-url="/api/seo/zip-lookup?zipCode=77001"
+                data-name="Houston ZIP Lookup"
+              >
+                Test Houston ZIP SEO
+              </button>
+              <button 
+                class="test-api-btn w-full px-4 py-2 bg-texas-gold text-white rounded-lg hover:bg-yellow-600 transition-colors"
+                data-url="/api/seo/sitemap?format=json"
+                data-name="JSON Sitemap"
+              >
+                Test Sitemap Generation
+              </button>
+            </div>
+            
+            <!-- Results Display -->
+            <div id="api-results" class="mt-4 hidden">
+              <h4 class="font-medium text-gray-800 mb-2">API Response:</h4>
+              <pre class="bg-gray-100 p-3 rounded text-xs overflow-x-auto max-h-64"></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Technical Implementation -->
+      <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <h2 class="text-xl font-bold text-texas-navy mb-4">Technical Implementation</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div>
+            <h4 class="font-semibold text-gray-800 mb-3">🎯 SEO Service</h4>
+            <ul class="space-y-1 text-sm text-gray-600">
+              <li>• Dynamic title generation</li>
+              <li>• Meta description optimization</li>
+              <li>• Keyword extraction</li>
+              <li>• Structured data (JSON-LD)</li>
+              <li>• Open Graph tags</li>
+              <li>• Twitter Card support</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="font-semibold text-gray-800 mb-3">🔌 API Integration</h4>
+            <ul class="space-y-1 text-sm text-gray-600">
+              <li>• RESTful API endpoints</li>
+              <li>• Bulk metadata generation</li>
+              <li>• Caching and performance</li>
+              <li>• Error handling</li>
+              <li>• Parameter validation</li>
+              <li>• Response compression</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="font-semibold text-gray-800 mb-3">⚛️ React Integration</h4>
+            <ul class="space-y-1 text-sm text-gray-600">
+              <li>• Custom hooks (useCitySEO)</li>
+              <li>• Automatic metadata application</li>
+              <li>• Document head manipulation</li>
+              <li>• Debug information</li>
+              <li>• Loading states</li>
+              <li>• Error recovery</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  // API Testing functionality
+  function initAPITesting() {
+    document.querySelectorAll('.test-api-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const url = btn.dataset.url;
+        const name = btn.dataset.name;
+        const resultsDiv = document.getElementById('api-results');
+        const resultsContent = resultsDiv?.querySelector('pre');
+        
+        if (!url || !resultsDiv || !resultsContent) return;
+        
+        // Show loading state
+        btn.textContent = 'Testing...';
+        btn.disabled = true;
+        resultsDiv.classList.remove('hidden');
+        resultsContent.textContent = 'Loading...';
+        
+        try {
+          const response = await fetch(url);
+          const data = await response.json();
+          
+          resultsContent.textContent = JSON.stringify(data, null, 2);
+          
+          // Add success/error styling
+          if (data.success) {
+            resultsContent.className = 'bg-green-50 border border-green-200 p-3 rounded text-xs overflow-x-auto max-h-64';
+          } else {
+            resultsContent.className = 'bg-red-50 border border-red-200 p-3 rounded text-xs overflow-x-auto max-h-64';
+          }
+        } catch (error) {
+          resultsContent.textContent = `Error: ${error.message}`;
+          resultsContent.className = 'bg-red-50 border border-red-200 p-3 rounded text-xs overflow-x-auto max-h-64';
+        } finally {
+          btn.textContent = `Test ${name}`;
+          btn.disabled = false;
+        }
+      });
+    });
+  }
+
+  // Initialize on load
+  document.addEventListener('DOMContentLoaded', initAPITesting);
+</script>
+
+<style>
+  /* Ensure proper styling for code blocks */
+  code {
+    font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
+  }
+  
+  /* Loading state for buttons */
+  button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  /* Better scrollbars for code blocks */
+  pre {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e0 #f7fafc;
+  }
+  
+  pre::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+  
+  pre::-webkit-scrollbar-track {
+    background: #f7fafc;
+  }
+  
+  pre::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 3px;
+  }
+</style>

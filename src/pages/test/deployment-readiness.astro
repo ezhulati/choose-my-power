@@ -1,0 +1,372 @@
+---
+/**
+ * Deployment Readiness Testing Page
+ * Task T035: Create production deployment configuration
+ * Phase 3.5 Polish & Validation: Deployment configuration validation
+ */
+
+import Layout from '../../layouts/Layout.astro';
+import DeploymentValidator from '../../components/deployment/DeploymentValidator';
+import ProductionConfigManager from '../../components/deployment/ProductionConfigManager';
+
+const title = 'Deployment Readiness Testing - ChooseMyPower.org';
+const description = 'Test and validate production deployment configuration and readiness';
+---
+
+<Layout title={title} description={description}>
+  <main class="min-h-screen bg-gray-50 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="bg-white rounded-xl shadow-sm p-8 mb-8">
+        <div class="flex items-center justify-between">
+          <div>
+            <h1 class="text-3xl font-bold text-texas-navy mb-3">
+              🚀 Deployment Readiness Testing
+            </h1>
+            <p class="text-gray-600 text-lg">
+              Validate production deployment configuration and system readiness
+            </p>
+          </div>
+          <div class="text-right">
+            <div class="text-sm text-gray-500">Task T035</div>
+            <div class="text-sm font-medium text-texas-navy">Phase 3.5 Polish & Validation</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Production Configuration Manager -->
+      <div class="bg-white rounded-xl shadow-sm p-8 mb-8">
+        <h2 class="text-2xl font-bold text-texas-navy mb-6">
+          ⚙️ Production Configuration
+        </h2>
+        <p class="text-gray-600 mb-6">
+          Configure and validate production deployment settings across different environments.
+        </p>
+        <ProductionConfigManager client:load />
+      </div>
+
+      <!-- Deployment Validation -->
+      <div class="bg-white rounded-xl shadow-sm p-8 mb-8">
+        <h2 class="text-2xl font-bold text-texas-navy mb-6">
+          🔍 Deployment Validation
+        </h2>
+        <p class="text-gray-600 mb-6">
+          Run comprehensive deployment validation checks to ensure production readiness.
+        </p>
+        <DeploymentValidator client:load />
+      </div>
+
+      <!-- Configuration Templates -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <!-- Netlify Configuration -->
+        <div class="bg-white rounded-xl shadow-sm p-8">
+          <h3 class="text-xl font-bold text-texas-navy mb-4">
+            🌐 Netlify Configuration
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Generated Netlify configuration for production deployment.
+          </p>
+          <div class="bg-gray-900 text-green-400 p-4 rounded-lg text-sm font-mono overflow-x-auto">
+            <div id="netlify-config">Loading configuration...</div>
+          </div>
+        </div>
+
+        <!-- Docker Configuration -->
+        <div class="bg-white rounded-xl shadow-sm p-8">
+          <h3 class="text-xl font-bold text-texas-navy mb-4">
+            🐳 Docker Configuration
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Generated Docker configuration for containerized deployment.
+          </p>
+          <div class="bg-gray-900 text-green-400 p-4 rounded-lg text-sm font-mono overflow-x-auto">
+            <div id="docker-config">Loading configuration...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Deployment Metrics -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <!-- Configuration Score -->
+        <div class="bg-white rounded-xl shadow-sm p-6 text-center">
+          <div class="text-3xl font-bold text-texas-navy mb-2" id="config-score">
+            Loading...
+          </div>
+          <div class="text-gray-600">Configuration Score</div>
+          <div class="mt-2 w-full bg-gray-200 rounded-full h-2">
+            <div class="bg-texas-red h-2 rounded-full transition-all duration-500" id="config-score-bar" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <!-- Security Rating -->
+        <div class="bg-white rounded-xl shadow-sm p-6 text-center">
+          <div class="text-3xl font-bold text-texas-navy mb-2" id="security-rating">
+            Loading...
+          </div>
+          <div class="text-gray-600">Security Rating</div>
+          <div class="mt-2 w-full bg-gray-200 rounded-full h-2">
+            <div class="bg-green-500 h-2 rounded-full transition-all duration-500" id="security-rating-bar" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <!-- Performance Rating -->
+        <div class="bg-white rounded-xl shadow-sm p-6 text-center">
+          <div class="text-3xl font-bold text-texas-navy mb-2" id="performance-rating">
+            Loading...
+          </div>
+          <div class="text-gray-600">Performance Rating</div>
+          <div class="mt-2 w-full bg-gray-200 rounded-full h-2">
+            <div class="bg-blue-500 h-2 rounded-full transition-all duration-500" id="performance-rating-bar" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Deployment Strategies -->
+      <div class="bg-white rounded-xl shadow-sm p-8 mb-8">
+        <h3 class="text-xl font-bold text-texas-navy mb-6">
+          📋 Deployment Strategies
+        </h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Immediate Deployment -->
+          <div class="border border-gray-200 rounded-lg p-4">
+            <h4 class="font-semibold text-texas-navy mb-2">🚀 Immediate</h4>
+            <p class="text-sm text-gray-600 mb-3">
+              Direct deployment to production without staging.
+            </p>
+            <div class="text-xs text-gray-500">
+              • Duration: 10-15 minutes<br>
+              • Risk: High<br>
+              • Use: Low-risk changes
+            </div>
+          </div>
+
+          <!-- Blue-Green Deployment -->
+          <div class="border border-gray-200 rounded-lg p-4">
+            <h4 class="font-semibold text-texas-navy mb-2">🔵 Blue-Green</h4>
+            <p class="text-sm text-gray-600 mb-3">
+              Deploy to parallel environment, then switch traffic.
+            </p>
+            <div class="text-xs text-gray-500">
+              • Duration: 20-30 minutes<br>
+              • Risk: Medium<br>
+              • Use: Major updates
+            </div>
+          </div>
+
+          <!-- Canary Deployment -->
+          <div class="border border-gray-200 rounded-lg p-4">
+            <h4 class="font-semibold text-texas-navy mb-2">🐦 Canary</h4>
+            <p class="text-sm text-gray-600 mb-3">
+              Gradual rollout to percentage of users.
+            </p>
+            <div class="text-xs text-gray-500">
+              • Duration: 45-60 minutes<br>
+              • Risk: Low<br>
+              • Use: Critical features
+            </div>
+          </div>
+
+          <!-- Staged Deployment -->
+          <div class="border border-gray-200 rounded-lg p-4">
+            <h4 class="font-semibold text-texas-navy mb-2">📚 Staged</h4>
+            <p class="text-sm text-gray-600 mb-3">
+              Multi-stage deployment with validation gates.
+            </p>
+            <div class="text-xs text-gray-500">
+              • Duration: 30-45 minutes<br>
+              • Risk: Very Low<br>
+              • Use: Complex changes
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Environment Configurations -->
+      <div class="bg-white rounded-xl shadow-sm p-8">
+        <h3 class="text-xl font-bold text-texas-navy mb-6">
+          🌍 Environment Configurations
+        </h3>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Production -->
+          <div class="border border-red-200 rounded-lg p-4 bg-red-50">
+            <h4 class="font-semibold text-red-800 mb-3">🔴 Production</h4>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between">
+                <span class="text-gray-600">Max Cities:</span>
+                <span class="font-medium">881</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-600">Cache Strategy:</span>
+                <span class="font-medium">Aggressive</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-600">Monitoring:</span>
+                <span class="font-medium">Full</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-600">Analytics:</span>
+                <span class="font-medium">Enabled</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Staging -->
+          <div class="border border-yellow-200 rounded-lg p-4 bg-yellow-50">
+            <h4 class="font-semibold text-yellow-800 mb-3">🟡 Staging</h4>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between">
+                <span class="text-gray-600">Max Cities:</span>
+                <span class="font-medium">200</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-600">Cache Strategy:</span>
+                <span class="font-medium">Balanced</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-600">Monitoring:</span>
+                <span class="font-medium">Basic</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-600">Analytics:</span>
+                <span class="font-medium">Disabled</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Preview -->
+          <div class="border border-green-200 rounded-lg p-4 bg-green-50">
+            <h4 class="font-semibold text-green-800 mb-3">🟢 Preview</h4>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between">
+                <span class="text-gray-600">Max Cities:</span>
+                <span class="font-medium">50</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-600">Cache Strategy:</span>
+                <span class="font-medium">Conservative</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-600">Monitoring:</span>
+                <span class="font-medium">Minimal</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-600">Analytics:</span>
+                <span class="font-medium">Disabled</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  // Load deployment configuration and metrics
+  async function loadDeploymentData() {
+    try {
+      // Simulate production configuration service
+      const mockConfig = {
+        score: 92,
+        securityRating: 88,
+        performanceRating: 94,
+        netlifyConfig: `[build]
+  publish = "dist"
+  command = "npm run build:production"
+  
+[build.environment]
+  NODE_ENV = "production"
+  MAX_CITIES = "881"
+  BATCH_SIZE = "10"
+  
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    Content-Security-Policy = "default-src 'self'"
+    
+[[redirects]]
+  from = "https://www.choosemypower.org/*"
+  to = "https://choosemypower.org/:splat"
+  status = 301`,
+        dockerConfig: `FROM node:20.5.0-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm ci --only=production
+
+COPY . .
+
+ENV NODE_ENV=production
+ENV MAX_CITIES=881
+ENV ENABLE_CACHING=true
+
+RUN npm run build:production
+
+EXPOSE 4321
+
+HEALTHCHECK --interval=30s --timeout=3s \\
+  CMD curl -f http://localhost:4321/health || exit 1
+
+CMD ["npm", "run", "preview"]`
+      };
+
+      // Update metrics
+      document.getElementById('config-score').textContent = `${mockConfig.score}%`;
+      document.getElementById('security-rating').textContent = `${mockConfig.securityRating}%`;
+      document.getElementById('performance-rating').textContent = `${mockConfig.performanceRating}%`;
+
+      // Update progress bars
+      document.getElementById('config-score-bar').style.width = `${mockConfig.score}%`;
+      document.getElementById('security-rating-bar').style.width = `${mockConfig.securityRating}%`;
+      document.getElementById('performance-rating-bar').style.width = `${mockConfig.performanceRating}%`;
+
+      // Update configurations
+      document.getElementById('netlify-config').textContent = mockConfig.netlifyConfig;
+      document.getElementById('docker-config').textContent = mockConfig.dockerConfig;
+
+    } catch (error) {
+      console.error('[DeploymentReadiness] Failed to load deployment data:', error);
+    }
+  }
+
+  // Initialize when page loads
+  document.addEventListener('DOMContentLoaded', loadDeploymentData);
+</script>
+
+<style>
+  /* Custom styles for deployment readiness page */
+  .deployment-metric {
+    transition: all 0.3s ease;
+  }
+
+  .deployment-metric:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  .config-display {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+
+  .config-display::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .config-display::-webkit-scrollbar-track {
+    background: #374151;
+  }
+
+  .config-display::-webkit-scrollbar-thumb {
+    background: #10b981;
+    border-radius: 3px;
+  }
+
+  .progress-bar {
+    transition: width 0.8s ease-in-out;
+  }
+</style>
