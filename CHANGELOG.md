@@ -25,6 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - API endpoints, redirects, SEO canonical URLs, and internal links all standardized
   - Municipal utility URLs: /electricity-plans/austin/municipal-utility/ → /electricity-plans/austin/municipal-utility
   - **IMPACT**: Resolves "This site can't be reached" errors when users enter ZIP codes
+- **BROKEN ZIP NAVIGATE ENDPOINT**: Fixed /api/zip/navigate returning 'ZIP code not found' errors  
+  - Updated endpoint to use same comprehensive ZIP lookup logic as working /api/zip-lookup
+  - Fixed Dallas 75205 and other valid ZIP codes being rejected
+  - Now uses universal fallback system with 943+ ZIP code coverage
+  - Returns clean URLs without trailing slashes: /electricity-plans/dallas
+  - **IMPACT**: Resolves frontend "ZIP Code Error" messages for users
 - **URL FORMAT CLEANUP**: Removed all -tx suffixes from redirect URLs per user requirement
   - Dallas: /electricity-plans/dallas/ (was /electricity-plans/dallas-tx/)
   - Fort Worth: /electricity-plans/fort-worth/ (was /electricity-plans/fort-worth-tx/)

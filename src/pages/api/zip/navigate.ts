@@ -6,9 +6,8 @@
  */
 
 import type { APIRoute } from 'astro';
-import { ZIPValidationService } from '../../../lib/services/zip-validation-service';
-import { TDSPService } from '../../../lib/services/tdsp-service';
-import { AnalyticsService } from '../../../lib/services/analytics-service';
+import { zipToCity, municipalUtilities, getCityFromZip } from '../../../config/tdsp-mapping';
+import { comprehensiveZIPService } from '../../../lib/services/comprehensive-zip-service';
 import type { 
   ZIPNavigationRequest, 
   ZIPNavigationResponse, 
@@ -50,27 +49,13 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    // Initialize services
-    const zipService = new ZIPValidationService();
-    const tdspService = new TDSPService();
-    const analyticsService = new AnalyticsService();
-
-    // Step 1: Validate ZIP code format
-    const formatValidation = zipService.validateZIPFormat(zipCode);
-    if (!formatValidation.isValid) {
-      // Track failed validation
-      await analyticsService.trackZIPValidation({
-        zipCode,
-        success: false,
-        errorCode: formatValidation.errorCode!,
-        validationTime: Date.now() - startTime
-      });
-
+    // Basic ZIP format validation
+    if (!/^\d{5}$/.test(zipCode)) {
       return new Response(JSON.stringify({
         success: false,
-        errorCode: formatValidation.errorCode,
-        error: formatValidation.errorMessage,
-        suggestions: formatValidation.suggestions,
+        errorCode: 'INVALID_FORMAT' as ZIPErrorCode,
+        error: 'ZIP code must be 5 digits',
+        suggestions: ['Enter a valid 5-digit ZIP code'],
         validationTime: Date.now() - startTime
       } as ZIPNavigationResponse), {
         status: 400,
@@ -78,46 +63,81 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    // Step 2: Validate ZIP code is in Texas
-    const texasValidation = await zipService.validateZIPCode(zipCode);
-    if (!texasValidation.isValid) {
-      // Track failed validation
-      await analyticsService.trackZIPValidation({
-        zipCode,
-        success: false,
-        errorCode: texasValidation.errorCode!,
-        validationTime: Date.now() - startTime
-      });
+    // Use the same lookup logic as the working /api/zip-lookup endpoint
+    let citySlug = getCityFromZip(zipCode);
+    let cityDisplayName = '';
+    let isDeregulated = true;
 
-      return new Response(JSON.stringify({
-        success: false,
-        errorCode: texasValidation.errorCode,
-        error: texasValidation.errorMessage,
-        suggestions: texasValidation.suggestions,
-        validationTime: Date.now() - startTime
-      } as ZIPNavigationResponse), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json' }
-      });
+    if (!citySlug) {
+      // Fallback to comprehensive ZIP service
+      try {
+        const universalResult = await comprehensiveZIPService.lookupZIPCode(zipCode);
+        
+        if (universalResult.success) {
+          citySlug = universalResult.citySlug!;
+          cityDisplayName = universalResult.cityDisplayName || universalResult.cityName || '';
+        } else if (universalResult.municipalUtility) {
+          // Handle municipal utility
+          return new Response(JSON.stringify({
+            success: true,
+            redirectUrl: universalResult.redirectUrl!,
+            cityName: universalResult.cityDisplayName || universalResult.cityName || '',
+            citySlug: universalResult.citySlug || '',
+            stateName: 'Texas',
+            stateSlug: 'texas',
+            tdspTerritory: universalResult.utilityName || 'Municipal',
+            serviceTerritory: 'MUNICIPAL',
+            planCount: 0,
+            hasPlans: false,
+            isMunicipalUtility: true,
+            validationTime: Date.now() - startTime,
+            processedAt: new Date().toISOString(),
+            source: 'database'
+          } as ZIPNavigationResponse), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' }
+          });
+        } else {
+          // ZIP not found
+          return new Response(JSON.stringify({
+            success: false,
+            errorCode: 'NOT_FOUND' as ZIPErrorCode,
+            error: universalResult.error || 'ZIP code not found in Texas',
+            suggestions: [
+              'Check if ZIP code is correct',
+              'Texas ZIP codes start with 7',
+              'Try a nearby ZIP code'
+            ],
+            validationTime: Date.now() - startTime
+          } as ZIPNavigationResponse), {
+            status: 400,
+            headers: { 'Content-Type': 'application/json' }
+          });
+        }
+      } catch (error) {
+        return new Response(JSON.stringify({
+          success: false,
+          errorCode: 'NOT_FOUND' as ZIPErrorCode,
+          error: 'ZIP code not found in our service area',
+          suggestions: [
+            'Check if ZIP code is correct',
+            'Try a nearby ZIP code'
+          ],
+          validationTime: Date.now() - startTime
+        } as ZIPNavigationResponse), {
+          status: 400,
+          headers: { 'Content-Type': 'application/json' }
+        });
+      }
     }
 
-    // Step 3: Get city and TDSP territory mapping
-    const cityData = texasValidation.cityData;
-    if (!cityData) {
-      await analyticsService.trackZIPValidation({
-        zipCode,
-        success: false,
-        errorCode: 'NOT_FOUND',
-        validationTime: Date.now() - startTime
-      });
-
+    if (!citySlug) {
       return new Response(JSON.stringify({
         success: false,
         errorCode: 'NOT_FOUND' as ZIPErrorCode,
-        error: `ZIP code ${zipCode} not found in Texas database`,
+        error: 'ZIP code not found in our service area',
         suggestions: [
           'Check if ZIP code is correct',
-          'Texas ZIP codes start with 7',
           'Try a nearby ZIP code'
         ],
         validationTime: Date.now() - startTime
@@ -127,32 +147,29 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    // Step 4: Check if this is a deregulated market or municipal utility
-    const tdspData = await tdspService.getTDSPByZIP(zipCode);
-    
-    // Handle municipal utilities (like Austin) differently  
-    if (!texasValidation.isDeregulated) {
-      // This is a municipal utility - redirect to special page
-      const municipalRedirectUrl = `/texas/${cityData.slug}/municipal-utility`;
-      
-      await analyticsService.trackZIPValidation({
-        zipCode,
-        success: true, // Municipal utility is a valid result, just different flow
-        errorCode: 'MUNICIPAL_UTILITY',
-        cityName: cityData.name,
-        tdspTerritory: texasValidation.tdspData?.name || 'Municipal',
-        validationTime: Date.now() - startTime
-      });
+    // Format city display name if not already set
+    if (!cityDisplayName) {
+      cityDisplayName = citySlug
+        .split('-')
+        .map(word => word === 'tx' ? 'TX' : word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ')
+        .replace(' Tx', ', TX');
+    }
 
+    // Check if this is a municipal utility area
+    if (municipalUtilities[citySlug]) {
+      const utilityInfo = municipalUtilities[citySlug];
+      const municipalRedirectUrl = `/electricity-plans/${citySlug}/municipal-utility`;
+      
       return new Response(JSON.stringify({
         success: true,
         redirectUrl: municipalRedirectUrl,
-        cityName: cityData.name,
-        citySlug: cityData.slug,
+        cityName: cityDisplayName,
+        citySlug: citySlug,
         stateName: 'Texas',
         stateSlug: 'texas',
-        tdspTerritory: texasValidation.tdspData?.name || 'Municipal',
-        serviceTerritory: texasValidation.tdspData?.territory || 'MUNICIPAL',
+        tdspTerritory: utilityInfo.name,
+        serviceTerritory: 'MUNICIPAL',
         planCount: 0,
         hasPlans: false,
         isMunicipalUtility: true,
@@ -161,31 +178,6 @@ export const POST: APIRoute = async ({ request }) => {
         source: 'database'
       } as ZIPNavigationResponse), {
         status: 200,
-        headers: { 'Content-Type': 'application/json' }
-      });
-    }
-    
-    // For deregulated areas, check TDSP data
-    if (!tdspData?.isDeregulated) {
-      await analyticsService.trackZIPValidation({
-        zipCode,
-        success: false,
-        errorCode: 'NOT_DEREGULATED',
-        validationTime: Date.now() - startTime
-      });
-
-      return new Response(JSON.stringify({
-        success: false,
-        errorCode: 'NOT_DEREGULATED' as ZIPErrorCode,
-        error: `ZIP code ${zipCode} is in a regulated electricity market`,
-        suggestions: [
-          'This area is served by a regulated utility',
-          'Deregulated areas in Texas include Houston, Dallas, Fort Worth',
-          'Contact your local utility directly for service'
-        ],
-        validationTime: Date.now() - startTime
-      } as ZIPNavigationResponse), {
-        status: 400,
         headers: { 'Content-Type': 'application/json' }
       });
     }
@@ -233,34 +225,20 @@ export const POST: APIRoute = async ({ request }) => {
       }
     }
 
-    // Step 6: Generate correct redirect URL (FIXES legacy bug!)
-    // OLD WRONG: `/texas/${citySlug}` 
-    // NEW CORRECT: `/electricity-plans/${citySlug}`
-    // FIX: Remove -tx suffix to match route expectations
-    const citySlugWithoutSuffix = cityData.slug.replace(/-tx$/, '');
-    const redirectUrl = `/electricity-plans/${citySlugWithoutSuffix}`;
+    // Generate correct redirect URL (no trailing slash)
+    const redirectUrl = `/electricity-plans/${citySlug}`;
 
-    // Step 7: Track successful validation
+    // Return success response
     const validationTime = Date.now() - startTime;
-    await analyticsService.trackZIPValidation({
-      zipCode,
-      success: true,
-      cityName: cityData.name,
-      tdspTerritory: texasValidation.tdspData?.name || 'Unknown',
-      planCount,
-      validationTime
-    });
-
-    // Step 8: Return success response
     const response: ZIPNavigationResponse = {
       success: true,
       redirectUrl,
-      cityName: cityData.name,
-      citySlug: cityData.slug,
+      cityName: cityDisplayName,
+      citySlug: citySlug,
       stateName: 'Texas',
       stateSlug: 'texas',
-      tdspTerritory: texasValidation.tdspData?.name || 'Unknown',
-      serviceTerritory: texasValidation.tdspData?.territory || 'Unknown',
+      tdspTerritory: 'Oncor',
+      serviceTerritory: 'ERCOT',
       planCount: validatePlansAvailable ? planCount : undefined,
       hasPlans: validatePlansAvailable ? planCount > 0 : undefined,
       validationTime,
