@@ -72,7 +72,7 @@ export const ZIPCodeLookupForm: React.FC<ZIPCodeLookupFormProps> = ({
       const startTime = Date.now();
 
       // Use the working ZIP lookup service
-      const response = await fetch(`/api/zip-lookup?zip=${zipCode}`, {
+      const response = await fetch(`/api/zip-lookup?zip=${encodeURIComponent(zipCode)}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -84,25 +84,45 @@ export const ZIPCodeLookupForm: React.FC<ZIPCodeLookupFormProps> = ({
 
       // Store performance data for display
       setPerformanceData({
-        responseTime: data.responseTime,
-        cached: data.cached,
-        cacheSource: response.headers.get('X-Cache-Source') || undefined
+        responseTime: data.validationTime || clientResponseTime,
+        cached: false, // No cache in new API yet
+        cacheSource: undefined
       });
 
-      if (data.success && data.data) {
+      if (data.success) {
         // Success - redirect to plans page
         if (onSuccess) {
-          onSuccess(data);
+          onSuccess({
+            success: true,
+            data: {
+              zipCode: zipCode,
+              redirectUrl: data.redirectUrl,
+              cityName: data.cityDisplayName,
+              marketStatus: 'active'
+            }
+          });
         } else {
-          window.location.href = data.data.redirectUrl;
+          window.location.href = data.redirectUrl;
         }
       } else {
         // Handle error response with enhanced recovery information
-        const errorMsg = data.error?.message || 'ZIP code validation failed';
+        const errorMsg = data.error || 'Unable to process your ZIP code right now. Please try again or browse all electricity plans →';
         setError(errorMsg);
-        setSuggestions(data.error?.suggestions || []);
-        setRecoveryActions(data.error?.recoveryActions || []);
-        setHelpfulTips(data.error?.helpfulTips || []);
+        
+        // Handle municipal utility case
+        if (data.municipalUtility) {
+          setHelpfulTips([
+            `${data.cityDisplayName} is served by ${data.utilityName}`,
+            'Municipal utility customers cannot choose their electricity provider',
+            'Browse our educational resources to learn more about electricity markets'
+          ]);
+        } else {
+          setHelpfulTips([
+            'Try entering a different ZIP code',
+            'Browse all electricity plans by city',
+            'Contact us if you believe this ZIP code should be supported'
+          ]);
+        }
         
         if (onError) {
           onError(errorMsg);

@@ -27,6 +27,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Resolves build failure: "Could not resolve ./zip-coverage-schema.ts from src/lib/database/init.ts"  
   - File contains ZIP coverage schema definitions and TDSP initialization data
   - Critical for database initialization in production environment
+- **ZIP LOOKUP COMPONENT ERROR**: Fixed ZIPCodeLookupForm using non-existent API endpoint
+  - Corrected API call from `/api/zip/navigate` to working `/api/zip-lookup` endpoint
+  - Updated response handling to match actual API response format with cityDisplayName
+  - Improved error messages and user experience with helpful tips for recovery
+  - Resolves "Unable to process your ZIP code right now" error affecting all ZIP lookup forms
 
 ### Added
 - **FRESH ELECTRICITY PLAN DATA**: Complete data refresh for all 882 Texas deregulated cities
