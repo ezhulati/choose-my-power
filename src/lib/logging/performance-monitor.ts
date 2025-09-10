@@ -200,7 +200,7 @@ class PerformanceMonitor {
     if (url.includes('.css')) return 'stylesheet';
     if (url.match(/\.(jpg|jpeg|png|gif|webp|svg)$/i)) return 'image';
     if (url.match(/\.(woff|woff2|ttf|eot)$/i)) return 'font';
-    if (url.includes('/api/')) return 'api';
+    if (url.includes('/api')) return 'api';
     return 'other';
   }
 

@@ -719,7 +719,7 @@ function generateEnhancedNavigationLinks(currentCity: string, currentFilters: st
       seasonality: 'year-round'
     },
     {
-      url: `/texas/${citySlug}/`,
+      url: `/texas/${citySlug}`,
       anchorText: `${cityName} Electricity Plans`,
       title: `All electricity plans available in ${cityName}, Texas`,
       context: 'navigation', 
@@ -729,7 +729,7 @@ function generateEnhancedNavigationLinks(currentCity: string, currentFilters: st
       seasonality: 'year-round'
     },
     {
-      url: '/texas/',
+      url: '/texas',
       anchorText: 'Texas Electricity Market',
       title: 'Compare electricity plans across all Texas cities',
       context: 'navigation',
@@ -743,7 +743,7 @@ function generateEnhancedNavigationLinks(currentCity: string, currentFilters: st
   // Add filter-specific navigation for high-value pages
   if (currentFilters.length > 0) {
     links.push({
-      url: `/texas/${citySlug}/`,
+      url: `/texas/${citySlug}`,
       anchorText: `All ${cityName} Plans`,
       title: `View all electricity plans in ${cityName}`,
       context: 'navigation',
@@ -776,7 +776,7 @@ function generateEnhancedContextualLinks(
     if (filterCombo.filters.length > 0 && !arraysEqual(filterCombo.filters, currentFilters)) {
       const filterPath = filterCombo.filters.join('/');
       links.push({
-        url: `/texas/${citySlug}/${filterPath}/`,
+        url: `/texas/${citySlug}/${filterPath}`,
         anchorText: `${cityName} ${filterCombo.anchor}`,
         title: `${filterCombo.title} in ${cityName}`,
         context: 'contextual',
@@ -825,7 +825,7 @@ function generateEnhancedBreadcrumbLinks(currentCity: string, currentFilters: st
       seasonality: 'year-round'
     },
     {
-      url: '/texas/',
+      url: '/texas',
       anchorText: 'Texas',
       title: 'Texas electricity plans and providers',
       context: 'breadcrumb',
@@ -835,7 +835,7 @@ function generateEnhancedBreadcrumbLinks(currentCity: string, currentFilters: st
       seasonality: 'year-round'
     },
     {
-      url: `/texas/${citySlug}/`,
+      url: `/texas/${citySlug}`,
       anchorText: cityName,
       title: `${cityName} electricity plans and rates`,
       context: 'breadcrumb',
@@ -1023,7 +1023,7 @@ function generateAdvancedSemanticLinks(
         const filterName = formatFilterName(filter);
         
         links.push({
-          url: `/texas/${currentCity}/${allFilters.join("/")}/`,
+          url: `/texas/${currentCity}/${allFilters.join("/")}`,
           anchorText: `${cityName} ${filterName.toLowerCase()} plans`,
           title: `${filterName} electricity plans in ${cityName}`,
           context: "semantic",
@@ -1059,7 +1059,7 @@ function generateEnhancedCompetitiveLinks(
     const altFilterName = formatFilterName(altFilter.name);
     
     links.push({
-      url: `/texas/${currentCity}/${altFilter.filters.join("/")}/`,
+      url: `/texas/${currentCity}/${altFilter.filters.join("/")}`,
       anchorText: `${cityName} ${altFilterName.toLowerCase()} options`,
       title: `Alternative: ${altFilterName} electricity plans in ${cityName}`,
       context: "competitive",

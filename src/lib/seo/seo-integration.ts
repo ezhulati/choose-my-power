@@ -473,7 +473,7 @@ export class SEOTestSuite {
         topProvider: 'Reliant Energy',
         tdspName: 'Oncor',
         population: 1300000,
-        currentPath: '/electricity-plans/dallas/12-month/',
+        currentPath: '/electricity-plans/dallas/12-month',
         pageType: 'single-filter',
         priority: 0.8
       };
@@ -530,7 +530,7 @@ export class SEOTestSuite {
         topProvider: 'Test Provider',
         tdspName: 'Test TDSP',
         population: 100000 + i * 10000,
-        currentPath: `/electricity-plans/test-city-${i}/12-month/`,
+        currentPath: `/electricity-plans/test-city-${i}/12-month`,
         pageType: 'single-filter',
         priority: 0.8
       }));
@@ -573,7 +573,7 @@ export class SEOTestSuite {
         topProvider: 'Test Provider',
         tdspName: 'Test TDSP',
         population: 500000,
-        currentPath: '/electricity-plans/cache-test/fixed-rate/',
+        currentPath: '/electricity-plans/cache-test/fixed-rate',
         pageType: 'single-filter',
         priority: 0.7
       };

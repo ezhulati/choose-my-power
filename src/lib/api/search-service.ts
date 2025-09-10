@@ -356,7 +356,7 @@ export class SearchService {
         type: 'city' as const,
         title: result.item.name,
         subtitle: `${result.item.zone} Texas • ${result.item.total_plans || 0} plans available`,
-        url: `/texas/${result.item.slug}/`,
+        url: `/texas/${result.item.slug}`,
         score: 1 - (result.score || 0),
         metadata: {
           population: result.item.population,
@@ -388,7 +388,7 @@ export class SearchService {
         type: 'provider' as const,
         title: result.item.name,
         subtitle: `${result.item.total_plans} plans • Serves ${result.item.service_areas.length} cities`,
-        url: `/providers/${result.item.name.toLowerCase().replace(/\s+/g, '-')}/`,
+        url: `/providers/${result.item.name.toLowerCase().replace(/\s+/g, '-')}`,
         score: 1 - (result.score || 0),
         metadata: {
           legalName: result.item.legal_name,

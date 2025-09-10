@@ -127,7 +127,7 @@ export class ZIPValidationService {
         success: true,
         data: {
           zipCode,
-          redirectUrl: `/electricity-plans/${zipMapping.citySlug}/`,
+          redirectUrl: `/electricity-plans/${zipMapping.citySlug}`,
           cityName: zipMapping.cityName,
           marketStatus: 'active' // Most deregulated areas are active
         }
@@ -283,7 +283,7 @@ export class ZIPValidationService {
         name: mapping.cityName,
         slug: mapping.citySlug,
         county: mapping.countyName,
-        redirectUrl: `/electricity-plans/${mapping.citySlug}/`
+        redirectUrl: `/electricity-plans/${mapping.citySlug}`
       },
       tdspData: {
         name: this.getTDSPDisplayName(mapping.tdspTerritory),

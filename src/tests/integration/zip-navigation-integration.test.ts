@@ -46,7 +46,7 @@ describe('ZIP Navigation Integration Tests', () => {
         expect(result.data).toBeDefined();
         expect(result.data!.zipCode).toBe(testCase.zip);
         expect(result.data!.citySlug).toBe(testCase.expectedSlug);
-        expect(result.data!.redirectUrl).toBe(`/electricity-plans/${testCase.expectedSlug}/`);
+        expect(result.data!.redirectUrl).toBe(`/electricity-plans/${testCase.expectedSlug}`);
         expect(result.data!.planCount).toBeGreaterThan(0);
         expect(result.responseTime).toBeDefined();
         expect(result.responseTime).toBeGreaterThanOrEqual(0);

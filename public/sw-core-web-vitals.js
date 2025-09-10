@@ -78,8 +78,8 @@ self.addEventListener('install', (event) => {
         const dynamicCache = await caches.open(CACHE_NAMES.dynamic);
         const importantPages = [
           '/texas',
-          '/electricity-plans/dallas-tx/',
-          '/electricity-plans/houston-tx/',
+          '/electricity-plans/dallas-tx',
+          '/electricity-plans/houston-tx',
           '/compare'
         ];
         
@@ -383,7 +383,7 @@ function isNetworkError(error) {
  * Get appropriate cache name for asset
  */
 function getCacheNameForAsset(request) {
-  if (request.url.includes('/fonts/')) {
+  if (request.url.includes('/fonts')) {
     return CACHE_NAMES.fonts;
   }
   if (isImageRequest(request)) {
@@ -419,8 +419,8 @@ function isExpired(response) {
 function getMaxAgeForResponse(response) {
   const url = response.url;
   
-  if (url.includes('/api/')) return CACHE_EXPIRATION.api;
-  if (url.includes('/fonts/')) return CACHE_EXPIRATION.fonts;
+  if (url.includes('/api')) return CACHE_EXPIRATION.api;
+  if (url.includes('/fonts')) return CACHE_EXPIRATION.fonts;
   if (isImageRequest({ url })) return CACHE_EXPIRATION.images;
   if (isStaticAsset({ url })) return CACHE_EXPIRATION.static;
   

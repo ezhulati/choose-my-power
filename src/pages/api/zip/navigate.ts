@@ -235,10 +235,10 @@ export const POST: APIRoute = async ({ request }) => {
 
     // Step 6: Generate correct redirect URL (FIXES legacy bug!)
     // OLD WRONG: `/texas/${citySlug}` 
-    // NEW CORRECT: `/electricity-plans/${citySlug}/`
+    // NEW CORRECT: `/electricity-plans/${citySlug}`
     // FIX: Remove -tx suffix to match route expectations
     const citySlugWithoutSuffix = cityData.slug.replace(/-tx$/, '');
-    const redirectUrl = `/electricity-plans/${citySlugWithoutSuffix}/`;
+    const redirectUrl = `/electricity-plans/${citySlugWithoutSuffix}`;
 
     // Step 7: Track successful validation
     const validationTime = Date.now() - startTime;

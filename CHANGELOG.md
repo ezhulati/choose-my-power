@@ -18,6 +18,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **ZIP LOOKUP FORM API MISMATCH**: Fixed frontend form using wrong API endpoint causing data inconsistencies
   - ZIPCodeLookupForm.tsx: Changed from POST /api/zip/route to GET /api/zip-lookup
   - Resolves issue where form used limited data source instead of comprehensive city mappings
+- **TRAILING SLASH NAVIGATION ERRORS**: Removed trailing slashes from ALL internal URLs sitewide
+  - Fixed 110 trailing slash instances across 35+ files using automated script
+  - ZIP lookup navigation: /electricity-plans/dallas/ → /electricity-plans/dallas
+  - Faceted navigation URLs: /electricity-plans/city/filter/ → /electricity-plans/city/filter
+  - API endpoints, redirects, SEO canonical URLs, and internal links all standardized
+  - Municipal utility URLs: /electricity-plans/austin/municipal-utility/ → /electricity-plans/austin/municipal-utility
+  - **IMPACT**: Resolves "This site can't be reached" errors when users enter ZIP codes
 - **URL FORMAT CLEANUP**: Removed all -tx suffixes from redirect URLs per user requirement
   - Dallas: /electricity-plans/dallas/ (was /electricity-plans/dallas-tx/)
   - Fort Worth: /electricity-plans/fort-worth/ (was /electricity-plans/fort-worth-tx/)

@@ -828,7 +828,7 @@ export class ComprehensiveZIPService {
         cityName: zipData.city,
         citySlug: cityMapping.slug,
         cityDisplayName: this.formatCityDisplayName(cityMapping.slug),
-        redirectUrl: `/electricity-plans/${cityMapping.slug}/`,
+        redirectUrl: `/electricity-plans/${cityMapping.slug}`,
         county: zipData.county,
         isTexas: true,
         isDeregulated: true,

@@ -228,7 +228,7 @@ function generateEnhancedBreadcrumbSchema(city: string, filters: string[], baseU
       "@type": "ListItem",
       "position": 3,
       "name": cityName,
-      "item": `${baseUrl}/texas/${city}/`,
+      "item": `${baseUrl}/texas/${city}`,
       "@id": `${baseUrl}/texas/${city}/#main`,
       "description": `Electricity plans and rates in ${cityName}, Texas`
     }
@@ -242,7 +242,7 @@ function generateEnhancedBreadcrumbSchema(city: string, filters: string[], baseU
       "@type": "ListItem",
       "position": 4 + index,
       "name": filterName,
-      "item": `${baseUrl}/texas/${city}/${filterPath}/`,
+      "item": `${baseUrl}/texas/${city}/${filterPath}`,
       "@id": `${baseUrl}/texas/${city}/${filterPath}/#main`,
       "description": `${filterName} electricity plans in ${cityName}`
     });
@@ -369,7 +369,7 @@ function generateLocalBusinessSchema(city: string, tdspInfo: any, planCount: num
     "@type": "LocalBusiness",
     "name": `Electricity Plans in ${cityName}`,
     "description": `Compare electricity plans and rates in ${cityName}, Texas. ${planCount} plans available from top providers.`,
-    "url": `https://choosemypower.org/texas/${city}/`,
+    "url": `https://choosemypower.org/texas/${city}`,
     "address": {
       "@type": "PostalAddress",
       "addressLocality": cityName,
@@ -941,7 +941,7 @@ function generateEnhancedLocalBusinessSchema(options: {
     "@id": `https://choosemypower.org/texas/${city}/#business`,
     "name": `Electricity Plans in ${cityName}`,
     "description": `Compare electricity plans and rates in ${cityName}, Texas. ${planCount} plans available from top-rated providers.`,
-    "url": `https://choosemypower.org/texas/${city}/`,
+    "url": `https://choosemypower.org/texas/${city}`,
     "address": {
       "@type": "PostalAddress",
       "addressLocality": cityName,

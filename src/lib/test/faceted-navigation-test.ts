@@ -147,7 +147,7 @@ export class FacetedNavigationTester {
 
     try {
       const url = urlStateManager.buildUrl('dallas-tx', filterState);
-      const expected = '/electricity-plans/dallas/12-month/24-month/fixed-rate/green-energy/no-deposit/';
+      const expected = '/electricity-plans/dallas/12-month/24-month/fixed-rate/green-energy/no-deposit';
       
       this.results.push({
         component: 'URL State Management',

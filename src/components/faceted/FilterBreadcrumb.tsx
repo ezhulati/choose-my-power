@@ -47,7 +47,7 @@ const FilterBreadcrumb: React.FC<FilterBreadcrumbProps> = ({
       label: 'Texas Electricity',
       type: 'navigation',
       value: null,
-      url: '/texas/',
+      url: '/texas',
       removable: false
     },
     {

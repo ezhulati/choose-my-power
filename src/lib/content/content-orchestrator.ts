@@ -219,7 +219,7 @@ export class ContentOrchestrator {
         localContext: this.enhanceLocalContext(template.localContext, context)
       },
       seo: {
-        canonicalUrl: `https://choosemypower.org/texas/${context.city}/`,
+        canonicalUrl: `https://choosemypower.org/texas/${context.city}`,
         ogImage: `/images/og/cities/${context.city}-electricity-plans.png`,
         structuredData: this.generateLocalBusinessSchema(context)
       }
@@ -260,7 +260,7 @@ export class ContentOrchestrator {
         localContext: template.localContext
       },
       seo: {
-        canonicalUrl: `https://choosemypower.org/electricity-plans/${context.city}/${filterPath}/`,
+        canonicalUrl: `https://choosemypower.org/electricity-plans/${context.city}/${filterPath}`,
         ogImage: `/images/og/filters/${filters.join('-')}-${context.city}.png`,
         structuredData: this.generateProductListingSchema(context, filters)
       }
@@ -289,7 +289,7 @@ export class ContentOrchestrator {
         localContext: template.localContext
       },
       seo: {
-        canonicalUrl: `https://choosemypower.org/providers/${context.provider}/`,
+        canonicalUrl: `https://choosemypower.org/providers/${context.provider}`,
         ogImage: `/images/og/providers/${context.provider}-electricity-plans.png`,
         structuredData: this.generateOrganizationSchema(context)
       }
@@ -460,7 +460,7 @@ export class ContentOrchestrator {
         localContext: `${cityName} residents have multiple electricity provider options in the deregulated Texas market.`
       },
       seo: {
-        canonicalUrl: `https://choosemypower.org/texas/${citySlug}/`,
+        canonicalUrl: `https://choosemypower.org/texas/${citySlug}`,
         ogImage: '/images/og/fallback-texas-electricity.png',
         structuredData: {}
       }
@@ -504,7 +504,7 @@ export class ContentOrchestrator {
         localContext: `${providerName} is a trusted electricity provider serving ${cityName} residents.`
       },
       seo: {
-        canonicalUrl: `https://choosemypower.org/providers/${providerSlug}/`,
+        canonicalUrl: `https://choosemypower.org/providers/${providerSlug}`,
         ogImage: '/images/og/fallback-provider.png',
         structuredData: {}
       }
@@ -536,7 +536,7 @@ export class ContentOrchestrator {
       "@type": "LocalBusiness",
       "name": `${cityName} Electricity Plans - ChooseMyPower.org`,
       "description": `Compare electricity plans and rates in ${cityName}, Texas`,
-      "url": `https://choosemypower.org/texas/${context.city}/`,
+      "url": `https://choosemypower.org/texas/${context.city}`,
       "areaServed": {
         "@type": "City",
         "name": cityName,
@@ -551,7 +551,7 @@ export class ContentOrchestrator {
       "@type": "ItemList",
       "name": `${filters.join(' ')} Electricity Plans`,
       "numberOfItems": context.planCount,
-      "url": `https://choosemypower.org/electricity-plans/${context.city}/${filters.join('/')}/`
+      "url": `https://choosemypower.org/electricity-plans/${context.city}/${filters.join('/')}`
     };
   }
 
@@ -560,7 +560,7 @@ export class ContentOrchestrator {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": context.provider,
-      "url": `https://choosemypower.org/providers/${context.provider}/`
+      "url": `https://choosemypower.org/providers/${context.provider}`
     };
   }
 

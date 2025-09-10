@@ -417,9 +417,9 @@ export class SEOMonitoringSystem {
 
   private getSamplePages(): Array<{ url: string; city: string; filters: string[] }> {
     return [
-      { url: '/texas/houston/', city: 'houston-tx', filters: [] },
-      { url: '/texas/dallas/12-month/', city: 'dallas-tx', filters: ['12-month'] },
-      { url: '/texas/austin/fixed-rate/', city: 'austin-tx', filters: ['fixed-rate'] }
+      { url: '/texas/houston', city: 'houston-tx', filters: [] },
+      { url: '/texas/dallas/12-month', city: 'dallas-tx', filters: ['12-month'] },
+      { url: '/texas/austin/fixed-rate', city: 'austin-tx', filters: ['fixed-rate'] }
     ];
   }
 

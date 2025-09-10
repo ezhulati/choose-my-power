@@ -150,7 +150,7 @@ export class CDNEdgeOptimization {
       // Edge optimization
       enableEdgeComputing: true,
       edgeRegions: ['us-east-1', 'us-west-1', 'eu-west-1', 'ap-southeast-1'],
-      priorityRoutes: ['/', '/texas/', '/compare/'],
+      priorityRoutes: ['/', '/texas', '/compare'],
       geoRoutingEnabled: true,
       
       // Purge configuration

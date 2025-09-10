@@ -247,7 +247,7 @@ export const GET: APIRoute = async ({ request }) => {
       return new Response(null, {
         status: 302,
         headers: {
-          'Location': `/electricity-plans/${citySlug}/`,
+          'Location': `/electricity-plans/${citySlug}`,
           'Cache-Control': 'public, max-age=86400'
         }
       });
@@ -259,7 +259,7 @@ export const GET: APIRoute = async ({ request }) => {
       zipCode,
       city: citySlug,
       cityDisplayName,
-      redirectUrl: `/electricity-plans/${citySlug}/`,
+      redirectUrl: `/electricity-plans/${citySlug}`,
       municipalUtility: false
     } as ZipLookupResponse), {
       status: 200,

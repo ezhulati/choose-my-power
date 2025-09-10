@@ -168,7 +168,7 @@ const PlanResultsGrid: React.FC<PlanResultsGridProps> = ({
             </p>
             <Button
               variant="texas-primary"
-              onClick={() => window.location.href = `/electricity-plans/${citySlug}/`}
+              onClick={() => window.location.href = `/electricity-plans/${citySlug}`}
               className="mt-4"
             >
               Clear All Filters

@@ -182,7 +182,7 @@ export class CriticalCSSExtractor {
       ...this.getBaseCriticalStyles(),
       
       // City-specific hero
-      '.city-hero{background:linear-gradient(135deg,rgba(0,40,104,0.9),rgba(30,64,175,0.9)),url("/images/cities/' + cityName.toLowerCase().replace(/\s+/g, '-') + '-clean.webp");background-size:cover;background-position:center}',
+      '.city-hero{background:linear-gradient(135deg,rgba(0,40,104,0.9),rgba(30,64,175,0.9)),url("/images/cities' + cityName.toLowerCase().replace(/\s+/g, '-') + '-clean.webp");background-size:cover;background-position:center}',
       
       // Plan grid layout (prevent CLS)
       '.plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin:2rem 0}',

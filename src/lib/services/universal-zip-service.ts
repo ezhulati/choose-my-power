@@ -452,7 +452,7 @@ export class UniversalZIPService {
         cityName: zipInfo.cityName,
         citySlug: geoMapping.citySlug,
         cityDisplayName: this.formatCityDisplayName(geoMapping.citySlug),
-        redirectUrl: `/electricity-plans/${geoMapping.citySlug}/`,
+        redirectUrl: `/electricity-plans/${geoMapping.citySlug}`,
         county: zipInfo.county,
         isTexas: true,
         isDeregulated: true,

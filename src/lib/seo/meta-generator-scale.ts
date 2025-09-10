@@ -682,8 +682,8 @@ function generateBreadcrumbData(city: string, filters: string[]): BreadcrumbItem
   
   const breadcrumbs: BreadcrumbItem[] = [
     { name: 'Home', url: '/', position: 1 },
-    { name: 'Texas', url: '/texas/', position: 2 },
-    { name: cityName, url: `/texas/${citySlug}/`, position: 3 }
+    { name: 'Texas', url: '/texas', position: 2 },
+    { name: cityName, url: `/texas/${citySlug}`, position: 3 }
   ];
   
   // Add filter breadcrumbs
@@ -691,7 +691,7 @@ function generateBreadcrumbData(city: string, filters: string[]): BreadcrumbItem
     const filterPath = filters.slice(0, index + 1).join('/');
     breadcrumbs.push({
       name: formatFilterName(filter),
-      url: `/texas/${citySlug}/${filterPath}/`,
+      url: `/texas/${citySlug}/${filterPath}`,
       position: 4 + index
     });
   });

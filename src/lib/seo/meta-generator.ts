@@ -255,7 +255,7 @@ function generateSchemaMarkup(options: FacetedMetaOptions): object[] {
   const breadcrumbs = [
     { name: 'Home', url: 'https://choosemypower.org' },
     { name: 'Electricity Plans', url: 'https://choosemypower.org/electricity-plans/' },
-    { name: cityName, url: `https://choosemypower.org/electricity-plans/${city}/` },
+    { name: cityName, url: `https://choosemypower.org/electricity-plans/${city}` },
   ];
 
   // Add filter breadcrumbs
@@ -264,7 +264,7 @@ function generateSchemaMarkup(options: FacetedMetaOptions): object[] {
     currentPath += `/${filter}`;
     breadcrumbs.push({
       name: formatFilterName(filter),
-      url: `https://choosemypower.org/electricity-plans/${currentPath}/`
+      url: `https://choosemypower.org/electricity-plans/${currentPath}`
     });
   });
 
@@ -285,7 +285,7 @@ function generateSchemaMarkup(options: FacetedMetaOptions): object[] {
     '@type': 'WebPage',
     name: `Electricity Plans in ${cityName}`,
     description: `Compare ${planCount} electricity plans in ${cityName}. Find competitive rates from licensed electricity companies.`,
-    url: `https://choosemypower.org/electricity-plans/${city}/${filters.join('/')}/`,
+    url: `https://choosemypower.org/electricity-plans/${city}/${filters.join('/')}`,
     mainEntity: {
       '@type': 'Service',
       name: 'Electricity Plan Comparison',
@@ -313,10 +313,10 @@ function generateSchemaMarkup(options: FacetedMetaOptions): object[] {
     schemas.push({
       '@context': 'https://schema.org',
       '@type': 'LocalBusiness',
-      '@id': `https://choosemypower.org/electricity-plans/${city}/`,
+      '@id': `https://choosemypower.org/electricity-plans/${city}`,
       name: `ChooseMyPower.org - ${cityName} Electricity Plans`,
       description: `Compare electricity plans and rates in ${cityName}, Texas. Find the best energy deals from licensed electricity companies.`,
-      url: `https://choosemypower.org/electricity-plans/${city}/`,
+      url: `https://choosemypower.org/electricity-plans/${city}`,
       address: {
         '@type': 'PostalAddress',
         addressLocality: cityName,

@@ -78,7 +78,7 @@ export function determineCanonicalUrl(currentPath: string, filters: string[]): s
     // Rule 1: Deep filter combinations (3+ filters) canonical to 2-filter parent
     {
       pattern: /^\/electricity-plans\/([^\/]+)\/([^\/]+)\/([^\/]+)\/([^\/]+)/,
-      canonicalPath: (match) => `/electricity-plans/${match[1]}/${match[2]}/${match[3]}/`,
+      canonicalPath: (match) => `/electricity-plans/${match[1]}/${match[2]}/${match[3]}`,
       reason: 'Deep combinations canonical to simpler version'
     },
 
@@ -97,7 +97,7 @@ export function determineCanonicalUrl(currentPath: string, filters: string[]): s
           return (aIndex === -1 ? 999 : aIndex) - (bIndex === -1 ? 999 : bIndex);
         });
 
-        return `/electricity-plans/${city}/${sortedFilters[0]}/${sortedFilters[1]}/`;
+        return `/electricity-plans/${city}/${sortedFilters[0]}/${sortedFilters[1]}`;
       },
       reason: 'Three filters canonical to top two priority filters'
     },
@@ -105,14 +105,14 @@ export function determineCanonicalUrl(currentPath: string, filters: string[]): s
     // Rule 3: Low-value filters canonical to city page
     {
       pattern: /^\/electricity-plans\/([^\/]+)\/(time-of-use|business|spanish-plans|weekend-free)\/$/,
-      canonicalPath: (match) => `/electricity-plans/${match[1]}/`,
+      canonicalPath: (match) => `/electricity-plans/${match[1]}`,
       reason: 'Low-value filters canonical to city page'
     },
 
     // Rule 4: Usage-based filters canonical to base filter (usage is not valuable for SEO)
     {
       pattern: /^\/electricity-plans\/([^\/]+)\/([^\/]+)\/(500-kwh|1000-kwh|2000-kwh)\/$/,
-      canonicalPath: (match) => `/electricity-plans/${match[1]}/${match[2]}/`,
+      canonicalPath: (match) => `/electricity-plans/${match[1]}/${match[2]}`,
       reason: 'Usage-based filters not valuable for SEO'
     },
 
@@ -126,21 +126,21 @@ export function determineCanonicalUrl(currentPath: string, filters: string[]): s
     // Rule 6: Complex rate type combinations canonical to simpler version
     {
       pattern: /^\/electricity-plans\/([^\/]+)\/([^\/]+)\/variable-rate\/indexed-rate\/$/,
-      canonicalPath: (match) => `/electricity-plans/${match[1]}/${match[2]}/variable-rate/`,
+      canonicalPath: (match) => `/electricity-plans/${match[1]}/${match[2]}/variable-rate`,
       reason: 'Multiple rate types canonical to primary rate type'
     },
 
     // Rule 7: Duplicate filter types canonical to first occurrence
     {
       pattern: /^\/electricity-plans\/([^\/]+)\/12-month\/24-month\//,
-      canonicalPath: (match) => `/electricity-plans/${match[1]}/12-month/`,
+      canonicalPath: (match) => `/electricity-plans/${match[1]}/12-month`,
       reason: 'Duplicate filter types canonical to first occurrence'
     },
 
     // Rule 8: Invalid combinations canonical to city page
     {
       pattern: /^\/electricity-plans\/([^\/]+)\/.*\/(invalid|test|debug)\//,
-      canonicalPath: (match) => `/electricity-plans/${match[1]}/`,
+      canonicalPath: (match) => `/electricity-plans/${match[1]}`,
       reason: 'Invalid filter combinations canonical to city page'
     },
   ];

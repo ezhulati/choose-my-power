@@ -126,7 +126,7 @@ function getCanonicalDecision(context: CanonicalContext): CanonicalDecision {
   // Rule 1: City pages always self-canonical (highest authority hubs)
   if (filters.length === 0) {
     return {
-      canonicalPath: `/texas/${city}/`,
+      canonicalPath: `/texas/${city}`,
       reason: 'City hub page - highest authority',
       priority: 1.0,
       shouldIndex: true
@@ -138,7 +138,7 @@ function getCanonicalDecision(context: CanonicalContext): CanonicalDecision {
   if (conflictingFilters.length > 0) {
     const primaryFilter = resolveConflictingFilters(conflictingFilters);
     return {
-      canonicalPath: `/texas/${city}/${primaryFilter}/`,
+      canonicalPath: `/texas/${city}/${primaryFilter}`,
       reason: 'Conflicting filters resolved to primary',
       priority: 0.7,
       shouldIndex: false
@@ -160,7 +160,7 @@ function getCanonicalDecision(context: CanonicalContext): CanonicalDecision {
   const seasonalCanonical = getSeasonalCanonical(filters, seasonalContext);
   if (seasonalCanonical) {
     return {
-      canonicalPath: `/texas/${city}/${seasonalCanonical}/`,
+      canonicalPath: `/texas/${city}/${seasonalCanonical}`,
       reason: 'Seasonal canonical optimization',
       priority: 0.6,
       shouldIndex: true
@@ -171,7 +171,7 @@ function getCanonicalDecision(context: CanonicalContext): CanonicalDecision {
   if (filters.length > 2) {
     const parentFilters = getOptimalParentCombination(filters, cityTier);
     return {
-      canonicalPath: `/texas/${city}/${parentFilters.join('/')}/`,
+      canonicalPath: `/texas/${city}/${parentFilters.join('/')}`,
       reason: 'Deep combination canonical to optimal parent',
       priority: 0.3,
       shouldIndex: false
@@ -182,7 +182,7 @@ function getCanonicalDecision(context: CanonicalContext): CanonicalDecision {
   if (filters.length === 2 && cityTier === 3 && cityPop < 50000) {
     const primaryFilter = getPrimaryFilter(filters);
     return {
-      canonicalPath: `/texas/${city}/${primaryFilter}/`,
+      canonicalPath: `/texas/${city}/${primaryFilter}`,
       reason: 'Small city - reduce combination complexity',
       priority: 0.4,
       shouldIndex: false
@@ -192,7 +192,7 @@ function getCanonicalDecision(context: CanonicalContext): CanonicalDecision {
   // Rule 7: Low-search-volume filters canonical to city
   if (filters.length === 1 && isLowSearchVolumeFilter(filters[0], marketData)) {
     return {
-      canonicalPath: `/texas/${city}/`,
+      canonicalPath: `/texas/${city}`,
       reason: 'Low search volume filter canonical to city',
       priority: 0.2,
       shouldIndex: false
@@ -307,9 +307,9 @@ export function getCityCanonicalUrls(city: string): string[] {
   
   return selfCanonicalCombos.map(filters => {
     if (filters.length === 0) {
-      return `${baseUrl}/texas/${city}/`;
+      return `${baseUrl}/texas/${city}`;
     }
-    return `${baseUrl}/texas/${city}/${filters.join('/')}/`;
+    return `${baseUrl}/texas/${city}/${filters.join('/')}`;
   });
 }
 

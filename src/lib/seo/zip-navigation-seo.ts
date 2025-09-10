@@ -59,7 +59,7 @@ export class ZIPNavigationSEOService {
   generateCityPageSEO(zipData: ZIPSEOData): CityPageSEO {
     const { cityName, citySlug, countyName, marketZone, planCount, avgRate, zipCode } = zipData;
     const capitalizedCity = this.capitalizeWords(cityName);
-    const pageUrl = `${this.baseUrl}/electricity-plans/${citySlug}/`;
+    const pageUrl = `${this.baseUrl}/electricity-plans/${citySlug}`;
 
     // Generate dynamic, SEO-optimized title
     const title = this.generateCityTitle(capitalizedCity, planCount, avgRate);
@@ -272,11 +272,11 @@ export class ZIPNavigationSEOService {
       },
       {
         name: `${region} Texas`,
-        url: `${this.baseUrl}/texas/${region.toLowerCase().replace(/\s+/g, '-')}/`
+        url: `${this.baseUrl}/texas/${region.toLowerCase().replace(/\s+/g, '-')}`
       },
       {
         name: `${cityName} Electricity Plans`,
-        url: `${this.baseUrl}/electricity-plans/${citySlug}/`
+        url: `${this.baseUrl}/electricity-plans/${citySlug}`
       }
     ];
   }
@@ -310,7 +310,7 @@ export class ZIPNavigationSEOService {
     priority: number;
   }> {
     return zipMappings.map(mapping => ({
-      url: `${this.baseUrl}/electricity-plans/${mapping.citySlug}/`,
+      url: `${this.baseUrl}/electricity-plans/${mapping.citySlug}`,
       lastmod: mapping.lastValidated.toISOString().split('T')[0],
       changefreq: 'weekly' as const,
       priority: this.calculateSEOPriority(mapping.priority, mapping.isDeregulated)

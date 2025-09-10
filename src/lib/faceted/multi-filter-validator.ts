@@ -164,7 +164,7 @@ export class MultiFilterValidator {
     
     return {
       isValid: validationResult.isValid,
-      url: `/electricity-plans/${city}/${filters.join('/')}/`,
+      url: `/electricity-plans/${city}/${filters.join('/')}`,
       filters,
       warnings: validationResult.warnings,
       errors: validationResult.errors,
@@ -325,7 +325,7 @@ export class MultiFilterValidator {
     const issues: string[] = [];
     
     // Check URL format
-    if (!url.startsWith('/electricity-plans/')) {
+    if (!url.startsWith('/electricity-plans')) {
       issues.push('URL must start with /electricity-plans/');
     }
     

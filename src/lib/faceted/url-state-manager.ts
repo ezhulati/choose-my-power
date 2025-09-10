@@ -407,7 +407,7 @@ export class UrlStateManager {
   getBreadcrumbs(citySlug: string, filterState: FilterState): Array<{ name: string; url: string; active: boolean }> {
     const breadcrumbs = [
       { name: 'Home', url: '/', active: false },
-      { name: 'Texas Electricity', url: '/texas/', active: false },
+      { name: 'Texas Electricity', url: '/texas', active: false },
       { name: `${this.formatCityName(citySlug)} Plans`, url: this.buildUrl(citySlug, {}), active: !this.hasAnyFilters(filterState) }
     ];
 

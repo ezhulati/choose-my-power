@@ -172,7 +172,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     }));
 
     // Build canonical URL
-    const canonicalUrl = `/electricity-plans/${body.citySlug}/${filterSegments.join('/')}/`;
+    const canonicalUrl = `/electricity-plans/${body.citySlug}/${filterSegments.join('/')}`;
 
     // Generate facets if requested
     let facets;
@@ -286,7 +286,7 @@ function buildFilterSegments(filters: Record<string, any>): string[] {
  */
 function buildRemoveFilterUrl(citySlug: string, currentSegments: string[], segmentToRemove: string): string {
   const newSegments = currentSegments.filter(segment => segment !== segmentToRemove);
-  return `/electricity-plans/${citySlug}/${newSegments.join('/')}/`;
+  return `/electricity-plans/${citySlug}/${newSegments.join('/')}`;
 }
 
 /**

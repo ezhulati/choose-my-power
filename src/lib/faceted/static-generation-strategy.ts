@@ -350,7 +350,7 @@ export class StaticGenerationStrategy {
    */
   async getPreBuildUrls(): Promise<string[]> {
     const paths = await this.generateStaticPaths();
-    return paths.map(path => `/electricity-plans/${path.params.path}/`);
+    return paths.map(path => `/electricity-plans/${path.params.path}`);
   }
 
   /**

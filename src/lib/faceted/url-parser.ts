@@ -199,7 +199,7 @@ export function addFilterToUrl(currentPath: string, filterValue: string): string
   }
   
   // Generate new path
-  return `/texas/${city}/${currentFilters.join('/')}/`;
+  return `/texas/${city}/${currentFilters.join('/')}`;
 }
 
 export function removeFilterFromUrl(currentPath: string, filterValue: string): string {
@@ -218,10 +218,10 @@ export function removeFilterFromUrl(currentPath: string, filterValue: string): s
   
   // Generate new path
   if (newFilters.length === 0) {
-    return `/texas/${city}/`;
+    return `/texas/${city}`;
   }
   
-  return `/texas/${city}/${newFilters.join('/')}/`;
+  return `/texas/${city}/${newFilters.join('/')}`;
 }
 
 export function extractFiltersFromPath(path: string): string[] {

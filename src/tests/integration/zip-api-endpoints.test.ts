@@ -44,7 +44,7 @@ describe('ZIP Navigation API Endpoints Integration', () => {
         expect(response.data.success).toBe(true);
         expect(response.data.data.zipCode).toBe(testCase.zip);
         expect(response.data.data.cityName).toBe(testCase.expectedCity);
-        expect(response.data.data.redirectUrl).toContain('/electricity-plans/');
+        expect(response.data.data.redirectUrl).toContain('/electricity-plans');
         expect(response.data.data.planCount).toBeGreaterThan(0);
         expect(response.data.responseTime).toBeGreaterThanOrEqual(0);
         expect(response.data.cached).toBeDefined();

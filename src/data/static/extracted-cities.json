@@ -64,7 +64,7 @@
         }
       },
       {
-        "name": "Create proper URL structure: `/texas/[city-slug]/`",
+        "name": "Create proper URL structure: `/texas/[city-slug]`",
         "slug": "create-proper-url-structure-texascity-slug-tx",
         "section": "Phase 3: Page Generation",
         "tdsp": {
@@ -10769,7 +10769,7 @@
       }
     },
     {
-      "name": "Create proper URL structure: `/texas/[city-slug]/`",
+      "name": "Create proper URL structure: `/texas/[city-slug]`",
       "slug": "create-proper-url-structure-texascity-slug-tx",
       "section": "Phase 3: Page Generation",
       "tdsp": {

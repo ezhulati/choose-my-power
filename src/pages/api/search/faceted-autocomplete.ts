@@ -206,7 +206,7 @@ function getFilterSuggestions(query: string, citySlug?: string): FacetedAutocomp
       label: filter.label,
       description: filter.description,
       category: 'Plan Filters',
-      url: citySlug ? `/electricity-plans/${citySlug}/${filter.pattern}/` : `/electricity-plans/dallas/${filter.pattern}/`,
+      url: citySlug ? `/electricity-plans/${citySlug}/${filter.pattern}` : `/electricity-plans/dallas/${filter.pattern}`,
       count: Math.floor(Math.random() * 200) + 50, // Mock count
       icon: getFilterIcon(filter.pattern)
     }));
@@ -230,7 +230,7 @@ function getProviderSuggestions(query: string, citySlug?: string): FacetedAutoco
       label: provider,
       description: `Plans from ${provider}`,
       category: 'Electricity Providers',
-      url: citySlug ? `/electricity-plans/${citySlug}/${provider.toLowerCase().replace(/\s+/g, '-')}/` : `/providers/${provider.toLowerCase().replace(/\s+/g, '-')}/`,
+      url: citySlug ? `/electricity-plans/${citySlug}/${provider.toLowerCase().replace(/\s+/g, '-')}` : `/providers/${provider.toLowerCase().replace(/\s+/g, '-')}`,
       count: Math.floor(Math.random() * 50) + 10,
       icon: '⚡'
     }));
@@ -260,7 +260,7 @@ function getFeatureSuggestions(query: string, citySlug?: string): FacetedAutocom
       label: feature.label,
       description: feature.desc,
       category: 'Plan Features',
-      url: citySlug ? `/electricity-plans/${citySlug}/${feature.key}/` : `/shop/${feature.key}/`,
+      url: citySlug ? `/electricity-plans/${citySlug}/${feature.key}` : `/shop/${feature.key}`,
       count: Math.floor(Math.random() * 100) + 20,
       icon: '🔋'
     }));
@@ -283,7 +283,7 @@ function getCitySuggestions(query: string): FacetedAutocompleteSuggestion[] {
       label: `${city}, Texas`,
       description: `Electricity plans in ${city}`,
       category: 'Texas Cities',
-      url: `/texas/${city.toLowerCase()}/`,
+      url: `/texas/${city.toLowerCase()}`,
       count: Math.floor(Math.random() * 300) + 100,
       icon: '📍'
     }));

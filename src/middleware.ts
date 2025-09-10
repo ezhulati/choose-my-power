@@ -145,7 +145,7 @@ export async function onRequest(context: APIContext, next: MiddlewareNext) {
   // Handle trailing slash removal for faceted navigation routes
   if (url.pathname !== '/' && url.pathname.endsWith('/')) {
     // Only redirect faceted navigation routes to maintain consistency with trailingSlash: 'never'
-    if (url.pathname.startsWith('/electricity-plans/')) {
+    if (url.pathname.startsWith('/electricity-plans')) {
       const newUrl = new URL(url);
       newUrl.pathname = url.pathname.slice(0, -1); // Remove trailing slash
       
@@ -162,8 +162,8 @@ export async function onRequest(context: APIContext, next: MiddlewareNext) {
 
   // Skip security headers for static assets in development
   if (import.meta.env.DEV && (
-    url.pathname.startsWith('/_astro/') ||
-    url.pathname.startsWith('/images/') ||
+    url.pathname.startsWith('/_astro') ||
+    url.pathname.startsWith('/images') ||
     url.pathname.match(/\.(js|css|png|jpg|jpeg|gif|svg|ico|woff|woff2)$/)
   )) {
     return response;
@@ -182,7 +182,7 @@ export async function onRequest(context: APIContext, next: MiddlewareNext) {
   }
 
   // Input validation for API endpoints
-  if (url.pathname.startsWith('/api/')) {
+  if (url.pathname.startsWith('/api')) {
     try {
       const method = request.method;
       

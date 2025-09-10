@@ -674,10 +674,10 @@ export class ZIPValidationService {
   }
   
   private generateRedirectUrl(cityName?: string): string {
-    if (!cityName) return '/electricity-plans/texas/';
+    if (!cityName) return '/electricity-plans/texas';
     
     const citySlug = cityName.toLowerCase().replace(/\s+/g, '-');
-    return `/electricity-plans/${citySlug}-tx/`;
+    return `/electricity-plans/${citySlug}-tx`;
   }
   
   private async findNearestValidatedZips(zipCode: string): Promise<any[]> {

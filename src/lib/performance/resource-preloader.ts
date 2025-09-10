@@ -95,8 +95,8 @@ export class ResourcePreloader {
         trigger: 'immediate',
         resources: [
           '/texas',
-          '/electricity-plans/dallas/',
-          '/electricity-plans/houston/',
+          '/electricity-plans/dallas',
+          '/electricity-plans/houston',
           // Faceted system assets handled by Astro's module system
         ]
       },
@@ -117,10 +117,10 @@ export class ResourcePreloader {
         priority: 'high',
         trigger: 'immediate',
         resources: [
-          '/electricity-plans/dallas/',
-          '/electricity-plans/houston/',
-          '/electricity-plans/austin-tx/',
-          '/electricity-plans/san-antonio-tx/'
+          '/electricity-plans/dallas',
+          '/electricity-plans/houston',
+          '/electricity-plans/austin-tx',
+          '/electricity-plans/san-antonio-tx'
         ]
       }
     ]);
@@ -139,9 +139,9 @@ export class ResourcePreloader {
         priority: 'medium',
         trigger: 'hover',
         resources: [
-          '/electricity-plans/[city]/12-month/',
-          '/electricity-plans/[city]/fixed-rate/',
-          '/electricity-plans/[city]/green-energy/'
+          '/electricity-plans/[city]/12-month',
+          '/electricity-plans/[city]/fixed-rate',
+          '/electricity-plans/[city]/green-energy'
         ]
       }
     ]);

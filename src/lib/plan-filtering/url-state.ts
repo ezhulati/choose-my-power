@@ -273,7 +273,7 @@ export class URLStateManager {
    * Generate SEO-friendly path from filters
    */
   generateSEOPath(filters: PlanFilter): string {
-    let path = `/electricity-plans/${filters.city}-${filters.state === 'texas' ? 'tx' : filters.state}/`;
+    let path = `/electricity-plans/${filters.city}-${filters.state === 'texas' ? 'tx' : filters.state}`;
 
     // Add contract length to path for common filters
     if (filters.contractLengths.length === 1) {
@@ -450,7 +450,7 @@ export class URLStateManager {
       filters.sortOrder === 'asc';
 
     if (hasOnlyLocationFilters) {
-      return `/electricity-plans/${filters.city}-tx/`;
+      return `/electricity-plans/${filters.city}-tx`;
     }
 
     return this.createShareableURL(filters);
