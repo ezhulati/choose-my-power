@@ -119,7 +119,7 @@ export const GET: APIRoute = async ({ request }) => {
         return new Response(null, {
           status: 302,
           headers: {
-            'Location': `/electricity-plans/${citySlug}-tx/municipal-utility`,
+            'Location': `/electricity-plans/${citySlug.endsWith('-tx') ? citySlug : citySlug + '-tx'}/municipal-utility`,
             'Cache-Control': 'public, max-age=86400'
           }
         });
@@ -134,7 +134,7 @@ export const GET: APIRoute = async ({ request }) => {
         municipalUtility: true,
         utilityName: utilityInfo.name,
         utilityInfo: utilityInfo.description,
-        redirectUrl: `/electricity-plans/${citySlug}-tx/municipal-utility`,
+        redirectUrl: `/electricity-plans/${citySlug.endsWith('-tx') ? citySlug : citySlug + '-tx'}/municipal-utility`,
         error: `${cityDisplayName} is served by ${utilityInfo.name}, a municipal utility. Residents cannot choose their electricity provider.`,
         errorType: 'non_deregulated'
       } as ZipLookupResponse), {
@@ -159,7 +159,7 @@ export const GET: APIRoute = async ({ request }) => {
       return new Response(null, {
         status: 302,
         headers: {
-          'Location': `/electricity-plans/${citySlug}-tx/`,
+          'Location': `/electricity-plans/${citySlug.endsWith('-tx') ? citySlug : citySlug + '-tx'}/`,
           'Cache-Control': 'public, max-age=86400'
         }
       });
@@ -171,7 +171,7 @@ export const GET: APIRoute = async ({ request }) => {
       zipCode,
       city: citySlug,
       cityDisplayName,
-      redirectUrl: `/electricity-plans/${citySlug}-tx/`,
+      redirectUrl: `/electricity-plans/${citySlug.endsWith('-tx') ? citySlug : citySlug + '-tx'}/`,
       municipalUtility: false
     } as ZipLookupResponse), {
       status: 200,
