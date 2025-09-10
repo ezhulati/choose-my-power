@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { zipToCity, municipalUtilities, getCityFromZip } from '../../config/tdsp-mapping';
+import { comprehensiveZIPService } from '../../lib/services/comprehensive-zip-service';
 
 // Force server-side rendering for API endpoint
 export const prerender = false;
@@ -86,10 +87,97 @@ export const GET: APIRoute = async ({ request }) => {
   }
 
   try {
-    // Look up city from ZIP code
-    const citySlug = getCityFromZip(zipCode);
+    // Look up city from ZIP code in our static mapping first
+    let citySlug = getCityFromZip(zipCode);
 
     if (!citySlug) {
+      // FALLBACK SYSTEM: Use universal ZIP service for unknown ZIP codes
+      console.log(`🔄 ZIP ${zipCode} not found in static mapping, trying universal lookup...`);
+      
+      try {
+        const universalResult = await comprehensiveZIPService.lookupZIPCode(zipCode);
+        
+        if (universalResult.success) {
+          // Successfully mapped to a supported city
+          citySlug = universalResult.citySlug!;
+          console.log(`✅ Universal lookup success: ${zipCode} -> ${citySlug} (confidence: ${universalResult.confidence}%)`);
+          
+          // Log this for future static mapping updates
+          console.log(`📝 Consider adding to static mapping: ${zipCode} -> ${citySlug} (from ${universalResult.cityName})`);
+        } else if (universalResult.municipalUtility) {
+          // Handle municipal utility case
+          const cityDisplayName = universalResult.cityDisplayName || universalResult.cityName;
+          const acceptHeader = request.headers.get('accept') || '';
+          const wantsBrowserRedirect = acceptHeader.includes('text/html');
+          
+          if (wantsBrowserRedirect) {
+            // Direct browser navigation - redirect to municipal utility page
+            return new Response(null, {
+              status: 302,
+              headers: {
+                'Location': universalResult.redirectUrl!,
+                'Cache-Control': 'public, max-age=86400'
+              }
+            });
+          }
+          
+          // AJAX/API call - return JSON response
+          return new Response(JSON.stringify({
+            success: false,
+            zipCode,
+            city: universalResult.citySlug,
+            cityDisplayName,
+            municipalUtility: true,
+            utilityName: universalResult.utilityName,
+            utilityInfo: universalResult.utilityInfo,
+            redirectUrl: universalResult.redirectUrl,
+            error: universalResult.error,
+            errorType: universalResult.errorType
+          } as ZipLookupResponse), {
+            status: 200,
+            headers: {
+              'Content-Type': 'application/json',
+              'Cache-Control': 'public, max-age=86400'
+            }
+          });
+        } else {
+          // Universal lookup failed
+          console.log(`❌ Universal lookup failed for ${zipCode}: ${universalResult.error}`);
+          
+          return new Response(JSON.stringify({
+            success: false,
+            zipCode,
+            error: universalResult.error || 'ZIP code not found in Texas deregulated electricity market.',
+            errorType: universalResult.errorType || 'not_found'
+          } as ZipLookupResponse), {
+            status: 404,
+            headers: {
+              'Content-Type': 'application/json',
+              'Cache-Control': 'public, max-age=1800' // Cache universal failures for 30 minutes
+            }
+          });
+        }
+      } catch (universalError) {
+        console.error(`❌ Universal ZIP lookup error for ${zipCode}:`, universalError);
+        
+        // Fall back to original error message
+        return new Response(JSON.stringify({
+          success: false,
+          zipCode,
+          error: 'ZIP code not found in our service area. We currently serve the Texas deregulated electricity market.',
+          errorType: 'not_found'
+        } as ZipLookupResponse), {
+          status: 404,
+          headers: {
+            'Content-Type': 'application/json',
+            'Cache-Control': 'public, max-age=3600'
+          }
+        });
+      }
+    }
+
+    if (!citySlug) {
+      // This shouldn't happen after universal lookup, but just in case
       return new Response(JSON.stringify({
         success: false,
         zipCode,
@@ -99,7 +187,7 @@ export const GET: APIRoute = async ({ request }) => {
         status: 404,
         headers: {
           'Content-Type': 'application/json',
-          'Cache-Control': 'public, max-age=3600' // Cache not found results for 1 hour
+          'Cache-Control': 'public, max-age=3600'
         }
       });
     }
