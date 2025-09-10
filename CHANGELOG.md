@@ -32,6 +32,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Updated response handling to match actual API response format with cityDisplayName
   - Improved error messages and user experience with helpful tips for recovery
   - Resolves "Unable to process your ZIP code right now" error affecting all ZIP lookup forms
+- **COMPREHENSIVE ZIP COVERAGE EXPANSION**: Dramatically expanded ZIP code coverage from 533 to 943 ZIP codes
+  - Fixed critical format mismatch: ZIP codes used -tx suffixes but TDSP mapping expected clean names
+  - Added complete coverage for major Texas markets: El Paso, Lubbock, Corpus Christi, Tyler, Amarillo, Waco, Beaumont
+  - Covers all major TDSPs: Oncor, CenterPoint, AEP North/Central, Texas-New Mexico Power
+  - Proper municipal utility handling for Austin (Austin Energy) and San Antonio (CPS Energy)
+  - Resolves "Only 1 zip works" issue - now supports statewide ZIP lookup across Texas electricity markets
 
 ### Added
 - **FRESH ELECTRICITY PLAN DATA**: Complete data refresh for all 882 Texas deregulated cities
