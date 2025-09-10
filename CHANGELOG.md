@@ -18,6 +18,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **ZIP LOOKUP FORM API MISMATCH**: Fixed frontend form using wrong API endpoint causing data inconsistencies
   - ZIPCodeLookupForm.tsx: Changed from POST /api/zip/route to GET /api/zip-lookup
   - Resolves issue where form used limited data source instead of comprehensive city mappings
+- **CRITICAL CORS API FAILURE**: Fixed ZIP lookup API failing on deployed site with ERR_FAILED browser errors
+  - Added CORS headers (Access-Control-Allow-Origin: *) to /api/zip-lookup endpoint
+  - Added OPTIONS handler for CORS preflight requests  
+  - Fixed browser fetch() requests failing while curl worked (production deployment issue)
+  - **IMPACT**: ZIP code forms now work properly on live site, no more "Failed to fetch" errors
 - **TRAILING SLASH NAVIGATION ERRORS**: Removed trailing slashes from ALL internal URLs sitewide
   - Fixed 110 trailing slash instances across 35+ files using automated script
   - ZIP lookup navigation: /electricity-plans/dallas/ → /electricity-plans/dallas

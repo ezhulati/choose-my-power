@@ -33,6 +33,16 @@ function isValidZipCode(zip: string): boolean {
   return /^\d{5}$/.test(zip);
 }
 
+// Helper function to create CORS-enabled headers
+function createCORSHeaders(additionalHeaders: Record<string, string> = {}): Record<string, string> {
+  return {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Accept',
+    ...additionalHeaders
+  };
+}
+
 export const GET: APIRoute = async ({ request }) => {
   // Add request logging for monitoring
   const startTime = Date.now();
@@ -49,10 +59,10 @@ export const GET: APIRoute = async ({ request }) => {
       errorType: 'invalid_zip'
     } as ZipLookupResponse), {
       status: 400,
-      headers: {
+      headers: createCORSHeaders({
         'Content-Type': 'application/json',
         'Cache-Control': 'no-cache'
-      }
+      })
     });
   }
 
@@ -263,11 +273,11 @@ export const GET: APIRoute = async ({ request }) => {
       municipalUtility: false
     } as ZipLookupResponse), {
       status: 200,
-      headers: {
+      headers: createCORSHeaders({
         'Content-Type': 'application/json',
         'Cache-Control': 'public, max-age=86400', // Cache successful lookups for 24 hours
         'X-Processing-Time': `${processingTime}ms`
-      }
+      })
     });
 
   } catch (error) {
@@ -338,4 +348,12 @@ export const POST: APIRoute = async ({ request }) => {
       headers: { 'Content-Type': 'application/json' }
     });
   }
+};
+
+// Handle CORS preflight requests
+export const OPTIONS: APIRoute = async () => {
+  return new Response(null, {
+    status: 200,
+    headers: createCORSHeaders()
+  });
 };
