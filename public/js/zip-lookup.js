@@ -180,19 +180,15 @@
     setLoadingState(true);
 
     try {
-      // Call our ZIP navigation API (NEW: uses proper endpoint)
-      console.log(`📞 Making API call to /api/zip/navigate with ZIP: ${zipCode}`);
-      const url = `/api/zip/navigate`;
+      // Call our ZIP lookup API (FIXED: uses working endpoint)
+      console.log(`📞 Making API call to /api/zip-lookup with ZIP: ${zipCode}`);
+      const url = `/api/zip-lookup?zip=${encodeURIComponent(zipCode)}`;
       const res = await fetch(url, {
-        method: 'POST',
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          zipCode: zipCode,
-          validatePlansAvailable: true
-        })
+        }
       });
 
       // Handle redirected responses (API might redirect directly)
