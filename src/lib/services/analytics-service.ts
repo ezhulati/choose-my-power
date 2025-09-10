@@ -44,21 +44,26 @@ export class AnalyticsService {
     confidence?: number;
   }): Promise<void> {
     try {
-      // Store in database for persistence
-      await db.insert(validationLogs).values({
-        zipCode: data.zipCode,
-        isValid: data.success,
-        source: data.source || 'web_form',
-        confidence: data.confidence || (data.success ? 90 : 0),
-        citySlug: data.cityName ? this.cityNameToSlug(data.cityName) : undefined,
-        tdspDuns: data.tdspTerritory ? this.tdspNameToDuns(data.tdspTerritory) : undefined,
-        errorMessage: data.errorCode,
-        processingTime: data.validationTime,
-        validatedAt: new Date()
-      }).catch(error => {
-        console.error('[Analytics] Database insert failed:', error);
-        // Continue with in-memory tracking
-      });
+      // Store in database for persistence using raw SQL (disabled until tables are created)
+      // try {
+      //   await db.query(`
+      //     INSERT INTO validation_logs (zip_code, is_valid, source, confidence, city_slug, tdsp_duns, error_message, processing_time, validated_at)
+      //     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+      //   `, [
+      //     data.zipCode,
+      //     data.success,
+      //     data.source || 'web_form',
+      //     data.confidence || (data.success ? 90 : 0),
+      //     data.cityName ? this.cityNameToSlug(data.cityName) : null,
+      //     data.tdspTerritory ? this.tdspNameToDuns(data.tdspTerritory) : null,
+      //     data.errorCode || null,
+      //     data.validationTime,
+      //     new Date()
+      //   ]);
+      // } catch (dbError) {
+      //   console.error('[Analytics] Database insert failed:', dbError);
+      //   // Continue with in-memory tracking
+      // }
     } catch (dbError) {
       console.error('[Analytics] Database tracking failed:', dbError);
     }

@@ -153,7 +153,7 @@ const PlansGrid: React.FC<PlansGridProps> = memo(({
   if (isLoading) {
     return (
       <div className={`space-y-6 ${className}`}>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {Array.from({ length: pageSize }).map((_, index) => (
             <div 
               key={index}
@@ -292,7 +292,7 @@ const PlansGrid: React.FC<PlansGridProps> = memo(({
       </div>
 
       {/* Plans Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         {paginatedPlans.map((plan) => (
           <PlanCard
             key={plan.id}

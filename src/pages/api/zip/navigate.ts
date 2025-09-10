@@ -79,7 +79,7 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     // Step 2: Validate ZIP code is in Texas
-    const texasValidation = await zipService.validateTexasZIP(zipCode);
+    const texasValidation = await zipService.validateZIPCode(zipCode);
     if (!texasValidation.isValid) {
       // Track failed validation
       await analyticsService.trackZIPValidation({
@@ -102,7 +102,7 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     // Step 3: Get city and TDSP territory mapping
-    const cityData = await zipService.getCityFromZIP(zipCode);
+    const cityData = texasValidation.cityData;
     if (!cityData) {
       await analyticsService.trackZIPValidation({
         zipCode,
@@ -131,7 +131,7 @@ export const POST: APIRoute = async ({ request }) => {
     const tdspData = await tdspService.getTDSPByZIP(zipCode);
     
     // Handle municipal utilities (like Austin) differently  
-    if (!cityData.isDeregulated) {
+    if (!texasValidation.isDeregulated) {
       // This is a municipal utility - redirect to special page
       const municipalRedirectUrl = `/texas/${cityData.slug}/municipal-utility`;
       
@@ -140,7 +140,7 @@ export const POST: APIRoute = async ({ request }) => {
         success: true, // Municipal utility is a valid result, just different flow
         errorCode: 'MUNICIPAL_UTILITY',
         cityName: cityData.name,
-        tdspTerritory: cityData.primaryTdsp,
+        tdspTerritory: texasValidation.tdspData?.name || 'Municipal',
         validationTime: Date.now() - startTime
       });
 
@@ -151,8 +151,8 @@ export const POST: APIRoute = async ({ request }) => {
         citySlug: cityData.slug,
         stateName: 'Texas',
         stateSlug: 'texas',
-        tdspTerritory: cityData.primaryTdsp,
-        serviceTerritory: tdspData?.code || 'MUNICIPAL',
+        tdspTerritory: texasValidation.tdspData?.name || 'Municipal',
+        serviceTerritory: texasValidation.tdspData?.territory || 'MUNICIPAL',
         planCount: 0,
         hasPlans: false,
         isMunicipalUtility: true,
@@ -194,7 +194,15 @@ export const POST: APIRoute = async ({ request }) => {
     let planCount = 0;
     if (validatePlansAvailable) {
       try {
-        planCount = await zipService.getPlanCountForCity(cityData.slug, 'texas');
+        // Use the plan count method from the service (fallback to 0)
+        try {
+          const { loadCityData } = await import('../../../lib/api/plan-data-service');
+          const cityPlanData = await loadCityData(cityData.slug.replace('-tx', ''));
+          planCount = cityPlanData?.filters?.['no-filters']?.plans?.length || 0;
+        } catch (error) {
+          console.warn('[ZIP Navigation] Error loading plan count:', error);
+          planCount = 0;
+        }
         
         if (planCount === 0) {
           await analyticsService.trackZIPValidation({
@@ -238,7 +246,7 @@ export const POST: APIRoute = async ({ request }) => {
       zipCode,
       success: true,
       cityName: cityData.name,
-      tdspTerritory: tdspData.name,
+      tdspTerritory: texasValidation.tdspData?.name || 'Unknown',
       planCount,
       validationTime
     });
@@ -251,8 +259,8 @@ export const POST: APIRoute = async ({ request }) => {
       citySlug: cityData.slug,
       stateName: 'Texas',
       stateSlug: 'texas',
-      tdspTerritory: tdspData.name,
-      serviceTerritory: tdspData.code,
+      tdspTerritory: texasValidation.tdspData?.name || 'Unknown',
+      serviceTerritory: texasValidation.tdspData?.territory || 'Unknown',
       planCount: validatePlansAvailable ? planCount : undefined,
       hasPlans: validatePlansAvailable ? planCount > 0 : undefined,
       validationTime,

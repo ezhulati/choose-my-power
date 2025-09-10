@@ -129,7 +129,7 @@ const PlanResultsGrid: React.FC<PlanResultsGridProps> = ({
   if (loading) {
     return (
       <div className="w-full">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
           {[...Array(6)].map((_, index) => (
             <Card key={index} className="p-6">
               <div className="space-y-4">
@@ -183,7 +183,7 @@ const PlanResultsGrid: React.FC<PlanResultsGridProps> = ({
     <div className={cn("w-full", className)}>
       <div className={cn(
         "grid gap-4 md:gap-6",
-        viewMode === 'grid' ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" : "grid-cols-1"
+        viewMode === 'grid' ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1"
       )}>
         {enhancedPlans.map((plan) => {
           const isSelected = selectedPlans.includes(plan.id);

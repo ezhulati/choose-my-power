@@ -189,50 +189,47 @@ export const EnterprisePlanCard: React.FC<EnterprisePlanCardProps> = ({
       {/* Plan Details */}
       <CardContent className="px-6 pb-0 pt-0 space-y-0">
 
-        {/* Enhanced Pricing Table with Texas Design System - Vertical Stack */}
+        {/* Enhanced Pricing Table with Texas Design System - Horizontal Layout */}
         <div className="bg-gradient-to-r from-gray-50 to-texas-cream/20 rounded-xl border-2 border-gray-200 p-4 mb-4 shadow-sm">
           <div className="text-xs font-bold text-texas-navy mb-3 text-center">Monthly Usage Pricing</div>
-          <div className="space-y-2">
-            <div className="flex justify-between items-center py-2 px-3 bg-white rounded-lg border shadow-sm hover:shadow-md transition-shadow duration-200">
-              <div className="text-base font-bold text-gray-900">
+          <div className="grid grid-cols-3 gap-2">
+            <div className="flex flex-col items-center py-2 px-2 bg-white rounded-lg border shadow-sm hover:shadow-md transition-shadow duration-200">
+              <div className="text-sm font-bold text-gray-900">
                 {plan.pricing?.rate500kWh ? `${plan.pricing.rate500kWh.toFixed(1)}¢` : formatRate(plan.rate)}
               </div>
               <div className="text-xs text-gray-600 font-medium">500 kWh</div>
             </div>
-            <div className="flex justify-between items-center py-2 px-3 bg-gradient-to-r from-texas-navy to-blue-800 text-white rounded-lg border-2 border-texas-navy shadow-md">
-              <div className="text-base font-bold">
+            <div className="flex flex-col items-center py-2 px-2 bg-gradient-to-r from-texas-navy to-blue-800 text-white rounded-lg border-2 border-texas-navy shadow-md">
+              <div className="text-sm font-bold">
                 {plan.pricing?.rate1000kWh ? `${plan.pricing.rate1000kWh.toFixed(1)}¢` : formatRate(plan.rate)}
               </div>
-              <div className="flex flex-col text-right">
-                <div className="text-xs font-semibold">1000 kWh</div>
-                <div className="text-[10px] opacity-90">Most Common</div>
-              </div>
+              <div className="text-xs font-semibold">1000 kWh</div>
             </div>
-            <div className="flex justify-between items-center py-2 px-3 bg-white rounded-lg border shadow-sm hover:shadow-md transition-shadow duration-200">
-              <div className="text-base font-bold text-gray-900">
+            <div className="flex flex-col items-center py-2 px-2 bg-white rounded-lg border shadow-sm hover:shadow-md transition-shadow duration-200">
+              <div className="text-sm font-bold text-gray-900">
                 {plan.pricing?.rate2000kWh ? `${plan.pricing.rate2000kWh.toFixed(1)}¢` : formatRate(plan.rate)}
               </div>
               <div className="text-xs text-gray-600 font-medium">2000 kWh</div>
             </div>
           </div>
           
-          {/* Enhanced Monthly Bill Totals - Vertical Stack */}
+          {/* Enhanced Monthly Bill Totals - Horizontal Layout */}
           <div className="mt-3 pt-3 border-t border-gray-300">
             <div className="text-xs font-bold text-gray-700 mb-2 text-center">Estimated Monthly Bill</div>
-            <div className="space-y-1">
-              <div className="flex justify-between items-center py-1 px-2">
+            <div className="grid grid-cols-3 gap-2">
+              <div className="flex flex-col items-center py-1 px-2">
                 <div className="text-sm font-bold text-gray-700">
                   ${plan.pricing?.rate500kWh ? ((plan.pricing.rate500kWh * 500) / 100).toFixed(0) : Math.round((parseFloat(plan.rate.toString()) * 500) / 100)}
                 </div>
                 <div className="text-xs text-gray-600">500 kWh</div>
               </div>
-              <div className="flex justify-between items-center py-1 px-2 bg-texas-gold/20 rounded">
+              <div className="flex flex-col items-center py-1 px-2 bg-texas-gold/20 rounded">
                 <div className="text-sm font-bold text-texas-navy">
                   ${plan.pricing?.rate1000kWh ? ((plan.pricing.rate1000kWh * 1000) / 100).toFixed(0) : Math.round((parseFloat(plan.rate.toString()) * 1000) / 100)}
                 </div>
                 <div className="text-xs text-texas-navy font-semibold">1000 kWh</div>
               </div>
-              <div className="flex justify-between items-center py-1 px-2">
+              <div className="flex flex-col items-center py-1 px-2">
                 <div className="text-sm font-bold text-gray-700">
                   ${plan.pricing?.rate2000kWh ? ((plan.pricing.rate2000kWh * 2000) / 100).toFixed(0) : Math.round((parseFloat(plan.rate.toString()) * 2000) / 100)}
                 </div>
