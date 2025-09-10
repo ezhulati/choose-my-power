@@ -23,6 +23,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Added OPTIONS handler for CORS preflight requests  
   - Fixed browser fetch() requests failing while curl worked (production deployment issue)
   - **IMPACT**: ZIP code forms now work properly on live site, no more "Failed to fetch" errors
+- **INTERMITTENT NETWORK FAILURES**: Added retry mechanism for ZIP lookup API to handle sporadic ERR_FAILED errors
+  - Implements 3-attempt retry with exponential backoff (1s, 2s, 4s delays)
+  - Added 10-second timeout for each fetch attempt to prevent hanging
+  - Handles inconsistent browser failures (ZIP 77002 works, 77003 fails intermittently)
+  - Provides user feedback during retry attempts with detailed console logging
+  - **IMPACT**: Resolves intermittent "ZIP Code Error Unable to process" messages on live deployment
 - **TRAILING SLASH NAVIGATION ERRORS**: Removed trailing slashes from ALL internal URLs sitewide
   - Fixed 110 trailing slash instances across 35+ files using automated script
   - ZIP lookup navigation: /electricity-plans/dallas/ → /electricity-plans/dallas

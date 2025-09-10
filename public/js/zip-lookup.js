@@ -180,16 +180,46 @@
     setLoadingState(true);
 
     try {
-      // Call our ZIP lookup API (FIXED: uses working endpoint)
+      // Call our ZIP lookup API with retry mechanism for network failures
       console.log(`📞 Making API call to /api/zip-lookup with ZIP: ${zipCode}`);
       const url = `/api/zip-lookup?zip=${encodeURIComponent(zipCode)}`;
-      const res = await fetch(url, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
+      
+      let res;
+      let attempts = 0;
+      const maxAttempts = 3;
+      
+      while (attempts < maxAttempts) {
+        attempts++;
+        
+        try {
+          console.log(`🔄 Attempt ${attempts}/${maxAttempts} for ZIP lookup`);
+          
+          res = await fetch(url, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            signal: AbortSignal.timeout(10000) // 10 second timeout
+          });
+          
+          // If fetch succeeds, break out of retry loop
+          break;
+          
+        } catch (fetchError) {
+          console.log(`❌ Attempt ${attempts} failed:`, fetchError.message);
+          
+          if (attempts === maxAttempts) {
+            // All retries exhausted, throw the last error
+            throw fetchError;
+          }
+          
+          // Wait before retrying (exponential backoff)
+          const delay = Math.pow(2, attempts) * 500; // 1s, 2s, 4s delays
+          console.log(`⏳ Waiting ${delay}ms before retry...`);
+          await new Promise(resolve => setTimeout(resolve, delay));
         }
-      });
+      }
 
       // Handle redirected responses (API might redirect directly)
       if (res.redirected) {
