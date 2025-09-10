@@ -71,16 +71,15 @@ export const ZIPCodeLookupForm: React.FC<ZIPCodeLookupFormProps> = ({
     try {
       const startTime = Date.now();
 
-      // Use the enhanced ZIP routing service
-      const response = await fetch('/api/zip/route', {
-        method: 'POST',
+      // Use the working ZIP lookup service
+      const response = await fetch(`/api/zip-lookup?zip=${zipCode}`, {
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ zipCode })
+        }
       });
 
-      const data: ZIPRoutingResult = await response.json();
+      const data = await response.json();
       const clientResponseTime = Date.now() - startTime;
 
       // Store performance data for display

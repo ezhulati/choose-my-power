@@ -15,6 +15,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Fixed ZIP lookup API to return consistent URL format with -tx suffix
   - Added missing city data files (college-station.json, longview.json) that caused ENOENT errors
   - **IMPACT**: Zero ERR_FAILED errors, no more hard refreshes required, all major cities accessible
+- **ZIP LOOKUP FORM API MISMATCH**: Fixed frontend form using wrong API endpoint causing data inconsistencies
+  - ZIPCodeLookupForm.tsx: Changed from POST /api/zip/route to GET /api/zip-lookup
+  - Resolves issue where form used limited data source instead of comprehensive city mappings
+- **URL FORMAT CLEANUP**: Removed all -tx suffixes from redirect URLs per user requirement
+  - Dallas: /electricity-plans/dallas/ (was /electricity-plans/dallas-tx/)
+  - Fort Worth: /electricity-plans/fort-worth/ (was /electricity-plans/fort-worth-tx/)
+  - Updated zip-lookup.ts to return clean URLs without conditional -tx logic
+  - Updated TDSP mapping for Fort Worth ZIP codes to use 'fort-worth' slug
 - **NETLIFY BUILD ERROR**: Added missing `zip-coverage-schema.ts` file required for production deployment
   - Resolves build failure: "Could not resolve ./zip-coverage-schema.ts from src/lib/database/init.ts"  
   - File contains ZIP coverage schema definitions and TDSP initialization data
