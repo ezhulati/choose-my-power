@@ -48,6 +48,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **COMPREHENSIVE ZIP COVERAGE EXPANSION**: Dramatically expanded ZIP code coverage from 533 to 943 ZIP codes
   - Fixed critical format mismatch: ZIP codes used -tx suffixes but TDSP mapping expected clean names
   - Added complete coverage for major Texas markets: El Paso, Lubbock, Corpus Christi, Tyler, Amarillo, Waco, Beaumont
+- **HOMEPAGE ZIP FORM CRITICAL FIX**: Fixed homepage ZIP form bypassing all backend fixes
+  - Problem: Homepage form used client-side navigation to /texas/{city} instead of working /api/zip-lookup endpoint
+  - Caused "This site can't be reached" errors for users entering ZIP codes on homepage
+  - Updated Homepage.tsx to use same API logic as all other working ZIP forms throughout site
+  - Removed hardcoded /texas/{city} navigation that bypassed comprehensive ZIP lookup system
+  - **IMPACT**: Resolves final source of "This site can't be reached" navigation errors
   - Covers all major TDSPs: Oncor, CenterPoint, AEP North/Central, Texas-New Mexico Power
   - Proper municipal utility handling for Austin (Austin Energy) and San Antonio (CPS Energy)
   - Resolves "Only 1 zip works" issue - now supports statewide ZIP lookup across Texas electricity markets

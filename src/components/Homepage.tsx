@@ -3,7 +3,6 @@ import { Zap, Calculator, Leaf, Users, TrendingDown, Battery, Award, BarChart } 
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
 import { ZipCodeSearch } from './ZipCodeSearch';
-import { getCityFromZip } from '../config/tdsp-mapping';
 import { getCredibleMarketingText, DEFAULT_COUNTS } from '../lib/utils/dynamic-counts';
 import { DynamicHeroMessaging } from './DynamicHeroMessaging';
 
@@ -12,27 +11,71 @@ interface HomepageProps {
 }
 
 export function Homepage({ onNavigate }: HomepageProps) {
-  const handleZipSearch = (zipCode: string) => {
+  const handleZipSearch = async (zipCode: string) => {
     console.log('Homepage handleZipSearch called with ZIP:', zipCode);
     
-    // Try to find the city for this ZIP code
-    const city = getCityFromZip(zipCode);
-    console.log('City lookup result:', city);
-    
-    if (city) {
-      console.log('Navigating to city page:', `/texas/${city}`);
-      // Use native browser navigation to go from React page to Astro page
-      window.location.href = `/texas/${city}`;
-    } else {
-      console.log('ZIP code not found in mapping, checking pattern...');
-      // ZIP code not found, try to determine state by ZIP code pattern
+    try {
+      // Use the working ZIP lookup API endpoint (same as fixed forms)
+      console.log(`Making API call to /api/zip-lookup with ZIP: ${zipCode}`);
+      const url = `/api/zip-lookup?zip=${encodeURIComponent(zipCode)}`;
+      const res = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      });
+
+      // Handle redirected responses (API might redirect directly)
+      if (res.redirected) {
+        console.log('API redirected directly, following redirect');
+        window.location.href = res.url;
+        return;
+      }
+
+      if (!res.ok) {
+        throw new Error(`API responded with status: ${res.status}`);
+      }
+
+      const result = await res.json();
+      console.log('API JSON response:', result);
+
+      if (result && result.success) {
+        // Success - use the redirect URL from the API
+        console.log('ZIP lookup successful:', result);
+        const redirectUrl = result.redirectUrl || result.redirectURL;
+        console.log('Navigating to:', redirectUrl);
+        
+        // Use the API-provided redirect URL (which goes to correct plans page)
+        window.location.href = redirectUrl;
+      } else {
+        console.log('ZIP lookup failed:', result);
+        
+        // Handle different error types with fallbacks
+        if (result.errorType === 'non_deregulated') {
+          // Municipal utility area - could show message or redirect
+          if (result.redirectUrl) {
+            window.location.href = result.redirectUrl;
+          } else {
+            onNavigate('/texas/electricity-providers');
+          }
+        } else if (result.errorType === 'not_found') {
+          // ZIP not found - go to general Texas page
+          onNavigate('/texas/electricity-providers');
+        } else {
+          // Generic error - fallback to Texas providers
+          onNavigate('/texas/electricity-providers');
+        }
+      }
+    } catch (error) {
+      console.error('ZIP lookup API error:', error);
+      
+      // Fallback error handling
       if (zipCode.startsWith('7')) {
         console.log('Texas ZIP code detected, going to Texas providers page');
-        // Texas ZIP code, but city not in our mapping - go to Texas page
         onNavigate('/texas/electricity-providers');
       } else {
         console.log('Unknown ZIP code, going to locations page');
-        // Not a Texas ZIP code or unknown - go to locations page
         onNavigate('/locations');
       }
     }
