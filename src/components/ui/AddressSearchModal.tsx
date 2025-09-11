@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { validateZipCode, getValidationMessage, type ZipCodeValidationResult } from '../../lib/validation/zip-code-validator';
+import { buildComparePowerUrl } from '../../lib/utils/comparepower-url';
 
 interface ESIIDLocation {
   esiid: string;
@@ -40,6 +41,7 @@ interface AddressSearchModalProps {
     };
     apiPlanId?: string; // Real MongoDB ObjectId from API
   };
+  usage: number; // Monthly usage in kWh passed from parent
   onSuccess: (esiid: string, address: string) => void;
 }
 
@@ -47,11 +49,11 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
   isOpen,
   onClose,
   planData,
+  usage,
   onSuccess
 }) => {
   const [address, setAddress] = useState('');
   const [zipCode, setZipCode] = useState('');
-  const [usage, setUsage] = useState(1000);
   const [searchResults, setSearchResults] = useState<ESIIDLocation[]>([]);
   const [selectedLocation, setSelectedLocation] = useState<ESIIDLocation | null>(null);
   const [isSearching, setIsSearching] = useState(false);
@@ -84,7 +86,6 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
       // Reset state
       setAddress('');
       setZipCode('');
-      setUsage(1000);
       setSearchResults([]);
       setSelectedLocation(null);
       setSearchError(null);
@@ -240,7 +241,9 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
       
       if (zipValidationResult.isValid) {
         // Set up new debounce timer for auto-search
+        console.log('[AddressModal] Setting up auto-search timer for:', { address, zipCode });
         debounceTimerRef.current = setTimeout(() => {
+          console.log('[AddressModal] Auto-search triggered');
           performSearch(address, zipCode);
         }, 1200); // Increased debounce time for better UX
       }
@@ -258,6 +261,8 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
   // Manual search handler with ZIP validation
   // Implements FR-004: Error messages for invalid ZIP codes
   const handleSearch = async () => {
+    console.log('[AddressModal] Manual search triggered', { address, zipCode });
+    
     if (!address.trim()) {
       setSearchError('Please enter a valid address');
       return;
@@ -281,6 +286,7 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
       debounceTimerRef.current = null;
     }
 
+    console.log('[AddressModal] Calling performSearch for manual search');
     await performSearch(address, zipCode);
   };
 
@@ -388,8 +394,25 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
     // Notify parent component of success
     onSuccess(selectedLocation.esiid, selectedLocation.address);
     
-    // Build the order URL with user's selected ESIID, plan ID, and usage
-    const orderUrl = `https://orders.comparepower.com/order/service_location?esiid=${selectedLocation.esiid}&plan_id=${actualPlanId}&usage=${usage}&zip_code=${zipCode}`;
+    // Build the order URL with validated parameters
+    const orderUrl = buildComparePowerUrl({
+      esiid: selectedLocation.esiid,
+      plan_id: actualPlanId,
+      usage: usage,
+      zip_code: zipCode
+    });
+    
+    // Check if URL generation failed
+    if (orderUrl === "ERROR") {
+      setPlanError('Unable to generate order URL. Please verify your information and try again.');
+      console.error('[AddressModal] URL generation failed:', {
+        esiid: selectedLocation.esiid,
+        planId: actualPlanId,
+        usage: usage,
+        zipCode: zipCode
+      });
+      return;
+    }
     
     console.log('[AddressModal] Opening ComparePower order page:', {
       esiid: selectedLocation.esiid,
@@ -401,7 +424,8 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
       usage: usage,
       originalPlanId: planData.id,
       apiPlanIdAvailable: !!planData.apiPlanId,
-      planIdSource: planData.apiPlanId ? 'API' : (planData.id ? 'plan.id' : 'none')
+      planIdSource: planData.apiPlanId ? 'API' : (planData.id ? 'plan.id' : 'none'),
+      generatedUrl: orderUrl
     });
     
     // Open the order page in a new tab
@@ -515,51 +539,6 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
               </div>
             </div>
           )}
-        </div>
-
-        <div>
-          <label htmlFor="usage" className="block text-sm font-medium text-gray-700 mb-1">
-            Monthly Usage (kWh)
-          </label>
-          <div className="relative">
-            <Input
-              id="usage"
-              type="number"
-              placeholder="1000"
-              value={usage}
-              onChange={(e) => setUsage(Math.max(1, Math.min(10000, parseInt(e.target.value) || 1000)))}
-              min="1"
-              max="10000"
-              step="50"
-              className="w-full focus-visible:ring-2 focus-visible:ring-texas-navy/50 focus-visible:border-texas-navy pr-12"
-              disabled={isSearching}
-              required
-            />
-            <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-sm text-gray-500">
-              kWh
-            </span>
-          </div>
-          <div className="flex gap-2 mt-2">
-            {[500, 1000, 1500, 2000].map(preset => (
-              <button
-                key={preset}
-                type="button"
-                onClick={() => setUsage(preset)}
-                className={cn(
-                  "px-2 py-1 text-xs rounded border transition-colors",
-                  usage === preset 
-                    ? "bg-texas-navy text-white border-texas-navy" 
-                    : "bg-white text-gray-600 border-gray-300 hover:border-texas-navy hover:text-texas-navy"
-                )}
-                disabled={isSearching}
-              >
-                {preset}
-              </button>
-            ))}
-          </div>
-          <p className="text-xs text-gray-500 mt-1">
-            Check your recent electricity bill. Most homes use 500-2000 kWh per month.
-          </p>
         </div>
 
         {/* Show searching indicator */}

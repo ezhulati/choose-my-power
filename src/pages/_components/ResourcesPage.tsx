@@ -125,7 +125,7 @@ export function ResourcesPage({}: ResourcesPageProps) {
               </div>
             </div>
 
-            <div className="max-w-md mx-auto mb-6">
+            <div className="max-w-md mx-auto mb-6 mt-16">
               <StandardZipInputReact 
                 size="lg"
                 variant="inline"

@@ -73,8 +73,8 @@ export default function StandardZipInputReact({
         const city = getCityFromZip(zipCode);
         
         if (city) {
-          // Navigate to the actual city page
-          window.location.href = `/texas/${city}`;
+          // Navigate to the electricity plans page (correct routing pattern)
+          window.location.href = `/electricity-plans/${city}`;
         } else {
           // ZIP code not found, try to determine state by ZIP code pattern
           if (zipCode.startsWith('7')) {

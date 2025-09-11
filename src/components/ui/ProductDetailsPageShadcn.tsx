@@ -1107,6 +1107,7 @@ export const ProductDetailsPageShadcn: React.FC<ProductDetailsPageShadcnProps> =
           // Priority: Use plan's actual MongoDB ID first, then fallback to API-fetched ID
           apiPlanId: planData.id && /^[a-f0-9]{24}$/i.test(planData.id) ? planData.id : realPlanId
         }}
+        usage={usage}
         onSuccess={handleAddressSuccess}
       />
     </div>

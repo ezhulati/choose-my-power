@@ -186,7 +186,7 @@ function LocationsPage({}: LocationsPageProps) {
               </p>
               
               {/* Trust Signals */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-lg mb-16">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-lg mb-24">
                 <div className="flex items-center px-4 py-2 bg-green-500/20 backdrop-blur-sm rounded-full border border-green-400/30">
                   <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
                   <span className="text-green-100 font-medium">Street-level accuracy</span>
@@ -203,7 +203,7 @@ function LocationsPage({}: LocationsPageProps) {
             </div>
 
             {/* Main ZIP Search */}
-            <div className="mb-12">
+            <div className="mb-12 mt-16">
               <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-10 max-w-2xl mx-auto">
                 <h2 className="text-2xl font-semibold text-white mb-6">What's Available at Your Address?</h2>
                 <StandardZipInputReact onSearch={handleZipSearch} size="lg" />
@@ -646,4 +646,4 @@ function LocationsPage({}: LocationsPageProps) {
   );
 }
 
-export default LocationsPage;
+export { LocationsPage };
