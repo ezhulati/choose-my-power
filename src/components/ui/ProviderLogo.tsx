@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { PROVIDER_LOGO_URLS, PROVIDER_NAME_MAPPING } from '../../lib/logo/provider-mappings';
+import { PROVIDER_LOGO_URLS, PROVIDER_NAME_MAPPING, generateFallbackLogoSVG } from '../../lib/logo/provider-mappings';
 
 interface ProviderLogoProps {
   providerName: string;
@@ -87,14 +87,9 @@ export const ProviderLogo: React.FC<ProviderLogoProps> = ({
         setLogoSrc(logoUrl);
         console.log(`✅ Found logo for ${providerName}: ${logoUrl}`);
       } else {
-        console.warn(`⚠️ No logo found for ${providerName}, using fallback`);
-        // Generate fallback SVG if no logo found
-        const fallbackSvg = `data:image/svg+xml;base64,${btoa(`
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" fill="none">
-            <rect width="120" height="40" rx="4" fill="#002868"/>
-            <text x="60" y="26" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="white">${providerName.toUpperCase().slice(0, 8)}</text>
-          </svg>
-        `)}`;
+        console.warn(`⚠️ No logo found for ${providerName}, using branded fallback`);
+        // Generate branded fallback SVG using provider colors
+        const fallbackSvg = generateFallbackLogoSVG(providerName);
         setLogoSrc(fallbackSvg);
       }
       
@@ -109,18 +104,13 @@ export const ProviderLogo: React.FC<ProviderLogoProps> = ({
 
   const handleImageError = () => {
     if (!hasError) {
-      console.warn(`Logo failed to load for ${providerName}, using fallback`);
-      // Generate a fresh fallback
-      const fallbackSvg = `data:image/svg+xml;base64,${btoa(`
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" fill="none">
-          <rect width="120" height="40" rx="4" fill="#6B7280"/>
-          <text x="60" y="26" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="white">${providerName.toUpperCase().slice(0, 8)}</text>
-        </svg>
-      `)}`;
+      console.warn(`Logo failed to load for ${providerName}, using branded fallback`);
+      // Generate branded fallback SVG when CDN fails
+      const fallbackSvg = generateFallbackLogoSVG(providerName);
       
       setLogoSrc(fallbackSvg);
       setHasError(true);
-      onError?.(`Failed to load logo for ${providerName}`);
+      onError?.(`CDN failed for ${providerName}, using fallback`);
     }
   };
 

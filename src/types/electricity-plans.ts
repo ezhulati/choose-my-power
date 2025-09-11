@@ -19,11 +19,11 @@
 
 import { z } from 'zod';
 import type { 
-  Plan, 
+  // Plan, 
   TdspInfo, 
   ApiParams, 
-  FilterState,
-  FacetValue 
+  // FilterState,
+  // FacetValue 
 } from './facets';
 
 // ============================================================================
@@ -1321,7 +1321,7 @@ export const isDeregulatedZip = (zipCode: string): boolean => {
  */
 export const getZipCodesForTdsp = (tdspDuns: string): string[] => {
   return Object.entries(COMPREHENSIVE_ZIP_TDSP_MAPPING)
-    .filter(([_, mapping]) => mapping.duns === tdspDuns)
+    .filter(([, mapping]) => mapping.duns === tdspDuns)
     .map(([zip]) => zip);
 };
 
@@ -1330,7 +1330,7 @@ export const getZipCodesForTdsp = (tdspDuns: string): string[] => {
  */
 export const getZipCodesInZone = (zone: 'North' | 'Coast' | 'Central' | 'South' | 'Valley'): string[] => {
   return Object.entries(COMPREHENSIVE_ZIP_TDSP_MAPPING)
-    .filter(([_, mapping]) => mapping.zone === zone)
+    .filter(([, mapping]) => mapping.zone === zone)
     .map(([zip]) => zip);
 };
 

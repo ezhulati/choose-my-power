@@ -36,7 +36,7 @@ export const GET: APIRoute = async ({ url }) => {
     // Get ZIP navigation insights
     const insights = await analyticsService.getZIPNavigationInsights(hours);
     
-    let responseData: any = {
+    const responseData: any = {
       success: true,
       data: {
         timeRange: {

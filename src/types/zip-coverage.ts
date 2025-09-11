@@ -287,7 +287,7 @@ export interface APIError {
   success: false;
   error: string;
   message: string;
-  details?: Record<string, any>;
+  details?: Record<string, unknown>;
   timestamp: Date;
   errorId?: string;
 }
@@ -357,7 +357,7 @@ export const VALIDATION_RULES: ValidationRules = {
     min: 73000,
     max: 79999
   },
-  citySlugFormat: /^[a-z0-9\-]+$/,
+  citySlugFormat: /^[a-z0-9-]+$/,
   dunsFormat: /^\d{9,13}$/,
   confidenceRange: {
     min: 0,

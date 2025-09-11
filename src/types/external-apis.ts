@@ -22,7 +22,7 @@ export interface APIResponse<T> {
 export interface APIError {
   code: string;
   message: string;
-  details?: Record<string, any>;
+  details?: Record<string, unknown>;
   retryable: boolean;
   timestamp: Date;
 }
@@ -213,6 +213,7 @@ export interface CenterPointTerritoryData extends BaseTDSPTerritoryData {
   source: 'centerpoint_api';
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface CenterPointTerritoryResponse extends TDSPTerritoryResponse<CenterPointTerritoryData> {}
 
 // AEP Texas (North/Central) Specific Types
@@ -229,6 +230,7 @@ export interface AEPTerritoryData extends BaseTDSPTerritoryData {
   source: 'aep_north_api' | 'aep_central_api';
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface AEPTerritoryResponse extends TDSPTerritoryResponse<AEPTerritoryData> {}
 
 // TNMP (Texas-New Mexico Power) Specific Types  
@@ -245,6 +247,7 @@ export interface TNMPTerritoryData extends BaseTDSPTerritoryData {
   source: 'tnmp_api';
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface TNMPTerritoryResponse extends TDSPTerritoryResponse<TNMPTerritoryData> {}
 
 // =============================================================================
@@ -443,11 +446,11 @@ export interface MockDataSeed {
 
 // Export all API client factory types
 export interface APIClientFactory {
-  createERCOTClient(config: any): ExternalAPIClient;
-  createPUCTClient(config: any): ExternalAPIClient;
-  createUSPSClient(config: any): ExternalAPIClient;
-  createOncorClient(config: any): ExternalAPIClient;
-  createCenterPointClient(config: any): ExternalAPIClient;
-  createAEPClient(config: any, region: 'north' | 'central'): ExternalAPIClient;
-  createTNMPClient(config: any): ExternalAPIClient;
+  createERCOTClient(config: Record<string, unknown>): ExternalAPIClient;
+  createPUCTClient(config: Record<string, unknown>): ExternalAPIClient;
+  createUSPSClient(config: Record<string, unknown>): ExternalAPIClient;
+  createOncorClient(config: Record<string, unknown>): ExternalAPIClient;
+  createCenterPointClient(config: Record<string, unknown>): ExternalAPIClient;
+  createAEPClient(config: Record<string, unknown>, region: 'north' | 'central'): ExternalAPIClient;
+  createTNMPClient(config: Record<string, unknown>): ExternalAPIClient;
 }

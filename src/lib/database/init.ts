@@ -320,7 +320,7 @@ async function seedElectricityPlans() {
       for (const plan of plans) {
         try {
           // Get or create provider
-          let providerRecord = await db.query('SELECT id FROM providers WHERE name = $1', [plan.provider.name]);
+          const providerRecord = await db.query('SELECT id FROM providers WHERE name = $1', [plan.provider.name]);
           let providerId;
           
           if (!providerRecord || providerRecord.length === 0) {

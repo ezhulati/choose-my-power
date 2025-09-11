@@ -26,8 +26,9 @@ export const tdspMapping: TdspMapping = {
   'alvord': { duns: '957877905', name: 'CenterPoint Energy Houston Electric', zone: 'Coast', tier: 3, priority: 0.45 },
   'amarillo': { duns: '007923311', name: 'AEP Texas North Company', zone: 'North', tier: 2, priority: 0.75 },
   'andrews': { duns: '957877905', name: 'CenterPoint Energy Houston Electric', zone: 'Coast', tier: 3, priority: 0.45 },
-  // Municipal Utility Cities - Special handling required
-  'austin': { duns: 'MUNICIPAL', name: 'Austin Energy', zone: 'Central', tier: 1, priority: 1.0, municipal: true },
+  // Austin - Mixed market with both deregulated and municipal areas
+  'austin': { duns: '1039940674000', name: 'Oncor Electric Delivery', zone: 'Central', tier: 1, priority: 0.9 },
+  'austin-municipal': { duns: 'MUNICIPAL', name: 'Austin Energy', zone: 'Central', tier: 1, priority: 1.0, municipal: true },
   'angleton': { duns: '957877905', name: 'CenterPoint Energy Houston Electric', zone: 'Coast', tier: 3, priority: 0.45 },
   'angus': { duns: '957877905', name: 'CenterPoint Energy Houston Electric', zone: 'Coast', tier: 3, priority: 0.45 },
   'anna': { duns: '1039940674000', name: 'Oncor Electric Delivery', zone: 'North', tier: 3, priority: 0.45 },

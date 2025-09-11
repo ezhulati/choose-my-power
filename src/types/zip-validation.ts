@@ -71,7 +71,7 @@ export interface FormInteractionRequest {
 export interface APIErrorResponse {
   error: string;
   message: string;
-  details?: Record<string, any>;
+  details?: Record<string, unknown>;
   timestamp: string;
 }
 
@@ -103,7 +103,7 @@ export interface ZIPValidationService {
 
 export interface AnalyticsService {
   trackFormInteraction(interaction: FormInteractionRequest): Promise<void>;
-  getInteractionMetrics(citySlug: string, dateRange?: [Date, Date]): Promise<any>;
+  getInteractionMetrics(citySlug: string, dateRange?: [Date, Date]): Promise<Record<string, unknown>>;
 }
 
 // Cache interfaces

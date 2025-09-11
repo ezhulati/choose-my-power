@@ -316,7 +316,7 @@ export interface FacetedSidebarProps {
     priceRanges: FacetValue[];
   };
   facetCounts: Record<string, Record<string, number>>;
-  onFilterChange: (filterType: string, value: any, checked: boolean) => void;
+  onFilterChange: (filterType: string, value: string | number | boolean, checked: boolean) => void;
   loading?: boolean;
 }
 
@@ -338,7 +338,7 @@ export interface FacetedSearchResponse {
   };
   appliedFilters: Array<{
     key: string;
-    value: any;
+    value: string | number | boolean;
     displayName: string;
     removeUrl: string;
   }>;

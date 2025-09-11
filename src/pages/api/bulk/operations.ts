@@ -77,7 +77,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     }
 
     let result;
-    let operationId = `bulk_${operation}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    const operationId = `bulk_${operation}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 
     switch (operation) {
       case 'validate_zips':

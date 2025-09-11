@@ -66,7 +66,7 @@ export const POST: APIRoute = async ({ request }) => {
     // Use the same lookup logic as the working /api/zip-lookup endpoint
     let citySlug = getCityFromZip(zipCode);
     let cityDisplayName = '';
-    let isDeregulated = true;
+    const isDeregulated = true;
 
     if (!citySlug) {
       // Fallback to comprehensive ZIP service

@@ -215,7 +215,7 @@ export interface UserInteraction {
     city?: string;
     searchTerm?: string;
     filterUsed?: PlanFilters;
-    [key: string]: any;
+    [key: string]: unknown;
   };
 }
 
@@ -226,7 +226,7 @@ export interface APIResponse<T> {
   error?: {
     message: string;
     code: string;
-    details?: any;
+    details?: Record<string, unknown>;
   };
   metadata?: {
     total?: number;
@@ -245,7 +245,7 @@ export interface SearchResult<T> {
   limit: number;
   hasNext: boolean;
   hasPrev: boolean;
-  filters: any;
+  filters: Record<string, unknown>;
   sortBy: string;
   sortOrder: 'asc' | 'desc';
 }

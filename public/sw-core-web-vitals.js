@@ -197,10 +197,24 @@ async function handleRequest(request) {
     const responseTime = performance.now() - startTime;
     updatePerformanceMetrics(responseTime, response.type === 'cached');
     
-    // Add performance headers
+    // Add performance headers - Safari compatible approach
     if (response) {
-      response.headers.set('SW-Cache-Status', response.type === 'cached' ? 'hit' : 'miss');
-      response.headers.set('SW-Response-Time', `${Math.round(responseTime)}ms`);
+      try {
+        // Create new response with additional headers for Safari compatibility
+        const newHeaders = new Headers(response.headers);
+        newHeaders.set('SW-Cache-Status', response.type === 'cached' ? 'hit' : 'miss');
+        newHeaders.set('SW-Response-Time', `${Math.round(responseTime)}ms`);
+        
+        // Clone response with new headers
+        response = new Response(response.body, {
+          status: response.status,
+          statusText: response.statusText,
+          headers: newHeaders
+        });
+      } catch (headerError) {
+        // Silently continue if header modification fails (Safari compatibility)
+        console.debug('SW: Header modification skipped for Safari compatibility');
+      }
     }
     
     return response;

@@ -55,6 +55,7 @@ export const PROVIDER_COLORS = {
   "txu-energy": "#1E3A8A"
 };
 
+// Provider logo URLs with CDN fallbacks and local fallback SVGs
 export const PROVIDER_LOGO_URLS = {
   'frontier-utilities': 'https://assets.comparepower.com/images/frontier_utilities.svg',
   'frontier utilities': 'https://assets.comparepower.com/images/frontier_utilities.svg',
@@ -88,4 +89,60 @@ export const PROVIDER_LOGO_URLS = {
   'payless power': 'https://assets.comparepower.com/images/payless_power.svg',
   'txu-energy': 'https://assets.comparepower.com/images/txu_energy.svg',
   'txu energy': 'https://assets.comparepower.com/images/txu_energy.svg'
+};
+
+// Fallback SVG generator - creates branded logos when CDN fails
+export const generateFallbackLogoSVG = (providerName: string): string => {
+  const normalizedName = providerName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  const color = PROVIDER_COLORS[normalizedName] || '#002868'; // Default Texas navy
+  const initials = providerName
+    .split(' ')
+    .map(word => word.charAt(0))
+    .join('')
+    .toUpperCase()
+    .slice(0, 3);
+  
+  return `data:image/svg+xml;base64,${btoa(`
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" fill="none">
+      <rect width="120" height="40" rx="6" fill="${color}"/>
+      <text x="60" y="27" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="white">${initials}</text>
+    </svg>
+  `)}`;
+};
+
+// Enhanced logo fetcher with CDN fallback logic
+export const getProviderLogo = async (providerName: string): Promise<string> => {
+  const normalized = providerName.toLowerCase().trim();
+  
+  // Try to get URL from mapping
+  let logoUrl = PROVIDER_LOGO_URLS[normalized];
+  
+  // Try with dashes
+  if (!logoUrl) {
+    const dashedName = normalized.replace(/[^a-z0-9]+/g, '-');
+    logoUrl = PROVIDER_LOGO_URLS[dashedName];
+  }
+  
+  // Try mapped name
+  if (!logoUrl) {
+    const mappedName = PROVIDER_NAME_MAPPING[normalized];
+    if (mappedName) {
+      logoUrl = PROVIDER_LOGO_URLS[mappedName];
+    }
+  }
+  
+  // If we have a URL, test if it loads
+  if (logoUrl) {
+    try {
+      const response = await fetch(logoUrl, { method: 'HEAD', signal: AbortSignal.timeout(3000) });
+      if (response.ok) {
+        return logoUrl;
+      }
+    } catch (error) {
+      console.warn(`CDN logo failed for ${providerName}, using fallback:`, error);
+    }
+  }
+  
+  // Return fallback SVG
+  return generateFallbackLogoSVG(providerName);
 };

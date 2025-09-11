@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import StandardZipInputReact from '../../components/StandardZipInputReact';
 import { getProviders, getCities, type RealProvider, type RealCity } from '../../lib/services/provider-service';
+import { utilityCompanies } from '../../data/mockData';
 import { 
   MapPin, Search, TrendingDown, Users, Zap, Building, ArrowRight, Star, 
   Globe, Phone, CheckCircle, AlertCircle, Calculator, Shield, Leaf, Award, 
