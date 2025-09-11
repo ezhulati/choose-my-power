@@ -2,6 +2,23 @@ import type { APIRoute } from 'astro';
 import { zipToCity, municipalUtilities, getCityFromZip } from '../../config/tdsp-mapping';
 import { comprehensiveZIPService } from '../../lib/services/comprehensive-zip-service';
 
+// Import 100% coverage mapping
+let comprehensiveMapping: any = null;
+
+async function loadComprehensiveMapping() {
+  if (!comprehensiveMapping) {
+    try {
+      const module = await import('../../types/comprehensive-zip-mapping-100');
+      comprehensiveMapping = module.COMPREHENSIVE_ZIP_TDSP_MAPPING_100;
+      console.log(`🎯 Loaded 100% coverage mapping with ${Object.keys(comprehensiveMapping).length} ZIP codes`);
+    } catch (error) {
+      console.error('Failed to load 100% coverage mapping:', error);
+      comprehensiveMapping = {};
+    }
+  }
+  return comprehensiveMapping;
+}
+
 // Force server-side rendering for API endpoint
 export const prerender = false;
 
@@ -26,6 +43,80 @@ function formatCityDisplayName(citySlug: string): string {
     .map(word => word === 'tx' ? 'TX' : word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ')
     .replace(' Tx', ', TX');
+}
+
+// Generate city slug from ZIP code and mapping data (from 100% coverage system)
+function generateCitySlug(zipCode: string, mappingData?: any): string {
+  const zip = parseInt(zipCode);
+  
+  // Major metro area mappings
+  if (zip >= 75000 && zip <= 75399) return 'dallas';
+  if (zip >= 76000 && zip <= 76299) return 'fort-worth';
+  if (zip >= 77000 && zip <= 77599) return 'houston';
+  if (zip >= 78000 && zip <= 78299) return 'austin';
+  if (zip >= 78400 && zip <= 78499) return 'corpus-christi';
+  if (zip >= 79000 && zip <= 79199) return 'lubbock';
+  if (zip >= 79900 && zip <= 79999) return 'el-paso';
+  
+  // Secondary cities
+  if (zip >= 75700 && zip <= 75799) return 'tyler';
+  if (zip >= 76700 && zip <= 76799) return 'waco';
+  if (zip >= 77550 && zip <= 77599) return 'galveston';
+  if (zip >= 78500 && zip <= 78599) return 'mcallen';
+  if (zip >= 78600 && zip <= 78699) return 'laredo';
+  if (zip >= 79300 && zip <= 79399) return 'amarillo';
+  if (zip >= 76900 && zip <= 76999) return 'san-angelo';
+  
+  // Default based on TDSP zone if available
+  if (mappingData?.zone) {
+    switch (mappingData.zone) {
+      case 'North': return 'north-texas';
+      case 'Coast': return 'southeast-texas';
+      case 'Central': return 'central-texas';
+      case 'South': return 'south-texas';
+      case 'Valley': return 'rio-grande-valley';
+      default: return 'texas';
+    }
+  }
+  
+  return 'texas';
+}
+
+// Generate display name for city (from 100% coverage system)
+function generateCityDisplayName(zipCode: string, mappingData?: any): string {
+  const zip = parseInt(zipCode);
+  
+  // Major metro area display names
+  if (zip >= 75000 && zip <= 75399) return 'Dallas';
+  if (zip >= 76000 && zip <= 76299) return 'Fort Worth';
+  if (zip >= 77000 && zip <= 77599) return 'Houston';
+  if (zip >= 78000 && zip <= 78299) return 'Austin';
+  if (zip >= 78400 && zip <= 78499) return 'Corpus Christi';
+  if (zip >= 79000 && zip <= 79199) return 'Lubbock';
+  if (zip >= 79900 && zip <= 79999) return 'El Paso';
+  
+  // Secondary cities
+  if (zip >= 75700 && zip <= 75799) return 'Tyler';
+  if (zip >= 76700 && zip <= 76799) return 'Waco';
+  if (zip >= 77550 && zip <= 77599) return 'Galveston';
+  if (zip >= 78500 && zip <= 78599) return 'McAllen';
+  if (zip >= 78600 && zip <= 78699) return 'Laredo';
+  if (zip >= 79300 && zip <= 79399) return 'Amarillo';
+  if (zip >= 76900 && zip <= 76999) return 'San Angelo';
+  
+  // Default based on TDSP zone if available
+  if (mappingData?.zone) {
+    switch (mappingData.zone) {
+      case 'North': return 'North Texas';
+      case 'Coast': return 'Southeast Texas';
+      case 'Central': return 'Central Texas';
+      case 'South': return 'South Texas';
+      case 'Valley': return 'Rio Grande Valley';
+      default: return 'Texas';
+    }
+  }
+  
+  return 'Texas';
 }
 
 // Validate ZIP code format
@@ -97,12 +188,32 @@ export const GET: APIRoute = async ({ request }) => {
   }
 
   try {
-    // Look up city from ZIP code in our static mapping first
-    let citySlug = getCityFromZip(zipCode);
+    // Load 100% coverage mapping
+    await loadComprehensiveMapping();
+    
+    // Check if ZIP is in 100% coverage mapping first
+    const mappingData = comprehensiveMapping[zipCode];
+    let citySlug: string | undefined;
+    let cityDisplayName: string;
+    
+    if (mappingData) {
+      // Use 100% coverage system
+      citySlug = generateCitySlug(zipCode, mappingData);
+      cityDisplayName = generateCityDisplayName(zipCode, mappingData);
+      console.log(`🎯 100% coverage lookup success: ${zipCode} -> ${citySlug} (confidence: ${mappingData.confidence || 95}%, source: ${mappingData.source || 'comprehensive'})`);
+    } else {
+      // FALLBACK 1: Look up city from ZIP code in our static mapping
+      citySlug = getCityFromZip(zipCode);
+      
+      if (citySlug) {
+        cityDisplayName = formatCityDisplayName(citySlug);
+        console.log(`📍 Static mapping lookup success: ${zipCode} -> ${citySlug}`);
+      }
+    }
 
     if (!citySlug) {
-      // FALLBACK SYSTEM: Use universal ZIP service for unknown ZIP codes
-      console.log(`🔄 ZIP ${zipCode} not found in static mapping, trying universal lookup...`);
+      // FALLBACK 2: Use universal ZIP service for unknown ZIP codes
+      console.log(`🔄 ZIP ${zipCode} not found in 100% coverage or static mapping, trying universal lookup...`);
       
       try {
         const universalResult = await comprehensiveZIPService.lookupZIPCode(zipCode);
@@ -110,6 +221,7 @@ export const GET: APIRoute = async ({ request }) => {
         if (universalResult.success) {
           // Successfully mapped to a supported city
           citySlug = universalResult.citySlug!;
+          cityDisplayName = universalResult.cityDisplayName || universalResult.cityName || formatCityDisplayName(citySlug);
           console.log(`✅ Universal lookup success: ${zipCode} -> ${citySlug} (confidence: ${universalResult.confidence}%)`);
           
           // Log this for future static mapping updates
@@ -187,7 +299,7 @@ export const GET: APIRoute = async ({ request }) => {
     }
 
     if (!citySlug) {
-      // This shouldn't happen after universal lookup, but just in case
+      // This shouldn't happen after 100% coverage mapping, but just in case
       return new Response(JSON.stringify({
         success: false,
         zipCode,
@@ -202,7 +314,10 @@ export const GET: APIRoute = async ({ request }) => {
       });
     }
 
-    const cityDisplayName = formatCityDisplayName(citySlug);
+    // Ensure cityDisplayName is set if not already set by 100% coverage system
+    if (!cityDisplayName) {
+      cityDisplayName = formatCityDisplayName(citySlug);
+    }
 
     // Check if this is a municipal utility area
     if (municipalUtilities[citySlug]) {
