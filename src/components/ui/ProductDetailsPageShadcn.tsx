@@ -67,6 +67,7 @@ export const ProductDetailsPageShadcn: React.FC<ProductDetailsPageShadcnProps> =
   const [activeTab, setActiveTab] = useState('overview');
   const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
   const [realPlanId, setRealPlanId] = useState<string | null>(null);
+  const [planIdLoading, setPlanIdLoading] = useState(true);
   const [currentCitySlug, setCurrentCitySlug] = useState<string>('dallas');
 
   // Extract current city from URL for proper plan routing
@@ -99,10 +100,13 @@ export const ProductDetailsPageShadcn: React.FC<ProductDetailsPageShadcnProps> =
   // Fetch real plan ID from ComparePower API
   React.useEffect(() => {
     const fetchRealPlanId = async () => {
+      setPlanIdLoading(true);
+      
       // Skip if plan already has a valid MongoDB ObjectId
       if (planData.id && /^[a-f0-9]{24}$/i.test(planData.id)) {
         console.log(`[ProductDetails] Plan already has valid MongoDB ID: ${planData.id}`);
         setRealPlanId(planData.id);
+        setPlanIdLoading(false);
         return;
       }
 
@@ -127,6 +131,8 @@ export const ProductDetailsPageShadcn: React.FC<ProductDetailsPageShadcnProps> =
       } catch (error) {
         console.warn('[ProductDetails] Could not fetch real plan ID from API:', error);
         // Will use fallback ObjectId in modal
+      } finally {
+        setPlanIdLoading(false);
       }
     };
     
@@ -965,13 +971,23 @@ export const ProductDetailsPageShadcn: React.FC<ProductDetailsPageShadcnProps> =
                     <div className="relative">
                       <Button 
                         onClick={() => setIsAddressModalOpen(true)}
-                        className="w-full bg-gradient-to-r from-texas-red to-red-600 hover:from-texas-red-600 hover:to-red-700 text-white py-4 px-6 text-lg font-bold rounded-xl transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-xl hover:shadow-2xl focus-visible:ring-4 focus-visible:ring-texas-red/40 focus-visible:ring-offset-2 group overflow-hidden"
+                        disabled={planIdLoading}
+                        className="w-full bg-gradient-to-r from-texas-red to-red-600 hover:from-texas-red-600 hover:to-red-700 text-white py-4 px-6 text-lg font-bold rounded-xl transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-xl hover:shadow-2xl focus-visible:ring-4 focus-visible:ring-texas-red/40 focus-visible:ring-offset-2 group overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                         aria-describedby="plan-selection-description"
                       >
                         <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                         <div className="relative flex items-center justify-center gap-3">
-                          <span>Select This Plan</span>
-                          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
+                          {planIdLoading ? (
+                            <>
+                              <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                              <span>Loading Plan...</span>
+                            </>
+                          ) : (
+                            <>
+                              <span>Select This Plan</span>
+                              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
+                            </>
+                          )}
                         </div>
                       </Button>
                       <div className="absolute -inset-1 bg-gradient-to-r from-texas-red to-red-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition-opacity duration-300 -z-10 pointer-events-none"></div>
