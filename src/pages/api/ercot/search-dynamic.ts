@@ -2,8 +2,12 @@ import type { APIRoute } from 'astro';
 import { ercotESIIDClient } from '../../../lib/api/ercot-esiid-client.ts';
 
 export const POST: APIRoute = async ({ request }) => {
+  console.log('🔥 ENDPOINT HIT - Starting request processing');
+  
   try {
+    console.log('🔥 About to parse JSON body');
     const body = await request.json();
+    console.log('🔥 JSON parsed successfully:', body);
     const { address, zipCode } = body;
 
     if (!address || !zipCode) {
@@ -27,11 +31,39 @@ export const POST: APIRoute = async ({ request }) => {
 
     console.log(`🔍 ERCOT API Address search: "${address}" in ZIP ${zipCode}`);
 
-    // Use real ERCOT API client - Search service locations using ComparePower ERCOT API
-    const esiidResults = await ercotESIIDClient.searchESIIDs({
-      address: address.trim(),
-      zip_code: zipCode
+    // Direct ERCOT API call - bypass hanging client
+    const url = new URL('https://ercot.api.comparepower.com/api/esiids');
+    url.searchParams.set('address', address.trim());
+    url.searchParams.set('zip_code', zipCode);
+
+    const response = await fetch(url.toString(), {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'User-Agent': 'ChooseMyPower.org/1.0',
+        'Accept': 'application/json',
+      },
     });
+
+    if (!response.ok) {
+      throw new Error(`ERCOT API error: ${response.status} ${response.statusText}`);
+    }
+
+    const rawResults = await response.json();
+    
+    // Transform to expected format
+    const esiidResults = rawResults.map((result: any) => ({
+      esiid: result.esiid,
+      address: result.address,
+      city: result.city,
+      state: result.state,
+      zip_code: result.zip_code,
+      county: result.county,
+      tdsp_duns: result.duns,
+      tdsp_name: result.station_name || 'ONCOR',
+      service_voltage: result.metered_service_type || '',
+      meter_type: result.metered === 'Y' ? 'Smart Meter' : 'Standard Meter'
+    }));
 
     if (esiidResults.length === 0) {
       console.log(`❌ No ESIID results found for address: ${address}, ZIP: ${zipCode}`);

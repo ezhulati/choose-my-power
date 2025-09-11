@@ -74,7 +74,9 @@ export class ERCOTESIIDClient {
    * This is the primary method to resolve addresses to TDSPs
    */
   async searchESIIDs(params: ESIIDSearchParams): Promise<ESIIDSearchResult[]> {
-    const cacheKey = `${params.address}_${params.zip_code}`.toLowerCase();
+    // Normalize address for consistent caching
+    const normalizedAddress = this.normalizeAddress(params.address);
+    const cacheKey = `${normalizedAddress}_${params.zip_code}`.toLowerCase();
     
     // Check cache first
     const cached = this.cache.get(cacheKey);
@@ -389,6 +391,19 @@ export class ERCOTESIIDClient {
   }
 
   /**
+   * Search with cache bypass for testing
+   */
+  async searchESIIDsWithoutCache(params: ESIIDSearchParams): Promise<ESIIDSearchResult[]> {
+    const originalMethod = this.searchESIIDs;
+    // Temporarily clear cache for this address
+    const normalizedAddress = this.normalizeAddress(params.address);
+    const cacheKey = `${normalizedAddress}_${params.zip_code}`.toLowerCase();
+    this.cache.delete(cacheKey);
+    
+    return this.searchESIIDs(params);
+  }
+
+  /**
    * Get cache statistics
    */
   public getCacheStats() {
@@ -422,6 +437,31 @@ export class ERCOTESIIDClient {
         lastError: error instanceof Error ? error.message : 'Unknown error'
       };
     }
+  }
+
+  /**
+   * Normalize address for consistent caching and API calls
+   */
+  private normalizeAddress(address: string): string {
+    return address
+      .trim()
+      .toLowerCase()
+      // Normalize common street abbreviations
+      .replace(/\bstreet\b/gi, 'st')
+      .replace(/\bavenue\b/gi, 'ave')
+      .replace(/\bboulevard\b/gi, 'blvd')
+      .replace(/\bdrive\b/gi, 'dr')
+      .replace(/\blane\b/gi, 'ln')
+      .replace(/\broads?\b/gi, 'rd')
+      .replace(/\bcourt\b/gi, 'ct')
+      .replace(/\bplace\b/gi, 'pl')
+      .replace(/\bapartment\b/gi, 'apt')
+      .replace(/\bsuite\b/gi, 'ste')
+      .replace(/\bunit\b/gi, 'apt')
+      // Remove extra spaces and punctuation
+      .replace(/[.,]/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
   }
 }
 

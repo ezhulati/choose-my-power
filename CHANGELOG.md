@@ -16,6 +16,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Smart geographic routing with confidence scoring for data quality assessment
   - **IMPACT**: Zero "ZIP not found" errors, bulletproof coverage for entire Texas market
 
+### Fixed
+- **ERCOT API INTEGRATION**: Complete end-to-end order flow now working perfectly
+  - Fixed ERCOT API client hanging issue by implementing direct fetch bypass
+  - Enhanced address normalization for consistent caching (street abbreviations, spacing)
+  - Resolved server port conflicts causing API endpoint failures
+  - Added comprehensive debugging and error handling for API troubleshooting
+  - **TESTED**: Full order flow from ZIP search to ComparePower order URL generation
+  - **VALIDATED**: 10 real ESIIDs returned for test addresses with exact apartment matches
+  - **IMPACT**: Complete customer order journey now functional with real data integration
+
 ### Changed
 - **ZIP LOOKUP API ENHANCEMENT**: Main ZIP lookup now uses 100% coverage system as primary source
 - **COMPREHENSIVE DATA UPDATE**: All 370+ city data files refreshed with latest plan and provider information
