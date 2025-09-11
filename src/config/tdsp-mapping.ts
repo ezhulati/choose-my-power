@@ -1167,7 +1167,7 @@ export const zipToCity: Record<string, string> = {
 
   // Galveston area (CenterPoint Energy Houston Electric)
   '77550': 'galveston', '77551': 'galveston', '77552': 'galveston', '77553': 'galveston',
-  '77554': 'galveston', '77555': 'galveston', '77573': 'galveston', '77592': 'galveston',
+  '77554': 'galveston', '77555': 'galveston', '77592': 'galveston',
 
   // Additional major Texas cities with deregulated markets
   
@@ -1273,8 +1273,8 @@ export const zipToCity: Record<string, string> = {
 
   // Coast region (CenterPoint Energy Houston Electric zone)
   '77316': 'conroe', '77301': 'conroe', '77302': 'conroe', '77303': 'conroe', '77304': 'conroe',
-  '77318': 'conroe', '77384': 'conroe', '77385': 'conroe',
-  '77414': 'bay-city', '77414': 'bay-city', '77404': 'katy', '77449': 'katy', '77450': 'katy',
+  '77318': 'conroe',
+  '77414': 'bay-city', '77404': 'katy', '77449': 'katy', '77450': 'katy',
   '77493': 'katy', '77494': 'katy',
   '77536': 'deer-park', '77537': 'deer-park',
   '77539': 'dickinson', '77510': 'texas-city', '77590': 'texas-city', '77591': 'texas-city',

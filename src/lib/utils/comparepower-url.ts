@@ -15,8 +15,8 @@ export interface ComparePowerUrlParams {
  * Returns "ERROR" if validation fails, otherwise returns the complete URL
  */
 export function buildComparePowerUrl({ esiid, plan_id, usage, zip_code }: ComparePowerUrlParams): string {
-  // Validate ESIID (17 digits)
-  if (!/^\d{17}$/.test(esiid)) {
+  // Validate ESIID (ComparePower API returns various formats - 17+ digits/chars)
+  if (!/^[0-9A-Z]{15,25}$/i.test(esiid)) {
     console.error('[ComparePower URL] Invalid ESIID format:', esiid);
     return "ERROR";
   }

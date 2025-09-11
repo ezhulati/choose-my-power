@@ -344,15 +344,24 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
 
   // Get the MongoDB ObjectId for the plan
   const getPlanObjectId = (planData: any): string | null => {
+    console.log('[AddressModal] Getting plan ObjectId:', {
+      planName: planData.name,
+      provider: planData.provider?.name,
+      planId: planData.id,
+      apiPlanId: planData.apiPlanId,
+      planIdIsValid: planData.id && /^[a-f0-9]{24}$/i.test(planData.id),
+      apiPlanIdIsValid: planData.apiPlanId && /^[a-f0-9]{24}$/i.test(planData.apiPlanId)
+    });
+    
     // First priority: Use API-fetched MongoDB ObjectId
-    if (planData.apiPlanId) {
-      console.log('[AddressModal] Using apiPlanId:', planData.apiPlanId);
+    if (planData.apiPlanId && /^[a-f0-9]{24}$/i.test(planData.apiPlanId)) {
+      console.log('[AddressModal] Using valid apiPlanId:', planData.apiPlanId);
       return planData.apiPlanId;
     }
     
     // Second priority: Use plan's own ID if it's a valid MongoDB ObjectId (24 hex chars)
     if (planData.id && /^[a-f0-9]{24}$/i.test(planData.id)) {
-      console.log('[AddressModal] Using plan.id:', planData.id);
+      console.log('[AddressModal] Using valid plan.id:', planData.id);
       return planData.id;
     }
     
@@ -361,29 +370,53 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
       planName: planData.name,
       provider: planData.provider?.name,
       planId: planData.id,
-      apiPlanId: planData.apiPlanId
+      apiPlanId: planData.apiPlanId,
+      planIdLength: planData.id?.length,
+      apiPlanIdLength: planData.apiPlanId?.length
     });
     
     return null;
   };
 
-  const handleProceedToOrder = () => {
+  const handleProceedToOrder = async () => {
     if (!selectedLocation) {
       console.error('[AddressModal] No location selected');
       return;
     }
     
     // Get the actual MongoDB ObjectId for the plan
-    const actualPlanId = getPlanObjectId(planData);
+    let actualPlanId = getPlanObjectId(planData);
     
-    // Check if we have a valid plan ID
+    // If no plan ID found, try to fetch it one more time as a fallback
     if (!actualPlanId) {
-      setPlanError('Unable to process order. Plan information is missing or invalid. Please contact support.');
-      console.error('[AddressModal] Cannot proceed with order - no valid plan ID', {
+      console.log('[AddressModal] No plan ID found, attempting to fetch from API...');
+      setPlanError('Loading plan information...');
+      
+      try {
+        const response = await fetch(`/api/plans/search?name=${encodeURIComponent(planData.name)}&provider=${encodeURIComponent(planData.provider.name)}&city=dallas`);
+        
+        if (response.ok) {
+          const searchResults = await response.json();
+          if (searchResults && searchResults.length > 0) {
+            actualPlanId = searchResults[0].id;
+            console.log('[AddressModal] Fetched plan ID from API:', actualPlanId);
+            setPlanError(null); // Clear the loading message
+          }
+        }
+      } catch (error) {
+        console.error('[AddressModal] Error fetching plan ID:', error);
+      }
+    }
+    
+    // Final check for valid plan ID
+    if (!actualPlanId) {
+      setPlanError('Unable to process order. Plan information is still loading. Please try again in a moment or contact support if the issue persists.');
+      console.error('[AddressModal] Cannot proceed with order - no valid plan ID after retry', {
         planName: planData.name,
         provider: planData.provider?.name,
         planDataId: planData.id,
-        apiPlanId: planData.apiPlanId
+        apiPlanId: planData.apiPlanId,
+        timestamp: new Date().toISOString()
       });
       return;
     }

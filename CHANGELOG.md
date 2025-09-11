@@ -18,6 +18,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - **ZIP LOOKUP API ENHANCEMENT**: Main ZIP lookup now uses 100% coverage system as primary source
+- **COMPREHENSIVE DATA UPDATE**: All 370+ city data files refreshed with latest plan and provider information
+  - Updated TDSP mappings across all Texas regions
+  - Enhanced plan availability data for better user experience
+  - Improved database integration with real-time fallback systems
   - Updated /api/zip-lookup to prioritize comprehensive mapping over static lookups
   - Enhanced fallback system maintains reliability with multiple data sources
   - Improved response times (<10ms) with intelligent caching
