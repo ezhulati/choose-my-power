@@ -2836,7 +2836,7 @@
           }
         },
         {
-          "id": "68c257a8a4a0c10d804d2bb2",
+          "id": "68c257a7a4a0c10d804d2bac",
           "name": "Free Nights & Solar Days 12 (8 pm)",
           "provider": {
             "name": "TXU Energy",
@@ -3058,6 +3058,43 @@
           }
         },
         {
+          "id": "68c32a88261e2af2d94d4dc0",
+          "name": "SimpleSaver 12",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.204,
+            "rate1000kWh": 0.099,
+            "rate2000kWh": 0.146,
+            "ratePerKwh": 0.099
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
           "id": "68c2f25ba4a0c10d804d3dbe",
           "name": "True Simple 12",
           "provider": {
@@ -3076,6 +3113,43 @@
             "length": 12,
             "type": "fixed",
             "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68c32a88261e2af2d94d4dbf",
+          "name": "SimpleSaver 14",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.203,
+            "rate1000kWh": 0.098,
+            "rate2000kWh": 0.146,
+            "ratePerKwh": 0.098
+          },
+          "contract": {
+            "length": 14,
+            "type": "fixed",
+            "earlyTerminationFee": 250,
             "autoRenewal": false,
             "satisfactionGuarantee": false
           },
@@ -3132,6 +3206,43 @@
           }
         },
         {
+          "id": "68c32a88261e2af2d94d4dc1",
+          "name": "SimpleSaver 24",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.215,
+            "rate1000kWh": 0.11,
+            "rate2000kWh": 0.158,
+            "ratePerKwh": 0.11
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 250,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
           "id": "68b9faaf4030b9912e39c74d",
           "name": "True Simple 24",
           "provider": {
@@ -3150,6 +3261,43 @@
             "length": 24,
             "type": "fixed",
             "earlyTerminationFee": 250,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "CENTERPOINT ENERGY HOUSTON ELECTRIC LLC"
+            ]
+          }
+        },
+        {
+          "id": "68c32a88261e2af2d94d4dc2",
+          "name": "SimpleSaver 36",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.225,
+            "rate1000kWh": 0.12,
+            "rate2000kWh": 0.168,
+            "ratePerKwh": 0.12
+          },
+          "contract": {
+            "length": 36,
+            "type": "fixed",
+            "earlyTerminationFee": 350,
             "autoRenewal": false,
             "satisfactionGuarantee": false
           },
@@ -3908,8 +4056,8 @@
           }
         }
       ],
-      "count": 103,
-      "lowestRate": 0.099,
+      "count": 107,
+      "lowestRate": 0.098,
       "highestRate": 0.236
     }
   }

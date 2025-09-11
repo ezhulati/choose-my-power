@@ -216,7 +216,7 @@
           }
         },
         {
-          "id": "68c31903e69c00276d428d35",
+          "id": "68c338acaf6a270af7ac07d1",
           "name": "12 Month GREEN (No Min Usage Fee)",
           "provider": {
             "name": "Constellation",
@@ -253,7 +253,7 @@
           }
         },
         {
-          "id": "68c31903e69c00276d428d34",
+          "id": "68c338acaf6a270af7ac07d3",
           "name": "12 Month Usage Bill Credit",
           "provider": {
             "name": "Constellation",
@@ -290,7 +290,7 @@
           }
         },
         {
-          "id": "68c31903e69c00276d428d36",
+          "id": "68c338acaf6a270af7ac07d2",
           "name": "24 Month Usage Bill Credit",
           "provider": {
             "name": "Constellation",
@@ -2830,7 +2830,7 @@
           }
         },
         {
-          "id": "68c2579f349dfd8c4303a051",
+          "id": "68c2579f349dfd8c4303a04e",
           "name": "Flex Forward",
           "provider": {
             "name": "TXU Energy",
@@ -3132,6 +3132,43 @@
           }
         },
         {
+          "id": "68c32a84261e2af2d94d4dbb",
+          "name": "SimpleSaver 12",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.208,
+            "rate1000kWh": 0.105,
+            "rate2000kWh": 0.153,
+            "ratePerKwh": 0.105
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS CENTRAL COMPANY"
+            ]
+          }
+        },
+        {
           "id": "68b714cf206770f7c5635126",
           "name": "True Simple 12",
           "provider": {
@@ -3150,6 +3187,43 @@
             "length": 12,
             "type": "fixed",
             "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS CENTRAL COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68c32a84261e2af2d94d4dba",
+          "name": "SimpleSaver 14",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.207,
+            "rate1000kWh": 0.104,
+            "rate2000kWh": 0.152,
+            "ratePerKwh": 0.104
+          },
+          "contract": {
+            "length": 14,
+            "type": "fixed",
+            "earlyTerminationFee": 250,
             "autoRenewal": false,
             "satisfactionGuarantee": false
           },
@@ -3206,6 +3280,43 @@
           }
         },
         {
+          "id": "68c32a84261e2af2d94d4dbc",
+          "name": "SimpleSaver 24",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.209,
+            "rate1000kWh": 0.106,
+            "rate2000kWh": 0.154,
+            "ratePerKwh": 0.106
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 250,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS CENTRAL COMPANY"
+            ]
+          }
+        },
+        {
           "id": "68bf04d901c94386ce788451",
           "name": "True Simple 24",
           "provider": {
@@ -3224,6 +3335,43 @@
             "length": 24,
             "type": "fixed",
             "earlyTerminationFee": 250,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS CENTRAL COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68c32a84261e2af2d94d4dbd",
+          "name": "SimpleSaver 36",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.213,
+            "rate1000kWh": 0.11,
+            "rate2000kWh": 0.158,
+            "ratePerKwh": 0.11
+          },
+          "contract": {
+            "length": 36,
+            "type": "fixed",
+            "earlyTerminationFee": 350,
             "autoRenewal": false,
             "satisfactionGuarantee": false
           },
@@ -3982,8 +4130,8 @@
           }
         }
       ],
-      "count": 105,
-      "lowestRate": 0.105,
+      "count": 109,
+      "lowestRate": 0.104,
       "highestRate": 0.235
     }
   }

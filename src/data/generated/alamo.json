@@ -216,7 +216,7 @@
           }
         },
         {
-          "id": "68c31918a4a0c10d804d4261",
+          "id": "68c338beaf6a270af7ac07df",
           "name": "12 Month GREEN (No Min Usage Fee)",
           "provider": {
             "name": "Constellation",
@@ -253,7 +253,7 @@
           }
         },
         {
-          "id": "68c31918a4a0c10d804d4260",
+          "id": "68c338beaf6a270af7ac07e0",
           "name": "12 Month Usage Bill Credit",
           "provider": {
             "name": "Constellation",
@@ -290,7 +290,7 @@
           }
         },
         {
-          "id": "68c31918a4a0c10d804d425f",
+          "id": "68c338beaf6a270af7ac07de",
           "name": "24 Month Usage Bill Credit",
           "provider": {
             "name": "Constellation",
@@ -2793,7 +2793,7 @@
           }
         },
         {
-          "id": "68c257b6a4a0c10d804d2bdf",
+          "id": "68c257b6a4a0c10d804d2be2",
           "name": "Flex Forward",
           "provider": {
             "name": "TXU Energy",
@@ -2873,7 +2873,7 @@
           }
         },
         {
-          "id": "68c257b6a4a0c10d804d2bda",
+          "id": "68c257b6a4a0c10d804d2bec",
           "name": "Free Nights & Solar Days 12 (8 pm)",
           "provider": {
             "name": "TXU Energy",
@@ -3095,6 +3095,43 @@
           }
         },
         {
+          "id": "68c32a98af6a270af7ac061c",
+          "name": "SimpleSaver 12",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.23,
+            "rate1000kWh": 0.122,
+            "rate2000kWh": 0.168,
+            "ratePerKwh": 0.122
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "TEXAS-NEW MEXICO POWER COMPANY"
+            ]
+          }
+        },
+        {
           "id": "68b714e6206770f7c5635150",
           "name": "True Simple 12",
           "provider": {
@@ -3113,6 +3150,43 @@
             "length": 12,
             "type": "fixed",
             "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "TEXAS-NEW MEXICO POWER COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68c32a98af6a270af7ac061d",
+          "name": "SimpleSaver 14",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.231,
+            "rate1000kWh": 0.123,
+            "rate2000kWh": 0.169,
+            "ratePerKwh": 0.123
+          },
+          "contract": {
+            "length": 14,
+            "type": "fixed",
+            "earlyTerminationFee": 250,
             "autoRenewal": false,
             "satisfactionGuarantee": false
           },
@@ -3169,6 +3243,43 @@
           }
         },
         {
+          "id": "68c32a99af6a270af7ac061e",
+          "name": "SimpleSaver 24",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.234,
+            "rate1000kWh": 0.126,
+            "rate2000kWh": 0.172,
+            "ratePerKwh": 0.126
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 250,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "TEXAS-NEW MEXICO POWER COMPANY"
+            ]
+          }
+        },
+        {
           "id": "68b9fab94030b9912e39c75e",
           "name": "True Simple 24",
           "provider": {
@@ -3187,6 +3298,43 @@
             "length": 24,
             "type": "fixed",
             "earlyTerminationFee": 250,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "TEXAS-NEW MEXICO POWER COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68c32a99af6a270af7ac061f",
+          "name": "SimpleSaver 36",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.238,
+            "rate1000kWh": 0.13,
+            "rate2000kWh": 0.176,
+            "ratePerKwh": 0.13
+          },
+          "contract": {
+            "length": 36,
+            "type": "fixed",
+            "earlyTerminationFee": 350,
             "autoRenewal": false,
             "satisfactionGuarantee": false
           },
@@ -3945,7 +4093,7 @@
           }
         }
       ],
-      "count": 104,
+      "count": 108,
       "lowestRate": 0.122,
       "highestRate": 0.254
     }

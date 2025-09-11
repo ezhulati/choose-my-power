@@ -3015,6 +3015,43 @@
           }
         },
         {
+          "id": "68c32a8daf6a270af7ac0611",
+          "name": "SimpleSaver 12",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.2,
+            "rate1000kWh": 0.096,
+            "rate2000kWh": 0.143,
+            "ratePerKwh": 0.096
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
           "id": "68b9fab64030b9912e39c755",
           "name": "True Simple 12",
           "provider": {
@@ -3033,6 +3070,43 @@
             "length": 12,
             "type": "fixed",
             "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68c32a8daf6a270af7ac0610",
+          "name": "SimpleSaver 14",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.199,
+            "rate1000kWh": 0.095,
+            "rate2000kWh": 0.143,
+            "ratePerKwh": 0.095
+          },
+          "contract": {
+            "length": 14,
+            "type": "fixed",
+            "earlyTerminationFee": 250,
             "autoRenewal": false,
             "satisfactionGuarantee": false
           },
@@ -3089,6 +3163,43 @@
           }
         },
         {
+          "id": "68c32a8daf6a270af7ac0612",
+          "name": "SimpleSaver 24",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.207,
+            "rate1000kWh": 0.103,
+            "rate2000kWh": 0.151,
+            "ratePerKwh": 0.103
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 250,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
           "id": "68bf04e34030b9912e3a511e",
           "name": "True Simple 24",
           "provider": {
@@ -3107,6 +3218,43 @@
             "length": 24,
             "type": "fixed",
             "earlyTerminationFee": 250,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 5.85,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "ONCOR ELECTRIC DELIVERY COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68c32a8daf6a270af7ac0613",
+          "name": "SimpleSaver 36",
+          "provider": {
+            "name": "APGE",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.214,
+            "rate1000kWh": 0.11,
+            "rate2000kWh": 0.158,
+            "ratePerKwh": 0.11
+          },
+          "contract": {
+            "length": 36,
+            "type": "fixed",
+            "earlyTerminationFee": 350,
             "autoRenewal": false,
             "satisfactionGuarantee": false
           },
@@ -3865,8 +4013,8 @@
           }
         }
       ],
-      "count": 102,
-      "lowestRate": 0.096,
+      "count": 106,
+      "lowestRate": 0.095,
       "highestRate": 0.232
     }
   }
