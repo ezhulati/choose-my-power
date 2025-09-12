@@ -53,7 +53,7 @@ export class OncorClient extends BaseAPIClient {
   /**
    * Validate ZIP codes using Oncor territory lookup
    */
-  async validateZipCodes(zipCodes: string[]): Promise<any[]> {
+  async validateZipCodes(zipCodes: string[]): Promise<unknown[]> {
     const results = [];
     
     // Process in batches for better performance
@@ -77,7 +77,7 @@ export class OncorClient extends BaseAPIClient {
   /**
    * Process a batch of ZIP codes
    */
-  private async processBatchZipCodes(zipCodes: string[]): Promise<any[]> {
+  private async processBatchZipCodes(zipCodes: string[]): Promise<unknown[]> {
     try {
       // Try batch endpoint first
       const batchRequest = {
@@ -86,7 +86,7 @@ export class OncorClient extends BaseAPIClient {
         includeAddressInfo: false
       };
 
-      const response = await this.makeRequest<any>(
+      const response = await this.makeRequest<unknown>(
         '/batch-zip-lookup',
         {
           method: 'POST',
@@ -95,12 +95,12 @@ export class OncorClient extends BaseAPIClient {
       );
 
       if (response.success && response.data?.results) {
-        return response.data.results.map((result: any) => 
+        return response.data.results.map((result: unknown) => 
           this.mapOncorResponse(result, result.zipCode)
         );
       }
     } catch (error) {
-      console.log('Batch endpoint failed, falling back to individual requests:', error.message);
+      console.warn('Batch endpoint failed, falling back to individual requests:', error.message);
     }
 
     // Fallback to individual requests
@@ -116,7 +116,7 @@ export class OncorClient extends BaseAPIClient {
   /**
    * Validate a single ZIP code
    */
-  async validateSingleZipCode(zipCode: string): Promise<any> {
+  async validateSingleZipCode(zipCode: string): Promise<unknown> {
     if (!this.isValidTexasZipCode(zipCode)) {
       return {
         zipCode,
@@ -142,7 +142,7 @@ export class OncorClient extends BaseAPIClient {
           processingTime: response.processingTime
         };
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       return {
         zipCode,
         isValid: false,
@@ -157,7 +157,7 @@ export class OncorClient extends BaseAPIClient {
   /**
    * Look up ZIP code territory information
    */
-  async lookupZipCode(zipCode: string): Promise<any> {
+  async lookupZipCode(zipCode: string): Promise<unknown> {
     const request: OncorTerritoryRequest = {
       zipCode,
       includeServiceInfo: true,
@@ -174,7 +174,7 @@ export class OncorClient extends BaseAPIClient {
       );
 
       return response;
-    } catch (error: any) {
+    } catch (error: unknown) {
       return {
         success: false,
         error: error.message,
@@ -191,7 +191,7 @@ export class OncorClient extends BaseAPIClient {
     city: string;
     state: string;
     zipCode: string;
-  }): Promise<any> {
+  }): Promise<unknown> {
     try {
       const request = {
         address: {
@@ -233,7 +233,7 @@ export class OncorClient extends BaseAPIClient {
           processingTime: response.processingTime
         };
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       return {
         success: false,
         error: error.message,
@@ -245,14 +245,14 @@ export class OncorClient extends BaseAPIClient {
   /**
    * Get service boundary information
    */
-  async getServiceBoundary(coordinates?: { lat: number; lng: number }): Promise<any> {
+  async getServiceBoundary(coordinates?: { lat: number; lng: number }): Promise<unknown> {
     try {
       let endpoint = '/service-boundary';
       if (coordinates) {
         endpoint += `?lat=${coordinates.lat}&lng=${coordinates.lng}`;
       }
 
-      const response = await this.makeRequest<any>(endpoint, { method: 'GET' });
+      const response = await this.makeRequest<unknown>(endpoint, { method: 'GET' });
 
       if (response.success) {
         return {
@@ -267,7 +267,7 @@ export class OncorClient extends BaseAPIClient {
       } else {
         return response;
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       return {
         success: false,
         error: error.message,
@@ -279,9 +279,9 @@ export class OncorClient extends BaseAPIClient {
   /**
    * Get health status of Oncor API
    */
-  async getHealthStatus(): Promise<any> {
+  async getHealthStatus(): Promise<unknown> {
     try {
-      const response = await this.makeRequest<any>('/health', { method: 'GET' });
+      const response = await this.makeRequest<unknown>('/health', { method: 'GET' });
 
       return {
         status: response.success ? 'healthy' : 'unhealthy',
@@ -290,7 +290,7 @@ export class OncorClient extends BaseAPIClient {
         timestamp: new Date().toISOString(),
         details: response.success ? response.data : { error: response.error }
       };
-    } catch (error: any) {
+    } catch (error: unknown) {
       return {
         status: 'unhealthy',
         responseTime: 0,
@@ -304,9 +304,9 @@ export class OncorClient extends BaseAPIClient {
   /**
    * Get current system information
    */
-  async getSystemInfo(): Promise<any> {
+  async getSystemInfo(): Promise<unknown> {
     try {
-      const response = await this.makeRequest<any>('/system-info', { method: 'GET' });
+      const response = await this.makeRequest<unknown>('/system-info', { method: 'GET' });
 
       if (response.success) {
         return {
@@ -323,7 +323,7 @@ export class OncorClient extends BaseAPIClient {
       } else {
         return response;
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       return {
         success: false,
         error: error.message,
@@ -335,7 +335,7 @@ export class OncorClient extends BaseAPIClient {
   /**
    * Map Oncor API response to standardized format
    */
-  private mapOncorResponse(oncorData: any, zipCode: string): any {
+  private mapOncorResponse(oncorData: unknown, zipCode: string): unknown {
     const isInTerritory = oncorData.inServiceTerritory !== false;
     
     return {
@@ -363,7 +363,7 @@ export class OncorClient extends BaseAPIClient {
   /**
    * Determine service type from Oncor data
    */
-  private determineServiceType(oncorData: any): string {
+  private determineServiceType(oncorData: unknown): string {
     if (oncorData.serviceClass === 'Municipal') {
       return 'municipal';
     }
@@ -379,7 +379,7 @@ export class OncorClient extends BaseAPIClient {
   /**
    * Calculate confidence score for ZIP validation
    */
-  private calculateConfidence(oncorData: any, isInTerritory: boolean): number {
+  private calculateConfidence(oncorData: unknown, isInTerritory: boolean): number {
     if (!isInTerritory) {
       return 0;
     }
@@ -398,7 +398,7 @@ export class OncorClient extends BaseAPIClient {
   /**
    * Calculate confidence for address validation
    */
-  private calculateAddressConfidence(addressData: any): number {
+  private calculateAddressConfidence(addressData: unknown): number {
     let confidence = addressData.isValid ? 85 : 0;
     
     if (addressData.standardizedAddress) confidence += 5;

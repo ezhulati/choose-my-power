@@ -35,7 +35,7 @@ export interface RealPlan {
     greenEnergy: number;
     greenEnergyPercentage?: number;
     billCredit: number;
-    freeTime?: any;
+    freeTime?: unknown;
     hasFreeTime?: boolean;
     deposit?: {
       required: boolean;
@@ -78,20 +78,20 @@ export interface PlanStats {
  */
 export async function getPlans(filters: PlanFilters = {}): Promise<RealPlan[]> {
   try {
-    console.log(`[PlanService] Getting plans with filters:`, filters);
+    console.warn(`[PlanService] Getting plans with filters:`, filters);
     
     // Try database first if available
     if (await hasPlansInDatabase()) {
       const plans = await getPlansFromDatabase(filters);
       if (plans.length > 0) {
-        console.log(`[PlanService] Found ${plans.length} plans from database`);
+        console.warn(`[PlanService] Found ${plans.length} plans from database`);
         return plans;
       }
     }
     
     // Fallback to generated data files
     const plans = await getPlansFromGeneratedData(filters);
-    console.log(`[PlanService] Found ${plans.length} plans from generated data`);
+    console.warn(`[PlanService] Found ${plans.length} plans from generated data`);
     return plans;
     
   } catch (error) {
@@ -105,7 +105,7 @@ export async function getPlans(filters: PlanFilters = {}): Promise<RealPlan[]> {
  */
 export async function getPlansForCity(citySlug: string, filters: Omit<PlanFilters, 'city') = {}): Promise<RealPlan[]> {
   try {
-    console.log(`[PlanService] Getting plans for city: ${citySlug}`);
+    console.warn(`[PlanService] Getting plans for city: ${citySlug}`);
     
     const allFilters = { ...filters, city: citySlug };
     return await getPlans(allFilters);
@@ -121,13 +121,13 @@ export async function getPlansForCity(citySlug: string, filters: Omit<PlanFilter
  */
 export async function getPlanById(planId: string): Promise<RealPlan | null> {
   try {
-    console.log(`[PlanService] Getting plan by ID: ${planId}`);
+    console.warn(`[PlanService] Getting plan by ID: ${planId}`);
     
     // Try database first
     if (await hasPlansInDatabase()) {
       const plan = await getPlanFromDatabase(planId);
       if (plan) {
-        console.log(`[PlanService] Found plan ${planId} from database`);
+        console.warn(`[PlanService] Found plan ${planId} from database`);
         return plan;
       }
     }
@@ -135,7 +135,7 @@ export async function getPlanById(planId: string): Promise<RealPlan | null> {
     // Search through generated data files
     const plan = await getPlanFromGeneratedData(planId);
     if (plan) {
-      console.log(`[PlanService] Found plan ${planId} from generated data`);
+      console.warn(`[PlanService] Found plan ${planId} from generated data`);
       return plan;
     }
     
@@ -153,7 +153,7 @@ export async function getPlanById(planId: string): Promise<RealPlan | null> {
  */
 export async function searchPlans(providerName: string, planName?: string, citySlug?: string): Promise<RealPlan[]> {
   try {
-    console.log(`[PlanService] Searching plans: provider="${providerName}", plan="${planName}", city="${citySlug}"`);
+    console.warn(`[PlanService] Searching plans: provider="${providerName}", plan="${planName}", city="${citySlug}"`);
     
     // Try database first
     if (await hasPlansInDatabase()) {
@@ -199,7 +199,7 @@ export async function searchPlans(providerName: string, planName?: string, cityS
           tdsp: plan.tdsp.short_name
         };
         
-        console.log(`[PlanService] Found plan from database search`);
+        console.warn(`[PlanService] Found plan from database search`);
         return [realPlan];
       }
     }
@@ -214,11 +214,11 @@ export async function searchPlans(providerName: string, planName?: string, cityS
       const filtered = plans.filter(plan => 
         plan.name.toLowerCase().includes(planName.toLowerCase())
       );
-      console.log(`[PlanService] Found ${filtered.length} plans matching name "${planName}"`);
+      console.warn(`[PlanService] Found ${filtered.length} plans matching name "${planName}"`);
       return filtered;
     }
     
-    console.log(`[PlanService] Found ${plans.length} plans for provider "${providerName}"`);
+    console.warn(`[PlanService] Found ${plans.length} plans for provider "${providerName}"`);
     return plans;
     
   } catch (error) {
@@ -261,7 +261,7 @@ export async function getPlanStats(citySlug?: string): Promise<PlanStats> {
       providers: uniqueProviders.size
     };
     
-    console.log(`[PlanService] Plan stats${citySlug ? ` for ${citySlug}` : ''}:`, stats);
+    console.warn(`[PlanService] Plan stats${citySlug ? ` for ${citySlug}` : ''}:`, stats);
     return stats;
     
   } catch (error) {
@@ -311,7 +311,7 @@ async function getPlansFromDatabase(filters: PlanFilters): Promise<RealPlan[]> {
       WHERE 1=1
     `;
     
-    const params: any[] = [];
+    const params: unknown[] = [];
     let paramIndex = 1;
     
     if (filters.city) {

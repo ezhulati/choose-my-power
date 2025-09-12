@@ -125,7 +125,7 @@ const FacetedPlanSearch: React.FC<FacetedPlanSearchProps> = ({
   );
 
   // Handle filter changes
-  const handleFilterChange = useCallback((filterType: string, value: any, checked: boolean) => {
+  const handleFilterChange = useCallback((filterType: string, value: unknown, checked: boolean) => {
     setCurrentFilters(prev => {
       const newFilters = { ...prev };
       

@@ -81,7 +81,7 @@ export class ERCOTESIIDClient {
     // Check cache first
     const cached = this.cache.get(cacheKey);
     if (cached) {
-      console.log(`Cache hit for ESIID search: ${params.address}, ${params.zip_code}`);
+      console.warn(`Cache hit for ESIID search: ${params.address}, ${params.zip_code}`);
       return cached;
     }
 
@@ -138,7 +138,7 @@ export class ERCOTESIIDClient {
       // Cache results (managed cache handles TTL automatically)
       this.cache.set(cacheKey, validResults);
 
-      console.log(`Found ${validResults.length} ESIID results for ${params.address}, ${params.zip_code}`);
+      console.warn(`Found ${validResults.length} ESIID results for ${params.address}, ${params.zip_code}`);
       return validResults;
 
     } catch (error) {
@@ -223,7 +223,7 @@ export class ERCOTESIIDClient {
     displayUsage: number = 1000
   ): Promise<AddressTDSPResolution> {
     
-    console.log(`🔍 Resolving address to TDSP: ${address}, ${zipCode}`);
+    console.warn(`🔍 Resolving address to TDSP: ${address}, ${zipCode}`);
     
     try {
       // Step 1: Search for ESIIDs
@@ -351,7 +351,7 @@ export class ERCOTESIIDClient {
   /**
    * Normalize ESIID result data
    */
-  private normalizeESIIDResult(result: any): ESIIDSearchResult {
+  private normalizeESIIDResult(result: unknown): ESIIDSearchResult {
     return {
       esiid: result.esiid,
       address: result.address.trim(),
@@ -369,7 +369,7 @@ export class ERCOTESIIDClient {
   /**
    * Normalize ESIID details data
    */
-  private normalizeESIIDDetails(details: any): ESIIDDetails {
+  private normalizeESIIDDetails(details: unknown): ESIIDDetails {
     return {
       ...this.normalizeESIIDResult(details),
       premise_number: details.premise_number,
@@ -387,7 +387,7 @@ export class ERCOTESIIDClient {
    */
   public clearCache(): void {
     this.cache.clear();
-    console.log('ESIID cache cleared');
+    console.warn('ESIID cache cleared');
   }
 
   /**

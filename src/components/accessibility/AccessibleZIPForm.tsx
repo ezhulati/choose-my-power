@@ -88,7 +88,7 @@ export const AccessibleZIPForm: React.FC<AccessibleZIPFormProps> = ({
     // Submit on Enter if valid
     if (e.key === 'Enter' && isZipValid && !isLoading) {
       e.preventDefault();
-      handleSubmit(e as any);
+      handleSubmit(e as unknown);
     }
     
     // Escape clears the field
@@ -262,7 +262,7 @@ export const AccessibleZIPForm: React.FC<AccessibleZIPFormProps> = ({
               w-full px-4 py-3 text-lg font-medium border-2 rounded-xl
               focus:ring-4 focus:ring-texas-red-200 focus:border-texas-red focus:outline-none
               transition-all duration-200
-              ${error ? 'border-texas-red bg-red-50' : 'border-gray-300 bg-white'}
+              ${error ? 'border-texas-red bg-texas-red/10' : 'border-gray-300 bg-white'}
               disabled:opacity-50 disabled:cursor-not-allowed
             `}
             maxLength={5}
@@ -332,7 +332,7 @@ export const AccessibleZIPForm: React.FC<AccessibleZIPFormProps> = ({
           id={errorId}
           role="alert"
           aria-live="assertive"
-          className="mt-6 p-4 bg-red-50 border-2 border-red-200 rounded-xl focus:outline-none focus:ring-4 focus:ring-red-200"
+          className="mt-6 p-4 bg-texas-red/10 border-2 border-texas-red/30 rounded-xl focus:outline-none focus:ring-4 focus:ring-red-200"
           tabIndex={-1}
         >
           <div className="flex">
@@ -347,17 +347,17 @@ export const AccessibleZIPForm: React.FC<AccessibleZIPFormProps> = ({
               </svg>
             </div>
             <div className="ml-3 flex-1">
-              <h3 className="text-sm font-semibold text-red-800">
+              <h3 className="text-sm font-semibold text-texas-red-800">
                 ZIP Code Error
               </h3>
-              <p className="mt-1 text-sm text-red-700">
+              <p className="mt-1 text-sm text-texas-red-700">
                 {error}
               </p>
               
               {/* Accessible suggestions */}
               {suggestions.length > 0 && (
                 <div className="mt-4">
-                  <h4 className="text-sm font-medium text-red-800 mb-2">
+                  <h4 className="text-sm font-medium text-texas-red-800 mb-2">
                     Try these ZIP codes:
                   </h4>
                   <div className="space-y-2" role="list">
@@ -369,7 +369,7 @@ export const AccessibleZIPForm: React.FC<AccessibleZIPFormProps> = ({
                         onKeyDown={(e) => handleSuggestionKeyDown(e, suggestion)}
                         className="
                           block w-full px-4 py-3 text-sm bg-white border-2 border-red-300 rounded-xl 
-                          hover:bg-red-50 active:bg-red-100 
+                          hover:bg-texas-red/10 active:bg-red-100 
                           focus:outline-none focus:ring-4 focus:ring-red-200 focus:border-red-500
                           transition-colors text-left
                           min-h-[44px]

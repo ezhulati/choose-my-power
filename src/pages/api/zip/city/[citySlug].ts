@@ -137,7 +137,7 @@ export const GET: APIRoute = async ({ params, request }) => {
     const cityData = CITY_ZIP_CODES[validatedCitySlug];
     
     if (!cityData) {
-      console.log(`[City ZIP API] City not found: ${validatedCitySlug}`);
+      console.warn(`[City ZIP API] City not found: ${validatedCitySlug}`);
       return new Response(
         JSON.stringify(createValidationError(
           'NOT_IN_TEXAS',
@@ -170,7 +170,7 @@ export const GET: APIRoute = async ({ params, request }) => {
     };
 
     const processingTime = Date.now() - startTime;
-    console.log(`[City ZIP API] Retrieved ${enhancedCityData.zipCodes.length} ZIP codes for ${validatedCitySlug} in ${processingTime}ms`);
+    console.warn(`[City ZIP API] Retrieved ${enhancedCityData.zipCodes.length} ZIP codes for ${validatedCitySlug} in ${processingTime}ms`);
 
     return new Response(
       JSON.stringify(enhancedCityData),

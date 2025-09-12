@@ -212,7 +212,7 @@ export class ComparePowerClient {
         if (cachedPlans) {
           this.metrics.cacheHits++;
           if (this.config.monitoring.logRequests) {
-            console.log(`Cache hit for TDSP ${params.tdsp_duns}`);
+            console.warn(`Cache hit for TDSP ${params.tdsp_duns}`);
           }
           return cachedPlans;
         }
@@ -265,7 +265,7 @@ export class ComparePowerClient {
       // 1. First check database cache (professional sites prioritize this)
       const dbCached = await planRepository.getPlansFromCache(params);
       if (dbCached && dbCached.length > 0) {
-        console.log(`📦 Database cache hit for ${cityName} (${dbCached.length} plans)`);
+        console.warn(`📦 Database cache hit for ${cityName} (${dbCached.length} plans)`);
         this.metrics.cacheHits++;
         return dbCached;
       }
@@ -273,7 +273,7 @@ export class ComparePowerClient {
       // 2. Check active database plans (if API cache is empty, use stored plans)
       const activePlans = await planRepository.getActivePlans(params.tdsp_duns, params);
       if (activePlans && activePlans.length > 0) {
-        console.log(`💾 Using active database plans for ${cityName} (${activePlans.length} plans)`);
+        console.warn(`💾 Using active database plans for ${cityName} (${activePlans.length} plans)`);
         
         // Store in cache for future use with shorter TTL
         await planRepository.setPlansCache(params, activePlans, 0.5); // 30 minutes
@@ -282,7 +282,7 @@ export class ComparePowerClient {
       }
 
       // 3. Only make API call if no database data available (minimize API usage)
-      console.log(`🌐 No cached data for ${cityName}, fetching from API...`);
+      console.warn(`🌐 No cached data for ${cityName}, fetching from API...`);
       const plans = await this.fetchPlans(params);
       
       // Log API usage for monitoring
@@ -365,7 +365,7 @@ export class ComparePowerClient {
     }
 
     if (skippedCount > 0) {
-      console.log(`${cityName}: Processed ${validPlans.length} plans, skipped ${skippedCount}, fixed ${fixedCount}`);
+      console.warn(`${cityName}: Processed ${validPlans.length} plans, skipped ${skippedCount}, fixed ${fixedCount}`);
     }
 
     return validPlans;
@@ -478,7 +478,7 @@ export class ComparePowerClient {
     cleaned.product.is_time_of_use = cleaned.product.is_time_of_use || false;
 
     if (wasFixed && this.config.monitoring.logRequests) {
-      console.log(`Auto-fixed plan data for ${cleaned._id}: ${cleaned.product.brand.name}`);
+      console.warn(`Auto-fixed plan data for ${cleaned._id}: ${cleaned.product.brand.name}`);
     }
 
     return cleaned;
@@ -827,7 +827,7 @@ export class ComparePowerClient {
     this.cache.clear();
     await this.redisCache.clear();
     const cleaned = await planRepository.cleanExpiredCache();
-    console.log(`Cleared all caches: memory, Redis, and ${cleaned} expired database entries`);
+    console.warn(`Cleared all caches: memory, Redis, and ${cleaned} expired database entries`);
   }
 
   /**
@@ -1108,7 +1108,7 @@ export class ComparePowerClient {
   /**
    * Validate API response structure
    */
-  private validateApiResponse(data: any[]): any[] {
+  private validateApiResponse(data: unknown[]): unknown[] {
     if (!Array.isArray(data)) {
       throw new ComparePowerApiError(
         ApiErrorType.DATA_VALIDATION_ERROR,
@@ -1171,7 +1171,7 @@ export class ComparePowerClient {
    * Handle API errors with comprehensive fallback strategies
    */
   private async handleApiError(
-    error: any,
+    error: unknown,
     params: ApiParams,
     responseTime: number
   ): Promise<Plan[]> {
@@ -1244,7 +1244,7 @@ export class ComparePowerClient {
   /**
    * Safe number parsing
    */
-  private safeParseNumber(value: any): number {
+  private safeParseNumber(value: unknown): number {
     const parsed = typeof value === 'number' ? value : parseFloat(value);
     return isNaN(parsed) ? 0 : Math.max(0, parsed);
   }
@@ -1252,7 +1252,7 @@ export class ComparePowerClient {
   /**
    * Safe rate parsing (converts to cents per kWh)
    */
-  private safeParseRate(value: any): number {
+  private safeParseRate(value: unknown): number {
     const parsed = this.safeParseNumber(value);
     return Math.round(parsed * 100) / 100; // Round to 2 decimal places
   }
@@ -1317,7 +1317,7 @@ export class ComparePowerClient {
     let failed = 0;
     const errors: Array<{ city: string; error: string }> = [];
     
-    console.log(`Starting mass batch processing for ${cityTdspMappings.length} cities...`);
+    console.warn(`Starting mass batch processing for ${cityTdspMappings.length} cities...`);
     
     // Group cities by TDSP for maximum efficiency
     const tdspGroups = new Map<string, string[]>();
@@ -1329,9 +1329,9 @@ export class ComparePowerClient {
       tdspGroups.get(tdsp)!.push(city);
     });
     
-    console.log(`Grouped into ${tdspGroups.size} TDSP batches:`);
+    console.warn(`Grouped into ${tdspGroups.size} TDSP batches:`);
     tdspGroups.forEach((cities, tdsp) => {
-      console.log(`  ${tdsp}: ${cities.length} cities`);
+      console.warn(`  ${tdsp}: ${cities.length} cities`);
     });
     
     // Process each TDSP group concurrently with smart throttling
@@ -1353,7 +1353,7 @@ export class ComparePowerClient {
             await Promise.all([
               this.redisCache.set(cityParams, allPlans),
               planRepository.setPlansCache(cityParams, allPlans, 24), // 24 hour cache
-              planRepository.storePlans(allPlans as any, tdspDuns)
+              planRepository.storePlans(allPlans as unknown, tdspDuns)
             ]);
             
             return { city: citySlug, success: true };
@@ -1396,11 +1396,11 @@ export class ComparePowerClient {
     
     const duration = Date.now() - startTime;
     
-    console.log(`Mass batch processing complete:`);
-    console.log(`  Duration: ${Math.round(duration / 1000)}s`);
-    console.log(`  Successful: ${successful}`);
-    console.log(`  Failed: ${failed}`);
-    console.log(`  Success Rate: ${Math.round((successful / (successful + failed)) * 100)}%`);
+    console.warn(`Mass batch processing complete:`);
+    console.warn(`  Duration: ${Math.round(duration / 1000)}s`);
+    console.warn(`  Successful: ${successful}`);
+    console.warn(`  Failed: ${failed}`);
+    console.warn(`  Success Rate: ${Math.round((successful / (successful + failed)) * 100)}%`);
     
     return { successful, failed, duration, errors };
   }
@@ -1410,7 +1410,7 @@ export class ComparePowerClient {
    * Warms cache for high-priority cities first, then fills in background
    */
   async warmProductionCache(): Promise<void> {
-    console.log('Starting intelligent production cache warming...');
+    console.warn('Starting intelligent production cache warming...');
     
     try {
       // Import TDSP mapping dynamically
@@ -1430,17 +1430,17 @@ export class ComparePowerClient {
         .map(([citySlug, config]) => ({ city: citySlug, tdsp: config.duns }));
       
       // Warm Tier 1 (high-priority) cities first
-      console.log(`Warming Tier 1 cities (${tier1Cities.length})...`);
+      console.warn(`Warming Tier 1 cities (${tier1Cities.length})...`);
       await this.batchProcessAllCities(tier1Cities);
       
       // Warm Tier 2 cities
-      console.log(`Warming Tier 2 cities (${tier2Cities.length})...`);
+      console.warn(`Warming Tier 2 cities (${tier2Cities.length})...`);
       await this.batchProcessAllCities(tier2Cities);
       
       // Warm Tier 3 cities in background (async)
-      console.log(`Starting background warming for Tier 3 cities (${tier3Cities.length})...`);
+      console.warn(`Starting background warming for Tier 3 cities (${tier3Cities.length})...`);
       this.batchProcessAllCities(tier3Cities).then(() => {
-        console.log('Background cache warming for Tier 3 cities complete');
+        console.warn('Background cache warming for Tier 3 cities complete');
       }).catch(error => {
         console.warn('Background cache warming failed:', error);
       });
@@ -1455,7 +1455,7 @@ export class ComparePowerClient {
    * Graceful shutdown
    */
   public async shutdown(): Promise<void> {
-    console.log('Shutting down ComparePower client...');
+    console.warn('Shutting down ComparePower client...');
     
     // Clear all batch timeouts
     this.batchTimeouts.forEach(timeout => clearTimeout(timeout));
@@ -1466,7 +1466,7 @@ export class ComparePowerClient {
     
     await this.redisCache.disconnect();
     this.cache.clear();
-    console.log('ComparePower client shutdown complete');
+    console.warn('ComparePower client shutdown complete');
   }
 }
 
@@ -1484,6 +1484,6 @@ export async function warmAllCitiesCache(): Promise<void> {
   await comparePowerClient.warmProductionCache();
 }
 
-export async function batchProcessCities(mappings: Record<string, string>[]): Promise<any> {
+export async function batchProcessCities(mappings: Record<string, string>[]): Promise<unknown> {
   return comparePowerClient.batchProcessAllCities(mappings);
 }

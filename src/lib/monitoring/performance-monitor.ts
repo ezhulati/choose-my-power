@@ -118,7 +118,7 @@ export class PerformanceMonitor {
     if (this.isMonitoring) return;
 
     this.isMonitoring = true;
-    console.log('📊 Starting performance monitoring for 881-city optimization...');
+    console.warn('📊 Starting performance monitoring for 881-city optimization...');
 
     // Monitor every 30 seconds
     this.monitoringInterval = setInterval(() => {
@@ -130,7 +130,7 @@ export class PerformanceMonitor {
       this.logPerformanceSummary();
     }, 300000);
 
-    console.log('✅ Performance monitoring active');
+    console.warn('✅ Performance monitoring active');
   }
 
   /**
@@ -145,7 +145,7 @@ export class PerformanceMonitor {
       this.monitoringInterval = undefined;
     }
 
-    console.log('🛑 Performance monitoring stopped');
+    console.warn('🛑 Performance monitoring stopped');
   }
 
   /**
@@ -215,7 +215,7 @@ export class PerformanceMonitor {
   /**
    * Check cache performance
    */
-  private checkCachePerformance(cacheStats: any): void {
+  private checkCachePerformance(cacheStats: unknown): void {
     if (cacheStats.memory.hitRate < this.THRESHOLDS.CACHE_HIT_RATE_ERROR) {
       this.createAlert('error', 'Poor cache hit rate', 'cache_hit_rate', cacheStats.memory.hitRate, this.THRESHOLDS.CACHE_HIT_RATE_ERROR);
     } else if (cacheStats.memory.hitRate < this.THRESHOLDS.CACHE_HIT_RATE_WARNING) {
@@ -226,7 +226,7 @@ export class PerformanceMonitor {
   /**
    * Check API performance
    */
-  private checkApiPerformance(apiStats: any): void {
+  private checkApiPerformance(apiStats: unknown): void {
     const errorRate = apiStats.errors / (apiStats.total || 1);
     
     if (errorRate > this.THRESHOLDS.API_ERROR_RATE_ERROR) {
@@ -325,7 +325,7 @@ export class PerformanceMonitor {
       // Clear old metrics
       this.metrics = this.metrics.slice(-1000);
       
-      console.log('✅ Emergency cleanup completed');
+      console.warn('✅ Emergency cleanup completed');
     } catch (error) {
       console.error('❌ Emergency cleanup failed:', error);
     }
@@ -349,7 +349,7 @@ export class PerformanceMonitor {
         global.gc();
       }
       
-      console.log('✅ Memory optimization completed');
+      console.warn('✅ Memory optimization completed');
     } catch (error) {
       console.error('❌ Memory optimization failed:', error);
     }
@@ -366,7 +366,7 @@ export class PerformanceMonitor {
   /**
    * Get API performance statistics
    */
-  private async getApiStats(): Promise<any> {
+  private async getApiStats(): Promise<unknown> {
     try {
       const cacheStats = await comparePowerClient.getCacheStats();
       return {
@@ -493,30 +493,30 @@ export class PerformanceMonitor {
   private logPerformanceSummary(): void {
     const summary = this.getPerformanceSummary(300000); // Last 5 minutes
     
-    console.log('\n📈 PERFORMANCE SUMMARY (881-City System)');
-    console.log('═'.repeat(60));
-    console.log(`Time Window: ${summary.timeWindow}`);
-    console.log(`Total Requests: ${summary.totalRequests}`);
-    console.log(`Avg Response Time: ${summary.averageResponseTime}ms`);
-    console.log(`P95 Response Time: ${summary.p95ResponseTime}ms`);
-    console.log(`P99 Response Time: ${summary.p99ResponseTime}ms`);
-    console.log(`Cache Hit Rate: ${Math.round(summary.cacheHitRate * 100)}%`);
-    console.log(`Memory Usage: ${summary.memoryUsageMB}MB`);
-    console.log(`Active Alerts: ${summary.alerts.length}`);
+    console.warn('\n📈 PERFORMANCE SUMMARY (881-City System)');
+    console.warn('═'.repeat(60));
+    console.warn(`Time Window: ${summary.timeWindow}`);
+    console.warn(`Total Requests: ${summary.totalRequests}`);
+    console.warn(`Avg Response Time: ${summary.averageResponseTime}ms`);
+    console.warn(`P95 Response Time: ${summary.p95ResponseTime}ms`);
+    console.warn(`P99 Response Time: ${summary.p99ResponseTime}ms`);
+    console.warn(`Cache Hit Rate: ${Math.round(summary.cacheHitRate * 100)}%`);
+    console.warn(`Memory Usage: ${summary.memoryUsageMB}MB`);
+    console.warn(`Active Alerts: ${summary.alerts.length}`);
     
     if (summary.slowestRoutes.length > 0) {
-      console.log('\n🐌 Slowest Routes:');
+      console.warn('\n🐌 Slowest Routes:');
       summary.slowestRoutes.slice(0, 3).forEach(route => {
-        console.log(`  ${route.route}: ${route.avgTime}ms (${route.count} requests)`);
+        console.warn(`  ${route.route}: ${route.avgTime}ms (${route.count} requests)`);
       });
     }
     
     if (summary.recommendations.length > 0) {
-      console.log('\n💡 Recommendations:');
-      summary.recommendations.forEach(rec => console.log(`  • ${rec}`));
+      console.warn('\n💡 Recommendations:');
+      summary.recommendations.forEach(rec => console.warn(`  • ${rec}`));
     }
     
-    console.log('═'.repeat(60));
+    console.warn('═'.repeat(60));
   }
 
   /**
@@ -524,9 +524,9 @@ export class PerformanceMonitor {
    */
   private setupGracefulShutdown(): void {
     const shutdown = () => {
-      console.log('🛑 Shutting down performance monitor...');
+      console.warn('🛑 Shutting down performance monitor...');
       this.stopMonitoring();
-      console.log('✅ Performance monitor shutdown complete');
+      console.warn('✅ Performance monitor shutdown complete');
     };
 
     process.on('SIGINT', shutdown);
@@ -547,7 +547,7 @@ export class PerformanceMonitor {
   clearAlerts(): void {
     this.alerts.length = 0;
     this.lastAlertTimes.clear();
-    console.log('🗑️  Performance alerts cleared');
+    console.warn('🗑️  Performance alerts cleared');
   }
 }
 

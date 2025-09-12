@@ -1,5 +1,5 @@
 export function isAdminEnabled(): boolean {
-  const env = (typeof process !== 'undefined' && process.env) ? process.env : ({} as any);
+  const env = (typeof process !== 'undefined' && process.env) ? process.env : ({} as unknown);
   const flag = env.ENABLE_ADMIN_PAGES;
   if (typeof flag === 'string') {
     return flag.toLowerCase() !== 'false' && flag !== '0';

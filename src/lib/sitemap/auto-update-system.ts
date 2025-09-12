@@ -77,7 +77,7 @@ export class SitemapAutoUpdater {
     });
     
     this.cache.lastStructureChange = new Date().toISOString();
-    console.log(`📄 Sitemap: Recorded ${urlArray.length} page(s) added`);
+    console.warn(`📄 Sitemap: Recorded ${urlArray.length} page(s) added`);
   }
 
   /**
@@ -94,7 +94,7 @@ export class SitemapAutoUpdater {
     });
     
     this.cache.lastStructureChange = new Date().toISOString();
-    console.log(`🗑️ Sitemap: Recorded ${urlArray.length} page(s) removed`);
+    console.warn(`🗑️ Sitemap: Recorded ${urlArray.length} page(s) removed`);
   }
 
   /**
@@ -109,7 +109,7 @@ export class SitemapAutoUpdater {
     });
     
     this.cache.lastStructureChange = new Date().toISOString();
-    console.log(`📦 Sitemap: Recorded bulk update with ${urls.length} URLs`);
+    console.warn(`📦 Sitemap: Recorded bulk update with ${urls.length} URLs`);
   }
 
   /**
@@ -126,7 +126,7 @@ export class SitemapAutoUpdater {
     });
     
     // Content updates don't trigger structure change, just regular update
-    console.log(`✏️ Sitemap: Recorded ${urlArray.length} page(s) updated`);
+    console.warn(`✏️ Sitemap: Recorded ${urlArray.length} page(s) updated`);
   }
 
   /**
@@ -196,12 +196,12 @@ export class SitemapAutoUpdater {
    */
   async forceUpdate(): Promise<void> {
     if (this.isUpdating) {
-      console.log('⏳ Sitemap update already in progress');
+      console.warn('⏳ Sitemap update already in progress');
       return;
     }
 
     this.isUpdating = true;
-    console.log('🔄 Force updating sitemap...');
+    console.warn('🔄 Force updating sitemap...');
 
     try {
       // Process any pending updates
@@ -211,7 +211,7 @@ export class SitemapAutoUpdater {
       this.cache.lastGenerated = new Date().toISOString();
       this.cache.lastStructureChange = new Date().toISOString();
       
-      console.log('✅ Sitemap force update completed:', stats);
+      console.warn('✅ Sitemap force update completed:', stats);
     } catch (error) {
       console.error('❌ Sitemap force update failed:', error);
       throw error;

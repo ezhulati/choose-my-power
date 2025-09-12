@@ -51,7 +51,7 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    console.log(`✅ ESIID validation successful for: ${esiid} (${esiidDetails.city}, ${esiidDetails.tdsp_code})`);
+    // ESIID validation successful - logging removed to comply with ESLint rules
 
     return new Response(JSON.stringify(esiidDetails), {
       status: 200,

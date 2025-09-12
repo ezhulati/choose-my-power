@@ -19,7 +19,7 @@ export const GET: APIRoute = async ({ site }) => {
   const baseUrl = site?.toString() || 'https://choosemypower.org';
   
   try {
-    console.log('🗺️  Generating enhanced faceted sitemap...');
+    console.warn('🗺️  Generating enhanced faceted sitemap...');
     
     // Get all pre-build URLs from static generation strategy
     const urls = await getPreBuildUrls();
@@ -46,7 +46,7 @@ export const GET: APIRoute = async ({ site }) => {
     // Generate XML
     const xml = generateSitemapXML(sitemapUrls);
     
-    console.log(`✅ Generated sitemap with ${sitemapUrls.length} faceted URLs`);
+    console.warn(`✅ Generated sitemap with ${sitemapUrls.length} faceted URLs`);
     
     return new Response(xml, {
       headers: {

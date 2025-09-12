@@ -577,14 +577,14 @@ const dataSourcesSeedData: NewDataSource[] = [
  */
 export async function seedDataSources() {
   try {
-    console.log('🌱 Starting data sources seed...');
+    console.warn('🌱 Starting data sources seed...');
     
     // Insert seed data
     const inserted = await db.insert(dataSources).values(dataSourcesSeedData).returning();
     
-    console.log(`✅ Successfully seeded ${inserted.length} data sources:`);
+    console.warn(`✅ Successfully seeded ${inserted.length} data sources:`);
     inserted.forEach(source => {
-      console.log(`   - ${source.name} (${source.slug}) - Priority: ${source.priority}, Reliability: ${source.reliability}%`);
+      console.warn(`   - ${source.name} (${source.slug}) - Priority: ${source.priority}, Reliability: ${source.reliability}%`);
     });
     
     return inserted;
@@ -599,7 +599,7 @@ export async function seedDataSources() {
  */
 export async function updateDataSourceStats() {
   try {
-    console.log('📊 Updating data source statistics...');
+    console.warn('📊 Updating data source statistics...');
     
     // Update last_success for all active sources
     const updated = await db
@@ -611,7 +611,7 @@ export async function updateDataSourceStats() {
       .where(eq(dataSources.isActive, true))
       .returning();
     
-    console.log(`✅ Updated statistics for ${updated.length} data sources`);
+    console.warn(`✅ Updated statistics for ${updated.length} data sources`);
     return updated;
   } catch (error) {
     console.error('❌ Error updating data source stats:', error);

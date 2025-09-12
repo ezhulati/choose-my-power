@@ -160,9 +160,9 @@ export const MobilePlanComparison: React.FC<MobilePlanComparisonProps> = ({
     if (!option) return plans;
 
     return [...plans].sort((a, b) => {
-      const getValue = (plan: Plan, field: string): any => {
+      const getValue = (plan: Plan, field: string): unknown => {
         const keys = field.split('.');
-        let value: any = plan;
+        let value: unknown = plan;
         for (const key of keys) {
           value = value?.[key];
         }

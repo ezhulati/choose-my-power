@@ -279,12 +279,12 @@ export class PerformanceOptimizationSystem {
     // Trigger garbage collection if memory usage is high
     if (heapUsedMB > this.config.maxHeapUsageMB * this.config.garbageCollectionThreshold) {
       if (global.gc) {
-        console.log('🗑️  Triggering garbage collection...');
+        console.warn('🗑️  Triggering garbage collection...');
         global.gc();
         
         const newMemoryUsage = process.memoryUsage();
         const newHeapUsedMB = newMemoryUsage.heapUsed / 1024 / 1024;
-        console.log(`💾 Memory usage: ${heapUsedMB.toFixed(2)}MB → ${newHeapUsedMB.toFixed(2)}MB`);
+        console.warn(`💾 Memory usage: ${heapUsedMB.toFixed(2)}MB → ${newHeapUsedMB.toFixed(2)}MB`);
       }
     }
 
@@ -300,7 +300,7 @@ export class PerformanceOptimizationSystem {
   async warmCdnCache(routes: string[]): Promise<void> {
     if (!this.config.enableCdnOptimization) return;
 
-    console.log(`🔥 Warming CDN cache for ${routes.length} routes...`);
+    console.warn(`🔥 Warming CDN cache for ${routes.length} routes...`);
 
     const batches = this.chunkArray(routes, this.config.cdnWarmupBatchSize);
     
@@ -313,7 +313,7 @@ export class PerformanceOptimizationSystem {
       await new Promise(resolve => setTimeout(resolve, 100));
     }
 
-    console.log('✅ CDN cache warming completed');
+    console.warn('✅ CDN cache warming completed');
   }
 
   /**
@@ -471,7 +471,7 @@ export class PerformanceOptimizationSystem {
       }, this.config.memoryCleanupIntervalMs);
     }
 
-    console.log('📊 Performance monitoring initialized');
+    console.warn('📊 Performance monitoring initialized');
   }
 
   private updateMetrics(): void {
@@ -545,7 +545,7 @@ export class PerformanceOptimizationSystem {
     const alert: PerformanceAlert = {
       id: alertId,
       severity,
-      type: type as any,
+      type: type as unknown,
       message,
       value: 0, // Would be populated based on type
       threshold: 0, // Would be populated based on type
@@ -580,13 +580,13 @@ export class PerformanceOptimizationSystem {
       }
     }
 
-    console.log('🧹 Internal caches cleaned up');
+    console.warn('🧹 Internal caches cleaned up');
   }
 
   private async warmSingleRoute(route: string): Promise<void> {
     try {
       // This would make a request to warm the CDN cache
-      console.log(`🔥 Warming route: ${route}`);
+      console.warn(`🔥 Warming route: ${route}`);
     } catch (error) {
       console.warn(`⚠️  Failed to warm route ${route}:`, error);
     }
@@ -629,7 +629,7 @@ export class PerformanceOptimizationSystem {
     if (this.cleanupInterval) {
       clearInterval(this.cleanupInterval);
     }
-    console.log('🛑 Performance monitoring stopped');
+    console.warn('🛑 Performance monitoring stopped');
   }
 }
 

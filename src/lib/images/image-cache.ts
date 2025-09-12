@@ -42,7 +42,7 @@ class ImageCache {
         await fs.mkdir(path.join(this.publicDir, subdir), { recursive: true });
       }
       
-      console.log('✅ Image cache directories initialized');
+      console.warn('✅ Image cache directories initialized');
     } catch (error) {
       console.error('❌ Failed to initialize cache directories:', error);
     }
@@ -85,7 +85,7 @@ class ImageCache {
       // Store in database cache for persistence and analytics
       await databaseCache.saveImage(image, localPath);
 
-      console.log(`✅ Cached image: ${cacheKey} -> ${publicUrl}`);
+      console.warn(`✅ Cached image: ${cacheKey} -> ${publicUrl}`);
       return publicUrl;
 
     } catch (error) {
@@ -103,7 +103,7 @@ class ImageCache {
     // Check memory cache first
     const memoryResult = this.memoryCache.get(cacheKey);
     if (memoryResult && !this.isExpired(memoryResult)) {
-      console.log(`🔥 Memory cache hit: ${cacheKey}`);
+      console.warn(`🔥 Memory cache hit: ${cacheKey}`);
       return memoryResult.url;
     }
 
@@ -112,7 +112,7 @@ class ImageCache {
     if (dbResult) {
       // Add back to memory cache
       this.addToMemoryCache(dbResult);
-      console.log(`💾 Database cache hit: ${cacheKey}`);
+      console.warn(`💾 Database cache hit: ${cacheKey}`);
       return dbResult.url;
     }
 
@@ -121,11 +121,11 @@ class ImageCache {
     if (fileResult && !this.isExpired(fileResult)) {
       // Add back to memory cache
       this.addToMemoryCache(fileResult);
-      console.log(`📁 File cache hit: ${cacheKey}`);
+      console.warn(`📁 File cache hit: ${cacheKey}`);
       return fileResult.url;
     }
 
-    console.log(`❌ Cache miss: ${cacheKey}`);
+    console.warn(`❌ Cache miss: ${cacheKey}`);
     return null;
   }
 
@@ -141,7 +141,7 @@ class ImageCache {
    * Batch cache multiple images
    */
   async batchStore(images: GeneratedImage[]): Promise<string[]> {
-    console.log(`🔄 Batch storing ${images.length} images...`);
+    console.warn(`🔄 Batch storing ${images.length} images...`);
     
     const results = await Promise.allSettled(
       images.map(image => this.storeImage(image))
@@ -160,7 +160,7 @@ class ImageCache {
       }
     });
 
-    console.log(`✅ Batch store complete: ${successCount}/${images.length} images cached`);
+    console.warn(`✅ Batch store complete: ${successCount}/${images.length} images cached`);
     return successUrls;
   }
 
@@ -191,7 +191,7 @@ class ImageCache {
    * Clean up expired images
    */
   async cleanupExpired(): Promise<number> {
-    console.log('🧹 Starting cache cleanup...');
+    console.warn('🧹 Starting cache cleanup...');
     
     const metadataFiles = await this.getAllMetadataFiles();
     let cleanedCount = 0;
@@ -210,7 +210,7 @@ class ImageCache {
       }
     }
 
-    console.log(`✅ Cache cleanup complete: ${cleanedCount} expired images removed`);
+    console.warn(`✅ Cache cleanup complete: ${cleanedCount} expired images removed`);
     return cleanedCount;
   }
 
@@ -218,7 +218,7 @@ class ImageCache {
    * Warm cache for high-priority contexts
    */
   async warmCache(contexts: ImageGenerationContext[]): Promise<void> {
-    console.log(`🔥 Warming cache for ${contexts.length} contexts...`);
+    console.warn(`🔥 Warming cache for ${contexts.length} contexts...`);
     
     // This would be called by the batch generation system
     // to pre-generate and cache high-priority images
@@ -231,7 +231,7 @@ class ImageCache {
       }
     }
 
-    console.log(`🎯 Need to generate ${missingContexts.length} missing images for cache warming`);
+    console.warn(`🎯 Need to generate ${missingContexts.length} missing images for cache warming`);
     // The actual generation would be handled by the batch generation system
   }
 

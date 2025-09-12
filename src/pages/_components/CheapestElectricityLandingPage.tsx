@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { ProviderCard } from '../../components/ProviderCard';
 import { getProviders, getCities, getPlansForCity, type RealProvider, type RealCity } from '../../lib/services/provider-service';
-import { TrendingDown, Calculator, Award, Clock, Shield, Star, DollarSign } from 'lucide-react';
+import { Star } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
 declare global {
@@ -28,7 +28,7 @@ export function CheapestElectricityLandingPage({ city, state }: CheapestElectric
   const [monthlyUsage, setMonthlyUsage] = useState('1000');
   const [providers, setProviders] = useState<RealProvider[]>([]);
   const [cities, setCities] = useState<RealCity[]>([]);
-  const [plans, setPlans] = useState<any[]>([]);
+  const [plans, setPlans] = useState<unknown[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

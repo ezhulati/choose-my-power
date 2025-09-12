@@ -113,7 +113,7 @@ export const POST: APIRoute = async ({ request }) => {
 };
 
 async function handleCoverageStatus() {
-  console.log('📊 Getting ZIP coverage status...');
+  console.warn('📊 Getting ZIP coverage status...');
   
   // Get existing coverage info
   const existingMappings = await getExistingMappingsCount();
@@ -151,7 +151,7 @@ async function handleCoverageStatus() {
 }
 
 async function handleGenerateMapping(exportFormat: string) {
-  console.log('🚀 Generating 100% ZIP coverage mapping...');
+  console.warn('🚀 Generating 100% ZIP coverage mapping...');
   
   const startTime = Date.now();
   
@@ -161,7 +161,7 @@ async function handleGenerateMapping(exportFormat: string) {
     const generationTime = Date.now() - startTime;
     
     let responseData;
-    let contentType = 'application/json';
+    const contentType = 'application/json';
     
     switch (exportFormat) {
       case 'typescript':
@@ -221,7 +221,7 @@ async function handleGenerateMapping(exportFormat: string) {
 }
 
 async function handleAnalyzeCoverage() {
-  console.log('🔍 Analyzing ZIP coverage gaps...');
+  console.warn('🔍 Analyzing ZIP coverage gaps...');
   
   const existingCount = await getExistingMappingsCount();
   const totalPossible = 10000;
@@ -271,8 +271,8 @@ async function handleAnalyzeCoverage() {
   });
 }
 
-async function handleFullGeneration(options: any) {
-  console.log('🎯 Starting full ZIP coverage generation...');
+async function handleFullGeneration(options: unknown) {
+  console.warn('🎯 Starting full ZIP coverage generation...');
   
   const mappings = await comprehensiveZIPMapper.generateComprehensiveMapping();
   
@@ -306,14 +306,14 @@ async function handleFullGeneration(options: any) {
   });
 }
 
-async function handleRegionGeneration(options: any) {
+async function handleRegionGeneration(options: unknown) {
   const { region } = options;
   
   if (!region) {
     throw new Error('Region parameter required');
   }
   
-  console.log(`🗺️ Generating ZIP coverage for ${region} region...`);
+  console.warn(`🗺️ Generating ZIP coverage for ${region} region...`);
   
   // This would call the region-specific mapping
   // For now, return a placeholder response
@@ -329,8 +329,8 @@ async function handleRegionGeneration(options: any) {
   });
 }
 
-async function handleValidateMapping(options: any) {
-  console.log('✅ Validating ZIP mapping data...');
+async function handleValidateMapping(options: unknown) {
+  console.warn('✅ Validating ZIP mapping data...');
   
   return new Response(JSON.stringify({
     success: true,
@@ -353,7 +353,7 @@ async function getExistingMappingsCount(): Promise<number> {
   }
 }
 
-function generateCSVExport(mappings: any[]): string {
+function generateCSVExport(mappings: unknown[]): string {
   const headers = 'zipCode,city,county,tdspDuns,tdspName,zone,confidence,source,isDeregulated\n';
   const rows = mappings.map(m => 
     `${m.zipCode},${m.city},${m.county},${m.tdsp.duns},${m.tdsp.name},${m.tdsp.zone},${m.confidence},${m.source},${m.isDeregulated}`
@@ -362,7 +362,7 @@ function generateCSVExport(mappings: any[]): string {
   return headers + rows;
 }
 
-function calculateConfidenceDistribution(mappings: any[]) {
+function calculateConfidenceDistribution(mappings: unknown[]) {
   const distribution = { high: 0, medium: 0, low: 0 };
   
   for (const mapping of mappings) {
@@ -374,7 +374,7 @@ function calculateConfidenceDistribution(mappings: any[]) {
   return distribution;
 }
 
-function calculateSourceDistribution(mappings: any[]) {
+function calculateSourceDistribution(mappings: unknown[]) {
   const distribution: Record<string, number> = {};
   
   for (const mapping of mappings) {
@@ -384,7 +384,7 @@ function calculateSourceDistribution(mappings: any[]) {
   return distribution;
 }
 
-function calculateTDSPDistribution(mappings: any[]) {
+function calculateTDSPDistribution(mappings: unknown[]) {
   const distribution: Record<string, number> = {};
   
   for (const mapping of mappings) {

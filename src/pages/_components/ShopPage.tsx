@@ -32,13 +32,12 @@ export function ShopPage({ category }: ShopPageProps) {
   const [selectedPriority, setSelectedPriority] = useState<'price' | 'service' | 'green' | 'features'>('price');
   const [providers, setProviders] = useState<RealProvider[]>([]);
   const [cities, setCities] = useState<RealCity[]>([]);
-  const [plans, setPlans] = useState<any[]>([]);
+  const [plans, setPlans] = useState<unknown[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadData = async () => {
       try {
-        console.log('[ShopPage] Loading shop data...');
         
         const [providersData, citiesData] = await Promise.all([
           getProviders('texas'),
@@ -52,7 +51,6 @@ export function ShopPage({ category }: ShopPageProps) {
         const houstonPlans = await getPlansForCity('houston', 'texas');
         setPlans(houstonPlans);
         
-        console.log(`[ShopPage] Loaded ${providersData.length} providers and ${houstonPlans.length} plans`);
       } catch (error) {
         console.error('[ShopPage] Error loading data:', error);
       } finally {
@@ -182,27 +180,21 @@ export function ShopPage({ category }: ShopPageProps) {
   };
 
   const handleZipSearch = (zipCode: string) => {
-    console.log('ShopPage handleZipSearch called with ZIP:', zipCode);
     
     // Try to find the city for this ZIP code
     const city = getCityFromZip(zipCode);
-    console.log('City lookup result:', city);
     
     if (city) {
-      console.log('Navigating to city page:', `/texas/${city}`);
       // Navigate to city page with category parameter if applicable
       const url = category ? `/texas/${city}?category=${category}` : `/texas/${city}`;
       navigate(url);
     } else {
-      console.log('ZIP code not found in mapping, checking pattern...');
       // ZIP code not found, try to determine state by ZIP code pattern
       if (zipCode.startsWith('7')) {
-        console.log('Texas ZIP code detected, going to Texas page');
         // Texas ZIP code, but city not in our mapping - go to Texas page
         const url = category ? `/texas?category=${category}` : `/texas`;
         navigate(url);
       } else {
-        console.log('Unknown ZIP code, going to locations page');
         // Not a Texas ZIP code or unknown - go to locations page
         navigate('/locations');
       }
@@ -272,7 +264,7 @@ export function ShopPage({ category }: ShopPageProps) {
                   {Object.entries(usageProfiles).map(([key, profile]) => (
                     <button
                       key={key}
-                      onClick={() => setSelectedUsage(key as any)}
+                      onClick={() => setSelectedUsage(key as unknown)}
                       className={`w-full p-4 text-left border rounded-lg transition-colors ${
                         selectedUsage === key
                           ? `border-${currentCategory.color}-600 bg-${currentCategory.color}-50`
@@ -303,8 +295,8 @@ export function ShopPage({ category }: ShopPageProps) {
                         <div className="font-medium text-green-900">APGE SimpleSaver 11</div>
                         <div className="text-green-700 text-sm">9.7¢/kWh • No hidden fees • $100 bill credit</div>
                       </div>
-                      <div className="p-4 bg-texas-cream-200 border border-blue-200 rounded-lg">
-                        <div className="font-medium text-blue-900">Gexa Eco Saver Plus</div>
+                      <div className="p-4 bg-texas-cream-200 border border-texas-navy/30 rounded-lg">
+                        <div className="font-medium text-texas-navy-900">Gexa Eco Saver Plus</div>
                         <div className="text-texas-navy text-sm">9.8¢/kWh • 100% green • $125 usage credit</div>
                       </div>
                     </>
@@ -316,8 +308,8 @@ export function ShopPage({ category }: ShopPageProps) {
                         <div className="font-medium text-green-900">Rhythm Energy Plans</div>
                         <div className="text-green-700 text-sm">100% renewable • Flexible billing • Smart alerts</div>
                       </div>
-                      <div className="p-4 bg-texas-cream-200 border border-blue-200 rounded-lg">
-                        <div className="font-medium text-blue-900">Green Mountain Energy</div>
+                      <div className="p-4 bg-texas-cream-200 border border-texas-navy/30 rounded-lg">
+                        <div className="font-medium text-texas-navy-900">Green Mountain Energy</div>
                         <div className="text-texas-navy text-sm">Pollution-free plans • Wind power • Conserve & save</div>
                       </div>
                     </>
@@ -373,9 +365,9 @@ export function ShopPage({ category }: ShopPageProps) {
                   <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
                   <span className="text-green-100 font-medium">9.7¢ actually cheapest</span>
                 </div>
-                <div className="flex items-center px-4 py-2 bg-blue-500/20 backdrop-blur-sm rounded-full border border-blue-400/30">
+                <div className="flex items-center px-4 py-2 bg-texas-navy/100/20 backdrop-blur-sm rounded-full border border-blue-400/30">
                   <div className="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
-                  <span className="text-blue-100 font-medium">15 good companies</span>
+                  <span className="text-white/90 font-medium">15 good companies</span>
                 </div>
                 <div className="flex items-center px-4 py-2 bg-texas-red/20 backdrop-blur-sm rounded-full border border-texas-red/30">
                   <div className="w-2 h-2 bg-texas-red-200 rounded-full mr-2"></div>
@@ -435,7 +427,7 @@ export function ShopPage({ category }: ShopPageProps) {
             {shoppingByPriority.map(priority => (
               <button
                 key={priority.id}
-                onClick={() => setSelectedPriority(priority.id as any)}
+                onClick={() => setSelectedPriority(priority.id as unknown)}
                 className={`px-6 py-3 rounded-xl font-semibold transition-all duration-200 ${
                   selectedPriority === priority.id
                     ? 'bg-texas-navy text-white shadow-lg'

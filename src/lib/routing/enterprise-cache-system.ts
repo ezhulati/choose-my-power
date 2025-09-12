@@ -158,7 +158,7 @@ export class EnterpriseCacheSystem implements RouteCache {
 
       this.redis.on('connect', () => {
         this.isConnected = true;
-        console.log('✅ Redis connection established');
+        console.warn('✅ Redis connection established');
       });
 
       this.redis.on('error', (error: Error) => {
@@ -170,7 +170,7 @@ export class EnterpriseCacheSystem implements RouteCache {
 
       this.redis.on('ready', () => {
         this.isConnected = true;
-        console.log('🚀 Redis client ready');
+        console.warn('🚀 Redis client ready');
       });
 
     } catch (error) {
@@ -258,7 +258,7 @@ export class EnterpriseCacheSystem implements RouteCache {
       }
 
       this.metrics.deletes += deletedCount;
-      console.log(`🗑️  Invalidated ${deletedCount} cache entries matching pattern: ${pattern}`);
+      console.warn(`🗑️  Invalidated ${deletedCount} cache entries matching pattern: ${pattern}`);
 
     } catch (error) {
       this.metrics.errors++;
@@ -285,7 +285,7 @@ export class EnterpriseCacheSystem implements RouteCache {
         }
       }
 
-      console.log('🧹 Cache cleared successfully');
+      console.warn('🧹 Cache cleared successfully');
 
     } catch (error) {
       this.metrics.errors++;
@@ -345,7 +345,7 @@ export class EnterpriseCacheSystem implements RouteCache {
    * Start intelligent cache warming process
    */
   private async startCacheWarming(): Promise<void> {
-    console.log('🔥 Starting intelligent cache warming...');
+    console.warn('🔥 Starting intelligent cache warming...');
 
     try {
       // Schedule periodic warming
@@ -368,7 +368,7 @@ export class EnterpriseCacheSystem implements RouteCache {
     if (!this.warmingStrategy.enabled) return;
 
     const startTime = Date.now();
-    console.log('🔥 Performing cache warming...');
+    console.warn('🔥 Performing cache warming...');
 
     try {
       // This would typically integrate with the routing system
@@ -380,7 +380,7 @@ export class EnterpriseCacheSystem implements RouteCache {
 
       for (const batch of batches) {
         if (Date.now() - startTime > this.warmingStrategy.maxWarmingTime) {
-          console.log('⏰ Cache warming timeout reached');
+          console.warn('⏰ Cache warming timeout reached');
           break;
         }
 
@@ -389,7 +389,7 @@ export class EnterpriseCacheSystem implements RouteCache {
       }
 
       const duration = Date.now() - startTime;
-      console.log(`✅ Cache warming completed: ${warmedCount} routes in ${duration}ms`);
+      console.warn(`✅ Cache warming completed: ${warmedCount} routes in ${duration}ms`);
 
     } catch (error) {
       console.error('❌ Cache warming failed:', error);
@@ -586,7 +586,7 @@ export class EnterpriseCacheSystem implements RouteCache {
       const cached = await this.get(route);
       if (!cached) {
         // Would generate route data here
-        console.log(`🔥 Warming route: ${route}`);
+        console.warn(`🔥 Warming route: ${route}`);
       }
     });
 

@@ -53,7 +53,7 @@ export class StaticGenerationStrategy {
   
   // Enterprise caching for 881-city optimization
   private readonly tierCityCache: Map<number, string[]> = new Map();
-  private readonly generationCache: Map<string, any> = new Map();
+  private readonly generationCache: Map<string, unknown> = new Map();
   private readonly buildMetrics: any = {
     startTime: Date.now(),
     memoryUsage: 0,
@@ -89,7 +89,7 @@ export class StaticGenerationStrategy {
    * Generate static paths for Astro's getStaticPaths
    */
   async generateStaticPaths(): Promise<GetStaticPathsResult> {
-    console.log('🏗️  Generating static paths for faceted navigation...');
+    console.warn('🏗️  Generating static paths for faceted navigation...');
     const startTime = Date.now();
     
     try {
@@ -97,7 +97,7 @@ export class StaticGenerationStrategy {
       const paths = await this.executePlan(plan);
       
       const duration = Date.now() - startTime;
-      console.log(`✅ Generated ${paths.length} static paths in ${duration}ms`);
+      console.warn(`✅ Generated ${paths.length} static paths in ${duration}ms`);
       
       // Log generation summary
       this.logGenerationSummary(plan, paths.length, duration);
@@ -191,7 +191,7 @@ export class StaticGenerationStrategy {
 
       // Respect page limits
       if (paths.length >= this.config.maxPagesPerBuild) {
-        console.log(`⚠️  Reached page limit (${this.config.maxPagesPerBuild}), stopping generation`);
+        console.warn(`⚠️  Reached page limit (${this.config.maxPagesPerBuild}), stopping generation`);
         break;
       }
     }
@@ -202,7 +202,7 @@ export class StaticGenerationStrategy {
   /**
    * Generate paths for a specific city
    */
-  private async generatePathsForCity(citySlug: string, cityData: any): Promise<StaticPath[]> {
+  private async generatePathsForCity(citySlug: string, cityData: unknown): Promise<StaticPath[]> {
     const paths: StaticPath[] = [];
     const cityTier = cityData.tier || 3;
     const maxCombinations = this.getMaxCombinationsForTier(cityTier);
@@ -311,25 +311,25 @@ export class StaticGenerationStrategy {
    * Log generation summary
    */
   private logGenerationSummary(plan: GenerationPlan, actualGenerated: number, duration: number): void {
-    console.log('\n📊 Static Generation Summary:');
-    console.log('=' .repeat(40));
-    console.log(`Planned pages: ${plan.totalPages}`);
-    console.log(`Generated pages: ${actualGenerated}`);
-    console.log(`High priority: ${plan.highPriorityPages}`);
-    console.log(`Medium priority: ${plan.mediumPriorityPages}`);
-    console.log(`Low priority: ${plan.lowPriorityPages}`);
-    console.log(`Build time: ${duration}ms`);
-    console.log(`Average per page: ${(duration / actualGenerated).toFixed(2)}ms`);
-    console.log(`ISR enabled: ${plan.shouldUseISR ? 'Yes' : 'No'}`);
+    console.warn('\n📊 Static Generation Summary:');
+    console.warn('=' .repeat(40));
+    console.warn(`Planned pages: ${plan.totalPages}`);
+    console.warn(`Generated pages: ${actualGenerated}`);
+    console.warn(`High priority: ${plan.highPriorityPages}`);
+    console.warn(`Medium priority: ${plan.mediumPriorityPages}`);
+    console.warn(`Low priority: ${plan.lowPriorityPages}`);
+    console.warn(`Build time: ${duration}ms`);
+    console.warn(`Average per page: ${(duration / actualGenerated).toFixed(2)}ms`);
+    console.warn(`ISR enabled: ${plan.shouldUseISR ? 'Yes' : 'No'}`);
     
     // Top cities by page count
     const topCities = Object.entries(plan.cityBreakdown)
       .sort(([,a], [,b]) => b - a)
       .slice(0, 5);
     
-    console.log('\nTop 5 cities by page count:');
+    console.warn('\nTop 5 cities by page count:');
     topCities.forEach(([city, count]) => {
-      console.log(`  ${city}: ${count} pages`);
+      console.warn(`  ${city}: ${count} pages`);
     });
   }
 

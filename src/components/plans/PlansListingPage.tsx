@@ -211,7 +211,6 @@ const PlansListingPage: React.FC<PlansListingPageProps> = ({
     }
 
     // Navigate to plan details or order flow
-    console.log('[PlansListingPage] Plan selected:', plan.planName);
   }, [onPlanSelect, pageState.filters.city]);
 
   // Handle plan comparison
@@ -233,7 +232,6 @@ const PlansListingPage: React.FC<PlansListingPageProps> = ({
         : `${plan.planName} removed from comparison`;
       
       // Could implement toast notification here
-      console.log('[PlansListingPage]', message);
     } else {
       console.warn('[PlansListingPage] Comparison error:', result.message);
     }
@@ -252,7 +250,6 @@ const PlansListingPage: React.FC<PlansListingPageProps> = ({
     }));
 
     if (result.success) {
-      console.log('[PlansListingPage] Plan removed from comparison');
     }
   }, []);
 
@@ -316,19 +313,19 @@ const PlansListingPage: React.FC<PlansListingPageProps> = ({
     return (
       <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 ${className}`}>
         <div className="text-center py-12">
-          <div className="bg-red-50 border border-red-200 rounded-lg p-6 max-w-md mx-auto">
-            <svg className="w-12 h-12 text-red-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="bg-texas-red/10 border border-texas-red/30 rounded-lg p-6 max-w-md mx-auto">
+            <svg className="w-12 h-12 text-texas-red mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
             </svg>
             <h3 className="text-lg font-semibold text-red-900 mb-2">
               Unable to Load Plans
             </h3>
-            <p className="text-sm text-red-700 mb-4">
+            <p className="text-sm text-texas-red-700 mb-4">
               {pageState.error}
             </p>
             <button
               onClick={() => loadPlans(pageState.filters)}
-              className="px-4 py-2 bg-red-600 text-white text-sm font-medium rounded-md hover:bg-red-700 transition-colors"
+              className="px-4 py-2 bg-red-600 text-white text-sm font-medium rounded-md hover:bg-texas-red-700 transition-colors"
             >
               Try Again
             </button>

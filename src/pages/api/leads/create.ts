@@ -23,7 +23,7 @@ interface LeadCreateRequest {
   utmContent?: string;
   sessionId?: string;
   planComparisons?: string[];
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 interface LeadCreateResponse {
@@ -31,7 +31,7 @@ interface LeadCreateResponse {
   leadId?: string;
   score?: number;
   status?: string;
-  recommendations?: any[];
+  recommendations?: unknown[];
   message?: string;
   error?: string;
 }
@@ -263,7 +263,7 @@ async function logApiMetrics(metrics: {
 }): Promise<void> {
   try {
     // This would integrate with your metrics system
-    console.log('API Metrics:', {
+    console.warn('API Metrics:', {
       timestamp: new Date().toISOString(),
       ...metrics
     });

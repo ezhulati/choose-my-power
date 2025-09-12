@@ -314,7 +314,7 @@ export function CompareRatesPage({}: CompareRatesPageProps) {
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-2">Fixed or Variable?</label>
-                    <Select value={rateType} onValueChange={(value) => setRateType(value as any)}>
+                    <Select value={rateType} onValueChange={(value) => setRateType(value as unknown)}>
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
@@ -328,7 +328,7 @@ export function CompareRatesPage({}: CompareRatesPageProps) {
 
                   <div>
                     <label className="block text-sm font-medium mb-2">Plan Length</label>
-                    <Select value={contractLength} onValueChange={(value) => setContractLength(value as any)}>
+                    <Select value={contractLength} onValueChange={(value) => setContractLength(value as unknown)}>
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
@@ -352,7 +352,7 @@ export function CompareRatesPage({}: CompareRatesPageProps) {
                 </h3>
                 <select
                   value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value as any)}
+                  onChange={(e) => setSortBy(e.target.value as unknown)}
                   className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                 >
                   <option value="total-cost">Cheapest Monthly Bill First</option>
@@ -508,7 +508,7 @@ export function CompareRatesPage({}: CompareRatesPageProps) {
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Rate Selection Tips</h3>
               <div className="space-y-4">
                 <div className="bg-texas-cream-200 p-4 rounded-lg">
-                  <div className="font-medium text-blue-900 mb-2">Compare Total Costs</div>
+                  <div className="font-medium text-texas-navy-900 mb-2">Compare Total Costs</div>
                   <div className="text-texas-navy text-sm">
                     Look beyond the rate per kWh. Include monthly fees and your actual usage.
                   </div>

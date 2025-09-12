@@ -85,7 +85,6 @@ export const ProviderLogo: React.FC<ProviderLogoProps> = ({
       
       if (logoUrl) {
         setLogoSrc(logoUrl);
-        console.log(`✅ Found logo for ${providerName}: ${logoUrl}`);
       } else {
         console.warn(`⚠️ No logo found for ${providerName}, using branded fallback`);
         // Generate branded fallback SVG using provider colors

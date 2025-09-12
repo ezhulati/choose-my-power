@@ -36,7 +36,7 @@ export class ZIPRoutingService {
     try {
       if (process.env.REDIS_URL) {
         this.redis = new Redis(process.env.REDIS_URL);
-        console.log('[ZIPRoutingService] Redis cache initialized');
+        console.warn('[ZIPRoutingService] Redis cache initialized');
         
         // Warm up cache with high-priority ZIPs
         await this.warmUpCache();
@@ -259,7 +259,7 @@ export class ZIPRoutingService {
         }
       }
       this.fallbackCache.clear();
-      console.log('[ZIPRoutingService] Cache cleared');
+      console.warn('[ZIPRoutingService] Cache cleared');
     } catch (error) {
       console.error('[ZIPRoutingService] Error clearing cache:', error);
     }
@@ -328,7 +328,7 @@ export class ZIPRoutingService {
     }
   }
 
-  private async cacheRouting(zipCode: string, data: any): Promise<void> {
+  private async cacheRouting(zipCode: string, data: unknown): Promise<void> {
     const cacheKey = `zip-routing:${zipCode}`;
     const cached: CachedZIPRouting = {
       ...data,
@@ -388,7 +388,7 @@ export class ZIPRoutingService {
         '79601', '79602'  // Abilene
       ];
 
-      console.log('[ZIPRoutingService] Warming up cache with high-priority ZIPs...');
+      console.warn('[ZIPRoutingService] Warming up cache with high-priority ZIPs...');
       
       for (const zip of highPriorityZips) {
         try {
@@ -399,7 +399,7 @@ export class ZIPRoutingService {
         }
       }
       
-      console.log(`[ZIPRoutingService] Cache warm-up completed for ${highPriorityZips.length} ZIP codes`);
+      console.warn(`[ZIPRoutingService] Cache warm-up completed for ${highPriorityZips.length} ZIP codes`);
     } catch (error) {
       console.error('[ZIPRoutingService] Cache warm-up error:', error);
     }

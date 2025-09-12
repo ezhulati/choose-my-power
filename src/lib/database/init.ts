@@ -16,11 +16,11 @@ export { db };
  */
 export async function initializeDatabase() {
   try {
-    console.log('🔄 Initializing database...');
+    console.warn('🔄 Initializing database...');
     
     // Create all tables (split into individual statements for Neon)
     await createTables();
-    console.log('✅ Database tables created successfully');
+    console.warn('✅ Database tables created successfully');
 
     // Seed TDSP data (existing system)
     await seedTDSPData();
@@ -40,7 +40,7 @@ export async function initializeDatabase() {
     // Seed electricity plans from generated data files
     await seedElectricityPlans();
     
-    console.log('✅ Database initialization complete');
+    console.warn('✅ Database initialization complete');
     return { success: true };
     
   } catch (error) {
@@ -124,7 +124,7 @@ async function seedTDSPData() {
     }
   }
   
-  console.log('✅ TDSP data seeded');
+  console.warn('✅ TDSP data seeded');
 }
 
 /**
@@ -199,7 +199,7 @@ async function seedCityData() {
     }
   }
   
-  console.log('✅ City data seeded');
+  console.warn('✅ City data seeded');
 }
 
 /**
@@ -268,14 +268,14 @@ async function seedProviderData() {
     }
   }
   
-  console.log('✅ Provider data seeded');
+  console.warn('✅ Provider data seeded');
 }
 
 /**
  * Seed electricity plans from generated JSON data files
  */
 async function seedElectricityPlans() {
-  console.log('🔄 Seeding electricity plans from generated data...');
+  console.warn('🔄 Seeding electricity plans from generated data...');
   
   // List of major cities to seed plans from
   const cities = ['dallas', 'houston', 'arlington', 'irving', 'south-houston'];
@@ -283,7 +283,7 @@ async function seedElectricityPlans() {
   
   for (const citySlug of cities) {
     try {
-      console.log(`Loading plans for ${citySlug}...`);
+      console.warn(`Loading plans for ${citySlug}...`);
       const cityData = await loadCityData(citySlug);
       
       if (!cityData) {
@@ -373,13 +373,13 @@ async function seedElectricityPlans() {
         }
       }
       
-      console.log(`✅ Seeded ${plans.length} plans for ${citySlug}`);
+      console.warn(`✅ Seeded ${plans.length} plans for ${citySlug}`);
     } catch (error) {
       console.warn(`Failed to process city ${citySlug}:`, error.message);
     }
   }
   
-  console.log(`✅ Electricity plans seeded: ${totalPlansSeeded} total plans`);
+  console.warn(`✅ Electricity plans seeded: ${totalPlansSeeded} total plans`);
 }
 
 /**
@@ -411,7 +411,7 @@ async function seedZIPCoverageTDSPData() {
     }
   }
   
-  console.log('✅ ZIP coverage TDSP data seeded');
+  console.warn('✅ ZIP coverage TDSP data seeded');
 }
 
 /**
@@ -446,7 +446,7 @@ async function seedZIPCoverageDataSources() {
     }
   }
   
-  console.log('✅ ZIP coverage data sources seeded');
+  console.warn('✅ ZIP coverage data sources seeded');
 }
 
 /**

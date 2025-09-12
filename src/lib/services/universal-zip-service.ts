@@ -172,7 +172,7 @@ class ExternalZIPService {
       const data = await response.json();
       
       if (data.postalCodes && data.postalCodes.length > 0) {
-        const result = data.postalCodes.find((code: any) => code.adminCode1 === 'TX');
+        const result = data.postalCodes.find((code: unknown) => code.adminCode1 === 'TX');
         
         if (result && result.placeName) {
           const zipInfo: ZIPCodeInfo = {
@@ -394,7 +394,7 @@ export class UniversalZIPService {
       }
 
       // Step 1: Validate ZIP code with external APIs
-      console.log(`🔍 Looking up ZIP ${zipCode} with external APIs...`);
+      console.warn(`🔍 Looking up ZIP ${zipCode} with external APIs...`);
       const zipInfo = await this.externalService.validateZIPCode(zipCode);
 
       if (!zipInfo) {
@@ -406,7 +406,7 @@ export class UniversalZIPService {
       }
 
       // Step 2: Find nearest supported city
-      console.log(`🗺️ Mapping ${zipInfo.cityName} to nearest supported electricity market...`);
+      console.warn(`🗺️ Mapping ${zipInfo.cityName} to nearest supported electricity market...`);
       const geoMapping = this.geoService.findNearestSupportedCity(
         zipInfo.cityName,
         zipInfo.latitude,
@@ -465,7 +465,7 @@ export class UniversalZIPService {
       // Cache successful result
       this.cache.set(zipCode, { data: result, timestamp: Date.now() });
 
-      console.log(`✅ Successfully mapped ZIP ${zipCode} (${zipInfo.cityName}) -> ${geoMapping.citySlug} (confidence: ${geoMapping.confidence}%)`);
+      console.warn(`✅ Successfully mapped ZIP ${zipCode} (${zipInfo.cityName}) -> ${geoMapping.citySlug} (confidence: ${geoMapping.confidence}%)`);
       return result;
 
     } catch (error) {

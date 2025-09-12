@@ -133,7 +133,6 @@ export const MobileMasterOptimizer: React.FC<MobileMasterOptimizerProps> = ({
         // Initialize progressive image loader
         if (enableAllOptimizations && enableProgressiveImages) {
           // Progressive image loader initializes automatically
-          console.log('Progressive image loading enabled');
         }
 
         // Initialize accessibility enhancer
@@ -150,7 +149,6 @@ export const MobileMasterOptimizer: React.FC<MobileMasterOptimizerProps> = ({
 
         setState(prev => ({ ...prev, isInitialized: true }));
 
-        console.log('Mobile Master Optimizer initialized:', {
           performanceScore: state.performanceScore,
           accessibilityScore: state.accessibilityScore,
           capabilities
@@ -176,7 +174,7 @@ export const MobileMasterOptimizer: React.FC<MobileMasterOptimizerProps> = ({
    * Detect mobile device capabilities
    */
   const detectMobileCapabilities = (): MobileCapabilities => {
-    const nav = navigator as any;
+    const nav = navigator as unknown;
     
     return {
       touchSupport: 'ontouchstart' in window || navigator.maxTouchPoints > 0,
@@ -298,7 +296,7 @@ export const MobileMasterOptimizer: React.FC<MobileMasterOptimizerProps> = ({
           planId: plan.id,
           position: position.toString(),
           funnelPath: state.conversionFunnel.join(' -> '),
-          timeToConversion: Date.now() - (mobileAnalyticsTracker.getState() as any).startTime
+          timeToConversion: Date.now() - (mobileAnalyticsTracker.getState() as unknown).startTime
         }
       });
     }

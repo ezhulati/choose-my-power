@@ -58,14 +58,14 @@ interface ConversationContext {
 interface Intent {
   primary: string;
   confidence: number;
-  parameters: Record<string, any>;
+  parameters: Record<string, unknown>;
   requiresAction: boolean;
   complexity: 'simple' | 'moderate' | 'complex';
 }
 
 interface Action {
   type: 'fetch_plans' | 'calculate_savings' | 'provide_info' | 'escalate' | 'collect_feedback';
-  parameters: Record<string, any>;
+  parameters: Record<string, unknown>;
   priority: number;
   estimatedTime: number;
 }
@@ -369,7 +369,7 @@ async function analyzeUserInput(state: SupportChatbotState): Promise<Partial<Sup
     },
     conversationContext: {
       ...state.conversationContext,
-      topic: intentResult.primary as any,
+      topic: intentResult.primary as unknown,
       entities: intentResult.entities,
       sentiment: intentResult.sentiment,
       stage: intentResult.requiresAction ? 'analysis' : 'information_gathering',

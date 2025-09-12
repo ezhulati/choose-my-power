@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getProviders, getCities, type RealProvider, type RealCity } from '../../lib/services/provider-service';
-import { BarChart, TrendingUp, Users, Zap, Building, Scale, Info, Calendar } from 'lucide-react';
+import { BarChart, TrendingUp, Users, Building, Scale, Info, Calendar } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
 declare global {
@@ -154,7 +154,7 @@ export function StateMarketInfoPage({ state }: StateMarketInfoPageProps) {
                 <Users className="h-5 w-5 text-texas-navy mr-2" />
                 <span className="text-sm font-medium text-texas-navy">Customers</span>
               </div>
-              <div className="text-2xl font-bold text-blue-900">{marketStats.residentialCustomers}</div>
+              <div className="text-2xl font-bold text-texas-navy-900">{marketStats.residentialCustomers}</div>
               <div className="text-sm text-texas-navy">residential</div>
             </div>
 
@@ -195,7 +195,7 @@ export function StateMarketInfoPage({ state }: StateMarketInfoPageProps) {
             {tabs.map((tab) => (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id as any)}
+                onClick={() => setActiveTab(tab.id as unknown)}
                 className={`flex items-center space-x-2 py-4 border-b-2 font-medium text-sm transition-colors ${
                   activeTab === tab.id
                     ? 'border-texas-navy text-texas-navy'
@@ -328,7 +328,7 @@ export function StateMarketInfoPage({ state }: StateMarketInfoPageProps) {
                     <p className="text-sm text-green-700">Multiple providers compete for customers, driving innovation and better rates.</p>
                   </div>
                   <div className="bg-texas-cream-200 p-4 rounded-lg">
-                    <h4 className="font-medium text-blue-900 mb-2">Choice</h4>
+                    <h4 className="font-medium text-texas-navy-900 mb-2">Choice</h4>
                     <p className="text-sm text-texas-navy">Customers can choose plans that match their specific needs and preferences.</p>
                   </div>
                   <div className="bg-purple-50 p-4 rounded-lg">

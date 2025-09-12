@@ -36,7 +36,6 @@ export function StatePage({ state }: StatePageProps) {
   useEffect(() => {
     const loadData = async () => {
       try {
-        console.log(`[StatePage] Loading data for state: ${state}`);
         
         const [providersData, citiesData] = await Promise.all([
           getProviders(state),
@@ -45,7 +44,6 @@ export function StatePage({ state }: StatePageProps) {
         
         setProviders(providersData);
         setCities(citiesData);
-        console.log(`[StatePage] Loaded ${providersData.length} providers and ${citiesData.length} cities`);
       } catch (error) {
         console.error(`[StatePage] Error loading data for ${state}:`, error);
       } finally {
@@ -140,7 +138,7 @@ export function StatePage({ state }: StatePageProps) {
                   <label className="block text-sm font-medium text-gray-700 mb-2">Plan Type</label>
                   <select
                     value={filterType}
-                    onChange={(e) => setFilterType(e.target.value as any)}
+                    onChange={(e) => setFilterType(e.target.value as unknown)}
                     className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   >
                     <option value="all">All Plan Types</option>
@@ -154,7 +152,7 @@ export function StatePage({ state }: StatePageProps) {
                   <label className="block text-sm font-medium text-gray-700 mb-2">Sort By</label>
                   <select
                     value={sortBy}
-                    onChange={(e) => setSortBy(e.target.value as any)}
+                    onChange={(e) => setSortBy(e.target.value as unknown)}
                     className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   >
                     <option value="rating">Highest Rated</option>

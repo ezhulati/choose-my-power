@@ -3,7 +3,6 @@ import { initializeDatabase } from '../../../lib/database/init.js';
 
 export const POST: APIRoute = async ({ request }) => {
   try {
-    console.log('🔄 Starting database initialization via API...');
     
     const result = await initializeDatabase();
     

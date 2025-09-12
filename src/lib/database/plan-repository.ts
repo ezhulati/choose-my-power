@@ -104,7 +104,7 @@ export class PlanRepository {
       `;
 
       if (cached.length > 0) {
-        console.log(`Database cache hit for key: ${cacheKey}`);
+        console.warn(`Database cache hit for key: ${cacheKey}`);
         return cached[0].plans_data as Plan[];
       }
 
@@ -142,7 +142,7 @@ export class PlanRepository {
           expires_at = EXCLUDED.expires_at
       `;
 
-      console.log(`Cached ${plans.length} plans for TDSP ${params.tdsp_duns}`);
+      console.warn(`Cached ${plans.length} plans for TDSP ${params.tdsp_duns}`);
     } catch (error) {
       console.error('Cache storage error:', error);
     }
@@ -211,7 +211,7 @@ export class PlanRepository {
         `;
       }
 
-      console.log(`Stored ${apiPlans.length} plans in database for TDSP ${tdspDuns}`);
+      console.warn(`Stored ${apiPlans.length} plans in database for TDSP ${tdspDuns}`);
     } catch (error) {
       console.error('Plan storage error:', error);
     }
@@ -482,7 +482,7 @@ export class PlanRepository {
   async updateLead(leadId: string, updates: Partial<Lead>): Promise<void> {
     try {
       const setClause: string[] = [];
-      const values: any[] = [];
+      const values: unknown[] = [];
 
       Object.entries(updates).forEach(([key, value]) => {
         if (value !== undefined && key !== 'id') {
@@ -578,7 +578,7 @@ export class PlanRepository {
   }): Promise<Lead[]> {
     try {
       let query = 'SELECT * FROM leads WHERE 1=1';
-      const values: any[] = [];
+      const values: unknown[] = [];
 
       if (filters?.status) {
         query += ` AND status = $${values.length + 1}`;
@@ -995,10 +995,10 @@ export class PlanRepository {
    * Analytics and Reporting Methods
    */
 
-  async storeUserJourneyEvents(events: Array<any>): Promise<void> {
+  async storeUserJourneyEvents(events: Array<unknown>): Promise<void> {
     try {
       // This would store user journey events in a dedicated table
-      console.log(`Would store ${events.length} user journey events`);
+      console.warn(`Would store ${events.length} user journey events`);
     } catch (error) {
       console.error('User journey events storage error:', error);
     }
@@ -1112,7 +1112,7 @@ export class PlanRepository {
 
   async updateCityPlans(citySlug: string, plans: Plan[]): Promise<void> {
     try {
-      console.log(`Updated plans for city: ${citySlug} (${plans.length} plans)`);
+      console.warn(`Updated plans for city: ${citySlug} (${plans.length} plans)`);
       // Implementation would update city-specific plan cache
     } catch (error) {
       console.error('Update city plans error:', error);
@@ -1145,20 +1145,20 @@ export class PlanRepository {
   async getActiveUsersCount(): Promise<number> { return 0; }
   async getCurrentSearchesCount(): Promise<number> { return 0; }
   async getRecentConversionsCount(): Promise<number> { return 0; }
-  async getRecentPerformanceMetrics(): Promise<any> { return {}; }
-  async getRecentErrorRates(): Promise<any> { return { errorRate: 0 }; }
+  async getRecentPerformanceMetrics(): Promise<unknown> { return {}; }
+  async getRecentErrorRates(): Promise<unknown> { return { errorRate: 0 }; }
   async getCurrentErrorRate(): Promise<number> { return 0; }
   async getCurrentAvgResponseTime(): Promise<number> { return 0; }
   async isDatabaseHealthy(): Promise<boolean> { return true; }
-  async getUserJourneyEvents(timeframe: string): Promise<any[]> { return []; }
-  async getSessionEvents(sessionId: string): Promise<any[]> { return []; }
-  async getTopPerformingPages(timeframe: string): Promise<any[]> { return []; }
-  async getTopSearchQueries(timeframe: string): Promise<any[]> { return []; }
-  async getPlanPopularityStats(timeframe: string): Promise<any[]> { return []; }
-  async getPopularSearches(timeframe: string): Promise<any[]> { return []; }
-  async getTrafficTrend(timeframe: string): Promise<any[]> { return []; }
-  async getSearchTrend(timeframe: string): Promise<any[]> { return []; }
-  async getPerformanceTrend(timeframe: string): Promise<any[]> { return []; }
+  async getUserJourneyEvents(timeframe: string): Promise<unknown[]> { return []; }
+  async getSessionEvents(sessionId: string): Promise<unknown[]> { return []; }
+  async getTopPerformingPages(timeframe: string): Promise<unknown[]> { return []; }
+  async getTopSearchQueries(timeframe: string): Promise<unknown[]> { return []; }
+  async getPlanPopularityStats(timeframe: string): Promise<unknown[]> { return []; }
+  async getPopularSearches(timeframe: string): Promise<unknown[]> { return []; }
+  async getTrafficTrend(timeframe: string): Promise<unknown[]> { return []; }
+  async getSearchTrend(timeframe: string): Promise<unknown[]> { return []; }
+  async getPerformanceTrend(timeframe: string): Promise<unknown[]> { return []; }
 
   private transformDatabasePlan = (dbPlan: DatabasePlan): Plan => ({
     id: dbPlan.external_id,

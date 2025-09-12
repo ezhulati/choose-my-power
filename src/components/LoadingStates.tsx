@@ -23,21 +23,9 @@ import {
   Zap,
   Search,
   MapPin,
-  Home,
   Building,
-  Filter,
-  Star,
-  Calendar,
-  DollarSign,
-  Leaf,
-  Clock,
   CheckCircle,
-  TrendingUp,
-  Loader2,
-  BarChart3,
-  Grid,
-  List,
-  Compare
+  Loader2
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';

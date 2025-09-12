@@ -45,21 +45,21 @@ interface Plan {
     length: number;
     unit: string;
   };
-  [key: string]: any; // Allow additional properties
+  [key: string]: unknown; // Allow additional properties
 }
 
 interface CityData {
   citySlug: string;
   cityName: string;
-  tdsp?: any;
+  tdsp?: unknown;
   filters?: {
     'no-filters'?: {
       plans: Plan[];
     };
-    [key: string]: any;
+    [key: string]: unknown;
   };
   plans?: Plan[]; // Fallback for different structure
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 // Simple in-memory cache to avoid repeated file reads
@@ -85,7 +85,7 @@ export async function loadCityData(citySlug: string): Promise<CityData | null> {
     const cachedTime = cacheTimestamps.get(citySlug);
     
     if (cached && cachedTime && (Date.now() - cachedTime) < CACHE_TTL) {
-      console.log(`[PlanDataService] Using cached data for city: ${citySlug}`);
+      console.warn(`[PlanDataService] Using cached data for city: ${citySlug}`);
       return cached;
     }
 
@@ -99,7 +99,7 @@ export async function loadCityData(citySlug: string): Promise<CityData | null> {
     
     const filePath = path.join(dataDir, `${citySlug}.json`);
     
-    console.log(`[PlanDataService] Loading city data from: ${filePath}`);
+    console.warn(`[PlanDataService] Loading city data from: ${filePath}`);
     
     // Read and parse JSON file
     const fileContent = await fs.readFile(filePath, 'utf-8');
@@ -111,7 +111,7 @@ export async function loadCityData(citySlug: string): Promise<CityData | null> {
     
     // Get plans from the correct location
     const plans = cityData.filters?.['no-filters']?.plans || cityData.plans || [];
-    console.log(`[PlanDataService] Loaded ${plans.length} plans for ${citySlug}`);
+    console.warn(`[PlanDataService] Loaded ${plans.length} plans for ${citySlug}`);
     
     return cityData;
   } catch (error) {
@@ -133,7 +133,7 @@ export async function findPlanByNameAndProvider(
   citySlug: string = 'dallas'
 ): Promise<Plan | null> {
   try {
-    console.log(`[PlanDataService] Searching for plan: "${name}" by "${provider}" in ${citySlug}`);
+    console.warn(`[PlanDataService] Searching for plan: "${name}" by "${provider}" in ${citySlug}`);
     
     const cityData = await loadCityData(citySlug);
     
@@ -158,7 +158,7 @@ export async function findPlanByNameAndProvider(
     
     // If no exact match, try fuzzy matching
     if (!matchedPlan) {
-      console.log(`[PlanDataService] No exact match, trying fuzzy search...`);
+      console.warn(`[PlanDataService] No exact match, trying fuzzy search...`);
       
       // Normalize names for comparison
       const normalizedName = name.toLowerCase().replace(/\s+/g, ' ').trim();
@@ -191,14 +191,14 @@ export async function findPlanByNameAndProvider(
     
     // If still no match, try to find any plan from the same provider
     if (!matchedPlan) {
-      console.log(`[PlanDataService] No fuzzy match, finding any plan from provider...`);
+      console.warn(`[PlanDataService] No fuzzy match, finding any plan from provider...`);
       matchedPlan = plans.find(plan => 
         plan.provider?.name?.toLowerCase() === provider.toLowerCase()
       );
     }
     
     if (matchedPlan) {
-      console.log(`[PlanDataService] Found plan: ${matchedPlan.name} with ID: ${matchedPlan.id}`);
+      console.warn(`[PlanDataService] Found plan: ${matchedPlan.name} with ID: ${matchedPlan.id}`);
       
       // Validate MongoDB ObjectId format
       if (!isValidMongoId(matchedPlan.id)) {
@@ -227,7 +227,7 @@ export async function findPlanById(
   citySlug: string = 'dallas'
 ): Promise<Plan | null> {
   try {
-    console.log(`[PlanDataService] Searching for plan by ID: ${planId} in ${citySlug}`);
+    console.warn(`[PlanDataService] Searching for plan by ID: ${planId} in ${citySlug}`);
     
     const cityData = await loadCityData(citySlug);
     
@@ -247,7 +247,7 @@ export async function findPlanById(
     const plan = plans.find(p => p.id === planId);
     
     if (plan) {
-      console.log(`[PlanDataService] Found plan: ${plan.name} by ${plan.provider.name}`);
+      console.warn(`[PlanDataService] Found plan: ${plan.name} by ${plan.provider.name}`);
       return plan;
     } else {
       console.warn(`[PlanDataService] No plan found with ID: ${planId}`);
@@ -287,7 +287,7 @@ export async function getUniqueProviders(citySlug: string = 'dallas'): Promise<s
     });
     
     const uniqueProviders = Array.from(providers).sort();
-    console.log(`[PlanDataService] Found ${uniqueProviders.length} unique providers in ${citySlug}`);
+    console.warn(`[PlanDataService] Found ${uniqueProviders.length} unique providers in ${citySlug}`);
     
     return uniqueProviders;
   } catch (error) {
@@ -311,5 +311,5 @@ export function isValidMongoId(id: string): boolean {
 export function clearCache(): void {
   cityDataCache.clear();
   cacheTimestamps.clear();
-  console.log('[PlanDataService] Cache cleared');
+  console.warn('[PlanDataService] Cache cleared');
 }

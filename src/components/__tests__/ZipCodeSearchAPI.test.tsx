@@ -26,15 +26,15 @@ vi.mock('../hooks/useESIIDLookup', () => ({
 
 // Mock cn utility
 vi.mock('../lib/utils', () => ({
-  cn: (...args: any[]) => args.filter(Boolean).join(' ')
+  cn: (...args: unknown[]) => args.filter(Boolean).join(' ')
 }));
 
 import { useElectricityPlansAPI } from '../hooks/useElectricityPlansAPI';
 import { useESIIDLookup } from '../hooks/useESIIDLookup';
 
 // Mock implementations
-const mockUseElectricityPlansAPI = useElectricityPlansAPI as any;
-const mockUseESIIDLookup = useESIIDLookup as any;
+const mockUseElectricityPlansAPI = useElectricityPlansAPI as unknown;
+const mockUseESIIDLookup = useESIIDLookup as unknown;
 
 // Test data
 const mockPlan = {

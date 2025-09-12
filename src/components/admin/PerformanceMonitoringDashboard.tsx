@@ -53,7 +53,7 @@ export const PerformanceMonitoringDashboard: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState<'overview' | 'alerts' | 'recommendations' | 'cache'>('overview');
   const [autoRefresh, setAutoRefresh] = useState(true);
   const [lastUpdated, setLastUpdated] = useState<Date>(new Date());
-  const [cacheAnalysis, setCacheAnalysis] = useState<any>(null);
+  const [cacheAnalysis, setCacheAnalysis] = useState<unknown>(null);
 
   const fetchSystemHealth = useCallback(async () => {
     try {
@@ -162,15 +162,15 @@ export const PerformanceMonitoringDashboard: React.FC = () => {
   const getHealthColor = (value: number, thresholds: { good: number; warning: number }): string => {
     if (value >= thresholds.good) return 'text-green-600';
     if (value >= thresholds.warning) return 'text-yellow-600';
-    return 'text-red-600';
+    return 'text-texas-red';
   };
 
   const getSeverityColor = (severity: string): string => {
     switch (severity) {
-      case 'CRITICAL': return 'bg-red-100 text-red-800 border-red-200';
+      case 'CRITICAL': return 'bg-red-100 text-texas-red-800 border-texas-red/30';
       case 'HIGH': return 'bg-orange-100 text-orange-800 border-orange-200';
       case 'MEDIUM': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
-      case 'LOW': return 'bg-blue-100 text-blue-800 border-blue-200';
+      case 'LOW': return 'bg-blue-100 text-texas-navy-800 border-texas-navy/30';
       default: return 'bg-gray-100 text-gray-800 border-gray-200';
     }
   };
@@ -239,7 +239,7 @@ export const PerformanceMonitoringDashboard: React.FC = () => {
                 </p>
               </div>
               <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-4 h-4 text-texas-navy" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
                 </svg>
               </div>
@@ -291,7 +291,7 @@ export const PerformanceMonitoringDashboard: React.FC = () => {
           ].map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setSelectedTab(tab.id as any)}
+              onClick={() => setSelectedTab(tab.id as unknown)}
               className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors ${
                 selectedTab === tab.id
                   ? 'border-texas-red text-texas-red'
@@ -339,13 +339,13 @@ export const PerformanceMonitoringDashboard: React.FC = () => {
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-gray-600">Active Alerts</span>
-                  <span className={`font-semibold ${systemHealth.alertsSummary.active > 0 ? 'text-red-600' : 'text-green-600'}`}>
+                  <span className={`font-semibold ${systemHealth.alertsSummary.active > 0 ? 'text-texas-red' : 'text-green-600'}`}>
                     {systemHealth.alertsSummary.active}
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-gray-600">Critical Alerts</span>
-                  <span className={`font-semibold ${systemHealth.alertsSummary.critical > 0 ? 'text-red-600' : 'text-green-600'}`}>
+                  <span className={`font-semibold ${systemHealth.alertsSummary.critical > 0 ? 'text-texas-red' : 'text-green-600'}`}>
                     {systemHealth.alertsSummary.critical}
                   </span>
                 </div>
@@ -357,7 +357,7 @@ export const PerformanceMonitoringDashboard: React.FC = () => {
               <div className="space-y-3">
                 <button 
                   onClick={() => window.open('/api/monitoring/performance?action=export&format=JSON', '_blank')}
-                  className="w-full px-4 py-2 bg-texas-navy text-white rounded-lg hover:bg-blue-800 transition-colors"
+                  className="w-full px-4 py-2 bg-texas-navy text-white rounded-lg hover:bg-texas-navy-800 transition-colors"
                 >
                   Export Performance Data
                 </button>
@@ -431,19 +431,19 @@ export const PerformanceMonitoringDashboard: React.FC = () => {
       {selectedTab === 'recommendations' && (
         <div className="space-y-4">
           {recommendations.length === 0 ? (
-            <div className="bg-blue-50 border border-blue-200 rounded-xl p-8 text-center">
+            <div className="bg-texas-navy/10 border border-texas-navy/30 rounded-xl p-8 text-center">
               <svg className="mx-auto h-12 w-12 text-blue-400 mb-4" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
               </svg>
-              <h3 className="text-lg font-semibold text-blue-800 mb-2">System Optimized</h3>
-              <p className="text-blue-600">No performance optimization recommendations at this time.</p>
+              <h3 className="text-lg font-semibold text-texas-navy-800 mb-2">System Optimized</h3>
+              <p className="text-texas-navy">No performance optimization recommendations at this time.</p>
             </div>
           ) : (
             recommendations.map((rec, index) => (
               <div key={index} className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                 <div className="flex items-start gap-4">
                   <div className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                    rec.priority === 'HIGH' ? 'bg-red-100 text-red-800' :
+                    rec.priority === 'HIGH' ? 'bg-red-100 text-texas-red-800' :
                     rec.priority === 'MEDIUM' ? 'bg-yellow-100 text-yellow-800' :
                     'bg-green-100 text-green-800'
                   }`}>
@@ -504,7 +504,7 @@ export const PerformanceMonitoringDashboard: React.FC = () => {
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
               <h4 className="font-semibold text-gray-900 mb-4">Most Cached ZIPs (Hot)</h4>
               <div className="space-y-3">
-                {cacheAnalysis.hotZIPs.map((zip: any, index: number) => (
+                {cacheAnalysis.hotZIPs.map((zip: unknown, index: number) => (
                   <div key={zip.zipCode} className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
                     <div>
                       <span className="font-medium text-gray-900">{zip.zipCode}</span>
@@ -519,13 +519,13 @@ export const PerformanceMonitoringDashboard: React.FC = () => {
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
               <h4 className="font-semibold text-gray-900 mb-4">Cache Misses (Cold)</h4>
               <div className="space-y-3">
-                {cacheAnalysis.coldZIPs.map((zip: any, index: number) => (
-                  <div key={zip.zipCode} className="flex justify-between items-center p-3 bg-red-50 rounded-lg">
+                {cacheAnalysis.coldZIPs.map((zip: unknown, index: number) => (
+                  <div key={zip.zipCode} className="flex justify-between items-center p-3 bg-texas-red/10 rounded-lg">
                     <div>
                       <span className="font-medium text-gray-900">{zip.zipCode}</span>
                       <span className="text-sm text-gray-600 ml-2">({zip.missCount} misses)</span>
                     </div>
-                    <span className="text-sm text-red-600">{zip.avgResponseTime}ms</span>
+                    <span className="text-sm text-texas-red">{zip.avgResponseTime}ms</span>
                   </div>
                 ))}
               </div>
@@ -538,7 +538,7 @@ export const PerformanceMonitoringDashboard: React.FC = () => {
             <ul className="space-y-2">
               {cacheAnalysis.recommendations.map((rec: string, index: number) => (
                 <li key={index} className="flex items-start gap-2">
-                  <svg className="w-4 h-4 text-blue-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-4 h-4 text-texas-navy mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-600">{rec}</span>

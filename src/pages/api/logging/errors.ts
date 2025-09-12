@@ -67,7 +67,7 @@ function checkRateLimit(identifier: string): { allowed: boolean; retryAfter?: nu
 /**
  * Validate error log request
  */
-function validateErrorLogRequest(body: any): ErrorLogRequest | null {
+function validateErrorLogRequest(body: unknown): ErrorLogRequest | null {
   if (!body || typeof body !== 'object') {
     return null;
   }
@@ -194,7 +194,7 @@ export const POST: APIRoute = async ({ request }) => {
   
   try {
     // Parse request body
-    let body: any;
+    let body: unknown;
     try {
       body = await request.json();
     } catch (error) {

@@ -74,7 +74,7 @@ const PlanCard: React.FC<PlanCardProps> = memo(({
   const rateTypeColors = {
     fixed: 'bg-green-100 text-green-800',
     variable: 'bg-yellow-100 text-yellow-800', 
-    indexed: 'bg-blue-100 text-blue-800'
+    indexed: 'bg-blue-100 text-texas-navy-800'
   };
 
   const availabilityWarning = isLimitedAvailability || isDiscontinued;
@@ -92,7 +92,7 @@ const PlanCard: React.FC<PlanCardProps> = memo(({
       {/* Availability Warning */}
       {availabilityWarning && (
         <div 
-          className="mb-4 p-2 rounded-md bg-red-50 border border-red-200"
+          className="mb-4 p-2 rounded-md bg-texas-red/10 border border-texas-red/30"
           data-testid="availability-warning"
         >
           <p className="text-sm text-texas-red font-medium">

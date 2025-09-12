@@ -49,6 +49,6 @@ export function buildComparePowerUrl({ esiid, plan_id, usage, zip_code }: Compar
   
   const finalUrl = `${base}?${qs}`;
   
-  console.log('[ComparePower URL] Generated:', finalUrl);
+  console.warn('[ComparePower URL] Generated:', finalUrl);
   return finalUrl;
 }

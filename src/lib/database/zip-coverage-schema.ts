@@ -79,8 +79,8 @@ export interface ValidationLog {
   validation_type: 'lookup' | 'sync' | 'manual' | 'conflict_resolution';
   data_source: string;           // Source that provided the data
   result: 'success' | 'error' | 'conflict' | 'no_change';
-  old_value?: Record<string, any>; // JSON object with previous values
-  new_value?: Record<string, any>; // JSON object with new values
+  old_value?: Record<string, unknown>; // JSON object with previous values
+  new_value?: Record<string, unknown>; // JSON object with new values
   conflict_sources?: string[];   // JSON array of sources that disagreed
   resolved_by?: string;          // How conflict was resolved
   timestamp: Date;

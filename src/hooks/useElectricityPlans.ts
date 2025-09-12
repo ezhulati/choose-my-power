@@ -620,7 +620,7 @@ export function useElectricityPlans(options: UseElectricityPlansOptions = {}) {
   }, []);
 
   // Analytics tracking helper
-  const trackSearchEvent = useCallback((eventName: string, properties: Record<string, any>) => {
+  const trackSearchEvent = useCallback((eventName: string, properties: Record<string, unknown>) => {
     if (!enableAnalytics) return;
 
     try {

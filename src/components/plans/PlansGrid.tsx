@@ -187,14 +187,14 @@ const PlansGrid: React.FC<PlansGridProps> = memo(({
   if (error) {
     return (
       <div className={`text-center py-12 ${className}`}>
-        <div className="bg-red-50 border border-red-200 rounded-lg p-6 max-w-md mx-auto">
-          <svg className="w-12 h-12 text-red-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <div className="bg-texas-red/10 border border-texas-red/30 rounded-lg p-6 max-w-md mx-auto">
+          <svg className="w-12 h-12 text-texas-red mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
           </svg>
-          <h3 className="text-lg font-semibold text-red-900 mb-2">
+          <h3 className="text-lg font-semibold text-texas-red-900 mb-2">
             Unable to Load Plans
           </h3>
-          <p className="text-sm text-red-700">
+          <p className="text-sm text-texas-red-700">
             {error}
           </p>
         </div>
@@ -223,14 +223,14 @@ const PlansGrid: React.FC<PlansGridProps> = memo(({
 
           {/* Filter Suggestions */}
           {suggestions.length > 0 && (
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-              <h4 className="font-semibold text-blue-900 mb-3">
+            <div className="bg-texas-navy/10 border border-texas-navy/30 rounded-lg p-4 mb-6">
+              <h4 className="font-semibold text-texas-navy-900 mb-3">
                 Suggested filter changes:
               </h4>
-              <ul className="space-y-2 text-sm text-blue-800">
+              <ul className="space-y-2 text-sm text-texas-navy-800">
                 {suggestions.slice(0, 3).map((suggestion, index) => (
                   <li key={index} className="flex items-start">
-                    <svg className="w-4 h-4 text-blue-600 mt-0.5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <svg className="w-4 h-4 text-texas-navy mt-0.5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
                     <span>{suggestion.suggestion}</span>
@@ -392,7 +392,7 @@ const PlansGrid: React.FC<PlansGridProps> = memo(({
           <p>
             <strong>Performance:</strong> Filter time: {filteredResult.responseTime}ms
             {filteredResult.responseTime > 300 && (
-              <span className="text-red-600 ml-2">⚠️ Exceeds 300ms target</span>
+              <span className="text-texas-red ml-2">⚠️ Exceeds 300ms target</span>
             )}
           </p>
           <p>

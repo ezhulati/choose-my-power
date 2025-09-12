@@ -286,9 +286,9 @@ export const microcopyLibrary = {
 };
 
 // Helper function to get microcopy with fallback
-export function getMicrocopy(path: string, replacements?: Record<string, any>): string {
+export function getMicrocopy(path: string, replacements?: Record<string, unknown>): string {
   const keys = path.split('.');
-  let value: any = microcopyLibrary;
+  let value: unknown = microcopyLibrary;
   
   for (const key of keys) {
     value = value?.[key];

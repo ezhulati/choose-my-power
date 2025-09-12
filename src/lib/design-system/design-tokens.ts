@@ -200,7 +200,7 @@ export const designSystem = {
   color: (category: keyof typeof COLORS, shade?: string | number) => {
     const colorCategory = COLORS[category];
     if (shade && typeof colorCategory === 'object' && shade in colorCategory) {
-      return (colorCategory as any)[shade];
+      return (colorCategory as unknown)[shade];
     }
     return typeof colorCategory === 'string' ? colorCategory : colorCategory[500];
   },

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { getProviders, getCities, type RealProvider, type RealCity } from '../../lib/services/provider-service';
-import { CheckCircle, Clock, Shield, Phone, AlertCircle, Users, ArrowRight } from 'lucide-react';
+import { CheckCircle, Phone, AlertCircle, ArrowRight } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
 declare global {
@@ -373,7 +373,7 @@ export function StateSwitchProviderPage({ state }: StateSwitchProviderPageProps)
         {/* CTA Section */}
         <div className="mt-12 bg-texas-navy text-white rounded-lg p-8 text-center">
           <h2 className="text-2xl font-bold mb-4">Ready to Switch?</h2>
-          <p className="text-blue-100 mb-6">
+          <p className="text-white/90 mb-6">
             Compare electricity providers in {stateData.name} and start saving today.
           </p>
           <button

@@ -11,7 +11,7 @@ import { analyticsService } from '../../../lib/services/analytics-service';
 
 // Simple caching for status endpoint
 let statusCache: {
-  data: any;
+  data: unknown;
   timestamp: number;
   ttl: number;
 } | null = null;

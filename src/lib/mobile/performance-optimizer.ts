@@ -95,7 +95,7 @@ class MobilePerformanceOptimizer {
         break;
 
       case 'layout-shift':
-        const clsEntry = entry as any; // LayoutShift interface
+        const clsEntry = entry as unknown; // LayoutShift interface
         if (!clsEntry.hadRecentInput) {
           this.updateMetric('cls', (this.metrics?.cls || 0) + clsEntry.value);
         }
@@ -125,7 +125,7 @@ class MobilePerformanceOptimizer {
       };
     }
 
-    (this.metrics as any)[metric] = value;
+    (this.metrics as unknown)[metric] = value;
 
     // Trigger optimization if performance is poor
     this.evaluateAndOptimize();
@@ -140,8 +140,8 @@ class MobilePerformanceOptimizer {
   private detectMobileCapabilities(): void {
     if (typeof navigator === 'undefined') return;
 
-    const connection = (navigator as any).connection;
-    const deviceMemory = (navigator as any).deviceMemory;
+    const connection = (navigator as unknown).connection;
+    const deviceMemory = (navigator as unknown).deviceMemory;
 
     if (!this.metrics) {
       this.metrics = {
@@ -357,8 +357,8 @@ class MobilePerformanceOptimizer {
    */
   private implementTaskScheduling(): void {
     const scheduler = (task: () => void): void => {
-      if ('scheduler' in window && 'postTask' in (window as any).scheduler) {
-        (window as any).scheduler.postTask(task, { priority: 'user-blocking' });
+      if ('scheduler' in window && 'postTask' in (window as unknown).scheduler) {
+        (window as unknown).scheduler.postTask(task, { priority: 'user-blocking' });
       } else if ('requestIdleCallback' in window) {
         requestIdleCallback(task);
       } else {
@@ -367,7 +367,7 @@ class MobilePerformanceOptimizer {
     };
 
     // Export scheduler for use by other components
-    (window as any).__mobileScheduler = scheduler;
+    (window as unknown).__mobileScheduler = scheduler;
   }
 
   /**
@@ -530,7 +530,7 @@ class MobilePerformanceOptimizer {
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw-mobile.js')
         .then((registration) => {
-          console.log('Mobile SW registered:', registration);
+          console.warn('Mobile SW registered:', registration);
         })
         .catch((error) => {
           console.warn('Mobile SW registration failed:', error);

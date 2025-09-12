@@ -76,7 +76,7 @@ export const ProductionConfigManager: React.FC = () => {
   const [configFormat, setConfigFormat] = useState<'netlify' | 'docker' | 'env'>('netlify');
 
   // Update configuration
-  const updateConfig = (section: keyof ProductionConfig, key: string, value: any) => {
+  const updateConfig = (section: keyof ProductionConfig, key: string, value: unknown) => {
     setConfig(prev => ({
       ...prev,
       [section]: {

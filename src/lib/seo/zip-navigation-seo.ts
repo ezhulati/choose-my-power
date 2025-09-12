@@ -27,7 +27,7 @@ export interface CityPageSEO {
   jsonLd: {
     '@context': 'https://schema.org';
     '@type': 'LocalBusiness' | 'WebPage';
-    [key: string]: any;
+    [key: string]: unknown;
   };
   breadcrumbs: Array<{
     name: string;

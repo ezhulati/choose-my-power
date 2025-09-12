@@ -21,7 +21,7 @@ const mockAbort = vi.fn();
 global.AbortController = vi.fn(() => ({
   abort: mockAbort,
   signal: { aborted: false }
-})) as any;
+})) as unknown;
 
 // Test data fixtures
 const mockPlan = {
@@ -573,7 +573,7 @@ describe('useElectricityPlansAPI', () => {
 
   describe('Loading States', () => {
     it('should set loading states correctly during search', async () => {
-      let resolveSearch: (value: any) => void;
+      let resolveSearch: (value: unknown) => void;
       const searchPromise = new Promise(resolve => {
         resolveSearch = resolve;
       });

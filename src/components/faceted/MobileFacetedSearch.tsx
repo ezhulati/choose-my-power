@@ -23,7 +23,7 @@ interface MobileFacetedSearchProps {
     features: FacetValue[];
     priceRanges: FacetValue[];
   };
-  onFilterChange: (filterType: string, value: any, checked: boolean) => void;
+  onFilterChange: (filterType: string, value: unknown, checked: boolean) => void;
   onClearAll: () => void;
   loading?: boolean;
 }

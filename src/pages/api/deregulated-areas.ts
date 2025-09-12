@@ -14,14 +14,14 @@ import Redis from 'ioredis';
 const CACHE_KEY = 'deregulated-areas-data';
 const CACHE_TTL = 4 * 60 * 60; // 4 hours (areas data changes infrequently)
 let redis: Redis | null = null;
-let fallbackCache: { data: any; cachedAt: number; expiresAt: number } | null = null;
+let fallbackCache: { data: unknown; cachedAt: number; expiresAt: number } | null = null;
 
 // Initialize Redis connection
 async function initializeRedis(): Promise<void> {
   if (!redis && process.env.REDIS_URL) {
     try {
       redis = new Redis(process.env.REDIS_URL);
-      console.log('[DeregulatedAreasAPI] Redis cache initialized');
+      console.warn('[DeregulatedAreasAPI] Redis cache initialized');
     } catch (error) {
       console.warn('[DeregulatedAreasAPI] Redis not available, using fallback cache:', error);
     }
@@ -97,7 +97,7 @@ export const GET: APIRoute = async ({ request }) => {
     }
 
     // Step 4: Cache miss - get fresh data from service
-    console.log('[DeregulatedAreasAPI] Cache miss - fetching fresh data');
+    console.warn('[DeregulatedAreasAPI] Cache miss - fetching fresh data');
     const areasData = await zipValidationService.getDeregulatedAreas();
 
     // Step 5: Cache the fresh data
@@ -208,7 +208,7 @@ export const OPTIONS: APIRoute = async () => {
 };
 
 // Generate ETag for caching efficiency
-function generateETag(data: any): string {
+function generateETag(data: unknown): string {
   // Simple hash based on data size and last update time
   const hash = `${data.totalCities}-${data.totalZipCodes}-${data.lastUpdated}`;
   return `"${Buffer.from(hash).toString('base64')}"`;

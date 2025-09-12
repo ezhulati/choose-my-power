@@ -121,7 +121,7 @@ export const filterDefinitions: FilterDefinition[] = [
     ],
     apiParam: 'feature',
     valueTransform: (segment: string) => {
-      const featureMap: Record<string, { param: string; value: any }> = {
+      const featureMap: Record<string, { param: string; value: unknown}> = {
         'no-deposit': { param: 'deposit_required', value: false },
         'prepaid': { param: 'is_pre_pay', value: true },
         'autopay-discount': { param: 'requires_auto_pay', value: true },
@@ -146,7 +146,7 @@ export const filterDefinitions: FilterDefinition[] = [
       };
       return displayMap[segment] || segment;
     },
-    isValid: (value: any) => value !== null,
+    isValid: (value: unknown) => value !== null,
     description: 'Special plan features and requirements'
   },
 
@@ -323,7 +323,7 @@ export class FilterMapper {
     appliedTypes: Set<FilterType>
   ): {
     appliedFilter?: AppliedFilter;
-    apiParam?: { param: string; value: any };
+    apiParam?: { param: string; value: unknown};
     error?: string;
     warning?: string;
   } {
@@ -373,7 +373,7 @@ export class FilterMapper {
 
     // Handle special case for plan features (multiple parameters)
     if (definition.type === 'plan_features' && typeof transformedValue === 'object') {
-      const featureParam = transformedValue as { param: string; value: any };
+      const featureParam = transformedValue as { param: string; value: unknown};
       return {
         appliedFilter,
         apiParam: { param: featureParam.param, value: featureParam.value }
@@ -391,7 +391,7 @@ export class FilterMapper {
    */
   private applyFilterToParams(
     apiParams: ApiParams,
-    paramInfo: { param: string; value: any }
+    paramInfo: { param: string; value: unknown}
   ): void {
     switch (paramInfo.param) {
       case 'term':
@@ -417,7 +417,7 @@ export class FilterMapper {
         break;
       default:
         // Handle any additional parameters
-        (apiParams as any)[paramInfo.param] = paramInfo.value;
+        (apiParams as unknown)[paramInfo.param] = paramInfo.value;
     }
   }
 

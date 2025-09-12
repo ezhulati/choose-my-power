@@ -37,7 +37,6 @@ export function TexasCompaniesPage({}: TexasCompaniesPageProps) {
   useEffect(() => {
     const loadData = async () => {
       try {
-        console.log('[TexasCompaniesPage] Loading Texas companies data...');
         
         const [providersData, citiesData] = await Promise.all([
           getProviders('texas'),
@@ -46,7 +45,6 @@ export function TexasCompaniesPage({}: TexasCompaniesPageProps) {
         
         setProviders(providersData);
         setCities(citiesData);
-        console.log(`[TexasCompaniesPage] Loaded ${providersData.length} providers`);
       } catch (error) {
         console.error('[TexasCompaniesPage] Error loading data:', error);
       } finally {
@@ -366,7 +364,7 @@ export function TexasCompaniesPage({}: TexasCompaniesPageProps) {
             {companyCategories.map(category => (
               <button
                 key={category.id}
-                onClick={() => setSelectedCategory(category.id as any)}
+                onClick={() => setSelectedCategory(category.id as unknown)}
                 className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                   selectedCategory === category.id
                     ? 'bg-texas-red text-white'

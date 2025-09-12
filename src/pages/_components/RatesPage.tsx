@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import StandardZipInputReact from '../../components/StandardZipInputReact';
 import { getProviders, getCities, getPlansForCity, type RealProvider, type RealCity } from '../../lib/services/provider-service';
-import { Calculator, TrendingDown, BarChart, MapPin, Zap, DollarSign, Calendar, Leaf, CheckCircle } from 'lucide-react';
+import { Calculator } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
 declare global {
@@ -26,13 +26,12 @@ export function RatesPage({}: RatesPageProps) {
   const [monthlyUsage, setMonthlyUsage] = useState('1000');
   const [providers, setProviders] = useState<RealProvider[]>([]);
   const [cities, setCities] = useState<RealCity[]>([]);
-  const [plans, setPlans] = useState<any[]>([]);
+  const [plans, setPlans] = useState<unknown[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadData = async () => {
       try {
-        console.log('[RatesPage] Loading providers and plans...');
         
         const [providersData, citiesData] = await Promise.all([
           getProviders('texas'),
@@ -46,7 +45,6 @@ export function RatesPage({}: RatesPageProps) {
         setCities(citiesData);
         setPlans(houstonPlans);
         
-        console.log(`[RatesPage] Loaded ${providersData.length} providers and ${houstonPlans.length} plans`);
       } catch (error) {
         console.error('[RatesPage] Error loading data:', error);
       } finally {
@@ -161,9 +159,9 @@ export function RatesPage({}: RatesPageProps) {
                   <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
                   <span className="text-green-100 font-medium">Real math, no surprises</span>
                 </div>
-                <div className="flex items-center px-4 py-2 bg-blue-500/20 backdrop-blur-sm rounded-full border border-blue-400/30">
+                <div className="flex items-center px-4 py-2 bg-texas-navy/100/20 backdrop-blur-sm rounded-full border border-blue-400/30">
                   <div className="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
-                  <span className="text-blue-100 font-medium">All fees included</span>
+                  <span className="text-white/90 font-medium">All fees included</span>
                 </div>
                 <div className="flex items-center px-4 py-2 bg-texas-red/20 backdrop-blur-sm rounded-full border border-texas-red/30">
                   <div className="w-2 h-2 bg-texas-red-200 rounded-full mr-2"></div>
@@ -260,7 +258,7 @@ export function RatesPage({}: RatesPageProps) {
                 <div className="text-sm text-green-700">Lowest Rate</div>
               </div>
               <div className="text-center p-6 bg-texas-cream-200 rounded-lg">
-                <div className="text-3xl font-bold text-blue-900">{averageRate.toFixed(1)}¢</div>
+                <div className="text-3xl font-bold text-texas-navy-900">{averageRate.toFixed(1)}¢</div>
                 <div className="text-sm text-texas-navy">Average Rate</div>
               </div>
               <div className="text-center p-6 bg-orange-50 rounded-lg">

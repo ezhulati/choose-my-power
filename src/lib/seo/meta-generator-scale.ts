@@ -71,7 +71,7 @@ interface FacetedMeta {
   twitterTitle?: string;
   twitterDescription?: string;
   keywords?: string[];
-  schema: any;
+  schema: unknown;
   breadcrumbData: BreadcrumbItem[];
 }
 

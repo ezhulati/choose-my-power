@@ -85,7 +85,7 @@ export class RedisCache {
 
   private async initializeRedis(): Promise<void> {
     if (!this.config.redis) {
-      console.log('Redis not configured, using memory cache only');
+      console.warn('Redis not configured, using memory cache only');
       return;
     }
 
@@ -98,7 +98,7 @@ export class RedisCache {
                        process.argv.includes('astro');
 
     if (isBuildTime) {
-      console.log('Build environment detected, using memory cache only (Redis disabled)');
+      console.warn('Build environment detected, using memory cache only (Redis disabled)');
       return;
     }
 
@@ -133,7 +133,7 @@ export class RedisCache {
       this.redisClient.on('connect', () => {
         this.redisConnected = true;
         this.stats.redis.connected = true;
-        console.log('Redis cache connected successfully with production optimizations');
+        console.warn('Redis cache connected successfully with production optimizations');
         
         // Set Redis memory optimization for 881 cities
         this.optimizeRedisForMassDeployment();
@@ -169,7 +169,7 @@ export class RedisCache {
       
       // Enable compression for large city datasets
       if (this.config.redis?.compression) {
-        console.log('Redis optimized for mass deployment with compression enabled');
+        console.warn('Redis optimized for mass deployment with compression enabled');
       }
     } catch (error) {
       console.warn('Failed to optimize Redis for mass deployment:', error);
@@ -368,7 +368,7 @@ export class RedisCache {
       
       // Validate cache version for deployment compatibility
       if (parsed.version !== '2.0' && process.env.NODE_ENV === 'production') {
-        console.log('Invalidating old cache version:', parsed.version);
+        console.warn('Invalidating old cache version:', parsed.version);
         await this.redisClient.del(redisKey);
         return null;
       }
@@ -395,7 +395,7 @@ export class RedisCache {
     let plansWarmed = 0;
     let errors = 0;
 
-    console.log('Starting production cache warming for 881 cities...');
+    console.warn('Starting production cache warming for 881 cities...');
 
     // Group cities by TDSP for efficient batch processing
     const tdspGroups = new Map<string, string[]>();
@@ -442,12 +442,12 @@ export class RedisCache {
     };
 
     const duration = Date.now() - startTime;
-    console.log(`Production cache warming completed:`);
-    console.log(`  Duration: ${Math.round(duration / 1000)}s`);
-    console.log(`  Cities: ${citiesWarmed}`);
-    console.log(`  Plans: ${plansWarmed}`);
-    console.log(`  Errors: ${errors}`);
-    console.log(`  Success Rate: ${Math.round(((citiesWarmed - errors) / citiesWarmed) * 100)}%`);
+    console.warn(`Production cache warming completed:`);
+    console.warn(`  Duration: ${Math.round(duration / 1000)}s`);
+    console.warn(`  Cities: ${citiesWarmed}`);
+    console.warn(`  Plans: ${plansWarmed}`);
+    console.warn(`  Errors: ${errors}`);
+    console.warn(`  Success Rate: ${Math.round(((citiesWarmed - errors) / citiesWarmed) * 100)}%`);
   }
   
   /**
@@ -561,7 +561,7 @@ export class RedisCache {
             keysToDelete.forEach(key => pipeline.del(key));
             await pipeline.exec();
             
-            console.log(`Invalidated ${keysToDelete.length} cache entries for city ${cityDuns}`);
+            console.warn(`Invalidated ${keysToDelete.length} cache entries for city ${cityDuns}`);
           }
         });
         
@@ -606,7 +606,7 @@ export class RedisCache {
         });
         
         stream.on('end', () => {
-          console.log(`Cleared ${totalKeysDeleted} cache entries from Redis`);
+          console.warn(`Cleared ${totalKeysDeleted} cache entries from Redis`);
         });
         
       } catch (error) {
@@ -624,7 +624,7 @@ export class RedisCache {
       .reduce((result, key) => {
         result[key] = params[key as keyof ApiParams];
         return result;
-      }, {} as any);
+      }, {} as unknown);
 
     return Buffer.from(JSON.stringify(sortedParams)).toString('base64');
   }
@@ -644,7 +644,7 @@ export class RedisCache {
     this.stats.redis.hitRate = 0;
   }
 
-  getStats(): CacheStats & { production?: any } {
+  getStats(): CacheStats & { production?: unknown} {
     this.stats.memory.size = this.memoryCache.size;
     this.updateHitRates();
     
@@ -763,7 +763,7 @@ export async function warmProductionCache(
     production: { massDeployment: true, priorityTiers: true, backgroundWarming: true }
   });
   
-  console.log('Starting production cache warming for 881 cities...');
+  console.warn('Starting production cache warming for 881 cities...');
   
   if (cityMappings) {
     // Use provided city mappings for comprehensive warming
@@ -772,5 +772,5 @@ export async function warmProductionCache(
   }
   
   await cache.warmCache(fetchFunction);
-  console.log('Production cache warming complete');
+  console.warn('Production cache warming complete');
 }

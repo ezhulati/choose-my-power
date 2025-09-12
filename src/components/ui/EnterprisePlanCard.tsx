@@ -72,7 +72,7 @@ export const EnterprisePlanCard: React.FC<EnterprisePlanCardProps> = ({
         return {
           label: 'Fixed Rate',
           description: 'Rate locked for contract term',
-          color: 'bg-blue-50 text-blue-700 border-blue-200',
+          color: 'bg-texas-navy/10 text-texas-navy-700 border-texas-navy/30',
           icon: 'shield'
         };
       case 'variable':
@@ -93,7 +93,7 @@ export const EnterprisePlanCard: React.FC<EnterprisePlanCardProps> = ({
         return {
           label: 'Fixed Rate',
           description: 'Rate locked for contract term',
-          color: 'bg-blue-50 text-blue-700 border-blue-200',
+          color: 'bg-texas-navy/10 text-texas-navy-700 border-texas-navy/30',
           icon: 'shield'
         };
     }
@@ -143,7 +143,7 @@ export const EnterprisePlanCard: React.FC<EnterprisePlanCardProps> = ({
                 className="max-w-full max-h-full object-contain"
               />
             ) : (
-              <Icon name={providerInfo.fallbackIcon as any} className="h-6 w-6" />
+              <Icon name={providerInfo.fallbackIcon as unknown} className="h-6 w-6" />
             )}
           </div>
         </div>

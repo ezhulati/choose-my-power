@@ -75,7 +75,7 @@ export interface AnalyticsEvent {
   type: AnalyticsEventType;
   timestamp: Date;
   sessionId: string;
-  data: Record<string, any>;
+  data: Record<string, unknown>;
   responseTime?: number;
 }
 
@@ -224,7 +224,7 @@ export const loadUserPreferencesFromSession = (): UserPreferences | null => {
 export const createAnalyticsEvent = (
   type: AnalyticsEventType,
   sessionId: string,
-  data: Record<string, any>,
+  data: Record<string, unknown>,
   responseTime?: number
 ): AnalyticsEvent => ({
   type,

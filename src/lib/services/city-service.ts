@@ -45,20 +45,20 @@ export interface CityStats {
  */
 export async function getCities(state: string = 'texas'): Promise<RealCity[]> {
   try {
-    console.log(`[CityService] Getting cities for state: ${state}`);
+    console.warn(`[CityService] Getting cities for state: ${state}`);
     
     // Try database first
     if (await hasDatabaseConnection()) {
       const cities = await getCitiesFromDatabase(state);
       if (cities.length > 0) {
-        console.log(`[CityService] Found ${cities.length} cities from database`);
+        console.warn(`[CityService] Found ${cities.length} cities from database`);
         return cities;
       }
     }
     
     // Fallback to TDSP mapping and generated data
     const cities = await getCitiesFromTDSPMapping();
-    console.log(`[CityService] Found ${cities.length} cities from TDSP mapping`);
+    console.warn(`[CityService] Found ${cities.length} cities from TDSP mapping`);
     return cities;
     
   } catch (error) {
@@ -72,13 +72,13 @@ export async function getCities(state: string = 'texas'): Promise<RealCity[]> {
  */
 export async function getCityBySlug(citySlug: string): Promise<RealCity | null> {
   try {
-    console.log(`[CityService] Getting city: ${citySlug}`);
+    console.warn(`[CityService] Getting city: ${citySlug}`);
     
     // Try database first
     if (await hasDatabaseConnection()) {
       const city = await getCityFromDatabase(citySlug);
       if (city) {
-        console.log(`[CityService] Found city ${citySlug} from database`);
+        console.warn(`[CityService] Found city ${citySlug} from database`);
         return city;
       }
     }
@@ -86,7 +86,7 @@ export async function getCityBySlug(citySlug: string): Promise<RealCity | null> 
     // Fallback to TDSP mapping and generated data
     const city = await getCityFromTDSPMapping(citySlug);
     if (city) {
-      console.log(`[CityService] Found city ${citySlug} from TDSP mapping`);
+      console.warn(`[CityService] Found city ${citySlug} from TDSP mapping`);
       return city;
     }
     
@@ -104,7 +104,7 @@ export async function getCityBySlug(citySlug: string): Promise<RealCity | null> 
  */
 export async function getCityStats(citySlug: string): Promise<CityStats | null> {
   try {
-    console.log(`[CityService] Getting stats for city: ${citySlug}`);
+    console.warn(`[CityService] Getting stats for city: ${citySlug}`);
     
     // Load city data to calculate statistics
     const cityData = await loadCityData(citySlug);
@@ -139,7 +139,7 @@ export async function getCityStats(citySlug: string): Promise<CityStats | null> 
       no_deposit_plans: plans.filter(p => !p.features?.deposit?.required).length
     };
     
-    console.log(`[CityService] Stats for ${citySlug}:`, stats);
+    console.warn(`[CityService] Stats for ${citySlug}:`, stats);
     return stats;
     
   } catch (error) {
@@ -165,7 +165,7 @@ export async function getMajorCities(limit: number = 20): Promise<RealCity[]> {
       })
       .slice(0, limit);
     
-    console.log(`[CityService] Found ${majors.length} major cities`);
+    console.warn(`[CityService] Found ${majors.length} major cities`);
     return majors;
     
   } catch (error) {
@@ -197,7 +197,7 @@ export async function searchCities(query: string): Promise<RealCity[]> {
       city.slug.toLowerCase().includes(normalizedQuery)
     );
     
-    console.log(`[CityService] Found ${matches.length} cities matching "${query}"`);
+    console.warn(`[CityService] Found ${matches.length} cities matching "${query}"`);
     return matches.slice(0, 10); // Limit results
     
   } catch (error) {

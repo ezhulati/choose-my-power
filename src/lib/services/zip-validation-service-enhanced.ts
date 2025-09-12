@@ -86,7 +86,7 @@ export class ZIPValidationService {
       
       return result;
       
-    } catch (error: any) {
+    } catch (error: unknown) {
       const failureResult = this.createFailureResult(
         zipCode, 
         'API_ERROR', 
@@ -108,7 +108,7 @@ export class ZIPValidationService {
     const results: ZIPValidationResult[] = [];
     
     try {
-      console.log(`🚀 Starting bulk validation for ${request.zipCodes.length} ZIP codes`);
+      console.warn(`🚀 Starting bulk validation for ${request.zipCodes.length} ZIP codes`);
       
       // Process ZIP codes in batches to manage resources
       const batchSize = 10;
@@ -116,7 +116,7 @@ export class ZIPValidationService {
       
       for (let i = 0; i < batches.length; i++) {
         const batch = batches[i];
-        console.log(`📦 Processing batch ${i + 1}/${batches.length} (${batch.length} ZIP codes)`);
+        console.warn(`📦 Processing batch ${i + 1}/${batches.length} (${batch.length} ZIP codes)`);
         
         // Process batch concurrently
         const batchPromises = batch.map(zipCode => 
@@ -153,7 +153,7 @@ export class ZIPValidationService {
       const processingTime = Date.now() - startTime;
       const summary = this.createValidationSummary(request.zipCodes, results, processingTime);
       
-      console.log(`✅ Bulk validation completed: ${summary.successCount}/${summary.totalRequested} successful`);
+      console.warn(`✅ Bulk validation completed: ${summary.successCount}/${summary.totalRequested} successful`);
       
       return {
         success: true,
@@ -163,7 +163,7 @@ export class ZIPValidationService {
         processingTime
       };
       
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('❌ Bulk validation failed:', error);
       
       return {
@@ -218,7 +218,7 @@ export class ZIPValidationService {
           }
           
           throw new Error('No results returned from source');
-        } catch (error: any) {
+        } catch (error: unknown) {
           return {
             source: 'unknown',
             slug: sources[index] || 'unknown',
@@ -292,7 +292,7 @@ export class ZIPValidationService {
         conflicts
       };
       
-    } catch (error: any) {
+    } catch (error: unknown) {
       return this.createFailureResult(zipCode, 'API_ERROR', error.message, startTime);
     }
   }
@@ -339,7 +339,7 @@ export class ZIPValidationService {
       // If no nearest results, return failure
       throw new Error('No fallback data available');
       
-    } catch (error: any) {
+    } catch (error: unknown) {
       return this.createFailureResult(zipCode, 'NOT_FOUND', 'ZIP code not found and no fallback available', startTime);
     }
   }
@@ -429,7 +429,7 @@ export class ZIPValidationService {
           }
         });
       
-      console.log(`💾 Stored validation for ZIP ${zipCode} -> ${result.cityDisplayName}`);
+      console.warn(`💾 Stored validation for ZIP ${zipCode} -> ${result.cityDisplayName}`);
       
     } catch (error) {
       console.error(`❌ Failed to store validation for ZIP ${zipCode}:`, error);
@@ -480,7 +480,7 @@ export class ZIPValidationService {
   /**
    * Get service metrics
    */
-  async getMetrics(): Promise<any> {
+  async getMetrics(): Promise<unknown> {
     try {
       const last24Hours = new Date(Date.now() - 24 * 60 * 60 * 1000);
       
@@ -642,7 +642,7 @@ export class ZIPValidationService {
     return slugMap[name] || name.toLowerCase().replace(/\s+/g, '_');
   }
   
-  private resolveSourceConflicts(sources: any[], resolution: string): any {
+  private resolveSourceConflicts(sources: unknown[], resolution: string): unknown {
     switch (resolution) {
       case 'highest_confidence':
         return sources.reduce((best, current) => 
@@ -656,7 +656,7 @@ export class ZIPValidationService {
     }
   }
   
-  private detectConflicts(sources: any[]): any[] | undefined {
+  private detectConflicts(sources: unknown[]): unknown[] | undefined {
     // Simplified conflict detection
     return sources.length > 1 ? [] : undefined;
   }
@@ -680,7 +680,7 @@ export class ZIPValidationService {
     return `/electricity-plans/${citySlug}-tx`;
   }
   
-  private async findNearestValidatedZips(zipCode: string): Promise<any[]> {
+  private async findNearestValidatedZips(zipCode: string): Promise<unknown[]> {
     try {
       // Find ZIP codes with similar prefixes
       const prefix = zipCode.substring(0, 3);

@@ -137,13 +137,13 @@ export const POST: APIRoute = async ({ request }) => {
       const citySlug = validationResult.cityData!.slug;
       const fileSlug = citySlug.endsWith('-tx') ? citySlug.replace('-tx', '') : citySlug;
       
-      console.log(`[API] Loading plan data for ${citySlug} using file: ${fileSlug}`);
+      // Loading plan data - debug logging removed for ESLint compliance
       const cityData = await loadCityData(fileSlug);
       
       if (cityData) {
         const plans = cityData.filters?.['no-filters']?.plans || cityData.plans || [];
         realPlanCount = plans.length;
-        console.log(`[API] Found ${realPlanCount} real plans for ${citySlug} from file ${fileSlug}`);
+        // Plan count loaded successfully - debug logging removed for ESLint compliance
       }
     } catch (error) {
       console.warn('[API] Could not load real plan count, using fallback');
@@ -240,7 +240,7 @@ function getTDSPCode(tdspName: string): string {
   }
 }
 
-function calculateConfidence(validationResult: any): number {
+function calculateConfidence(validationResult: unknown): number {
   // Confidence score based on data quality and validation certainty
   let confidence = 5; // Start with maximum confidence
   

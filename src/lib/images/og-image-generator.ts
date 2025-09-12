@@ -32,7 +32,7 @@ class OGImageGenerator {
       if (!options.forceRegenerate) {
         const cachedUrl = await imageCache.getCachedImage(context);
         if (cachedUrl) {
-          console.log(`🔥 Using cached OG image: ${cachedUrl}`);
+          console.warn(`🔥 Using cached OG image: ${cachedUrl}`);
           return cachedUrl;
         }
       }
@@ -41,7 +41,7 @@ class OGImageGenerator {
       if (useStrategy) {
         const templateImage = await this.getTemplateImage(context);
         if (templateImage) {
-          console.log(`♻️ Using template image: ${templateImage}`);
+          console.warn(`♻️ Using template image: ${templateImage}`);
           return templateImage;
         }
       }
@@ -69,7 +69,7 @@ class OGImageGenerator {
     contexts: ImageGenerationContext[], 
     options: OGImageOptions = {}
   ): Promise<Map<string, string>> {
-    console.log(`🔄 Batch generating OG images for ${contexts.length} contexts...`);
+    console.warn(`🔄 Batch generating OG images for ${contexts.length} contexts...`);
     
     const results = new Map<string, string>();
     const useStrategy = options.useStrategy !== false;
@@ -77,7 +77,7 @@ class OGImageGenerator {
     if (useStrategy) {
       // Use cost optimization strategy
       const requiredTemplates = imageStrategy.getRequiredTemplates(contexts);
-      console.log(`💡 Strategy optimization: ${contexts.length} pages → ${requiredTemplates.length} unique images`);
+      console.warn(`💡 Strategy optimization: ${contexts.length} pages → ${requiredTemplates.length} unique images`);
       
       // Generate template images first
       await this.generateTemplateImages(requiredTemplates, contexts);
@@ -117,7 +117,7 @@ class OGImageGenerator {
       }
     }
 
-    console.log(`✅ Batch complete: ${results.size} OG images ready`);
+    console.warn(`✅ Batch complete: ${results.size} OG images ready`);
     return results;
   }
 
@@ -178,7 +178,7 @@ class OGImageGenerator {
     try {
       // Generate contextual prompt
       const prompt = promptGenerator.generatePrompt(context);
-      console.log(`🎨 Generated prompt: ${prompt.substring(0, 100)}...`);
+      console.warn(`🎨 Generated prompt: ${prompt.substring(0, 100)}...`);
 
       // Validate prompt quality
       const validation = promptGenerator.validatePrompt(prompt);
@@ -198,7 +198,7 @@ class OGImageGenerator {
       const cachedUrl = await imageCache.storeImage(generatedImage);
       
       if (cachedUrl) {
-        console.log(`✅ Generated and cached OG image: ${cachedUrl}`);
+        console.warn(`✅ Generated and cached OG image: ${cachedUrl}`);
         return cachedUrl;
       }
 
@@ -232,10 +232,10 @@ class OGImageGenerator {
    * Generate template images for strategy optimization
    */
   private async generateTemplateImages(
-    templates: any[],
+    templates: unknown[],
     contexts: ImageGenerationContext[]
   ): Promise<void> {
-    console.log(`🏭 Generating ${templates.length} template images...`);
+    console.warn(`🏭 Generating ${templates.length} template images...`);
     
     for (const template of templates) {
       // Find a representative context for this template
@@ -249,25 +249,25 @@ class OGImageGenerator {
         // Check if template already exists
         const existingUrl = await imageCache.getCachedImage(templateContext);
         if (existingUrl) {
-          console.log(`✅ Template ${template.name} already exists`);
+          console.warn(`✅ Template ${template.name} already exists`);
           continue;
         }
         
         // Generate template image
         const templateUrl = await this.generateNewImage(templateContext, {});
         if (templateUrl) {
-          console.log(`✅ Generated template: ${template.name}`);
+          console.warn(`✅ Generated template: ${template.name}`);
         }
       }
     }
     
-    console.log(`✅ Template generation complete`);
+    console.warn(`✅ Template generation complete`);
   }
 
   /**
    * Create template context for image generation
    */
-  private createTemplateContext(template: any, baseContext: ImageGenerationContext): ImageGenerationContext {
+  private createTemplateContext(template: unknown, baseContext: ImageGenerationContext): ImageGenerationContext {
     return {
       ...baseContext,
       // Modify context to represent the template rather than specific page
@@ -283,7 +283,7 @@ class OGImageGenerator {
   /**
    * Get template image URL
    */
-  private getTemplateImageUrl(template: any, context: ImageGenerationContext): string {
+  private getTemplateImageUrl(template: unknown, context: ImageGenerationContext): string {
     // This would return the cached template image URL
     // For now, return a constructed URL based on template
     return `/images/og/generated/templates/${template.id}.jpg`;
@@ -401,7 +401,7 @@ class OGImageGenerator {
   /**
    * Get cost optimization report
    */
-  async getCostReport(contexts: ImageGenerationContext[]): Promise<any> {
+  async getCostReport(contexts: ImageGenerationContext[]): Promise<unknown> {
     const costSavings = imageStrategy.getCostSavings(contexts);
     const cacheStats = await imageCache.getCacheStats();
     const healthStatus = await this.healthCheck();
@@ -417,7 +417,7 @@ class OGImageGenerator {
   /**
    * Generate optimization recommendations
    */
-  private generateRecommendations(costSavings: any, health: any): string[] {
+  private generateRecommendations(costSavings: unknown, health: unknown): string[] {
     const recommendations: string[] = [];
     
     if (costSavings.savingsPercent > 90) {

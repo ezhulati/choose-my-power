@@ -328,11 +328,11 @@ export class FormInteractionModel {
 }
 
 // Export type guards
-export const isFormInteraction = (obj: any): obj is FormInteraction => {
+export const isFormInteraction = (obj: unknown): obj is FormInteraction => {
   return FormInteractionSchema.safeParse(obj).success;
 };
 
-export const isFormInteractionEntity = (obj: any): obj is FormInteractionEntity => {
+export const isFormInteractionEntity = (obj: unknown): obj is FormInteractionEntity => {
   return FormInteractionEntitySchema.safeParse(obj).success;
 };
 

@@ -54,7 +54,7 @@ export interface SystemHealthCheck {
 }
 
 export class ZIPCoverageOrchestrator {
-  private operationQueue: Array<() => Promise<any>> = [];
+  private operationQueue: Array<() => Promise<unknown>> = [];
   private isProcessing = false;
   private healthCheckInterval?: NodeJS.Timeout;
   private lastHealthCheck?: SystemHealthCheck;
@@ -446,7 +446,7 @@ export class ZIPCoverageOrchestrator {
 
   // Private helper methods
 
-  private queueOperation(operation: () => Promise<any>): void {
+  private queueOperation(operation: () => Promise<unknown>): void {
     this.operationQueue.push(operation);
     
     // Auto-process if queue gets large

@@ -67,7 +67,7 @@ export const DataPipelineDashboard: React.FC<DataPipelineDashboardProps> = ({
   const [logs, setLogs] = useState<string[]>([]);
   const [isStreaming, setIsStreaming] = useState(false);
   const [streamController, setStreamController] = useState<AbortController | null>(null);
-  const [lastRunResult, setLastRunResult] = useState<any>(null);
+  const [lastRunResult, setLastRunResult] = useState<unknown>(null);
   const logsEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -322,9 +322,9 @@ export const DataPipelineDashboard: React.FC<DataPipelineDashboardProps> = ({
       <div className="flex justify-between items-start mb-4">
         <h3 className="text-lg font-semibold text-texas-navy">Pipeline Status</h3>
         <div className={`px-3 py-1 rounded-full text-sm font-medium ${
-          status.isRunning ? 'bg-blue-100 text-blue-800' : 
+          status.isRunning ? 'bg-blue-100 text-texas-navy-800' : 
           status.currentPhase === 'complete' ? 'bg-green-100 text-green-800' :
-          status.currentPhase === 'error' ? 'bg-red-100 text-red-800' :
+          status.currentPhase === 'error' ? 'bg-red-100 text-texas-red-800' :
           'bg-gray-100 text-gray-800'
         }`}>
           {status.isRunning ? '🏃‍♂️ Running' : 
@@ -344,11 +344,11 @@ export const DataPipelineDashboard: React.FC<DataPipelineDashboardProps> = ({
           <div className="text-sm text-gray-600">Completed</div>
         </div>
         <div className="text-center">
-          <div className="text-2xl font-bold text-red-600">{status.failed}</div>
+          <div className="text-2xl font-bold text-texas-red">{status.failed}</div>
           <div className="text-sm text-gray-600">Failed</div>
         </div>
         <div className="text-center">
-          <div className="text-2xl font-bold text-blue-600">{status.throughput.toFixed(1)}</div>
+          <div className="text-2xl font-bold text-texas-navy">{status.throughput.toFixed(1)}</div>
           <div className="text-sm text-gray-600">Cities/min</div>
         </div>
       </div>
@@ -397,7 +397,7 @@ export const DataPipelineDashboard: React.FC<DataPipelineDashboardProps> = ({
           disabled={status.isRunning && !isStreaming}
           className={`px-4 py-2 rounded-lg transition-colors ${
             isStreaming 
-              ? 'bg-red-600 text-white hover:bg-red-700' 
+              ? 'bg-red-600 text-white hover:bg-texas-red-700' 
               : 'bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed'
           }`}
         >
@@ -430,7 +430,7 @@ export const DataPipelineDashboard: React.FC<DataPipelineDashboardProps> = ({
         <div className="mt-4 p-4 bg-gray-50 rounded-lg">
           <h4 className="font-medium text-gray-800 mb-2">Last Run Summary</h4>
           <div className="text-sm text-gray-600 space-y-1">
-            <div>Status: <span className={lastRunResult.success ? 'text-green-600' : 'text-red-600'}>
+            <div>Status: <span className={lastRunResult.success ? 'text-green-600' : 'text-texas-red'}>
               {lastRunResult.success ? 'Success' : 'Failed'}
             </span></div>
             <div>Cities Completed: <span className="font-medium">{lastRunResult.completedCities}</span></div>

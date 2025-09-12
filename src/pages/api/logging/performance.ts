@@ -71,7 +71,7 @@ function checkRateLimit(identifier: string): { allowed: boolean; retryAfter?: nu
 /**
  * Validate performance log request
  */
-function validatePerformanceLogRequest(body: any): PerformanceLogRequest | null {
+function validatePerformanceLogRequest(body: unknown): PerformanceLogRequest | null {
   if (!body || typeof body !== 'object') {
     return null;
   }
@@ -130,7 +130,7 @@ function validatePerformanceLogRequest(body: any): PerformanceLogRequest | null 
     sessionId: body.sessionId ? String(body.sessionId).slice(0, 100) : undefined,
     coreWebVitals: validatedCoreWebVitals,
     customMetrics: Array.isArray(body.customMetrics) 
-      ? body.customMetrics.slice(0, 50).map((metric: any) => ({
+      ? body.customMetrics.slice(0, 50).map((metric: Record<string, unknown>) => ({
           name: String(metric.name || 'unknown').slice(0, 100),
           value: typeof metric.value === 'number' ? metric.value : 0,
           unit: String(metric.unit || 'unknown').slice(0, 20),
@@ -138,7 +138,7 @@ function validatePerformanceLogRequest(body: any): PerformanceLogRequest | null 
         }))
       : undefined,
     resourceTimings: Array.isArray(body.resourceTimings)
-      ? body.resourceTimings.slice(0, 100).map((timing: any) => ({
+      ? body.resourceTimings.slice(0, 100).map((timing: Record<string, unknown>) => ({
           name: String(timing.name || 'unknown').slice(0, 500),
           duration: typeof timing.duration === 'number' ? timing.duration : 0,
           transferSize: typeof timing.transferSize === 'number' ? timing.transferSize : 0,
@@ -297,7 +297,7 @@ async function storePerformanceData(perfData: PerformanceLogRequest): Promise<st
       performanceMonitor.recordMetric(
         metric.name,
         metric.value,
-        metric.unit as any,
+        metric.unit as unknown,
         {
           ...metric.tags,
           page: new URL(perfData.pageUrl).pathname,
@@ -319,7 +319,7 @@ export const POST: APIRoute = async ({ request }) => {
   
   try {
     // Parse request body
-    let body: any;
+    let body: unknown;
     try {
       body = await request.json();
     } catch (error) {

@@ -43,7 +43,6 @@ import {
  * Example: Validate ZIP codes with comprehensive error handling
  */
 function exampleZipCodeValidation() {
-  console.log('=== ZIP Code Validation Examples ===');
   
   const testZipCodes = ['75201', '77001', '78701', '90210', 'invalid', '75201-1234'];
   
@@ -52,7 +51,6 @@ function exampleZipCodeValidation() {
     const isTexasValid = validateTexasZipCode(zip);
     const isDeregulated = isDeregulatedZip(zip);
     
-    console.log(`ZIP ${zip}:`, {
       validFormat: isValid,
       texasZip: isTexasValid,
       deregulated: isDeregulated,
@@ -68,7 +66,6 @@ function exampleZipCodeValidation() {
  * Example: Validate and process addresses for ESIID lookup
  */
 function exampleAddressValidation() {
-  console.log('\n=== Address Validation Examples ===');
   
   const testAddresses = [
     // Valid address
@@ -97,7 +94,6 @@ function exampleAddressValidation() {
   
   testAddresses.forEach((address, index) => {
     const validation = AddressSchema.safeParse(address);
-    console.log(`Address ${index + 1}:`, {
       valid: validation.success,
       address: validation.success ? validation.data : 'Invalid',
       errors: validation.success ? [] : validation.error.errors,
@@ -113,7 +109,6 @@ function exampleAddressValidation() {
  * Example: Resolve ZIP codes to TDSP information
  */
 function exampleTdspResolution() {
-  console.log('\n=== TDSP Resolution Examples ===');
   
   const testZips = ['75201', '77001', '78701', '78401', '79601'];
   
@@ -121,7 +116,6 @@ function exampleTdspResolution() {
     const tdspInfo = getTdspFromZip(zip);
     const zipCodesInSameTdsp = tdspInfo ? getZipCodesForTdsp(tdspInfo.duns).length : 0;
     
-    console.log(`ZIP ${zip}:`, {
       tdsp: tdspInfo?.name || 'Not found',
       zone: tdspInfo?.zone || 'Unknown',
       duns: tdspInfo?.duns || 'N/A',
@@ -138,7 +132,6 @@ function exampleTdspResolution() {
  * Example: Validate API parameters before making requests
  */
 function exampleApiParameterValidation() {
-  console.log('\n=== API Parameter Validation Examples ===');
   
   const testApiParams = [
     // Valid parameters
@@ -163,7 +156,6 @@ function exampleApiParameterValidation() {
   
   testApiParams.forEach((params, index) => {
     const validation = ApiParamsSchema.safeParse(params);
-    console.log(`API Params ${index + 1}:`, {
       valid: validation.success,
       params: validation.success ? validation.data : 'Invalid',
       errors: validation.success ? [] : validation.error.errors.map(e => e.message),
@@ -179,7 +171,6 @@ function exampleApiParameterValidation() {
  * Example: Validate ESIID search parameters
  */
 function exampleESIIDSearchValidation() {
-  console.log('\n=== ESIID Search Parameter Examples ===');
   
   const testSearchParams = [
     // Valid search
@@ -201,7 +192,6 @@ function exampleESIIDSearchValidation() {
   
   testSearchParams.forEach((params, index) => {
     const validation = ESIIDSearchParamsSchema.safeParse(params);
-    console.log(`ESIID Search ${index + 1}:`, {
       valid: validation.success,
       params: validation.success ? validation.data : 'Invalid',
       errors: validation.success ? [] : validation.error.errors.map(e => e.message),
@@ -217,7 +207,6 @@ function exampleESIIDSearchValidation() {
  * Example: Create and validate complete ZIP search requests
  */
 function exampleZipSearchRequest() {
-  console.log('\n=== ZIP Search Request Examples ===');
   
   const searchRequests = [
     // Basic search
@@ -241,7 +230,6 @@ function exampleZipSearchRequest() {
   
   searchRequests.forEach((request, index) => {
     const validation = ZipSearchRequestSchema.safeParse(request);
-    console.log(`Search Request ${index + 1}:`, {
       valid: validation.success,
       request: validation.success ? validation.data : 'Invalid',
       errors: validation.success ? [] : validation.error.errors.map(e => e.message),
@@ -305,7 +293,6 @@ async function processZipSearchRequest(request: ZipSearchRequest): Promise<ZipSe
  * Example: Type-safe TDSP analytics function
  */
 function analyzeTdspCoverage() {
-  console.log('\n=== TDSP Coverage Analysis ===');
   
   const tdspAnalysis = new Map<string, {
     name: string;
@@ -335,7 +322,6 @@ function analyzeTdspCoverage() {
   
   // Display analysis
   tdspAnalysis.forEach((analysis, duns) => {
-    console.log(`${analysis.name} (${analysis.zone}):`, {
       duns,
       zipCodes: analysis.zipCount,
       samples: analysis.sampleZips,
@@ -351,7 +337,6 @@ function analyzeTdspCoverage() {
  * Run all examples
  */
 export function runElectricityPlansExamples() {
-  console.log('🚀 Running Electricity Plans Type System Examples\n');
   
   exampleZipCodeValidation();
   exampleAddressValidation();
@@ -362,25 +347,18 @@ export function runElectricityPlansExamples() {
   analyzeTdspCoverage();
   
   // Test the type-safe function
-  console.log('\n=== Type-Safe Function Example ===');
   const sampleRequest: ZipSearchRequest = {
     zipCode: '75201',
     displayUsage: 1000,
   };
   
   processZipSearchRequest(sampleRequest).then(response => {
-    console.log('Search result:', {
       success: response.success,
       tdsp: response.tdsp?.name,
       errors: response.errors?.length || 0,
     });
   });
   
-  console.log('\n✅ All examples completed successfully!');
-  console.log('\n📊 Summary:');
-  console.log(`- Total ZIP codes mapped: ${Object.keys(COMPREHENSIVE_ZIP_TDSP_MAPPING).length}`);
-  console.log(`- Validation constants: ${Object.keys(VALIDATION_CONSTANTS).length} defined`);
-  console.log('- Complete type safety across the entire ZIP search pipeline');
 }
 
 // Only run examples if this file is executed directly

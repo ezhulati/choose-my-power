@@ -47,7 +47,7 @@ export const PlanRecommendationWidget: React.FC<PlanRecommendationWidgetProps> =
   const [userMessage, setUserMessage] = useState('');
   const [agentResponse, setAgentResponse] = useState('');
   const [confidence, setConfidence] = useState(0);
-  const [analysisSteps, setAnalysisSteps] = useState<any[]>([]);
+  const [analysisSteps, setAnalysisSteps] = useState<unknown[]>([]);
   const [isStreamMode, setIsStreamMode] = useState(false);
   const streamingRef = useRef<AbortController | null>(null);
 
@@ -392,7 +392,7 @@ export const PlanRecommendationWidget: React.FC<PlanRecommendationWidgetProps> =
             disabled={!preferences.location}
             className={`px-6 py-3 rounded-lg transition-colors ${
               isStreamMode 
-                ? 'bg-red-600 text-white hover:bg-red-700' 
+                ? 'bg-red-600 text-white hover:bg-texas-red-700' 
                 : 'btn-outline border-2 border-texas-navy text-texas-navy hover:bg-texas-navy hover:text-white'
             }`}
           >
@@ -420,7 +420,7 @@ export const PlanRecommendationWidget: React.FC<PlanRecommendationWidgetProps> =
                 <span className="text-gray-600">Confidence Score:</span>
                 <span className={`font-medium ${
                   confidence > 0.7 ? 'text-green-600' : 
-                  confidence > 0.4 ? 'text-yellow-600' : 'text-red-600'
+                  confidence > 0.4 ? 'text-yellow-600' : 'text-texas-red'
                 }`}>
                   {Math.round(confidence * 100)}%
                 </span>

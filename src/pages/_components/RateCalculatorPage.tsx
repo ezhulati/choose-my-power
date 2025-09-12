@@ -126,9 +126,9 @@ export function RateCalculatorPage({}: RateCalculatorPageProps) {
                   <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
                   <span className="text-green-100 font-medium">Exact calculations</span>
                 </div>
-                <div className="flex items-center px-4 py-2 bg-blue-500/20 backdrop-blur-sm rounded-full border border-blue-400/30">
+                <div className="flex items-center px-4 py-2 bg-texas-navy/100/20 backdrop-blur-sm rounded-full border border-blue-400/30">
                   <div className="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
-                  <span className="text-blue-100 font-medium">Real rates</span>
+                  <span className="text-white/90 font-medium">Real rates</span>
                 </div>
                 <div className="flex items-center px-4 py-2 bg-texas-red/20 backdrop-blur-sm rounded-full border border-texas-red/30">
                   <div className="w-2 h-2 bg-texas-red-200 rounded-full mr-2"></div>

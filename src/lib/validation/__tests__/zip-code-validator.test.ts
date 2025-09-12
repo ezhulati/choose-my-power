@@ -295,8 +295,8 @@ describe('ZIP Code Validator', () => {
 
   describe('Edge Cases', () => {
     it('should handle null/undefined inputs gracefully', () => {
-      expect(validateZipFormat(null as any).isValid).toBe(false);
-      expect(validateZipFormat(undefined as any).isValid).toBe(false);
+      expect(validateZipFormat(null as unknown).isValid).toBe(false);
+      expect(validateZipFormat(undefined as unknown).isValid).toBe(false);
     });
 
     it('should handle whitespace in ZIP codes', () => {

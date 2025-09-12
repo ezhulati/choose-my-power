@@ -128,7 +128,7 @@ export const GET: APIRoute = async ({ params, request, clientAddress }) => {
 /**
  * Generate facet data for a specific city
  */
-async function generateCityFacets(citySlug: string, tdspDuns: string): Promise<any> {
+async function generateCityFacets(citySlug: string, tdspDuns: string): Promise<unknown> {
   // In production, this would query the database to get actual counts
   // For now, using mock data that represents realistic distributions
   
@@ -313,7 +313,7 @@ function getEmptyFacets() {
 /**
  * Calculate total plans from facet data
  */
-function calculateTotalPlans(facets: any): number {
+function calculateTotalPlans(facets: unknown): number {
   // Use rate types as the base count since all plans have a rate type
   return facets.rateTypes.reduce((sum: number, facet: FacetValue) => sum + facet.count, 0);
 }

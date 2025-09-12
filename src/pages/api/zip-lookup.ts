@@ -3,14 +3,14 @@ import { zipToCity, municipalUtilities, getCityFromZip } from '../../config/tdsp
 import { comprehensiveZIPService } from '../../lib/services/comprehensive-zip-service';
 
 // Import 100% coverage mapping
-let comprehensiveMapping: any = null;
+let comprehensiveMapping: Record<string, unknown> | null = null;
 
 async function loadComprehensiveMapping() {
   if (!comprehensiveMapping) {
     try {
       const module = await import('../../types/comprehensive-zip-mapping-100');
       comprehensiveMapping = module.COMPREHENSIVE_ZIP_TDSP_MAPPING_100;
-      console.log(`🎯 Loaded 100% coverage mapping with ${Object.keys(comprehensiveMapping).length} ZIP codes`);
+      console.warn(`🎯 Loaded 100% coverage mapping with ${Object.keys(comprehensiveMapping).length} ZIP codes`);
     } catch (error) {
       console.error('Failed to load 100% coverage mapping:', error);
       comprehensiveMapping = {};
@@ -46,7 +46,7 @@ function formatCityDisplayName(citySlug: string): string {
 }
 
 // Generate city slug from ZIP code and mapping data (from 100% coverage system)
-function generateCitySlug(zipCode: string, mappingData?: any): string {
+function generateCitySlug(zipCode: string, mappingData?: Record<string, unknown>): string {
   const zip = parseInt(zipCode);
   
   // Major metro area mappings
@@ -83,7 +83,7 @@ function generateCitySlug(zipCode: string, mappingData?: any): string {
 }
 
 // Generate display name for city (from 100% coverage system)
-function generateCityDisplayName(zipCode: string, mappingData?: any): string {
+function generateCityDisplayName(zipCode: string, mappingData?: Record<string, unknown>): string {
   const zip = parseInt(zipCode);
   
   // Major metro area display names
@@ -200,20 +200,20 @@ export const GET: APIRoute = async ({ request }) => {
       // Use 100% coverage system
       citySlug = generateCitySlug(zipCode, mappingData);
       cityDisplayName = generateCityDisplayName(zipCode, mappingData);
-      console.log(`🎯 100% coverage lookup success: ${zipCode} -> ${citySlug} (confidence: ${mappingData.confidence || 95}%, source: ${mappingData.source || 'comprehensive'})`);
+      console.warn(`🎯 100% coverage lookup success: ${zipCode} -> ${citySlug} (confidence: ${mappingData.confidence || 95}%, source: ${mappingData.source || 'comprehensive'})`);
     } else {
       // FALLBACK 1: Look up city from ZIP code in our static mapping
       citySlug = getCityFromZip(zipCode);
       
       if (citySlug) {
         cityDisplayName = formatCityDisplayName(citySlug);
-        console.log(`📍 Static mapping lookup success: ${zipCode} -> ${citySlug}`);
+        console.warn(`📍 Static mapping lookup success: ${zipCode} -> ${citySlug}`);
       }
     }
 
     if (!citySlug) {
       // FALLBACK 2: Use universal ZIP service for unknown ZIP codes
-      console.log(`🔄 ZIP ${zipCode} not found in 100% coverage or static mapping, trying universal lookup...`);
+      console.warn(`🔄 ZIP ${zipCode} not found in 100% coverage or static mapping, trying universal lookup...`);
       
       try {
         const universalResult = await comprehensiveZIPService.lookupZIPCode(zipCode);
@@ -222,10 +222,10 @@ export const GET: APIRoute = async ({ request }) => {
           // Successfully mapped to a supported city
           citySlug = universalResult.citySlug!;
           cityDisplayName = universalResult.cityDisplayName || universalResult.cityName || formatCityDisplayName(citySlug);
-          console.log(`✅ Universal lookup success: ${zipCode} -> ${citySlug} (confidence: ${universalResult.confidence}%)`);
+          console.warn(`✅ Universal lookup success: ${zipCode} -> ${citySlug} (confidence: ${universalResult.confidence}%)`);
           
           // Log this for future static mapping updates
-          console.log(`📝 Consider adding to static mapping: ${zipCode} -> ${citySlug} (from ${universalResult.cityName})`);
+          console.warn(`📝 Consider adding to static mapping: ${zipCode} -> ${citySlug} (from ${universalResult.cityName})`);
         } else if (universalResult.municipalUtility) {
           // Handle municipal utility case
           const cityDisplayName = universalResult.cityDisplayName || universalResult.cityName;
@@ -264,7 +264,7 @@ export const GET: APIRoute = async ({ request }) => {
           });
         } else {
           // Universal lookup failed
-          console.log(`❌ Universal lookup failed for ${zipCode}: ${universalResult.error}`);
+          console.warn(`❌ Universal lookup failed for ${zipCode}: ${universalResult.error}`);
           
           return new Response(JSON.stringify({
             success: false,
@@ -361,7 +361,7 @@ export const GET: APIRoute = async ({ request }) => {
 
     // Success case - deregulated market
     const processingTime = Date.now() - startTime;
-    console.log(`✅ ZIP lookup success: ${zipCode} -> ${citySlug} (${processingTime}ms)`);
+    console.warn(`✅ ZIP lookup success: ${zipCode} -> ${citySlug} (${processingTime}ms)`);
     
     // Check if this is a direct browser navigation (Accept header indicates HTML)
     const acceptHeader = request.headers.get('accept') || '';
@@ -451,7 +451,7 @@ export const POST: APIRoute = async ({ request }) => {
     });
 
     // Call the GET handler
-    return GET({ request: getRequest } as any);
+    return GET({ request: getRequest } as Parameters<typeof GET>[0]);
     
   } catch (error) {
     return new Response(JSON.stringify({

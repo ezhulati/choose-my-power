@@ -10,7 +10,7 @@ import { apiClientFactory } from '../../../lib/external-apis/client-factory';
 
 // Simple caching
 let overviewCache: {
-  data: any;
+  data: unknown;
   timestamp: number;
   ttl: number;
 } | null = null;

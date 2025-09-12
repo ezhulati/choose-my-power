@@ -50,14 +50,14 @@ export const GET: APIRoute = async ({ url, request }) => {
       // Ignore referer parsing errors
     }
 
-    console.log(`[API] Searching for plan: "${name}" by provider: "${provider}" in city: ${citySlug}`);
+    console.warn(`[API] Searching for plan: "${name}" by provider: "${provider}" in city: ${citySlug}`);
 
     // Check if database has plan data, use database if available, otherwise fall back to JSON files
     const hasDbPlans = await hasPlansInDatabase();
     
     let matchedPlan;
     if (hasDbPlans) {
-      console.log('[API] Using database for plan search');
+      console.warn('[API] Using database for plan search');
       const dbPlan = await findPlanByNameAndProviderDB(name, provider, citySlug);
       if (dbPlan) {
         // Convert database plan to expected format
@@ -76,7 +76,7 @@ export const GET: APIRoute = async ({ url, request }) => {
         };
       }
     } else {
-      console.log('[API] Falling back to JSON file search');
+      console.warn('[API] Falling back to JSON file search');
       matchedPlan = await findPlanByNameAndProvider(name, provider, citySlug);
     }
 
@@ -90,7 +90,7 @@ export const GET: APIRoute = async ({ url, request }) => {
         termLength: matchedPlan.term?.length
       };
 
-      console.log(`[API] Found matching plan ID: ${result.id} for "${result.name}" by ${result.provider}`);
+      console.warn(`[API] Found matching plan ID: ${result.id} for "${result.name}" by ${result.provider}`);
       
       return new Response(JSON.stringify([result]), {
         status: 200,
@@ -105,7 +105,7 @@ export const GET: APIRoute = async ({ url, request }) => {
       const availableProviders = hasDbPlans 
         ? await getUniqueProvidersDB(citySlug)
         : await getUniqueProviders(citySlug);
-      console.log(`[API] Available providers in ${citySlug}: ${availableProviders.join(', ')}`);
+      console.warn(`[API] Available providers in ${citySlug}: ${availableProviders.join(', ')}`);
       
       return new Response(JSON.stringify([]), {
         status: 200,

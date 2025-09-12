@@ -302,7 +302,7 @@ export class SEOMonitoringSystem {
   }
 
   // Helper methods for mock data generation
-  private async fetchPageData(url: string): Promise<any> {
+  private async fetchPageData(url: string): Promise<unknown> {
     return {
       title: 'Sample Page Title',
       content: 'Sample page content...',
@@ -311,7 +311,7 @@ export class SEOMonitoringSystem {
     };
   }
 
-  private analyzeTechnicalSEO(pageData: any): TechnicalIssue[] {
+  private analyzeTechnicalSEO(pageData: unknown): TechnicalIssue[] {
     const issues: TechnicalIssue[] = [];
     
     if (pageData.loadTime > 3) {
@@ -329,7 +329,7 @@ export class SEOMonitoringSystem {
     return issues;
   }
 
-  private analyzeContentQuality(pageData: any): ContentMetrics {
+  private analyzeContentQuality(pageData: unknown): ContentMetrics {
     return {
       wordCount: pageData.wordCount,
       readabilityScore: Math.floor(Math.random() * 40) + 60,
@@ -387,7 +387,7 @@ export class SEOMonitoringSystem {
     };
   }
 
-  private calculateHealthScore(data: any): SEOHealthScore {
+  private calculateHealthScore(data: unknown): SEOHealthScore {
     const base = 80;
     const technical = base - (data.technicalIssues.length * 5);
     const content = Math.min(100, data.contentMetrics.qualityScore);
@@ -423,20 +423,20 @@ export class SEOMonitoringSystem {
     ];
   }
 
-  private identifyCommonIssues(metrics: PageSEOMetrics[]): any {
+  private identifyCommonIssues(metrics: PageSEOMetrics[]): unknown {
     return {
       slowLoading: metrics.filter(m => m.trafficData.coreWebVitals.lcp > 2.5).length,
       duplicateContent: metrics.filter(m => m.contentMetrics.duplicateContentRisk > 30).length
     };
   }
 
-  private identifyPerformanceBottlenecks(metrics: PageSEOMetrics[]): any {
+  private identifyPerformanceBottlenecks(metrics: PageSEOMetrics[]): unknown {
     return {
       poorInternalLinking: metrics.filter(m => m.healthScore.linkingStructure < 60).length
     };
   }
 
-  private identifyContentOpportunities(metrics: PageSEOMetrics[]): any {
+  private identifyContentOpportunities(metrics: PageSEOMetrics[]): unknown {
     return {
       thinContent: metrics.filter(m => m.contentMetrics.wordCount < 300).length
     };

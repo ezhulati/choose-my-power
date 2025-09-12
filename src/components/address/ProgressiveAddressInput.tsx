@@ -21,7 +21,7 @@ interface ProgressiveAddressInputProps {
   onAddressResolved: (result: {
     address: AddressInfo;
     tdsp: TdspInfo;
-    apiParams: any;
+    apiParams: unknown;
     confidence: string;
   }) => void;
   onError: (error: string) => void;
@@ -56,9 +56,9 @@ const ProgressiveAddressInput: React.FC<ProgressiveAddressInputProps> = ({
     unitNumber: ''
   });
   
-  const [zipAnalysis, setZipAnalysis] = useState<any>(null);
+  const [zipAnalysis, setZipAnalysis] = useState<unknown>(null);
   const [progressSteps, setProgressSteps] = useState<ProgressiveResolutionStep[]>([]);
-  const [tdspOptions, setTdspOptions] = useState<any>(null);
+  const [tdspOptions, setTdspOptions] = useState<unknown>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [suggestions, setSuggestions] = useState<string[]>([]);
@@ -283,7 +283,7 @@ const ProgressiveAddressInput: React.FC<ProgressiveAddressInputProps> = ({
 
           {zipAnalysis && !isLoading && (
             <div className="bg-texas-cream-200 p-4 rounded-lg">
-              <h4 className="font-medium text-blue-900 mb-2">Service Area Analysis</h4>
+              <h4 className="font-medium text-texas-navy-900 mb-2">Service Area Analysis</h4>
               <p className="text-texas-navy text-sm mb-3">{zipAnalysis.explanation}</p>
               
               {zipAnalysis.primaryTdsp && (
@@ -489,7 +489,7 @@ const ProgressiveAddressInput: React.FC<ProgressiveAddressInputProps> = ({
           </div>
 
           <div className="space-y-3">
-            {tdspOptions.options.map((option: any, index: number) => (
+            {tdspOptions.options.map((option: unknown, index: number) => (
               <button
                 key={option.tdsp.duns}
                 onClick={() => handleTdspSelection(option.tdsp)}

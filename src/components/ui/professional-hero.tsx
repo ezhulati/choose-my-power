@@ -61,7 +61,7 @@ export function ProfessionalHero({
   };
 
   const getSubtitleColor = () => {
-    return variant === 'minimal' ? 'text-gray-600' : 'text-blue-100';
+    return variant === 'minimal' ? 'text-gray-600' : 'text-white/90';
   };
 
   return (

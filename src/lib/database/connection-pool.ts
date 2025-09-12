@@ -71,7 +71,7 @@ export class DatabaseConnectionPool {
   private replicaSqls: ReturnType<typeof postgres>[] = [];
   private replicaWeights: number[] = [];
   private connectionHealth = new Map<string, ConnectionHealth>();
-  private queryCache = createManagedCache<any>('db-queries', 5 * 60 * 1000); // 5 minutes
+  private queryCache = createManagedCache<unknown>('db-queries', 5 * 60 * 1000); // 5 minutes
   private stats: QueryStats = {
     totalQueries: 0,
     slowQueries: 0,
@@ -111,7 +111,7 @@ export class DatabaseConnectionPool {
         
         // Error handling
         onnotice: (notice) => {
-          console.log('PostgreSQL notice:', notice);
+          console.warn('PostgreSQL notice:', notice);
         },
         
         // Connection lifecycle
@@ -128,7 +128,7 @@ export class DatabaseConnectionPool {
         responseTime: 0
       });
 
-      console.log('Primary database connection initialized');
+      console.warn('Primary database connection initialized');
     } catch (error) {
       console.error('Failed to initialize primary database connection:', error);
       this.connectionHealth.set('primary', {
@@ -182,7 +182,7 @@ export class DatabaseConnectionPool {
           responseTime: 0
         });
 
-        console.log(`Read replica ${replicaId} initialized`);
+        console.warn(`Read replica ${replicaId} initialized`);
       } catch (error) {
         console.error(`Failed to initialize read replica ${replicaId}:`, error);
         this.connectionHealth.set(replicaId, {
@@ -198,7 +198,7 @@ export class DatabaseConnectionPool {
   /**
    * Execute a write query (uses primary connection)
    */
-  async executeWrite<T>(query: string, params?: any[]): Promise<T[]> {
+  async executeWrite<T>(query: string, params?: unknown[]): Promise<T[]> {
     if (!this.primarySql) {
       throw new Error('Primary database connection not available');
     }
@@ -230,7 +230,7 @@ export class DatabaseConnectionPool {
   /**
    * Execute a read query (uses read replica or primary)
    */
-  async executeRead<T>(query: string, params?: any[], useCache = false): Promise<T[]> {
+  async executeRead<T>(query: string, params?: unknown[], useCache = false): Promise<T[]> {
     const cacheKey = useCache ? this.generateCacheKey(query, params) : null;
     
     // Check cache first if enabled
@@ -284,7 +284,7 @@ export class DatabaseConnectionPool {
       
       // Retry with primary if replica failed
       if (connectionId !== 'primary' && this.primarySql) {
-        console.log('Retrying query with primary connection');
+        console.warn('Retrying query with primary connection');
         return this.executeReadWithPrimary(query, params, cacheKey);
       }
       
@@ -295,7 +295,7 @@ export class DatabaseConnectionPool {
   /**
    * Execute read query with primary connection (fallback)
    */
-  private async executeReadWithPrimary<T>(query: string, params?: any[], cacheKey?: string | null): Promise<T[]> {
+  private async executeReadWithPrimary<T>(query: string, params?: unknown[], cacheKey?: string | null): Promise<T[]> {
     if (!this.primarySql) {
       throw new Error('Primary database connection not available');
     }
@@ -406,7 +406,7 @@ export class DatabaseConnectionPool {
   /**
    * Generate cache key for query results
    */
-  private generateCacheKey(query: string, params?: any[]): string {
+  private generateCacheKey(query: string, params?: unknown[]): string {
     const normalizedQuery = query.trim().toLowerCase();
     const paramStr = params ? JSON.stringify(params) : '';
     return Buffer.from(normalizedQuery + paramStr).toString('base64').substring(0, 64);
@@ -495,7 +495,7 @@ export class DatabaseConnectionPool {
     }
 
     await Promise.allSettled(closePromises);
-    console.log('Database connection pool closed');
+    console.warn('Database connection pool closed');
   }
 }
 

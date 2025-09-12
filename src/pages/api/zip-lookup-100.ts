@@ -9,20 +9,20 @@
 import type { APIRoute } from 'astro';
 
 // Import the 100% coverage mapping
-let comprehensiveMapping: any = null;
+let comprehensiveMapping: unknown = null;
 
 async function loadComprehensiveMapping() {
   if (!comprehensiveMapping) {
     try {
       const module = await import('../../types/comprehensive-zip-mapping-100');
       comprehensiveMapping = module.COMPREHENSIVE_ZIP_TDSP_MAPPING_100;
-      console.log(`🎯 Loaded comprehensive ZIP mapping with ${Object.keys(comprehensiveMapping).length} ZIP codes`);
+      console.warn(`🎯 Loaded comprehensive ZIP mapping with ${Object.keys(comprehensiveMapping).length} ZIP codes`);
     } catch (error) {
       console.error('Failed to load comprehensive mapping:', error);
       // Fallback to existing mapping
       const fallbackModule = await import('../../types/electricity-plans');
       comprehensiveMapping = fallbackModule.COMPREHENSIVE_ZIP_TDSP_MAPPING;
-      console.log(`⚠️ Using fallback mapping with ${Object.keys(comprehensiveMapping).length} ZIP codes`);
+      console.warn(`⚠️ Using fallback mapping with ${Object.keys(comprehensiveMapping).length} ZIP codes`);
     }
   }
   return comprehensiveMapping;
@@ -145,7 +145,7 @@ export const GET: APIRoute = async ({ url }) => {
     };
     
     // Log successful lookup
-    console.log(`✅ ZIP lookup success: ${zipCode} -> ${citySlug} (${Date.now() - startTime}ms)`);
+    console.warn(`✅ ZIP lookup success: ${zipCode} -> ${citySlug} (${Date.now() - startTime}ms)`);
     
     return new Response(JSON.stringify(response), {
       status: 200,
@@ -175,7 +175,7 @@ export const GET: APIRoute = async ({ url }) => {
 /**
  * Generate city slug from ZIP code and mapping data
  */
-function generateCitySlug(zipCode: string, mappingData: any): string {
+function generateCitySlug(zipCode: string, mappingData: unknown): string {
   const zip = parseInt(zipCode);
   
   // Major metro area mappings
@@ -210,7 +210,7 @@ function generateCitySlug(zipCode: string, mappingData: any): string {
 /**
  * Generate display name for city
  */
-function generateCityDisplayName(zipCode: string, mappingData: any): string {
+function generateCityDisplayName(zipCode: string, mappingData: unknown): string {
   const zip = parseInt(zipCode);
   
   // Major metro area display names

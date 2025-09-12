@@ -10,8 +10,8 @@ import { logger } from '../../lib/logging/logger';
 
 interface ErrorBoundaryProps {
   children: ReactNode;
-  fallback?: (error: Error, errorInfo: any) => ReactNode;
-  onError?: (error: Error, errorInfo: any) => void;
+  fallback?: (error: Error, errorInfo: unknown) => ReactNode;
+  onError?: (error: Error, errorInfo: unknown) => void;
   level?: 'page' | 'component' | 'feature';
   name?: string;
   isolate?: boolean; // Whether to isolate errors to this boundary
@@ -20,7 +20,7 @@ interface ErrorBoundaryProps {
 interface ErrorBoundaryState {
   hasError: boolean;
   error: Error | null;
-  errorInfo: any;
+  errorInfo: unknown;
   errorId?: string;
   retryCount: number;
   lastErrorTime: number;
@@ -51,7 +51,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     };
   }
 
-  componentDidCatch(error: Error, errorInfo: any) {
+  componentDidCatch(error: Error, errorInfo: unknown) {
     const { onError, name = 'UnknownComponent', level = 'component' } = this.props;
     
     // Track error with context
@@ -235,29 +235,29 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
       const showTechnicalDetails = process.env.NODE_ENV === 'development';
 
       return (
-        <div className="error-boundary-container p-6 bg-red-50 border border-red-200 rounded-lg m-4">
+        <div className="error-boundary-container p-6 bg-texas-red/10 border border-texas-red/30 rounded-lg m-4">
           <div className="flex items-start space-x-4">
             <div className="flex-shrink-0">
-              <svg className="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 text-texas-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L4.268 18.5c-.77.833.192 2.5 1.732 2.5z" />
               </svg>
             </div>
             
             <div className="flex-1">
-              <h3 className="text-lg font-semibold text-red-800 mb-2">
+              <h3 className="text-lg font-semibold text-texas-red-800 mb-2">
                 {level === 'page' ? 'Page Error' : level === 'feature' ? 'Feature Error' : 'Component Error'}
               </h3>
               
-              <p className="text-red-700 mb-4">
+              <p className="text-texas-red-700 mb-4">
                 {userMessage}
               </p>
 
               {showTechnicalDetails && (
                 <details className="mb-4">
-                  <summary className="cursor-pointer text-red-600 hover:text-red-800 font-medium">
+                  <summary className="cursor-pointer text-texas-red hover:text-texas-red-800 font-medium">
                     Technical Details
                   </summary>
-                  <div className="mt-2 p-3 bg-red-100 rounded text-sm">
+                  <div className="mt-2 p-3 bg-texas-red/20 rounded text-sm">
                     <div className="mb-2">
                       <strong>Error:</strong> {error.message}
                     </div>
@@ -288,7 +288,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
                 {showRetry && (
                   <button
                     onClick={this.handleManualRetry}
-                    className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
+                    className="px-4 py-2 bg-texas-red text-white rounded hover:bg-texas-red-600 transition-colors"
                   >
                     Try Again
                   </button>
@@ -303,7 +303,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 
                 <button
                   onClick={() => window.location.reload()}
-                  className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+                  className="px-4 py-2 bg-texas-navy text-white rounded hover:bg-texas-navy-600 transition-colors"
                 >
                   Reload Page
                 </button>

@@ -30,13 +30,12 @@ export function TexasPlansPage({}: TexasPlansPageProps) {
   const [monthlyUsage, setMonthlyUsage] = useState('1000');
   const [providers, setProviders] = useState<RealProvider[]>([]);
   const [cities, setCities] = useState<RealCity[]>([]);
-  const [allTexasPlans, setAllTexasPlans] = useState<any[]>([]);
+  const [allTexasPlans, setAllTexasPlans] = useState<unknown[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadData = async () => {
       try {
-        console.log('[TexasPlansPage] Loading Texas plans data...');
         
         const [providersData, citiesData] = await Promise.all([
           getProviders('texas'),
@@ -50,7 +49,6 @@ export function TexasPlansPage({}: TexasPlansPageProps) {
         const houstonPlans = await getPlansForCity('houston', 'texas');
         setAllTexasPlans(houstonPlans);
         
-        console.log(`[TexasPlansPage] Loaded ${houstonPlans.length} sample plans`);
       } catch (error) {
         console.error('[TexasPlansPage] Error loading data:', error);
       } finally {
@@ -274,7 +272,7 @@ export function TexasPlansPage({}: TexasPlansPageProps) {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Texas Electricity Plans - Complete Guide & Analysis
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-4xl mx-auto">
+            <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-4xl mx-auto">
               Complete analysis of {loading ? '300+' : allTexasPlans.length} electricity plans from {loading ? '100+' : texasProviders.length} providers. 
               Find fixed rate, green energy, prepaid, and specialty plans across all Texas markets.
             </p>
@@ -400,7 +398,7 @@ export function TexasPlansPage({}: TexasPlansPageProps) {
             {planTypes.map(type => (
               <button
                 key={type.id}
-                onClick={() => setSelectedPlanType(type.id as any)}
+                onClick={() => setSelectedPlanType(type.id as unknown)}
                 className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                   selectedPlanType === type.id
                     ? 'bg-texas-navy text-white'
@@ -474,7 +472,7 @@ export function TexasPlansPage({}: TexasPlansPageProps) {
                     onClick={() => setMonthlyUsage(profile.value)}
                     className={`p-3 text-center border rounded-lg transition-colors ${
                       monthlyUsage === profile.value
-                        ? 'border-texas-navy bg-texas-cream-200 text-blue-900'
+                        ? 'border-texas-navy bg-texas-cream-200 text-texas-navy-900'
                         : 'border-gray-200 hover:bg-gray-50'
                     }`}
                   >

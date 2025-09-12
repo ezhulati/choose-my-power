@@ -27,7 +27,7 @@ export function DynamicHeroMessaging() {
         {messaging.headline}
       </h1>
       
-      <p className="text-lg md:text-xl text-blue-100/80 font-normal max-w-3xl mx-auto leading-relaxed">
+      <p className="text-lg md:text-xl text-white/90/80 font-normal max-w-3xl mx-auto leading-relaxed">
         {messaging.subheadline}
       </p>
     </div>

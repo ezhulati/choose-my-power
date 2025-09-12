@@ -299,7 +299,7 @@ class PromptGenerator {
   /**
    * Replace placeholders in prompt template
    */
-  private replacePlaceholders(prompt: string, data: any): string {
+  private replacePlaceholders(prompt: string, data: unknown): string {
     let result = prompt;
     
     // Replace city-specific placeholders

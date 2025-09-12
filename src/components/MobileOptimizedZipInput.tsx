@@ -248,14 +248,12 @@ export const MobileOptimizedZipInput: React.FC<MobileOptimizedZipInputProps> = (
    */
   const processTDSPResolution = async (zipCode: string, location?: LocationData): Promise<void> => {
     try {
-      console.log(`📱 Mobile ZIP lookup: ${zipCode}`);
       
       // Step 1: Use our comprehensive ZIP lookup API first
       const response = await fetch(`/api/zip-lookup?zip=${encodeURIComponent(zipCode)}`);
       const zipResult = await response.json();
 
       if (zipResult.success) {
-        console.log(`✅ Mobile ZIP resolved to city: ${zipResult.city}`);
         
         try {
           // Step 2: Check for multi-TDSP scenarios
@@ -294,7 +292,6 @@ export const MobileOptimizedZipInput: React.FC<MobileOptimizedZipInputProps> = (
 
         } catch (multiTDSPError) {
           // Fallback to basic resolution if multi-TDSP fails
-          console.log(`⚠️ Multi-TDSP detection failed, using basic mobile resolution`);
           
           const basicResult: TDSPResolutionResult & { location?: LocationData } = {
             method: 'zip_direct',
@@ -330,7 +327,6 @@ export const MobileOptimizedZipInput: React.FC<MobileOptimizedZipInputProps> = (
 
       } else {
         // Handle ZIP lookup errors
-        console.log(`⚠️ Mobile ZIP lookup failed:`, zipResult);
         
         if (zipResult.errorType === 'non_deregulated') {
           // Municipal utility - show special error with haptic feedback
@@ -347,7 +343,6 @@ export const MobileOptimizedZipInput: React.FC<MobileOptimizedZipInputProps> = (
           
         } else if (zipResult.errorType === 'not_found') {
           // Try fallback to multi-TDSP detector
-          console.log(`🔄 Mobile ZIP not found, trying fallback...`);
           
           try {
             const analysis = await multiTDSPDetector.analyzeZipCode(zipCode, displayUsage);

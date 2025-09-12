@@ -324,8 +324,8 @@ export class PerformanceTracker {
    */
   private sendToMonitoringService(metric: PerformanceMetrics): void {
     // Implementation would send to Datadog, New Relic, etc.
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'performance_metric', {
+    if (typeof window !== 'undefined' && (window as unknown).gtag) {
+      (window as unknown).gtag('event', 'performance_metric', {
         event_category: 'performance',
         event_label: `${metric.city}/${metric.filters.join('/')}`,
         value: Math.round(metric.pageLoadTime),
@@ -340,7 +340,7 @@ export class PerformanceTracker {
   /**
    * Send alert to monitoring service
    */
-  private sendAlert(alert: any): void {
+  private sendAlert(alert: unknown): void {
     // Implementation would send to Slack, PagerDuty, etc.
     console.warn('Performance alert would be sent to monitoring service:', alert);
   }

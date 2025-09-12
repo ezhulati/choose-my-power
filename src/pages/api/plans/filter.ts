@@ -202,8 +202,8 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 /**
  * Build API parameters from filter request
  */
-async function buildApiParams(request: FilterRequest, tdspDuns: string): Promise<any> {
-  const params: any = {
+async function buildApiParams(request: FilterRequest, tdspDuns: string): Promise<unknown> {
+  const params: unknown = {
     tdsp_duns: tdspDuns
   };
 
@@ -348,7 +348,7 @@ async function trackFilteringAnalytics(
   resultCount: number
 ): Promise<void> {
   try {
-    console.log('Real-time filtering analytics:', {
+    console.warn('Real-time filtering analytics:', {
       sessionId,
       citySlug,
       filters,

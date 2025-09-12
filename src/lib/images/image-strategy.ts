@@ -99,15 +99,15 @@ class ImageStrategy {
     });
 
     // Log usage statistics
-    console.log('📊 Image Template Usage:');
+    console.warn('📊 Image Template Usage:');
     templateUsage.forEach((count, templateId) => {
       const template = this.imageTemplates.find(t => t.id === templateId);
-      console.log(`  ${template?.name || templateId}: ${count} pages`);
+      console.warn(`  ${template?.name || templateId}: ${count} pages`);
     });
 
     const uniqueTemplates = templateUsage.size;
-    console.log(`✅ Total unique images needed: ${uniqueTemplates}`);
-    console.log(`💰 Cost optimization: ${contexts.length} pages → ${uniqueTemplates} images`);
+    console.warn(`✅ Total unique images needed: ${uniqueTemplates}`);
+    console.warn(`💰 Cost optimization: ${contexts.length} pages → ${uniqueTemplates} images`);
 
     return mapping;
   }
@@ -325,21 +325,21 @@ class ImageStrategy {
       distribution.set(template.name, (distribution.get(template.name) || 0) + 1);
     });
 
-    console.log('\n📊 IMAGE TEMPLATE DISTRIBUTION:');
-    console.log('=' .repeat(50));
+    console.warn('\n📊 IMAGE TEMPLATE DISTRIBUTION:');
+    console.warn('=' .repeat(50));
     
     Array.from(distribution.entries())
       .sort(([,a], [,b]) => b - a)
       .forEach(([name, count]) => {
         const percentage = ((count / contexts.length) * 100).toFixed(1);
-        console.log(`${name.padEnd(30)} ${count.toString().padStart(4)} pages (${percentage}%)`);
+        console.warn(`${name.padEnd(30)} ${count.toString().padStart(4)} pages (${percentage}%)`);
       });
       
-    console.log('=' .repeat(50));
-    console.log(`Total: ${contexts.length} pages → ${distribution.size} unique images`);
+    console.warn('=' .repeat(50));
+    console.warn(`Total: ${contexts.length} pages → ${distribution.size} unique images`);
     
     const costSavings = this.getCostSavings(contexts);
-    console.log(`💰 Cost Savings: ${costSavings.savingsPercent}% (${costSavings.estimatedCostReduction})`);
+    console.warn(`💰 Cost Savings: ${costSavings.savingsPercent}% (${costSavings.estimatedCostReduction})`);
   }
 }
 

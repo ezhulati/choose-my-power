@@ -45,7 +45,7 @@ export interface Plan {
   provider: {
     name: string;
     logo: string;
-    logoInfo: any;
+    logoInfo: unknown;
     rating: number;
     reviewCount: number;
   };

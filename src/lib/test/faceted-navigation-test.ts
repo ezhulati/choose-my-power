@@ -23,7 +23,6 @@ export class FacetedNavigationTester {
    * Run comprehensive test suite
    */
   async runAllTests(): Promise<{ passed: number; failed: number; results: TestResult[] }> {
-    console.log('🧪 Starting Faceted Navigation System Tests...');
     
     await this.testRouting();
     await this.testUrlStateManagement();
@@ -35,7 +34,6 @@ export class FacetedNavigationTester {
     const passed = this.results.filter(r => r.passed).length;
     const failed = this.results.filter(r => !r.passed).length;
     
-    console.log(`\n📊 Test Results: ${passed} passed, ${failed} failed`);
     
     return {
       passed,
@@ -48,7 +46,6 @@ export class FacetedNavigationTester {
    * Test routing system
    */
   private async testRouting(): Promise<void> {
-    console.log('\n🔀 Testing Routing System...');
 
     const testUrls = [
       'dallas-tx',
@@ -88,7 +85,6 @@ export class FacetedNavigationTester {
    * Test URL state management
    */
   private async testUrlStateManagement(): Promise<void> {
-    console.log('\n🔗 Testing URL State Management...');
 
     // Test URL parsing
     const testCases = [
@@ -169,7 +165,6 @@ export class FacetedNavigationTester {
    * Test API endpoints
    */
   private async testApiEndpoints(): Promise<void> {
-    console.log('\n🌐 Testing API Endpoints...');
 
     // Test faceted search API
     try {
@@ -274,7 +269,6 @@ export class FacetedNavigationTester {
    * Test performance optimization
    */
   private async testPerformanceOptimization(): Promise<void> {
-    console.log('\n⚡ Testing Performance Optimization...');
 
     // Test caching
     const testData = { test: 'data', timestamp: Date.now() };
@@ -338,7 +332,6 @@ export class FacetedNavigationTester {
    * Test filter validation
    */
   private async testFilterValidation(): Promise<void> {
-    console.log('\n✅ Testing Filter Validation...');
 
     const validFilters = [
       '12-month',
@@ -401,7 +394,6 @@ export class FacetedNavigationTester {
    * Test SEO URLs
    */
   private async testSeoUrls(): Promise<void> {
-    console.log('\n🔍 Testing SEO URLs...');
 
     const testCities = ['dallas-tx', 'houston-tx', 'austin-tx'];
 
@@ -445,7 +437,7 @@ export class FacetedNavigationTester {
   /**
    * Deep equality check for objects
    */
-  private deepEqual(obj1: any, obj2: any): boolean {
+  private deepEqual(obj1: unknown, obj2: unknown): boolean {
     return JSON.stringify(obj1) === JSON.stringify(obj2);
   }
 
@@ -453,8 +445,6 @@ export class FacetedNavigationTester {
    * Print detailed test results
    */
   printResults(): void {
-    console.log('\n📋 Detailed Test Results:');
-    console.log('================================');
 
     const groupedResults = this.results.reduce((acc, result) => {
       if (!acc[result.component]) {
@@ -465,13 +455,10 @@ export class FacetedNavigationTester {
     }, {} as Record<string, TestResult[]>);
 
     for (const [component, tests] of Object.entries(groupedResults)) {
-      console.log(`\n${component}:`);
       tests.forEach(test => {
         const status = test.passed ? '✅' : '❌';
         const duration = test.duration ? ` (${test.duration.toFixed(2)}ms)` : '';
-        console.log(`  ${status} ${test.test}${duration}`);
         if (!test.passed) {
-          console.log(`     ${test.message}`);
         }
       });
     }
@@ -490,6 +477,5 @@ export async function runFacetedNavigationTests(): Promise<boolean> {
 // Auto-run tests in development
 if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
   // Add global function for manual testing
-  (window as any).testFacetedNavigation = runFacetedNavigationTests;
-  console.log('🧪 Faceted Navigation tests available. Run `window.testFacetedNavigation()` in console.');
+  (window as unknown).testFacetedNavigation = runFacetedNavigationTests;
 }

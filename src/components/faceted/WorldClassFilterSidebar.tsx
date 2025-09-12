@@ -41,7 +41,7 @@ interface FilterSection {
 }
 
 interface WorldClassFilterSidebarProps {
-  currentFilters: Record<string, any>;
+  currentFilters: Record<string, unknown>;
   onFilterChange: (filterId: string, value: string, checked: boolean) => void;
   totalResults: number;
   loading?: boolean;

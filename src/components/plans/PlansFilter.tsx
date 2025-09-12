@@ -599,17 +599,17 @@ const PlansFilter: React.FC<PlansFilterProps> = memo(({
 
           {/* Filter Summary */}
           {activeFilterCount > 0 && (
-            <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <div className="mt-6 p-4 bg-texas-navy/10 border border-texas-navy/30 rounded-lg">
               <div className="flex items-center justify-between">
                 <div>
-                  <h4 className="font-medium text-blue-900">Active Filters</h4>
-                  <p className="text-sm text-blue-700">
+                  <h4 className="font-medium text-texas-navy-900">Active Filters</h4>
+                  <p className="text-sm text-texas-navy-700">
                     {activeFilterCount} filter{activeFilterCount !== 1 ? 's' : ''} applied
                   </p>
                 </div>
                 <button
                   onClick={clearAllFilters}
-                  className="text-sm text-blue-600 hover:text-blue-800 font-medium"
+                  className="text-sm text-texas-navy hover:text-texas-navy-800 font-medium"
                 >
                   Clear All
                 </button>

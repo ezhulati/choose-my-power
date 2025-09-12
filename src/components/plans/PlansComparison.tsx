@@ -277,7 +277,7 @@ const OverviewView: React.FC<OverviewViewProps> = ({
               {/* Remove Button */}
               <button
                 onClick={() => onRemovePlan(plan.id)}
-                className="absolute top-2 right-2 w-6 h-6 bg-red-100 text-red-600 rounded-full flex items-center justify-center hover:bg-red-200 transition-colors text-xs"
+                className="absolute top-2 right-2 w-6 h-6 bg-red-100 text-texas-red rounded-full flex items-center justify-center hover:bg-red-200 transition-colors text-xs"
                 aria-label={`Remove ${plan.planName} from comparison`}
               >
                 ×
@@ -403,31 +403,31 @@ const CostAnalysisView: React.FC<CostAnalysisViewProps> = ({
   return (
     <div className="space-y-6">
       {/* Cost Summary */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-blue-50 rounded-lg">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-texas-navy/10 rounded-lg">
         <div className="text-center">
-          <div className="text-2xl font-bold text-blue-900">
+          <div className="text-2xl font-bold text-texas-navy-900">
             {CostAnalysisUtils.formatCurrency(analysis.summary.lowestCost.totalCost)}
           </div>
-          <div className="text-sm text-blue-700">Best Deal</div>
-          <div className="text-xs font-medium text-blue-900 mt-1">
+          <div className="text-sm text-texas-navy-700">Best Deal</div>
+          <div className="text-xs font-medium text-texas-navy-900 mt-1">
             {analysis.summary.lowestCost.planName}
           </div>
         </div>
         <div className="text-center">
-          <div className="text-2xl font-bold text-blue-900">
+          <div className="text-2xl font-bold text-texas-navy-900">
             {CostAnalysisUtils.formatCurrency(analysis.summary.costSpread)}
           </div>
-          <div className="text-sm text-blue-700">Price Difference</div>
-          <div className="text-xs text-blue-600 mt-1">
+          <div className="text-sm text-texas-navy-700">Price Difference</div>
+          <div className="text-xs text-texas-navy mt-1">
             Between highest and lowest
           </div>
         </div>
         <div className="text-center">
-          <div className="text-2xl font-bold text-blue-900">
+          <div className="text-2xl font-bold text-texas-navy-900">
             {CostAnalysisUtils.formatCurrency(analysis.summary.averageCost)}
           </div>
-          <div className="text-sm text-blue-700">Average Cost</div>
-          <div className="text-xs text-blue-600 mt-1">
+          <div className="text-sm text-texas-navy-700">Average Cost</div>
+          <div className="text-xs text-texas-navy mt-1">
             Across all compared plans
           </div>
         </div>

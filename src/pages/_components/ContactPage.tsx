@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MessageCircle, Clock, HelpCircle, Users } from 'lucide-react';
+import { Clock, Users } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
 declare global {
@@ -234,10 +234,10 @@ export function ContactPage({}: ContactPageProps) {
               </div>
             </div>
 
-            <div className="bg-texas-cream-200 border border-blue-200 rounded-lg p-6">
+            <div className="bg-texas-cream-200 border border-texas-navy/30 rounded-lg p-6">
               <div className="flex items-center mb-4">
                 <Clock className="h-6 w-6 text-texas-navy mr-3" />
-                <h3 className="text-lg font-semibold text-blue-900">Response Times</h3>
+                <h3 className="text-lg font-semibold text-texas-navy-900">Response Times</h3>
               </div>
               <div className="space-y-2 text-texas-navy">
                 <div className="flex justify-between">

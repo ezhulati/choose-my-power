@@ -198,7 +198,7 @@ export const MobileZIPLookupForm: React.FC<MobileZIPLookupFormProps> = ({
     if (isLoading) {
       return `${baseClasses} bg-gray-400 text-white cursor-wait`;
     } else if (isZipValid) {
-      return `${baseClasses} bg-texas-red text-white hover:bg-red-700 active:scale-95 active:bg-red-800`;
+      return `${baseClasses} bg-texas-red text-white hover:bg-texas-red-700 active:scale-95 active:bg-red-800`;
     } else {
       return `${baseClasses} bg-gray-300 text-gray-500`;
     }
@@ -278,7 +278,7 @@ export const MobileZIPLookupForm: React.FC<MobileZIPLookupFormProps> = ({
 
       {/* Error display with mobile optimizations */}
       {error && (
-        <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-xl" data-testid="mobile-zip-error">
+        <div className="mt-6 p-4 bg-texas-red/10 border border-texas-red/30 rounded-xl" data-testid="mobile-zip-error">
           <div className="flex">
             <div className="flex-shrink-0">
               <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
@@ -286,10 +286,10 @@ export const MobileZIPLookupForm: React.FC<MobileZIPLookupFormProps> = ({
               </svg>
             </div>
             <div className="ml-3 flex-1">
-              <h4 className="text-sm font-semibold text-red-800">
+              <h4 className="text-sm font-semibold text-texas-red-800">
                 ZIP Code Error
               </h4>
-              <p className="mt-1 text-sm text-red-700">
+              <p className="mt-1 text-sm text-texas-red-700">
                 {error}
               </p>
               
@@ -299,7 +299,7 @@ export const MobileZIPLookupForm: React.FC<MobileZIPLookupFormProps> = ({
                   <button
                     type="button"
                     onClick={() => setIsExpanded(!isExpanded)}
-                    className="flex items-center text-sm font-medium text-red-800 hover:text-red-900 touch-manipulation"
+                    className="flex items-center text-sm font-medium text-texas-red-800 hover:text-red-900 touch-manipulation"
                   >
                     What you can do
                     <svg 
@@ -312,7 +312,7 @@ export const MobileZIPLookupForm: React.FC<MobileZIPLookupFormProps> = ({
                   </button>
                   
                   {isExpanded && (
-                    <ul className="mt-2 text-sm text-red-700 space-y-1">
+                    <ul className="mt-2 text-sm text-texas-red-700 space-y-1">
                       {recoveryActions.map((action, index) => (
                         <li key={index}>• {action}</li>
                       ))}
@@ -324,7 +324,7 @@ export const MobileZIPLookupForm: React.FC<MobileZIPLookupFormProps> = ({
               {/* Suggestions - Always visible on mobile for quick access */}
               {suggestions.length > 0 && (
                 <div className="mt-4">
-                  <p className="text-sm font-medium text-red-800 mb-3">
+                  <p className="text-sm font-medium text-texas-red-800 mb-3">
                     Try these ZIP codes:
                   </p>
                   <div className="grid grid-cols-1 gap-2">
@@ -333,7 +333,7 @@ export const MobileZIPLookupForm: React.FC<MobileZIPLookupFormProps> = ({
                         key={suggestion}
                         type="button"
                         onClick={() => handleSuggestionClick(suggestion)}
-                        className="px-4 py-3 text-sm bg-white border border-red-300 rounded-xl hover:bg-red-50 active:bg-red-100 transition-colors touch-manipulation text-left"
+                        className="px-4 py-3 text-sm bg-white border border-red-300 rounded-xl hover:bg-texas-red/10 active:bg-red-100 transition-colors touch-manipulation text-left"
                       >
                         {suggestion}
                       </button>
@@ -345,8 +345,8 @@ export const MobileZIPLookupForm: React.FC<MobileZIPLookupFormProps> = ({
               {/* Helpful Tips - Expandable on mobile to save space */}
               {helpfulTips.length > 0 && isExpanded && (
                 <div className="mt-4">
-                  <p className="text-sm font-medium text-red-800">💡 Helpful Tips:</p>
-                  <ul className="mt-2 text-sm text-red-700 space-y-1">
+                  <p className="text-sm font-medium text-texas-red-800">💡 Helpful Tips:</p>
+                  <ul className="mt-2 text-sm text-texas-red-700 space-y-1">
                     {helpfulTips.map((tip, index) => (
                       <li key={index}>• {tip}</li>
                     ))}
@@ -360,9 +360,9 @@ export const MobileZIPLookupForm: React.FC<MobileZIPLookupFormProps> = ({
 
       {/* Performance metrics (development mode) - Minimal on mobile */}
       {showPerformanceMetrics && performanceData && (
-        <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-xl">
+        <div className="mt-4 p-3 bg-texas-navy/10 border border-texas-navy/30 rounded-xl">
           <div className="flex justify-between items-center text-xs">
-            <span className="text-blue-600 font-medium">
+            <span className="text-texas-navy font-medium">
               {performanceData.responseTime}ms
             </span>
             <span className={`font-medium ${performanceData.cached ? 'text-green-600' : 'text-orange-600'}`}>

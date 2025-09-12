@@ -88,7 +88,7 @@ class IdeogramClient {
     const results: GeneratedImage[] = [];
     const batchSize = 5; // Process 5 at a time to respect rate limits
     
-    console.log(`🎨 Starting batch generation of ${prompts.length} images...`);
+    console.warn(`🎨 Starting batch generation of ${prompts.length} images...`);
 
     for (let i = 0; i < prompts.length; i += batchSize) {
       const batch = prompts.slice(i, i + batchSize);
@@ -102,7 +102,7 @@ class IdeogramClient {
         batchResults.forEach((result, index) => {
           if (result.status === 'fulfilled' && result.value) {
             results.push(result.value);
-            console.log(`✅ Generated image ${i + index + 1}/${prompts.length}`);
+            console.warn(`✅ Generated image ${i + index + 1}/${prompts.length}`);
           } else {
             console.warn(`⚠️ Failed to generate image ${i + index + 1}/${prompts.length}`);
           }
@@ -118,14 +118,14 @@ class IdeogramClient {
       }
     }
 
-    console.log(`🎉 Batch complete: ${results.length}/${prompts.length} images generated`);
+    console.warn(`🎉 Batch complete: ${results.length}/${prompts.length} images generated`);
     return results;
   }
 
   /**
    * Make HTTP request with retry logic
    */
-  private async makeRequest(data: any): Promise<any> {
+  private async makeRequest(data: unknown): Promise<unknown> {
     let lastError: Error;
 
     for (let attempt = 1; attempt <= this.retryAttempts; attempt++) {

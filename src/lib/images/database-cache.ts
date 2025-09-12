@@ -26,7 +26,7 @@ interface ImageRecord {
 }
 
 class DatabaseCache {
-  private db: any; // Will use Netlify database connection
+  private db: unknown; // Will use Netlify database connection
   
   constructor() {
     // Initialize database connection
@@ -45,7 +45,7 @@ class DatabaseCache {
       // Create images table if it doesn't exist
       await this.createImagesTable();
       
-      console.log('✅ Database cache initialized');
+      console.warn('✅ Database cache initialized');
     } catch (error) {
       console.warn('⚠️ Database cache not available:', error.message);
     }
@@ -85,7 +85,7 @@ class DatabaseCache {
       await this.db.query(`CREATE INDEX IF NOT EXISTS idx_og_images_generated_at ON og_images(generated_at)`);
       await this.db.query(`CREATE INDEX IF NOT EXISTS idx_og_images_status ON og_images(status)`);
       
-      console.log('✅ OG images database table ready');
+      console.warn('✅ OG images database table ready');
     } catch (error) {
       console.error('❌ Failed to create images table:', error);
     }
@@ -140,7 +140,7 @@ class DatabaseCache {
         ]
       );
       
-      console.log(`💾 Saved image to database: ${image.cacheKey}`);
+      console.warn(`💾 Saved image to database: ${image.cacheKey}`);
       return true;
       
     } catch (error) {
@@ -194,9 +194,9 @@ class DatabaseCache {
   async getAnalytics(): Promise<{
     totalImages: number;
     totalCost: number;
-    topContexts: any[];
-    usageStats: any;
-    costSavings: any;
+    topContexts: unknown[];
+    usageStats: unknown;
+    costSavings: unknown;
   }> {
     if (!this.db) {
       return {
@@ -300,7 +300,7 @@ class DatabaseCache {
       `);
       
       const cleanedCount = result.rows.length;
-      console.log(`🧹 Cleaned ${cleanedCount} expired images from database`);
+      console.warn(`🧹 Cleaned ${cleanedCount} expired images from database`);
       return cleanedCount;
       
     } catch (error) {
@@ -312,7 +312,7 @@ class DatabaseCache {
   /**
    * Get most reused images (for optimization insights)
    */
-  async getMostReusedImages(limit: number = 20): Promise<any[]> {
+  async getMostReusedImages(limit: number = 20): Promise<unknown[]> {
     if (!this.db) return [];
     
     try {
@@ -347,12 +347,12 @@ class DatabaseCache {
   /**
    * Search images by context
    */
-  async searchByContext(searchParams: Partial<ImageGenerationContext>): Promise<any[]> {
+  async searchByContext(searchParams: Partial<ImageGenerationContext>): Promise<unknown[]> {
     if (!this.db) return [];
     
     try {
       let whereClause = '1=1';
-      const params: any[] = [];
+      const params: unknown[] = [];
       let paramIndex = 1;
       
       if (searchParams.city) {

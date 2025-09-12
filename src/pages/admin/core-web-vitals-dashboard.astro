@@ -543,7 +543,7 @@ class CoreWebVitalsDashboard {
     
     // Update color based on score
     circle.className = overallScore >= 90 ? 'text-green-500' : 
-                     overallScore >= 70 ? 'text-yellow-500' : 'text-red-500';
+                     overallScore >= 70 ? 'text-yellow-500' : 'text-texas-red';
     
     // Update rating
     const rating = overallScore >= 90 ? 'Excellent' : 
@@ -769,7 +769,7 @@ class CoreWebVitalsDashboard {
             'bg-green-100'
           }">
             <span class="${
-              rec.type === 'critical' ? 'text-red-800' :
+              rec.type === 'critical' ? 'text-texas-red-800' :
               rec.type === 'warning' ? 'text-yellow-800' :
               'text-green-800'
             } text-xs">${rec.icon}</span>

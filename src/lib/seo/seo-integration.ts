@@ -48,7 +48,7 @@ interface CompleteSEOOutput {
   meta: FacetedMeta;
   canonical: string;
   schema: object[];
-  internalLinks: any;
+  internalLinks: unknown;
   content: ContentTemplate;
   performance: SEOPerformanceMetrics;
   validation: SEOValidationResult;
@@ -231,7 +231,7 @@ export async function generateBatchSEO(
   const totalPages = contexts.length;
   let processedPages = 0;
   
-  console.log(`Starting batch SEO generation for ${totalPages} pages...`);
+  console.warn(`Starting batch SEO generation for ${totalPages} pages...`);
   
   // Process in batches to manage memory and performance
   for (let i = 0; i < contexts.length; i += batchSize) {
@@ -256,7 +256,7 @@ export async function generateBatchSEO(
       const batchTime = Date.now() - batchStartTime;
       const avgTimePerPage = batchTime / batch.length;
       
-      console.log(`Batch ${Math.floor(i / batchSize) + 1} completed: ${batch.length} pages in ${batchTime}ms (${avgTimePerPage.toFixed(1)}ms/page). Progress: ${processedPages}/${totalPages}`);
+      console.warn(`Batch ${Math.floor(i / batchSize) + 1} completed: ${batch.length} pages in ${batchTime}ms (${avgTimePerPage.toFixed(1)}ms/page). Progress: ${processedPages}/${totalPages}`);
       
       // Memory optimization: clear cache if using conservative strategy
       if (cacheStrategy === 'conservative' && globalSEOCache.size > 1000) {
@@ -274,7 +274,7 @@ export async function generateBatchSEO(
     }
   }
   
-  console.log(`Batch SEO generation completed: ${processedPages} pages processed`);
+  console.warn(`Batch SEO generation completed: ${processedPages} pages processed`);
   return results;
 }
 
@@ -317,9 +317,9 @@ function validateSEOOutput(seoOutput: Omit<CompleteSEOOutput, 'performance' | 'v
     score -= 10;
   } else {
     // Check for required schema types
-    const hasOrganization = seoOutput.schema.some((s: any) => s['@type'] === 'Organization');
-    const hasBreadcrumb = seoOutput.schema.some((s: any) => s['@type'] === 'BreadcrumbList');
-    const hasItemList = seoOutput.schema.some((s: any) => s['@type'] === 'ItemList');
+    const hasOrganization = seoOutput.schema.some((s: unknown) => s['@type'] === 'Organization');
+    const hasBreadcrumb = seoOutput.schema.some((s: unknown) => s['@type'] === 'BreadcrumbList');
+    const hasItemList = seoOutput.schema.some((s: unknown) => s['@type'] === 'ItemList');
     
     if (!hasOrganization) {
       warnings.push('Missing Organization schema markup');

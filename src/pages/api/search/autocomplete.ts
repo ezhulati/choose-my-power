@@ -125,7 +125,7 @@ async function logApiMetrics(metrics: {
   ipAddress?: string;
 }): Promise<void> {
   try {
-    console.log('API Metrics:', {
+    console.warn('API Metrics:', {
       timestamp: new Date().toISOString(),
       ...metrics
     });

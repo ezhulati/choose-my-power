@@ -3,7 +3,7 @@ import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { ProviderCard } from '../../components/ProviderCard';
 import { getProviders, type RealProvider } from '../../lib/services/provider-service';
 import { getCities, type RealCity } from '../../lib/services/city-service';
-import { MapPin, TrendingDown, Users, Zap, Filter, Calculator, Leaf, Shield } from 'lucide-react';
+import { MapPin, TrendingDown, Users, Zap, Filter, Calculator, Leaf } from 'lucide-react';
 import EnhancedSectionReact from '../../components/ui/EnhancedSectionReact';
 import EnhancedCardReact from '../../components/ui/EnhancedCardReact';
 import AccentBoxReact from '../../components/ui/AccentBoxReact';
@@ -211,7 +211,7 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
                   <label className="block text-sm font-medium text-gray-700 mb-2">Plan Type</label>
                   <select
                     value={filterType}
-                    onChange={(e) => setFilterType(e.target.value as any)}
+                    onChange={(e) => setFilterType(e.target.value as unknown)}
                     className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   >
                     <option value="all">All Plan Types</option>
@@ -225,7 +225,7 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
                   <label className="block text-sm font-medium text-gray-700 mb-2">Sort By</label>
                   <select
                     value={sortBy}
-                    onChange={(e) => setSortBy(e.target.value as any)}
+                    onChange={(e) => setSortBy(e.target.value as unknown)}
                     className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   >
                     <option value="rating">Highest Rated</option>
@@ -369,10 +369,10 @@ export function StateElectricityProvidersPage({ state }: StateElectricityProvide
               
               <button
                 onClick={() => navigate(`/providers#service`)}
-                className="p-4 bg-texas-cream-200 border border-blue-200 rounded-lg hover:bg-texas-cream transition-colors text-center"
+                className="p-4 bg-texas-cream-200 border border-texas-navy/30 rounded-lg hover:bg-texas-cream transition-colors text-center"
               >
                 <Users className="h-6 w-6 text-texas-navy mx-auto mb-2" />
-                <div className="font-medium text-blue-900">Best Customer Service</div>
+                <div className="font-medium text-texas-navy-900">Best Customer Service</div>
                 <div className="text-sm text-texas-navy">Top-rated support</div>
               </button>
               

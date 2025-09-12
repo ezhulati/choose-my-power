@@ -52,12 +52,12 @@ export class MultiTDSPDetector {
    */
   async analyzeZipCode(zipCode: string, displayUsage: number = 1000): Promise<TDSPResolutionResult> {
     const normalizedZip = zipCode.trim();
-    console.log(`🔍 Analyzing ZIP code for multi-TDSP: ${normalizedZip}`);
+    console.warn(`🔍 Analyzing ZIP code for multi-TDSP: ${normalizedZip}`);
 
     // Check cache first
     const cached = this.zipCache.get(normalizedZip);
     if (cached) {
-      console.log(`Cache hit for ZIP analysis: ${normalizedZip}`);
+      console.warn(`Cache hit for ZIP analysis: ${normalizedZip}`);
       return cached;
     }
 
@@ -66,7 +66,7 @@ export class MultiTDSPDetector {
       const multiTDSPInfo = this.knownMultiTDSPZips.get(normalizedZip);
       
       if (multiTDSPInfo) {
-        console.log(`⚠️  Known multi-TDSP ZIP detected: ${normalizedZip}`);
+        console.warn(`⚠️  Known multi-TDSP ZIP detected: ${normalizedZip}`);
         return {
           method: 'address_required',
           tdsp_duns: multiTDSPInfo.possibleTDSPs[0].duns, // Primary TDSP as default
@@ -90,7 +90,7 @@ export class MultiTDSPDetector {
       const citySlug = zipToCity[normalizedZip];
       if (citySlug && tdspMapping[citySlug]) {
         const tdsp = tdspMapping[citySlug];
-        console.log(`✅ Direct ZIP-to-TDSP mapping: ${normalizedZip} → ${citySlug} → ${tdsp.name}`);
+        console.warn(`✅ Direct ZIP-to-TDSP mapping: ${normalizedZip} → ${citySlug} → ${tdsp.name}`);
         
         const result = {
           method: 'zip_direct' as const,
@@ -113,16 +113,16 @@ export class MultiTDSPDetector {
       }
 
       // Step 3: Dynamic multi-TDSP detection via API testing
-      console.log(`🧪 Testing multiple TDSPs for unknown ZIP: ${normalizedZip}`);
+      console.warn(`🧪 Testing multiple TDSPs for unknown ZIP: ${normalizedZip}`);
       const multiTDSPResult = await this.testMultipleTDSPs(normalizedZip, displayUsage);
       
       if (multiTDSPResult) {
-        console.log(`⚠️  Dynamic multi-TDSP detected for ${normalizedZip}`);
+        console.warn(`⚠️  Dynamic multi-TDSP detected for ${normalizedZip}`);
         return multiTDSPResult;
       }
 
       // Step 4: Fallback - unknown ZIP
-      console.log(`❓ Unknown ZIP code: ${normalizedZip}`);
+      console.warn(`❓ Unknown ZIP code: ${normalizedZip}`);
       return {
         method: 'address_required',
         tdsp_duns: '1039940674000', // Default to Oncor (largest TDSP)
@@ -151,7 +151,7 @@ export class MultiTDSPDetector {
     displayUsage: number = 1000
   ): Promise<TDSPResolutionResult> {
     
-    console.log(`📍 Resolving address to TDSP: ${address}, ${zipCode}`);
+    console.warn(`📍 Resolving address to TDSP: ${address}, ${zipCode}`);
     
     try {
       const esiidResolution = await ercotESIIDClient.resolveAddressToTDSP(
@@ -178,7 +178,7 @@ export class MultiTDSPDetector {
           }))
         };
 
-        console.log(`✅ ESIID resolution successful: ${result.tdsp_name} (${result.confidence} confidence)`);
+        console.warn(`✅ ESIID resolution successful: ${result.tdsp_name} (${result.confidence} confidence)`);
         return result;
       }
 
@@ -188,7 +188,7 @@ export class MultiTDSPDetector {
       console.error('Address-to-TDSP resolution failed:', error);
       
       // Fallback to ZIP analysis
-      console.log('Falling back to ZIP analysis...');
+      console.warn('Falling back to ZIP analysis...');
       return this.analyzeZipCode(zipCode, displayUsage);
     }
   }
@@ -221,11 +221,11 @@ export class MultiTDSPDetector {
             name: tdsp.name,
             planCount: plans.length
           });
-          console.log(`✅ ${tdsp.name}: ${plans.length} plans available`);
+          console.warn(`✅ ${tdsp.name}: ${plans.length} plans available`);
         }
       } catch (error) {
         // TDSP not available for this area - expected behavior
-        console.log(`❌ ${tdsp.name}: Not available`);
+        console.warn(`❌ ${tdsp.name}: Not available`);
       }
 
       // Small delay to avoid rate limits
@@ -308,7 +308,7 @@ export class MultiTDSPDetector {
       { duns: '957877905', name: 'CenterPoint Energy Houston Electric', cities: ['zapata-tx'], confidence: 'low' }
     ], 'service_territory');
 
-    console.log(`📋 Initialized ${this.knownMultiTDSPZips.size} known multi-TDSP ZIP codes`);
+    console.warn(`📋 Initialized ${this.knownMultiTDSPZips.size} known multi-TDSP ZIP codes`);
   }
 
   /**
@@ -347,7 +347,7 @@ export class MultiTDSPDetector {
   public clearCache(): void {
     this.zipCache.clear();
     ercotESIIDClient.clearCache();
-    console.log('Multi-TDSP detector cache cleared');
+    console.warn('Multi-TDSP detector cache cleared');
   }
 
   /**

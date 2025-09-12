@@ -10,7 +10,6 @@ import type { ZIPRoutingResult } from '../../types/zip-navigation';
 
 export const ZIPLookupTestPage: React.FC = () => {
   const handleSuccess = (response: ZIPRoutingResult) => {
-    console.log('ZIP lookup success:', response);
     alert(`Success! Redirecting to: ${response.data?.redirectUrl}\nResponse Time: ${response.responseTime}ms\nCached: ${response.cached}`);
   };
 

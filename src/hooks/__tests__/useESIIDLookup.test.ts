@@ -21,7 +21,7 @@ const mockAbort = vi.fn();
 global.AbortController = vi.fn(() => ({
   abort: mockAbort,
   signal: { aborted: false }
-})) as any;
+})) as unknown;
 
 // Test data fixtures
 const mockESIIDResponse = {
@@ -703,7 +703,7 @@ describe('useESIIDLookup', () => {
 
   describe('Loading States', () => {
     it('should set loading states correctly during lookup', async () => {
-      let resolveLookup: (value: any) => void;
+      let resolveLookup: (value: unknown) => void;
       const lookupPromise = new Promise(resolve => {
         resolveLookup = resolve;
       });

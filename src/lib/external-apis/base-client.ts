@@ -98,7 +98,7 @@ export abstract class BaseAPIClient implements ExternalAPIClient {
         cached: false
       };
 
-    } catch (error: any) {
+    } catch (error: unknown) {
       const processingTime = Date.now() - startTime;
       
       // Handle circuit breaker
@@ -132,7 +132,7 @@ export abstract class BaseAPIClient implements ExternalAPIClient {
       
       return response;
       
-    } catch (error: any) {
+    } catch (error: unknown) {
       if (attempt >= this.config.maxRetries || !this.isRetryableError(error)) {
         throw error;
       }
@@ -165,9 +165,9 @@ export abstract class BaseAPIClient implements ExternalAPIClient {
   /**
    * Basic XML parsing (override in subclasses for specific formats)
    */
-  protected parseXML(xmlText: string): any {
+  protected parseXML(xmlText: string): unknown {
     // Simplified XML parsing - real implementation would use DOMParser or xml2js
-    const jsonResult: any = {};
+    const jsonResult: unknown = {};
     
     // Extract simple values (this is a basic implementation)
     const matches = xmlText.match(/<(\w+)>([^<]+)<\/\1>/g);
@@ -334,7 +334,7 @@ export abstract class BaseAPIClient implements ExternalAPIClient {
   /**
    * Handle failed request for circuit breaker
    */
-  private onRequestFailure(error: any): void {
+  private onRequestFailure(error: unknown): void {
     if (!this.config.circuitBreaker?.enabled) {
       return;
     }
@@ -352,7 +352,7 @@ export abstract class BaseAPIClient implements ExternalAPIClient {
   /**
    * Check if error is retryable
    */
-  private isRetryableError(error: any): boolean {
+  private isRetryableError(error: unknown): boolean {
     if (error.name === 'AbortError' || error.name === 'TimeoutError') {
       return true;
     }
@@ -376,8 +376,8 @@ export abstract class BaseAPIClient implements ExternalAPIClient {
   }
 
   // Abstract methods that must be implemented by subclasses
-  abstract validateZipCodes(zipCodes: string[]): Promise<any[]>;
-  abstract getHealthStatus(): Promise<any>;
+  abstract validateZipCodes(zipCodes: string[]): Promise<unknown[]>;
+  abstract getHealthStatus(): Promise<unknown>;
 
   // Optional methods with default implementations
   async getRateLimitInfo(): Promise<RateLimitInfo> {

@@ -70,7 +70,7 @@ export interface ElectricityPlan {
   yrac_link?: string;
   
   // Faceted search support
-  facets?: Record<string, any>; // JSON field for facet data
+  facets?: Record<string, unknown>; // JSON field for facet data
   search_vector?: string; // Full-text search vector
   city_slug?: string; // For faceted navigation
   
@@ -121,7 +121,7 @@ export interface PlanCache {
 export interface ApiLog {
   id: string;
   endpoint: string;
-  params: Record<string, any>;
+  params: Record<string, unknown>;
   response_status: number;
   response_time_ms: number;
   error_message?: string;
@@ -167,7 +167,7 @@ export interface PlanComparison {
   session_id: string;
   plan_ids: string[];
   city_slug?: string;
-  filters_applied: Record<string, any>;
+  filters_applied: Record<string, unknown>;
   comparison_duration_seconds?: number;
   selected_plan_id?: string;
   created_at: Date;

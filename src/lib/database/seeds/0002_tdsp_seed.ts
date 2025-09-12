@@ -274,37 +274,37 @@ const additionalTdspData: NewTdspInfo[] = [
  */
 export async function seedTdspInfo() {
   try {
-    console.log('🌱 Starting TDSP information seed...');
+    console.warn('🌱 Starting TDSP information seed...');
     
     // Insert major TDSPs first
     const majorInserted = await db.insert(tdspInfo).values(tdspSeedData).returning();
     
-    console.log(`✅ Successfully seeded ${majorInserted.length} major TDSPs:`);
+    console.warn(`✅ Successfully seeded ${majorInserted.length} major TDSPs:`);
     majorInserted.forEach(tdsp => {
-      console.log(`   - ${tdsp.name} (${tdsp.duns}) - Zone: ${tdsp.zone}, Cities: ${(tdsp.serviceArea as string[]).length}`);
+      console.warn(`   - ${tdsp.name} (${tdsp.duns}) - Zone: ${tdsp.zone}, Cities: ${(tdsp.serviceArea as string[]).length}`);
     });
     
     // Insert additional smaller TDSPs
     const additionalInserted = await db.insert(tdspInfo).values(additionalTdspData).returning();
     
-    console.log(`✅ Successfully seeded ${additionalInserted.length} additional TDSPs:`);
+    console.warn(`✅ Successfully seeded ${additionalInserted.length} additional TDSPs:`);
     additionalInserted.forEach(tdsp => {
-      console.log(`   - ${tdsp.name} (${tdsp.duns}) - Zone: ${tdsp.zone}, Cities: ${(tdsp.serviceArea as string[]).length}`);
+      console.warn(`   - ${tdsp.name} (${tdsp.duns}) - Zone: ${tdsp.zone}, Cities: ${(tdsp.serviceArea as string[]).length}`);
     });
     
     const totalInserted = [...majorInserted, ...additionalInserted];
     
-    console.log(`\n📊 TDSP Coverage Summary:`);
-    console.log(`   - Total TDSPs: ${totalInserted.length}`);
-    console.log(`   - North Zone: ${totalInserted.filter(t => t.zone === 'North').length}`);
-    console.log(`   - Coast Zone: ${totalInserted.filter(t => t.zone === 'Coast').length}`);
-    console.log(`   - Central Zone: ${totalInserted.filter(t => t.zone === 'Central').length}`);
-    console.log(`   - South Zone: ${totalInserted.filter(t => t.zone === 'South').length}`);
-    console.log(`   - Valley Zone: ${totalInserted.filter(t => t.zone === 'Valley').length}`);
+    console.warn(`\n📊 TDSP Coverage Summary:`);
+    console.warn(`   - Total TDSPs: ${totalInserted.length}`);
+    console.warn(`   - North Zone: ${totalInserted.filter(t => t.zone === 'North').length}`);
+    console.warn(`   - Coast Zone: ${totalInserted.filter(t => t.zone === 'Coast').length}`);
+    console.warn(`   - Central Zone: ${totalInserted.filter(t => t.zone === 'Central').length}`);
+    console.warn(`   - South Zone: ${totalInserted.filter(t => t.zone === 'South').length}`);
+    console.warn(`   - Valley Zone: ${totalInserted.filter(t => t.zone === 'Valley').length}`);
     
     // Calculate total cities covered
     const totalCities = totalInserted.reduce((sum, tdsp) => sum + (tdsp.serviceArea as string[]).length, 0);
-    console.log(`   - Total Cities Covered: ${totalCities}`);
+    console.warn(`   - Total Cities Covered: ${totalCities}`);
     
     return totalInserted;
   } catch (error) {
@@ -318,7 +318,7 @@ export async function seedTdspInfo() {
  */
 export async function updateTdspServiceAreas() {
   try {
-    console.log('🔄 Updating TDSP service areas...');
+    console.warn('🔄 Updating TDSP service areas...');
     
     // This could be used to add new cities to existing TDSPs
     const updateCount = await db
@@ -327,7 +327,7 @@ export async function updateTdspServiceAreas() {
       .where(eq(tdspInfo.isActive, true))
       .returning();
     
-    console.log(`✅ Updated ${updateCount.length} TDSP records with current timestamp`);
+    console.warn(`✅ Updated ${updateCount.length} TDSP records with current timestamp`);
     return updateCount;
   } catch (error) {
     console.error('❌ Error updating TDSP service areas:', error);
@@ -360,7 +360,7 @@ export async function getTdspCoverageStats() {
       )
     };
     
-    console.log('📊 TDSP Coverage Statistics:', stats);
+    console.warn('📊 TDSP Coverage Statistics:', stats);
     return stats;
   } catch (error) {
     console.error('❌ Error getting TDSP coverage stats:', error);

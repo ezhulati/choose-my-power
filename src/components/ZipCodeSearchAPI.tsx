@@ -345,14 +345,14 @@ export const ZipCodeSearchAPI: React.FC<ZipCodeSearchAPIProps> = ({
                 state.isZipValid ? (
                   <CheckCircle className={cn(config.icon, 'text-green-500')} />
                 ) : state.hasInteracted ? (
-                  <AlertCircle className={cn(config.icon, 'text-red-500')} />
+                  <AlertCircle className={cn(config.icon, 'text-texas-red')} />
                 ) : null
               )}
             </div>
           </div>
 
           {state.hasInteracted && !state.isZipValid && state.zipCode && (
-            <p className="text-sm text-red-600 flex items-center gap-1">
+            <p className="text-sm text-texas-red flex items-center gap-1">
               <AlertCircle className="h-4 w-4" />
               Please enter a valid Texas ZIP code (starts with 7)
             </p>
@@ -363,7 +363,7 @@ export const ZipCodeSearchAPI: React.FC<ZipCodeSearchAPIProps> = ({
         {state.showAddressInput && (
           <div className="space-y-2 animate-in slide-in-from-top-2 duration-300">
             <label htmlFor="address-input-api" className="block text-sm font-medium text-gray-700">
-              Address <span className="text-red-500">*</span>
+              Address <span className="text-texas-red">*</span>
             </label>
             
             <div className={cn('relative flex items-center', style.container)}>
@@ -503,16 +503,16 @@ export const ZipCodeSearchAPI: React.FC<ZipCodeSearchAPIProps> = ({
 
       {/* Search Results Summary */}
       {planSearch.plans.length > 0 && planSearch.searchMeta && (
-        <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+        <div className="mt-4 p-4 bg-texas-navy/10 border border-texas-navy/30 rounded-lg">
           <div className="flex items-start gap-3">
-            <Zap className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
+            <Zap className="h-5 w-5 text-texas-navy mt-0.5 flex-shrink-0" />
             <div>
-              <h3 className="font-medium text-blue-800">Search Complete</h3>
-              <p className="text-sm text-blue-700">
+              <h3 className="font-medium text-texas-navy-800">Search Complete</h3>
+              <p className="text-sm text-texas-navy-700">
                 Found <strong>{planSearch.searchMeta.totalPlans} plans</strong> for ZIP {state.zipCode}
                 {state.address && <span> at {state.address}</span>}
               </p>
-              <p className="mt-1 text-xs text-blue-600">
+              <p className="mt-1 text-xs text-texas-navy">
                 Search method: {planSearch.searchMeta.method} • 
                 Response time: {planSearch.searchMeta.responseTime}ms • 
                 Usage: {state.usage} kWh

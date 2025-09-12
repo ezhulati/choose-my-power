@@ -48,7 +48,7 @@ interface PlanRecommendation {
 interface AnalysisStep {
   step: string;
   description: string;
-  result: any;
+  result: unknown;
   timestamp: Date;
 }
 

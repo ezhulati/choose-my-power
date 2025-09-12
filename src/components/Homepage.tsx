@@ -12,11 +12,9 @@ interface HomepageProps {
 
 export function Homepage({ onNavigate }: HomepageProps) {
   const handleZipSearch = async (zipCode: string) => {
-    console.log('Homepage handleZipSearch called with ZIP:', zipCode);
     
     try {
       // Use the working ZIP lookup API endpoint (same as fixed forms)
-      console.log(`Making API call to /api/zip-lookup with ZIP: ${zipCode}`);
       const url = `/api/zip-lookup?zip=${encodeURIComponent(zipCode)}`;
       const res = await fetch(url, {
         method: 'GET',
@@ -28,7 +26,6 @@ export function Homepage({ onNavigate }: HomepageProps) {
 
       // Handle redirected responses (API might redirect directly)
       if (res.redirected) {
-        console.log('API redirected directly, following redirect');
         window.location.href = res.url;
         return;
       }
@@ -38,18 +35,14 @@ export function Homepage({ onNavigate }: HomepageProps) {
       }
 
       const result = await res.json();
-      console.log('API JSON response:', result);
 
       if (result && result.success) {
         // Success - use the redirect URL from the API
-        console.log('ZIP lookup successful:', result);
         const redirectUrl = result.redirectUrl || result.redirectURL;
-        console.log('Navigating to:', redirectUrl);
         
         // Use the API-provided redirect URL (which goes to correct plans page)
         window.location.href = redirectUrl;
       } else {
-        console.log('ZIP lookup failed:', result);
         
         // Handle different error types with fallbacks
         if (result.errorType === 'non_deregulated') {
@@ -72,10 +65,8 @@ export function Homepage({ onNavigate }: HomepageProps) {
       
       // Fallback error handling
       if (zipCode.startsWith('7')) {
-        console.log('Texas ZIP code detected, going to Texas providers page');
         onNavigate('/texas/electricity-providers');
       } else {
-        console.log('Unknown ZIP code, going to locations page');
         onNavigate('/locations');
       }
     }
@@ -263,7 +254,7 @@ export function Homepage({ onNavigate }: HomepageProps) {
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
             Ready to Find Your Best Provider?
           </h2>
-          <p className="text-lg sm:text-xl mb-6 sm:mb-8 text-blue-100">
+          <p className="text-lg sm:text-xl mb-6 sm:mb-8 text-white/90">
             Compare all your options and find the plan that actually works for you
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center max-w-lg mx-auto">

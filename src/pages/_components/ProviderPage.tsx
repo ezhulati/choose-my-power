@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getProviderByName, type RealProvider } from '../../lib/services/provider-service';
-import { Star, Phone, Globe, MapPin, Zap, DollarSign, Calendar, Leaf, CheckCircle, AlertTriangle, XCircle, ThumbsUp, ThumbsDown, Users } from 'lucide-react';
+import { Star, Phone, Globe, Zap, CheckCircle, AlertTriangle, XCircle, ThumbsUp, ThumbsDown, Users } from 'lucide-react';
 import EnhancedSectionReact from '../../components/ui/EnhancedSectionReact';
 import EnhancedCardReact from '../../components/ui/EnhancedCardReact';
 import AccentBoxReact from '../../components/ui/AccentBoxReact';
@@ -262,7 +262,7 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
             {tabs.map((tab) => (
               <button
                 key={tab.id}
-                onClick={() => setSelectedTab(tab.id as any)}
+                onClick={() => setSelectedTab(tab.id as unknown)}
                 className={`flex items-center space-x-2 py-4 border-b-2 font-medium text-sm transition-colors ${
                   selectedTab === tab.id
                     ? 'border-texas-navy text-texas-navy'
@@ -311,7 +311,7 @@ export function ProviderPage({ providerId }: ProviderPageProps) {
                   <div className="space-y-3">
                     {provider.heroJourney.whereTheyFallShort.map((item, index) => (
                       <div key={index} className="flex items-start">
-                        <XCircle className="h-5 w-5 text-red-500 mr-3 flex-shrink-0 mt-0.5" />
+                        <XCircle className="h-5 w-5 text-texas-red mr-3 flex-shrink-0 mt-0.5" />
                         <span className="text-gray-700">{item}</span>
                       </div>
                     ))}

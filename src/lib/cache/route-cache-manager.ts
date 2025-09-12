@@ -16,7 +16,7 @@ import { tdspMapping } from '../../config/tdsp-mapping';
 import type { Plan, ApiParams } from '../../types/facets';
 
 interface CacheEntry {
-  data: any;
+  data: unknown;
   timestamp: number;
   accessCount: number;
   lastAccessed: number;
@@ -85,7 +85,7 @@ export class RouteCacheManager {
    * Initialize cache with high-priority routes
    */
   private async initializeCache(): Promise<void> {
-    console.log('🚀 Initializing route cache for 881 cities...');
+    console.warn('🚀 Initializing route cache for 881 cities...');
     
     try {
       // Warm cache with high-priority city pages
@@ -100,7 +100,7 @@ export class RouteCacheManager {
         }
       }
       
-      console.log(`✅ Cache initialized with ${this.preloadQueue.size} high-priority routes`);
+      console.warn(`✅ Cache initialized with ${this.preloadQueue.size} high-priority routes`);
       
       // Start preloading in background
       this.processPreloadQueue();
@@ -150,7 +150,7 @@ export class RouteCacheManager {
   /**
    * Set route data in cache with intelligent priority
    */
-  async setCachedRoute(path: string, data: any): Promise<void> {
+  async setCachedRoute(path: string, data: unknown): Promise<void> {
     const cacheKey = this.getCacheKey(path);
     const memorySize = this.estimateMemorySize(data);
     const priority = this.calculatePriority(path);
@@ -201,7 +201,7 @@ export class RouteCacheManager {
         this.stats.preloadSuccesses++;
         this.stats.totalPreloadTime += preloadTime;
         
-        console.log(`✅ Preloaded ${path} in ${preloadTime}ms (${routeResult.plans.length} plans)`);
+        console.warn(`✅ Preloaded ${path} in ${preloadTime}ms (${routeResult.plans.length} plans)`);
         return true;
       } else {
         this.stats.preloadFailures++;
@@ -225,7 +225,7 @@ export class RouteCacheManager {
     }
     
     this.isPreloading = true;
-    console.log(`🔄 Processing preload queue: ${this.preloadQueue.size} routes`);
+    console.warn(`🔄 Processing preload queue: ${this.preloadQueue.size} routes`);
     
     try {
       const batch = Array.from(this.preloadQueue).slice(0, this.PRELOAD_BATCH_SIZE);
@@ -239,7 +239,7 @@ export class RouteCacheManager {
       const results = await Promise.allSettled(preloadPromises);
       const successful = results.filter(r => r.status === 'fulfilled' && r.value).length;
       
-      console.log(`📊 Preload batch complete: ${successful}/${batch.length} successful`);
+      console.warn(`📊 Preload batch complete: ${successful}/${batch.length} successful`);
       
       // Continue processing if queue not empty
       if (this.preloadQueue.size > 0) {
@@ -257,7 +257,7 @@ export class RouteCacheManager {
    * Smart cache warming for high-value routes
    */
   async warmCacheForTier(tier: number, maxRoutes: number = 50): Promise<void> {
-    console.log(`🔥 Warming cache for Tier ${tier} cities (max ${maxRoutes} routes)...`);
+    console.warn(`🔥 Warming cache for Tier ${tier} cities (max ${maxRoutes} routes)...`);
     
     const tierCities = Object.entries(tdspMapping)
       .filter(([_, config]) => config.tier === tier)
@@ -285,7 +285,7 @@ export class RouteCacheManager {
     }
     
     const duration = Date.now() - startTime;
-    console.log(`✅ Cache warmed for Tier ${tier}: ${warmed} routes queued in ${duration}ms`);
+    console.warn(`✅ Cache warmed for Tier ${tier}: ${warmed} routes queued in ${duration}ms`);
     
     // Start processing queue
     this.processPreloadQueue();
@@ -304,7 +304,7 @@ export class RouteCacheManager {
     // Stats logging every 10 minutes
     setInterval(() => this.logPerformanceStats(), 600000);
     
-    console.log('🔄 Background cache management tasks started');
+    console.warn('🔄 Background cache management tasks started');
   }
 
   /**
@@ -322,7 +322,7 @@ export class RouteCacheManager {
     }
     
     if (cleaned > 0) {
-      console.log(`🧹 Cleaned ${cleaned} expired cache entries`);
+      console.warn(`🧹 Cleaned ${cleaned} expired cache entries`);
     }
   }
 
@@ -352,7 +352,7 @@ export class RouteCacheManager {
       }
       
       const newMemoryMB = this.getCurrentMemoryUsage();
-      console.log(`🗑️  Memory optimization: removed ${toRemove} entries, ${Math.round(currentMemoryMB - newMemoryMB)}MB freed`);
+      console.warn(`🗑️  Memory optimization: removed ${toRemove} entries, ${Math.round(currentMemoryMB - newMemoryMB)}MB freed`);
     }
   }
 
@@ -386,7 +386,7 @@ export class RouteCacheManager {
     return tdspMapping[citySlug]?.tier || 3;
   }
 
-  private estimateMemorySize(data: any): number {
+  private estimateMemorySize(data: unknown): number {
     // Rough estimation of memory usage in bytes
     return JSON.stringify(data).length * 2; // Unicode strings use 2 bytes per character
   }
@@ -484,14 +484,14 @@ export class RouteCacheManager {
     const stats = this.getCacheStats();
     const routerStats = getRouterCacheStats();
     
-    console.log('\n📊 CACHE PERFORMANCE REPORT');
-    console.log('═'.repeat(50));
-    console.log(`Memory Cache: ${stats.memory.totalEntries} entries, ${stats.memory.totalMemoryMB}MB`);
-    console.log(`Hit Rate: ${Math.round(stats.memory.hitRate * 100)}%`);
-    console.log(`Preload Queue: ${stats.preloader.activePreloads} pending`);
-    console.log(`Route Performance: avg ${stats.performance.averageRouteTime}ms, P95 ${stats.performance.p95RouteTime}ms`);
-    console.log(`Router Caches: City=${routerStats.cityValidationCache}, TDSP=${routerStats.tdspMappingCache}, Route=${routerStats.routeCache}`);
-    console.log('═'.repeat(50));
+    console.warn('\n📊 CACHE PERFORMANCE REPORT');
+    console.warn('═'.repeat(50));
+    console.warn(`Memory Cache: ${stats.memory.totalEntries} entries, ${stats.memory.totalMemoryMB}MB`);
+    console.warn(`Hit Rate: ${Math.round(stats.memory.hitRate * 100)}%`);
+    console.warn(`Preload Queue: ${stats.preloader.activePreloads} pending`);
+    console.warn(`Route Performance: avg ${stats.performance.averageRouteTime}ms, P95 ${stats.performance.p95RouteTime}ms`);
+    console.warn(`Router Caches: City=${routerStats.cityValidationCache}, TDSP=${routerStats.tdspMappingCache}, Route=${routerStats.routeCache}`);
+    console.warn('═'.repeat(50));
   }
 
   /**
@@ -513,7 +513,7 @@ export class RouteCacheManager {
       totalPreloadTime: 0,
     };
     
-    console.log('🗑️  Route cache cleared');
+    console.warn('🗑️  Route cache cleared');
   }
 
   async warmHighPriorityCities(): Promise<void> {
@@ -525,9 +525,9 @@ export class RouteCacheManager {
    * Graceful shutdown
    */
   async shutdown(): Promise<void> {
-    console.log('🛑 Shutting down route cache manager...');
+    console.warn('🛑 Shutting down route cache manager...');
     // Clear any pending timers, close connections, etc.
-    console.log('✅ Route cache manager shutdown complete');
+    console.warn('✅ Route cache manager shutdown complete');
   }
 }
 
@@ -536,9 +536,9 @@ export const routeCacheManager = new RouteCacheManager();
 
 // Export utility functions
 export async function warmCacheForProduction(): Promise<void> {
-  console.log('🔥 Starting production cache warming...');
+  console.warn('🔥 Starting production cache warming...');
   await routeCacheManager.warmHighPriorityCities();
-  console.log('✅ Production cache warming complete');
+  console.warn('✅ Production cache warming complete');
 }
 
 export function getCachePerformanceStats() {

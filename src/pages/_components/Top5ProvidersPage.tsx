@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { ProviderCard } from '../../components/ProviderCard';
 import { getProviders, getCities, type RealProvider, type RealCity } from '../../lib/services/provider-service';
-import { Award, Star, TrendingDown, Users, Shield, Trophy, Medal, Crown, CheckCircle, Target } from 'lucide-react';
+import { Award, Star, Trophy, Medal, Crown, CheckCircle, Target } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
 declare global {
@@ -120,7 +120,7 @@ export function Top5ProvidersPage({}: Top5ProvidersPageProps) {
       case 1: return <Crown className="h-8 w-8 text-yellow-500" />;
       case 2: return <Medal className="h-8 w-8 text-gray-400" />;
       case 3: return <Award className="h-8 w-8 text-orange-500" />;
-      default: return <Target className="h-8 w-8 text-blue-500" />;
+      default: return <Target className="h-8 w-8 text-texas-navy" />;
     }
   };
 
@@ -201,7 +201,7 @@ export function Top5ProvidersPage({}: Top5ProvidersPageProps) {
             {categories.map((category) => (
               <button
                 key={category.id}
-                onClick={() => setSelectedCategory(category.id as any)}
+                onClick={() => setSelectedCategory(category.id as unknown)}
                 className={`p-6 rounded-lg border-2 transition-all ${
                   selectedCategory === category.id
                     ? 'border-texas-navy bg-texas-cream-200'
@@ -378,8 +378,8 @@ export function Top5ProvidersPage({}: Top5ProvidersPageProps) {
               </ul>
             </div>
 
-            <div className="bg-texas-cream-200 border border-blue-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold text-blue-900 mb-4">Need Help Choosing?</h3>
+            <div className="bg-texas-cream-200 border border-texas-navy/30 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-texas-navy-900 mb-4">Need Help Choosing?</h3>
               <p className="text-texas-navy text-sm mb-4">
                 Rankings help narrow your choices, but the best provider depends on your specific needs and location.
               </p>

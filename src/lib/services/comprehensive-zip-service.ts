@@ -540,7 +540,7 @@ class TexasZIPDatabase {
       });
     }
 
-    console.log(`📍 Loaded ${this.zipDatabase.size} Texas ZIP codes into comprehensive database`);
+    console.warn(`📍 Loaded ${this.zipDatabase.size} Texas ZIP codes into comprehensive database`);
   }
 
   lookupZIP(zipCode: string): { city: string; county: string; region: string; latitude?: number; longitude?: number } | null {
@@ -840,7 +840,7 @@ export class ComprehensiveZIPService {
       // Cache successful result
       this.cache.set(zipCode, { data: result, timestamp: Date.now() });
 
-      console.log(`✅ Comprehensive lookup: ZIP ${zipCode} (${zipData.city}) -> ${cityMapping.slug} (confidence: ${result.confidence}%)`);
+      console.warn(`✅ Comprehensive lookup: ZIP ${zipCode} (${zipData.city}) -> ${cityMapping.slug} (confidence: ${result.confidence}%)`);
       return result;
 
     } catch (error) {

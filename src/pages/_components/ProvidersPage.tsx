@@ -31,7 +31,6 @@ export function ProvidersPage() {
   useEffect(() => {
     const loadData = async () => {
       try {
-        console.log('[ProvidersPage] Loading providers and cities...');
         
         const [providersData, citiesData] = await Promise.all([
           getProviders('texas'),
@@ -40,7 +39,6 @@ export function ProvidersPage() {
         
         setProviders(providersData);
         setCities(citiesData);
-        console.log(`[ProvidersPage] Loaded ${providersData.length} providers and ${citiesData.length} cities`);
       } catch (error) {
         console.error('[ProvidersPage] Error loading data:', error);
       } finally {
@@ -373,9 +371,9 @@ export function ProvidersPage() {
                   <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
                   <span className="text-green-100 font-medium">Real customer reviews</span>
                 </div>
-                <div className="flex items-center px-4 py-2 bg-blue-500/20 backdrop-blur-sm rounded-full border border-blue-400/30">
+                <div className="flex items-center px-4 py-2 bg-texas-navy/100/20 backdrop-blur-sm rounded-full border border-blue-400/30">
                   <div className="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
-                  <span className="text-blue-100 font-medium">6 honest categories</span>
+                  <span className="text-white/90 font-medium">6 honest categories</span>
                 </div>
                 <div className="flex items-center px-4 py-2 bg-texas-red/20 backdrop-blur-sm rounded-full border border-texas-red/30">
                   <div className="w-2 h-2 bg-texas-red-200 rounded-full mr-2"></div>
@@ -462,7 +460,7 @@ export function ProvidersPage() {
           {providerCategories.map(category => (
             <button
               key={category.id}
-              onClick={() => setSelectedCategory(category.id as any)}
+              onClick={() => setSelectedCategory(category.id as unknown)}
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                 selectedCategory === category.id
                   ? 'bg-texas-navy text-white'
@@ -581,7 +579,7 @@ export function ProvidersPage() {
               
               <select
                 value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as any)}
+                onChange={(e) => setSortBy(e.target.value as unknown)}
                 className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               >
                 <option value="rating">Highest Rated</option>

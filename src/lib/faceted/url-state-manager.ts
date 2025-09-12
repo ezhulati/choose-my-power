@@ -122,7 +122,7 @@ export class UrlStateManager {
   /**
    * Add filter to current URL
    */
-  addFilter(currentPath: string, filterType: keyof FilterState, value: any): string {
+  addFilter(currentPath: string, filterType: keyof FilterState, value: unknown): string {
     const parsed = this.parseUrl(currentPath);
     if (!parsed.isValid) return currentPath;
 
@@ -139,7 +139,7 @@ export class UrlStateManager {
         newState.features = [...(newState.features || []), value];
         break;
       default:
-        (newState as any)[filterType] = value;
+        (newState as unknown)[filterType] = value;
     }
 
     return this.buildUrl(parsed.citySlug, newState);
@@ -174,7 +174,7 @@ export class UrlStateManager {
         }
         break;
       default:
-        delete (newState as any)[filterType];
+        delete (newState as unknown)[filterType];
     }
 
     return this.buildUrl(parsed.citySlug, newState);
@@ -491,7 +491,7 @@ export class UrlStateManager {
 export const urlStateManager = new UrlStateManager();
 
 // Export utility functions
-export function addFilterToUrl(currentPath: string, filterType: keyof FilterState, value: any): string {
+export function addFilterToUrl(currentPath: string, filterType: keyof FilterState, value: unknown): string {
   return urlStateManager.addFilter(currentPath, filterType, value);
 }
 

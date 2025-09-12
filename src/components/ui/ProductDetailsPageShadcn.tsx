@@ -104,14 +104,12 @@ export const ProductDetailsPageShadcn: React.FC<ProductDetailsPageShadcnProps> =
       
       // Skip if plan already has a valid MongoDB ObjectId
       if (planData.id && /^[a-f0-9]{24}$/i.test(planData.id)) {
-        console.log(`[ProductDetails] Plan already has valid MongoDB ID: ${planData.id}`);
         setRealPlanId(planData.id);
         setPlanIdLoading(false);
         return;
       }
 
       try {
-        console.log(`[ProductDetails] Fetching real plan ID for: "${planData.name}" by "${planData.provider.name}"`);
         
         // Include city in the search if available
         const cityParam = currentCitySlug ? `&city=${encodeURIComponent(currentCitySlug)}` : '';
@@ -120,7 +118,6 @@ export const ProductDetailsPageShadcn: React.FC<ProductDetailsPageShadcnProps> =
         if (response.ok) {
           const searchResults = await response.json();
           if (searchResults && searchResults.length > 0) {
-            console.log(`[ProductDetails] Fetched plan ID from API: ${searchResults[0].id}`);
             setRealPlanId(searchResults[0].id);
           } else {
             console.warn(`[ProductDetails] No plan found via API for: "${planData.name}" by "${planData.provider.name}"`);
@@ -639,7 +636,7 @@ export const ProductDetailsPageShadcn: React.FC<ProductDetailsPageShadcnProps> =
                           </p>
                           <div className="flex gap-2">
                             <Badge className="bg-texas-gold-100 text-texas-navy text-xs px-3 py-1">Verified Customer</Badge>
-                            <Badge className="bg-blue-100 text-blue-700 text-xs px-3 py-1">24-Month Plan</Badge>
+                            <Badge className="bg-blue-100 text-texas-navy-700 text-xs px-3 py-1">24-Month Plan</Badge>
                           </div>
                         </div>
                       </div>

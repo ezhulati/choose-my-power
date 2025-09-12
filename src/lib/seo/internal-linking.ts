@@ -897,7 +897,7 @@ function generateLinkCacheKey(context: LinkingContext): string {
 /**
  * Cache links result with memory management
  */
-function cacheLinksResult(key: string, result: any): void {
+function cacheLinksResult(key: string, result: unknown): void {
   // Convert to cacheable format (simplified)
   const cacheableResult = JSON.stringify(result);
   
@@ -913,7 +913,7 @@ function cacheLinksResult(key: string, result: any): void {
 /**
  * Parse links from cache format
  */
-function parseLinksFromCache(cached: any): any {
+function parseLinksFromCache(cached: unknown): unknown {
   return cached; // In production, this would handle deserialization
 }
 
@@ -939,8 +939,8 @@ function trackLinkPerformance(processingTime: number, type: "generated" | "cache
 export async function generateBatchInternalLinks(
   contexts: LinkingContext[],
   batchSize: number = 100
-): Promise<Map<string, any>> {
-  const results = new Map<string, any>();
+): Promise<Map<string, unknown>> {
+  const results = new Map<string, unknown>();
   
   // Process in batches to manage memory
   for (let i = 0; i < contexts.length; i += batchSize) {

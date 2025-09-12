@@ -117,8 +117,7 @@ export class ImageOptimizationPipeline {
   private async generateSource(
     originalSrc: string,
     format: string,
-    options: any
-  ): Promise<OptimizedImageSource> {
+    options: unknown): Promise<OptimizedImageSource> {
     const sizes = this.config.sizes.filter(size => 
       !options.maxWidth || size.width <= options.maxWidth
     );
@@ -170,7 +169,7 @@ export class ImageOptimizationPipeline {
   /**
    * Generate fallback image source
    */
-  private async generateFallback(originalSrc: string, options: any) {
+  private async generateFallback(originalSrc: string, options: unknown) {
     const fallbackSize = this.config.sizes.find(s => s.width === 1024) || this.config.sizes[0];
     
     return {

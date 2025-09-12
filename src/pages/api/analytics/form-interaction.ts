@@ -38,7 +38,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     const rateLimitCheck = checkAnalyticsRateLimit(clientIP);
     
     if (!rateLimitCheck.allowed) {
-      console.log(`[Analytics API] Rate limit exceeded for ${clientIP}`);
+      console.warn(`[Analytics API] Rate limit exceeded for ${clientIP}`);
       return new Response(
         JSON.stringify({
           error: 'RATE_LIMITED',

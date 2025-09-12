@@ -24,12 +24,8 @@ import {
   AlertCircle,
   Info,
   Search,
-  Navigation,
   Building,
-  Loader2,
-  ArrowRight,
-  ChevronDown,
-  X
+  Loader2
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -105,9 +101,9 @@ export interface AddressInputProps {
   /** Error state */
   error?: string;
   /** Success callback */
-  onSuccess?: (data: any) => void;
+  onSuccess?: (data: unknown) => void;
   /** Error callback */
-  onError?: (error: any) => void;
+  onError?: (error: Error | string) => void;
 }
 
 export function AddressInput({
@@ -133,7 +129,7 @@ export function AddressInput({
     zipCode,
     address,
     isZipValid,
-    isAddressValid,
+    _isAddressValid,
     isLoading,
     error: hookError,
     setZipCode,
@@ -164,8 +160,8 @@ export function AddressInput({
   const zipInputRef = useRef<HTMLInputElement>(null);
   const addressInputRef = useRef<HTMLInputElement>(null);
   const suggestionsRef = useRef<HTMLDivElement>(null);
-  const autocompleteService = useRef<any>(null);
-  const placesService = useRef<any>(null);
+  const autocompleteService = useRef<google.maps.places.AutocompleteService | null>(null);
+  const placesService = useRef<google.maps.places.PlacesService | null>(null);
 
   // Initialize Google Places API
   useEffect(() => {
@@ -256,7 +252,7 @@ export function AddressInput({
   }, []);
 
   // Validate address
-  const validateAddress = useCallback((addr: string, zip: string) => {
+  const validateAddress = useCallback((addr: string, _zip: string) => {
     if (!addr || addr.trim().length < 5) {
       return {
         isValid: false,
@@ -382,7 +378,7 @@ export function AddressInput({
         types: ['address']
       };
 
-      autocompleteService.current.getPlacePredictions(request, (predictions: any[], status: string) => {
+      autocompleteService.current.getPlacePredictions(request, (predictions: google.maps.places.AutocompletePrediction[] | null, status: google.maps.places.PlacesServiceStatus) => {
         if (status === 'OK' && predictions) {
           const suggestions: AddressSuggestion[] = predictions.slice(0, 5).map((prediction, index) => ({
             id: `suggestion_${index}`,
@@ -533,7 +529,7 @@ export function AddressInput({
                   validationState.zipCode.isValid ? (
                     <CheckCircle className={cn(config.icon, 'text-green-500')} />
                   ) : (
-                    <AlertCircle className={cn(config.icon, 'text-red-500')} />
+                    <AlertCircle className={cn(config.icon, 'text-texas-red')} />
                   )
                 )}
               </div>
@@ -616,7 +612,7 @@ export function AddressInput({
                 >
                   <CardContent className="p-0">
                     <div className="max-h-60 overflow-y-auto">
-                      {addressSuggestions.map((suggestion, index) => (
+                      {addressSuggestions.map((suggestion, _index) => (
                         <div
                           key={suggestion.id}
                           onClick={() => handleSuggestionSelect(suggestion)}
@@ -657,9 +653,9 @@ export function AddressInput({
 
           {/* Error Message */}
           {error && (
-            <div className="flex items-center gap-2 p-3 rounded-lg bg-red-50 border border-red-200">
-              <AlertCircle className="h-5 w-5 text-red-500 flex-shrink-0" />
-              <span className="text-sm text-red-700">{error.userMessage || error}</span>
+            <div className="flex items-center gap-2 p-3 rounded-lg bg-texas-red/10 border border-texas-red/30">
+              <AlertCircle className="h-5 w-5 text-texas-red flex-shrink-0" />
+              <span className="text-sm text-texas-red-700">{error.userMessage || error}</span>
             </div>
           )}
 

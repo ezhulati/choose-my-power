@@ -147,8 +147,8 @@ const ProfessionalFacetedSidebar: React.FC<FacetedSidebarProps> = ({
     // Implementation for clearing filters
     Object.keys(currentFilters).forEach(filterType => {
       if (Array.isArray(currentFilters[filterType as keyof typeof currentFilters])) {
-        const arrayValue = currentFilters[filterType as keyof typeof currentFilters] as any[];
-        arrayValue.forEach((value: any) => {
+        const arrayValue = currentFilters[filterType as keyof typeof currentFilters] as unknown[];
+        arrayValue.forEach((value: unknown) => {
           onFilterChange(filterType, value, false);
         });
       } else if (currentFilters[filterType as keyof typeof currentFilters]) {
@@ -242,7 +242,7 @@ const ProfessionalFacetedSidebar: React.FC<FacetedSidebarProps> = ({
                         section.type === 'radio'
                           ? currentFilters[section.id as keyof typeof currentFilters] === option.value
                           : Array.isArray(currentFilters[section.id as keyof typeof currentFilters])
-                          ? (currentFilters[section.id as keyof typeof currentFilters] as any[])?.includes(option.value)
+                          ? (currentFilters[section.id as keyof typeof currentFilters] as unknown[])?.includes(option.value)
                           : false
                       }
                       onChange={(e) => {

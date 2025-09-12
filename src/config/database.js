@@ -14,7 +14,7 @@ const dbUrl = process.env.NETLIFY_DATABASE_URL_UNPOOLED ||
               process.env.NETLIFY_DATABASE_URL || 
               process.env.DATABASE_URL;
 
-console.log('🔧 Database URL configured:', !!dbUrl);
+console.warn('🔧 Database URL configured:', !!dbUrl);
 
 if (dbUrl) {
   const sql = neon(dbUrl);

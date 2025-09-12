@@ -66,7 +66,7 @@ export interface AnalyticsRequest {
   responseTime: number;
   timestamp: string; // ISO date string
   userAgent?: string;
-  additionalData?: Record<string, any>;
+  additionalData?: Record<string, unknown>;
 }
 
 export interface AnalyticsResponse {
@@ -79,7 +79,7 @@ export interface AnalyticsResponse {
 export interface APIError {
   error: string;
   code: string;
-  details?: Record<string, any>;
+  details?: Record<string, unknown>;
   timestamp: string;
   suggestions?: string[];
 }
@@ -213,7 +213,7 @@ export type APIEndpoint =
 
 export type HTTPMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
-export interface APIRequest<TParams = any> {
+export interface APIRequest<TParams = Record<string, unknown>> {
   endpoint: APIEndpoint;
   method: HTTPMethod;
   params?: TParams;
@@ -221,7 +221,7 @@ export interface APIRequest<TParams = any> {
 }
 
 // Type guards for runtime validation
-export const isPlansListResponse = (obj: any): obj is PlansListResponse => {
+export const isPlansListResponse = (obj: unknown): obj is PlansListResponse => {
   return obj && 
          Array.isArray(obj.plans) && 
          typeof obj.totalCount === 'number' && 
@@ -230,16 +230,16 @@ export const isPlansListResponse = (obj: any): obj is PlansListResponse => {
          typeof obj.responseTime === 'number';
 };
 
-export const isAPIError = (obj: any): obj is APIError => {
+export const isAPIError = (obj: unknown): obj is APIError => {
   return obj && 
          typeof obj.error === 'string' && 
          typeof obj.code === 'string' && 
          typeof obj.timestamp === 'string';
 };
 
-export const isValidPlanIds = (planIds: any): planIds is string[] => {
+export const isValidPlanIds = (planIds: unknown): planIds is string[] => {
   return Array.isArray(planIds) && 
          planIds.length >= 2 && 
          planIds.length <= 4 && 
-         planIds.every((id: any) => typeof id === 'string' && /^[0-9a-fA-F]{24}$/.test(id));
+         planIds.every((id: unknown) => typeof id === 'string' && /^[0-9a-fA-F]{24}$/.test(id));
 };

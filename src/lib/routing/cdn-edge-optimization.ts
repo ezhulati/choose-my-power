@@ -251,7 +251,7 @@ export class CDNEdgeOptimization {
     failed: number;
     regions: string[];
   }> {
-    console.log(`🔥 Warming edge cache for ${routes.length} routes...`);
+    console.warn(`🔥 Warming edge cache for ${routes.length} routes...`);
     
     const targetRegions = regions || this.config.edgeRegions;
     let warmed = 0;
@@ -269,7 +269,7 @@ export class CDNEdgeOptimization {
 
     await Promise.all(warmingPromises);
 
-    console.log(`✅ Edge cache warming completed: ${warmed} success, ${failed} failed`);
+    console.warn(`✅ Edge cache warming completed: ${warmed} success, ${failed} failed`);
     
     return { warmed, failed, regions: targetRegions };
   }
@@ -313,7 +313,7 @@ export class CDNEdgeOptimization {
       }
     }
 
-    console.log(`🗑️  Purge operations: ${executed} executed, ${queued} queued`);
+    console.warn(`🗑️  Purge operations: ${executed} executed, ${queued} queued`);
     return { queued, executed };
   }
 
@@ -334,7 +334,7 @@ export class CDNEdgeOptimization {
     optimizedRegions: string[];
     errors: string[];
   }> {
-    console.log(`🌍 Optimizing route ${route} for regions: ${regions.join(', ')}`);
+    console.warn(`🌍 Optimizing route ${route} for regions: ${regions.join(', ')}`);
     
     const optimizedRegions: string[] = [];
     const errors: string[] = [];
@@ -369,7 +369,7 @@ export class CDNEdgeOptimization {
     // Sort by pattern specificity (more specific patterns first)
     this.cacheRules.sort((a, b) => b.pattern.length - a.pattern.length);
     
-    console.log(`📋 Cache rule configured for pattern: ${rule.pattern}`);
+    console.warn(`📋 Cache rule configured for pattern: ${rule.pattern}`);
   }
 
   /**
@@ -396,7 +396,7 @@ export class CDNEdgeOptimization {
         avgResponseTime: this.metrics.averageResponseTime,
         totalRequests: this.metrics.totalRequests
       },
-      byRegion: [] as any[],
+      byRegion: [] as unknown[],
       recommendations: [] as string[]
     };
 
@@ -523,7 +523,7 @@ export class CDNEdgeOptimization {
       this.processPurgeQueue();
     }, 30000); // Update every 30 seconds
 
-    console.log('📊 CDN monitoring started');
+    console.warn('📊 CDN monitoring started');
   }
 
   private async updateMetrics(): Promise<void> {
@@ -550,17 +550,17 @@ export class CDNEdgeOptimization {
 
   private async updateCloudflareMetrics(): Promise<void> {
     // Cloudflare Analytics API integration would go here
-    console.log('📊 Updating Cloudflare metrics...');
+    console.warn('📊 Updating Cloudflare metrics...');
   }
 
   private async updateFastlyMetrics(): Promise<void> {
     // Fastly Analytics API integration would go here
-    console.log('📊 Updating Fastly metrics...');
+    console.warn('📊 Updating Fastly metrics...');
   }
 
   private async updateCloudFrontMetrics(): Promise<void> {
     // CloudFront CloudWatch integration would go here
-    console.log('📊 Updating CloudFront metrics...');
+    console.warn('📊 Updating CloudFront metrics...');
   }
 
   private findMatchingCacheRule(route: string): EdgeCacheRule | null {
@@ -612,7 +612,7 @@ export class CDNEdgeOptimization {
 
   private async warmSingleRoute(route: string, regions: string[]): Promise<void> {
     // Implementation would make requests to edge locations
-    console.log(`🔥 Warming ${route} in regions: ${regions.join(', ')}`);
+    console.warn(`🔥 Warming ${route} in regions: ${regions.join(', ')}`);
     
     for (const region of regions) {
       // Simulate warming request
@@ -656,17 +656,17 @@ export class CDNEdgeOptimization {
   }
 
   private async purgeCloudflare(operation: PurgeOperation): Promise<void> {
-    console.log(`🗑️  Purging from Cloudflare: ${operation.target}`);
+    console.warn(`🗑️  Purging from Cloudflare: ${operation.target}`);
     // Cloudflare purge API call would go here
   }
 
   private async purgeFastly(operation: PurgeOperation): Promise<void> {
-    console.log(`🗑️  Purging from Fastly: ${operation.target}`);
+    console.warn(`🗑️  Purging from Fastly: ${operation.target}`);
     // Fastly purge API call would go here
   }
 
   private async purgeCloudFront(operation: PurgeOperation): Promise<void> {
-    console.log(`🗑️  Purging from CloudFront: ${operation.target}`);
+    console.warn(`🗑️  Purging from CloudFront: ${operation.target}`);
     // CloudFront invalidation API call would go here
   }
 
@@ -697,7 +697,7 @@ export class CDNEdgeOptimization {
 
   private async optimizeSingleRegion(route: string, region: string): Promise<void> {
     // Implementation would optimize edge cache for specific region
-    console.log(`🌍 Optimizing ${route} for region: ${region}`);
+    console.warn(`🌍 Optimizing ${route} for region: ${region}`);
   }
 
   private calculateRegionResponseTime(region: string): number {
@@ -705,7 +705,7 @@ export class CDNEdgeOptimization {
     return Math.random() * 500; // Placeholder
   }
 
-  private generateOptimizationRecommendations(report: any): string[] {
+  private generateOptimizationRecommendations(report: unknown): string[] {
     const recommendations: string[] = [];
 
     if (report.global.hitRate < this.config.performanceThresholds.hitRateMin) {
@@ -717,9 +717,9 @@ export class CDNEdgeOptimization {
     }
 
     // Add region-specific recommendations
-    const unhealthyRegions = report.byRegion.filter((r: any) => r.health !== 'healthy');
+    const unhealthyRegions = report.byRegion.filter((r: unknown) => r.health !== 'healthy');
     if (unhealthyRegions.length > 0) {
-      recommendations.push(`Investigate performance issues in regions: ${unhealthyRegions.map((r: any) => r.region).join(', ')}`);
+      recommendations.push(`Investigate performance issues in regions: ${unhealthyRegions.map((r: unknown) => r.region).join(', ')}`);
     }
 
     return recommendations;
@@ -730,7 +730,7 @@ export class CDNEdgeOptimization {
     if (this.monitoringInterval) {
       clearInterval(this.monitoringInterval);
     }
-    console.log('🛑 CDN optimization monitoring stopped');
+    console.warn('🛑 CDN optimization monitoring stopped');
   }
 }
 

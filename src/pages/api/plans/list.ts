@@ -204,7 +204,7 @@ export const GET: APIRoute = async ({ request, url }) => {
     const hasMore = offset + limit < filteredCount;
 
     // Generate suggestions for zero results (FR-011)
-    let suggestions: any[] = [];
+    let suggestions: unknown[] = [];
     if (filteredCount === 0) {
       try {
         suggestions = filterEngine.generateSuggestions(filters);

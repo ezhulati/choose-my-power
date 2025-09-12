@@ -178,22 +178,22 @@ const normalizeUrl = (u: string) => (u && typeof u === 'string') ? u.replace(/\/
         <!-- Overall Health Status -->
         <div class={`mt-4 p-4 rounded-lg border-2 ${
           healthStatus === 'excellent' ? 'bg-green-50 border-green-200' :
-          healthStatus === 'good' ? 'bg-texas-cream-200 border-blue-200' :
+          healthStatus === 'good' ? 'bg-texas-cream-200 border-texas-navy/30' :
           healthStatus === 'warning' ? 'bg-yellow-50 border-yellow-200' :
-          'bg-red-50 border-red-200'
+          'bg-texas-red/10 border-texas-red/30'
         }`}>
           <div class="flex items-center">
             <div class={`w-4 h-4 rounded-full mr-3 ${
               healthStatus === 'excellent' ? 'bg-green-500' :
               healthStatus === 'good' ? 'bg-texas-cream-2000' :
               healthStatus === 'warning' ? 'bg-yellow-500' :
-              'bg-red-500'
+              'bg-texas-red/100'
             }`}></div>
             <span class={`font-semibold ${
               healthStatus === 'excellent' ? 'text-green-800' :
               healthStatus === 'good' ? 'text-texas-navy' :
               healthStatus === 'warning' ? 'text-yellow-800' :
-              'text-red-800'
+              'text-texas-red-800'
             }`}>
               System Health: {healthScore}/100 ({healthStatus.toUpperCase()})
             </span>

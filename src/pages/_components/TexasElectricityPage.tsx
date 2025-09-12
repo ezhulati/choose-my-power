@@ -37,7 +37,6 @@ export function TexasElectricityPage({}: TexasElectricityPageProps) {
   useEffect(() => {
     const loadData = async () => {
       try {
-        console.log('[TexasElectricityPage] Loading Texas data...');
         
         const [providersData, citiesData] = await Promise.all([
           getProviders('texas'),
@@ -46,7 +45,6 @@ export function TexasElectricityPage({}: TexasElectricityPageProps) {
         
         setProviders(providersData);
         setCities(citiesData);
-        console.log(`[TexasElectricityPage] Loaded ${providersData.length} providers and ${citiesData.length} cities`);
       } catch (error) {
         console.error('[TexasElectricityPage] Error loading data:', error);
       } finally {

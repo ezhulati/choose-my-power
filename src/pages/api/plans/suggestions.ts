@@ -360,7 +360,7 @@ function generateSuggestionInsights(
   suggestions: ElectricityPlan[],
   allPlans: ElectricityPlan[],
   type: string
-): any {
+): unknown {
   if (suggestions.length === 0) {
     return {
       summary: 'No suggestions found',

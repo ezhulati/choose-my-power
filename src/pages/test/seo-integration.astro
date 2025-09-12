@@ -30,7 +30,7 @@ import CityPageSEOIntegration from '../../components/seo/CityPageSEOIntegration'
         <h2 class="text-2xl font-bold text-texas-navy mb-6">Live SEO Metadata Application</h2>
         <div class="bg-gradient-to-r from-texas-navy to-blue-800 text-white p-6 rounded-xl mb-6">
           <h3 class="text-xl font-semibold mb-2">Dallas Electricity Plans</h3>
-          <p class="text-blue-100">
+          <p class="text-white/90">
             This page demonstrates automatic SEO metadata application. Check the page title, meta tags, and structured data.
           </p>
         </div>
@@ -76,8 +76,8 @@ import CityPageSEOIntegration from '../../components/seo/CityPageSEOIntegration'
               isDeregulated={true}
               showDebugInfo={false}
             />
-            <div class="mt-4 p-3 bg-blue-50 rounded-lg">
-              <p class="text-sm text-blue-700">
+            <div class="mt-4 p-3 bg-texas-navy/10 rounded-lg">
+              <p class="text-sm text-texas-navy-700">
                 SEO metadata generated and applied automatically. Title includes plan count and average rate.
               </p>
             </div>
@@ -201,14 +201,14 @@ import CityPageSEOIntegration from '../../components/seo/CityPageSEOIntegration'
             <h3 class="text-lg font-semibold text-gray-900 mb-4">🧪 Quick Tests</h3>
             <div class="space-y-3">
               <button 
-                class="test-api-btn w-full px-4 py-2 bg-texas-red text-white rounded-lg hover:bg-red-700 transition-colors"
+                class="test-api-btn w-full px-4 py-2 bg-texas-red text-white rounded-lg hover:bg-texas-red-700 transition-colors"
                 data-url="/api/seo/city-metadata?zipCode=75201&cityName=dallas&citySlug=dallas-tx&marketZone=North&planCount=109&avgRate=12.5&isDeregulated=true"
                 data-name="Dallas City Metadata"
               >
                 Test Dallas SEO Metadata
               </button>
               <button 
-                class="test-api-btn w-full px-4 py-2 bg-texas-navy text-white rounded-lg hover:bg-blue-800 transition-colors"
+                class="test-api-btn w-full px-4 py-2 bg-texas-navy text-white rounded-lg hover:bg-texas-navy-800 transition-colors"
                 data-url="/api/seo/zip-lookup?zipCode=77001"
                 data-name="Houston ZIP Lookup"
               >
@@ -305,11 +305,11 @@ import CityPageSEOIntegration from '../../components/seo/CityPageSEOIntegration'
           if (data.success) {
             resultsContent.className = 'bg-green-50 border border-green-200 p-3 rounded text-xs overflow-x-auto max-h-64';
           } else {
-            resultsContent.className = 'bg-red-50 border border-red-200 p-3 rounded text-xs overflow-x-auto max-h-64';
+            resultsContent.className = 'bg-texas-red/10 border border-texas-red/30 p-3 rounded text-xs overflow-x-auto max-h-64';
           }
         } catch (error) {
           resultsContent.textContent = `Error: ${error.message}`;
-          resultsContent.className = 'bg-red-50 border border-red-200 p-3 rounded text-xs overflow-x-auto max-h-64';
+          resultsContent.className = 'bg-texas-red/10 border border-texas-red/30 p-3 rounded text-xs overflow-x-auto max-h-64';
         } finally {
           btn.textContent = `Test ${name}`;
           btn.disabled = false;

@@ -206,7 +206,7 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
           setStep('results');
         }
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       // Ignore abort errors
       if (error.name === 'AbortError') {
         return;
@@ -241,9 +241,9 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
       
       if (zipValidationResult.isValid) {
         // Set up new debounce timer for auto-search
-        console.log('[AddressModal] Setting up auto-search timer for:', { address, zipCode });
+        // Setting up auto-search timer - debug logging removed for ESLint compliance
         debounceTimerRef.current = setTimeout(() => {
-          console.log('[AddressModal] Auto-search triggered');
+          // Auto-search triggered - debug logging removed for ESLint compliance
           performSearch(address, zipCode);
         }, 1200); // Increased debounce time for better UX
       }
@@ -261,7 +261,7 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
   // Manual search handler with ZIP validation
   // Implements FR-004: Error messages for invalid ZIP codes
   const handleSearch = async () => {
-    console.log('[AddressModal] Manual search triggered', { address, zipCode });
+    // Manual search triggered - debug logging removed for ESLint compliance
     
     if (!address.trim()) {
       setSearchError('Please enter a valid address');
@@ -286,7 +286,7 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
       debounceTimerRef.current = null;
     }
 
-    console.log('[AddressModal] Calling performSearch for manual search');
+    // Calling performSearch for manual search - debug logging removed for ESLint compliance
     await performSearch(address, zipCode);
   };
 
@@ -343,8 +343,9 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
   };
 
   // Get the MongoDB ObjectId for the plan
-  const getPlanObjectId = (planData: any): string | null => {
-    console.log('[AddressModal] Getting plan ObjectId:', {
+  const getPlanObjectId = (planData: unknown): string | null => {
+    // Getting plan ObjectId - debug logging removed for ESLint compliance
+    //
       planName: planData.name,
       provider: planData.provider?.name,
       planId: planData.id,
@@ -355,18 +356,19 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
     
     // First priority: Use API-fetched MongoDB ObjectId
     if (planData.apiPlanId && /^[a-f0-9]{24}$/i.test(planData.apiPlanId)) {
-      console.log('[AddressModal] Using valid apiPlanId:', planData.apiPlanId);
+      // Using valid apiPlanId - debug logging removed for ESLint compliance
       return planData.apiPlanId;
     }
     
     // Second priority: Use plan's own ID if it's a valid MongoDB ObjectId (24 hex chars)
     if (planData.id && /^[a-f0-9]{24}$/i.test(planData.id)) {
-      console.log('[AddressModal] Using valid plan.id:', planData.id);
+      // Using valid plan.id - debug logging removed for ESLint compliance
       return planData.id;
     }
     
     // No valid plan ID found - this is an error condition
-    console.error('[AddressModal] No valid plan ID found for:', {
+    console.error('[AddressModal] No valid plan ID found for plan:', planData.name);
+    /*
       planName: planData.name,
       provider: planData.provider?.name,
       planId: planData.id,
@@ -389,7 +391,7 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
     
     // If no plan ID found, try to fetch it one more time as a fallback
     if (!actualPlanId) {
-      console.log('[AddressModal] No plan ID found, attempting to fetch from API...');
+      // No plan ID found, attempting to fetch from API - debug logging removed for ESLint compliance
       setPlanError('Loading plan information...');
       
       try {
@@ -399,7 +401,7 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
           const searchResults = await response.json();
           if (searchResults && searchResults.length > 0) {
             actualPlanId = searchResults[0].id;
-            console.log('[AddressModal] Fetched plan ID from API:', actualPlanId);
+            // Fetched plan ID from API - debug logging removed for ESLint compliance
             setPlanError(null); // Clear the loading message
           }
         }
@@ -447,7 +449,8 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
       return;
     }
     
-    console.log('[AddressModal] Opening ComparePower order page:', {
+    // Opening ComparePower order page - debug logging removed for ESLint compliance
+    /*
       esiid: selectedLocation.esiid,
       planId: actualPlanId,
       planName: planData.name,
@@ -512,7 +515,7 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
                 showZipValidation && zipValidation && (
                   zipValidation.isValid 
                     ? "border-green-300 focus-visible:border-green-500 focus-visible:ring-green-500/50"
-                    : "border-red-300 focus-visible:border-red-500 focus-visible:ring-red-500/50"
+                    : "border-texas-red focus-visible:border-texas-red focus-visible:ring-texas-red/50"
                 )
               )}
               autoComplete="postal-code"
@@ -526,7 +529,7 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
                 {zipValidation.isValid ? (
                   <CheckCircle className="h-4 w-4 text-green-600" />
                 ) : (
-                  <AlertCircle className="h-4 w-4 text-red-600" />
+                  <AlertCircle className="h-4 w-4 text-texas-red" />
                 )}
               </div>
             )}
@@ -538,17 +541,17 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
               "mt-2 p-2 rounded-md text-sm flex items-start gap-2",
               zipValidation.isValid 
                 ? "bg-green-50 border border-green-200"
-                : "bg-red-50 border border-red-200"
+                : "bg-texas-red/10 border border-texas-red/30"
             )}>
               {zipValidation.isValid ? (
                 <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0 mt-0.5" />
               ) : (
-                <AlertCircle className="h-4 w-4 text-red-600 flex-shrink-0 mt-0.5" />
+                <AlertCircle className="h-4 w-4 text-texas-red flex-shrink-0 mt-0.5" />
               )}
               <div className="flex-1">
                 <div className={cn(
                   "font-medium",
-                  zipValidation.isValid ? "text-green-800" : "text-red-800"
+                  zipValidation.isValid ? "text-green-800" : "text-texas-red-800"
                 )}>
                   {(() => {
                     const message = getValidationMessage(zipValidation);
@@ -564,7 +567,7 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
                 {zipValidation.city && (
                   <div className={cn(
                     "text-xs mt-1",
-                    zipValidation.isValid ? "text-green-700" : "text-red-700"
+                    zipValidation.isValid ? "text-green-700" : "text-texas-red-700"
                   )}>
                     {zipValidation.city}, Texas • {zipValidation.tdsp?.name || 'Utility TBD'}
                   </div>
@@ -584,7 +587,7 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
 
         {searchError && (
           <div 
-            className="flex items-center p-3 text-sm text-red-800 bg-red-50 border border-red-200 rounded-md"
+            className="flex items-center p-3 text-sm text-texas-red-800 bg-texas-red/10 border border-texas-red/30 rounded-md"
             role="alert"
             aria-live="polite"
             aria-atomic="true"
@@ -639,7 +642,7 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
             key={location.esiid}
             className={cn(
               "cursor-pointer border-2 transition-all duration-200 hover:border-texas-navy hover:shadow-md active:scale-[0.98]",
-              validatingEsiid === location.esiid && "border-texas-red bg-red-50",
+              validatingEsiid === location.esiid && "border-texas-red bg-texas-red/10",
               isValidating && validatingEsiid !== location.esiid && "opacity-30 cursor-not-allowed pointer-events-none"
             )}
             onClick={(e) => {
@@ -685,7 +688,7 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
 
       {searchError && (
         <div 
-          className="flex items-center p-3 text-sm text-red-800 bg-red-50 border border-red-200 rounded-md"
+          className="flex items-center p-3 text-sm text-texas-red-800 bg-texas-red/10 border border-texas-red/30 rounded-md"
           role="alert"
           aria-live="polite"
           aria-atomic="true"
@@ -738,7 +741,7 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
 
       {planError && (
         <div 
-          className="flex items-center p-3 text-sm text-red-800 bg-red-50 border border-red-200 rounded-md"
+          className="flex items-center p-3 text-sm text-texas-red-800 bg-texas-red/10 border border-texas-red/30 rounded-md"
           role="alert"
           aria-live="polite"
           aria-atomic="true"

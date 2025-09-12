@@ -62,7 +62,7 @@ export class EducationalContentSystem {
     this.createEnergyEfficiencyGuide();
     this.createMarketTrendsGuide();
 
-    console.log(`📚 Initialized ${this.guides.size} comprehensive educational guides`);
+    console.warn(`📚 Initialized ${this.guides.size} comprehensive educational guides`);
   }
 
   /**

@@ -368,7 +368,7 @@ const PlanResultsGrid: React.FC<PlanResultsGridProps> = ({
                         </li>
                         {plan.early_termination_fee > 0 && (
                           <li className="flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                            <span className="w-1.5 h-1.5 bg-texas-red/100 rounded-full"></span>
                             ${plan.early_termination_fee} early termination fee
                           </li>
                         )}

@@ -44,15 +44,15 @@ class BatchGenerator {
     const jobId = this.generateJobId();
     const contexts = await this.generateAllPageContexts();
     
-    console.log(`🏭 Starting strategic batch generation: ${contexts.length} page contexts`);
+    console.warn(`🏭 Starting strategic batch generation: ${contexts.length} page contexts`);
     
     // Use image strategy to optimize contexts to ~300 unique templates
     const requiredTemplates = imageStrategy.getRequiredTemplates(contexts);
     const optimizedContexts = this.createTemplateContexts(requiredTemplates, contexts);
     
     const costSavings = imageStrategy.getCostSavings(contexts);
-    console.log(`💰 Cost optimization: ${costSavings.totalPages} pages → ${costSavings.uniqueImages} images`);
-    console.log(`💵 Estimated savings: ${costSavings.estimatedCostReduction}`);
+    console.warn(`💰 Cost optimization: ${costSavings.totalPages} pages → ${costSavings.uniqueImages} images`);
+    console.warn(`💵 Estimated savings: ${costSavings.estimatedCostReduction}`);
     
     const job: BatchJob = {
       id: jobId,
@@ -182,7 +182,7 @@ class BatchGenerator {
    */
   private async executeJob(job: BatchJob): Promise<void> {
     try {
-      console.log(`🚀 Starting batch job ${job.id}: ${job.totalImages} images`);
+      console.warn(`🚀 Starting batch job ${job.id}: ${job.totalImages} images`);
       
       job.status = 'running';
       job.startedAt = new Date().toISOString();
@@ -195,7 +195,7 @@ class BatchGenerator {
         if (job.status !== 'running') break; // Job was cancelled
         
         const batch = job.contexts.slice(i, i + batchSize);
-        console.log(`📦 Processing batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(job.contexts.length / batchSize)}`);
+        console.warn(`📦 Processing batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(job.contexts.length / batchSize)}`);
 
         try {
           const results = await this.processBatch(batch);
@@ -222,7 +222,7 @@ class BatchGenerator {
       job.completedAt = new Date().toISOString();
       job.progress = 100;
 
-      console.log(`✅ Batch job ${job.id} completed: ${job.generatedImages}/${job.totalImages} images`);
+      console.warn(`✅ Batch job ${job.id} completed: ${job.generatedImages}/${job.totalImages} images`);
       
       if (job.errors.length > 0) {
         console.warn(`⚠️ Job completed with ${job.errors.length} errors`);
@@ -343,7 +343,7 @@ class BatchGenerator {
       }
     }
 
-    console.log(`📊 Generated ${contexts.length} total page contexts`);
+    console.warn(`📊 Generated ${contexts.length} total page contexts`);
     return contexts;
   }
 
@@ -429,7 +429,7 @@ class BatchGenerator {
       }
     }
 
-    console.log(`🎯 Generated ${contexts.length} high-priority contexts`);
+    console.warn(`🎯 Generated ${contexts.length} high-priority contexts`);
     return contexts;
   }
 
@@ -437,7 +437,7 @@ class BatchGenerator {
    * Create template contexts from strategy optimization
    */
   private createTemplateContexts(
-    templates: any[], 
+    templates: unknown[], 
     allContexts: ImageGenerationContext[]
   ): ImageGenerationContext[] {
     const templateContexts: ImageGenerationContext[] = [];
@@ -457,7 +457,7 @@ class BatchGenerator {
       }
     }
     
-    console.log(`🏗️ Created ${templateContexts.length} template contexts from ${templates.length} templates`);
+    console.warn(`🏗️ Created ${templateContexts.length} template contexts from ${templates.length} templates`);
     return templateContexts;
   }
 
@@ -521,7 +521,7 @@ class BatchGenerator {
       }
     }
     
-    console.log(`🧹 Cleaned up ${cleanedCount} old batch jobs`);
+    console.warn(`🧹 Cleaned up ${cleanedCount} old batch jobs`);
     return cleanedCount;
   }
 }

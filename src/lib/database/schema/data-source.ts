@@ -213,7 +213,7 @@ export function isValidReliability(reliability: number): boolean {
   return reliability >= 0 && reliability <= 100 && Number.isInteger(reliability);
 }
 
-export function isValidConfiguration(config: any, type: DataSourceType): boolean {
+export function isValidConfiguration(config: unknown, type: DataSourceType): boolean {
   if (!config || typeof config !== 'object') return false;
   
   if (type === DATA_SOURCE_TYPES.API) {
@@ -420,7 +420,7 @@ export const DEFAULT_DATA_SOURCE_SEED: NewDataSource[] = Object.values(TEXAS_DAT
     endpoints: {}
   } : {},
   metadata: {
-    description: (source as any).description || '',
+    description: (source as unknown).description || '',
     region: 'texas',
     category: 'electricity_market'
   }

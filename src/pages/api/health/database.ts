@@ -13,7 +13,7 @@ export const GET: APIRoute = async () => {
     
     // If database is not healthy, try to initialize
     if (!healthStatus.healthy) {
-      console.log('🔧 Database not healthy, attempting initialization...');
+      console.warn('🔧 Database not healthy, attempting initialization...');
       
       try {
         await initializeDatabase();
@@ -35,7 +35,7 @@ export const GET: APIRoute = async () => {
 
     const status = healthStatus.healthy ? 200 : 500;
 
-    console.log(`🏥 Database health check: ${healthStatus.healthy ? 'HEALTHY' : 'UNHEALTHY'}`);
+    console.warn(`🏥 Database health check: ${healthStatus.healthy ? 'HEALTHY' : 'UNHEALTHY'}`);
 
     return new Response(JSON.stringify(responseData, null, 2), {
       status,

@@ -26,7 +26,7 @@ interface FilterInteractionData {
     width: number;
     height: number;
   };
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 interface AnalyticsResponse {
@@ -81,7 +81,7 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     // Parse request body
-    let requestData: any;
+    let requestData: FilterInteractionData;
     try {
       requestData = await request.json();
     } catch (error) {
@@ -195,7 +195,7 @@ export const POST: APIRoute = async ({ request }) => {
 /**
  * Validate interaction data structure and required fields
  */
-function validateInteractionData(data: any): { valid: boolean; errors?: string[] } {
+function validateInteractionData(data: unknown): { valid: boolean; errors?: string[] } {
   const errors: string[] = [];
 
   // Required fields
@@ -263,7 +263,7 @@ function validateInteractionData(data: any): { valid: boolean; errors?: string[]
 /**
  * Sanitize string input for security
  */
-function sanitizeString(input: any): string {
+function sanitizeString(input: unknown): string {
   if (typeof input !== 'string') return '';
   
   return input
@@ -287,7 +287,7 @@ function recordInteraction(data: FilterInteractionData): boolean {
     
     // Log interesting interactions in development
     if (process.env.NODE_ENV === 'development') {
-      console.log('[Analytics] Filter interaction:', {
+      console.warn('[Analytics] Filter interaction:', {
         type: data.interactionType,
         filter: data.filterName,
         value: data.filterValue,
@@ -357,7 +357,7 @@ function flushAnalyticsBuffer(): void {
   const interactions = analyticsBuffer.splice(0);
   
   if (process.env.NODE_ENV === 'development') {
-    console.log(`[Analytics] Flushing ${interactions.length} interactions`);
+    console.warn(`[Analytics] Flushing ${interactions.length} interactions`);
     
     // Generate summary statistics
     const stats = interactions.reduce((acc, interaction) => {
@@ -366,7 +366,7 @@ function flushAnalyticsBuffer(): void {
       return acc;
     }, {} as Record<string, number>);
     
-    console.log('[Analytics] Interaction summary:', stats);
+    console.warn('[Analytics] Interaction summary:', stats);
   }
   
   // TODO: Implement actual analytics service integration
@@ -420,6 +420,6 @@ setInterval(() => {
   
   const removedCount = beforeCount - analyticsBuffer.length;
   if (removedCount > 0 && process.env.NODE_ENV === 'development') {
-    console.log(`[Analytics] Cleaned ${removedCount} old analytics entries`);
+    console.warn(`[Analytics] Cleaned ${removedCount} old analytics entries`);
   }
 }, 60 * 60 * 1000); // Run every hour

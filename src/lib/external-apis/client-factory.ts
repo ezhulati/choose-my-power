@@ -307,7 +307,7 @@ export class APIClientFactory {
   /**
    * Get client health status
    */
-  async getClientHealthStatus(clientName?: string): Promise<any> {
+  async getClientHealthStatus(clientName?: string): Promise<unknown> {
     if (clientName) {
       const client = this.clients.get(clientName);
       if (client) {
@@ -317,12 +317,12 @@ export class APIClientFactory {
     }
 
     // Get health status for all clients
-    const healthStatuses: Record<string, any> = {};
+    const healthStatuses: Record<string, unknown> = {};
     
     for (const [name, client] of this.clients) {
       try {
         healthStatuses[name] = await client.getHealthStatus();
-      } catch (error: any) {
+      } catch (error: unknown) {
         healthStatuses[name] = {
           status: 'error',
           error: error.message,
@@ -341,7 +341,7 @@ export class APIClientFactory {
   /**
    * Calculate overall health from individual client health statuses
    */
-  private calculateOverallHealth(healthStatuses: Record<string, any>): string {
+  private calculateOverallHealth(healthStatuses: Record<string, unknown>): string {
     const statuses = Object.values(healthStatuses);
     
     if (statuses.length === 0) {

@@ -18,7 +18,7 @@ interface SearchResponse {
   filters?: {
     type: string;
     limit: number;
-    appliedFilters: Record<string, any>;
+    appliedFilters: Record<string, unknown>;
   };
   error?: string;
 }
@@ -189,7 +189,7 @@ async function logApiMetrics(metrics: {
   ipAddress?: string;
 }): Promise<void> {
   try {
-    console.log('API Metrics:', {
+    console.warn('API Metrics:', {
       timestamp: new Date().toISOString(),
       ...metrics
     });

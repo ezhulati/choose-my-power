@@ -86,7 +86,7 @@ export interface PlanResultsProps {
   /** Callback for comparison changes */
   onComparisonChange?: (planIds: string[]) => void;
   /** Analytics event callback */
-  onTrackEvent?: (event: string, properties: Record<string, any>) => void;
+  onTrackEvent?: (event: string, properties: Record<string, unknown>) => void;
 }
 
 export function PlanResults({
@@ -289,7 +289,7 @@ export function PlanResults({
       planType: plan.contract.type as 'fixed' | 'variable' | 'indexed',
       greenEnergy: plan.features.greenEnergy > 0,
       noDeposit: !plan.features.deposit.required,
-      topRated: (plan.provider as any)?.rating >= 4.5 || false,
+      topRated: (plan.provider as unknown)?.rating >= 4.5 || false,
       features: [
         plan.contract.type === 'fixed' ? 'Fixed Rate' : 'Variable Rate',
         ...(plan.features.greenEnergy > 0 ? [`${plan.features.greenEnergy}% Green Energy`] : []),
@@ -302,7 +302,7 @@ export function PlanResults({
   }, [searchFilteredPlans]);
 
   // Handle filter changes
-  const handleFilterChange = useCallback((filterType: string, value: any) => {
+  const handleFilterChange = useCallback((filterType: string, value: unknown) => {
     const newFilters = { ...selectedFilters, [filterType]: value };
     setSelectedFilters(newFilters);
     updateFilters(newFilters);
@@ -319,8 +319,8 @@ export function PlanResults({
     const option = sortOptions.find(opt => opt.value === sortValue);
     if (!option) return;
 
-    setCurrentSort({ field: option.field as any, order: option.order });
-    updateSorting(option.field as any, option.order);
+    setCurrentSort({ field: option.field as unknown, order: option.order });
+    updateSorting(option.field as unknown, option.order);
     
     trackEvent('sort_changed', {
       sortField: option.field,
@@ -647,8 +647,8 @@ export function PlanResults({
 // Plan Filters Component
 interface PlanFiltersProps {
   config: FilterConfig;
-  selectedFilters: any;
-  onFilterChange: (filterType: string, value: any) => void;
+  selectedFilters: unknown;
+  onFilterChange: (filterType: string, value: unknown) => void;
 }
 
 function PlanFilters({ config, selectedFilters, onFilterChange }: PlanFiltersProps) {

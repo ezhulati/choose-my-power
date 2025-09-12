@@ -13,7 +13,7 @@ interface FilterBreadcrumbProps {
   filters: FilterState;
   citySlug: string;
   cityName: string;
-  onRemoveFilter: (filterType: string, value: any, checked: boolean) => void;
+  onRemoveFilter: (filterType: string, value: unknown, checked: boolean) => void;
   onClearAll: () => void;
   className?: string;
 }
@@ -21,7 +21,7 @@ interface FilterBreadcrumbProps {
 interface BreadcrumbItem {
   label: string;
   type: string;
-  value: any;
+  value: unknown;
   url: string;
   removable: boolean;
 }
@@ -221,7 +221,7 @@ const FilterBreadcrumb: React.FC<FilterBreadcrumbProps> = ({
 /**
  * Build URL for removing a specific filter
  */
-function buildRemoveFilterUrl(citySlug: string, filterType: string, value: any, currentFilters: FilterState): string {
+function buildRemoveFilterUrl(citySlug: string, filterType: string, value: unknown, currentFilters: FilterState): string {
   const newFilters = { ...currentFilters };
   
   // Remove the specific filter

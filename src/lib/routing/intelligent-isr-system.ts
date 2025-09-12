@@ -155,7 +155,7 @@ export class IntelligentISRSystem {
    * Initialize the ISR system with background processes
    */
   private initializeISRSystem(): void {
-    console.log('🔄 Initializing Intelligent ISR System...');
+    console.warn('🔄 Initializing Intelligent ISR System...');
 
     // Start queue processor
     this.startQueueProcessor();
@@ -175,7 +175,7 @@ export class IntelligentISRSystem {
     process.on('SIGTERM', () => this.gracefulShutdown());
     process.on('SIGINT', () => this.gracefulShutdown());
 
-    console.log('✅ ISR System initialized successfully');
+    console.warn('✅ ISR System initialized successfully');
   }
 
   /**
@@ -292,7 +292,7 @@ export class IntelligentISRSystem {
       this.regenerationQueue.set(routePath, task);
       this.metrics.queueLength = this.regenerationQueue.size;
 
-      console.log(`📥 Queued regeneration: ${routePath} (reason: ${reason}, priority: ${priority})`);
+      console.warn(`📥 Queued regeneration: ${routePath} (reason: ${reason}, priority: ${priority})`);
       return true;
 
     } catch (error) {
@@ -312,7 +312,7 @@ export class IntelligentISRSystem {
       if (success) queuedCount++;
     }
 
-    console.log(`🔄 Manually queued ${queuedCount}/${routePaths.length} routes for regeneration`);
+    console.warn(`🔄 Manually queued ${queuedCount}/${routePaths.length} routes for regeneration`);
     return queuedCount;
   }
 
@@ -321,7 +321,7 @@ export class IntelligentISRSystem {
    */
   async invalidateRoutes(pattern: string): Promise<number> {
     try {
-      console.log(`🗑️  Invalidating routes matching pattern: ${pattern}`);
+      console.warn(`🗑️  Invalidating routes matching pattern: ${pattern}`);
 
       // Invalidate cache entries
       const invalidatedCount = await this.cache.invalidate(pattern);
@@ -347,7 +347,7 @@ export class IntelligentISRSystem {
   /**
    * Get current ISR metrics and status
    */
-  getMetrics(): RegenerationMetrics & { config: ISRConfig; queueStatus: any } {
+  getMetrics(): RegenerationMetrics & { config: ISRConfig; queueStatus: unknown} {
     return {
       ...this.metrics,
       config: this.config,
@@ -380,7 +380,7 @@ export class IntelligentISRSystem {
     };
 
     processQueue();
-    console.log('✅ Queue processor started');
+    console.warn('✅ Queue processor started');
   }
 
   /**
@@ -415,7 +415,7 @@ export class IntelligentISRSystem {
     task.attempts++;
 
     try {
-      console.log(`🔄 Regenerating: ${task.routePath} (attempt ${task.attempts})`);
+      console.warn(`🔄 Regenerating: ${task.routePath} (attempt ${task.attempts})`);
 
       // Rate limiting
       await this.enforceRateLimit();
@@ -427,7 +427,7 @@ export class IntelligentISRSystem {
       const duration = Date.now() - startTime;
       this.updateSuccessMetrics(duration, task.routePath);
 
-      console.log(`✅ Regenerated: ${task.routePath} in ${duration}ms`);
+      console.warn(`✅ Regenerated: ${task.routePath} in ${duration}ms`);
 
     } catch (error) {
       console.error(`❌ Regeneration failed: ${task.routePath}`, error);
@@ -646,7 +646,7 @@ export class IntelligentISRSystem {
   }
 
   private analyzeTrafficPatterns(): void {
-    console.log('📊 Analyzing traffic patterns...');
+    console.warn('📊 Analyzing traffic patterns...');
     
     for (const [routePath, pattern] of this.trafficPatterns.entries()) {
       // Identify peak hours
@@ -671,7 +671,7 @@ export class IntelligentISRSystem {
   }
 
   private async monitorPriceChanges(): Promise<void> {
-    console.log('💰 Monitoring price changes...');
+    console.warn('💰 Monitoring price changes...');
     
     // This would typically check for price changes across all routes
     // For now, just log that monitoring is active
@@ -680,11 +680,11 @@ export class IntelligentISRSystem {
   private async queuePatternRegeneration(pattern: string): Promise<void> {
     // Queue regeneration for routes matching the pattern
     // This would typically parse the pattern and queue relevant routes
-    console.log(`🔄 Queuing regeneration for pattern: ${pattern}`);
+    console.warn(`🔄 Queuing regeneration for pattern: ${pattern}`);
   }
 
   private async invalidateCdn(pattern: string): Promise<void> {
-    console.log(`🌐 Invalidating CDN for pattern: ${pattern}`);
+    console.warn(`🌐 Invalidating CDN for pattern: ${pattern}`);
     // CDN invalidation logic would go here
   }
 
@@ -705,20 +705,20 @@ export class IntelligentISRSystem {
   private resetDailyMetrics(): void {
     this.metrics.dailyRegenerationCount = 0;
     this.metrics.lastResetTime = Date.now();
-    console.log('📊 Daily metrics reset');
+    console.warn('📊 Daily metrics reset');
   }
 
   private async gracefulShutdown(): Promise<void> {
-    console.log('🛑 ISR System graceful shutdown initiated...');
+    console.warn('🛑 ISR System graceful shutdown initiated...');
     this.isShuttingDown = true;
     
     // Wait for active regenerations to complete
     while (this.activeRegenerations.size > 0) {
-      console.log(`⏳ Waiting for ${this.activeRegenerations.size} active regenerations to complete...`);
+      console.warn(`⏳ Waiting for ${this.activeRegenerations.size} active regenerations to complete...`);
       await new Promise(resolve => setTimeout(resolve, 1000));
     }
     
-    console.log('✅ ISR System shutdown complete');
+    console.warn('✅ ISR System shutdown complete');
   }
 }
 

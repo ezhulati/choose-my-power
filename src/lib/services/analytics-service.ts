@@ -21,10 +21,10 @@ export interface AnalyticsMetrics {
 }
 
 export class AnalyticsService {
-  private zipValidations: any[] = [];
-  private cityValidations: any[] = [];
-  private interactions: any[] = [];
-  private batchQueue: any[] = [];
+  private zipValidations: unknown[] = [];
+  private cityValidations: unknown[] = [];
+  private interactions: unknown[] = [];
+  private batchQueue: unknown[] = [];
   private batchTimeout: NodeJS.Timeout | null = null;
   private readonly batchSize = 10;
   private readonly batchDelay = 5000; // 5 seconds
@@ -89,9 +89,9 @@ export class AnalyticsService {
 
       // Log important events
       if (data.success) {
-        console.log(`[Analytics] ZIP validation success: ${data.zipCode} → ${data.cityName}`);
+        console.warn(`[Analytics] ZIP validation success: ${data.zipCode} → ${data.cityName}`);
       } else {
-        console.log(`[Analytics] ZIP validation error: ${data.zipCode} → ${data.errorCode}`);
+        console.warn(`[Analytics] ZIP validation error: ${data.zipCode} → ${data.errorCode}`);
       }
     } catch (error) {
       console.error('[Analytics] Error tracking ZIP validation:', error);
@@ -413,7 +413,7 @@ export class AnalyticsService {
     return dunsMapping[duns] || `TDSP-${duns.slice(-4)}`;
   }
 
-  private dataQualityIssues: any[];
+  private dataQualityIssues: unknown[];
 
   /**
    * Track city plans validation
@@ -443,7 +443,7 @@ export class AnalyticsService {
         this.cityValidations = this.cityValidations.slice(-1000);
       }
 
-      console.log(`[Analytics] City validation: ${data.citySlug} → ${data.planCount} plans`);
+      console.warn(`[Analytics] City validation: ${data.citySlug} → ${data.planCount} plans`);
     } catch (error) {
       console.error('[Analytics] Error tracking city validation:', error);
     }
@@ -711,7 +711,7 @@ export class AnalyticsService {
   }
 
   // Validation helper
-  private validateFormInteractionRequest(interaction: any): FormInteractionRequest {
+  private validateFormInteractionRequest(interaction: unknown): FormInteractionRequest {
     // Basic validation - in production would use a proper validation library
     return {
       zipCode: interaction.zipCode || '',
@@ -748,7 +748,7 @@ export class AnalyticsService {
         this.interactions = this.interactions.slice(-maxSize);
       }
 
-      console.log(`[AnalyticsService] Processed batch of ${batch.length} interactions`);
+      console.warn(`[AnalyticsService] Processed batch of ${batch.length} interactions`);
       
     } catch (error) {
       console.error('[AnalyticsService] Batch processing error:', error);
@@ -769,9 +769,9 @@ export class AnalyticsService {
     
     // Log important events
     if (interaction.action === 'submit' && interaction.success) {
-      console.log(`[AnalyticsService] Successful ZIP submission: ${interaction.zipCode} on ${interaction.cityPage}`);
+      console.warn(`[AnalyticsService] Successful ZIP submission: ${interaction.zipCode} on ${interaction.cityPage}`);
     } else if (interaction.action === 'error') {
-      console.log(`[AnalyticsService] Error interaction: ${interaction.zipCode} on ${interaction.cityPage}`);
+      console.warn(`[AnalyticsService] Error interaction: ${interaction.zipCode} on ${interaction.cityPage}`);
     }
   }
 
@@ -910,7 +910,7 @@ export class AnalyticsService {
         await this.flushNavigationEvents();
       }
 
-      console.log(`[Analytics] ZIP navigation tracked: ${event.eventType} for ${event.zipCode} (${event.responseTime}ms)`);
+      console.warn(`[Analytics] ZIP navigation tracked: ${event.eventType} for ${event.zipCode} (${event.responseTime}ms)`);
     } catch (error) {
       console.error('[Analytics] Error tracking ZIP navigation event:', error);
     }
@@ -1021,7 +1021,7 @@ export class AnalyticsService {
     try {
       // In a production system, you'd write to database here
       // For now, we'll just log the batch
-      console.log(`[Analytics] Flushed ${this.navigationEvents.length} navigation events to persistence`);
+      console.warn(`[Analytics] Flushed ${this.navigationEvents.length} navigation events to persistence`);
     } catch (error) {
       console.error('[Analytics] Error flushing navigation events:', error);
     }

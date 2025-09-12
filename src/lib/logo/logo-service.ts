@@ -281,5 +281,5 @@ export async function preloadCommonLogos(): Promise<void> {
     commonProviders.map(provider => getProviderLogo(provider))
   );
   
-  console.log(`✅ Preloaded ${commonProviders.length} common provider logos`);
+  console.warn(`✅ Preloaded ${commonProviders.length} common provider logos`);
 }

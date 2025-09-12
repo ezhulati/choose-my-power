@@ -32,7 +32,7 @@ const postgresClient = postgres(connectionString, {
   idle_timeout: 20, // Idle timeout in seconds
   connect_timeout: 10, // Connection timeout in seconds
   ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
-  onnotice: process.env.NODE_ENV === 'development' ? console.log : undefined,
+  onnotice: process.env.NODE_ENV === 'development' ? console.warn : undefined,
 })
 
 // Initialize Drizzle with schema
@@ -86,7 +86,7 @@ export async function getDatabaseMetrics() {
 export async function closeDatabaseConnection() {
   try {
     await postgresClient.end()
-    console.log('[Database] Connection closed gracefully')
+    console.warn('[Database] Connection closed gracefully')
   } catch (error) {
     console.error('[Database] Error closing connection:', error)
   }

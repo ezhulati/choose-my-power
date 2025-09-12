@@ -21,7 +21,7 @@ interface SmartAddressInputProps {
   onAddressResolved?: (result: {
     address: AddressInfo;
     tdsp: TdspInfo;
-    apiParams: any;
+    apiParams: unknown;
     confidence: string;
     method: string;
   }) => void;
@@ -61,7 +61,7 @@ const SmartAddressInput: React.FC<SmartAddressInputProps> = ({
   });
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [validation, setValidation] = useState<ValidationState | null>(null);
-  const [zipAnalysis, setZipAnalysis] = useState<any>(null);
+  const [zipAnalysis, setZipAnalysis] = useState<unknown>(null);
 
   // Handle ZIP code input with debounced analysis
   const analyzeZipCode = useCallback(async (zip: string) => {
@@ -253,7 +253,7 @@ const SmartAddressInput: React.FC<SmartAddressInputProps> = ({
       {validation && (
         <div className={`
           mt-2 p-3 rounded-lg text-sm
-          ${validation.type === 'error' ? 'bg-red-50 text-red-800' :
+          ${validation.type === 'error' ? 'bg-texas-red/10 text-texas-red-800' :
             validation.type === 'warning' ? 'bg-yellow-50 text-yellow-800' :
             validation.type === 'success' ? 'bg-green-50 text-green-800' :
             'bg-texas-cream-200 text-texas-navy'}

@@ -346,9 +346,8 @@ export const GET: APIRoute = async ({ request, url }) => {
  */
 function generatePlanRecommendation(
   plans: ElectricityPlan[],
-  costAnalysis: any,
-  featureMatrix: any
-): PlanRecommendation | undefined {
+  costAnalysis: unknown,
+  featureMatrix: unknown): PlanRecommendation | undefined {
   if (plans.length === 0) return undefined;
 
   // Simple recommendation: lowest cost plan
@@ -408,10 +407,9 @@ function countPlanFeatures(plan: ElectricityPlan): number {
  */
 function generateComparisonInsights(
   plans: ElectricityPlan[],
-  costAnalysis: any,
-  featureMatrix: any
-): any {
-  const insights: any = {
+  costAnalysis: unknown,
+  featureMatrix: unknown): unknown {
+  const insights: unknown = {
     summary: {
       planCount: plans.length,
       averageRate: plans.reduce((sum, plan) => sum + plan.baseRate, 0) / plans.length,

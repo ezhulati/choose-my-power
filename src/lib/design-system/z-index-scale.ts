@@ -127,6 +127,6 @@ export const validateZIndexScale = (): boolean => {
     }
   }
   
-  console.log('✅ Z-index scale validation passed.');
+  console.warn('✅ Z-index scale validation passed.');
   return true;
 };

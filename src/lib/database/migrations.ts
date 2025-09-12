@@ -12,7 +12,7 @@ import { getProviderLogo, getAllProviders } from '../providers/logo-mapper';
  * Run database migrations - create all tables and indexes
  */
 export async function runMigrations(): Promise<void> {
-  console.log('🔄 Running database migrations...');
+  console.warn('🔄 Running database migrations...');
   
   try {
     const sql = createUnpooledDatabaseConnection();
@@ -20,7 +20,7 @@ export async function runMigrations(): Promise<void> {
     // Execute the full schema creation
     await sql`${CREATE_TABLES_SQL}`;
     
-    console.log('✅ Database migrations completed successfully');
+    console.warn('✅ Database migrations completed successfully');
   } catch (error) {
     console.error('❌ Migration failed:', error);
     throw error;
@@ -31,7 +31,7 @@ export async function runMigrations(): Promise<void> {
  * Seed providers table with existing logo data
  */
 export async function seedProviders(): Promise<void> {
-  console.log('🌱 Seeding providers table...');
+  console.warn('🌱 Seeding providers table...');
   
   try {
     const sql = createUnpooledDatabaseConnection();
@@ -55,7 +55,7 @@ export async function seedProviders(): Promise<void> {
       `;
     }
     
-    console.log(`✅ Seeded ${providers.length} providers`);
+    console.warn(`✅ Seeded ${providers.length} providers`);
   } catch (error) {
     console.error('❌ Provider seeding failed:', error);
     throw error;
@@ -66,7 +66,7 @@ export async function seedProviders(): Promise<void> {
  * Seed TDSP (Transmission and Distribution Service Providers) data
  */
 export async function seedTDSP(): Promise<void> {
-  console.log('🌱 Seeding TDSP data...');
+  console.warn('🌱 Seeding TDSP data...');
   
   const tdspData: Omit<TDSP, 'id' | 'created_at' | 'updated_at'>[] = [
     {
@@ -122,7 +122,7 @@ export async function seedTDSP(): Promise<void> {
       `;
     }
     
-    console.log(`✅ Seeded ${tdspData.length} TDSP records`);
+    console.warn(`✅ Seeded ${tdspData.length} TDSP records`);
   } catch (error) {
     console.error('❌ TDSP seeding failed:', error);
     throw error;
@@ -133,7 +133,7 @@ export async function seedTDSP(): Promise<void> {
  * Seed major Texas cities data
  */
 export async function seedCities(): Promise<void> {
-  console.log('🌱 Seeding cities data...');
+  console.warn('🌱 Seeding cities data...');
   
   const citiesData: Omit<City, 'id' | 'created_at' | 'updated_at'>[] = [
     {
@@ -215,7 +215,7 @@ export async function seedCities(): Promise<void> {
       `;
     }
     
-    console.log(`✅ Seeded ${citiesData.length} cities`);
+    console.warn(`✅ Seeded ${citiesData.length} cities`);
   } catch (error) {
     console.error('❌ Cities seeding failed:', error);
     throw error;
@@ -226,7 +226,7 @@ export async function seedCities(): Promise<void> {
  * Clean expired cache entries
  */
 export async function cleanExpiredCache(): Promise<void> {
-  console.log('🧹 Cleaning expired cache entries...');
+  console.warn('🧹 Cleaning expired cache entries...');
   
   try {
     const sql = createUnpooledDatabaseConnection();
@@ -236,7 +236,7 @@ export async function cleanExpiredCache(): Promise<void> {
       WHERE expires_at < NOW()
     `;
     
-    console.log(`✅ Cleaned ${result.length} expired cache entries`);
+    console.warn(`✅ Cleaned ${result.length} expired cache entries`);
   } catch (error) {
     console.error('❌ Cache cleanup failed:', error);
     throw error;
@@ -276,7 +276,7 @@ export async function getDatabaseStats() {
  * Full database setup - run all migrations and seeding
  */
 export async function setupDatabase(): Promise<void> {
-  console.log('🚀 Setting up ChooseMyPower database...');
+  console.warn('🚀 Setting up ChooseMyPower database...');
   
   try {
     await runMigrations();
@@ -285,7 +285,7 @@ export async function setupDatabase(): Promise<void> {
     await seedCities();
     
     const stats = await getDatabaseStats();
-    console.log('📊 Database setup completed:', stats);
+    console.warn('📊 Database setup completed:', stats);
   } catch (error) {
     console.error('❌ Database setup failed:', error);
     throw error;
@@ -296,7 +296,7 @@ export async function setupDatabase(): Promise<void> {
  * Reset database - WARNING: This will drop all data
  */
 export async function resetDatabase(): Promise<void> {
-  console.log('⚠️  RESETTING DATABASE - ALL DATA WILL BE LOST!');
+  console.warn('⚠️  RESETTING DATABASE - ALL DATA WILL BE LOST!');
   
   try {
     const sql = createUnpooledDatabaseConnection();
@@ -313,7 +313,7 @@ export async function resetDatabase(): Promise<void> {
       DROP FUNCTION IF EXISTS update_updated_at_column() CASCADE;
     `;
     
-    console.log('🗑️  Database reset completed');
+    console.warn('🗑️  Database reset completed');
   } catch (error) {
     console.error('❌ Database reset failed:', error);
     throw error;

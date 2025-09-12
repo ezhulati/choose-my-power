@@ -163,7 +163,7 @@ function buildApiParams(city: string, filters: string[]): ApiParams {
  * Fetch plans from API with enhanced caching and error handling
  * Optimized for thousands of concurrent requests
  */
-export async function fetchPlansFromAPI(params: ApiParams): Promise<any[]> {
+export async function fetchPlansFromAPI(params: ApiParams): Promise<unknown[]> {
   try {
     const plans = await comparePowerClient.fetchPlans(params);
     

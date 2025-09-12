@@ -95,7 +95,7 @@ export class CriticalCSSExtractor {
    * Extract critical CSS for above-the-fold content
    */
   extractCriticalCSS(pageName: string, htmlContent: string): ExtractedCSS {
-    console.log(`🎨 Extracting critical CSS for: ${pageName}`);
+    console.warn(`🎨 Extracting critical CSS for: ${pageName}`);
     
     const startTime = Date.now();
     const allSelectors = this.getAllCriticalSelectors();
@@ -105,8 +105,8 @@ export class CriticalCSSExtractor {
     const { deferred, preload } = this.categorizeDeferredCSS();
     
     const extractionTime = Date.now() - startTime;
-    console.log(`   ⚡ Critical CSS extracted in ${extractionTime}ms`);
-    console.log(`   📏 Critical CSS size: ${critical.length} bytes`);
+    console.warn(`   ⚡ Critical CSS extracted in ${extractionTime}ms`);
+    console.warn(`   📏 Critical CSS size: ${critical.length} bytes`);
     
     return {
       critical,

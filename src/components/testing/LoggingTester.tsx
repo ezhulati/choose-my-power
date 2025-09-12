@@ -22,14 +22,14 @@ interface LogEntry {
 interface TestResult {
   success: boolean;
   message: string;
-  details?: any;
+  details?: unknown;
   duration?: number;
 }
 
 const LoggingTester: React.FC = () => {
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [errorStats, setErrorStats] = useState<ErrorStats | null>(null);
-  const [performanceStats, setPerformanceStats] = useState<any>(null);
+  const [performanceStats, setPerformanceStats] = useState<unknown>(null);
   const [testResults, setTestResults] = useState<TestResult[]>([]);
   const [activeTest, setActiveTest] = useState<string | null>(null);
   const [remoteLoggingEnabled, setRemoteLoggingEnabled] = useState(false);
@@ -367,7 +367,7 @@ const LoggingTester: React.FC = () => {
         <button
           onClick={testErrorTracking}
           disabled={activeTest === 'error-tracking'}
-          className="px-4 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="px-4 py-3 bg-red-600 text-white rounded-lg hover:bg-texas-red-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
           {activeTest === 'error-tracking' ? 'Testing...' : 'Test Error Tracking'}
         </button>
@@ -484,7 +484,7 @@ const LoggingTester: React.FC = () => {
                 className={`p-3 rounded-lg border ${
                   result.success
                     ? 'bg-green-50 border-green-200 text-green-800'
-                    : 'bg-red-50 border-red-200 text-red-800'
+                    : 'bg-texas-red/10 border-texas-red/30 text-texas-red-800'
                 }`}
               >
                 <div className="flex justify-between items-start">
@@ -529,7 +529,7 @@ const LoggingTester: React.FC = () => {
                   log.level === 'warn' ? 'text-yellow-400' :
                   log.level === 'info' ? 'text-blue-400' :
                   log.level === 'debug' ? 'text-gray-400' :
-                  'text-red-500'
+                  'text-texas-red'
                 }`}>
                   {log.level.toUpperCase()}
                 </span>
@@ -547,19 +547,19 @@ const LoggingTester: React.FC = () => {
       </div>
 
       {/* Configuration Info */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-        <h4 className="font-semibold text-blue-800 mb-2">ℹ️ Configuration</h4>
+      <div className="bg-texas-navy/10 border border-texas-navy/30 rounded-lg p-4">
+        <h4 className="font-semibold text-texas-navy-800 mb-2">ℹ️ Configuration</h4>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
           <div>
-            <span className="text-blue-700">Environment:</span>
+            <span className="text-texas-navy-700">Environment:</span>
             <span className="ml-2 font-medium">{import.meta.env.MODE}</span>
           </div>
           <div>
-            <span className="text-blue-700">Remote Logging:</span>
+            <span className="text-texas-navy-700">Remote Logging:</span>
             <span className="ml-2 font-medium">{remoteLoggingEnabled ? 'Enabled' : 'Disabled'}</span>
           </div>
           <div>
-            <span className="text-blue-700">Log Level:</span>
+            <span className="text-texas-navy-700">Log Level:</span>
             <span className="ml-2 font-medium">{import.meta.env.MODE === 'development' ? 'debug' : 'warn'}</span>
           </div>
         </div>

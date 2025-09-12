@@ -20,7 +20,7 @@ export interface UserJourneyEvent {
   planId?: string;
   searchQuery?: string;
   timestamp: Date;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 export interface ConversionFunnel {
@@ -103,7 +103,7 @@ export class AnalyticsService {
   /**
    * Track page view
    */
-  async trackPageView(sessionId: string, page: string, metadata?: Record<string, any>): Promise<void> {
+  async trackPageView(sessionId: string, page: string, metadata?: Record<string, unknown>): Promise<void> {
     await this.trackEvent({
       sessionId,
       event: 'page_view',
@@ -120,7 +120,7 @@ export class AnalyticsService {
     sessionId: string,
     query: string,
     resultsCount: number,
-    metadata?: Record<string, any>
+    metadata?: Record<string, unknown>
   ): Promise<void> {
     await this.trackEvent({
       sessionId,
@@ -137,7 +137,7 @@ export class AnalyticsService {
   /**
    * Track plan view
    */
-  async trackPlanView(sessionId: string, planId: string, metadata?: Record<string, any>): Promise<void> {
+  async trackPlanView(sessionId: string, planId: string, metadata?: Record<string, unknown>): Promise<void> {
     await this.trackEvent({
       sessionId,
       event: 'plan_view',
@@ -154,7 +154,7 @@ export class AnalyticsService {
     sessionId: string,
     planIds: string[],
     duration: number,
-    metadata?: Record<string, any>
+    metadata?: Record<string, unknown>
   ): Promise<void> {
     await this.trackEvent({
       sessionId,
@@ -189,7 +189,7 @@ export class AnalyticsService {
     sessionId: string,
     leadId: string,
     score: number,
-    metadata?: Record<string, any>
+    metadata?: Record<string, unknown>
   ): Promise<void> {
     await this.trackEvent({
       sessionId,
@@ -210,7 +210,7 @@ export class AnalyticsService {
     sessionId: string,
     conversionType: string,
     value?: number,
-    metadata?: Record<string, any>
+    metadata?: Record<string, unknown>
   ): Promise<void> {
     await this.trackEvent({
       sessionId,
@@ -408,11 +408,11 @@ export class AnalyticsService {
   async generateCustomReport(config: {
     metrics: string[];
     timeframe: { start: Date; end: Date };
-    filters?: Record<string, any>;
+    filters?: Record<string, unknown>;
     groupBy?: 'day' | 'week' | 'month';
   }): Promise<{
-    data: Array<Record<string, any>>;
-    summary: Record<string, any>;
+    data: Array<Record<string, unknown>>;
+    summary: Record<string, unknown>;
     metadata: {
       generatedAt: Date;
       timeframe: { start: Date; end: Date };

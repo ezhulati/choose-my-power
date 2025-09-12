@@ -425,7 +425,7 @@ export class AddressValidator {
   /**
    * Parse SmartyStreets JSON response
    */
-  private parseSmartyStreetsResponse(data: any[], originalAddress: AddressInfo): AddressValidationResult {
+  private parseSmartyStreetsResponse(data: unknown[], originalAddress: AddressInfo): AddressValidationResult {
     if (!Array.isArray(data) || data.length === 0) {
       return {
         isValid: false,

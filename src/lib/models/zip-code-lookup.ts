@@ -139,7 +139,7 @@ export class ZIPCodeLookupModel {
     this.data.isValid = false;
     this.data.tdspId = null;
     this.data.redirectUrl = null;
-    this.data.errorCode = errorCode as any; // Type assertion for error codes
+    this.data.errorCode = errorCode as unknown; // Type assertion for error codes
     
     // Re-validate after changes
     ZIPCodeLookupSchema.parse(this.data);
@@ -217,10 +217,10 @@ export class ZIPCodeLookupModel {
 }
 
 // Export type guards
-export const isZIPCodeLookup = (obj: any): obj is ZIPCodeLookup => {
+export const isZIPCodeLookup = (obj: unknown): obj is ZIPCodeLookup => {
   return ZIPCodeLookupSchema.safeParse(obj).success;
 };
 
-export const isZIPCodeLookupEntity = (obj: any): obj is ZIPCodeLookupEntity => {
+export const isZIPCodeLookupEntity = (obj: unknown): obj is ZIPCodeLookupEntity => {
   return ZIPCodeLookupEntitySchema.safeParse(obj).success;
 };

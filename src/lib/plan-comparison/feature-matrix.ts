@@ -684,7 +684,7 @@ export class FeatureMatrixBuilder {
   exportMatrixData(matrix: FeatureMatrix): {
     csvData: string;
     jsonData: string;
-    summaryData: any;
+    summaryData: unknown;
   } {
     // CSV format
     const headers = ['Feature', ...matrix.plans.map(p => p.planName)];
@@ -731,7 +731,7 @@ export const FeatureMatrixUtils = {
       score: number;
     };
   } {
-    const leaders: any = {};
+    const leaders: unknown = {};
     
     matrix.categories.forEach(category => {
       const categoryComparisons = matrix.comparisons.filter(c => c.categoryId === category.id);

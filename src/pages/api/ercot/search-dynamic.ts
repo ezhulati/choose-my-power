@@ -2,12 +2,12 @@ import type { APIRoute } from 'astro';
 import { ercotESIIDClient } from '../../../lib/api/ercot-esiid-client.ts';
 
 export const POST: APIRoute = async ({ request }) => {
-  console.log('🔥 ENDPOINT HIT - Starting request processing');
+  console.warn('🔥 ENDPOINT HIT - Starting request processing');
   
   try {
-    console.log('🔥 About to parse JSON body');
+    console.warn('🔥 About to parse JSON body');
     const body = await request.json();
-    console.log('🔥 JSON parsed successfully:', body);
+    console.warn('🔥 JSON parsed successfully:', body);
     const { address, zipCode } = body;
 
     if (!address || !zipCode) {
@@ -29,7 +29,7 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    console.log(`🔍 ERCOT API Address search: "${address}" in ZIP ${zipCode}`);
+    console.warn(`🔍 ERCOT API Address search: "${address}" in ZIP ${zipCode}`);
 
     // Direct ERCOT API call - bypass hanging client
     const url = new URL('https://ercot.api.comparepower.com/api/esiids');
@@ -52,7 +52,7 @@ export const POST: APIRoute = async ({ request }) => {
     const rawResults = await response.json();
     
     // Transform to expected format
-    const esiidResults = rawResults.map((result: any) => ({
+    const esiidResults = rawResults.map((result: unknown) => ({
       esiid: result.esiid,
       address: result.address,
       city: result.city,
@@ -66,7 +66,7 @@ export const POST: APIRoute = async ({ request }) => {
     }));
 
     if (esiidResults.length === 0) {
-      console.log(`❌ No ESIID results found for address: ${address}, ZIP: ${zipCode}`);
+      console.warn(`❌ No ESIID results found for address: ${address}, ZIP: ${zipCode}`);
       return new Response(JSON.stringify({ 
         error: 'No service locations found for this address. Please check your address and try again.'
       }), {
@@ -75,7 +75,7 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    console.log(`✅ Found ${esiidResults.length} ESIID results from real ERCOT API`);
+    console.warn(`✅ Found ${esiidResults.length} ESIID results from real ERCOT API`);
 
     // Transform ERCOT API response to match expected format
     const locations = esiidResults.map(result => ({

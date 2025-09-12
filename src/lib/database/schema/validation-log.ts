@@ -156,13 +156,13 @@ export interface ValidationResponseData {
     responseTime: number;
     success: boolean;
     confidence: number;
-    data?: any;
+    data?: unknown;
     error?: string;
   }[];
   conflicts?: {
     field: string;
-    values: { source: string; value: any; confidence: number; }[];
-    resolved: any;
+    values: { source: string; value: unknown; confidence: number; }[];
+    resolved: unknown;
     resolution: string;
   }[];
   method: 'primary' | 'fallback' | 'cache_only' | 'tdsp_api' | 'fallback_nearest';
@@ -348,7 +348,7 @@ export const validationLogUtils = {
   createSuccessLog: (
     zipCode: string,
     dataSourceSlug: string,
-    result: any,
+    result: unknown,
     processingTime: number,
     request: ValidationRequestPayload
   ): Omit<NewValidationLog, 'id' | 'createdAt' | 'validatedAt'> => {
@@ -406,8 +406,8 @@ export const validationLogUtils = {
     
     // Remove API keys or tokens from options if present
     if (sanitized.options) {
-      delete (sanitized.options as any).apiKey;
-      delete (sanitized.options as any).token;
+      delete (sanitized.options as unknown).apiKey;
+      delete (sanitized.options as unknown).token;
     }
     
     return sanitized;

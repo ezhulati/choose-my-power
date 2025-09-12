@@ -99,32 +99,32 @@ export class ComprehensiveZIPMapper {
    * Generate comprehensive ZIP mapping for 100% Texas coverage
    */
   async generateComprehensiveMapping(): Promise<ExpandedZIPMapping[]> {
-    console.log('🚀 Starting comprehensive ZIP mapping for 100% Texas coverage...');
+    console.warn('🚀 Starting comprehensive ZIP mapping for 100% Texas coverage...');
     
     // Step 1: Get existing mappings
     const existingMappings = await this.getExistingMappings();
-    console.log(`📊 Found ${existingMappings.length} existing ZIP mappings`);
+    console.warn(`📊 Found ${existingMappings.length} existing ZIP mappings`);
     
     // Step 2: Generate all possible Texas ZIP codes
     const allTexasZIPs = this.generateAllTexasZIPs();
-    console.log(`🗺️ Generated ${allTexasZIPs.length} possible Texas ZIP codes`);
+    console.warn(`🗺️ Generated ${allTexasZIPs.length} possible Texas ZIP codes`);
     
     // Step 3: Identify gaps
     const existingZIPs = new Set(existingMappings.map(m => m.zipCode));
     const missingZIPs = allTexasZIPs.filter(zip => !existingZIPs.has(zip));
-    console.log(`📍 Found ${missingZIPs.length} missing ZIP codes to map`);
+    console.warn(`📍 Found ${missingZIPs.length} missing ZIP codes to map`);
     
     // Step 4: Fill gaps with intelligent inference
     const newMappings = await this.fillZIPGaps(missingZIPs);
-    console.log(`✅ Generated ${newMappings.length} new ZIP mappings`);
+    console.warn(`✅ Generated ${newMappings.length} new ZIP mappings`);
     
     // Step 5: Combine and validate
     const comprehensiveMapping = [...existingMappings, ...newMappings];
-    console.log(`🎯 Total coverage: ${comprehensiveMapping.length} ZIP codes`);
+    console.warn(`🎯 Total coverage: ${comprehensiveMapping.length} ZIP codes`);
     
     // Step 6: Calculate coverage percentage
     const coveragePercentage = (comprehensiveMapping.length / allTexasZIPs.length) * 100;
-    console.log(`📈 Coverage achieved: ${coveragePercentage.toFixed(2)}%`);
+    console.warn(`📈 Coverage achieved: ${coveragePercentage.toFixed(2)}%`);
     
     return comprehensiveMapping;
   }

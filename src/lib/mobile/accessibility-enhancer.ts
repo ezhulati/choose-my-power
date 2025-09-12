@@ -128,7 +128,7 @@ class MobileAccessibilityEnhancer {
     this.observeContentChanges();
     this.applyAccessibilityEnhancements();
 
-    console.log('Mobile Accessibility Enhancer initialized:', {
+    console.warn('Mobile Accessibility Enhancer initialized:', {
       wcagLevel: this.config.wcagLevel,
       screenReaderDetected: this.state.isScreenReaderActive,
       contrastRatio: this.state.contrastRatio,

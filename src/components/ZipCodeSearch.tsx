@@ -68,9 +68,9 @@ export interface ZipCodeSearchProps {
   /** Loading state */
   loading?: boolean;
   /** Success callback */
-  onSuccess?: (response: any) => void;
+  onSuccess?: (response: unknown) => void;
   /** Error callback */
-  onError?: (error: any) => void;
+  onError?: (error: unknown) => void;
 }
 
 export function ZipCodeSearch({
@@ -227,7 +227,7 @@ export function ZipCodeSearch({
   const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
     if (!showDropdown || suggestions.length === 0) {
       if (e.key === 'Enter') {
-        handleSubmit(e as any);
+        handleSubmit(e as unknown);
       }
       return;
     }
@@ -250,7 +250,7 @@ export function ZipCodeSearch({
         if (highlightedIndex >= 0) {
           handleSuggestionClick(suggestions[highlightedIndex]);
         } else {
-          handleSubmit(e as any);
+          handleSubmit(e as unknown);
         }
         break;
       case 'Escape':

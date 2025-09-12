@@ -37,7 +37,6 @@ function LocationsPage({}: LocationsPageProps) {
   useEffect(() => {
     const loadData = async () => {
       try {
-        console.log('[LocationsPage] Loading providers and cities...');
         
         const [providersData, citiesData] = await Promise.all([
           getProviders('texas'),
@@ -46,7 +45,6 @@ function LocationsPage({}: LocationsPageProps) {
         
         setProviders(providersData);
         setCities(citiesData);
-        console.log(`[LocationsPage] Loaded ${providersData.length} providers and ${citiesData.length} cities`);
       } catch (error) {
         console.error('[LocationsPage] Error loading data:', error);
       } finally {
@@ -191,9 +189,9 @@ function LocationsPage({}: LocationsPageProps) {
                   <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
                   <span className="text-green-100 font-medium">Street-level accuracy</span>
                 </div>
-                <div className="flex items-center px-4 py-2 bg-blue-500/20 backdrop-blur-sm rounded-full border border-blue-400/30">
+                <div className="flex items-center px-4 py-2 bg-texas-navy/100/20 backdrop-blur-sm rounded-full border border-blue-400/30">
                   <div className="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
-                  <span className="text-blue-100 font-medium">880+ Texas cities</span>
+                  <span className="text-white/90 font-medium">880+ Texas cities</span>
                 </div>
                 <div className="flex items-center px-4 py-2 bg-texas-red/20 backdrop-blur-sm rounded-full border border-texas-red/30">
                   <div className="w-2 h-2 bg-texas-red-200 rounded-full mr-2"></div>
@@ -278,7 +276,7 @@ function LocationsPage({}: LocationsPageProps) {
               {/* Region Filter */}
               <select
                 value={selectedRegion}
-                onChange={(e) => setSelectedRegion(e.target.value as any)}
+                onChange={(e) => setSelectedRegion(e.target.value as unknown)}
                 className="border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               >
                 <option value="all">Show Everything</option>
@@ -289,7 +287,7 @@ function LocationsPage({}: LocationsPageProps) {
               {/* Metric Selector */}
               <select
                 value={selectedMetric}
-                onChange={(e) => setSelectedMetric(e.target.value as any)}
+                onChange={(e) => setSelectedMetric(e.target.value as unknown)}
                 className="border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               >
                 <option value="providers">How Many Companies</option>
@@ -527,7 +525,7 @@ function LocationsPage({}: LocationsPageProps) {
         </div>
 
         {/* ZIP Code Examples */}
-        <div className="bg-texas-cream-200 border border-blue-200 rounded-lg p-8 mb-16">
+        <div className="bg-texas-cream-200 border border-texas-navy/30 rounded-lg p-8 mb-16">
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
               Don't Know Your ZIP? Try These
@@ -552,7 +550,7 @@ function LocationsPage({}: LocationsPageProps) {
               <button
                 key={index}
                 onClick={() => handleZipSearch(example.zip)}
-                className="p-4 bg-white border border-blue-200 rounded-lg hover:bg-texas-cream-200 hover:border-blue-300 transition-colors text-left"
+                className="p-4 bg-white border border-texas-navy/30 rounded-lg hover:bg-texas-cream-200 hover:border-blue-300 transition-colors text-left"
               >
                 <div className="font-bold text-texas-navy text-lg">{example.zip}</div>
                 <div className="text-gray-900 font-medium">{example.city}, {example.state}</div>
@@ -628,7 +626,7 @@ function LocationsPage({}: LocationsPageProps) {
       <div className="bg-gradient-to-br from-texas-navy via-blue-900 to-texas-navy text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to See What's Available Where You Live?</h2>
-          <p className="text-xl mb-8 text-blue-100 max-w-3xl mx-auto">
+          <p className="text-xl mb-8 text-white/90 max-w-3xl mx-auto">
             Enter your ZIP and we'll show you licensed electricity companies, 100+ plans, and exactly what 
             your neighbors are paying. Takes 30 seconds.
           </p>

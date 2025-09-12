@@ -47,7 +47,7 @@ export enum ApiErrorType {
 
 export interface ApiErrorContext {
   url?: string;
-  params?: Record<string, any>;
+  params?: Record<string, unknown>;
   statusCode?: number;
   retryAttempt?: number;
   maxRetries?: number;

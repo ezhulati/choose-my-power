@@ -115,7 +115,7 @@ export const ProfessionalPlanCard: React.FC<ProfessionalPlanCardProps> = ({
       <CardFooter className="pt-0">
         {/* Single Button */}
         <Button 
-          className="w-full bg-texas-navy hover:bg-blue-800 text-white font-semibold transition-colors duration-200 group-hover:bg-texas-red group-hover:hover:bg-texas-red-600"
+          className="w-full bg-texas-navy hover:bg-texas-navy-800 text-white font-semibold transition-colors duration-200 group-hover:bg-texas-red group-hover:hover:bg-texas-red-600"
           onClick={(e) => {
             e.stopPropagation();
             handleViewDetails();

@@ -71,7 +71,7 @@ export interface CacheStats {
 
 export class AddressCache {
   private config: CacheConfig;
-  private memoryCache: Map<string, CacheEntry<any>> = new Map();
+  private memoryCache: Map<string, CacheEntry<unknown>> = new Map();
   private redisCache?: RedisCache;
   private stats: CacheStats;
   private readonly CACHE_VERSION = '1.0.0';
@@ -143,7 +143,7 @@ export class AddressCache {
   /**
    * Set ZIP code analysis cache
    */
-  async setZipAnalysis(zipCode: string, analysis: any): Promise<void> {
+  async setZipAnalysis(zipCode: string, analysis: unknown): Promise<void> {
     const key = `zip_analysis:${zipCode}`;
     await this.set(key, analysis, 'zipAnalysis');
   }
@@ -159,7 +159,7 @@ export class AddressCache {
   /**
    * Set address validation cache
    */
-  async setAddressValidation(address: AddressInfo, validation: any): Promise<void> {
+  async setAddressValidation(address: AddressInfo, validation: unknown): Promise<void> {
     const key = this.getAddressKey('address_validation', address);
     await this.set(key, validation, 'addressValidation');
   }
@@ -191,7 +191,7 @@ export class AddressCache {
   /**
    * Set boundary data cache
    */
-  async setBoundaryData(zipCode: string, data: any): Promise<void> {
+  async setBoundaryData(zipCode: string, data: unknown): Promise<void> {
     const key = `boundary_data:${zipCode}`;
     await this.set(key, data, 'boundaryData');
   }
@@ -207,7 +207,7 @@ export class AddressCache {
   /**
    * Set ESID lookup cache
    */
-  async setEsidLookup(address: NormalizedAddress, result: any): Promise<void> {
+  async setEsidLookup(address: NormalizedAddress, result: unknown): Promise<void> {
     const key = this.getNormalizedAddressKey('esid_lookup', address);
     await this.set(key, result, 'esidLookup');
   }
@@ -365,7 +365,7 @@ export class AddressCache {
     if (!this.redisCache) return null;
     
     try {
-      const value = await this.redisCache.get({ tdsp_duns: key } as any);
+      const value = await this.redisCache.get({ tdsp_duns: key } as unknown);
       return value as T;
     } catch (error) {
       console.warn('Redis get error:', error);
@@ -377,7 +377,7 @@ export class AddressCache {
     if (!this.redisCache) return;
 
     try {
-      await this.redisCache.set({ tdsp_duns: key } as any, value as any);
+      await this.redisCache.set({ tdsp_duns: key } as unknown, value as unknown);
     } catch (error) {
       console.warn('Redis set error:', error);
     }
@@ -432,7 +432,7 @@ export class AddressCache {
     ].join('|')}`;
   }
 
-  private isExpired(entry: CacheEntry<any>): boolean {
+  private isExpired(entry: CacheEntry<unknown>): boolean {
     return Date.now() - entry.timestamp > entry.ttl;
   }
 
@@ -485,7 +485,7 @@ export class AddressCache {
       if (evicted > 0) {
         this.stats.evictions += evicted;
         this.stats.size.memory = this.memoryCache.size;
-        console.log(`Cleaned up ${evicted} expired cache entries`);
+        console.warn(`Cleaned up ${evicted} expired cache entries`);
       }
     }, 300000); // 5 minutes
   }
@@ -494,12 +494,12 @@ export class AddressCache {
    * Warm up cache with frequently accessed data
    */
   async warmupCache(commonZipCodes: string[]): Promise<void> {
-    console.log(`Warming up cache for ${commonZipCodes.length} ZIP codes...`);
+    console.warn(`Warming up cache for ${commonZipCodes.length} ZIP codes...`);
     
     // This would pre-load frequently accessed ZIP codes and their boundary data
     // For now, this is a placeholder
     
-    console.log('Cache warmup completed');
+    console.warn('Cache warmup completed');
   }
 
   /**
@@ -525,7 +525,7 @@ export class AddressCache {
       averageResponseTime: { memory: 0, redis: 0, database: 0, file: 0 }
     };
 
-    console.log('All caches cleared');
+    console.warn('All caches cleared');
   }
 
   /**
@@ -547,7 +547,7 @@ export class AddressCache {
    */
   async optimizeCache(): Promise<{
     recommendedActions: string[];
-    performanceMetrics: any;
+    performanceMetrics: unknown;
   }> {
     const stats = this.getStats();
     const recommendedActions: string[] = [];

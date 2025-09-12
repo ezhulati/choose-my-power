@@ -23,16 +23,15 @@ export function CalculatorPage() {
 
   const [monthlyUsage, setMonthlyUsage] = useState(1000);
   const [selectedState, setSelectedState] = useState('texas');
-  const [calculationResults, setCalculationResults] = useState<any[]>([]);
+  const [calculationResults, setCalculationResults] = useState<unknown[]>([]);
   const [providers, setProviders] = useState<RealProvider[]>([]);
-  const [plans, setPlans] = useState<any[]>([]);
+  const [plans, setPlans] = useState<unknown[]>([]);
   const [loading, setLoading] = useState(true);
 
   // Load data when component mounts
   useEffect(() => {
     const loadData = async () => {
       try {
-        console.log('[CalculatorPage] Loading providers and plans...');
         
         const [providersData] = await Promise.all([
           getProviders('texas')
@@ -44,7 +43,6 @@ export function CalculatorPage() {
         setProviders(providersData);
         setPlans(houstonPlans);
         
-        console.log(`[CalculatorPage] Loaded ${providersData.length} providers and ${houstonPlans.length} plans`);
       } catch (error) {
         console.error('[CalculatorPage] Error loading data:', error);
       } finally {
@@ -168,9 +166,9 @@ export function CalculatorPage() {
                   <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
                   <span className="text-green-100 font-medium">All fees included</span>
                 </div>
-                <div className="flex items-center px-4 py-2 bg-blue-500/20 backdrop-blur-sm rounded-full border border-blue-400/30">
+                <div className="flex items-center px-4 py-2 bg-texas-navy/100/20 backdrop-blur-sm rounded-full border border-blue-400/30">
                   <div className="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
-                  <span className="text-blue-100 font-medium">Real-time rates</span>
+                  <span className="text-white/90 font-medium">Real-time rates</span>
                 </div>
                 <div className="flex items-center px-4 py-2 bg-texas-red/20 backdrop-blur-sm rounded-full border border-texas-red/30">
                   <div className="w-2 h-2 bg-texas-red-200 rounded-full mr-2"></div>

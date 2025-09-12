@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { getProviders, getCities, getPlansForCity, type RealProvider, type RealCity } from '../../lib/services/provider-service';
-import { Calendar, Zap, TrendingDown, Leaf, Shield, Filter } from 'lucide-react';
+import { Calendar, TrendingDown, Leaf, Shield, Filter } from 'lucide-react';
 import EnhancedSectionReact from '../../components/ui/EnhancedSectionReact';
 import EnhancedCardReact from '../../components/ui/EnhancedCardReact';
 import AccentBoxReact from '../../components/ui/AccentBoxReact';
@@ -31,13 +31,12 @@ export function StateElectricityPlansPage({ state }: StateElectricityPlansPagePr
   const [greenFilter, setGreenFilter] = useState<boolean>(false);
   const [providers, setProviders] = useState<RealProvider[]>([]);
   const [cities, setCities] = useState<RealCity[]>([]);
-  const [allPlans, setAllPlans] = useState<any[]>([]);
+  const [allPlans, setAllPlans] = useState<unknown[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadData = async () => {
       try {
-        console.log(`[StateElectricityPlansPage] Loading data for state: ${state}`);
         
         const [providersData, citiesData] = await Promise.all([
           getProviders(state),
@@ -52,7 +51,6 @@ export function StateElectricityPlansPage({ state }: StateElectricityPlansPagePr
         const cityPlans = await getPlansForCity(majorCity.slug, state);
         setAllPlans(cityPlans);
         
-        console.log(`[StateElectricityPlansPage] Loaded ${cityPlans.length} plans`);
       } catch (error) {
         console.error(`[StateElectricityPlansPage] Error loading data for ${state}:`, error);
       } finally {
@@ -180,7 +178,7 @@ export function StateElectricityPlansPage({ state }: StateElectricityPlansPagePr
                   <label className="block text-sm font-medium text-gray-700 mb-2">Plan Type</label>
                   <select
                     value={planTypeFilter}
-                    onChange={(e) => setPlanTypeFilter(e.target.value as any)}
+                    onChange={(e) => setPlanTypeFilter(e.target.value as unknown)}
                     className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   >
                     <option value="all">All Plan Types</option>
@@ -194,7 +192,7 @@ export function StateElectricityPlansPage({ state }: StateElectricityPlansPagePr
                   <label className="block text-sm font-medium text-gray-700 mb-2">Contract Length</label>
                   <select
                     value={termFilter}
-                    onChange={(e) => setTermFilter(e.target.value as any)}
+                    onChange={(e) => setTermFilter(e.target.value as unknown)}
                     className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   >
                     <option value="all">All Contract Lengths</option>
@@ -222,7 +220,7 @@ export function StateElectricityPlansPage({ state }: StateElectricityPlansPagePr
             <EnhancedCardReact title="Plan Types Explained" variant="elevated">
               <div className="space-y-3 text-sm">
                 <div>
-                  <div className="font-medium text-blue-900">Fixed Rate</div>
+                  <div className="font-medium text-texas-navy-900">Fixed Rate</div>
                   <div className="text-gray-600">Rate stays the same for the entire contract</div>
                 </div>
                 <div>

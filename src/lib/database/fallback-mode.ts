@@ -39,7 +39,7 @@ export class FallbackRepository {
         return null;
       }
 
-      console.log(`File cache hit for TDSP: ${params.tdsp_duns}`);
+      console.warn(`File cache hit for TDSP: ${params.tdsp_duns}`);
       return cached.plans;
     } catch (error) {
       return null;
@@ -66,7 +66,7 @@ export class FallbackRepository {
       };
 
       await fs.writeFile(filePath, JSON.stringify(cacheData, null, 2));
-      console.log(`Cached ${plans.length} plans to file for TDSP ${params.tdsp_duns}`);
+      console.warn(`Cached ${plans.length} plans to file for TDSP ${params.tdsp_duns}`);
     } catch (error) {
       console.warn('File cache storage failed:', error);
     }
@@ -75,7 +75,7 @@ export class FallbackRepository {
   /**
    * Store plans for analysis (file-based)
    */
-  async storePlans(apiPlans: any[], tdspDuns: string): Promise<void> {
+  async storePlans(apiPlans: unknown[], tdspDuns: string): Promise<void> {
     try {
       await this.ensureCacheDir();
       
@@ -108,7 +108,7 @@ export class FallbackRepository {
       }
 
       await fs.writeFile(analyticsFile, JSON.stringify(analytics, null, 2));
-      console.log(`Stored ${newPlans.length} plans for analytics`);
+      console.warn(`Stored ${newPlans.length} plans for analytics`);
     } catch (error) {
       console.warn('Analytics storage failed:', error);
     }
@@ -117,7 +117,7 @@ export class FallbackRepository {
   /**
    * Log API calls to file
    */
-  async logApiCall(endpoint: string, params: any, status: number, responseTime: number, error?: string): Promise<void> {
+  async logApiCall(endpoint: string, params: unknown, status: number, responseTime: number, error?: string): Promise<void> {
     try {
       await this.ensureCacheDir();
       
@@ -182,7 +182,7 @@ export class FallbackRepository {
         const logFile = path.join(CACHE_DIR, 'api_logs.json');
         const logs = JSON.parse(await fs.readFile(logFile, 'utf-8'));
         const yesterday = new Date(Date.now() - 24 * 60 * 60 * 1000);
-        apiCallsLast24h = logs.filter((log: any) => new Date(log.timestamp) > yesterday).length;
+        apiCallsLast24h = logs.filter((log: unknown) => new Date(log.timestamp) > yesterday).length;
       } catch {
         // No logs yet
       }

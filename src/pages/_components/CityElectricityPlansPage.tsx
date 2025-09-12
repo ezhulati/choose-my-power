@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { EnterprisePlanCard } from '../../components/ui/EnterprisePlanCard';
 import { getProviders, getCities, getPlansForCity, type RealProvider, type RealCity } from '../../lib/services/provider-service';
-import { Calendar, Zap, TrendingDown, Leaf, Shield, Filter } from 'lucide-react';
+import { Filter } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
 declare global {
@@ -30,7 +30,7 @@ export function CityElectricityPlansPage({ state, city }: CityElectricityPlansPa
   const [greenFilter, setGreenFilter] = useState<boolean>(false);
   const [providers, setProviders] = useState<RealProvider[]>([]);
   const [cities, setCities] = useState<RealCity[]>([]);
-  const [plans, setPlans] = useState<any[]>([]);
+  const [plans, setPlans] = useState<unknown[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -146,7 +146,7 @@ export function CityElectricityPlansPage({ state, city }: CityElectricityPlansPa
               {/* Plan Type Overview */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div className="bg-texas-cream-200 p-3 rounded-lg">
-                  <div className="text-2xl font-bold text-blue-900">{planTypeStats.fixed}</div>
+                  <div className="text-2xl font-bold text-texas-navy-900">{planTypeStats.fixed}</div>
                   <div className="text-sm text-texas-navy">Fixed Rate Plans</div>
                 </div>
                 <div className="bg-orange-50 p-3 rounded-lg">
@@ -205,7 +205,7 @@ export function CityElectricityPlansPage({ state, city }: CityElectricityPlansPa
                   <label className="block text-sm font-medium text-gray-700 mb-2">How do you want your rate to work?</label>
                   <select
                     value={planTypeFilter}
-                    onChange={(e) => setPlanTypeFilter(e.target.value as any)}
+                    onChange={(e) => setPlanTypeFilter(e.target.value as unknown)}
                     className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   >
                     <option value="all">Show me all types</option>
@@ -219,7 +219,7 @@ export function CityElectricityPlansPage({ state, city }: CityElectricityPlansPa
                   <label className="block text-sm font-medium text-gray-700 mb-2">How long do you want to commit?</label>
                   <select
                     value={termFilter}
-                    onChange={(e) => setTermFilter(e.target.value as any)}
+                    onChange={(e) => setTermFilter(e.target.value as unknown)}
                     className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   >
                     <option value="all">Any length is fine</option>
@@ -248,7 +248,7 @@ export function CityElectricityPlansPage({ state, city }: CityElectricityPlansPa
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Plan Types</h3>
               <div className="space-y-3 text-sm">
                 <div>
-                  <div className="font-medium text-blue-900">Fixed Rate</div>
+                  <div className="font-medium text-texas-navy-900">Fixed Rate</div>
                   <div className="text-gray-600">Same rate for entire contract</div>
                 </div>
                 <div>

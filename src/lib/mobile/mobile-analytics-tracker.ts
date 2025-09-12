@@ -206,7 +206,7 @@ class MobileAnalyticsTracker {
 
     // Respect Do Not Track
     if (this.config.respectDoNotTrack && this.isDNTEnabled()) {
-      console.log('Analytics tracking disabled due to Do Not Track setting');
+      console.warn('Analytics tracking disabled due to Do Not Track setting');
       return;
     }
 
@@ -244,7 +244,7 @@ class MobileAnalyticsTracker {
     });
 
     this.isInitialized = true;
-    console.log('Mobile Analytics Tracker initialized:', {
+    console.warn('Mobile Analytics Tracker initialized:', {
       sessionId: this.sessionId,
       deviceType: this.deviceInfo.deviceType,
       trackingEnabled: this.consentGiven
@@ -282,8 +282,8 @@ class MobileAnalyticsTracker {
    */
   private isDNTEnabled(): boolean {
     return navigator.doNotTrack === '1' || 
-           (navigator as any).msDoNotTrack === '1' ||
-           (window as any).doNotTrack === '1';
+           (navigator as unknown).msDoNotTrack === '1' ||
+           (window as unknown).doNotTrack === '1';
   }
 
   /**
@@ -310,7 +310,7 @@ class MobileAnalyticsTracker {
     const browser = this.getBrowser(userAgent);
     
     // Connection information
-    const connection = (navigator as any).connection || (navigator as any).mozConnection || (navigator as any).webkitConnection;
+    const connection = (navigator as unknown).connection || (navigator as unknown).mozConnection || (navigator as unknown).webkitConnection;
     
     return {
       userAgent,
@@ -408,7 +408,7 @@ class MobileAnalyticsTracker {
         break;
         
       case 'layout-shift':
-        const clsEntry = entry as any;
+        const clsEntry = entry as unknown;
         if (!clsEntry.hadRecentInput) {
           this.trackPerformanceMetric('cls', clsEntry.value);
         }

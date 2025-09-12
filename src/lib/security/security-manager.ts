@@ -16,7 +16,7 @@ export interface RateLimitConfig {
   maxRequests: number;
   skipSuccessfulRequests?: boolean;
   skipFailedRequests?: boolean;
-  keyGenerator?: (request: any) => string;
+  keyGenerator?: (request: unknown) => string;
 }
 
 export interface SecurityConfig {
@@ -52,14 +52,14 @@ export interface SecurityEvent {
   userAgent?: string;
   endpoint: string;
   message: string;
-  metadata: Record<string, any>;
+  metadata: Record<string, unknown>;
   timestamp: Date;
 }
 
 export interface ValidationResult {
   valid: boolean;
   errors: string[];
-  sanitizedData?: any;
+  sanitizedData?: unknown;
 }
 
 export class SecurityManager {
@@ -216,9 +216,9 @@ export class SecurityManager {
   /**
    * Validate and sanitize input data
    */
-  validateInput(data: any, rules: ValidationRules): ValidationResult {
+  validateInput(data: unknown, rules: ValidationRules): ValidationResult {
     const errors: string[] = [];
-    const sanitizedData: any = {};
+    const sanitizedData: unknown = {};
 
     try {
       // Check overall data size
@@ -256,10 +256,10 @@ export class SecurityManager {
   /**
    * Validate individual field
    */
-  private validateField(fieldName: string, value: any, rule: ValidationRule): {
+  private validateField(fieldName: string, value: unknown, rule: ValidationRule): {
     valid: boolean;
     errors: string[];
-    sanitizedValue: any;
+    sanitizedValue: unknown;
   } {
     const errors: string[] = [];
     let sanitizedValue = value;
@@ -454,7 +454,7 @@ export class SecurityManager {
     ip: string;
     userAgent?: string;
     endpoint: string;
-    data?: any;
+    data?: unknown;
   }): { suspicious: boolean; reasons: string[] } {
     const reasons: string[] = [];
 
@@ -680,7 +680,7 @@ export interface ValidationRule {
   pattern?: RegExp;
   minItems?: number;
   maxItems?: number;
-  validator?: (value: any) => { valid: boolean; errors: string[]; value?: any };
+  validator?: (value: unknown) => { valid: boolean; errors: string[]; value?: unknown};
 }
 
 export type ValidationRules = Record<string, ValidationRule>;

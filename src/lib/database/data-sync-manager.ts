@@ -18,7 +18,7 @@ import type { CityAnalytics } from './schema';
 interface SyncJob {
   id: string;
   type: 'city_plans' | 'provider_data' | 'market_analytics';
-  params: Record<string, any>;
+  params: Record<string, unknown>;
   priority: 'high' | 'medium' | 'low';
   scheduledAt: Date;
   retryCount: number;
@@ -58,12 +58,12 @@ export class DataSyncManager {
    */
   start(): void {
     if (this.isRunning) {
-      console.log('Data sync manager already running');
+      console.warn('Data sync manager already running');
       return;
     }
 
     this.isRunning = true;
-    console.log('Starting Data Sync Manager with hourly synchronization...');
+    console.warn('Starting Data Sync Manager with hourly synchronization...');
 
     // Run initial sync
     this.schedulePrioritySync();
@@ -83,7 +83,7 @@ export class DataSyncManager {
       clearInterval(this.syncInterval);
       this.syncInterval = null;
     }
-    console.log('Data Sync Manager stopped');
+    console.warn('Data Sync Manager stopped');
   }
 
   /**
@@ -113,7 +113,7 @@ export class DataSyncManager {
         this.syncQueue.set(jobId, job);
       }
 
-      console.log(`Scheduled ${priorityCities.length} priority city sync jobs`);
+      console.warn(`Scheduled ${priorityCities.length} priority city sync jobs`);
       this.processQueue();
     } catch (error) {
       console.error('Priority sync scheduling error:', error);
@@ -127,7 +127,7 @@ export class DataSyncManager {
     try {
       // Only sync if queue is not too busy
       if (this.syncQueue.size > 50) {
-        console.log('Sync queue busy, skipping regular sync');
+        console.warn('Sync queue busy, skipping regular sync');
         return;
       }
 
@@ -160,7 +160,7 @@ export class DataSyncManager {
         }
       }
 
-      console.log(`Scheduled ${allCities.length} regular sync jobs in ${batchedCities.length} batches`);
+      console.warn(`Scheduled ${allCities.length} regular sync jobs in ${batchedCities.length} batches`);
       setTimeout(() => this.processQueue(), 1000);
     } catch (error) {
       console.error('Regular sync scheduling error:', error);
@@ -204,7 +204,7 @@ export class DataSyncManager {
     this.syncQueue.set(job.id, job);
 
     try {
-      console.log(`Executing sync job: ${job.id} (${job.type}) for ${job.params.cityName || 'unknown'}`);
+      console.warn(`Executing sync job: ${job.id} (${job.type}) for ${job.params.cityName || 'unknown'}`);
 
       let stats: SyncStats;
       
@@ -226,7 +226,7 @@ export class DataSyncManager {
       job.completedAt = new Date();
       job.duration = job.completedAt.getTime() - job.startedAt.getTime();
       
-      console.log(`✅ Sync job ${job.id} completed:`, {
+      console.warn(`✅ Sync job ${job.id} completed:`, {
         duration: job.duration,
         totalPlans: stats.totalPlans,
         newPlans: stats.newPlans,
@@ -252,7 +252,7 @@ export class DataSyncManager {
         job.scheduledAt = new Date(Date.now() + (job.retryCount * 30000)); // Exponential backoff
         job.error = String(error);
         
-        console.log(`Retrying job ${job.id} (attempt ${job.retryCount}/${job.maxRetries})`);
+        console.warn(`Retrying job ${job.id} (attempt ${job.retryCount}/${job.maxRetries})`);
       } else {
         job.status = 'failed';
         job.error = String(error);
@@ -277,7 +277,7 @@ export class DataSyncManager {
   /**
    * Sync city plans with professional database-first strategy
    */
-  private async syncCityPlans(params: any): Promise<SyncStats> {
+  private async syncCityPlans(params: unknown): Promise<SyncStats> {
     const startTime = Date.now();
     const stats: SyncStats = {
       totalPlans: 0,
@@ -300,12 +300,12 @@ export class DataSyncManager {
       let cacheHit = false;
 
       if (plans && plans.length > 0) {
-        console.log(`📦 Database cache hit for ${params.cityName} (${plans.length} plans)`);
+        console.warn(`📦 Database cache hit for ${params.cityName} (${plans.length} plans)`);
         cacheHit = true;
         stats.cacheHitRate = 100;
       } else {
         // 2. If no cache, fetch from API (minimize API calls)
-        console.log(`🌐 Fetching fresh data for ${params.cityName} from API`);
+        console.warn(`🌐 Fetching fresh data for ${params.cityName} from API`);
         plans = await this.apiClient.getPlansWithCache(apiParams);
         stats.apiCallsUsed = 1;
         stats.cacheHitRate = 0;
@@ -430,7 +430,7 @@ export class DataSyncManager {
   /**
    * Sync provider data (logos, ratings, contact info)
    */
-  private async syncProviderData(params: any): Promise<SyncStats> {
+  private async syncProviderData(params: unknown): Promise<SyncStats> {
     const stats: SyncStats = {
       totalPlans: 0,
       newPlans: 0,
@@ -443,7 +443,7 @@ export class DataSyncManager {
 
     try {
       // Implementation would sync provider information
-      console.log('Provider data sync not fully implemented yet');
+      console.warn('Provider data sync not fully implemented yet');
     } catch (error) {
       stats.errors = 1;
       throw error;
@@ -456,7 +456,7 @@ export class DataSyncManager {
   /**
    * Sync market analytics data
    */
-  private async syncMarketAnalytics(params: any): Promise<SyncStats> {
+  private async syncMarketAnalytics(params: unknown): Promise<SyncStats> {
     const stats: SyncStats = {
       totalPlans: 0,
       newPlans: 0,
@@ -469,7 +469,7 @@ export class DataSyncManager {
 
     try {
       // Implementation would sync market-wide analytics
-      console.log('Market analytics sync not fully implemented yet');
+      console.warn('Market analytics sync not fully implemented yet');
     } catch (error) {
       stats.errors = 1;
       throw error;
@@ -587,7 +587,7 @@ export class DataSyncManager {
     });
 
     if (jobsToRemove.length > 0) {
-      console.log(`Cleaned up ${jobsToRemove.length} old sync jobs`);
+      console.warn(`Cleaned up ${jobsToRemove.length} old sync jobs`);
     }
   }
 
@@ -606,7 +606,7 @@ export class DataSyncManager {
    * Emergency stop all sync operations
    */
   emergencyStop(): void {
-    console.log('🚨 EMERGENCY STOP: Halting all sync operations');
+    console.warn('🚨 EMERGENCY STOP: Halting all sync operations');
     this.stop();
     this.syncQueue.clear();
   }
@@ -615,7 +615,7 @@ export class DataSyncManager {
    * Force refresh all city data (use sparingly)
    */
   async forceRefreshAllCities(): Promise<void> {
-    console.log('🔄 Force refresh initiated - this will make many API calls');
+    console.warn('🔄 Force refresh initiated - this will make many API calls');
     
     const allCities = await planRepository.getAllCities();
     
@@ -640,7 +640,7 @@ export class DataSyncManager {
       this.syncQueue.set(jobId, job);
     }
 
-    console.log(`Scheduled ${allCities.length} force refresh jobs`);
+    console.warn(`Scheduled ${allCities.length} force refresh jobs`);
   }
 }
 

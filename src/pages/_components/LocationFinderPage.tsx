@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { getProviders, getCities, type RealProvider, type RealCity } from '../../lib/services/provider-service';
-import { MapPin, Search, TrendingDown, Users, Zap, Building, ArrowRight, Star, Globe, Phone, CheckCircle, AlertCircle, Calculator, Shield, Leaf, Award, Clock, Eye, Target, Home } from 'lucide-react';
+import { MapPin, TrendingDown, Users, Zap, Building, ArrowRight, CheckCircle, Calculator, Shield, Leaf } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
 declare global {
@@ -237,7 +237,7 @@ export function LocationFinderPage({}: LocationFinderPageProps) {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8">
               Find Electricity Providers in Your Area
             </h1>
-            <p className="text-xl md:text-2xl mb-12 text-blue-100 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl mb-12 text-white/90 max-w-4xl mx-auto leading-relaxed">
               Enter your ZIP code below to find electricity providers and rates available at your specific address. 
               Compare plans from licensed providers and start saving today.
             </p>
@@ -383,7 +383,7 @@ export function LocationFinderPage({}: LocationFinderPageProps) {
                       <div className="text-sm text-gray-600">Population</div>
                     </div>
                     <div className="text-center p-3 bg-texas-cream-200 rounded-lg">
-                      <div className="text-lg font-bold text-blue-900">{location.providers}</div>
+                      <div className="text-lg font-bold text-texas-navy-900">{location.providers}</div>
                       <div className="text-sm text-texas-navy">Providers</div>
                     </div>
                   </div>
@@ -667,7 +667,7 @@ export function LocationFinderPage({}: LocationFinderPageProps) {
         </div>
 
         {/* ZIP Code Examples */}
-        <div className="bg-texas-cream-200 border border-blue-200 rounded-lg p-8 mb-16">
+        <div className="bg-texas-cream-200 border border-texas-navy/30 rounded-lg p-8 mb-16">
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
               Not Sure About Your ZIP Code?
@@ -692,7 +692,7 @@ export function LocationFinderPage({}: LocationFinderPageProps) {
               <button
                 key={index}
                 onClick={() => handleZipSearch(example.zip)}
-                className="p-4 bg-white border border-blue-200 rounded-lg hover:bg-texas-cream-200 hover:border-blue-300 transition-colors text-left"
+                className="p-4 bg-white border border-texas-navy/30 rounded-lg hover:bg-texas-cream-200 hover:border-blue-300 transition-colors text-left"
               >
                 <div className="font-bold text-texas-navy text-lg">{example.zip}</div>
                 <div className="text-gray-900 font-medium">{example.city}, {example.state}</div>
@@ -766,7 +766,7 @@ export function LocationFinderPage({}: LocationFinderPageProps) {
       <div className="bg-gradient-to-br from-texas-navy via-blue-900 to-texas-navy text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Find Your Providers?</h2>
-          <p className="text-xl mb-8 text-blue-100 max-w-3xl mx-auto">
+          <p className="text-xl mb-8 text-white/90 max-w-3xl mx-auto">
             Get the real scoop on electricity plans in your exact area.
             Compare your options and choose with confidence.
           </p>

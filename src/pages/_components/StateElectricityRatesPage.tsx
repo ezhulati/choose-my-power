@@ -151,7 +151,7 @@ export function StateElectricityRatesPage({ state }: StateElectricityRatesPagePr
                     <BarChart className="h-5 w-5 text-texas-navy mr-2" />
                     <span className="text-sm font-medium text-texas-navy">Average Rate</span>
                   </div>
-                  <div className="text-2xl font-bold text-blue-900">{averageRate.toFixed(1)}¢</div>
+                  <div className="text-2xl font-bold text-texas-navy-900">{averageRate.toFixed(1)}¢</div>
                   <div className="text-sm text-texas-navy">per kWh</div>
                 </div>
 
@@ -203,10 +203,10 @@ export function StateElectricityRatesPage({ state }: StateElectricityRatesPagePr
                   {usageOptions.map((option) => (
                     <button
                       key={option.value}
-                      onClick={() => setSelectedUsage(option.value as any)}
+                      onClick={() => setSelectedUsage(option.value as unknown)}
                       className={`p-3 text-center border rounded-lg transition-colors ${
                         selectedUsage === option.value
-                          ? 'border-texas-navy bg-texas-cream-200 text-blue-900'
+                          ? 'border-texas-navy bg-texas-cream-200 text-texas-navy-900'
                           : 'border-gray-200 hover:bg-gray-50'
                       }`}
                     >

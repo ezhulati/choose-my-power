@@ -210,9 +210,9 @@ export function ComparePage() {
                   <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
                   <span className="text-green-100 font-medium">300+ plans analyzed daily</span>
                 </div>
-                <div className="flex items-center px-4 py-2 bg-blue-500/20 backdrop-blur-sm rounded-full border border-blue-400/30">
+                <div className="flex items-center px-4 py-2 bg-texas-navy/100/20 backdrop-blur-sm rounded-full border border-blue-400/30">
                   <div className="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
-                  <span className="text-blue-100 font-medium">Real customer reviews</span>
+                  <span className="text-white/90 font-medium">Real customer reviews</span>
                 </div>
                 <div className="flex items-center px-4 py-2 bg-texas-red/20 backdrop-blur-sm rounded-full border border-texas-red/30">
                   <div className="w-2 h-2 bg-texas-red-200 rounded-full mr-2"></div>
@@ -365,7 +365,7 @@ export function ComparePage() {
               <thead>
                 <tr className="border-b-2 border-gray-200">
                   <th className="text-left py-4 px-2 font-semibold text-gray-900">Comparison Aspect</th>
-                  <th className="text-center py-4 px-4 font-semibold text-blue-900">Compare Providers</th>
+                  <th className="text-center py-4 px-4 font-semibold text-texas-navy-900">Compare Providers</th>
                   <th className="text-center py-4 px-4 font-semibold text-green-900">Compare Plans</th>
                   <th className="text-center py-4 px-4 font-semibold text-purple-900">Compare Rates</th>
                 </tr>
@@ -476,7 +476,7 @@ export function ComparePage() {
         </div>
 
         {/* Quick Decision Guide */}
-        <div className="bg-texas-cream-200 border border-blue-200 rounded-lg p-8">
+        <div className="bg-texas-cream-200 border border-texas-navy/30 rounded-lg p-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
             Where Should You Start? (30-Second Guide)
           </h2>

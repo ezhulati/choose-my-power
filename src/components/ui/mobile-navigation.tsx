@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown, ChevronRight, Home, Search, MapPin, Calculator, BookOpen } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
 import { Button } from './button';
 import { Z_INDEX, zIndexClass } from '../../lib/design-system/z-index-scale';
 import { cn } from '../../lib/utils';

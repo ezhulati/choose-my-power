@@ -49,7 +49,7 @@ export class ProductionMonitor {
   private alerts: AlertThresholds;
   private startTime: number;
   private monitoringInterval: NodeJS.Timeout | null = null;
-  private alertCallbacks: Array<(alert: any) => void> = [];
+  private alertCallbacks: Array<(alert: unknown) => void> = [];
 
   constructor(alertThresholds: Partial<AlertThresholds> = {}) {
     this.startTime = Date.now();
@@ -93,7 +93,7 @@ export class ProductionMonitor {
       performance: {
         memoryUsage: process.memoryUsage(),
         eventLoopDelay: 0,
-        activeHandles: (process as any)._getActiveHandles?.()?.length || 0
+        activeHandles: (process as unknown)._getActiveHandles?.()?.length || 0
       }
     };
   }
@@ -111,7 +111,7 @@ export class ProductionMonitor {
       this.checkAlerts();
     }, intervalMs);
 
-    console.log(`🔍 Production monitoring started (${intervalMs}ms interval)`);
+    console.warn(`🔍 Production monitoring started (${intervalMs}ms interval)`);
   }
 
   /**
@@ -122,7 +122,7 @@ export class ProductionMonitor {
       clearInterval(this.monitoringInterval);
       this.monitoringInterval = null;
     }
-    console.log('🛑 Production monitoring stopped');
+    console.warn('🛑 Production monitoring stopped');
   }
 
   /**
@@ -209,7 +209,7 @@ export class ProductionMonitor {
       
       // Active handles
       this.metrics.performance.activeHandles = 
-        (process as any)._getActiveHandles?.()?.length || 0;
+        (process as unknown)._getActiveHandles?.()?.length || 0;
       
       // Event loop delay measurement
       const start = process.hrtime.bigint();
@@ -258,7 +258,7 @@ export class ProductionMonitor {
    * Check alert thresholds and trigger alerts
    */
   private checkAlerts(): void {
-    const alerts: any[] = [];
+    const alerts: unknown[] = [];
     
     // Error rate alert
     const errorRate = this.metrics.api.failedRequests / this.metrics.api.totalRequests;
@@ -333,7 +333,7 @@ export class ProductionMonitor {
   /**
    * Add alert callback
    */
-  onAlert(callback: (alert: any) => void): void {
+  onAlert(callback: (alert: unknown) => void): void {
     this.alertCallbacks.push(callback);
   }
 
@@ -347,7 +347,7 @@ export class ProductionMonitor {
   /**
    * Get metrics summary for monitoring dashboards
    */
-  getMetricsSummary(): any {
+  getMetricsSummary(): unknown {
     const errorRate = this.metrics.api.totalRequests > 0 
       ? this.metrics.api.failedRequests / this.metrics.api.totalRequests 
       : 0;
@@ -405,7 +405,7 @@ export class ProductionMonitor {
   resetMetrics(): void {
     this.metrics = this.initializeMetrics();
     this.startTime = Date.now();
-    console.log('📊 Production metrics reset');
+    console.warn('📊 Production metrics reset');
   }
 }
 
@@ -419,12 +419,12 @@ if (process.env.NODE_ENV === 'production') {
   // Log summary every 5 minutes
   setInterval(() => {
     const summary = productionMonitor.getMetricsSummary();
-    console.log('📊 Production Metrics Summary:');
-    console.log(`   Health Score: ${summary.healthScore}/100`);
-    console.log(`   Requests: ${summary.requests.total} (${summary.requests.errorRate}% error rate)`);
-    console.log(`   Cache Hit Rate: ${summary.cache.memoryHitRate}% memory, ${summary.cache.redisHitRate}% Redis`);
-    console.log(`   Memory Usage: ${summary.performance.memoryUsageMB}MB`);
-    console.log(`   Active Cities: ${summary.deployment.citiesActive}`);
+    console.warn('📊 Production Metrics Summary:');
+    console.warn(`   Health Score: ${summary.healthScore}/100`);
+    console.warn(`   Requests: ${summary.requests.total} (${summary.requests.errorRate}% error rate)`);
+    console.warn(`   Cache Hit Rate: ${summary.cache.memoryHitRate}% memory, ${summary.cache.redisHitRate}% Redis`);
+    console.warn(`   Memory Usage: ${summary.performance.memoryUsageMB}MB`);
+    console.warn(`   Active Cities: ${summary.deployment.citiesActive}`);
   }, 300000); // 5 minutes
 }
 

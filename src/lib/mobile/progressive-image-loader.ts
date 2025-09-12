@@ -139,7 +139,7 @@ class ProgressiveImageLoader {
       this.setupServiceWorker();
     }
 
-    console.log('Progressive Image Loader initialized:', {
+    console.warn('Progressive Image Loader initialized:', {
       webpSupported: this.formatSupport.webp,
       avifSupported: this.formatSupport.avif,
       connectionType: this.connectionInfo?.effectiveType,
@@ -178,7 +178,7 @@ class ProgressiveImageLoader {
    * Detect connection information for adaptive loading
    */
   private detectConnectionInfo(): void {
-    const connection = (navigator as any).connection || (navigator as any).mozConnection || (navigator as any).webkitConnection;
+    const connection = (navigator as unknown).connection || (navigator as unknown).mozConnection || (navigator as unknown).webkitConnection;
     
     if (connection) {
       this.connectionInfo = {
@@ -535,7 +535,7 @@ class ProgressiveImageLoader {
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw-images.js')
         .then((registration) => {
-          console.log('Image SW registered:', registration);
+          console.warn('Image SW registered:', registration);
         })
         .catch((error) => {
           console.warn('Image SW registration failed:', error);

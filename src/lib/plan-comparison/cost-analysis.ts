@@ -495,7 +495,7 @@ export class CostAnalysisEngine {
     const maxMonths = Math.max(...comparison.plans.map(p => p.monthlyProjections.length));
 
     for (let month = 1; month <= maxMonths; month++) {
-      const monthData: any = { month };
+      const monthData: unknown = { month };
       comparison.plans.forEach(plan => {
         const projection = plan.monthlyProjections.find(p => p.month === month);
         monthData[plan.planName] = projection ? projection.cumulativeCost : 0;

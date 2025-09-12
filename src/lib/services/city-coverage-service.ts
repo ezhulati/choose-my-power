@@ -70,7 +70,7 @@ export interface CityCoverageMetrics {
 }
 
 export class CityCoverageService {
-  private cache = new Map<string, { data: any; timestamp: number; ttl: number }>();
+  private cache = new Map<string, { data: unknown; timestamp: number; ttl: number }>();
   private readonly DEFAULT_TTL = 1800000; // 30 minutes
   
   /**
@@ -628,7 +628,7 @@ export class CityCoverageService {
   }
 
   // Cache management
-  private getCachedResult(key: string): { data: any; timestamp: number; ttl: number } | null {
+  private getCachedResult(key: string): { data: unknown; timestamp: number; ttl: number } | null {
     const cached = this.cache.get(key);
     if (!cached) return null;
     
@@ -640,7 +640,7 @@ export class CityCoverageService {
     return cached;
   }
 
-  private setCachedResult(key: string, result: { data: any; timestamp: number; ttl: number }): void {
+  private setCachedResult(key: string, result: { data: unknown; timestamp: number; ttl: number }): void {
     this.cache.set(key, result);
     
     if (this.cache.size > 1000) {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
-import { Zap, Calendar, Leaf, DollarSign, Shield, TrendingDown, Users, Calculator, Star, MapPin, ArrowRight, CheckCircle, Filter, BarChart, Target, Award, Home } from 'lucide-react';
+import { Zap, TrendingDown, Users, MapPin, CheckCircle, Target, Award } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
 declare global {
@@ -226,7 +226,7 @@ export function ElectricityPlansPage({}: ElectricityPlansPageProps) {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Electricity Plans - Complete Guide & Analysis Hub
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-4xl mx-auto">
+            <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-4xl mx-auto">
               Master guide to electricity plan types, selection strategy, and decision-making. 
               Compare Texas electricity plans across 5 categories with expert analysis and selection tools.
             </p>
@@ -288,7 +288,7 @@ export function ElectricityPlansPage({}: ElectricityPlansPageProps) {
             {planCategories.map(category => (
               <button
                 key={category.id}
-                onClick={() => setSelectedCategory(category.id as any)}
+                onClick={() => setSelectedCategory(category.id as unknown)}
                 className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                   selectedCategory === category.id
                     ? 'bg-texas-navy text-white'
@@ -424,7 +424,7 @@ export function ElectricityPlansPage({}: ElectricityPlansPageProps) {
               <thead>
                 <tr className="border-b-2 border-gray-200">
                   <th className="text-left py-4 px-2 font-semibold text-gray-900">Comparison Factor</th>
-                  <th className="text-center py-4 px-4 font-semibold text-blue-900">Fixed Rate</th>
+                  <th className="text-center py-4 px-4 font-semibold text-texas-navy-900">Fixed Rate</th>
                   <th className="text-center py-4 px-4 font-semibold text-orange-900">Variable Rate</th>
                   <th className="text-center py-4 px-4 font-semibold text-green-900">Green Energy</th>
                   <th className="text-center py-4 px-4 font-semibold text-purple-900">Prepaid</th>

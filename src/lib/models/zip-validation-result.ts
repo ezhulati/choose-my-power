@@ -275,7 +275,7 @@ export class ZIPValidationResultModel {
 }
 
 // Export type guards
-export const isZIPValidationResult = (obj: any): obj is ZIPValidationResult => {
+export const isZIPValidationResult = (obj: unknown): obj is ZIPValidationResult => {
   return ZIPValidationResultSchema.safeParse(obj).success;
 };
 

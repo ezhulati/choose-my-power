@@ -285,7 +285,7 @@ async function getSystemHealthMetrics(): Promise<{
 /**
  * Calculate total data points in dashboard response
  */
-function calculateDataPoints(dashboardData: any): number {
+function calculateDataPoints(dashboardData: Record<string, unknown>): number {
   let count = 0;
   
   count += dashboardData.funnel?.length || 0;
@@ -321,7 +321,7 @@ function filterDashboardMetrics(response: DashboardResponse, requestedMetrics: s
   requestedMetrics.forEach(metric => {
     const key = metricsMap[metric.toLowerCase()];
     if (key && response.data[key]) {
-      (filteredData as any)[key] = response.data[key];
+      (filteredData as Record<string, unknown>)[key] = response.data[key];
     }
   });
 
@@ -402,7 +402,7 @@ async function logApiMetrics(metrics: {
   ipAddress?: string;
 }): Promise<void> {
   try {
-    console.log('API Metrics:', {
+    console.warn('API Metrics:', {
       timestamp: new Date().toISOString(),
       ...metrics
     });

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { getProviders, getCities, getPlansForCity, type RealProvider, type RealCity } from '../../lib/services/provider-service';
-import { Shield, CreditCard, Clock, CheckCircle, AlertTriangle } from 'lucide-react';
+import { Shield, CheckCircle } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
 declare global {
@@ -27,7 +27,7 @@ export function CityNoDepositPage({ state, city }: CityNoDepositPageProps) {
   const [creditScore, setCreditScore] = useState<'excellent' | 'good' | 'fair' | 'poor'>('good');
   const [providers, setProviders] = useState<RealProvider[]>([]);
   const [cities, setCities] = useState<RealCity[]>([]);
-  const [plans, setPlans] = useState<any[]>([]);
+  const [plans, setPlans] = useState<unknown[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -194,7 +194,7 @@ export function CityNoDepositPage({ state, city }: CityNoDepositPageProps) {
               {creditScoreOptions.map((option) => (
                 <button
                   key={option.value}
-                  onClick={() => setCreditScore(option.value as any)}
+                  onClick={() => setCreditScore(option.value as unknown)}
                   className={`p-4 text-center border-2 rounded-lg transition-colors ${
                     creditScore === option.value
                       ? `border-${option.color}-600 bg-${option.color}-50 text-${option.color}-900`
@@ -250,7 +250,7 @@ export function CityNoDepositPage({ state, city }: CityNoDepositPageProps) {
             )}
             
             {creditScore === 'poor' && (
-              <div className="text-red-700">
+              <div className="text-texas-red-700">
                 <p className="mb-3">❌ Prepaid electricity may be your best option in {cityData.name}</p>
                 <ul className="list-disc list-inside space-y-1 text-sm">
                   <li>Traditional no-deposit plans unlikely to be approved</li>

@@ -41,7 +41,7 @@ export interface AddressError {
   severity: ErrorSeverity;
   recoverable: boolean;
   retryable: boolean;
-  context?: any;
+  context?: unknown;
   suggestedActions?: string[];
   fallbackStrategy?: string;
   timestamp: Date;
@@ -93,7 +93,7 @@ export class AddressErrorHandler {
    * Handle address validation errors with fallbacks
    */
   async handleAddressValidationError(
-    error: any,
+    error: unknown,
     originalAddress: AddressInfo
   ): Promise<{ 
     normalizedAddress: NormalizedAddress | null; 
@@ -130,7 +130,7 @@ export class AddressErrorHandler {
    * Handle TDSP resolution errors with comprehensive fallbacks
    */
   async handleTdspResolutionError(
-    error: any,
+    error: unknown,
     address: AddressInfo | NormalizedAddress,
     zipCode: string
   ): Promise<FallbackResult> {
@@ -179,7 +179,7 @@ export class AddressErrorHandler {
   /**
    * Handle API integration errors
    */
-  handleApiError(error: any, context?: any): AddressError {
+  handleApiError(error: unknown, context?: any): AddressError {
     let code = 'API_ERROR';
     let severity = ErrorSeverity.MEDIUM;
 
@@ -214,10 +214,10 @@ export class AddressErrorHandler {
    * Handle network errors with retry strategies
    */
   async handleNetworkError(
-    error: any,
-    operation: () => Promise<any>,
+    error: unknown,
+    operation: () => Promise<unknown>,
     maxRetries: number = 3
-  ): Promise<any> {
+  ): Promise<unknown> {
     const networkError = this.createError(
       'NETWORK_ERROR',
       error.message || 'Network operation failed',

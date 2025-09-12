@@ -11,48 +11,48 @@ import { seedTdspInfo, updateTdspServiceAreas, getTdspCoverageStats } from './00
  */
 export async function runAllSeeds() {
   try {
-    console.log('🚀 Starting ZIP Coverage System Seed Process...');
-    console.log('=' .repeat(60));
+    console.warn('🚀 Starting ZIP Coverage System Seed Process...');
+    console.warn('=' .repeat(60));
     
     const startTime = Date.now();
     
     // Step 1: Seed Data Sources (needed for foreign keys in validation logs)
-    console.log('\n📡 Phase 1: Data Sources');
-    console.log('-'.repeat(30));
+    console.warn('\n📡 Phase 1: Data Sources');
+    console.warn('-'.repeat(30));
     const dataSources = await seedDataSources();
     await updateDataSourceStats();
     
     // Step 2: Seed TDSP Information (needed for foreign keys in city territories and ZIP mappings)
-    console.log('\n🏭 Phase 2: TDSP Information');
-    console.log('-'.repeat(30));
+    console.warn('\n🏭 Phase 2: TDSP Information');
+    console.warn('-'.repeat(30));
     const tdsps = await seedTdspInfo();
     await updateTdspServiceAreas();
     
     // Step 3: Get coverage statistics
-    console.log('\n📊 Phase 3: Coverage Statistics');
-    console.log('-'.repeat(30));
+    console.warn('\n📊 Phase 3: Coverage Statistics');
+    console.warn('-'.repeat(30));
     const stats = await getTdspCoverageStats();
     
     const endTime = Date.now();
     const duration = endTime - startTime;
     
     // Summary report
-    console.log('\n' + '='.repeat(60));
-    console.log('✅ ZIP COVERAGE SYSTEM SEED COMPLETE');
-    console.log('='.repeat(60));
-    console.log(`📊 Summary:`);
-    console.log(`   • Data Sources: ${dataSources.length} seeded`);
-    console.log(`   • TDSPs: ${tdsps.length} seeded`);
-    console.log(`   • Cities Covered: ${stats.totalCitiesCovered}`);
-    console.log(`   • Zones Covered: ${Object.keys(stats.byZone).length}`);
-    console.log(`   • Largest TDSP: ${stats.largestTdsp.name} (${(stats.largestTdsp.serviceArea as string[]).length} cities)`);
-    console.log(`   • Duration: ${duration}ms`);
+    console.warn('\n' + '='.repeat(60));
+    console.warn('✅ ZIP COVERAGE SYSTEM SEED COMPLETE');
+    console.warn('='.repeat(60));
+    console.warn(`📊 Summary:`);
+    console.warn(`   • Data Sources: ${dataSources.length} seeded`);
+    console.warn(`   • TDSPs: ${tdsps.length} seeded`);
+    console.warn(`   • Cities Covered: ${stats.totalCitiesCovered}`);
+    console.warn(`   • Zones Covered: ${Object.keys(stats.byZone).length}`);
+    console.warn(`   • Largest TDSP: ${stats.largestTdsp.name} (${(stats.largestTdsp.serviceArea as string[]).length} cities)`);
+    console.warn(`   • Duration: ${duration}ms`);
     
-    console.log(`\n🎯 Next Steps:`);
-    console.log(`   1. Run city territory seeds when city data is available`);
-    console.log(`   2. Run ZIP code mapping seeds with external API data`);
-    console.log(`   3. Begin validation log collection from real usage`);
-    console.log(`   4. Monitor data source health and performance`);
+    console.warn(`\n🎯 Next Steps:`);
+    console.warn(`   1. Run city territory seeds when city data is available`);
+    console.warn(`   2. Run ZIP code mapping seeds with external API data`);
+    console.warn(`   3. Begin validation log collection from real usage`);
+    console.warn(`   4. Monitor data source health and performance`);
     
     return {
       dataSources,
@@ -79,19 +79,19 @@ export async function runAllSeeds() {
  */
 export async function runDevSeeds() {
   try {
-    console.log('🛠️  Running Development Seeds...');
+    console.warn('🛠️  Running Development Seeds...');
     
     // Run main seeds
     const result = await runAllSeeds();
     
     // Add development-specific data
-    console.log('\n🧪 Adding Development Test Data...');
-    console.log('-'.repeat(30));
+    console.warn('\n🧪 Adding Development Test Data...');
+    console.warn('-'.repeat(30));
     
     // TODO: Add sample city territories and ZIP mappings for development
-    console.log('   • Sample city territories: Pending implementation');
-    console.log('   • Sample ZIP mappings: Pending implementation');
-    console.log('   • Test validation logs: Pending implementation');
+    console.warn('   • Sample city territories: Pending implementation');
+    console.warn('   • Sample ZIP mappings: Pending implementation');
+    console.warn('   • Test validation logs: Pending implementation');
     
     return result;
     
@@ -106,14 +106,14 @@ export async function runDevSeeds() {
  */
 export async function runProdSeeds() {
   try {
-    console.log('🏭 Running Production Seeds...');
+    console.warn('🏭 Running Production Seeds...');
     
     // Run main seeds with production validation
     const result = await runAllSeeds();
     
     // Production-specific validations
-    console.log('\n🔒 Production Validations...');
-    console.log('-'.repeat(30));
+    console.warn('\n🔒 Production Validations...');
+    console.warn('-'.repeat(30));
     
     // Validate all major TDSPs are present
     if (result.tdsps.length < 5) {
@@ -130,7 +130,7 @@ export async function runProdSeeds() {
       throw new Error(`Expected at least 8 data sources, got ${result.dataSources.length}`);
     }
     
-    console.log('✅ All production validations passed');
+    console.warn('✅ All production validations passed');
     
     return result;
     
@@ -145,7 +145,7 @@ export async function runProdSeeds() {
  */
 export async function cleanAllSeeds() {
   try {
-    console.log('🧹 Cleaning all seeded data...');
+    console.warn('🧹 Cleaning all seeded data...');
     
     // Import db and tables
     const { db } = await import('../init');
@@ -157,21 +157,21 @@ export async function cleanAllSeeds() {
     
     // Delete in reverse dependency order
     await db.delete(validationLogs);
-    console.log('   • Validation logs cleared');
+    console.warn('   • Validation logs cleared');
     
     await db.delete(zipCodeMappings);
-    console.log('   • ZIP code mappings cleared');
+    console.warn('   • ZIP code mappings cleared');
     
     await db.delete(cityTerritories);
-    console.log('   • City territories cleared');
+    console.warn('   • City territories cleared');
     
     await db.delete(tdspInfo);
-    console.log('   • TDSP information cleared');
+    console.warn('   • TDSP information cleared');
     
     await db.delete(dataSources);
-    console.log('   • Data sources cleared');
+    console.warn('   • Data sources cleared');
     
-    console.log('✅ All seeded data cleaned');
+    console.warn('✅ All seeded data cleaned');
     
   } catch (error) {
     console.error('❌ Error cleaning seeded data:', error);
@@ -184,7 +184,7 @@ export async function cleanAllSeeds() {
  */
 export async function verifySeedIntegrity() {
   try {
-    console.log('🔍 Verifying seed data integrity...');
+    console.warn('🔍 Verifying seed data integrity...');
     
     const { db } = await import('../init');
     const { dataSources } = await import('../schema/data-source');
@@ -220,10 +220,10 @@ export async function verifySeedIntegrity() {
       overall: dataSourceCount.count > 0 && tdspCount.count > 0
     };
     
-    console.log('📊 Integrity Report:');
-    console.log(`   • Data Sources: ${integrity.dataSources.total} total, ${integrity.dataSources.active} active`);
-    console.log(`   • TDSPs: ${integrity.tdsps.total} total, ${integrity.tdsps.active} active`);
-    console.log(`   • Overall Health: ${integrity.overall ? '✅ HEALTHY' : '❌ ISSUES FOUND'}`);
+    console.warn('📊 Integrity Report:');
+    console.warn(`   • Data Sources: ${integrity.dataSources.total} total, ${integrity.dataSources.active} active`);
+    console.warn(`   • TDSPs: ${integrity.tdsps.total} total, ${integrity.tdsps.active} active`);
+    console.warn(`   • Overall Health: ${integrity.overall ? '✅ HEALTHY' : '❌ ISSUES FOUND'}`);
     
     return integrity;
     
@@ -254,12 +254,12 @@ if (require.main === module) {
       verifySeedIntegrity().catch(console.error);
       break;
     default:
-      console.log('Usage: node seed-runner.js [all|dev|prod|clean|verify]');
-      console.log('  all    - Run all seeds');
-      console.log('  dev    - Run development seeds');
-      console.log('  prod   - Run production seeds');
-      console.log('  clean  - Clean all seeded data');
-      console.log('  verify - Verify seed integrity');
+      console.warn('Usage: node seed-runner.js [all|dev|prod|clean|verify]');
+      console.warn('  all    - Run all seeds');
+      console.warn('  dev    - Run development seeds');
+      console.warn('  prod   - Run production seeds');
+      console.warn('  clean  - Clean all seeded data');
+      console.warn('  verify - Verify seed integrity');
       break;
   }
 }

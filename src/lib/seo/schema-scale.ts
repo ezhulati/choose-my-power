@@ -57,8 +57,8 @@ interface SchemaGenerationOptions {
   city: string;
   filters: string[];
   plans: Plan[];
-  meta: any;
-  tdspInfo: any;
+  meta: unknown;
+  tdspInfo: unknown;
   url: string;
   planCount: number;
   lowestRate: number;
@@ -260,7 +260,7 @@ function generateEnhancedBreadcrumbSchema(city: string, filters: string[], baseU
 /**
  * Generate WebPage schema
  */
-function generateWebPageSchema(city: string, filters: string[], meta: any, url: string, tdspInfo: any): object {
+function generateWebPageSchema(city: string, filters: string[], meta: unknown, url: string, tdspInfo: unknown): object {
   const cityName = formatCityName(city);
   const filterText = filters.length > 0 ? ` - ${filters.map(formatFilterName).join(' ')}` : '';
   
@@ -298,7 +298,7 @@ function generateWebPageSchema(city: string, filters: string[], meta: any, url: 
 /**
  * Generate ItemList schema for plan listings
  */
-function generateItemListSchema(city: string, filters: string[], plans: Plan[], meta: any, totalCount: number): object {
+function generateItemListSchema(city: string, filters: string[], plans: Plan[], meta: unknown, totalCount: number): object {
   const cityName = formatCityName(city);
   const limitedPlans = plans.slice(0, 20); // Limit for performance
   
@@ -361,7 +361,7 @@ function generateItemListSchema(city: string, filters: string[], plans: Plan[], 
 /**
  * Generate LocalBusiness schema for city pages
  */
-function generateLocalBusinessSchema(city: string, tdspInfo: any, planCount: number): object {
+function generateLocalBusinessSchema(city: string, tdspInfo: unknown, planCount: number): object {
   const cityName = formatCityName(city);
   
   return {
@@ -408,7 +408,7 @@ function generateLocalBusinessSchema(city: string, tdspInfo: any, planCount: num
 /**
  * Generate Service schema for filter pages
  */
-function generateServiceSchema(city: string, filters: string[], tdspInfo: any, planCount: number, lowestRate: number): object {
+function generateServiceSchema(city: string, filters: string[], tdspInfo: unknown, planCount: number, lowestRate: number): object {
   const cityName = formatCityName(city);
   const serviceType = getServiceTypeFromFilters(filters);
   
@@ -459,7 +459,7 @@ function getServiceTypeFromFilters(filters: string[]): string {
 /**
  * Generate FAQ schema for common combinations
  */
-function generateFAQSchema(city: string, filters: string[], tdspInfo: any): object {
+function generateFAQSchema(city: string, filters: string[], tdspInfo: unknown): object {
   const cityName = formatCityName(city);
   const filterText = filters.length > 0 ? filters.map(formatFilterName).join(' ').toLowerCase() : '';
   
@@ -538,7 +538,7 @@ function shouldIncludeFAQSchema(city: string, filters: string[]): boolean {
 function generateComprehensiveServiceSchema(options: {
   city: string;
   filters: string[];
-  tdspInfo: any;
+  tdspInfo: unknown;
   planCount: number;
   lowestRate: number;
   averageRate?: number;
@@ -658,7 +658,7 @@ function generateAggregateOfferSchema(options: {
 export function validateSchemaMarkup(schemas: object[]): string[] {
   const issues: string[] = [];
   
-  schemas.forEach((schema: any, index) => {
+  schemas.forEach((schema: unknown, index) => {
     // Check required fields
     if (!schema['@context']) {
       issues.push(`Schema ${index}: Missing @context`);
@@ -707,7 +707,7 @@ export function getSchemaStats(allSchemas: object[][]): SchemaStats {
   let faqSchemas = 0;
   
   allSchemas.forEach(schemas => {
-    schemas.forEach((schema: any) => {
+    schemas.forEach((schema: unknown) => {
       totalSchemas++;
       switch (schema['@type']) {
         case 'BreadcrumbList':
@@ -751,9 +751,9 @@ export function getSchemaStats(allSchemas: object[][]): SchemaStats {
 function generateEnhancedWebPageSchema(options: {
   city: string;
   filters: string[];
-  meta: any;
+  meta: unknown;
   url: string;
-  tdspInfo: any;
+  tdspInfo: unknown;
   lastUpdated?: string;
   seasonalTrends?: SeasonalData;
 }): object {
@@ -827,7 +827,7 @@ function generateAdvancedItemListSchema(options: {
   city: string;
   filters: string[];
   plans: Plan[];
-  meta: any;
+  meta: unknown;
   planCount: number;
   averageRate?: number;
   topProviders?: ProviderInfo[];
@@ -926,7 +926,7 @@ function generateAdvancedItemListSchema(options: {
 // Enhanced LocalBusiness Schema with detailed service area
 function generateEnhancedLocalBusinessSchema(options: {
   city: string;
-  tdspInfo: any;
+  tdspInfo: unknown;
   planCount: number;
   cityCoordinates?: { lat: number; lng: number; };
   serviceAreaRadius?: number;
@@ -1084,7 +1084,7 @@ function generatePlaceSchema(options: {
   city: string;
   cityCoordinates?: { lat: number; lng: number; };
   serviceAreaRadius?: number;
-  tdspInfo: any;
+  tdspInfo: unknown;
 }): object {
   const { city, cityCoordinates, serviceAreaRadius, tdspInfo } = options;
   const cityName = formatCityName(city);
@@ -1311,7 +1311,7 @@ export function validateAndOptimizeSchemas(schemas: object[]): {
   let originalSize = 0;
   let optimizedSize = 0;
   
-  schemas.forEach((schema: any, index) => {
+  schemas.forEach((schema: unknown, index) => {
     originalSize += JSON.stringify(schema).length;
     
     // Validate required fields
@@ -1341,7 +1341,7 @@ export function validateAndOptimizeSchemas(schemas: object[]): {
 /**
  * Remove empty fields from schema objects for optimization
  */
-function removeEmptyFields(obj: any): any {
+function removeEmptyFields(obj: unknown): unknown {
   if (obj === null || obj === undefined) return obj;
   
   if (Array.isArray(obj)) {
@@ -1349,7 +1349,7 @@ function removeEmptyFields(obj: any): any {
   }
   
   if (typeof obj === "object") {
-    const cleaned: any = {};
+    const cleaned: unknown = {};
     Object.keys(obj).forEach(key => {
       const value = removeEmptyFields(obj[key]);
       if (value !== null && value !== undefined && value !== "" && 

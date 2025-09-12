@@ -50,7 +50,7 @@ export class PUCTClient extends BaseAPIClient {
   /**
    * Validate ZIP codes using PUCT deregulated area data
    */
-  async validateZipCodes(zipCodes: string[]): Promise<any[]> {
+  async validateZipCodes(zipCodes: string[]): Promise<unknown[]> {
     const results = [];
     
     // PUCT doesn't have a batch API, so we process one by one with delays
@@ -70,7 +70,7 @@ export class PUCTClient extends BaseAPIClient {
   /**
    * Validate a single ZIP code against PUCT data
    */
-  async validateSingleZipCode(zipCode: string): Promise<any> {
+  async validateSingleZipCode(zipCode: string): Promise<unknown> {
     if (!this.isValidTexasZipCode(zipCode)) {
       return {
         zipCode,
@@ -95,7 +95,7 @@ export class PUCTClient extends BaseAPIClient {
       );
 
       return result;
-    } catch (error: any) {
+    } catch (error: unknown) {
       return {
         zipCode,
         isValid: false,
@@ -109,12 +109,12 @@ export class PUCTClient extends BaseAPIClient {
   /**
    * Check deregulated status for a ZIP code
    */
-  private async checkDeregulatedStatus(zipCode: string): Promise<any> {
+  private async checkDeregulatedStatus(zipCode: string): Promise<unknown> {
     try {
       // PUCT doesn't have a direct ZIP API, so we query the REP directory
       // This is a simplified implementation - real PUCT integration would
       // require parsing HTML or using their specific data formats
-      const response = await this.makeRequest<any>(
+      const response = await this.makeRequest<unknown>(
         `/rep/REP_DIRECTORY.aspx?zip=${zipCode}`,
         { method: 'GET' }
       );
@@ -128,7 +128,7 @@ export class PUCTClient extends BaseAPIClient {
           processingTime: response.processingTime
         };
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       return {
         success: false,
         error: error.message,
@@ -140,10 +140,10 @@ export class PUCTClient extends BaseAPIClient {
   /**
    * Get city information from PUCT data
    */
-  private async getCityInformation(zipCode: string): Promise<any> {
+  private async getCityInformation(zipCode: string): Promise<unknown> {
     try {
       // Query PUCT service area data
-      const response = await this.makeRequest<any>(
+      const response = await this.makeRequest<unknown>(
         '/rep/service-areas.json',
         { method: 'GET' }
       );
@@ -162,7 +162,7 @@ export class PUCTClient extends BaseAPIClient {
           processingTime: response.processingTime
         };
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       return {
         success: false,
         error: error.message,
@@ -192,7 +192,7 @@ export class PUCTClient extends BaseAPIClient {
         processingTime: Date.now() - startTime,
         source: 'puct_rep_directory'
       };
-    } catch (error: any) {
+    } catch (error: unknown) {
       return {
         success: false,
         error: error.message,
@@ -210,7 +210,7 @@ export class PUCTClient extends BaseAPIClient {
     includeProviders: boolean = false
   ): Promise<PUCTDeregulatedArea | null> {
     try {
-      const response = await this.makeRequest<any>(
+      const response = await this.makeRequest<unknown>(
         `/rep/city-lookup.aspx?city=${encodeURIComponent(cityName)}`,
         { method: 'GET' }
       );
@@ -235,9 +235,9 @@ export class PUCTClient extends BaseAPIClient {
   /**
    * Get certified retail electric providers for a city
    */
-  private async getCertifiedProviders(cityName: string): Promise<any[]> {
+  private async getCertifiedProviders(cityName: string): Promise<unknown[]> {
     try {
-      const response = await this.makeRequest<any>(
+      const response = await this.makeRequest<unknown>(
         `/rep/providers.json?city=${encodeURIComponent(cityName)}`,
         { method: 'GET' }
       );
@@ -256,9 +256,9 @@ export class PUCTClient extends BaseAPIClient {
   /**
    * Get health status of PUCT services
    */
-  async getHealthStatus(): Promise<any> {
+  async getHealthStatus(): Promise<unknown> {
     try {
-      const response = await this.makeRequest<any>(
+      const response = await this.makeRequest<unknown>(
         '/rep/REP_DIRECTORY.aspx',
         { method: 'GET' }
       );
@@ -270,7 +270,7 @@ export class PUCTClient extends BaseAPIClient {
         timestamp: new Date().toISOString(),
         details: response.success ? 'PUCT directory accessible' : { error: response.error }
       };
-    } catch (error: any) {
+    } catch (error: unknown) {
       return {
         status: 'unhealthy',
         responseTime: 0,
@@ -284,7 +284,7 @@ export class PUCTClient extends BaseAPIClient {
   /**
    * Parse REP directory response (simplified - real implementation would parse HTML)
    */
-  private parseREPDirectoryResponse(htmlData: string, zipCode: string): any {
+  private parseREPDirectoryResponse(htmlData: string, zipCode: string): unknown {
     // This is a simplified implementation
     // Real PUCT integration would require HTML parsing or using their data API
     
@@ -308,7 +308,7 @@ export class PUCTClient extends BaseAPIClient {
   /**
    * Find city by ZIP code in PUCT service area data
    */
-  private findCityByZipCode(serviceAreaData: any, zipCode: string): any {
+  private findCityByZipCode(serviceAreaData: unknown, zipCode: string): unknown {
     // Mock implementation - real PUCT data would have actual city mappings
     const knownCities = this.getKnownCityMapping();
     const cityName = knownCities[zipCode];
@@ -329,7 +329,7 @@ export class PUCTClient extends BaseAPIClient {
   /**
    * Parse city deregulation data
    */
-  private parseCityDeregulationData(cityData: any, cityName: string): PUCTDeregulatedArea {
+  private parseCityDeregulationData(cityData: unknown, cityName: string): PUCTDeregulatedArea {
     // Mock implementation based on known Texas deregulation status
     const isDeregulated = this.isKnownDeregulatedCity(cityName);
     
@@ -349,7 +349,7 @@ export class PUCTClient extends BaseAPIClient {
   /**
    * Parse provider data from PUCT response
    */
-  private parseProviderData(providerData: any): any[] {
+  private parseProviderData(providerData: unknown): unknown[] {
     // Mock implementation - real PUCT data would have actual provider details
     return [
       {
@@ -380,9 +380,9 @@ export class PUCTClient extends BaseAPIClient {
    */
   private combineValidationResults(
     zipCode: string,
-    deregulatedStatus: PromiseSettledResult<any>,
-    cityInfo: PromiseSettledResult<any>
-  ): any {
+    deregulatedStatus: PromiseSettledResult<unknown>,
+    cityInfo: PromiseSettledResult<unknown>
+  ): unknown {
     let isValid = false;
     let serviceType = 'unknown';
     let cityName = 'Unknown';
@@ -438,8 +438,8 @@ export class PUCTClient extends BaseAPIClient {
   /**
    * Get fallback data for common ZIP codes
    */
-  private getFallbackData(zipCode: string): any {
-    const knownData: Record<string, any> = {
+  private getFallbackData(zipCode: string): unknown {
+    const knownData: Record<string, unknown> = {
       '75201': { serviceType: 'deregulated', cityName: 'Dallas', county: 'Dallas County' },
       '77001': { serviceType: 'deregulated', cityName: 'Houston', county: 'Harris County' },
       '78701': { serviceType: 'deregulated', cityName: 'Austin', county: 'Travis County' },

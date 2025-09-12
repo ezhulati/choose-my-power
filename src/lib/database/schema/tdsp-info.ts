@@ -107,12 +107,12 @@ export function isValidTdspZone(zone: string): zone is TdspZone {
   return Object.values(TDSP_ZONES).includes(zone as TdspZone);
 }
 
-export function isValidServiceArea(serviceArea: any): serviceArea is string[] {
+export function isValidServiceArea(serviceArea: unknown): serviceArea is string[] {
   return Array.isArray(serviceArea) &&
          serviceArea.every(city => typeof city === 'string' && city.length > 0);
 }
 
-export function isValidContactInfo(contactInfo: any): contactInfo is TdspContactInfo {
+export function isValidContactInfo(contactInfo: unknown): contactInfo is TdspContactInfo {
   if (!contactInfo || typeof contactInfo !== 'object') return false;
   
   // Optional fields should be strings if present

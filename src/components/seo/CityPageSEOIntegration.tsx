@@ -128,28 +128,28 @@ export const CityPageSEOIntegration: React.FC<CityPageSEOIntegrationProps> = ({
   // Render debug information if requested
   if (showDebugInfo) {
     return (
-      <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 mt-6">
-        <h3 className="text-lg font-semibold text-blue-800 mb-4">
+      <div className="bg-texas-navy/10 border border-texas-navy/30 rounded-xl p-6 mt-6">
+        <h3 className="text-lg font-semibold text-texas-navy-800 mb-4">
           🔍 SEO Integration Debug Information
         </h3>
         
         {loading && (
           <div className="flex items-center mb-4">
-            <svg className="animate-spin h-5 w-5 text-blue-600 mr-2" fill="none" viewBox="0 0 24 24">
+            <svg className="animate-spin h-5 w-5 text-texas-navy mr-2" fill="none" viewBox="0 0 24 24">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
-            <span className="text-blue-700">Loading SEO metadata...</span>
+            <span className="text-texas-navy-700">Loading SEO metadata...</span>
           </div>
         )}
 
         {error && (
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
-            <h4 className="text-red-800 font-medium">❌ SEO Loading Error</h4>
-            <p className="text-red-700 text-sm mt-1">{error}</p>
+          <div className="bg-texas-red/10 border border-texas-red/30 rounded-lg p-4 mb-4">
+            <h4 className="text-texas-red-800 font-medium">❌ SEO Loading Error</h4>
+            <p className="text-texas-red-700 text-sm mt-1">{error}</p>
             <button
               onClick={refresh}
-              className="mt-2 px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700 transition-colors"
+              className="mt-2 px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-texas-red-700 transition-colors"
             >
               Retry
             </button>
@@ -159,33 +159,33 @@ export const CityPageSEOIntegration: React.FC<CityPageSEOIntegrationProps> = ({
         {metadata && (
           <div className="space-y-4">
             <div>
-              <h4 className="font-medium text-blue-800 mb-2">📝 Page Title</h4>
-              <p className="text-sm text-blue-700 bg-white p-2 rounded border">
+              <h4 className="font-medium text-texas-navy-800 mb-2">📝 Page Title</h4>
+              <p className="text-sm text-texas-navy-700 bg-white p-2 rounded border">
                 {metadata.title}
               </p>
             </div>
 
             <div>
-              <h4 className="font-medium text-blue-800 mb-2">📄 Meta Description</h4>
-              <p className="text-sm text-blue-700 bg-white p-2 rounded border">
+              <h4 className="font-medium text-texas-navy-800 mb-2">📄 Meta Description</h4>
+              <p className="text-sm text-texas-navy-700 bg-white p-2 rounded border">
                 {metadata.description}
               </p>
             </div>
 
             <div>
-              <h4 className="font-medium text-blue-800 mb-2">🔗 Canonical URL</h4>
-              <p className="text-sm text-blue-700 bg-white p-2 rounded border">
+              <h4 className="font-medium text-texas-navy-800 mb-2">🔗 Canonical URL</h4>
+              <p className="text-sm text-texas-navy-700 bg-white p-2 rounded border">
                 {metadata.canonicalUrl}
               </p>
             </div>
 
             <div>
-              <h4 className="font-medium text-blue-800 mb-2">🏷️ Keywords ({metadata.keywords.length})</h4>
+              <h4 className="font-medium text-texas-navy-800 mb-2">🏷️ Keywords ({metadata.keywords.length})</h4>
               <div className="flex flex-wrap gap-1">
                 {metadata.keywords.slice(0, 10).map((keyword, index) => (
                   <span
                     key={index}
-                    className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded"
+                    className="px-2 py-1 bg-blue-100 text-texas-navy-800 text-xs rounded"
                   >
                     {keyword}
                   </span>
@@ -199,8 +199,8 @@ export const CityPageSEOIntegration: React.FC<CityPageSEOIntegrationProps> = ({
             </div>
 
             <div>
-              <h4 className="font-medium text-blue-800 mb-2">🍞 Breadcrumbs</h4>
-              <div className="text-sm text-blue-700 bg-white p-2 rounded border">
+              <h4 className="font-medium text-texas-navy-800 mb-2">🍞 Breadcrumbs</h4>
+              <div className="text-sm text-texas-navy-700 bg-white p-2 rounded border">
                 {metadata.breadcrumbs.map((crumb, index) => (
                   <span key={index}>
                     {index > 0 && ' › '}
@@ -213,7 +213,7 @@ export const CityPageSEOIntegration: React.FC<CityPageSEOIntegrationProps> = ({
             </div>
 
             <div>
-              <h4 className="font-medium text-blue-800 mb-2">📱 Social Media Preview</h4>
+              <h4 className="font-medium text-texas-navy-800 mb-2">📱 Social Media Preview</h4>
               <div className="bg-white border rounded-lg p-3">
                 <div className="flex items-start space-x-3">
                   <div className="w-16 h-16 bg-gray-200 rounded flex-shrink-0 flex items-center justify-center">
@@ -235,8 +235,8 @@ export const CityPageSEOIntegration: React.FC<CityPageSEOIntegrationProps> = ({
             </div>
 
             <div>
-              <h4 className="font-medium text-blue-800 mb-2">⚙️ SEO Parameters</h4>
-              <div className="text-xs text-blue-700 bg-white p-2 rounded border font-mono">
+              <h4 className="font-medium text-texas-navy-800 mb-2">⚙️ SEO Parameters</h4>
+              <div className="text-xs text-texas-navy-700 bg-white p-2 rounded border font-mono">
                 <div>ZIP: {zipCode}</div>
                 <div>City: {cityName} ({citySlug})</div>
                 <div>Market Zone: {marketZone}</div>

@@ -182,7 +182,7 @@ export class EnterpriseRoutingSystem {
    * Generates optimized static paths with intelligent batching
    */
   async generateStaticPaths(): Promise<GetStaticPaths> {
-    console.log('🚀 Enterprise Routing System: Generating static paths for production scale...');
+    console.warn('🚀 Enterprise Routing System: Generating static paths for production scale...');
     const startTime = Date.now();
 
     try {
@@ -193,13 +193,13 @@ export class EnterpriseRoutingSystem {
 
       // Generate routing plan
       const plan = await this.createMasterRoutingPlan();
-      console.log(`📋 Master plan created: ${plan.totalRoutes} routes across ${plan.cityCount} cities`);
+      console.warn(`📋 Master plan created: ${plan.totalRoutes} routes across ${plan.cityCount} cities`);
 
       // Execute batched generation
       const paths = await this.executeBatchedGeneration(plan);
       
       const duration = Date.now() - startTime;
-      console.log(`✅ Generated ${paths.length} routes in ${duration}ms (${(duration / paths.length).toFixed(2)}ms per route)`);
+      console.warn(`✅ Generated ${paths.length} routes in ${duration}ms (${(duration / paths.length).toFixed(2)}ms per route)`);
 
       // Log performance summary
       this.logPerformanceSummary(plan, paths.length, duration);
@@ -348,7 +348,7 @@ export class EnterpriseRoutingSystem {
     const allRoutes = this.createPriorityOrderedRoutes(plan);
     const batches = this.chunkArray(allRoutes, batchSize);
 
-    console.log(`🔄 Processing ${batches.length} batches of ${batchSize} routes each...`);
+    console.warn(`🔄 Processing ${batches.length} batches of ${batchSize} routes each...`);
 
     for (let batchIndex = 0; batchIndex < batches.length; batchIndex++) {
       const batch = batches[batchIndex];
@@ -371,7 +371,7 @@ export class EnterpriseRoutingSystem {
 
       // Progress logging
       const progress = (processedCount / plan.totalRoutes) * 100;
-      console.log(`📊 Progress: ${progress.toFixed(1)}% (${processedCount}/${plan.totalRoutes} routes)`);
+      console.warn(`📊 Progress: ${progress.toFixed(1)}% (${processedCount}/${plan.totalRoutes} routes)`);
     }
 
     return routes;
@@ -415,7 +415,7 @@ export class EnterpriseRoutingSystem {
       const duration = Date.now() - startTime;
       const avgTime = duration / batch.length;
 
-      console.log(`✅ Batch ${batchNumber}/${totalBatches}: ${routes.length}/${batch.length} routes (${avgTime.toFixed(0)}ms avg)`);
+      console.warn(`✅ Batch ${batchNumber}/${totalBatches}: ${routes.length}/${batch.length} routes (${avgTime.toFixed(0)}ms avg)`);
 
     } catch (error) {
       console.error(`❌ Batch ${batchNumber} processing failed:`, error);
@@ -525,9 +525,9 @@ export class EnterpriseRoutingSystem {
   }
 
   private prioritizeFilterCombinations(
-    combinations: any[], 
+    combinations: unknown[], 
     cityTier: number
-  ): any[] {
+  ): unknown[] {
     return combinations
       .filter(c => c.isValid && c.shouldGenerate)
       .sort((a, b) => {
@@ -624,7 +624,7 @@ export class EnterpriseRoutingSystem {
       .filter(r => r.priority === 'critical')
       .slice(0, 100); // Limit to top 100 critical routes
 
-    console.log(`🔥 Warming cache for ${criticalRoutes.length} critical routes...`);
+    console.warn(`🔥 Warming cache for ${criticalRoutes.length} critical routes...`);
 
     // Warm in parallel but with rate limiting
     const batchSize = 5;
@@ -676,27 +676,27 @@ export class EnterpriseRoutingSystem {
   }
 
   private startPerformanceTracking(): void {
-    console.log('📊 Starting performance tracking...');
+    console.warn('📊 Starting performance tracking...');
   }
 
   private logPerformanceSummary(plan: MasterRoutingPlan, generated: number, duration: number): void {
-    console.log('\n📈 Enterprise Routing Performance Summary');
-    console.log('=' + '='.repeat(50));
-    console.log(`Total routes planned: ${plan.totalRoutes}`);
-    console.log(`Total routes generated: ${generated}`);
-    console.log(`Generation efficiency: ${((generated / plan.totalRoutes) * 100).toFixed(1)}%`);
-    console.log(`Total cities: ${plan.cityCount}`);
-    console.log(`Tier 1 routes: ${plan.tier1Routes}`);
-    console.log(`Tier 2 routes: ${plan.tier2Routes}`);
-    console.log(`Tier 3 routes: ${plan.tier3Routes}`);
-    console.log(`Critical routes: ${plan.criticalRoutes}`);
-    console.log(`High priority routes: ${plan.highPriorityRoutes}`);
-    console.log(`Medium priority routes: ${plan.mediumPriorityRoutes}`);
-    console.log(`Low priority routes: ${plan.lowPriorityRoutes}`);
-    console.log(`Total generation time: ${duration}ms`);
-    console.log(`Average time per route: ${(duration / generated).toFixed(2)}ms`);
-    console.log(`Memory usage: ${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB`);
-    console.log('=' + '='.repeat(50));
+    console.warn('\n📈 Enterprise Routing Performance Summary');
+    console.warn('=' + '='.repeat(50));
+    console.warn(`Total routes planned: ${plan.totalRoutes}`);
+    console.warn(`Total routes generated: ${generated}`);
+    console.warn(`Generation efficiency: ${((generated / plan.totalRoutes) * 100).toFixed(1)}%`);
+    console.warn(`Total cities: ${plan.cityCount}`);
+    console.warn(`Tier 1 routes: ${plan.tier1Routes}`);
+    console.warn(`Tier 2 routes: ${plan.tier2Routes}`);
+    console.warn(`Tier 3 routes: ${plan.tier3Routes}`);
+    console.warn(`Critical routes: ${plan.criticalRoutes}`);
+    console.warn(`High priority routes: ${plan.highPriorityRoutes}`);
+    console.warn(`Medium priority routes: ${plan.mediumPriorityRoutes}`);
+    console.warn(`Low priority routes: ${plan.lowPriorityRoutes}`);
+    console.warn(`Total generation time: ${duration}ms`);
+    console.warn(`Average time per route: ${(duration / generated).toFixed(2)}ms`);
+    console.warn(`Memory usage: ${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB`);
+    console.warn('=' + '='.repeat(50));
   }
 }
 

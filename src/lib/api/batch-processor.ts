@@ -9,9 +9,9 @@ import { createManagedCache } from '../utils/memory-manager';
 
 interface BatchRequest {
   id: string;
-  params: Record<string, any>;
-  resolve: (result: any) => void;
-  reject: (error: any) => void;
+  params: Record<string, unknown>;
+  resolve: (result: unknown) => void;
+  reject: (error: unknown) => void;
   timestamp: number;
   priority: 'high' | 'normal' | 'low';
 }
@@ -41,7 +41,7 @@ export class ApiBatchProcessor {
   private pendingRequests = new Map<string, BatchRequest[]>();
   private batchTimers = new Map<string, NodeJS.Timeout>();
   private circuitBreakerState = new Map<string, { isOpen: boolean; failures: number; lastFailure: number }>();
-  private deduplicationCache = createManagedCache<any>('api-dedup', 5000); // 5 seconds
+  private deduplicationCache = createManagedCache<unknown>('api-dedup', 5000); // 5 seconds
   private stats: RequestStats = {
     totalRequests: 0,
     batchedRequests: 0,
@@ -59,7 +59,7 @@ export class ApiBatchProcessor {
    */
   async batchRequest<T>(
     endpoint: string,
-    params: Record<string, any>,
+    params: Record<string, unknown>,
     priority: 'high' | 'normal' | 'low' = 'normal'
   ): Promise<T> {
     this.stats.totalRequests++;
@@ -164,9 +164,9 @@ export class ApiBatchProcessor {
   /**
    * Combine parameters from multiple requests into a single batch
    */
-  private combineBatchParams(requests: BatchRequest[]): Record<string, any> {
-    const combined: Record<string, any> = {};
-    const uniqueParams = new Map<string, Set<any>>();
+  private combineBatchParams(requests: BatchRequest[]): Record<string, unknown> {
+    const combined: Record<string, unknown> = {};
+    const uniqueParams = new Map<string, Set<unknown>>();
     
     // Collect all unique parameter values
     for (const request of requests) {
@@ -199,7 +199,7 @@ export class ApiBatchProcessor {
   /**
    * Make the actual batched API call
    */
-  private async makeBatchApiCall(endpoint: string, params: Record<string, any>): Promise<any> {
+  private async makeBatchApiCall(endpoint: string, params: Record<string, unknown>): Promise<unknown> {
     const url = new URL(endpoint);
     
     // Add parameters to URL
@@ -246,7 +246,7 @@ export class ApiBatchProcessor {
     // Cache for deduplication
     if (this.config.deduplication && Array.isArray(data)) {
       // Cache individual results based on their parameters
-      data.forEach((item: any, index: number) => {
+      data.forEach((item: unknown, index: number) => {
         if (item && typeof item === 'object') {
           const dedupeKey = this.generateDedupeKeyForItem(endpoint, item);
           this.deduplicationCache.set(dedupeKey, item);
@@ -262,8 +262,7 @@ export class ApiBatchProcessor {
    */
   private async distributeBatchResponses(
     requests: BatchRequest[],
-    batchResponse: any
-  ): Promise<void> {
+    batchResponse: unknown): Promise<void> {
     if (!Array.isArray(batchResponse)) {
       // Single response - distribute to all requests
       for (const request of requests) {
@@ -299,7 +298,7 @@ export class ApiBatchProcessor {
   /**
    * Find matching response for a specific request
    */
-  private findMatchingResponse(request: BatchRequest, responses: any[]): any {
+  private findMatchingResponse(request: BatchRequest, responses: unknown[]): unknown {
     // For electricity plans API, match by TDSP DUNS
     const tdspDuns = request.params.tdsp_duns;
     
@@ -321,8 +320,7 @@ export class ApiBatchProcessor {
   private handleBatchFailure(
     endpoint: string,
     requests: BatchRequest[],
-    error: any
-  ): void {
+    error: unknown): void {
     // Record failure for circuit breaker
     this.recordFailure(endpoint);
     this.stats.errorRate = (this.stats.errorRate + 1) / this.stats.totalRequests;
@@ -418,13 +416,13 @@ export class ApiBatchProcessor {
   /**
    * Generate deduplication cache key
    */
-  private generateDedupeKey(endpoint: string, params: Record<string, any>): string {
+  private generateDedupeKey(endpoint: string, params: Record<string, unknown>): string {
     const sortedParams = Object.keys(params)
       .sort()
       .reduce((result, key) => {
         result[key] = params[key];
         return result;
-      }, {} as Record<string, any>);
+      }, {} as Record<string, unknown>);
 
     return `${endpoint}_${Buffer.from(JSON.stringify(sortedParams)).toString('base64')}`;
   }
@@ -432,7 +430,7 @@ export class ApiBatchProcessor {
   /**
    * Generate deduplication key for individual items
    */
-  private generateDedupeKeyForItem(endpoint: string, item: any): string {
+  private generateDedupeKeyForItem(endpoint: string, item: unknown): string {
     // For electricity plans, use plan ID or unique identifier
     const identifier = item.id || item._id || item.plan_id || JSON.stringify(item);
     return `${endpoint}_item_${identifier}`;
@@ -441,7 +439,7 @@ export class ApiBatchProcessor {
   /**
    * Get processing statistics
    */
-  getStats(): RequestStats & { pendingBatches: number; circuitBreakerStates: Record<string, any> } {
+  getStats(): RequestStats & { pendingBatches: number; circuitBreakerStates: Record<string, unknown> } {
     return {
       ...this.stats,
       pendingBatches: this.pendingRequests.size,

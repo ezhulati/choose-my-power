@@ -157,7 +157,7 @@ describe('ZIP Navigation Integration Tests', () => {
       ];
 
       for (const test of errorTests) {
-        const recovery = await zipErrorRecoveryService.getErrorRecovery(test.zip, test.expectedType as any);
+        const recovery = await zipErrorRecoveryService.getErrorRecovery(test.zip, test.expectedType as unknown);
         
         expect(recovery.suggestions).toBeDefined();
         expect(recovery.recoveryActions).toBeDefined();

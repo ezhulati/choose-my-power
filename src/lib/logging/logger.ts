@@ -91,7 +91,7 @@ class Logger {
 
     if (typeof window !== 'undefined' && window.performance) {
       entry.performanceMetrics = {
-        memory: (performance as any).memory?.usedJSHeapSize,
+        memory: (performance as unknown).memory?.usedJSHeapSize,
         timing: performance.now()
       };
     }
@@ -148,7 +148,7 @@ class Logger {
 
     switch (entry.level) {
       case 'debug':
-        console.debug(message, entry.context);
+        console.warn(message, entry.context);
         break;
       case 'info':
         console.info(message, entry.context);
@@ -166,7 +166,7 @@ class Logger {
     }
 
     if (this.isDevelopment && entry.performanceMetrics) {
-      console.debug('Performance:', entry.performanceMetrics);
+      console.warn('Performance:', entry.performanceMetrics);
     }
   }
 
@@ -394,7 +394,7 @@ export function createLogger(component: string, additionalContext?: LogContext):
 }
 
 // Error boundary helper
-export function logErrorBoundary(error: Error, errorInfo: any, component: string): void {
+export function logErrorBoundary(error: Error, errorInfo: unknown, component: string): void {
   logger.error('React Error Boundary triggered', error, {
     component,
     action: 'error_boundary',

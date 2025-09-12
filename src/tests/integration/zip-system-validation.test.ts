@@ -163,7 +163,7 @@ describe('ZIP System Validation Tests', () => {
       expect(exported.data).toBeDefined();
       
       // Validate export structure
-      const data = exported.data as any;
+      const data = exported.data as unknown;
       expect(data.systemHealth).toBeDefined();
       expect(data.trends).toBeDefined();
       expect(data.alerts).toBeDefined();

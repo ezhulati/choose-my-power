@@ -272,7 +272,7 @@ export const MobileConversionOptimizer: React.FC<ConversionOptimizerProps> = ({
   /**
    * Track conversion events
    */
-  const trackConversionEvent = (event: string, data: any = {}) => {
+  const trackConversionEvent = (event: string, data: unknown = {}) => {
     // Integration with analytics service
     if (typeof gtag !== 'undefined') {
       gtag('event', event, {
@@ -283,7 +283,6 @@ export const MobileConversionOptimizer: React.FC<ConversionOptimizerProps> = ({
       });
     }
     
-    console.log('Conversion Event:', event, data);
   };
 
   /**

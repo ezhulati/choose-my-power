@@ -48,8 +48,8 @@ interface ContentTemplate {
 
 // Performance optimization: Cache frequently generated content templates
 const templateCache = new Map<string, ContentTemplate>();
-const heroCache = new Map<string, any>();
-const faqCache = new Map<string, any>();
+const heroCache = new Map<string, unknown>();
+const faqCache = new Map<string, unknown>();
 const localContextCache = new Map<string, string>();
 
 /**
@@ -278,7 +278,7 @@ function formatFilterName(filter: string): string {
 }
 
 function getFilterBenefits(filter: string) {
-  const benefits: Record<string, any> = {
+  const benefits: Record<string, unknown> = {
     '12-month': {
       primary: 'Rate locked for 12 months',
       secondary: 'Moderate-length contract term', 
@@ -342,7 +342,7 @@ function getCombinationBenefits(filters: string[]) {
 }
 
 function getProviderInfo(provider: string) {
-  const providers: Record<string, any> = {
+  const providers: Record<string, unknown> = {
     'reliant-energy': {
       reputation: 'Been around since 1996—they\'re not going anywhere',
       primaryBenefit: 'Actually answers their customer service phone',

@@ -87,7 +87,7 @@ class PerformanceMonitor {
       // First Input Delay
       const fidObserver = new PerformanceObserver((entryList) => {
         const entries = entryList.getEntries();
-        entries.forEach((entry: any) => {
+        entries.forEach((entry: unknown) => {
           this.coreWebVitals.FID = entry.processingStart - entry.startTime;
           this.recordMetric('core_web_vitals_fid', this.coreWebVitals.FID, 'ms');
         });
@@ -99,7 +99,7 @@ class PerformanceMonitor {
       const clsObserver = new PerformanceObserver((entryList) => {
         let clsValue = 0;
         const entries = entryList.getEntries();
-        entries.forEach((entry: any) => {
+        entries.forEach((entry: unknown) => {
           if (!entry.hadRecentInput) {
             clsValue += entry.value;
           }
@@ -350,11 +350,11 @@ class PerformanceMonitor {
    * Measure memory usage
    */
   measureMemory(context?: LogContext): MemoryMetric | null {
-    if (!this.enabled || !(performance as any).memory) {
+    if (!this.enabled || !(performance as unknown).memory) {
       return null;
     }
 
-    const memInfo = (performance as any).memory;
+    const memInfo = (performance as unknown).memory;
     const metric: MemoryMetric = {
       name: 'memory_usage',
       value: memInfo.usedJSHeapSize,
@@ -432,7 +432,7 @@ class PerformanceMonitor {
   /**
    * Get performance statistics
    */
-  getStats(): Record<string, any> {
+  getStats(): Record<string, unknown> {
     const now = Date.now();
     const last5Minutes = this.metrics.filter(m => now - m.timestamp < 300000);
     
@@ -441,7 +441,7 @@ class PerformanceMonitor {
       totalMetrics: this.metrics.length,
       recentMetrics: last5Minutes.length,
       averages: {} as Record<string, number>,
-      percentiles: {} as Record<string, any>
+      percentiles: {} as Record<string, unknown>
     };
 
     // Calculate averages for timing metrics
@@ -478,7 +478,7 @@ class PerformanceMonitor {
       timestamp: new Date().toISOString(),
       pageUrl: window.location.href,
       userAgent: navigator.userAgent,
-      connectionType: (navigator as any).connection?.effectiveType,
+      connectionType: (navigator as unknown).connection?.effectiveType,
       coreWebVitals: { ...this.coreWebVitals },
       customMetrics: this.metrics.slice(-50), // Last 50 metrics
       resourceTimings: performance.getEntriesByType('resource') as PerformanceResourceTiming[],
@@ -520,14 +520,14 @@ class PerformanceMonitor {
   /**
    * Decorator for timing functions
    */
-  withTiming<T extends (...args: any[]) => any>(
+  withTiming<T extends (...args: unknown[]) => any>(
     fn: T,
     name?: string,
     context?: LogContext
   ): T {
     const timingName = name || fn.name || 'anonymous_function';
     
-    return ((...args: any[]) => {
+    return ((...args: unknown[]) => {
       this.startTiming(timingName, context);
       
       try {
@@ -595,7 +595,7 @@ export function measureMemory(context?: LogContext): MemoryMetric | null {
   return performanceMonitor.measureMemory(context);
 }
 
-export function withTiming<T extends (...args: any[]) => any>(
+export function withTiming<T extends (...args: unknown[]) => any>(
   fn: T,
   name?: string,
   context?: LogContext
@@ -603,6 +603,6 @@ export function withTiming<T extends (...args: any[]) => any>(
   return performanceMonitor.withTiming(fn, name, context);
 }
 
-export function getPerformanceStats(): Record<string, any> {
+export function getPerformanceStats(): Record<string, unknown> {
   return performanceMonitor.getStats();
 }

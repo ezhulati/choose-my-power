@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getProviders, getCities, type RealProvider, type RealCity } from '../../lib/services/provider-service';
-import { Star, TrendingDown, Calendar, Leaf, DollarSign, Users, Shield, Phone, CheckCircle, X } from 'lucide-react';
+import { Star, CheckCircle } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
 declare global {
@@ -145,9 +145,9 @@ export function ProviderComparisonPage({ providerA, providerB, state }: Provider
             </p>
 
             {/* Quick Winner Banner */}
-            <div className="bg-texas-cream-200 border border-blue-200 rounded-lg p-4 inline-block">
+            <div className="bg-texas-cream-200 border border-texas-navy/30 rounded-lg p-4 inline-block">
               <div className="text-sm text-texas-navy mb-1">Quick Comparison Winner:</div>
-              <div className="text-lg font-bold text-blue-900">
+              <div className="text-lg font-bold text-texas-navy-900">
                 {provider1Cost < provider2Cost ? provider1.name : provider2.name} 
                 <span className="text-green-600 ml-2">saves ${annualSavings.toFixed(0)}/year</span>
               </div>
@@ -249,7 +249,7 @@ export function ProviderComparisonPage({ providerA, providerB, state }: Provider
                   onClick={() => setSelectedUsage(usage)}
                   className={`p-3 text-center border rounded-lg transition-colors ${
                     selectedUsage === usage
-                      ? 'border-texas-navy bg-texas-cream-200 text-blue-900'
+                      ? 'border-texas-navy bg-texas-cream-200 text-texas-navy-900'
                       : 'border-gray-200 hover:bg-gray-50'
                   }`}
                 >
@@ -399,7 +399,7 @@ export function ProviderComparisonPage({ providerA, providerB, state }: Provider
         {/* Bottom CTA */}
         <div className="bg-texas-navy text-white rounded-lg p-8 text-center">
           <h2 className="text-2xl font-bold mb-4">Ready to Switch?</h2>
-          <p className="text-blue-100 mb-6">
+          <p className="text-white/90 mb-6">
             Based on our comparison, {provider1Cost < provider2Cost ? provider1.name : provider2.name} offers better value. 
             Get started today and begin saving on your electricity bill.
           </p>

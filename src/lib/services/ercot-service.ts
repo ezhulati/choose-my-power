@@ -125,7 +125,7 @@ export async function searchServiceLocations(address: string, zipCode: string): 
     const normalizedAddress = address.trim();
     const normalizedZip = zipCode.trim();
 
-    console.log(`🔍 Searching ERCOT API for address: "${normalizedAddress}" in ZIP ${normalizedZip}`);
+    // Searching ERCOT API - debug logging removed for ESLint compliance
 
     // Call the real ComparePower ERCOT API
     const response = await fetch(`https://ercot.api.comparepower.com/api/esiids?address=${encodeURIComponent(normalizedAddress)}&zip_code=${normalizedZip}`, {
@@ -150,7 +150,7 @@ export async function searchServiceLocations(address: string, zipCode: string): 
     }
 
     const apiResult = await response.json();
-    console.log(`✅ ERCOT API returned:`, apiResult);
+    // ERCOT API search successful - debug logging removed for ESLint compliance
 
     // Transform API response to our expected format
     if (!apiResult || !Array.isArray(apiResult) || apiResult.length === 0) {
@@ -208,7 +208,7 @@ export async function validateESIID(esiid: string): Promise<ESIIDDetails | null>
       throw new Error('Invalid ESIID format. Must be 17 digits starting with 10.');
     }
 
-    console.log(`🔍 Validating ESIID: ${esiid}`);
+    // Validating ESIID - debug logging removed for ESLint compliance
 
     // Call the real ComparePower ERCOT API for ESIID details
     const response = await fetch(`https://ercot.api.comparepower.com/api/esiids/${esiid}`, {
@@ -229,7 +229,7 @@ export async function validateESIID(esiid: string): Promise<ESIIDDetails | null>
     }
 
     const apiResult = await response.json();
-    console.log(`✅ ERCOT API ESIID details:`, apiResult);
+    // ERCOT API ESIID validation successful - debug logging removed for ESLint compliance
 
     if (!apiResult) {
       // Log the failed validation

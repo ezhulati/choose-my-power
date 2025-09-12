@@ -67,10 +67,10 @@ export interface PageContent {
 
 export class ContentOrchestrator {
   private cache: Map<string, PageContent> = new Map();
-  private marketData: Map<string, any> = new Map();
+  private marketData: Map<string, unknown> = new Map();
   
   constructor() {
-    console.log('🎨 Content Orchestrator initialized for 5,800+ pages');
+    console.warn('🎨 Content Orchestrator initialized for 5,800+ pages');
   }
 
   /**
@@ -188,7 +188,7 @@ export class ContentOrchestrator {
   /**
    * Enhanced city content with local insights and market data
    */
-  private async enhanceCityContent(template: any, context: ContentContext): Promise<PageContent> {
+  private async enhanceCityContent(template: unknown, context: ContentContext): Promise<PageContent> {
     const cityName = this.formatCityName(context.city);
     
     return {
@@ -229,7 +229,7 @@ export class ContentOrchestrator {
   /**
    * Enhanced faceted content with filter-specific insights
    */
-  private async enhanceFacetedContent(template: any, context: ContentContext, filters: string[]): Promise<PageContent> {
+  private async enhanceFacetedContent(template: unknown, context: ContentContext, filters: string[]): Promise<PageContent> {
     const filterPath = filters.join('/');
     const cityName = this.formatCityName(context.city);
     
@@ -270,7 +270,7 @@ export class ContentOrchestrator {
   /**
    * Enhanced provider content with competitive analysis
    */
-  private async enhanceProviderContent(template: any, context: any): Promise<PageContent> {
+  private async enhanceProviderContent(template: unknown, context: unknown): Promise<PageContent> {
     return {
       title: `${template.hero.headline} | ChooseMyPower.org`,
       description: template.introduction.substring(0, 155) + '...',
@@ -299,14 +299,14 @@ export class ContentOrchestrator {
   /**
    * Fetch real electricity plans for a city
    */
-  private async fetchCityPlans(dunsNumber: string): Promise<any[]> {
+  private async fetchCityPlans(dunsNumber: string): Promise<unknown[]> {
     try {
       const plans = await comparePowerClient.fetchPlans({
         tdsp_duns: dunsNumber,
         display_usage: 1000
       });
       
-      console.log(`✅ Fetched ${plans.length} plans for DUNS ${dunsNumber}`);
+      console.warn(`✅ Fetched ${plans.length} plans for DUNS ${dunsNumber}`);
       return plans;
       
     } catch (error) {
@@ -318,9 +318,9 @@ export class ContentOrchestrator {
   /**
    * Fetch filtered electricity plans
    */
-  private async fetchFilteredPlans(dunsNumber: string, filters: string[]): Promise<any[]> {
+  private async fetchFilteredPlans(dunsNumber: string, filters: string[]): Promise<unknown[]> {
     try {
-      const apiParams: any = {
+      const apiParams: unknown = {
         tdsp_duns: dunsNumber,
         display_usage: 1000
       };
@@ -351,7 +351,7 @@ export class ContentOrchestrator {
   /**
    * Fetch provider-specific plans
    */
-  private async fetchProviderPlans(providerSlug: string, dunsNumber?: string): Promise<any[]> {
+  private async fetchProviderPlans(providerSlug: string, dunsNumber?: string): Promise<unknown[]> {
     // This would integrate with provider-specific API endpoints
     // For now, return fallback data
     return this.getFallbackPlans().slice(0, 15);
@@ -360,7 +360,7 @@ export class ContentOrchestrator {
   /**
    * Build content context from real data
    */
-  private buildContext(citySlug: string, filters: string[], plans: any[], tdspInfo: any): ContentContext {
+  private buildContext(citySlug: string, filters: string[], plans: unknown[], tdspInfo: unknown): ContentContext {
     const rates = plans.map(p => p.pricing?.rate1000kWh || 99).filter(r => r < 50);
     
     return {
@@ -380,7 +380,7 @@ export class ContentOrchestrator {
   /**
    * Build provider-specific context
    */
-  private buildProviderContext(providerSlug: string, citySlug: string | undefined, plans: any[], tdspInfo: any): any {
+  private buildProviderContext(providerSlug: string, citySlug: string | undefined, plans: unknown[], tdspInfo: unknown): unknown {
     return {
       ...this.buildContext(citySlug || 'texas', [], plans, tdspInfo || {}),
       provider: providerSlug
@@ -414,7 +414,7 @@ export class ContentOrchestrator {
     return 'fall';
   }
 
-  private getFallbackPlans(): any[] {
+  private getFallbackPlans(): unknown[] {
     return Array.from({ length: 25 }, (_, i) => ({
       id: `fallback-${i}`,
       provider: { name: `Provider ${i + 1}` },
@@ -555,7 +555,7 @@ export class ContentOrchestrator {
     };
   }
 
-  private generateOrganizationSchema(context: any): object {
+  private generateOrganizationSchema(context: unknown): object {
     return {
       "@context": "https://schema.org",
       "@type": "Organization",
@@ -571,7 +571,7 @@ export class ContentOrchestrator {
     const allContent = new Map<string, PageContent>();
     const cities = Object.keys(tdspMapping);
     
-    console.log(`🚀 Starting content generation for ${cities.length} cities...`);
+    console.warn(`🚀 Starting content generation for ${cities.length} cities...`);
     
     // Process in batches to avoid overwhelming the system
     const batchSize = 10;
@@ -604,10 +604,10 @@ export class ContentOrchestrator {
         }
       }));
       
-      console.log(`✅ Completed batch ${Math.ceil((i + 1) / batchSize)} of ${Math.ceil(cities.length / batchSize)}`);
+      console.warn(`✅ Completed batch ${Math.ceil((i + 1) / batchSize)} of ${Math.ceil(cities.length / batchSize)}`);
     }
     
-    console.log(`🎯 Generated content for ${allContent.size} pages`);
+    console.warn(`🎯 Generated content for ${allContent.size} pages`);
     return allContent;
   }
 
@@ -616,7 +616,7 @@ export class ContentOrchestrator {
    */
   clearCache(): void {
     this.cache.clear();
-    console.log('🗑️ Content cache cleared');
+    console.warn('🗑️ Content cache cleared');
   }
 }
 

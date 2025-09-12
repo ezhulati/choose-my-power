@@ -76,7 +76,7 @@ export class ZIPPerformanceMonitoringService {
     try {
       if (process.env.REDIS_URL) {
         this.redis = new Redis(process.env.REDIS_URL);
-        console.log('[ZIPPerformanceMonitoring] Redis monitoring initialized');
+        console.warn('[ZIPPerformanceMonitoring] Redis monitoring initialized');
       }
     } catch (error) {
       console.warn('[ZIPPerformanceMonitoring] Redis not available for monitoring:', error);
@@ -353,7 +353,7 @@ export class ZIPPerformanceMonitoringService {
     format: string;
     recordCount: number;
     generatedAt: Date;
-    data?: any;
+    data?: unknown;
   }> {
     const exportId = `zip-perf-export-${Date.now()}`;
     const systemHealth = await this.getSystemHealth();

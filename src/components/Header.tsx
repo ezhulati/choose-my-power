@@ -68,13 +68,6 @@ export function Header({ onNavigate }: HeaderProps) {
     }
   };
 
-  const handleMouseEnter = (itemName: string) => {
-    setActiveDropdown(itemName);
-  };
-
-  const handleMouseLeave = () => {
-    setActiveDropdown(null);
-  };
 
   const handleDropdownClick = (href: string) => {
     onNavigate(href);

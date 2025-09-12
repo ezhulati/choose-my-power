@@ -5,19 +5,15 @@ export const GET: APIRoute = async ({ url }) => {
   try {
     const zipCode = url.searchParams.get('zip') || '75201';
     
-    console.log(`🔍 Testing ZIP code lookup for: ${zipCode}`);
     
     // Test 1: Check if cities table has data
     const cityCount = await db.query('SELECT COUNT(*) as count FROM cities');
-    console.log(`Cities query result:`, cityCount);
     
     // Test 2: Check if TDSP table has data
     const tdspCount = await db.query('SELECT COUNT(*) as count FROM tdsp');
-    console.log(`TDSPs query result:`, tdspCount);
     
     // Test 3: Show all cities with their ZIP codes
     const allCities = await db.query('SELECT name, slug, zip_codes FROM cities');
-    console.log(`All cities:`, allCities.rows);
     
     // Test 4: The actual ZIP lookup query
     const zipLookup = await db.query(`
@@ -34,7 +30,6 @@ export const GET: APIRoute = async ({ url }) => {
       LIMIT 1
     `, [`"${zipCode}"`]);
     
-    console.log(`ZIP lookup result for ${zipCode}:`, zipLookup.rows);
     
     // Test 5: Try alternative query without JSONB
     const alternativeQuery = await db.query(`
@@ -51,7 +46,6 @@ export const GET: APIRoute = async ({ url }) => {
       LIMIT 1
     `, [`%"${zipCode}"%`]);
     
-    console.log(`Alternative query result:`, alternativeQuery.rows);
     
     return new Response(JSON.stringify({
       success: true,

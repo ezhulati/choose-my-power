@@ -119,7 +119,7 @@ export const parseFiltersFromURL = (searchParams: URLSearchParams, defaultCity: 
     filters.contractLengths = contractStr
       .split(',')
       .map(Number)
-      .filter(n => VALID_CONTRACT_LENGTHS.includes(n as any));
+      .filter(n => VALID_CONTRACT_LENGTHS.includes(n as unknown));
   }
   
   // Parse rate types

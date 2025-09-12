@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
-import { getProviders, getCities, getPlansForCity, type RealProvider, type RealCity } from '../../lib/services/provider-service';
+import { getProviders, getCities, getPlansForCity, type RealProvider, type RealCity, type RealPlan } from '../../lib/services/provider-service';
 import { Icon } from '../../components/ui/Icon';
 import { Card, CardHeader, CardContent, CardTitle, CardDescription } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
@@ -9,7 +9,6 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '.
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../components/ui/select';
 import { Input } from '../../components/ui/input';
 import { Separator } from '../../components/ui/separator';
-import { Shield, TrendingDown, Leaf, DollarSign, Clock } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
 declare global {
@@ -37,13 +36,12 @@ export function ComparePlansPage({}: ComparePlansPageProps) {
   const [showComparison, setShowComparison] = useState(false);
   const [providers, setProviders] = useState<RealProvider[]>([]);
   const [cities, setCities] = useState<RealCity[]>([]);
-  const [plans, setPlans] = useState<any[]>([]);
+  const [plans, setPlans] = useState<RealPlan[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadData = async () => {
       try {
-        console.log('[ComparePlansPage] Loading plans data...');
         
         const [providersData, citiesData] = await Promise.all([
           getProviders('texas'),
@@ -57,7 +55,6 @@ export function ComparePlansPage({}: ComparePlansPageProps) {
         const houstonPlans = await getPlansForCity('houston', 'texas');
         setPlans(houstonPlans);
         
-        console.log(`[ComparePlansPage] Loaded ${houstonPlans.length} plans`);
       } catch (error) {
         console.error('[ComparePlansPage] Error loading data:', error);
       } finally {
@@ -168,10 +165,10 @@ export function ComparePlansPage({}: ComparePlansPageProps) {
     { name: 'Rate per kWh', key: 'rate', format: (val: number) => `${val}¢` },
     { name: 'Contract Length', key: 'termLength', format: (val: number) => `${val} months` },
     { name: 'Plan Type', key: 'type', format: (val: string) => val.charAt(0).toUpperCase() + val.slice(1) },
-    { name: 'Monthly Fee', key: 'monthlyFee', format: (plan: any) => `$${plan.fees.monthlyFee}` },
-    { name: 'Cancellation Fee', key: 'cancellationFee', format: (plan: any) => `$${plan.fees.cancellationFee}` },
+    { name: 'Monthly Fee', key: 'monthlyFee', format: (plan: RealPlan) => `$${(plan as unknown).fees?.monthlyFee || 0}` },
+    { name: 'Cancellation Fee', key: 'cancellationFee', format: (plan: RealPlan) => `$${plan.features?.cancellation?.fee || 0}` },
     { name: 'Renewable %', key: 'renewablePercent', format: (val: number) => `${val}%` },
-    { name: 'Monthly Cost*', key: 'monthlyCost', format: (plan: any) => `$${calculateMonthlyCost(plan.rate, parseInt(monthlyUsage), plan.fees.monthlyFee).toFixed(2)}` }
+    { name: 'Monthly Cost*', key: 'monthlyCost', format: (plan: RealPlan) => `$${calculateMonthlyCost(plan.rate, parseInt(monthlyUsage), (plan as unknown).fees?.monthlyFee || 0).toFixed(2)}` }
   ];
 
   return (
@@ -307,7 +304,7 @@ export function ComparePlansPage({}: ComparePlansPageProps) {
                           <div className={`font-semibold ${metric.name === 'Monthly Cost*' ? 'text-green-600 text-lg' : ''}`}>
                             {metric.key === 'monthlyFee' || metric.key === 'cancellationFee' || metric.key === 'monthlyCost'
                               ? metric.format(plan)
-                              : metric.format((plan as any)?.[metric.key] || 0)
+                              : metric.format((plan as unknown)?.[metric.key] || 0)
                             }
                           </div>
                         </TableCell>
@@ -384,7 +381,7 @@ export function ComparePlansPage({}: ComparePlansPageProps) {
             {planTypes.map(type => (
               <button
                 key={type.id}
-                onClick={() => setPlanTypeFilter(type.id as any)}
+                onClick={() => setPlanTypeFilter(type.id as unknown)}
                 className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                   planTypeFilter === type.id
                     ? 'bg-green-600 text-white'
@@ -437,7 +434,7 @@ export function ComparePlansPage({}: ComparePlansPageProps) {
               
               <div>
                 <label className="block text-sm font-medium mb-2">Plan Type</label>
-                <Select value={planTypeFilter} onValueChange={(value) => setPlanTypeFilter(value as any)}>
+                <Select value={planTypeFilter} onValueChange={(value) => setPlanTypeFilter(value as unknown)}>
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>
@@ -454,7 +451,7 @@ export function ComparePlansPage({}: ComparePlansPageProps) {
               
               <div>
                 <label className="block text-sm font-medium mb-2">Contract Length</label>
-                <Select value={termFilter} onValueChange={(value) => setTermFilter(value as any)}>
+                <Select value={termFilter} onValueChange={(value) => setTermFilter(value as unknown)}>
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>

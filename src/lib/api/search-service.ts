@@ -20,7 +20,7 @@ export interface SearchResult {
   subtitle?: string;
   url: string;
   score: number;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 export interface SearchSuggestion {
@@ -64,7 +64,7 @@ export interface SearchFilters {
 export class SearchService {
   private citySearchIndex: Fuse<CitySearchData> | null = null;
   private providerSearchIndex: Fuse<ProviderSearchData> | null = null;
-  private planFeatureSearchIndex: Fuse<any> | null = null;
+  private planFeatureSearchIndex: Fuse<unknown> | null = null;
   private popularQueries: Map<string, number> = new Map();
   private searchCache: Map<string, SearchResult[]> = new Map();
   private lastIndexUpdate = 0;
@@ -98,7 +98,7 @@ export class SearchService {
       await this.loadPopularQueries();
 
       this.lastIndexUpdate = Date.now();
-      console.log('Search indexes initialized successfully');
+      console.warn('Search indexes initialized successfully');
       
     } catch (error) {
       console.error('Failed to initialize search indexes:', error);
@@ -605,7 +605,7 @@ export class SearchService {
     const searchData: Omit<SearchHistory, 'id'> = {
       session_id: sessionId,
       search_query: query,
-      search_type: type as any,
+      search_type: type as unknown,
       results_count: resultsCount,
       no_results: resultsCount === 0,
       created_at: new Date(),
@@ -618,13 +618,13 @@ export class SearchService {
    * Refresh search indexes
    */
   private async refreshSearchIndexes(): Promise<void> {
-    console.log('Refreshing search indexes...');
+    console.warn('Refreshing search indexes...');
     try {
       await this.initializeCityIndex();
       await this.initializeProviderIndex();
       await this.loadPopularQueries();
       this.lastIndexUpdate = Date.now();
-      console.log('Search indexes refreshed successfully');
+      console.warn('Search indexes refreshed successfully');
     } catch (error) {
       console.error('Failed to refresh search indexes:', error);
     }
@@ -635,7 +635,7 @@ export class SearchService {
    */
   clearCache(): void {
     this.searchCache.clear();
-    console.log('Search cache cleared');
+    console.warn('Search cache cleared');
   }
 
   /**

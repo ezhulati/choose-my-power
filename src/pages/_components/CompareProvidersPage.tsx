@@ -137,10 +137,10 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
   const comparisonMetrics = [
     { name: 'Customer Rating', key: 'rating', format: (val: number) => `${val}★` },
     { name: 'Total Reviews', key: 'reviewCount', format: (val: number) => val.toLocaleString() },
-    { name: 'Available Plans', key: 'plans', format: (val: any[]) => val.length.toString() },
+    { name: 'Available Plans', key: 'plans', format: (val: unknown[]) => val.length.toString() },
     { name: 'Service States', key: 'serviceStates', format: (val: string[]) => val.length.toString() },
-    { name: 'Lowest Rate', key: 'lowestRate', format: (provider: any) => `${Math.min(...provider.plans.map((p: any) => p.rate))}¢/kWh` },
-    { name: 'Green Plans', key: 'greenPlans', format: (provider: any) => provider.plans.filter((p: any) => p.renewablePercent === 100).length > 0 ? 'Yes' : 'No' }
+    { name: 'Lowest Rate', key: 'lowestRate', format: (provider: unknown) => `${Math.min(...provider.plans.map((p: unknown) => p.rate))}¢/kWh` },
+    { name: 'Green Plans', key: 'greenPlans', format: (provider: unknown) => provider.plans.filter((p: unknown) => p.renewablePercent === 100).length > 0 ? 'Yes' : 'No' }
   ];
 
   return (
@@ -156,7 +156,7 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Which Provider Is Right for You?
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-4xl mx-auto">
+            <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-4xl mx-auto">
               We'll help you compare providers based on what actually matters - customer service that works, 
               rates without surprises, and companies that do what they promise.
             </p>
@@ -275,7 +275,7 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
                           <div className="font-semibold">
                             {metric.key === 'lowestRate' || metric.key === 'greenPlans' 
                               ? metric.format(provider)
-                              : metric.format((provider as any)?.[metric.key] || 0)
+                              : metric.format((provider as unknown)?.[metric.key] || 0)
                             }
                           </div>
                         </TableCell>
@@ -347,7 +347,7 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
                     ? 'border-texas-navy bg-texas-cream-200'
                     : ''
                 }`}
-                onClick={() => setFilterCategory(category.id as any)}
+                onClick={() => setFilterCategory(category.id as unknown)}
               >
                 <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg mb-4 ${
                   filterCategory === category.id
@@ -374,7 +374,7 @@ export function CompareProvidersPage({}: CompareProvidersPageProps) {
             </div>
             
             <div className="flex items-center space-x-4">
-              <Select value={sortBy} onValueChange={(value) => setSortBy(value as any)}>
+              <Select value={sortBy} onValueChange={(value) => setSortBy(value as unknown)}>
                 <SelectTrigger className="w-48">
                   <SelectValue />
                 </SelectTrigger>

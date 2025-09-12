@@ -164,9 +164,9 @@ export const MobilePlanComparisonImproved: React.FC<MobilePlanComparisonImproved
     if (!option) return plans;
 
     return [...plans].sort((a, b) => {
-      const getValue = (plan: Plan, field: string): any => {
+      const getValue = (plan: Plan, field: string): unknown => {
         const keys = field.split('.');
-        let value: any = plan;
+        let value: unknown = plan;
         for (const key of keys) {
           value = value?.[key];
         }
@@ -383,7 +383,7 @@ export const MobilePlanComparisonImproved: React.FC<MobilePlanComparisonImproved
 
       {/* Swipe Instructions with improved design */}
       {enableSwipeActions && (
-        <Alert className="mx-4 border-blue-200 bg-texas-cream-200">
+        <Alert className="mx-4 border-texas-navy/30 bg-texas-cream-200">
           <AlertDescription className="flex items-center justify-center gap-6 text-sm text-texas-navy">
             <div className="flex items-center gap-2">
               <span className="text-lg">👈</span>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { ProviderCard } from '../../components/ProviderCard';
 import { getProviders, getCities, getPlansForCity, type RealProvider, type RealCity } from '../../lib/services/provider-service';
-import { MapPin, TrendingDown, Users, Zap, Calculator, Star, Award, Clock, Filter, Phone, Globe, Building, Calendar, Shield, Leaf } from 'lucide-react';
+import { MapPin, TrendingDown, Shield, Leaf } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
 declare global {
@@ -29,7 +29,7 @@ export function TexasCityPage({ city }: TexasCityPageProps) {
   const [monthlyUsage, setMonthlyUsage] = useState('1000');
   const [providers, setProviders] = useState<RealProvider[]>([]);
   const [cities, setCities] = useState<RealCity[]>([]);
-  const [plans, setPlans] = useState<any[]>([]);
+  const [plans, setPlans] = useState<unknown[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -197,7 +197,7 @@ export function TexasCityPage({ city }: TexasCityPageProps) {
               <button
                 key={link.name}
                 onClick={() => navigate(link.href)}
-                className="flex flex-col items-center p-3 bg-gray-50 rounded-lg hover:bg-red-50 hover:text-texas-red transition-colors group"
+                className="flex flex-col items-center p-3 bg-gray-50 rounded-lg hover:bg-texas-red/10 hover:text-texas-red transition-colors group"
               >
                 <link.icon className="h-5 w-5 mb-2 text-gray-400 group-hover:text-texas-red" />
                 <span className="text-xs font-medium text-center">{link.name}</span>
@@ -269,7 +269,7 @@ export function TexasCityPage({ city }: TexasCityPageProps) {
               <div className="pt-4">
                 <button
                   onClick={() => navigate(`/texas/${city}/electricity-providers`)}
-                  className="text-texas-red hover:text-red-800 font-medium"
+                  className="text-texas-red hover:text-texas-red-800 font-medium"
                 >
                   View all {cityData.name} providers →
                 </button>
@@ -414,7 +414,7 @@ export function TexasCityPage({ city }: TexasCityPageProps) {
           <div className="text-center mt-6">
             <button
               onClick={() => navigate('/texas')}
-              className="text-texas-red hover:text-red-800 font-medium"
+              className="text-texas-red hover:text-texas-red-800 font-medium"
             >
               View All Texas Cities →
             </button>

@@ -371,7 +371,7 @@ function generateFAQSchema(cityName: string, filters: string[]) {
   ];
 
   // Add filter-specific FAQs
-  const filterFAQs: Record<string, any> = {
+  const filterFAQs: Record<string, unknown> = {
     '12-month': {
       '@type': 'Question',
       name: `Why choose a 12-month electricity plan in ${cityName}?`,

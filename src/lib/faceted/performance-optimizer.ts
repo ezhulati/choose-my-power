@@ -30,8 +30,8 @@ export interface OptimizationOptions {
 }
 
 export class PerformanceOptimizer {
-  private cache = new Map<string, { data: any; timestamp: number; ttl: number }>();
-  private requestCache = new Map<string, Promise<any>>();
+  private cache = new Map<string, { data: unknown; timestamp: number; ttl: number }>();
+  private requestCache = new Map<string, Promise<unknown>>();
   private debounceTimers = new Map<string, NodeJS.Timeout>();
   private performanceMetrics: PerformanceMetrics = {
     searchTime: 0,
@@ -56,7 +56,7 @@ export class PerformanceOptimizer {
   };
 
   private activeRequests = 0;
-  private requestQueue: Array<() => Promise<any>> = [];
+  private requestQueue: Array<() => Promise<unknown>> = [];
 
   constructor(
     private config: CacheConfig = {},
@@ -75,8 +75,8 @@ export class PerformanceOptimizer {
   async optimizedSearch(
     citySlug: string,
     filterState: FilterState,
-    searchFunction: () => Promise<any>
-  ): Promise<any> {
+    searchFunction: () => Promise<unknown>
+  ): Promise<unknown> {
     const startTime = performance.now();
     const cacheKey = this.generateCacheKey(citySlug, filterState);
 
@@ -127,7 +127,7 @@ export class PerformanceOptimizer {
   /**
    * Debounced function execution
    */
-  debounce<T extends (...args: any[]) => Promise<any>>(
+  debounce<T extends (...args: unknown[]) => Promise<unknown>>(
     key: string,
     func: T,
     delay?: number
@@ -358,7 +358,7 @@ export class PerformanceOptimizer {
 
     // Force garbage collection if available (development only)
     if (typeof window !== 'undefined' && 'gc' in window && process.env.NODE_ENV === 'development') {
-      (window as any).gc();
+      (window as unknown).gc();
     }
   }
 
@@ -415,7 +415,7 @@ export class PerformanceOptimizer {
     return cached.data;
   }
 
-  private setCached(key: string, data: any, ttl: number): void {
+  private setCached(key: string, data: unknown, ttl: number): void {
     // Enforce cache size limit
     if (this.cache.size >= this.config.maxSize) {
       // Remove oldest entries
@@ -492,7 +492,7 @@ export class PerformanceOptimizer {
 
   private getMemoryUsage(): number | undefined {
     if (typeof window !== 'undefined' && 'performance' in window && 'memory' in window.performance) {
-      return (window.performance as any).memory.usedJSHeapSize;
+      return (window.performance as unknown).memory.usedJSHeapSize;
     }
     return undefined;
   }

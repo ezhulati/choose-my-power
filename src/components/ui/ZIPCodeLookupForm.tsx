@@ -220,7 +220,7 @@ export const ZIPCodeLookupForm: React.FC<ZIPCodeLookupFormProps> = ({
             ${isLoading 
               ? 'bg-gray-400 text-white cursor-wait' 
               : isZipValid
-                ? 'bg-texas-red text-white hover:bg-red-700 active:scale-95'
+                ? 'bg-texas-red text-white hover:bg-texas-red-700 active:scale-95'
                 : 'bg-gray-300 text-gray-500'
             }
           `}
@@ -242,7 +242,7 @@ export const ZIPCodeLookupForm: React.FC<ZIPCodeLookupFormProps> = ({
 
       {/* Error display */}
       {error && (
-        <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-lg" data-testid="zip-error">
+        <div className="mt-6 p-4 bg-texas-red/10 border border-texas-red/30 rounded-lg" data-testid="zip-error">
           <div className="flex">
             <div className="flex-shrink-0">
               <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
@@ -250,18 +250,18 @@ export const ZIPCodeLookupForm: React.FC<ZIPCodeLookupFormProps> = ({
               </svg>
             </div>
             <div className="ml-3">
-              <h4 className="text-sm font-semibold text-red-800">
+              <h4 className="text-sm font-semibold text-texas-red-800">
                 ZIP Code Error
               </h4>
-              <p className="mt-1 text-sm text-red-700">
+              <p className="mt-1 text-sm text-texas-red-700">
                 {error}
               </p>
               
               {/* Recovery Actions */}
               {recoveryActions.length > 0 && (
                 <div className="mt-3">
-                  <p className="text-sm font-medium text-red-800">What you can do:</p>
-                  <ul className="mt-2 text-sm text-red-700 space-y-1">
+                  <p className="text-sm font-medium text-texas-red-800">What you can do:</p>
+                  <ul className="mt-2 text-sm text-texas-red-700 space-y-1">
                     {recoveryActions.map((action, index) => (
                       <li key={index}>• {action}</li>
                     ))}
@@ -272,7 +272,7 @@ export const ZIPCodeLookupForm: React.FC<ZIPCodeLookupFormProps> = ({
               {/* Suggestions */}
               {suggestions.length > 0 && (
                 <div className="mt-3">
-                  <p className="text-sm font-medium text-red-800">
+                  <p className="text-sm font-medium text-texas-red-800">
                     Try these suggested ZIP codes:
                   </p>
                   <div className="mt-2 flex flex-wrap gap-2">
@@ -281,7 +281,7 @@ export const ZIPCodeLookupForm: React.FC<ZIPCodeLookupFormProps> = ({
                         key={suggestion}
                         type="button"
                         onClick={() => handleSuggestionClick(suggestion)}
-                        className="px-3 py-1 text-sm bg-white border border-red-300 rounded-md hover:bg-red-50 transition-colors"
+                        className="px-3 py-1 text-sm bg-white border border-red-300 rounded-md hover:bg-texas-red/10 transition-colors"
                       >
                         {suggestion}
                       </button>
@@ -293,8 +293,8 @@ export const ZIPCodeLookupForm: React.FC<ZIPCodeLookupFormProps> = ({
               {/* Helpful Tips */}
               {helpfulTips.length > 0 && (
                 <div className="mt-3">
-                  <p className="text-sm font-medium text-red-800">💡 Helpful Tips:</p>
-                  <ul className="mt-2 text-sm text-red-700 space-y-1">
+                  <p className="text-sm font-medium text-texas-red-800">💡 Helpful Tips:</p>
+                  <ul className="mt-2 text-sm text-texas-red-700 space-y-1">
                     {helpfulTips.map((tip, index) => (
                       <li key={index}>• {tip}</li>
                     ))}
@@ -308,25 +308,25 @@ export const ZIPCodeLookupForm: React.FC<ZIPCodeLookupFormProps> = ({
 
       {/* Performance metrics (development mode) */}
       {showPerformanceMetrics && performanceData && (
-        <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-          <h5 className="text-sm font-semibold text-blue-800 mb-2">Performance Metrics</h5>
+        <div className="mt-6 p-4 bg-texas-navy/10 border border-texas-navy/30 rounded-lg">
+          <h5 className="text-sm font-semibold text-texas-navy-800 mb-2">Performance Metrics</h5>
           <div className="grid grid-cols-3 gap-4 text-xs">
             <div>
-              <span className="text-blue-600 font-medium">Response Time:</span>
+              <span className="text-texas-navy font-medium">Response Time:</span>
               <br />
-              <span className="text-blue-800">{performanceData.responseTime}ms</span>
+              <span className="text-texas-navy-800">{performanceData.responseTime}ms</span>
             </div>
             <div>
-              <span className="text-blue-600 font-medium">Cache Status:</span>
+              <span className="text-texas-navy font-medium">Cache Status:</span>
               <br />
               <span className={`${performanceData.cached ? 'text-green-600' : 'text-orange-600'}`}>
                 {performanceData.cached ? 'HIT' : 'MISS'}
               </span>
             </div>
             <div>
-              <span className="text-blue-600 font-medium">Cache Source:</span>
+              <span className="text-texas-navy font-medium">Cache Source:</span>
               <br />
-              <span className="text-blue-800">
+              <span className="text-texas-navy-800">
                 {performanceData.cacheSource || 'fresh'}
               </span>
             </div>

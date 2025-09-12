@@ -67,20 +67,20 @@ export interface RealPlan {
  */
 export async function getProviders(state?: string): Promise<RealProvider[]> {
   try {
-    console.log(`[ProviderService] Getting providers for state: ${state || 'all'}`);
+    console.warn(`[ProviderService] Getting providers for state: ${state || 'all'}`);
     
     // Try database first
     if (await hasDatabaseConnection()) {
       const providers = await getProvidersFromDatabase(state);
       if (providers.length > 0) {
-        console.log(`[ProviderService] Found ${providers.length} providers from database`);
+        console.warn(`[ProviderService] Found ${providers.length} providers from database`);
         return providers;
       }
     }
     
     // Fallback to generated data files
     const providers = await getProvidersFromGeneratedData(state);
-    console.log(`[ProviderService] Found ${providers.length} providers from generated data`);
+    console.warn(`[ProviderService] Found ${providers.length} providers from generated data`);
     return providers;
     
   } catch (error) {
@@ -94,13 +94,13 @@ export async function getProviders(state?: string): Promise<RealProvider[]> {
  */
 export async function getProviderByName(providerName: string): Promise<RealProvider | null> {
   try {
-    console.log(`[ProviderService] Getting provider: ${providerName}`);
+    console.warn(`[ProviderService] Getting provider: ${providerName}`);
     
     // Try database first
     if (await hasDatabaseConnection()) {
       const provider = await getProviderFromDatabase(providerName);
       if (provider) {
-        console.log(`[ProviderService] Found provider ${providerName} from database`);
+        console.warn(`[ProviderService] Found provider ${providerName} from database`);
         return provider;
       }
     }
@@ -108,7 +108,7 @@ export async function getProviderByName(providerName: string): Promise<RealProvi
     // Fallback to generated data
     const provider = await getProviderFromGeneratedData(providerName);
     if (provider) {
-      console.log(`[ProviderService] Found provider ${providerName} from generated data`);
+      console.warn(`[ProviderService] Found provider ${providerName} from generated data`);
       return provider;
     }
     
@@ -126,7 +126,7 @@ export async function getProviderByName(providerName: string): Promise<RealProvi
  */
 export async function getProvidersForCity(citySlug: string): Promise<RealProvider[]> {
   try {
-    console.log(`[ProviderService] Getting providers for city: ${citySlug}`);
+    console.warn(`[ProviderService] Getting providers for city: ${citySlug}`);
     
     // Load city data to get available providers
     const cityData = await loadCityData(citySlug);
@@ -159,7 +159,7 @@ export async function getProvidersForCity(citySlug: string): Promise<RealProvide
       }
     }
     
-    console.log(`[ProviderService] Found ${providers.length} providers for ${citySlug}`);
+    console.warn(`[ProviderService] Found ${providers.length} providers for ${citySlug}`);
     return providers.sort((a, b) => a.name.localeCompare(b.name));
     
   } catch (error) {
@@ -189,7 +189,7 @@ export async function getProviderStats(state: string = 'texas'): Promise<{
       total_plans: providers.reduce((sum, p) => sum + (p.plan_count || 0), 0)
     };
     
-    console.log(`[ProviderService] Provider stats for ${state}:`, stats);
+    console.warn(`[ProviderService] Provider stats for ${state}:`, stats);
     return stats;
     
   } catch (error) {
@@ -365,20 +365,20 @@ async function getProviderFromGeneratedData(providerName: string): Promise<RealP
  */
 export async function getCities(state?: string): Promise<RealCity[]> {
   try {
-    console.log(`[ProviderService] Getting cities for state: ${state || 'all'}`);
+    console.warn(`[ProviderService] Getting cities for state: ${state || 'all'}`);
     
     // Try database first
     if (await hasDatabaseConnection()) {
       const cities = await getCitiesFromDatabase(state);
       if (cities.length > 0) {
-        console.log(`[ProviderService] Found ${cities.length} cities from database`);
+        console.warn(`[ProviderService] Found ${cities.length} cities from database`);
         return cities;
       }
     }
     
     // Fallback to generated data files
     const cities = await getCitiesFromGeneratedData(state);
-    console.log(`[ProviderService] Found ${cities.length} cities from generated data`);
+    console.warn(`[ProviderService] Found ${cities.length} cities from generated data`);
     return cities;
     
   } catch (error) {
@@ -392,7 +392,7 @@ export async function getCities(state?: string): Promise<RealCity[]> {
  */
 export async function getCityBySlug(citySlug: string): Promise<RealCity | null> {
   try {
-    console.log(`[ProviderService] Getting city: ${citySlug}`);
+    console.warn(`[ProviderService] Getting city: ${citySlug}`);
     
     // Load city data
     const cityData = await loadCityData(citySlug);
@@ -422,7 +422,7 @@ export async function getCityBySlug(citySlug: string): Promise<RealCity | null> 
  */
 export async function getPlansForCity(citySlug: string, state?: string): Promise<RealPlan[]> {
   try {
-    console.log(`[ProviderService] Getting plans for city: ${citySlug}`);
+    console.warn(`[ProviderService] Getting plans for city: ${citySlug}`);
     
     // Load city data
     const cityData = await loadCityData(citySlug);
@@ -461,7 +461,7 @@ export async function getPlansForCity(citySlug: string, state?: string): Promise
       state: state || 'texas'
     }));
     
-    console.log(`[ProviderService] Found ${realPlans.length} plans for ${citySlug}`);
+    console.warn(`[ProviderService] Found ${realPlans.length} plans for ${citySlug}`);
     return realPlans;
     
   } catch (error) {

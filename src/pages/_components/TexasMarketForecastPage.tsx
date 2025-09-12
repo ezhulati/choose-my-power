@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
-import { TrendingDown, TrendingUp, BarChart, Zap, DollarSign, AlertTriangle, CheckCircle, Calendar, Activity, Globe, Calculator, Info, ArrowRight, ExternalLink } from 'lucide-react';
+import { TrendingDown, TrendingUp, BarChart, Zap, DollarSign, AlertTriangle, Activity, Globe, Calculator, Info, ArrowRight, ExternalLink } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
 declare global {
@@ -133,10 +133,10 @@ export function TexasMarketForecastPage({}: TexasMarketForecastPageProps) {
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Texas Electricity Prices | 75205
             </h1>
-            <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-blue-100">
+            <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-white/90">
               Forecast & Market Outlook — 2025
             </h2>
-            <p className="text-xl mb-8 text-blue-100 max-w-4xl mx-auto">
+            <p className="text-xl mb-8 text-white/90 max-w-4xl mx-auto">
               Complete analysis of Texas electricity market trends, wholesale price forecasts, 
               and what Dallas residents can expect in 2025.
             </p>
@@ -337,11 +337,11 @@ export function TexasMarketForecastPage({}: TexasMarketForecastPageProps) {
             ))}
           </div>
 
-          <div className="mt-8 p-6 bg-texas-cream-200 border border-blue-200 rounded-lg">
+          <div className="mt-8 p-6 bg-texas-cream-200 border border-texas-navy/30 rounded-lg">
             <div className="flex items-start">
               <Info className="h-6 w-6 text-texas-navy mr-3 mt-1 flex-shrink-0" />
               <div>
-                <h3 className="font-semibold text-blue-900 mb-2">Stay Informed on Transmission Costs</h3>
+                <h3 className="font-semibold text-texas-navy-900 mb-2">Stay Informed on Transmission Costs</h3>
                 <p className="text-texas-navy text-sm">
                   New grid investments could shift cost burdens—especially through rate structure changes—
                   facing residential customers unless broader reforms are approved.
@@ -448,7 +448,7 @@ export function TexasMarketForecastPage({}: TexasMarketForecastPageProps) {
         {/* Final Analysis */}
         <div className="mt-12 bg-texas-navy text-white rounded-lg p-8">
           <h2 className="text-2xl font-bold mb-4 text-center">Final Analysis</h2>
-          <p className="text-blue-100 text-lg leading-relaxed text-center max-w-4xl mx-auto">
+          <p className="text-white/90 text-lg leading-relaxed text-center max-w-4xl mx-auto">
             The forecast isn't wrong in quoting EIA's ~$30/MWh wholesale projection. However, 
             <strong className="text-white"> real-world market pricing and retail rates reflect a more cautious outlook</strong>, 
             placing 2025 strip prices firmly above $50/MWh. Consumers should monitor both forecasts <em>and</em> forward market trends—

@@ -38,7 +38,7 @@ interface FacetedSearchResponse {
   };
   appliedFilters: Array<{
     key: string;
-    value: any;
+    value: unknown;
     displayName: string;
     removeUrl: string;
   }>;
@@ -239,7 +239,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 /**
  * Convert filter object to URL segments
  */
-function buildFilterSegments(filters: Record<string, any>): string[] {
+function buildFilterSegments(filters: Record<string, unknown>): string[] {
   const segments: string[] = [];
   
   for (const [key, value] of Object.entries(filters)) {
@@ -292,7 +292,7 @@ function buildRemoveFilterUrl(citySlug: string, currentSegments: string[], segme
 /**
  * Generate facet counts for the current search
  */
-async function generateFacets(citySlug: string, tdspDuns: string, appliedFilters: any[]): Promise<any> {
+async function generateFacets(citySlug: string, tdspDuns: string, appliedFilters: unknown[]): Promise<unknown> {
   // This is a simplified implementation - in production, you'd query the database
   // to get actual counts for each facet value
   return {
@@ -338,7 +338,7 @@ async function trackFacetedSearch(
   resultCount: number
 ): Promise<void> {
   try {
-    console.log('Faceted search analytics:', {
+    console.warn('Faceted search analytics:', {
       sessionId,
       citySlug,
       filters: filterSegments,

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { getProviders, getCities, getPlansForCity, type RealProvider, type RealCity } from '../../lib/services/provider-service';
-import { TrendingDown, Calculator, BarChart, DollarSign, Clock, Zap, Award } from 'lucide-react';
+import { TrendingDown, Calculator, BarChart, DollarSign, Zap } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
 declare global {
@@ -28,7 +28,7 @@ export function CityElectricityRatesPage({ state, city }: CityElectricityRatesPa
   const [showComparison, setShowComparison] = useState(true);
   const [providers, setProviders] = useState<RealProvider[]>([]);
   const [cities, setCities] = useState<RealCity[]>([]);
-  const [plans, setPlans] = useState<any[]>([]);
+  const [plans, setPlans] = useState<unknown[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -160,7 +160,7 @@ export function CityElectricityRatesPage({ state, city }: CityElectricityRatesPa
                     <BarChart className="h-5 w-5 text-texas-navy mr-2" />
                     <span className="text-sm font-medium text-texas-navy">City Average</span>
                   </div>
-                  <div className="text-2xl font-bold text-blue-900">{averageRate}¢</div>
+                  <div className="text-2xl font-bold text-texas-navy-900">{averageRate}¢</div>
                   <div className="text-sm text-texas-navy">per kWh</div>
                 </div>
 
@@ -235,7 +235,7 @@ export function CityElectricityRatesPage({ state, city }: CityElectricityRatesPa
                       onClick={() => setSelectedUsage(option.value)}
                       className={`p-3 text-center border rounded-lg transition-colors ${
                         selectedUsage === option.value
-                          ? 'border-texas-navy bg-texas-cream-200 text-blue-900'
+                          ? 'border-texas-navy bg-texas-cream-200 text-texas-navy-900'
                           : 'border-gray-200 hover:bg-gray-50'
                       }`}
                     >

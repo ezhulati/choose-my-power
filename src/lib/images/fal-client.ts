@@ -83,14 +83,14 @@ class FalClient {
     };
 
     try {
-      console.log(`🎨 Generating with fal.ai: ${prompt.substring(0, 50)}...`);
+      console.warn(`🎨 Generating with fal.ai: ${prompt.substring(0, 50)}...`);
       
       const response = await fal.subscribe("fal-ai/stable-diffusion-v35-large", {
         input: requestData,
         logs: false, // Disable logs for cleaner output
         onQueueUpdate: (update) => {
           if (update.status === "IN_PROGRESS") {
-            console.log(`⏳ Generation in progress...`);
+            console.warn(`⏳ Generation in progress...`);
           }
         }
       }) as { data: FalImageResponse };
@@ -113,7 +113,7 @@ class FalClient {
 
       throw new Error('No image data received from fal.ai');
 
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('❌ Fal.ai API error:', error.message || error);
       
       // Return fallback image on API failure
@@ -131,7 +131,7 @@ class FalClient {
     const results: GeneratedImage[] = [];
     const batchSize = 3; // Process 3 at a time for fal.ai
     
-    console.log(`🎨 Starting fal.ai batch generation of ${prompts.length} images...`);
+    console.warn(`🎨 Starting fal.ai batch generation of ${prompts.length} images...`);
 
     for (let i = 0; i < prompts.length; i += batchSize) {
       const batch = prompts.slice(i, i + batchSize);
@@ -145,7 +145,7 @@ class FalClient {
         batchResults.forEach((result, index) => {
           if (result.status === 'fulfilled' && result.value) {
             results.push(result.value);
-            console.log(`✅ Generated image ${i + index + 1}/${prompts.length}`);
+            console.warn(`✅ Generated image ${i + index + 1}/${prompts.length}`);
           } else {
             console.warn(`⚠️ Failed to generate image ${i + index + 1}/${prompts.length}`);
           }
@@ -161,7 +161,7 @@ class FalClient {
       }
     }
 
-    console.log(`🎉 Fal.ai batch complete: ${results.length}/${prompts.length} images generated`);
+    console.warn(`🎉 Fal.ai batch complete: ${results.length}/${prompts.length} images generated`);
     return results;
   }
 
@@ -300,14 +300,14 @@ class FalClient {
     };
 
     try {
-      console.log(`🍌 Creating with nano-banana: ${prompt.substring(0, 50)}...`);
+      console.warn(`🍌 Creating with nano-banana: ${prompt.substring(0, 50)}...`);
       
       const response = await fal.subscribe("fal-ai/nano-banana/edit", {
         input: requestData,
         logs: false,
         onQueueUpdate: (update) => {
           if (update.status === "IN_PROGRESS") {
-            console.log(`⏳ nano-banana generation in progress...`);
+            console.warn(`⏳ nano-banana generation in progress...`);
           }
         }
       }) as { data: NanoBananaResponse };
@@ -330,7 +330,7 @@ class FalClient {
 
       throw new Error('No image data received from nano-banana');
 
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('❌ nano-banana API error:', error.message || error);
       return null;
     }
@@ -360,14 +360,14 @@ class FalClient {
     };
 
     try {
-      console.log(`🍌 Generating with nano-banana: ${prompt.substring(0, 50)}...`);
+      console.warn(`🍌 Generating with nano-banana: ${prompt.substring(0, 50)}...`);
       
       const response = await fal.subscribe("fal-ai/nano-banana", {
         input: requestData,
         logs: false,
         onQueueUpdate: (update) => {
           if (update.status === "IN_PROGRESS") {
-            console.log(`⏳ nano-banana generation in progress...`);
+            console.warn(`⏳ nano-banana generation in progress...`);
           }
         }
       }) as { data: NanoBananaResponse };
@@ -390,7 +390,7 @@ class FalClient {
 
       throw new Error('No image data received from nano-banana');
 
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('❌ nano-banana API error:', error.message || error);
       
       // Return fallback image on API failure
@@ -408,7 +408,7 @@ class FalClient {
     const results: GeneratedImage[] = [];
     const batchSize = 1; // Process one at a time for nano-banana (Gemini-powered)
     
-    console.log(`🍌 Starting nano-banana + Gemini batch generation of ${prompts.length} images...`);
+    console.warn(`🍌 Starting nano-banana + Gemini batch generation of ${prompts.length} images...`);
 
     for (let i = 0; i < prompts.length; i += batchSize) {
       const batch = prompts.slice(i, i + batchSize);
@@ -422,7 +422,7 @@ class FalClient {
         batchResults.forEach((result, index) => {
           if (result.status === 'fulfilled' && result.value) {
             results.push(result.value);
-            console.log(`✅ Generated nano-banana image ${i + index + 1}/${prompts.length}`);
+            console.warn(`✅ Generated nano-banana image ${i + index + 1}/${prompts.length}`);
           } else {
             console.warn(`⚠️ Failed to generate nano-banana image ${i + index + 1}/${prompts.length}`);
           }
@@ -438,7 +438,7 @@ class FalClient {
       }
     }
 
-    console.log(`🎉 nano-banana batch complete: ${results.length}/${prompts.length} images generated`);
+    console.warn(`🎉 nano-banana batch complete: ${results.length}/${prompts.length} images generated`);
     return results;
   }
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { ProviderCard } from '../../components/ProviderCard';
 import { getProviders, getCities, type RealProvider, type RealCity } from '../../lib/services/provider-service';
-import { Shield, CreditCard, Clock, CheckCircle, AlertTriangle, DollarSign } from 'lucide-react';
+import { Shield, CheckCircle, AlertTriangle } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
 declare global {
@@ -228,7 +228,7 @@ export function StateNoDepositPage({ state }: StateNoDepositPageProps) {
               {creditScoreOptions.map((option) => (
                 <button
                   key={option.value}
-                  onClick={() => setCreditScore(option.value as any)}
+                  onClick={() => setCreditScore(option.value as unknown)}
                   className={`p-4 text-center border-2 rounded-lg transition-colors ${
                     creditScore === option.value
                       ? `border-${option.color}-600 bg-${option.color}-50 text-${option.color}-900`
@@ -281,7 +281,7 @@ export function StateNoDepositPage({ state }: StateNoDepositPageProps) {
             )}
             
             {creditScore === 'poor' && (
-              <div className="text-red-700">
+              <div className="text-texas-red-700">
                 <p className="mb-3">❌ Prepaid electricity may be your best option</p>
                 <ul className="list-disc list-inside space-y-1 text-sm">
                   <li>Traditional no-deposit plans unlikely</li>
@@ -364,7 +364,7 @@ export function StateNoDepositPage({ state }: StateNoDepositPageProps) {
                   </div>
                   
                   <div>
-                    <div className="text-sm font-medium text-red-700 mb-1">Cons:</div>
+                    <div className="text-sm font-medium text-texas-red-700 mb-1">Cons:</div>
                     <ul className="text-sm text-gray-600 space-y-1">
                       {alt.cons.map((con, conIndex) => (
                         <li key={conIndex} className="flex items-center">

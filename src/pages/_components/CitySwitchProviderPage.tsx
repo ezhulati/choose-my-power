@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { getProviders, getCities, type RealProvider, type RealCity } from '../../lib/services/provider-service';
-import { CheckCircle, Clock, Shield, Phone, ArrowRight, Users, AlertCircle } from 'lucide-react';
+import { CheckCircle, Phone, ArrowRight, AlertCircle } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
 declare global {
@@ -322,7 +322,7 @@ export function CitySwitchProviderPage({ state, city }: CitySwitchProviderPagePr
         {/* CTA */}
         <div className="bg-texas-navy text-white rounded-lg p-8 text-center">
           <h2 className="text-2xl font-bold mb-4">Ready to Switch in {cityData.name}?</h2>
-          <p className="text-blue-100 mb-6">
+          <p className="text-white/90 mb-6">
             Compare electricity providers serving {cityData.name} and start saving today.
           </p>
           <button

@@ -200,13 +200,13 @@ export const DeploymentValidator: React.FC = () => {
   const getSeverityColor = (severity: string) => {
     switch (severity) {
       case 'critical':
-        return 'text-red-600 bg-red-100';
+        return 'text-texas-red bg-red-100';
       case 'high':
         return 'text-orange-600 bg-orange-100';
       case 'medium':
         return 'text-yellow-600 bg-yellow-100';
       case 'low':
-        return 'text-blue-600 bg-blue-100';
+        return 'text-texas-navy bg-blue-100';
       default:
         return 'text-gray-600 bg-gray-100';
     }
@@ -216,9 +216,9 @@ export const DeploymentValidator: React.FC = () => {
   const getStrategyColor = (strategy: string) => {
     switch (strategy) {
       case 'immediate':
-        return 'text-red-600 bg-red-100';
+        return 'text-texas-red bg-red-100';
       case 'blue-green':
-        return 'text-blue-600 bg-blue-100';
+        return 'text-texas-navy bg-blue-100';
       case 'canary':
         return 'text-green-600 bg-green-100';
       case 'staged':
@@ -268,7 +268,7 @@ export const DeploymentValidator: React.FC = () => {
                 <div className="text-3xl font-bold mb-2">{validationResult.score}%</div>
                 <div className="text-sm opacity-90">Overall Score</div>
                 <div className={`inline-block px-3 py-1 rounded-full text-xs font-medium mt-2 ${
-                  validationResult.ready ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
+                  validationResult.ready ? 'bg-green-500 text-white' : 'bg-texas-red/100 text-white'
                 }`}>
                   {validationResult.ready ? 'READY' : 'NOT READY'}
                 </div>
@@ -324,9 +324,9 @@ export const DeploymentValidator: React.FC = () => {
                   key={index}
                   className={`p-4 rounded-lg border-l-4 ${
                     check.status === 'pass' ? 'border-green-500 bg-green-50' :
-                    check.status === 'fail' ? 'border-red-500 bg-red-50' :
+                    check.status === 'fail' ? 'border-red-500 bg-texas-red/10' :
                     check.status === 'warning' ? 'border-yellow-500 bg-yellow-50' :
-                    'border-blue-500 bg-blue-50'
+                    'border-blue-500 bg-texas-navy/10'
                   }`}
                 >
                   <div className="flex items-start justify-between">
@@ -344,7 +344,7 @@ export const DeploymentValidator: React.FC = () => {
                       )}
                       {check.fix && (
                         <div className="mt-3 p-2 bg-white rounded border-l-2 border-blue-500">
-                          <p className="text-xs text-blue-700">
+                          <p className="text-xs text-texas-navy-700">
                             <strong>Fix:</strong> {check.fix}
                           </p>
                         </div>
@@ -357,11 +357,11 @@ export const DeploymentValidator: React.FC = () => {
           </div>
 
           {/* Recommendations */}
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-            <h4 className="font-medium text-blue-900 mb-4">📋 Recommendations</h4>
+          <div className="bg-texas-navy/10 border border-texas-navy/30 rounded-lg p-6">
+            <h4 className="font-medium text-texas-navy-900 mb-4">📋 Recommendations</h4>
             <div className="space-y-2">
               {validationResult.recommendations.map((rec, index) => (
-                <p key={index} className="text-sm text-blue-800 leading-relaxed">
+                <p key={index} className="text-sm text-texas-navy-800 leading-relaxed">
                   {rec}
                 </p>
               ))}

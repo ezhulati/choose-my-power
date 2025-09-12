@@ -20,7 +20,7 @@ interface MemoryManagerConfig {
 }
 
 export class MemoryManager {
-  private caches = new Map<string, Map<string, CacheEntry<any>>>();
+  private caches = new Map<string, Map<string, CacheEntry<unknown>>>();
   private intervals = new Map<string, NodeJS.Timeout>();
   private observers = new Set<MutationObserver>();
   private config: MemoryManagerConfig;
@@ -101,12 +101,12 @@ export class MemoryManager {
       }
 
       if (removedLRU > 0) {
-        console.debug(`Cache ${cacheName}: Removed ${removedLRU} LRU entries`);
+        console.warn(`Cache ${cacheName}: Removed ${removedLRU} LRU entries`);
       }
     }
 
     if (removedExpired > 0) {
-      console.debug(`Cache ${cacheName}: Removed ${removedExpired} expired entries`);
+      console.warn(`Cache ${cacheName}: Removed ${removedExpired} expired entries`);
     }
   }
 
@@ -122,7 +122,7 @@ export class MemoryManager {
     }, 30000);
 
     // Monitor performance entries for memory leaks
-    if ('performance' in window && 'memory' in (window.performance as any)) {
+    if ('performance' in window && 'memory' in (window.performance as unknown)) {
       this.monitorPerformanceMemory();
     }
   }
@@ -133,7 +133,7 @@ export class MemoryManager {
   private checkMemoryUsage(): void {
     if (typeof window === 'undefined') return;
 
-    const performance = window.performance as any;
+    const performance = window.performance as unknown;
     if (!performance.memory) return;
 
     const usedMB = performance.memory.usedJSHeapSize / (1024 * 1024);
@@ -148,8 +148,8 @@ export class MemoryManager {
       this.forceCleanupAll();
       
       // Trigger garbage collection if available
-      if ((window as any).gc) {
-        (window as any).gc();
+      if ((window as unknown).gc) {
+        (window as unknown).gc();
       }
     }
   }
@@ -158,7 +158,7 @@ export class MemoryManager {
    * Monitor performance memory metrics
    */
   private monitorPerformanceMemory(): void {
-    const performance = window.performance as any;
+    const performance = window.performance as unknown;
     if (!performance.memory) return;
 
     let previousUsage = performance.memory.usedJSHeapSize;
@@ -233,7 +233,7 @@ export class MemoryManager {
     // Clear all caches
     this.caches.clear();
 
-    console.log('MemoryManager destroyed and cleaned up');
+    console.warn('MemoryManager destroyed and cleaned up');
   }
 
   /**
@@ -246,8 +246,8 @@ export class MemoryManager {
     }
 
     let memoryUsage: MemoryUsage | undefined;
-    if (typeof window !== 'undefined' && (window.performance as any).memory) {
-      const memory = (window.performance as any).memory;
+    if (typeof window !== 'undefined' && (window.performance as unknown).memory) {
+      const memory = (window.performance as unknown).memory;
       memoryUsage = {
         used: Math.round(memory.usedJSHeapSize / (1024 * 1024)),
         total: Math.round(memory.totalJSHeapSize / (1024 * 1024)),
@@ -355,5 +355,5 @@ export function createManagedCache<T>(name: string, ttl?: number): ManagedCache<
 
 // Export for debugging
 if (typeof window !== 'undefined') {
-  (window as any).__memoryManager = memoryManager;
+  (window as unknown).__memoryManager = memoryManager;
 }

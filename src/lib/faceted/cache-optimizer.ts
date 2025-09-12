@@ -88,7 +88,7 @@ export class FacetedCacheOptimizer {
    */
   async warmCache(): Promise<CacheMetrics> {
     if (this.warmingInProgress) {
-      console.log('Cache warming already in progress, skipping...');
+      console.warn('Cache warming already in progress, skipping...');
       return this.metrics;
     }
 
@@ -97,11 +97,11 @@ export class FacetedCacheOptimizer {
     this.metrics.requestsWarmed = 0;
     this.metrics.errorsEncountered = 0;
 
-    console.log('🔥 Starting faceted navigation cache warming...');
+    console.warn('🔥 Starting faceted navigation cache warming...');
 
     try {
       const warmingPlan = this.createWarmingPlan();
-      console.log(`📋 Warming plan: ${warmingPlan.totalRequests} requests across ${warmingPlan.highPriority.length} high priority + ${warmingPlan.mediumPriority.length} medium priority combinations`);
+      console.warn(`📋 Warming plan: ${warmingPlan.totalRequests} requests across ${warmingPlan.highPriority.length} high priority + ${warmingPlan.mediumPriority.length} medium priority combinations`);
 
       // Warm high-priority combinations first
       await this.warmCombinations(warmingPlan.highPriority, 'high');
@@ -127,7 +127,7 @@ export class FacetedCacheOptimizer {
         ? duration / this.metrics.requestsWarmed 
         : 0;
       
-      console.log(`✅ Cache warming completed: ${this.metrics.requestsWarmed} requests in ${duration}ms`);
+      console.warn(`✅ Cache warming completed: ${this.metrics.requestsWarmed} requests in ${duration}ms`);
     }
 
     return this.metrics;
@@ -221,7 +221,7 @@ export class FacetedCacheOptimizer {
     combinations: Array<{ city: string; filters: string[]; tdspDuns: string }>,
     priority: string
   ): Promise<void> {
-    console.log(`🔥 Warming ${combinations.length} ${priority} priority combinations...`);
+    console.warn(`🔥 Warming ${combinations.length} ${priority} priority combinations...`);
     
     // Process in batches to avoid overwhelming the API
     for (let i = 0; i < combinations.length; i += this.config.warmingBatchSize) {
@@ -343,7 +343,7 @@ export class FacetedCacheOptimizer {
       await comparePowerClient.clearCache();
       invalidatedCount = cacheStats.memory.totalEntries || 0;
       
-      console.log(`🗑️ Invalidated ${invalidatedCount} stale cache entries`);
+      console.warn(`🗑️ Invalidated ${invalidatedCount} stale cache entries`);
       
     } catch (error) {
       console.error('Cache invalidation failed:', error);
@@ -355,7 +355,7 @@ export class FacetedCacheOptimizer {
   /**
    * Get current cache metrics
    */
-  async getCacheMetrics(): Promise<CacheMetrics & { currentStats: any }> {
+  async getCacheMetrics(): Promise<CacheMetrics & { currentStats: unknown}> {
     try {
       const currentStats = await comparePowerClient.getCacheStats();
       
@@ -378,13 +378,13 @@ export class FacetedCacheOptimizer {
   scheduleMaintenanceTasks(): void {
     // Schedule cache warming
     setInterval(async () => {
-      console.log('🔄 Running scheduled cache warming...');
+      console.warn('🔄 Running scheduled cache warming...');
       await this.warmCache();
     }, this.config.invalidationSchedule * 60 * 1000);
 
     // Schedule stale cache invalidation
     setInterval(async () => {
-      console.log('🗑️ Running scheduled cache invalidation...');
+      console.warn('🗑️ Running scheduled cache invalidation...');
       await this.invalidateStaleCache();
     }, (this.config.invalidationSchedule * 2) * 60 * 1000);
   }
@@ -392,7 +392,7 @@ export class FacetedCacheOptimizer {
   /**
    * Optimize cache configuration based on usage patterns
    */
-  optimizeConfiguration(usageStats: any): CacheOptimizationConfig {
+  optimizeConfiguration(usageStats: unknown): CacheOptimizationConfig {
     const optimized = { ...this.config };
 
     // Adjust warming batch size based on error rate

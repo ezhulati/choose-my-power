@@ -403,7 +403,7 @@ export class CoreWebVitalsImageOptimizer {
       this.performanceObserver = new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
           if (entry.entryType === 'largest-contentful-paint') {
-            this.trackLCPCandidate(entry as any);
+            this.trackLCPCandidate(entry as unknown);
           }
         }
       });
@@ -460,11 +460,11 @@ export class CoreWebVitalsImageOptimizer {
   /**
    * Track LCP candidates for optimization
    */
-  private trackLCPCandidate(entry: any): void {
+  private trackLCPCandidate(entry: unknown): void {
     if (entry.element && entry.element.tagName === 'IMG') {
       const src = entry.element.src || entry.element.dataset.src;
       if (src && this.lcpCandidates.has(src)) {
-        console.log('✅ LCP optimized image detected:', {
+        console.warn('✅ LCP optimized image detected:', {
           src,
           loadTime: entry.loadTime,
           renderTime: entry.renderTime,

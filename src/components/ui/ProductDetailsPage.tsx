@@ -180,8 +180,8 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = ({
                   <div className="text-3xl font-bold text-texas-navy mb-1">{plan.rate}¢</div>
                   <div className="text-gray-600 text-sm font-medium">per kWh</div>
                 </div>
-                <div className="text-center p-4 bg-blue-50 rounded-xl border border-blue-200">
-                  <div className="text-3xl font-bold text-blue-900 mb-1">{plan.termLength}</div>
+                <div className="text-center p-4 bg-texas-navy/10 rounded-xl border border-texas-navy/30">
+                  <div className="text-3xl font-bold text-texas-navy-900 mb-1">{plan.termLength}</div>
                   <div className="text-gray-600 text-sm font-medium">months</div>
                 </div>
                 <div className="text-center p-4 bg-green-50 rounded-xl border border-green-200">
@@ -495,14 +495,14 @@ export const ProductDetailsPage: React.FC<ProductDetailsPageProps> = ({
               </Card>
 
               {/* Help Section */}
-              <Card className="bg-blue-50 border-blue-200 p-6">
+              <Card className="bg-texas-navy/10 border-texas-navy/30 p-6">
                 <div className="text-center">
-                  <Icon icon="info" size={32} className="text-blue-600 mx-auto mb-3" />
-                  <h4 className="font-semibold text-blue-900 mb-2">Need Help Deciding?</h4>
-                  <p className="text-sm text-blue-700 mb-4">
+                  <Icon icon="info" size={32} className="text-texas-navy mx-auto mb-3" />
+                  <h4 className="font-semibold text-texas-navy-900 mb-2">Need Help Deciding?</h4>
+                  <p className="text-sm text-texas-navy-700 mb-4">
                     Compare this plan with others or get personalized recommendations.
                   </p>
-                  <Button variant="link" className="text-blue-600 font-semibold text-sm hover:text-blue-800 p-0">
+                  <Button variant="link" className="text-texas-navy font-semibold text-sm hover:text-texas-navy-800 p-0">
                     Get Free Consultation →
                   </Button>
                 </div>

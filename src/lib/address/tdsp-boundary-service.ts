@@ -384,7 +384,7 @@ export class TdspBoundaryService {
    */
   private isAddressInBoundary(
     address: NormalizedAddress, 
-    boundary: { tdsp: TdspInfo; streetPatterns: any[] }
+    boundary: { tdsp: TdspInfo; streetPatterns: unknown[] }
   ): boolean {
     const streetNumber = parseInt(address.streetNumber);
     const fullStreetName = `${address.streetName} ${address.streetType}`.toLowerCase();
@@ -493,7 +493,7 @@ export class TdspBoundaryService {
     // - Local database
     
     // For now, we'll just log that boundary data loading is not implemented
-    console.log('Boundary data loading would be implemented here');
+    console.warn('Boundary data loading would be implemented here');
   }
 
   /**

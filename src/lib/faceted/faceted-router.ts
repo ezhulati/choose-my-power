@@ -309,7 +309,7 @@ export class FacetedRouter {
   /**
    * Prioritize filter patterns based on usefulness and popularity
    */
-  private prioritizeFilterPatterns(filterDef: any): string[] {
+  private prioritizeFilterPatterns(filterDef: unknown): string[] {
     const patterns = filterDef.urlPatterns;
     
     // Define priority order for common filter types
@@ -518,7 +518,7 @@ export class FacetedRouter {
     if (!cached) return null;
     
     // Check if cache entry is still valid
-    if (Date.now() - (cached as any).cacheTimestamp > this.CACHE_TTL) {
+    if (Date.now() - (cached as unknown).cacheTimestamp > this.CACHE_TTL) {
       this.routeCache.delete(cacheKey);
       return null;
     }
@@ -528,8 +528,8 @@ export class FacetedRouter {
   
   private setRouteCache(cacheKey: string, result: FacetedRouteResult, ttl?: number): void {
     // Add cache timestamp
-    (result as any).cacheTimestamp = Date.now();
-    (result as any).cacheTTL = ttl || this.CACHE_TTL;
+    (result as unknown).cacheTimestamp = Date.now();
+    (result as unknown).cacheTTL = ttl || this.CACHE_TTL;
     
     this.routeCache.set(cacheKey, result);
     
@@ -547,7 +547,7 @@ export class FacetedRouter {
     this.cityValidationCache.clear();
     this.tdspMappingCache.clear();
     this.routeCache.clear();
-    console.log('🗑️  FacetedRouter caches cleared');
+    console.warn('🗑️  FacetedRouter caches cleared');
   }
   
   /**

@@ -21,7 +21,7 @@ interface Migration {
  */
 export async function executeMigration(migrationPath: string): Promise<void> {
   try {
-    console.log(`🔄 Executing migration: ${migrationPath}`);
+    console.warn(`🔄 Executing migration: ${migrationPath}`);
     
     const migrationSql = readFileSync(migrationPath, 'utf8');
     
@@ -31,7 +31,7 @@ export async function executeMigration(migrationPath: string): Promise<void> {
       .map(stmt => stmt.trim())
       .filter(stmt => stmt.length > 0 && !stmt.startsWith('--'));
     
-    console.log(`   Found ${statements.length} SQL statements to execute`);
+    console.warn(`   Found ${statements.length} SQL statements to execute`);
     
     for (let i = 0; i < statements.length; i++) {
       const statement = statements[i];
@@ -39,19 +39,19 @@ export async function executeMigration(migrationPath: string): Promise<void> {
       
       try {
         await db.execute(sql.raw(statement));
-        console.log(`   ✅ Statement ${i + 1}/${statements.length} executed successfully`);
-      } catch (error: any) {
+        console.warn(`   ✅ Statement ${i + 1}/${statements.length} executed successfully`);
+      } catch (error: unknown) {
         // Check if error is about already existing objects
         if (error.message?.includes('already exists') || 
             error.message?.includes('relation') && error.message?.includes('already exists')) {
-          console.log(`   ⚠️  Statement ${i + 1} skipped (object already exists)`);
+          console.warn(`   ⚠️  Statement ${i + 1} skipped (object already exists)`);
           continue;
         }
         throw new Error(`Statement ${i + 1} failed: ${error.message}\nStatement: ${statement.substring(0, 100)}...`);
       }
     }
     
-    console.log(`✅ Migration completed successfully`);
+    console.warn(`✅ Migration completed successfully`);
     
   } catch (error) {
     console.error(`❌ Migration failed:`, error);
@@ -64,8 +64,8 @@ export async function executeMigration(migrationPath: string): Promise<void> {
  */
 export async function runMigrations(): Promise<void> {
   try {
-    console.log('🚀 Starting database migrations...');
-    console.log('='.repeat(50));
+    console.warn('🚀 Starting database migrations...');
+    console.warn('='.repeat(50));
     
     const startTime = Date.now();
     
@@ -78,7 +78,7 @@ export async function runMigrations(): Promise<void> {
       '0001_zip_coverage_tables.sql'
     ];
     
-    console.log(`Found ${migrationFiles.length} migration file(s) to process`);
+    console.warn(`Found ${migrationFiles.length} migration file(s) to process`);
     
     for (const filename of migrationFiles) {
       const migrationPath = resolve(migrationsDir, filename);
@@ -88,13 +88,13 @@ export async function runMigrations(): Promise<void> {
       const isExecuted = await checkMigrationExecuted(migrationId);
       
       if (isExecuted) {
-        console.log(`⏭️  Skipping ${filename} (already executed)`);
+        console.warn(`⏭️  Skipping ${filename} (already executed)`);
         continue;
       }
       
       // Execute migration
-      console.log(`\n📄 Processing ${filename}`);
-      console.log('-'.repeat(30));
+      console.warn(`\n📄 Processing ${filename}`);
+      console.warn('-'.repeat(30));
       
       await executeMigration(migrationPath);
       await recordMigrationExecuted(migrationId, filename);
@@ -103,11 +103,11 @@ export async function runMigrations(): Promise<void> {
     const endTime = Date.now();
     const duration = endTime - startTime;
     
-    console.log('\n' + '='.repeat(50));
-    console.log('✅ ALL MIGRATIONS COMPLETED');
-    console.log('='.repeat(50));
-    console.log(`⏱️  Duration: ${duration}ms`);
-    console.log(`📊 Database is now ready for ZIP coverage system`);
+    console.warn('\n' + '='.repeat(50));
+    console.warn('✅ ALL MIGRATIONS COMPLETED');
+    console.warn('='.repeat(50));
+    console.warn(`⏱️  Duration: ${duration}ms`);
+    console.warn(`📊 Database is now ready for ZIP coverage system`);
     
   } catch (error) {
     console.error('\n❌ MIGRATION PROCESS FAILED');
@@ -136,7 +136,7 @@ async function createMigrationsTable(): Promise<void> {
   
   try {
     await db.execute(sql.raw(createTableSql));
-    console.log('📋 Migrations tracking table ready');
+    console.warn('📋 Migrations tracking table ready');
   } catch (error) {
     console.error('❌ Failed to create migrations table:', error);
     throw error;
@@ -169,7 +169,7 @@ async function recordMigrationExecuted(migrationId: string, filename: string): P
         VALUES ('${migrationId}', '${filename}', now())
       `)
     );
-    console.log(`📝 Recorded migration execution: ${migrationId}`);
+    console.warn(`📝 Recorded migration execution: ${migrationId}`);
   } catch (error) {
     console.error(`❌ Failed to record migration: ${migrationId}`, error);
     throw error;
@@ -193,7 +193,7 @@ export async function getMigrationHistory(): Promise<Migration[]> {
       executedAt: row.executed_at as Date
     }));
   } catch (error) {
-    console.log('No migration history found (migrations table may not exist)');
+    console.warn('No migration history found (migrations table may not exist)');
     return [];
   }
 }
@@ -203,17 +203,17 @@ export async function getMigrationHistory(): Promise<Migration[]> {
  */
 export async function rollbackLastMigration(): Promise<void> {
   try {
-    console.log('⚠️  WARNING: Rolling back last migration');
-    console.log('This operation is potentially destructive!');
+    console.warn('⚠️  WARNING: Rolling back last migration');
+    console.warn('This operation is potentially destructive!');
     
     const history = await getMigrationHistory();
     if (history.length === 0) {
-      console.log('No migrations to rollback');
+      console.warn('No migrations to rollback');
       return;
     }
     
     const lastMigration = history[0];
-    console.log(`Rolling back: ${lastMigration.name}`);
+    console.warn(`Rolling back: ${lastMigration.name}`);
     
     // For ZIP coverage tables, drop them in reverse order
     if (lastMigration.id === '0001_zip_coverage_tables') {
@@ -227,7 +227,7 @@ export async function rollbackLastMigration(): Promise<void> {
       `;
       
       await db.execute(sql.raw(dropTablesSQL));
-      console.log('✅ Tables dropped successfully');
+      console.warn('✅ Tables dropped successfully');
     }
     
     // Remove migration record
@@ -235,7 +235,7 @@ export async function rollbackLastMigration(): Promise<void> {
       sql.raw(`DELETE FROM "_migrations" WHERE id = '${lastMigration.id}'`)
     );
     
-    console.log(`✅ Rollback completed: ${lastMigration.name}`);
+    console.warn(`✅ Rollback completed: ${lastMigration.name}`);
     
   } catch (error) {
     console.error('❌ Rollback failed:', error);
@@ -248,19 +248,19 @@ export async function rollbackLastMigration(): Promise<void> {
  */
 export async function checkDatabaseHealth(): Promise<void> {
   try {
-    console.log('🏥 Checking database health...');
+    console.warn('🏥 Checking database health...');
     
     // Test basic connection
     await db.execute(sql.raw('SELECT 1 as test'));
-    console.log('✅ Database connection: OK');
+    console.warn('✅ Database connection: OK');
     
     // Check if UUID extension is available
     await db.execute(sql.raw('SELECT uuid_generate_v4()'));
-    console.log('✅ UUID extension: OK');
+    console.warn('✅ UUID extension: OK');
     
     // Check migrations table
     const history = await getMigrationHistory();
-    console.log(`✅ Migrations table: OK (${history.length} migrations executed)`);
+    console.warn(`✅ Migrations table: OK (${history.length} migrations executed)`);
     
     // Check each ZIP coverage table
     const tables = [
@@ -274,13 +274,13 @@ export async function checkDatabaseHealth(): Promise<void> {
     for (const table of tables) {
       try {
         await db.execute(sql.raw(`SELECT COUNT(*) FROM "${table}"`));
-        console.log(`✅ Table "${table}": OK`);
+        console.warn(`✅ Table "${table}": OK`);
       } catch (error) {
-        console.log(`❌ Table "${table}": NOT FOUND`);
+        console.warn(`❌ Table "${table}": NOT FOUND`);
       }
     }
     
-    console.log('🏥 Database health check completed');
+    console.warn('🏥 Database health check completed');
     
   } catch (error) {
     console.error('❌ Database health check failed:', error);
@@ -298,9 +298,9 @@ if (require.main === module) {
       break;
     case 'history':
       getMigrationHistory().then(history => {
-        console.log('📋 Migration History:');
+        console.warn('📋 Migration History:');
         history.forEach(migration => {
-          console.log(`   ${migration.id} - ${migration.name} (${migration.executedAt})`);
+          console.warn(`   ${migration.id} - ${migration.name} (${migration.executedAt})`);
         });
       }).catch(console.error);
       break;
@@ -311,11 +311,11 @@ if (require.main === module) {
       checkDatabaseHealth().catch(console.error);
       break;
     default:
-      console.log('Usage: node migrate.js [up|history|rollback|health]');
-      console.log('  up       - Run all pending migrations');
-      console.log('  history  - Show migration history');
-      console.log('  rollback - Rollback last migration (dangerous!)');
-      console.log('  health   - Check database health');
+      console.warn('Usage: node migrate.js [up|history|rollback|health]');
+      console.warn('  up       - Run all pending migrations');
+      console.warn('  history  - Show migration history');
+      console.warn('  rollback - Rollback last migration (dangerous!)');
+      console.warn('  health   - Check database health');
       break;
   }
 }

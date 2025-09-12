@@ -54,7 +54,7 @@ const EnhancedFacetedSidebar: React.FC<FacetedSidebarProps> = ({
     // Clear each filter type
     Object.keys(currentFilters).forEach(filterType => {
       if (Array.isArray(currentFilters[filterType as keyof typeof currentFilters])) {
-        const arrayValue = currentFilters[filterType as keyof typeof currentFilters] as any[];
+        const arrayValue = currentFilters[filterType as keyof typeof currentFilters] as unknown[];
         arrayValue.forEach(value => {
           onFilterChange(filterType, value, false);
         });

@@ -121,7 +121,7 @@ export const TEXAS_TDSPS = {
 } as const;
 
 export class TDSPService {
-  private cache = new Map<string, { data: any; timestamp: number; ttl: number }>();
+  private cache = new Map<string, { data: unknown; timestamp: number; ttl: number }>();
   private readonly DEFAULT_TTL = 43200000; // 12 hours
   private clientFactory = apiClientFactory;
   private tdspMappings: Map<string, TDSPTerritory>;
@@ -671,7 +671,7 @@ export class TDSPService {
     }
   }
 
-  private getCachedResult(key: string): { data: any; timestamp: number; ttl: number } | null {
+  private getCachedResult(key: string): { data: unknown; timestamp: number; ttl: number } | null {
     const cached = this.cache.get(key);
     if (!cached) return null;
     
@@ -683,7 +683,7 @@ export class TDSPService {
     return cached;
   }
 
-  private setCachedResult(key: string, result: { data: any; timestamp: number; ttl: number }): void {
+  private setCachedResult(key: string, result: { data: unknown; timestamp: number; ttl: number }): void {
     this.cache.set(key, result);
     
     if (this.cache.size > 500) {

@@ -202,7 +202,7 @@ export const getZipCodeRegion = (zipCode: string): string | null => {
 export const createValidationError = (
   error: keyof typeof ERROR_CODES,
   message: string,
-  details?: Record<string, any>
+  details?: Record<string, unknown>
 ): APIErrorResponse => {
   return {
     error: ERROR_CODES[error],

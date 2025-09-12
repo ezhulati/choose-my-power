@@ -52,7 +52,7 @@ export interface TdspResolutionResult {
   requiresManualSelection: boolean;
   metadata: {
     addressValidation: AddressValidationResult | null;
-    boundaryLookup: any;
+    boundaryLookup: unknown;
     processingTime: number;
     cacheHit: boolean;
   };
@@ -64,7 +64,7 @@ export interface ProgressiveResolutionStep {
   description: string;
   required: boolean;
   completed: boolean;
-  data?: any;
+  data?: unknown;
 }
 
 export class AddressTdspResolver {
@@ -72,8 +72,8 @@ export class AddressTdspResolver {
   private readonly cacheTTL = 3600000; // 1 hour
 
   constructor() {
-    console.log('AddressTdspResolver initialized');
-    console.log(`Multi-TDSP ZIP codes configured: ${MULTI_TDSP_STATS.totalZipCodes}`);
+    console.warn('AddressTdspResolver initialized');
+    console.warn(`Multi-TDSP ZIP codes configured: ${MULTI_TDSP_STATS.totalZipCodes}`);
   }
 
   /**
@@ -363,7 +363,7 @@ export class AddressTdspResolver {
   getSystemStats(): {
     multiTdspStats: typeof MULTI_TDSP_STATS;
     cacheStats: { size: number; hitRate?: number };
-    serviceStats: any;
+    serviceStats: unknown;
   } {
     return {
       multiTdspStats: MULTI_TDSP_STATS,
@@ -427,8 +427,7 @@ export class AddressTdspResolver {
 
   private calculateOverallConfidence(
     addressValidation: AddressValidationResult,
-    boundaryResult: any
-  ): 'high' | 'medium' | 'low' {
+    boundaryResult: unknown): 'high' | 'medium' | 'low' {
     const addressWeight = 0.4;
     const boundaryWeight = 0.6;
 
@@ -447,7 +446,7 @@ export class AddressTdspResolver {
 
   private shouldRequireManualSelection(
     zipCode: string,
-    boundaryResult: any,
+    boundaryResult: unknown,
     options: TdspResolutionOptions
   ): boolean {
     if (!options.includeAlternatives) return false;
@@ -460,7 +459,7 @@ export class AddressTdspResolver {
     return (boundaryResult.alternativeTdsps?.length || 0) > 0 && boundaryResult.confidence !== 'high';
   }
 
-  private generateSuggestions(zipCode: string, boundaryResult: any): string[] {
+  private generateSuggestions(zipCode: string, boundaryResult: unknown): string[] {
     const suggestions: string[] = [];
     
     if (requiresAddressValidation(zipCode)) {

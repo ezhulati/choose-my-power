@@ -91,7 +91,7 @@ export class ZIPDiscoveryService {
    * Discover all missing ZIP codes for complete Texas coverage
    */
   async discoverMissingZIPCodes(): Promise<ZIPMappingResult[]> {
-    console.log('🔍 Starting comprehensive ZIP code discovery...');
+    console.warn('🔍 Starting comprehensive ZIP code discovery...');
     
     const discoveredZIPs: ZIPMappingResult[] = [];
     const existingZIPs = await this.getExistingZIPCodes();
@@ -100,7 +100,7 @@ export class ZIPDiscoveryService {
     const allTexasZIPs = this.generateTexasZIPRange();
     const missingZIPs = allTexasZIPs.filter(zip => !existingZIPs.has(zip));
     
-    console.log(`📊 Found ${missingZIPs.length} potential missing ZIP codes`);
+    console.warn(`📊 Found ${missingZIPs.length} potential missing ZIP codes`);
     
     // Process in batches to avoid rate limiting
     const batchSize = 50;
@@ -111,14 +111,14 @@ export class ZIPDiscoveryService {
       
       // Progress logging
       if (i % 200 === 0) {
-        console.log(`📈 Processed ${i + batch.length}/${missingZIPs.length} ZIP codes`);
+        console.warn(`📈 Processed ${i + batch.length}/${missingZIPs.length} ZIP codes`);
       }
       
       // Rate limiting delay
       await this.delay(100);
     }
     
-    console.log(`✅ Discovery complete: ${discoveredZIPs.length} new ZIP codes mapped`);
+    console.warn(`✅ Discovery complete: ${discoveredZIPs.length} new ZIP codes mapped`);
     return discoveredZIPs;
   }
 
@@ -130,7 +130,7 @@ export class ZIPDiscoveryService {
       return this.gapAnalysisCache;
     }
 
-    console.log('📊 Analyzing ZIP coverage gaps...');
+    console.warn('📊 Analyzing ZIP coverage gaps...');
     
     const existingZIPs = await this.getExistingZIPCodes();
     const allTexasZIPs = this.generateTexasZIPRange();
@@ -187,7 +187,7 @@ export class ZIPDiscoveryService {
    * Generate comprehensive ZIP mapping for a specific region
    */
   async mapRegionZIPCodes(region: 'North' | 'Coast' | 'Central' | 'South' | 'Valley'): Promise<ZIPMappingResult[]> {
-    console.log(`🗺️ Mapping ZIP codes for ${region} region...`);
+    console.warn(`🗺️ Mapping ZIP codes for ${region} region...`);
     
     const regionZIPs = this.getZIPRangeByRegion(region);
     const mappedZIPs: ZIPMappingResult[] = [];
@@ -203,7 +203,7 @@ export class ZIPDiscoveryService {
       }
     }
     
-    console.log(`✅ Mapped ${mappedZIPs.length} ZIP codes in ${region} region`);
+    console.warn(`✅ Mapped ${mappedZIPs.length} ZIP codes in ${region} region`);
     return mappedZIPs;
   }
 
@@ -213,14 +213,14 @@ export class ZIPDiscoveryService {
   async validateExistingMappings(): Promise<{
     validated: ZIPMappingResult[];
     errors: { zipCode: string; error: string }[];
-    improvements: { zipCode: string; oldData: any; newData: ZIPMappingResult }[];
+    improvements: { zipCode: string; oldData: unknown; newData: ZIPMappingResult }[];
   }> {
-    console.log('🔍 Validating existing ZIP mappings...');
+    console.warn('🔍 Validating existing ZIP mappings...');
     
     const existingZIPs = await this.getExistingZIPCodes();
     const validated: ZIPMappingResult[] = [];
     const errors: { zipCode: string; error: string }[] = [];
-    const improvements: { zipCode: string; oldData: any; newData: ZIPMappingResult }[] = [];
+    const improvements: { zipCode: string; oldData: unknown; newData: ZIPMappingResult }[] = [];
     
     for (const zipCode of existingZIPs) {
       try {
@@ -394,13 +394,13 @@ export class ZIPDiscoveryService {
     return new Set(Object.keys(COMPREHENSIVE_ZIP_TDSP_MAPPING));
   }
 
-  private async getCurrentMapping(zipCode: string): Promise<any> {
+  private async getCurrentMapping(zipCode: string): Promise<unknown> {
     // Get current mapping data for a ZIP code
     const { COMPREHENSIVE_ZIP_TDSP_MAPPING } = await import('../../types/electricity-plans');
     return COMPREHENSIVE_ZIP_TDSP_MAPPING[zipCode];
   }
 
-  private hasImprovedData(oldData: any, newData: ZIPMappingResult): boolean {
+  private hasImprovedData(oldData: unknown, newData: ZIPMappingResult): boolean {
     // Compare data quality and determine if new data is better
     return newData.tdsp.confidence > 80;
   }

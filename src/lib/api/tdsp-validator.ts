@@ -48,7 +48,7 @@ export class TdspValidator {
     }
 
     this.isValidating = true;
-    console.log('Starting comprehensive TDSP validation...');
+    console.warn('Starting comprehensive TDSP validation...');
 
     try {
       const cities = Object.entries(tdspMapping);
@@ -63,7 +63,7 @@ export class TdspValidator {
         await Promise.all(batchPromises);
         
         // Progress logging
-        console.log(`Validated ${Math.min(i + batchSize, cities.length)}/${cities.length} cities`);
+        console.warn(`Validated ${Math.min(i + batchSize, cities.length)}/${cities.length} cities`);
         
         // Small delay between batches to be respectful to the API
         if (i + batchSize < cities.length) {
@@ -145,7 +145,7 @@ export class TdspValidator {
     uniqueTdsps: Array<{ duns: string; name: string; isValid: boolean; error?: string }>;
     summary: { total: number; valid: number; invalid: number };
   }> {
-    console.log('Running quick TDSP connectivity check...');
+    console.warn('Running quick TDSP connectivity check...');
     
     // Get unique TDSP DUNS numbers
     const uniqueTdsps = Array.from(
@@ -196,7 +196,7 @@ export class TdspValidator {
     const citiesInTier = Object.entries(tdspMapping)
       .filter(([_, config]) => config.tier === tier);
 
-    console.log(`Validating ${citiesInTier.length} Tier ${tier} cities...`);
+    console.warn(`Validating ${citiesInTier.length} Tier ${tier} cities...`);
 
     const results = await Promise.all(
       citiesInTier.map(([citySlug, config]) => 
@@ -211,7 +211,7 @@ export class TdspValidator {
     const citiesInZone = Object.entries(tdspMapping)
       .filter(([_, config]) => config.zone === zone);
 
-    console.log(`Validating ${citiesInZone.length} cities in ${zone} zone...`);
+    console.warn(`Validating ${citiesInZone.length} cities in ${zone} zone...`);
 
     const results = await Promise.all(
       citiesInZone.map(([citySlug, config]) => 
@@ -288,8 +288,8 @@ export class TdspValidator {
    */
   private generateRecommendations(
     results: TdspValidationResult[],
-    zoneStats: Record<string, any>,
-    tierStats: Record<number, any>
+    zoneStats: Record<string, unknown>,
+    tierStats: Record<string, unknown>
   ): string[] {
     const recommendations: string[] = [];
     const invalidResults = results.filter(r => !r.isValid);
@@ -429,21 +429,21 @@ export const tdspValidator = new TdspValidator();
 
 // Utility function to run quick validation
 export async function quickValidation(): Promise<void> {
-  console.log('Running quick TDSP validation...');
+  console.warn('Running quick TDSP validation...');
   
   try {
     const connectivity = await tdspValidator.validateConnectivity();
     
-    console.log('TDSP Connectivity Results:');
-    console.log(`Total unique TDSPs: ${connectivity.summary.total}`);
-    console.log(`Valid: ${connectivity.summary.valid}`);
-    console.log(`Invalid: ${connectivity.summary.invalid}`);
+    console.warn('TDSP Connectivity Results:');
+    console.warn(`Total unique TDSPs: ${connectivity.summary.total}`);
+    console.warn(`Valid: ${connectivity.summary.valid}`);
+    console.warn(`Invalid: ${connectivity.summary.invalid}`);
     
     if (connectivity.summary.invalid > 0) {
-      console.log('\nInvalid TDSPs:');
+      console.warn('\nInvalid TDSPs:');
       connectivity.uniqueTdsps
         .filter(t => !t.isValid)
-        .forEach(t => console.log(`- ${t.name} (${t.duns}): ${t.error || 'No plans found'}`));
+        .forEach(t => console.warn(`- ${t.name} (${t.duns}): ${t.error || 'No plans found'}`));
     }
   } catch (error) {
     console.error('Validation failed:', error);
@@ -452,23 +452,23 @@ export async function quickValidation(): Promise<void> {
 
 // Utility function to run full validation
 export async function fullValidation(): Promise<ValidationSummary> {
-  console.log('Running full TDSP validation...');
+  console.warn('Running full TDSP validation...');
   
   try {
     const summary = await tdspValidator.validateAllMappings();
     
-    console.log('\n=== TDSP Validation Summary ===');
-    console.log(`Total cities: ${summary.totalCities}`);
-    console.log(`Valid cities: ${summary.validCities}`);
-    console.log(`Invalid cities: ${summary.invalidCities}`);
-    console.log(`Success rate: ${((summary.validCities / summary.totalCities) * 100).toFixed(1)}%`);
-    console.log(`Total plans found: ${summary.totalPlans}`);
-    console.log(`Average response time: ${summary.averageResponseTime}ms`);
+    console.warn('\n=== TDSP Validation Summary ===');
+    console.warn(`Total cities: ${summary.totalCities}`);
+    console.warn(`Valid cities: ${summary.validCities}`);
+    console.warn(`Invalid cities: ${summary.invalidCities}`);
+    console.warn(`Success rate: ${((summary.validCities / summary.totalCities) * 100).toFixed(1)}%`);
+    console.warn(`Total plans found: ${summary.totalPlans}`);
+    console.warn(`Average response time: ${summary.averageResponseTime}ms`);
     
     if (summary.recommendations.length > 0) {
-      console.log('\n=== Recommendations ===');
+      console.warn('\n=== Recommendations ===');
       summary.recommendations.forEach((rec, i) => {
-        console.log(`${i + 1}. ${rec}`);
+        console.warn(`${i + 1}. ${rec}`);
       });
     }
     

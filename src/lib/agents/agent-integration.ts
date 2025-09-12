@@ -91,7 +91,7 @@ export class AgentApiClient {
   }
 
   // Plan analysis with database fallback
-  async analyzePlanForAgent(planId: string, agentType: string): Promise<any> {
+  async analyzePlanForAgent(planId: string, agentType: string): Promise<unknown> {
     try {
       // Try database first for plan details
       const dbPlan = await planRepository.getPlanById(planId);
@@ -146,7 +146,7 @@ export class AgentApiClient {
   }
 
   // Batch processing for data pipeline agent
-  async processCityBatch(cityBatch: string[], config: any): Promise<{
+  async processCityBatch(cityBatch: string[], config: unknown): Promise<{
     successful: Array<{ citySlug: string; plansCount: number; processingTime: number; cacheHit: boolean }>;
     failed: Array<{ citySlug: string; error: string; retryable: boolean }>;
   }> {
@@ -203,7 +203,7 @@ export class AgentApiClient {
   }
 
   // Private helper methods
-  private async getCachedData(key: string, includeStale = false): Promise<any> {
+  private async getCachedData(key: string, includeStale = false): Promise<unknown> {
     try {
       // Integration with your existing Redis cache
       if (AGENT_CONFIG.integration.useExistingCache) {
@@ -218,7 +218,7 @@ export class AgentApiClient {
     }
   }
 
-  private async setCachedData(key: string, data: any, ttl: number): Promise<void> {
+  private async setCachedData(key: string, data: unknown, ttl: number): Promise<void> {
     try {
       if (AGENT_CONFIG.integration.useExistingCache) {
         // This would integrate with your actual cache implementation
@@ -229,7 +229,7 @@ export class AgentApiClient {
     }
   }
 
-  private enhancePlanData(plan: any, agentType: string): any {
+  private enhancePlanData(plan: unknown, agentType: string): unknown {
     // Enhance plan data with agent-specific information
     return {
       ...plan,
@@ -241,7 +241,7 @@ export class AgentApiClient {
     };
   }
 
-  private isRetryableError(error: any): boolean {
+  private isRetryableError(error: unknown): boolean {
     // Determine if an error is retryable
     const retryableErrors = ['ECONNRESET', 'ETIMEDOUT', 'ENOTFOUND', 'rate_limit'];
     const errorMessage = error instanceof Error ? error.message.toLowerCase() : '';
@@ -259,7 +259,7 @@ export class AgentApiClient {
 // Session manager for support chatbot
 export class AgentSessionManager {
   private static instance: AgentSessionManager;
-  private activeSessions = new Map<string, any>();
+  private activeSessions = new Map<string, unknown>();
 
   private constructor() {}
 
@@ -282,11 +282,11 @@ export class AgentSessionManager {
     });
   }
 
-  getSession(sessionId: string): any {
+  getSession(sessionId: string): unknown {
     return this.activeSessions.get(sessionId);
   }
 
-  updateSession(sessionId: string, updates: any): void {
+  updateSession(sessionId: string, updates: unknown): void {
     const session = this.activeSessions.get(sessionId);
     if (session) {
       this.activeSessions.set(sessionId, {
@@ -316,7 +316,7 @@ export class AgentSessionManager {
 // Monitoring and metrics
 export class AgentMetricsCollector {
   private static instance: AgentMetricsCollector;
-  private metrics = new Map<string, any>();
+  private metrics = new Map<string, unknown>();
 
   private constructor() {}
 
@@ -345,8 +345,8 @@ export class AgentMetricsCollector {
     });
   }
 
-  getMetrics(): any {
-    const result: any = {};
+  getMetrics(): unknown {
+    const result: unknown = {};
     
     for (const [key, metrics] of this.metrics.entries()) {
       const [agentType, operation] = key.split(':');

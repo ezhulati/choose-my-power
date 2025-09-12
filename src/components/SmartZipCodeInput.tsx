@@ -146,7 +146,6 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
     }));
 
     try {
-      console.log(`🔍 Looking up ZIP code: ${sanitizedZipCode}`);
       
       // Step 1: Use our new ZIP lookup API first
       const response = await fetch(`/api/zip-lookup?zip=${encodeURIComponent(sanitizedZipCode)}`);
@@ -154,14 +153,12 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
 
       if (zipResult.success) {
         // ZIP code resolved to a single city - now check if we need multi-TDSP detection
-        console.log(`✅ ZIP resolved to city: ${zipResult.city}`);
         
         // Step 2: Check if this city might have multi-TDSP scenarios
         try {
           const analysis = await multiTDSPDetector.analyzeZipCode(sanitizedZipCode, displayUsage);
           
           if (analysis.addressRequired) {
-            console.log(`⚠️  Address required for ZIP ${sanitizedZipCode} due to multi-TDSP`);
             
             setState(prev => ({
               ...prev,
@@ -176,7 +173,6 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
           }
 
           // Direct resolution successful
-          console.log(`✅ Direct ZIP resolution: ${analysis.tdsp_name}`);
           
           setState(prev => ({
             ...prev,
@@ -191,7 +187,6 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
 
         } catch (multiTDSPError) {
           // Fallback to basic city resolution if multi-TDSP detection fails
-          console.log(`⚠️ Multi-TDSP detection failed, using basic city resolution`);
           
           // Create a basic TDSP result from our ZIP lookup
           const basicResult: TDSPResolutionResult = {
@@ -223,7 +218,6 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
 
       } else {
         // Handle different error types from ZIP lookup API
-        console.log(`⚠️ ZIP lookup failed:`, zipResult);
         
         if (zipResult.errorType === 'non_deregulated') {
           // Municipal utility area - show special error
@@ -234,7 +228,6 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
           }));
         } else if (zipResult.errorType === 'not_found') {
           // ZIP not found in our database, try multi-TDSP detector as fallback
-          console.log(`🔄 ZIP not in our database, trying multi-TDSP detection...`);
           
           try {
             const analysis = await multiTDSPDetector.analyzeZipCode(sanitizedZipCode, displayUsage);
@@ -330,7 +323,6 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
     }));
 
     try {
-      console.log(`📍 Resolving address: ${sanitizedAddress}, ${sanitizedZipCode}`);
       
       // Step 2: Resolve address to specific TDSP using ESIID
       const resolution = await multiTDSPDetector.resolveAddressToTDSP(
@@ -340,7 +332,6 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
       );
 
       if (resolution.requiresUserInput && resolution.alternatives) {
-        console.log(`🤔 Multiple TDSPs found, requiring user selection`);
         
         setState(prev => ({
           ...prev,
@@ -354,7 +345,6 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
       }
 
       // Address resolution successful
-      console.log(`✅ Address resolved to: ${resolution.tdsp_name}`);
       
       setState(prev => ({
         ...prev,
@@ -407,7 +397,6 @@ export const SmartZipCodeInput: React.FC<SmartZipCodeInputProps> = ({
       }
     };
 
-    console.log(`👤 User selected TDSP: ${selectedTDSP.name}`);
 
     setState(prev => ({
       ...prev,

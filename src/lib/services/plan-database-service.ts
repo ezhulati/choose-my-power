@@ -44,7 +44,7 @@ export interface DatabasePlan {
     depositRequired: boolean;
     depositAmount: number;
   };
-  planData: any; // Full original plan data as JSON
+  planData: unknown; // Full original plan data as JSON
 }
 
 /**
@@ -56,7 +56,7 @@ export async function findPlanByNameAndProviderDB(
   citySlug?: string
 ): Promise<DatabasePlan | null> {
   try {
-    console.log(`[PlanDatabaseService] Searching for plan: "${planName}" by "${providerName}" ${citySlug ? `in ${citySlug}` : ''}`);
+    console.warn(`[PlanDatabaseService] Searching for plan: "${planName}" by "${providerName}" ${citySlug ? `in ${citySlug}` : ''}`);
     
     let query = `
       SELECT 
@@ -103,12 +103,12 @@ export async function findPlanByNameAndProviderDB(
     const exactQuery = query + ` AND LOWER(ep.name) = LOWER($${params.length + 1})`;
     const exactParams = [...params, planName];
     
-    console.log(`[PlanDatabaseService] Trying exact match query`);
+    console.warn(`[PlanDatabaseService] Trying exact match query`);
     let results = await db.query(exactQuery, exactParams);
     
     // If no exact match, try fuzzy matching
     if (!results || results.length === 0) {
-      console.log(`[PlanDatabaseService] No exact match, trying fuzzy search...`);
+      console.warn(`[PlanDatabaseService] No exact match, trying fuzzy search...`);
       
       // Use ILIKE for partial matching (case-insensitive)
       const fuzzyQuery = query + ` AND ep.name ILIKE $${params.length + 1}`;
@@ -119,7 +119,7 @@ export async function findPlanByNameAndProviderDB(
     
     // If still no match, just find any plan from the provider in the city
     if (!results || results.length === 0) {
-      console.log(`[PlanDatabaseService] No fuzzy match, finding any plan from provider...`);
+      console.warn(`[PlanDatabaseService] No fuzzy match, finding any plan from provider...`);
       results = await db.query(query + ' LIMIT 1', params);
     }
     
@@ -166,7 +166,7 @@ export async function findPlanByNameAndProviderDB(
         planData: row.plan_data
       };
       
-      console.log(`[PlanDatabaseService] Found plan: ${plan.name} with ID: ${plan.id}`);
+      console.warn(`[PlanDatabaseService] Found plan: ${plan.name} with ID: ${plan.id}`);
       return plan;
     } else {
       console.warn(`[PlanDatabaseService] No plan found for "${planName}" by "${providerName}"`);
@@ -184,7 +184,7 @@ export async function findPlanByNameAndProviderDB(
  */
 export async function findPlanByIdDB(planId: string): Promise<DatabasePlan | null> {
   try {
-    console.log(`[PlanDatabaseService] Searching for plan by ID: ${planId}`);
+    console.warn(`[PlanDatabaseService] Searching for plan by ID: ${planId}`);
     
     const query = `
       SELECT 
@@ -265,7 +265,7 @@ export async function findPlanByIdDB(planId: string): Promise<DatabasePlan | nul
         planData: row.plan_data
       };
       
-      console.log(`[PlanDatabaseService] Found plan: ${plan.name} by ${plan.provider.name}`);
+      console.warn(`[PlanDatabaseService] Found plan: ${plan.name} by ${plan.provider.name}`);
       return plan;
     } else {
       console.warn(`[PlanDatabaseService] No plan found with ID: ${planId}`);
@@ -283,7 +283,7 @@ export async function findPlanByIdDB(planId: string): Promise<DatabasePlan | nul
  */
 export async function getUniqueProvidersDB(citySlug?: string): Promise<string[]> {
   try {
-    console.log(`[PlanDatabaseService] Getting unique providers ${citySlug ? `for ${citySlug}` : ''}`);
+    console.warn(`[PlanDatabaseService] Getting unique providers ${citySlug ? `for ${citySlug}` : ''}`);
     
     let query = `
       SELECT DISTINCT p.name
@@ -306,7 +306,7 @@ export async function getUniqueProvidersDB(citySlug?: string): Promise<string[]>
     const results = await db.query(query, params);
     
     const providers = results.map(row => row.name);
-    console.log(`[PlanDatabaseService] Found ${providers.length} unique providers`);
+    console.warn(`[PlanDatabaseService] Found ${providers.length} unique providers`);
     
     return providers;
   } catch (error) {

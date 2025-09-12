@@ -96,7 +96,7 @@ export class DataPipelineService {
    * Start job scheduler
    */
   private startJobScheduler(): void {
-    console.log('Starting data pipeline scheduler...');
+    console.warn('Starting data pipeline scheduler...');
     
     // Check jobs every minute
     setInterval(() => {
@@ -120,7 +120,7 @@ export class DataPipelineService {
 
       // Check if job should run
       if (this.shouldRunJob(job, now)) {
-        console.log(`Starting pipeline job: ${job.name}`);
+        console.warn(`Starting pipeline job: ${job.name}`);
         await this.runJob(jobId);
       }
     }
@@ -185,7 +185,7 @@ export class DataPipelineService {
       // Schedule next run
       this.scheduleNextRun(job);
 
-      console.log(`Pipeline job ${job.name} completed:`, {
+      console.warn(`Pipeline job ${job.name} completed:`, {
         success: result.success,
         updated: result.updated,
         failed: result.failed,
@@ -225,7 +225,7 @@ export class DataPipelineService {
    * Update plan data from external APIs
    */
   private async updatePlanData(): Promise<DataUpdateResult> {
-    console.log('Starting plan data update...');
+    console.warn('Starting plan data update...');
     
     const startTime = Date.now();
     let updated = 0;
@@ -235,7 +235,7 @@ export class DataPipelineService {
     try {
       // Get all cities that need data updates
       const cities = await planRepository.getCitiesForDataUpdate();
-      console.log(`Updating plan data for ${cities.length} cities`);
+      console.warn(`Updating plan data for ${cities.length} cities`);
 
       // Process cities in batches to respect rate limits
       const batchSize = 10;
@@ -302,7 +302,7 @@ export class DataPipelineService {
    * Sync provider information
    */
   private async syncProviderData(): Promise<DataUpdateResult> {
-    console.log('Starting provider data sync...');
+    console.warn('Starting provider data sync...');
     
     const startTime = Date.now();
     let updated = 0;
@@ -312,7 +312,7 @@ export class DataPipelineService {
     try {
       // Get all providers from plan data
       const providers = await planRepository.getAllUniqueProviders();
-      console.log(`Syncing data for ${providers.length} providers`);
+      console.warn(`Syncing data for ${providers.length} providers`);
 
       for (const provider of providers) {
         try {
@@ -370,7 +370,7 @@ export class DataPipelineService {
    * Calculate market analytics for all cities
    */
   private async calculateMarketAnalytics(): Promise<DataUpdateResult> {
-    console.log('Starting market analytics calculation...');
+    console.warn('Starting market analytics calculation...');
     
     const startTime = Date.now();
     let updated = 0;
@@ -379,7 +379,7 @@ export class DataPipelineService {
 
     try {
       const cities = await planRepository.getAllCities();
-      console.log(`Calculating market analytics for ${cities.length} cities`);
+      console.warn(`Calculating market analytics for ${cities.length} cities`);
 
       for (const city of cities) {
         try {
@@ -423,7 +423,7 @@ export class DataPipelineService {
    * Clean up expired caches
    */
   private async cleanupCaches(): Promise<DataUpdateResult> {
-    console.log('Starting cache cleanup...');
+    console.warn('Starting cache cleanup...');
     
     const startTime = Date.now();
     let updated = 0;
@@ -440,7 +440,7 @@ export class DataPipelineService {
       const cleanedApiLogs = await planRepository.cleanOldApiLogs(30);
       updated += cleanedApiLogs;
 
-      console.log(`Cache cleanup completed: ${updated} items cleaned`);
+      console.warn(`Cache cleanup completed: ${updated} items cleaned`);
 
       return {
         success: true,
@@ -468,7 +468,7 @@ export class DataPipelineService {
    * Refresh search indexes
    */
   private async refreshSearchIndexes(): Promise<DataUpdateResult> {
-    console.log('Starting search index refresh...');
+    console.warn('Starting search index refresh...');
     
     const startTime = Date.now();
 
@@ -545,7 +545,7 @@ export class DataPipelineService {
   /**
    * Detect provider specialties based on their plans
    */
-  private detectProviderSpecialties(stats: any): string[] {
+  private detectProviderSpecialties(stats: unknown): string[] {
     const specialties: string[] = [];
 
     if (stats.green_percentage > 50) {

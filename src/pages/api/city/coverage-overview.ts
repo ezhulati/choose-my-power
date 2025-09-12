@@ -9,7 +9,7 @@ import { cityCoverageService } from '../../../lib/services/city-coverage-service
 
 // Simple caching
 let overviewCache: {
-  data: any;
+  data: unknown;
   timestamp: number;
   ttl: number;
 } | null = null;
@@ -54,7 +54,7 @@ export const GET: APIRoute = async ({ request }) => {
     const systemMetrics = await cityCoverageService.getSystemCoverageMetrics();
     
     // Get cities needing attention if requested
-    let citiesNeedingAttention: any[] = [];
+    let citiesNeedingAttention: unknown[] = [];
     if (showNeedsAttention || includeDetails) {
       citiesNeedingAttention = await cityCoverageService.getCitiesNeedingAttention(
         Math.min(limit, 100)

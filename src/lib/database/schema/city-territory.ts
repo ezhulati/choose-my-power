@@ -97,7 +97,7 @@ export function isValidCitySlug(slug: string): boolean {
   return /^[a-z0-9-]+$/.test(slug) && slug.length >= 3 && slug.length <= 100;
 }
 
-export function isValidCoordinates(coords: any): coords is CityCoordinates {
+export function isValidCoordinates(coords: unknown): coords is CityCoordinates {
   return coords &&
          typeof coords.latitude === 'number' &&
          typeof coords.longitude === 'number' &&
@@ -105,7 +105,7 @@ export function isValidCoordinates(coords: any): coords is CityCoordinates {
          coords.longitude >= -107 && coords.longitude <= -93; // Texas longitude range
 }
 
-export function isValidZipCodeArray(zipCodes: any): zipCodes is string[] {
+export function isValidZipCodeArray(zipCodes: unknown): zipCodes is string[] {
   return Array.isArray(zipCodes) &&
          zipCodes.length > 0 &&
          zipCodes.every(zip => typeof zip === 'string' && /^\d{5}$/.test(zip));

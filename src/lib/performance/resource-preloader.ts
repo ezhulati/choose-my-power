@@ -171,7 +171,7 @@ export class ResourcePreloader {
    * Start preloading based on current page and user behavior
    */
   async startPreloading(currentPath: string): Promise<void> {
-    console.log('🚀 Starting intelligent resource preloading');
+    console.warn('🚀 Starting intelligent resource preloading');
 
     // Check performance budget constraints
     if (!this.isWithinBudget()) {
@@ -218,7 +218,7 @@ export class ResourcePreloader {
 
     // Wait for all critical resources
     await Promise.allSettled(criticalPromises);
-    console.log('✅ Critical resources preloaded');
+    console.warn('✅ Critical resources preloaded');
   }
 
   /**
@@ -236,7 +236,7 @@ export class ResourcePreloader {
     }
 
     if (strategies.length === 0) {
-      console.log('ℹ️ No specific preload strategy found for', currentPath);
+      console.warn('ℹ️ No specific preload strategy found for', currentPath);
       return;
     }
 
@@ -337,7 +337,7 @@ export class ResourcePreloader {
         // Track completion
         link.onload = () => {
           this.performanceMetrics.preloadsCompleted++;
-          console.log(`✅ Preloaded: ${url}`);
+          console.warn(`✅ Preloaded: ${url}`);
         };
 
         link.onerror = () => {
@@ -350,7 +350,7 @@ export class ResourcePreloader {
         await fetch(url, { 
           method: 'HEAD',
           priority: priority === 'high' ? 'high' : 'low'
-        } as any);
+        } as unknown);
         this.preloadedResources.add(url);
       }
     } catch (error) {
@@ -455,7 +455,7 @@ export class ResourcePreloader {
    */
   private setupConnectionAwarePreloading(): void {
     if ('connection' in navigator) {
-      const connection = (navigator as any).connection;
+      const connection = (navigator as unknown).connection;
       
       // Adjust preloading based on connection quality
       if (connection) {
@@ -463,7 +463,7 @@ export class ResourcePreloader {
         const saveData = connection.saveData;
         
         if (saveData || effectiveType === 'slow-2g' || effectiveType === '2g') {
-          console.log('🐌 Slow connection detected - reducing preloading');
+          console.warn('🐌 Slow connection detected - reducing preloading');
           this.config.budgets.maxConcurrentRequests = 2;
         } else if (effectiveType === '3g') {
           this.config.budgets.maxConcurrentRequests = 4;
@@ -498,7 +498,7 @@ export class ResourcePreloader {
    */
   private isWithinBudget(): boolean {
     if (this.config.budgets.respectDataSaver && 'connection' in navigator) {
-      const connection = (navigator as any).connection;
+      const connection = (navigator as unknown).connection;
       if (connection?.saveData) {
         return false;
       }

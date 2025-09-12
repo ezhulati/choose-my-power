@@ -107,7 +107,7 @@ export class LeadManagementService {
     leadId: string;
     score: number;
     status: Lead['status'];
-    recommendations?: any[];
+    recommendations?: unknown[];
   }> {
     try {
       // Get engagement data if session ID provided
@@ -273,7 +273,7 @@ export class LeadManagementService {
    */
   private generateLeadNotes(
     formData: LeadFormData,
-    engagementData?: any,
+    engagementData?: unknown,
     score?: number
   ): string {
     const notes: string[] = [];
@@ -350,7 +350,7 @@ export class LeadManagementService {
   /**
    * Generate personalized plan recommendations
    */
-  private async generateRecommendations(formData: LeadFormData): Promise<any[]> {
+  private async generateRecommendations(formData: LeadFormData): Promise<unknown[]> {
     try {
       const params = {
         tdsp_duns: await this.getTdspFromZip(formData.zipCode),
@@ -407,7 +407,7 @@ export class LeadManagementService {
   /**
    * Calculate total cost for specific usage
    */
-  private calculateTotalForUsage(plan: any, usage: number): number {
+  private calculateTotalForUsage(plan: unknown, usage: number): number {
     // Use the closest usage tier or interpolate
     if (usage <= 500) {
       return plan.pricing.total500kWh || (plan.pricing.ratePerKwh * usage) / 100;
@@ -424,7 +424,7 @@ export class LeadManagementService {
   /**
    * Extract key features for recommendations
    */
-  private extractKeyFeatures(plan: any): string[] {
+  private extractKeyFeatures(plan: unknown): string[] {
     const features: string[] = [];
     
     if (plan.features.greenEnergy > 0) {
@@ -527,7 +527,7 @@ export class LeadManagementService {
   private async startNurturingSequence(
     leadId: string,
     email: string,
-    recommendations: any[]
+    recommendations: unknown[]
   ): Promise<void> {
     try {
       // Welcome email with recommendations
@@ -570,16 +570,16 @@ export class LeadManagementService {
     subject: string;
     body?: string;
     template?: string;
-    data?: any;
+    data?: unknown;
   }): Promise<void> {
     // Implement email sending logic
-    console.log('Email would be sent:', emailData);
+    console.warn('Email would be sent:', emailData);
   }
 
   /**
    * Send webhook to CRM systems
    */
-  private async sendCrmWebhook(data: any): Promise<void> {
+  private async sendCrmWebhook(data: unknown): Promise<void> {
     try {
       await fetch(process.env.CRM_WEBHOOK_URL!, {
         method: 'POST',

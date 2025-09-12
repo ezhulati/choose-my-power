@@ -51,7 +51,7 @@ export class PerformanceOptimizer {
    * Create advanced performance indexes for electricity plan queries
    */
   async createPerformanceIndexes(): Promise<void> {
-    console.log('🚀 Creating advanced performance indexes for electricity plans...');
+    console.warn('🚀 Creating advanced performance indexes for electricity plans...');
 
     const indexes = [
       // Core plan lookup indexes
@@ -191,7 +191,7 @@ export class PerformanceOptimizer {
           ON ${this.db(index.table)} ${this.db.unsafe(indexType)} (${this.db.unsafe(columnList)})
         `;
 
-        console.log(`✅ Created index: ${index.name} (${index.description})`);
+        console.warn(`✅ Created index: ${index.name} (${index.description})`);
         createdCount++;
       } catch (error) {
         console.warn(`⚠️ Skipped index ${index.name}: ${error}`);
@@ -199,14 +199,14 @@ export class PerformanceOptimizer {
       }
     }
 
-    console.log(`📊 Index creation complete: ${createdCount} created, ${skippedCount} skipped`);
+    console.warn(`📊 Index creation complete: ${createdCount} created, ${skippedCount} skipped`);
   }
 
   /**
    * Analyze query performance and provide optimization recommendations
    */
   async analyzeQueryPerformance(): Promise<QueryPerformance[]> {
-    console.log('🔍 Analyzing query performance...');
+    console.warn('🔍 Analyzing query performance...');
 
     try {
       // Get query statistics (PostgreSQL specific)
@@ -270,7 +270,7 @@ export class PerformanceOptimizer {
    * Get comprehensive database metrics and recommendations
    */
   async getDatabaseMetrics(): Promise<DatabaseMetrics> {
-    console.log('📊 Gathering database performance metrics...');
+    console.warn('📊 Gathering database performance metrics...');
 
     try {
       const [
@@ -333,7 +333,7 @@ export class PerformanceOptimizer {
    * Optimize database for electricity plan queries
    */
   async optimizeForElectricityPlans(): Promise<void> {
-    console.log('⚡ Optimizing database for electricity plan queries...');
+    console.warn('⚡ Optimizing database for electricity plan queries...');
 
     // 1. Create performance indexes
     await this.createPerformanceIndexes();
@@ -347,14 +347,14 @@ export class PerformanceOptimizer {
     // 4. Set up monitoring
     await this.setupPerformanceMonitoring();
 
-    console.log('✅ Database optimization complete');
+    console.warn('✅ Database optimization complete');
   }
 
   /**
    * Update table statistics for better query planning
    */
   private async updateTableStatistics(): Promise<void> {
-    console.log('📈 Updating table statistics...');
+    console.warn('📈 Updating table statistics...');
 
     const tables = [
       'electricity_plans',
@@ -369,7 +369,7 @@ export class PerformanceOptimizer {
     for (const table of tables) {
       try {
         await this.db`ANALYZE ${this.db(table)}`;
-        console.log(`✅ Updated statistics for ${table}`);
+        console.warn(`✅ Updated statistics for ${table}`);
       } catch (error) {
         console.warn(`⚠️ Failed to update statistics for ${table}:`, error);
       }
@@ -380,7 +380,7 @@ export class PerformanceOptimizer {
    * Create materialized views for complex queries
    */
   async createMaterializedViews(): Promise<void> {
-    console.log('🏗️ Creating materialized views for complex queries...');
+    console.warn('🏗️ Creating materialized views for complex queries...');
 
     // City plan summary view
     try {
@@ -408,7 +408,7 @@ export class PerformanceOptimizer {
         ON city_plan_summary (city_slug, lowest_rate)
       `;
 
-      console.log('✅ Created city_plan_summary materialized view');
+      console.warn('✅ Created city_plan_summary materialized view');
     } catch (error) {
       console.warn('⚠️ Failed to create city_plan_summary view:', error);
     }
@@ -439,7 +439,7 @@ export class PerformanceOptimizer {
         ON provider_performance (provider_name, average_rate)
       `;
 
-      console.log('✅ Created provider_performance materialized view');
+      console.warn('✅ Created provider_performance materialized view');
     } catch (error) {
       console.warn('⚠️ Failed to create provider_performance view:', error);
     }
@@ -449,14 +449,14 @@ export class PerformanceOptimizer {
    * Refresh materialized views (should be done periodically)
    */
   async refreshMaterializedViews(): Promise<void> {
-    console.log('🔄 Refreshing materialized views...');
+    console.warn('🔄 Refreshing materialized views...');
 
     const views = ['city_plan_summary', 'provider_performance'];
 
     for (const view of views) {
       try {
         await this.db`REFRESH MATERIALIZED VIEW CONCURRENTLY ${this.db(view)}`;
-        console.log(`✅ Refreshed ${view}`);
+        console.warn(`✅ Refreshed ${view}`);
       } catch (error) {
         console.warn(`⚠️ Failed to refresh ${view}:`, error);
       }
@@ -467,14 +467,14 @@ export class PerformanceOptimizer {
    * Set up performance monitoring
    */
   private async setupPerformanceMonitoring(): Promise<void> {
-    console.log('📊 Setting up performance monitoring...');
+    console.warn('📊 Setting up performance monitoring...');
 
     // Enable query statistics collection (if not already enabled)
     try {
       await this.db`
         SELECT pg_stat_statements_reset()
       `;
-      console.log('✅ Reset query statistics for fresh monitoring');
+      console.warn('✅ Reset query statistics for fresh monitoring');
     } catch (error) {
       console.warn('⚠️ pg_stat_statements not available - query analysis will be limited');
     }
@@ -598,23 +598,23 @@ export class PerformanceOptimizer {
    * Optimize common electricity plan queries
    */
   private async optimizeCommonQueries(): Promise<void> {
-    console.log('🎯 Optimizing common query patterns...');
+    console.warn('🎯 Optimizing common query patterns...');
 
     // Set work_mem for complex queries
     try {
       await this.db`SET work_mem = '256MB'`;
-      console.log('✅ Increased work_mem for complex queries');
+      console.warn('✅ Increased work_mem for complex queries');
     } catch (error) {
       console.warn('⚠️ Could not adjust work_mem:', error);
     }
 
     // Set shared_buffers recommendation
-    console.log('💡 Recommendation: Set shared_buffers to 25% of available RAM for optimal performance');
+    console.warn('💡 Recommendation: Set shared_buffers to 25% of available RAM for optimal performance');
     
     // Enable query plan caching
     try {
       await this.db`SET plan_cache_mode = 'auto'`;
-      console.log('✅ Enabled query plan caching');
+      console.warn('✅ Enabled query plan caching');
     } catch (error) {
       console.warn('⚠️ Could not enable plan caching:', error);
     }
@@ -629,7 +629,7 @@ export class PerformanceOptimizer {
     criticalIssues: string[];
     recommendations: string[];
   }> {
-    console.log('🏥 Performing database performance health check...');
+    console.warn('🏥 Performing database performance health check...');
 
     const metrics = await this.getDatabaseMetrics();
     const criticalIssues: string[] = [];
@@ -673,21 +673,21 @@ export class PerformanceOptimizer {
    * Cleanup and maintenance tasks
    */
   async performMaintenance(): Promise<void> {
-    console.log('🧹 Performing database maintenance tasks...');
+    console.warn('🧹 Performing database maintenance tasks...');
 
     // Clean expired cache entries
     const cleanedCache = await this.db`
       DELETE FROM plan_cache 
       WHERE expires_at < NOW() - INTERVAL '1 day'
     `;
-    console.log(`🗑️ Cleaned ${cleanedCache.length} expired cache entries`);
+    console.warn(`🗑️ Cleaned ${cleanedCache.length} expired cache entries`);
 
     // Clean old API logs
     const cleanedLogs = await this.db`
       DELETE FROM api_logs 
       WHERE created_at < NOW() - INTERVAL '30 days'
     `;
-    console.log(`🗑️ Cleaned ${cleanedLogs.length} old API log entries`);
+    console.warn(`🗑️ Cleaned ${cleanedLogs.length} old API log entries`);
 
     // Refresh materialized views
     await this.refreshMaterializedViews();
@@ -695,7 +695,7 @@ export class PerformanceOptimizer {
     // Update table statistics
     await this.updateTableStatistics();
 
-    console.log('✅ Maintenance tasks completed');
+    console.warn('✅ Maintenance tasks completed');
   }
 }
 
@@ -718,6 +718,6 @@ export async function performDatabaseMaintenance(): Promise<void> {
   await performanceOptimizer.performMaintenance();
 }
 
-export async function checkDatabaseHealth(): Promise<any> {
+export async function checkDatabaseHealth(): Promise<unknown> {
   return performanceOptimizer.performanceHealthCheck();
 }

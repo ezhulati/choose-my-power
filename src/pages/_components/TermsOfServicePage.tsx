@@ -181,8 +181,8 @@ export function TermsOfServicePage({}: TermsOfServicePageProps) {
         </div>
 
         {/* Contact CTA */}
-        <div className="mt-8 bg-texas-cream-200 border border-blue-200 rounded-lg p-6 text-center">
-          <h3 className="text-lg font-semibold text-blue-900 mb-2">Questions About These Terms?</h3>
+        <div className="mt-8 bg-texas-cream-200 border border-texas-navy/30 rounded-lg p-6 text-center">
+          <h3 className="text-lg font-semibold text-texas-navy-900 mb-2">Questions About These Terms?</h3>
           <p className="text-texas-navy mb-4">Our team is available to clarify any questions about our terms of service.</p>
           <button
             onClick={() => navigate('/resources/support/contact')}

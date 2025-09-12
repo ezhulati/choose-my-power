@@ -181,12 +181,12 @@ class ErrorTracker {
     // Resource loading errors
     window.addEventListener('error', (event) => {
       if (event.target && event.target !== window) {
-        this.trackError(new Error(`Resource loading failed: ${(event.target as any).src || (event.target as any).href}`), {
+        this.trackError(new Error(`Resource loading failed: ${(event.target as unknown).src || (event.target as unknown).href}`), {
           action: 'resource_error',
           url: window.location.href,
           metadata: {
-            resourceType: (event.target as any).tagName,
-            resourceUrl: (event.target as any).src || (event.target as any).href
+            resourceType: (event.target as unknown).tagName,
+            resourceUrl: (event.target as unknown).src || (event.target as unknown).href
           }
         });
       }
@@ -413,11 +413,11 @@ class ErrorTracker {
   /**
    * Wrap async function with error tracking
    */
-  wrapAsync<T extends (...args: any[]) => Promise<any>>(
+  wrapAsync<T extends (...args: unknown[]) => Promise<unknown>>(
     fn: T,
     context?: LogContext
   ): T {
-    return (async (...args: any[]) => {
+    return (async (...args: unknown[]) => {
       try {
         return await fn(...args);
       } catch (error) {
@@ -437,12 +437,12 @@ class ErrorTracker {
   /**
    * Create retry decorator for functions
    */
-  withRetry<T extends (...args: any[]) => Promise<any>>(
+  withRetry<T extends (...args: unknown[]) => Promise<unknown>>(
     fn: T,
     retryConfig: RetryConfig,
     context?: LogContext
   ): T {
-    return (async (...args: any[]) => {
+    return (async (...args: unknown[]) => {
       let lastError: Error;
       
       for (let attempt = 1; attempt <= retryConfig.maxAttempts; attempt++) {
@@ -513,14 +513,14 @@ export function createErrorWithContext(
   return errorTracker.createError(message, code, statusCode, context);
 }
 
-export function withErrorTracking<T extends (...args: any[]) => Promise<any>>(
+export function withErrorTracking<T extends (...args: unknown[]) => Promise<unknown>>(
   fn: T,
   context?: LogContext
 ): T {
   return errorTracker.wrapAsync(fn, context);
 }
 
-export function withRetry<T extends (...args: any[]) => Promise<any>>(
+export function withRetry<T extends (...args: unknown[]) => Promise<unknown>>(
   fn: T,
   retryConfig: RetryConfig,
   context?: LogContext

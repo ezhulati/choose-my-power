@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ZipCodeSearch } from '../../components/ZipCodeSearch';
 import { getProviders, getCities, getCityBySlug, getPlansForCity, type RealProvider, type RealCity } from '../../lib/services/provider-service';
-import { MapPin, TrendingDown, Users, Zap, Building, ArrowRight, Search, Star } from 'lucide-react';
+import { MapPin, ArrowRight, Search, Star } from 'lucide-react';
 import { Button } from '../../components/ui/button';
 import { Card, CardHeader, CardContent, CardFooter } from '../../components/ui/card';
 
@@ -30,13 +30,12 @@ export function CityPage({ state, city }: CityPageProps) {
   const [providers, setProviders] = useState<RealProvider[]>([]);
   const [cities, setCities] = useState<RealCity[]>([]);
   const [cityData, setCityData] = useState<RealCity | null>(null);
-  const [cityPlans, setCityPlans] = useState<any[]>([]);
+  const [cityPlans, setCityPlans] = useState<unknown[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadData = async () => {
       try {
-        console.log(`[CityPage] Loading data for ${city}, ${state}`);
         
         const [providersData, citiesData, cityDetails] = await Promise.all([
           getProviders(state),
@@ -53,7 +52,6 @@ export function CityPage({ state, city }: CityPageProps) {
           setCityPlans(plansData);
         }
         
-        console.log(`[CityPage] Loaded city data for ${city}`);
       } catch (error) {
         console.error(`[CityPage] Error loading data for ${city}, ${state}:`, error);
       } finally {
@@ -273,7 +271,7 @@ export function CityPage({ state, city }: CityPageProps) {
             {Object.keys(usageRates).map((usage) => (
               <Button
                 key={usage}
-                onClick={() => setSelectedUsage(usage as any)}
+                onClick={() => setSelectedUsage(usage as unknown)}
                 variant={selectedUsage === usage ? 'texas-primary' : 'secondary'}
                 size="sm"
               >
@@ -297,7 +295,7 @@ export function CityPage({ state, city }: CityPageProps) {
             </div>
             <div className="text-center p-4 bg-texas-cream-200 rounded-lg">
               <div className="text-sm text-texas-navy mb-1">Est. Yearly Cost</div>
-              <div className="text-2xl font-bold text-blue-900">
+              <div className="text-2xl font-bold text-texas-navy-900">
                 ${usageRates[selectedUsage].yearly}
               </div>
               <div className="text-sm text-texas-navy">annual estimate</div>

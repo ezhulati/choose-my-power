@@ -128,7 +128,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
       if (result.success) {
         // Success - use reliable form-based navigation
-        console.log('✅ ZIP lookup successful:', result);
         
         // Show success feedback briefly
         const successMessage = document.createElement('div');
@@ -151,7 +150,6 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location = result.redirectUrl;
       } else {
         // Handle different error types
-        console.log('⚠️ ZIP lookup failed:', result);
         
         if (result.errorType === 'non_deregulated') {
           // Municipal utility area

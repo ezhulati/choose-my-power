@@ -55,7 +55,7 @@ export class ERCOTClient extends BaseAPIClient {
   /**
    * Validate ZIP codes using ERCOT service territory lookup
    */
-  async validateZipCodes(zipCodes: string[]): Promise<any[]> {
+  async validateZipCodes(zipCodes: string[]): Promise<unknown[]> {
     const results = [];
     
     // Process ZIP codes in batches to respect rate limits
@@ -98,7 +98,7 @@ export class ERCOTClient extends BaseAPIClient {
   /**
    * Look up service territory for a specific ZIP code
    */
-  async lookupServiceTerritory(zipCode: string): Promise<any> {
+  async lookupServiceTerritory(zipCode: string): Promise<unknown> {
     if (!this.isValidTexasZipCode(zipCode)) {
       return {
         success: false,
@@ -135,7 +135,7 @@ export class ERCOTClient extends BaseAPIClient {
           processingTime: response.processingTime
         };
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       return {
         success: false,
         error: error.message,
@@ -147,7 +147,7 @@ export class ERCOTClient extends BaseAPIClient {
   /**
    * Get load zone information for a ZIP code
    */
-  async getLoadZoneData(zipCode: string): Promise<any> {
+  async getLoadZoneData(zipCode: string): Promise<unknown> {
     try {
       const response = await this.makeRequest<ERCOTLoadZoneData>(
         `/np4-745-er/load-zone-lookup?zipCode=${zipCode}`,
@@ -173,7 +173,7 @@ export class ERCOTClient extends BaseAPIClient {
           processingTime: response.processingTime
         };
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       return {
         success: false,
         error: error.message,
@@ -185,9 +185,9 @@ export class ERCOTClient extends BaseAPIClient {
   /**
    * Get current market data and system status
    */
-  async getHealthStatus(): Promise<any> {
+  async getHealthStatus(): Promise<unknown> {
     try {
-      const response = await this.makeRequest<any>(
+      const response = await this.makeRequest<unknown>(
         '/np4-183-cd/system-status',
         { method: 'GET' }
       );
@@ -199,7 +199,7 @@ export class ERCOTClient extends BaseAPIClient {
         timestamp: new Date().toISOString(),
         details: response.success ? response.data : { error: response.error }
       };
-    } catch (error: any) {
+    } catch (error: unknown) {
       return {
         status: 'unhealthy',
         responseTime: 0,
@@ -213,9 +213,9 @@ export class ERCOTClient extends BaseAPIClient {
   /**
    * Get real-time system conditions
    */
-  async getSystemConditions(): Promise<any> {
+  async getSystemConditions(): Promise<unknown> {
     try {
-      const response = await this.makeRequest<any>(
+      const response = await this.makeRequest<unknown>(
         '/np4-190-cd/system-wide-demand',
         { method: 'GET' }
       );
@@ -235,7 +235,7 @@ export class ERCOTClient extends BaseAPIClient {
       } else {
         return response;
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       return {
         success: false,
         error: error.message,
@@ -247,7 +247,7 @@ export class ERCOTClient extends BaseAPIClient {
   /**
    * Map ERCOT API response to standardized format
    */
-  private mapERCOTResponse(ercotData: ERCOTServiceTerritoryResponse, zipCode: string): any {
+  private mapERCOTResponse(ercotData: ERCOTServiceTerritoryResponse, zipCode: string): unknown {
     return {
       zipCode,
       cityName: ercotData.cityName || this.inferCityFromZip(zipCode),
@@ -359,7 +359,7 @@ export class ERCOTClient extends BaseAPIClient {
   /**
    * Determine system condition from demand data
    */
-  private getSystemCondition(demandData: any): string {
+  private getSystemCondition(demandData: unknown): string {
     const reserveMargin = demandData.operatingReserve || 0;
     const demandRatio = (demandData.actualSystemDemand || 0) / (demandData.forecastSystemDemand || 1);
     

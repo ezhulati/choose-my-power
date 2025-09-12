@@ -114,7 +114,7 @@ export class ZIPValidationService {
       cityName: string;
       marketStatus: 'active' | 'limited' | 'transitioning';
     };
-    error?: any;
+    error?: unknown;
   }> {
     try {
       const zipMapping = this.zipMappings.get(zipCode);
@@ -237,7 +237,7 @@ export class ZIPValidationService {
         });
       }
 
-      console.log(`[ZIPValidationService] Loaded ${this.zipMappings.size} ZIP code mappings`);
+      // ZIP code mappings loaded successfully - debug logging removed for ESLint compliance
     } catch (error) {
       console.error('[ZIPValidationService] Error loading ZIP mappings:', error);
     }
@@ -357,7 +357,7 @@ export class ZIPValidationService {
       // Transform citySlug to match filename pattern (remove -tx suffix)
       const fileSlug = citySlug.endsWith('-tx') ? citySlug.replace('-tx', '') : citySlug;
       
-      console.log(`[ZIPValidationService] Loading plan data for ${citySlug} using file: ${fileSlug}`);
+      // Loading plan data - debug logging removed for ESLint compliance
       
       // Use real plan data service to get actual plan counts
       const cityData = await loadCityData(fileSlug);
@@ -371,7 +371,7 @@ export class ZIPValidationService {
       const plans = cityData.filters?.['no-filters']?.plans || cityData.plans || [];
       const actualPlanCount = plans.length;
       
-      console.log(`[ZIPValidationService] Found ${actualPlanCount} real plans for ${citySlug} from file ${fileSlug}`);
+      // Plan data loaded successfully - debug logging removed for ESLint compliance
       return actualPlanCount;
       
     } catch (error) {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BookOpen, Users, Zap, Calculator, Shield, Home, Building, Leaf } from 'lucide-react';
+import { Users, Zap, Calculator } from 'lucide-react';
 
 // Extend Window interface to include our navigation function
 declare global {
@@ -132,7 +132,7 @@ export function ResourcesGuidesPage({}: ResourcesGuidesPageProps) {
             {categories.map(category => (
               <button
                 key={category.id}
-                onClick={() => setSelectedCategory(category.id as any)}
+                onClick={() => setSelectedCategory(category.id as unknown)}
                 className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                   selectedCategory === category.id
                     ? 'bg-texas-navy text-white'
