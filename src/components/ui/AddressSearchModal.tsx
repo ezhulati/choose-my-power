@@ -345,14 +345,16 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
   // Get the MongoDB ObjectId for the plan
   const getPlanObjectId = (planData: unknown): string | null => {
     // Getting plan ObjectId - debug logging removed for ESLint compliance
-    //
-      planName: planData.name,
-      provider: planData.provider?.name,
-      planId: planData.id,
-      apiPlanId: planData.apiPlanId,
-      planIdIsValid: planData.id && /^[a-f0-9]{24}$/i.test(planData.id),
-      apiPlanIdIsValid: planData.apiPlanId && /^[a-f0-9]{24}$/i.test(planData.apiPlanId)
-    });
+    if (process.env.NODE_ENV === 'development') {
+      console.log('Plan ObjectId validation:', {
+        planName: planData.name,
+        provider: planData.provider?.name,
+        planId: planData.id,
+        apiPlanId: planData.apiPlanId,
+        planIdIsValid: planData.id && /^[a-f0-9]{24}$/i.test(planData.id),
+        apiPlanIdIsValid: planData.apiPlanId && /^[a-f0-9]{24}$/i.test(planData.apiPlanId)
+      });
+    }
     
     // First priority: Use API-fetched MongoDB ObjectId
     if (planData.apiPlanId && /^[a-f0-9]{24}$/i.test(planData.apiPlanId)) {
@@ -367,8 +369,7 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
     }
     
     // No valid plan ID found - this is an error condition
-    console.error('[AddressModal] No valid plan ID found for plan:', planData.name);
-    /*
+    console.error('[AddressModal] No valid plan ID found for plan:', planData.name, {
       planName: planData.name,
       provider: planData.provider?.name,
       planId: planData.id,
@@ -450,19 +451,21 @@ export const AddressSearchModal: React.FC<AddressSearchModalProps> = ({
     }
     
     // Opening ComparePower order page - debug logging removed for ESLint compliance
-    /*
-      esiid: selectedLocation.esiid,
-      planId: actualPlanId,
-      planName: planData.name,
-      provider: planData.provider.name,
-      address: selectedLocation.address,
-      zipCode: zipCode,
-      usage: usage,
-      originalPlanId: planData.id,
-      apiPlanIdAvailable: !!planData.apiPlanId,
-      planIdSource: planData.apiPlanId ? 'API' : (planData.id ? 'plan.id' : 'none'),
-      generatedUrl: orderUrl
-    });
+    if (process.env.NODE_ENV === 'development') {
+      console.log('Opening ComparePower order page:', {
+        esiid: selectedLocation.esiid,
+        planId: actualPlanId,
+        planName: planData.name,
+        provider: planData.provider.name,
+        address: selectedLocation.address,
+        zipCode: zipCode,
+        usage: usage,
+        originalPlanId: planData.id,
+        apiPlanIdAvailable: !!planData.apiPlanId,
+        planIdSource: planData.apiPlanId ? 'API' : (planData.id ? 'plan.id' : 'none'),
+        generatedUrl: orderUrl
+      });
+    }
     
     // Open the order page in a new tab
     window.open(orderUrl, '_blank');

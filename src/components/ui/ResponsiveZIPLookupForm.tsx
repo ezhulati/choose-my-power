@@ -91,6 +91,7 @@ export const ResponsiveZIPLookupForm: React.FC<ResponsiveZIPLookupFormProps> = (
   // Log device detection for development
   useEffect(() => {
     if (process.env.NODE_ENV === 'development' && showPerformanceMetrics) {
+      console.log('ResponsiveZIPLookupForm device detection:', {
         windowWidth,
         isMobile,
         isTouch,
