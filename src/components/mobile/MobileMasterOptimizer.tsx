@@ -149,11 +149,6 @@ export const MobileMasterOptimizer: React.FC<MobileMasterOptimizerProps> = ({
 
         setState(prev => ({ ...prev, isInitialized: true }));
 
-          performanceScore: state.performanceScore,
-          accessibilityScore: state.accessibilityScore,
-          capabilities
-        });
-
       } catch (error) {
         console.error('Failed to initialize mobile optimizations:', error);
         onError?.(error as Error);

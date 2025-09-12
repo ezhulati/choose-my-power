@@ -216,7 +216,7 @@
           }
         },
         {
-          "id": "68c338acaf6a270af7ac07d1",
+          "id": "68c48a2a5277bcf144b51253",
           "name": "12 Month GREEN (No Min Usage Fee)",
           "provider": {
             "name": "Constellation",
@@ -253,7 +253,7 @@
           }
         },
         {
-          "id": "68c338acaf6a270af7ac07d3",
+          "id": "68c48a2a5277bcf144b51251",
           "name": "12 Month Usage Bill Credit",
           "provider": {
             "name": "Constellation",
@@ -290,7 +290,7 @@
           }
         },
         {
-          "id": "68c338acaf6a270af7ac07d2",
+          "id": "68c48a2a5277bcf144b51252",
           "name": "24 Month Usage Bill Credit",
           "provider": {
             "name": "Constellation",
@@ -2035,6 +2035,43 @@
           }
         },
         {
+          "id": "68c4397aeff9206496f87f43",
+          "name": "Reliant Conservation 12 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.183,
+            "rate1000kWh": 0.175,
+            "rate2000kWh": 0.18,
+            "ratePerKwh": 0.175
+          },
+          "contract": {
+            "length": 12,
+            "type": "fixed",
+            "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS CENTRAL COMPANY"
+            ]
+          }
+        },
+        {
           "id": "68c2fb23a4a0c10d804d3eeb",
           "name": "Reliant Power Savings 2,000 kWh 12 plan",
           "provider": {
@@ -2090,6 +2127,43 @@
             "length": 12,
             "type": "fixed",
             "earlyTerminationFee": 150,
+            "autoRenewal": false,
+            "satisfactionGuarantee": false
+          },
+          "features": {
+            "greenEnergy": 24,
+            "billCredit": 0,
+            "deposit": {
+              "required": false,
+              "amount": 0
+            }
+          },
+          "availability": {
+            "enrollmentType": "both",
+            "serviceAreas": [
+              "AEP TEXAS CENTRAL COMPANY"
+            ]
+          }
+        },
+        {
+          "id": "68c4397beff9206496f87f49",
+          "name": "Reliant Conservation 24 plan",
+          "provider": {
+            "name": "Reliant",
+            "logo": "",
+            "rating": 0,
+            "reviewCount": 0
+          },
+          "pricing": {
+            "rate500kWh": 0.183,
+            "rate1000kWh": 0.175,
+            "rate2000kWh": 0.18,
+            "ratePerKwh": 0.175
+          },
+          "contract": {
+            "length": 24,
+            "type": "fixed",
+            "earlyTerminationFee": 295,
             "autoRenewal": false,
             "satisfactionGuarantee": false
           },
@@ -2830,7 +2904,7 @@
           }
         },
         {
-          "id": "68c2579f349dfd8c4303a04e",
+          "id": "68c3a93107a7d963e4738efd",
           "name": "Flex Forward",
           "provider": {
             "name": "TXU Energy",
@@ -2867,7 +2941,7 @@
           }
         },
         {
-          "id": "68c257a0349dfd8c4303a05e",
+          "id": "68c3a93107a7d963e4738f08",
           "name": "Ultimate Season Pass 12",
           "provider": {
             "name": "TXU Energy",
@@ -2910,7 +2984,7 @@
           }
         },
         {
-          "id": "68c257a0349dfd8c4303a05d",
+          "id": "68c3a93207a7d963e4738f09",
           "name": "Free Nights & Solar Days 12 (8 pm)",
           "provider": {
             "name": "TXU Energy",
@@ -2947,7 +3021,7 @@
           }
         },
         {
-          "id": "68c2ebaea4a0c10d804d3cf8",
+          "id": "68c46e13518a1953ff11e94b",
           "name": "Rhythm Saver 12",
           "provider": {
             "name": "Rhythm Energy",
@@ -2984,7 +3058,7 @@
           }
         },
         {
-          "id": "68c2ebaea4a0c10d804d3cf6",
+          "id": "68c46e13518a1953ff11e94d",
           "name": "Watt a Deal 12",
           "provider": {
             "name": "Rhythm Energy",
@@ -3021,7 +3095,7 @@
           }
         },
         {
-          "id": "68c2ebaea4a0c10d804d3cf7",
+          "id": "68c46e13518a1953ff11e94c",
           "name": "Simply Green 13",
           "provider": {
             "name": "Rhythm Energy",
@@ -3030,10 +3104,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.185,
-            "rate1000kWh": 0.171,
-            "rate2000kWh": 0.165,
-            "ratePerKwh": 0.171
+            "rate500kWh": 0.184,
+            "rate1000kWh": 0.17,
+            "rate2000kWh": 0.164,
+            "ratePerKwh": 0.17
           },
           "contract": {
             "length": 13,
@@ -3058,7 +3132,7 @@
           }
         },
         {
-          "id": "68c2e7bdb05451282d307d20",
+          "id": "68c46aa9eff9206496f884cd",
           "name": "Simply Green 23",
           "provider": {
             "name": "Rhythm Energy",
@@ -3067,10 +3141,10 @@
             "reviewCount": 0
           },
           "pricing": {
-            "rate500kWh": 0.186,
-            "rate1000kWh": 0.173,
-            "rate2000kWh": 0.166,
-            "ratePerKwh": 0.173
+            "rate500kWh": 0.184,
+            "rate1000kWh": 0.171,
+            "rate2000kWh": 0.165,
+            "ratePerKwh": 0.171
           },
           "contract": {
             "length": 23,
@@ -4130,7 +4204,7 @@
           }
         }
       ],
-      "count": 109,
+      "count": 111,
       "lowestRate": 0.104,
       "highestRate": 0.235
     }

@@ -24,6 +24,7 @@ import {
   ArrowRight, 
   CheckCircle, 
   AlertCircle, 
+  AlertTriangle,
   Info 
 } from 'lucide-react';
 import { ProviderLogo } from './ProviderLogo';
@@ -968,7 +969,7 @@ export const ProductDetailsPageShadcn: React.FC<ProductDetailsPageShadcnProps> =
                     <div className="relative">
                       <Button 
                         onClick={() => setIsAddressModalOpen(true)}
-                        disabled={planIdLoading}
+                        disabled={planIdLoading || (!planIdLoading && !realPlanId && !(planData.id && /^[a-f0-9]{24}$/i.test(planData.id)))}
                         className="w-full bg-gradient-to-r from-texas-red to-red-600 hover:from-texas-red-600 hover:to-red-700 text-white py-4 px-6 text-lg font-bold rounded-xl transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-xl hover:shadow-2xl focus-visible:ring-4 focus-visible:ring-texas-red/40 focus-visible:ring-offset-2 group overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                         aria-describedby="plan-selection-description"
                       >
@@ -978,6 +979,11 @@ export const ProductDetailsPageShadcn: React.FC<ProductDetailsPageShadcnProps> =
                             <>
                               <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                               <span>Loading Plan...</span>
+                            </>
+                          ) : !realPlanId && !(planData.id && /^[a-f0-9]{24}$/i.test(planData.id)) ? (
+                            <>
+                              <AlertTriangle className="w-5 h-5" />
+                              <span>Plan Currently Unavailable</span>
                             </>
                           ) : (
                             <>
@@ -993,6 +999,14 @@ export const ProductDetailsPageShadcn: React.FC<ProductDetailsPageShadcnProps> =
                     <div id="plan-selection-description" className="sr-only">
                       Opens address verification modal to check plan availability at your service location
                     </div>
+
+                    {/* Plan availability status message */}
+                    {!planIdLoading && !realPlanId && !(planData.id && /^[a-f0-9]{24}$/i.test(planData.id)) && (
+                      <div className="flex items-center gap-2 text-sm text-orange-600 bg-orange-50 p-3 rounded-lg border border-orange-200">
+                        <AlertTriangle className="w-4 h-4 flex-shrink-0" />
+                        <span>This plan cannot be ordered online at the moment. Please contact support for assistance.</span>
+                      </div>
+                    )}
                     
                     {/* Secondary Actions - Enhanced */}
                     <div className="grid grid-cols-2 gap-4 w-full">
@@ -1118,7 +1132,9 @@ export const ProductDetailsPageShadcn: React.FC<ProductDetailsPageShadcnProps> =
             name: planData.provider.name
           },
           // Priority: Use plan's actual MongoDB ID first, then fallback to API-fetched ID
-          apiPlanId: planData.id && /^[a-f0-9]{24}$/i.test(planData.id) ? planData.id : realPlanId
+          // Ensure we always have a valid MongoDB ObjectId before allowing order
+          apiPlanId: (planData.id && /^[a-f0-9]{24}$/i.test(planData.id)) ? planData.id : 
+                    (realPlanId && /^[a-f0-9]{24}$/i.test(realPlanId)) ? realPlanId : null
         }}
         usage={usage}
         onSuccess={handleAddressSuccess}
