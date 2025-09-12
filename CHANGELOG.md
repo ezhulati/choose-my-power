@@ -33,6 +33,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **IMPACT**: Zero "ZIP not found" errors, bulletproof coverage for entire Texas market
 
 ### Fixed
+- **MUNICIPAL UTILITY COMPLIANCE**: Removed Austin from footer links to prevent customer confusion
+  - Austin Energy is a municipal utility with NO customer choice options
+  - Footer previously incorrectly suggested Austin had deregulated electricity market
+  - **IMPACT**: Constitutional compliance ensuring only deregulated markets are marketed
+
 - **ERCOT API INTEGRATION**: Complete end-to-end order flow now working perfectly
   - Fixed ERCOT API client hanging issue by implementing direct fetch bypass
   - Enhanced address normalization for consistent caching (street abbreviations, spacing)
